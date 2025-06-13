@@ -14,7 +14,7 @@ from ...types import (
     String,
     Time,
 )
-from ...utils.frozendict import merge
+from ...utils.frozendict import exclude, merge, remap
 from ..nodes import InputNode
 
 
@@ -145,11 +145,11 @@ def input(
     <AVStream:input.mp4:0>
     ```
     """
-    options = {
-        k: v
-        for k, v in locals().items()
-        if k not in ("filename", "decoder_options", "extra_options")
-    }
+    _remap: dict[str, str] = {}
+    options = remap(
+        exclude(locals(), ("filename", "decoder_options", "extra_options", "_remap")),
+        _remap,
+    )
 
     return InputNode(
         filename=str(filename),

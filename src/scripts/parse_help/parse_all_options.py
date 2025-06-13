@@ -14,7 +14,7 @@ def parse_all_options(help_text: str) -> list[FFMpegAVOption]:
         r"(?P<short_name>[\w\-\.\+]+)\s+\<(?P<type>[\w]+)\>\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
     )
     re_choice_pattern = re.compile(
-        r"(?P<short_name>[\w\-\s\.\+]+)\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
+        r"(?P<short_name>[\w\-\.\+]+)\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
     )
     re_value_pattern = re.compile(
         r"(?P<short_name>[\w\-\.\+]+)\s+(?P<value>[\w\-]+)\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"

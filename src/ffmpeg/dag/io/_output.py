@@ -14,7 +14,7 @@ from ...types import (
     String,
     Time,
 )
-from ...utils.frozendict import merge
+from ...utils.frozendict import exclude, merge, remap
 from ..nodes import FilterableStream, OutputNode, OutputStream
 
 
@@ -225,12 +225,16 @@ def output(
     Returns:
         the output stream
     """
-
-    options = {
-        k: v
-        for k, v in locals().items()
-        if k not in ("filename", "streams", "encoder_options", "extra_options")
+    _remap: dict[str, str] = {
+        "_pass": "pass",
     }
+    options = remap(
+        exclude(
+            locals(),
+            ("filename", "streams", "extra_options", "encoder_options", "_remap"),
+        ),
+        _remap,
+    )
 
     return OutputNode(
         inputs=streams,

@@ -1,7 +1,7 @@
 # NOTE: this file is auto-generated, do not modify
 from typing import Literal
 
-from ..utils.frozendict import FrozenDict
+from ..utils.frozendict import exclude, remap
 from .schema import FFMpegEncoderOption
 
 
@@ -13,7 +13,8 @@ def a64multi() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def a64multi5() -> FFMpegEncoderOption:
@@ -24,7 +25,8 @@ def a64multi5() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def alias_pix() -> FFMpegEncoderOption:
@@ -35,20 +37,14 @@ def alias_pix() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def amv(
     mpv_flags: str
     | None
-    | Literal[
-        "skip_rd",
-        "strict_gop",
-        "qp_rd                        E..V....... Use rate distortion",
-        "cbp_rd                       E..V....... use rate distortion",
-        "naq                          E..V....... normalize adaptive",
-        "mv0",
-    ] = None,
+    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -121,7 +117,8 @@ def amv(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def apng() -> FFMpegEncoderOption:
@@ -132,7 +129,8 @@ def apng() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def asv1() -> FFMpegEncoderOption:
@@ -143,7 +141,8 @@ def asv1() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def asv2() -> FFMpegEncoderOption:
@@ -154,7 +153,8 @@ def asv2() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def librav1e(
@@ -179,7 +179,12 @@ def librav1e(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {
+        "tile_rows": "tile-rows",
+        "tile_columns": "tile-columns",
+        "rav1e_params": "rav1e-params",
+    }
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libsvtav1(
@@ -212,7 +217,10 @@ def libsvtav1(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {
+        "svtav1_params": "svtav1-params",
+    }
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def av1_nvenc(
@@ -341,7 +349,19 @@ def av1_nvenc(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {
+        "tile_rows": "tile-rows",
+        "tile_columns": "tile-columns",
+        "rc_lookahead": "rc-lookahead",
+        "no_scenecut": "no-scenecut",
+        "forced_idr": "forced-idr",
+        "spatial_aq": "spatial-aq",
+        "temporal_aq": "temporal-aq",
+        "aq_strength": "aq-strength",
+        "intra_refresh": "intra-refresh",
+        "timing_info": "timing-info",
+    }
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def av1_vaapi(
@@ -395,7 +415,8 @@ def av1_vaapi(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def avrp() -> FFMpegEncoderOption:
@@ -406,7 +427,8 @@ def avrp() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def avui() -> FFMpegEncoderOption:
@@ -417,7 +439,8 @@ def avui() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def ayuv() -> FFMpegEncoderOption:
@@ -428,7 +451,8 @@ def ayuv() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def bitpacked() -> FFMpegEncoderOption:
@@ -439,7 +463,8 @@ def bitpacked() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def bmp() -> FFMpegEncoderOption:
@@ -450,7 +475,8 @@ def bmp() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def cfhd(
@@ -481,7 +507,8 @@ def cfhd(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def cinepak(
@@ -504,7 +531,8 @@ def cinepak(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def cljr(
@@ -519,7 +547,8 @@ def cljr(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def vc2() -> FFMpegEncoderOption:
@@ -530,7 +559,8 @@ def vc2() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def dnxhd(
@@ -553,7 +583,8 @@ def dnxhd(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def dpx() -> FFMpegEncoderOption:
@@ -564,7 +595,8 @@ def dpx() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def dvvideo(
@@ -579,7 +611,8 @@ def dvvideo(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def exr(
@@ -598,7 +631,8 @@ def exr(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def ffv1(
@@ -617,7 +651,8 @@ def ffv1(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def ffvhuff(
@@ -636,7 +671,8 @@ def ffvhuff(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def fits() -> FFMpegEncoderOption:
@@ -647,7 +683,8 @@ def fits() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def flashsv() -> FFMpegEncoderOption:
@@ -658,7 +695,8 @@ def flashsv() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def flashsv2() -> FFMpegEncoderOption:
@@ -669,20 +707,14 @@ def flashsv2() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def flv(
     mpv_flags: str
     | None
-    | Literal[
-        "skip_rd",
-        "strict_gop",
-        "qp_rd                        E..V....... Use rate distortion",
-        "cbp_rd                       E..V....... use rate distortion",
-        "naq                          E..V....... normalize adaptive",
-        "mv0",
-    ] = None,
+    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -759,13 +791,12 @@ def flv(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def gif(
-    gifflags: str
-    | None
-    | Literal["offsetting", "transdiff                    E..V....... enable"] = None,
+    gifflags: str | None | Literal["offsetting", "transdiff"] = None,
     gifimage: bool | None = None,
     global_palette: bool | None = None,
 ) -> FFMpegEncoderOption:
@@ -780,20 +811,14 @@ def gif(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def h261(
     mpv_flags: str
     | None
-    | Literal[
-        "skip_rd",
-        "strict_gop",
-        "qp_rd                        E..V....... Use rate distortion",
-        "cbp_rd                       E..V....... use rate distortion",
-        "naq                          E..V....... normalize adaptive",
-        "mv0",
-    ] = None,
+    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -870,7 +895,8 @@ def h261(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def h263(
@@ -878,14 +904,7 @@ def h263(
     mb_info: int | None = None,
     mpv_flags: str
     | None
-    | Literal[
-        "skip_rd",
-        "strict_gop",
-        "qp_rd                        E..V....... Use rate distortion",
-        "cbp_rd                       E..V....... use rate distortion",
-        "naq                          E..V....... normalize adaptive",
-        "mv0",
-    ] = None,
+    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -964,7 +983,8 @@ def h263(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def h263_v4l2m2m(
@@ -981,7 +1001,8 @@ def h263_v4l2m2m(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def h263p(
@@ -991,14 +1012,7 @@ def h263p(
     structured_slices: bool | None = None,
     mpv_flags: str
     | None
-    | Literal[
-        "skip_rd",
-        "strict_gop",
-        "qp_rd                        E..V....... Use rate distortion",
-        "cbp_rd                       E..V....... use rate distortion",
-        "naq                          E..V....... normalize adaptive",
-        "mv0",
-    ] = None,
+    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -1079,7 +1093,8 @@ def h263p(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libx264(
@@ -1190,7 +1205,27 @@ def libx264(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {
+        "aq_mode": "aq-mode",
+        "aq_strength": "aq-strength",
+        "psy_rd": "psy-rd",
+        "rc_lookahead": "rc-lookahead",
+        "intra_refresh": "intra-refresh",
+        "bluray_compat": "bluray-compat",
+        "b_bias": "b-bias",
+        "b_pyramid": "b-pyramid",
+        "mixed_refs": "mixed-refs",
+        "_8x8dct": "8x8dct",
+        "fast_pskip": "fast-pskip",
+        "direct_pred": "direct-pred",
+        "slice_max_size": "slice-max-size",
+        "nal_hrd": "nal-hrd",
+        "avcintra_class": "avcintra-class",
+        "motion_est": "motion-est",
+        "forced_idr": "forced-idr",
+        "x264_params": "x264-params",
+    }
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libx264rgb(
@@ -1301,7 +1336,27 @@ def libx264rgb(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {
+        "aq_mode": "aq-mode",
+        "aq_strength": "aq-strength",
+        "psy_rd": "psy-rd",
+        "rc_lookahead": "rc-lookahead",
+        "intra_refresh": "intra-refresh",
+        "bluray_compat": "bluray-compat",
+        "b_bias": "b-bias",
+        "b_pyramid": "b-pyramid",
+        "mixed_refs": "mixed-refs",
+        "_8x8dct": "8x8dct",
+        "fast_pskip": "fast-pskip",
+        "direct_pred": "direct-pred",
+        "slice_max_size": "slice-max-size",
+        "nal_hrd": "nal-hrd",
+        "avcintra_class": "avcintra-class",
+        "motion_est": "motion-est",
+        "forced_idr": "forced-idr",
+        "x264_params": "x264-params",
+    }
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def h264_nvenc(
@@ -1467,7 +1522,20 @@ def h264_nvenc(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {
+        "rc_lookahead": "rc-lookahead",
+        "_2pass": "2pass",
+        "no_scenecut": "no-scenecut",
+        "forced_idr": "forced-idr",
+        "spatial_aq": "spatial-aq",
+        "temporal_aq": "temporal-aq",
+        "aq_strength": "aq-strength",
+        "bluray_compat": "bluray-compat",
+        "intra_refresh": "intra-refresh",
+        "single_slice_intra_refresh": "single-slice-intra-refresh",
+        "constrained_encoding": "constrained-encoding",
+    }
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def h264_v4l2m2m(
@@ -1484,7 +1552,8 @@ def h264_v4l2m2m(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def h264_vaapi(
@@ -1502,12 +1571,7 @@ def h264_vaapi(
     aud: bool | None = None,
     sei: str
     | None
-    | Literal[
-        "identifier",
-        "timing",
-        "recovery_point               E..V....... Include recovery points where",
-        "a53_cc",
-    ] = None,
+    | Literal["identifier", "timing", "recovery_point", "a53_cc"] = None,
     profile: int
     | None
     | Literal["constrained_baseline", "main", "high", "high10"] = None,
@@ -1556,7 +1620,8 @@ def h264_vaapi(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def hap(
@@ -1575,7 +1640,8 @@ def hap(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def hdr() -> FFMpegEncoderOption:
@@ -1586,7 +1652,8 @@ def hdr() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libx265(
@@ -1617,7 +1684,11 @@ def libx265(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {
+        "forced_idr": "forced-idr",
+        "x265_params": "x265-params",
+    }
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def hevc_nvenc(
@@ -1774,7 +1845,18 @@ def hevc_nvenc(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {
+        "rc_lookahead": "rc-lookahead",
+        "_2pass": "2pass",
+        "no_scenecut": "no-scenecut",
+        "forced_idr": "forced-idr",
+        "aq_strength": "aq-strength",
+        "bluray_compat": "bluray-compat",
+        "intra_refresh": "intra-refresh",
+        "single_slice_intra_refresh": "single-slice-intra-refresh",
+        "constrained_encoding": "constrained-encoding",
+    }
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def hevc_v4l2m2m(
@@ -1791,7 +1873,8 @@ def hevc_v4l2m2m(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def hevc_vaapi(
@@ -1812,12 +1895,7 @@ def hevc_vaapi(
     | Literal[
         "1", "2", "2.1", "3", "3.1", "4", "4.1", "5", "5.1", "5.2", "6", "6.1", "6.2"
     ] = None,
-    sei: str
-    | None
-    | Literal[
-        "hdr                          E..V....... Include HDR metadata for mastering display colour volume and content light level",
-        "a53_cc",
-    ] = None,
+    sei: str | None | Literal["hdr", "a53_cc"] = None,
     tiles: str | None = None,
 ) -> FFMpegEncoderOption:
     """
@@ -1841,7 +1919,8 @@ def hevc_vaapi(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def huffyuv(
@@ -1858,7 +1937,8 @@ def huffyuv(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def jpeg2000(
@@ -1887,7 +1967,8 @@ def jpeg2000(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libopenjpeg(
@@ -1916,7 +1997,8 @@ def libopenjpeg(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def jpegls(
@@ -1931,7 +2013,8 @@ def jpegls(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libjxl(
@@ -1950,7 +2033,8 @@ def libjxl(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def ljpeg(
@@ -1965,7 +2049,8 @@ def ljpeg(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def magicyuv(
@@ -1980,20 +2065,14 @@ def magicyuv(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def mjpeg(
     mpv_flags: str
     | None
-    | Literal[
-        "skip_rd",
-        "strict_gop",
-        "qp_rd                        E..V....... Use rate distortion",
-        "cbp_rd                       E..V....... use rate distortion",
-        "naq                          E..V....... normalize adaptive",
-        "mv0",
-    ] = None,
+    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -2066,7 +2145,8 @@ def mjpeg(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def mjpeg_vaapi(
@@ -2093,7 +2173,8 @@ def mjpeg_vaapi(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def mpeg1video(
@@ -2106,14 +2187,7 @@ def mpeg1video(
     brd_scale: int | None = None,
     mpv_flags: str
     | None
-    | Literal[
-        "skip_rd",
-        "strict_gop",
-        "qp_rd                        E..V....... Use rate distortion",
-        "cbp_rd                       E..V....... use rate distortion",
-        "naq                          E..V....... normalize adaptive",
-        "mv0",
-    ] = None,
+    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -2197,7 +2271,8 @@ def mpeg1video(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def mpeg2video(
@@ -2218,14 +2293,7 @@ def mpeg2video(
     | Literal["component", "pal", "ntsc", "secam", "mac", "unspecified"] = None,
     mpv_flags: str
     | None
-    | Literal[
-        "skip_rd",
-        "strict_gop",
-        "qp_rd                        E..V....... Use rate distortion",
-        "cbp_rd                       E..V....... use rate distortion",
-        "naq                          E..V....... normalize adaptive",
-        "mv0",
-    ] = None,
+    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -2315,7 +2383,8 @@ def mpeg2video(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def mpeg2_vaapi(
@@ -2346,7 +2415,8 @@ def mpeg2_vaapi(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def mpeg4(
@@ -2358,14 +2428,7 @@ def mpeg4(
     brd_scale: int | None = None,
     mpv_flags: str
     | None
-    | Literal[
-        "skip_rd",
-        "strict_gop",
-        "qp_rd                        E..V....... Use rate distortion",
-        "cbp_rd                       E..V....... use rate distortion",
-        "naq                          E..V....... normalize adaptive",
-        "mv0",
-    ] = None,
+    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -2448,7 +2511,8 @@ def mpeg4(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libxvid(
@@ -2475,7 +2539,8 @@ def libxvid(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def mpeg4_v4l2m2m(
@@ -2492,20 +2557,14 @@ def mpeg4_v4l2m2m(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def msmpeg4v2(
     mpv_flags: str
     | None
-    | Literal[
-        "skip_rd",
-        "strict_gop",
-        "qp_rd                        E..V....... Use rate distortion",
-        "cbp_rd                       E..V....... use rate distortion",
-        "naq                          E..V....... normalize adaptive",
-        "mv0",
-    ] = None,
+    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -2582,20 +2641,14 @@ def msmpeg4v2(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def msmpeg4(
     mpv_flags: str
     | None
-    | Literal[
-        "skip_rd",
-        "strict_gop",
-        "qp_rd                        E..V....... Use rate distortion",
-        "cbp_rd                       E..V....... use rate distortion",
-        "naq                          E..V....... normalize adaptive",
-        "mv0",
-    ] = None,
+    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -2672,7 +2725,8 @@ def msmpeg4(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def msrle() -> FFMpegEncoderOption:
@@ -2683,7 +2737,8 @@ def msrle() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def msvideo1() -> FFMpegEncoderOption:
@@ -2694,7 +2749,8 @@ def msvideo1() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pam() -> FFMpegEncoderOption:
@@ -2705,7 +2761,8 @@ def pam() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pbm() -> FFMpegEncoderOption:
@@ -2716,7 +2773,8 @@ def pbm() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcx() -> FFMpegEncoderOption:
@@ -2727,7 +2785,8 @@ def pcx() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pfm() -> FFMpegEncoderOption:
@@ -2738,7 +2797,8 @@ def pfm() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pgm() -> FFMpegEncoderOption:
@@ -2749,7 +2809,8 @@ def pgm() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pgmyuv() -> FFMpegEncoderOption:
@@ -2760,7 +2821,8 @@ def pgmyuv() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def phm() -> FFMpegEncoderOption:
@@ -2771,7 +2833,8 @@ def phm() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def png() -> FFMpegEncoderOption:
@@ -2782,7 +2845,8 @@ def png() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def ppm() -> FFMpegEncoderOption:
@@ -2793,7 +2857,8 @@ def ppm() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def prores(
@@ -2808,7 +2873,8 @@ def prores(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def prores_aw(
@@ -2823,7 +2889,8 @@ def prores_aw(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def prores_ks(
@@ -2852,7 +2919,8 @@ def prores_ks(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def qoi() -> FFMpegEncoderOption:
@@ -2863,7 +2931,8 @@ def qoi() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def qtrle() -> FFMpegEncoderOption:
@@ -2874,7 +2943,8 @@ def qtrle() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def r10k() -> FFMpegEncoderOption:
@@ -2885,7 +2955,8 @@ def r10k() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def r210() -> FFMpegEncoderOption:
@@ -2896,7 +2967,8 @@ def r210() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def rawvideo() -> FFMpegEncoderOption:
@@ -2907,7 +2979,8 @@ def rawvideo() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def roqvideo(
@@ -2922,7 +2995,8 @@ def roqvideo(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def rpza(
@@ -2943,20 +3017,14 @@ def rpza(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def rv10(
     mpv_flags: str
     | None
-    | Literal[
-        "skip_rd",
-        "strict_gop",
-        "qp_rd                        E..V....... Use rate distortion",
-        "cbp_rd                       E..V....... use rate distortion",
-        "naq                          E..V....... normalize adaptive",
-        "mv0",
-    ] = None,
+    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -3033,20 +3101,14 @@ def rv10(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def rv20(
     mpv_flags: str
     | None
-    | Literal[
-        "skip_rd",
-        "strict_gop",
-        "qp_rd                        E..V....... Use rate distortion",
-        "cbp_rd                       E..V....... use rate distortion",
-        "naq                          E..V....... normalize adaptive",
-        "mv0",
-    ] = None,
+    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -3123,7 +3185,8 @@ def rv20(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def sgi(
@@ -3138,7 +3201,8 @@ def sgi(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def smc() -> FFMpegEncoderOption:
@@ -3149,7 +3213,8 @@ def smc() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def snow(
@@ -3178,20 +3243,14 @@ def snow(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def speedhq(
     mpv_flags: str
     | None
-    | Literal[
-        "skip_rd",
-        "strict_gop",
-        "qp_rd                        E..V....... Use rate distortion",
-        "cbp_rd                       E..V....... use rate distortion",
-        "naq                          E..V....... normalize adaptive",
-        "mv0",
-    ] = None,
+    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -3268,7 +3327,8 @@ def speedhq(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def sunrast(
@@ -3283,7 +3343,8 @@ def sunrast(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def svq1(
@@ -3298,7 +3359,10 @@ def svq1(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {
+        "motion_est": "motion-est",
+    }
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def targa(
@@ -3313,7 +3377,8 @@ def targa(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libtheora() -> FFMpegEncoderOption:
@@ -3324,7 +3389,8 @@ def libtheora() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def tiff(
@@ -3341,7 +3407,8 @@ def tiff(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def utvideo(
@@ -3356,7 +3423,8 @@ def utvideo(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def v210() -> FFMpegEncoderOption:
@@ -3367,7 +3435,8 @@ def v210() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def v308() -> FFMpegEncoderOption:
@@ -3378,7 +3447,8 @@ def v308() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def v408() -> FFMpegEncoderOption:
@@ -3389,7 +3459,8 @@ def v408() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def v410() -> FFMpegEncoderOption:
@@ -3400,7 +3471,8 @@ def v410() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def vbn(
@@ -3415,7 +3487,8 @@ def vbn(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def vnull() -> FFMpegEncoderOption:
@@ -3426,7 +3499,8 @@ def vnull() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libvpx() -> FFMpegEncoderOption:
@@ -3437,7 +3511,8 @@ def libvpx() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def vp8_v4l2m2m(
@@ -3454,7 +3529,8 @@ def vp8_v4l2m2m(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def vp8_vaapi(
@@ -3485,7 +3561,8 @@ def vp8_vaapi(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def vp9_vaapi(
@@ -3516,7 +3593,8 @@ def vp9_vaapi(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def wbmp() -> FFMpegEncoderOption:
@@ -3527,7 +3605,8 @@ def wbmp() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libwebp_anim(
@@ -3552,7 +3631,8 @@ def libwebp_anim(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libwebp(
@@ -3577,20 +3657,14 @@ def libwebp(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def wmv1(
     mpv_flags: str
     | None
-    | Literal[
-        "skip_rd",
-        "strict_gop",
-        "qp_rd                        E..V....... Use rate distortion",
-        "cbp_rd                       E..V....... use rate distortion",
-        "naq                          E..V....... normalize adaptive",
-        "mv0",
-    ] = None,
+    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -3667,20 +3741,14 @@ def wmv1(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def wmv2(
     mpv_flags: str
     | None
-    | Literal[
-        "skip_rd",
-        "strict_gop",
-        "qp_rd                        E..V....... Use rate distortion",
-        "cbp_rd                       E..V....... use rate distortion",
-        "naq                          E..V....... normalize adaptive",
-        "mv0",
-    ] = None,
+    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -3757,7 +3825,8 @@ def wmv2(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def wrapped_avframe() -> FFMpegEncoderOption:
@@ -3768,7 +3837,8 @@ def wrapped_avframe() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def xbm() -> FFMpegEncoderOption:
@@ -3779,7 +3849,8 @@ def xbm() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def xface() -> FFMpegEncoderOption:
@@ -3790,7 +3861,8 @@ def xface() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def xwd() -> FFMpegEncoderOption:
@@ -3801,7 +3873,8 @@ def xwd() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def y41p() -> FFMpegEncoderOption:
@@ -3812,7 +3885,8 @@ def y41p() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def yuv4() -> FFMpegEncoderOption:
@@ -3823,7 +3897,8 @@ def yuv4() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def zlib() -> FFMpegEncoderOption:
@@ -3834,7 +3909,8 @@ def zlib() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def zmbv() -> FFMpegEncoderOption:
@@ -3845,7 +3921,8 @@ def zmbv() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def aac(
@@ -3874,7 +3951,8 @@ def aac(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def ac3() -> FFMpegEncoderOption:
@@ -3885,7 +3963,8 @@ def ac3() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def ac3_fixed() -> FFMpegEncoderOption:
@@ -3896,7 +3975,8 @@ def ac3_fixed() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def adpcm_adx() -> FFMpegEncoderOption:
@@ -3907,7 +3987,8 @@ def adpcm_adx() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def adpcm_argo(
@@ -3922,7 +4003,8 @@ def adpcm_argo(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def g722() -> FFMpegEncoderOption:
@@ -3933,7 +4015,8 @@ def g722() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def g726(
@@ -3948,7 +4031,8 @@ def g726(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def g726le(
@@ -3963,7 +4047,8 @@ def g726le(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def adpcm_ima_alp(
@@ -3978,7 +4063,8 @@ def adpcm_ima_alp(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def adpcm_ima_amv(
@@ -3993,7 +4079,8 @@ def adpcm_ima_amv(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def adpcm_ima_apm(
@@ -4008,7 +4095,8 @@ def adpcm_ima_apm(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def adpcm_ima_qt(
@@ -4023,7 +4111,8 @@ def adpcm_ima_qt(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def adpcm_ima_ssi(
@@ -4038,7 +4127,8 @@ def adpcm_ima_ssi(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def adpcm_ima_wav(
@@ -4053,7 +4143,8 @@ def adpcm_ima_wav(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def adpcm_ima_ws(
@@ -4068,7 +4159,8 @@ def adpcm_ima_ws(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def adpcm_ms(
@@ -4083,7 +4175,8 @@ def adpcm_ms(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def adpcm_swf(
@@ -4098,7 +4191,8 @@ def adpcm_swf(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def adpcm_yamaha(
@@ -4113,7 +4207,8 @@ def adpcm_yamaha(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def alac(
@@ -4130,7 +4225,8 @@ def alac(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def anull() -> FFMpegEncoderOption:
@@ -4141,7 +4237,8 @@ def anull() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def aptx() -> FFMpegEncoderOption:
@@ -4152,7 +4249,8 @@ def aptx() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def aptx_hd() -> FFMpegEncoderOption:
@@ -4163,7 +4261,8 @@ def aptx_hd() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libcodec2(
@@ -4182,7 +4281,8 @@ def libcodec2(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def comfortnoise() -> FFMpegEncoderOption:
@@ -4193,7 +4293,8 @@ def comfortnoise() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def dfpwm() -> FFMpegEncoderOption:
@@ -4204,7 +4305,8 @@ def dfpwm() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def dca() -> FFMpegEncoderOption:
@@ -4215,7 +4317,8 @@ def dca() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def eac3() -> FFMpegEncoderOption:
@@ -4226,7 +4329,8 @@ def eac3() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def flac(
@@ -4265,7 +4369,8 @@ def flac(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def g723_1() -> FFMpegEncoderOption:
@@ -4276,7 +4381,8 @@ def g723_1() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libgsm() -> FFMpegEncoderOption:
@@ -4287,7 +4393,8 @@ def libgsm() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libgsm_ms() -> FFMpegEncoderOption:
@@ -4298,7 +4405,8 @@ def libgsm_ms() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def mlp(
@@ -4325,7 +4433,8 @@ def mlp(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def mp2() -> FFMpegEncoderOption:
@@ -4336,7 +4445,8 @@ def mp2() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def mp2fixed() -> FFMpegEncoderOption:
@@ -4347,7 +4457,8 @@ def mp2fixed() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libtwolame(
@@ -4376,7 +4487,8 @@ def libtwolame(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libmp3lame(
@@ -4399,7 +4511,8 @@ def libmp3lame(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libshine() -> FFMpegEncoderOption:
@@ -4410,7 +4523,8 @@ def libshine() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def nellymoser() -> FFMpegEncoderOption:
@@ -4421,7 +4535,8 @@ def nellymoser() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def opus(
@@ -4438,7 +4553,8 @@ def opus(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libopus(
@@ -4465,7 +4581,8 @@ def libopus(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_alaw() -> FFMpegEncoderOption:
@@ -4476,7 +4593,8 @@ def pcm_alaw() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_bluray() -> FFMpegEncoderOption:
@@ -4487,7 +4605,8 @@ def pcm_bluray() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_dvd() -> FFMpegEncoderOption:
@@ -4498,7 +4617,8 @@ def pcm_dvd() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_f32be() -> FFMpegEncoderOption:
@@ -4509,7 +4629,8 @@ def pcm_f32be() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_f32le() -> FFMpegEncoderOption:
@@ -4520,7 +4641,8 @@ def pcm_f32le() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_f64be() -> FFMpegEncoderOption:
@@ -4531,7 +4653,8 @@ def pcm_f64be() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_f64le() -> FFMpegEncoderOption:
@@ -4542,7 +4665,8 @@ def pcm_f64le() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_mulaw() -> FFMpegEncoderOption:
@@ -4553,7 +4677,8 @@ def pcm_mulaw() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_s16be() -> FFMpegEncoderOption:
@@ -4564,7 +4689,8 @@ def pcm_s16be() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_s16be_planar() -> FFMpegEncoderOption:
@@ -4575,7 +4701,8 @@ def pcm_s16be_planar() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_s16le() -> FFMpegEncoderOption:
@@ -4586,7 +4713,8 @@ def pcm_s16le() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_s16le_planar() -> FFMpegEncoderOption:
@@ -4597,7 +4725,8 @@ def pcm_s16le_planar() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_s24be() -> FFMpegEncoderOption:
@@ -4608,7 +4737,8 @@ def pcm_s24be() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_s24daud() -> FFMpegEncoderOption:
@@ -4619,7 +4749,8 @@ def pcm_s24daud() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_s24le() -> FFMpegEncoderOption:
@@ -4630,7 +4761,8 @@ def pcm_s24le() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_s24le_planar() -> FFMpegEncoderOption:
@@ -4641,7 +4773,8 @@ def pcm_s24le_planar() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_s32be() -> FFMpegEncoderOption:
@@ -4652,7 +4785,8 @@ def pcm_s32be() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_s32le() -> FFMpegEncoderOption:
@@ -4663,7 +4797,8 @@ def pcm_s32le() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_s32le_planar() -> FFMpegEncoderOption:
@@ -4674,7 +4809,8 @@ def pcm_s32le_planar() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_s64be() -> FFMpegEncoderOption:
@@ -4685,7 +4821,8 @@ def pcm_s64be() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_s64le() -> FFMpegEncoderOption:
@@ -4696,7 +4833,8 @@ def pcm_s64le() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_s8() -> FFMpegEncoderOption:
@@ -4707,7 +4845,8 @@ def pcm_s8() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_s8_planar() -> FFMpegEncoderOption:
@@ -4718,7 +4857,8 @@ def pcm_s8_planar() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_u16be() -> FFMpegEncoderOption:
@@ -4729,7 +4869,8 @@ def pcm_u16be() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_u16le() -> FFMpegEncoderOption:
@@ -4740,7 +4881,8 @@ def pcm_u16le() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_u24be() -> FFMpegEncoderOption:
@@ -4751,7 +4893,8 @@ def pcm_u24be() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_u24le() -> FFMpegEncoderOption:
@@ -4762,7 +4905,8 @@ def pcm_u24le() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_u32be() -> FFMpegEncoderOption:
@@ -4773,7 +4917,8 @@ def pcm_u32be() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_u32le() -> FFMpegEncoderOption:
@@ -4784,7 +4929,8 @@ def pcm_u32le() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_u8() -> FFMpegEncoderOption:
@@ -4795,7 +4941,8 @@ def pcm_u8() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def pcm_vidc() -> FFMpegEncoderOption:
@@ -4806,7 +4953,8 @@ def pcm_vidc() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def real_144() -> FFMpegEncoderOption:
@@ -4817,7 +4965,8 @@ def real_144() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def roq_dpcm() -> FFMpegEncoderOption:
@@ -4828,7 +4977,8 @@ def roq_dpcm() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def s302m() -> FFMpegEncoderOption:
@@ -4839,7 +4989,8 @@ def s302m() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def sbc(
@@ -4856,7 +5007,8 @@ def sbc(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def sonic() -> FFMpegEncoderOption:
@@ -4867,7 +5019,8 @@ def sonic() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def sonicls() -> FFMpegEncoderOption:
@@ -4878,7 +5031,8 @@ def sonicls() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libspeex(
@@ -4901,7 +5055,8 @@ def libspeex(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def truehd(
@@ -4928,7 +5083,8 @@ def truehd(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def tta() -> FFMpegEncoderOption:
@@ -4939,7 +5095,8 @@ def tta() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def vorbis() -> FFMpegEncoderOption:
@@ -4950,7 +5107,8 @@ def vorbis() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def libvorbis(
@@ -4965,7 +5123,8 @@ def libvorbis(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def wavpack(
@@ -4982,7 +5141,8 @@ def wavpack(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def wmav1() -> FFMpegEncoderOption:
@@ -4993,7 +5153,8 @@ def wmav1() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def wmav2() -> FFMpegEncoderOption:
@@ -5004,7 +5165,8 @@ def wmav2() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def ssa() -> FFMpegEncoderOption:
@@ -5015,7 +5177,8 @@ def ssa() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def ass() -> FFMpegEncoderOption:
@@ -5026,7 +5189,8 @@ def ass() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def dvbsub() -> FFMpegEncoderOption:
@@ -5037,7 +5201,8 @@ def dvbsub() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def dvdsub(
@@ -5054,7 +5219,8 @@ def dvdsub(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def mov_text(
@@ -5069,7 +5235,8 @@ def mov_text(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def srt() -> FFMpegEncoderOption:
@@ -5080,7 +5247,8 @@ def srt() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def subrip() -> FFMpegEncoderOption:
@@ -5091,7 +5259,8 @@ def subrip() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def text() -> FFMpegEncoderOption:
@@ -5102,7 +5271,8 @@ def text() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def ttml() -> FFMpegEncoderOption:
@@ -5113,7 +5283,8 @@ def ttml() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def webvtt() -> FFMpegEncoderOption:
@@ -5124,7 +5295,8 @@ def webvtt() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 
 
 def xsub() -> FFMpegEncoderOption:
@@ -5135,4 +5307,5 @@ def xsub() -> FFMpegEncoderOption:
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {}
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))

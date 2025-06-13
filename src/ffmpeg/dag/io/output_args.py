@@ -17,7 +17,7 @@ from ...types import (
     String,
     Time,
 )
-from ...utils.frozendict import merge
+from ...utils.frozendict import exclude, merge, remap
 
 if TYPE_CHECKING:
     from ..nodes import FilterableStream, OutputNode, OutputStream
@@ -237,12 +237,23 @@ class OutputArgs(ABC):
         Returns:
             the output stream
         """
-        options = {
-            k: v
-            for k, v in locals().items()
-            if k
-            not in ("filename", "streams", "encoder_options", "extra_options", "self")
+        _remap: dict[str, str] = {
+            "_pass": "pass",
         }
+        options = remap(
+            exclude(
+                locals(),
+                (
+                    "filename",
+                    "streams",
+                    "extra_options",
+                    "encoder_options",
+                    "_remap",
+                    "self",
+                ),
+            ),
+            _remap,
+        )
 
         return self._output_node(
             *streams,

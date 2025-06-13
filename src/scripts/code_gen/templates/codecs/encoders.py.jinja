@@ -1,6 +1,6 @@
 from typing import Literal
 from .schema import FFMpegEncoderOption
-from ..utils.frozendict import FrozenDict
+from ..utils.frozendict import FrozenDict, remap, exclude
 
 {% for codec in codecs %}
 {% if codec.is_encoder %}
@@ -21,6 +21,13 @@ def {{codec.name | option_name_safe }}(
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
+    _remap: dict[str, str] = {
+        {% for option in codec.filterd_options() %}
+        {% if option.name != option.name | option_name_safe %}
+        "{{ option.name | option_name_safe }}": "{{ option.name }}",
+        {% endif %}
+        {% endfor %}
+    }
+    return FFMpegEncoderOption(kwargs=exclude(remap(locals(), _remap), "_remap"))
 {% endif %}
 {% endfor %}

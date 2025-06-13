@@ -1,4 +1,4 @@
-from ..frozendict import FrozenDict, merge
+from ..frozendict import FrozenDict, exclude, merge, remap
 
 
 def test_frozendict() -> None:
@@ -55,3 +55,29 @@ def test_merge() -> None:
     assert merge(
         {"a": 1}, {"b": 2}, {"c": 3}, {"d": 4}, {"e": 5}, {"f": None}, {"g": None}
     ) == {"a": 1, "b": 2, "c": 3, "d": 4, "e": 5}
+
+
+def test_remap() -> None:
+    assert remap({"a": 1, "b": 2}, {"a": "c"}) == {"c": 1, "b": 2}
+    assert remap({"a": 1, "b": 2, "c": 3}, {"a": "d", "b": "e", "c": "f"}) == {
+        "d": 1,
+        "e": 2,
+        "f": 3,
+    }
+
+
+def test_exclude() -> None:
+    assert exclude({"a": 1, "b": 2, "c": 3}, ["a"]) == {"b": 2, "c": 3}
+    assert exclude({"a": 1, "b": 2, "c": 3}, ["a", "b"]) == {"c": 3}
+    assert exclude({"a": 1, "b": 2, "c": 3}, ["a", "b", "c"]) == {}
+    assert exclude({"a": 1, "b": 2, "c": 3}, ["d"]) == {"a": 1, "b": 2, "c": 3}
+    assert exclude({"a": 1, "b": 2, "c": 3}, ["d", "e", "f"]) == {
+        "a": 1,
+        "b": 2,
+        "c": 3,
+    }
+    assert exclude({"a": 1, "b": 2, "c": 3}, ["d", "e", "f"]) == {
+        "a": 1,
+        "b": 2,
+        "c": 3,
+    }
