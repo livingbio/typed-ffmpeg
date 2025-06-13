@@ -13,7 +13,7 @@ from ...types import (
     String,
     Time,
 )
-from ...utils.frozendict import FrozenDict
+from ...utils.frozendict import exclude, merge, remap
 from ..nodes import FilterableStream, OutputNode, OutputStream
 
 
@@ -114,7 +114,7 @@ def output(
     dcodec: String = None,
     dn: Boolean = None,
     top: Int = None,
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> OutputStream:
     """
     Output file URL
@@ -222,110 +222,13 @@ def output(
     Returns:
         the output stream
     """
-
-    options = {
-        k: v
-        for k, v in {
-            "f": f,
-            "c": c,
-            "codec": codec,
-            "pre": pre,
-            "map": map,
-            "map_metadata": map_metadata,
-            "map_chapters": map_chapters,
-            "t": t,
-            "to": to,
-            "fs": fs,
-            "ss": ss,
-            "timestamp": timestamp,
-            "metadata": metadata,
-            "program": program,
-            "stream_group": stream_group,
-            "dframes": dframes,
-            "target": target,
-            "shortest": shortest,
-            "shortest_buf_duration": shortest_buf_duration,
-            "bitexact": bitexact,
-            "apad": apad,
-            "copyinkf": copyinkf,
-            "copypriorss": copypriorss,
-            "frames": frames,
-            "tag": tag,
-            "q": q,
-            "qscale": qscale,
-            "profile": profile,
-            "filter": filter,
-            "filter_script": filter_script,
-            "attach": attach,
-            "disposition": disposition,
-            "thread_queue_size": thread_queue_size,
-            "bits_per_raw_sample": bits_per_raw_sample,
-            "stats_enc_pre": stats_enc_pre,
-            "stats_enc_post": stats_enc_post,
-            "stats_mux_pre": stats_mux_pre,
-            "stats_enc_pre_fmt": stats_enc_pre_fmt,
-            "stats_enc_post_fmt": stats_enc_post_fmt,
-            "stats_mux_pre_fmt": stats_mux_pre_fmt,
-            "vframes": vframes,
-            "r": r,
-            "fpsmax": fpsmax,
-            "s": s,
-            "aspect": aspect,
-            "pix_fmt": pix_fmt,
-            "vn": vn,
-            "rc_override": rc_override,
-            "vcodec": vcodec,
-            "timecode": timecode,
-            "pass": _pass,
-            "passlogfile": passlogfile,
-            "vf": vf,
-            "intra_matrix": intra_matrix,
-            "inter_matrix": inter_matrix,
-            "chroma_intra_matrix": chroma_intra_matrix,
-            "vtag": vtag,
-            "fps_mode": fps_mode,
-            "force_fps": force_fps,
-            "streamid": streamid,
-            "force_key_frames": force_key_frames,
-            "b": b,
-            "autoscale": autoscale,
-            "fix_sub_duration_heartbeat": fix_sub_duration_heartbeat,
-            "aframes": aframes,
-            "aq": aq,
-            "ar": ar,
-            "ac": ac,
-            "an": an,
-            "acodec": acodec,
-            "ab": ab,
-            "atag": atag,
-            "sample_fmt": sample_fmt,
-            "channel_layout": channel_layout,
-            "ch_layout": ch_layout,
-            "af": af,
-            "sn": sn,
-            "scodec": scodec,
-            "stag": stag,
-            "muxdelay": muxdelay,
-            "muxpreload": muxpreload,
-            "sdp_file": sdp_file,
-            "time_base": time_base,
-            "enc_time_base": enc_time_base,
-            "bsf": bsf,
-            "apre": apre,
-            "vpre": vpre,
-            "spre": spre,
-            "fpre": fpre,
-            "max_muxing_queue_size": max_muxing_queue_size,
-            "muxing_queue_data_threshold": muxing_queue_data_threshold,
-            "dcodec": dcodec,
-            "dn": dn,
-            "top": top,
-        }.items()
-        if v is not None
+    _remap: dict[str, str] = {
+        "_pass": "pass",
     }
+    options = remap(
+        exclude(locals(), ("filename", "streams", "extra_options", "_remap")), _remap
+    )
 
     return OutputNode(
-        inputs=streams,
-        filename=str(filename),
-        kwargs=FrozenDict(options | (extra_options or {})),
+        inputs=streams, filename=str(filename), kwargs=merge(options, extra_options)
     ).stream()
