@@ -6,6 +6,8 @@ from ...utils.frozendict import FrozenDict
 from ..nodes import InputNode
 from ...streams.av import AVStream
 from typing import Any
+from ...utils.frozendict import merge
+
 {{ _components.import_types('...types') }}
 
 def input(
@@ -39,18 +41,13 @@ def input(
     <AVStream:input.mp4:0>
     ```
     """
-
-    options = {
-        k: v for k, v in {
+    return InputNode(
+        filename=str(filename),
+        kwargs=merge({
             {% for option in options %}
                 {%- if option.is_input_option -%}
                 "{{ option.name}}": {{ option.name | option_name_safe }},
                 {% endif %}
                 {% endfor %}
-        }.items() if v is not None
-    }
-
-    return InputNode(
-        filename=str(filename),
-        kwargs=FrozenDict(options | (extra_options or {}) )
+        }, extra_options )
     ).stream()
