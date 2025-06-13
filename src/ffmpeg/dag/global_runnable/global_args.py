@@ -81,7 +81,7 @@ class GlobalArgs(ABC):
         adrift_threshold: Func = None,
         qphist: Func = None,
         vsync: Func = None,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> GlobalStream:
         """
         Set global options.

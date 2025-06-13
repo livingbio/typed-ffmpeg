@@ -1,7 +1,8 @@
 {% import "_components.jinja" as _components %}
 
 from pathlib import Path
-from ...utils.frozendict import FrozenDict
+from ...utils.frozendict import FrozenDict, merge, remap, exclude
+
 
 from ..nodes import InputNode
 from ...streams.av import AVStream
@@ -16,7 +17,7 @@ def input(
     {{ option.name }}: {{ option | option_typing }} = None,
     {%- endif -%}
     {%- endfor -%}
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AVStream:
     """
     Input file URL (ffmpeg ``-i`` option)
@@ -39,18 +40,16 @@ def input(
     <AVStream:input.mp4:0>
     ```
     """
-
-    options = {
-        k: v for k, v in {
-            {% for option in options %}
-                {%- if option.is_input_option -%}
-                "{{ option.name}}": {{ option.name | option_name_safe }},
-                {% endif %}
-                {% endfor %}
-        }.items() if v is not None
+    _remap: dict[str, str] = {
+         {% for option in options %}
+         {% if option.is_input_option and option.name != option.name | option_name_safe %}
+         "{{ option.name | option_name_safe }}": "{{ option.name }}",
+         {% endif %}
+         {% endfor %}
     }
+    options = remap(exclude(locals(), ("filename", "extra_options", "_remap")), _remap)
 
     return InputNode(
         filename=str(filename),
-        kwargs=FrozenDict(options | (extra_options or {}) )
+        kwargs=merge(options, extra_options)
     ).stream()

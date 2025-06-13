@@ -35,7 +35,7 @@ class GlobalArgs(ABC):
         {{ option.name }}: {{ option | option_typing }} = None,
         {%- endif -%}
         {%- endfor -%}
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> GlobalStream:
         """
         Set global options.
