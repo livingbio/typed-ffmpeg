@@ -6,8 +6,7 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 {{ _components.import_types('...types') }}
-from ...codecs.schema import FFMpegEncoderOption
-from ...utils.frozendict import FrozenDict, merge, remap, exclude
+from ...utils.frozendict import merge
 
 
 if TYPE_CHECKING:
@@ -28,7 +27,6 @@ class OutputArgs(ABC):
         {{ option.name | option_name_safe }}: {{ option | option_typing }} = None,
         {%- endif -%}
         {%- endfor -%}
-        encoder_options: FFMpegEncoderOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> OutputStream:
         """
@@ -42,23 +40,16 @@ class OutputArgs(ABC):
             {{option.name | option_name_safe}}: {{option.help }}
             {% endif %}
             {%- endfor -%}
-            encoder_options: ffmpeg's encoder options
             extra_options: the arguments for the output
 
         Returns:
             the output stream
         """
-        _remap: dict[str, str] = {
-            {% for option in options %}
-            {% if option.is_output_option and option.name != option.name | option_name_safe %}
-            "{{ option.name | option_name_safe }}": "{{ option.name }}",
-            {% endif %}
-            {% endfor %}
-        }
-        options = remap(exclude(locals(), ("filename", "streams", "extra_options", "encoder_options", "_remap", "self")), _remap)
 
-        return self._output_node(
-            *streams,
-            filename=str(filename),
-            **merge(options, encoder_options.kwargs if encoder_options else {}, extra_options)
-        ).stream()
+        return self._output_node(*streams, filename=filename, **merge({
+            {% for option in options %}
+                {%- if option.is_output_option -%}
+                "{{ option.name}}": {{ option.name | option_name_safe }},
+                {% endif %}
+            {% endfor %}
+        }, extra_options)).stream()

@@ -1,13 +1,14 @@
 {% import "_components.jinja" as _components %}
 
 from pathlib import Path
-from ...utils.frozendict import FrozenDict, merge, remap, exclude
+from ...utils.frozendict import FrozenDict
 
 from ..nodes import InputNode
 from ...streams.av import AVStream
 from typing import Any
+from ...utils.frozendict import merge
+
 {{ _components.import_types('...types') }}
-from ...codecs.schema import FFMpegDecoderOption
 
 def input(
     filename: str | Path,
@@ -17,7 +18,6 @@ def input(
     {{ option.name }}: {{ option | option_typing }} = None,
     {%- endif -%}
     {%- endfor -%}
-    decoder_options: FFMpegDecoderOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> AVStream:
     """
@@ -30,7 +30,6 @@ def input(
         {{option.name | option_name_safe}}: {{option.help }}
         {% endif %}
         {%- endfor -%}
-        decoder_options: ffmpeg's decoder options
         extra_options: ffmpeg's input file options
 
     Returns:
@@ -42,16 +41,13 @@ def input(
     <AVStream:input.mp4:0>
     ```
     """
-    _remap: dict[str, str] = {
-        {% for option in options %}
-        {% if option.is_input_option and option.name != option.name | option_name_safe %}
-        "{{ option.name | option_name_safe }}": "{{ option.name }}",
-        {% endif %}
-        {% endfor %}
-    }
-    options = remap(exclude(locals(), ("filename", "decoder_options", "extra_options", "_remap")), _remap)
-
     return InputNode(
         filename=str(filename),
-        kwargs=merge(options, decoder_options.kwargs if decoder_options else {}, extra_options)
+        kwargs=merge({
+            {% for option in options %}
+                {%- if option.is_input_option -%}
+                "{{ option.name}}": {{ option.name | option_name_safe }},
+                {% endif %}
+                {% endfor %}
+        }, extra_options )
     ).stream()
