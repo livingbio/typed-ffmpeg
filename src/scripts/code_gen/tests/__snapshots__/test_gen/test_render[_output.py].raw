@@ -2,6 +2,7 @@
 
 
 from pathlib import Path
+from ...codecs.schema import FFMpegEncoderOption
 
 from ..nodes import OutputNode, OutputStream, FilterableStream
 from typing import Any
@@ -9,12 +10,12 @@ from typing import Any
 from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
 
 
-from ...utils.frozendict import FrozenDict, merge, remap, exclude
-from ...codecs.schema import FFMpegEncoderOption
+from ...utils.frozendict import FrozenDict
+from ...utils.frozendict import merge
 
 def output(
     *streams: FilterableStream,
-    filename: str | Path,encoder_options: FFMpegEncoderOption | None =  None,
+    filename: str | Path,encoder_options: FFMpegEncoderOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> OutputStream:
     """
@@ -29,13 +30,11 @@ def output(
     Returns:
         the output stream
     """
-    _remap: dict[str, str] = {
-        
-    }
-    options = remap(exclude(locals(), ("filename", "streams", "extra_options", "encoder_options", "_remap")), _remap)
 
     return OutputNode(
         inputs=streams,
         filename=str(filename),
-        kwargs=merge(options, encoder_options.kwargs if encoder_options else {}, extra_options)
+        kwargs=merge({
+            
+        }, encoder_options.kwargs if encoder_options else {}, extra_options )
     ).stream()
