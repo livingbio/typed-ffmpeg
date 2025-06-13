@@ -99,7 +99,7 @@ def option_name_safe(string: str) -> str:
     Returns:
         The option name safe
     """
-    if string in keyword.kwlist:
+    if string in (*keyword.kwlist, "dict", "list", "self"):
         return "_" + string
     if string[0].isdigit():
         return "_" + string

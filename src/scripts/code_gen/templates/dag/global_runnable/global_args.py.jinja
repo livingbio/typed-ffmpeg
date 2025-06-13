@@ -5,7 +5,6 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any
 {{ _components.import_types('...types') }}
-from ...utils.frozendict import FrozenDict, merge, remap, exclude
 
 if TYPE_CHECKING:
     from ..nodes import GlobalNode, GlobalStream, OutputStream
@@ -51,13 +50,13 @@ class GlobalArgs(ABC):
         Returns:
             GlobalStream: GlobalStream instance
         """
-        _remap: dict[str, str] = {
-            {% for option in options %}
-            {% if option.is_global_option and option.name != option.name | option_name_safe %}
-            "{{ option.name | option_name_safe }}": "{{ option.name }}",
-            {% endif %}
-            {% endfor %}
-        }
+
         return self._global_node(
-            **merge(remap(exclude(locals(), ("extra_options", "_remap", "self")), _remap), extra_options)
+            **({k: v for k, v in {
+                {% for option in options %}
+                {%- if option.is_global_option -%}
+                "{{ option.name}}": {{ option.name | option_name_safe }},
+                {% endif %}
+                {% endfor %}
+            }.items() if v is not None} | (extra_options or {})),
         ).stream()

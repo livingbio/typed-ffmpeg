@@ -1,4 +1,4 @@
-from ..frozendict import FrozenDict, exclude, merge, remap
+from ..frozendict import FrozenDict, exclude, merge, rekey
 
 
 def test_frozendict() -> None:
@@ -58,8 +58,8 @@ def test_merge() -> None:
 
 
 def test_remap() -> None:
-    assert remap({"a": 1, "b": 2}, {"a": "c"}) == {"c": 1, "b": 2}
-    assert remap({"a": 1, "b": 2, "c": 3}, {"a": "d", "b": "e", "c": "f"}) == {
+    assert rekey({"a": 1, "b": 2}, {"a": "c"}) == {"c": 1, "b": 2}
+    assert rekey({"a": 1, "b": 2, "c": 3}, {"a": "d", "b": "e", "c": "f"}) == {
         "d": 1,
         "e": 2,
         "f": 3,

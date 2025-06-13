@@ -149,15 +149,15 @@ def exclude(maps: Mapping[Any, Any], exclude: Iterable[Any]) -> FrozenDict[Any, 
     return FrozenDict({k: v for k, v in maps.items() if k not in exclude})
 
 
-def remap(maps: Mapping[Any, Any], remap: Mapping[Any, Any]) -> FrozenDict[Any, Any]:
+def rekey(maps: Mapping[Any, Any], rekey: Mapping[Any, Any]) -> FrozenDict[Any, Any]:
     """
-    Remap the keys of a dictionary.
+    rekey the keys of a dictionary.
 
     Args:
-        maps: Dictionary to remap
-        remap: Mapping of old keys to new keys
+        maps: Dictionary to rekey
+        rekey: Mapping of old keys to new keys
 
     Returns:
         A new dictionary with the keys remapped
     """
-    return FrozenDict({remap.get(k, k): v for k, v in maps.items()})
+    return FrozenDict({rekey.get(k, k): v for k, v in maps.items()})

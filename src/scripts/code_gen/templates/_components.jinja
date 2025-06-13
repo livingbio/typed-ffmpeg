@@ -151,7 +151,7 @@ def {{f.name}}(
     {{ stream_typings(f, "function") }}
     {% if not f.is_dynamic_input and f.options | length > 0 %}*,{% endif %}
     {{ f | filter_option_typings }}
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) {{- return_stream_typings(f) }}
     """
     {{ docstring(f) }}

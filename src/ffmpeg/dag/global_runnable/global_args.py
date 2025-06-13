@@ -12,7 +12,6 @@ from ...types import (
     Func,
     Int,
 )
-from ...utils.frozendict import exclude, merge, remap
 
 if TYPE_CHECKING:
     from ..nodes import GlobalNode, GlobalStream, OutputStream
@@ -137,10 +136,60 @@ class GlobalArgs(ABC):
         Returns:
             GlobalStream: GlobalStream instance
         """
-        _remap: dict[str, str] = {}
+
         return self._global_node(
-            **merge(
-                remap(exclude(locals(), ("extra_options", "_remap", "self")), _remap),
-                extra_options,
-            )
+            **(
+                {
+                    k: v
+                    for k, v in {
+                        "loglevel": loglevel,
+                        "v": v,
+                        "report": report,
+                        "max_alloc": max_alloc,
+                        "cpuflags": cpuflags,
+                        "cpucount": cpucount,
+                        "hide_banner": hide_banner,
+                        "y": y,
+                        "n": n,
+                        "ignore_unknown": ignore_unknown,
+                        "copy_unknown": copy_unknown,
+                        "recast_media": recast_media,
+                        "benchmark": benchmark,
+                        "benchmark_all": benchmark_all,
+                        "progress": progress,
+                        "stdin": stdin,
+                        "timelimit": timelimit,
+                        "dump": dump,
+                        "hex": hex,
+                        "frame_drop_threshold": frame_drop_threshold,
+                        "copyts": copyts,
+                        "start_at_zero": start_at_zero,
+                        "copytb": copytb,
+                        "dts_delta_threshold": dts_delta_threshold,
+                        "dts_error_threshold": dts_error_threshold,
+                        "xerror": xerror,
+                        "abort_on": abort_on,
+                        "filter_threads": filter_threads,
+                        "filter_complex": filter_complex,
+                        "filter_complex_threads": filter_complex_threads,
+                        "lavfi": lavfi,
+                        "filter_complex_script": filter_complex_script,
+                        "auto_conversion_filters": auto_conversion_filters,
+                        "stats": stats,
+                        "stats_period": stats_period,
+                        "debug_ts": debug_ts,
+                        "max_error_rate": max_error_rate,
+                        "vstats": vstats,
+                        "vstats_file": vstats_file,
+                        "vstats_version": vstats_version,
+                        "init_hw_device": init_hw_device,
+                        "filter_hw_device": filter_hw_device,
+                        "adrift_threshold": adrift_threshold,
+                        "qphist": qphist,
+                        "vsync": vsync,
+                    }.items()
+                    if v is not None
+                }
+                | (extra_options or {})
+            ),
         ).stream()

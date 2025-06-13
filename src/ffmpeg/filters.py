@@ -89,7 +89,7 @@ def acrossfade(
         "hsin2",
     ]
     | Default = Default("tri"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -135,7 +135,7 @@ def ainterleave(
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default(
         "longest"
     ),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -177,7 +177,7 @@ def alphamerge(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -220,7 +220,7 @@ def alphamerge(
 def amerge(
     *streams: AudioStream,
     inputs: Int = Auto("len(streams)"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -260,7 +260,7 @@ def amix(
     dropout_transition: Float = Default(2.0),
     weights: String = Default("1 1"),
     normalize: Boolean = Default(True),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -302,7 +302,7 @@ def amix(
 def amultiply(
     _multiply0: AudioStream,
     _multiply1: AudioStream,
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -338,7 +338,7 @@ def anlmf(
     leakage: Float = Default(0.0),
     out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -388,7 +388,7 @@ def anlms(
     leakage: Float = Default(0.0),
     out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -433,7 +433,7 @@ def apsnr(
     _input1: AudioStream,
     *,
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -472,7 +472,7 @@ def arls(
     delta: Float = Default(2.0),
     out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -515,7 +515,7 @@ def asdr(
     _input1: AudioStream,
     *,
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -550,7 +550,7 @@ def asisdr(
     _input1: AudioStream,
     *,
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -584,7 +584,7 @@ def astreamselect(
     *streams: AudioStream,
     inputs: Int = Auto("len(streams)"),
     map: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> FilterNode:
     """
 
@@ -625,7 +625,7 @@ def axcorrelate(
     *,
     size: Int = Default(256),
     algo: Int | Literal["slow", "fast", "best"] | Default = Default("best"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -908,7 +908,7 @@ def blend(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -990,7 +990,7 @@ def blend_vulkan(
     c2_opacity: Double = Default(1.0),
     c3_opacity: Double = Default(1.0),
     all_opacity: Double = Default(1.0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1054,7 +1054,7 @@ def bm3d(
     ref: Boolean = Default(False),
     planes: Int = Default(7),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1117,7 +1117,7 @@ def colormap(
     type: Int | Literal["relative", "absolute"] | Default = Default("absolute"),
     kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1164,7 +1164,7 @@ def concat(
     v: Int = Default(1),
     a: Int = Default(0),
     unsafe: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> FilterNode:
     """
 
@@ -1215,7 +1215,7 @@ def convolve(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1268,7 +1268,7 @@ def corr(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1316,7 +1316,7 @@ def decimate(
     ppsrc: Boolean = Default(False),
     chroma: Boolean = Default(True),
     mixed: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1373,7 +1373,7 @@ def deconvolve(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1428,7 +1428,7 @@ def displace(
         "smear"
     ),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1469,7 +1469,7 @@ def feedback(
     *,
     x: Int = Default(0),
     w: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> tuple[
     VideoStream,
     VideoStream,
@@ -1528,7 +1528,7 @@ def fieldmatch(
     blockx: Int = Default(16),
     blocky: Int = Default(16),
     combpel: Int = Default(80),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1592,7 +1592,7 @@ def framepack(
     format: Int
     | Literal["sbs", "tab", "frameseq", "lines", "columns"]
     | Default = Default("sbs"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1631,7 +1631,7 @@ def freezeframes(
     first: Int64 = Default(0),
     last: Int64 = Default(0),
     replace: Int64 = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1676,7 +1676,7 @@ def guided(
     guidance: Int | Literal["off", "on"] | Default = Default("off"),
     planes: Int = Default(1),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1732,7 +1732,7 @@ def haldclut(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1782,7 +1782,7 @@ def headphone(
     type: Int | Literal["time", "freq"] | Default = Default("freq"),
     size: Int = Default(1024),
     hrir: Int | Literal["stereo", "multich"] | Default = Default("stereo"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -1827,7 +1827,7 @@ def hstack(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
     shortest: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1865,7 +1865,7 @@ def hstack_vaapi(
     inputs: Int = Default(2),
     shortest: Boolean = Default(False),
     height: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1911,7 +1911,7 @@ def hysteresis(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1964,7 +1964,7 @@ def identity(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2008,7 +2008,7 @@ def interleave(
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default(
         "longest"
     ),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2046,7 +2046,7 @@ def join(
     inputs: Int = Auto("len(streams)"),
     channel_layout: String = Default("stereo"),
     map: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -2090,7 +2090,7 @@ def ladspa(
     nb_samples: Int = Default(1024),
     duration: Duration = Default(-1e-06),
     latency: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -2299,7 +2299,7 @@ def libplacebo(
     force_icc_lut: Boolean = Default(False),
     force_dither: Boolean = Default(False),
     disable_fbos: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2491,7 +2491,7 @@ def limitdiff(
     reference: Boolean = Default(False),
     planes: Int = Default(15),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2544,7 +2544,7 @@ def lut2(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2599,7 +2599,7 @@ def lv2(
     sample_rate: Int = Default(44100),
     nb_samples: Int = Default(1024),
     duration: Duration = Default(-1e-06),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -2645,7 +2645,7 @@ def maskedclamp(
     overshoot: Int = Default(0),
     planes: Int = Default(15),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2691,7 +2691,7 @@ def maskedmax(
     *,
     planes: Int = Default(15),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2733,7 +2733,7 @@ def maskedmerge(
     *,
     planes: Int = Default(15),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2775,7 +2775,7 @@ def maskedmin(
     *,
     planes: Int = Default(15),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2818,7 +2818,7 @@ def maskedthreshold(
     planes: Int = Default(15),
     mode: Int | Literal["abs", "diff"] | Default = Default("abs"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2868,7 +2868,7 @@ def mergeplanes(
     map2p: Int = Default(0),
     map3s: Int = Default(0),
     map3p: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2923,7 +2923,7 @@ def midequalizer(
     *,
     planes: Int = Default(15),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2967,7 +2967,7 @@ def mix(
         "longest"
     ),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3022,7 +3022,7 @@ def morpho(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3075,7 +3075,7 @@ def msad(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3121,7 +3121,7 @@ def multiply(
     offset: Float = Default(0.5),
     planes: Flags = Default("F"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3185,7 +3185,7 @@ def overlay(
     alpha: Int | Literal["straight", "premultiplied"] | Default = Default("straight"),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3239,7 +3239,7 @@ def overlay_opencl(
     *,
     x: Int = Default(0),
     y: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3288,7 +3288,7 @@ def overlay_vaapi(
     shortest: Boolean = Default(False),
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3342,7 +3342,7 @@ def overlay_vulkan(
     *,
     x: Int = Default(0),
     y: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3397,7 +3397,7 @@ def paletteuse(
     new: Boolean = Default(False),
     alpha_threshold: Int = Default(128),
     debug_kdtree: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3444,7 +3444,7 @@ def premultiply(
     planes: Int = Default(15),
     inplace: Boolean = Default(False),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3489,7 +3489,7 @@ def program_opencl(
     shortest: Boolean = Default(False),
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3546,7 +3546,7 @@ def psnr(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3597,7 +3597,7 @@ def remap(
     *,
     format: Int | Literal["color", "gray"] | Default = Default("color"),
     fill: Color = Default("black"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3639,7 +3639,7 @@ def remap_opencl(
     *,
     interp: Int | Literal["near", "linear"] | Default = Default("linear"),
     fill: Color = Default("black"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3690,7 +3690,7 @@ def sidechaincompress(
     detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
     level_sc: Double = Default(1.0),
     mix: Double = Default(1.0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -3761,7 +3761,7 @@ def sidechaingate(
     link: Int | Literal["average", "maximum"] | Default = Default("average"),
     level_sc: Double = Default(1.0),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -3828,7 +3828,7 @@ def signature(
     th_xh: Int = Default(116),
     th_di: Int = Default(0),
     th_it: Double = Default(0.5),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3915,7 +3915,7 @@ def spectrumsynth(
     orientation: Int | Literal["vertical", "horizontal"] | Default = Default(
         "vertical"
     ),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -3969,7 +3969,7 @@ def ssim(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4013,7 +4013,7 @@ def streamselect(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
     map: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> FilterNode:
     """
 
@@ -4056,7 +4056,7 @@ def threshold(
     *,
     planes: Int = Default(15),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4097,7 +4097,7 @@ def unpremultiply(
     planes: Int = Default(15),
     inplace: Boolean = Default(False),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4144,7 +4144,7 @@ def varblur(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4197,7 +4197,7 @@ def vif(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4239,7 +4239,7 @@ def vstack(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
     shortest: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4277,7 +4277,7 @@ def vstack_vaapi(
     inputs: Int = Default(2),
     shortest: Boolean = Default(False),
     width: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4323,7 +4323,7 @@ def xcorrelate(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4437,7 +4437,7 @@ def xfade(
     duration: Duration = Default(1.0),
     offset: Duration = Default(0.0),
     expr: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4495,7 +4495,7 @@ def xfade_opencl(
     kernel: String = Default(None),
     duration: Duration = Default(1.0),
     offset: Duration = Default(0.0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4545,7 +4545,7 @@ def xmedian(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4597,7 +4597,7 @@ def xstack(
     grid: Image_size = Default(None),
     shortest: Boolean = Default(False),
     fill: String = Default("none"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4644,7 +4644,7 @@ def xstack_vaapi(
     grid: Image_size = Default(None),
     grid_tile_size: Image_size = Default(None),
     fill: String = Default("none"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
