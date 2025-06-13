@@ -1,6 +1,7 @@
 {% import "_components.jinja" as _components %}
 
 from pathlib import Path
+from ...codecs.schema import FFMpegEncoderOption
 
 from ..nodes import OutputNode, OutputStream, FilterableStream
 from typing import Any
@@ -17,6 +18,7 @@ def output(
     {{ option.name | option_name_safe }}: {{ option | option_typing }} = None,
     {%- endif -%}
     {%- endfor -%}
+    encoder_options: FFMpegEncoderOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> OutputStream:
     """
@@ -30,6 +32,7 @@ def output(
         {{option.name | option_name_safe}}: {{option.help }}
         {% endif %}
         {%- endfor -%}
+        encoder_options: ffmpeg's encoder options
         extra_options: the arguments for the output
 
     Returns:
@@ -45,5 +48,5 @@ def output(
                 "{{ option.name}}": {{ option.name | option_name_safe }},
                 {% endif %}
                 {% endfor %}
-        }, extra_options )
+        }, encoder_options.kwargs if encoder_options else {}, extra_options )
     ).stream()

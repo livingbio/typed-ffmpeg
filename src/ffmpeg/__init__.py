@@ -22,7 +22,7 @@ Example:
     ```
 """
 
-from . import compile, dag, filters, sources
+from . import codecs, compile, dag, filters, sources
 from .base import afilter, filter_multi_output, input, merge_outputs, output, vfilter
 from .dag import Stream
 from .exceptions import FFMpegExecuteError, FFMpegTypeError, FFMpegValueError
@@ -31,6 +31,7 @@ from .info import get_codecs, get_decoders, get_encoders
 from .streams import AudioStream, AVStream, SubtitleStream, VideoStream
 
 __all__ = [
+    "codecs",
     "sources",
     "filters",
     "input",

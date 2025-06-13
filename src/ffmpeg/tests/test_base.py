@@ -3,6 +3,8 @@ from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
 from ..base import input, merge_outputs, output, vfilter
+from ..codecs.decoders import h264
+from ..codecs.encoders import h263
 from ..filters import concat, join
 from ..schema import StreamType
 from ..sources import color
@@ -18,6 +20,18 @@ def test_output_node(snapshot: SnapshotAssertion) -> None:
     # assert snapshot(extension_class=JSONSnapshotExtension) == (out.compile())
 
     out = input1.output(filename="out.mp4", extra_options=value)
+    assert snapshot(extension_class=JSONSnapshotExtension) == (out.compile())
+
+
+def test_output_node_with_encoder_options(snapshot: SnapshotAssertion) -> None:
+    input1 = input("input1")
+    out = input1.output(filename="out.mp4", encoder_options=h263(skip_cmp="sad"))
+    assert snapshot(extension_class=JSONSnapshotExtension) == (out.compile())
+
+
+def test_output_node_with_decoder_options(snapshot: SnapshotAssertion) -> None:
+    input1 = input("input1", decoder_options=h264(is_avc=True))
+    out = input1.output(filename="out.mp4")
     assert snapshot(extension_class=JSONSnapshotExtension) == (out.compile())
 
 

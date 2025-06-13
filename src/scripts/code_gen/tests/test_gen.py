@@ -48,7 +48,7 @@ def test_render(snapshot: SnapshotAssertion) -> None:
     ]
 
     with tempfile.TemporaryDirectory() as outpath:
-        outputs = render(filters, [], Path(outpath))
+        outputs = render(filters=filters, options=[], codecs=[], outpath=Path(outpath))
 
         for outfile in outputs:
             assert (

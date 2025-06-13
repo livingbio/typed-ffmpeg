@@ -2,6 +2,7 @@
 
 
 from pathlib import Path
+from ...codecs.schema import FFMpegEncoderOption
 
 from ..nodes import OutputNode, OutputStream, FilterableStream
 from typing import Any
@@ -14,7 +15,8 @@ from ...utils.frozendict import merge
 
 def output(
     *streams: FilterableStream,
-    filename: str | Path,extra_options: dict[str, Any] | None = None,
+    filename: str | Path,encoder_options: FFMpegEncoderOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> OutputStream:
     """
     Output file URL
@@ -22,6 +24,7 @@ def output(
     Args:
         *streams: the streams to output
         filename: the filename to output to
+        encoder_options: ffmpeg's encoder options
         extra_options: the arguments for the output
 
     Returns:
@@ -33,5 +36,5 @@ def output(
         filename=str(filename),
         kwargs=merge({
             
-        }, extra_options )
+        }, encoder_options.kwargs if encoder_options else {}, extra_options )
     ).stream()

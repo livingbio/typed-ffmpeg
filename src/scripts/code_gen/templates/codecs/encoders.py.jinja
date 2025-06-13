@@ -1,0 +1,30 @@
+from typing import Literal
+from .schema import FFMpegEncoderOption
+from ..utils.frozendict import FrozenDict, merge
+
+{% for codec in codecs %}
+{% if codec.is_encoder %}
+def {{codec.name | option_name_safe }}(
+    {% for option in codec.filterd_options() %}
+    {{option.name| option_name_safe}}: {{option.code_gen_type}} = None,
+    {% endfor %}
+) -> FFMpegEncoderOption:
+    """
+    {{codec.description}}
+    {% if codec.options | length > 0 %}
+    Args:
+    {%- for option in codec.filterd_options() %}
+        {{option.name | option_name_safe}}: {{option.help}}
+    {%- endfor %}
+    {%- endif %}
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(kwargs=merge({
+        {% for option in codec.filterd_options() %}
+        "{{ option.name}}": {{ option.name | option_name_safe }},
+        {% endfor %}
+    }))
+{% endif %}
+{% endfor %}
