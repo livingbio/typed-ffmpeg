@@ -24,6 +24,7 @@ from ..types import (
     String,
     Video_rate,
 )
+from ..utils.frozendict import merge
 
 if TYPE_CHECKING:
     from .audio import AudioStream
@@ -65,15 +66,17 @@ class VideoStream(FilterableStream):
                 name="addroi", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "x": x,
-                "y": y,
-                "w": w,
-                "h": h,
-                "qoffset": qoffset,
-                "clear": clear,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "x": x,
+                    "y": y,
+                    "w": w,
+                    "h": h,
+                    "qoffset": qoffset,
+                    "clear": clear,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -97,7 +100,7 @@ class VideoStream(FilterableStream):
                 name="alphaextract", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.video(0)
 
@@ -142,14 +145,16 @@ class VideoStream(FilterableStream):
             ),
             self,
             _alpha,
-            **{
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -192,17 +197,19 @@ class VideoStream(FilterableStream):
                 name="amplify", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "radius": radius,
-                "factor": factor,
-                "threshold": threshold,
-                "tolerance": tolerance,
-                "low": low,
-                "high": high,
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "radius": radius,
+                    "factor": factor,
+                    "threshold": threshold,
+                    "tolerance": tolerance,
+                    "low": low,
+                    "high": high,
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -239,14 +246,16 @@ class VideoStream(FilterableStream):
                 name="ass", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "filename": filename,
-                "original_size": original_size,
-                "fontsdir": fontsdir,
-                "alpha": alpha,
-                "shaping": shaping,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "filename": filename,
+                    "original_size": original_size,
+                    "fontsdir": fontsdir,
+                    "alpha": alpha,
+                    "shaping": shaping,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -299,22 +308,24 @@ class VideoStream(FilterableStream):
                 name="atadenoise", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "0a": _0a,
-                "0b": _0b,
-                "1a": _1a,
-                "1b": _1b,
-                "2a": _2a,
-                "2b": _2b,
-                "s": s,
-                "p": p,
-                "a": a,
-                "0s": _0s,
-                "1s": _1s,
-                "2s": _2s,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "0a": _0a,
+                    "0b": _0b,
+                    "1a": _1a,
+                    "1b": _1b,
+                    "2a": _2a,
+                    "2b": _2b,
+                    "s": s,
+                    "p": p,
+                    "a": a,
+                    "0s": _0s,
+                    "1s": _1s,
+                    "2s": _2s,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -349,13 +360,15 @@ class VideoStream(FilterableStream):
                 name="avgblur", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "sizeX": sizeX,
-                "planes": planes,
-                "sizeY": sizeY,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "sizeX": sizeX,
+                    "planes": planes,
+                    "sizeY": sizeY,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -390,12 +403,14 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "sizeX": sizeX,
-                "planes": planes,
-                "sizeY": sizeY,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "sizeX": sizeX,
+                    "planes": planes,
+                    "sizeY": sizeY,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -430,12 +445,14 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "sizeX": sizeX,
-                "sizeY": sizeY,
-                "planes": planes,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "sizeX": sizeX,
+                    "sizeY": sizeY,
+                    "planes": planes,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -472,13 +489,15 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "threshold": threshold,
-                "similarity": similarity,
-                "blend": blend,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "threshold": threshold,
+                    "similarity": similarity,
+                    "blend": blend,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -509,11 +528,13 @@ class VideoStream(FilterableStream):
                 name="bbox", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "min_val": min_val,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "min_val": min_val,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -542,10 +563,12 @@ class VideoStream(FilterableStream):
                 name="bench", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "action": action,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "action": action,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -580,13 +603,15 @@ class VideoStream(FilterableStream):
                 name="bilateral", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "sigmaS": sigmaS,
-                "sigmaR": sigmaR,
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "sigmaS": sigmaS,
+                    "sigmaR": sigmaR,
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -621,12 +646,14 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "bitplane": bitplane,
-                "filter": filter,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "bitplane": bitplane,
+                    "filter": filter,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -659,12 +686,14 @@ class VideoStream(FilterableStream):
                 name="blackdetect", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "d": d,
-                "picture_black_ratio_th": picture_black_ratio_th,
-                "pixel_black_th": pixel_black_th,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "d": d,
+                    "picture_black_ratio_th": picture_black_ratio_th,
+                    "pixel_black_th": pixel_black_th,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -695,11 +724,13 @@ class VideoStream(FilterableStream):
                 name="blackframe", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "amount": amount,
-                "threshold": threshold,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "amount": amount,
+                    "threshold": threshold,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -999,29 +1030,31 @@ class VideoStream(FilterableStream):
             ),
             self,
             _bottom,
-            **{
-                "c0_mode": c0_mode,
-                "c1_mode": c1_mode,
-                "c2_mode": c2_mode,
-                "c3_mode": c3_mode,
-                "all_mode": all_mode,
-                "c0_expr": c0_expr,
-                "c1_expr": c1_expr,
-                "c2_expr": c2_expr,
-                "c3_expr": c3_expr,
-                "all_expr": all_expr,
-                "c0_opacity": c0_opacity,
-                "c1_opacity": c1_opacity,
-                "c2_opacity": c2_opacity,
-                "c3_opacity": c3_opacity,
-                "all_opacity": all_opacity,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "c0_mode": c0_mode,
+                    "c1_mode": c1_mode,
+                    "c2_mode": c2_mode,
+                    "c3_mode": c3_mode,
+                    "all_mode": all_mode,
+                    "c0_expr": c0_expr,
+                    "c1_expr": c1_expr,
+                    "c2_expr": c2_expr,
+                    "c3_expr": c3_expr,
+                    "all_expr": all_expr,
+                    "c0_opacity": c0_opacity,
+                    "c1_opacity": c1_opacity,
+                    "c2_opacity": c2_opacity,
+                    "c3_opacity": c3_opacity,
+                    "all_opacity": all_opacity,
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1072,19 +1105,21 @@ class VideoStream(FilterableStream):
             ),
             self,
             _bottom,
-            **{
-                "c0_mode": c0_mode,
-                "c1_mode": c1_mode,
-                "c2_mode": c2_mode,
-                "c3_mode": c3_mode,
-                "all_mode": all_mode,
-                "c0_opacity": c0_opacity,
-                "c1_opacity": c1_opacity,
-                "c2_opacity": c2_opacity,
-                "c3_opacity": c3_opacity,
-                "all_opacity": all_opacity,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "c0_mode": c0_mode,
+                    "c1_mode": c1_mode,
+                    "c2_mode": c2_mode,
+                    "c3_mode": c3_mode,
+                    "all_mode": all_mode,
+                    "c0_opacity": c0_opacity,
+                    "c1_opacity": c1_opacity,
+                    "c2_opacity": c2_opacity,
+                    "c3_opacity": c3_opacity,
+                    "all_opacity": all_opacity,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1117,12 +1152,14 @@ class VideoStream(FilterableStream):
                 name="blockdetect", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "period_min": period_min,
-                "period_max": period_max,
-                "planes": planes,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "period_min": period_min,
+                    "period_max": period_max,
+                    "planes": planes,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1161,15 +1198,17 @@ class VideoStream(FilterableStream):
                 name="blurdetect", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "high": high,
-                "low": low,
-                "radius": radius,
-                "block_pct": block_pct,
-                "block_width": block_width,
-                "planes": planes,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "high": high,
+                    "low": low,
+                    "radius": radius,
+                    "block_pct": block_pct,
+                    "block_width": block_width,
+                    "planes": planes,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1210,16 +1249,18 @@ class VideoStream(FilterableStream):
                 name="boxblur", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "luma_radius": luma_radius,
-                "luma_power": luma_power,
-                "chroma_radius": chroma_radius,
-                "chroma_power": chroma_power,
-                "alpha_radius": alpha_radius,
-                "alpha_power": alpha_power,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "luma_radius": luma_radius,
+                    "luma_power": luma_power,
+                    "chroma_radius": chroma_radius,
+                    "chroma_power": chroma_power,
+                    "alpha_radius": alpha_radius,
+                    "alpha_power": alpha_power,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1260,15 +1301,17 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "luma_radius": luma_radius,
-                "luma_power": luma_power,
-                "chroma_radius": chroma_radius,
-                "chroma_power": chroma_power,
-                "alpha_radius": alpha_radius,
-                "alpha_power": alpha_power,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "luma_radius": luma_radius,
+                    "luma_power": luma_power,
+                    "chroma_radius": chroma_radius,
+                    "chroma_power": chroma_power,
+                    "alpha_radius": alpha_radius,
+                    "alpha_power": alpha_power,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1305,13 +1348,15 @@ class VideoStream(FilterableStream):
                 name="bwdif", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "mode": mode,
-                "parity": parity,
-                "deint": deint,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "parity": parity,
+                    "deint": deint,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1350,13 +1395,15 @@ class VideoStream(FilterableStream):
                 name="bwdif_vulkan", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "mode": mode,
-                "parity": parity,
-                "deint": deint,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "parity": parity,
+                    "deint": deint,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1389,12 +1436,14 @@ class VideoStream(FilterableStream):
                 name="cas", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "strength": strength,
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "strength": strength,
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1418,7 +1467,7 @@ class VideoStream(FilterableStream):
                 name="ccrepack", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.video(0)
 
@@ -1451,11 +1500,13 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "dist_x": dist_x,
-                "dist_y": dist_y,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "dist_x": dist_x,
+                    "dist_y": dist_y,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1492,14 +1543,16 @@ class VideoStream(FilterableStream):
                 name="chromahold", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "color": color,
-                "similarity": similarity,
-                "blend": blend,
-                "yuv": yuv,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "color": color,
+                    "similarity": similarity,
+                    "blend": blend,
+                    "yuv": yuv,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1536,14 +1589,16 @@ class VideoStream(FilterableStream):
                 name="chromakey", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "color": color,
-                "similarity": similarity,
-                "blend": blend,
-                "yuv": yuv,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "color": color,
+                    "similarity": similarity,
+                    "blend": blend,
+                    "yuv": yuv,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1592,19 +1647,21 @@ class VideoStream(FilterableStream):
                 name="chromanr", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "thres": thres,
-                "sizew": sizew,
-                "sizeh": sizeh,
-                "stepw": stepw,
-                "steph": steph,
-                "threy": threy,
-                "threu": threu,
-                "threv": threv,
-                "distance": distance,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "thres": thres,
+                    "sizew": sizew,
+                    "sizeh": sizeh,
+                    "stepw": stepw,
+                    "steph": steph,
+                    "threy": threy,
+                    "threu": threu,
+                    "threv": threv,
+                    "distance": distance,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1643,15 +1700,17 @@ class VideoStream(FilterableStream):
                 name="chromashift", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "cbh": cbh,
-                "cbv": cbv,
-                "crh": crh,
-                "crv": crv,
-                "edge": edge,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "cbh": cbh,
+                    "cbv": cbv,
+                    "crh": crh,
+                    "crv": crv,
+                    "edge": edge,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1732,19 +1791,21 @@ class VideoStream(FilterableStream):
                 name="ciescope", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "system": system,
-                "cie": cie,
-                "gamuts": gamuts,
-                "size": size,
-                "intensity": intensity,
-                "contrast": contrast,
-                "corrgamma": corrgamma,
-                "showwhite": showwhite,
-                "gamma": gamma,
-                "fill": fill,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "system": system,
+                    "cie": cie,
+                    "gamuts": gamuts,
+                    "size": size,
+                    "intensity": intensity,
+                    "contrast": contrast,
+                    "corrgamma": corrgamma,
+                    "showwhite": showwhite,
+                    "gamma": gamma,
+                    "fill": fill,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1783,15 +1844,17 @@ class VideoStream(FilterableStream):
                 name="codecview", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "mv": mv,
-                "qp": qp,
-                "mv_type": mv_type,
-                "frame_type": frame_type,
-                "block": block,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mv": mv,
+                    "qp": qp,
+                    "mv_type": mv_type,
+                    "frame_type": frame_type,
+                    "block": block,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1840,20 +1903,22 @@ class VideoStream(FilterableStream):
                 name="colorbalance", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "rs": rs,
-                "gs": gs,
-                "bs": bs,
-                "rm": rm,
-                "gm": gm,
-                "bm": bm,
-                "rh": rh,
-                "gh": gh,
-                "bh": bh,
-                "pl": pl,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "rs": rs,
+                    "gs": gs,
+                    "bs": bs,
+                    "rm": rm,
+                    "gm": gm,
+                    "bm": bm,
+                    "rh": rh,
+                    "gh": gh,
+                    "bh": bh,
+                    "pl": pl,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1922,28 +1987,30 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "rr": rr,
-                "rg": rg,
-                "rb": rb,
-                "ra": ra,
-                "gr": gr,
-                "gg": gg,
-                "gb": gb,
-                "ga": ga,
-                "br": br,
-                "bg": bg,
-                "bb": bb,
-                "ba": ba,
-                "ar": ar,
-                "ag": ag,
-                "ab": ab,
-                "aa": aa,
-                "pc": pc,
-                "pa": pa,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "rr": rr,
+                    "rg": rg,
+                    "rb": rb,
+                    "ra": ra,
+                    "gr": gr,
+                    "gg": gg,
+                    "gb": gb,
+                    "ga": ga,
+                    "br": br,
+                    "bg": bg,
+                    "bb": bb,
+                    "ba": ba,
+                    "ar": ar,
+                    "ag": ag,
+                    "ab": ab,
+                    "aa": aa,
+                    "pc": pc,
+                    "pa": pa,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1988,17 +2055,19 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "rc": rc,
-                "gm": gm,
-                "by": by,
-                "rcw": rcw,
-                "gmw": gmw,
-                "byw": byw,
-                "pl": pl,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "rc": rc,
+                    "gm": gm,
+                    "by": by,
+                    "rcw": rcw,
+                    "gmw": gmw,
+                    "byw": byw,
+                    "pl": pl,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -2041,16 +2110,18 @@ class VideoStream(FilterableStream):
                 name="colorcorrect", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "rl": rl,
-                "bl": bl,
-                "rh": rh,
-                "bh": bh,
-                "saturation": saturation,
-                "analyze": analyze,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "rl": rl,
+                    "bl": bl,
+                    "rh": rh,
+                    "bh": bh,
+                    "saturation": saturation,
+                    "analyze": analyze,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -2085,13 +2156,15 @@ class VideoStream(FilterableStream):
                 name="colorhold", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "color": color,
-                "similarity": similarity,
-                "blend": blend,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "color": color,
+                    "similarity": similarity,
+                    "blend": blend,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -2128,14 +2201,16 @@ class VideoStream(FilterableStream):
                 name="colorize", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "hue": hue,
-                "saturation": saturation,
-                "lightness": lightness,
-                "mix": mix,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "hue": hue,
+                    "saturation": saturation,
+                    "lightness": lightness,
+                    "mix": mix,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -2170,13 +2245,15 @@ class VideoStream(FilterableStream):
                 name="colorkey", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "color": color,
-                "similarity": similarity,
-                "blend": blend,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "color": color,
+                    "similarity": similarity,
+                    "blend": blend,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -2211,12 +2288,14 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "color": color,
-                "similarity": similarity,
-                "blend": blend,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "color": color,
+                    "similarity": similarity,
+                    "blend": blend,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -2281,27 +2360,29 @@ class VideoStream(FilterableStream):
                 name="colorlevels", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "rimin": rimin,
-                "gimin": gimin,
-                "bimin": bimin,
-                "aimin": aimin,
-                "rimax": rimax,
-                "gimax": gimax,
-                "bimax": bimax,
-                "aimax": aimax,
-                "romin": romin,
-                "gomin": gomin,
-                "bomin": bomin,
-                "aomin": aomin,
-                "romax": romax,
-                "gomax": gomax,
-                "bomax": bomax,
-                "aomax": aomax,
-                "preserve": preserve,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "rimin": rimin,
+                    "gimin": gimin,
+                    "bimin": bimin,
+                    "aimin": aimin,
+                    "rimax": rimax,
+                    "gimax": gimax,
+                    "bimax": bimax,
+                    "aimax": aimax,
+                    "romin": romin,
+                    "gomin": gomin,
+                    "bomin": bomin,
+                    "aomin": aomin,
+                    "romax": romax,
+                    "gomax": gomax,
+                    "bomax": bomax,
+                    "aomax": aomax,
+                    "preserve": preserve,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -2346,14 +2427,16 @@ class VideoStream(FilterableStream):
             self,
             _source,
             _target,
-            **{
-                "patch_size": patch_size,
-                "nb_patches": nb_patches,
-                "type": type,
-                "kernel": kernel,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "patch_size": patch_size,
+                    "nb_patches": nb_patches,
+                    "type": type,
+                    "kernel": kernel,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -2408,12 +2491,14 @@ class VideoStream(FilterableStream):
                 name="colormatrix", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "src": src,
-                "dst": dst,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "src": src,
+                    "dst": dst,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -2594,24 +2679,26 @@ class VideoStream(FilterableStream):
                 name="colorspace", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "all": all,
-                "space": space,
-                "range": range,
-                "primaries": primaries,
-                "trc": trc,
-                "format": format,
-                "fast": fast,
-                "dither": dither,
-                "wpadapt": wpadapt,
-                "iall": iall,
-                "ispace": ispace,
-                "irange": irange,
-                "iprimaries": iprimaries,
-                "itrc": itrc,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "all": all,
+                    "space": space,
+                    "range": range,
+                    "primaries": primaries,
+                    "trc": trc,
+                    "format": format,
+                    "fast": fast,
+                    "dither": dither,
+                    "wpadapt": wpadapt,
+                    "iall": iall,
+                    "ispace": ispace,
+                    "irange": irange,
+                    "iprimaries": iprimaries,
+                    "itrc": itrc,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -2648,13 +2735,15 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "temperature": temperature,
-                "mix": mix,
-                "pl": pl,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "temperature": temperature,
+                    "mix": mix,
+                    "pl": pl,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -2715,26 +2804,28 @@ class VideoStream(FilterableStream):
                 name="convolution", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "0m": _0m,
-                "1m": _1m,
-                "2m": _2m,
-                "3m": _3m,
-                "0rdiv": _0rdiv,
-                "1rdiv": _1rdiv,
-                "2rdiv": _2rdiv,
-                "3rdiv": _3rdiv,
-                "0bias": _0bias,
-                "1bias": _1bias,
-                "2bias": _2bias,
-                "3bias": _3bias,
-                "0mode": _0mode,
-                "1mode": _1mode,
-                "2mode": _2mode,
-                "3mode": _3mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "0m": _0m,
+                    "1m": _1m,
+                    "2m": _2m,
+                    "3m": _3m,
+                    "0rdiv": _0rdiv,
+                    "1rdiv": _1rdiv,
+                    "2rdiv": _2rdiv,
+                    "3rdiv": _3rdiv,
+                    "0bias": _0bias,
+                    "1bias": _1bias,
+                    "2bias": _2bias,
+                    "3bias": _3bias,
+                    "0mode": _0mode,
+                    "1mode": _1mode,
+                    "2mode": _2mode,
+                    "3mode": _3mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -2785,20 +2876,22 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "0m": _0m,
-                "2m": _2m,
-                "3m": _3m,
-                "0rdiv": _0rdiv,
-                "1rdiv": _1rdiv,
-                "2rdiv": _2rdiv,
-                "3rdiv": _3rdiv,
-                "0bias": _0bias,
-                "1bias": _1bias,
-                "2bias": _2bias,
-                "3bias": _3bias,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "0m": _0m,
+                    "2m": _2m,
+                    "3m": _3m,
+                    "0rdiv": _0rdiv,
+                    "1rdiv": _1rdiv,
+                    "2rdiv": _2rdiv,
+                    "3rdiv": _3rdiv,
+                    "0bias": _0bias,
+                    "1bias": _1bias,
+                    "2bias": _2bias,
+                    "3bias": _3bias,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -2849,17 +2942,19 @@ class VideoStream(FilterableStream):
             ),
             self,
             _impulse,
-            **{
-                "planes": planes,
-                "impulse": impulse,
-                "noise": noise,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "impulse": impulse,
+                    "noise": noise,
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -2883,7 +2978,7 @@ class VideoStream(FilterableStream):
                 name="copy", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.video(0)
 
@@ -2926,14 +3021,16 @@ class VideoStream(FilterableStream):
             ),
             self,
             _reference,
-            **{
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -2964,11 +3061,13 @@ class VideoStream(FilterableStream):
                 name="cover_rect", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "cover": cover,
-                "mode": mode,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "cover": cover,
+                    "mode": mode,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3007,15 +3106,17 @@ class VideoStream(FilterableStream):
                 name="crop", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "out_w": out_w,
-                "out_h": out_h,
-                "x": x,
-                "y": y,
-                "keep_aspect": keep_aspect,
-                "exact": exact,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "out_w": out_w,
+                    "out_h": out_h,
+                    "x": x,
+                    "y": y,
+                    "keep_aspect": keep_aspect,
+                    "exact": exact,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3064,20 +3165,22 @@ class VideoStream(FilterableStream):
                 name="cropdetect", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "limit": limit,
-                "round": round,
-                "reset": reset,
-                "skip": skip,
-                "reset_count": reset_count,
-                "max_outliers": max_outliers,
-                "mode": mode,
-                "high": high,
-                "low": low,
-                "mv_threshold": mv_threshold,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "limit": limit,
+                    "round": round,
+                    "reset": reset,
+                    "skip": skip,
+                    "reset_count": reset_count,
+                    "max_outliers": max_outliers,
+                    "mode": mode,
+                    "high": high,
+                    "low": low,
+                    "mv_threshold": mv_threshold,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3110,12 +3213,14 @@ class VideoStream(FilterableStream):
                 name="cue", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "cue": cue,
-                "preroll": preroll,
-                "buffer": buffer,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "cue": cue,
+                    "preroll": preroll,
+                    "buffer": buffer,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3176,19 +3281,21 @@ class VideoStream(FilterableStream):
                 name="curves", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "preset": preset,
-                "master": master,
-                "red": red,
-                "green": green,
-                "blue": blue,
-                "all": all,
-                "psfile": psfile,
-                "plot": plot,
-                "interp": interp,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "preset": preset,
+                    "master": master,
+                    "red": red,
+                    "green": green,
+                    "blue": blue,
+                    "all": all,
+                    "psfile": psfile,
+                    "plot": plot,
+                    "interp": interp,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3231,17 +3338,19 @@ class VideoStream(FilterableStream):
                 name="datascope", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "size": size,
-                "x": x,
-                "y": y,
-                "mode": mode,
-                "axis": axis,
-                "opacity": opacity,
-                "format": format,
-                "components": components,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "size": size,
+                    "x": x,
+                    "y": y,
+                    "mode": mode,
+                    "axis": axis,
+                    "opacity": opacity,
+                    "format": format,
+                    "components": components,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3276,13 +3385,15 @@ class VideoStream(FilterableStream):
                 name="dblur", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "angle": angle,
-                "radius": radius,
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "angle": angle,
+                    "radius": radius,
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3319,14 +3430,16 @@ class VideoStream(FilterableStream):
                 name="dctdnoiz", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "sigma": sigma,
-                "overlap": overlap,
-                "expr": expr,
-                "n": n,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "sigma": sigma,
+                    "overlap": overlap,
+                    "expr": expr,
+                    "n": n,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3371,18 +3484,20 @@ class VideoStream(FilterableStream):
                 name="deband", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "1thr": _1thr,
-                "2thr": _2thr,
-                "3thr": _3thr,
-                "4thr": _4thr,
-                "range": range,
-                "direction": direction,
-                "blur": blur,
-                "coupling": coupling,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "1thr": _1thr,
+                    "2thr": _2thr,
+                    "3thr": _3thr,
+                    "4thr": _4thr,
+                    "range": range,
+                    "direction": direction,
+                    "blur": blur,
+                    "coupling": coupling,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3425,17 +3540,19 @@ class VideoStream(FilterableStream):
                 name="deblock", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "filter": filter,
-                "block": block,
-                "alpha": alpha,
-                "beta": beta,
-                "gamma": gamma,
-                "delta": delta,
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "filter": filter,
+                    "block": block,
+                    "alpha": alpha,
+                    "beta": beta,
+                    "gamma": gamma,
+                    "delta": delta,
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3486,17 +3603,19 @@ class VideoStream(FilterableStream):
             ),
             self,
             _impulse,
-            **{
-                "planes": planes,
-                "impulse": impulse,
-                "noise": noise,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "impulse": impulse,
+                    "noise": noise,
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3537,15 +3656,17 @@ class VideoStream(FilterableStream):
                 name="dedot", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "m": m,
-                "lt": lt,
-                "tl": tl,
-                "tc": tc,
-                "ct": ct,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "m": m,
+                    "lt": lt,
+                    "tl": tl,
+                    "tc": tc,
+                    "ct": ct,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3582,14 +3703,16 @@ class VideoStream(FilterableStream):
                 name="deflate", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "threshold0": threshold0,
-                "threshold1": threshold1,
-                "threshold2": threshold2,
-                "threshold3": threshold3,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "threshold0": threshold0,
+                    "threshold1": threshold1,
+                    "threshold2": threshold2,
+                    "threshold3": threshold3,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3624,12 +3747,14 @@ class VideoStream(FilterableStream):
                 name="deflicker", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "size": size,
-                "mode": mode,
-                "bypass": bypass,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "size": size,
+                    "mode": mode,
+                    "bypass": bypass,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3658,10 +3783,12 @@ class VideoStream(FilterableStream):
                 name="dejudder", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "cycle": cycle,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "cycle": cycle,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3700,15 +3827,17 @@ class VideoStream(FilterableStream):
                 name="delogo", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "x": x,
-                "y": y,
-                "w": w,
-                "h": h,
-                "show": show,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "x": x,
+                    "y": y,
+                    "w": w,
+                    "h": h,
+                    "show": show,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3747,15 +3876,17 @@ class VideoStream(FilterableStream):
                 name="derain", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "filter_type": filter_type,
-                "dnn_backend": dnn_backend,
-                "model": model,
-                "input": input,
-                "output": output,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "filter_type": filter_type,
+                    "dnn_backend": dnn_backend,
+                    "model": model,
+                    "input": input,
+                    "output": output,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3808,21 +3939,23 @@ class VideoStream(FilterableStream):
                 name="deshake", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "x": x,
-                "y": y,
-                "w": w,
-                "h": h,
-                "rx": rx,
-                "ry": ry,
-                "edge": edge,
-                "blocksize": blocksize,
-                "contrast": contrast,
-                "search": search,
-                "filename": filename,
-                "opencl": opencl,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "x": x,
+                    "y": y,
+                    "w": w,
+                    "h": h,
+                    "rx": rx,
+                    "ry": ry,
+                    "edge": edge,
+                    "blocksize": blocksize,
+                    "contrast": contrast,
+                    "search": search,
+                    "filename": filename,
+                    "opencl": opencl,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3863,15 +3996,17 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "tripod": tripod,
-                "debug": debug,
-                "adaptive_crop": adaptive_crop,
-                "refine_features": refine_features,
-                "smooth_strength": smooth_strength,
-                "smooth_window_multiplier": smooth_window_multiplier,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "tripod": tripod,
+                    "debug": debug,
+                    "adaptive_crop": adaptive_crop,
+                    "refine_features": refine_features,
+                    "smooth_strength": smooth_strength,
+                    "smooth_window_multiplier": smooth_window_multiplier,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3916,18 +4051,20 @@ class VideoStream(FilterableStream):
                 name="despill", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "type": type,
-                "mix": mix,
-                "expand": expand,
-                "red": red,
-                "green": green,
-                "blue": blue,
-                "brightness": brightness,
-                "alpha": alpha,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "type": type,
+                    "mix": mix,
+                    "expand": expand,
+                    "red": red,
+                    "green": green,
+                    "blue": blue,
+                    "brightness": brightness,
+                    "alpha": alpha,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3962,12 +4099,14 @@ class VideoStream(FilterableStream):
                 name="detelecine", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "first_field": first_field,
-                "pattern": pattern,
-                "start_frame": start_frame,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "first_field": first_field,
+                    "pattern": pattern,
+                    "start_frame": start_frame,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4006,15 +4145,17 @@ class VideoStream(FilterableStream):
                 name="dilation", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "coordinates": coordinates,
-                "threshold0": threshold0,
-                "threshold1": threshold1,
-                "threshold2": threshold2,
-                "threshold3": threshold3,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "coordinates": coordinates,
+                    "threshold0": threshold0,
+                    "threshold1": threshold1,
+                    "threshold2": threshold2,
+                    "threshold3": threshold3,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4053,14 +4194,16 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "threshold0": threshold0,
-                "threshold1": threshold1,
-                "threshold2": threshold2,
-                "threshold3": threshold3,
-                "coordinates": coordinates,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "threshold0": threshold0,
+                    "threshold1": threshold1,
+                    "threshold2": threshold2,
+                    "threshold3": threshold3,
+                    "coordinates": coordinates,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4099,11 +4242,13 @@ class VideoStream(FilterableStream):
             self,
             _xmap,
             _ymap,
-            **{
-                "edge": edge,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "edge": edge,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4150,19 +4295,21 @@ class VideoStream(FilterableStream):
                 name="dnn_classify", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "dnn_backend": dnn_backend,
-                "model": model,
-                "input": input,
-                "output": output,
-                "backend_configs": backend_configs,
-                "options": options,
-                "async": _async,
-                "confidence": confidence,
-                "labels": labels,
-                "target": target,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "dnn_backend": dnn_backend,
+                    "model": model,
+                    "input": input,
+                    "output": output,
+                    "backend_configs": backend_configs,
+                    "options": options,
+                    "async": _async,
+                    "confidence": confidence,
+                    "labels": labels,
+                    "target": target,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4207,18 +4354,20 @@ class VideoStream(FilterableStream):
                 name="dnn_detect", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "dnn_backend": dnn_backend,
-                "model": model,
-                "input": input,
-                "output": output,
-                "backend_configs": backend_configs,
-                "options": options,
-                "async": _async,
-                "confidence": confidence,
-                "labels": labels,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "dnn_backend": dnn_backend,
+                    "model": model,
+                    "input": input,
+                    "output": output,
+                    "backend_configs": backend_configs,
+                    "options": options,
+                    "async": _async,
+                    "confidence": confidence,
+                    "labels": labels,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4261,16 +4410,18 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "dnn_backend": dnn_backend,
-                "model": model,
-                "input": input,
-                "output": output,
-                "backend_configs": backend_configs,
-                "options": options,
-                "async": _async,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "dnn_backend": dnn_backend,
+                    "model": model,
+                    "input": input,
+                    "output": output,
+                    "backend_configs": backend_configs,
+                    "options": options,
+                    "async": _async,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4301,10 +4452,12 @@ class VideoStream(FilterableStream):
                 name="doubleweave", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "first_field": first_field,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "first_field": first_field,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4349,18 +4502,20 @@ class VideoStream(FilterableStream):
                 name="drawbox", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "x": x,
-                "y": y,
-                "width": width,
-                "height": height,
-                "color": color,
-                "thickness": thickness,
-                "replace": replace,
-                "box_source": box_source,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "x": x,
+                    "y": y,
+                    "width": width,
+                    "height": height,
+                    "color": color,
+                    "thickness": thickness,
+                    "replace": replace,
+                    "box_source": box_source,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4419,24 +4574,26 @@ class VideoStream(FilterableStream):
                 name="drawgraph", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "m1": m1,
-                "fg1": fg1,
-                "m2": m2,
-                "fg2": fg2,
-                "m3": m3,
-                "fg3": fg3,
-                "m4": m4,
-                "fg4": fg4,
-                "bg": bg,
-                "min": min,
-                "max": max,
-                "mode": mode,
-                "slide": slide,
-                "size": size,
-                "rate": rate,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "m1": m1,
+                    "fg1": fg1,
+                    "m2": m2,
+                    "fg2": fg2,
+                    "m3": m3,
+                    "fg3": fg3,
+                    "m4": m4,
+                    "fg4": fg4,
+                    "bg": bg,
+                    "min": min,
+                    "max": max,
+                    "mode": mode,
+                    "slide": slide,
+                    "size": size,
+                    "rate": rate,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4479,17 +4636,19 @@ class VideoStream(FilterableStream):
                 name="drawgrid", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "x": x,
-                "y": y,
-                "width": width,
-                "height": height,
-                "color": color,
-                "thickness": thickness,
-                "replace": replace,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "x": x,
+                    "y": y,
+                    "width": width,
+                    "height": height,
+                    "color": color,
+                    "thickness": thickness,
+                    "replace": replace,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4623,45 +4782,47 @@ class VideoStream(FilterableStream):
                 name="drawtext", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "fontfile": fontfile,
-                "text": text,
-                "textfile": textfile,
-                "fontcolor": fontcolor,
-                "fontcolor_expr": fontcolor_expr,
-                "boxcolor": boxcolor,
-                "bordercolor": bordercolor,
-                "shadowcolor": shadowcolor,
-                "box": box,
-                "boxborderw": boxborderw,
-                "line_spacing": line_spacing,
-                "fontsize": fontsize,
-                "text_align": text_align,
-                "x": x,
-                "y": y,
-                "boxw": boxw,
-                "boxh": boxh,
-                "shadowx": shadowx,
-                "shadowy": shadowy,
-                "borderw": borderw,
-                "tabsize": tabsize,
-                "basetime": basetime,
-                "font": font,
-                "expansion": expansion,
-                "y_align": y_align,
-                "timecode": timecode,
-                "tc24hmax": tc24hmax,
-                "timecode_rate": timecode_rate,
-                "reload": reload,
-                "alpha": alpha,
-                "fix_bounds": fix_bounds,
-                "start_number": start_number,
-                "text_source": text_source,
-                "text_shaping": text_shaping,
-                "ft_load_flags": ft_load_flags,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "fontfile": fontfile,
+                    "text": text,
+                    "textfile": textfile,
+                    "fontcolor": fontcolor,
+                    "fontcolor_expr": fontcolor_expr,
+                    "boxcolor": boxcolor,
+                    "bordercolor": bordercolor,
+                    "shadowcolor": shadowcolor,
+                    "box": box,
+                    "boxborderw": boxborderw,
+                    "line_spacing": line_spacing,
+                    "fontsize": fontsize,
+                    "text_align": text_align,
+                    "x": x,
+                    "y": y,
+                    "boxw": boxw,
+                    "boxh": boxh,
+                    "shadowx": shadowx,
+                    "shadowy": shadowy,
+                    "borderw": borderw,
+                    "tabsize": tabsize,
+                    "basetime": basetime,
+                    "font": font,
+                    "expansion": expansion,
+                    "y_align": y_align,
+                    "timecode": timecode,
+                    "tc24hmax": tc24hmax,
+                    "timecode_rate": timecode_rate,
+                    "reload": reload,
+                    "alpha": alpha,
+                    "fix_bounds": fix_bounds,
+                    "start_number": start_number,
+                    "text_source": text_source,
+                    "text_shaping": text_shaping,
+                    "ft_load_flags": ft_load_flags,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4700,14 +4861,16 @@ class VideoStream(FilterableStream):
                 name="edgedetect", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "high": high,
-                "low": low,
-                "mode": mode,
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "high": high,
+                    "low": low,
+                    "mode": mode,
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4744,14 +4907,16 @@ class VideoStream(FilterableStream):
                 name="elbg", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "codebook_length": codebook_length,
-                "nb_steps": nb_steps,
-                "seed": seed,
-                "pal8": pal8,
-                "use_alpha": use_alpha,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "codebook_length": codebook_length,
+                    "nb_steps": nb_steps,
+                    "seed": seed,
+                    "pal8": pal8,
+                    "use_alpha": use_alpha,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4782,11 +4947,13 @@ class VideoStream(FilterableStream):
                 name="entropy", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "mode": mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4815,10 +4982,12 @@ class VideoStream(FilterableStream):
                 name="epx", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "n": n,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "n": n,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4865,19 +5034,21 @@ class VideoStream(FilterableStream):
                 name="eq", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "contrast": contrast,
-                "brightness": brightness,
-                "saturation": saturation,
-                "gamma": gamma,
-                "gamma_r": gamma_r,
-                "gamma_g": gamma_g,
-                "gamma_b": gamma_b,
-                "gamma_weight": gamma_weight,
-                "eval": eval,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "contrast": contrast,
+                    "brightness": brightness,
+                    "saturation": saturation,
+                    "gamma": gamma,
+                    "gamma_r": gamma_r,
+                    "gamma_g": gamma_g,
+                    "gamma_b": gamma_b,
+                    "gamma_weight": gamma_weight,
+                    "eval": eval,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4916,15 +5087,17 @@ class VideoStream(FilterableStream):
                 name="erosion", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "coordinates": coordinates,
-                "threshold0": threshold0,
-                "threshold1": threshold1,
-                "threshold2": threshold2,
-                "threshold3": threshold3,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "coordinates": coordinates,
+                    "threshold0": threshold0,
+                    "threshold1": threshold1,
+                    "threshold2": threshold2,
+                    "threshold3": threshold3,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4963,14 +5136,16 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "threshold0": threshold0,
-                "threshold1": threshold1,
-                "threshold2": threshold2,
-                "threshold3": threshold3,
-                "coordinates": coordinates,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "threshold0": threshold0,
+                    "threshold1": threshold1,
+                    "threshold2": threshold2,
+                    "threshold3": threshold3,
+                    "coordinates": coordinates,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5017,19 +5192,21 @@ class VideoStream(FilterableStream):
                 name="estdif", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "mode": mode,
-                "parity": parity,
-                "deint": deint,
-                "rslope": rslope,
-                "redge": redge,
-                "ecost": ecost,
-                "mcost": mcost,
-                "dcost": dcost,
-                "interp": interp,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "parity": parity,
+                    "deint": deint,
+                    "rslope": rslope,
+                    "redge": redge,
+                    "ecost": ecost,
+                    "mcost": mcost,
+                    "dcost": dcost,
+                    "interp": interp,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5062,12 +5239,14 @@ class VideoStream(FilterableStream):
                 name="exposure", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "exposure": exposure,
-                "black": black,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "exposure": exposure,
+                    "black": black,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5101,10 +5280,12 @@ class VideoStream(FilterableStream):
                 typings_output="[StreamType.video] * len(planes.split('+'))",
             ),
             self,
-            **{
-                "planes": planes,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                },
+                extra_options,
+            ),
         )
 
         return filter_node
@@ -5148,17 +5329,19 @@ class VideoStream(FilterableStream):
                 name="fade", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "type": type,
-                "start_frame": start_frame,
-                "nb_frames": nb_frames,
-                "alpha": alpha,
-                "start_time": start_time,
-                "duration": duration,
-                "color": color,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "type": type,
+                    "start_frame": start_frame,
+                    "nb_frames": nb_frames,
+                    "alpha": alpha,
+                    "start_time": start_time,
+                    "duration": duration,
+                    "color": color,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5197,11 +5380,13 @@ class VideoStream(FilterableStream):
             ),
             self,
             _feedin,
-            **{
-                "x": x,
-                "w": w,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "x": x,
+                    "w": w,
+                },
+                extra_options,
+            ),
         )
         return (
             filter_node.video(0),
@@ -5276,19 +5461,21 @@ class VideoStream(FilterableStream):
                 name="fftdnoiz", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "sigma": sigma,
-                "amount": amount,
-                "block": block,
-                "overlap": overlap,
-                "method": method,
-                "prev": prev,
-                "next": next,
-                "planes": planes,
-                "window": window,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "sigma": sigma,
+                    "amount": amount,
+                    "block": block,
+                    "overlap": overlap,
+                    "method": method,
+                    "prev": prev,
+                    "next": next,
+                    "planes": planes,
+                    "window": window,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5331,17 +5518,19 @@ class VideoStream(FilterableStream):
                 name="fftfilt", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "dc_Y": dc_Y,
-                "dc_U": dc_U,
-                "dc_V": dc_V,
-                "weight_Y": weight_Y,
-                "weight_U": weight_U,
-                "weight_V": weight_V,
-                "eval": eval,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "dc_Y": dc_Y,
+                    "dc_U": dc_U,
+                    "dc_V": dc_V,
+                    "weight_Y": weight_Y,
+                    "weight_U": weight_U,
+                    "weight_V": weight_V,
+                    "eval": eval,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5370,10 +5559,12 @@ class VideoStream(FilterableStream):
                 name="field", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "type": type,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "type": type,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5406,11 +5597,13 @@ class VideoStream(FilterableStream):
                 name="fieldhint", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "hint": hint,
-                "mode": mode,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "hint": hint,
+                    "mode": mode,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5441,11 +5634,13 @@ class VideoStream(FilterableStream):
                 name="fieldorder", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "order": order,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "order": order,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5488,16 +5683,18 @@ class VideoStream(FilterableStream):
                 name="fillborders", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "left": left,
-                "right": right,
-                "top": top,
-                "bottom": bottom,
-                "mode": mode,
-                "color": color,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "left": left,
+                    "right": right,
+                    "top": top,
+                    "bottom": bottom,
+                    "mode": mode,
+                    "color": color,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5534,14 +5731,16 @@ class VideoStream(FilterableStream):
                 name="find_rect", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "object": object,
-                "threshold": threshold,
-                "mipmaps": mipmaps,
-                "xmin": xmin,
-                "discard": discard,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "object": object,
+                    "threshold": threshold,
+                    "mipmaps": mipmaps,
+                    "xmin": xmin,
+                    "discard": discard,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5565,7 +5764,7 @@ class VideoStream(FilterableStream):
                 name="flip_vulkan", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.video(0)
 
@@ -5614,20 +5813,22 @@ class VideoStream(FilterableStream):
                 name="floodfill", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "x": x,
-                "y": y,
-                "s0": s0,
-                "s1": s1,
-                "s2": s2,
-                "s3": s3,
-                "d0": d0,
-                "d1": d1,
-                "d2": d2,
-                "d3": d3,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "x": x,
+                    "y": y,
+                    "s0": s0,
+                    "s1": s1,
+                    "s2": s2,
+                    "s3": s3,
+                    "d0": d0,
+                    "d1": d1,
+                    "d2": d2,
+                    "d3": d3,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5656,10 +5857,12 @@ class VideoStream(FilterableStream):
                 name="format", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "pix_fmts": pix_fmts,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "pix_fmts": pix_fmts,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5696,13 +5899,15 @@ class VideoStream(FilterableStream):
                 name="fps", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "fps": fps,
-                "start_time": start_time,
-                "round": round,
-                "eof_action": eof_action,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "fps": fps,
+                    "start_time": start_time,
+                    "round": round,
+                    "eof_action": eof_action,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5737,10 +5942,12 @@ class VideoStream(FilterableStream):
             ),
             self,
             _right,
-            **{
-                "format": format,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "format": format,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5779,14 +5986,16 @@ class VideoStream(FilterableStream):
                 name="framerate", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "fps": fps,
-                "interp_start": interp_start,
-                "interp_end": interp_end,
-                "scene": scene,
-                "flags": flags,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "fps": fps,
+                    "interp_start": interp_start,
+                    "interp_end": interp_end,
+                    "scene": scene,
+                    "flags": flags,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5817,11 +6026,13 @@ class VideoStream(FilterableStream):
                 name="framestep", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "step": step,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "step": step,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5852,11 +6063,13 @@ class VideoStream(FilterableStream):
                 name="freezedetect", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "n": n,
-                "d": d,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "n": n,
+                    "d": d,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5893,12 +6106,14 @@ class VideoStream(FilterableStream):
             ),
             self,
             _replace,
-            **{
-                "first": first,
-                "last": last,
-                "replace": replace,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "first": first,
+                    "last": last,
+                    "replace": replace,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5931,12 +6146,14 @@ class VideoStream(FilterableStream):
                 name="frei0r", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "filter_name": filter_name,
-                "filter_params": filter_params,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "filter_name": filter_name,
+                    "filter_params": filter_params,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -5973,14 +6190,16 @@ class VideoStream(FilterableStream):
                 name="fspp", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "quality": quality,
-                "qp": qp,
-                "strength": strength,
-                "use_bframe_qp": use_bframe_qp,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "quality": quality,
+                    "qp": qp,
+                    "strength": strength,
+                    "use_bframe_qp": use_bframe_qp,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6017,14 +6236,16 @@ class VideoStream(FilterableStream):
                 name="gblur", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "sigma": sigma,
-                "steps": steps,
-                "planes": planes,
-                "sigmaV": sigmaV,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "sigma": sigma,
+                    "steps": steps,
+                    "planes": planes,
+                    "sigmaV": sigmaV,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6061,14 +6282,16 @@ class VideoStream(FilterableStream):
                 name="gblur_vulkan", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "sigma": sigma,
-                "sigmaV": sigmaV,
-                "planes": planes,
-                "size": size,
-                "sizeV": sizeV,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "sigma": sigma,
+                    "sigmaV": sigmaV,
+                    "planes": planes,
+                    "size": size,
+                    "sizeV": sizeV,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6115,18 +6338,20 @@ class VideoStream(FilterableStream):
                 name="geq", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "lum_expr": lum_expr,
-                "cb_expr": cb_expr,
-                "cr_expr": cr_expr,
-                "alpha_expr": alpha_expr,
-                "red_expr": red_expr,
-                "green_expr": green_expr,
-                "blue_expr": blue_expr,
-                "interpolation": interpolation,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "lum_expr": lum_expr,
+                    "cb_expr": cb_expr,
+                    "cr_expr": cr_expr,
+                    "alpha_expr": alpha_expr,
+                    "red_expr": red_expr,
+                    "green_expr": green_expr,
+                    "blue_expr": blue_expr,
+                    "interpolation": interpolation,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6159,12 +6384,14 @@ class VideoStream(FilterableStream):
                 name="gradfun", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "strength": strength,
-                "radius": radius,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "strength": strength,
+                    "radius": radius,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6225,14 +6452,16 @@ class VideoStream(FilterableStream):
                 name="graphmonitor", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "size": size,
-                "opacity": opacity,
-                "mode": mode,
-                "flags": flags,
-                "rate": rate,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "size": size,
+                    "opacity": opacity,
+                    "mode": mode,
+                    "flags": flags,
+                    "rate": rate,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6261,10 +6490,12 @@ class VideoStream(FilterableStream):
                 name="grayworld", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6299,13 +6530,15 @@ class VideoStream(FilterableStream):
                 name="greyedge", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "difford": difford,
-                "minknorm": minknorm,
-                "sigma": sigma,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "difford": difford,
+                    "minknorm": minknorm,
+                    "sigma": sigma,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6356,16 +6589,18 @@ class VideoStream(FilterableStream):
             ),
             self,
             _clut,
-            **{
-                "clut": clut,
-                "interp": interp,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "clut": clut,
+                    "interp": interp,
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6394,10 +6629,12 @@ class VideoStream(FilterableStream):
                 name="hflip", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6421,7 +6658,7 @@ class VideoStream(FilterableStream):
                 name="hflip_vulkan", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.video(0)
 
@@ -6458,13 +6695,15 @@ class VideoStream(FilterableStream):
                 name="histeq", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "strength": strength,
-                "intensity": intensity,
-                "antibanding": antibanding,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "strength": strength,
+                    "intensity": intensity,
+                    "antibanding": antibanding,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6524,17 +6763,19 @@ class VideoStream(FilterableStream):
                 name="histogram", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "level_height": level_height,
-                "scale_height": scale_height,
-                "display_mode": display_mode,
-                "levels_mode": levels_mode,
-                "components": components,
-                "fgopacity": fgopacity,
-                "bgopacity": bgopacity,
-                "colors_mode": colors_mode,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "level_height": level_height,
+                    "scale_height": scale_height,
+                    "display_mode": display_mode,
+                    "levels_mode": levels_mode,
+                    "components": components,
+                    "fgopacity": fgopacity,
+                    "bgopacity": bgopacity,
+                    "colors_mode": colors_mode,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6571,14 +6812,16 @@ class VideoStream(FilterableStream):
                 name="hqdn3d", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "luma_spatial": luma_spatial,
-                "chroma_spatial": chroma_spatial,
-                "luma_tmp": luma_tmp,
-                "chroma_tmp": chroma_tmp,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "luma_spatial": luma_spatial,
+                    "chroma_spatial": chroma_spatial,
+                    "luma_tmp": luma_tmp,
+                    "chroma_tmp": chroma_tmp,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6607,10 +6850,12 @@ class VideoStream(FilterableStream):
                 name="hqx", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "n": n,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "n": n,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6649,15 +6894,17 @@ class VideoStream(FilterableStream):
                 name="hsvhold", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "hue": hue,
-                "sat": sat,
-                "val": val,
-                "similarity": similarity,
-                "blend": blend,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "hue": hue,
+                    "sat": sat,
+                    "val": val,
+                    "similarity": similarity,
+                    "blend": blend,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6696,15 +6943,17 @@ class VideoStream(FilterableStream):
                 name="hsvkey", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "hue": hue,
-                "sat": sat,
-                "val": val,
-                "similarity": similarity,
-                "blend": blend,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "hue": hue,
+                    "sat": sat,
+                    "val": val,
+                    "similarity": similarity,
+                    "blend": blend,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6741,14 +6990,16 @@ class VideoStream(FilterableStream):
                 name="hue", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "h": h,
-                "s": s,
-                "H": H,
-                "b": b,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "h": h,
+                    "s": s,
+                    "H": H,
+                    "b": b,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6799,19 +7050,21 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "hue": hue,
-                "saturation": saturation,
-                "intensity": intensity,
-                "colors": colors,
-                "strength": strength,
-                "rw": rw,
-                "gw": gw,
-                "bw": bw,
-                "lightness": lightness,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "hue": hue,
+                    "saturation": saturation,
+                    "intensity": intensity,
+                    "colors": colors,
+                    "strength": strength,
+                    "rw": rw,
+                    "gw": gw,
+                    "bw": bw,
+                    "lightness": lightness,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6835,7 +7088,7 @@ class VideoStream(FilterableStream):
                 name="hwdownload", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.video(0)
 
@@ -6870,12 +7123,14 @@ class VideoStream(FilterableStream):
                 name="hwmap", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "mode": mode,
-                "derive_device": derive_device,
-                "reverse": reverse,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "derive_device": derive_device,
+                    "reverse": reverse,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6904,10 +7159,12 @@ class VideoStream(FilterableStream):
                 name="hwupload", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "derive_device": derive_device,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "derive_device": derive_device,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6938,10 +7195,12 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "device": device,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "device": device,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6990,16 +7249,18 @@ class VideoStream(FilterableStream):
             ),
             self,
             _alt,
-            **{
-                "planes": planes,
-                "threshold": threshold,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "threshold": threshold,
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7044,14 +7305,16 @@ class VideoStream(FilterableStream):
             ),
             self,
             _reference,
-            **{
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7088,14 +7351,16 @@ class VideoStream(FilterableStream):
                 name="idet", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "intl_thres": intl_thres,
-                "prog_thres": prog_thres,
-                "rep_thres": rep_thres,
-                "half_life": half_life,
-                "analyze_interlaced_flag": analyze_interlaced_flag,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "intl_thres": intl_thres,
+                    "prog_thres": prog_thres,
+                    "rep_thres": rep_thres,
+                    "half_life": half_life,
+                    "analyze_interlaced_flag": analyze_interlaced_flag,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7142,16 +7407,18 @@ class VideoStream(FilterableStream):
                 name="il", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "luma_mode": luma_mode,
-                "chroma_mode": chroma_mode,
-                "alpha_mode": alpha_mode,
-                "luma_swap": luma_swap,
-                "chroma_swap": chroma_swap,
-                "alpha_swap": alpha_swap,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "luma_mode": luma_mode,
+                    "chroma_mode": chroma_mode,
+                    "alpha_mode": alpha_mode,
+                    "luma_swap": luma_swap,
+                    "chroma_swap": chroma_swap,
+                    "alpha_swap": alpha_swap,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7188,14 +7455,16 @@ class VideoStream(FilterableStream):
                 name="inflate", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "threshold0": threshold0,
-                "threshold1": threshold1,
-                "threshold2": threshold2,
-                "threshold3": threshold3,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "threshold0": threshold0,
+                    "threshold1": threshold1,
+                    "threshold2": threshold2,
+                    "threshold3": threshold3,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7228,11 +7497,13 @@ class VideoStream(FilterableStream):
                 name="interlace", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "scan": scan,
-                "lowpass": lowpass,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "scan": scan,
+                    "lowpass": lowpass,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7269,14 +7540,16 @@ class VideoStream(FilterableStream):
                 name="kerndeint", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "thresh": thresh,
-                "map": map,
-                "order": order,
-                "sharp": sharp,
-                "twoway": twoway,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "thresh": thresh,
+                    "map": map,
+                    "order": order,
+                    "sharp": sharp,
+                    "twoway": twoway,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7311,13 +7584,15 @@ class VideoStream(FilterableStream):
                 name="kirsch", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "planes": planes,
-                "scale": scale,
-                "delta": delta,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "scale": scale,
+                    "delta": delta,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7350,12 +7625,14 @@ class VideoStream(FilterableStream):
                 name="lagfun", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "decay": decay,
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "decay": decay,
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7384,10 +7661,12 @@ class VideoStream(FilterableStream):
                 name="latency", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7430,16 +7709,18 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "cx": cx,
-                "cy": cy,
-                "k1": k1,
-                "k2": k2,
-                "i": i,
-                "fc": fc,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "cx": cx,
+                    "cy": cy,
+                    "k1": k1,
+                    "k2": k2,
+                    "i": i,
+                    "fc": fc,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7474,13 +7755,15 @@ class VideoStream(FilterableStream):
                 name="limiter", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "min": min,
-                "max": max,
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "min": min,
+                    "max": max,
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7515,13 +7798,15 @@ class VideoStream(FilterableStream):
                 name="loop", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "loop": loop,
-                "size": size,
-                "start": start,
-                "time": time,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "loop": loop,
+                    "size": size,
+                    "start": start,
+                    "time": time,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7556,13 +7841,15 @@ class VideoStream(FilterableStream):
                 name="lumakey", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "threshold": threshold,
-                "tolerance": tolerance,
-                "softness": softness,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "threshold": threshold,
+                    "tolerance": tolerance,
+                    "softness": softness,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7613,21 +7900,23 @@ class VideoStream(FilterableStream):
                 name="lut", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "c0": c0,
-                "c1": c1,
-                "c2": c2,
-                "c3": c3,
-                "y": y,
-                "u": u,
-                "v": v,
-                "r": r,
-                "g": g,
-                "b": b,
-                "a": a,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "c0": c0,
+                    "c1": c1,
+                    "c2": c2,
+                    "c3": c3,
+                    "y": y,
+                    "u": u,
+                    "v": v,
+                    "r": r,
+                    "g": g,
+                    "b": b,
+                    "a": a,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7662,12 +7951,14 @@ class VideoStream(FilterableStream):
                 name="lut1d", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "file": file,
-                "interp": interp,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "file": file,
+                    "interp": interp,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7720,19 +8011,21 @@ class VideoStream(FilterableStream):
             ),
             self,
             _srcy,
-            **{
-                "c0": c0,
-                "c1": c1,
-                "c2": c2,
-                "c3": c3,
-                "d": d,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "c0": c0,
+                    "c1": c1,
+                    "c2": c2,
+                    "c3": c3,
+                    "d": d,
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7769,13 +8062,15 @@ class VideoStream(FilterableStream):
                 name="lut3d", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "file": file,
-                "clut": clut,
-                "interp": interp,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "file": file,
+                    "clut": clut,
+                    "interp": interp,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7826,21 +8121,23 @@ class VideoStream(FilterableStream):
                 name="lutrgb", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "c0": c0,
-                "c1": c1,
-                "c2": c2,
-                "c3": c3,
-                "y": y,
-                "u": u,
-                "v": v,
-                "r": r,
-                "g": g,
-                "b": b,
-                "a": a,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "c0": c0,
+                    "c1": c1,
+                    "c2": c2,
+                    "c3": c3,
+                    "y": y,
+                    "u": u,
+                    "v": v,
+                    "r": r,
+                    "g": g,
+                    "b": b,
+                    "a": a,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7891,21 +8188,23 @@ class VideoStream(FilterableStream):
                 name="lutyuv", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "c0": c0,
-                "c1": c1,
-                "c2": c2,
-                "c3": c3,
-                "y": y,
-                "u": u,
-                "v": v,
-                "r": r,
-                "g": g,
-                "b": b,
-                "a": a,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "c0": c0,
+                    "c1": c1,
+                    "c2": c2,
+                    "c3": c3,
+                    "y": y,
+                    "u": u,
+                    "v": v,
+                    "r": r,
+                    "g": g,
+                    "b": b,
+                    "a": a,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7946,13 +8245,15 @@ class VideoStream(FilterableStream):
             self,
             _dark,
             _bright,
-            **{
-                "undershoot": undershoot,
-                "overshoot": overshoot,
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "undershoot": undershoot,
+                    "overshoot": overshoot,
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7989,11 +8290,13 @@ class VideoStream(FilterableStream):
             self,
             _filter1,
             _filter2,
-            **{
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8030,11 +8333,13 @@ class VideoStream(FilterableStream):
             self,
             _overlay,
             _mask,
-            **{
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8071,11 +8376,13 @@ class VideoStream(FilterableStream):
             self,
             _filter1,
             _filter2,
-            **{
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8114,13 +8421,15 @@ class VideoStream(FilterableStream):
             ),
             self,
             _reference,
-            **{
-                "threshold": threshold,
-                "planes": planes,
-                "mode": mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "threshold": threshold,
+                    "planes": planes,
+                    "mode": mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8159,15 +8468,17 @@ class VideoStream(FilterableStream):
                 name="maskfun", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "low": low,
-                "high": high,
-                "planes": planes,
-                "fill": fill,
-                "sum": sum,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "low": low,
+                    "high": high,
+                    "planes": planes,
+                    "fill": fill,
+                    "sum": sum,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8202,12 +8513,14 @@ class VideoStream(FilterableStream):
                 name="mcdeint", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "mode": mode,
-                "parity": parity,
-                "qp": qp,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "parity": parity,
+                    "qp": qp,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8244,14 +8557,16 @@ class VideoStream(FilterableStream):
                 name="median", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "radius": radius,
-                "planes": planes,
-                "radiusV": radiusV,
-                "percentile": percentile,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "radius": radius,
+                    "planes": planes,
+                    "radiusV": radiusV,
+                    "percentile": percentile,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8286,12 +8601,14 @@ class VideoStream(FilterableStream):
                 name="mestimate", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "method": method,
-                "mb_size": mb_size,
-                "search_param": search_param,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "method": method,
+                    "mb_size": mb_size,
+                    "search_param": search_param,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8340,17 +8657,19 @@ class VideoStream(FilterableStream):
                 name="metadata", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "mode": mode,
-                "key": key,
-                "value": value,
-                "function": function,
-                "expr": expr,
-                "file": file,
-                "direct": direct,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "key": key,
+                    "value": value,
+                    "function": function,
+                    "expr": expr,
+                    "file": file,
+                    "direct": direct,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8385,11 +8704,13 @@ class VideoStream(FilterableStream):
             ),
             self,
             _in1,
-            **{
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8438,19 +8759,21 @@ class VideoStream(FilterableStream):
                 name="minterpolate", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "fps": fps,
-                "mi_mode": mi_mode,
-                "mc_mode": mc_mode,
-                "me_mode": me_mode,
-                "me": me,
-                "mb_size": mb_size,
-                "search_param": search_param,
-                "vsbmc": vsbmc,
-                "scd": scd,
-                "scd_threshold": scd_threshold,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "fps": fps,
+                    "mi_mode": mi_mode,
+                    "mc_mode": mc_mode,
+                    "me_mode": me_mode,
+                    "me": me,
+                    "mb_size": mb_size,
+                    "search_param": search_param,
+                    "vsbmc": vsbmc,
+                    "scd": scd,
+                    "scd_threshold": scd_threshold,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8487,14 +8810,16 @@ class VideoStream(FilterableStream):
                 name="monochrome", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "cb": cb,
-                "cr": cr,
-                "size": size,
-                "high": high,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "cb": cb,
+                    "cr": cr,
+                    "size": size,
+                    "high": high,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8547,17 +8872,19 @@ class VideoStream(FilterableStream):
             ),
             self,
             _structure,
-            **{
-                "mode": mode,
-                "planes": planes,
-                "structure": structure,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "planes": planes,
+                    "structure": structure,
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8594,14 +8921,16 @@ class VideoStream(FilterableStream):
                 name="mpdecimate", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "max": max,
-                "keep": keep,
-                "hi": hi,
-                "lo": lo,
-                "frac": frac,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "max": max,
+                    "keep": keep,
+                    "hi": hi,
+                    "lo": lo,
+                    "frac": frac,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8644,14 +8973,16 @@ class VideoStream(FilterableStream):
             ),
             self,
             _reference,
-            **{
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8690,13 +9021,15 @@ class VideoStream(FilterableStream):
             ),
             self,
             _factor,
-            **{
-                "scale": scale,
-                "offset": offset,
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "scale": scale,
+                    "offset": offset,
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8731,12 +9064,14 @@ class VideoStream(FilterableStream):
                 name="negate", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "components": components,
-                "negate_alpha": negate_alpha,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "components": components,
+                    "negate_alpha": negate_alpha,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8775,15 +9110,17 @@ class VideoStream(FilterableStream):
                 name="nlmeans", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "s": s,
-                "p": p,
-                "pc": pc,
-                "r": r,
-                "rc": rc,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "s": s,
+                    "p": p,
+                    "pc": pc,
+                    "r": r,
+                    "rc": rc,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8822,14 +9159,16 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "s": s,
-                "p": p,
-                "pc": pc,
-                "r": r,
-                "rc": rc,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "s": s,
+                    "p": p,
+                    "pc": pc,
+                    "r": r,
+                    "rc": rc,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8882,21 +9221,23 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "s": s,
-                "p": p,
-                "r": r,
-                "t": t,
-                "s1": s1,
-                "s2": s2,
-                "s3": s3,
-                "s4": s4,
-                "p1": p1,
-                "p2": p2,
-                "p3": p3,
-                "p4": p4,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "s": s,
+                    "p": p,
+                    "r": r,
+                    "t": t,
+                    "s1": s1,
+                    "s2": s2,
+                    "s3": s3,
+                    "s4": s4,
+                    "p1": p1,
+                    "p2": p2,
+                    "p3": p3,
+                    "p4": p4,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8949,19 +9290,21 @@ class VideoStream(FilterableStream):
                 name="nnedi", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "weights": weights,
-                "deint": deint,
-                "field": field,
-                "planes": planes,
-                "nsize": nsize,
-                "nns": nns,
-                "qual": qual,
-                "etype": etype,
-                "pscrn": pscrn,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "weights": weights,
+                    "deint": deint,
+                    "field": field,
+                    "planes": planes,
+                    "nsize": nsize,
+                    "nns": nns,
+                    "qual": qual,
+                    "etype": etype,
+                    "pscrn": pscrn,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8990,10 +9333,12 @@ class VideoStream(FilterableStream):
                 name="noformat", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "pix_fmts": pix_fmts,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "pix_fmts": pix_fmts,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9052,25 +9397,27 @@ class VideoStream(FilterableStream):
                 name="noise", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "all_seed": all_seed,
-                "all_strength": all_strength,
-                "all_flags": all_flags,
-                "c0_seed": c0_seed,
-                "c0_strength": c0_strength,
-                "c0_flags": c0_flags,
-                "c1_seed": c1_seed,
-                "c1_strength": c1_strength,
-                "c1_flags": c1_flags,
-                "c2_seed": c2_seed,
-                "c2_strength": c2_strength,
-                "c2_flags": c2_flags,
-                "c3_seed": c3_seed,
-                "c3_strength": c3_strength,
-                "c3_flags": c3_flags,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "all_seed": all_seed,
+                    "all_strength": all_strength,
+                    "all_flags": all_flags,
+                    "c0_seed": c0_seed,
+                    "c0_strength": c0_strength,
+                    "c0_flags": c0_flags,
+                    "c1_seed": c1_seed,
+                    "c1_strength": c1_strength,
+                    "c1_flags": c1_flags,
+                    "c2_seed": c2_seed,
+                    "c2_strength": c2_strength,
+                    "c2_flags": c2_flags,
+                    "c3_seed": c3_seed,
+                    "c3_strength": c3_strength,
+                    "c3_flags": c3_flags,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9109,15 +9456,17 @@ class VideoStream(FilterableStream):
                 name="normalize", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "blackpt": blackpt,
-                "whitept": whitept,
-                "smoothing": smoothing,
-                "independence": independence,
-                "strength": strength,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "blackpt": blackpt,
+                    "whitept": whitept,
+                    "smoothing": smoothing,
+                    "independence": independence,
+                    "strength": strength,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9141,7 +9490,7 @@ class VideoStream(FilterableStream):
                 name="null", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.video(0)
 
@@ -9196,23 +9545,25 @@ class VideoStream(FilterableStream):
                 name="oscilloscope", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "x": x,
-                "y": y,
-                "s": s,
-                "t": t,
-                "o": o,
-                "tx": tx,
-                "ty": ty,
-                "tw": tw,
-                "th": th,
-                "c": c,
-                "g": g,
-                "st": st,
-                "sc": sc,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "x": x,
+                    "y": y,
+                    "s": s,
+                    "t": t,
+                    "o": o,
+                    "tx": tx,
+                    "ty": ty,
+                    "tw": tw,
+                    "th": th,
+                    "c": c,
+                    "g": g,
+                    "st": st,
+                    "sc": sc,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9281,19 +9632,21 @@ class VideoStream(FilterableStream):
             ),
             self,
             _overlay,
-            **{
-                "x": x,
-                "y": y,
-                "eof_action": eof_action,
-                "eval": eval,
-                "shortest": shortest,
-                "format": format,
-                "repeatlast": repeatlast,
-                "alpha": alpha,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "x": x,
+                    "y": y,
+                    "eof_action": eof_action,
+                    "eval": eval,
+                    "shortest": shortest,
+                    "format": format,
+                    "repeatlast": repeatlast,
+                    "alpha": alpha,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9328,11 +9681,13 @@ class VideoStream(FilterableStream):
             ),
             self,
             _overlay,
-            **{
-                "x": x,
-                "y": y,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "x": x,
+                    "y": y,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9385,18 +9740,20 @@ class VideoStream(FilterableStream):
             ),
             self,
             _overlay,
-            **{
-                "x": x,
-                "y": y,
-                "w": w,
-                "h": h,
-                "alpha": alpha,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "x": x,
+                    "y": y,
+                    "w": w,
+                    "h": h,
+                    "alpha": alpha,
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9431,11 +9788,13 @@ class VideoStream(FilterableStream):
             ),
             self,
             _overlay,
-            **{
-                "x": x,
-                "y": y,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "x": x,
+                    "y": y,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9470,13 +9829,15 @@ class VideoStream(FilterableStream):
                 name="owdenoise", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "depth": depth,
-                "luma_strength": luma_strength,
-                "chroma_strength": chroma_strength,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "depth": depth,
+                    "luma_strength": luma_strength,
+                    "chroma_strength": chroma_strength,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9517,16 +9878,18 @@ class VideoStream(FilterableStream):
                 name="pad", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "width": width,
-                "height": height,
-                "x": x,
-                "y": y,
-                "color": color,
-                "eval": eval,
-                "aspect": aspect,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "width": width,
+                    "height": height,
+                    "x": x,
+                    "y": y,
+                    "color": color,
+                    "eval": eval,
+                    "aspect": aspect,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9565,15 +9928,17 @@ class VideoStream(FilterableStream):
                 name="pad_opencl", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "width": width,
-                "height": height,
-                "x": x,
-                "y": y,
-                "color": color,
-                "aspect": aspect,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "width": width,
+                    "height": height,
+                    "x": x,
+                    "y": y,
+                    "color": color,
+                    "aspect": aspect,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9608,13 +9973,15 @@ class VideoStream(FilterableStream):
                 name="palettegen", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "max_colors": max_colors,
-                "reserve_transparent": reserve_transparent,
-                "transparency_color": transparency_color,
-                "stats_mode": stats_mode,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "max_colors": max_colors,
+                    "reserve_transparent": reserve_transparent,
+                    "transparency_color": transparency_color,
+                    "stats_mode": stats_mode,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9668,15 +10035,17 @@ class VideoStream(FilterableStream):
             ),
             self,
             _palette,
-            **{
-                "dither": dither,
-                "bayer_scale": bayer_scale,
-                "diff_mode": diff_mode,
-                "new": new,
-                "alpha_threshold": alpha_threshold,
-                "debug_kdtree": debug_kdtree,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "dither": dither,
+                    "bayer_scale": bayer_scale,
+                    "diff_mode": diff_mode,
+                    "new": new,
+                    "alpha_threshold": alpha_threshold,
+                    "debug_kdtree": debug_kdtree,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9711,12 +10080,14 @@ class VideoStream(FilterableStream):
                 name="perms", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "mode": mode,
-                "seed": seed,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "seed": seed,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9767,21 +10138,23 @@ class VideoStream(FilterableStream):
                 name="perspective", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "x0": x0,
-                "y0": y0,
-                "x1": x1,
-                "y1": y1,
-                "x2": x2,
-                "y2": y2,
-                "x3": x3,
-                "y3": y3,
-                "interpolation": interpolation,
-                "sense": sense,
-                "eval": eval,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "x0": x0,
+                    "y0": y0,
+                    "x1": x1,
+                    "y1": y1,
+                    "x2": x2,
+                    "y2": y2,
+                    "x3": x3,
+                    "y3": y3,
+                    "interpolation": interpolation,
+                    "sense": sense,
+                    "eval": eval,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9814,11 +10187,13 @@ class VideoStream(FilterableStream):
                 name="phase", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "mode": mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9855,13 +10230,15 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "frames": frames,
-                "threshold": threshold,
-                "skip": skip,
-                "bypass": bypass,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "frames": frames,
+                    "threshold": threshold,
+                    "skip": skip,
+                    "bypass": bypass,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9885,7 +10262,7 @@ class VideoStream(FilterableStream):
                 name="pixdesctest", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.video(0)
 
@@ -9922,14 +10299,16 @@ class VideoStream(FilterableStream):
                 name="pixelize", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "width": width,
-                "height": height,
-                "mode": mode,
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "width": width,
+                    "height": height,
+                    "mode": mode,
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9972,17 +10351,19 @@ class VideoStream(FilterableStream):
                 name="pixscope", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "x": x,
-                "y": y,
-                "w": w,
-                "h": h,
-                "o": o,
-                "wx": wx,
-                "wy": wy,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "x": x,
+                    "y": y,
+                    "w": w,
+                    "h": h,
+                    "o": o,
+                    "wx": wx,
+                    "wy": wy,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10015,12 +10396,14 @@ class VideoStream(FilterableStream):
                 name="pp7", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "qp": qp,
-                "mode": mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "qp": qp,
+                    "mode": mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10055,13 +10438,15 @@ class VideoStream(FilterableStream):
                 name="prewitt", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "planes": planes,
-                "scale": scale,
-                "delta": delta,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "scale": scale,
+                    "delta": delta,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10096,12 +10481,14 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "planes": planes,
-                "scale": scale,
-                "delta": delta,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "scale": scale,
+                    "delta": delta,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10169,17 +10556,19 @@ class VideoStream(FilterableStream):
                 name="pseudocolor", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "c0": c0,
-                "c1": c1,
-                "c2": c2,
-                "c3": c3,
-                "index": index,
-                "preset": preset,
-                "opacity": opacity,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "c0": c0,
+                    "c1": c1,
+                    "c2": c2,
+                    "c3": c3,
+                    "index": index,
+                    "preset": preset,
+                    "opacity": opacity,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10228,17 +10617,19 @@ class VideoStream(FilterableStream):
             ),
             self,
             _reference,
-            **{
-                "stats_file": stats_file,
-                "stats_version": stats_version,
-                "output_max": output_max,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "stats_file": stats_file,
+                    "stats_version": stats_version,
+                    "output_max": output_max,
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10277,15 +10668,17 @@ class VideoStream(FilterableStream):
                 name="pullup", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "jl": jl,
-                "jr": jr,
-                "jt": jt,
-                "jb": jb,
-                "sb": sb,
-                "mp": mp,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "jl": jl,
+                    "jr": jr,
+                    "jt": jt,
+                    "jb": jb,
+                    "sb": sb,
+                    "mp": mp,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10316,11 +10709,13 @@ class VideoStream(FilterableStream):
                 name="qp", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "qp": qp,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "qp": qp,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10351,11 +10746,13 @@ class VideoStream(FilterableStream):
                 name="random", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "frames": frames,
-                "seed": seed,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "frames": frames,
+                    "seed": seed,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10394,15 +10791,17 @@ class VideoStream(FilterableStream):
                 name="readeia608", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "scan_min": scan_min,
-                "scan_max": scan_max,
-                "spw": spw,
-                "chp": chp,
-                "lp": lp,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "scan_min": scan_min,
+                    "scan_max": scan_max,
+                    "spw": spw,
+                    "chp": chp,
+                    "lp": lp,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10435,12 +10834,14 @@ class VideoStream(FilterableStream):
                 name="readvitc", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "scan_max": scan_max,
-                "thr_b": thr_b,
-                "thr_w": thr_w,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "scan_max": scan_max,
+                    "thr_b": thr_b,
+                    "thr_w": thr_w,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10471,11 +10872,13 @@ class VideoStream(FilterableStream):
                 name="realtime", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "limit": limit,
-                "speed": speed,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "limit": limit,
+                    "speed": speed,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10512,11 +10915,13 @@ class VideoStream(FilterableStream):
             self,
             _xmap,
             _ymap,
-            **{
-                "format": format,
-                "fill": fill,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "format": format,
+                    "fill": fill,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10553,11 +10958,13 @@ class VideoStream(FilterableStream):
             self,
             _xmap,
             _ymap,
-            **{
-                "interp": interp,
-                "fill": fill,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "interp": interp,
+                    "fill": fill,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10594,14 +11001,16 @@ class VideoStream(FilterableStream):
                 name="removegrain", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "m0": m0,
-                "m1": m1,
-                "m2": m2,
-                "m3": m3,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "m0": m0,
+                    "m1": m1,
+                    "m2": m2,
+                    "m3": m3,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10632,11 +11041,13 @@ class VideoStream(FilterableStream):
                 name="removelogo", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "filename": filename,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "filename": filename,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10660,7 +11071,7 @@ class VideoStream(FilterableStream):
                 name="repeatfields", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.video(0)
 
@@ -10684,7 +11095,7 @@ class VideoStream(FilterableStream):
                 name="reverse", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.video(0)
 
@@ -10731,19 +11142,21 @@ class VideoStream(FilterableStream):
                 name="rgbashift", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "rh": rh,
-                "rv": rv,
-                "gh": gh,
-                "gv": gv,
-                "bh": bh,
-                "bv": bv,
-                "ah": ah,
-                "av": av,
-                "edge": edge,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "rh": rh,
+                    "rv": rv,
+                    "gh": gh,
+                    "gv": gv,
+                    "bh": bh,
+                    "bv": bv,
+                    "ah": ah,
+                    "av": av,
+                    "edge": edge,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10778,13 +11191,15 @@ class VideoStream(FilterableStream):
                 name="roberts", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "planes": planes,
-                "scale": scale,
-                "delta": delta,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "scale": scale,
+                    "delta": delta,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10819,12 +11234,14 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "planes": planes,
-                "scale": scale,
-                "delta": delta,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "scale": scale,
+                    "delta": delta,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10863,15 +11280,17 @@ class VideoStream(FilterableStream):
                 name="rotate", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "angle": angle,
-                "out_w": out_w,
-                "out_h": out_h,
-                "fillcolor": fillcolor,
-                "bilinear": bilinear,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "angle": angle,
+                    "out_w": out_w,
+                    "out_h": out_h,
+                    "fillcolor": fillcolor,
+                    "bilinear": bilinear,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10912,16 +11331,18 @@ class VideoStream(FilterableStream):
                 name="sab", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "luma_radius": luma_radius,
-                "luma_pre_filter_radius": luma_pre_filter_radius,
-                "luma_strength": luma_strength,
-                "chroma_radius": chroma_radius,
-                "chroma_pre_filter_radius": chroma_pre_filter_radius,
-                "chroma_strength": chroma_strength,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "luma_radius": luma_radius,
+                    "luma_pre_filter_radius": luma_pre_filter_radius,
+                    "luma_strength": luma_strength,
+                    "chroma_radius": chroma_radius,
+                    "chroma_pre_filter_radius": chroma_pre_filter_radius,
+                    "chroma_strength": chroma_strength,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10996,26 +11417,28 @@ class VideoStream(FilterableStream):
                 name="scale", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "w": w,
-                "h": h,
-                "flags": flags,
-                "interl": interl,
-                "in_color_matrix": in_color_matrix,
-                "out_color_matrix": out_color_matrix,
-                "in_range": in_range,
-                "out_range": out_range,
-                "in_v_chr_pos": in_v_chr_pos,
-                "in_h_chr_pos": in_h_chr_pos,
-                "out_v_chr_pos": out_v_chr_pos,
-                "out_h_chr_pos": out_h_chr_pos,
-                "force_original_aspect_ratio": force_original_aspect_ratio,
-                "force_divisible_by": force_divisible_by,
-                "param0": param0,
-                "param1": param1,
-                "eval": eval,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "w": w,
+                    "h": h,
+                    "flags": flags,
+                    "interl": interl,
+                    "in_color_matrix": in_color_matrix,
+                    "out_color_matrix": out_color_matrix,
+                    "in_range": in_range,
+                    "out_range": out_range,
+                    "in_v_chr_pos": in_v_chr_pos,
+                    "in_h_chr_pos": in_h_chr_pos,
+                    "out_v_chr_pos": out_v_chr_pos,
+                    "out_h_chr_pos": out_h_chr_pos,
+                    "force_original_aspect_ratio": force_original_aspect_ratio,
+                    "force_divisible_by": force_divisible_by,
+                    "param0": param0,
+                    "param1": param1,
+                    "eval": eval,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11046,11 +11469,13 @@ class VideoStream(FilterableStream):
                 name="scdet", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "threshold": threshold,
-                "sc_pass": sc_pass,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "threshold": threshold,
+                    "sc_pass": sc_pass,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11085,13 +11510,15 @@ class VideoStream(FilterableStream):
                 name="scharr", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "planes": planes,
-                "scale": scale,
-                "delta": delta,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "scale": scale,
+                    "delta": delta,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11128,14 +11555,16 @@ class VideoStream(FilterableStream):
                 name="scroll", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "horizontal": horizontal,
-                "vertical": vertical,
-                "hpos": hpos,
-                "vpos": vpos,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "horizontal": horizontal,
+                    "vertical": vertical,
+                    "hpos": hpos,
+                    "vpos": vpos,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11169,11 +11598,13 @@ class VideoStream(FilterableStream):
                 typings_output="[StreamType.video] * len((str(timestamps or frames)).split('|'))",
             ),
             self,
-            **{
-                "timestamps": timestamps,
-                "frames": frames,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "timestamps": timestamps,
+                    "frames": frames,
+                },
+                extra_options,
+            ),
         )
 
         return filter_node
@@ -11208,11 +11639,13 @@ class VideoStream(FilterableStream):
                 typings_output="[StreamType.video] * int(outputs)",
             ),
             self,
-            **{
-                "expr": expr,
-                "outputs": outputs,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "expr": expr,
+                    "outputs": outputs,
+                },
+                extra_options,
+            ),
         )
 
         return filter_node
@@ -11268,21 +11701,23 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "correction_method": correction_method,
-                "reds": reds,
-                "yellows": yellows,
-                "greens": greens,
-                "cyans": cyans,
-                "blues": blues,
-                "magentas": magentas,
-                "whites": whites,
-                "neutrals": neutrals,
-                "blacks": blacks,
-                "psfile": psfile,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "correction_method": correction_method,
+                    "reds": reds,
+                    "yellows": yellows,
+                    "greens": greens,
+                    "cyans": cyans,
+                    "blues": blues,
+                    "magentas": magentas,
+                    "whites": whites,
+                    "neutrals": neutrals,
+                    "blacks": blacks,
+                    "psfile": psfile,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11313,11 +11748,13 @@ class VideoStream(FilterableStream):
                 name="sendcmd", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "commands": commands,
-                "filename": filename,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "commands": commands,
+                    "filename": filename,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11343,7 +11780,7 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.video(0)
 
@@ -11374,11 +11811,13 @@ class VideoStream(FilterableStream):
                 name="setdar", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "dar": dar,
-                "max": max,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "dar": dar,
+                    "max": max,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11407,10 +11846,12 @@ class VideoStream(FilterableStream):
                 name="setfield", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "mode": mode,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11517,14 +11958,16 @@ class VideoStream(FilterableStream):
                 name="setparams", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "field_mode": field_mode,
-                "range": range,
-                "color_primaries": color_primaries,
-                "color_trc": color_trc,
-                "colorspace": colorspace,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "field_mode": field_mode,
+                    "range": range,
+                    "color_primaries": color_primaries,
+                    "color_trc": color_trc,
+                    "colorspace": colorspace,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11553,10 +11996,12 @@ class VideoStream(FilterableStream):
                 name="setpts", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "expr": expr,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "expr": expr,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11597,10 +12042,12 @@ class VideoStream(FilterableStream):
                 name="setrange", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "range": range,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "range": range,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11631,11 +12078,13 @@ class VideoStream(FilterableStream):
                 name="setsar", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "sar": sar,
-                "max": max,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "sar": sar,
+                    "max": max,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11664,10 +12113,12 @@ class VideoStream(FilterableStream):
                 name="settb", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "expr": expr,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "expr": expr,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11704,14 +12155,16 @@ class VideoStream(FilterableStream):
                 name="shear", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "shx": shx,
-                "shy": shy,
-                "fillcolor": fillcolor,
-                "interp": interp,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "shx": shx,
+                    "shy": shy,
+                    "fillcolor": fillcolor,
+                    "interp": interp,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11740,10 +12193,12 @@ class VideoStream(FilterableStream):
                 name="showinfo", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "checksum": checksum,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "checksum": checksum,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11772,10 +12227,12 @@ class VideoStream(FilterableStream):
                 name="showpalette", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "s": s,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "s": s,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11808,11 +12265,13 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "mapping": mapping,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mapping": mapping,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11855,15 +12314,17 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "direction": direction,
-                "mode": mode,
-                "width": width,
-                "height": height,
-                "seed": seed,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "direction": direction,
+                    "mode": mode,
+                    "width": width,
+                    "height": height,
+                    "seed": seed,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11902,14 +12363,16 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "map0": map0,
-                "map1": map1,
-                "map2": map2,
-                "map3": map3,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "map0": map0,
+                    "map1": map1,
+                    "map2": map2,
+                    "map3": map3,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11966,12 +12429,14 @@ class VideoStream(FilterableStream):
                 name="sidedata", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "mode": mode,
-                "type": type,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "type": type,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -12004,12 +12469,14 @@ class VideoStream(FilterableStream):
                 name="signalstats", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "stat": stat,
-                "out": out,
-                "c": c,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "stat": stat,
+                    "out": out,
+                    "c": c,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -12038,10 +12505,12 @@ class VideoStream(FilterableStream):
                 name="siti", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "print_summary": print_summary,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "print_summary": print_summary,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -12082,16 +12551,18 @@ class VideoStream(FilterableStream):
                 name="smartblur", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "luma_radius": luma_radius,
-                "luma_strength": luma_strength,
-                "luma_threshold": luma_threshold,
-                "chroma_radius": chroma_radius,
-                "chroma_strength": chroma_strength,
-                "chroma_threshold": chroma_threshold,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "luma_radius": luma_radius,
+                    "luma_strength": luma_strength,
+                    "luma_threshold": luma_threshold,
+                    "chroma_radius": chroma_radius,
+                    "chroma_strength": chroma_strength,
+                    "chroma_threshold": chroma_threshold,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -12126,13 +12597,15 @@ class VideoStream(FilterableStream):
                 name="sobel", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "planes": planes,
-                "scale": scale,
-                "delta": delta,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "scale": scale,
+                    "delta": delta,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -12165,12 +12638,14 @@ class VideoStream(FilterableStream):
                 name="sobel_opencl", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "planes": planes,
-                "scale": scale,
-                "delta": delta,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "scale": scale,
+                    "delta": delta,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -12244,16 +12719,18 @@ class VideoStream(FilterableStream):
             ),
             self,
             _phase,
-            **{
-                "sample_rate": sample_rate,
-                "channels": channels,
-                "scale": scale,
-                "slide": slide,
-                "win_func": win_func,
-                "overlap": overlap,
-                "orientation": orientation,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "sample_rate": sample_rate,
+                    "channels": channels,
+                    "scale": scale,
+                    "slide": slide,
+                    "win_func": win_func,
+                    "overlap": overlap,
+                    "orientation": orientation,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -12285,10 +12762,12 @@ class VideoStream(FilterableStream):
                 typings_output="[StreamType.video] * int(outputs)",
             ),
             self,
-            **{
-                "outputs": outputs,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "outputs": outputs,
+                },
+                extra_options,
+            ),
         )
 
         return filter_node
@@ -12326,14 +12805,16 @@ class VideoStream(FilterableStream):
                 name="spp", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "quality": quality,
-                "qp": qp,
-                "mode": mode,
-                "use_bframe_qp": use_bframe_qp,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "quality": quality,
+                    "qp": qp,
+                    "mode": mode,
+                    "use_bframe_qp": use_bframe_qp,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -12370,14 +12851,16 @@ class VideoStream(FilterableStream):
                 name="sr", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "dnn_backend": dnn_backend,
-                "scale_factor": scale_factor,
-                "model": model,
-                "input": input,
-                "output": output,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "dnn_backend": dnn_backend,
+                    "scale_factor": scale_factor,
+                    "model": model,
+                    "input": input,
+                    "output": output,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -12422,15 +12905,17 @@ class VideoStream(FilterableStream):
             ),
             self,
             _reference,
-            **{
-                "stats_file": stats_file,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "stats_file": stats_file,
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -12522,11 +13007,13 @@ class VideoStream(FilterableStream):
                 name="stereo3d", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "in": _in,
-                "out": out,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "in": _in,
+                    "out": out,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -12569,17 +13056,19 @@ class VideoStream(FilterableStream):
                 name="subtitles", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "filename": filename,
-                "original_size": original_size,
-                "fontsdir": fontsdir,
-                "alpha": alpha,
-                "charenc": charenc,
-                "stream_index": stream_index,
-                "force_style": force_style,
-                "wrap_unicode": wrap_unicode,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "filename": filename,
+                    "original_size": original_size,
+                    "fontsdir": fontsdir,
+                    "alpha": alpha,
+                    "charenc": charenc,
+                    "stream_index": stream_index,
+                    "force_style": force_style,
+                    "wrap_unicode": wrap_unicode,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -12603,7 +13092,7 @@ class VideoStream(FilterableStream):
                 name="super2xsai", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.video(0)
 
@@ -12644,16 +13133,18 @@ class VideoStream(FilterableStream):
                 name="swaprect", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "w": w,
-                "h": h,
-                "x1": x1,
-                "y1": y1,
-                "x2": x2,
-                "y2": y2,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "w": w,
+                    "h": h,
+                    "x1": x1,
+                    "y1": y1,
+                    "x2": x2,
+                    "y2": y2,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -12682,10 +13173,12 @@ class VideoStream(FilterableStream):
                 name="swapuv", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -12969,25 +13462,27 @@ class VideoStream(FilterableStream):
                 name="tblend", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "c0_mode": c0_mode,
-                "c1_mode": c1_mode,
-                "c2_mode": c2_mode,
-                "c3_mode": c3_mode,
-                "all_mode": all_mode,
-                "c0_expr": c0_expr,
-                "c1_expr": c1_expr,
-                "c2_expr": c2_expr,
-                "c3_expr": c3_expr,
-                "all_expr": all_expr,
-                "c0_opacity": c0_opacity,
-                "c1_opacity": c1_opacity,
-                "c2_opacity": c2_opacity,
-                "c3_opacity": c3_opacity,
-                "all_opacity": all_opacity,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "c0_mode": c0_mode,
+                    "c1_mode": c1_mode,
+                    "c2_mode": c2_mode,
+                    "c3_mode": c3_mode,
+                    "all_mode": all_mode,
+                    "c0_expr": c0_expr,
+                    "c1_expr": c1_expr,
+                    "c2_expr": c2_expr,
+                    "c3_expr": c3_expr,
+                    "all_expr": all_expr,
+                    "c0_opacity": c0_opacity,
+                    "c1_opacity": c1_opacity,
+                    "c2_opacity": c2_opacity,
+                    "c3_opacity": c3_opacity,
+                    "all_opacity": all_opacity,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13020,11 +13515,13 @@ class VideoStream(FilterableStream):
                 name="telecine", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "first_field": first_field,
-                "pattern": pattern,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "first_field": first_field,
+                    "pattern": pattern,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13073,17 +13570,19 @@ class VideoStream(FilterableStream):
                 name="thistogram", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "width": width,
-                "display_mode": display_mode,
-                "levels_mode": levels_mode,
-                "components": components,
-                "bgopacity": bgopacity,
-                "envelope": envelope,
-                "ecolor": ecolor,
-                "slide": slide,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "width": width,
+                    "display_mode": display_mode,
+                    "levels_mode": levels_mode,
+                    "components": components,
+                    "bgopacity": bgopacity,
+                    "envelope": envelope,
+                    "ecolor": ecolor,
+                    "slide": slide,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13122,11 +13621,13 @@ class VideoStream(FilterableStream):
             _threshold,
             _min,
             _max,
-            **{
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13159,12 +13660,14 @@ class VideoStream(FilterableStream):
                 name="thumbnail", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "n": n,
-                "log": log,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "n": n,
+                    "log": log,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13205,16 +13708,18 @@ class VideoStream(FilterableStream):
                 name="tile", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "layout": layout,
-                "nb_frames": nb_frames,
-                "margin": margin,
-                "padding": padding,
-                "color": color,
-                "overlap": overlap,
-                "init_padding": init_padding,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "layout": layout,
+                    "nb_frames": nb_frames,
+                    "margin": margin,
+                    "padding": padding,
+                    "color": color,
+                    "overlap": overlap,
+                    "init_padding": init_padding,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13254,10 +13759,12 @@ class VideoStream(FilterableStream):
                 name="tinterlace", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "mode": mode,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13294,14 +13801,16 @@ class VideoStream(FilterableStream):
                 name="tlut2", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "c0": c0,
-                "c1": c1,
-                "c2": c2,
-                "c3": c3,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "c0": c0,
+                    "c1": c1,
+                    "c2": c2,
+                    "c3": c3,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13336,13 +13845,15 @@ class VideoStream(FilterableStream):
                 name="tmedian", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "radius": radius,
-                "planes": planes,
-                "percentile": percentile,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "radius": radius,
+                    "planes": planes,
+                    "percentile": percentile,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13379,13 +13890,15 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "radius": radius,
-                "sigma": sigma,
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "radius": radius,
+                    "sigma": sigma,
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13422,14 +13935,16 @@ class VideoStream(FilterableStream):
                 name="tmix", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "frames": frames,
-                "weights": weights,
-                "scale": scale,
-                "planes": planes,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "frames": frames,
+                    "weights": weights,
+                    "scale": scale,
+                    "planes": planes,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13466,13 +13981,15 @@ class VideoStream(FilterableStream):
                 name="tonemap", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "tonemap": tonemap,
-                "param": param,
-                "desat": desat,
-                "peak": peak,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "tonemap": tonemap,
+                    "param": param,
+                    "desat": desat,
+                    "peak": peak,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13523,19 +14040,21 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "tonemap": tonemap,
-                "transfer": transfer,
-                "matrix": matrix,
-                "primaries": primaries,
-                "range": range,
-                "format": format,
-                "peak": peak,
-                "param": param,
-                "desat": desat,
-                "threshold": threshold,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "tonemap": tonemap,
+                    "transfer": transfer,
+                    "matrix": matrix,
+                    "primaries": primaries,
+                    "range": range,
+                    "format": format,
+                    "peak": peak,
+                    "param": param,
+                    "desat": desat,
+                    "threshold": threshold,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13572,13 +14091,15 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "format": format,
-                "matrix": matrix,
-                "primaries": primaries,
-                "transfer": transfer,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "format": format,
+                    "matrix": matrix,
+                    "primaries": primaries,
+                    "transfer": transfer,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13619,16 +14140,18 @@ class VideoStream(FilterableStream):
                 name="tpad", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "start": start,
-                "stop": stop,
-                "start_mode": start_mode,
-                "stop_mode": stop_mode,
-                "start_duration": start_duration,
-                "stop_duration": stop_duration,
-                "color": color,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "start": start,
+                    "stop": stop,
+                    "start_mode": start_mode,
+                    "stop_mode": stop_mode,
+                    "start_duration": start_duration,
+                    "stop_duration": stop_duration,
+                    "color": color,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13663,11 +14186,13 @@ class VideoStream(FilterableStream):
                 name="transpose", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "dir": dir,
-                "passthrough": passthrough,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "dir": dir,
+                    "passthrough": passthrough,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13704,11 +14229,13 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "dir": dir,
-                "passthrough": passthrough,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "dir": dir,
+                    "passthrough": passthrough,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13749,16 +14276,18 @@ class VideoStream(FilterableStream):
                 name="trim", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "start": start,
-                "end": end,
-                "start_pts": start_pts,
-                "end_pts": end_pts,
-                "duration": duration,
-                "start_frame": start_frame,
-                "end_frame": end_frame,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "start": start,
+                    "end": end,
+                    "start_pts": start_pts,
+                    "end_pts": end_pts,
+                    "duration": duration,
+                    "start_frame": start_frame,
+                    "end_frame": end_frame,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13805,19 +14334,21 @@ class VideoStream(FilterableStream):
                 name="unsharp", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "luma_msize_x": luma_msize_x,
-                "luma_msize_y": luma_msize_y,
-                "luma_amount": luma_amount,
-                "chroma_msize_x": chroma_msize_x,
-                "chroma_msize_y": chroma_msize_y,
-                "chroma_amount": chroma_amount,
-                "alpha_msize_x": alpha_msize_x,
-                "alpha_msize_y": alpha_msize_y,
-                "alpha_amount": alpha_amount,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "luma_msize_x": luma_msize_x,
+                    "luma_msize_y": luma_msize_y,
+                    "luma_amount": luma_amount,
+                    "chroma_msize_x": chroma_msize_x,
+                    "chroma_msize_y": chroma_msize_y,
+                    "chroma_amount": chroma_amount,
+                    "alpha_msize_x": alpha_msize_x,
+                    "alpha_msize_y": alpha_msize_y,
+                    "alpha_amount": alpha_amount,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13858,15 +14389,17 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "luma_msize_x": luma_msize_x,
-                "luma_msize_y": luma_msize_y,
-                "luma_amount": luma_amount,
-                "chroma_msize_x": chroma_msize_x,
-                "chroma_msize_y": chroma_msize_y,
-                "chroma_amount": chroma_amount,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "luma_msize_x": luma_msize_x,
+                    "luma_msize_y": luma_msize_y,
+                    "luma_amount": luma_amount,
+                    "chroma_msize_x": chroma_msize_x,
+                    "chroma_msize_y": chroma_msize_y,
+                    "chroma_amount": chroma_amount,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13895,10 +14428,12 @@ class VideoStream(FilterableStream):
                 name="untile", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "layout": layout,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "layout": layout,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -13935,14 +14470,16 @@ class VideoStream(FilterableStream):
                 name="uspp", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "quality": quality,
-                "qp": qp,
-                "use_bframe_qp": use_bframe_qp,
-                "codec": codec,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "quality": quality,
+                    "qp": qp,
+                    "use_bframe_qp": use_bframe_qp,
+                    "codec": codec,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14123,45 +14660,47 @@ class VideoStream(FilterableStream):
                 name="v360", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "input": input,
-                "output": output,
-                "interp": interp,
-                "w": w,
-                "h": h,
-                "in_stereo": in_stereo,
-                "out_stereo": out_stereo,
-                "in_forder": in_forder,
-                "out_forder": out_forder,
-                "in_frot": in_frot,
-                "out_frot": out_frot,
-                "in_pad": in_pad,
-                "out_pad": out_pad,
-                "fin_pad": fin_pad,
-                "fout_pad": fout_pad,
-                "yaw": yaw,
-                "pitch": pitch,
-                "roll": roll,
-                "rorder": rorder,
-                "h_fov": h_fov,
-                "v_fov": v_fov,
-                "d_fov": d_fov,
-                "h_flip": h_flip,
-                "v_flip": v_flip,
-                "d_flip": d_flip,
-                "ih_flip": ih_flip,
-                "iv_flip": iv_flip,
-                "in_trans": in_trans,
-                "out_trans": out_trans,
-                "ih_fov": ih_fov,
-                "iv_fov": iv_fov,
-                "id_fov": id_fov,
-                "h_offset": h_offset,
-                "v_offset": v_offset,
-                "alpha_mask": alpha_mask,
-                "reset_rot": reset_rot,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "input": input,
+                    "output": output,
+                    "interp": interp,
+                    "w": w,
+                    "h": h,
+                    "in_stereo": in_stereo,
+                    "out_stereo": out_stereo,
+                    "in_forder": in_forder,
+                    "out_forder": out_forder,
+                    "in_frot": in_frot,
+                    "out_frot": out_frot,
+                    "in_pad": in_pad,
+                    "out_pad": out_pad,
+                    "fin_pad": fin_pad,
+                    "fout_pad": fout_pad,
+                    "yaw": yaw,
+                    "pitch": pitch,
+                    "roll": roll,
+                    "rorder": rorder,
+                    "h_fov": h_fov,
+                    "v_fov": v_fov,
+                    "d_fov": d_fov,
+                    "h_flip": h_flip,
+                    "v_flip": v_flip,
+                    "d_flip": d_flip,
+                    "ih_flip": ih_flip,
+                    "iv_flip": iv_flip,
+                    "in_trans": in_trans,
+                    "out_trans": out_trans,
+                    "ih_fov": ih_fov,
+                    "iv_fov": iv_fov,
+                    "id_fov": id_fov,
+                    "h_offset": h_offset,
+                    "v_offset": v_offset,
+                    "alpha_mask": alpha_mask,
+                    "reset_rot": reset_rot,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14204,16 +14743,18 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "threshold": threshold,
-                "method": method,
-                "nsteps": nsteps,
-                "percent": percent,
-                "planes": planes,
-                "type": type,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "threshold": threshold,
+                    "method": method,
+                    "nsteps": nsteps,
+                    "percent": percent,
+                    "planes": planes,
+                    "type": type,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14264,17 +14805,19 @@ class VideoStream(FilterableStream):
             ),
             self,
             _radius,
-            **{
-                "min_r": min_r,
-                "max_r": max_r,
-                "planes": planes,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "min_r": min_r,
+                    "max_r": max_r,
+                    "planes": planes,
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14335,23 +14878,25 @@ class VideoStream(FilterableStream):
                 name="vectorscope", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "mode": mode,
-                "x": x,
-                "y": y,
-                "intensity": intensity,
-                "envelope": envelope,
-                "graticule": graticule,
-                "opacity": opacity,
-                "flags": flags,
-                "bgopacity": bgopacity,
-                "lthreshold": lthreshold,
-                "hthreshold": hthreshold,
-                "colorspace": colorspace,
-                "tint0": tint0,
-                "tint1": tint1,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "x": x,
+                    "y": y,
+                    "intensity": intensity,
+                    "envelope": envelope,
+                    "graticule": graticule,
+                    "opacity": opacity,
+                    "flags": flags,
+                    "bgopacity": bgopacity,
+                    "lthreshold": lthreshold,
+                    "hthreshold": hthreshold,
+                    "colorspace": colorspace,
+                    "tint0": tint0,
+                    "tint1": tint1,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14380,10 +14925,12 @@ class VideoStream(FilterableStream):
                 name="vflip", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14407,7 +14954,7 @@ class VideoStream(FilterableStream):
                 name="vflip_vulkan", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.video(0)
 
@@ -14431,7 +14978,7 @@ class VideoStream(FilterableStream):
                 name="vfrdet", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.video(0)
 
@@ -14476,18 +15023,20 @@ class VideoStream(FilterableStream):
                 name="vibrance", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "intensity": intensity,
-                "rbal": rbal,
-                "gbal": gbal,
-                "bbal": bbal,
-                "rlum": rlum,
-                "glum": glum,
-                "blum": blum,
-                "alternate": alternate,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "intensity": intensity,
+                    "rbal": rbal,
+                    "gbal": gbal,
+                    "bbal": bbal,
+                    "rlum": rlum,
+                    "glum": glum,
+                    "blum": blum,
+                    "alternate": alternate,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14530,16 +15079,18 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "result": result,
-                "shakiness": shakiness,
-                "accuracy": accuracy,
-                "stepsize": stepsize,
-                "mincontrast": mincontrast,
-                "show": show,
-                "tripod": tripod,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "result": result,
+                    "shakiness": shakiness,
+                    "accuracy": accuracy,
+                    "stepsize": stepsize,
+                    "mincontrast": mincontrast,
+                    "show": show,
+                    "tripod": tripod,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14598,23 +15149,25 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "input": input,
-                "smoothing": smoothing,
-                "optalgo": optalgo,
-                "maxshift": maxshift,
-                "maxangle": maxangle,
-                "crop": crop,
-                "invert": invert,
-                "relative": relative,
-                "zoom": zoom,
-                "optzoom": optzoom,
-                "zoomspeed": zoomspeed,
-                "interpol": interpol,
-                "tripod": tripod,
-                "debug": debug,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "input": input,
+                    "smoothing": smoothing,
+                    "optalgo": optalgo,
+                    "maxshift": maxshift,
+                    "maxangle": maxangle,
+                    "crop": crop,
+                    "invert": invert,
+                    "relative": relative,
+                    "zoom": zoom,
+                    "optzoom": optzoom,
+                    "zoomspeed": zoomspeed,
+                    "interpol": interpol,
+                    "tripod": tripod,
+                    "debug": debug,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14657,14 +15210,16 @@ class VideoStream(FilterableStream):
             ),
             self,
             _reference,
-            **{
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14707,17 +15262,19 @@ class VideoStream(FilterableStream):
                 name="vignette", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "angle": angle,
-                "x0": x0,
-                "y0": y0,
-                "mode": mode,
-                "eval": eval,
-                "dither": dither,
-                "aspect": aspect,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "angle": angle,
+                    "x0": x0,
+                    "y0": y0,
+                    "mode": mode,
+                    "eval": eval,
+                    "dither": dither,
+                    "aspect": aspect,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14746,10 +15303,12 @@ class VideoStream(FilterableStream):
                 name="vmafmotion", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "stats_file": stats_file,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "stats_file": stats_file,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14786,14 +15345,16 @@ class VideoStream(FilterableStream):
                 name="w3fdif", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "filter": filter,
-                "mode": mode,
-                "parity": parity,
-                "deint": deint,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "filter": filter,
+                    "mode": mode,
+                    "parity": parity,
+                    "deint": deint,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14864,25 +15425,27 @@ class VideoStream(FilterableStream):
                 name="waveform", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "mode": mode,
-                "intensity": intensity,
-                "mirror": mirror,
-                "display": display,
-                "components": components,
-                "envelope": envelope,
-                "filter": filter,
-                "graticule": graticule,
-                "opacity": opacity,
-                "flags": flags,
-                "scale": scale,
-                "bgopacity": bgopacity,
-                "tint0": tint0,
-                "tint1": tint1,
-                "fitmode": fitmode,
-                "input": input,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "intensity": intensity,
+                    "mirror": mirror,
+                    "display": display,
+                    "components": components,
+                    "envelope": envelope,
+                    "filter": filter,
+                    "graticule": graticule,
+                    "opacity": opacity,
+                    "flags": flags,
+                    "scale": scale,
+                    "bgopacity": bgopacity,
+                    "tint0": tint0,
+                    "tint1": tint1,
+                    "fitmode": fitmode,
+                    "input": input,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14913,10 +15476,12 @@ class VideoStream(FilterableStream):
                 name="weave", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "first_field": first_field,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "first_field": first_field,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14945,10 +15510,12 @@ class VideoStream(FilterableStream):
                 name="xbr", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "n": n,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "n": n,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14997,16 +15564,18 @@ class VideoStream(FilterableStream):
             ),
             self,
             _secondary,
-            **{
-                "planes": planes,
-                "secondary": secondary,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "planes": planes,
+                    "secondary": secondary,
+                    "eof_action": eof_action,
+                    "shortest": shortest,
+                    "repeatlast": repeatlast,
+                    "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -15107,13 +15676,15 @@ class VideoStream(FilterableStream):
             ),
             self,
             _xfade,
-            **{
-                "transition": transition,
-                "duration": duration,
-                "offset": offset,
-                "expr": expr,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "transition": transition,
+                    "duration": duration,
+                    "offset": offset,
+                    "expr": expr,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -15167,14 +15738,16 @@ class VideoStream(FilterableStream):
             ),
             self,
             _xfade,
-            **{
-                "transition": transition,
-                "source": source,
-                "kernel": kernel,
-                "duration": duration,
-                "offset": offset,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "transition": transition,
+                    "source": source,
+                    "kernel": kernel,
+                    "duration": duration,
+                    "offset": offset,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -15213,13 +15786,15 @@ class VideoStream(FilterableStream):
                 name="yadif", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "mode": mode,
-                "parity": parity,
-                "deint": deint,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "parity": parity,
+                    "deint": deint,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -15254,13 +15829,15 @@ class VideoStream(FilterableStream):
                 name="yaepblur", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "radius": radius,
-                "planes": planes,
-                "sigma": sigma,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "radius": radius,
+                    "planes": planes,
+                    "sigma": sigma,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -15289,10 +15866,12 @@ class VideoStream(FilterableStream):
                 name="zmq", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "bind_address": bind_address,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "bind_address": bind_address,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -15331,15 +15910,17 @@ class VideoStream(FilterableStream):
                 name="zoompan", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "zoom": zoom,
-                "x": x,
-                "y": y,
-                "d": d,
-                "s": s,
-                "fps": fps,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "zoom": zoom,
+                    "x": x,
+                    "y": y,
+                    "d": d,
+                    "s": s,
+                    "fps": fps,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -15556,27 +16137,29 @@ class VideoStream(FilterableStream):
                 name="zscale", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **{
-                "w": w,
-                "h": h,
-                "size": size,
-                "dither": dither,
-                "filter": filter,
-                "out_range": out_range,
-                "primaries": primaries,
-                "transfer": transfer,
-                "matrix": matrix,
-                "in_range": in_range,
-                "primariesin": primariesin,
-                "transferin": transferin,
-                "matrixin": matrixin,
-                "chromal": chromal,
-                "chromalin": chromalin,
-                "npl": npl,
-                "agamma": agamma,
-                "param_a": param_a,
-                "param_b": param_b,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "w": w,
+                    "h": h,
+                    "size": size,
+                    "dither": dither,
+                    "filter": filter,
+                    "out_range": out_range,
+                    "primaries": primaries,
+                    "transfer": transfer,
+                    "matrix": matrix,
+                    "in_range": in_range,
+                    "primariesin": primariesin,
+                    "transferin": transferin,
+                    "matrixin": matrixin,
+                    "chromal": chromal,
+                    "chromalin": chromalin,
+                    "npl": npl,
+                    "agamma": agamma,
+                    "param_a": param_a,
+                    "param_b": param_b,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)

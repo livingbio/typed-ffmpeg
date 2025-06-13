@@ -108,11 +108,11 @@ References:
 filter_node = filter_node_factory(
     {{f.to_def}},
     {{ stream_params(f, type) }}
-    **{
+    **merge({
         {% for option in f.options %}
         "{{ option.name}}": {{ option.name | option_name_safe }},
         {% endfor %}
-    } | (extra_options or {})
+    }, extra_options)
 )
 {% if f.is_dynamic_output %}
 return filter_node
