@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any
 {{ _components.import_types('...types') }}
 from ...utils.frozendict import merge
+from ...codecs.schema import FFMpegEncoderOption
 
 
 if TYPE_CHECKING:
@@ -27,6 +28,7 @@ class OutputArgs(ABC):
         {{ option.name | option_name_safe }}: {{ option | option_typing }} = None,
         {%- endif -%}
         {%- endfor -%}
+        encoder_options: FFMpegEncoderOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> OutputStream:
         """
@@ -40,6 +42,7 @@ class OutputArgs(ABC):
             {{option.name | option_name_safe}}: {{option.help }}
             {% endif %}
             {%- endfor -%}
+            encoder_options: ffmpeg's encoder options
             extra_options: the arguments for the output
 
         Returns:
@@ -52,4 +55,4 @@ class OutputArgs(ABC):
                 "{{ option.name}}": {{ option.name | option_name_safe }},
                 {% endif %}
             {% endfor %}
-        }, extra_options)).stream()
+        }, encoder_options.kwargs if encoder_options else {}, extra_options)).stream()

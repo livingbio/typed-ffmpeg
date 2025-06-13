@@ -23,6 +23,7 @@ from ..types import (
     String,
     Video_rate,
 )
+from ..utils.frozendict import merge
 
 if TYPE_CHECKING:
     from .video import VideoStream
@@ -41,7 +42,7 @@ class AudioStream(FilterableStream):
         xzoom: Float = Default(1.0),
         xpos: Float = Default(0.0),
         length: Int = Default(15),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
 
@@ -70,18 +71,20 @@ class AudioStream(FilterableStream):
                 name="a3dscope", typings_input=("audio",), typings_output=("video",)
             ),
             self,
-            **{
-                "rate": rate,
-                "size": size,
-                "fov": fov,
-                "roll": roll,
-                "pitch": pitch,
-                "yaw": yaw,
-                "xzoom": xzoom,
-                "xpos": xpos,
-                "length": length,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "rate": rate,
+                    "size": size,
+                    "fov": fov,
+                    "roll": roll,
+                    "pitch": pitch,
+                    "yaw": yaw,
+                    "xzoom": xzoom,
+                    "xpos": xpos,
+                    "length": length,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -89,7 +92,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         action: Int | Literal["start", "stop"] | Default = Default("start"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -110,10 +113,12 @@ class AudioStream(FilterableStream):
                 name="abench", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "action": action,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "action": action,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -126,7 +131,7 @@ class AudioStream(FilterableStream):
             "red|green|blue|yellow|orange|lime|pink|magenta|brown"
         ),
         mode: Int | Literal["bars", "trace"] | Default = Default("bars"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
 
@@ -150,13 +155,15 @@ class AudioStream(FilterableStream):
                 name="abitscope", typings_input=("audio",), typings_output=("video",)
             ),
             self,
-            **{
-                "rate": rate,
-                "size": size,
-                "colors": colors,
-                "mode": mode,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "rate": rate,
+                    "size": size,
+                    "colors": colors,
+                    "mode": mode,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -175,7 +182,7 @@ class AudioStream(FilterableStream):
         detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
         level_sc: Double = Default(1.0),
         mix: Double = Default(1.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -207,21 +214,23 @@ class AudioStream(FilterableStream):
                 name="acompressor", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "level_in": level_in,
-                "mode": mode,
-                "threshold": threshold,
-                "ratio": ratio,
-                "attack": attack,
-                "release": release,
-                "makeup": makeup,
-                "knee": knee,
-                "link": link,
-                "detection": detection,
-                "level_sc": level_sc,
-                "mix": mix,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "level_in": level_in,
+                    "mode": mode,
+                    "threshold": threshold,
+                    "ratio": ratio,
+                    "attack": attack,
+                    "release": release,
+                    "makeup": makeup,
+                    "knee": knee,
+                    "link": link,
+                    "detection": detection,
+                    "level_sc": level_sc,
+                    "mix": mix,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -229,7 +238,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         contrast: Float = Default(33.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -250,16 +259,18 @@ class AudioStream(FilterableStream):
                 name="acontrast", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "contrast": contrast,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "contrast": contrast,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
     def acopy(
         self,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -277,7 +288,7 @@ class AudioStream(FilterableStream):
                 name="acopy", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.audio(0)
 
@@ -344,7 +355,7 @@ class AudioStream(FilterableStream):
             "hsin2",
         ]
         | Default = Default("tri"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -372,14 +383,16 @@ class AudioStream(FilterableStream):
             ),
             self,
             _crossfade1,
-            **{
-                "nb_samples": nb_samples,
-                "duration": duration,
-                "overlap": overlap,
-                "curve1": curve1,
-                "curve2": curve2,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "nb_samples": nb_samples,
+                    "duration": duration,
+                    "overlap": overlap,
+                    "curve1": curve1,
+                    "curve2": curve2,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -395,7 +408,7 @@ class AudioStream(FilterableStream):
         level: Float = Default(1.0),
         gain: String = Default("1.f"),
         precision: Int | Literal["auto", "float", "double"] | Default = Default("auto"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> FilterNode:
         """
 
@@ -423,14 +436,16 @@ class AudioStream(FilterableStream):
                 typings_output="[StreamType.audio] * len(re.split(r'[ |]+', str(split)))",
             ),
             self,
-            **{
-                "split": split,
-                "order": order,
-                "level": level,
-                "gain": gain,
-                "precision": precision,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "split": split,
+                    "order": order,
+                    "level": level,
+                    "gain": gain,
+                    "precision": precision,
+                },
+                extra_options,
+            ),
         )
 
         return filter_node
@@ -450,7 +465,7 @@ class AudioStream(FilterableStream):
         lforange: Double = Default(20.0),
         lforate: Double = Default(0.3),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -482,21 +497,23 @@ class AudioStream(FilterableStream):
                 name="acrusher", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "level_in": level_in,
-                "level_out": level_out,
-                "bits": bits,
-                "mix": mix,
-                "mode": mode,
-                "dc": dc,
-                "aa": aa,
-                "samples": samples,
-                "lfo": lfo,
-                "lforange": lforange,
-                "lforate": lforate,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "level_in": level_in,
+                    "level_out": level_out,
+                    "bits": bits,
+                    "mix": mix,
+                    "mode": mode,
+                    "dc": dc,
+                    "aa": aa,
+                    "samples": samples,
+                    "lfo": lfo,
+                    "lforange": lforange,
+                    "lforate": lforate,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -506,7 +523,7 @@ class AudioStream(FilterableStream):
         cue: Int64 = Default(0),
         preroll: Duration = Default(0.0),
         buffer: Duration = Default(0.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -529,12 +546,14 @@ class AudioStream(FilterableStream):
                 name="acue", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "cue": cue,
-                "preroll": preroll,
-                "buffer": buffer,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "cue": cue,
+                    "preroll": preroll,
+                    "buffer": buffer,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -548,7 +567,7 @@ class AudioStream(FilterableStream):
         burst: Double = Default(2.0),
         method: Int | Literal["add", "a", "save", "s"] | Default = Default("add"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -575,16 +594,18 @@ class AudioStream(FilterableStream):
                 name="adeclick", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "window": window,
-                "overlap": overlap,
-                "arorder": arorder,
-                "threshold": threshold,
-                "burst": burst,
-                "method": method,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "window": window,
+                    "overlap": overlap,
+                    "arorder": arorder,
+                    "threshold": threshold,
+                    "burst": burst,
+                    "method": method,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -598,7 +619,7 @@ class AudioStream(FilterableStream):
         hsize: Int = Default(1000),
         method: Int | Literal["add", "a", "save", "s"] | Default = Default("add"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -625,16 +646,18 @@ class AudioStream(FilterableStream):
                 name="adeclip", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "window": window,
-                "overlap": overlap,
-                "arorder": arorder,
-                "threshold": threshold,
-                "hsize": hsize,
-                "method": method,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "window": window,
+                    "overlap": overlap,
+                    "arorder": arorder,
+                    "threshold": threshold,
+                    "hsize": hsize,
+                    "method": method,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -644,7 +667,7 @@ class AudioStream(FilterableStream):
         stages: Int = Default(6),
         seed: Int64 = Default(-1),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -667,12 +690,14 @@ class AudioStream(FilterableStream):
                 name="adecorrelate", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "stages": stages,
-                "seed": seed,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "stages": stages,
+                    "seed": seed,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -682,7 +707,7 @@ class AudioStream(FilterableStream):
         delays: String = Default(None),
         all: Boolean = Default(False),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -705,12 +730,14 @@ class AudioStream(FilterableStream):
                 name="adelay", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "delays": delays,
-                "all": all,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "delays": delays,
+                    "all": all,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -720,7 +747,7 @@ class AudioStream(FilterableStream):
         level: Double = Default(-351.0),
         type: Int | Literal["dc", "ac", "square", "pulse"] | Default = Default("dc"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -743,12 +770,14 @@ class AudioStream(FilterableStream):
                 name="adenorm", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "level": level,
-                "type": type,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "level": level,
+                    "type": type,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -756,7 +785,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -777,10 +806,12 @@ class AudioStream(FilterableStream):
                 name="aderivative", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -804,7 +835,7 @@ class AudioStream(FilterableStream):
         | Default = Default("frame"),
         size: Image_size = Default("900x256"),
         rate: Video_rate = Default("25"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
 
@@ -839,24 +870,26 @@ class AudioStream(FilterableStream):
                 name="adrawgraph", typings_input=("audio",), typings_output=("video",)
             ),
             self,
-            **{
-                "m1": m1,
-                "fg1": fg1,
-                "m2": m2,
-                "fg2": fg2,
-                "m3": m3,
-                "fg3": fg3,
-                "m4": m4,
-                "fg4": fg4,
-                "bg": bg,
-                "min": min,
-                "max": max,
-                "mode": mode,
-                "slide": slide,
-                "size": size,
-                "rate": rate,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "m1": m1,
+                    "fg1": fg1,
+                    "m2": m2,
+                    "fg2": fg2,
+                    "m3": m3,
+                    "fg3": fg3,
+                    "m4": m4,
+                    "fg4": fg4,
+                    "bg": bg,
+                    "min": min,
+                    "max": max,
+                    "mode": mode,
+                    "slide": slide,
+                    "size": size,
+                    "rate": rate,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -868,7 +901,7 @@ class AudioStream(FilterableStream):
         release: Double = Default(100.0),
         channels: String = Default("all"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -893,14 +926,16 @@ class AudioStream(FilterableStream):
                 name="adrc", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "transfer": transfer,
-                "attack": attack,
-                "release": release,
-                "channels": channels,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "transfer": transfer,
+                    "attack": attack,
+                    "release": release,
+                    "channels": channels,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -928,7 +963,7 @@ class AudioStream(FilterableStream):
         auto: Int | Literal["disabled", "off", "on"] | Default = Default("disabled"),
         precision: Int | Literal["auto", "float", "double"] | Default = Default("auto"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -967,26 +1002,28 @@ class AudioStream(FilterableStream):
                 typings_output=("audio",),
             ),
             self,
-            **{
-                "threshold": threshold,
-                "dfrequency": dfrequency,
-                "dqfactor": dqfactor,
-                "tfrequency": tfrequency,
-                "tqfactor": tqfactor,
-                "attack": attack,
-                "release": release,
-                "ratio": ratio,
-                "makeup": makeup,
-                "range": range,
-                "mode": mode,
-                "dftype": dftype,
-                "tftype": tftype,
-                "direction": direction,
-                "auto": auto,
-                "precision": precision,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "threshold": threshold,
+                    "dfrequency": dfrequency,
+                    "dqfactor": dqfactor,
+                    "tfrequency": tfrequency,
+                    "tqfactor": tqfactor,
+                    "attack": attack,
+                    "release": release,
+                    "ratio": ratio,
+                    "makeup": makeup,
+                    "range": range,
+                    "mode": mode,
+                    "dftype": dftype,
+                    "tftype": tftype,
+                    "direction": direction,
+                    "auto": auto,
+                    "precision": precision,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -996,7 +1033,7 @@ class AudioStream(FilterableStream):
         sensitivity: Double = Default(2.0),
         basefreq: Double = Default(22050.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -1021,12 +1058,14 @@ class AudioStream(FilterableStream):
                 typings_output=("audio",),
             ),
             self,
-            **{
-                "sensitivity": sensitivity,
-                "basefreq": basefreq,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "sensitivity": sensitivity,
+                    "basefreq": basefreq,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -1037,7 +1076,7 @@ class AudioStream(FilterableStream):
         out_gain: Float = Default(0.3),
         delays: String = Default("1000"),
         decays: String = Default("0.5"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -1061,13 +1100,15 @@ class AudioStream(FilterableStream):
                 name="aecho", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "in_gain": in_gain,
-                "out_gain": out_gain,
-                "delays": delays,
-                "decays": decays,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "in_gain": in_gain,
+                    "out_gain": out_gain,
+                    "delays": delays,
+                    "decays": decays,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -1083,7 +1124,7 @@ class AudioStream(FilterableStream):
         | Literal["col", "emi", "bsi", "riaa", "cd", "50fm", "75fm", "50kf", "75kf"]
         | Default = Default("cd"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -1108,14 +1149,16 @@ class AudioStream(FilterableStream):
                 name="aemphasis", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "level_in": level_in,
-                "level_out": level_out,
-                "mode": mode,
-                "type": type,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "level_in": level_in,
+                    "level_out": level_out,
+                    "mode": mode,
+                    "type": type,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -1125,7 +1168,7 @@ class AudioStream(FilterableStream):
         exprs: String = Default(None),
         channel_layout: String = Default(None),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -1148,12 +1191,14 @@ class AudioStream(FilterableStream):
                 name="aeval", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "exprs": exprs,
-                "channel_layout": channel_layout,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "exprs": exprs,
+                    "channel_layout": channel_layout,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -1169,7 +1214,7 @@ class AudioStream(FilterableStream):
         ceil: Double = Default(9999.0),
         listen: Boolean = Default(False),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -1198,18 +1243,20 @@ class AudioStream(FilterableStream):
                 name="aexciter", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "level_in": level_in,
-                "level_out": level_out,
-                "amount": amount,
-                "drive": drive,
-                "blend": blend,
-                "freq": freq,
-                "ceil": ceil,
-                "listen": listen,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "level_in": level_in,
+                    "level_out": level_out,
+                    "amount": amount,
+                    "drive": drive,
+                    "blend": blend,
+                    "freq": freq,
+                    "ceil": ceil,
+                    "listen": listen,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -1252,7 +1299,7 @@ class AudioStream(FilterableStream):
         silence: Double = Default(0.0),
         unity: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -1281,18 +1328,20 @@ class AudioStream(FilterableStream):
                 name="afade", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "type": type,
-                "start_sample": start_sample,
-                "nb_samples": nb_samples,
-                "start_time": start_time,
-                "duration": duration,
-                "curve": curve,
-                "silence": silence,
-                "unity": unity,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "type": type,
+                    "start_sample": start_sample,
+                    "nb_samples": nb_samples,
+                    "start_time": start_time,
+                    "duration": duration,
+                    "curve": curve,
+                    "silence": silence,
+                    "unity": unity,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -1322,7 +1371,7 @@ class AudioStream(FilterableStream):
         | Default = Default("none"),
         gain_smooth: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -1357,24 +1406,26 @@ class AudioStream(FilterableStream):
                 name="afftdn", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "noise_reduction": noise_reduction,
-                "noise_floor": noise_floor,
-                "noise_type": noise_type,
-                "band_noise": band_noise,
-                "residual_floor": residual_floor,
-                "track_noise": track_noise,
-                "track_residual": track_residual,
-                "output_mode": output_mode,
-                "adaptivity": adaptivity,
-                "floor_offset": floor_offset,
-                "noise_link": noise_link,
-                "band_multiplier": band_multiplier,
-                "sample_noise": sample_noise,
-                "gain_smooth": gain_smooth,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "noise_reduction": noise_reduction,
+                    "noise_floor": noise_floor,
+                    "noise_type": noise_type,
+                    "band_noise": band_noise,
+                    "residual_floor": residual_floor,
+                    "track_noise": track_noise,
+                    "track_residual": track_residual,
+                    "output_mode": output_mode,
+                    "adaptivity": adaptivity,
+                    "floor_offset": floor_offset,
+                    "noise_link": noise_link,
+                    "band_multiplier": band_multiplier,
+                    "sample_noise": sample_noise,
+                    "gain_smooth": gain_smooth,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -1412,7 +1463,7 @@ class AudioStream(FilterableStream):
         | Default = Default("hann"),
         overlap: Float = Default(0.75),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -1438,15 +1489,17 @@ class AudioStream(FilterableStream):
                 name="afftfilt", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "real": real,
-                "imag": imag,
-                "win_size": win_size,
-                "win_func": win_func,
-                "overlap": overlap,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "real": real,
+                    "imag": imag,
+                    "win_size": win_size,
+                    "win_func": win_func,
+                    "overlap": overlap,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -1456,7 +1509,7 @@ class AudioStream(FilterableStream):
         sample_fmts: String = Default(None),
         sample_rates: String = Default(None),
         channel_layouts: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -1479,12 +1532,14 @@ class AudioStream(FilterableStream):
                 name="aformat", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "sample_fmts": sample_fmts,
-                "sample_rates": sample_rates,
-                "channel_layouts": channel_layouts,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "sample_fmts": sample_fmts,
+                    "sample_rates": sample_rates,
+                    "channel_layouts": channel_layouts,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -1495,7 +1550,7 @@ class AudioStream(FilterableStream):
         level: Double = Default(1.0),
         order: Int = Default(8),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -1519,13 +1574,15 @@ class AudioStream(FilterableStream):
                 name="afreqshift", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "shift": shift,
-                "level": level,
-                "order": order,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "shift": shift,
+                    "level": level,
+                    "order": order,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -1543,7 +1600,7 @@ class AudioStream(FilterableStream):
         samples: Int = Default(8192),
         softness: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -1572,18 +1629,20 @@ class AudioStream(FilterableStream):
                 name="afwtdn", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "sigma": sigma,
-                "levels": levels,
-                "wavet": wavet,
-                "percent": percent,
-                "profile": profile,
-                "adaptive": adaptive,
-                "samples": samples,
-                "softness": softness,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "sigma": sigma,
+                    "levels": levels,
+                    "wavet": wavet,
+                    "percent": percent,
+                    "profile": profile,
+                    "adaptive": adaptive,
+                    "samples": samples,
+                    "softness": softness,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -1603,7 +1662,7 @@ class AudioStream(FilterableStream):
         link: Int | Literal["average", "maximum"] | Default = Default("average"),
         level_sc: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -1636,22 +1695,24 @@ class AudioStream(FilterableStream):
                 name="agate", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "level_in": level_in,
-                "mode": mode,
-                "range": range,
-                "threshold": threshold,
-                "ratio": ratio,
-                "attack": attack,
-                "release": release,
-                "makeup": makeup,
-                "knee": knee,
-                "detection": detection,
-                "link": link,
-                "level_sc": level_sc,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "level_in": level_in,
+                    "mode": mode,
+                    "range": range,
+                    "threshold": threshold,
+                    "ratio": ratio,
+                    "attack": attack,
+                    "release": release,
+                    "makeup": makeup,
+                    "knee": knee,
+                    "detection": detection,
+                    "link": link,
+                    "level_sc": level_sc,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -1687,7 +1748,7 @@ class AudioStream(FilterableStream):
         ]
         | Default = Default("all+queue"),
         rate: Video_rate = Default("25"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
 
@@ -1714,14 +1775,16 @@ class AudioStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "size": size,
-                "opacity": opacity,
-                "mode": mode,
-                "flags": flags,
-                "rate": rate,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "size": size,
+                    "opacity": opacity,
+                    "mode": mode,
+                    "flags": flags,
+                    "rate": rate,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1739,7 +1802,7 @@ class AudioStream(FilterableStream):
         rheight: Float = Default(0.1),
         slide: Int | Literal["replace", "scroll"] | Default = Default("replace"),
         hmode: Int | Literal["abs", "sign"] | Default = Default("abs"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
 
@@ -1768,18 +1831,20 @@ class AudioStream(FilterableStream):
                 name="ahistogram", typings_input=("audio",), typings_output=("video",)
             ),
             self,
-            **{
-                "dmode": dmode,
-                "rate": rate,
-                "size": size,
-                "scale": scale,
-                "ascale": ascale,
-                "acount": acount,
-                "rheight": rheight,
-                "slide": slide,
-                "hmode": hmode,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "dmode": dmode,
+                    "rate": rate,
+                    "size": size,
+                    "scale": scale,
+                    "ascale": ascale,
+                    "acount": acount,
+                    "rheight": rheight,
+                    "slide": slide,
+                    "hmode": hmode,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -1803,7 +1868,7 @@ class AudioStream(FilterableStream):
         channel: Int = Default(0),
         size: Image_size = Default("hd720"),
         rate: Video_rate = Default("25"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> FilterNode:
         """
 
@@ -1841,24 +1906,26 @@ class AudioStream(FilterableStream):
                 typings_output="[StreamType.audio] + [StreamType.video] if response else []",
             ),
             self,
-            **{
-                "zeros": zeros,
-                "poles": poles,
-                "gains": gains,
-                "dry": dry,
-                "wet": wet,
-                "format": format,
-                "process": process,
-                "precision": precision,
-                "e": e,
-                "normalize": normalize,
-                "mix": mix,
-                "response": response,
-                "channel": channel,
-                "size": size,
-                "rate": rate,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "zeros": zeros,
+                    "poles": poles,
+                    "gains": gains,
+                    "dry": dry,
+                    "wet": wet,
+                    "format": format,
+                    "process": process,
+                    "precision": precision,
+                    "e": e,
+                    "normalize": normalize,
+                    "mix": mix,
+                    "response": response,
+                    "channel": channel,
+                    "size": size,
+                    "rate": rate,
+                },
+                extra_options,
+            ),
         )
 
         return filter_node
@@ -1867,7 +1934,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -1888,10 +1955,12 @@ class AudioStream(FilterableStream):
                 name="aintegral", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -1899,7 +1968,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -1920,10 +1989,12 @@ class AudioStream(FilterableStream):
                 name="alatency", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -1940,7 +2011,7 @@ class AudioStream(FilterableStream):
         level: Boolean = Default(True),
         latency: Boolean = Default(False),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -1970,19 +2041,21 @@ class AudioStream(FilterableStream):
                 name="alimiter", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "level_in": level_in,
-                "level_out": level_out,
-                "limit": limit,
-                "attack": attack,
-                "release": release,
-                "asc": asc,
-                "asc_level": asc_level,
-                "level": level,
-                "latency": latency,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "level_in": level_in,
+                    "level_out": level_out,
+                    "limit": limit,
+                    "attack": attack,
+                    "release": release,
+                    "asc": asc,
+                    "asc_level": asc_level,
+                    "level": level,
+                    "latency": latency,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2003,7 +2076,7 @@ class AudioStream(FilterableStream):
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2033,19 +2106,21 @@ class AudioStream(FilterableStream):
                 name="allpass", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "order": order,
-                "transform": transform,
-                "precision": precision,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "frequency": frequency,
+                    "width_type": width_type,
+                    "width": width,
+                    "mix": mix,
+                    "channels": channels,
+                    "normalize": normalize,
+                    "order": order,
+                    "transform": transform,
+                    "precision": precision,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2056,7 +2131,7 @@ class AudioStream(FilterableStream):
         size: Int64 = Default(0),
         start: Int64 = Default(0),
         time: Duration = Default("INT64_MAX"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2080,13 +2155,15 @@ class AudioStream(FilterableStream):
                 name="aloop", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "loop": loop,
-                "size": size,
-                "start": start,
-                "time": time,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "loop": loop,
+                    "size": size,
+                    "start": start,
+                    "time": time,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2107,7 +2184,7 @@ class AudioStream(FilterableStream):
         file: String = Default(None),
         direct: Boolean = Default(False),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2135,24 +2212,26 @@ class AudioStream(FilterableStream):
                 name="ametadata", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "mode": mode,
-                "key": key,
-                "value": value,
-                "function": function,
-                "expr": expr,
-                "file": file,
-                "direct": direct,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "key": key,
+                    "value": value,
+                    "function": function,
+                    "expr": expr,
+                    "file": file,
+                    "direct": direct,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
     def amultiply(
         self,
         _multiply1: AudioStream,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2173,7 +2252,7 @@ class AudioStream(FilterableStream):
             ),
             self,
             _multiply1,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.audio(0)
 
@@ -2189,7 +2268,7 @@ class AudioStream(FilterableStream):
             "red|green|blue|yellow|orange|lime|pink|magenta|brown"
         ),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> FilterNode:
         """
 
@@ -2219,16 +2298,18 @@ class AudioStream(FilterableStream):
                 typings_output="[StreamType.audio] + [StreamType.video] if curves else []",
             ),
             self,
-            **{
-                "params": params,
-                "curves": curves,
-                "size": size,
-                "mgain": mgain,
-                "fscale": fscale,
-                "colors": colors,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "params": params,
+                    "curves": curves,
+                    "size": size,
+                    "mgain": mgain,
+                    "fscale": fscale,
+                    "colors": colors,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
 
         return filter_node
@@ -2242,7 +2323,7 @@ class AudioStream(FilterableStream):
         output: Int | Literal["i", "o", "n"] | Default = Default("o"),
         smooth: Float = Default(11.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2268,15 +2349,17 @@ class AudioStream(FilterableStream):
                 name="anlmdn", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "strength": strength,
-                "patch": patch,
-                "research": research,
-                "output": output,
-                "smooth": smooth,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "strength": strength,
+                    "patch": patch,
+                    "research": research,
+                    "output": output,
+                    "smooth": smooth,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2290,7 +2373,7 @@ class AudioStream(FilterableStream):
         leakage: Float = Default(0.0),
         out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2319,15 +2402,17 @@ class AudioStream(FilterableStream):
             ),
             self,
             _desired,
-            **{
-                "order": order,
-                "mu": mu,
-                "eps": eps,
-                "leakage": leakage,
-                "out_mode": out_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "order": order,
+                    "mu": mu,
+                    "eps": eps,
+                    "leakage": leakage,
+                    "out_mode": out_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2341,7 +2426,7 @@ class AudioStream(FilterableStream):
         leakage: Float = Default(0.0),
         out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2370,21 +2455,23 @@ class AudioStream(FilterableStream):
             ),
             self,
             _desired,
-            **{
-                "order": order,
-                "mu": mu,
-                "eps": eps,
-                "leakage": leakage,
-                "out_mode": out_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "order": order,
+                    "mu": mu,
+                    "eps": eps,
+                    "leakage": leakage,
+                    "out_mode": out_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
     def anull(
         self,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2402,7 +2489,7 @@ class AudioStream(FilterableStream):
                 name="anull", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.audio(0)
 
@@ -2415,7 +2502,7 @@ class AudioStream(FilterableStream):
         pad_dur: Duration = Default(-1e-06),
         whole_dur: Duration = Default(-1e-06),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2441,15 +2528,17 @@ class AudioStream(FilterableStream):
                 name="apad", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "packet_size": packet_size,
-                "pad_len": pad_len,
-                "whole_len": whole_len,
-                "pad_dur": pad_dur,
-                "whole_dur": whole_dur,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "packet_size": packet_size,
+                    "pad_len": pad_len,
+                    "whole_len": whole_len,
+                    "pad_dur": pad_dur,
+                    "whole_dur": whole_dur,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2461,7 +2550,7 @@ class AudioStream(FilterableStream):
         ),
         seed: Int64 = Default(-1),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2484,12 +2573,14 @@ class AudioStream(FilterableStream):
                 name="aperms", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "mode": mode,
-                "seed": seed,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "seed": seed,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2507,7 +2598,7 @@ class AudioStream(FilterableStream):
         tolerance: Float = Default(0.0),
         angle: Float = Default(170.0),
         duration: Duration = Default(2.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> FilterNode:
         """
 
@@ -2541,20 +2632,22 @@ class AudioStream(FilterableStream):
                 typings_output="[StreamType.audio] + ([StreamType.video] if video else [])",
             ),
             self,
-            **{
-                "rate": rate,
-                "size": size,
-                "rc": rc,
-                "gc": gc,
-                "bc": bc,
-                "mpc": mpc,
-                "video": video,
-                "phasing": phasing,
-                "tolerance": tolerance,
-                "angle": angle,
-                "duration": duration,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "rate": rate,
+                    "size": size,
+                    "rc": rc,
+                    "gc": gc,
+                    "bc": bc,
+                    "mpc": mpc,
+                    "video": video,
+                    "phasing": phasing,
+                    "tolerance": tolerance,
+                    "angle": angle,
+                    "duration": duration,
+                },
+                extra_options,
+            ),
         )
 
         return filter_node
@@ -2570,7 +2663,7 @@ class AudioStream(FilterableStream):
         type: Int | Literal["triangular", "t", "sinusoidal", "s"] | Default = Default(
             "triangular"
         ),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2596,15 +2689,17 @@ class AudioStream(FilterableStream):
                 name="aphaser", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "in_gain": in_gain,
-                "out_gain": out_gain,
-                "delay": delay,
-                "decay": decay,
-                "speed": speed,
-                "type": type,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "in_gain": in_gain,
+                    "out_gain": out_gain,
+                    "delay": delay,
+                    "decay": decay,
+                    "speed": speed,
+                    "type": type,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2615,7 +2710,7 @@ class AudioStream(FilterableStream):
         level: Double = Default(1.0),
         order: Int = Default(8),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2639,13 +2734,15 @@ class AudioStream(FilterableStream):
                 name="aphaseshift", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "shift": shift,
-                "level": level,
-                "order": order,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "shift": shift,
+                    "level": level,
+                    "order": order,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2654,7 +2751,7 @@ class AudioStream(FilterableStream):
         _input1: AudioStream,
         *,
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2678,10 +2775,12 @@ class AudioStream(FilterableStream):
             ),
             self,
             _input1,
-            **{
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2696,7 +2795,7 @@ class AudioStream(FilterableStream):
         iterations: Int = Default(10),
         level: Boolean = Default(False),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2724,17 +2823,19 @@ class AudioStream(FilterableStream):
                 name="apsyclip", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "level_in": level_in,
-                "level_out": level_out,
-                "clip": clip,
-                "diff": diff,
-                "adaptive": adaptive,
-                "iterations": iterations,
-                "level": level,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "level_in": level_in,
+                    "level_out": level_out,
+                    "clip": clip,
+                    "diff": diff,
+                    "adaptive": adaptive,
+                    "iterations": iterations,
+                    "level": level,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2754,7 +2855,7 @@ class AudioStream(FilterableStream):
         bpm: Double = Default(120.0),
         ms: Int = Default(500),
         hz: Double = Default(2.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2785,20 +2886,22 @@ class AudioStream(FilterableStream):
                 name="apulsator", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "level_in": level_in,
-                "level_out": level_out,
-                "mode": mode,
-                "amount": amount,
-                "offset_l": offset_l,
-                "offset_r": offset_r,
-                "width": width,
-                "timing": timing,
-                "bpm": bpm,
-                "ms": ms,
-                "hz": hz,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "level_in": level_in,
+                    "level_out": level_out,
+                    "mode": mode,
+                    "amount": amount,
+                    "offset_l": offset_l,
+                    "offset_r": offset_r,
+                    "width": width,
+                    "timing": timing,
+                    "bpm": bpm,
+                    "ms": ms,
+                    "hz": hz,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2807,7 +2910,7 @@ class AudioStream(FilterableStream):
         *,
         limit: Duration = Default(2.0),
         speed: Double = Default(1.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2829,11 +2932,13 @@ class AudioStream(FilterableStream):
                 name="arealtime", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "limit": limit,
-                "speed": speed,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "limit": limit,
+                    "speed": speed,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2841,7 +2946,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         sample_rate: Int = Default(0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2862,16 +2967,18 @@ class AudioStream(FilterableStream):
                 name="aresample", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "sample_rate": sample_rate,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "sample_rate": sample_rate,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
     def areverse(
         self,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2889,7 +2996,7 @@ class AudioStream(FilterableStream):
                 name="areverse", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.audio(0)
 
@@ -2902,7 +3009,7 @@ class AudioStream(FilterableStream):
         delta: Float = Default(2.0),
         out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2928,14 +3035,16 @@ class AudioStream(FilterableStream):
             ),
             self,
             _desired,
-            **{
-                "order": order,
-                "lambda": _lambda,
-                "delta": delta,
-                "out_mode": out_mode,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "order": order,
+                    "lambda": _lambda,
+                    "delta": delta,
+                    "out_mode": out_mode,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2945,7 +3054,7 @@ class AudioStream(FilterableStream):
         model: String = Default(None),
         mix: Float = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -2968,12 +3077,14 @@ class AudioStream(FilterableStream):
                 name="arnndn", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "model": model,
-                "mix": mix,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "model": model,
+                    "mix": mix,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2982,7 +3093,7 @@ class AudioStream(FilterableStream):
         _input1: AudioStream,
         *,
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3004,10 +3115,12 @@ class AudioStream(FilterableStream):
             ),
             self,
             _input1,
-            **{
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3016,7 +3129,7 @@ class AudioStream(FilterableStream):
         *,
         timestamps: String = Default(None),
         samples: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> FilterNode:
         """
 
@@ -3041,11 +3154,13 @@ class AudioStream(FilterableStream):
                 typings_output="[StreamType.audio] * len(str(timestamps or samples).split('|'))",
             ),
             self,
-            **{
-                "timestamps": timestamps,
-                "samples": samples,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "timestamps": timestamps,
+                    "samples": samples,
+                },
+                extra_options,
+            ),
         )
 
         return filter_node
@@ -3055,7 +3170,7 @@ class AudioStream(FilterableStream):
         *,
         expr: String = Default("1"),
         outputs: Int = Default(1),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> FilterNode:
         """
 
@@ -3080,11 +3195,13 @@ class AudioStream(FilterableStream):
                 typings_output="[StreamType.audio] * int(outputs)",
             ),
             self,
-            **{
-                "expr": expr,
-                "outputs": outputs,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "expr": expr,
+                    "outputs": outputs,
+                },
+                extra_options,
+            ),
         )
 
         return filter_node
@@ -3094,7 +3211,7 @@ class AudioStream(FilterableStream):
         *,
         commands: String = Default(None),
         filename: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3116,11 +3233,13 @@ class AudioStream(FilterableStream):
                 name="asendcmd", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "commands": commands,
-                "filename": filename,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "commands": commands,
+                    "filename": filename,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3130,7 +3249,7 @@ class AudioStream(FilterableStream):
         nb_out_samples: Int = Default(1024),
         pad: Boolean = Default(True),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3153,12 +3272,14 @@ class AudioStream(FilterableStream):
                 name="asetnsamples", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "nb_out_samples": nb_out_samples,
-                "pad": pad,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "nb_out_samples": nb_out_samples,
+                    "pad": pad,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3166,7 +3287,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         expr: String = Default("PTS"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3187,10 +3308,12 @@ class AudioStream(FilterableStream):
                 name="asetpts", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "expr": expr,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "expr": expr,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3198,7 +3321,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         sample_rate: Int = Default(44100),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3219,10 +3342,12 @@ class AudioStream(FilterableStream):
                 name="asetrate", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "sample_rate": sample_rate,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "sample_rate": sample_rate,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3230,7 +3355,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         expr: String = Default("intb"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3251,16 +3376,18 @@ class AudioStream(FilterableStream):
                 name="asettb", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "expr": expr,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "expr": expr,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
     def ashowinfo(
         self,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3278,7 +3405,7 @@ class AudioStream(FilterableStream):
                 name="ashowinfo", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.audio(0)
 
@@ -3312,7 +3439,7 @@ class AudioStream(FilterableStream):
         ]
         | Default = Default(-1),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3335,12 +3462,14 @@ class AudioStream(FilterableStream):
                 name="asidedata", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "mode": mode,
-                "type": type,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "type": type,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3349,7 +3478,7 @@ class AudioStream(FilterableStream):
         _input1: AudioStream,
         *,
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3373,10 +3502,12 @@ class AudioStream(FilterableStream):
             ),
             self,
             _input1,
-            **{
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3393,7 +3524,7 @@ class AudioStream(FilterableStream):
         param: Double = Default(1.0),
         oversample: Int = Default(1),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3419,15 +3550,17 @@ class AudioStream(FilterableStream):
                 name="asoftclip", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "type": type,
-                "threshold": threshold,
-                "output": output,
-                "param": param,
-                "oversample": oversample,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "type": type,
+                    "threshold": threshold,
+                    "output": output,
+                    "param": param,
+                    "oversample": oversample,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3483,7 +3616,7 @@ class AudioStream(FilterableStream):
         | Default = Default(
             "all+mean+variance+centroid+spread+skewness+kurtosis+entropy+flatness+crest+flux+slope+decrease+rolloff"
         ),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3509,13 +3642,15 @@ class AudioStream(FilterableStream):
                 typings_output=("audio",),
             ),
             self,
-            **{
-                "win_size": win_size,
-                "win_func": win_func,
-                "overlap": overlap,
-                "measure": measure,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "win_size": win_size,
+                    "win_func": win_func,
+                    "overlap": overlap,
+                    "measure": measure,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3523,7 +3658,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         outputs: Int = Default(2),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> FilterNode:
         """
 
@@ -3547,10 +3682,12 @@ class AudioStream(FilterableStream):
                 typings_output="[StreamType.audio] * int(outputs)",
             ),
             self,
-            **{
-                "outputs": outputs,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "outputs": outputs,
+                },
+                extra_options,
+            ),
         )
 
         return filter_node
@@ -3565,7 +3702,7 @@ class AudioStream(FilterableStream):
         lmctl: String = Default(None),
         lmname: String = Default(None),
         logfn: String = Default("/dev/null"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3592,16 +3729,18 @@ class AudioStream(FilterableStream):
                 name="asr", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "rate": rate,
-                "hmm": hmm,
-                "dict": dict,
-                "lm": lm,
-                "lmctl": lmctl,
-                "lmname": lmname,
-                "logfn": logfn,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "rate": rate,
+                    "hmm": hmm,
+                    "dict": dict,
+                    "lm": lm,
+                    "lmctl": lmctl,
+                    "lmname": lmname,
+                    "logfn": logfn,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3679,7 +3818,7 @@ class AudioStream(FilterableStream):
         | Default = Default(
             "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count"
         ),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3704,14 +3843,16 @@ class AudioStream(FilterableStream):
                 name="astats", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "length": length,
-                "metadata": metadata,
-                "reset": reset,
-                "measure_perchannel": measure_perchannel,
-                "measure_overall": measure_overall,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "length": length,
+                    "metadata": metadata,
+                    "reset": reset,
+                    "measure_perchannel": measure_perchannel,
+                    "measure_overall": measure_overall,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3728,7 +3869,7 @@ class AudioStream(FilterableStream):
         delay: Double = Default(20.0),
         channels: String = Default("all"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3758,19 +3899,21 @@ class AudioStream(FilterableStream):
                 name="asubboost", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "dry": dry,
-                "wet": wet,
-                "boost": boost,
-                "decay": decay,
-                "feedback": feedback,
-                "cutoff": cutoff,
-                "slope": slope,
-                "delay": delay,
-                "channels": channels,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "dry": dry,
+                    "wet": wet,
+                    "boost": boost,
+                    "decay": decay,
+                    "feedback": feedback,
+                    "cutoff": cutoff,
+                    "slope": slope,
+                    "delay": delay,
+                    "channels": channels,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3781,7 +3924,7 @@ class AudioStream(FilterableStream):
         order: Int = Default(10),
         level: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3805,13 +3948,15 @@ class AudioStream(FilterableStream):
                 name="asubcut", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "cutoff": cutoff,
-                "order": order,
-                "level": level,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "cutoff": cutoff,
+                    "order": order,
+                    "level": level,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3822,7 +3967,7 @@ class AudioStream(FilterableStream):
         order: Int = Default(10),
         level: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3846,13 +3991,15 @@ class AudioStream(FilterableStream):
                 name="asupercut", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "cutoff": cutoff,
-                "order": order,
-                "level": level,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "cutoff": cutoff,
+                    "order": order,
+                    "level": level,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3864,7 +4011,7 @@ class AudioStream(FilterableStream):
         qfactor: Double = Default(1.0),
         level: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3889,14 +4036,16 @@ class AudioStream(FilterableStream):
                 name="asuperpass", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "centerf": centerf,
-                "order": order,
-                "qfactor": qfactor,
-                "level": level,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "centerf": centerf,
+                    "order": order,
+                    "qfactor": qfactor,
+                    "level": level,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3908,7 +4057,7 @@ class AudioStream(FilterableStream):
         qfactor: Double = Default(1.0),
         level: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3933,14 +4082,16 @@ class AudioStream(FilterableStream):
                 name="asuperstop", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "centerf": centerf,
-                "order": order,
-                "qfactor": qfactor,
-                "level": level,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "centerf": centerf,
+                    "order": order,
+                    "qfactor": qfactor,
+                    "level": level,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3948,7 +4099,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         tempo: Double = Default(1.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -3969,10 +4120,12 @@ class AudioStream(FilterableStream):
                 name="atempo", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "tempo": tempo,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "tempo": tempo,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3985,7 +4138,7 @@ class AudioStream(FilterableStream):
         order: Int = Default(5),
         level: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4011,15 +4164,17 @@ class AudioStream(FilterableStream):
                 name="atilt", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "freq": freq,
-                "slope": slope,
-                "width": width,
-                "order": order,
-                "level": level,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "freq": freq,
+                    "slope": slope,
+                    "width": width,
+                    "order": order,
+                    "level": level,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4033,7 +4188,7 @@ class AudioStream(FilterableStream):
         duration: Duration = Default(0.0),
         start_sample: Int64 = Default(-1),
         end_sample: Int64 = Default("I64_MAX"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4060,16 +4215,18 @@ class AudioStream(FilterableStream):
                 name="atrim", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "start": start,
-                "end": end,
-                "start_pts": start_pts,
-                "end_pts": end_pts,
-                "duration": duration,
-                "start_sample": start_sample,
-                "end_sample": end_sample,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "start": start,
+                    "end": end,
+                    "start_pts": start_pts,
+                    "end_pts": end_pts,
+                    "duration": duration,
+                    "start_sample": start_sample,
+                    "end_sample": end_sample,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4094,7 +4251,7 @@ class AudioStream(FilterableStream):
         scale: Int | Literal["lin", "sqrt", "cbrt", "log"] | Default = Default("lin"),
         swap: Boolean = Default(True),
         mirror: Int | Literal["none", "x", "y", "xy"] | Default = Default("none"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
 
@@ -4130,25 +4287,27 @@ class AudioStream(FilterableStream):
                 name="avectorscope", typings_input=("audio",), typings_output=("video",)
             ),
             self,
-            **{
-                "mode": mode,
-                "rate": rate,
-                "size": size,
-                "rc": rc,
-                "gc": gc,
-                "bc": bc,
-                "ac": ac,
-                "rf": rf,
-                "gf": gf,
-                "bf": bf,
-                "af": af,
-                "zoom": zoom,
-                "draw": draw,
-                "scale": scale,
-                "swap": swap,
-                "mirror": mirror,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mode": mode,
+                    "rate": rate,
+                    "size": size,
+                    "rc": rc,
+                    "gc": gc,
+                    "bc": bc,
+                    "ac": ac,
+                    "rf": rf,
+                    "gf": gf,
+                    "bf": bf,
+                    "af": af,
+                    "zoom": zoom,
+                    "draw": draw,
+                    "scale": scale,
+                    "swap": swap,
+                    "mirror": mirror,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -4158,7 +4317,7 @@ class AudioStream(FilterableStream):
         *,
         size: Int = Default(256),
         algo: Int | Literal["slow", "fast", "best"] | Default = Default("best"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4183,11 +4342,13 @@ class AudioStream(FilterableStream):
             ),
             self,
             _axcorrelate1,
-            **{
-                "size": size,
-                "algo": algo,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "size": size,
+                    "algo": algo,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4195,7 +4356,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         bind_address: String = Default("tcp://*:5555"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4216,10 +4377,12 @@ class AudioStream(FilterableStream):
                 name="azmq", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "bind_address": bind_address,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "bind_address": bind_address,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4241,7 +4404,7 @@ class AudioStream(FilterableStream):
         | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4272,20 +4435,22 @@ class AudioStream(FilterableStream):
                 name="bandpass", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "csg": csg,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "frequency": frequency,
+                    "width_type": width_type,
+                    "width": width,
+                    "csg": csg,
+                    "mix": mix,
+                    "channels": channels,
+                    "normalize": normalize,
+                    "transform": transform,
+                    "precision": precision,
+                    "blocksize": blocksize,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4306,7 +4471,7 @@ class AudioStream(FilterableStream):
         | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4336,19 +4501,21 @@ class AudioStream(FilterableStream):
                 name="bandreject", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "frequency": frequency,
+                    "width_type": width_type,
+                    "width": width,
+                    "mix": mix,
+                    "channels": channels,
+                    "normalize": normalize,
+                    "transform": transform,
+                    "precision": precision,
+                    "blocksize": blocksize,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4371,7 +4538,7 @@ class AudioStream(FilterableStream):
         | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4403,21 +4570,23 @@ class AudioStream(FilterableStream):
                 name="bass", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "gain": gain,
-                "poles": poles,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "frequency": frequency,
+                    "width_type": width_type,
+                    "width": width,
+                    "gain": gain,
+                    "poles": poles,
+                    "mix": mix,
+                    "channels": channels,
+                    "normalize": normalize,
+                    "transform": transform,
+                    "precision": precision,
+                    "blocksize": blocksize,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4437,7 +4606,7 @@ class AudioStream(FilterableStream):
         | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4466,18 +4635,20 @@ class AudioStream(FilterableStream):
                 name="biquad", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "a0": a0,
-                "a1": a1,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "a0": a0,
+                    "a1": a1,
+                    "mix": mix,
+                    "channels": channels,
+                    "normalize": normalize,
+                    "transform": transform,
+                    "precision": precision,
+                    "blocksize": blocksize,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4489,7 +4660,7 @@ class AudioStream(FilterableStream):
         ),
         fcut: Int = Default(0),
         feed: Int = Default(0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4512,12 +4683,14 @@ class AudioStream(FilterableStream):
                 name="bs2b", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "profile": profile,
-                "fcut": fcut,
-                "feed": feed,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "profile": profile,
+                    "fcut": fcut,
+                    "feed": feed,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4526,7 +4699,7 @@ class AudioStream(FilterableStream):
         *,
         map: String = Default(None),
         channel_layout: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4548,11 +4721,13 @@ class AudioStream(FilterableStream):
                 name="channelmap", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "map": map,
-                "channel_layout": channel_layout,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "map": map,
+                    "channel_layout": channel_layout,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4561,7 +4736,7 @@ class AudioStream(FilterableStream):
         *,
         channel_layout: String = Default("stereo"),
         channels: String = Default("all"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> FilterNode:
         """
 
@@ -4586,11 +4761,13 @@ class AudioStream(FilterableStream):
                 typings_output="[StreamType.audio] * CHANNEL_LAYOUT[str(channel_layout)]",
             ),
             self,
-            **{
-                "channel_layout": channel_layout,
-                "channels": channels,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "channel_layout": channel_layout,
+                    "channels": channels,
+                },
+                extra_options,
+            ),
         )
 
         return filter_node
@@ -4604,7 +4781,7 @@ class AudioStream(FilterableStream):
         decays: String = Default(None),
         speeds: String = Default(None),
         depths: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4630,15 +4807,17 @@ class AudioStream(FilterableStream):
                 name="chorus", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "in_gain": in_gain,
-                "out_gain": out_gain,
-                "delays": delays,
-                "decays": decays,
-                "speeds": speeds,
-                "depths": depths,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "in_gain": in_gain,
+                    "out_gain": out_gain,
+                    "delays": delays,
+                    "decays": decays,
+                    "speeds": speeds,
+                    "depths": depths,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4652,7 +4831,7 @@ class AudioStream(FilterableStream):
         gain: Double = Default(0.0),
         volume: Double = Default(0.0),
         delay: Double = Default(0.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4679,16 +4858,18 @@ class AudioStream(FilterableStream):
                 name="compand", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "attacks": attacks,
-                "decays": decays,
-                "points": points,
-                "soft-knee": soft_knee,
-                "gain": gain,
-                "volume": volume,
-                "delay": delay,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "attacks": attacks,
+                    "decays": decays,
+                    "points": points,
+                    "soft-knee": soft_knee,
+                    "gain": gain,
+                    "volume": volume,
+                    "delay": delay,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4702,7 +4883,7 @@ class AudioStream(FilterableStream):
         wet: Double = Default(1.0),
         temp: Int = Default(20),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4731,16 +4912,18 @@ class AudioStream(FilterableStream):
                 typings_output=("audio",),
             ),
             self,
-            **{
-                "mm": mm,
-                "cm": cm,
-                "m": m,
-                "dry": dry,
-                "wet": wet,
-                "temp": temp,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "mm": mm,
+                    "cm": cm,
+                    "m": m,
+                    "dry": dry,
+                    "wet": wet,
+                    "temp": temp,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4754,7 +4937,7 @@ class AudioStream(FilterableStream):
         level_out: Double = Default(1.0),
         block_size: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4781,16 +4964,18 @@ class AudioStream(FilterableStream):
                 name="crossfeed", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "strength": strength,
-                "range": range,
-                "slope": slope,
-                "level_in": level_in,
-                "level_out": level_out,
-                "block_size": block_size,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "strength": strength,
+                    "range": range,
+                    "slope": slope,
+                    "level_in": level_in,
+                    "level_out": level_out,
+                    "block_size": block_size,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4800,7 +4985,7 @@ class AudioStream(FilterableStream):
         i: Float = Default(2.0),
         c: Boolean = Default(True),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4823,12 +5008,14 @@ class AudioStream(FilterableStream):
                 name="crystalizer", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "i": i,
-                "c": c,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "i": i,
+                    "c": c,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4838,7 +5025,7 @@ class AudioStream(FilterableStream):
         shift: Double = Default(0.0),
         limitergain: Double = Default(0.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4861,12 +5048,14 @@ class AudioStream(FilterableStream):
                 name="dcshift", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "shift": shift,
-                "limitergain": limitergain,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "shift": shift,
+                    "limitergain": limitergain,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4878,7 +5067,7 @@ class AudioStream(FilterableStream):
         f: Double = Default(0.5),
         s: Int | Literal["i", "o", "e"] | Default = Default("o"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4903,14 +5092,16 @@ class AudioStream(FilterableStream):
                 name="deesser", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "i": i,
-                "m": m,
-                "f": f,
-                "s": s,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "i": i,
+                    "m": m,
+                    "f": f,
+                    "s": s,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4921,7 +5112,7 @@ class AudioStream(FilterableStream):
         enhance: Double = Default(1.0),
         voice: Double = Default(2.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4947,13 +5138,15 @@ class AudioStream(FilterableStream):
                 typings_output=("audio",),
             ),
             self,
-            **{
-                "original": original,
-                "enhance": enhance,
-                "voice": voice,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "original": original,
+                    "enhance": enhance,
+                    "voice": voice,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -4961,7 +5154,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         length: Double = Default(3.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -4982,10 +5175,12 @@ class AudioStream(FilterableStream):
                 name="drmeter", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "length": length,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "length": length,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -5006,7 +5201,7 @@ class AudioStream(FilterableStream):
         overlap: Double = Default(0.0),
         curve: String = Default(None),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -5040,29 +5235,31 @@ class AudioStream(FilterableStream):
                 name="dynaudnorm", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "framelen": framelen,
-                "gausssize": gausssize,
-                "peak": peak,
-                "maxgain": maxgain,
-                "targetrms": targetrms,
-                "coupling": coupling,
-                "correctdc": correctdc,
-                "altboundary": altboundary,
-                "compress": compress,
-                "threshold": threshold,
-                "channels": channels,
-                "overlap": overlap,
-                "curve": curve,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "framelen": framelen,
+                    "gausssize": gausssize,
+                    "peak": peak,
+                    "maxgain": maxgain,
+                    "targetrms": targetrms,
+                    "coupling": coupling,
+                    "correctdc": correctdc,
+                    "altboundary": altboundary,
+                    "compress": compress,
+                    "threshold": threshold,
+                    "channels": channels,
+                    "overlap": overlap,
+                    "curve": curve,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
     def earwax(
         self,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -5080,7 +5277,7 @@ class AudioStream(FilterableStream):
                 name="earwax", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.audio(0)
 
@@ -5108,7 +5305,7 @@ class AudioStream(FilterableStream):
         lra_high: Double = Default(0.0),
         sample_peak: Double = Default(0.0),
         true_peak: Double = Default(0.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> FilterNode:
         """
 
@@ -5148,26 +5345,28 @@ class AudioStream(FilterableStream):
                 typings_output="[StreamType.video] if video else [] + [StreamType.audio]",
             ),
             self,
-            **{
-                "video": video,
-                "size": size,
-                "meter": meter,
-                "framelog": framelog,
-                "metadata": metadata,
-                "peak": peak,
-                "dualmono": dualmono,
-                "panlaw": panlaw,
-                "target": target,
-                "gauge": gauge,
-                "scale": scale,
-                "integrated": integrated,
-                "range": range,
-                "lra_low": lra_low,
-                "lra_high": lra_high,
-                "sample_peak": sample_peak,
-                "true_peak": true_peak,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "video": video,
+                    "size": size,
+                    "meter": meter,
+                    "framelog": framelog,
+                    "metadata": metadata,
+                    "peak": peak,
+                    "dualmono": dualmono,
+                    "panlaw": panlaw,
+                    "target": target,
+                    "gauge": gauge,
+                    "scale": scale,
+                    "integrated": integrated,
+                    "range": range,
+                    "lra_low": lra_low,
+                    "lra_high": lra_high,
+                    "sample_peak": sample_peak,
+                    "true_peak": true_peak,
+                },
+                extra_options,
+            ),
         )
 
         return filter_node
@@ -5190,7 +5389,7 @@ class AudioStream(FilterableStream):
         | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -5221,20 +5420,22 @@ class AudioStream(FilterableStream):
                 name="equalizer", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "gain": gain,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "frequency": frequency,
+                    "width_type": width_type,
+                    "width": width,
+                    "gain": gain,
+                    "mix": mix,
+                    "channels": channels,
+                    "normalize": normalize,
+                    "transform": transform,
+                    "precision": precision,
+                    "blocksize": blocksize,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -5244,7 +5445,7 @@ class AudioStream(FilterableStream):
         m: Float = Default(2.5),
         c: Boolean = Default(True),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -5267,12 +5468,14 @@ class AudioStream(FilterableStream):
                 name="extrastereo", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "m": m,
-                "c": c,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "m": m,
+                    "c": c,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -5309,7 +5512,7 @@ class AudioStream(FilterableStream):
         | Default = Default("linlog"),
         fft2: Boolean = Default(False),
         min_phase: Boolean = Default(False),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -5342,22 +5545,24 @@ class AudioStream(FilterableStream):
                 name="firequalizer", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "gain": gain,
-                "gain_entry": gain_entry,
-                "delay": delay,
-                "accuracy": accuracy,
-                "wfunc": wfunc,
-                "fixed": fixed,
-                "multi": multi,
-                "zero_phase": zero_phase,
-                "scale": scale,
-                "dumpfile": dumpfile,
-                "dumpscale": dumpscale,
-                "fft2": fft2,
-                "min_phase": min_phase,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "gain": gain,
+                    "gain_entry": gain_entry,
+                    "delay": delay,
+                    "accuracy": accuracy,
+                    "wfunc": wfunc,
+                    "fixed": fixed,
+                    "multi": multi,
+                    "zero_phase": zero_phase,
+                    "scale": scale,
+                    "dumpfile": dumpfile,
+                    "dumpscale": dumpscale,
+                    "fft2": fft2,
+                    "min_phase": min_phase,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -5374,7 +5579,7 @@ class AudioStream(FilterableStream):
         ),
         phase: Double = Default(25.0),
         interp: Int | Literal["linear", "quadratic"] | Default = Default("linear"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -5402,17 +5607,19 @@ class AudioStream(FilterableStream):
                 name="flanger", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "delay": delay,
-                "depth": depth,
-                "regen": regen,
-                "width": width,
-                "speed": speed,
-                "shape": shape,
-                "phase": phase,
-                "interp": interp,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "delay": delay,
+                    "depth": depth,
+                    "regen": regen,
+                    "width": width,
+                    "speed": speed,
+                    "shape": shape,
+                    "phase": phase,
+                    "interp": interp,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -5434,7 +5641,7 @@ class AudioStream(FilterableStream):
         right_balance: Double = Default(1.0),
         right_gain: Double = Default(1.0),
         right_phase: Boolean = Default(True),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -5467,22 +5674,24 @@ class AudioStream(FilterableStream):
                 name="haas", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "level_in": level_in,
-                "level_out": level_out,
-                "side_gain": side_gain,
-                "middle_source": middle_source,
-                "middle_phase": middle_phase,
-                "left_delay": left_delay,
-                "left_balance": left_balance,
-                "left_gain": left_gain,
-                "left_phase": left_phase,
-                "right_delay": right_delay,
-                "right_balance": right_balance,
-                "right_gain": right_gain,
-                "right_phase": right_phase,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "level_in": level_in,
+                    "level_out": level_out,
+                    "side_gain": side_gain,
+                    "middle_source": middle_source,
+                    "middle_phase": middle_phase,
+                    "left_delay": left_delay,
+                    "left_balance": left_balance,
+                    "left_gain": left_gain,
+                    "left_phase": left_phase,
+                    "right_delay": right_delay,
+                    "right_balance": right_balance,
+                    "right_gain": right_gain,
+                    "right_phase": right_phase,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -5497,7 +5706,7 @@ class AudioStream(FilterableStream):
         | Literal["off", "lle", "pe", "cdt", "tgm"]
         | Default = Default("off"),
         bits_per_sample: Int | Literal["16", "20", "24"] | Default = Default(16),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -5523,15 +5732,17 @@ class AudioStream(FilterableStream):
                 name="hdcd", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "disable_autoconvert": disable_autoconvert,
-                "process_stereo": process_stereo,
-                "cdt_ms": cdt_ms,
-                "force_pe": force_pe,
-                "analyze_mode": analyze_mode,
-                "bits_per_sample": bits_per_sample,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "disable_autoconvert": disable_autoconvert,
+                    "process_stereo": process_stereo,
+                    "cdt_ms": cdt_ms,
+                    "force_pe": force_pe,
+                    "analyze_mode": analyze_mode,
+                    "bits_per_sample": bits_per_sample,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -5553,7 +5764,7 @@ class AudioStream(FilterableStream):
         | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -5584,20 +5795,22 @@ class AudioStream(FilterableStream):
                 name="highpass", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "poles": poles,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "frequency": frequency,
+                    "width_type": width_type,
+                    "width": width,
+                    "poles": poles,
+                    "mix": mix,
+                    "channels": channels,
+                    "normalize": normalize,
+                    "transform": transform,
+                    "precision": precision,
+                    "blocksize": blocksize,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -5620,7 +5833,7 @@ class AudioStream(FilterableStream):
         | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -5652,21 +5865,23 @@ class AudioStream(FilterableStream):
                 name="highshelf", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "gain": gain,
-                "poles": poles,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "frequency": frequency,
+                    "width_type": width_type,
+                    "width": width,
+                    "gain": gain,
+                    "poles": poles,
+                    "mix": mix,
+                    "channels": channels,
+                    "normalize": normalize,
+                    "transform": transform,
+                    "precision": precision,
+                    "blocksize": blocksize,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -5686,7 +5901,7 @@ class AudioStream(FilterableStream):
         print_format: Int | Literal["none", "json", "summary"] | Default = Default(
             "none"
         ),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -5717,20 +5932,22 @@ class AudioStream(FilterableStream):
                 name="loudnorm", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "I": I,
-                "LRA": LRA,
-                "TP": TP,
-                "measured_I": measured_I,
-                "measured_LRA": measured_LRA,
-                "measured_TP": measured_TP,
-                "measured_thresh": measured_thresh,
-                "offset": offset,
-                "linear": linear,
-                "dual_mono": dual_mono,
-                "print_format": print_format,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "I": I,
+                    "LRA": LRA,
+                    "TP": TP,
+                    "measured_I": measured_I,
+                    "measured_LRA": measured_LRA,
+                    "measured_TP": measured_TP,
+                    "measured_thresh": measured_thresh,
+                    "offset": offset,
+                    "linear": linear,
+                    "dual_mono": dual_mono,
+                    "print_format": print_format,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -5752,7 +5969,7 @@ class AudioStream(FilterableStream):
         | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -5783,20 +6000,22 @@ class AudioStream(FilterableStream):
                 name="lowpass", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "poles": poles,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "frequency": frequency,
+                    "width_type": width_type,
+                    "width": width,
+                    "poles": poles,
+                    "mix": mix,
+                    "channels": channels,
+                    "normalize": normalize,
+                    "transform": transform,
+                    "precision": precision,
+                    "blocksize": blocksize,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -5819,7 +6038,7 @@ class AudioStream(FilterableStream):
         | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -5851,21 +6070,23 @@ class AudioStream(FilterableStream):
                 name="lowshelf", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "gain": gain,
-                "poles": poles,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "frequency": frequency,
+                    "width_type": width_type,
+                    "width": width,
+                    "gain": gain,
+                    "poles": poles,
+                    "mix": mix,
+                    "channels": channels,
+                    "normalize": normalize,
+                    "transform": transform,
+                    "precision": precision,
+                    "blocksize": blocksize,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -5875,7 +6096,7 @@ class AudioStream(FilterableStream):
         args: String = Default(
             "0.005,0.1 6 -47/-40,-34/-34,-17/-33 100 | 0.003,0.05 6 -47/-40,-34/-34,-17/-33 400 | 0.000625,0.0125 6 -47/-40,-34/-34,-15/-33 1600 | 0.0001,0.025 6 -47/-40,-34/-34,-31/-31,-0/-30 6400 | 0,0.025 6 -38/-31,-28/-28,-0/-25 22000"
         ),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -5896,10 +6117,12 @@ class AudioStream(FilterableStream):
                 name="mcompand", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "args": args,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "args": args,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -5907,7 +6130,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         args: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -5928,10 +6151,12 @@ class AudioStream(FilterableStream):
                 name="pan", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "args": args,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "args": args,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -5940,7 +6165,7 @@ class AudioStream(FilterableStream):
         *,
         track_gain: Float = Default(0.0),
         track_peak: Float = Default(0.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -5962,11 +6187,13 @@ class AudioStream(FilterableStream):
                 name="replaygain", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "track_gain": track_gain,
-                "track_peak": track_peak,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "track_gain": track_gain,
+                    "track_peak": track_peak,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -5991,7 +6218,7 @@ class AudioStream(FilterableStream):
             "speed"
         ),
         channels: Int | Literal["apart", "together"] | Default = Default("apart"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -6021,19 +6248,21 @@ class AudioStream(FilterableStream):
                 name="rubberband", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "tempo": tempo,
-                "pitch": pitch,
-                "transients": transients,
-                "detector": detector,
-                "phase": phase,
-                "window": window,
-                "smoothing": smoothing,
-                "formant": formant,
-                "pitchq": pitchq,
-                "channels": channels,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "tempo": tempo,
+                    "pitch": pitch,
+                    "transients": transients,
+                    "detector": detector,
+                    "phase": phase,
+                    "window": window,
+                    "smoothing": smoothing,
+                    "formant": formant,
+                    "pitchq": pitchq,
+                    "channels": channels,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -6076,7 +6305,7 @@ class AudioStream(FilterableStream):
         ]
         | Default = Default("unspecified"),
         cscheme: String = Default("1|0.5|0|0|0.5|1"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
 
@@ -6122,35 +6351,37 @@ class AudioStream(FilterableStream):
                 name="showcqt", typings_input=("audio",), typings_output=("video",)
             ),
             self,
-            **{
-                "size": size,
-                "fps": fps,
-                "bar_h": bar_h,
-                "axis_h": axis_h,
-                "sono_h": sono_h,
-                "fullhd": fullhd,
-                "sono_v": sono_v,
-                "bar_v": bar_v,
-                "sono_g": sono_g,
-                "bar_g": bar_g,
-                "bar_t": bar_t,
-                "timeclamp": timeclamp,
-                "attack": attack,
-                "basefreq": basefreq,
-                "endfreq": endfreq,
-                "coeffclamp": coeffclamp,
-                "tlength": tlength,
-                "count": count,
-                "fcount": fcount,
-                "fontfile": fontfile,
-                "font": font,
-                "fontcolor": fontcolor,
-                "axisfile": axisfile,
-                "axis": axis,
-                "csp": csp,
-                "cscheme": cscheme,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "size": size,
+                    "fps": fps,
+                    "bar_h": bar_h,
+                    "axis_h": axis_h,
+                    "sono_h": sono_h,
+                    "fullhd": fullhd,
+                    "sono_v": sono_v,
+                    "bar_v": bar_v,
+                    "sono_g": sono_g,
+                    "bar_g": bar_g,
+                    "bar_t": bar_t,
+                    "timeclamp": timeclamp,
+                    "attack": attack,
+                    "basefreq": basefreq,
+                    "endfreq": endfreq,
+                    "coeffclamp": coeffclamp,
+                    "tlength": tlength,
+                    "count": count,
+                    "fcount": fcount,
+                    "fontfile": fontfile,
+                    "font": font,
+                    "fontcolor": fontcolor,
+                    "axisfile": axisfile,
+                    "axis": axis,
+                    "csp": csp,
+                    "cscheme": cscheme,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6181,7 +6412,7 @@ class AudioStream(FilterableStream):
         direction: Int | Literal["lr", "rl", "ud", "du"] | Default = Default("lr"),
         bar: Float = Default(0.0),
         rotation: Float = Default(0.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
 
@@ -6217,25 +6448,27 @@ class AudioStream(FilterableStream):
                 name="showcwt", typings_input=("audio",), typings_output=("video",)
             ),
             self,
-            **{
-                "size": size,
-                "rate": rate,
-                "scale": scale,
-                "iscale": iscale,
-                "min": min,
-                "max": max,
-                "imin": imin,
-                "imax": imax,
-                "logb": logb,
-                "deviation": deviation,
-                "pps": pps,
-                "mode": mode,
-                "slide": slide,
-                "direction": direction,
-                "bar": bar,
-                "rotation": rotation,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "size": size,
+                    "rate": rate,
+                    "scale": scale,
+                    "iscale": iscale,
+                    "min": min,
+                    "max": max,
+                    "imin": imin,
+                    "imax": imax,
+                    "logb": logb,
+                    "deviation": deviation,
+                    "pps": pps,
+                    "mode": mode,
+                    "slide": slide,
+                    "direction": direction,
+                    "bar": bar,
+                    "rotation": rotation,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6285,7 +6518,7 @@ class AudioStream(FilterableStream):
             "magnitude"
         ),
         channels: String = Default("all"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
 
@@ -6319,23 +6552,25 @@ class AudioStream(FilterableStream):
                 name="showfreqs", typings_input=("audio",), typings_output=("video",)
             ),
             self,
-            **{
-                "size": size,
-                "rate": rate,
-                "mode": mode,
-                "ascale": ascale,
-                "fscale": fscale,
-                "win_size": win_size,
-                "win_func": win_func,
-                "overlap": overlap,
-                "averaging": averaging,
-                "colors": colors,
-                "cmode": cmode,
-                "minamp": minamp,
-                "data": data,
-                "channels": channels,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "size": size,
+                    "rate": rate,
+                    "mode": mode,
+                    "ascale": ascale,
+                    "fscale": fscale,
+                    "win_size": win_size,
+                    "win_func": win_func,
+                    "overlap": overlap,
+                    "averaging": averaging,
+                    "colors": colors,
+                    "cmode": cmode,
+                    "minamp": minamp,
+                    "data": data,
+                    "channels": channels,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6371,7 +6606,7 @@ class AudioStream(FilterableStream):
         ]
         | Default = Default("hann"),
         rate: Video_rate = Default("25"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
 
@@ -6395,13 +6630,15 @@ class AudioStream(FilterableStream):
                 name="showspatial", typings_input=("audio",), typings_output=("video",)
             ),
             self,
-            **{
-                "size": size,
-                "win_size": win_size,
-                "win_func": win_func,
-                "rate": rate,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "size": size,
+                    "win_size": win_size,
+                    "win_func": win_func,
+                    "rate": rate,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6479,7 +6716,7 @@ class AudioStream(FilterableStream):
         drange: Float = Default(120.0),
         limit: Float = Default(0.0),
         opacity: Float = Default(1.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
 
@@ -6519,29 +6756,31 @@ class AudioStream(FilterableStream):
                 name="showspectrum", typings_input=("audio",), typings_output=("video",)
             ),
             self,
-            **{
-                "size": size,
-                "slide": slide,
-                "mode": mode,
-                "color": color,
-                "scale": scale,
-                "fscale": fscale,
-                "saturation": saturation,
-                "win_func": win_func,
-                "orientation": orientation,
-                "overlap": overlap,
-                "gain": gain,
-                "data": data,
-                "rotation": rotation,
-                "start": start,
-                "stop": stop,
-                "fps": fps,
-                "legend": legend,
-                "drange": drange,
-                "limit": limit,
-                "opacity": opacity,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "size": size,
+                    "slide": slide,
+                    "mode": mode,
+                    "color": color,
+                    "scale": scale,
+                    "fscale": fscale,
+                    "saturation": saturation,
+                    "win_func": win_func,
+                    "orientation": orientation,
+                    "overlap": overlap,
+                    "gain": gain,
+                    "data": data,
+                    "rotation": rotation,
+                    "start": start,
+                    "stop": stop,
+                    "fps": fps,
+                    "legend": legend,
+                    "drange": drange,
+                    "limit": limit,
+                    "opacity": opacity,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6611,7 +6850,7 @@ class AudioStream(FilterableStream):
         drange: Float = Default(120.0),
         limit: Float = Default(0.0),
         opacity: Float = Default(1.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
 
@@ -6649,25 +6888,27 @@ class AudioStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **{
-                "size": size,
-                "mode": mode,
-                "color": color,
-                "scale": scale,
-                "fscale": fscale,
-                "saturation": saturation,
-                "win_func": win_func,
-                "orientation": orientation,
-                "gain": gain,
-                "legend": legend,
-                "rotation": rotation,
-                "start": start,
-                "stop": stop,
-                "drange": drange,
-                "limit": limit,
-                "opacity": opacity,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "size": size,
+                    "mode": mode,
+                    "color": color,
+                    "scale": scale,
+                    "fscale": fscale,
+                    "saturation": saturation,
+                    "win_func": win_func,
+                    "orientation": orientation,
+                    "gain": gain,
+                    "legend": legend,
+                    "rotation": rotation,
+                    "start": start,
+                    "stop": stop,
+                    "drange": drange,
+                    "limit": limit,
+                    "opacity": opacity,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6689,7 +6930,7 @@ class AudioStream(FilterableStream):
         p: Float = Default(0.0),
         m: Int | Literal["p", "r"] | Default = Default("p"),
         ds: Int | Literal["lin", "log"] | Default = Default("lin"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
 
@@ -6724,24 +6965,26 @@ class AudioStream(FilterableStream):
                 name="showvolume", typings_input=("audio",), typings_output=("video",)
             ),
             self,
-            **{
-                "rate": rate,
-                "b": b,
-                "w": w,
-                "h": h,
-                "f": f,
-                "c": c,
-                "t": t,
-                "v": v,
-                "dm": dm,
-                "dmc": dmc,
-                "o": o,
-                "s": s,
-                "p": p,
-                "m": m,
-                "ds": ds,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "rate": rate,
+                    "b": b,
+                    "w": w,
+                    "h": h,
+                    "f": f,
+                    "c": c,
+                    "t": t,
+                    "v": v,
+                    "dm": dm,
+                    "dmc": dmc,
+                    "o": o,
+                    "s": s,
+                    "p": p,
+                    "m": m,
+                    "ds": ds,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6760,7 +7003,7 @@ class AudioStream(FilterableStream):
         ),
         scale: Int | Literal["lin", "log", "sqrt", "cbrt"] | Default = Default("lin"),
         draw: Int | Literal["scale", "full"] | Default = Default("scale"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
 
@@ -6788,17 +7031,19 @@ class AudioStream(FilterableStream):
                 name="showwaves", typings_input=("audio",), typings_output=("video",)
             ),
             self,
-            **{
-                "size": size,
-                "mode": mode,
-                "n": n,
-                "rate": rate,
-                "split_channels": split_channels,
-                "colors": colors,
-                "scale": scale,
-                "draw": draw,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "size": size,
+                    "mode": mode,
+                    "n": n,
+                    "rate": rate,
+                    "split_channels": split_channels,
+                    "colors": colors,
+                    "scale": scale,
+                    "draw": draw,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6813,7 +7058,7 @@ class AudioStream(FilterableStream):
         scale: Int | Literal["lin", "log", "sqrt", "cbrt"] | Default = Default("lin"),
         draw: Int | Literal["scale", "full"] | Default = Default("scale"),
         filter: Int | Literal["average", "peak"] | Default = Default("average"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
 
@@ -6839,15 +7084,17 @@ class AudioStream(FilterableStream):
                 name="showwavespic", typings_input=("audio",), typings_output=("video",)
             ),
             self,
-            **{
-                "size": size,
-                "split_channels": split_channels,
-                "colors": colors,
-                "scale": scale,
-                "draw": draw,
-                "filter": filter,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "size": size,
+                    "split_channels": split_channels,
+                    "colors": colors,
+                    "scale": scale,
+                    "draw": draw,
+                    "filter": filter,
+                },
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6867,7 +7114,7 @@ class AudioStream(FilterableStream):
         detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
         level_sc: Double = Default(1.0),
         mix: Double = Default(1.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -6902,21 +7149,23 @@ class AudioStream(FilterableStream):
             ),
             self,
             _sidechain,
-            **{
-                "level_in": level_in,
-                "mode": mode,
-                "threshold": threshold,
-                "ratio": ratio,
-                "attack": attack,
-                "release": release,
-                "makeup": makeup,
-                "knee": knee,
-                "link": link,
-                "detection": detection,
-                "level_sc": level_sc,
-                "mix": mix,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "level_in": level_in,
+                    "mode": mode,
+                    "threshold": threshold,
+                    "ratio": ratio,
+                    "attack": attack,
+                    "release": release,
+                    "makeup": makeup,
+                    "knee": knee,
+                    "link": link,
+                    "detection": detection,
+                    "level_sc": level_sc,
+                    "mix": mix,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -6937,7 +7186,7 @@ class AudioStream(FilterableStream):
         link: Int | Literal["average", "maximum"] | Default = Default("average"),
         level_sc: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -6973,22 +7222,24 @@ class AudioStream(FilterableStream):
             ),
             self,
             _sidechain,
-            **{
-                "level_in": level_in,
-                "mode": mode,
-                "range": range,
-                "threshold": threshold,
-                "ratio": ratio,
-                "attack": attack,
-                "release": release,
-                "makeup": makeup,
-                "knee": knee,
-                "detection": detection,
-                "link": link,
-                "level_sc": level_sc,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "level_in": level_in,
+                    "mode": mode,
+                    "range": range,
+                    "threshold": threshold,
+                    "ratio": ratio,
+                    "attack": attack,
+                    "release": release,
+                    "makeup": makeup,
+                    "knee": knee,
+                    "detection": detection,
+                    "link": link,
+                    "level_sc": level_sc,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -6998,7 +7249,7 @@ class AudioStream(FilterableStream):
         n: Double = Default(0.001),
         d: Duration = Default(2.0),
         mono: Boolean = Default(False),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -7023,12 +7274,14 @@ class AudioStream(FilterableStream):
                 typings_output=("audio",),
             ),
             self,
-            **{
-                "n": n,
-                "d": d,
-                "mono": mono,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "n": n,
+                    "d": d,
+                    "mono": mono,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -7051,7 +7304,7 @@ class AudioStream(FilterableStream):
         window: Duration = Default(0.02),
         timestamp: Int | Literal["write", "copy"] | Default = Default("write"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -7087,23 +7340,25 @@ class AudioStream(FilterableStream):
                 typings_output=("audio",),
             ),
             self,
-            **{
-                "start_periods": start_periods,
-                "start_duration": start_duration,
-                "start_threshold": start_threshold,
-                "start_silence": start_silence,
-                "start_mode": start_mode,
-                "stop_periods": stop_periods,
-                "stop_duration": stop_duration,
-                "stop_threshold": stop_threshold,
-                "stop_silence": stop_silence,
-                "stop_mode": stop_mode,
-                "detection": detection,
-                "window": window,
-                "timestamp": timestamp,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "start_periods": start_periods,
+                    "start_duration": start_duration,
+                    "start_threshold": start_threshold,
+                    "start_silence": start_silence,
+                    "start_mode": start_mode,
+                    "stop_periods": stop_periods,
+                    "stop_duration": stop_duration,
+                    "stop_threshold": stop_threshold,
+                    "stop_silence": stop_silence,
+                    "stop_mode": stop_mode,
+                    "detection": detection,
+                    "window": window,
+                    "timestamp": timestamp,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -7124,7 +7379,7 @@ class AudioStream(FilterableStream):
         minphase: Boolean = Default(False),
         anglestep: Float = Default(0.5),
         radstep: Float = Default(0.01),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -7158,23 +7413,25 @@ class AudioStream(FilterableStream):
                 name="sofalizer", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "sofa": sofa,
-                "gain": gain,
-                "rotation": rotation,
-                "elevation": elevation,
-                "radius": radius,
-                "type": type,
-                "speakers": speakers,
-                "lfegain": lfegain,
-                "framesize": framesize,
-                "normalize": normalize,
-                "interpolate": interpolate,
-                "minphase": minphase,
-                "anglestep": anglestep,
-                "radstep": radstep,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "sofa": sofa,
+                    "gain": gain,
+                    "rotation": rotation,
+                    "elevation": elevation,
+                    "radius": radius,
+                    "type": type,
+                    "speakers": speakers,
+                    "lfegain": lfegain,
+                    "framesize": framesize,
+                    "normalize": normalize,
+                    "interpolate": interpolate,
+                    "minphase": minphase,
+                    "anglestep": anglestep,
+                    "radstep": radstep,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -7192,7 +7449,7 @@ class AudioStream(FilterableStream):
         link: Boolean = Default(False),
         rms: Double = Default(0.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -7223,20 +7480,22 @@ class AudioStream(FilterableStream):
                 name="speechnorm", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "peak": peak,
-                "expansion": expansion,
-                "compression": compression,
-                "threshold": threshold,
-                "raise": _raise,
-                "fall": fall,
-                "channels": channels,
-                "invert": invert,
-                "link": link,
-                "rms": rms,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "peak": peak,
+                    "expansion": expansion,
+                    "compression": compression,
+                    "threshold": threshold,
+                    "raise": _raise,
+                    "fall": fall,
+                    "channels": channels,
+                    "invert": invert,
+                    "link": link,
+                    "rms": rms,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -7270,7 +7529,7 @@ class AudioStream(FilterableStream):
             "balance"
         ),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -7311,30 +7570,32 @@ class AudioStream(FilterableStream):
                 name="stereotools", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "level_in": level_in,
-                "level_out": level_out,
-                "balance_in": balance_in,
-                "balance_out": balance_out,
-                "softclip": softclip,
-                "mutel": mutel,
-                "muter": muter,
-                "phasel": phasel,
-                "phaser": phaser,
-                "mode": mode,
-                "slev": slev,
-                "sbal": sbal,
-                "mlev": mlev,
-                "mpan": mpan,
-                "base": base,
-                "delay": delay,
-                "sclevel": sclevel,
-                "phase": phase,
-                "bmode_in": bmode_in,
-                "bmode_out": bmode_out,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "level_in": level_in,
+                    "level_out": level_out,
+                    "balance_in": balance_in,
+                    "balance_out": balance_out,
+                    "softclip": softclip,
+                    "mutel": mutel,
+                    "muter": muter,
+                    "phasel": phasel,
+                    "phaser": phaser,
+                    "mode": mode,
+                    "slev": slev,
+                    "sbal": sbal,
+                    "mlev": mlev,
+                    "mpan": mpan,
+                    "base": base,
+                    "delay": delay,
+                    "sclevel": sclevel,
+                    "phase": phase,
+                    "bmode_in": bmode_in,
+                    "bmode_out": bmode_out,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -7346,7 +7607,7 @@ class AudioStream(FilterableStream):
         crossfeed: Float = Default(0.3),
         drymix: Float = Default(0.8),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -7371,14 +7632,16 @@ class AudioStream(FilterableStream):
                 name="stereowiden", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "delay": delay,
-                "feedback": feedback,
-                "crossfeed": crossfeed,
-                "drymix": drymix,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "delay": delay,
+                    "feedback": feedback,
+                    "crossfeed": crossfeed,
+                    "drymix": drymix,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -7403,7 +7666,7 @@ class AudioStream(FilterableStream):
         _16b: Float = Default(1.0),
         _17b: Float = Default(1.0),
         _18b: Float = Default(1.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -7443,27 +7706,29 @@ class AudioStream(FilterableStream):
                 typings_output=("audio",),
             ),
             self,
-            **{
-                "1b": _1b,
-                "2b": _2b,
-                "3b": _3b,
-                "4b": _4b,
-                "5b": _5b,
-                "6b": _6b,
-                "7b": _7b,
-                "8b": _8b,
-                "9b": _9b,
-                "10b": _10b,
-                "11b": _11b,
-                "12b": _12b,
-                "13b": _13b,
-                "14b": _14b,
-                "15b": _15b,
-                "16b": _16b,
-                "17b": _17b,
-                "18b": _18b,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "1b": _1b,
+                    "2b": _2b,
+                    "3b": _3b,
+                    "4b": _4b,
+                    "5b": _5b,
+                    "6b": _6b,
+                    "7b": _7b,
+                    "8b": _8b,
+                    "9b": _9b,
+                    "10b": _10b,
+                    "11b": _11b,
+                    "12b": _12b,
+                    "13b": _13b,
+                    "14b": _14b,
+                    "15b": _15b,
+                    "16b": _16b,
+                    "17b": _17b,
+                    "18b": _18b,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -7545,7 +7810,7 @@ class AudioStream(FilterableStream):
         ]
         | Default = Default("hann"),
         overlap: Float = Default(0.5),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -7615,59 +7880,61 @@ class AudioStream(FilterableStream):
                 name="surround", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "chl_out": chl_out,
-                "chl_in": chl_in,
-                "level_in": level_in,
-                "level_out": level_out,
-                "lfe": lfe,
-                "lfe_low": lfe_low,
-                "lfe_high": lfe_high,
-                "lfe_mode": lfe_mode,
-                "smooth": smooth,
-                "angle": angle,
-                "focus": focus,
-                "fc_in": fc_in,
-                "fc_out": fc_out,
-                "fl_in": fl_in,
-                "fl_out": fl_out,
-                "fr_in": fr_in,
-                "fr_out": fr_out,
-                "sl_in": sl_in,
-                "sl_out": sl_out,
-                "sr_in": sr_in,
-                "sr_out": sr_out,
-                "bl_in": bl_in,
-                "bl_out": bl_out,
-                "br_in": br_in,
-                "br_out": br_out,
-                "bc_in": bc_in,
-                "bc_out": bc_out,
-                "lfe_in": lfe_in,
-                "lfe_out": lfe_out,
-                "allx": allx,
-                "ally": ally,
-                "fcx": fcx,
-                "flx": flx,
-                "frx": frx,
-                "blx": blx,
-                "brx": brx,
-                "slx": slx,
-                "srx": srx,
-                "bcx": bcx,
-                "fcy": fcy,
-                "fly": fly,
-                "fry": fry,
-                "bly": bly,
-                "bry": bry,
-                "sly": sly,
-                "sry": sry,
-                "bcy": bcy,
-                "win_size": win_size,
-                "win_func": win_func,
-                "overlap": overlap,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "chl_out": chl_out,
+                    "chl_in": chl_in,
+                    "level_in": level_in,
+                    "level_out": level_out,
+                    "lfe": lfe,
+                    "lfe_low": lfe_low,
+                    "lfe_high": lfe_high,
+                    "lfe_mode": lfe_mode,
+                    "smooth": smooth,
+                    "angle": angle,
+                    "focus": focus,
+                    "fc_in": fc_in,
+                    "fc_out": fc_out,
+                    "fl_in": fl_in,
+                    "fl_out": fl_out,
+                    "fr_in": fr_in,
+                    "fr_out": fr_out,
+                    "sl_in": sl_in,
+                    "sl_out": sl_out,
+                    "sr_in": sr_in,
+                    "sr_out": sr_out,
+                    "bl_in": bl_in,
+                    "bl_out": bl_out,
+                    "br_in": br_in,
+                    "br_out": br_out,
+                    "bc_in": bc_in,
+                    "bc_out": bc_out,
+                    "lfe_in": lfe_in,
+                    "lfe_out": lfe_out,
+                    "allx": allx,
+                    "ally": ally,
+                    "fcx": fcx,
+                    "flx": flx,
+                    "frx": frx,
+                    "blx": blx,
+                    "brx": brx,
+                    "slx": slx,
+                    "srx": srx,
+                    "bcx": bcx,
+                    "fcy": fcy,
+                    "fly": fly,
+                    "fry": fry,
+                    "bly": bly,
+                    "bry": bry,
+                    "sly": sly,
+                    "sry": sry,
+                    "bcy": bcy,
+                    "win_size": win_size,
+                    "win_func": win_func,
+                    "overlap": overlap,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -7690,7 +7957,7 @@ class AudioStream(FilterableStream):
         | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -7722,21 +7989,23 @@ class AudioStream(FilterableStream):
                 name="tiltshelf", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "gain": gain,
-                "poles": poles,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "frequency": frequency,
+                    "width_type": width_type,
+                    "width": width,
+                    "gain": gain,
+                    "poles": poles,
+                    "mix": mix,
+                    "channels": channels,
+                    "normalize": normalize,
+                    "transform": transform,
+                    "precision": precision,
+                    "blocksize": blocksize,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -7759,7 +8028,7 @@ class AudioStream(FilterableStream):
         | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -7791,21 +8060,23 @@ class AudioStream(FilterableStream):
                 name="treble", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "frequency": frequency,
-                "width_type": width_type,
-                "width": width,
-                "gain": gain,
-                "poles": poles,
-                "mix": mix,
-                "channels": channels,
-                "normalize": normalize,
-                "transform": transform,
-                "precision": precision,
-                "blocksize": blocksize,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "frequency": frequency,
+                    "width_type": width_type,
+                    "width": width,
+                    "gain": gain,
+                    "poles": poles,
+                    "mix": mix,
+                    "channels": channels,
+                    "normalize": normalize,
+                    "transform": transform,
+                    "precision": precision,
+                    "blocksize": blocksize,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -7815,7 +8086,7 @@ class AudioStream(FilterableStream):
         f: Double = Default(5.0),
         d: Double = Default(0.5),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -7838,12 +8109,14 @@ class AudioStream(FilterableStream):
                 name="tremolo", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "f": f,
-                "d": d,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "f": f,
+                    "d": d,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -7853,7 +8126,7 @@ class AudioStream(FilterableStream):
         f: Double = Default(5.0),
         d: Double = Default(0.5),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -7876,12 +8149,14 @@ class AudioStream(FilterableStream):
                 name="vibrato", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "f": f,
-                "d": d,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "f": f,
+                    "d": d,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -7891,7 +8166,7 @@ class AudioStream(FilterableStream):
         cutoff: Double = Default(250.0),
         strength: Double = Default(3.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -7914,12 +8189,14 @@ class AudioStream(FilterableStream):
                 name="virtualbass", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "cutoff": cutoff,
-                "strength": strength,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "cutoff": cutoff,
+                    "strength": strength,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -7937,7 +8214,7 @@ class AudioStream(FilterableStream):
         replaygain_preamp: Double = Default(0.0),
         replaygain_noclip: Boolean = Default(True),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -7964,22 +8241,24 @@ class AudioStream(FilterableStream):
                 name="volume", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{
-                "volume": volume,
-                "precision": precision,
-                "eval": eval,
-                "replaygain": replaygain,
-                "replaygain_preamp": replaygain_preamp,
-                "replaygain_noclip": replaygain_noclip,
-                "enable": enable,
-            }
-            | (extra_options or {}),
+            **merge(
+                {
+                    "volume": volume,
+                    "precision": precision,
+                    "eval": eval,
+                    "replaygain": replaygain,
+                    "replaygain_preamp": replaygain_preamp,
+                    "replaygain_noclip": replaygain_noclip,
+                    "enable": enable,
+                },
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
     def volumedetect(
         self,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
 
@@ -7997,6 +8276,6 @@ class AudioStream(FilterableStream):
                 name="volumedetect", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **{} | (extra_options or {}),
+            **merge({}, extra_options),
         )
         return filter_node.audio(0)

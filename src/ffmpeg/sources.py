@@ -26,6 +26,7 @@ from .types import (
     String,
     Video_rate,
 )
+from .utils.frozendict import merge
 
 
 def abuffer(
@@ -35,7 +36,7 @@ def abuffer(
     sample_fmt: Sample_fmt = Default("none"),
     channel_layout: String = Default(None),
     channels: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -57,14 +58,16 @@ def abuffer(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="abuffer", typings_input=(), typings_output=("audio",)),
-        **{
-            "time_base": time_base,
-            "sample_rate": sample_rate,
-            "sample_fmt": sample_fmt,
-            "channel_layout": channel_layout,
-            "channels": channels,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "time_base": time_base,
+                "sample_rate": sample_rate,
+                "sample_fmt": sample_fmt,
+                "channel_layout": channel_layout,
+                "channels": channels,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -76,7 +79,7 @@ def aevalsrc(
     sample_rate: String = Default("44100"),
     duration: Duration = Default(-1e-06),
     channel_layout: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -98,14 +101,16 @@ def aevalsrc(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="aevalsrc", typings_input=(), typings_output=("audio",)),
-        **{
-            "exprs": exprs,
-            "nb_samples": nb_samples,
-            "sample_rate": sample_rate,
-            "duration": duration,
-            "channel_layout": channel_layout,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "exprs": exprs,
+                "nb_samples": nb_samples,
+                "sample_rate": sample_rate,
+                "duration": duration,
+                "channel_layout": channel_layout,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -117,7 +122,7 @@ def afdelaysrc(
     nb_samples: Int = Default(1024),
     taps: Int = Default(0),
     channel_layout: String = Default("stereo"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -139,14 +144,16 @@ def afdelaysrc(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="afdelaysrc", typings_input=(), typings_output=("audio",)),
-        **{
-            "delay": delay,
-            "sample_rate": sample_rate,
-            "nb_samples": nb_samples,
-            "taps": taps,
-            "channel_layout": channel_layout,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "delay": delay,
+                "sample_rate": sample_rate,
+                "nb_samples": nb_samples,
+                "taps": taps,
+                "channel_layout": channel_layout,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -185,7 +192,7 @@ def afireqsrc(
     nb_samples: Int = Default(1024),
     interp: Int | Literal["linear", "cubic"] | Default = Default("linear"),
     phase: Int | Literal["linear", "min"] | Default = Default("min"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -210,17 +217,19 @@ def afireqsrc(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="afireqsrc", typings_input=(), typings_output=("audio",)),
-        **{
-            "preset": preset,
-            "gains": gains,
-            "bands": bands,
-            "taps": taps,
-            "sample_rate": sample_rate,
-            "nb_samples": nb_samples,
-            "interp": interp,
-            "phase": phase,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "preset": preset,
+                "gains": gains,
+                "bands": bands,
+                "taps": taps,
+                "sample_rate": sample_rate,
+                "nb_samples": nb_samples,
+                "interp": interp,
+                "phase": phase,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -281,7 +290,7 @@ def afirsrc(
         "kaiser",
     ]
     | Default = Default("blackman"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -305,16 +314,18 @@ def afirsrc(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="afirsrc", typings_input=(), typings_output=("audio",)),
-        **{
-            "taps": taps,
-            "frequency": frequency,
-            "magnitude": magnitude,
-            "phase": phase,
-            "sample_rate": sample_rate,
-            "nb_samples": nb_samples,
-            "win_func": win_func,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "taps": taps,
+                "frequency": frequency,
+                "magnitude": magnitude,
+                "phase": phase,
+                "sample_rate": sample_rate,
+                "nb_samples": nb_samples,
+                "win_func": win_func,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -325,7 +336,7 @@ def ainterleave(
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default(
         "longest"
     ),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -349,11 +360,13 @@ def ainterleave(
             typings_output=("audio",),
         ),
         *streams,
-        **{
-            "nb_inputs": nb_inputs,
-            "duration": duration,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "nb_inputs": nb_inputs,
+                "duration": duration,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -363,7 +376,7 @@ def allrgb(
     rate: Video_rate = Default("25"),
     duration: Duration = Default(-1e-06),
     sar: Rational = Default("1/1"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -383,12 +396,14 @@ def allrgb(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="allrgb", typings_input=(), typings_output=("video",)),
-        **{
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -398,7 +413,7 @@ def allyuv(
     rate: Video_rate = Default("25"),
     duration: Duration = Default(-1e-06),
     sar: Rational = Default("1/1"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -418,12 +433,14 @@ def allyuv(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="allyuv", typings_input=(), typings_output=("video",)),
-        **{
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -431,7 +448,7 @@ def allyuv(
 def amerge(
     *streams: AudioStream,
     inputs: Int = Auto("len(streams)"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -454,10 +471,12 @@ def amerge(
             typings_output=("audio",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -471,7 +490,7 @@ def amix(
     dropout_transition: Float = Default(2.0),
     weights: String = Default("1 1"),
     normalize: Boolean = Default(True),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -498,14 +517,16 @@ def amix(
             typings_output=("audio",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "duration": duration,
-            "dropout_transition": dropout_transition,
-            "weights": weights,
-            "normalize": normalize,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "duration": duration,
+                "dropout_transition": dropout_transition,
+                "weights": weights,
+                "normalize": normalize,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -521,7 +542,7 @@ def amovie(
     discontinuity: Duration = Default(0.0),
     dec_threads: Int = Default(0),
     format_opts: Dictionary = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> FilterNode:
     """
 
@@ -552,18 +573,20 @@ def amovie(
             typings_input="[StreamType.audio] * len(streams.split('+'))",
             typings_output="[StreamType.audio] * len(streams.split('+'))",
         ),
-        **{
-            "filename": filename,
-            "format_name": format_name,
-            "stream_index": stream_index,
-            "seek_point": seek_point,
-            "streams": streams,
-            "loop": loop,
-            "discontinuity": discontinuity,
-            "dec_threads": dec_threads,
-            "format_opts": format_opts,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "filename": filename,
+                "format_name": format_name,
+                "stream_index": stream_index,
+                "seek_point": seek_point,
+                "streams": streams,
+                "loop": loop,
+                "discontinuity": discontinuity,
+                "dec_threads": dec_threads,
+                "format_opts": format_opts,
+            },
+            extra_options,
+        ),
     )
 
     return filter_node
@@ -580,7 +603,7 @@ def anoisesrc(
     seed: Int64 = Default(-1),
     nb_samples: Int = Default(1024),
     density: Double = Default(0.05),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -604,16 +627,18 @@ def anoisesrc(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="anoisesrc", typings_input=(), typings_output=("audio",)),
-        **{
-            "sample_rate": sample_rate,
-            "amplitude": amplitude,
-            "duration": duration,
-            "color": color,
-            "seed": seed,
-            "nb_samples": nb_samples,
-            "density": density,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "sample_rate": sample_rate,
+                "amplitude": amplitude,
+                "duration": duration,
+                "color": color,
+                "seed": seed,
+                "nb_samples": nb_samples,
+                "density": density,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -624,7 +649,7 @@ def anullsrc(
     sample_rate: String = Default("44100"),
     nb_samples: Int = Default(1024),
     duration: Duration = Default(-1e-06),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -645,13 +670,15 @@ def anullsrc(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="anullsrc", typings_input=(), typings_output=("audio",)),
-        **{
-            "channel_layout": channel_layout,
-            "sample_rate": sample_rate,
-            "nb_samples": nb_samples,
-            "duration": duration,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "channel_layout": channel_layout,
+                "sample_rate": sample_rate,
+                "nb_samples": nb_samples,
+                "duration": duration,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -660,7 +687,7 @@ def astreamselect(
     *streams: AudioStream,
     inputs: Int = Auto("len(streams)"),
     map: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> FilterNode:
     """
 
@@ -685,11 +712,13 @@ def astreamselect(
             typings_output="[StreamType.audio] * len(re.findall(r'\\d+', str(map)))",
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "map": map,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "map": map,
+            },
+            extra_options,
+        ),
     )
 
     return filter_node
@@ -708,7 +737,7 @@ def avsynctest(
     fg: Color = Default("white"),
     bg: Color = Default("black"),
     ag: Color = Default("gray"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> tuple[
     AudioStream,
     VideoStream,
@@ -742,20 +771,22 @@ def avsynctest(
         FFMpegFilterDef(
             name="avsynctest", typings_input=(), typings_output=("audio", "video")
         ),
-        **{
-            "size": size,
-            "framerate": framerate,
-            "samplerate": samplerate,
-            "amplitude": amplitude,
-            "period": period,
-            "delay": delay,
-            "cycle": cycle,
-            "duration": duration,
-            "fg": fg,
-            "bg": bg,
-            "ag": ag,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "framerate": framerate,
+                "samplerate": samplerate,
+                "amplitude": amplitude,
+                "period": period,
+                "delay": delay,
+                "cycle": cycle,
+                "duration": duration,
+                "fg": fg,
+                "bg": bg,
+                "ag": ag,
+            },
+            extra_options,
+        ),
     )
     return (
         filter_node.audio(0),
@@ -777,7 +808,7 @@ def bm3d(
     ref: Boolean = Default(False),
     planes: Int = Default(7),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -811,21 +842,23 @@ def bm3d(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "sigma": sigma,
-            "block": block,
-            "bstep": bstep,
-            "group": group,
-            "range": range,
-            "mstep": mstep,
-            "thmse": thmse,
-            "hdthr": hdthr,
-            "estim": estim,
-            "ref": ref,
-            "planes": planes,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "sigma": sigma,
+                "block": block,
+                "bstep": bstep,
+                "group": group,
+                "range": range,
+                "mstep": mstep,
+                "thmse": thmse,
+                "hdthr": hdthr,
+                "estim": estim,
+                "ref": ref,
+                "planes": planes,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -838,7 +871,7 @@ def buffer(
     pix_fmt: Pix_fmt = Default("none"),
     sar: Rational = Default("0/1"),
     time_base: Rational = Default("0/1"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -861,15 +894,17 @@ def buffer(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="buffer", typings_input=(), typings_output=("video",)),
-        **{
-            "width": width,
-            "video_size": video_size,
-            "height": height,
-            "pix_fmt": pix_fmt,
-            "sar": sar,
-            "time_base": time_base,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "width": width,
+                "video_size": video_size,
+                "height": height,
+                "pix_fmt": pix_fmt,
+                "sar": sar,
+                "time_base": time_base,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -887,7 +922,7 @@ def cellauto(
     start_full: Boolean = Default(False),
     full: Boolean = Default(True),
     stitch: Boolean = Default(True),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -915,20 +950,22 @@ def cellauto(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="cellauto", typings_input=(), typings_output=("video",)),
-        **{
-            "filename": filename,
-            "pattern": pattern,
-            "rate": rate,
-            "size": size,
-            "rule": rule,
-            "random_fill_ratio": random_fill_ratio,
-            "random_seed": random_seed,
-            "scroll": scroll,
-            "start_full": start_full,
-            "full": full,
-            "stitch": stitch,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "filename": filename,
+                "pattern": pattern,
+                "rate": rate,
+                "size": size,
+                "rule": rule,
+                "random_fill_ratio": random_fill_ratio,
+                "random_seed": random_seed,
+                "scroll": scroll,
+                "start_full": start_full,
+                "full": full,
+                "stitch": stitch,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -940,7 +977,7 @@ def color(
     rate: Video_rate = Default("25"),
     duration: Duration = Default(-1e-06),
     sar: Rational = Default("1/1"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -962,14 +999,16 @@ def color(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="color", typings_input=(), typings_output=("video",)),
-        **{
-            "color": color,
-            "size": size,
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "color": color,
+                "size": size,
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -985,7 +1024,7 @@ def color_vulkan(
     out_range: Int
     | Literal["full", "limited", "jpeg", "mpeg", "tv", "pc"]
     | Default = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1011,16 +1050,18 @@ def color_vulkan(
         FFMpegFilterDef(
             name="color_vulkan", typings_input=(), typings_output=("video",)
         ),
-        **{
-            "color": color,
-            "size": size,
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-            "format": format,
-            "out_range": out_range,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "color": color,
+                "size": size,
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+                "format": format,
+                "out_range": out_range,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1032,7 +1073,7 @@ def colorchart(
     sar: Rational = Default("1/1"),
     patch_size: Image_size = Default("64x64"),
     preset: Int | Literal["reference", "skintones"] | Default = Default("reference"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1054,14 +1095,16 @@ def colorchart(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="colorchart", typings_input=(), typings_output=("video",)),
-        **{
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-            "patch_size": patch_size,
-            "preset": preset,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+                "patch_size": patch_size,
+                "preset": preset,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1073,7 +1116,7 @@ def colorspectrum(
     duration: Duration = Default(-1e-06),
     sar: Rational = Default("1/1"),
     type: Int | Literal["black", "white", "all"] | Default = Default("black"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1097,14 +1140,16 @@ def colorspectrum(
         FFMpegFilterDef(
             name="colorspectrum", typings_input=(), typings_output=("video",)
         ),
-        **{
-            "size": size,
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-            "type": type,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+                "type": type,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1115,7 +1160,7 @@ def concat(
     v: Int = Default(1),
     a: Int = Default(0),
     unsafe: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> FilterNode:
     """
 
@@ -1142,13 +1187,15 @@ def concat(
             typings_output="[StreamType.video]*int(v) + [StreamType.audio]*int(a)",
         ),
         *streams,
-        **{
-            "n": n,
-            "v": v,
-            "a": a,
-            "unsafe": unsafe,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "n": n,
+                "v": v,
+                "a": a,
+                "unsafe": unsafe,
+            },
+            extra_options,
+        ),
     )
 
     return filter_node
@@ -1164,7 +1211,7 @@ def decimate(
     ppsrc: Boolean = Default(False),
     chroma: Boolean = Default(True),
     mixed: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1194,17 +1241,19 @@ def decimate(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "cycle": cycle,
-            "dupthresh": dupthresh,
-            "scthresh": scthresh,
-            "blockx": blockx,
-            "blocky": blocky,
-            "ppsrc": ppsrc,
-            "chroma": chroma,
-            "mixed": mixed,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "cycle": cycle,
+                "dupthresh": dupthresh,
+                "scthresh": scthresh,
+                "blockx": blockx,
+                "blocky": blocky,
+                "ppsrc": ppsrc,
+                "chroma": chroma,
+                "mixed": mixed,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1227,7 +1276,7 @@ def fieldmatch(
     blockx: Int = Default(16),
     blocky: Int = Default(16),
     combpel: Int = Default(80),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1263,23 +1312,25 @@ def fieldmatch(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "order": order,
-            "mode": mode,
-            "ppsrc": ppsrc,
-            "field": field,
-            "mchroma": mchroma,
-            "y0": y0,
-            "scthresh": scthresh,
-            "combmatch": combmatch,
-            "combdbg": combdbg,
-            "cthresh": cthresh,
-            "chroma": chroma,
-            "blockx": blockx,
-            "blocky": blocky,
-            "combpel": combpel,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "order": order,
+                "mode": mode,
+                "ppsrc": ppsrc,
+                "field": field,
+                "mchroma": mchroma,
+                "y0": y0,
+                "scthresh": scthresh,
+                "combmatch": combmatch,
+                "combdbg": combdbg,
+                "cthresh": cthresh,
+                "chroma": chroma,
+                "blockx": blockx,
+                "blocky": blocky,
+                "combpel": combpel,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1291,7 +1342,7 @@ def flite(
     text: String = Default(None),
     textfile: String = Default(None),
     v: String = Default("kal"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -1313,14 +1364,16 @@ def flite(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="flite", typings_input=(), typings_output=("audio",)),
-        **{
-            "list_voices": list_voices,
-            "nb_samples": nb_samples,
-            "text": text,
-            "textfile": textfile,
-            "v": v,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "list_voices": list_voices,
+                "nb_samples": nb_samples,
+                "text": text,
+                "textfile": textfile,
+                "v": v,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -1331,7 +1384,7 @@ def frei0r_src(
     framerate: Video_rate = Default("25"),
     filter_name: String = Default(None),
     filter_params: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1352,13 +1405,15 @@ def frei0r_src(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="frei0r_src", typings_input=(), typings_output=("video",)),
-        **{
-            "size": size,
-            "framerate": framerate,
-            "filter_name": filter_name,
-            "filter_params": filter_params,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "framerate": framerate,
+                "filter_name": filter_name,
+                "filter_params": filter_params,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1386,7 +1441,7 @@ def gradients(
     type: Int | Literal["linear", "radial", "circular", "spiral"] | Default = Default(
         "linear"
     ),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1422,28 +1477,30 @@ def gradients(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="gradients", typings_input=(), typings_output=("video",)),
-        **{
-            "size": size,
-            "rate": rate,
-            "c0": c0,
-            "c1": c1,
-            "c2": c2,
-            "c3": c3,
-            "c4": c4,
-            "c5": c5,
-            "c6": c6,
-            "c7": c7,
-            "x0": x0,
-            "y0": y0,
-            "x1": x1,
-            "y1": y1,
-            "nb_colors": nb_colors,
-            "seed": seed,
-            "duration": duration,
-            "speed": speed,
-            "type": type,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "rate": rate,
+                "c0": c0,
+                "c1": c1,
+                "c2": c2,
+                "c3": c3,
+                "c4": c4,
+                "c5": c5,
+                "c6": c6,
+                "c7": c7,
+                "x0": x0,
+                "y0": y0,
+                "x1": x1,
+                "y1": y1,
+                "nb_colors": nb_colors,
+                "seed": seed,
+                "duration": duration,
+                "speed": speed,
+                "type": type,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1457,7 +1514,7 @@ def guided(
     guidance: Int | Literal["off", "on"] | Default = Default("off"),
     planes: Int = Default(1),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1486,16 +1543,18 @@ def guided(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "radius": radius,
-            "eps": eps,
-            "mode": mode,
-            "sub": sub,
-            "guidance": guidance,
-            "planes": planes,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "radius": radius,
+                "eps": eps,
+                "mode": mode,
+                "sub": sub,
+                "guidance": guidance,
+                "planes": planes,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1506,7 +1565,7 @@ def haldclutsrc(
     rate: Video_rate = Default("25"),
     duration: Duration = Default(-1e-06),
     sar: Rational = Default("1/1"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1529,13 +1588,15 @@ def haldclutsrc(
         FFMpegFilterDef(
             name="haldclutsrc", typings_input=(), typings_output=("video",)
         ),
-        **{
-            "level": level,
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "level": level,
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1548,7 +1609,7 @@ def headphone(
     type: Int | Literal["time", "freq"] | Default = Default("freq"),
     size: Int = Default(1024),
     hrir: Int | Literal["stereo", "multich"] | Default = Default("stereo"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -1576,15 +1637,17 @@ def headphone(
             typings_output=("audio",),
         ),
         *streams,
-        **{
-            "map": map,
-            "gain": gain,
-            "lfe": lfe,
-            "type": type,
-            "size": size,
-            "hrir": hrir,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "map": map,
+                "gain": gain,
+                "lfe": lfe,
+                "type": type,
+                "size": size,
+                "hrir": hrir,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -1642,7 +1705,7 @@ def hilbert(
         "kaiser",
     ]
     | Default = Default("blackman"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -1663,13 +1726,15 @@ def hilbert(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="hilbert", typings_input=(), typings_output=("audio",)),
-        **{
-            "sample_rate": sample_rate,
-            "taps": taps,
-            "nb_samples": nb_samples,
-            "win_func": win_func,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "sample_rate": sample_rate,
+                "taps": taps,
+                "nb_samples": nb_samples,
+                "win_func": win_func,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -1678,7 +1743,7 @@ def hstack(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
     shortest: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1702,11 +1767,13 @@ def hstack(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "shortest": shortest,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "shortest": shortest,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1716,7 +1783,7 @@ def hstack_vaapi(
     inputs: Int = Default(2),
     shortest: Boolean = Default(False),
     height: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1741,12 +1808,14 @@ def hstack_vaapi(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "shortest": shortest,
-            "height": height,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "shortest": shortest,
+                "height": height,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1757,7 +1826,7 @@ def interleave(
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default(
         "longest"
     ),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1781,11 +1850,13 @@ def interleave(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "nb_inputs": nb_inputs,
-            "duration": duration,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "nb_inputs": nb_inputs,
+                "duration": duration,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1795,7 +1866,7 @@ def join(
     inputs: Int = Auto("len(streams)"),
     channel_layout: String = Default("stereo"),
     map: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -1820,12 +1891,14 @@ def join(
             typings_output=("audio",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "channel_layout": channel_layout,
-            "map": map,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "channel_layout": channel_layout,
+                "map": map,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -1839,7 +1912,7 @@ def ladspa(
     nb_samples: Int = Default(1024),
     duration: Duration = Default(-1e-06),
     latency: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -1866,16 +1939,18 @@ def ladspa(
             name="ladspa", typings_input="[StreamType.audio]", typings_output=("audio",)
         ),
         *streams,
-        **{
-            "file": file,
-            "plugin": plugin,
-            "controls": controls,
-            "sample_rate": sample_rate,
-            "nb_samples": nb_samples,
-            "duration": duration,
-            "latency": latency,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "file": file,
+                "plugin": plugin,
+                "controls": controls,
+                "sample_rate": sample_rate,
+                "nb_samples": nb_samples,
+                "duration": duration,
+                "latency": latency,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -2048,7 +2123,7 @@ def libplacebo(
     force_icc_lut: Boolean = Default(False),
     force_dither: Boolean = Default(False),
     disable_fbos: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2148,87 +2223,89 @@ def libplacebo(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "w": w,
-            "h": h,
-            "fps": fps,
-            "crop_x": crop_x,
-            "crop_y": crop_y,
-            "crop_w": crop_w,
-            "crop_h": crop_h,
-            "pos_x": pos_x,
-            "pos_y": pos_y,
-            "pos_w": pos_w,
-            "pos_h": pos_h,
-            "format": format,
-            "force_original_aspect_ratio": force_original_aspect_ratio,
-            "force_divisible_by": force_divisible_by,
-            "normalize_sar": normalize_sar,
-            "pad_crop_ratio": pad_crop_ratio,
-            "fillcolor": fillcolor,
-            "corner_rounding": corner_rounding,
-            "extra_opts": extra_opts,
-            "colorspace": colorspace,
-            "range": range,
-            "color_primaries": color_primaries,
-            "color_trc": color_trc,
-            "upscaler": upscaler,
-            "downscaler": downscaler,
-            "frame_mixer": frame_mixer,
-            "lut_entries": lut_entries,
-            "antiringing": antiringing,
-            "sigmoid": sigmoid,
-            "apply_filmgrain": apply_filmgrain,
-            "apply_dolbyvision": apply_dolbyvision,
-            "deband": deband,
-            "deband_iterations": deband_iterations,
-            "deband_threshold": deband_threshold,
-            "deband_radius": deband_radius,
-            "deband_grain": deband_grain,
-            "brightness": brightness,
-            "contrast": contrast,
-            "saturation": saturation,
-            "hue": hue,
-            "gamma": gamma,
-            "peak_detect": peak_detect,
-            "smoothing_period": smoothing_period,
-            "minimum_peak": minimum_peak,
-            "scene_threshold_low": scene_threshold_low,
-            "scene_threshold_high": scene_threshold_high,
-            "percentile": percentile,
-            "gamut_mode": gamut_mode,
-            "tonemapping": tonemapping,
-            "tonemapping_param": tonemapping_param,
-            "inverse_tonemapping": inverse_tonemapping,
-            "tonemapping_lut_size": tonemapping_lut_size,
-            "contrast_recovery": contrast_recovery,
-            "contrast_smoothness": contrast_smoothness,
-            "desaturation_strength": desaturation_strength,
-            "desaturation_exponent": desaturation_exponent,
-            "gamut_warning": gamut_warning,
-            "gamut_clipping": gamut_clipping,
-            "intent": intent,
-            "tonemapping_mode": tonemapping_mode,
-            "tonemapping_crosstalk": tonemapping_crosstalk,
-            "overshoot": overshoot,
-            "hybrid_mix": hybrid_mix,
-            "dithering": dithering,
-            "dither_lut_size": dither_lut_size,
-            "dither_temporal": dither_temporal,
-            "cones": cones,
-            "cone-strength": cone_strength,
-            "custom_shader_path": custom_shader_path,
-            "custom_shader_bin": custom_shader_bin,
-            "skip_aa": skip_aa,
-            "polar_cutoff": polar_cutoff,
-            "disable_linear": disable_linear,
-            "disable_builtin": disable_builtin,
-            "force_icc_lut": force_icc_lut,
-            "force_dither": force_dither,
-            "disable_fbos": disable_fbos,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "w": w,
+                "h": h,
+                "fps": fps,
+                "crop_x": crop_x,
+                "crop_y": crop_y,
+                "crop_w": crop_w,
+                "crop_h": crop_h,
+                "pos_x": pos_x,
+                "pos_y": pos_y,
+                "pos_w": pos_w,
+                "pos_h": pos_h,
+                "format": format,
+                "force_original_aspect_ratio": force_original_aspect_ratio,
+                "force_divisible_by": force_divisible_by,
+                "normalize_sar": normalize_sar,
+                "pad_crop_ratio": pad_crop_ratio,
+                "fillcolor": fillcolor,
+                "corner_rounding": corner_rounding,
+                "extra_opts": extra_opts,
+                "colorspace": colorspace,
+                "range": range,
+                "color_primaries": color_primaries,
+                "color_trc": color_trc,
+                "upscaler": upscaler,
+                "downscaler": downscaler,
+                "frame_mixer": frame_mixer,
+                "lut_entries": lut_entries,
+                "antiringing": antiringing,
+                "sigmoid": sigmoid,
+                "apply_filmgrain": apply_filmgrain,
+                "apply_dolbyvision": apply_dolbyvision,
+                "deband": deband,
+                "deband_iterations": deband_iterations,
+                "deband_threshold": deband_threshold,
+                "deband_radius": deband_radius,
+                "deband_grain": deband_grain,
+                "brightness": brightness,
+                "contrast": contrast,
+                "saturation": saturation,
+                "hue": hue,
+                "gamma": gamma,
+                "peak_detect": peak_detect,
+                "smoothing_period": smoothing_period,
+                "minimum_peak": minimum_peak,
+                "scene_threshold_low": scene_threshold_low,
+                "scene_threshold_high": scene_threshold_high,
+                "percentile": percentile,
+                "gamut_mode": gamut_mode,
+                "tonemapping": tonemapping,
+                "tonemapping_param": tonemapping_param,
+                "inverse_tonemapping": inverse_tonemapping,
+                "tonemapping_lut_size": tonemapping_lut_size,
+                "contrast_recovery": contrast_recovery,
+                "contrast_smoothness": contrast_smoothness,
+                "desaturation_strength": desaturation_strength,
+                "desaturation_exponent": desaturation_exponent,
+                "gamut_warning": gamut_warning,
+                "gamut_clipping": gamut_clipping,
+                "intent": intent,
+                "tonemapping_mode": tonemapping_mode,
+                "tonemapping_crosstalk": tonemapping_crosstalk,
+                "overshoot": overshoot,
+                "hybrid_mix": hybrid_mix,
+                "dithering": dithering,
+                "dither_lut_size": dither_lut_size,
+                "dither_temporal": dither_temporal,
+                "cones": cones,
+                "cone-strength": cone_strength,
+                "custom_shader_path": custom_shader_path,
+                "custom_shader_bin": custom_shader_bin,
+                "skip_aa": skip_aa,
+                "polar_cutoff": polar_cutoff,
+                "disable_linear": disable_linear,
+                "disable_builtin": disable_builtin,
+                "force_icc_lut": force_icc_lut,
+                "force_dither": force_dither,
+                "disable_fbos": disable_fbos,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2246,7 +2323,7 @@ def life(
     life_color: Color = Default("white"),
     death_color: Color = Default("black"),
     mold_color: Color = Default("black"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2274,20 +2351,22 @@ def life(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="life", typings_input=(), typings_output=("video",)),
-        **{
-            "filename": filename,
-            "size": size,
-            "rate": rate,
-            "rule": rule,
-            "random_fill_ratio": random_fill_ratio,
-            "random_seed": random_seed,
-            "stitch": stitch,
-            "mold": mold,
-            "life_color": life_color,
-            "death_color": death_color,
-            "mold_color": mold_color,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "filename": filename,
+                "size": size,
+                "rate": rate,
+                "rule": rule,
+                "random_fill_ratio": random_fill_ratio,
+                "random_seed": random_seed,
+                "stitch": stitch,
+                "mold": mold,
+                "life_color": life_color,
+                "death_color": death_color,
+                "mold_color": mold_color,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2299,7 +2378,7 @@ def limitdiff(
     reference: Boolean = Default(False),
     planes: Int = Default(15),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2326,14 +2405,16 @@ def limitdiff(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "threshold": threshold,
-            "elasticity": elasticity,
-            "reference": reference,
-            "planes": planes,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "threshold": threshold,
+                "elasticity": elasticity,
+                "reference": reference,
+                "planes": planes,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2345,7 +2426,7 @@ def lv2(
     sample_rate: Int = Default(44100),
     nb_samples: Int = Default(1024),
     duration: Duration = Default(-1e-06),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -2370,14 +2451,16 @@ def lv2(
             name="lv2", typings_input="[StreamType.audio]", typings_output=("audio",)
         ),
         *streams,
-        **{
-            "plugin": plugin,
-            "controls": controls,
-            "sample_rate": sample_rate,
-            "nb_samples": nb_samples,
-            "duration": duration,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "plugin": plugin,
+                "controls": controls,
+                "sample_rate": sample_rate,
+                "nb_samples": nb_samples,
+                "duration": duration,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -2402,7 +2485,7 @@ def mandelbrot(
     inner: Int
     | Literal["black", "period", "convergence", "mincol"]
     | Default = Default("mincol"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2433,23 +2516,25 @@ def mandelbrot(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="mandelbrot", typings_input=(), typings_output=("video",)),
-        **{
-            "size": size,
-            "rate": rate,
-            "maxiter": maxiter,
-            "start_x": start_x,
-            "start_y": start_y,
-            "start_scale": start_scale,
-            "end_scale": end_scale,
-            "end_pts": end_pts,
-            "bailout": bailout,
-            "morphxf": morphxf,
-            "morphyf": morphyf,
-            "morphamp": morphamp,
-            "outer": outer,
-            "inner": inner,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "rate": rate,
+                "maxiter": maxiter,
+                "start_x": start_x,
+                "start_y": start_y,
+                "start_scale": start_scale,
+                "end_scale": end_scale,
+                "end_pts": end_pts,
+                "bailout": bailout,
+                "morphxf": morphxf,
+                "morphyf": morphyf,
+                "morphamp": morphamp,
+                "outer": outer,
+                "inner": inner,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2466,7 +2551,7 @@ def mergeplanes(
     map2p: Int = Default(0),
     map3s: Int = Default(0),
     map3p: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2498,19 +2583,21 @@ def mergeplanes(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "mapping": mapping,
-            "format": format,
-            "map0s": map0s,
-            "map0p": map0p,
-            "map1s": map1s,
-            "map1p": map1p,
-            "map2s": map2s,
-            "map2p": map2p,
-            "map3s": map3s,
-            "map3p": map3p,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "mapping": mapping,
+                "format": format,
+                "map0s": map0s,
+                "map0p": map0p,
+                "map1s": map1s,
+                "map1p": map1p,
+                "map2s": map2s,
+                "map2p": map2p,
+                "map3s": map3s,
+                "map3p": map3p,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2525,7 +2612,7 @@ def mix(
         "longest"
     ),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2553,15 +2640,17 @@ def mix(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "weights": weights,
-            "scale": scale,
-            "planes": planes,
-            "duration": duration,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "weights": weights,
+                "scale": scale,
+                "planes": planes,
+                "duration": duration,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2577,7 +2666,7 @@ def movie(
     discontinuity: Duration = Default(0.0),
     dec_threads: Int = Default(0),
     format_opts: Dictionary = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> FilterNode:
     """
 
@@ -2608,18 +2697,20 @@ def movie(
             typings_input="[StreamType.video] * len(streams.split('+'))",
             typings_output="[StreamType.video] * len(streams.split('+'))",
         ),
-        **{
-            "filename": filename,
-            "format_name": format_name,
-            "stream_index": stream_index,
-            "seek_point": seek_point,
-            "streams": streams,
-            "loop": loop,
-            "discontinuity": discontinuity,
-            "dec_threads": dec_threads,
-            "format_opts": format_opts,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "filename": filename,
+                "format_name": format_name,
+                "stream_index": stream_index,
+                "seek_point": seek_point,
+                "streams": streams,
+                "loop": loop,
+                "discontinuity": discontinuity,
+                "dec_threads": dec_threads,
+                "format_opts": format_opts,
+            },
+            extra_options,
+        ),
     )
 
     return filter_node
@@ -2645,7 +2736,7 @@ def mptestsrc(
     ]
     | Default = Default("all"),
     max_frames: Int64 = Default(30),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2666,13 +2757,15 @@ def mptestsrc(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="mptestsrc", typings_input=(), typings_output=("video",)),
-        **{
-            "rate": rate,
-            "duration": duration,
-            "test": test,
-            "max_frames": max_frames,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "rate": rate,
+                "duration": duration,
+                "test": test,
+                "max_frames": max_frames,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2683,7 +2776,7 @@ def nullsrc(
     rate: Video_rate = Default("25"),
     duration: Duration = Default(-1e-06),
     sar: Rational = Default("1/1"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2704,13 +2797,15 @@ def nullsrc(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="nullsrc", typings_input=(), typings_output=("video",)),
-        **{
-            "size": size,
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2722,7 +2817,7 @@ def openclsrc(
     size: Image_size = Default(None),
     format: Pix_fmt = Default("none"),
     rate: Video_rate = Default("25"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2744,14 +2839,16 @@ def openclsrc(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="openclsrc", typings_input=(), typings_output=("video",)),
-        **{
-            "source": source,
-            "kernel": kernel,
-            "size": size,
-            "format": format,
-            "rate": rate,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "source": source,
+                "kernel": kernel,
+                "size": size,
+                "format": format,
+                "rate": rate,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2762,7 +2859,7 @@ def pal100bars(
     rate: Video_rate = Default("25"),
     duration: Duration = Default(-1e-06),
     sar: Rational = Default("1/1"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2783,13 +2880,15 @@ def pal100bars(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="pal100bars", typings_input=(), typings_output=("video",)),
-        **{
-            "size": size,
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2800,7 +2899,7 @@ def pal75bars(
     rate: Video_rate = Default("25"),
     duration: Duration = Default(-1e-06),
     sar: Rational = Default("1/1"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2821,13 +2920,15 @@ def pal75bars(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="pal75bars", typings_input=(), typings_output=("video",)),
-        **{
-            "size": size,
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2837,7 +2938,7 @@ def premultiply(
     planes: Int = Default(15),
     inplace: Boolean = Default(False),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2862,12 +2963,14 @@ def premultiply(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "planes": planes,
-            "inplace": inplace,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "planes": planes,
+                "inplace": inplace,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2882,7 +2985,7 @@ def program_opencl(
     shortest: Boolean = Default(False),
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2912,17 +3015,19 @@ def program_opencl(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "source": source,
-            "kernel": kernel,
-            "inputs": inputs,
-            "size": size,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "source": source,
+                "kernel": kernel,
+                "inputs": inputs,
+                "size": size,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2934,7 +3039,7 @@ def rgbtestsrc(
     duration: Duration = Default(-1e-06),
     sar: Rational = Default("1/1"),
     complement: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2956,14 +3061,16 @@ def rgbtestsrc(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="rgbtestsrc", typings_input=(), typings_output=("video",)),
-        **{
-            "size": size,
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-            "complement": complement,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+                "complement": complement,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2975,7 +3082,7 @@ def sierpinski(
     seed: Int64 = Default(-1),
     jump: Int = Default(100),
     type: Int | Literal["carpet", "triangle"] | Default = Default("carpet"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2997,14 +3104,16 @@ def sierpinski(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="sierpinski", typings_input=(), typings_output=("video",)),
-        **{
-            "size": size,
-            "rate": rate,
-            "seed": seed,
-            "jump": jump,
-            "type": type,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "rate": rate,
+                "seed": seed,
+                "jump": jump,
+                "type": type,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3020,7 +3129,7 @@ def signature(
     th_xh: Int = Default(116),
     th_di: Int = Default(0),
     th_it: Double = Default(0.5),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3051,18 +3160,20 @@ def signature(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "detectmode": detectmode,
-            "nb_inputs": nb_inputs,
-            "filename": filename,
-            "format": format,
-            "th_d": th_d,
-            "th_dc": th_dc,
-            "th_xh": th_xh,
-            "th_di": th_di,
-            "th_it": th_it,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "detectmode": detectmode,
+                "nb_inputs": nb_inputs,
+                "filename": filename,
+                "format": format,
+                "th_d": th_d,
+                "th_dc": th_dc,
+                "th_xh": th_xh,
+                "th_di": th_di,
+                "th_it": th_it,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3079,7 +3190,7 @@ def sinc(
     round: Boolean = Default(False),
     hptaps: Int = Default(0),
     lptaps: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -3106,19 +3217,21 @@ def sinc(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="sinc", typings_input=(), typings_output=("audio",)),
-        **{
-            "sample_rate": sample_rate,
-            "nb_samples": nb_samples,
-            "hp": hp,
-            "lp": lp,
-            "phase": phase,
-            "beta": beta,
-            "att": att,
-            "round": round,
-            "hptaps": hptaps,
-            "lptaps": lptaps,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "sample_rate": sample_rate,
+                "nb_samples": nb_samples,
+                "hp": hp,
+                "lp": lp,
+                "phase": phase,
+                "beta": beta,
+                "att": att,
+                "round": round,
+                "hptaps": hptaps,
+                "lptaps": lptaps,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -3130,7 +3243,7 @@ def sine(
     sample_rate: Int = Default(44100),
     duration: Duration = Default(0.0),
     samples_per_frame: String = Default("1024"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -3152,14 +3265,16 @@ def sine(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="sine", typings_input=(), typings_output=("audio",)),
-        **{
-            "frequency": frequency,
-            "beep_factor": beep_factor,
-            "sample_rate": sample_rate,
-            "duration": duration,
-            "samples_per_frame": samples_per_frame,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "frequency": frequency,
+                "beep_factor": beep_factor,
+                "sample_rate": sample_rate,
+                "duration": duration,
+                "samples_per_frame": samples_per_frame,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -3170,7 +3285,7 @@ def smptebars(
     rate: Video_rate = Default("25"),
     duration: Duration = Default(-1e-06),
     sar: Rational = Default("1/1"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3191,13 +3306,15 @@ def smptebars(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="smptebars", typings_input=(), typings_output=("video",)),
-        **{
-            "size": size,
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3208,7 +3325,7 @@ def smptehdbars(
     rate: Video_rate = Default("25"),
     duration: Duration = Default(-1e-06),
     sar: Rational = Default("1/1"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3231,13 +3348,15 @@ def smptehdbars(
         FFMpegFilterDef(
             name="smptehdbars", typings_input=(), typings_output=("video",)
         ),
-        **{
-            "size": size,
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3246,7 +3365,7 @@ def streamselect(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
     map: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> FilterNode:
     """
 
@@ -3271,11 +3390,13 @@ def streamselect(
             typings_output="[StreamType.video] * len(re.findall(r'\\d+', str(map)))",
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "map": map,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "map": map,
+            },
+            extra_options,
+        ),
     )
 
     return filter_node
@@ -3288,7 +3409,7 @@ def testsrc(
     duration: Duration = Default(-1e-06),
     sar: Rational = Default("1/1"),
     decimals: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3310,14 +3431,16 @@ def testsrc(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="testsrc", typings_input=(), typings_output=("video",)),
-        **{
-            "size": size,
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-            "decimals": decimals,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+                "decimals": decimals,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3329,7 +3452,7 @@ def testsrc2(
     duration: Duration = Default(-1e-06),
     sar: Rational = Default("1/1"),
     alpha: Int = Default(255),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3351,14 +3474,16 @@ def testsrc2(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="testsrc2", typings_input=(), typings_output=("video",)),
-        **{
-            "size": size,
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-            "alpha": alpha,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+                "alpha": alpha,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3368,7 +3493,7 @@ def unpremultiply(
     planes: Int = Default(15),
     inplace: Boolean = Default(False),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3393,12 +3518,14 @@ def unpremultiply(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "planes": planes,
-            "inplace": inplace,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "planes": planes,
+                "inplace": inplace,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3407,7 +3534,7 @@ def vstack(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
     shortest: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3431,11 +3558,13 @@ def vstack(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "shortest": shortest,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "shortest": shortest,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3445,7 +3574,7 @@ def vstack_vaapi(
     inputs: Int = Default(2),
     shortest: Boolean = Default(False),
     width: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3470,12 +3599,14 @@ def vstack_vaapi(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "shortest": shortest,
-            "width": width,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "shortest": shortest,
+                "width": width,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3490,7 +3621,7 @@ def xmedian(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3520,17 +3651,19 @@ def xmedian(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "planes": planes,
-            "percentile": percentile,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "planes": planes,
+                "percentile": percentile,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3542,7 +3675,7 @@ def xstack(
     grid: Image_size = Default(None),
     shortest: Boolean = Default(False),
     fill: String = Default("none"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3569,14 +3702,16 @@ def xstack(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "layout": layout,
-            "grid": grid,
-            "shortest": shortest,
-            "fill": fill,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "layout": layout,
+                "grid": grid,
+                "shortest": shortest,
+                "fill": fill,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3589,7 +3724,7 @@ def xstack_vaapi(
     grid: Image_size = Default(None),
     grid_tile_size: Image_size = Default(None),
     fill: String = Default("none"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3617,15 +3752,17 @@ def xstack_vaapi(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "shortest": shortest,
-            "layout": layout,
-            "grid": grid,
-            "grid_tile_size": grid_tile_size,
-            "fill": fill,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "shortest": shortest,
+                "layout": layout,
+                "grid": grid,
+                "grid_tile_size": grid_tile_size,
+                "fill": fill,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3636,7 +3773,7 @@ def yuvtestsrc(
     rate: Video_rate = Default("25"),
     duration: Duration = Default(-1e-06),
     sar: Rational = Default("1/1"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3657,13 +3794,15 @@ def yuvtestsrc(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="yuvtestsrc", typings_input=(), typings_output=("video",)),
-        **{
-            "size": size,
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3690,7 +3829,7 @@ def zoneplate(
     kt2: Int = Default(0),
     ku: Int = Default(0),
     kv: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3727,28 +3866,30 @@ def zoneplate(
     """
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="zoneplate", typings_input=(), typings_output=("video",)),
-        **{
-            "size": size,
-            "rate": rate,
-            "duration": duration,
-            "sar": sar,
-            "precision": precision,
-            "xo": xo,
-            "yo": yo,
-            "to": to,
-            "k0": k0,
-            "kx": kx,
-            "ky": ky,
-            "kt": kt,
-            "kxt": kxt,
-            "kyt": kyt,
-            "kxy": kxy,
-            "kx2": kx2,
-            "ky2": ky2,
-            "kt2": kt2,
-            "ku": ku,
-            "kv": kv,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "rate": rate,
+                "duration": duration,
+                "sar": sar,
+                "precision": precision,
+                "xo": xo,
+                "yo": yo,
+                "to": to,
+                "k0": k0,
+                "kx": kx,
+                "ky": ky,
+                "kt": kt,
+                "kxt": kxt,
+                "kyt": kyt,
+                "kxy": kxy,
+                "kx2": kx2,
+                "ky2": ky2,
+                "kt2": kt2,
+                "ku": ku,
+                "kv": kv,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
