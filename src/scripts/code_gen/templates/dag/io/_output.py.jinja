@@ -48,8 +48,10 @@ def output(
         }.items() if v is not None
     }
 
+    kwargs = options | (encoder_options.kwargs | {} if encoder_options else {}) | (extra_options or {})
+
     return OutputNode(
         inputs=streams,
         filename=str(filename),
-        kwargs=FrozenDict(options | (encoder_options.kwargs if encoder_options else {}) | (extra_options or {}))
+        kwargs=FrozenDict(kwargs)
     ).stream()

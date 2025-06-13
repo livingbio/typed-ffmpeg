@@ -205,6 +205,10 @@ def input(
         if v is not None
     }
 
-    return InputNode(
-        filename=str(filename), kwargs=FrozenDict(options | (extra_options or {}))
-    ).stream()
+    kwargs = (
+        options
+        | (decoder_options.kwargs | {} if decoder_options else {})
+        | (extra_options or {})
+    )
+
+    return InputNode(filename=str(filename), kwargs=FrozenDict(kwargs)).stream()

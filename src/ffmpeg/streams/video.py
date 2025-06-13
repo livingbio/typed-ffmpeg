@@ -651,7 +651,7 @@ class VideoStream(FilterableStream):
             default: the video stream
 
         References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blackdetect)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blackdetect_002c-blackdetect_005fvulkan)
 
         """
         filter_node = filter_node_factory(

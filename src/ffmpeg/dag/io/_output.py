@@ -327,12 +327,12 @@ def output(
         if v is not None
     }
 
+    kwargs = (
+        options
+        | (encoder_options.kwargs | {} if encoder_options else {})
+        | (extra_options or {})
+    )
+
     return OutputNode(
-        inputs=streams,
-        filename=str(filename),
-        kwargs=FrozenDict(
-            options
-            | (encoder_options.kwargs if encoder_options else {})
-            | (extra_options or {})
-        ),
+        inputs=streams, filename=str(filename), kwargs=FrozenDict(kwargs)
     ).stream()

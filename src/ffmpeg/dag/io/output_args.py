@@ -338,10 +338,12 @@ class OutputArgs(ABC):
             if v is not None
         }
 
+        kwargs = (
+            options
+            | (encoder_options.kwargs | {} if encoder_options else {})
+            | (extra_options or {})
+        )
+
         return self._output_node(
-            *streams,
-            filename=filename,
-            **options,
-            **(encoder_options.kwargs if encoder_options else {}),
-            **(extra_options or {}),
+            *streams, filename=filename, **options, **kwargs
         ).stream()

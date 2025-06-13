@@ -106,3 +106,9 @@ class FrozenDict(Mapping[K, V], Generic[K, V]):
             # Create a stable hash based on sorted key-value pairs
             self._hash = hash(frozenset(self._data.items()))
         return self._hash
+
+    def __or__(self, other: Mapping[Any, Any]) -> dict[Any, Any]:
+        return dict(self) | dict(other)
+
+    def __ror__(self, other: Mapping[Any, Any]) -> dict[Any, Any]:
+        return dict(other) | dict(self)

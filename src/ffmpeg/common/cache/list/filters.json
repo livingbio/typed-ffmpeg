@@ -20676,7 +20676,7 @@
       }
     ],
     "pre": [],
-    "ref": "https://ffmpeg.org/ffmpeg-filters.html#blackdetect",
+    "ref": "https://ffmpeg.org/ffmpeg-filters.html#blackdetect_002c-blackdetect_005fvulkan",
     "stream_typings_input": [
       {
         "__class__": "FFMpegIOType",

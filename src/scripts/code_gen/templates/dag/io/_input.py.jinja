@@ -53,7 +53,9 @@ def input(
         }.items() if v is not None
     }
 
+    kwargs = options | (decoder_options.kwargs | {} if decoder_options else {}) | (extra_options or {})
+
     return InputNode(
         filename=str(filename),
-        kwargs=FrozenDict(options | (extra_options or {}) )
+        kwargs=FrozenDict(kwargs)
     ).stream()
