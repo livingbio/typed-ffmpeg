@@ -13,8 +13,9 @@ from ffmpeg.common.schema import FFMpegFilter
 
 from .parse_all_filter import extract
 from .parse_all_options import extract_avoption_info_from_help
+from .parse_codecs import extract_all_codecs
 from .parse_filter import extract_avfilter_info_from_help
-from .schema import FFMpegAVOption
+from .schema import FFMpegAVOption, FFMpegCodec
 
 app = typer.Typer(help="Parse FFmpeg filter help information")
 
@@ -76,3 +77,11 @@ def all_filters() -> list[FFMpegFilter]:
         )
 
     return output
+
+
+@app.command()
+def all_codecs() -> list[FFMpegCodec]:
+    """
+    Parse all codecs from FFmpeg help output
+    """
+    return extract_all_codecs()
