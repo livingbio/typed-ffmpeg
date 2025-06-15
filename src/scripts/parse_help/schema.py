@@ -131,3 +131,21 @@ class FFMpegEncoder(FFMpegCodec):
 @dataclass(frozen=True, kw_only=True)
 class FFMpegDecoder(FFMpegCodec):
     pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class FFMpegMuxerBase(Serializable):
+    name: str
+    flags: str
+    description: str
+    options: tuple[FFMpegAVOption, ...] = ()
+
+
+@dataclass(frozen=True, kw_only=True)
+class FFMpegDemuxer(FFMpegMuxerBase):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class FFMpegMuxer(FFMpegMuxerBase):
+    pass
