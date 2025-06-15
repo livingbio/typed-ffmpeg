@@ -11,8 +11,8 @@ from ffmpeg.common.schema import FFMpegFilter, FFMpegOption
 from ..manual.cli import load_config
 from ..parse_c.cli import parse_ffmpeg_options
 from ..parse_docs.cli import extract_docs
-from ..parse_help.cli import all_codecs, all_filters
-from ..parse_help.schema import FFMpegCodec
+from ..parse_help.cli import all_codecs, all_filters, all_muxers
+from ..parse_help.schema import FFMpegCodec, FFMpegMuxerBase
 from .gen import render
 
 app = typer.Typer()
@@ -113,6 +113,28 @@ def load_codecs(rebuild: bool) -> list[FFMpegCodec]:
     return codecs
 
 
+def load_muxers(rebuild: bool) -> list[FFMpegMuxerBase]:
+    """
+    Load muxers from the output path
+
+    Args:
+        rebuild: Whether to use the cache
+
+    Returns:
+        The muxers
+    """
+
+    if not rebuild:
+        try:
+            return load(list[FFMpegMuxerBase], "muxers")
+        except Exception as e:
+            logging.error(f"Failed to load muxers from cache: {e}")
+
+    muxers = all_muxers()
+    save(muxers, "muxers")
+    return muxers
+
+
 @app.command()
 def generate(outpath: Path | None = None, rebuild: bool = False) -> None:
     """
@@ -128,11 +150,13 @@ def generate(outpath: Path | None = None, rebuild: bool = False) -> None:
     ffmpeg_filters = load_filters(outpath, rebuild)
     ffmpeg_options = gen_option_info()
     ffmpeg_codecs = load_codecs(rebuild)
+    ffmpeg_muxers = load_muxers(rebuild)
 
     render(
         filters=ffmpeg_filters,
         options=ffmpeg_options,
         codecs=ffmpeg_codecs,
+        muxers=ffmpeg_muxers,
         outpath=outpath,
     )
     os.system("pre-commit run -a")
