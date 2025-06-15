@@ -64,6 +64,16 @@ class FFMpegAVOption(Serializable):
                     return "int | None"
                 case "sample_fmt":
                     return "str | None"
+                case "binary":
+                    return "str | None"
+                case "rational":
+                    return "str | None"
+                case "color":
+                    return "str | None"
+                case "video_rate":
+                    return "str | None"
+                case "pix_fmt":
+                    return "str | None"
                 case _:
                     raise ValueError(f"Invalid option type: {self.type}")
 
@@ -139,6 +149,14 @@ class FFMpegMuxerBase(Serializable):
     flags: str
     description: str
     options: tuple[FFMpegAVOption, ...] = ()
+
+    @property
+    def is_muxer(self) -> bool:
+        return isinstance(self, FFMpegMuxer)
+
+    @property
+    def is_demuxer(self) -> bool:
+        return isinstance(self, FFMpegDemuxer)
 
 
 @dataclass(frozen=True, kw_only=True)

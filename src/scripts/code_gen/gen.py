@@ -13,7 +13,7 @@ from ffmpeg.common.schema import (
     FFMpegOptionType,
 )
 
-from ..parse_help.schema import FFMpegCodec
+from ..parse_help.schema import FFMpegCodec, FFMpegMuxerBase
 
 template_folder = Path(__file__).parent / "templates"
 
@@ -254,6 +254,7 @@ def render(
     filters: list[FFMpegFilter],
     options: list[FFMpegOption],
     codecs: list[FFMpegCodec],
+    muxers: list[FFMpegMuxerBase],
     outpath: pathlib.Path,
 ) -> list[pathlib.Path]:
     """
@@ -275,7 +276,9 @@ def render(
         template_path = template_file.relative_to(template_folder)
 
         template = env.get_template(str(template_path))
-        code = template.render(filters=filters, options=options, codecs=codecs)
+        code = template.render(
+            filters=filters, options=options, codecs=codecs, muxers=muxers
+        )
 
         opath = outpath / str(template_path).replace(".jinja", "")
         opath.parent.mkdir(parents=True, exist_ok=True)
