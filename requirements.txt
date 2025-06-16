@@ -266,7 +266,9 @@ platformdirs==4.3.8
     #   mkdocs-get-deps
     #   virtualenv
 pluggy==1.6.0
-    # via pytest
+    # via
+    #   pytest
+    #   pytest-cov
 pre-commit==4.2.0
     # via -r requirements.in
 prompt-toolkit==3.0.51
@@ -303,7 +305,7 @@ pytest==8.4.0
     #   pytest-datadir
     #   pytest-recording
     #   syrupy
-pytest-cov==6.1.1
+pytest-cov==6.2.1
     # via -r requirements.in
 pytest-datadir==1.7.2
     # via -r requirements.in
