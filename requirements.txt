@@ -402,7 +402,7 @@ twine==6.1.0
     # via -r requirements.in
 typer==0.16.0
     # via -r requirements.in
-typing-extensions==4.13.2
+typing-extensions==4.14.0
     # via
     #   beautifulsoup4
     #   black
