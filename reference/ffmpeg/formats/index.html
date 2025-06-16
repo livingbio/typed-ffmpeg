@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/reference/scripts/parse_help/parse_muxer/">
+        <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/formats/">
       
       
-        <link rel="prev" href="../parse_filter/">
+        <link rel="prev" href="../filters/">
       
       
-        <link rel="next" href="../schema/">
+        <link rel="next" href="demuxers/">
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>parse_muxer - typed-ffmpeg</title>
+        <title>formats - typed-ffmpeg</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,15 +50,15 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../../../css/ansi-colours.css">
+      <link rel="stylesheet" href="../../../css/ansi-colours.css">
     
-      <link rel="stylesheet" href="../../../../css/jupyter-cells.css">
+      <link rel="stylesheet" href="../../../css/jupyter-cells.css">
     
-      <link rel="stylesheet" href="../../../../css/pandas-dataframe.css">
+      <link rel="stylesheet" href="../../../css/pandas-dataframe.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#scripts.parse_help.parse_muxer" class="md-skip">
+        <a href="#ffmpeg.formats" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="typed-ffmpeg" class="md-header__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
+    <a href="../../.." title="typed-ffmpeg" class="md-header__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              parse_muxer
+              formats
             
           </span>
         </div>
@@ -231,7 +231,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../.." class="md-tabs__link">
+        <a href="../../.." class="md-tabs__link">
           
   
   
@@ -251,7 +251,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../usage/basic-api-usage/" class="md-tabs__link">
+        <a href="../../../usage/basic-api-usage/" class="md-tabs__link">
           
   
   
@@ -273,7 +273,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../ffmpeg/" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -307,7 +307,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="typed-ffmpeg" class="md-nav__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
+    <a href="../../.." title="typed-ffmpeg" class="md-nav__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -378,7 +378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -401,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../faq/" class="md-nav__link">
+      <a href="../../../faq/" class="md-nav__link">
         
   
   
@@ -472,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../usage/basic-api-usage/" class="md-nav__link">
+      <a href="../../../usage/basic-api-usage/" class="md-nav__link">
         
   
   
@@ -495,7 +495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../usage/probe/" class="md-nav__link">
+      <a href="../../../usage/probe/" class="md-nav__link">
         
   
   
@@ -518,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../usage/complex-filtering/" class="md-nav__link">
+      <a href="../../../usage/complex-filtering/" class="md-nav__link">
         
   
   
@@ -541,7 +541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../usage/customizing-filters/" class="md-nav__link">
+      <a href="../../../usage/customizing-filters/" class="md-nav__link">
         
   
   
@@ -564,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../usage/execute/" class="md-nav__link">
+      <a href="../../../usage/execute/" class="md-nav__link">
         
   
   
@@ -637,6 +637,8 @@
                 
   
   
+    
+  
   
   
     
@@ -647,15 +649,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ffmpeg/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -674,7 +676,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             ffmpeg
@@ -688,7 +690,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/base/" class="md-nav__link">
+      <a href="../base/" class="md-nav__link">
         
   
   
@@ -726,7 +728,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ffmpeg/codecs/" class="md-nav__link ">
+            <a href="../codecs/" class="md-nav__link ">
               
   
   
@@ -759,7 +761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/codecs/decoders/" class="md-nav__link">
+      <a href="../codecs/decoders/" class="md-nav__link">
         
   
   
@@ -782,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/codecs/encoders/" class="md-nav__link">
+      <a href="../codecs/encoders/" class="md-nav__link">
         
   
   
@@ -805,7 +807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/codecs/schema/" class="md-nav__link">
+      <a href="../codecs/schema/" class="md-nav__link">
         
   
   
@@ -851,7 +853,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ffmpeg/common/" class="md-nav__link ">
+            <a href="../common/" class="md-nav__link ">
               
   
   
@@ -884,7 +886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/common/cache/" class="md-nav__link">
+      <a href="../common/cache/" class="md-nav__link">
         
   
   
@@ -907,7 +909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/common/schema/" class="md-nav__link">
+      <a href="../common/schema/" class="md-nav__link">
         
   
   
@@ -930,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/common/serialize/" class="md-nav__link">
+      <a href="../common/serialize/" class="md-nav__link">
         
   
   
@@ -976,7 +978,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ffmpeg/compile/" class="md-nav__link ">
+            <a href="../compile/" class="md-nav__link ">
               
   
   
@@ -1009,7 +1011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/compile/compile_cli/" class="md-nav__link">
+      <a href="../compile/compile_cli/" class="md-nav__link">
         
   
   
@@ -1032,7 +1034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/compile/compile_json/" class="md-nav__link">
+      <a href="../compile/compile_json/" class="md-nav__link">
         
   
   
@@ -1055,7 +1057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/compile/compile_python/" class="md-nav__link">
+      <a href="../compile/compile_python/" class="md-nav__link">
         
   
   
@@ -1078,7 +1080,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/compile/context/" class="md-nav__link">
+      <a href="../compile/context/" class="md-nav__link">
         
   
   
@@ -1101,7 +1103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/compile/validate/" class="md-nav__link">
+      <a href="../compile/validate/" class="md-nav__link">
         
   
   
@@ -1147,7 +1149,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ffmpeg/dag/" class="md-nav__link ">
+            <a href="../dag/" class="md-nav__link ">
               
   
   
@@ -1180,7 +1182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/dag/factory/" class="md-nav__link">
+      <a href="../dag/factory/" class="md-nav__link">
         
   
   
@@ -1218,7 +1220,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ffmpeg/dag/global_runnable/" class="md-nav__link ">
+            <a href="../dag/global_runnable/" class="md-nav__link ">
               
   
   
@@ -1251,7 +1253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/dag/global_runnable/global_args/" class="md-nav__link">
+      <a href="../dag/global_runnable/global_args/" class="md-nav__link">
         
   
   
@@ -1274,7 +1276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/dag/global_runnable/runnable/" class="md-nav__link">
+      <a href="../dag/global_runnable/runnable/" class="md-nav__link">
         
   
   
@@ -1320,7 +1322,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ffmpeg/dag/io/" class="md-nav__link ">
+            <a href="../dag/io/" class="md-nav__link ">
               
   
   
@@ -1353,7 +1355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/dag/io/_input/" class="md-nav__link">
+      <a href="../dag/io/_input/" class="md-nav__link">
         
   
   
@@ -1376,7 +1378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/dag/io/_output/" class="md-nav__link">
+      <a href="../dag/io/_output/" class="md-nav__link">
         
   
   
@@ -1399,7 +1401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/dag/io/output_args/" class="md-nav__link">
+      <a href="../dag/io/output_args/" class="md-nav__link">
         
   
   
@@ -1430,7 +1432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/dag/nodes/" class="md-nav__link">
+      <a href="../dag/nodes/" class="md-nav__link">
         
   
   
@@ -1453,7 +1455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/dag/schema/" class="md-nav__link">
+      <a href="../dag/schema/" class="md-nav__link">
         
   
   
@@ -1476,7 +1478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/dag/utils/" class="md-nav__link">
+      <a href="../dag/utils/" class="md-nav__link">
         
   
   
@@ -1507,7 +1509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/exceptions/" class="md-nav__link">
+      <a href="../exceptions/" class="md-nav__link">
         
   
   
@@ -1545,7 +1547,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ffmpeg/ffprobe/" class="md-nav__link ">
+            <a href="../ffprobe/" class="md-nav__link ">
               
   
   
@@ -1578,7 +1580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/ffprobe/parse/" class="md-nav__link">
+      <a href="../ffprobe/parse/" class="md-nav__link">
         
   
   
@@ -1601,7 +1603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/ffprobe/probe/" class="md-nav__link">
+      <a href="../ffprobe/probe/" class="md-nav__link">
         
   
   
@@ -1624,7 +1626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/ffprobe/schema/" class="md-nav__link">
+      <a href="../ffprobe/schema/" class="md-nav__link">
         
   
   
@@ -1647,7 +1649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/ffprobe/xml2json/" class="md-nav__link">
+      <a href="../ffprobe/xml2json/" class="md-nav__link">
         
   
   
@@ -1678,7 +1680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/filters/" class="md-nav__link">
+      <a href="../filters/" class="md-nav__link">
         
   
   
@@ -1698,28 +1700,7 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../ffmpeg/info/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    info
     
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
   
   
   
@@ -1731,20 +1712,20 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_9" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ffmpeg/muxers/" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   
   <span class="md-ellipsis">
-    muxers
+    formats
     
   </span>
   
@@ -1752,16 +1733,16 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3_1_10" id="__nav_3_1_10_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_3_1_9" id="__nav_3_1_9_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1_10">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1_9">
             <span class="md-nav__icon md-icon"></span>
-            muxers
+            formats
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1772,7 +1753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/muxers/demuxers/" class="md-nav__link">
+      <a href="demuxers/" class="md-nav__link">
         
   
   
@@ -1795,7 +1776,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/muxers/muxers/" class="md-nav__link">
+      <a href="muxers/" class="md-nav__link">
         
   
   
@@ -1818,7 +1799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/muxers/schema/" class="md-nav__link">
+      <a href="schema/" class="md-nav__link">
         
   
   
@@ -1849,7 +1830,30 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/schema/" class="md-nav__link">
+      <a href="../info/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    info
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema/" class="md-nav__link">
         
   
   
@@ -1872,7 +1876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/sources/" class="md-nav__link">
+      <a href="../sources/" class="md-nav__link">
         
   
   
@@ -1910,7 +1914,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ffmpeg/streams/" class="md-nav__link ">
+            <a href="../streams/" class="md-nav__link ">
               
   
   
@@ -1943,7 +1947,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/streams/audio/" class="md-nav__link">
+      <a href="../streams/audio/" class="md-nav__link">
         
   
   
@@ -1966,7 +1970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/streams/av/" class="md-nav__link">
+      <a href="../streams/av/" class="md-nav__link">
         
   
   
@@ -1989,7 +1993,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/streams/channel_layout/" class="md-nav__link">
+      <a href="../streams/channel_layout/" class="md-nav__link">
         
   
   
@@ -2012,7 +2016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/streams/subtitle/" class="md-nav__link">
+      <a href="../streams/subtitle/" class="md-nav__link">
         
   
   
@@ -2035,7 +2039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/streams/video/" class="md-nav__link">
+      <a href="../streams/video/" class="md-nav__link">
         
   
   
@@ -2066,7 +2070,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/types/" class="md-nav__link">
+      <a href="../types/" class="md-nav__link">
         
   
   
@@ -2104,7 +2108,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ffmpeg/utils/" class="md-nav__link ">
+            <a href="../utils/" class="md-nav__link ">
               
   
   
@@ -2137,7 +2141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/utils/escaping/" class="md-nav__link">
+      <a href="../utils/escaping/" class="md-nav__link">
         
   
   
@@ -2160,7 +2164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/utils/frozendict/" class="md-nav__link">
+      <a href="../utils/frozendict/" class="md-nav__link">
         
   
   
@@ -2198,7 +2202,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ffmpeg/utils/lazy_eval/" class="md-nav__link ">
+            <a href="../utils/lazy_eval/" class="md-nav__link ">
               
   
   
@@ -2231,7 +2235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/utils/lazy_eval/operator/" class="md-nav__link">
+      <a href="../utils/lazy_eval/operator/" class="md-nav__link">
         
   
   
@@ -2254,7 +2258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/utils/lazy_eval/schema/" class="md-nav__link">
+      <a href="../utils/lazy_eval/schema/" class="md-nav__link">
         
   
   
@@ -2285,7 +2289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/utils/run/" class="md-nav__link">
+      <a href="../utils/run/" class="md-nav__link">
         
   
   
@@ -2308,7 +2312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/utils/snapshot/" class="md-nav__link">
+      <a href="../utils/snapshot/" class="md-nav__link">
         
   
   
@@ -2331,7 +2335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/utils/typing/" class="md-nav__link">
+      <a href="../utils/typing/" class="md-nav__link">
         
   
   
@@ -2354,7 +2358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/utils/view/" class="md-nav__link">
+      <a href="../utils/view/" class="md-nav__link">
         
   
   
@@ -2390,8 +2394,6 @@
                 
   
   
-    
-  
   
   
     
@@ -2402,15 +2404,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../scripts/" class="md-nav__link ">
               
   
   
@@ -2429,7 +2431,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             scripts
@@ -2458,7 +2460,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../code_gen/" class="md-nav__link ">
+            <a href="../../scripts/code_gen/" class="md-nav__link ">
               
   
   
@@ -2491,7 +2493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../code_gen/cli/" class="md-nav__link">
+      <a href="../../scripts/code_gen/cli/" class="md-nav__link">
         
   
   
@@ -2514,7 +2516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../code_gen/gen/" class="md-nav__link">
+      <a href="../../scripts/code_gen/gen/" class="md-nav__link">
         
   
   
@@ -2545,7 +2547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../main/" class="md-nav__link">
+      <a href="../../scripts/main/" class="md-nav__link">
         
   
   
@@ -2583,7 +2585,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../manual/" class="md-nav__link ">
+            <a href="../../scripts/manual/" class="md-nav__link ">
               
   
   
@@ -2616,7 +2618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/cli/" class="md-nav__link">
+      <a href="../../scripts/manual/cli/" class="md-nav__link">
         
   
   
@@ -2639,7 +2641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manual/schema/" class="md-nav__link">
+      <a href="../../scripts/manual/schema/" class="md-nav__link">
         
   
   
@@ -2685,7 +2687,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../parse_c/" class="md-nav__link ">
+            <a href="../../scripts/parse_c/" class="md-nav__link ">
               
   
   
@@ -2718,7 +2720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../parse_c/cli/" class="md-nav__link">
+      <a href="../../scripts/parse_c/cli/" class="md-nav__link">
         
   
   
@@ -2741,7 +2743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../parse_c/parse_c_structure/" class="md-nav__link">
+      <a href="../../scripts/parse_c/parse_c_structure/" class="md-nav__link">
         
   
   
@@ -2764,7 +2766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../parse_c/parse_ffmpeg_opt_c/" class="md-nav__link">
+      <a href="../../scripts/parse_c/parse_ffmpeg_opt_c/" class="md-nav__link">
         
   
   
@@ -2787,7 +2789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../parse_c/pre_compile/" class="md-nav__link">
+      <a href="../../scripts/parse_c/pre_compile/" class="md-nav__link">
         
   
   
@@ -2810,7 +2812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../parse_c/xsd_to_dataclasses/" class="md-nav__link">
+      <a href="../../scripts/parse_c/xsd_to_dataclasses/" class="md-nav__link">
         
   
   
@@ -2856,7 +2858,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../parse_docs/" class="md-nav__link ">
+            <a href="../../scripts/parse_docs/" class="md-nav__link ">
               
   
   
@@ -2889,7 +2891,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../parse_docs/cli/" class="md-nav__link">
+      <a href="../../scripts/parse_docs/cli/" class="md-nav__link">
         
   
   
@@ -2912,7 +2914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../parse_docs/helpers/" class="md-nav__link">
+      <a href="../../scripts/parse_docs/helpers/" class="md-nav__link">
         
   
   
@@ -2935,7 +2937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../parse_docs/schema/" class="md-nav__link">
+      <a href="../../scripts/parse_docs/schema/" class="md-nav__link">
         
   
   
@@ -2963,8 +2965,6 @@
                 
   
   
-    
-  
   
   
     
@@ -2975,15 +2975,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_6" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../scripts/parse_help/" class="md-nav__link ">
               
   
   
@@ -3002,7 +3002,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2_6">
             <span class="md-nav__icon md-icon"></span>
             parse_help
@@ -3016,7 +3016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
+      <a href="../../scripts/parse_help/cli/" class="md-nav__link">
         
   
   
@@ -3039,7 +3039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_all_filter/" class="md-nav__link">
+      <a href="../../scripts/parse_help/parse_all_filter/" class="md-nav__link">
         
   
   
@@ -3062,7 +3062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_all_options/" class="md-nav__link">
+      <a href="../../scripts/parse_help/parse_all_options/" class="md-nav__link">
         
   
   
@@ -3085,7 +3085,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_codecs/" class="md-nav__link">
+      <a href="../../scripts/parse_help/parse_codecs/" class="md-nav__link">
         
   
   
@@ -3108,7 +3108,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_filter/" class="md-nav__link">
+      <a href="../../scripts/parse_help/parse_filter/" class="md-nav__link">
         
   
   
@@ -3128,91 +3128,20 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    parse_muxer
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../scripts/parse_help/parse_formats/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    parse_muxer
+    parse_formats
     
   </span>
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="Page contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Page contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#scripts.parse_help.parse_muxer.extract_codec_option" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_codec_option
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scripts.parse_help.parse_muxer.extract_muxer_help_text" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_muxer_help_text
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scripts.parse_help.parse_muxer.parse_help_text" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;parse_help_text
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3225,7 +3154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../schema/" class="md-nav__link">
+      <a href="../../scripts/parse_help/schema/" class="md-nav__link">
         
   
   
@@ -3286,41 +3215,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Page contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#scripts.parse_help.parse_muxer.extract_codec_option" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_codec_option
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scripts.parse_help.parse_muxer.extract_muxer_help_text" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_muxer_help_text
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scripts.parse_help.parse_muxer.parse_help_text" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;parse_help_text
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -3342,11 +3236,11 @@
 
 
 
-<h1 id="scripts.parse_help.parse_muxer" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-module"></code>            <span class="doc doc-object-name doc-module-name">parse_muxer</span>
+<h1 id="ffmpeg.formats" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-module"></code>            <span class="doc doc-object-name doc-module-name">formats</span>
 
 
-<a href="#scripts.parse_help.parse_muxer" class="headerlink" title="Permanent link">&para;</a></h1>
+<a href="#ffmpeg.formats" class="headerlink" title="Permanent link">&para;</a></h1>
 
     <div class="doc doc-contents first">
 
@@ -3355,11 +3249,7 @@
 
 
 
-
-
-
-
-<p><span class="doc-section-title">Functions:</span></p>
+<p><span class="doc-section-title">Modules:</span></p>
     <table>
       <thead>
         <tr>
@@ -3368,32 +3258,28 @@
         </tr>
       </thead>
       <tbody>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="            extract_codec_option (scripts.parse_help.parse_muxer.extract_codec_option)" href="#scripts.parse_help.parse_muxer.extract_codec_option">extract_codec_option</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Get the help text for a codec option.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="            extract_muxer_help_text (scripts.parse_help.parse_muxer.extract_muxer_help_text)" href="#scripts.parse_help.parse_muxer.extract_muxer_help_text">extract_muxer_help_text</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Get the help text for all codecs.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="            parse_help_text (scripts.parse_help.parse_muxer.parse_help_text)" href="#scripts.parse_help.parse_muxer.parse_help_text">parse_help_text</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Parse the help text for encoders or decoders.</p>
-                </div>
-              </td>
-            </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            demuxers (ffmpeg.formats.demuxers)" href="demuxers/#ffmpeg.formats.demuxers">demuxers</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            muxers (ffmpeg.formats.muxers)" href="muxers/#ffmpeg.formats.muxers">muxers</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
       </tbody>
     </table>
+
+
+
+
 
 
 
@@ -3408,248 +3294,6 @@
 
 
 
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="scripts.parse_help.parse_muxer.extract_codec_option" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">extract_codec_option</span>
-
-
-<a href="#scripts.parse_help.parse_muxer.extract_codec_option" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">extract_codec_option</span><span class="p">(</span>
-    <span class="n">codec</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;muxer&quot;</span><span class="p">,</span> <span class="s2">&quot;demuxer&quot;</span><span class="p">]</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="scripts.parse_help.schema.FFMpegAVOption">FFMpegAVOption</span></span><span class="p">]</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Get the help text for a codec option.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>codec</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The codec name</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>type</code>
-            </td>
-            <td>
-                  <code><span title="typing.Literal">Literal</span>[&#39;muxer&#39;, &#39;demuxer&#39;]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The type of codec</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="list">list</span>[<span title="scripts.parse_help.schema.FFMpegAVOption">FFMpegAVOption</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>A list of codec options</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="scripts.parse_help.parse_muxer.extract_muxer_help_text" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">extract_muxer_help_text</span>
-
-
-<a href="#scripts.parse_help.parse_muxer.extract_muxer_help_text" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">extract_muxer_help_text</span><span class="p">(</span>
-    <span class="nb">type</span><span class="p">:</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;muxers&quot;</span><span class="p">,</span> <span class="s2">&quot;demuxers&quot;</span><span class="p">],</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="scripts.parse_help.schema.FFMpegMuxerBase">FFMpegMuxerBase</span></span><span class="p">]</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Get the help text for all codecs.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>type</code>
-            </td>
-            <td>
-                  <code><span title="typing.Literal">Literal</span>[&#39;muxers&#39;, &#39;demuxers&#39;]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The type of codec</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="list">list</span>[<span title="scripts.parse_help.schema.FFMpegMuxerBase">FFMpegMuxerBase</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>A list of codecs</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="scripts.parse_help.parse_muxer.parse_help_text" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">parse_help_text</span>
-
-
-<a href="#scripts.parse_help.parse_muxer.parse_help_text" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">parse_help_text</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="scripts.parse_help.schema.FFMpegMuxerBase">FFMpegMuxerBase</span></span><span class="p">]</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Parse the help text for encoders or decoders.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>text</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The help text to parse from ffmpeg command output</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="list">list</span>[<span title="scripts.parse_help.schema.FFMpegMuxerBase">FFMpegMuxerBase</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>A list of codec instances (either FFMpegEncoder or FFMpegDecoder objects)</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    </div>
-
-</div>
 
 
 
@@ -3708,10 +3352,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>

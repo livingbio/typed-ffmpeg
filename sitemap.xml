@@ -169,19 +169,19 @@
          <lastmod>2025-06-16</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/muxers/</loc>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/formats/</loc>
          <lastmod>2025-06-16</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/muxers/demuxers/</loc>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/formats/demuxers/</loc>
          <lastmod>2025-06-16</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/muxers/muxers/</loc>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/formats/muxers/</loc>
          <lastmod>2025-06-16</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/muxers/schema/</loc>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/formats/schema/</loc>
          <lastmod>2025-06-16</lastmod>
     </url>
     <url>
@@ -345,7 +345,7 @@
          <lastmod>2025-06-16</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/scripts/parse_help/parse_muxer/</loc>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/scripts/parse_help/parse_formats/</loc>
          <lastmod>2025-06-16</lastmod>
     </url>
     <url>

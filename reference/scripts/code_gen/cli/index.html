@@ -1700,29 +1700,6 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../../ffmpeg/info/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    info
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
     
@@ -1735,16 +1712,16 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_9" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ffmpeg/muxers/" class="md-nav__link ">
+            <a href="../../../ffmpeg/formats/" class="md-nav__link ">
               
   
   
   <span class="md-ellipsis">
-    muxers
+    formats
     
   </span>
   
@@ -1752,16 +1729,16 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3_1_10" id="__nav_3_1_10_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3_1_9" id="__nav_3_1_9_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1_10">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_9">
             <span class="md-nav__icon md-icon"></span>
-            muxers
+            formats
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1772,7 +1749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/muxers/demuxers/" class="md-nav__link">
+      <a href="../../../ffmpeg/formats/demuxers/" class="md-nav__link">
         
   
   
@@ -1795,7 +1772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/muxers/muxers/" class="md-nav__link">
+      <a href="../../../ffmpeg/formats/muxers/" class="md-nav__link">
         
   
   
@@ -1818,7 +1795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ffmpeg/muxers/schema/" class="md-nav__link">
+      <a href="../../../ffmpeg/formats/schema/" class="md-nav__link">
         
   
   
@@ -1837,6 +1814,29 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ffmpeg/info/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    info
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -3229,12 +3229,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../parse_help/parse_muxer/" class="md-nav__link">
+      <a href="../../parse_help/parse_formats/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    parse_muxer
+    parse_formats
     
   </span>
   
@@ -3889,7 +3889,7 @@
 
 
 <a href="#scripts.code_gen.cli.load_muxers" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">load_muxers</span><span class="p">(</span><span class="n">rebuild</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="scripts.parse_help.schema.FFMpegMuxerBase">FFMpegMuxerBase</span></span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">load_muxers</span><span class="p">(</span><span class="n">rebuild</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="scripts.parse_help.schema.FFMpegFormat">FFMpegFormat</span></span><span class="p">]</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3939,7 +3939,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="list">list</span>[<span title="scripts.parse_help.schema.FFMpegMuxerBase">FFMpegMuxerBase</span>]</code>
+                  <code><span title="list">list</span>[<span title="scripts.parse_help.schema.FFMpegFormat">FFMpegFormat</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
