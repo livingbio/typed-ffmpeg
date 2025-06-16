@@ -13,7 +13,7 @@ omit =
     src/ffmpeg/streams/video.py
     src/ffmpeg/streams/audio.py
     src/ffmpeg/codecs/encoders.py
-    src/ffmpeg/codec/decoders.py
+    src/ffmpeg/codecs/decoders.py
     src/ffmpeg/muxers/muxers.py
     src/ffmpeg/muxers/demuxers.py
     test_*.py
