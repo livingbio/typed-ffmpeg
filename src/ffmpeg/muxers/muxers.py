@@ -6,37 +6,9 @@ from .schema import FFMpegMuxerOption
 
 
 def _3g2(
-    movflags: str
-    | None
-    | Literal[
-        "rtphint",
-        "empty_moov",
-        "frag_keyframe",
-        "frag_every_frame",
-        "separate_moof",
-        "frag_custom",
-        "isml",
-        "faststart",
-        "omit_tfhd_offset",
-        "disable_chpl",
-        "default_base_moof",
-        "dash",
-        "cmaf",
-        "frag_discont",
-        "delay_moov",
-        "global_sidx",
-        "skip_sidx",
-        "write_colr",
-        "prefer_icc",
-        "write_gama",
-        "use_metadata_tags",
-        "skip_trailer",
-        "negative_cts_offsets",
-    ] = None,
+    movflags: str | None = None,
     moov_size: int | None = None,
-    rtpflags: str
-    | None
-    | Literal["latm", "rfc2190", "skip_rtcp", "h264_mode0", "send_bye"] = None,
+    rtpflags: str | None = None,
     skip_iods: bool | None = None,
     iods_audio_profile: int | None = None,
     iods_video_profile: int | None = None,
@@ -127,37 +99,9 @@ def _3g2(
 
 
 def _3gp(
-    movflags: str
-    | None
-    | Literal[
-        "rtphint",
-        "empty_moov",
-        "frag_keyframe",
-        "frag_every_frame",
-        "separate_moof",
-        "frag_custom",
-        "isml",
-        "faststart",
-        "omit_tfhd_offset",
-        "disable_chpl",
-        "default_base_moof",
-        "dash",
-        "cmaf",
-        "frag_discont",
-        "delay_moov",
-        "global_sidx",
-        "skip_sidx",
-        "write_colr",
-        "prefer_icc",
-        "write_gama",
-        "use_metadata_tags",
-        "skip_trailer",
-        "negative_cts_offsets",
-    ] = None,
+    movflags: str | None = None,
     moov_size: int | None = None,
-    rtpflags: str
-    | None
-    | Literal["latm", "rfc2190", "skip_rtcp", "h264_mode0", "send_bye"] = None,
+    rtpflags: str | None = None,
     skip_iods: bool | None = None,
     iods_audio_profile: int | None = None,
     iods_video_profile: int | None = None,
@@ -863,7 +807,7 @@ def dash(
     ldash: bool | None = None,
     master_m3u8_publish_rate: int | None = None,
     write_prft: bool | None = None,
-    mpd_profile: str | None | Literal["dash", "dvb_dash"] = None,
+    mpd_profile: str | None = None,
     http_opts: str | None = None,
     target_latency: str | None = None,
     min_playback_rate: str | None = None,
@@ -1091,37 +1035,9 @@ def f32le() -> FFMpegMuxerOption:
 
 
 def f4v(
-    movflags: str
-    | None
-    | Literal[
-        "rtphint",
-        "empty_moov",
-        "frag_keyframe",
-        "frag_every_frame",
-        "separate_moof",
-        "frag_custom",
-        "isml",
-        "faststart",
-        "omit_tfhd_offset",
-        "disable_chpl",
-        "default_base_moof",
-        "dash",
-        "cmaf",
-        "frag_discont",
-        "delay_moov",
-        "global_sidx",
-        "skip_sidx",
-        "write_colr",
-        "prefer_icc",
-        "write_gama",
-        "use_metadata_tags",
-        "skip_trailer",
-        "negative_cts_offsets",
-    ] = None,
+    movflags: str | None = None,
     moov_size: int | None = None,
-    rtpflags: str
-    | None
-    | Literal["latm", "rfc2190", "skip_rtcp", "h264_mode0", "send_bye"] = None,
+    rtpflags: str | None = None,
     skip_iods: bool | None = None,
     iods_audio_profile: int | None = None,
     iods_video_profile: int | None = None,
@@ -1401,15 +1317,7 @@ def flac(
 
 
 def flv(
-    flvflags: str
-    | None
-    | Literal[
-        "aac_seq_header_detect",
-        "no_sequence_end",
-        "no_metadata",
-        "no_duration_filesize",
-        "add_keyframe_index",
-    ] = None,
+    flvflags: str | None = None,
 ) -> FFMpegMuxerOption:
     """
     FLV (Flash Video)
@@ -1684,25 +1592,7 @@ def hls(
     hls_segment_type: int | None | Literal["mpegts", "fmp4"] = None,
     hls_fmp4_init_filename: str | None = None,
     hls_fmp4_init_resend: bool | None = None,
-    hls_flags: str
-    | None
-    | Literal[
-        "single_file",
-        "temp_file",
-        "delete_segments",
-        "round_durations",
-        "discont_start",
-        "omit_endlist",
-        "split_by_time",
-        "append_list",
-        "program_date_time",
-        "second_level_segment_index",
-        "second_level_segment_duration",
-        "second_level_segment_size",
-        "periodic_rekey",
-        "independent_segments",
-        "iframes_only",
-    ] = None,
+    hls_flags: str | None = None,
     strftime: bool | None = None,
     strftime_mkdir: bool | None = None,
     hls_playlist_type: int | None | Literal["event", "vod"] = None,
@@ -1876,37 +1766,9 @@ def image2pipe() -> FFMpegMuxerOption:
 
 
 def ipod(
-    movflags: str
-    | None
-    | Literal[
-        "rtphint",
-        "empty_moov",
-        "frag_keyframe",
-        "frag_every_frame",
-        "separate_moof",
-        "frag_custom",
-        "isml",
-        "faststart",
-        "omit_tfhd_offset",
-        "disable_chpl",
-        "default_base_moof",
-        "dash",
-        "cmaf",
-        "frag_discont",
-        "delay_moov",
-        "global_sidx",
-        "skip_sidx",
-        "write_colr",
-        "prefer_icc",
-        "write_gama",
-        "use_metadata_tags",
-        "skip_trailer",
-        "negative_cts_offsets",
-    ] = None,
+    movflags: str | None = None,
     moov_size: int | None = None,
-    rtpflags: str
-    | None
-    | Literal["latm", "rfc2190", "skip_rtcp", "h264_mode0", "send_bye"] = None,
+    rtpflags: str | None = None,
     skip_iods: bool | None = None,
     iods_audio_profile: int | None = None,
     iods_video_profile: int | None = None,
@@ -2008,37 +1870,9 @@ def ircam() -> FFMpegMuxerOption:
 
 
 def ismv(
-    movflags: str
-    | None
-    | Literal[
-        "rtphint",
-        "empty_moov",
-        "frag_keyframe",
-        "frag_every_frame",
-        "separate_moof",
-        "frag_custom",
-        "isml",
-        "faststart",
-        "omit_tfhd_offset",
-        "disable_chpl",
-        "default_base_moof",
-        "dash",
-        "cmaf",
-        "frag_discont",
-        "delay_moov",
-        "global_sidx",
-        "skip_sidx",
-        "write_colr",
-        "prefer_icc",
-        "write_gama",
-        "use_metadata_tags",
-        "skip_trailer",
-        "negative_cts_offsets",
-    ] = None,
+    movflags: str | None = None,
     moov_size: int | None = None,
-    rtpflags: str
-    | None
-    | Literal["latm", "rfc2190", "skip_rtcp", "h264_mode0", "send_bye"] = None,
+    rtpflags: str | None = None,
     skip_iods: bool | None = None,
     iods_audio_profile: int | None = None,
     iods_video_profile: int | None = None,
@@ -2332,37 +2166,9 @@ def mmf() -> FFMpegMuxerOption:
 
 
 def mov(
-    movflags: str
-    | None
-    | Literal[
-        "rtphint",
-        "empty_moov",
-        "frag_keyframe",
-        "frag_every_frame",
-        "separate_moof",
-        "frag_custom",
-        "isml",
-        "faststart",
-        "omit_tfhd_offset",
-        "disable_chpl",
-        "default_base_moof",
-        "dash",
-        "cmaf",
-        "frag_discont",
-        "delay_moov",
-        "global_sidx",
-        "skip_sidx",
-        "write_colr",
-        "prefer_icc",
-        "write_gama",
-        "use_metadata_tags",
-        "skip_trailer",
-        "negative_cts_offsets",
-    ] = None,
+    movflags: str | None = None,
     moov_size: int | None = None,
-    rtpflags: str
-    | None
-    | Literal["latm", "rfc2190", "skip_rtcp", "h264_mode0", "send_bye"] = None,
+    rtpflags: str | None = None,
     skip_iods: bool | None = None,
     iods_audio_profile: int | None = None,
     iods_video_profile: int | None = None,
@@ -2491,37 +2297,9 @@ def mp3(
 
 
 def mp4(
-    movflags: str
-    | None
-    | Literal[
-        "rtphint",
-        "empty_moov",
-        "frag_keyframe",
-        "frag_every_frame",
-        "separate_moof",
-        "frag_custom",
-        "isml",
-        "faststart",
-        "omit_tfhd_offset",
-        "disable_chpl",
-        "default_base_moof",
-        "dash",
-        "cmaf",
-        "frag_discont",
-        "delay_moov",
-        "global_sidx",
-        "skip_sidx",
-        "write_colr",
-        "prefer_icc",
-        "write_gama",
-        "use_metadata_tags",
-        "skip_trailer",
-        "negative_cts_offsets",
-    ] = None,
+    movflags: str | None = None,
     moov_size: int | None = None,
-    rtpflags: str
-    | None
-    | Literal["latm", "rfc2190", "skip_rtcp", "h264_mode0", "send_bye"] = None,
+    rtpflags: str | None = None,
     skip_iods: bool | None = None,
     iods_audio_profile: int | None = None,
     iods_video_profile: int | None = None,
@@ -2665,17 +2443,7 @@ def mpegts(
     mpegts_m2ts_mode: bool | None = None,
     muxrate: int | None = None,
     pes_payload_size: int | None = None,
-    mpegts_flags: str
-    | None
-    | Literal[
-        "resend_headers",
-        "latm",
-        "pat_pmt_at_frames",
-        "system_b",
-        "initial_discontinuity",
-        "nit",
-        "omit_rai",
-    ] = None,
+    mpegts_flags: str | None = None,
     mpegts_copyts: bool | None = None,
     tables_version: int | None = None,
     omit_video_pes_length: bool | None = None,
@@ -2834,7 +2602,7 @@ def null() -> FFMpegMuxerOption:
 
 
 def nut(
-    syncpoints: str | None | Literal["default", "none", "timestamped"] = None,
+    syncpoints: str | None = None,
     write_index: bool | None = None,
 ) -> FFMpegMuxerOption:
     """
@@ -2965,37 +2733,9 @@ def oss() -> FFMpegMuxerOption:
 
 
 def psp(
-    movflags: str
-    | None
-    | Literal[
-        "rtphint",
-        "empty_moov",
-        "frag_keyframe",
-        "frag_every_frame",
-        "separate_moof",
-        "frag_custom",
-        "isml",
-        "faststart",
-        "omit_tfhd_offset",
-        "disable_chpl",
-        "default_base_moof",
-        "dash",
-        "cmaf",
-        "frag_discont",
-        "delay_moov",
-        "global_sidx",
-        "skip_sidx",
-        "write_colr",
-        "prefer_icc",
-        "write_gama",
-        "use_metadata_tags",
-        "skip_trailer",
-        "negative_cts_offsets",
-    ] = None,
+    movflags: str | None = None,
     moov_size: int | None = None,
-    rtpflags: str
-    | None
-    | Literal["latm", "rfc2190", "skip_rtcp", "h264_mode0", "send_bye"] = None,
+    rtpflags: str | None = None,
     skip_iods: bool | None = None,
     iods_audio_profile: int | None = None,
     iods_video_profile: int | None = None,
@@ -3172,9 +2912,7 @@ def rso() -> FFMpegMuxerOption:
 
 
 def rtp(
-    rtpflags: str
-    | None
-    | Literal["latm", "rfc2190", "skip_rtcp", "h264_mode0", "send_bye"] = None,
+    rtpflags: str | None = None,
     payload_type: int | None = None,
     ssrc: int | None = None,
     cname: str | None = None,
@@ -3231,10 +2969,8 @@ def rtp_mpegts(
 
 
 def rtsp(
-    rtpflags: str
-    | None
-    | Literal["latm", "rfc2190", "skip_rtcp", "h264_mode0", "send_bye"] = None,
-    rtsp_transport: str | None | Literal["udp", "tcp"] = None,
+    rtpflags: str | None = None,
+    rtsp_transport: str | None = None,
     min_port: int | None = None,
     max_port: int | None = None,
     buffer_size: int | None = None,
@@ -3445,7 +3181,7 @@ def sox() -> FFMpegMuxerOption:
 
 
 def spdif(
-    spdif_flags: str | None | Literal["be"] = None,
+    spdif_flags: str | None = None,
     dtshd_rate: int | None = None,
     dtshd_fallback_time: int | None = None,
 ) -> FFMpegMuxerOption:

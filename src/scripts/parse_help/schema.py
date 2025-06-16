@@ -28,10 +28,12 @@ class FFMpegAVOption(Serializable):
     @property
     def code_gen_type(self) -> str:
         def handle_choices() -> str:
-            if self.choices:
-                return "| Literal[{}]".format(
-                    ", ".join(f'"{choice.name}"' for choice in self.choices)
-                )
+            if self.type != "flags":
+                # NOTE: flags not supported for now
+                if self.choices:
+                    return "| Literal[{}]".format(
+                        ", ".join(f'"{choice.name}"' for choice in self.choices)
+                    )
             return ""
 
         def handle_type() -> str:

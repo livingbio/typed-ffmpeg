@@ -3053,9 +3053,7 @@ def lavfi(
 
 def libcdio(
     speed: int | None = None,
-    paranoia_mode: str
-    | None
-    | Literal["disable", "verify", "overlap", "neverskip", "full"] = None,
+    paranoia_mode: str | None = None,
 ) -> FFMpegDemuxerOption:
     """
 
@@ -4739,12 +4737,10 @@ def rso() -> FFMpegDemuxerOption:
 
 
 def rtp(
-    rtp_flags: str | None | Literal["filter_src"] = None,
+    rtp_flags: str | None = None,
     listen_timeout: str | None = None,
     localaddr: str | None = None,
-    allowed_media_types: str
-    | None
-    | Literal["video", "audio", "data", "subtitle"] = None,
+    allowed_media_types: str | None = None,
     reorder_queue_size: int | None = None,
     buffer_size: int | None = None,
 ) -> FFMpegDemuxerOption:
@@ -4778,15 +4774,9 @@ def rtp(
 
 def rtsp(
     initial_pause: bool | None = None,
-    rtsp_transport: str
-    | None
-    | Literal["udp", "tcp", "udp_multicast", "http", "https"] = None,
-    rtsp_flags: str
-    | None
-    | Literal["filter_src", "listen", "prefer_tcp", "satip_raw"] = None,
-    allowed_media_types: str
-    | None
-    | Literal["video", "audio", "data", "subtitle"] = None,
+    rtsp_transport: str | None = None,
+    rtsp_flags: str | None = None,
+    allowed_media_types: str | None = None,
     min_port: int | None = None,
     max_port: int | None = None,
     listen_timeout: int | None = None,
@@ -5137,12 +5127,10 @@ def sdns() -> FFMpegDemuxerOption:
 
 
 def sdp(
-    sdp_flags: str | None | Literal["filter_src", "custom_io", "rtcp_to_source"] = None,
+    sdp_flags: str | None = None,
     listen_timeout: str | None = None,
     localaddr: str | None = None,
-    allowed_media_types: str
-    | None
-    | Literal["video", "audio", "data", "subtitle"] = None,
+    allowed_media_types: str | None = None,
     reorder_queue_size: int | None = None,
     buffer_size: int | None = None,
 ) -> FFMpegDemuxerOption:
