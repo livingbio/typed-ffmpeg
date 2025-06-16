@@ -77,7 +77,7 @@ gitdb==4.0.12
     # via gitpython
 gitpython==3.1.44
     # via mknotebooks
-graphviz==0.20.3 ; platform_system != "Windows"
+graphviz==0.21 ; platform_system != "Windows"
     # via -r requirements.in
 griffe==1.7.3
     # via
