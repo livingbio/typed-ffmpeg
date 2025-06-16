@@ -273,7 +273,7 @@ pre-commit==4.2.0
     # via -r requirements.in
 prompt-toolkit==3.0.51
     # via ipython
-propcache==0.3.1
+propcache==0.3.2
     # via yarl
 psutil==7.0.0
     # via ipykernel
