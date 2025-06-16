@@ -5,13 +5,13 @@ from ..utils.frozendict import FrozenDict
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegMuxerOptionBase(Serializable):
+class FFMpegFormatOption(Serializable):
     kwargs: FrozenDict[str, str | int | float | bool] = FrozenDict({})
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegMuxerOption(FFMpegMuxerOptionBase): ...
+class FFMpegMuxerOption(FFMpegFormatOption): ...
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegDemuxerOption(FFMpegMuxerOptionBase): ...
+class FFMpegDemuxerOption(FFMpegFormatOption): ...

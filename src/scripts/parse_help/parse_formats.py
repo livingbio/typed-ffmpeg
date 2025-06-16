@@ -3,10 +3,10 @@ from typing import Literal
 
 from .parse_all_options import parse_all_options
 from .parse_codecs import extract_help_text
-from .schema import FFMpegAVOption, FFMpegDemuxer, FFMpegMuxer, FFMpegMuxerBase
+from .schema import FFMpegAVOption, FFMpegDemuxer, FFMpegFormat, FFMpegMuxer
 
 
-def parse_help_text(text: str) -> list[FFMpegMuxerBase]:
+def parse_help_text(text: str) -> list[FFMpegFormat]:
     """
     Parse the help text for encoders or decoders.
 
@@ -16,7 +16,7 @@ def parse_help_text(text: str) -> list[FFMpegMuxerBase]:
     Returns:
         A list of codec instances (either FFMpegEncoder or FFMpegDecoder objects)
     """
-    output: list[FFMpegMuxerBase] = []
+    output: list[FFMpegFormat] = []
     lines = text.splitlines()
     re_pattern = re.compile(r"^\s*([\w\.\s]{2})\s(\w+)\s+(.*)$")
 
@@ -24,15 +24,13 @@ def parse_help_text(text: str) -> list[FFMpegMuxerBase]:
         match = re_pattern.findall(line)
         if match:
             flags, name, description = match[0]
-            output.append(
-                FFMpegMuxerBase(name=name, flags=flags, description=description)
-            )
+            output.append(FFMpegFormat(name=name, flags=flags, description=description))
     return output
 
 
-def extract_muxer_help_text(
-    type: Literal["muxers", "demuxers"],
-) -> list[FFMpegMuxerBase]:
+def extract_format_help_text(
+    type: Literal["muxers", "demuxers", "formats"],
+) -> list[FFMpegFormat]:
     """
     Get the help text for all codecs.
 
@@ -45,7 +43,7 @@ def extract_muxer_help_text(
     return parse_help_text(extract_help_text(f"-{type}"))
 
 
-def extract_codec_option(
+def extract_format_option(
     codec: str, type: Literal["muxer", "demuxer"]
 ) -> list[FFMpegAVOption]:
     """
@@ -70,11 +68,17 @@ def extract_codec_option(
     return output
 
 
-def extract_all_muxers() -> list[FFMpegMuxerBase]:
-    output: list[FFMpegMuxerBase] = []
+def extract_all_formats() -> list[FFMpegFormat]:
+    """
+    Extract all formats.
 
-    for codec in extract_muxer_help_text("muxers"):
-        options = extract_codec_option(codec.name, "muxer")
+    Returns:
+        A list of formats
+    """
+    output: list[FFMpegFormat] = []
+
+    for codec in extract_format_help_text("muxers"):
+        options = extract_format_option(codec.name, "muxer")
         output.append(
             FFMpegMuxer(
                 name=codec.name,
@@ -84,8 +88,8 @@ def extract_all_muxers() -> list[FFMpegMuxerBase]:
             )
         )
 
-    for codec in extract_muxer_help_text("demuxers"):
-        options = extract_codec_option(codec.name, "demuxer")
+    for codec in extract_format_help_text("demuxers"):
+        options = extract_format_option(codec.name, "demuxer")
         output.append(
             FFMpegDemuxer(
                 name=codec.name,

@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Any
 
 from ...codecs.schema import FFMpegDecoderOption
-from ...muxers.schema import FFMpegDemuxerOption
+from ...formats.schema import FFMpegDemuxerOption
 from ...streams.av import AVStream
 from ...types import (
     Boolean,

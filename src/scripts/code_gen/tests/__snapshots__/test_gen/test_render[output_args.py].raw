@@ -11,7 +11,7 @@ from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags
 
 from ...utils.frozendict import merge
 from ...codecs.schema import FFMpegEncoderOption
-from ...muxers.schema import FFMpegMuxerOption
+from ...formats.schema import FFMpegMuxerOption
 
 
 if TYPE_CHECKING:
