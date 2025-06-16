@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, Any
 {{ _components.import_types('...types') }}
 from ...utils.frozendict import merge
 from ...codecs.schema import FFMpegEncoderOption
+from ...muxers.schema import FFMpegMuxerOption
 
 
 if TYPE_CHECKING:
@@ -29,6 +30,7 @@ class OutputArgs(ABC):
         {%- endif -%}
         {%- endfor -%}
         encoder_options: FFMpegEncoderOption | None = None,
+        muxer_options: FFMpegMuxerOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> OutputStream:
         """
@@ -43,6 +45,7 @@ class OutputArgs(ABC):
             {% endif %}
             {%- endfor -%}
             encoder_options: ffmpeg's encoder options
+            muxer_options: FFMpegMuxerOption | None = None,
             extra_options: the arguments for the output
 
         Returns:
@@ -55,4 +58,4 @@ class OutputArgs(ABC):
                 "{{ option.name}}": {{ option.name | option_name_safe }},
                 {% endif %}
             {% endfor %}
-        }, encoder_options.kwargs if encoder_options else {}, extra_options)).stream()
+        }, encoder_options.kwargs if encoder_options else {}, muxer_options.kwargs if muxer_options else {}, extra_options)).stream()

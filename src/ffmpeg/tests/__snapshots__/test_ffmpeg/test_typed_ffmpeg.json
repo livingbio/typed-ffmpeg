@@ -33,6 +33,7 @@
   "info",
   "input",
   "merge_outputs",
+  "muxers",
   "output",
   "probe",
   "probe_obj",

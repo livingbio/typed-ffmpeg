@@ -1,0 +1,30 @@
+from typing import Literal
+from .schema import FFMpegDemuxerOption
+from ..utils.frozendict import FrozenDict, merge
+
+{% for codec in muxers %}
+{% if codec.is_demuxer %}
+def {{codec.name | option_name_safe }}(
+    {% for option in codec.options %}
+    {{option.name| option_name_safe}}: {{option.code_gen_type}} = None,
+    {% endfor %}
+) -> FFMpegDemuxerOption:
+    """
+    {{codec.description}}
+    {% if codec.options | length > 0 %}
+    Args:
+    {%- for option in codec.options %}
+        {{option.name | option_name_safe}}: {{option.help}}
+    {%- endfor %}
+    {%- endif %}
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDemuxerOption(kwargs=merge({
+        {% for option in codec.options %}
+        "{{ option.name}}": {{ option.name | option_name_safe }},
+        {% endfor %}
+    }))
+{% endif %}
+{% endfor %}

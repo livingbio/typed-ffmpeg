@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any
 
 from ...codecs.schema import FFMpegDecoderOption
+from ...muxers.schema import FFMpegDemuxerOption
 from ...streams.av import AVStream
 from ...types import (
     Boolean,
@@ -74,6 +75,7 @@ def input(
     dn: Boolean = None,
     top: Int = None,
     decoder_options: FFMpegDecoderOption | None = None,
+    demuxer_options: FFMpegDemuxerOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> AVStream:
     """
@@ -134,6 +136,7 @@ def input(
         dn: disable data
         top: deprecated, use the setfield video filter
         decoder_options: ffmpeg's decoder options
+        demuxer_options: ffmpeg's demuxer options
         extra_options: ffmpeg's input file options
 
     Returns:
@@ -203,6 +206,7 @@ def input(
                 "top": top,
             },
             decoder_options.kwargs if decoder_options else {},
+            demuxer_options.kwargs if demuxer_options else {},
             extra_options,
         ),
     ).stream()

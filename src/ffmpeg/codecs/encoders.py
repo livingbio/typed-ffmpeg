@@ -39,9 +39,7 @@ def alias_pix() -> FFMpegEncoderOption:
 
 
 def amv(
-    mpv_flags: str
-    | None
-    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
+    mpv_flags: str | None = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -840,9 +838,7 @@ def flashsv2() -> FFMpegEncoderOption:
 
 
 def flv(
-    mpv_flags: str
-    | None
-    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
+    mpv_flags: str | None = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -953,7 +949,7 @@ def flv(
 
 
 def gif(
-    gifflags: str | None | Literal["offsetting", "transdiff"] = None,
+    gifflags: str | None = None,
     gifimage: bool | None = None,
     global_palette: bool | None = None,
 ) -> FFMpegEncoderOption:
@@ -980,9 +976,7 @@ def gif(
 
 
 def h261(
-    mpv_flags: str
-    | None
-    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
+    mpv_flags: str | None = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -1095,9 +1089,7 @@ def h261(
 def h263(
     obmc: bool | None = None,
     mb_info: int | None = None,
-    mpv_flags: str
-    | None
-    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
+    mpv_flags: str | None = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -1240,9 +1232,7 @@ def h263p(
     aiv: bool | None = None,
     obmc: bool | None = None,
     structured_slices: bool | None = None,
-    mpv_flags: str
-    | None
-    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
+    mpv_flags: str | None = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -1939,9 +1929,7 @@ def h264_vaapi(
     quality: int | None = None,
     coder: int | None | Literal["cavlc", "cabac", "vlc", "ac"] = None,
     aud: bool | None = None,
-    sei: str
-    | None
-    | Literal["identifier", "timing", "recovery_point", "a53_cc"] = None,
+    sei: str | None = None,
     profile: int
     | None
     | Literal["constrained_baseline", "main", "high", "high10"] = None,
@@ -2341,7 +2329,7 @@ def hevc_vaapi(
     | Literal[
         "1", "2", "2.1", "3", "3.1", "4", "4.1", "5", "5.1", "5.2", "6", "6.1", "6.2"
     ] = None,
-    sei: str | None | Literal["hdr", "a53_cc"] = None,
+    sei: str | None = None,
     tiles: str | None = None,
 ) -> FFMpegEncoderOption:
     """
@@ -2585,9 +2573,7 @@ def magicyuv(
 
 
 def mjpeg(
-    mpv_flags: str
-    | None
-    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
+    mpv_flags: str | None = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -2738,9 +2724,7 @@ def mpeg1video(
     b_strategy: int | None = None,
     b_sensitivity: int | None = None,
     brd_scale: int | None = None,
-    mpv_flags: str
-    | None
-    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
+    mpv_flags: str | None = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -2880,9 +2864,7 @@ def mpeg2video(
     video_format: int
     | None
     | Literal["component", "pal", "ntsc", "secam", "mac", "unspecified"] = None,
-    mpv_flags: str
-    | None
-    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
+    mpv_flags: str | None = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -3069,9 +3051,7 @@ def mpeg4(
     b_strategy: int | None = None,
     b_sensitivity: int | None = None,
     brd_scale: int | None = None,
-    mpv_flags: str
-    | None
-    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
+    mpv_flags: str | None = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -3257,9 +3237,7 @@ def mpeg4_v4l2m2m(
 
 
 def msmpeg4v2(
-    mpv_flags: str
-    | None
-    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
+    mpv_flags: str | None = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -3370,9 +3348,7 @@ def msmpeg4v2(
 
 
 def msmpeg4(
-    mpv_flags: str
-    | None
-    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
+    mpv_flags: str | None = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -3792,9 +3768,7 @@ def rpza(
 
 
 def rv10(
-    mpv_flags: str
-    | None
-    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
+    mpv_flags: str | None = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -3905,9 +3879,7 @@ def rv10(
 
 
 def rv20(
-    mpv_flags: str
-    | None
-    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
+    mpv_flags: str | None = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -4092,9 +4064,7 @@ def snow(
 
 
 def speedhq(
-    mpv_flags: str
-    | None
-    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
+    mpv_flags: str | None = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -4604,9 +4574,7 @@ def libwebp(
 
 
 def wmv1(
-    mpv_flags: str
-    | None
-    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
+    mpv_flags: str | None = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -4717,9 +4685,7 @@ def wmv1(
 
 
 def wmv2(
-    mpv_flags: str
-    | None
-    | Literal["skip_rd", "strict_gop", "qp_rd", "cbp_rd", "naq", "mv0"] = None,
+    mpv_flags: str | None = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,

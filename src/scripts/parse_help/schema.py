@@ -28,10 +28,12 @@ class FFMpegAVOption(Serializable):
     @property
     def code_gen_type(self) -> str:
         def handle_choices() -> str:
-            if self.choices:
-                return "| Literal[{}]".format(
-                    ", ".join(f'"{choice.name}"' for choice in self.choices)
-                )
+            if self.type != "flags":
+                # NOTE: flags not supported for now
+                if self.choices:
+                    return "| Literal[{}]".format(
+                        ", ".join(f'"{choice.name}"' for choice in self.choices)
+                    )
             return ""
 
         def handle_type() -> str:
@@ -63,6 +65,16 @@ class FFMpegAVOption(Serializable):
                 case "sample_rate":
                     return "int | None"
                 case "sample_fmt":
+                    return "str | None"
+                case "binary":
+                    return "str | None"
+                case "rational":
+                    return "str | None"
+                case "color":
+                    return "str | None"
+                case "video_rate":
+                    return "str | None"
+                case "pix_fmt":
                     return "str | None"
                 case _:
                     raise ValueError(f"Invalid option type: {self.type}")
@@ -130,4 +142,30 @@ class FFMpegEncoder(FFMpegCodec):
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegDecoder(FFMpegCodec):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class FFMpegMuxerBase(Serializable):
+    name: str
+    flags: str
+    description: str
+    options: tuple[FFMpegAVOption, ...] = ()
+
+    @property
+    def is_muxer(self) -> bool:
+        return isinstance(self, FFMpegMuxer)
+
+    @property
+    def is_demuxer(self) -> bool:
+        return isinstance(self, FFMpegDemuxer)
+
+
+@dataclass(frozen=True, kw_only=True)
+class FFMpegDemuxer(FFMpegMuxerBase):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class FFMpegMuxer(FFMpegMuxerBase):
     pass

@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any
 
 from ...codecs.schema import FFMpegEncoderOption
+from ...muxers.schema import FFMpegMuxerOption
 from ...types import (
     Boolean,
     Float,
@@ -116,6 +117,7 @@ def output(
     dn: Boolean = None,
     top: Int = None,
     encoder_options: FFMpegEncoderOption | None = None,
+    muxer_options: FFMpegMuxerOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> OutputStream:
     """
@@ -220,6 +222,7 @@ def output(
         dn: disable data
         top: deprecated, use the setfield video filter
         encoder_options: ffmpeg's encoder options
+        muxer_options: ffmpeg's muxer options
         extra_options: the arguments for the output
 
     Returns:
@@ -327,6 +330,7 @@ def output(
                 "top": top,
             },
             encoder_options.kwargs if encoder_options else {},
+            muxer_options.kwargs if muxer_options else {},
             extra_options,
         ),
     ).stream()
