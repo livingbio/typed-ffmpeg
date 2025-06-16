@@ -126,7 +126,7 @@ def load_muxers(rebuild: bool) -> list[FFMpegFormat]:
 
     if not rebuild:
         try:
-            return load(list[FFMpegFormat], "muxers")
+            return load(list[FFMpegFormat], "formats")
         except Exception as e:
             logging.error(f"Failed to load muxers from cache: {e}")
 
