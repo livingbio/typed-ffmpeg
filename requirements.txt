@@ -24,7 +24,7 @@ bleach[css]==6.2.0
     # via nbconvert
 build==1.2.2.post1
     # via -r requirements.in
-certifi==2025.4.26
+certifi==2025.6.15
     # via requests
 cffi==1.17.1
     # via cryptography
