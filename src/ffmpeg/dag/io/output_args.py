@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
 from ...codecs.schema import FFMpegEncoderOption
+from ...muxers.schema import FFMpegMuxerOption
 from ...types import (
     Boolean,
     Float,
@@ -128,6 +129,7 @@ class OutputArgs(ABC):
         dn: Boolean = None,
         top: Int = None,
         encoder_options: FFMpegEncoderOption | None = None,
+        muxer_options: FFMpegMuxerOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> OutputStream:
         """
@@ -232,6 +234,7 @@ class OutputArgs(ABC):
             dn: disable data
             top: deprecated, use the setfield video filter
             encoder_options: ffmpeg's encoder options
+            muxer_options: FFMpegMuxerOption | None = None,
             extra_options: the arguments for the output
 
         Returns:
@@ -339,6 +342,7 @@ class OutputArgs(ABC):
                     "top": top,
                 },
                 encoder_options.kwargs if encoder_options else {},
+                muxer_options.kwargs if muxer_options else {},
                 extra_options,
             ),
         ).stream()

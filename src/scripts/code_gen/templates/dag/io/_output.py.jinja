@@ -2,6 +2,7 @@
 
 from pathlib import Path
 from ...codecs.schema import FFMpegEncoderOption
+from ...muxers.schema import FFMpegMuxerOption
 
 from ..nodes import OutputNode, OutputStream, FilterableStream
 from typing import Any
@@ -19,6 +20,7 @@ def output(
     {%- endif -%}
     {%- endfor -%}
     encoder_options: FFMpegEncoderOption | None = None,
+    muxer_options: FFMpegMuxerOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> OutputStream:
     """
@@ -33,6 +35,7 @@ def output(
         {% endif %}
         {%- endfor -%}
         encoder_options: ffmpeg's encoder options
+        muxer_options: ffmpeg's muxer options
         extra_options: the arguments for the output
 
     Returns:
@@ -48,5 +51,5 @@ def output(
                 "{{ option.name}}": {{ option.name | option_name_safe }},
                 {% endif %}
                 {% endfor %}
-        }, encoder_options.kwargs if encoder_options else {}, extra_options )
+        }, encoder_options.kwargs if encoder_options else {}, muxer_options.kwargs if muxer_options else {}, extra_options )
     ).stream()
