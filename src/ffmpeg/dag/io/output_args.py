@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
 from ...codecs.schema import FFMpegEncoderOption
-from ...muxers.schema import FFMpegMuxerOption
+from ...formats.schema import FFMpegMuxerOption
 from ...types import (
     Boolean,
     Float,

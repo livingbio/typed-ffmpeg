@@ -146,7 +146,7 @@ class FFMpegDecoder(FFMpegCodec):
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegMuxerBase(Serializable):
+class FFMpegFormat(Serializable):
     name: str
     flags: str
     description: str
@@ -162,10 +162,10 @@ class FFMpegMuxerBase(Serializable):
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegDemuxer(FFMpegMuxerBase):
+class FFMpegDemuxer(FFMpegFormat):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegMuxer(FFMpegMuxerBase):
+class FFMpegMuxer(FFMpegFormat):
     pass

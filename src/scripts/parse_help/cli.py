@@ -15,8 +15,8 @@ from .parse_all_filter import extract
 from .parse_all_options import extract_avoption_info_from_help
 from .parse_codecs import extract_all_codecs
 from .parse_filter import extract_avfilter_info_from_help
-from .parse_muxer import extract_all_muxers
-from .schema import FFMpegAVOption, FFMpegCodec, FFMpegMuxerBase
+from .parse_formats import extract_all_formats
+from .schema import FFMpegAVOption, FFMpegCodec, FFMpegFormat
 
 app = typer.Typer(help="Parse FFmpeg filter help information")
 
@@ -89,8 +89,8 @@ def all_codecs() -> list[FFMpegCodec]:
 
 
 @app.command()
-def all_muxers() -> list[FFMpegMuxerBase]:
+def all_formats() -> list[FFMpegFormat]:
     """
     Parse all muxers from FFmpeg help output
     """
-    return extract_all_muxers()
+    return extract_all_formats()

@@ -3,9 +3,9 @@ from typing import Literal
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
-from ..parse_muxer import (
-    extract_codec_option,
-    extract_muxer_help_text,
+from ..parse_formats import (
+    extract_format_help_text,
+    extract_format_option,
 )
 
 
@@ -13,7 +13,7 @@ from ..parse_muxer import (
 def test_parse_codecs_help_text(
     snapshot: SnapshotAssertion, type: Literal["muxers", "demuxers"]
 ) -> None:
-    codecs = extract_muxer_help_text(type)
+    codecs = extract_format_help_text(type)
     snapshot == codecs
 
 
@@ -29,7 +29,7 @@ def test_parse_codecs_help_text(
 def test_parse_codec_option(
     snapshot: SnapshotAssertion, codec: str, type: Literal["muxer", "demuxer"]
 ) -> None:
-    options = extract_codec_option(codec, type)
+    options = extract_format_option(codec, type)
     assert snapshot == options
 
 

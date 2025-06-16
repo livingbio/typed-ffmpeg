@@ -2,7 +2,7 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from .. import muxers
+from .. import formats
 from ..base import input, merge_outputs, output, vfilter
 from ..codecs.decoders import h264
 from ..codecs.encoders import h263
@@ -37,9 +37,9 @@ def test_output_node_with_decoder_options(snapshot: SnapshotAssertion) -> None:
 
 
 def test_output_node_with_muxer_options(snapshot: SnapshotAssertion) -> None:
-    input1 = input("input1", demuxer_options=muxers.demuxers.ac3(raw_packet_size=1024))
+    input1 = input("input1", demuxer_options=formats.demuxers.ac3(raw_packet_size=1024))
     out = input1.output(
-        filename="out.mp4", muxer_options=muxers.muxers.mp4(movflags="faststart")
+        filename="out.mp4", muxer_options=formats.muxers.mp4(movflags="faststart")
     )
     assert snapshot(extension_class=JSONSnapshotExtension) == (out.compile())
 

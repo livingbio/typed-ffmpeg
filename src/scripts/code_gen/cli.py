@@ -11,8 +11,8 @@ from ffmpeg.common.schema import FFMpegFilter, FFMpegOption
 from ..manual.cli import load_config
 from ..parse_c.cli import parse_ffmpeg_options
 from ..parse_docs.cli import extract_docs
-from ..parse_help.cli import all_codecs, all_filters, all_muxers
-from ..parse_help.schema import FFMpegCodec, FFMpegMuxerBase
+from ..parse_help.cli import all_codecs, all_filters, all_formats
+from ..parse_help.schema import FFMpegCodec, FFMpegFormat
 from .gen import render
 
 app = typer.Typer()
@@ -113,7 +113,7 @@ def load_codecs(rebuild: bool) -> list[FFMpegCodec]:
     return codecs
 
 
-def load_muxers(rebuild: bool) -> list[FFMpegMuxerBase]:
+def load_muxers(rebuild: bool) -> list[FFMpegFormat]:
     """
     Load muxers from the output path
 
@@ -126,13 +126,13 @@ def load_muxers(rebuild: bool) -> list[FFMpegMuxerBase]:
 
     if not rebuild:
         try:
-            return load(list[FFMpegMuxerBase], "muxers")
+            return load(list[FFMpegFormat], "formats")
         except Exception as e:
             logging.error(f"Failed to load muxers from cache: {e}")
 
-    muxers = all_muxers()
-    save(muxers, "muxers")
-    return muxers
+    formats = all_formats()
+    save(formats, "formats")
+    return formats
 
 
 @app.command()

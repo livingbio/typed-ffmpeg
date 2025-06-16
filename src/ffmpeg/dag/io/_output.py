@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Any
 
 from ...codecs.schema import FFMpegEncoderOption
-from ...muxers.schema import FFMpegMuxerOption
+from ...formats.schema import FFMpegMuxerOption
 from ...types import (
     Boolean,
     Float,

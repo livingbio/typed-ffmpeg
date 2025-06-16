@@ -9,7 +9,7 @@ from ...streams.av import AVStream
 from typing import Any
 from ...utils.frozendict import merge
 from ...codecs.schema import FFMpegDecoderOption
-from ...muxers.schema import FFMpegDemuxerOption
+from ...formats.schema import FFMpegDemuxerOption
 
 
 from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate

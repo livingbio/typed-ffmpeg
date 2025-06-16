@@ -13,7 +13,7 @@ from ffmpeg.common.schema import (
     FFMpegOptionType,
 )
 
-from ..parse_help.schema import FFMpegCodec, FFMpegMuxerBase
+from ..parse_help.schema import FFMpegCodec, FFMpegFormat
 
 template_folder = Path(__file__).parent / "templates"
 
@@ -254,7 +254,7 @@ def render(
     filters: list[FFMpegFilter],
     options: list[FFMpegOption],
     codecs: list[FFMpegCodec],
-    muxers: list[FFMpegMuxerBase],
+    muxers: list[FFMpegFormat],
     outpath: pathlib.Path,
 ) -> list[pathlib.Path]:
     """
