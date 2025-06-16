@@ -432,7 +432,7 @@ webencodings==0.5.1
     #   tinycss2
 wrapt==1.17.2
     # via vcrpy
-yarl==1.20.0
+yarl==1.20.1
     # via vcrpy
 zipp==3.23.0
     # via importlib-metadata
