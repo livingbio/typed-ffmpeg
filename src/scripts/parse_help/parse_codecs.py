@@ -1,9 +1,9 @@
 import re
-import subprocess
 from typing import Literal
 
 from .parse_all_options import parse_all_options
 from .schema import FFMpegAVOption, FFMpegCodec, FFMpegDecoder, FFMpegEncoder
+from .utils import run_ffmpeg_command
 
 
 def extract_help_text(*command: str) -> str:
@@ -16,12 +16,7 @@ def extract_help_text(*command: str) -> str:
     Returns:
         The raw help text output from ffmpeg command
     """
-    result = subprocess.run(
-        ["ffmpeg", *command, "-hide_banner"],
-        stdout=subprocess.PIPE,
-        text=True,
-    )
-    return result.stdout
+    return run_ffmpeg_command(command)
 
 
 def parse_help_text(text: str) -> list[FFMpegCodec]:

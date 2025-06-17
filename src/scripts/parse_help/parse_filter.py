@@ -9,7 +9,6 @@ general filters list.
 """
 
 import re
-import subprocess
 from collections import defaultdict
 from dataclasses import replace
 
@@ -22,6 +21,8 @@ from ffmpeg.common.schema import (
     StreamType,
 )
 
+from .utils import run_ffmpeg_command
+
 
 def extract_filter_help_text(filter_name: str) -> str:
     """
@@ -33,13 +34,7 @@ def extract_filter_help_text(filter_name: str) -> str:
     Returns:
         The help text.
     """
-
-    result = subprocess.run(
-        ["ffmpeg", "-h", f"filter={filter_name}", "-hide_banner"],
-        stdout=subprocess.PIPE,
-        text=True,
-    )
-    return result.stdout
+    return run_ffmpeg_command(["-h", f"filter={filter_name}"])
 
 
 def _left_space(line: str) -> int:

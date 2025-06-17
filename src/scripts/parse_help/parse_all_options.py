@@ -1,7 +1,7 @@
 import re
-import subprocess
 
 from .schema import FFMpegAVOption, FFMpegOptionChoice
+from .utils import run_ffmpeg_command
 
 
 def parse_all_options(help_text: str) -> list[FFMpegAVOption]:
@@ -125,13 +125,7 @@ def extract_options_help_text() -> str:
     Returns:
         The help text.
     """
-
-    result = subprocess.run(
-        ["ffmpeg", "-h", "full", "-hide_banner"],
-        stdout=subprocess.PIPE,
-        text=True,
-    )
-    return result.stdout
+    return run_ffmpeg_command(["-h", "full"])
 
 
 def extract_avoption_info_from_help() -> list[FFMpegAVOption]:

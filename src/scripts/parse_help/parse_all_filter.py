@@ -8,9 +8,10 @@ input/output stream types, and other metadata.
 """
 
 import re
-import subprocess
 
 from ffmpeg.common.schema import FFMpegFilter, FFMpegIOType, StreamType
+
+from .utils import run_ffmpeg_command
 
 
 def extract_all_filters_text() -> str:
@@ -20,11 +21,7 @@ def extract_all_filters_text() -> str:
     Returns:
         The help text.
     """
-
-    result = subprocess.run(
-        ["ffmpeg", "-filters", "-hide_banner"], stdout=subprocess.PIPE, text=True
-    )
-    return result.stdout
+    return run_ffmpeg_command(["-filters"])
 
 
 def _extract_io(io: str) -> tuple[tuple[FFMpegIOType, ...], tuple[FFMpegIOType, ...]]:

@@ -6512,15 +6512,25 @@ def mpl2() -> FFMpegDecoderOption:
     return FFMpegDecoderOption(kwargs=merge({}))
 
 
-def pjs() -> FFMpegDecoderOption:
+def pjs(
+    keep_ass_markup: bool | None = None,
+) -> FFMpegDecoderOption:
     """
     PJS subtitle
 
+    Args:
+        keep_ass_markup: Set if ASS tags must be escaped (default false)
 
     Returns:
         the set codec options
     """
-    return FFMpegDecoderOption(kwargs=merge({}))
+    return FFMpegDecoderOption(
+        kwargs=merge(
+            {
+                "keep_ass_markup": keep_ass_markup,
+            }
+        )
+    )
 
 
 def realtext() -> FFMpegDecoderOption:
@@ -6545,15 +6555,25 @@ def sami() -> FFMpegDecoderOption:
     return FFMpegDecoderOption(kwargs=merge({}))
 
 
-def stl() -> FFMpegDecoderOption:
+def stl(
+    keep_ass_markup: bool | None = None,
+) -> FFMpegDecoderOption:
     """
     Spruce subtitle format
 
+    Args:
+        keep_ass_markup: Set if ASS tags must be escaped (default false)
 
     Returns:
         the set codec options
     """
-    return FFMpegDecoderOption(kwargs=merge({}))
+    return FFMpegDecoderOption(
+        kwargs=merge(
+            {
+                "keep_ass_markup": keep_ass_markup,
+            }
+        )
+    )
 
 
 def srt() -> FFMpegDecoderOption:
@@ -6589,37 +6609,67 @@ def subviewer() -> FFMpegDecoderOption:
     return FFMpegDecoderOption(kwargs=merge({}))
 
 
-def subviewer1() -> FFMpegDecoderOption:
+def subviewer1(
+    keep_ass_markup: bool | None = None,
+) -> FFMpegDecoderOption:
     """
     SubViewer1 subtitle
 
+    Args:
+        keep_ass_markup: Set if ASS tags must be escaped (default false)
 
     Returns:
         the set codec options
     """
-    return FFMpegDecoderOption(kwargs=merge({}))
+    return FFMpegDecoderOption(
+        kwargs=merge(
+            {
+                "keep_ass_markup": keep_ass_markup,
+            }
+        )
+    )
 
 
-def text() -> FFMpegDecoderOption:
+def text(
+    keep_ass_markup: bool | None = None,
+) -> FFMpegDecoderOption:
     """
     Raw text subtitle
 
+    Args:
+        keep_ass_markup: Set if ASS tags must be escaped (default false)
 
     Returns:
         the set codec options
     """
-    return FFMpegDecoderOption(kwargs=merge({}))
+    return FFMpegDecoderOption(
+        kwargs=merge(
+            {
+                "keep_ass_markup": keep_ass_markup,
+            }
+        )
+    )
 
 
-def vplayer() -> FFMpegDecoderOption:
+def vplayer(
+    keep_ass_markup: bool | None = None,
+) -> FFMpegDecoderOption:
     """
     VPlayer subtitle
 
+    Args:
+        keep_ass_markup: Set if ASS tags must be escaped (default false)
 
     Returns:
         the set codec options
     """
-    return FFMpegDecoderOption(kwargs=merge({}))
+    return FFMpegDecoderOption(
+        kwargs=merge(
+            {
+                "keep_ass_markup": keep_ass_markup,
+            }
+        )
+    )
 
 
 def webvtt() -> FFMpegDecoderOption:
