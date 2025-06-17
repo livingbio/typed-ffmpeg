@@ -2,8 +2,8 @@ import re
 from typing import Literal
 
 from .parse_all_options import parse_all_options
-from .parse_codecs import extract_help_text
 from .schema import FFMpegAVOption, FFMpegDemuxer, FFMpegFormat, FFMpegMuxer
+from .utils import run_ffmpeg_command
 
 
 def parse_help_text(text: str) -> list[FFMpegFormat]:
@@ -40,7 +40,7 @@ def extract_format_help_text(
     Returns:
         A list of codecs
     """
-    return parse_help_text(extract_help_text(f"-{type}"))
+    return parse_help_text(run_ffmpeg_command([f"-{type}"]))
 
 
 def extract_format_option(
@@ -56,7 +56,7 @@ def extract_format_option(
     Returns:
         A list of codec options
     """
-    codec_options = parse_all_options(extract_help_text("-h", f"{type}={codec}"))
+    codec_options = parse_all_options(run_ffmpeg_command(["-h", f"{type}={codec}"]))
     # NOTE: some filter help text contains duplicate options, so we need to remove them (e.g. encoder=h264_nvenc)
     passed_options = set()
     output = []

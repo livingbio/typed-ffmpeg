@@ -14,16 +14,6 @@ from ffmpeg.common.schema import FFMpegFilter, FFMpegIOType, StreamType
 from .utils import run_ffmpeg_command
 
 
-def extract_all_filters_text() -> str:
-    """
-    Get the help text for all filters.
-
-    Returns:
-        The help text.
-    """
-    return run_ffmpeg_command(["-filters"])
-
-
 def _extract_io(io: str) -> tuple[tuple[FFMpegIOType, ...], tuple[FFMpegIOType, ...]]:
     """
     Extract the input or output stream type from the help text.
@@ -110,4 +100,4 @@ def extract() -> list[FFMpegFilter]:
     Returns:
         The filter information.
     """
-    return extract_filter_info(extract_all_filters_text())
+    return extract_filter_info(run_ffmpeg_command(["-filters"]))

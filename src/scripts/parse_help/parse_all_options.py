@@ -5,6 +5,15 @@ from .utils import run_ffmpeg_command
 
 
 def parse_all_options(help_text: str) -> list[FFMpegAVOption]:
+    """
+    Parse the help text for all options.
+
+    Args:
+        help_text: The help text to parse.
+
+    Returns:
+        A list of AVOptions.
+    """
     output: list[FFMpegAVOption] = []
     section = None
     last_option: FFMpegAVOption | None = None
@@ -118,16 +127,12 @@ def parse_all_options(help_text: str) -> list[FFMpegAVOption]:
     return output
 
 
-def extract_options_help_text() -> str:
+def extract_avoption_info_from_help() -> list[FFMpegAVOption]:
     """
-    Get the help text for a filter.
+    Extract the AVOption information from the help text.
 
     Returns:
-        The help text.
+        A list of AVOptions.
     """
-    return run_ffmpeg_command(["-h", "full"])
-
-
-def extract_avoption_info_from_help() -> list[FFMpegAVOption]:
-    text = extract_options_help_text()
+    text = run_ffmpeg_command(["-h", "full"])
     return parse_all_options(text)

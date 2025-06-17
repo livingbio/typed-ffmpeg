@@ -304,7 +304,16 @@ def _remove_duplicate(options: list[FFMpegFilterOption]) -> list[FFMpegFilterOpt
 
 
 def extract_avfilter_info_from_help(filter_name: str) -> FFMpegFilter:
-    text = extract_filter_help_text(filter_name)
+    """
+    Extract the filter information from the help text.
+
+    Args:
+        filter_name: The name of the filter.
+
+    Returns:
+        The filter information.
+    """
+    text = run_ffmpeg_command(["-h", f"filter={filter_name}"])
 
     if "Unknown filter" in text:
         raise ValueError(f"Unknown filter {filter_name}")
