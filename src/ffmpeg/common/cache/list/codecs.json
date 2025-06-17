@@ -25702,7 +25702,20 @@
     "description": "PJS subtitle",
     "flags": "S.....",
     "name": "pjs",
-    "options": []
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": null,
+        "flags": ".D...S.....",
+        "help": "Set if ASS tags must be escaped (default false)",
+        "max": null,
+        "min": null,
+        "name": "keep_ass_markup",
+        "section": "text/vplayer/stl/pjs/subviewer1 decoder AVOptions:",
+        "type": "boolean"
+      }
+    ]
   },
   {
     "__class__": "FFMpegDecoder",
@@ -25723,7 +25736,20 @@
     "description": "Spruce subtitle format",
     "flags": "S.....",
     "name": "stl",
-    "options": []
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": null,
+        "flags": ".D...S.....",
+        "help": "Set if ASS tags must be escaped (default false)",
+        "max": null,
+        "min": null,
+        "name": "keep_ass_markup",
+        "section": "text/vplayer/stl/pjs/subviewer1 decoder AVOptions:",
+        "type": "boolean"
+      }
+    ]
   },
   {
     "__class__": "FFMpegDecoder",
@@ -25751,21 +25777,60 @@
     "description": "SubViewer1 subtitle",
     "flags": "S.....",
     "name": "subviewer1",
-    "options": []
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": null,
+        "flags": ".D...S.....",
+        "help": "Set if ASS tags must be escaped (default false)",
+        "max": null,
+        "min": null,
+        "name": "keep_ass_markup",
+        "section": "text/vplayer/stl/pjs/subviewer1 decoder AVOptions:",
+        "type": "boolean"
+      }
+    ]
   },
   {
     "__class__": "FFMpegDecoder",
     "description": "Raw text subtitle",
     "flags": "S.....",
     "name": "text",
-    "options": []
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": null,
+        "flags": ".D...S.....",
+        "help": "Set if ASS tags must be escaped (default false)",
+        "max": null,
+        "min": null,
+        "name": "keep_ass_markup",
+        "section": "text/vplayer/stl/pjs/subviewer1 decoder AVOptions:",
+        "type": "boolean"
+      }
+    ]
   },
   {
     "__class__": "FFMpegDecoder",
     "description": "VPlayer subtitle",
     "flags": "S.....",
     "name": "vplayer",
-    "options": []
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": null,
+        "flags": ".D...S.....",
+        "help": "Set if ASS tags must be escaped (default false)",
+        "max": null,
+        "min": null,
+        "name": "keep_ass_markup",
+        "section": "text/vplayer/stl/pjs/subviewer1 decoder AVOptions:",
+        "type": "boolean"
+      }
+    ]
   },
   {
     "__class__": "FFMpegDecoder",

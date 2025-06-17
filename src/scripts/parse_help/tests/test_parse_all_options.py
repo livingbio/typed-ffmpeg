@@ -1,7 +1,7 @@
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
-from ..parse_all_options import parse_all_options
+from ..utils import parse_all_options
 
 
 @pytest.mark.parametrize(

@@ -1,10 +1,38 @@
 import re
 import subprocess
+from collections.abc import Sequence
 
 from .schema import FFMpegAVOption, FFMpegOptionChoice
 
 
+def run_ffmpeg_command(args: Sequence[str]) -> str:
+    """
+    Run an ffmpeg command and return its output.
+
+    Args:
+        args: The command line arguments to pass to ffmpeg (excluding 'ffmpeg' itself)
+
+    Returns:
+        The command output as a string
+    """
+    result = subprocess.run(
+        ["ffmpeg", *args, "-hide_banner"],
+        stdout=subprocess.PIPE,
+        text=True,
+    )
+    return result.stdout
+
+
 def parse_all_options(help_text: str) -> list[FFMpegAVOption]:
+    """
+    Parse all options from ffmpeg help text.
+
+    Args:
+        help_text: The help text to parse
+
+    Returns:
+        A list of FFMpegAVOption objects
+    """
     output: list[FFMpegAVOption] = []
     section = None
     last_option: FFMpegAVOption | None = None
@@ -118,22 +146,12 @@ def parse_all_options(help_text: str) -> list[FFMpegAVOption]:
     return output
 
 
-def extract_options_help_text() -> str:
+def extract_avoption_info_from_help() -> list[FFMpegAVOption]:
     """
-    Get the help text for a filter.
+    Extract all AVOptions from ffmpeg help text.
 
     Returns:
-        The help text.
+        A list of FFMpegAVOption objects
     """
-
-    result = subprocess.run(
-        ["ffmpeg", "-h", "full", "-hide_banner"],
-        stdout=subprocess.PIPE,
-        text=True,
-    )
-    return result.stdout
-
-
-def extract_avoption_info_from_help() -> list[FFMpegAVOption]:
-    text = extract_options_help_text()
+    text = run_ffmpeg_command(["-h", "full"])
     return parse_all_options(text)

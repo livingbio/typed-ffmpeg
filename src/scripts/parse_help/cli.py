@@ -11,12 +11,12 @@ import typer
 
 from ffmpeg.common.schema import FFMpegFilter
 
-from .parse_all_filter import extract
-from .parse_all_options import extract_avoption_info_from_help
+from .parse_all_filter import extract as extract_all_filters
 from .parse_codecs import extract_all_codecs
 from .parse_filter import extract_avfilter_info_from_help
 from .parse_formats import extract_all_formats
 from .schema import FFMpegAVOption, FFMpegCodec, FFMpegFormat
+from .utils import extract_avoption_info_from_help
 
 app = typer.Typer(help="Parse FFmpeg filter help information")
 
@@ -48,7 +48,7 @@ def all_filters() -> list[FFMpegFilter]:
     """
     output = []
 
-    for filter_info in extract():
+    for filter_info in extract_all_filters():
         try:
             filter_info_from_help = extract_avfilter_info_from_help(filter_info.name)
         except AssertionError:  # pragma: no cover

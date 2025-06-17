@@ -9,7 +9,6 @@ general filters list.
 """
 
 import re
-import subprocess
 from collections import defaultdict
 from dataclasses import replace
 
@@ -22,6 +21,8 @@ from ffmpeg.common.schema import (
     StreamType,
 )
 
+from .utils import run_ffmpeg_command
+
 
 def extract_filter_help_text(filter_name: str) -> str:
     """
@@ -33,13 +34,7 @@ def extract_filter_help_text(filter_name: str) -> str:
     Returns:
         The help text.
     """
-
-    result = subprocess.run(
-        ["ffmpeg", "-h", f"filter={filter_name}", "-hide_banner"],
-        stdout=subprocess.PIPE,
-        text=True,
-    )
-    return result.stdout
+    return run_ffmpeg_command(["-h", f"filter={filter_name}"])
 
 
 def _left_space(line: str) -> int:
@@ -309,7 +304,16 @@ def _remove_duplicate(options: list[FFMpegFilterOption]) -> list[FFMpegFilterOpt
 
 
 def extract_avfilter_info_from_help(filter_name: str) -> FFMpegFilter:
-    text = extract_filter_help_text(filter_name)
+    """
+    Extract the filter information from the help text.
+
+    Args:
+        filter_name: The name of the filter.
+
+    Returns:
+        The filter information.
+    """
+    text = run_ffmpeg_command(["-h", f"filter={filter_name}"])
 
     if "Unknown filter" in text:
         raise ValueError(f"Unknown filter {filter_name}")
