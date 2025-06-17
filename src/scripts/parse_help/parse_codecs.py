@@ -1,9 +1,8 @@
 import re
 from typing import Literal
 
-from .parse_all_options import parse_all_options
 from .schema import FFMpegAVOption, FFMpegCodec, FFMpegDecoder, FFMpegEncoder
-from .utils import run_ffmpeg_command
+from .utils import parse_all_options, run_ffmpeg_command
 
 
 def parse_help_text(text: str) -> list[FFMpegCodec]:
