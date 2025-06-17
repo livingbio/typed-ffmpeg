@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/reference/scripts/parse_help/parse_codecs/">
       
       
-        <link rel="prev" href="../parse_all_options/">
+        <link rel="prev" href="../parse_all_filter/">
       
       
         <link rel="next" href="../parse_filter/">
@@ -3059,29 +3059,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../parse_all_options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    parse_all_options
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -3149,15 +3126,6 @@
   <a href="#scripts.parse_help.parse_codecs.extract_codecs_help_text" class="md-nav__link">
     <span class="md-ellipsis">
       <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_codecs_help_text
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scripts.parse_help.parse_codecs.extract_help_text" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_help_text
     </span>
   </a>
   
@@ -3250,6 +3218,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    utils
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3314,15 +3305,6 @@
   <a href="#scripts.parse_help.parse_codecs.extract_codecs_help_text" class="md-nav__link">
     <span class="md-ellipsis">
       <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_codecs_help_text
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scripts.parse_help.parse_codecs.extract_help_text" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_help_text
     </span>
   </a>
   
@@ -3399,14 +3381,6 @@
               <td>
                 <div class="doc-md-description">
                   <p>Get the help text for all codecs.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="            extract_help_text (scripts.parse_help.parse_codecs.extract_help_text)" href="#scripts.parse_help.parse_codecs.extract_help_text">extract_help_text</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Get the help text for encoders or decoders.</p>
                 </div>
               </td>
             </tr>
@@ -3592,80 +3566,6 @@
             <td>
               <div class="doc-md-description">
                 <p>A list of codecs</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="scripts.parse_help.parse_codecs.extract_help_text" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">extract_help_text</span>
-
-
-<a href="#scripts.parse_help.parse_codecs.extract_help_text" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">extract_help_text</span><span class="p">(</span><span class="o">*</span><span class="n">command</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="str">str</span></span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Get the help text for encoders or decoders.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>command</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The ffmpeg command to run ('-encoders' or '-decoders')</p>
-              </div>
-            </td>
-            <td>
-                  <code>()</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The raw help text output from ffmpeg command</p>
               </div>
             </td>
           </tr>

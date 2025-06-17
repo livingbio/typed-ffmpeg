@@ -3062,29 +3062,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_all_options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    parse_all_options
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../parse_codecs/" class="md-nav__link">
         
   
@@ -3160,6 +3137,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#scripts.parse_help.parse_filter.extract_avfilter_info_from_help" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_avfilter_info_from_help
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#scripts.parse_help.parse_filter.extract_filter_help_text" class="md-nav__link">
     <span class="md-ellipsis">
       <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_filter_help_text
@@ -3232,6 +3218,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    utils
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3282,6 +3291,15 @@
       Page contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.parse_help.parse_filter.extract_avfilter_info_from_help" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_avfilter_info_from_help
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#scripts.parse_help.parse_filter.extract_filter_help_text" class="md-nav__link">
@@ -3357,6 +3375,14 @@ general filters list.</p>
       </thead>
       <tbody>
             <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            extract_avfilter_info_from_help (scripts.parse_help.parse_filter.extract_avfilter_info_from_help)" href="#scripts.parse_help.parse_filter.extract_avfilter_info_from_help">extract_avfilter_info_from_help</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Extract the filter information from the help text.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
               <td><code><a class="autorefs autorefs-internal" title="            extract_filter_help_text (scripts.parse_help.parse_filter.extract_filter_help_text)" href="#scripts.parse_help.parse_filter.extract_filter_help_text">extract_filter_help_text</a></code></td>
               <td>
                 <div class="doc-md-description">
@@ -3388,6 +3414,92 @@ general filters list.</p>
 
 
 
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="scripts.parse_help.parse_filter.extract_avfilter_info_from_help" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">extract_avfilter_info_from_help</span>
+
+
+<a href="#scripts.parse_help.parse_filter.extract_avfilter_info_from_help" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">extract_avfilter_info_from_help</span><span class="p">(</span>
+    <span class="n">filter_name</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            FFMpegFilter
+
+
+  
+      dataclass
+   (ffmpeg.common.schema.FFMpegFilter)" href="../../../ffmpeg/common/schema/#ffmpeg.common.schema.FFMpegFilter">FFMpegFilter</a></span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Extract the filter information from the help text.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>filter_name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The name of the filter.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            FFMpegFilter
+
+
+  
+      dataclass
+   (ffmpeg.common.schema.FFMpegFilter)" href="../../../ffmpeg/common/schema/#ffmpeg.common.schema.FFMpegFilter">FFMpegFilter</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The filter information.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
 
 <div class="doc doc-object doc-function">
 
