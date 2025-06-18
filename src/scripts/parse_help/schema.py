@@ -3,10 +3,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Literal
 
-from ffmpeg.common.serialize import Serializable, serializable
 
-
-@serializable
 class FFMpegOptionType(str, Enum):
     """
     Enumeration of possible data types for FFmpeg AV options (e.g. codec, format, filter options).
@@ -36,34 +33,33 @@ class FFMpegOptionType(str, Enum):
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegOption(Serializable):
+class FFMpegOption:
     """
     Represents FFMpeg Options in the help text, there are different types of options:
 
+    Example:
+
     ```
-    ### (General) options:
+    # (General) options:
     Has no type in help text, no flags in help text, has varname, support -no(option) syntax
 
-    Example:
     Advanced global options:
     -cpuflags flags     force specific cpu flags
     -cpucount count     force specific cpu count
 
-    ### AVOptions:
+    # AVOptions:
     Has type, has flags, no varname, per-stream, not support -no(option) syntax
     (ref: https://ffmpeg.org/ffmpeg-all.html#AVOptions)
 
-    Example:
     AVCodecContext AVOptions:
     -b                 <int64>      E..VA...... set bitrate (in bits/s) (from 0 to I64_MAX) (default 200000)
     -ab                <int64>      E...A...... set bitrate (in bits/s) (from 0 to INT_MAX) (default 128000)
     -bt                <int>        E..VA...... Set video bitrate tolerance (in bits/s). In 1-pass mode, bitrate tolerance specifies how far ratecontrol is willing to deviate from the target average bitrate value. This is not related to minimum/maximum bitrate. Lowering tolerance too much has an adverse effect on quality. (from 0 to INT_MAX) (default 4000000)
     -flags             <flags>      ED.VAS..... (default 0)
 
-    ### AVFilter AVOptions
+    # AVFilter AVOptions
     Has type, has flags, no varname, per-stream, has specially syntax
 
-    Example:
     tmedian AVOptions:
         radius            <int>        ..FV....... set median filter radius (from 1 to 127) (default 1)
         planes            <int>        ..FV.....T. set planes to filter (from 0 to 15) (default 15)
@@ -101,19 +97,20 @@ class FFMpegOption(Serializable):
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegOptionChoice(Serializable):
+class FFMpegOptionChoice:
     """
     Represents a choice for an AVOption.
     NOTE: there are 2 types of choices (flags, enum)
 
+    Example:
     ```
-    ### Example flags:
+    # flags:
     -fflags            <flags>      ED......... (default autobsf)
        flush_packets                E.......... reduce the latency by flushing out packets immediately
        ignidx                       .D......... ignore index
        genpts                       .D......... generate pts
 
-    ### Example enum:
+    # enum:
     preset            <int>        ..F.A...... set equalizer preset (from -1 to 17) (default flat)
      custom          -1           ..F.A......
      flat            0            ..F.A......
@@ -140,20 +137,19 @@ class FFMpegAVOption(FFMpegOption):
     """
     Represents an AVOption.
 
+    Example:
     ```
-    Example (AVFormatContext AVOptions):
     AVFormatContext AVOptions:
     -fflags            <flags>      ED......... (default autobsf)
         flush_packets                E.......... reduce the latency by flushing out packets immediately
 
-    Example (AVCodecContext AVOptions):
     AVCodecContext AVOptions:
     -b                 <int64>      E..VA...... set bitrate (in bits/s) (from 0 to I64_MAX) (default 200000)
     -ab                <int64>      E...A...... set bitrate (in bits/s) (from 0 to INT_MAX) (default 128000)
     -bt                <int>        E..VA...... Set video bitrate tolerance (in bits/s). In 1-pass mode, bitrate tolerance specifies how far ratecontrol is willing to deviate from the target average bitrate value. This is not related to minimum/maximum bitrate. Lowering tolerance too much has an adverse effect on quality. (from 0 to INT_MAX) (default 4000000)
     -flags             <flags>      ED.VAS..... (default 0)
 
-    Example (AVFilter AVOptions):
+    # (AVFilter AVOptions):
     tmedian AVOptions:
         radius            <int>        ..FV....... set median filter radius (from 1 to 127) (default 1)
         planes            <int>        ..FV.....T. set planes to filter (from 0 to 15) (default 15)
@@ -168,71 +164,70 @@ class FFMpegAVOption(FFMpegOption):
     default: str | None = None
     choices: tuple[FFMpegOptionChoice, ...] = ()
 
-    @property
-    def code_gen_type(self) -> str:
-        def handle_choices() -> str:
-            if self.type != FFMpegOptionType.flags:
-                # NOTE: flags not supported yet
-                if self.choices:
-                    return "| Literal[{}]".format(
-                        ", ".join(f'"{choice.name}"' for choice in self.choices)
-                    )
-            return ""
+    # @property
+    # def code_gen_type(self) -> str:
+    #     def handle_choices() -> str:
+    #         if self.type != FFMpegOptionType.flags:
+    #             # NOTE: flags not supported yet
+    #             if self.choices:
+    #                 return "| Literal[{}]".format(
+    #                     ", ".join(f'"{choice.name}"' for choice in self.choices)
+    #                 )
+    #         return ""
 
-        def handle_type() -> str:
-            match self.type:
-                case FFMpegOptionType.boolean:
-                    return "bool | None"
-                case FFMpegOptionType.int:
-                    return "int | None"
-                case FFMpegOptionType.int64:
-                    return "int | None"
-                case FFMpegOptionType.float:
-                    return "float | None"
-                case FFMpegOptionType.double:
-                    return "float | None"
-                case FFMpegOptionType.string:
-                    return "str | None"
-                case FFMpegOptionType.channel_layout:
-                    return "str | None"
-                case FFMpegOptionType.flags:
-                    return "str | None"
-                case FFMpegOptionType.duration:
-                    return "str | None"
-                case FFMpegOptionType.dictionary:
-                    return "str | None"
-                case FFMpegOptionType.image_size:
-                    return "str | None"
-                case FFMpegOptionType.pixel_format:
-                    return "str | None"
-                case FFMpegOptionType.sample_rate:
-                    return "int | None"
-                case FFMpegOptionType.sample_fmt:
-                    return "str | None"
-                case FFMpegOptionType.binary:
-                    return "str | None"
-                case FFMpegOptionType.rational:
-                    return "str | None"
-                case FFMpegOptionType.color:
-                    return "str | None"
-                case FFMpegOptionType.video_rate:
-                    return "str | None"
-                case FFMpegOptionType.pix_fmt:
-                    return "str | None"
-                case _:
-                    raise ValueError(f"Invalid option type: {self.type}")
+    #     def handle_type() -> str:
+    #         match self.type:
+    #             case FFMpegOptionType.boolean:
+    #                 return "bool | None"
+    #             case FFMpegOptionType.int:
+    #                 return "int | None"
+    #             case FFMpegOptionType.int64:
+    #                 return "int | None"
+    #             case FFMpegOptionType.float:
+    #                 return "float | None"
+    #             case FFMpegOptionType.double:
+    #                 return "float | None"
+    #             case FFMpegOptionType.string:
+    #                 return "str | None"
+    #             case FFMpegOptionType.channel_layout:
+    #                 return "str | None"
+    #             case FFMpegOptionType.flags:
+    #                 return "str | None"
+    #             case FFMpegOptionType.duration:
+    #                 return "str | None"
+    #             case FFMpegOptionType.dictionary:
+    #                 return "str | None"
+    #             case FFMpegOptionType.image_size:
+    #                 return "str | None"
+    #             case FFMpegOptionType.pixel_format:
+    #                 return "str | None"
+    #             case FFMpegOptionType.sample_rate:
+    #                 return "int | None"
+    #             case FFMpegOptionType.sample_fmt:
+    #                 return "str | None"
+    #             case FFMpegOptionType.binary:
+    #                 return "str | None"
+    #             case FFMpegOptionType.rational:
+    #                 return "str | None"
+    #             case FFMpegOptionType.color:
+    #                 return "str | None"
+    #             case FFMpegOptionType.video_rate:
+    #                 return "str | None"
+    #             case FFMpegOptionType.pix_fmt:
+    #                 return "str | None"
+    #             case _:
+    #                 raise ValueError(f"Invalid option type: {self.type}")
 
-        return f"{handle_type()}{handle_choices()}"
+    #     return f"{handle_type()}{handle_choices()}"
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegOptionSet(Serializable):
+class FFMpegOptionSet:
     """
     Represents a set of options set. such as formats, codecs, filters, etc.
 
-    ```
     Example:
-    -formats
+    ```
     File formats:
     D. = Demuxing supported
     .E = Muxing supported
@@ -250,9 +245,13 @@ class FFMpegOptionSet(Serializable):
 @dataclass(frozen=True, kw_only=True)
 class FFMpegCodec(FFMpegOptionSet):
     """
-    Represents a codec.
+    Represents a codec,
+
+    NOTE: the same name encoder and decoder has different options, so we will store them separately.
+
     Example:
-    -encoders
+    ```
+    Encoders:
     V..... = Video
     A..... = Audio
     S..... = Subtitle
@@ -264,6 +263,22 @@ class FFMpegCodec(FFMpegOptionSet):
     ------
     V....D a64multi             Multicolor charset for Commodore 64 (codec a64_multi)
     V....D a64multi5            Multicolor charset for Commodore 64, extended with 5th color (colram) (codec a64_multi5)
+
+    Decoders:
+    V..... = Video
+    A..... = Audio
+    S..... = Subtitle
+    .F.... = Frame-level multithreading
+    ..S... = Slice-level multithreading
+    ...X.. = Codec is experimental
+    ....B. = Supports draw_horiz_band
+    .....D = Supports direct rendering method 1
+    ------
+    V....D 012v                 Uncompressed 4:2:2 10-bit
+    V....D 4xm                  4X Movie
+    V....D 8bps                 QuickTime 8BPS video
+    V....D aasc                 Autodesk RLE
+    ```
     """
 
     def filterd_options(self) -> Iterable[FFMpegAVOption]:
@@ -310,17 +325,31 @@ class FFMpegDecoder(FFMpegCodec):
 class FFMpegFormat(FFMpegOptionSet):
     """
     Represents a format.
+    NOTE: the same name demuxer and muxer has different options, so we will store them separately.
+
     Example:
-    -formats
+    ```
+    File formats:
+    D. = Demuxing supported
+    .E = Muxing supported
+    --
+    E 3g2             3GP2 (3GPP2 file format)
+    E 3gp             3GP (3GPP file format)
+    E a64             a64 - video for Commodore 64
+    E ac3             raw AC-3
+    E ac4             raw AC-4
+
     File formats:
     D. = Demuxing supported
     .E = Muxing supported
     --
     D  3dostr          3DO STR
-    E 3g2             3GP2 (3GPP2 file format)
-    E 3gp             3GP (3GPP file format)
     D  4xm             4X Technologies
-    E a64             a64 - video for Commodore 64
+    D  aa              Audible AA format files
+    D  aac             raw ADTS AAC (Advanced Audio Coding)
+    D  aax             CRI AAX
+    D  ac3             raw AC-3
+    ```
     """
 
     @property
@@ -346,7 +375,9 @@ class FFMpegMuxer(FFMpegFormat):
 class FFMpegFilter(FFMpegOptionSet):
     """
     Represents a filter.
+
     Example:
+    ```
     Filters:
     T.. = Timeline support
     .S. = Slice threading
@@ -364,6 +395,7 @@ class FFMpegFilter(FFMpegOptionSet):
     .S. acrossover        A->N       Split audio into per-bands streams.
     T.C acrusher          A->A       Reduce audio bit resolution.
     TS. adeclick          A->A       Remove impulsive noise from input audio.
+    ```
     """
 
     pass
