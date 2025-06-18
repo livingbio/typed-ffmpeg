@@ -2,7 +2,7 @@ import re
 from typing import Literal
 
 from .schema import FFMpegAVOption, FFMpegCodec, FFMpegDecoder, FFMpegEncoder
-from .utils import parse_all_options, run_ffmpeg_command
+from .utils import parse_av_option, parse_section_tree, run_ffmpeg_command
 
 
 def parse_help_text(text: str) -> list[FFMpegCodec]:
@@ -55,7 +55,7 @@ def extract_codec_option(
     Returns:
         A list of codec options
     """
-    codec_options = parse_all_options(run_ffmpeg_command(["-h", f"{type}={codec}"]))
+    codec_options = parse_section_tree(run_ffmpeg_command(["-h", f"{type}={codec}"]))
     # NOTE: some filter help text contains duplicate options, so we need to remove them (e.g. encoder=h264_nvenc)
     passed_options = set()
     output = []
