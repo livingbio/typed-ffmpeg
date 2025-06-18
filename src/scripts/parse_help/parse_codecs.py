@@ -23,7 +23,7 @@ def parse_help_text(text: str) -> list[FFMpegCodec]:
         match = re_pattern.findall(line)
         if match:
             flags, name, description = match[0]
-            output.append(FFMpegCodec(name=name, flags=flags, description=description))
+            output.append(FFMpegCodec(name=name, flags=flags, help=description))
     return output
 
 
@@ -76,8 +76,8 @@ def extract_all_codecs() -> list[FFMpegCodec]:
             FFMpegEncoder(
                 name=codec.name,
                 flags=codec.flags,
-                description=codec.description,
-                options=tuple(options),
+                help=codec.help,
+                choices=tuple(options),
             )
         )
 
@@ -87,8 +87,8 @@ def extract_all_codecs() -> list[FFMpegCodec]:
             FFMpegDecoder(
                 name=codec.name,
                 flags=codec.flags,
-                description=codec.description,
-                options=tuple(options),
+                help=codec.help,
+                choices=tuple(options),
             )
         )
 
