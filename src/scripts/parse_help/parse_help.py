@@ -1,5 +1,5 @@
 """
-This module is used to parse the help text of FFmpeg. 
+This module is used to parse the help text of FFmpeg.
 
 ffmpeg -h full or ffmpeg -h filter=scale
 
@@ -13,13 +13,16 @@ The tree structure is parsed into a list of FFMpegAVOption objects by the follow
 
 import re
 
-from .utils import run_ffmpeg_command, parse_section_tree
-from .schema import FFMpegAVOption, FFMpegOptionChoice, FFMpegOption
+from .schema import FFMpegAVOption, FFMpegOption, FFMpegOptionChoice, FFMpegOptionType
+from .utils import parse_section_tree, run_ffmpeg_command
 
-re_option_pattern = re.compile(r"(?P<name>[\-\w]+)\s+\<(?P<type>[\w]+)\>\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?")
+re_option_pattern = re.compile(
+    r"(?P<name>[\-\w]+)\s+\<(?P<type>[\w]+)\>\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
+)
 re_choice_pattern = re.compile(
     r"^(?P<name>(?:(?!  ).)+)\s+(?P<value>[\d\-]+)?\s+(?P<flags>[\w\.]{11})(?P<help>\s+.*)?"
 )
+
 
 def parse(help_text: str) -> list[FFMpegOption]:
     """
@@ -43,14 +46,16 @@ def parse(help_text: str) -> list[FFMpegOption]:
     Returns:
         A list of FFMpegOption objects
     """
-    tree=  parse_section_tree(help_text)
+    tree = parse_section_tree(help_text)
     output: list[FFMpegOption] = []
 
     for section in tree:
         if "options" in section:
             # FFMpeg's general options
             for option in tree[section]:
-                assert not tree[section][option], f"General options should not have choice: {section}.{option}"
+                assert not tree[section][option], (
+                    f"General options should not have choice: {section}.{option}"
+                )
                 parts = option.split("  ")
                 if " " in parts[0].strip():
                     name, argname = parts[0].strip().split(" ", 1)
@@ -60,31 +65,53 @@ def parse(help_text: str) -> list[FFMpegOption]:
 
                 help = parts[-1].strip()
 
-                output.append(FFMpegOption(section=section, name=name.strip("-"), argname=argname, help=help))
+                output.append(
+                    FFMpegOption(
+                        section=section,
+                        name=name.strip("-"),
+                        argname=argname,
+                        help=help,
+                    )
+                )
         elif "AVOptions" in section:
             # FFmpeg's AVOptions
             for option in tree[section]:
-
                 choices: list[FFMpegOptionChoice] = []
                 for choice in tree[section][option]:
                     match = re_choice_pattern.match(choice)
                     assert match, f"No choice found in line: {choice}"
 
-                    choices.append(FFMpegOptionChoice(name=match.group('name').strip("-"), value=match.group('value'), flags=match.group('flags'), help=match.group('help')))
+                    choices.append(
+                        FFMpegOptionChoice(
+                            name=match.group("name").strip("-"),
+                            value=match.group("value"),
+                            flags=match.group("flags"),
+                            help=match.group("help"),
+                        )
+                    )
 
                 match = re_option_pattern.match(option)
                 assert match, f"No option found in line: {option}"
-                output.append(FFMpegAVOption(section=section, name=match.group('name').strip("-"), type=match.group('type'), flags=match.group('flags'), help=match.group('help'), choices=choices))
+                output.append(
+                    FFMpegAVOption(
+                        section=section,
+                        name=match.group("name").strip("-"),
+                        type=FFMpegOptionType(match.group("type")),
+                        flags=match.group("flags"),
+                        help=match.group("help"),
+                        choices=tuple(choices),
+                    )
+                )
 
     return output
 
 
-def extract_options_from_help() -> list[FFMpegAVOption]:
+def extract_options_from_help() -> list[FFMpegOption]:
     """
-    Extract all AVOptions from ffmpeg help text.
+    Extract all options from ffmpeg help text.
 
     Returns:
-        A list of FFMpegAVOption objects
+        A list of FFMpegOption objects
     """
     text = run_ffmpeg_command(["-h", "full"])
     return parse(text)
