@@ -35,7 +35,7 @@ def _left_space(line: str) -> int:
     for i in range(len(line)):
         if line[i] != " ":
             if line[i] == "-":
-                return i+1
+                return i + 1
             else:
                 return i
 
