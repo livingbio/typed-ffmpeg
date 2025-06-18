@@ -78,7 +78,7 @@ class FFMpegOption:
     help: str
     """The help text description for the option."""
 
-    varname: str | None = None
+    argname: str | None = None
     """The variable name for the option (e.g., "flags", "count") or None if not specified."""
 
 

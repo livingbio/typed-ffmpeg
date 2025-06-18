@@ -42,7 +42,7 @@ def _left_space(line: str) -> int:
     return len(line)
 
 
-def parse_section_tree(text: str) -> OrderedDict[str, Any]:
+def parse_section_tree(text: str) -> dict[str, dict[str, dict[str, None]]]:
     """
     Parse the help text into a tree structure.
 
