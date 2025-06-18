@@ -49,25 +49,25 @@ Pix_fmt = str | Default | LazyValue
 please see `ffmpeg -pix_fmts` for a list of supported pixel formats.
 """
 
-Int = int | Default | LazyValue
+Int = str | int | Default | LazyValue
 """
 This represents FFmpeg's integer type. It can accept either a Python integer value
 or a string that represents a integer value.
 """
 
-Int64 = int | Default | LazyValue
+Int64 = str | int | Default | LazyValue
 """
 This represents FFmpeg's integer type. It can accept either a Python integer value
 or a string that represents a integer value.
 """
 
-Double = int | float | Default | LazyValue
+Double = str | int | float | Default | LazyValue
 """
 This represents FFmpeg's double type. It can accept either a Python integer or float value
 or a string that represents a double value.
 """
 # TODO: more info
-Float = int | float | Default | LazyValue
+Float = str | int | float | Default | LazyValue
 """
 This represents FFmpeg's float type. It can accept either a Python integer or float value
 or a string that represents a float value.
