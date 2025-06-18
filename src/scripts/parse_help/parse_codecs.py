@@ -77,7 +77,7 @@ def extract_all_codecs() -> list[FFMpegCodec]:
                 name=codec.name,
                 flags=codec.flags,
                 help=codec.help,
-                choices=tuple(options),
+                options=tuple(options),
             )
         )
 
@@ -88,7 +88,7 @@ def extract_all_codecs() -> list[FFMpegCodec]:
                 name=codec.name,
                 flags=codec.flags,
                 help=codec.help,
-                choices=tuple(options),
+                options=tuple(options),
             )
         )
 

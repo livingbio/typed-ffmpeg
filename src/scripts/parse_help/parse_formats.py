@@ -23,7 +23,7 @@ def parse_help_text(text: str) -> list[FFMpegFormat]:
         match = re_pattern.findall(line)
         if match:
             flags, name, description = match[0]
-            output.append(FFMpegFormat(name=name, flags=flags, description=description))
+            output.append(FFMpegFormat(name=name, flags=flags, help=description))
     return output
 
 
@@ -82,7 +82,7 @@ def extract_all_formats() -> list[FFMpegFormat]:
             FFMpegMuxer(
                 name=codec.name,
                 flags=codec.flags,
-                description=codec.description,
+                help=codec.help,
                 options=tuple(options),
             )
         )
@@ -93,7 +93,7 @@ def extract_all_formats() -> list[FFMpegFormat]:
             FFMpegDemuxer(
                 name=codec.name,
                 flags=codec.flags,
-                description=codec.description,
+                help=codec.help,
                 options=tuple(options),
             )
         )

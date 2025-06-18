@@ -1,8 +1,7 @@
-import re
 import subprocess
+from collections import OrderedDict
 from collections.abc import Sequence
-
-from .schema import FFMpegAVOption, FFMpegOptionChoice
+from typing import Any
 
 
 def run_ffmpeg_command(args: Sequence[str]) -> str:
@@ -23,135 +22,55 @@ def run_ffmpeg_command(args: Sequence[str]) -> str:
     return result.stdout
 
 
-def parse_all_options(help_text: str) -> list[FFMpegAVOption]:
+def _left_space(line: str) -> int:
     """
-    Parse all options from ffmpeg help text.
+    Get the number of leading spaces in a string.
 
     Args:
-        help_text: The help text to parse
+        line: The string to check.
 
     Returns:
-        A list of FFMpegAVOption objects
+        The number of leading spaces.
     """
-    output: list[FFMpegAVOption] = []
-    section = None
-    last_option: FFMpegAVOption | None = None
-    choices: list[FFMpegOptionChoice] = []
-
-    re_option_pattern = re.compile(
-        r"(?P<short_name>[\w\-\.\+]+)\s+\<(?P<type>[\w]+)\>\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
-    )
-    re_choice_pattern = re.compile(
-        r"(?P<short_name>[\w\-\.\+]+)\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
-    )
-    re_value_pattern = re.compile(
-        r"(?P<short_name>[\w\-\.\+]+)\s+(?P<value>[\w\-]+)\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
-    )
-
-    for line in help_text.split("\n"):
-        # Empty line
-        if not line.strip():
-            if last_option:
-                output.append(
-                    FFMpegAVOption(
-                        section=last_option.section,
-                        name=last_option.name.strip().strip("-"),
-                        type=last_option.type,
-                        flags=last_option.flags,
-                        help=last_option.help,
-                        choices=tuple(choices),
-                    )
-                )
-                last_option = None
-                choices = []
-            continue
-
-        # AVOptions section
-        if re.findall(r"^[\w\.\s\/]+[\s]+AVOptions:", line):
-            section = line
-            continue
-
-        if not section:
-            continue
-
-        # Choice line
-        if line.startswith("     "):
-            assert last_option
-            if last_option.type == "flags":
-                choice = re_choice_pattern.findall(line)
-                assert choice, f"No choice found in line: {line}"
-                name, flags, help = choice[0]
-                choices.append(
-                    FFMpegOptionChoice(
-                        name=name.strip(),
-                        flags=flags,
-                        help=help,
-                        value=name.strip(),
-                    )
-                )
-            elif last_option.type == "string":
-                choice = re_choice_pattern.findall(line)
-                assert choice, f"No choice found in line: {line}"
-                name, flags, help = choice[0]
-                choices.append(
-                    FFMpegOptionChoice(
-                        name=name.strip(),
-                        flags=flags,
-                        help=help,
-                        value=name.strip(),
-                    )
-                )
+    for i in range(len(line)):
+        if line[i] != " ":
+            if line[i] == "-":
+                return i+1
             else:
-                v = re_value_pattern.findall(line)
-                assert v, f"No value found in line: {line}"
-                name, value, flags, help = v[0]
-                choices.append(
-                    FFMpegOptionChoice(
-                        name=name.strip(),
-                        flags=flags,
-                        value=value,
-                        help=help,
-                    )
-                )
+                return i
 
+    return len(line)
+
+
+def parse_section_tree(text: str) -> OrderedDict[str, Any]:
+    """
+    Parse the help text into a tree structure.
+
+    Args:
+        text: The help text.
+
+    Returns:
+        The tree structure.
+    """
+    output: OrderedDict[str, Any] = OrderedDict()
+    paths: list[tuple[int, str]] = []
+
+    for i, line in enumerate(text.split("\n")):
+        indent = _left_space(line)
+        if not line.strip():
             continue
+        paths = [k for k in paths if k[0] < indent]
 
-        # Option line
-        if line.startswith("  ") and not line.startswith("   "):
-            if last_option:
-                output.append(
-                    FFMpegAVOption(
-                        section=last_option.section,
-                        name=last_option.name.strip().strip("-"),
-                        type=last_option.type,
-                        flags=last_option.flags,
-                        help=last_option.help,
-                        choices=tuple(choices),
-                    )
-                )
-            last_option = None
-            choices = []
+        line = line.strip()
 
-            p = re_option_pattern.findall(line)
-            assert p, f"No option found in line: {line}"
+        insert_node = output
+        for p in paths:
+            if p[1] not in insert_node:
+                insert_node[p[1]] = OrderedDict()
 
-            last_option = FFMpegAVOption(
-                section=section,
-                name=p[0][0].strip(),
-                type=p[0][1],
-                flags=p[0][2],
-                help=p[0][3],
-            )
+            insert_node = insert_node[p[1]]
+
+        insert_node[line] = OrderedDict()
+        paths.append((indent, line))
 
     return output
-
-
-def extract_avoption_info_from_help() -> list[FFMpegAVOption]:
-    """
-    Extract all AVOptions from ffmpeg help text.
-
-    Returns:
-        A list of FFMpegAVOption objects
-    """
-    text = run_ffmpeg_command(["-h", "full"])
-    return parse_all_options(text)

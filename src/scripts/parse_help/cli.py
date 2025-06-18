@@ -15,20 +15,9 @@ from .parse_all_filter import extract as extract_all_filters
 from .parse_codecs import extract_all_codecs
 from .parse_filter import extract_avfilter_info_from_help
 from .parse_formats import extract_all_formats
-from .schema import FFMpegAVOption, FFMpegCodec, FFMpegFormat
-from .utils import extract_avoption_info_from_help
+from .schema import FFMpegCodec, FFMpegFormat
 
 app = typer.Typer(help="Parse FFmpeg filter help information")
-
-
-@app.command()
-def all_options() -> list[FFMpegAVOption]:
-    """
-    Parse all options from FFmpeg help output
-    """
-    options = extract_avoption_info_from_help()
-    print(options)
-    return options
 
 
 @app.command()

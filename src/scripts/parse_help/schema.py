@@ -6,9 +6,12 @@ from typing import Literal
 
 class FFMpegOptionType(str, Enum):
     """
-    Enumeration of possible data types for FFmpeg AV options (e.g. codec, format, filter options).
+    Enumeration of possible data types for FFmpeg AV options.
 
-    https://ffmpeg.org/ffmpeg-all.html#AVOptions
+    These types are used for codec, format, and filter options as documented in
+    the FFmpeg AVOptions specification.
+
+    See: https://ffmpeg.org/ffmpeg-all.html#AVOptions
     """
 
     boolean = "boolean"
@@ -35,109 +38,97 @@ class FFMpegOptionType(str, Enum):
 @dataclass(frozen=True, kw_only=True)
 class FFMpegOption:
     """
-    Represents FFMpeg Options in the help text, there are different types of options:
+    Represents an FFmpeg option from help text output.
 
-    Example:
+    FFmpeg has different types of options with varying characteristics:
 
+    1. **General Options**: No type in help text, no flags, has varname, supports -no(option) syntax
+    2. **AVOptions**: Has type, has flags, no varname, per-stream, doesn't support -no(option) syntax
+    3. **AVFilter AVOptions**: Has type, has flags, no varname, per-stream, special syntax
+    4. **BSF AVFilters**: Not fully investigated yet
+
+    Examples:
     ```
-    # (General) options:
-    Has no type in help text, no flags in help text, has varname, support -no(option) syntax
-
-    Advanced global options:
+    General options:
     -cpuflags flags     force specific cpu flags
     -cpucount count     force specific cpu count
-
-    # AVOptions:
-    Has type, has flags, no varname, per-stream, not support -no(option) syntax
-    (ref: https://ffmpeg.org/ffmpeg-all.html#AVOptions)
 
     AVCodecContext AVOptions:
     -b                 <int64>      E..VA...... set bitrate (in bits/s) (from 0 to I64_MAX) (default 200000)
     -ab                <int64>      E...A...... set bitrate (in bits/s) (from 0 to INT_MAX) (default 128000)
-    -bt                <int>        E..VA...... Set video bitrate tolerance (in bits/s). In 1-pass mode, bitrate tolerance specifies how far ratecontrol is willing to deviate from the target average bitrate value. This is not related to minimum/maximum bitrate. Lowering tolerance too much has an adverse effect on quality. (from 0 to INT_MAX) (default 4000000)
-    -flags             <flags>      ED.VAS..... (default 0)
 
-    # AVFilter AVOptions
-    Has type, has flags, no varname, per-stream, has specially syntax
-
-    tmedian AVOptions:
-        radius            <int>        ..FV....... set median filter radius (from 1 to 127) (default 1)
-        planes            <int>        ..FV.....T. set planes to filter (from 0 to 15) (default 15)
-        percentile        <float>      ..FV.....T. set percentile (from 0 to 1) (default 0.5)
-
-    ### BSF AVFilters:
-    not investigated yet
+    AVFilter AVOptions:
+    radius            <int>        ..FV....... set median filter radius (from 1 to 127) (default 1)
+    planes            <int>        ..FV.....T. set planes to filter (from 0 to 15) (default 15)
     ```
     """
 
     section: str
-    """
-    The section of the option based on the help text. e.g. "Advanced global options", "AVOptions", "AVFilter AVOptions", "BSF AVFilters"
-    """
+    """The section name from help text (e.g., "Advanced global options", "AVOptions")."""
+
     name: str
-    """
-    The name of the option. e.g. "-b", "radius", "preset"
-    """
+    """The option name (e.g., "b", "radius", "preset")."""
+
     type: FFMpegOptionType | None = None
-    """
-    The type of the option. e.g. "int", "float", "string"
-    """
+    """The option's data type (e.g., "int", "float", "string")."""
+
     flags: str | None = None
-    """
-    The flags of the option. e.g. "E..VA......", "..FV.......", "..F.A......" or None if not specified
-    """
+    """The option's flags (e.g., "E..VA......", "..FV.......") or None if not specified."""
+
     help: str
-    """
-    The help of the option. e.g. "set bitrate (in bits/s) (from 0 to I64_MAX) (default 200000)"
-    """
+    """The help text description for the option."""
+
     varname: str | None = None
-    """
-    The varname of the option. e.g. "flags", "count", None if not specified
-    """
+    """The variable name for the option (e.g., "flags", "count") or None if not specified."""
 
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegOptionChoice:
     """
-    Represents a choice for an AVOption.
-    NOTE: there are 2 types of choices (flags, enum)
+    Represents a choice value for an AVOption.
 
-    Example:
+    There are two types of choices:
+    1. **Flags**: Multiple boolean flags that can be combined
+    2. **Enum**: Single choice from a predefined set of values
+
+    Examples:
     ```
-    # flags:
+    Flags:
     -fflags            <flags>      ED......... (default autobsf)
        flush_packets                E.......... reduce the latency by flushing out packets immediately
        ignidx                       .D......... ignore index
        genpts                       .D......... generate pts
 
-    # enum:
+    Enum:
     preset            <int>        ..F.A...... set equalizer preset (from -1 to 17) (default flat)
      custom          -1           ..F.A......
      flat            0            ..F.A......
      acoustic        1            ..F.A......
-     bass            2            ..F.A......
-     beats           3            ..F.A......
-     classic         4            ..F.A......
-     clear           5            ..F.A......
-     deep bass       6            ..F.A......
-     dubstep         7            ..F.A......
-     electronic      8            ..F.A......
-     hardstyle       9            ..F.A......
     ```
     """
 
     name: str
+    """The choice name."""
+
     help: str
+    """The help text description for this choice."""
+
     flags: str
+    """The flags associated with this choice."""
+
     value: str
+    """The value associated with this choice."""
 
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegAVOption(FFMpegOption):
     """
-    Represents an AVOption.
+    Represents an FFmpeg AVOption with additional metadata.
 
-    Example:
+    AVOptions are per-stream options that have types, flags, and may include
+    range constraints, default values, and choice lists.
+
+    Examples:
     ```
     AVFormatContext AVOptions:
     -fflags            <flags>      ED......... (default autobsf)
@@ -145,24 +136,25 @@ class FFMpegAVOption(FFMpegOption):
 
     AVCodecContext AVOptions:
     -b                 <int64>      E..VA...... set bitrate (in bits/s) (from 0 to I64_MAX) (default 200000)
-    -ab                <int64>      E...A...... set bitrate (in bits/s) (from 0 to INT_MAX) (default 128000)
-    -bt                <int>        E..VA...... Set video bitrate tolerance (in bits/s). In 1-pass mode, bitrate tolerance specifies how far ratecontrol is willing to deviate from the target average bitrate value. This is not related to minimum/maximum bitrate. Lowering tolerance too much has an adverse effect on quality. (from 0 to INT_MAX) (default 4000000)
-    -flags             <flags>      ED.VAS..... (default 0)
+    -bt                <int>        E..VA...... Set video bitrate tolerance (in bits/s) (from 0 to INT_MAX) (default 4000000)
 
-    # (AVFilter AVOptions):
-    tmedian AVOptions:
-        radius            <int>        ..FV....... set median filter radius (from 1 to 127) (default 1)
-        planes            <int>        ..FV.....T. set planes to filter (from 0 to 15) (default 15)
-        percentile        <float>      ..FV.....T. set percentile (from 0 to 1) (default 0.5)
-
-    Example (BSF AVFilters):
+    AVFilter AVOptions:
+    radius            <int>        ..FV....... set median filter radius (from 1 to 127) (default 1)
+    percentile        <float>      ..FV.....T. set percentile (from 0 to 1) (default 0.5)
     ```
     """
 
     min: str | None = None
+    """The minimum allowed value for this option."""
+
     max: str | None = None
+    """The maximum allowed value for this option."""
+
     default: str | None = None
+    """The default value for this option."""
+
     choices: tuple[FFMpegOptionChoice, ...] = ()
+    """Available choices for this option (for enum or flags types)."""
 
     # @property
     # def code_gen_type(self) -> str:
@@ -224,7 +216,11 @@ class FFMpegAVOption(FFMpegOption):
 @dataclass(frozen=True, kw_only=True)
 class FFMpegOptionSet:
     """
-    Represents a set of options set. such as formats, codecs, filters, etc.
+    Base class for sets of FFmpeg options.
+
+    Represents collections of options such as formats, codecs, filters, etc.
+    Each option set has a name, flags indicating capabilities, help text,
+    and a collection of available options.
 
     Example:
     ```
@@ -237,19 +233,27 @@ class FFMpegOptionSet:
     """
 
     name: str
+    """The name of the option set."""
+
     flags: str
+    """The flags indicating capabilities of this option set."""
+
     help: str
+    """The help text description for this option set."""
+
     options: tuple[FFMpegAVOption, ...] = ()
+    """The available options in this set."""
 
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegCodec(FFMpegOptionSet):
     """
-    Represents a codec,
+    Represents an FFmpeg codec (encoder or decoder).
 
-    NOTE: the same name encoder and decoder has different options, so we will store them separately.
+    Note: Encoders and decoders with the same name have different options,
+    so they are stored separately.
 
-    Example:
+    Examples:
     ```
     Encoders:
     V..... = Video
@@ -265,15 +269,6 @@ class FFMpegCodec(FFMpegOptionSet):
     V....D a64multi5            Multicolor charset for Commodore 64, extended with 5th color (colram) (codec a64_multi5)
 
     Decoders:
-    V..... = Video
-    A..... = Audio
-    S..... = Subtitle
-    .F.... = Frame-level multithreading
-    ..S... = Slice-level multithreading
-    ...X.. = Codec is experimental
-    ....B. = Supports draw_horiz_band
-    .....D = Supports direct rendering method 1
-    ------
     V....D 012v                 Uncompressed 4:2:2 10-bit
     V....D 4xm                  4X Movie
     V....D 8bps                 QuickTime 8BPS video
@@ -282,7 +277,15 @@ class FFMpegCodec(FFMpegOptionSet):
     """
 
     def filterd_options(self) -> Iterable[FFMpegAVOption]:
-        # NOTE: the nvenv_hevc has alias for some options, so we need to filter them out
+        """
+        Filter out duplicate options based on normalized names.
+
+        Some codecs (like nvenc_hevc) have aliases for options, so we filter
+        them out to avoid duplicates.
+
+        Returns:
+            An iterable of unique options.
+        """
         passed = set()
         for option in self.options:
             if option.name.replace("-", "_") in passed:
@@ -292,6 +295,15 @@ class FFMpegCodec(FFMpegOptionSet):
 
     @property
     def codec_type(self) -> Literal["video", "audio", "subtitle"]:
+        """
+        Determine the codec type based on the first flag character.
+
+        Returns:
+            The codec type as a string literal.
+
+        Raises:
+            ValueError: If the stream type flag is invalid.
+        """
         match self.flags[0]:
             case "V":
                 return "video"
@@ -304,45 +316,47 @@ class FFMpegCodec(FFMpegOptionSet):
 
     @property
     def is_encoder(self) -> bool:
+        """Check if this codec is an encoder."""
         return isinstance(self, FFMpegEncoder)
 
     @property
     def is_decoder(self) -> bool:
+        """Check if this codec is a decoder."""
         return isinstance(self, FFMpegDecoder)
 
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegEncoder(FFMpegCodec):
+    """Represents an FFmpeg encoder codec."""
+
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegDecoder(FFMpegCodec):
+    """Represents an FFmpeg decoder codec."""
+
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegFormat(FFMpegOptionSet):
     """
-    Represents a format.
-    NOTE: the same name demuxer and muxer has different options, so we will store them separately.
+    Represents an FFmpeg format (demuxer or muxer).
 
-    Example:
+    Note: Demuxers and muxers with the same name have different options,
+    so they are stored separately.
+
+    Examples:
     ```
-    File formats:
-    D. = Demuxing supported
-    .E = Muxing supported
-    --
+    Muxers (E = Muxing supported):
     E 3g2             3GP2 (3GPP2 file format)
     E 3gp             3GP (3GPP file format)
     E a64             a64 - video for Commodore 64
     E ac3             raw AC-3
     E ac4             raw AC-4
 
-    File formats:
-    D. = Demuxing supported
-    .E = Muxing supported
-    --
+    Demuxers (D = Demuxing supported):
     D  3dostr          3DO STR
     D  4xm             4X Technologies
     D  aa              Audible AA format files
@@ -354,29 +368,38 @@ class FFMpegFormat(FFMpegOptionSet):
 
     @property
     def is_muxer(self) -> bool:
+        """Check if this format is a muxer."""
         return isinstance(self, FFMpegMuxer)
 
     @property
     def is_demuxer(self) -> bool:
+        """Check if this format is a demuxer."""
         return isinstance(self, FFMpegDemuxer)
 
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegDemuxer(FFMpegFormat):
+    """Represents an FFmpeg demuxer format."""
+
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegMuxer(FFMpegFormat):
+    """Represents an FFmpeg muxer format."""
+
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegFilter(FFMpegOptionSet):
     """
-    Represents a filter.
+    Represents an FFmpeg filter.
 
-    Example:
+    Filters process audio, video, or other data streams and can have various
+    capabilities indicated by their flags.
+
+    Examples:
     ```
     Filters:
     T.. = Timeline support
@@ -398,4 +421,19 @@ class FFMpegFilter(FFMpegOptionSet):
     ```
     """
 
-    pass
+    io_flags: str
+    """
+    The IO flags of the filter.
+
+    Examples:
+    ```
+    A->A: Audio input/output
+    V->V: Video input/output
+    N->N: Dynamic number and/or type of input/output
+    |->|: Source or sink filter
+    A->N: Audio input/output to dynamic number of outputs
+    N->A: Dynamic number of inputs/outputs to audio output
+    V->N: Video input/output to dynamic number of outputs
+    N->V: Dynamic number of inputs/outputs to video output
+    ```
+    """
