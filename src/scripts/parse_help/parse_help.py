@@ -1,14 +1,13 @@
 """
-This module is used to parse the help text of FFmpeg.
+A module for parsing FFmpeg help text output into structured option data.
 
-ffmpeg -h full or ffmpeg -h filter=scale
+This module processes the output of commands like `ffmpeg -h full` or `ffmpeg -h filter=scale`
+into a structured format. It handles both general FFmpeg options and AVOptions.
 
-The help text is parsed into a tree structure, and then the tree structure is parsed into a list of FFMpegAVOption objects.
-
-The tree structure is parsed into a list of FFMpegAVOption objects by the following steps:
-
-1. Parse the help text into a tree structure.
-2. Parse the tree structure into a list of FFMpegAVOption objects.
+The parsing process follows these steps:
+1. The help text is parsed into a hierarchical tree structure
+2. The tree is then traversed to extract individual options
+3. Options are converted into strongly-typed FFMpegOption objects
 """
 
 import re
@@ -20,9 +19,13 @@ from .utils import parse_general_option, parse_section_tree, run_ffmpeg_command,
 
 def parse(help_text: str) -> list[FFMpegOption]:
     """
-    Parse all options from ffmpeg help text.
+    Parse FFmpeg help text into a structured list of options.
 
-    Example:
+    Processes both general FFmpeg options and AVOptions from the help text.
+    The function handles complex option hierarchies, including nested flags
+    and their associated values.
+
+    Example input:
     ```
     AVOptions:
     -b                 <int64>      E..VA...... set bitrate (in bits/s) (from 0 to I64_MAX) (default 200000)
@@ -33,12 +36,6 @@ def parse(help_text: str) -> list[FFMpegOption]:
        ignidx                       .D......... ignore index
        genpts                       .D......... generate pts
     ```
-
-    Args:
-        help_text: The help text to parse
-
-    Returns:
-        A list of FFMpegOption objects
     """
     tree = parse_section_tree(help_text)
     output: list[FFMpegOption] = []
@@ -56,10 +53,10 @@ def parse(help_text: str) -> list[FFMpegOption]:
 
 def extract_options_from_help() -> list[FFMpegOption]:
     """
-    Extract all options from ffmpeg help text.
-
-    Returns:
-        A list of FFMpegOption objects
+    Extract and parse all options from FFmpeg's full help output.
+    
+    Executes `ffmpeg -h full` and processes its output to create a comprehensive
+    list of all available FFmpeg options, including both general options and AVOptions.
     """
     text = run_ffmpeg_command(["-h", "full"])
     return parse(text)
