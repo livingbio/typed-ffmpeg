@@ -3,7 +3,9 @@ import subprocess
 from collections import OrderedDict
 from collections.abc import Sequence
 from typing import Any
+
 from .schema import FFMpegAVOption, FFMpegOption, FFMpegOptionChoice, FFMpegOptionType
+
 
 def run_ffmpeg_command(args: Sequence[str]) -> str:
     """
@@ -38,9 +40,9 @@ def _count_indent(line: str) -> int:
         The number of leading spaces, or the index after '-' if the first non-space character is '-'.
 
     Example:
-        >>> _left_space('    -foo')
+        >>> _left_space("    -foo")
         5
-        >>> _left_space('  bar')
+        >>> _left_space("  bar")
         2
     """
     for i in range(len(line)):
@@ -105,6 +107,7 @@ def parse_section_tree(text: str) -> dict[str, dict[str, dict[str, None]]]:
 
     return output
 
+
 re_choice_pattern = re.compile(
     r"^(?P<name>(?:(?!  ).)+)\s+(?P<value>[\d\-]+)?\s+(?P<flags>[\w\.]{11})(?P<help>\s+.*)?"
 )
@@ -112,7 +115,10 @@ re_option_pattern = re.compile(
     r"(?P<name>[\-\w]+)\s+\<(?P<type>[\w]+)\>\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
 )
 
-def parse_av_option(section: str, tree: dict[str, dict[str, dict[str, None]]]) -> list[FFMpegAVOption]:
+
+def parse_av_option(
+    section: str, tree: dict[str, dict[str, dict[str, None]]]
+) -> list[FFMpegAVOption]:
     """
     Parse a section of AVOptions from a tree structure into a list of FFMpegAVOption objects.
 
@@ -135,27 +141,31 @@ def parse_av_option(section: str, tree: dict[str, dict[str, dict[str, None]]]) -
 
             choices.append(
                 FFMpegOptionChoice(
-                    name=match.group("name").strip("-"),
-                    value=match.group("value"),
-                    flags=match.group("flags"),
-                    help=match.group("help"),
+                    name=match.group("name").strip().strip("-"),
+                    value=match.group("value").strip(),
+                    flags=match.group("flags").strip(),
+                    help=match.group("help").strip(),
                 )
             )
 
         match = re_option_pattern.match(option)
         assert match, f"No option found in line: {option}"
-        output.append(FFMpegAVOption(
+        output.append(
+            FFMpegAVOption(
                 section=section,
-                name=match.group("name").strip("-"),
-                type=FFMpegOptionType(match.group("type")),
-                flags=match.group("flags"),
-                help=match.group("help"),
+                name=match.group("name").strip().strip("-"),
+                type=FFMpegOptionType(match.group("type").strip()),
+                flags=match.group("flags").strip(),
+                help=match.group("help").strip(),
                 choices=tuple(choices),
             )
         )
     return output
 
-def parse_general_option(section: str, tree: dict[str, dict[str, dict[str, None]]]) -> list[FFMpegOption]:
+
+def parse_general_option(
+    section: str, tree: dict[str, dict[str, dict[str, None]]]
+) -> list[FFMpegOption]:
     """
     Parse a section of general options from a tree structure into a list of FFMpegOption objects.
 
@@ -170,7 +180,7 @@ def parse_general_option(section: str, tree: dict[str, dict[str, dict[str, None]
         AssertionError: If a general option is found to have choices (which is not expected).
     """
     output: list[FFMpegOption] = []
-    
+
     for option in tree[section]:
         assert not tree[section][option], (
             f"General options should not have choice: {section}.{option}"

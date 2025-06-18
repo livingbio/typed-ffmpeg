@@ -10,14 +10,16 @@ The parsing process follows these steps:
 3. Options are converted into strongly-typed FFMpegOption objects
 """
 
-import re
+from .schema import FFMpegOption
+from .utils import (
+    parse_av_option,
+    parse_general_option,
+    parse_section_tree,
+    run_ffmpeg_command,
+)
 
-from .schema import FFMpegAVOption, FFMpegOption, FFMpegOptionChoice, FFMpegOptionType
-from .utils import parse_general_option, parse_section_tree, run_ffmpeg_command, parse_av_option
 
-
-
-def parse(help_text: str) -> list[FFMpegOption]:
+def _parse(help_text: str) -> list[FFMpegOption]:
     """
     Parse FFmpeg help text into a structured list of options.
 
@@ -46,17 +48,16 @@ def parse(help_text: str) -> list[FFMpegOption]:
         elif "AVOptions" in section:
             # FFmpeg's AVOptions
             output.extend(parse_av_option(section, tree))
-         
 
     return output
 
 
-def extract_options_from_help() -> list[FFMpegOption]:
+def extract() -> list[FFMpegOption]:
     """
     Extract and parse all options from FFmpeg's full help output.
-    
+
     Executes `ffmpeg -h full` and processes its output to create a comprehensive
     list of all available FFmpeg options, including both general options and AVOptions.
     """
     text = run_ffmpeg_command(["-h", "full"])
-    return parse(text)
+    return _parse(text)

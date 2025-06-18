@@ -4,8 +4,8 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 
 from ..parse_codecs import (
-    extract_codec_option,
-    extract_codecs_help_text,
+    _extract_codec,
+    _extract_list,
 )
 
 
@@ -13,7 +13,7 @@ from ..parse_codecs import (
 def test_parse_codecs_help_text(
     snapshot: SnapshotAssertion, type: Literal["encoders", "decoders", "codecs"]
 ) -> None:
-    codecs = extract_codecs_help_text(type)
+    codecs = _extract_list(type)
     snapshot == codecs
 
 
@@ -29,7 +29,7 @@ def test_parse_codecs_help_text(
 def test_parse_codec_option(
     snapshot: SnapshotAssertion, codec: str, type: Literal["encoder", "decoder"]
 ) -> None:
-    options = extract_codec_option(codec, type)
+    options = _extract_codec(codec, type)
     assert snapshot == options
 
 
