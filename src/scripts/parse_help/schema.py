@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from enum import Enum
 from typing import Literal
+from ..code_gen.schema import FFMpegOptionType
 
-FFMpegOptionType = Literal["boolean", "duration", "color", "flags", "dictionary", "pix_fmt", "int", "int64", "double", "float", "string", "video_rate", "image_size", "rational", "sample_fmt", "binary", "channel_layout", "pixel_format", "sample_rate"]
 """
 Enumeration of possible data types for FFmpeg AV options.
 
