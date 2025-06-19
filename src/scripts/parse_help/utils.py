@@ -2,7 +2,7 @@ import re
 import subprocess
 from collections import OrderedDict
 from collections.abc import Sequence
-from typing import Any
+from typing import Any, cast, get_args
 
 from .schema import FFMpegAVOption, FFMpegOption, FFMpegOptionChoice, FFMpegOptionType
 
@@ -177,6 +177,12 @@ def _extract_min_max_default(help: str) -> tuple[str | None, str | None, str | N
     return min, max, default
 
 
+def _validate_option_type(value: str) -> FFMpegOptionType:
+    valid = get_args(FFMpegOptionType)
+    if value not in valid:
+        raise ValueError(f"Invalid mark type: {value}, expected one of {valid}")
+    return cast(FFMpegOptionType, value)
+
 def parse_av_option(
     section: str, tree: dict[str, dict[str, dict[str, None]]]
 ) -> list[FFMpegAVOption]:
@@ -218,7 +224,7 @@ def parse_av_option(
             FFMpegAVOption(
                 section=section,
                 name=r["name"].strip("-"),
-                type=FFMpegOptionType(r["type"]),
+                type=_validate_option_type(r["type"]),
                 flags=r["flags"],
                 help=r.get("help", ""),
                 choices=tuple(choices),

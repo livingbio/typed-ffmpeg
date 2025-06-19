@@ -1,36 +1,16 @@
 from dataclasses import dataclass
 from enum import Enum
+from typing import Literal
 
+FFMpegOptionType = Literal["boolean", "duration", "color", "flags", "dictionary", "pix_fmt", "int", "int64", "double", "float", "string", "video_rate", "image_size", "rational", "sample_fmt", "binary", "channel_layout", "pixel_format", "sample_rate"]
+"""
+Enumeration of possible data types for FFmpeg AV options.
 
-class FFMpegOptionType(str, Enum):
-    """
-    Enumeration of possible data types for FFmpeg AV options.
+These types are used for codec, format, and filter options as documented in
+the FFmpeg AVOptions specification.
 
-    These types are used for codec, format, and filter options as documented in
-    the FFmpeg AVOptions specification.
-
-    See: https://ffmpeg.org/ffmpeg-all.html#AVOptions
-    """
-
-    boolean = "boolean"
-    duration = "duration"
-    color = "color"
-    flags = "flags"
-    dictionary = "dictionary"
-    pix_fmt = "pix_fmt"
-    int = "int"
-    int64 = "int64"
-    double = "double"
-    float = "float"
-    string = "string"
-    video_rate = "video_rate"
-    image_size = "image_size"
-    rational = "rational"
-    sample_fmt = "sample_fmt"
-    binary = "binary"
-    channel_layout = "channel_layout"
-    pixel_format = "pixel_format"
-    sample_rate = "sample_rate"
+See: https://ffmpeg.org/ffmpeg-all.html#AVOptions
+"""
 
 
 @dataclass(frozen=True, kw_only=True)

@@ -2,7 +2,13 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ..parse_filters import _extract_list, _parse_filter, _parse_list, _extract_filter, extract
+from ..parse_filters import (
+    _extract_filter,
+    _extract_list,
+    _parse_filter,
+    _parse_list,
+    extract,
+)
 
 
 @pytest.mark.dev_only
@@ -79,16 +85,18 @@ def test_parse_filter(snapshot: SnapshotAssertion, text: str) -> None:
     options = _parse_filter(text)
     assert snapshot(extension_class=JSONSnapshotExtension) == options
 
+
 @pytest.mark.parametrize(
     "filter",
     [
         "overlay",
         "scale",
-    ]
+    ],
 )
 def test_extract_filter_options(snapshot: SnapshotAssertion, filter: str) -> None:
     options = _extract_filter(filter)
     assert snapshot(extension_class=JSONSnapshotExtension) == options
+
 
 @pytest.mark.dev_only
 def test_extract_all_filters(snapshot: SnapshotAssertion) -> None:
