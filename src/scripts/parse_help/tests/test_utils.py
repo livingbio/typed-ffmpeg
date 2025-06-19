@@ -17,14 +17,6 @@ def test_run_ffmpeg_command() -> None:
     assert len(output) > 0
 
 
-@pytest.mark.main_branch_only
-def test_main_branch_only_example() -> None:
-    """Example test that only runs on the main branch."""
-    # This test would contain logic that should only run on main branch
-    # For example, tests that require access to production APIs or databases
-    assert True  # Placeholder assertion
-
-
 @pytest.mark.parametrize(
     "text",
     [

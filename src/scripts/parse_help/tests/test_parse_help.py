@@ -1,3 +1,4 @@
+import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
@@ -28,5 +29,6 @@ AVCodecContext AVOptions:
     assert snapshot(extension_class=JSONSnapshotExtension) == _parse(text)
 
 
+@pytest.mark.main_branch_only
 def test_extract_options_from_help(snapshot: SnapshotAssertion) -> None:
     snapshot(extension_class=JSONSnapshotExtension) == extract()
