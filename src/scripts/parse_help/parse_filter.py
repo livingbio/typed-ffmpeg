@@ -13,10 +13,10 @@ from collections import defaultdict
 from dataclasses import replace
 
 from ffmpeg.common.schema import (
+    FFMpegAVOptionChoice,
+    FFMpegAVOptionType,
     FFMpegFilter,
     FFMpegFilterOption,
-    FFMpegFilterOptionChoice,
-    FFMpegFilterOptionType,
     FFMpegIOType,
     StreamType,
 )
@@ -205,7 +205,7 @@ def _parse_min_max_line(line: str) -> tuple[str | None, str | None]:
     return None, None
 
 
-def _parse_choices(lines: list[str]) -> list[FFMpegFilterOptionChoice]:
+def _parse_choices(lines: list[str]) -> list[FFMpegAVOptionChoice]:
     """
     Parse the choices for an option.
 
@@ -215,7 +215,7 @@ def _parse_choices(lines: list[str]) -> list[FFMpegFilterOptionChoice]:
     Returns:
         The parsed choices.
     """
-    output: list[FFMpegFilterOptionChoice] = []
+    output: list[FFMpegAVOptionChoice] = []
     for line in lines:
         match: list[tuple[str, str, str, str]] = re.findall(
             r"([\w]+)\s+([\s\-\w]+)\s+([\w\.]{11})(\s+.*)?", line
@@ -226,7 +226,7 @@ def _parse_choices(lines: list[str]) -> list[FFMpegFilterOptionChoice]:
             value = name
 
         output.append(
-            FFMpegFilterOptionChoice(
+            FFMpegAVOptionChoice(
                 name=name, help=help.strip(), value=value.strip(), flags=flags.strip()
             )
         )
@@ -271,7 +271,7 @@ def _parse_options(
                 alias=(name,),
                 name=name,
                 description=help.strip(),
-                type=FFMpegFilterOptionType(type),
+                type=FFMpegAVOptionType(type),
                 flags=flags,
                 min=min,
                 max=max,
@@ -364,7 +364,7 @@ def extract_avfilter_info_from_help(filter_name: str) -> FFMpegFilter:
             FFMpegFilterOption(
                 name="enable",
                 description="timeline editing",
-                type=FFMpegFilterOptionType.string,
+                type=FFMpegAVOptionType.string,
             )
         )
 

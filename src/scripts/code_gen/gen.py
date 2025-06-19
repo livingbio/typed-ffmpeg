@@ -6,9 +6,9 @@ from pathlib import Path
 import jinja2
 
 from ffmpeg.common.schema import (
+    FFMpegAVOptionType,
     FFMpegFilter,
     FFMpegFilterOption,
-    FFMpegFilterOptionType,
     FFMpegOption,
     FFMpegOptionType,
 )
@@ -34,37 +34,37 @@ def filter_option_typing(option: FFMpegFilterOption) -> str:
         The typing of the filter option
     """
     base_type = None
-    if option.type == FFMpegFilterOptionType.boolean:
+    if option.type == FFMpegAVOptionType.boolean:
         base_type = "Boolean"
-    elif option.type == FFMpegFilterOptionType.duration:
+    elif option.type == FFMpegAVOptionType.duration:
         base_type = "Duration"
-    elif option.type == FFMpegFilterOptionType.color:
+    elif option.type == FFMpegAVOptionType.color:
         base_type = "Color"
-    elif option.type == FFMpegFilterOptionType.flags:
+    elif option.type == FFMpegAVOptionType.flags:
         base_type = "Flags"
-    elif option.type == FFMpegFilterOptionType.dictionary:
+    elif option.type == FFMpegAVOptionType.dictionary:
         base_type = "Dictionary"
-    elif option.type == FFMpegFilterOptionType.pix_fmt:
+    elif option.type == FFMpegAVOptionType.pix_fmt:
         base_type = "Pix_fmt"
-    elif option.type == FFMpegFilterOptionType.int:
+    elif option.type == FFMpegAVOptionType.int:
         base_type = "Int"
-    elif option.type == FFMpegFilterOptionType.int64:
+    elif option.type == FFMpegAVOptionType.int64:
         base_type = "Int64"
-    elif option.type == FFMpegFilterOptionType.double:
+    elif option.type == FFMpegAVOptionType.double:
         base_type = "Double"
-    elif option.type == FFMpegFilterOptionType.float:
+    elif option.type == FFMpegAVOptionType.float:
         base_type = "Float"
-    elif option.type == FFMpegFilterOptionType.string:
+    elif option.type == FFMpegAVOptionType.string:
         base_type = "String"
-    elif option.type == FFMpegFilterOptionType.video_rate:
+    elif option.type == FFMpegAVOptionType.video_rate:
         base_type = "Video_rate"
-    elif option.type == FFMpegFilterOptionType.image_size:
+    elif option.type == FFMpegAVOptionType.image_size:
         base_type = "Image_size"
-    elif option.type == FFMpegFilterOptionType.rational:
+    elif option.type == FFMpegAVOptionType.rational:
         base_type = "Rational"
-    elif option.type == FFMpegFilterOptionType.sample_fmt:
+    elif option.type == FFMpegAVOptionType.sample_fmt:
         base_type = "Sample_fmt"
-    elif option.type == FFMpegFilterOptionType.binary:
+    elif option.type == FFMpegAVOptionType.binary:
         base_type = "Binary"
 
     assert base_type, f"{option.type} not fit"

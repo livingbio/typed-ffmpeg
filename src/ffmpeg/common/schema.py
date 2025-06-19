@@ -24,6 +24,15 @@ class StreamType(str, Enum):
     processed by FFmpeg filters. Each stream in FFmpeg is either an audio
     stream or a video stream, and filters are designed to work with
     specific stream types.
+
+    NOTE:
+    Here we only focus on the stream types that are supported by the filter node. Other stream types are not supported yet.
+
+    > stream_type is one of following: ’v’ or ’V’ for video, ’a’ for audio, ’s’ for subtitle, ’d’ for data,
+    and ’t’ for attachments. ’v’ matches all video streams, ’V’ only matches video streams which are not attached pictures,
+    video thumbnails or cover arts.
+
+    https://ffmpeg.org/ffmpeg.html#Stream-specifiers-1
     """
 
     audio = "audio"
@@ -34,13 +43,11 @@ class StreamType(str, Enum):
 
 
 @serializable
-class FFMpegFilterOptionType(str, Enum):
+class FFMpegAVOptionType(str, Enum):
     """
-    Enumeration of possible data types for FFmpeg filter options.
+    Enumeration of possible data types for FFmpeg AV options (e.g. codec, format, filter options).
 
-    This enum defines the various data types that can be used for options
-    in FFmpeg filters. Each type corresponds to a specific kind of value
-    that can be passed to a filter parameter.
+    https://ffmpeg.org/ffmpeg-all.html#AVOptions
     """
 
     boolean = "boolean"
@@ -100,7 +107,7 @@ class FFMpegFilterType(str, Enum):
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegFilterOptionChoice(Serializable):
+class FFMpegAVOptionChoice(Serializable):
     """
     Represents a single choice for an FFmpeg filter option with enumerated values.
 
@@ -139,7 +146,7 @@ class FFMpegFilterOption(Serializable):
     description: str
     """Human-readable description of what the option does"""
 
-    type: FFMpegFilterOptionType
+    type: FFMpegAVOptionType
     """The data type of the option (boolean, int, string, etc.)"""
 
     min: str | None = None
@@ -151,10 +158,7 @@ class FFMpegFilterOption(Serializable):
     default: bool | int | float | str | None = None
     """Default value used by FFmpeg if the option is not specified"""
 
-    required: bool = False
-    """Whether the option must be provided or can be omitted"""
-
-    choices: tuple[FFMpegFilterOptionChoice, ...] = ()
+    choices: tuple[FFMpegAVOptionChoice, ...] = ()
     """Enumerated values that this option accepts, if applicable"""
 
     flags: str | None = None
@@ -540,6 +544,17 @@ class FFMpegOption(Serializable):
     This class defines the metadata for a single option that can be passed
     to the FFmpeg command line, including its type, help text, and flags
     that determine its behavior.
+
+    NOTE: These options looks like this in the help text:
+
+    Global options (affect whole program instead of just one file):
+    -loglevel loglevel  set logging level
+    -v loglevel         set logging level
+    -report             generate a report
+    -max_alloc bytes    set maximum size of a single allocated block
+    -y                  overwrite output files
+    -n                  never overwrite output files
+    -ignore_unknown     Ignore unknown stream types
     """
 
     name: str

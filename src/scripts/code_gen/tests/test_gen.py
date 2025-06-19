@@ -5,9 +5,9 @@ from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.single_file import SingleFileSnapshotExtension
 
 from ffmpeg.common.schema import (
+    FFMpegAVOptionType,
     FFMpegFilter,
     FFMpegFilterOption,
-    FFMpegFilterOptionType,
     FFMpegIOType,
     StreamType,
 )
@@ -34,14 +34,12 @@ def test_render(snapshot: SnapshotAssertion) -> None:
                 FFMpegFilterOption(
                     name="order",
                     description="set the filter order",
-                    type=FFMpegFilterOptionType.int,
-                    required=False,
+                    type=FFMpegAVOptionType.int,
                 ),
                 FFMpegFilterOption(
                     name="projection",
                     description="set the filter projection",
-                    type=FFMpegFilterOptionType.int,
-                    required=False,
+                    type=FFMpegAVOptionType.int,
                 ),
             ),
         )
