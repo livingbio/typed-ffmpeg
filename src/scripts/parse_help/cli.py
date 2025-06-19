@@ -11,6 +11,7 @@ import typer
 
 from . import parse_codecs, parse_filters, parse_formats
 from .schema import FFMpegCodec, FFMpegFilter, FFMpegFormat
+from ..code_gen.ir import schema
 
 app = typer.Typer(help="Parse FFmpeg filter help information")
 
@@ -24,7 +25,7 @@ def all_filters() -> list[FFMpegFilter]:
 
 
 @app.command()
-def all_codecs() -> list[FFMpegCodec]:
+def all_codecs() -> list[schema.FFMpegCodec]:
     """
     Parse all codecs from FFmpeg help output
     """
