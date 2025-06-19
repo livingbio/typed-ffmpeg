@@ -1,0 +1,5 @@
+[
+  "FFMpegAVOption(section='ffvhuff AVOptions:', name='non_deterministic', type=<FFMpegOptionType.boolean: 'boolean'>, flags='E..V.......', help='Allow multithreading for e.g. context=1 at the expense of determinism (default false)', argname=None, min=None, max=None, default='false', choices=())",
+  "FFMpegAVOption(section='ffvhuff AVOptions:', name='pred', type=<FFMpegOptionType.int: 'int'>, flags='E..V.......', help='Prediction method (from 0 to 2) (default left)', argname=None, min='0', max='2', default='left', choices=(FFMpegOptionChoice(name='left', help='', flags='E..V.......', value='0'), FFMpegOptionChoice(name='plane', help='', flags='E..V.......', value='1'), FFMpegOptionChoice(name='median', help='', flags='E..V.......', value='2')))",
+  "FFMpegAVOption(section='ffvhuff AVOptions:', name='context', type=<FFMpegOptionType.int: 'int'>, flags='E..V.......', help='Set per-frame huffman tables (from 0 to 1) (default 0)', argname=None, min='0', max='1', default='0', choices=())"
+]

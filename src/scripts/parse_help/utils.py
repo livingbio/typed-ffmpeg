@@ -104,9 +104,6 @@ def parse_section_tree(text: str) -> dict[str, dict[str, dict[str, None]]]:
 
         insert_node = output
         for p in paths:
-            if p[1] not in insert_node:
-                insert_node[p[1]] = OrderedDict()
-
             insert_node = insert_node[p[1]]
 
         insert_node[line] = OrderedDict()
@@ -173,10 +170,8 @@ def _extract_min_max_default(help: str) -> tuple[str | None, str | None, str | N
         min, max = None, None
 
     defaults = re_default.findall(help)
-    if defaults:
-        default = defaults[0]
-    else:
-        default = None
+    assert defaults, f"No default found in help: {help}"
+    default = defaults[0]
     return min, max, default
 
 
