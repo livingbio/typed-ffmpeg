@@ -52,7 +52,11 @@ jobs:
       - name: Run tests
         run: |
           source .venv/bin/activate
-          pytest src/ffmpeg --cov=./src/ffmpeg --cov-report=xml
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            pytest src/ffmpeg --cov=./src/ffmpeg --cov-report=xml
+          else
+            pytest src/ffmpeg -m "not main_branch_only" --cov=./src/ffmpeg --cov-report=xml
+          fi
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
         with:

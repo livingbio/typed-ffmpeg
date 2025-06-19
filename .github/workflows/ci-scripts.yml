@@ -43,7 +43,11 @@ jobs:
       - name: Run tests
         run: |
           source .venv/bin/activate
-          pytest src/scripts --cov=./src/scripts --cov-report=xml
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            pytest src/scripts --cov=./src/scripts --cov-report=xml
+          else
+            pytest src/scripts -m "not main_branch_only" --cov=./src/scripts --cov-report=xml
+          fi
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
