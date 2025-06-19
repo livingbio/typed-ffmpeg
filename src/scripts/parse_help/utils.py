@@ -170,8 +170,10 @@ def _extract_min_max_default(help: str) -> tuple[str | None, str | None, str | N
         min, max = None, None
 
     defaults = re_default.findall(help)
-    assert defaults, f"No default found in help: {help}"
-    default = defaults[0]
+    if defaults:
+        default = defaults[0]
+    else:
+        default = None
     return min, max, default
 
 

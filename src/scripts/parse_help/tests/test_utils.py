@@ -79,17 +79,34 @@ def test_parse_section_tree(text: str, snapshot: SnapshotAssertion) -> None:
     assert snapshot(extension_class=JSONSnapshotExtension) == tree
 
 
-def test_parse_av_option(snapshot: SnapshotAssertion) -> None:
-    text = """ffvhuff AVOptions:
+@pytest.mark.parametrize(
+    "text, section",
+    [
+        pytest.param(
+            """ffvhuff AVOptions:
   -non_deterministic <boolean>    E..V....... Allow multithreading for e.g. context=1 at the expense of determinism (default false)
   -pred              <int>        E..V....... Prediction method (from 0 to 2) (default left)
      left            0            E..V.......
      plane           1            E..V.......
      median          2            E..V.......
-  -context           <int>        E..V....... Set per-frame huffman tables (from 0 to 1) (default 0)"""
+  -context           <int>        E..V....... Set per-frame huffman tables (from 0 to 1) (default 0)""",
+            "ffvhuff AVOptions:",
+            id="option-without-min-max",
+        ),
+        pytest.param(
+            """dfpwm demuxer AVOptions:
+  -sample_rate       <int>        .D.........  (from 0 to INT_MAX) (default 48000)
+  -channels          <int>        .D........P  (from 0 to INT_MAX) (default 1)
+  -ch_layout         <channel_layout> .D......... """,
+            "dfpwm demuxer AVOptions:",
+            id="option-without-default",
+        ),
+    ],
+)
+def test_parse_av_option(text: str, section: str, snapshot: SnapshotAssertion) -> None:
     tree = parse_section_tree(text)
     assert snapshot(extension_class=JSONSnapshotExtension) == parse_av_option(
-        "ffvhuff AVOptions:", tree
+        section, tree
     )
 
 
