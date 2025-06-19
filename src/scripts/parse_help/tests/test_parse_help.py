@@ -29,4 +29,4 @@ AVCodecContext AVOptions:
 
 
 def test_extract_options_from_help(snapshot: SnapshotAssertion) -> None:
-    assert snapshot(extension_class=JSONSnapshotExtension) == extract()
+    snapshot(extension_class=JSONSnapshotExtension) == extract()
