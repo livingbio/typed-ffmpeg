@@ -1,7 +1,5 @@
-from collections.abc import Iterable
 from dataclasses import dataclass
 from enum import Enum
-from typing import Literal
 
 
 class FFMpegOptionType(str, Enum):
@@ -156,62 +154,6 @@ class FFMpegAVOption(FFMpegOption):
     choices: tuple[FFMpegOptionChoice, ...] = ()
     """Available choices for this option (for enum or flags types)."""
 
-    # @property
-    # def code_gen_type(self) -> str:
-    #     def handle_choices() -> str:
-    #         if self.type != FFMpegOptionType.flags:
-    #             # NOTE: flags not supported yet
-    #             if self.choices:
-    #                 return "| Literal[{}]".format(
-    #                     ", ".join(f'"{choice.name}"' for choice in self.choices)
-    #                 )
-    #         return ""
-
-    #     def handle_type() -> str:
-    #         match self.type:
-    #             case FFMpegOptionType.boolean:
-    #                 return "bool | None"
-    #             case FFMpegOptionType.int:
-    #                 return "int | None"
-    #             case FFMpegOptionType.int64:
-    #                 return "int | None"
-    #             case FFMpegOptionType.float:
-    #                 return "float | None"
-    #             case FFMpegOptionType.double:
-    #                 return "float | None"
-    #             case FFMpegOptionType.string:
-    #                 return "str | None"
-    #             case FFMpegOptionType.channel_layout:
-    #                 return "str | None"
-    #             case FFMpegOptionType.flags:
-    #                 return "str | None"
-    #             case FFMpegOptionType.duration:
-    #                 return "str | None"
-    #             case FFMpegOptionType.dictionary:
-    #                 return "str | None"
-    #             case FFMpegOptionType.image_size:
-    #                 return "str | None"
-    #             case FFMpegOptionType.pixel_format:
-    #                 return "str | None"
-    #             case FFMpegOptionType.sample_rate:
-    #                 return "int | None"
-    #             case FFMpegOptionType.sample_fmt:
-    #                 return "str | None"
-    #             case FFMpegOptionType.binary:
-    #                 return "str | None"
-    #             case FFMpegOptionType.rational:
-    #                 return "str | None"
-    #             case FFMpegOptionType.color:
-    #                 return "str | None"
-    #             case FFMpegOptionType.video_rate:
-    #                 return "str | None"
-    #             case FFMpegOptionType.pix_fmt:
-    #                 return "str | None"
-    #             case _:
-    #                 raise ValueError(f"Invalid option type: {self.type}")
-
-    #     return f"{handle_type()}{handle_choices()}"
-
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegOptionSet:
@@ -276,54 +218,6 @@ class FFMpegCodec(FFMpegOptionSet):
     ```
     """
 
-    def filterd_options(self) -> Iterable[FFMpegAVOption]:
-        """
-        Filter out duplicate options based on normalized names.
-
-        Some codecs (like nvenc_hevc) have aliases for options, so we filter
-        them out to avoid duplicates.
-
-        Returns:
-            An iterable of unique options.
-        """
-        passed = set()
-        for option in self.options:
-            if option.name.replace("-", "_") in passed:
-                continue
-            passed.add(option.name.replace("-", "_"))
-            yield option
-
-    @property
-    def codec_type(self) -> Literal["video", "audio", "subtitle"]:
-        """
-        Determine the codec type based on the first flag character.
-
-        Returns:
-            The codec type as a string literal.
-
-        Raises:
-            ValueError: If the stream type flag is invalid.
-        """
-        match self.flags[0]:
-            case "V":
-                return "video"
-            case "A":
-                return "audio"
-            case "S":
-                return "subtitle"
-            case _:
-                raise ValueError(f"Invalid stream type: {self.flags[0]}")
-
-    @property
-    def is_encoder(self) -> bool:
-        """Check if this codec is an encoder."""
-        return isinstance(self, FFMpegEncoder)
-
-    @property
-    def is_decoder(self) -> bool:
-        """Check if this codec is a decoder."""
-        return isinstance(self, FFMpegDecoder)
-
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegEncoder(FFMpegCodec):
@@ -365,16 +259,6 @@ class FFMpegFormat(FFMpegOptionSet):
     D  ac3             raw AC-3
     ```
     """
-
-    @property
-    def is_muxer(self) -> bool:
-        """Check if this format is a muxer."""
-        return isinstance(self, FFMpegMuxer)
-
-    @property
-    def is_demuxer(self) -> bool:
-        """Check if this format is a demuxer."""
-        return isinstance(self, FFMpegDemuxer)
 
 
 @dataclass(frozen=True, kw_only=True)

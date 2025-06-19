@@ -1,0 +1,9 @@
+[
+  "FFMpegAVOption(section='scale(2ref) AVOptions:', name='w', type=<FFMpegOptionType.string: 'string'>, flags='..FV.....T.', help='Output video width', argname=None, min=None, max=None, default=None, choices=())",
+  "FFMpegAVOption(section='scale(2ref) AVOptions:', name='width', type=<FFMpegOptionType.string: 'string'>, flags='..FV.....T.', help='Output video width', argname=None, min=None, max=None, default=None, choices=())",
+  "FFMpegAVOption(section='scale(2ref) AVOptions:', name='h', type=<FFMpegOptionType.string: 'string'>, flags='..FV.....T.', help='Output video height', argname=None, min=None, max=None, default=None, choices=())",
+  "FFMpegAVOption(section='scale(2ref) AVOptions:', name='height', type=<FFMpegOptionType.string: 'string'>, flags='..FV.....T.', help='Output video height', argname=None, min=None, max=None, default=None, choices=())",
+  "FFMpegAVOption(section='scale(2ref) AVOptions:', name='flags', type=<FFMpegOptionType.string: 'string'>, flags='..FV.......', help='Flags to pass to libswscale (default \"\")', argname=None, min=None, max=None, default=None, choices=())",
+  "FFMpegAVOption(section='scale(2ref) AVOptions:', name='interl', type=<FFMpegOptionType.boolean: 'boolean'>, flags='..FV.......', help='set interlacing (default false)', argname=None, min=None, max=None, default='false', choices=())",
+  "FFMpegAVOption(section='scale(2ref) AVOptions:', name='in_color_matrix', type=<FFMpegOptionType.string: 'string'>, flags='..FV.......', help='set input YCbCr type (default \"auto\")', argname=None, min=None, max=None, default=None, choices=(FFMpegOptionChoice(name='auto', help='', flags='..FV.......', value='auto'),))"
+]

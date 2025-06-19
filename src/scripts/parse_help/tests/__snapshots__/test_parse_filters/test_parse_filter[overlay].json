@@ -1,0 +1,5 @@
+[
+  "FFMpegAVOption(section='overlay AVOptions:', name='x', type=<FFMpegOptionType.string: 'string'>, flags='..FV.......', help='set the x expression (default \"0\")', argname=None, min=None, max=None, default=None, choices=())",
+  "FFMpegAVOption(section='overlay AVOptions:', name='y', type=<FFMpegOptionType.string: 'string'>, flags='..FV.......', help='set the y expression (default \"0\")', argname=None, min=None, max=None, default=None, choices=())",
+  "FFMpegAVOption(section='overlay AVOptions:', name='eof_action', type=<FFMpegOptionType.int: 'int'>, flags='..FV.......', help='Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)', argname=None, min='0', max='2', default='repeat', choices=(FFMpegOptionChoice(name='repeat', help='Repeat the previous frame.', flags='..FV.......', value='0'), FFMpegOptionChoice(name='endall', help='End both streams.', flags='..FV.......', value='1'), FFMpegOptionChoice(name='pass', help='Pass through the main input.', flags='..FV.......', value='2')))"
+]
