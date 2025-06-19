@@ -2,7 +2,19 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ..utils import parse_section_tree
+from ..utils import (
+    parse_av_option,
+    parse_general_option,
+    parse_section_tree,
+    run_ffmpeg_command,
+)
+
+
+def test_run_ffmpeg_command() -> None:
+    """Test that run_ffmpeg_command executes and returns output."""
+    output = run_ffmpeg_command(["-version"])
+    assert "ffmpeg version" in output
+    assert len(output) > 0
 
 
 @pytest.mark.parametrize(
@@ -65,3 +77,29 @@ ffvhuff AVOptions:
 def test_parse_section_tree(text: str, snapshot: SnapshotAssertion) -> None:
     tree = parse_section_tree(text)
     assert snapshot(extension_class=JSONSnapshotExtension) == tree
+
+
+def test_parse_av_option(snapshot: SnapshotAssertion) -> None:
+    text = """ffvhuff AVOptions:
+  -non_deterministic <boolean>    E..V....... Allow multithreading for e.g. context=1 at the expense of determinism (default false)
+  -pred              <int>        E..V....... Prediction method (from 0 to 2) (default left)
+     left            0            E..V.......
+     plane           1            E..V.......
+     median          2            E..V.......
+  -context           <int>        E..V....... Set per-frame huffman tables (from 0 to 1) (default 0)"""
+    tree = parse_section_tree(text)
+    assert snapshot(extension_class=JSONSnapshotExtension) == parse_av_option(
+        "ffvhuff AVOptions:", tree
+    )
+
+
+def test_parse_general_option(snapshot: SnapshotAssertion) -> None:
+    text = """General options:
+-cpuflags flags     force specific cpu flags
+-cpucount count     force specific cpu count
+-copy_unknown       Copy unknown stream types
+"""
+    tree = parse_section_tree(text)
+    assert snapshot(extension_class=JSONSnapshotExtension) == parse_general_option(
+        "General options:", tree
+    )
