@@ -415,7 +415,7 @@ typing-extensions==4.14.0
     #   referencing
     #   rich
     #   typer
-urllib3==2.4.0
+urllib3==2.5.0
     # via
     #   requests
     #   twine
