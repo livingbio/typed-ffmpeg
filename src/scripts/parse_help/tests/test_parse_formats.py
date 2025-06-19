@@ -10,8 +10,8 @@ from ..parse_formats import (
     extract,
 )
 
-@pytest.mark.dev_only
 
+@pytest.mark.dev_only
 @pytest.mark.parametrize("type", ["muxers", "demuxers"])
 def test_parse_codecs_help_text(
     snapshot: SnapshotAssertion, type: Literal["muxers", "demuxers"]
@@ -34,6 +34,7 @@ def test_parse_codec_option(
 ) -> None:
     options = _extract_format(codec, type)
     assert snapshot == options
+
 
 @pytest.mark.dev_only
 def test_extract_all_codecs(snapshot: SnapshotAssertion) -> None:

@@ -57,7 +57,6 @@ def _extract_list(
     return _parse_list(run_ffmpeg_command([f"-{type}"]))
 
 
-
 def _parse_format(text: str) -> list[FFMpegAVOption]:
     """
     Parse the help text for a format option.
@@ -90,6 +89,7 @@ def _parse_format(text: str) -> list[FFMpegAVOption]:
             return parse_av_option(section, tree)
     return []
 
+
 def _extract_format(
     format: str,
     type: Literal["muxer", "demuxer"],
@@ -105,6 +105,7 @@ def _extract_format(
         A list of format options
     """
     return _parse_format(run_ffmpeg_command([f"-{type}={format}"]))
+
 
 def extract() -> list[FFMpegFormat]:
     """

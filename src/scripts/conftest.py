@@ -1,5 +1,6 @@
 import pytest
 
+
 def pytest_addoption(parser: pytest.Parser) -> None:
     parser.addoption(
         "--run-dev",
@@ -7,6 +8,7 @@ def pytest_addoption(parser: pytest.Parser) -> None:
         default=False,
         help="Run tests marked as dev_only",
     )
+
 
 def pytest_runtest_setup(item: pytest.Item) -> None:
     if "dev_only" in item.keywords and not item.config.getoption("--run-dev"):
