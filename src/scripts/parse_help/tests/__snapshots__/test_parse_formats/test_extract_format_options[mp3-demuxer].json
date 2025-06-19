@@ -1,0 +1,3 @@
+[
+  "FFMpegAVOption(section='mp3 AVOptions:', name='usetoc', type=<FFMpegOptionType.boolean: 'boolean'>, flags='.D.........', help='use table of contents (default false)', argname=None, min=None, max=None, default='false', choices=())"
+]

@@ -32,12 +32,12 @@ def _parse_list(text: str) -> list[FFMpegFormat]:
     """
     output: list[FFMpegFormat] = []
     lines = text.splitlines()
-    re_pattern = re.compile(r"^\s*([\w]+)\s(\w+)\s+(.*)$")
+    re_pattern = re.compile(r"^\s*(?P<flag>[DE]+)\s*(?P<name>\w+)\s+(?P<help>.*)$")
 
     for line in lines:
-        match = re_pattern.findall(line)
+        match = re_pattern.match(line)
         if match:
-            flags, name, description = match[0]
+            flags, name, description = match.groups()
             output.append(FFMpegFormat(name=name, flags=flags, help=description))
     return output
 
@@ -104,7 +104,7 @@ def _extract_format(
     Returns:
         A list of format options
     """
-    return _parse_format(run_ffmpeg_command([f"-{type}={format}"]))
+    return _parse_format(run_ffmpeg_command(["-h", f"{type}={format}"]))
 
 
 def extract() -> list[FFMpegFormat]:
