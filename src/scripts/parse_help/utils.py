@@ -12,14 +12,16 @@ def run_ffmpeg_command(args: Sequence[str]) -> str:
     Execute an ffmpeg command with the provided arguments and return its standard output as a string.
 
     Args:
-        args: The command line arguments to pass to ffmpeg (excluding the 'ffmpeg' executable itself).
+        args: The command line arguments to pass to ffmpeg (excluding the 'ffmpeg' executable itself)
 
     Returns:
-        The standard output produced by the ffmpeg command.
+        The standard output produced by the ffmpeg command
 
     Example:
+        ```python
         >>> run_ffmpeg_command(["-version"])
         'ffmpeg version ...'
+        ```
     """
     result = subprocess.run(
         ["ffmpeg", *args, "-hide_banner"],
@@ -34,16 +36,18 @@ def _count_indent(line: str) -> int:
     Calculate the number of leading spaces in a string, with special handling for lines starting with '-'.
 
     Args:
-        line: The string to analyze.
+        line: The string to analyze
 
     Returns:
-        The number of leading spaces, or the index after '-' if the first non-space character is '-'.
+        The number of leading spaces, or the index after '-' if the first non-space character is '-'
 
     Example:
-        >>> _left_space("    -foo")
+        ```python
+        >>> _count_indent("    -foo")
         5
-        >>> _left_space("  bar")
+        >>> _count_indent("  bar")
         2
+        ```
     """
     for i in range(len(line)):
         if line[i] != " ":
@@ -60,29 +64,32 @@ def parse_section_tree(text: str) -> dict[str, dict[str, dict[str, None]]]:
     Parse indented help text into a nested tree structure, preserving section hierarchy.
 
     Args:
-        text: The help text to parse, typically from ffmpeg's help output.
+        text: The help text to parse, typically from ffmpeg's help output
 
     Returns:
-        A nested ordered dictionary representing the section hierarchy, where each key is a section or option name.
+        A nested ordered dictionary representing the section hierarchy, where each key is a section or option name
 
     Example:
         Input text:
-            Section1
-              Option1
-                SubOption1
-            Section2
-              Option2
+        ```
+        Section1
+          Option1
+            SubOption1
+        Section2
+          Option2
+        ```
+
         Output:
-            OrderedDict({
-                'Section1': OrderedDict({
-                    'Option1': OrderedDict({
-                        'SubOption1': OrderedDict()
-                    })
-                }),
-                'Section2': OrderedDict({
-                    'Option2': OrderedDict()
-                })
-            })
+        ```python
+        OrderedDict(
+            {
+                "Section1": OrderedDict(
+                    {"Option1": OrderedDict({"SubOption1": OrderedDict()})}
+                ),
+                "Section2": OrderedDict({"Option2": OrderedDict()}),
+            }
+        )
+        ```
     """
     output: OrderedDict[str, Any] = OrderedDict()
     paths: list[tuple[int, str]] = []
@@ -115,6 +122,63 @@ re_option_pattern = re.compile(
     r"(?P<name>[\-\w]+)\s+\<(?P<type>[\w]+)\>\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
 )
 
+re_min_max = re.compile(r"from\s+(?P<min>[\d\-]+)\s+to\s+(?P<max>[\d\-]+)")
+re_default = re.compile(r"default\s+(?P<default>[\d\w\-]+)")
+
+
+def _extract_match(match: re.Match[str]) -> dict[str, str]:
+    r"""
+    Extract and clean named groups from a regex match object.
+
+    Args:
+        match: A regex match object with named groups
+
+    Returns:
+        A dictionary containing the named groups with stripped values, excluding None values
+
+    Example:
+        ```python
+        >>> import re
+        >>> pattern = re.compile(r"(?P<name>\w+)\s+(?P<value>\d+)")
+        >>> match = pattern.match("foo  123")
+        >>> _extract_match(match)
+        {'name': 'foo', 'value': '123'}
+        ```
+    """
+    return {k: v.strip() for k, v in match.groupdict().items() if v}
+
+
+def _extract_min_max_default(help: str) -> tuple[str | None, str | None, str | None]:
+    """
+    Extract minimum, maximum, and default values from a help string using regex patterns.
+
+    Args:
+        help: The help text to parse for min/max/default values
+
+    Returns:
+        A tuple containing (min, max, default) values, where each can be None if not found
+
+    Example:
+        ```python
+        >>> _extract_min_max_default("range from 0 to 100, default 50")
+        ('0', '100', '50')
+        >>> _extract_min_max_default("no limits specified")
+        (None, None, None)
+        ```
+    """
+    match = re_min_max.findall(help)
+    if match:
+        min, max = match[0]
+    else:
+        min, max = None, None
+
+    defaults = re_default.findall(help)
+    if defaults:
+        default = defaults[0]
+    else:
+        default = None
+    return min, max, default
+
 
 def parse_av_option(
     section: str, tree: dict[str, dict[str, dict[str, None]]]
@@ -123,14 +187,14 @@ def parse_av_option(
     Parse a section of AVOptions from a tree structure into a list of FFMpegAVOption objects.
 
     Args:
-        section: The section name to parse (e.g., 'AVOptions').
-        tree: The tree structure as produced by parse_section_tree().
+        section: The section name to parse (e.g., 'AVOptions')
+        tree: The tree structure as produced by parse_section_tree()
 
     Returns:
-        A list of FFMpegAVOption objects, each representing an option with its possible choices.
+        A list of FFMpegAVOption objects, each representing an option with its possible choices
 
     Raises:
-        AssertionError: If the expected option or choice format is not matched.
+        AssertionError: If the expected option or choice format is not matched
     """
     output: list[FFMpegAVOption] = []
     for option in tree[section]:
@@ -138,26 +202,32 @@ def parse_av_option(
         for choice in tree[section][option]:
             match = re_choice_pattern.match(choice)
             assert match, f"No choice found in line: {choice}"
+            r = _extract_match(match)
 
             choices.append(
                 FFMpegOptionChoice(
-                    name=match.group("name").strip().strip("-"),
-                    value=match.group("value").strip(),
-                    flags=match.group("flags").strip(),
-                    help=match.group("help").strip(),
+                    name=r["name"],
+                    value=r["value"] if "value" in r else r["name"],
+                    flags=r["flags"],
+                    help=r.get("help", ""),
                 )
             )
 
         match = re_option_pattern.match(option)
         assert match, f"No option found in line: {option}"
+        r = _extract_match(match)
+        min, max, default = _extract_min_max_default(r.get("help", ""))
         output.append(
             FFMpegAVOption(
                 section=section,
-                name=match.group("name").strip().strip("-"),
-                type=FFMpegOptionType(match.group("type").strip()),
-                flags=match.group("flags").strip(),
-                help=match.group("help").strip(),
+                name=r["name"].strip("-"),
+                type=FFMpegOptionType(r["type"]),
+                flags=r["flags"],
+                help=r.get("help", ""),
                 choices=tuple(choices),
+                min=min,
+                max=max,
+                default=default,
             )
         )
     return output
@@ -170,14 +240,14 @@ def parse_general_option(
     Parse a section of general options from a tree structure into a list of FFMpegOption objects.
 
     Args:
-        section: The section name to parse (e.g., 'Main options').
-        tree: The tree structure as produced by parse_section_tree().
+        section: The section name to parse (e.g., 'Main options')
+        tree: The tree structure as produced by parse_section_tree()
 
     Returns:
-        A list of FFMpegOption objects, each representing a general ffmpeg option.
+        A list of FFMpegOption objects, each representing a general ffmpeg option
 
     Raises:
-        AssertionError: If a general option is found to have choices (which is not expected).
+        AssertionError: If a general option is found to have choices (which is not expected)
     """
     output: list[FFMpegOption] = []
 
