@@ -70,3 +70,23 @@ def _parse_filter(text: str) -> list[FFMpegAVOption]:
         if "AVOptions" in section:
             return parse_av_option(section, tree)
     return []
+
+def _extract_filter(filter: str) -> list[FFMpegAVOption]:
+    """
+    Get the help text for a filter.
+    """
+    return _parse_filter(run_ffmpeg_command(["-h", f"filter={filter}"]))
+
+def extract() -> list[FFMpegFilter]:
+    """
+    Get the help text for all filters.
+    """
+    output: list[FFMpegFilter] = []
+    for filter in _extract_list():
+        options = _extract_filter(filter.name)
+        output.append(
+            FFMpegFilter(
+                name=filter.name, flags=filter.flags, io_flags=filter.io_flags, help=filter.help, options=tuple(options)
+            )
+        )
+    return output
