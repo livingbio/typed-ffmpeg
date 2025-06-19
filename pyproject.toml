@@ -126,5 +126,6 @@ docstring-code-format = true
 
 [tool.pytest.ini_options]
 markers = [
-    "main_branch_only: marks tests to be run only on the main branch"
+    "dev_only: marks tests to be run only on the main branch"
 ]
+addopts = "--cov-report=term-missing"

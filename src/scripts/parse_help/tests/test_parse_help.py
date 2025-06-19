@@ -29,6 +29,6 @@ AVCodecContext AVOptions:
     assert snapshot(extension_class=JSONSnapshotExtension) == _parse(text)
 
 
-@pytest.mark.main_branch_only
+@pytest.mark.dev_only
 def test_extract_options_from_help(snapshot: SnapshotAssertion) -> None:
-    snapshot(extension_class=JSONSnapshotExtension) == extract()
+    assert snapshot(extension_class=JSONSnapshotExtension) == extract()

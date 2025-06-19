@@ -2,19 +2,22 @@ from typing import Literal
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
+from syrupy.extensions.json import JSONSnapshotExtension
 
 from ..parse_formats import (
-    extract_format_help_text,
-    extract_format_option,
+    _extract_format,
+    _extract_list,
+    extract,
 )
 
+@pytest.mark.dev_only
 
 @pytest.mark.parametrize("type", ["muxers", "demuxers"])
 def test_parse_codecs_help_text(
     snapshot: SnapshotAssertion, type: Literal["muxers", "demuxers"]
 ) -> None:
-    codecs = extract_format_help_text(type)
-    snapshot == codecs
+    codecs = _extract_list(type)
+    assert snapshot(extension_class=JSONSnapshotExtension) == codecs
 
 
 @pytest.mark.parametrize(
@@ -29,10 +32,10 @@ def test_parse_codecs_help_text(
 def test_parse_codec_option(
     snapshot: SnapshotAssertion, codec: str, type: Literal["muxer", "demuxer"]
 ) -> None:
-    options = extract_format_option(codec, type)
+    options = _extract_format(codec, type)
     assert snapshot == options
 
-
-# def test_extract_all_codecs(snapshot: SnapshotAssertion) -> None:
-#     codecs = extract_all_codecs()
-#     assert snapshot == codecs
+@pytest.mark.dev_only
+def test_extract_all_codecs(snapshot: SnapshotAssertion) -> None:
+    codecs = extract()
+    assert snapshot(extension_class=JSONSnapshotExtension) == codecs
