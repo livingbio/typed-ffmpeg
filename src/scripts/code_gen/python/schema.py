@@ -1,4 +1,4 @@
-from ..ir.schema import FFMpegCodec, FFMpegOption, FFMpegOptionChoice
+from ..schema import FFMpegCodec, FFMpegOption, FFMpegOptionChoice
 from .utils import safe_name, option_typing
 
 class PythonFFMpegCodec(FFMpegCodec):

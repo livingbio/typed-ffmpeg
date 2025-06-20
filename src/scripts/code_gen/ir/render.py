@@ -1,6 +1,6 @@
 from typing import Any
 import jinja2
-from .schema import FFMpegCodec, FFMpegFilter, FFMpegOption, FFMpegFormat
+from ..schema import FFMpegCodec, FFMpegFilter, FFMpegOption, FFMpegFormat
 from pathlib import Path
 
 def render(

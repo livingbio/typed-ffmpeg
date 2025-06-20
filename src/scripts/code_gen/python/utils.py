@@ -1,5 +1,5 @@
 import keyword
-from ..ir.schema import FFMpegOptionType, FFMpegOption
+from ..schema import FFMpegOptionType, FFMpegOption
 
 def safe_name(string: str) -> str:
     """
