@@ -1,0 +1,8 @@
+{
+  "Print help / information / capabilities:": {
+    "-L                  show license": {},
+    "-h topic            show help": {},
+    "-? topic            show help": {},
+    "-help topic         show help": {}
+  }
+}

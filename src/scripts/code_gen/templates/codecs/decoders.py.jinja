@@ -5,7 +5,7 @@ from ..utils.frozendict import FrozenDict, merge
 {% for codec in codecs %}
 {% if codec.is_decoder %}
 def {{codec.name | option_name_safe }}(
-    {% for option in codec.filterd_options() %}
+    {% for option in codec.options %}
     {{option.name| option_name_safe}}: {{option.code_gen_type}} = None,
     {% endfor %}
 ) -> FFMpegDecoderOption:
@@ -13,7 +13,7 @@ def {{codec.name | option_name_safe }}(
     {{codec.description}}
     {% if codec.options | length > 0 %}
     Args:
-    {%- for option in codec.filterd_options() %}
+    {%- for option in codec.options %}
         {{option.name | option_name_safe}}: {{option.help}}
     {%- endfor %}
     {%- endif %}

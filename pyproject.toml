@@ -123,3 +123,9 @@ ignore = [
 [tool.ruff.format]
 quote-style = "double"
 docstring-code-format = true
+
+[tool.pytest.ini_options]
+markers = [
+    "dev_only: marks tests to be run only on the main branch"
+]
+addopts = "--cov-report=term-missing"

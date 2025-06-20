@@ -1,0 +1,13 @@
+[
+  "FFMpegOption(section='Subtitle options:', name='s', type=None, flags=None, help='set frame size (WxH or abbreviation)', argname='size')",
+  "FFMpegOption(section='Subtitle options:', name='sn', type=None, flags=None, help='disable subtitle', argname=None)",
+  "FFMpegOption(section='Subtitle options:', name='scodec', type=None, flags=None, help=\"force subtitle codec ('copy' to copy stream)\", argname='codec')",
+  "FFMpegOption(section='Subtitle options:', name='stag', type=None, flags=None, help='force subtitle tag/fourcc', argname='fourcc/tag')",
+  "FFMpegOption(section='Subtitle options:', name='fix_sub_duration', type=None, flags=None, help='fix subtitles duration', argname=None)",
+  "FFMpegOption(section='Subtitle options:', name='canvas_size', type=None, flags=None, help='set canvas size (WxH or abbreviation)', argname='size')",
+  "FFMpegOption(section='Subtitle options:', name='spre', type=None, flags=None, help='set the subtitle options to the indicated preset', argname='preset')",
+  "FFMpegAVOption(section='AVCodecContext AVOptions:', name='b', type='int64', flags='E..VA......', help='set bitrate (in bits/s) (from 0 to I64_MAX) (default 200000)', argname=None, min=None, max=None, default='200000', choices=())",
+  "FFMpegAVOption(section='AVCodecContext AVOptions:', name='ab', type='int64', flags='E...A......', help='set bitrate (in bits/s) (from 0 to INT_MAX) (default 128000)', argname=None, min=None, max=None, default='128000', choices=())",
+  "FFMpegAVOption(section='AVCodecContext AVOptions:', name='bt', type='int', flags='E..VA......', help='Set video bitrate tolerance (in bits/s). In 1-pass mode, bitrate tolerance specifies how far ratecontrol is willing to deviate from the target average bitrate value. This is not related to minimum/maximum bitrate. Lowering tolerance too much has an adverse effect on quality. (from 0 to INT_MAX) (default 4000000)', argname=None, min=None, max=None, default='4000000', choices=())",
+  "FFMpegAVOption(section='AVCodecContext AVOptions:', name='flags', type='flags', flags='ED.VAS.....', help='(default 0)', argname=None, min=None, max=None, default='0', choices=(FFMpegOptionChoice(name='unaligned', help='allow decoders to produce unaligned output', flags='.D.V.......', value='unaligned'), FFMpegOptionChoice(name='mv4', help='use four motion vectors per macroblock (MPEG-4)', flags='E..V.......', value='mv4')))"
+]

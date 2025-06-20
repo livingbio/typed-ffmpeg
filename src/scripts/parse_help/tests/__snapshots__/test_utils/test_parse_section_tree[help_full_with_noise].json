@@ -1,0 +1,11 @@
+{
+  "Hyper fast Audio and Video encoder": {},
+  "usage: ffmpeg [options] [[infile options] -i infile]... {[outfile options] outfile}...": {},
+  "Getting help:": {
+    "-h      -- print basic options": {},
+    "-h long -- print more options": {},
+    "-h full -- print all options (including all format and codec specific options, very long)": {},
+    "-h type=name -- print all options for the named decoder/encoder/demuxer/muxer/filter/bsf/protocol": {},
+    "See man ffmpeg for detailed description of the options.": {}
+  }
+}

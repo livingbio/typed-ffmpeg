@@ -1,0 +1,5 @@
+[
+  "FFMpegCodec(name='012v', flags='D.VI.S', help='Uncompressed 4:2:2 10-bit', options=())",
+  "FFMpegCodec(name='4xm', flags='D.V.L.', help='4X Movie', options=())",
+  "FFMpegCodec(name='8bps', flags='D.VI.S', help='QuickTime 8BPS video', options=())"
+]

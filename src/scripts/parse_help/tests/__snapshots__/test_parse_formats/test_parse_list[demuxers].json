@@ -1,0 +1,13 @@
+[
+  "FFMpegFormat(name='3dostr', flags='D', help='3DO STR', options=())",
+  "FFMpegFormat(name='4xm', flags='D', help='4X Technologies', options=())",
+  "FFMpegFormat(name='aa', flags='D', help='Audible AA format files', options=())",
+  "FFMpegFormat(name='aac', flags='D', help='raw ADTS AAC (Advanced Audio Coding)', options=())",
+  "FFMpegFormat(name='aax', flags='D', help='CRI AAX', options=())",
+  "FFMpegFormat(name='ac3', flags='D', help='raw AC-3', options=())",
+  "FFMpegFormat(name='ac4', flags='D', help='raw AC-4', options=())",
+  "FFMpegFormat(name='ace', flags='D', help='tri-Ace Audio Container', options=())",
+  "FFMpegFormat(name='acm', flags='D', help='Interplay ACM', options=())",
+  "FFMpegFormat(name='act', flags='D', help='ACT Voice file format', options=())",
+  "FFMpegFormat(name='adf', flags='D', help='Artworx Data Format', options=())"
+]
