@@ -6,12 +6,12 @@ build>=1.0.0
 twine>=4.0.0
 
 # Development dependencies
+ty
 pytest-cov>=4.1,<7.0
 pytest-datadir>=1.5.0
 pytest-recording>=0.13.1
 syrupy>=4.6.0
 pre-commit
-mypy
 typer
 jinja2
 devtools
