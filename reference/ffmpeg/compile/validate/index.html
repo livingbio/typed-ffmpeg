@@ -3462,16 +3462,16 @@ filters to ensure the graph is valid for FFmpeg processing.</p>
 
   
       dataclass
-   (ffmpeg.dag.schema.Node)" href="../../dag/schema/#ffmpeg.dag.schema.Node">Node</a></span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">down_index</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+   (ffmpeg.dag.schema.Node)" href="../../dag/schema/#ffmpeg.dag.schema.Node">Node</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">down_index</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">context</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            DAGContext
 
 
   
       dataclass
-   (ffmpeg.compile.context.DAGContext)" href="../context/#ffmpeg.compile.context.DAGContext">DAGContext</a></span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">mapping</span><span class="p">:</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span>
-        <span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            Stream
+   (ffmpeg.compile.context.DAGContext)" href="../context/#ffmpeg.compile.context.DAGContext">DAGContext</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">mapping</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            Stream
 
 
   
@@ -3486,8 +3486,9 @@ filters to ensure the graph is valid for FFmpeg processing.</p>
 
   
       dataclass
-   (ffmpeg.dag.schema.Stream)" href="../../dag/schema/#ffmpeg.dag.schema.Stream">Stream</a></span>
-    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+   (ffmpeg.dag.schema.Stream)" href="../../dag/schema/#ffmpeg.dag.schema.Stream">Stream</a></span><span class="p">]</span>
+        <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="tuple">tuple</span></span><span class="p">[</span>
     <span class="n"><a class="autorefs autorefs-internal" title="            Stream
 
@@ -3568,7 +3569,7 @@ connecting each output of the split to the corresponding downstream node.</p>
 
   
       dataclass
-   (ffmpeg.dag.schema.Node)" href="../../dag/schema/#ffmpeg.dag.schema.Node">Node</a></code>
+   (ffmpeg.dag.schema.Node)" href="../../dag/schema/#ffmpeg.dag.schema.Node">Node</a> | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3584,7 +3585,7 @@ connecting each output of the split to the corresponding downstream node.</p>
                 <code>down_index</code>
             </td>
             <td>
-                  <code><span title="int">int</span></code>
+                  <code><span title="int">int</span> | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3605,7 +3606,7 @@ connecting each output of the split to the corresponding downstream node.</p>
 
   
       dataclass
-   (ffmpeg.compile.context.DAGContext)" href="../context/#ffmpeg.compile.context.DAGContext">DAGContext</a></code>
+   (ffmpeg.compile.context.DAGContext)" href="../context/#ffmpeg.compile.context.DAGContext">DAGContext</a> | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3636,7 +3637,7 @@ connecting each output of the split to the corresponding downstream node.</p>
 
   
       dataclass
-   (ffmpeg.dag.schema.Stream)" href="../../dag/schema/#ffmpeg.dag.schema.Stream">Stream</a>]</code>
+   (ffmpeg.dag.schema.Stream)" href="../../dag/schema/#ffmpeg.dag.schema.Stream">Stream</a>] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3862,7 +3863,7 @@ existing one, preserving the original graph.</p>
 
   
       dataclass
-   (ffmpeg.dag.schema.Stream)" href="../../dag/schema/#ffmpeg.dag.schema.Stream">Stream</a></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+   (ffmpeg.dag.schema.Stream)" href="../../dag/schema/#ffmpeg.dag.schema.Stream">Stream</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            Stream
 
 
@@ -3939,7 +3940,7 @@ new graph structure with the split nodes removed.</p>
 
   
       dataclass
-   (ffmpeg.dag.schema.Stream)" href="../../dag/schema/#ffmpeg.dag.schema.Stream">Stream</a>]</code>
+   (ffmpeg.dag.schema.Stream)" href="../../dag/schema/#ffmpeg.dag.schema.Stream">Stream</a>] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
