@@ -38,4 +38,23 @@ repos:
         args: [--fix]
       # Run the formatter.
       - id: ruff-format
-  # TODO: Add ty type checking
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.8.0
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: mypy
+        types: [python]
+        exclude: migrations/|commands/|sandbox/|samples|sdk
+        files: ^src/
+        additional_dependencies:
+          - pytest
+          - syrupy
+          - types-Pillow
+          - typer
+          - jinja2
+          - types-beautifulsoup4
+          - devtools
+          - html2text
+        args: ['--config-file=pyproject.toml']
