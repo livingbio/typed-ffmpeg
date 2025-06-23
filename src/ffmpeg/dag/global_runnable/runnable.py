@@ -235,9 +235,7 @@ class GlobalRunable(GlobalArgs):
         stdout_stream = subprocess.PIPE if pipe_stdout or quiet else None
         stderr_stream = subprocess.PIPE if pipe_stderr or quiet else None
 
-        logger.info(
-            f"Running command: {' '.join(args)}"
-        )
+        logger.info(f"Running command: {' '.join(args)}")
 
         return subprocess.Popen(
             args,
