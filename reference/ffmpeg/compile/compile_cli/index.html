@@ -3820,12 +3820,16 @@ filter graph syntax, and escaping of special characters in FFmpeg commands.</p>
 
 
 <a href="#ffmpeg.compile.compile_cli.compile" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">compile</span><span class="p">(</span><span class="n">stream</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Stream
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">compile</span><span class="p">(</span>
+    <span class="n">stream</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Stream
 
 
   
       dataclass
-   (ffmpeg.dag.schema.Stream)" href="../../dag/schema/#ffmpeg.dag.schema.Stream">Stream</a></span><span class="p">,</span> <span class="n">auto_fix</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="str">str</span></span>
+   (ffmpeg.dag.schema.Stream)" href="../../dag/schema/#ffmpeg.dag.schema.Stream">Stream</a></span><span class="p">,</span>
+    <span class="n">auto_fix</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">use_filter_complex_script</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="str">str</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3883,6 +3887,23 @@ and converts it into a command-line string that can be passed to FFmpeg.</p>
                   <code>True</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>use_filter_complex_script</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If True, use -filter_complex_script with a
+                      temporary file instead of -filter_complex</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -3928,7 +3949,9 @@ and converts it into a command-line string that can be passed to FFmpeg.</p>
 
   
       dataclass
-   (ffmpeg.dag.schema.Stream)" href="../../dag/schema/#ffmpeg.dag.schema.Stream">Stream</a></span><span class="p">,</span> <span class="n">auto_fix</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">True</span>
+   (ffmpeg.dag.schema.Stream)" href="../../dag/schema/#ffmpeg.dag.schema.Stream">Stream</a></span><span class="p">,</span>
+    <span class="n">auto_fix</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">use_filter_complex_script</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">]</span>
 </code></pre></div>
 
@@ -3965,8 +3988,10 @@ to FFmpeg. The compilation process follows these steps:</p>
 </li>
 <li>Properly labels all streams</li>
 <li>Maintains correct filter chain order</li>
+<li>Handles stream splitting and merging</li>
 <li>
-<p>Handles stream splitting and merging</p>
+<p>If use_filter_complex_script is True, creates a temporary file
+     with the filter complex content and uses -filter_complex_script</p>
 </li>
 <li>
 <p>Output Files: Processes destination files</p>
@@ -4028,6 +4053,23 @@ to FFmpeg. The compilation process follows these steps:</p>
             </td>
             <td>
                   <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>use_filter_complex_script</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If True, use -filter_complex_script with a
+                      temporary file instead of -filter_complex</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
             </td>
           </tr>
       </tbody>
