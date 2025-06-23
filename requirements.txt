@@ -283,7 +283,7 @@ pure-eval==0.2.3
     # via stack-data
 pycparser==2.22
     # via cffi
-pygments==2.19.1
+pygments==2.19.2
     # via
     #   devtools
     #   ipython
