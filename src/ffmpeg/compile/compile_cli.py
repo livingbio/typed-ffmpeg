@@ -23,7 +23,6 @@ import tempfile
 from collections import defaultdict
 from collections.abc import Mapping
 from dataclasses import replace
-from typing import TYPE_CHECKING
 
 from ..base import input, merge_outputs, output
 from ..common.cache import load
@@ -49,9 +48,6 @@ from ..utils.lazy_eval.schema import LazyValue
 from ..utils.run import command_line
 from .context import DAGContext
 from .validate import validate
-
-if TYPE_CHECKING:
-    from ..dag.nodes import Node
 
 logger = logging.getLogger(__name__)
 
