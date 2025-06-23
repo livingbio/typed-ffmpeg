@@ -236,7 +236,7 @@ class GlobalRunable(GlobalArgs):
         stderr_stream = subprocess.PIPE if pipe_stderr or quiet else None
 
         logger.info(
-            f"Running command: {self.compile_line(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix, use_filter_complex_script=use_filter_complex_script)}"
+            f"Running command: {' '.join(args)}"
         )
 
         return subprocess.Popen(
