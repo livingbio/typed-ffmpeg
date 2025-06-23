@@ -1,8 +1,27 @@
 from dataclasses import dataclass
 from typing import Literal
-from abc import ABC, abstractmethod
 
-FFMpegOptionType = Literal["boolean", "duration", "color", "flags", "dictionary", "pix_fmt", "int", "int64", "double", "float", "string", "video_rate", "image_size", "rational", "sample_fmt", "binary", "channel_layout", "pixel_format", "sample_rate"]
+FFMpegOptionType = Literal[
+    "boolean",
+    "duration",
+    "color",
+    "flags",
+    "dictionary",
+    "pix_fmt",
+    "int",
+    "int64",
+    "double",
+    "float",
+    "string",
+    "video_rate",
+    "image_size",
+    "rational",
+    "sample_fmt",
+    "binary",
+    "channel_layout",
+    "pixel_format",
+    "sample_rate",
+]
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -27,6 +46,7 @@ class FFMpegOptionIR:
     def typing(self) -> str:
         raise NotImplementedError()
 
+
 @dataclass(frozen=True, kw_only=True)
 class FFMpegCodecIR:
     name: str
@@ -38,4 +58,3 @@ class FFMpegCodecIR:
 
     def safe_name(self) -> str:
         raise NotImplementedError()
-    

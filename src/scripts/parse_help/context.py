@@ -1,14 +1,28 @@
 from typing import cast
-from ..code_gen.schema import FFMpegCodecIR, FFMpegOptionIR, FFMpegOptionChoiceIR
-from .schema import FFMpegAVOption, FFMpegOptionSet, FFMpegOptionChoice, FFMpegOptionType, FFMpegOption, FFMpegDecoder, FFMpegEncoder
 
-def convert(obj: FFMpegOptionSet | FFMpegOption | FFMpegOptionChoice) -> FFMpegCodecIR | FFMpegOptionIR | FFMpegOptionChoiceIR:
+from ..code_gen.schema import FFMpegCodecIR, FFMpegOptionChoiceIR, FFMpegOptionIR
+from .schema import (
+    FFMpegAVOption,
+    FFMpegDecoder,
+    FFMpegEncoder,
+    FFMpegOption,
+    FFMpegOptionChoice,
+    FFMpegOptionSet,
+)
+
+
+def convert(
+    obj: FFMpegOptionSet | FFMpegOption | FFMpegOptionChoice,
+) -> FFMpegCodecIR | FFMpegOptionIR | FFMpegOptionChoiceIR:
     match obj:
         case FFMpegEncoder():
             return FFMpegCodecIR(
                 name=obj.name,
                 help=obj.help,
-                options=cast(tuple[FFMpegOptionIR, ...], tuple(convert(option) for option in obj.options)),
+                options=cast(
+                    tuple[FFMpegOptionIR, ...],
+                    tuple(convert(option) for option in obj.options),
+                ),
                 is_decoder=False,
                 is_encoder=True,
             )
@@ -16,7 +30,10 @@ def convert(obj: FFMpegOptionSet | FFMpegOption | FFMpegOptionChoice) -> FFMpegC
             return FFMpegCodecIR(
                 name=obj.name,
                 help=obj.help,
-                options=cast(tuple[FFMpegOptionIR, ...], tuple(convert(option) for option in obj.options)),
+                options=cast(
+                    tuple[FFMpegOptionIR, ...],
+                    tuple(convert(option) for option in obj.options),
+                ),
                 is_decoder=True,
                 is_encoder=False,
             )
@@ -26,7 +43,10 @@ def convert(obj: FFMpegOptionSet | FFMpegOption | FFMpegOptionChoice) -> FFMpegC
                 help=obj.help,
                 type=obj.type,
                 default=obj.default,
-                choices=cast(tuple[FFMpegOptionChoiceIR, ...], tuple(convert(choice) for choice in obj.choices)),
+                choices=cast(
+                    tuple[FFMpegOptionChoiceIR, ...],
+                    tuple(convert(choice) for choice in obj.choices),
+                ),
             )
-        
+
     raise NotImplementedError()

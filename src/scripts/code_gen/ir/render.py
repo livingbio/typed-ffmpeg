@@ -1,13 +1,10 @@
-from typing import Any
-import jinja2
-from ..schema import FFMpegCodecIR, FFMpegFilter, FFMpegOptionIR, FFMpegFormat
 from pathlib import Path
+from typing import Any
 
-def render(
-    template_folder: Path,
-    outpath: Path,
-    **kwargs: Any
-) -> list[Path]:
+import jinja2
+
+
+def render(template_folder: Path, outpath: Path, **kwargs: Any) -> list[Path]:
     """
     Render the filter and option documents
 

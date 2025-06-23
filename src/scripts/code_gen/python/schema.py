@@ -1,9 +1,11 @@
-from ..schema import FFMpegCodecIR, FFMpegOptionIR, FFMpegOptionChoiceIR
-from .utils import safe_name, option_typing
+from ..schema import FFMpegCodecIR, FFMpegOptionIR
+from .utils import option_typing, safe_name
+
 
 class PythonFFMpegCodec(FFMpegCodecIR):
     def safe_name(self) -> str:
         return safe_name(self.name)
+
 
 class PythonFFMpegOption(FFMpegOptionIR):
     def safe_name(self) -> str:
