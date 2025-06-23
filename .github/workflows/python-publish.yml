@@ -37,7 +37,7 @@ jobs:
       - name: Install dependencies
         run: |
           source .venv/bin/activate
-          uv pip install -r requirements.in
+          uv pip install -r requirements.txt
       - name: Build package
         run: |
           source .venv/bin/activate
