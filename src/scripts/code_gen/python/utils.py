@@ -1,5 +1,5 @@
 import keyword
-from ..schema import FFMpegOptionType, FFMpegOption
+from ..schema import FFMpegOptionType, FFMpegOptionIR
 
 def safe_name(string: str) -> str:
     """
@@ -20,7 +20,7 @@ def safe_name(string: str) -> str:
 
     return string
 
-def option_typing(option: FFMpegOption) -> str:
+def option_typing(option: FFMpegOptionIR) -> str:
     base_type = option.type.capitalize()
 
     if not option.choices:
