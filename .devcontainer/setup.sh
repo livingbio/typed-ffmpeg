@@ -3,7 +3,7 @@
 # Create and activate virtual environment
 uv venv
 # Install dependencies
-uv pip install -r requirements.in
+uv pip install -r requirements.txt
 uv pip install -e .
 
 # Install pre-commit hooks

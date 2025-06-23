@@ -35,7 +35,7 @@ jobs:
         run: uv venv
       - name: Install dependencies
         run: |
-          uv pip install -r requirements.in
+          uv pip install -r requirements.txt
       - name: Prepare compatible version
         run: |
           sed -i \
