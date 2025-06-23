@@ -83,6 +83,7 @@ class GlobalRunable(GlobalArgs):
         cmd: str | list[str] = "ffmpeg",
         overwrite_output: bool | None = None,
         auto_fix: bool = True,
+        use_filter_complex_script: bool = False,
     ) -> list[str]:
         """
         Build command-line arguments for invoking FFmpeg.
@@ -100,6 +101,8 @@ class GlobalRunable(GlobalArgs):
                              If None (default), use the current settings
             auto_fix: Whether to automatically fix issues in the filter graph,
                      such as adding split filters for reused streams
+            use_filter_complex_script: If True, use -filter_complex_script with a
+                                      temporary file instead of -filter_complex
 
         Returns:
             A list of strings representing the complete FFmpeg command
@@ -117,17 +120,30 @@ class GlobalRunable(GlobalArgs):
             cmd = [cmd]
 
         if overwrite_output is True:
-            return self.global_args(y=True).compile(cmd, auto_fix=auto_fix)
+            return self.global_args(y=True).compile(
+                cmd,
+                auto_fix=auto_fix,
+                use_filter_complex_script=use_filter_complex_script,
+            )
         elif overwrite_output is False:
-            return self.global_args(n=True).compile(cmd, auto_fix=auto_fix)
+            return self.global_args(n=True).compile(
+                cmd,
+                auto_fix=auto_fix,
+                use_filter_complex_script=use_filter_complex_script,
+            )
 
-        return cmd + compile_as_list(self._global_node().stream(), auto_fix=auto_fix)
+        return cmd + compile_as_list(
+            self._global_node().stream(),
+            auto_fix=auto_fix,
+            use_filter_complex_script=use_filter_complex_script,
+        )
 
     def compile_line(
         self,
         cmd: str | list[str] = "ffmpeg",
         overwrite_output: bool | None = None,
         auto_fix: bool = True,
+        use_filter_complex_script: bool = False,
     ) -> str:
         """
         Build a command-line string for invoking FFmpeg.
@@ -143,6 +159,8 @@ class GlobalRunable(GlobalArgs):
                              If False, add the -n option to never overwrite
                              If None (default), use the current settings
             auto_fix: Whether to automatically fix issues in the filter graph
+            use_filter_complex_script: If True, use -filter_complex_script with a
+                                      temporary file instead of -filter_complex
 
         Returns:
             A string representing the complete FFmpeg command with proper escaping
@@ -155,7 +173,12 @@ class GlobalRunable(GlobalArgs):
             ```
         """
         return command_line(
-            self.compile(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix)
+            self.compile(
+                cmd,
+                overwrite_output=overwrite_output,
+                auto_fix=auto_fix,
+                use_filter_complex_script=use_filter_complex_script,
+            )
         )
 
     def run_async(
@@ -167,6 +190,7 @@ class GlobalRunable(GlobalArgs):
         quiet: bool = False,
         overwrite_output: bool | None = None,
         auto_fix: bool = True,
+        use_filter_complex_script: bool = False,
     ) -> subprocess.Popen[bytes]:
         """
         Run FFmpeg asynchronously as a subprocess.
@@ -186,6 +210,8 @@ class GlobalRunable(GlobalArgs):
                              If False, add the -n option to never overwrite
                              If None (default), use the current settings
             auto_fix: Whether to automatically fix issues in the filter graph
+            use_filter_complex_script: If True, use -filter_complex_script with a
+                                      temporary file instead of -filter_complex
 
         Returns:
             A subprocess.Popen object representing the running FFmpeg process
@@ -199,13 +225,18 @@ class GlobalRunable(GlobalArgs):
             ```
         """
 
-        args = self.compile(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix)
+        args = self.compile(
+            cmd,
+            overwrite_output=overwrite_output,
+            auto_fix=auto_fix,
+            use_filter_complex_script=use_filter_complex_script,
+        )
         stdin_stream = subprocess.PIPE if pipe_stdin else None
         stdout_stream = subprocess.PIPE if pipe_stdout or quiet else None
         stderr_stream = subprocess.PIPE if pipe_stderr or quiet else None
 
         logger.info(
-            f"Running command: {self.compile_line(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix)}"
+            f"Running command: {self.compile_line(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix, use_filter_complex_script=use_filter_complex_script)}"
         )
 
         return subprocess.Popen(
@@ -224,6 +255,7 @@ class GlobalRunable(GlobalArgs):
         quiet: bool = False,
         overwrite_output: bool | None = None,
         auto_fix: bool = True,
+        use_filter_complex_script: bool = False,
     ) -> tuple[bytes, bytes]:
         """
         Run FFmpeg synchronously and wait for completion.
@@ -243,6 +275,8 @@ class GlobalRunable(GlobalArgs):
                              If False, add the -n option to never overwrite
                              If None (default), use the current settings
             auto_fix: Whether to automatically fix issues in the filter graph
+            use_filter_complex_script: If True, use -filter_complex_script with a
+                                      temporary file instead of -filter_complex
 
         Returns:
             A tuple of (stdout_bytes, stderr_bytes), which will be empty bytes
@@ -272,6 +306,7 @@ class GlobalRunable(GlobalArgs):
             quiet=quiet,
             overwrite_output=overwrite_output,
             auto_fix=auto_fix,
+            use_filter_complex_script=use_filter_complex_script,
         )
         stdout, stderr = process.communicate(input)
         retcode = process.poll()
@@ -280,7 +315,10 @@ class GlobalRunable(GlobalArgs):
             raise FFMpegExecuteError(
                 retcode=retcode,
                 cmd=self.compile_line(
-                    cmd, overwrite_output=overwrite_output, auto_fix=auto_fix
+                    cmd,
+                    overwrite_output=overwrite_output,
+                    auto_fix=auto_fix,
+                    use_filter_complex_script=use_filter_complex_script,
                 ),
                 stdout=stdout,
                 stderr=stderr,
