@@ -214,7 +214,7 @@ more-itertools==10.7.0
     # via
     #   jaraco-classes
     #   jaraco-functools
-multidict==6.4.4
+multidict==6.5.0
     # via yarl
 mypy==1.16.0
     # via -r requirements.in
