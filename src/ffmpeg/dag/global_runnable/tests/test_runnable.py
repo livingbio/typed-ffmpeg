@@ -10,7 +10,7 @@ import pytest
 from ....base import input
 
 
-def test_use_filter_complex_script_parameter():
+def test_use_filter_complex_script_parameter() -> None:
     """Test that use_filter_complex_script parameter works correctly."""
     # Create a simple filter graph
     stream = (
@@ -39,7 +39,7 @@ def test_use_filter_complex_script_parameter():
         assert "scale=w=1280:h=720" in script_content
 
 
-def test_use_filter_complex_script_with_run_method():
+def test_use_filter_complex_script_with_run_method() -> None:
     """Test that use_filter_complex_script parameter works with the run method."""
     # Create a simple filter graph
     stream = (
@@ -58,7 +58,7 @@ def test_use_filter_complex_script_with_run_method():
         pytest.fail(f"compile with use_filter_complex_script=True failed: {e}")
 
 
-def test_use_filter_complex_script_with_compile_line():
+def test_use_filter_complex_script_with_compile_line() -> None:
     """Test that use_filter_complex_script parameter works with compile_line method."""
     # Create a simple filter graph
     stream = (
