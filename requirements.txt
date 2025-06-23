@@ -299,7 +299,7 @@ pymdown-extensions==10.15
     #   mkdocstrings
 pyproject-hooks==1.2.0
     # via build
-pytest==8.4.0
+pytest==8.4.1
     # via
     #   pytest-cov
     #   pytest-datadir
