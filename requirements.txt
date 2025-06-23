@@ -292,7 +292,7 @@ pygments==2.19.1
     #   pytest
     #   readme-renderer
     #   rich
-pymdown-extensions==10.15
+pymdown-extensions==10.16
     # via
     #   -r requirements.in
     #   mkdocs-material
