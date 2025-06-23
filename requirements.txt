@@ -91,7 +91,7 @@ idna==3.10
     #   yarl
 iniconfig==2.1.0
     # via pytest
-ipykernel==6.29.5
+ipykernel==6.27.1
     # via -r requirements.in
 ipython==9.3.0
     # via ipykernel
