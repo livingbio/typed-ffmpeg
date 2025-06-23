@@ -19,7 +19,7 @@ global-exclude codecov.yml
 global-exclude mkdocs.yml
 global-exclude pyproject-compatible.toml
 global-exclude requirements.in
-global-exclude requirements.txt
+global-exclude requirements.in
 global-exclude tox.ini
 global-exclude uv.lock
 global-exclude README.ipynb
