@@ -12,8 +12,8 @@ from typing import Optional
 
 from syrupy.extensions.json import JSONSnapshotExtension
 from syrupy.types import (
-    PropertyFilter,
-    PropertyMatcher,
+    PropertyFilter,  # ty: ignore[possibly-unbound-import]
+    PropertyMatcher,  # ty: ignore[possibly-unbound-import]
     SerializableData,
     SerializedData,
 )

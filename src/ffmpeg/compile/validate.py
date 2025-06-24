@@ -21,7 +21,7 @@ from .context import DAGContext
 
 
 def remove_split(
-    current_stream: Stream, mapping: dict[Stream, Stream] = None
+    current_stream: Stream, mapping: dict[Stream, Stream] | None = None
 ) -> tuple[Stream, dict[Stream, Stream]]:
     """
     Remove all split nodes from the graph to prepare for reconstruction.
@@ -91,10 +91,10 @@ def remove_split(
 
 def add_split(
     current_stream: Stream,
-    down_node: Node = None,
-    down_index: int = None,
-    context: DAGContext = None,
-    mapping: dict[tuple[Stream, Node | None, int | None], Stream] = None,
+    down_node: Node | None = None,
+    down_index: int | None = None,
+    context: DAGContext | None = None,
+    mapping: dict[tuple[Stream, Node | None, int | None], Stream] | None = None,
 ) -> tuple[Stream, dict[tuple[Stream, Node | None, int | None], Stream]]:
     """
     Add split nodes to the graph where streams are reused.

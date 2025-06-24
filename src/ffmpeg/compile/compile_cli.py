@@ -16,8 +16,10 @@ filter graph syntax, and escaping of special characters in FFmpeg commands.
 
 from __future__ import annotations
 
+import logging
 import re
 import shlex
+import tempfile
 from collections import defaultdict
 from collections.abc import Mapping
 from dataclasses import replace
@@ -46,6 +48,8 @@ from ..utils.lazy_eval.schema import LazyValue
 from ..utils.run import command_line
 from .context import DAGContext
 from .validate import validate
+
+logger = logging.getLogger(__name__)
 
 
 def get_options_dict() -> dict[str, FFMpegOption]:
@@ -502,7 +506,9 @@ def parse(cli: str) -> Stream:
     return result
 
 
-def compile(stream: Stream, auto_fix: bool = True) -> str:
+def compile(
+    stream: Stream, auto_fix: bool = True, use_filter_complex_script: bool = False
+) -> str:
     """
     Compile a stream into a command-line string.
 
@@ -512,14 +518,20 @@ def compile(stream: Stream, auto_fix: bool = True) -> str:
     Args:
         stream: The Stream object to compile into a command-line string
         auto_fix: Whether to automatically fix issues in the stream
+        use_filter_complex_script: If True, use -filter_complex_script with a
+                                  temporary file instead of -filter_complex
 
     Returns:
         A command-line string that can be passed to FFmpeg
     """
-    return "ffmpeg " + command_line(compile_as_list(stream, auto_fix))
+    return "ffmpeg " + command_line(
+        compile_as_list(stream, auto_fix, use_filter_complex_script)
+    )
 
 
-def compile_as_list(stream: Stream, auto_fix: bool = True) -> list[str]:
+def compile_as_list(
+    stream: Stream, auto_fix: bool = True, use_filter_complex_script: bool = False
+) -> list[str]:
     """
     Compile a stream into a list of FFmpeg command-line arguments.
 
@@ -545,6 +557,8 @@ def compile_as_list(stream: Stream, auto_fix: bool = True) -> list[str]:
        - Properly labels all streams
        - Maintains correct filter chain order
        - Handles stream splitting and merging
+       - If use_filter_complex_script is True, creates a temporary file
+         with the filter complex content and uses -filter_complex_script
 
     5. Output Files: Processes destination files
        - File paths and output options
@@ -560,6 +574,8 @@ def compile_as_list(stream: Stream, auto_fix: bool = True) -> list[str]:
         stream: The Stream object to compile into arguments
         auto_fix: Whether to automatically fix issues in the stream
                  (e.g., reconnecting disconnected nodes)
+        use_filter_complex_script: If True, use -filter_complex_script with a
+                                  temporary file instead of -filter_complex
 
     Returns:
         A list of strings representing FFmpeg command-line arguments
@@ -605,7 +621,19 @@ def compile_as_list(stream: Stream, auto_fix: bool = True) -> list[str]:
         vf_commands += ["".join(get_args(node, context))]
 
     if vf_commands:
-        commands += ["-filter_complex", ";".join(vf_commands)]
+        filter_complex_content = ";".join(vf_commands)
+
+        if use_filter_complex_script:
+            # Create a temporary file with the filter complex content
+            with tempfile.NamedTemporaryFile(
+                mode="w", suffix=".txt", delete=False
+            ) as f:
+                f.write(filter_complex_content)
+                temp_filename = f.name
+
+            commands += ["-filter_complex_script", temp_filename]
+        else:
+            commands += ["-filter_complex", filter_complex_content]
 
     # compile the output nodes
     output_nodes = [node for node in context.all_nodes if isinstance(node, OutputNode)]

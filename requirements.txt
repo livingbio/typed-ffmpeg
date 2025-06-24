@@ -12,7 +12,7 @@ babel==2.17.0
     # via mkdocs-material
 backports-tarfile==1.2.0
     # via jaraco-context
-backrefs==5.8
+backrefs==5.9
     # via mkdocs-material
 beautifulsoup4==4.13.4
     # via
@@ -107,7 +107,7 @@ jaraco-classes==3.4.0
     # via keyring
 jaraco-context==6.0.1
     # via keyring
-jaraco-functools==4.1.0
+jaraco-functools==4.2.1
     # via keyring
 jedi==0.19.2
     # via ipython
@@ -144,7 +144,7 @@ keyring==25.6.0
     # via twine
 lxml==5.4.0
     # via -r requirements.in
-markdown==3.8
+markdown==3.8.2
     # via
     #   markdown-callouts
     #   mkdocs
@@ -214,9 +214,9 @@ more-itertools==10.7.0
     # via
     #   jaraco-classes
     #   jaraco-functools
-multidict==6.4.4
+multidict==6.5.0
     # via yarl
-mypy==1.16.0
+mypy==1.16.1
     # via -r requirements.in
 mypy-extensions==1.1.0
     # via
@@ -283,7 +283,7 @@ pure-eval==0.2.3
     # via stack-data
 pycparser==2.22
     # via cffi
-pygments==2.19.1
+pygments==2.19.2
     # via
     #   devtools
     #   ipython
@@ -292,14 +292,14 @@ pygments==2.19.1
     #   pytest
     #   readme-renderer
     #   rich
-pymdown-extensions==10.15
+pymdown-extensions==10.16
     # via
     #   -r requirements.in
     #   mkdocs-material
     #   mkdocstrings
 pyproject-hooks==1.2.0
     # via build
-pytest==8.4.0
+pytest==8.4.1
     # via
     #   pytest-cov
     #   pytest-datadir
@@ -353,7 +353,7 @@ rpds-py==0.25.1
     # via
     #   jsonschema
     #   referencing
-ruff==0.11.13
+ruff==0.12.0
     # via -r requirements.in
 secretstorage==3.3.3
     # via keyring
@@ -415,7 +415,7 @@ typing-extensions==4.14.0
     #   referencing
     #   rich
     #   typer
-urllib3==2.4.0
+urllib3==2.5.0
     # via
     #   requests
     #   twine
