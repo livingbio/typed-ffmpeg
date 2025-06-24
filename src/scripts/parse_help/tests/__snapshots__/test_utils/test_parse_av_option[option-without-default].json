@@ -1,0 +1,5 @@
+[
+  "FFMpegAVOption(section='dfpwm demuxer AVOptions:', name='sample_rate', type='int', flags='.D.........', help='(from 0 to INT_MAX) (default 48000)', argname=None, min=None, max=None, default='48000', choices=())",
+  "FFMpegAVOption(section='dfpwm demuxer AVOptions:', name='channels', type='int', flags='.D........P', help='(from 0 to INT_MAX) (default 1)', argname=None, min=None, max=None, default='1', choices=())",
+  "FFMpegAVOption(section='dfpwm demuxer AVOptions:', name='ch_layout', type='channel_layout', flags='.D.........', help='', argname=None, min=None, max=None, default=None, choices=())"
+]
