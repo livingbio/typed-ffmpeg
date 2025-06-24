@@ -49,14 +49,24 @@ class FFMpegOptionIR:
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegCodecIR:
+class FFMpegOptionSetIR:
     name: str
-    options: tuple[FFMpegOptionIR, ...] = ()
     help: str
-
-    is_decoder: bool
-    is_encoder: bool
+    options: tuple[FFMpegOptionIR, ...] = ()
 
     @property
     def safe_name(self) -> str:
         raise NotImplementedError()
+    
+
+@dataclass(frozen=True, kw_only=True)
+class FFMpegCodecIR(FFMpegOptionSetIR):
+    is_decoder: bool
+    is_encoder: bool
+
+
+
+@dataclass(frozen=True, kw_only=True)
+class FFMpegFormatIR(FFMpegOptionSetIR):
+    is_muxer: bool
+    is_demuxer: bool
