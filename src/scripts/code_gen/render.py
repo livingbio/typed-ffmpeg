@@ -22,7 +22,7 @@ def render(template_folder: Path, outpath: Path, **kwargs: Any) -> list[Path]:
         loader=loader,
     )
 
-    outpath.mkdir(exist_ok=True)
+    outpath.mkdir(exist_ok=True, parents=True)
     output = []
 
     for template_file in template_folder.glob("**/*.jinja"):

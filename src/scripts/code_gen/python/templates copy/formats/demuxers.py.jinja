@@ -2,7 +2,7 @@ from typing import Literal
 from .schema import FFMpegDemuxerOption
 from ..utils.frozendict import FrozenDict, merge
 
-{% for codec in formats %}
+{% for codec in muxers %}
 {% if codec.is_demuxer %}
 def {{ codec.safe_name }}(
     {% for option in codec.options %}

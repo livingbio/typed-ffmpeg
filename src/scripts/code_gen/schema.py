@@ -43,6 +43,7 @@ class FFMpegAVOptionIR:
     @property
     def safe_name(self) -> str:
         raise NotImplementedError()
+
     @property
     def typing(self) -> str:
         raise NotImplementedError()
@@ -57,7 +58,7 @@ class FFMpegOptionSetIR:
     @property
     def safe_name(self) -> str:
         raise NotImplementedError()
-    
+
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegCodecIR(FFMpegOptionSetIR):
@@ -65,8 +66,20 @@ class FFMpegCodecIR(FFMpegOptionSetIR):
     is_encoder: bool
 
 
-
 @dataclass(frozen=True, kw_only=True)
 class FFMpegFormatIR(FFMpegOptionSetIR):
     is_muxer: bool
     is_demuxer: bool
+
+
+@dataclass(frozen=True, kw_only=True)
+class FFMpegFilterIR(FFMpegOptionSetIR):
+    is_dynamic_input: bool
+    is_dynamic_output: bool
+
+    stream_typings_input: tuple[Literal["audio", "video"], ...]
+    stream_typings_output: tuple[Literal["audio", "video"], ...]
+
+    @property
+    def return_typing(self) -> str:
+        raise NotImplementedError()

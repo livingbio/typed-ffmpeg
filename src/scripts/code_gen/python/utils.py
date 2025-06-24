@@ -26,7 +26,7 @@ def safe_name(string: str) -> str:
 def option_typing(option: FFMpegAVOptionIR) -> str:
     base_type = option.type.capitalize()
 
-    if not option.choices:
+    if not option.choices or option.type == "flags":
         return base_type
 
     values = ",".join(f'"{i.name}"' for i in option.choices)
