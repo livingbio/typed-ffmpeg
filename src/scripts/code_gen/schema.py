@@ -33,7 +33,7 @@ class FFMpegOptionChoiceIR:
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegOptionIR:
+class FFMpegAVOptionIR:
     name: str
     help: str
     type: FFMpegOptionType
@@ -52,7 +52,7 @@ class FFMpegOptionIR:
 class FFMpegOptionSetIR:
     name: str
     help: str
-    options: tuple[FFMpegOptionIR, ...] = ()
+    options: tuple[FFMpegAVOptionIR, ...] = ()
 
     @property
     def safe_name(self) -> str:

@@ -47,7 +47,7 @@ class FFMpegOption:
     name: str
     """The option name (e.g., "b", "radius", "preset")."""
 
-    type: FFMpegOptionType | None = None
+    type: FFMpegOptionType
     """The option's data type (e.g., "int", "float", "string")."""
 
     flags: str | None = None

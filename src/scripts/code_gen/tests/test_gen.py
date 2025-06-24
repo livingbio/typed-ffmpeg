@@ -1,8 +1,10 @@
 import tempfile
 from pathlib import Path
 
+import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.single_file import SingleFileSnapshotExtension
+from syrupy.extensions.json import JSONSnapshotExtension
 
 from ffmpeg.common.schema import (
     FFMpegFilter,
@@ -11,6 +13,7 @@ from ffmpeg.common.schema import (
     FFMpegIOType,
     StreamType,
 )
+from scripts.parse_help.context import all_codecs
 
 from ..gen import render
 
@@ -57,3 +60,4 @@ def test_render(snapshot: SnapshotAssertion) -> None:
                 snapshot(name=outfile.name, extension_class=SingleFileSnapshotExtension)
                 == outfile.read_bytes()
             )
+
