@@ -2,19 +2,19 @@ from typing import Literal
 from .schema import FFMpegMuxerOption
 from ..utils.frozendict import FrozenDict, merge
 
-{% for codec in formats %}
+{% for codec in muxers %}
 {% if codec.is_muxer %}
-def {{ codec.safe_name }}(
+def {{codec.name | option_name_safe }}(
     {% for option in codec.options %}
-    {{ option.safe_name }}: {{ option.typing }} = None,
+    {{option.name| option_name_safe}}: {{option.code_gen_type}} = None,
     {% endfor %}
 ) -> FFMpegMuxerOption:
     """
-    {{codec.help}}
+    {{codec.description}}
     {% if codec.options | length > 0 %}
     Args:
     {%- for option in codec.options %}
-        {{ option.safe_name}}: {{ option.help }}
+        {{option.name | option_name_safe}}: {{option.help}}
     {%- endfor %}
     {%- endif %}
 
@@ -23,7 +23,7 @@ def {{ codec.safe_name }}(
     """
     return FFMpegMuxerOption(kwargs=merge({
         {% for option in codec.options %}
-        "{{ option.name}}": {{ option.safe_name }},
+        "{{ option.name}}": {{ option.name | option_name_safe }},
         {% endfor %}
     }))
 {% endif %}

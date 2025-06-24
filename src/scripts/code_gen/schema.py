@@ -77,9 +77,29 @@ class FFMpegFilterIR(FFMpegOptionSetIR):
     is_dynamic_input: bool
     is_dynamic_output: bool
 
+    input_stream_types: Literal["audio", "video", "mixed"]
+
     stream_typings_input: tuple[Literal["audio", "video"], ...]
     stream_typings_output: tuple[Literal["audio", "video"], ...]
 
+    ref: str
+
+    @property
+    def safe_name(self) -> str:
+        raise NotImplementedError()
+
     @property
     def return_typing(self) -> str:
+        raise NotImplementedError()
+
+    @property
+    def filter_option_typings(self) -> str:
+        raise NotImplementedError()
+
+    @property
+    def return_stream_typings(self) -> str:
+        raise NotImplementedError()
+
+    @property
+    def docstring(self) -> str:
         raise NotImplementedError()
