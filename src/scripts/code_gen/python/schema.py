@@ -1,15 +1,24 @@
-from ..schema import FFMpegCodecIR, FFMpegOptionIR
+from ..schema import FFMpegCodecIR, FFMpegOptionIR, FFMpegOptionChoiceIR
 from .utils import option_typing, safe_name
+from dataclasses import dataclass
 
+@dataclass(frozen=True, kw_only=True)
+class PythonFFMpegOptionChoice(FFMpegOptionChoiceIR):
+    ...
 
+@dataclass(frozen=True, kw_only=True)
 class PythonFFMpegCodec(FFMpegCodecIR):
+    @property
     def safe_name(self) -> str:
         return safe_name(self.name)
 
 
+@dataclass(frozen=True, kw_only=True)
 class PythonFFMpegOption(FFMpegOptionIR):
+    @property
     def safe_name(self) -> str:
         return safe_name(self.name)
 
+    @property
     def typing(self) -> str:
         return option_typing(self)

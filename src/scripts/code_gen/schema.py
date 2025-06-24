@@ -40,9 +40,10 @@ class FFMpegOptionIR:
     default: str | None
     choices: tuple[FFMpegOptionChoiceIR, ...] = ()
 
+    @property
     def safe_name(self) -> str:
         raise NotImplementedError()
-
+    @property
     def typing(self) -> str:
         raise NotImplementedError()
 
@@ -56,5 +57,6 @@ class FFMpegCodecIR:
     is_decoder: bool
     is_encoder: bool
 
+    @property
     def safe_name(self) -> str:
         raise NotImplementedError()
