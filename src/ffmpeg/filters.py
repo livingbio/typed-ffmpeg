@@ -32,40 +32,9 @@ def acrossfade(
     _crossfade1: AudioStream,
     *,
     nb_samples: Int = Default("44100"),
-    ns: Int = Default("44100"),
     duration: Duration = Default("0"),
-    d: Duration = Default("0"),
     overlap: Boolean = Default("true"),
-    o: Boolean = Default("true"),
     curve1: Int
-    | Literal[
-        "nofade",
-        "tri",
-        "qsin",
-        "esin",
-        "hsin",
-        "log",
-        "ipar",
-        "qua",
-        "cub",
-        "squ",
-        "cbr",
-        "par",
-        "exp",
-        "iqsin",
-        "ihsin",
-        "dese",
-        "desi",
-        "losi",
-        "sinc",
-        "isinc",
-        "quat",
-        "quatr",
-        "qsin2",
-        "hsin2",
-    ]
-    | Default = Default("tri"),
-    c1: Int
     | Literal[
         "nofade",
         "tri",
@@ -121,34 +90,6 @@ def acrossfade(
         "hsin2",
     ]
     | Default = Default("tri"),
-    c2: Int
-    | Literal[
-        "nofade",
-        "tri",
-        "qsin",
-        "esin",
-        "hsin",
-        "log",
-        "ipar",
-        "qua",
-        "cub",
-        "squ",
-        "cbr",
-        "par",
-        "exp",
-        "iqsin",
-        "ihsin",
-        "dese",
-        "desi",
-        "losi",
-        "sinc",
-        "isinc",
-        "quat",
-        "quatr",
-        "qsin2",
-        "hsin2",
-    ]
-    | Default = Default("tri"),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -157,15 +98,10 @@ def acrossfade(
 
     Args:
         nb_samples: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
-        ns: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
         duration: set cross fade duration (default 0)
-        d: set cross fade duration (default 0)
         overlap: overlap 1st stream end with 2nd stream start (default true)
-        o: overlap 1st stream end with 2nd stream start (default true)
         curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
-        c1: set fade curve type for 1st stream (from -1 to 22) (default tri)
         curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
-        c2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
 
     Returns:
         default: the audio stream
@@ -185,15 +121,10 @@ def acrossfade(
         **merge(
             {
                 "nb_samples": nb_samples,
-                "ns": ns,
                 "duration": duration,
-                "d": d,
                 "overlap": overlap,
-                "o": o,
                 "curve1": curve1,
-                "c1": c1,
                 "curve2": curve2,
-                "c2": c2,
             },
             extra_options,
         ),
@@ -204,7 +135,6 @@ def acrossfade(
 def ainterleave(
     *streams: AudioStream,
     nb_inputs: Int = Auto("len(streams)"),
-    n: Int = Default("2"),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default(
         "longest"
     ),
@@ -216,7 +146,6 @@ def ainterleave(
 
     Args:
         nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
-        n: set number of inputs (from 1 to INT_MAX) (default 2)
         duration: how to determine the end-of-stream (from 0 to 2) (default longest)
 
     Returns:
@@ -236,7 +165,6 @@ def ainterleave(
         **merge(
             {
                 "nb_inputs": nb_inputs,
-                "n": n,
                 "duration": duration,
             },
             extra_options,
@@ -1450,9 +1378,7 @@ def feedback(
     _feedin: VideoStream,
     *,
     x: Int = Default("0"),
-    y: Int = Default("0"),
     w: Int = Default("0"),
-    h: Int = Default("0"),
     extra_options: dict[str, Any] | None = None,
 ) -> tuple[
     VideoStream,
@@ -1464,9 +1390,7 @@ def feedback(
 
     Args:
         x: set top left crop position (from 0 to INT_MAX) (default 0)
-        y: set top left crop position (from 0 to INT_MAX) (default 0)
         w: set crop size (from 0 to INT_MAX) (default 0)
-        h: set crop size (from 0 to INT_MAX) (default 0)
 
     Returns:
         default: the video stream
@@ -1487,9 +1411,7 @@ def feedback(
         **merge(
             {
                 "x": x,
-                "y": y,
                 "w": w,
-                "h": h,
             },
             extra_options,
         ),
@@ -1510,7 +1432,6 @@ def fieldmatch(
     field: Int | Literal["auto", "bottom", "top"] | Default = Default("auto"),
     mchroma: Boolean = Default("true"),
     y0: Int = Default("0"),
-    y1: Int = Default("0"),
     scthresh: Double = Default("12"),
     combmatch: Int | Literal["none", "sc", "full"] | Default = Default("sc"),
     combdbg: Int | Literal["none", "pcn", "pcnub"] | Default = Default("none"),
@@ -1532,7 +1453,6 @@ def fieldmatch(
         field: set the field to match from (from -1 to 1) (default auto)
         mchroma: set whether or not chroma is included during the match comparisons (default true)
         y0: define an exclusion band which excludes the lines between y0 and y1 from the field matching decision (from 0 to INT_MAX) (default 0)
-        y1: define an exclusion band which excludes the lines between y0 and y1 from the field matching decision (from 0 to INT_MAX) (default 0)
         scthresh: set scene change detection threshold (from 0 to 100) (default 12)
         combmatch: set combmatching mode (from 0 to 2) (default sc)
         combdbg: enable comb debug (from 0 to 2) (default none)
@@ -1564,7 +1484,6 @@ def fieldmatch(
                 "field": field,
                 "mchroma": mchroma,
                 "y0": y0,
-                "y1": y1,
                 "scthresh": scthresh,
                 "combmatch": combmatch,
                 "combdbg": combdbg,
@@ -1963,7 +1882,6 @@ def identity(
 def interleave(
     *streams: VideoStream,
     nb_inputs: Int = Auto("len(streams)"),
-    n: Int = Default("2"),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default(
         "longest"
     ),
@@ -1975,7 +1893,6 @@ def interleave(
 
     Args:
         nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
-        n: set number of inputs (from 1 to INT_MAX) (default 2)
         duration: how to determine the end-of-stream (from 0 to 2) (default longest)
 
     Returns:
@@ -1995,7 +1912,6 @@ def interleave(
         **merge(
             {
                 "nb_inputs": nb_inputs,
-                "n": n,
                 "duration": duration,
             },
             extra_options,
@@ -2049,19 +1965,12 @@ def join(
 def ladspa(
     *streams: AudioStream,
     file: String = Default(None),
-    f: String = Default(None),
     plugin: String = Default(None),
-    p: String = Default(None),
     controls: String = Default(None),
-    c: String = Default(None),
     sample_rate: Int = Default("44100"),
-    s: Int = Default("44100"),
     nb_samples: Int = Default("1024"),
-    n: Int = Default("1024"),
     duration: Duration = Default("-0"),
-    d: Duration = Default("-0"),
     latency: Boolean = Default("false"),
-    l: Boolean = Default("false"),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -2070,19 +1979,12 @@ def ladspa(
 
     Args:
         file: set library name or full path
-        f: set library name or full path
         plugin: set plugin name
-        p: set plugin name
         controls: set plugin options
-        c: set plugin options
         sample_rate: set sample rate (from 1 to INT_MAX) (default 44100)
-        s: set sample rate (from 1 to INT_MAX) (default 44100)
         nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
-        n: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
         duration: set audio duration (default -0.000001)
-        d: set audio duration (default -0.000001)
         latency: enable latency compensation (default false)
-        l: enable latency compensation (default false)
 
     Returns:
         default: the audio stream
@@ -2099,19 +2001,12 @@ def ladspa(
         **merge(
             {
                 "file": file,
-                "f": f,
                 "plugin": plugin,
-                "p": p,
                 "controls": controls,
-                "c": c,
                 "sample_rate": sample_rate,
-                "s": s,
                 "nb_samples": nb_samples,
-                "n": n,
                 "duration": duration,
-                "d": d,
                 "latency": latency,
-                "l": l,
             },
             extra_options,
         ),
@@ -2571,15 +2466,10 @@ def lut2(
 def lv2(
     *streams: AudioStream,
     plugin: String = Default(None),
-    p: String = Default(None),
     controls: String = Default(None),
-    c: String = Default(None),
     sample_rate: Int = Default("44100"),
-    s: Int = Default("44100"),
     nb_samples: Int = Default("1024"),
-    n: Int = Default("1024"),
     duration: Duration = Default("-0"),
-    d: Duration = Default("-0"),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -2588,15 +2478,10 @@ def lv2(
 
     Args:
         plugin: set plugin uri
-        p: set plugin uri
         controls: set plugin options
-        c: set plugin options
         sample_rate: set sample rate (from 1 to INT_MAX) (default 44100)
-        s: set sample rate (from 1 to INT_MAX) (default 44100)
         nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
-        n: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
         duration: set audio duration (default -0.000001)
-        d: set audio duration (default -0.000001)
 
     Returns:
         default: the audio stream
@@ -2613,15 +2498,10 @@ def lv2(
         **merge(
             {
                 "plugin": plugin,
-                "p": p,
                 "controls": controls,
-                "c": c,
                 "sample_rate": sample_rate,
-                "s": s,
                 "nb_samples": nb_samples,
-                "n": n,
                 "duration": duration,
-                "d": d,
             },
             extra_options,
         ),
@@ -3435,7 +3315,6 @@ def program_opencl(
     kernel: String = Default(None),
     inputs: Int = Default("1"),
     size: Image_size = Default(None),
-    s: Image_size = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3447,7 +3326,6 @@ def program_opencl(
         kernel: Kernel name in program
         inputs: Number of inputs (from 1 to INT_MAX) (default 1)
         size: Video size
-        s: Video size
 
     Returns:
         default: the video stream
@@ -3469,7 +3347,6 @@ def program_opencl(
                 "kernel": kernel,
                 "inputs": inputs,
                 "size": size,
-                "s": s,
             },
             extra_options,
         ),
@@ -3482,7 +3359,6 @@ def psnr(
     _reference: VideoStream,
     *,
     stats_file: String = Default(None),
-    f: String = Default(None),
     stats_version: Int = Default("1"),
     output_max: Boolean = Default("false"),
     extra_options: dict[str, Any] | None = None,
@@ -3493,7 +3369,6 @@ def psnr(
 
     Args:
         stats_file: Set file where to store per-frame difference information
-        f: Set file where to store per-frame difference information
         stats_version: Set the format version for the stats file. (from 1 to 2) (default 1)
         output_max: Add raw stats (max values) to the output log. (default false)
 
@@ -3513,7 +3388,6 @@ def psnr(
         **merge(
             {
                 "stats_file": stats_file,
-                "f": f,
                 "stats_version": stats_version,
                 "output_max": output_max,
             },
@@ -3906,7 +3780,6 @@ def ssim(
     _reference: VideoStream,
     *,
     stats_file: String = Default(None),
-    f: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3915,7 +3788,6 @@ def ssim(
 
     Args:
         stats_file: Set file where to store per-frame difference information
-        f: Set file where to store per-frame difference information
 
     Returns:
         default: the video stream
@@ -3933,7 +3805,6 @@ def ssim(
         **merge(
             {
                 "stats_file": stats_file,
-                "f": f,
             },
             extra_options,
         ),

@@ -17449,18 +17449,6 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "0",
-        "flags": ".D.........",
-        "help": "(from 0 to INT_MAX) (default 0)",
-        "max": null,
-        "min": null,
-        "name": "frame_size",
-        "section": "sbg_demuxer AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
         "default": "5000000",
         "flags": ".D.........",
         "help": "(from 0 to INT_MAX) (default 5000000)",

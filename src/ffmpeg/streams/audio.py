@@ -34,19 +34,13 @@ class AudioStream(FilterableStream):
         self,
         *,
         rate: Video_rate = Default(None),
-        r: Video_rate = Default(None),
         size: Image_size = Default(None),
-        s: Image_size = Default(None),
         fov: Float = Default("90"),
         roll: Float = Default("0"),
         pitch: Float = Default("0"),
         yaw: Float = Default("0"),
         xzoom: Float = Default("1"),
-        yzoom: Float = Default("1"),
-        zzoom: Float = Default("1"),
         xpos: Float = Default("0"),
-        ypos: Float = Default("0"),
-        zpos: Float = Default("0"),
         length: Int = Default("15"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
@@ -56,19 +50,13 @@ class AudioStream(FilterableStream):
 
         Args:
             rate: set video rate (default "25")
-            r: set video rate (default "25")
             size: set video size (default "hd720")
-            s: set video size (default "hd720")
             fov: set camera FoV (from 40 to 150) (default 90)
             roll: set camera roll (from -180 to 180) (default 0)
             pitch: set camera pitch (from -180 to 180) (default 0)
             yaw: set camera yaw (from -180 to 180) (default 0)
             xzoom: set camera zoom (from 0.01 to 10) (default 1)
-            yzoom: set camera zoom (from 0.01 to 10) (default 1)
-            zzoom: set camera zoom (from 0.01 to 10) (default 1)
             xpos: set camera position (from -60 to 60) (default 0)
-            ypos: set camera position (from -60 to 60) (default 0)
-            zpos: set camera position (from -60 to 60) (default 0)
             length: set length (from 1 to 60) (default 15)
 
         Returns:
@@ -86,19 +74,13 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "rate": rate,
-                    "r": r,
                     "size": size,
-                    "s": s,
                     "fov": fov,
                     "roll": roll,
                     "pitch": pitch,
                     "yaw": yaw,
                     "xzoom": xzoom,
-                    "yzoom": yzoom,
-                    "zzoom": zzoom,
                     "xpos": xpos,
-                    "ypos": ypos,
-                    "zpos": zpos,
                     "length": length,
                 },
                 extra_options,
@@ -144,12 +126,9 @@ class AudioStream(FilterableStream):
         self,
         *,
         rate: Video_rate = Default(None),
-        r: Video_rate = Default(None),
         size: Image_size = Default(None),
-        s: Image_size = Default(None),
         colors: String = Default(None),
         mode: Int | Literal["bars", "trace"] | Default = Default("bars"),
-        m: Int | Literal["bars", "trace"] | Default = Default("bars"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -158,12 +137,9 @@ class AudioStream(FilterableStream):
 
         Args:
             rate: set video rate (default "25")
-            r: set video rate (default "25")
             size: set video size (default "1024x256")
-            s: set video size (default "1024x256")
             colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
             mode: set output mode (from 0 to 1) (default bars)
-            m: set output mode (from 0 to 1) (default bars)
 
         Returns:
             default: the video stream
@@ -180,12 +156,9 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "rate": rate,
-                    "r": r,
                     "size": size,
-                    "s": s,
                     "colors": colors,
                     "mode": mode,
-                    "m": m,
                 },
                 extra_options,
             ),
@@ -322,40 +295,9 @@ class AudioStream(FilterableStream):
         _crossfade1: AudioStream,
         *,
         nb_samples: Int = Default("44100"),
-        ns: Int = Default("44100"),
         duration: Duration = Default("0"),
-        d: Duration = Default("0"),
         overlap: Boolean = Default("true"),
-        o: Boolean = Default("true"),
         curve1: Int
-        | Literal[
-            "nofade",
-            "tri",
-            "qsin",
-            "esin",
-            "hsin",
-            "log",
-            "ipar",
-            "qua",
-            "cub",
-            "squ",
-            "cbr",
-            "par",
-            "exp",
-            "iqsin",
-            "ihsin",
-            "dese",
-            "desi",
-            "losi",
-            "sinc",
-            "isinc",
-            "quat",
-            "quatr",
-            "qsin2",
-            "hsin2",
-        ]
-        | Default = Default("tri"),
-        c1: Int
         | Literal[
             "nofade",
             "tri",
@@ -411,34 +353,6 @@ class AudioStream(FilterableStream):
             "hsin2",
         ]
         | Default = Default("tri"),
-        c2: Int
-        | Literal[
-            "nofade",
-            "tri",
-            "qsin",
-            "esin",
-            "hsin",
-            "log",
-            "ipar",
-            "qua",
-            "cub",
-            "squ",
-            "cbr",
-            "par",
-            "exp",
-            "iqsin",
-            "ihsin",
-            "dese",
-            "desi",
-            "losi",
-            "sinc",
-            "isinc",
-            "quat",
-            "quatr",
-            "qsin2",
-            "hsin2",
-        ]
-        | Default = Default("tri"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -447,15 +361,10 @@ class AudioStream(FilterableStream):
 
         Args:
             nb_samples: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
-            ns: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
             duration: set cross fade duration (default 0)
-            d: set cross fade duration (default 0)
             overlap: overlap 1st stream end with 2nd stream start (default true)
-            o: overlap 1st stream end with 2nd stream start (default true)
             curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
-            c1: set fade curve type for 1st stream (from -1 to 22) (default tri)
             curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
-            c2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
 
         Returns:
             default: the audio stream
@@ -475,15 +384,10 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "nb_samples": nb_samples,
-                    "ns": ns,
                     "duration": duration,
-                    "d": d,
                     "overlap": overlap,
-                    "o": o,
                     "curve1": curve1,
-                    "c1": c1,
                     "curve2": curve2,
-                    "c2": c2,
                 },
                 extra_options,
             ),
@@ -652,17 +556,11 @@ class AudioStream(FilterableStream):
         self,
         *,
         window: Double = Default("55"),
-        w: Double = Default("55"),
         overlap: Double = Default("75"),
-        o: Double = Default("75"),
         arorder: Double = Default("2"),
-        a: Double = Default("2"),
         threshold: Double = Default("2"),
-        t: Double = Default("2"),
         burst: Double = Default("2"),
-        b: Double = Default("2"),
         method: Int | Literal["add", "a", "save", "s"] | Default = Default("add"),
-        m: Int | Literal["add", "a", "save", "s"] | Default = Default("add"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -671,17 +569,11 @@ class AudioStream(FilterableStream):
 
         Args:
             window: set window size (from 10 to 100) (default 55)
-            w: set window size (from 10 to 100) (default 55)
             overlap: set window overlap (from 50 to 95) (default 75)
-            o: set window overlap (from 50 to 95) (default 75)
             arorder: set autoregression order (from 0 to 25) (default 2)
-            a: set autoregression order (from 0 to 25) (default 2)
             threshold: set threshold (from 1 to 100) (default 2)
-            t: set threshold (from 1 to 100) (default 2)
             burst: set burst fusion (from 0 to 10) (default 2)
-            b: set burst fusion (from 0 to 10) (default 2)
             method: set overlap method (from 0 to 1) (default add)
-            m: set overlap method (from 0 to 1) (default add)
 
         Returns:
             default: the audio stream
@@ -698,17 +590,11 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "window": window,
-                    "w": w,
                     "overlap": overlap,
-                    "o": o,
                     "arorder": arorder,
-                    "a": a,
                     "threshold": threshold,
-                    "t": t,
                     "burst": burst,
-                    "b": b,
                     "method": method,
-                    "m": m,
                 },
                 extra_options,
             ),
@@ -719,17 +605,11 @@ class AudioStream(FilterableStream):
         self,
         *,
         window: Double = Default("55"),
-        w: Double = Default("55"),
         overlap: Double = Default("75"),
-        o: Double = Default("75"),
         arorder: Double = Default("8"),
-        a: Double = Default("8"),
         threshold: Double = Default("10"),
-        t: Double = Default("10"),
         hsize: Int = Default("1000"),
-        n: Int = Default("1000"),
         method: Int | Literal["add", "a", "save", "s"] | Default = Default("add"),
-        m: Int | Literal["add", "a", "save", "s"] | Default = Default("add"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -738,17 +618,11 @@ class AudioStream(FilterableStream):
 
         Args:
             window: set window size (from 10 to 100) (default 55)
-            w: set window size (from 10 to 100) (default 55)
             overlap: set window overlap (from 50 to 95) (default 75)
-            o: set window overlap (from 50 to 95) (default 75)
             arorder: set autoregression order (from 0 to 25) (default 8)
-            a: set autoregression order (from 0 to 25) (default 8)
             threshold: set threshold (from 1 to 100) (default 10)
-            t: set threshold (from 1 to 100) (default 10)
             hsize: set histogram size (from 100 to 9999) (default 1000)
-            n: set histogram size (from 100 to 9999) (default 1000)
             method: set overlap method (from 0 to 1) (default add)
-            m: set overlap method (from 0 to 1) (default add)
 
         Returns:
             default: the audio stream
@@ -765,17 +639,11 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "window": window,
-                    "w": w,
                     "overlap": overlap,
-                    "o": o,
                     "arorder": arorder,
-                    "a": a,
                     "threshold": threshold,
-                    "t": t,
                     "hsize": hsize,
-                    "n": n,
                     "method": method,
-                    "m": m,
                 },
                 extra_options,
             ),
@@ -936,9 +804,7 @@ class AudioStream(FilterableStream):
         | Literal["frame", "replace", "scroll", "rscroll", "picture"]
         | Default = Default("frame"),
         size: Image_size = Default(None),
-        s: Image_size = Default(None),
         rate: Video_rate = Default(None),
-        r: Video_rate = Default(None),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -960,9 +826,7 @@ class AudioStream(FilterableStream):
             mode: set graph mode (from 0 to 2) (default line)
             slide: set slide mode (from 0 to 4) (default frame)
             size: set graph size (default "900x256")
-            s: set graph size (default "900x256")
             rate: set video rate (default "25")
-            r: set video rate (default "25")
 
         Returns:
             default: the video stream
@@ -992,9 +856,7 @@ class AudioStream(FilterableStream):
                     "mode": mode,
                     "slide": slide,
                     "size": size,
-                    "s": s,
                     "rate": rate,
-                    "r": r,
                 },
                 extra_options,
             ),
@@ -1263,7 +1125,6 @@ class AudioStream(FilterableStream):
         *,
         exprs: String = Default(None),
         channel_layout: String = Default(None),
-        c: String = Default(None),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -1273,7 +1134,6 @@ class AudioStream(FilterableStream):
         Args:
             exprs: set the '|'-separated list of channels expressions
             channel_layout: set channel layout
-            c: set channel layout
 
         Returns:
             default: the audio stream
@@ -1291,7 +1151,6 @@ class AudioStream(FilterableStream):
                 {
                     "exprs": exprs,
                     "channel_layout": channel_layout,
-                    "c": c,
                 },
                 extra_options,
             ),
@@ -1357,44 +1216,11 @@ class AudioStream(FilterableStream):
         self,
         *,
         type: Int | Literal["in", "out"] | Default = Default("in"),
-        t: Int | Literal["in", "out"] | Default = Default("in"),
         start_sample: Int64 = Default("0"),
-        ss: Int64 = Default("0"),
         nb_samples: Int64 = Default("44100"),
-        ns: Int64 = Default("44100"),
         start_time: Duration = Default("0"),
-        st: Duration = Default("0"),
         duration: Duration = Default("0"),
-        d: Duration = Default("0"),
         curve: Int
-        | Literal[
-            "nofade",
-            "tri",
-            "qsin",
-            "esin",
-            "hsin",
-            "log",
-            "ipar",
-            "qua",
-            "cub",
-            "squ",
-            "cbr",
-            "par",
-            "exp",
-            "iqsin",
-            "ihsin",
-            "dese",
-            "desi",
-            "losi",
-            "sinc",
-            "isinc",
-            "quat",
-            "quatr",
-            "qsin2",
-            "hsin2",
-        ]
-        | Default = Default("tri"),
-        c: Int
         | Literal[
             "nofade",
             "tri",
@@ -1432,17 +1258,11 @@ class AudioStream(FilterableStream):
 
         Args:
             type: set the fade direction (from 0 to 1) (default in)
-            t: set the fade direction (from 0 to 1) (default in)
             start_sample: set number of first sample to start fading (from 0 to I64_MAX) (default 0)
-            ss: set number of first sample to start fading (from 0 to I64_MAX) (default 0)
             nb_samples: set number of samples for fade duration (from 1 to I64_MAX) (default 44100)
-            ns: set number of samples for fade duration (from 1 to I64_MAX) (default 44100)
             start_time: set time to start fading (default 0)
-            st: set time to start fading (default 0)
             duration: set fade duration (default 0)
-            d: set fade duration (default 0)
             curve: set fade curve type (from -1 to 22) (default tri)
-            c: set fade curve type (from -1 to 22) (default tri)
             silence: set the silence gain (from 0 to 1) (default 0)
             unity: set the unity gain (from 0 to 1) (default 1)
 
@@ -1461,17 +1281,11 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "type": type,
-                    "t": t,
                     "start_sample": start_sample,
-                    "ss": ss,
                     "nb_samples": nb_samples,
-                    "ns": ns,
                     "start_time": start_time,
-                    "st": st,
                     "duration": duration,
-                    "d": d,
                     "curve": curve,
-                    "c": c,
                     "silence": silence,
                     "unity": unity,
                 },
@@ -1484,47 +1298,27 @@ class AudioStream(FilterableStream):
         self,
         *,
         noise_reduction: Float = Default("12"),
-        nr: Float = Default("12"),
         noise_floor: Float = Default("-50"),
-        nf: Float = Default("-50"),
         noise_type: Int
         | Literal["white", "w", "vinyl", "v", "shellac", "s", "custom", "c"]
         | Default = Default("white"),
-        nt: Int
-        | Literal["white", "w", "vinyl", "v", "shellac", "s", "custom", "c"]
-        | Default = Default("white"),
         band_noise: String = Default(None),
-        bn: String = Default(None),
         residual_floor: Float = Default("-38"),
-        rf: Float = Default("-38"),
         track_noise: Boolean = Default("false"),
-        tn: Boolean = Default("false"),
         track_residual: Boolean = Default("false"),
-        tr: Boolean = Default("false"),
         output_mode: Int
         | Literal["input", "i", "output", "o", "noise", "n"]
         | Default = Default("output"),
-        om: Int
-        | Literal["input", "i", "output", "o", "noise", "n"]
-        | Default = Default("output"),
         adaptivity: Float = Default("0"),
-        ad: Float = Default("0"),
         floor_offset: Float = Default("1"),
-        fo: Float = Default("1"),
         noise_link: Int | Literal["none", "min", "max", "average"] | Default = Default(
             "min"
         ),
-        nl: Int | Literal["none", "min", "max", "average"] | Default = Default("min"),
         band_multiplier: Float = Default("1"),
-        bm: Float = Default("1"),
         sample_noise: Int
         | Literal["none", "start", "begin", "stop", "end"]
         | Default = Default("none"),
-        sn: Int | Literal["none", "start", "begin", "stop", "end"] | Default = Default(
-            "none"
-        ),
         gain_smooth: Int = Default("0"),
-        gs: Int = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -1533,33 +1327,19 @@ class AudioStream(FilterableStream):
 
         Args:
             noise_reduction: set the noise reduction (from 0.01 to 97) (default 12)
-            nr: set the noise reduction (from 0.01 to 97) (default 12)
             noise_floor: set the noise floor (from -80 to -20) (default -50)
-            nf: set the noise floor (from -80 to -20) (default -50)
             noise_type: set the noise type (from 0 to 3) (default white)
-            nt: set the noise type (from 0 to 3) (default white)
             band_noise: set the custom bands noise
-            bn: set the custom bands noise
             residual_floor: set the residual floor (from -80 to -20) (default -38)
-            rf: set the residual floor (from -80 to -20) (default -38)
             track_noise: track noise (default false)
-            tn: track noise (default false)
             track_residual: track residual (default false)
-            tr: track residual (default false)
             output_mode: set output mode (from 0 to 2) (default output)
-            om: set output mode (from 0 to 2) (default output)
             adaptivity: set adaptivity factor (from 0 to 1) (default 0.5)
-            ad: set adaptivity factor (from 0 to 1) (default 0.5)
             floor_offset: set noise floor offset factor (from -2 to 2) (default 1)
-            fo: set noise floor offset factor (from -2 to 2) (default 1)
             noise_link: set the noise floor link (from 0 to 3) (default min)
-            nl: set the noise floor link (from 0 to 3) (default min)
             band_multiplier: set band multiplier (from 0.2 to 5) (default 1.25)
-            bm: set band multiplier (from 0.2 to 5) (default 1.25)
             sample_noise: set sample noise mode (from 0 to 2) (default none)
-            sn: set sample noise mode (from 0 to 2) (default none)
             gain_smooth: set gain smooth radius (from 0 to 50) (default 0)
-            gs: set gain smooth radius (from 0 to 50) (default 0)
 
         Returns:
             default: the audio stream
@@ -1576,33 +1356,19 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "noise_reduction": noise_reduction,
-                    "nr": nr,
                     "noise_floor": noise_floor,
-                    "nf": nf,
                     "noise_type": noise_type,
-                    "nt": nt,
                     "band_noise": band_noise,
-                    "bn": bn,
                     "residual_floor": residual_floor,
-                    "rf": rf,
                     "track_noise": track_noise,
-                    "tn": tn,
                     "track_residual": track_residual,
-                    "tr": tr,
                     "output_mode": output_mode,
-                    "om": om,
                     "adaptivity": adaptivity,
-                    "ad": ad,
                     "floor_offset": floor_offset,
-                    "fo": fo,
                     "noise_link": noise_link,
-                    "nl": nl,
                     "band_multiplier": band_multiplier,
-                    "bm": bm,
                     "sample_noise": sample_noise,
-                    "sn": sn,
                     "gain_smooth": gain_smooth,
-                    "gs": gs,
                 },
                 extra_options,
             ),
@@ -1684,11 +1450,8 @@ class AudioStream(FilterableStream):
         self,
         *,
         sample_fmts: String = Default(None),
-        f: String = Default(None),
         sample_rates: String = Default(None),
-        r: String = Default(None),
         channel_layouts: String = Default(None),
-        cl: String = Default(None),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -1697,11 +1460,8 @@ class AudioStream(FilterableStream):
 
         Args:
             sample_fmts: A '|'-separated list of sample formats.
-            f: A '|'-separated list of sample formats.
             sample_rates: A '|'-separated list of sample rates.
-            r: A '|'-separated list of sample rates.
             channel_layouts: A '|'-separated list of channel layouts.
-            cl: A '|'-separated list of channel layouts.
 
         Returns:
             default: the audio stream
@@ -1718,11 +1478,8 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "sample_fmts": sample_fmts,
-                    "f": f,
                     "sample_rates": sample_rates,
-                    "r": r,
                     "channel_layouts": channel_layouts,
-                    "cl": cl,
                 },
                 extra_options,
             ),
@@ -1897,13 +1654,8 @@ class AudioStream(FilterableStream):
         self,
         *,
         size: Image_size = Default(None),
-        s: Image_size = Default(None),
         opacity: Float = Default("0"),
-        o: Float = Default("0"),
         mode: Flags
-        | Literal["full", "compact", "nozero", "noeof", "nodisabled"]
-        | Default = Default("0"),
-        m: Flags
         | Literal["full", "compact", "nozero", "noeof", "nodisabled"]
         | Default = Default("0"),
         flags: Flags
@@ -1929,31 +1681,7 @@ class AudioStream(FilterableStream):
             "disabled",
         ]
         | Default = Default("all"),
-        f: Flags
-        | Literal[
-            "none",
-            "all",
-            "queue",
-            "frame_count_in",
-            "frame_count_out",
-            "frame_count_delta",
-            "pts",
-            "pts_delta",
-            "time",
-            "time_delta",
-            "timebase",
-            "format",
-            "size",
-            "rate",
-            "eof",
-            "sample_count_in",
-            "sample_count_out",
-            "sample_count_delta",
-            "disabled",
-        ]
-        | Default = Default("all"),
         rate: Video_rate = Default(None),
-        r: Video_rate = Default(None),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -1962,15 +1690,10 @@ class AudioStream(FilterableStream):
 
         Args:
             size: set monitor size (default "hd720")
-            s: set monitor size (default "hd720")
             opacity: set video opacity (from 0 to 1) (default 0.9)
-            o: set video opacity (from 0 to 1) (default 0.9)
             mode: set mode (default 0)
-            m: set mode (default 0)
             flags: set flags (default all+queue)
-            f: set flags (default all+queue)
             rate: set video rate (default "25")
-            r: set video rate (default "25")
 
         Returns:
             default: the video stream
@@ -1989,15 +1712,10 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "size": size,
-                    "s": s,
                     "opacity": opacity,
-                    "o": o,
                     "mode": mode,
-                    "m": m,
                     "flags": flags,
-                    "f": f,
                     "rate": rate,
-                    "r": r,
                 },
                 extra_options,
             ),
@@ -2009,9 +1727,7 @@ class AudioStream(FilterableStream):
         *,
         dmode: Int | Literal["single", "separate"] | Default = Default("single"),
         rate: Video_rate = Default(None),
-        r: Video_rate = Default(None),
         size: Image_size = Default(None),
-        s: Image_size = Default(None),
         scale: Int | Literal["log", "sqrt", "cbrt", "lin", "rlog"] | Default = Default(
             "log"
         ),
@@ -2029,9 +1745,7 @@ class AudioStream(FilterableStream):
         Args:
             dmode: set method to display channels (from 0 to 1) (default single)
             rate: set video rate (default "25")
-            r: set video rate (default "25")
             size: set video size (default "hd720")
-            s: set video size (default "hd720")
             scale: set display scale (from 0 to 4) (default log)
             ascale: set amplitude scale (from 0 to 1) (default log)
             acount: how much frames to accumulate (from -1 to 100) (default 1)
@@ -2055,9 +1769,7 @@ class AudioStream(FilterableStream):
                 {
                     "dmode": dmode,
                     "rate": rate,
-                    "r": r,
                     "size": size,
-                    "s": s,
                     "scale": scale,
                     "ascale": ascale,
                     "acount": acount,
@@ -2074,25 +1786,17 @@ class AudioStream(FilterableStream):
         self,
         *,
         zeros: String = Default(None),
-        z: String = Default(None),
         poles: String = Default(None),
-        p: String = Default(None),
         gains: String = Default(None),
-        k: String = Default(None),
         dry: Double = Default("1"),
         wet: Double = Default("1"),
         format: Int
         | Literal["ll", "sf", "tf", "zp", "pr", "pd", "sp"]
         | Default = Default("zp"),
-        f: Int | Literal["ll", "sf", "tf", "zp", "pr", "pd", "sp"] | Default = Default(
-            "zp"
-        ),
         process: Int | Literal["d", "s", "p"] | Default = Default("s"),
-        r: Int | Literal["d", "s", "p"] | Default = Default("s"),
         precision: Int | Literal["dbl", "flt", "i32", "i16"] | Default = Default("dbl"),
         e: Int | Literal["dbl", "flt", "i32", "i16"] | Default = Default("dbl"),
         normalize: Boolean = Default("true"),
-        n: Boolean = Default("true"),
         mix: Double = Default("1"),
         response: Boolean = Default("false"),
         channel: Int = Default("0"),
@@ -2106,21 +1810,15 @@ class AudioStream(FilterableStream):
 
         Args:
             zeros: set B/numerator/zeros/reflection coefficients (default "1+0i 1-0i")
-            z: set B/numerator/zeros/reflection coefficients (default "1+0i 1-0i")
             poles: set A/denominator/poles/ladder coefficients (default "1+0i 1-0i")
-            p: set A/denominator/poles/ladder coefficients (default "1+0i 1-0i")
             gains: set channels gains (default "1|1")
-            k: set channels gains (default "1|1")
             dry: set dry gain (from 0 to 1) (default 1)
             wet: set wet gain (from 0 to 1) (default 1)
             format: set coefficients format (from -2 to 4) (default zp)
-            f: set coefficients format (from -2 to 4) (default zp)
             process: set kind of processing (from 0 to 2) (default s)
-            r: set kind of processing (from 0 to 2) (default s)
             precision: set filtering precision (from 0 to 3) (default dbl)
             e: set precision (from 0 to 3) (default dbl)
             normalize: normalize coefficients (default true)
-            n: normalize coefficients (default true)
             mix: set mix (from 0 to 1) (default 1)
             response: show IR frequency response (default false)
             channel: set IR channel to display frequency response (from 0 to 1024) (default 0)
@@ -2145,21 +1843,15 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "zeros": zeros,
-                    "z": z,
                     "poles": poles,
-                    "p": p,
                     "gains": gains,
-                    "k": k,
                     "dry": dry,
                     "wet": wet,
                     "format": format,
-                    "f": f,
                     "process": process,
-                    "r": r,
                     "precision": precision,
                     "e": e,
                     "normalize": normalize,
-                    "n": n,
                     "mix": mix,
                     "response": response,
                     "channel": channel,
@@ -2282,31 +1974,18 @@ class AudioStream(FilterableStream):
         self,
         *,
         frequency: Double = Default("3000"),
-        f: Double = Default("3000"),
         width_type: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
-        t: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
         width: Double = Default("0"),
-        w: Double = Default("0"),
         mix: Double = Default("1"),
-        m: Double = Default("1"),
         channels: String = Default(None),
-        c: String = Default(None),
         normalize: Boolean = Default("false"),
-        n: Boolean = Default("false"),
         order: Int = Default("2"),
-        o: Int = Default("2"),
         transform: Int
-        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
-        | Default = Default("di"),
-        a: Int
         | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
         | Default = Default("di"),
         precision: Int
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
-        r: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(
-            "auto"
-        ),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -2315,23 +1994,14 @@ class AudioStream(FilterableStream):
 
         Args:
             frequency: set central frequency (from 0 to 999999) (default 3000)
-            f: set central frequency (from 0 to 999999) (default 3000)
             width_type: set filter-width type (from 1 to 5) (default q)
-            t: set filter-width type (from 1 to 5) (default q)
             width: set width (from 0 to 99999) (default 0.707)
-            w: set width (from 0 to 99999) (default 0.707)
             mix: set mix (from 0 to 1) (default 1)
-            m: set mix (from 0 to 1) (default 1)
             channels: set channels to filter (default "all")
-            c: set channels to filter (default "all")
             normalize: normalize coefficients (default false)
-            n: normalize coefficients (default false)
             order: set filter order (from 1 to 2) (default 2)
-            o: set filter order (from 1 to 2) (default 2)
             transform: set transform type (from 0 to 6) (default di)
-            a: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
-            r: set filtering precision (from -1 to 3) (default auto)
 
         Returns:
             default: the audio stream
@@ -2348,23 +2018,14 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "frequency": frequency,
-                    "f": f,
                     "width_type": width_type,
-                    "t": t,
                     "width": width,
-                    "w": w,
                     "mix": mix,
-                    "m": m,
                     "channels": channels,
-                    "c": c,
                     "normalize": normalize,
-                    "n": n,
                     "order": order,
-                    "o": o,
                     "transform": transform,
-                    "a": a,
                     "precision": precision,
-                    "r": r,
                 },
                 extra_options,
             ),
@@ -2557,15 +2218,10 @@ class AudioStream(FilterableStream):
         self,
         *,
         strength: Float = Default("1e-05"),
-        s: Float = Default("1e-05"),
         patch: Duration = Default("0"),
-        p: Duration = Default("0"),
         research: Duration = Default("0"),
-        r: Duration = Default("0"),
         output: Int | Literal["i", "o", "n"] | Default = Default("o"),
-        o: Int | Literal["i", "o", "n"] | Default = Default("o"),
         smooth: Float = Default("11"),
-        m: Float = Default("11"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -2574,15 +2230,10 @@ class AudioStream(FilterableStream):
 
         Args:
             strength: set denoising strength (from 1e-05 to 10000) (default 1e-05)
-            s: set denoising strength (from 1e-05 to 10000) (default 1e-05)
             patch: set patch duration (default 0.002)
-            p: set patch duration (default 0.002)
             research: set research duration (default 0.006)
-            r: set research duration (default 0.006)
             output: set output mode (from 0 to 2) (default o)
-            o: set output mode (from 0 to 2) (default o)
             smooth: set smooth factor (from 1 to 1000) (default 11)
-            m: set smooth factor (from 1 to 1000) (default 11)
 
         Returns:
             default: the audio stream
@@ -2599,15 +2250,10 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "strength": strength,
-                    "s": s,
                     "patch": patch,
-                    "p": p,
                     "research": research,
-                    "r": r,
                     "output": output,
-                    "o": o,
                     "smooth": smooth,
-                    "m": m,
                 },
                 extra_options,
             ),
@@ -2827,9 +2473,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         rate: Video_rate = Default(None),
-        r: Video_rate = Default(None),
         size: Image_size = Default(None),
-        s: Image_size = Default(None),
         rc: Int = Default("2"),
         gc: Int = Default("7"),
         bc: Int = Default("1"),
@@ -2837,11 +2481,8 @@ class AudioStream(FilterableStream):
         video: Boolean = Default("true"),
         phasing: Boolean = Default("false"),
         tolerance: Float = Default("0"),
-        t: Float = Default("0"),
         angle: Float = Default("170"),
-        a: Float = Default("170"),
         duration: Duration = Default("2"),
-        d: Duration = Default("2"),
         extra_options: dict[str, Any] | None = None,
     ) -> FilterNode:
         """
@@ -2850,9 +2491,7 @@ class AudioStream(FilterableStream):
 
         Args:
             rate: set video rate (default "25")
-            r: set video rate (default "25")
             size: set video size (default "800x400")
-            s: set video size (default "800x400")
             rc: set red contrast (from 0 to 255) (default 2)
             gc: set green contrast (from 0 to 255) (default 7)
             bc: set blue contrast (from 0 to 255) (default 1)
@@ -2860,11 +2499,8 @@ class AudioStream(FilterableStream):
             video: set video output (default true)
             phasing: set mono and out-of-phase detection output (default false)
             tolerance: set phase tolerance for mono detection (from 0 to 1) (default 0)
-            t: set phase tolerance for mono detection (from 0 to 1) (default 0)
             angle: set angle threshold for out-of-phase detection (from 90 to 180) (default 170)
-            a: set angle threshold for out-of-phase detection (from 90 to 180) (default 170)
             duration: set minimum mono or out-of-phase duration in seconds (default 2)
-            d: set minimum mono or out-of-phase duration in seconds (default 2)
 
         Returns:
             filter_node: the filter node
@@ -2884,9 +2520,7 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "rate": rate,
-                    "r": r,
                     "size": size,
-                    "s": s,
                     "rc": rc,
                     "gc": gc,
                     "bc": bc,
@@ -2894,11 +2528,8 @@ class AudioStream(FilterableStream):
                     "video": video,
                     "phasing": phasing,
                     "tolerance": tolerance,
-                    "t": t,
                     "angle": angle,
-                    "a": a,
                     "duration": duration,
-                    "d": d,
                 },
                 extra_options,
             ),
@@ -3287,7 +2918,6 @@ class AudioStream(FilterableStream):
         self,
         *,
         model: String = Default(None),
-        m: String = Default(None),
         mix: Float = Default("1"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
@@ -3297,7 +2927,6 @@ class AudioStream(FilterableStream):
 
         Args:
             model: set model name
-            m: set model name
             mix: set output vs input mix (from -1 to 1) (default 1)
 
         Returns:
@@ -3315,7 +2944,6 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "model": model,
-                    "m": m,
                     "mix": mix,
                 },
                 extra_options,
@@ -3394,9 +3022,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         expr: String = Default(None),
-        e: String = Default(None),
         outputs: Int = Default("1"),
-        n: Int = Default("1"),
         extra_options: dict[str, Any] | None = None,
     ) -> FilterNode:
         """
@@ -3405,9 +3031,7 @@ class AudioStream(FilterableStream):
 
         Args:
             expr: set an expression to use for selecting frames (default "1")
-            e: set an expression to use for selecting frames (default "1")
             outputs: set the number of outputs (from 1 to INT_MAX) (default 1)
-            n: set the number of outputs (from 1 to INT_MAX) (default 1)
 
         Returns:
             filter_node: the filter node
@@ -3427,9 +3051,7 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "expr": expr,
-                    "e": e,
                     "outputs": outputs,
-                    "n": n,
                 },
                 extra_options,
             ),
@@ -3441,9 +3063,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         commands: String = Default(None),
-        c: String = Default(None),
         filename: String = Default(None),
-        f: String = Default(None),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -3452,9 +3072,7 @@ class AudioStream(FilterableStream):
 
         Args:
             commands: set commands
-            c: set commands
             filename: set commands file
-            f: set commands file
 
         Returns:
             default: the audio stream
@@ -3471,9 +3089,7 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "commands": commands,
-                    "c": c,
                     "filename": filename,
-                    "f": f,
                 },
                 extra_options,
             ),
@@ -3484,9 +3100,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         nb_out_samples: Int = Default("1024"),
-        n: Int = Default("1024"),
         pad: Boolean = Default("true"),
-        p: Boolean = Default("true"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -3495,9 +3109,7 @@ class AudioStream(FilterableStream):
 
         Args:
             nb_out_samples: set the number of per-frame output samples (from 1 to INT_MAX) (default 1024)
-            n: set the number of per-frame output samples (from 1 to INT_MAX) (default 1024)
             pad: pad last frame with zeros (default true)
-            p: pad last frame with zeros (default true)
 
         Returns:
             default: the audio stream
@@ -3514,9 +3126,7 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "nb_out_samples": nb_out_samples,
-                    "n": n,
                     "pad": pad,
-                    "p": p,
                 },
                 extra_options,
             ),
@@ -3561,7 +3171,6 @@ class AudioStream(FilterableStream):
         self,
         *,
         sample_rate: Int = Default("44100"),
-        r: Int = Default("44100"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -3570,7 +3179,6 @@ class AudioStream(FilterableStream):
 
         Args:
             sample_rate: set the sample rate (from 1 to INT_MAX) (default 44100)
-            r: set the sample rate (from 1 to INT_MAX) (default 44100)
 
         Returns:
             default: the audio stream
@@ -3587,7 +3195,6 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "sample_rate": sample_rate,
-                    "r": r,
                 },
                 extra_options,
             ),
@@ -3598,7 +3205,6 @@ class AudioStream(FilterableStream):
         self,
         *,
         expr: String = Default(None),
-        tb: String = Default(None),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -3607,7 +3213,6 @@ class AudioStream(FilterableStream):
 
         Args:
             expr: set expression determining the output timebase (default "intb")
-            tb: set expression determining the output timebase (default "intb")
 
         Returns:
             default: the audio stream
@@ -3624,7 +3229,6 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "expr": expr,
-                    "tb": tb,
                 },
                 extra_options,
             ),
@@ -4388,13 +3992,10 @@ class AudioStream(FilterableStream):
         self,
         *,
         start: Duration = Default("INT64_MAX"),
-        starti: Duration = Default("INT64_MAX"),
         end: Duration = Default("INT64_MAX"),
-        endi: Duration = Default("INT64_MAX"),
         start_pts: Int64 = Default("I64_MIN"),
         end_pts: Int64 = Default("I64_MIN"),
         duration: Duration = Default("0"),
-        durationi: Duration = Default("0"),
         start_sample: Int64 = Default("-1"),
         end_sample: Int64 = Default("I64_MAX"),
         extra_options: dict[str, Any] | None = None,
@@ -4405,13 +4006,10 @@ class AudioStream(FilterableStream):
 
         Args:
             start: Timestamp of the first frame that should be passed (default INT64_MAX)
-            starti: Timestamp of the first frame that should be passed (default INT64_MAX)
             end: Timestamp of the first frame that should be dropped again (default INT64_MAX)
-            endi: Timestamp of the first frame that should be dropped again (default INT64_MAX)
             start_pts: Timestamp of the first frame that should be passed (from I64_MIN to I64_MAX) (default I64_MIN)
             end_pts: Timestamp of the first frame that should be dropped again (from I64_MIN to I64_MAX) (default I64_MIN)
             duration: Maximum duration of the output (default 0)
-            durationi: Maximum duration of the output (default 0)
             start_sample: Number of the first audio sample that should be passed to the output (from -1 to I64_MAX) (default -1)
             end_sample: Number of the first audio sample that should be dropped again (from 0 to I64_MAX) (default I64_MAX)
 
@@ -4430,13 +4028,10 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "start": start,
-                    "starti": starti,
                     "end": end,
-                    "endi": endi,
                     "start_pts": start_pts,
                     "end_pts": end_pts,
                     "duration": duration,
-                    "durationi": durationi,
                     "start_sample": start_sample,
                     "end_sample": end_sample,
                 },
@@ -4451,13 +4046,8 @@ class AudioStream(FilterableStream):
         mode: Int | Literal["lissajous", "lissajous_xy", "polar"] | Default = Default(
             "lissajous"
         ),
-        m: Int | Literal["lissajous", "lissajous_xy", "polar"] | Default = Default(
-            "lissajous"
-        ),
         rate: Video_rate = Default(None),
-        r: Video_rate = Default(None),
         size: Image_size = Default(None),
-        s: Image_size = Default(None),
         rc: Int = Default("40"),
         gc: Int = Default("160"),
         bc: Int = Default("80"),
@@ -4479,11 +4069,8 @@ class AudioStream(FilterableStream):
 
         Args:
             mode: set mode (from 0 to 2) (default lissajous)
-            m: set mode (from 0 to 2) (default lissajous)
             rate: set video rate (default "25")
-            r: set video rate (default "25")
             size: set video size (default "400x400")
-            s: set video size (default "400x400")
             rc: set red contrast (from 0 to 255) (default 40)
             gc: set green contrast (from 0 to 255) (default 160)
             bc: set blue contrast (from 0 to 255) (default 80)
@@ -4513,11 +4100,8 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "mode": mode,
-                    "m": m,
                     "rate": rate,
-                    "r": r,
                     "size": size,
-                    "s": s,
                     "rc": rc,
                     "gc": gc,
                     "bc": bc,
@@ -4582,7 +4166,6 @@ class AudioStream(FilterableStream):
         self,
         *,
         bind_address: String = Default(None),
-        b: String = Default(None),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -4591,7 +4174,6 @@ class AudioStream(FilterableStream):
 
         Args:
             bind_address: set bind address (default "tcp://*:5555")
-            b: set bind address (default "tcp://*:5555")
 
         Returns:
             default: the audio stream
@@ -4608,7 +4190,6 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "bind_address": bind_address,
-                    "b": b,
                 },
                 extra_options,
             ),
@@ -4619,32 +4200,19 @@ class AudioStream(FilterableStream):
         self,
         *,
         frequency: Double = Default("3000"),
-        f: Double = Default("3000"),
         width_type: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
-        t: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
         width: Double = Default("0"),
-        w: Double = Default("0"),
         csg: Boolean = Default("false"),
         mix: Double = Default("1"),
-        m: Double = Default("1"),
         channels: String = Default(None),
-        c: String = Default(None),
         normalize: Boolean = Default("false"),
-        n: Boolean = Default("false"),
         transform: Int
-        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
-        | Default = Default("di"),
-        a: Int
         | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
         | Default = Default("di"),
         precision: Int
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
-        r: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(
-            "auto"
-        ),
         blocksize: Int = Default("0"),
-        b: Int = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -4653,24 +4221,15 @@ class AudioStream(FilterableStream):
 
         Args:
             frequency: set central frequency (from 0 to 999999) (default 3000)
-            f: set central frequency (from 0 to 999999) (default 3000)
             width_type: set filter-width type (from 1 to 5) (default q)
-            t: set filter-width type (from 1 to 5) (default q)
             width: set width (from 0 to 99999) (default 0.5)
-            w: set width (from 0 to 99999) (default 0.5)
             csg: use constant skirt gain (default false)
             mix: set mix (from 0 to 1) (default 1)
-            m: set mix (from 0 to 1) (default 1)
             channels: set channels to filter (default "all")
-            c: set channels to filter (default "all")
             normalize: normalize coefficients (default false)
-            n: normalize coefficients (default false)
             transform: set transform type (from 0 to 6) (default di)
-            a: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
-            r: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
-            b: set the block size (from 0 to 32768) (default 0)
 
         Returns:
             default: the audio stream
@@ -4687,24 +4246,15 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "frequency": frequency,
-                    "f": f,
                     "width_type": width_type,
-                    "t": t,
                     "width": width,
-                    "w": w,
                     "csg": csg,
                     "mix": mix,
-                    "m": m,
                     "channels": channels,
-                    "c": c,
                     "normalize": normalize,
-                    "n": n,
                     "transform": transform,
-                    "a": a,
                     "precision": precision,
-                    "r": r,
                     "blocksize": blocksize,
-                    "b": b,
                 },
                 extra_options,
             ),
@@ -4715,31 +4265,18 @@ class AudioStream(FilterableStream):
         self,
         *,
         frequency: Double = Default("3000"),
-        f: Double = Default("3000"),
         width_type: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
-        t: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
         width: Double = Default("0"),
-        w: Double = Default("0"),
         mix: Double = Default("1"),
-        m: Double = Default("1"),
         channels: String = Default(None),
-        c: String = Default(None),
         normalize: Boolean = Default("false"),
-        n: Boolean = Default("false"),
         transform: Int
-        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
-        | Default = Default("di"),
-        a: Int
         | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
         | Default = Default("di"),
         precision: Int
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
-        r: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(
-            "auto"
-        ),
         blocksize: Int = Default("0"),
-        b: Int = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -4748,23 +4285,14 @@ class AudioStream(FilterableStream):
 
         Args:
             frequency: set central frequency (from 0 to 999999) (default 3000)
-            f: set central frequency (from 0 to 999999) (default 3000)
             width_type: set filter-width type (from 1 to 5) (default q)
-            t: set filter-width type (from 1 to 5) (default q)
             width: set width (from 0 to 99999) (default 0.5)
-            w: set width (from 0 to 99999) (default 0.5)
             mix: set mix (from 0 to 1) (default 1)
-            m: set mix (from 0 to 1) (default 1)
             channels: set channels to filter (default "all")
-            c: set channels to filter (default "all")
             normalize: normalize coefficients (default false)
-            n: normalize coefficients (default false)
             transform: set transform type (from 0 to 6) (default di)
-            a: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
-            r: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
-            b: set the block size (from 0 to 32768) (default 0)
 
         Returns:
             default: the audio stream
@@ -4781,23 +4309,14 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "frequency": frequency,
-                    "f": f,
                     "width_type": width_type,
-                    "t": t,
                     "width": width,
-                    "w": w,
                     "mix": mix,
-                    "m": m,
                     "channels": channels,
-                    "c": c,
                     "normalize": normalize,
-                    "n": n,
                     "transform": transform,
-                    "a": a,
                     "precision": precision,
-                    "r": r,
                     "blocksize": blocksize,
-                    "b": b,
                 },
                 extra_options,
             ),
@@ -4808,35 +4327,20 @@ class AudioStream(FilterableStream):
         self,
         *,
         frequency: Double = Default("100"),
-        f: Double = Default("100"),
         width_type: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
-        t: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
         width: Double = Default("0"),
-        w: Double = Default("0"),
         gain: Double = Default("0"),
-        g: Double = Default("0"),
         poles: Int = Default("2"),
-        p: Int = Default("2"),
         mix: Double = Default("1"),
-        m: Double = Default("1"),
         channels: String = Default(None),
-        c: String = Default(None),
         normalize: Boolean = Default("false"),
-        n: Boolean = Default("false"),
         transform: Int
-        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
-        | Default = Default("di"),
-        a: Int
         | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
         | Default = Default("di"),
         precision: Int
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
-        r: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(
-            "auto"
-        ),
         blocksize: Int = Default("0"),
-        b: Int = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -4845,27 +4349,16 @@ class AudioStream(FilterableStream):
 
         Args:
             frequency: set central frequency (from 0 to 999999) (default 100)
-            f: set central frequency (from 0 to 999999) (default 100)
             width_type: set filter-width type (from 1 to 5) (default q)
-            t: set filter-width type (from 1 to 5) (default q)
             width: set width (from 0 to 99999) (default 0.5)
-            w: set width (from 0 to 99999) (default 0.5)
             gain: set gain (from -900 to 900) (default 0)
-            g: set gain (from -900 to 900) (default 0)
             poles: set number of poles (from 1 to 2) (default 2)
-            p: set number of poles (from 1 to 2) (default 2)
             mix: set mix (from 0 to 1) (default 1)
-            m: set mix (from 0 to 1) (default 1)
             channels: set channels to filter (default "all")
-            c: set channels to filter (default "all")
             normalize: normalize coefficients (default false)
-            n: normalize coefficients (default false)
             transform: set transform type (from 0 to 6) (default di)
-            a: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
-            r: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
-            b: set the block size (from 0 to 32768) (default 0)
 
         Returns:
             default: the audio stream
@@ -4882,27 +4375,16 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "frequency": frequency,
-                    "f": f,
                     "width_type": width_type,
-                    "t": t,
                     "width": width,
-                    "w": w,
                     "gain": gain,
-                    "g": g,
                     "poles": poles,
-                    "p": p,
                     "mix": mix,
-                    "m": m,
                     "channels": channels,
-                    "c": c,
                     "normalize": normalize,
-                    "n": n,
                     "transform": transform,
-                    "a": a,
                     "precision": precision,
-                    "r": r,
                     "blocksize": blocksize,
-                    "b": b,
                 },
                 extra_options,
             ),
@@ -4914,30 +4396,16 @@ class AudioStream(FilterableStream):
         *,
         a0: Double = Default("1"),
         a1: Double = Default("0"),
-        a2: Double = Default("0"),
-        b0: Double = Default("0"),
-        b1: Double = Default("0"),
-        b2: Double = Default("0"),
         mix: Double = Default("1"),
-        m: Double = Default("1"),
         channels: String = Default(None),
-        c: String = Default(None),
         normalize: Boolean = Default("false"),
-        n: Boolean = Default("false"),
         transform: Int
-        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
-        | Default = Default("di"),
-        a: Int
         | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
         | Default = Default("di"),
         precision: Int
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
-        r: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(
-            "auto"
-        ),
         blocksize: Int = Default("0"),
-        b: Int = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -4947,22 +4415,12 @@ class AudioStream(FilterableStream):
         Args:
             a0: (from INT_MIN to INT_MAX) (default 1)
             a1: (from INT_MIN to INT_MAX) (default 0)
-            a2: (from INT_MIN to INT_MAX) (default 0)
-            b0: (from INT_MIN to INT_MAX) (default 0)
-            b1: (from INT_MIN to INT_MAX) (default 0)
-            b2: (from INT_MIN to INT_MAX) (default 0)
             mix: set mix (from 0 to 1) (default 1)
-            m: set mix (from 0 to 1) (default 1)
             channels: set channels to filter (default "all")
-            c: set channels to filter (default "all")
             normalize: normalize coefficients (default false)
-            n: normalize coefficients (default false)
             transform: set transform type (from 0 to 6) (default di)
-            a: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
-            r: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
-            b: set the block size (from 0 to 32768) (default 0)
 
         Returns:
             default: the audio stream
@@ -4980,22 +4438,12 @@ class AudioStream(FilterableStream):
                 {
                     "a0": a0,
                     "a1": a1,
-                    "a2": a2,
-                    "b0": b0,
-                    "b1": b1,
-                    "b2": b2,
                     "mix": mix,
-                    "m": m,
                     "channels": channels,
-                    "c": c,
                     "normalize": normalize,
-                    "n": n,
                     "transform": transform,
-                    "a": a,
                     "precision": precision,
-                    "r": r,
                     "blocksize": blocksize,
-                    "b": b,
                 },
                 extra_options,
             ),
@@ -5520,31 +4968,18 @@ class AudioStream(FilterableStream):
         self,
         *,
         framelen: Int = Default("500"),
-        f: Int = Default("500"),
         gausssize: Int = Default("31"),
-        g: Int = Default("31"),
         peak: Double = Default("0"),
-        p: Double = Default("0"),
         maxgain: Double = Default("10"),
-        m: Double = Default("10"),
         targetrms: Double = Default("0"),
-        r: Double = Default("0"),
         coupling: Boolean = Default("true"),
-        n: Boolean = Default("true"),
         correctdc: Boolean = Default("false"),
-        c: Boolean = Default("false"),
         altboundary: Boolean = Default("false"),
-        b: Boolean = Default("false"),
         compress: Double = Default("0"),
-        s: Double = Default("0"),
         threshold: Double = Default("0"),
-        t: Double = Default("0"),
         channels: String = Default(None),
-        h: String = Default(None),
         overlap: Double = Default("0"),
-        o: Double = Default("0"),
         curve: String = Default(None),
-        v: String = Default(None),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -5553,31 +4988,18 @@ class AudioStream(FilterableStream):
 
         Args:
             framelen: set the frame length in msec (from 10 to 8000) (default 500)
-            f: set the frame length in msec (from 10 to 8000) (default 500)
             gausssize: set the filter size (from 3 to 301) (default 31)
-            g: set the filter size (from 3 to 301) (default 31)
             peak: set the peak value (from 0 to 1) (default 0.95)
-            p: set the peak value (from 0 to 1) (default 0.95)
             maxgain: set the max amplification (from 1 to 100) (default 10)
-            m: set the max amplification (from 1 to 100) (default 10)
             targetrms: set the target RMS (from 0 to 1) (default 0)
-            r: set the target RMS (from 0 to 1) (default 0)
             coupling: set channel coupling (default true)
-            n: set channel coupling (default true)
             correctdc: set DC correction (default false)
-            c: set DC correction (default false)
             altboundary: set alternative boundary mode (default false)
-            b: set alternative boundary mode (default false)
             compress: set the compress factor (from 0 to 30) (default 0)
-            s: set the compress factor (from 0 to 30) (default 0)
             threshold: set the threshold value (from 0 to 1) (default 0)
-            t: set the threshold value (from 0 to 1) (default 0)
             channels: set channels to filter (default "all")
-            h: set channels to filter (default "all")
             overlap: set the frame overlap (from 0 to 1) (default 0)
-            o: set the frame overlap (from 0 to 1) (default 0)
             curve: set the custom peak mapping curve
-            v: set the custom peak mapping curve
 
         Returns:
             default: the audio stream
@@ -5594,31 +5016,18 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "framelen": framelen,
-                    "f": f,
                     "gausssize": gausssize,
-                    "g": g,
                     "peak": peak,
-                    "p": p,
                     "maxgain": maxgain,
-                    "m": m,
                     "targetrms": targetrms,
-                    "r": r,
                     "coupling": coupling,
-                    "n": n,
                     "correctdc": correctdc,
-                    "c": c,
                     "altboundary": altboundary,
-                    "b": b,
                     "compress": compress,
-                    "s": s,
                     "threshold": threshold,
-                    "t": t,
                     "channels": channels,
-                    "h": h,
                     "overlap": overlap,
-                    "o": o,
                     "curve": curve,
-                    "v": v,
                 },
                 extra_options,
             ),
@@ -5743,33 +5152,19 @@ class AudioStream(FilterableStream):
         self,
         *,
         frequency: Double = Default("0"),
-        f: Double = Default("0"),
         width_type: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
-        t: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
         width: Double = Default("1"),
-        w: Double = Default("1"),
         gain: Double = Default("0"),
-        g: Double = Default("0"),
         mix: Double = Default("1"),
-        m: Double = Default("1"),
         channels: String = Default(None),
-        c: String = Default(None),
         normalize: Boolean = Default("false"),
-        n: Boolean = Default("false"),
         transform: Int
-        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
-        | Default = Default("di"),
-        a: Int
         | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
         | Default = Default("di"),
         precision: Int
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
-        r: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(
-            "auto"
-        ),
         blocksize: Int = Default("0"),
-        b: Int = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -5778,25 +5173,15 @@ class AudioStream(FilterableStream):
 
         Args:
             frequency: set central frequency (from 0 to 999999) (default 0)
-            f: set central frequency (from 0 to 999999) (default 0)
             width_type: set filter-width type (from 1 to 5) (default q)
-            t: set filter-width type (from 1 to 5) (default q)
             width: set width (from 0 to 99999) (default 1)
-            w: set width (from 0 to 99999) (default 1)
             gain: set gain (from -900 to 900) (default 0)
-            g: set gain (from -900 to 900) (default 0)
             mix: set mix (from 0 to 1) (default 1)
-            m: set mix (from 0 to 1) (default 1)
             channels: set channels to filter (default "all")
-            c: set channels to filter (default "all")
             normalize: normalize coefficients (default false)
-            n: normalize coefficients (default false)
             transform: set transform type (from 0 to 6) (default di)
-            a: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
-            r: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
-            b: set the block size (from 0 to 32768) (default 0)
 
         Returns:
             default: the audio stream
@@ -5813,25 +5198,15 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "frequency": frequency,
-                    "f": f,
                     "width_type": width_type,
-                    "t": t,
                     "width": width,
-                    "w": w,
                     "gain": gain,
-                    "g": g,
                     "mix": mix,
-                    "m": m,
                     "channels": channels,
-                    "c": c,
                     "normalize": normalize,
-                    "n": n,
                     "transform": transform,
-                    "a": a,
                     "precision": precision,
-                    "r": r,
                     "blocksize": blocksize,
-                    "b": b,
                 },
                 extra_options,
             ),
@@ -6146,33 +5521,19 @@ class AudioStream(FilterableStream):
         self,
         *,
         frequency: Double = Default("3000"),
-        f: Double = Default("3000"),
         width_type: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
-        t: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
         width: Double = Default("0"),
-        w: Double = Default("0"),
         poles: Int = Default("2"),
-        p: Int = Default("2"),
         mix: Double = Default("1"),
-        m: Double = Default("1"),
         channels: String = Default(None),
-        c: String = Default(None),
         normalize: Boolean = Default("false"),
-        n: Boolean = Default("false"),
         transform: Int
-        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
-        | Default = Default("di"),
-        a: Int
         | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
         | Default = Default("di"),
         precision: Int
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
-        r: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(
-            "auto"
-        ),
         blocksize: Int = Default("0"),
-        b: Int = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -6181,25 +5542,15 @@ class AudioStream(FilterableStream):
 
         Args:
             frequency: set frequency (from 0 to 999999) (default 3000)
-            f: set frequency (from 0 to 999999) (default 3000)
             width_type: set filter-width type (from 1 to 5) (default q)
-            t: set filter-width type (from 1 to 5) (default q)
             width: set width (from 0 to 99999) (default 0.707)
-            w: set width (from 0 to 99999) (default 0.707)
             poles: set number of poles (from 1 to 2) (default 2)
-            p: set number of poles (from 1 to 2) (default 2)
             mix: set mix (from 0 to 1) (default 1)
-            m: set mix (from 0 to 1) (default 1)
             channels: set channels to filter (default "all")
-            c: set channels to filter (default "all")
             normalize: normalize coefficients (default false)
-            n: normalize coefficients (default false)
             transform: set transform type (from 0 to 6) (default di)
-            a: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
-            r: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
-            b: set the block size (from 0 to 32768) (default 0)
 
         Returns:
             default: the audio stream
@@ -6216,25 +5567,15 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "frequency": frequency,
-                    "f": f,
                     "width_type": width_type,
-                    "t": t,
                     "width": width,
-                    "w": w,
                     "poles": poles,
-                    "p": p,
                     "mix": mix,
-                    "m": m,
                     "channels": channels,
-                    "c": c,
                     "normalize": normalize,
-                    "n": n,
                     "transform": transform,
-                    "a": a,
                     "precision": precision,
-                    "r": r,
                     "blocksize": blocksize,
-                    "b": b,
                 },
                 extra_options,
             ),
@@ -6245,35 +5586,20 @@ class AudioStream(FilterableStream):
         self,
         *,
         frequency: Double = Default("3000"),
-        f: Double = Default("3000"),
         width_type: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
-        t: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
         width: Double = Default("0"),
-        w: Double = Default("0"),
         gain: Double = Default("0"),
-        g: Double = Default("0"),
         poles: Int = Default("2"),
-        p: Int = Default("2"),
         mix: Double = Default("1"),
-        m: Double = Default("1"),
         channels: String = Default(None),
-        c: String = Default(None),
         normalize: Boolean = Default("false"),
-        n: Boolean = Default("false"),
         transform: Int
-        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
-        | Default = Default("di"),
-        a: Int
         | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
         | Default = Default("di"),
         precision: Int
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
-        r: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(
-            "auto"
-        ),
         blocksize: Int = Default("0"),
-        b: Int = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -6282,27 +5608,16 @@ class AudioStream(FilterableStream):
 
         Args:
             frequency: set central frequency (from 0 to 999999) (default 3000)
-            f: set central frequency (from 0 to 999999) (default 3000)
             width_type: set filter-width type (from 1 to 5) (default q)
-            t: set filter-width type (from 1 to 5) (default q)
             width: set width (from 0 to 99999) (default 0.5)
-            w: set width (from 0 to 99999) (default 0.5)
             gain: set gain (from -900 to 900) (default 0)
-            g: set gain (from -900 to 900) (default 0)
             poles: set number of poles (from 1 to 2) (default 2)
-            p: set number of poles (from 1 to 2) (default 2)
             mix: set mix (from 0 to 1) (default 1)
-            m: set mix (from 0 to 1) (default 1)
             channels: set channels to filter (default "all")
-            c: set channels to filter (default "all")
             normalize: normalize coefficients (default false)
-            n: normalize coefficients (default false)
             transform: set transform type (from 0 to 6) (default di)
-            a: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
-            r: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
-            b: set the block size (from 0 to 32768) (default 0)
 
         Returns:
             default: the audio stream
@@ -6319,27 +5634,16 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "frequency": frequency,
-                    "f": f,
                     "width_type": width_type,
-                    "t": t,
                     "width": width,
-                    "w": w,
                     "gain": gain,
-                    "g": g,
                     "poles": poles,
-                    "p": p,
                     "mix": mix,
-                    "m": m,
                     "channels": channels,
-                    "c": c,
                     "normalize": normalize,
-                    "n": n,
                     "transform": transform,
-                    "a": a,
                     "precision": precision,
-                    "r": r,
                     "blocksize": blocksize,
-                    "b": b,
                 },
                 extra_options,
             ),
@@ -6350,17 +5654,11 @@ class AudioStream(FilterableStream):
         self,
         *,
         I: Double = Default("-24"),
-        i: Double = Default("-24"),
         LRA: Double = Default("7"),
-        lra: Double = Default("7"),
         TP: Double = Default("-2"),
-        tp: Double = Default("-2"),
         measured_I: Double = Default("0"),
-        measured_i: Double = Default("0"),
         measured_LRA: Double = Default("0"),
-        measured_lra: Double = Default("0"),
         measured_TP: Double = Default("99"),
-        measured_tp: Double = Default("99"),
         measured_thresh: Double = Default("-70"),
         offset: Double = Default("0"),
         linear: Boolean = Default("true"),
@@ -6376,17 +5674,11 @@ class AudioStream(FilterableStream):
 
         Args:
             I: set integrated loudness target (from -70 to -5) (default -24)
-            i: set integrated loudness target (from -70 to -5) (default -24)
             LRA: set loudness range target (from 1 to 50) (default 7)
-            lra: set loudness range target (from 1 to 50) (default 7)
             TP: set maximum true peak (from -9 to 0) (default -2)
-            tp: set maximum true peak (from -9 to 0) (default -2)
             measured_I: measured IL of input file (from -99 to 0) (default 0)
-            measured_i: measured IL of input file (from -99 to 0) (default 0)
             measured_LRA: measured LRA of input file (from 0 to 99) (default 0)
-            measured_lra: measured LRA of input file (from 0 to 99) (default 0)
             measured_TP: measured true peak of input file (from -99 to 99) (default 99)
-            measured_tp: measured true peak of input file (from -99 to 99) (default 99)
             measured_thresh: measured threshold of input file (from -99 to 0) (default -70)
             offset: set offset gain (from -99 to 99) (default 0)
             linear: normalize linearly if possible (default true)
@@ -6408,17 +5700,11 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "I": I,
-                    "i": i,
                     "LRA": LRA,
-                    "lra": lra,
                     "TP": TP,
-                    "tp": tp,
                     "measured_I": measured_I,
-                    "measured_i": measured_i,
                     "measured_LRA": measured_LRA,
-                    "measured_lra": measured_lra,
                     "measured_TP": measured_TP,
-                    "measured_tp": measured_tp,
                     "measured_thresh": measured_thresh,
                     "offset": offset,
                     "linear": linear,
@@ -6434,33 +5720,19 @@ class AudioStream(FilterableStream):
         self,
         *,
         frequency: Double = Default("500"),
-        f: Double = Default("500"),
         width_type: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
-        t: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
         width: Double = Default("0"),
-        w: Double = Default("0"),
         poles: Int = Default("2"),
-        p: Int = Default("2"),
         mix: Double = Default("1"),
-        m: Double = Default("1"),
         channels: String = Default(None),
-        c: String = Default(None),
         normalize: Boolean = Default("false"),
-        n: Boolean = Default("false"),
         transform: Int
-        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
-        | Default = Default("di"),
-        a: Int
         | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
         | Default = Default("di"),
         precision: Int
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
-        r: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(
-            "auto"
-        ),
         blocksize: Int = Default("0"),
-        b: Int = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -6469,25 +5741,15 @@ class AudioStream(FilterableStream):
 
         Args:
             frequency: set frequency (from 0 to 999999) (default 500)
-            f: set frequency (from 0 to 999999) (default 500)
             width_type: set filter-width type (from 1 to 5) (default q)
-            t: set filter-width type (from 1 to 5) (default q)
             width: set width (from 0 to 99999) (default 0.707)
-            w: set width (from 0 to 99999) (default 0.707)
             poles: set number of poles (from 1 to 2) (default 2)
-            p: set number of poles (from 1 to 2) (default 2)
             mix: set mix (from 0 to 1) (default 1)
-            m: set mix (from 0 to 1) (default 1)
             channels: set channels to filter (default "all")
-            c: set channels to filter (default "all")
             normalize: normalize coefficients (default false)
-            n: normalize coefficients (default false)
             transform: set transform type (from 0 to 6) (default di)
-            a: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
-            r: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
-            b: set the block size (from 0 to 32768) (default 0)
 
         Returns:
             default: the audio stream
@@ -6504,25 +5766,15 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "frequency": frequency,
-                    "f": f,
                     "width_type": width_type,
-                    "t": t,
                     "width": width,
-                    "w": w,
                     "poles": poles,
-                    "p": p,
                     "mix": mix,
-                    "m": m,
                     "channels": channels,
-                    "c": c,
                     "normalize": normalize,
-                    "n": n,
                     "transform": transform,
-                    "a": a,
                     "precision": precision,
-                    "r": r,
                     "blocksize": blocksize,
-                    "b": b,
                 },
                 extra_options,
             ),
@@ -6533,35 +5785,20 @@ class AudioStream(FilterableStream):
         self,
         *,
         frequency: Double = Default("100"),
-        f: Double = Default("100"),
         width_type: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
-        t: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
         width: Double = Default("0"),
-        w: Double = Default("0"),
         gain: Double = Default("0"),
-        g: Double = Default("0"),
         poles: Int = Default("2"),
-        p: Int = Default("2"),
         mix: Double = Default("1"),
-        m: Double = Default("1"),
         channels: String = Default(None),
-        c: String = Default(None),
         normalize: Boolean = Default("false"),
-        n: Boolean = Default("false"),
         transform: Int
-        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
-        | Default = Default("di"),
-        a: Int
         | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
         | Default = Default("di"),
         precision: Int
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
-        r: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(
-            "auto"
-        ),
         blocksize: Int = Default("0"),
-        b: Int = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -6570,27 +5807,16 @@ class AudioStream(FilterableStream):
 
         Args:
             frequency: set central frequency (from 0 to 999999) (default 100)
-            f: set central frequency (from 0 to 999999) (default 100)
             width_type: set filter-width type (from 1 to 5) (default q)
-            t: set filter-width type (from 1 to 5) (default q)
             width: set width (from 0 to 99999) (default 0.5)
-            w: set width (from 0 to 99999) (default 0.5)
             gain: set gain (from -900 to 900) (default 0)
-            g: set gain (from -900 to 900) (default 0)
             poles: set number of poles (from 1 to 2) (default 2)
-            p: set number of poles (from 1 to 2) (default 2)
             mix: set mix (from 0 to 1) (default 1)
-            m: set mix (from 0 to 1) (default 1)
             channels: set channels to filter (default "all")
-            c: set channels to filter (default "all")
             normalize: normalize coefficients (default false)
-            n: normalize coefficients (default false)
             transform: set transform type (from 0 to 6) (default di)
-            a: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
-            r: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
-            b: set the block size (from 0 to 32768) (default 0)
 
         Returns:
             default: the audio stream
@@ -6607,27 +5833,16 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "frequency": frequency,
-                    "f": f,
                     "width_type": width_type,
-                    "t": t,
                     "width": width,
-                    "w": w,
                     "gain": gain,
-                    "g": g,
                     "poles": poles,
-                    "p": p,
                     "mix": mix,
-                    "m": m,
                     "channels": channels,
-                    "c": c,
                     "normalize": normalize,
-                    "n": n,
                     "transform": transform,
-                    "a": a,
                     "precision": precision,
-                    "r": r,
                     "blocksize": blocksize,
-                    "b": b,
                 },
                 extra_options,
             ),
@@ -6812,25 +6027,17 @@ class AudioStream(FilterableStream):
         self,
         *,
         size: Image_size = Default(None),
-        s: Image_size = Default(None),
         fps: Video_rate = Default(None),
-        rate: Video_rate = Default(None),
-        r: Video_rate = Default(None),
         bar_h: Int = Default("-1"),
         axis_h: Int = Default("-1"),
         sono_h: Int = Default("-1"),
         fullhd: Boolean = Default("true"),
         sono_v: String = Default(None),
-        volume: String = Default(None),
         bar_v: String = Default(None),
-        volume2: String = Default(None),
         sono_g: Float = Default("3"),
-        gamma: Float = Default("3"),
         bar_g: Float = Default("1"),
-        gamma2: Float = Default("1"),
         bar_t: Float = Default("1"),
         timeclamp: Double = Default("0"),
-        tc: Double = Default("0"),
         attack: Double = Default("0"),
         basefreq: Double = Default("20"),
         endfreq: Double = Default("20495"),
@@ -6843,7 +6050,6 @@ class AudioStream(FilterableStream):
         fontcolor: String = Default(None),
         axisfile: String = Default(None),
         axis: Boolean = Default("true"),
-        text: Boolean = Default("true"),
         csp: Int
         | Literal[
             "unspecified",
@@ -6864,25 +6070,17 @@ class AudioStream(FilterableStream):
 
         Args:
             size: set video size (default "1920x1080")
-            s: set video size (default "1920x1080")
             fps: set video rate (default "25")
-            rate: set video rate (default "25")
-            r: set video rate (default "25")
             bar_h: set bargraph height (from -1 to INT_MAX) (default -1)
             axis_h: set axis height (from -1 to INT_MAX) (default -1)
             sono_h: set sonogram height (from -1 to INT_MAX) (default -1)
             fullhd: set fullhd size (default true)
             sono_v: set sonogram volume (default "16")
-            volume: set sonogram volume (default "16")
             bar_v: set bargraph volume (default "sono_v")
-            volume2: set bargraph volume (default "sono_v")
             sono_g: set sonogram gamma (from 1 to 7) (default 3)
-            gamma: set sonogram gamma (from 1 to 7) (default 3)
             bar_g: set bargraph gamma (from 1 to 7) (default 1)
-            gamma2: set bargraph gamma (from 1 to 7) (default 1)
             bar_t: set bar transparency (from 0 to 1) (default 1)
             timeclamp: set timeclamp (from 0.002 to 1) (default 0.17)
-            tc: set timeclamp (from 0.002 to 1) (default 0.17)
             attack: set attack time (from 0 to 1) (default 0)
             basefreq: set base frequency (from 10 to 100000) (default 20.0152)
             endfreq: set end frequency (from 10 to 100000) (default 20495.6)
@@ -6895,7 +6093,6 @@ class AudioStream(FilterableStream):
             fontcolor: set font color (default "st(0, (midi(f)-59.5)/12);st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));r(1-ld(1)) + b(ld(1))")
             axisfile: set axis image
             axis: draw axis (default true)
-            text: draw axis (default true)
             csp: set color space (from 0 to INT_MAX) (default unspecified)
             cscheme: set color scheme (default "1|0.5|0|0|0.5|1")
 
@@ -6914,25 +6111,17 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "size": size,
-                    "s": s,
                     "fps": fps,
-                    "rate": rate,
-                    "r": r,
                     "bar_h": bar_h,
                     "axis_h": axis_h,
                     "sono_h": sono_h,
                     "fullhd": fullhd,
                     "sono_v": sono_v,
-                    "volume": volume,
                     "bar_v": bar_v,
-                    "volume2": volume2,
                     "sono_g": sono_g,
-                    "gamma": gamma,
                     "bar_g": bar_g,
-                    "gamma2": gamma2,
                     "bar_t": bar_t,
                     "timeclamp": timeclamp,
-                    "tc": tc,
                     "attack": attack,
                     "basefreq": basefreq,
                     "endfreq": endfreq,
@@ -6945,7 +6134,6 @@ class AudioStream(FilterableStream):
                     "fontcolor": fontcolor,
                     "axisfile": axisfile,
                     "axis": axis,
-                    "text": text,
                     "csp": csp,
                     "cscheme": cscheme,
                 },
@@ -6958,9 +6146,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         size: Image_size = Default(None),
-        s: Image_size = Default(None),
         rate: String = Default(None),
-        r: String = Default(None),
         scale: Int
         | Literal["linear", "log", "bark", "mel", "erbs", "sqrt", "cbrt", "qdrt"]
         | Default = Default("linear"),
@@ -6991,9 +6177,7 @@ class AudioStream(FilterableStream):
 
         Args:
             size: set video size (default "640x512")
-            s: set video size (default "640x512")
             rate: set video rate (default "25")
-            r: set video rate (default "25")
             scale: set frequency scale (from 0 to 7) (default linear)
             iscale: set intensity scale (from 0 to 4) (default log)
             min: set minimum frequency (from 1 to 192000) (default 20)
@@ -7024,9 +6208,7 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "size": size,
-                    "s": s,
                     "rate": rate,
-                    "r": r,
                     "scale": scale,
                     "iscale": iscale,
                     "min": min,
@@ -7051,9 +6233,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         size: Image_size = Default(None),
-        s: Image_size = Default(None),
         rate: Video_rate = Default(None),
-        r: Video_rate = Default(None),
         mode: Int | Literal["line", "bar", "dot"] | Default = Default("bar"),
         ascale: Int | Literal["lin", "sqrt", "cbrt", "log"] | Default = Default("log"),
         fscale: Int | Literal["lin", "log", "rlog"] | Default = Default("lin"),
@@ -7101,9 +6281,7 @@ class AudioStream(FilterableStream):
 
         Args:
             size: set video size (default "1024x512")
-            s: set video size (default "1024x512")
             rate: set video rate (default "25")
-            r: set video rate (default "25")
             mode: set display mode (from 0 to 2) (default bar)
             ascale: set amplitude scale (from 0 to 3) (default log)
             fscale: set frequency scale (from 0 to 2) (default lin)
@@ -7132,9 +6310,7 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "size": size,
-                    "s": s,
                     "rate": rate,
-                    "r": r,
                     "mode": mode,
                     "ascale": ascale,
                     "fscale": fscale,
@@ -7157,7 +6333,6 @@ class AudioStream(FilterableStream):
         self,
         *,
         size: Image_size = Default(None),
-        s: Image_size = Default(None),
         win_size: Int = Default("4096"),
         win_func: Int
         | Literal[
@@ -7186,7 +6361,6 @@ class AudioStream(FilterableStream):
         ]
         | Default = Default("hann"),
         rate: Video_rate = Default(None),
-        r: Video_rate = Default(None),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7195,11 +6369,9 @@ class AudioStream(FilterableStream):
 
         Args:
             size: set video size (default "512x512")
-            s: set video size (default "512x512")
             win_size: set window size (from 1024 to 65536) (default 4096)
             win_func: set window function (from 0 to 20) (default hann)
             rate: set video rate (default "25")
-            r: set video rate (default "25")
 
         Returns:
             default: the video stream
@@ -7216,11 +6388,9 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "size": size,
-                    "s": s,
                     "win_size": win_size,
                     "win_func": win_func,
                     "rate": rate,
-                    "r": r,
                 },
                 extra_options,
             ),
@@ -7231,7 +6401,6 @@ class AudioStream(FilterableStream):
         self,
         *,
         size: Image_size = Default(None),
-        s: Image_size = Default(None),
         slide: Int
         | Literal["replace", "scroll", "fullframe", "rscroll", "lreplace"]
         | Default = Default("replace"),
@@ -7310,7 +6479,6 @@ class AudioStream(FilterableStream):
 
         Args:
             size: set video size (default "640x512")
-            s: set video size (default "640x512")
             slide: set sliding mode (from 0 to 4) (default replace)
             mode: set channel display mode (from 0 to 1) (default combined)
             color: set channel coloring (from 0 to 14) (default channel)
@@ -7346,7 +6514,6 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "size": size,
-                    "s": s,
                     "slide": slide,
                     "mode": mode,
                     "color": color,
@@ -7376,7 +6543,6 @@ class AudioStream(FilterableStream):
         self,
         *,
         size: Image_size = Default(None),
-        s: Image_size = Default(None),
         mode: Int | Literal["combined", "separate"] | Default = Default("combined"),
         color: Int
         | Literal[
@@ -7447,7 +6613,6 @@ class AudioStream(FilterableStream):
 
         Args:
             size: set video size (default "4096x2048")
-            s: set video size (default "4096x2048")
             mode: set channel display mode (from 0 to 1) (default combined)
             color: set channel coloring (from 0 to 14) (default intensity)
             scale: set display scale (from 0 to 5) (default log)
@@ -7481,7 +6646,6 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "size": size,
-                    "s": s,
                     "mode": mode,
                     "color": color,
                     "scale": scale,
@@ -7507,7 +6671,6 @@ class AudioStream(FilterableStream):
         self,
         *,
         rate: Video_rate = Default(None),
-        r: Video_rate = Default(None),
         b: Int = Default("1"),
         w: Int = Default("400"),
         h: Int = Default("20"),
@@ -7530,7 +6693,6 @@ class AudioStream(FilterableStream):
 
         Args:
             rate: set video rate (default "25")
-            r: set video rate (default "25")
             b: set border width (from 0 to 5) (default 1)
             w: set channel width (from 80 to 8192) (default 400)
             h: set channel height (from 1 to 900) (default 20)
@@ -7561,7 +6723,6 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "rate": rate,
-                    "r": r,
                     "b": b,
                     "w": w,
                     "h": h,
@@ -7586,13 +6747,11 @@ class AudioStream(FilterableStream):
         self,
         *,
         size: Image_size = Default(None),
-        s: Image_size = Default(None),
         mode: Int | Literal["point", "line", "p2p", "cline"] | Default = Default(
             "point"
         ),
         n: Rational = Default("0"),
         rate: Video_rate = Default(None),
-        r: Video_rate = Default(None),
         split_channels: Boolean = Default("false"),
         colors: String = Default(None),
         scale: Int | Literal["lin", "log", "sqrt", "cbrt"] | Default = Default("lin"),
@@ -7605,11 +6764,9 @@ class AudioStream(FilterableStream):
 
         Args:
             size: set video size (default "600x240")
-            s: set video size (default "600x240")
             mode: select display mode (from 0 to 3) (default point)
             n: set how many samples to show in the same point (from 0 to INT_MAX) (default 0/1)
             rate: set video rate (default "25")
-            r: set video rate (default "25")
             split_channels: draw channels separately (default false)
             colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
             scale: set amplitude scale (from 0 to 3) (default lin)
@@ -7630,11 +6787,9 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "size": size,
-                    "s": s,
                     "mode": mode,
                     "n": n,
                     "rate": rate,
-                    "r": r,
                     "split_channels": split_channels,
                     "colors": colors,
                     "scale": scale,
@@ -7649,7 +6804,6 @@ class AudioStream(FilterableStream):
         self,
         *,
         size: Image_size = Default(None),
-        s: Image_size = Default(None),
         split_channels: Boolean = Default("false"),
         colors: String = Default(None),
         scale: Int | Literal["lin", "log", "sqrt", "cbrt"] | Default = Default("lin"),
@@ -7663,7 +6817,6 @@ class AudioStream(FilterableStream):
 
         Args:
             size: set video size (default "600x240")
-            s: set video size (default "600x240")
             split_channels: draw channels separately (default false)
             colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
             scale: set amplitude scale (from 0 to 3) (default lin)
@@ -7685,7 +6838,6 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "size": size,
-                    "s": s,
                     "split_channels": split_channels,
                     "colors": colors,
                     "scale": scale,
@@ -7843,11 +6995,8 @@ class AudioStream(FilterableStream):
         self,
         *,
         n: Double = Default("0"),
-        noise: Double = Default("0"),
         d: Duration = Default("2"),
-        duration: Duration = Default("2"),
         mono: Boolean = Default("false"),
-        m: Boolean = Default("false"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -7856,11 +7005,8 @@ class AudioStream(FilterableStream):
 
         Args:
             n: set noise tolerance (from 0 to DBL_MAX) (default 0.001)
-            noise: set noise tolerance (from 0 to DBL_MAX) (default 0.001)
             d: set minimum duration in seconds (default 2)
-            duration: set minimum duration in seconds (default 2)
             mono: check each channel separately (default false)
-            m: check each channel separately (default false)
 
         Returns:
             default: the audio stream
@@ -7879,11 +7025,8 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "n": n,
-                    "noise": noise,
                     "d": d,
-                    "duration": duration,
                     "mono": mono,
-                    "m": m,
                 },
                 extra_options,
             ),
@@ -8041,25 +7184,15 @@ class AudioStream(FilterableStream):
         self,
         *,
         peak: Double = Default("0"),
-        p: Double = Default("0"),
         expansion: Double = Default("2"),
-        e: Double = Default("2"),
         compression: Double = Default("2"),
-        c: Double = Default("2"),
         threshold: Double = Default("0"),
-        t: Double = Default("0"),
         _raise: Double = Default("0"),
-        r: Double = Default("0"),
         fall: Double = Default("0"),
-        f: Double = Default("0"),
         channels: String = Default(None),
-        h: String = Default(None),
         invert: Boolean = Default("false"),
-        i: Boolean = Default("false"),
         link: Boolean = Default("false"),
-        l: Boolean = Default("false"),
         rms: Double = Default("0"),
-        m: Double = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -8068,25 +7201,15 @@ class AudioStream(FilterableStream):
 
         Args:
             peak: set the peak value (from 0 to 1) (default 0.95)
-            p: set the peak value (from 0 to 1) (default 0.95)
             expansion: set the max expansion factor (from 1 to 50) (default 2)
-            e: set the max expansion factor (from 1 to 50) (default 2)
             compression: set the max compression factor (from 1 to 50) (default 2)
-            c: set the max compression factor (from 1 to 50) (default 2)
             threshold: set the threshold value (from 0 to 1) (default 0)
-            t: set the threshold value (from 0 to 1) (default 0)
             _raise: set the expansion raising amount (from 0 to 1) (default 0.001)
-            r: set the expansion raising amount (from 0 to 1) (default 0.001)
             fall: set the compression raising amount (from 0 to 1) (default 0.001)
-            f: set the compression raising amount (from 0 to 1) (default 0.001)
             channels: set channels to filter (default "all")
-            h: set channels to filter (default "all")
             invert: set inverted filtering (default false)
-            i: set inverted filtering (default false)
             link: set linked channels filtering (default false)
-            l: set linked channels filtering (default false)
             rms: set the RMS value (from 0 to 1) (default 0)
-            m: set the RMS value (from 0 to 1) (default 0)
 
         Returns:
             default: the audio stream
@@ -8103,25 +7226,15 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "peak": peak,
-                    "p": p,
                     "expansion": expansion,
-                    "e": e,
                     "compression": compression,
-                    "c": c,
                     "threshold": threshold,
-                    "t": t,
                     "raise": _raise,
-                    "r": r,
                     "fall": fall,
-                    "f": f,
                     "channels": channels,
-                    "h": h,
                     "invert": invert,
-                    "i": i,
                     "link": link,
-                    "l": l,
                     "rms": rms,
-                    "m": m,
                 },
                 extra_options,
             ),
@@ -8577,35 +7690,20 @@ class AudioStream(FilterableStream):
         self,
         *,
         frequency: Double = Default("3000"),
-        f: Double = Default("3000"),
         width_type: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
-        t: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
         width: Double = Default("0"),
-        w: Double = Default("0"),
         gain: Double = Default("0"),
-        g: Double = Default("0"),
         poles: Int = Default("2"),
-        p: Int = Default("2"),
         mix: Double = Default("1"),
-        m: Double = Default("1"),
         channels: String = Default(None),
-        c: String = Default(None),
         normalize: Boolean = Default("false"),
-        n: Boolean = Default("false"),
         transform: Int
-        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
-        | Default = Default("di"),
-        a: Int
         | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
         | Default = Default("di"),
         precision: Int
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
-        r: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(
-            "auto"
-        ),
         blocksize: Int = Default("0"),
-        b: Int = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -8614,27 +7712,16 @@ class AudioStream(FilterableStream):
 
         Args:
             frequency: set central frequency (from 0 to 999999) (default 3000)
-            f: set central frequency (from 0 to 999999) (default 3000)
             width_type: set filter-width type (from 1 to 5) (default q)
-            t: set filter-width type (from 1 to 5) (default q)
             width: set width (from 0 to 99999) (default 0.5)
-            w: set width (from 0 to 99999) (default 0.5)
             gain: set gain (from -900 to 900) (default 0)
-            g: set gain (from -900 to 900) (default 0)
             poles: set number of poles (from 1 to 2) (default 2)
-            p: set number of poles (from 1 to 2) (default 2)
             mix: set mix (from 0 to 1) (default 1)
-            m: set mix (from 0 to 1) (default 1)
             channels: set channels to filter (default "all")
-            c: set channels to filter (default "all")
             normalize: normalize coefficients (default false)
-            n: normalize coefficients (default false)
             transform: set transform type (from 0 to 6) (default di)
-            a: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
-            r: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
-            b: set the block size (from 0 to 32768) (default 0)
 
         Returns:
             default: the audio stream
@@ -8651,27 +7738,16 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "frequency": frequency,
-                    "f": f,
                     "width_type": width_type,
-                    "t": t,
                     "width": width,
-                    "w": w,
                     "gain": gain,
-                    "g": g,
                     "poles": poles,
-                    "p": p,
                     "mix": mix,
-                    "m": m,
                     "channels": channels,
-                    "c": c,
                     "normalize": normalize,
-                    "n": n,
                     "transform": transform,
-                    "a": a,
                     "precision": precision,
-                    "r": r,
                     "blocksize": blocksize,
-                    "b": b,
                 },
                 extra_options,
             ),
@@ -8682,35 +7758,20 @@ class AudioStream(FilterableStream):
         self,
         *,
         frequency: Double = Default("3000"),
-        f: Double = Default("3000"),
         width_type: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
-        t: Int | Literal["h", "q", "o", "s", "k"] | Default = Default("q"),
         width: Double = Default("0"),
-        w: Double = Default("0"),
         gain: Double = Default("0"),
-        g: Double = Default("0"),
         poles: Int = Default("2"),
-        p: Int = Default("2"),
         mix: Double = Default("1"),
-        m: Double = Default("1"),
         channels: String = Default(None),
-        c: String = Default(None),
         normalize: Boolean = Default("false"),
-        n: Boolean = Default("false"),
         transform: Int
-        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
-        | Default = Default("di"),
-        a: Int
         | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
         | Default = Default("di"),
         precision: Int
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
-        r: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default(
-            "auto"
-        ),
         blocksize: Int = Default("0"),
-        b: Int = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -8719,27 +7780,16 @@ class AudioStream(FilterableStream):
 
         Args:
             frequency: set central frequency (from 0 to 999999) (default 3000)
-            f: set central frequency (from 0 to 999999) (default 3000)
             width_type: set filter-width type (from 1 to 5) (default q)
-            t: set filter-width type (from 1 to 5) (default q)
             width: set width (from 0 to 99999) (default 0.5)
-            w: set width (from 0 to 99999) (default 0.5)
             gain: set gain (from -900 to 900) (default 0)
-            g: set gain (from -900 to 900) (default 0)
             poles: set number of poles (from 1 to 2) (default 2)
-            p: set number of poles (from 1 to 2) (default 2)
             mix: set mix (from 0 to 1) (default 1)
-            m: set mix (from 0 to 1) (default 1)
             channels: set channels to filter (default "all")
-            c: set channels to filter (default "all")
             normalize: normalize coefficients (default false)
-            n: normalize coefficients (default false)
             transform: set transform type (from 0 to 6) (default di)
-            a: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
-            r: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
-            b: set the block size (from 0 to 32768) (default 0)
 
         Returns:
             default: the audio stream
@@ -8756,27 +7806,16 @@ class AudioStream(FilterableStream):
             **merge(
                 {
                     "frequency": frequency,
-                    "f": f,
                     "width_type": width_type,
-                    "t": t,
                     "width": width,
-                    "w": w,
                     "gain": gain,
-                    "g": g,
                     "poles": poles,
-                    "p": p,
                     "mix": mix,
-                    "m": m,
                     "channels": channels,
-                    "c": c,
                     "normalize": normalize,
-                    "n": n,
                     "transform": transform,
-                    "a": a,
                     "precision": precision,
-                    "r": r,
                     "blocksize": blocksize,
-                    "b": b,
                 },
                 extra_options,
             ),

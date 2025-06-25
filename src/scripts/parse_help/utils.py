@@ -229,6 +229,8 @@ def parse_av_option(
         AssertionError: If the expected option or choice format is not matched
     """
     output: list[FFMpegAVOption] = []
+    previous_option: str | None = None
+
     for option in tree[section]:
         choices: list[FFMpegOptionChoice] = []
         for choice in tree[section][option]:
@@ -246,6 +248,17 @@ def parse_av_option(
                     help=r.get("help", ""),
                 )
             )
+
+        if (
+            previous_option
+            and option.split(" ", 1)[1].strip()
+            == previous_option.split(" ", 1)[1].strip()
+        ):
+            # skip duplicate option e.g.
+            #    gains             <string>     ..F.A...... set gain values per band (default "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0")
+            #    g                 <string>     ..F.A...... set gain values per band (default "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0")
+            continue
+        previous_option = option
 
         match = re_option_pattern.match(option)
         assert match, f"No option found in line: {option}"

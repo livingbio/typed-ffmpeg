@@ -1432,7 +1432,6 @@ def libx264(
     nal_hrd: int | None | Literal["none", "vbr", "cbr"] = None,
     avcintra_class: int | None = None,
     me_method: int | None | Literal["dia", "hex", "umh", "esa", "tesa"] = None,
-    motion_est: int | None | Literal["dia", "hex", "umh", "esa", "tesa"] = None,
     forced_idr: bool | None = None,
     coder: int | None | Literal["default", "cavlc", "cabac", "vlc", "ac"] = None,
     b_strategy: int | None = None,
@@ -1485,7 +1484,6 @@ def libx264(
         nal_hrd: Signal HRD information (requires vbv-bufsize; cbr not allowed in .mp4) (from -1 to INT_MAX) (default -1)
         avcintra_class: AVC-Intra class 50/100/200/300/480 (from -1 to 480) (default -1)
         me_method: Set motion estimation method (from -1 to 4) (default -1)
-        motion_est: Set motion estimation method (from -1 to 4) (default -1)
         forced_idr: If forcing keyframes, force them as IDR frames. (default false)
         coder: Coder type (from -1 to 1) (default default)
         b_strategy: Strategy to choose between I/P/B-frames (from -1 to 2) (default -1)
@@ -1540,7 +1538,6 @@ def libx264(
                 "nal-hrd": nal_hrd,
                 "avcintra-class": avcintra_class,
                 "me_method": me_method,
-                "motion-est": motion_est,
                 "forced-idr": forced_idr,
                 "coder": coder,
                 "b_strategy": b_strategy,
@@ -1596,7 +1593,6 @@ def libx264rgb(
     nal_hrd: int | None | Literal["none", "vbr", "cbr"] = None,
     avcintra_class: int | None = None,
     me_method: int | None | Literal["dia", "hex", "umh", "esa", "tesa"] = None,
-    motion_est: int | None | Literal["dia", "hex", "umh", "esa", "tesa"] = None,
     forced_idr: bool | None = None,
     coder: int | None | Literal["default", "cavlc", "cabac", "vlc", "ac"] = None,
     b_strategy: int | None = None,
@@ -1649,7 +1645,6 @@ def libx264rgb(
         nal_hrd: Signal HRD information (requires vbv-bufsize; cbr not allowed in .mp4) (from -1 to INT_MAX) (default -1)
         avcintra_class: AVC-Intra class 50/100/200/300/480 (from -1 to 480) (default -1)
         me_method: Set motion estimation method (from -1 to 4) (default -1)
-        motion_est: Set motion estimation method (from -1 to 4) (default -1)
         forced_idr: If forcing keyframes, force them as IDR frames. (default false)
         coder: Coder type (from -1 to 1) (default default)
         b_strategy: Strategy to choose between I/P/B-frames (from -1 to 2) (default -1)
@@ -1704,7 +1699,6 @@ def libx264rgb(
                 "nal-hrd": nal_hrd,
                 "avcintra-class": avcintra_class,
                 "me_method": me_method,
-                "motion-est": motion_est,
                 "forced-idr": forced_idr,
                 "coder": coder,
                 "b_strategy": b_strategy,
@@ -3796,7 +3790,6 @@ def roqvideo(
 
 def rpza(
     skip_frame_thresh: int | None = None,
-    start_one_color_thresh: int | None = None,
     continue_one_color_thresh: int | None = None,
     sixteen_color_thresh: int | None = None,
 ) -> FFMpegEncoderOption:
@@ -3805,7 +3798,6 @@ def rpza(
 
     Args:
         skip_frame_thresh: (from 0 to 24) (default 1)
-        start_one_color_thresh: (from 0 to 24) (default 1)
         continue_one_color_thresh: (from 0 to 24) (default 0)
         sixteen_color_thresh: (from 0 to 24) (default 1)
 
@@ -3816,7 +3808,6 @@ def rpza(
         kwargs=merge(
             {
                 "skip_frame_thresh": skip_frame_thresh,
-                "start_one_color_thresh": start_one_color_thresh,
                 "continue_one_color_thresh": continue_one_color_thresh,
                 "sixteen_color_thresh": sixteen_color_thresh,
             }
@@ -5711,7 +5702,6 @@ def flac(
     lpc_type: int | None | Literal["none", "fixed", "levinson", "cholesky"] = None,
     lpc_passes: int | None = None,
     min_partition_order: int | None = None,
-    max_partition_order: int | None = None,
     prediction_order_method: int
     | None
     | Literal["estimation", "2level", "4level", "8level", "search", "log"] = None,
@@ -5721,7 +5711,6 @@ def flac(
     exact_rice_parameters: bool | None = None,
     multi_dim_quant: bool | None = None,
     min_prediction_order: int | None = None,
-    max_prediction_order: int | None = None,
 ) -> FFMpegEncoderOption:
     """
     FLAC (Free Lossless Audio Codec)
@@ -5731,13 +5720,11 @@ def flac(
         lpc_type: LPC algorithm (from -1 to 3) (default -1)
         lpc_passes: Number of passes to use for Cholesky factorization during LPC analysis (from 1 to INT_MAX) (default 2)
         min_partition_order: (from -1 to 8) (default -1)
-        max_partition_order: (from -1 to 8) (default -1)
         prediction_order_method: Search method for selecting prediction order (from -1 to 5) (default -1)
         ch_mode: Stereo decorrelation mode (from -1 to 3) (default auto)
         exact_rice_parameters: Calculate rice parameters exactly (default false)
         multi_dim_quant: Multi-dimensional quantization (default false)
         min_prediction_order: (from -1 to 32) (default -1)
-        max_prediction_order: (from -1 to 32) (default -1)
 
     Returns:
         the set codec options
@@ -5749,13 +5736,11 @@ def flac(
                 "lpc_type": lpc_type,
                 "lpc_passes": lpc_passes,
                 "min_partition_order": min_partition_order,
-                "max_partition_order": max_partition_order,
                 "prediction_order_method": prediction_order_method,
                 "ch_mode": ch_mode,
                 "exact_rice_parameters": exact_rice_parameters,
                 "multi_dim_quant": multi_dim_quant,
                 "min_prediction_order": min_prediction_order,
-                "max_prediction_order": max_prediction_order,
             }
         )
     )

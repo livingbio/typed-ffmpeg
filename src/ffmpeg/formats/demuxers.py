@@ -5145,7 +5145,6 @@ def sbc(
 
 def sbg(
     sample_rate: int | None = None,
-    frame_size: int | None = None,
     max_file_size: int | None = None,
 ) -> FFMpegDemuxerOption:
     """
@@ -5153,7 +5152,6 @@ def sbg(
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 0)
-        frame_size: (from 0 to INT_MAX) (default 0)
         max_file_size: (from 0 to INT_MAX) (default 5000000)
 
     Returns:
@@ -5163,7 +5161,6 @@ def sbg(
         kwargs=merge(
             {
                 "sample_rate": sample_rate,
-                "frame_size": frame_size,
                 "max_file_size": max_file_size,
             }
         )

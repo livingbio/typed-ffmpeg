@@ -23,18 +23,6 @@
     },
     {
       "argname": null,
-      "choices": [],
-      "default": "2",
-      "flags": "..F.A......",
-      "help": "set number of inputs (from 1 to INT_MAX) (default 2)",
-      "max": null,
-      "min": null,
-      "name": "n",
-      "section": "ainterleave AVOptions:",
-      "type": "int"
-    },
-    {
-      "argname": null,
       "choices": [
         {
           "flags": "..F.A......",

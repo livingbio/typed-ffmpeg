@@ -99,6 +99,7 @@ def test_parse_filter_options(snapshot: SnapshotAssertion, text: str) -> None:
         "ainterleave",
         "stereotools",  # option choices contain special characters e.g. "lr>lr           0            ..F.A....T."
         "afireqsrc",  # option choices contains space e.g. "vocal booster   17           ..F.A......"
+        "acrossfade",  # contains option alias e.g. nb_samples = ns
     ],
 )
 def test_extract_filter(snapshot: SnapshotAssertion, filter: str) -> None:

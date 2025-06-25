@@ -5483,54 +5483,6 @@
       },
       {
         "__class__": "FFMpegAVOption",
-        "choices": [
-          {
-            "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "",
-            "name": "dia",
-            "value": "0"
-          },
-          {
-            "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "",
-            "name": "hex",
-            "value": "1"
-          },
-          {
-            "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "",
-            "name": "umh",
-            "value": "2"
-          },
-          {
-            "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "",
-            "name": "esa",
-            "value": "3"
-          },
-          {
-            "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "",
-            "name": "tesa",
-            "value": "4"
-          }
-        ],
-        "default": "-1",
-        "flags": "E..V.......",
-        "help": "Set motion estimation method (from -1 to 4) (default -1)",
-        "max": "4",
-        "min": "-1",
-        "name": "motion-est",
-        "section": "libx264 AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
         "choices": [],
         "default": "false",
         "flags": "E..V.......",
@@ -6294,54 +6246,6 @@
         "max": "4",
         "min": "-1",
         "name": "me_method",
-        "section": "libx264rgb AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [
-          {
-            "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "",
-            "name": "dia",
-            "value": "0"
-          },
-          {
-            "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "",
-            "name": "hex",
-            "value": "1"
-          },
-          {
-            "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "",
-            "name": "umh",
-            "value": "2"
-          },
-          {
-            "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "",
-            "name": "esa",
-            "value": "3"
-          },
-          {
-            "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "",
-            "name": "tesa",
-            "value": "4"
-          }
-        ],
-        "default": "-1",
-        "flags": "E..V.......",
-        "help": "Set motion estimation method (from -1 to 4) (default -1)",
-        "max": "4",
-        "min": "-1",
-        "name": "motion-est",
         "section": "libx264rgb AVOptions:",
         "type": "int"
       },
@@ -7184,34 +7088,10 @@
         "choices": [],
         "default": "false",
         "flags": "E..V.......",
-        "help": "set to 1 to enable Spatial AQ (default false)",
-        "max": null,
-        "min": null,
-        "name": "spatial_aq",
-        "section": "h264_nvenc AVOptions:",
-        "type": "boolean"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "false",
-        "flags": "E..V.......",
         "help": "set to 1 to enable Temporal AQ (default false)",
         "max": null,
         "min": null,
         "name": "temporal-aq",
-        "section": "h264_nvenc AVOptions:",
-        "type": "boolean"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "false",
-        "flags": "E..V.......",
-        "help": "set to 1 to enable Temporal AQ (default false)",
-        "max": null,
-        "min": null,
-        "name": "temporal_aq",
         "section": "h264_nvenc AVOptions:",
         "type": "boolean"
       },
@@ -8939,34 +8819,10 @@
         "choices": [],
         "default": "false",
         "flags": "E..V.......",
-        "help": "set to 1 to enable Spatial AQ (default false)",
-        "max": null,
-        "min": null,
-        "name": "spatial-aq",
-        "section": "hevc_nvenc AVOptions:",
-        "type": "boolean"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "false",
-        "flags": "E..V.......",
         "help": "set to 1 to enable Temporal AQ (default false)",
         "max": null,
         "min": null,
         "name": "temporal_aq",
-        "section": "hevc_nvenc AVOptions:",
-        "type": "boolean"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "false",
-        "flags": "E..V.......",
-        "help": "set to 1 to enable Temporal AQ (default false)",
-        "max": null,
-        "min": null,
-        "name": "temporal-aq",
         "section": "hevc_nvenc AVOptions:",
         "type": "boolean"
       },
@@ -14414,18 +14270,6 @@
         "max": "24",
         "min": "0",
         "name": "skip_frame_thresh",
-        "section": "rpza AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "1",
-        "flags": "E..V.......",
-        "help": "(from 0 to 24) (default 1)",
-        "max": "24",
-        "min": "0",
-        "name": "start_one_color_thresh",
         "section": "rpza AVOptions:",
         "type": "int"
       },
@@ -20200,18 +20044,6 @@
       },
       {
         "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "-1",
-        "flags": "E...A......",
-        "help": "(from -1 to 8) (default -1)",
-        "max": "8",
-        "min": "-1",
-        "name": "max_partition_order",
-        "section": "FLAC encoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
         "choices": [
           {
             "__class__": "FFMpegOptionChoice",
@@ -20346,18 +20178,6 @@
         "max": "32",
         "min": "-1",
         "name": "min_prediction_order",
-        "section": "FLAC encoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "-1",
-        "flags": "E...A......",
-        "help": "(from -1 to 32) (default -1)",
-        "max": "32",
-        "min": "-1",
-        "name": "max_prediction_order",
         "section": "FLAC encoder AVOptions:",
         "type": "int"
       }
