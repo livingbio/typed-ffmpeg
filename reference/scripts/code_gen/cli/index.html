@@ -2590,9 +2590,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#scripts.code_gen.cli.load_muxers" class="md-nav__link">
+  <a href="#scripts.code_gen.cli.load_formats" class="md-nav__link">
     <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;load_muxers
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;load_formats
     </span>
   </a>
   
@@ -2620,6 +2620,29 @@
   
   <span class="md-ellipsis">
     gen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    schema
     
   </span>
   
@@ -3388,9 +3411,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#scripts.code_gen.cli.load_muxers" class="md-nav__link">
+  <a href="#scripts.code_gen.cli.load_formats" class="md-nav__link">
     <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;load_muxers
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;load_formats
     </span>
   </a>
   
@@ -3486,7 +3509,7 @@
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="            load_muxers (scripts.code_gen.cli.load_muxers)" href="#scripts.code_gen.cli.load_muxers">load_muxers</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="            load_formats (scripts.code_gen.cli.load_formats)" href="#scripts.code_gen.cli.load_formats">load_formats</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Load muxers from the output path</p>
@@ -3736,7 +3759,7 @@
 
 
 <a href="#scripts.code_gen.cli.load_codecs" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">load_codecs</span><span class="p">(</span><span class="n">rebuild</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="scripts.parse_help.schema.FFMpegCodec">FFMpegCodec</span></span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">load_codecs</span><span class="p">(</span><span class="n">rebuild</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="scripts.code_gen.schema.FFMpegCodec">FFMpegCodec</span></span><span class="p">]</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3786,7 +3809,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="list">list</span>[<span title="scripts.parse_help.schema.FFMpegCodec">FFMpegCodec</span>]</code>
+                  <code><span title="list">list</span>[<span title="scripts.code_gen.schema.FFMpegCodec">FFMpegCodec</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3810,9 +3833,7 @@
 
 
 <a href="#scripts.code_gen.cli.load_filters" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">load_filters</span><span class="p">(</span>
-    <span class="n">outpath</span><span class="p">:</span> <span class="n"><span title="pathlib.Path">Path</span></span><span class="p">,</span> <span class="n">rebuild</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            FFMpegFilter
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">load_filters</span><span class="p">(</span><span class="n">rebuild</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            FFMpegFilter
 
 
   
@@ -3836,22 +3857,6 @@
         </tr>
       </thead>
       <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>outpath</code>
-            </td>
-            <td>
-                  <code><span title="pathlib.Path">Path</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The output path</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
           <tr class="doc-section-item">
             <td>
                 <code>rebuild</code>
@@ -3907,12 +3912,12 @@
 <div class="doc doc-object doc-function">
 
 
-<h2 id="scripts.code_gen.cli.load_muxers" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">load_muxers</span>
+<h2 id="scripts.code_gen.cli.load_formats" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">load_formats</span>
 
 
-<a href="#scripts.code_gen.cli.load_muxers" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">load_muxers</span><span class="p">(</span><span class="n">rebuild</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="scripts.parse_help.schema.FFMpegFormat">FFMpegFormat</span></span><span class="p">]</span>
+<a href="#scripts.code_gen.cli.load_formats" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">load_formats</span><span class="p">(</span><span class="n">rebuild</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="scripts.code_gen.schema.FFMpegFormat">FFMpegFormat</span></span><span class="p">]</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3962,7 +3967,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="list">list</span>[<span title="scripts.parse_help.schema.FFMpegFormat">FFMpegFormat</span>]</code>
+                  <code><span title="list">list</span>[<span title="scripts.code_gen.schema.FFMpegFormat">FFMpegFormat</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
