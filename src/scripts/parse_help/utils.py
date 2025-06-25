@@ -1,7 +1,7 @@
 import re
 import subprocess
 from collections import OrderedDict
-from collections.abc import Sequence
+from collections.abc import Iterable, Sequence
 from typing import Any, cast, get_args
 
 from ..code_gen.schema import FFMpegOptionType
@@ -111,6 +111,30 @@ def parse_section_tree(text: str) -> dict[str, Any]:
         paths.append((indent, line))
 
     return output
+
+
+def glob(tree: dict[str, Any], pattern: str) -> list[tuple[str, dict[str, Any]]]:
+    """
+    Glob a tree of sections and options.
+
+    Args:
+        tree: The tree to glob
+        pattern: The pattern to match
+
+    Returns:
+        An iterable of tuples containing the matched key and value
+    """
+
+    def _glob(
+        tree: dict[str, Any], pattern: str
+    ) -> Iterable[tuple[str, dict[str, Any]]]:
+        for key, value in tree.items():
+            if re.match(pattern, key):
+                yield key, value
+            else:
+                yield from _glob(value, pattern)
+
+    return list(_glob(tree, pattern))
 
 
 re_choice_pattern = re.compile(

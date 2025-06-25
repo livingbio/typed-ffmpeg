@@ -1,7 +1,9 @@
 import re
+from dataclasses import replace
+from typing import Any, Literal, cast
 
-from .schema import FFMpegAVOption, FFMpegFilter
-from .utils import parse_av_option, parse_section_tree, run_ffmpeg_command
+from .schema import FFMpegFilter, FFMpegIOType
+from .utils import glob, parse_av_option, parse_section_tree, run_ffmpeg_command
 
 
 def _parse_list(text: str) -> list[FFMpegFilter]:
@@ -61,22 +63,90 @@ def _extract_list() -> list[FFMpegFilter]:
     return _parse_list(run_ffmpeg_command(["-filters"]))
 
 
-def _parse_filter_options(text: str) -> list[FFMpegAVOption]:
+def _parse_filter_io(tree: dict[str, Any]) -> list[FFMpegIOType]:
+    """
+    Parse the help text for a filter's inputs and outputs.
+    """
+    output = []
+    for key, value in tree.items():
+        if key.startswith("#"):
+            match = re.match(
+                r"#(?P<index>\d+)\:\s*(?P<name>\w+)\s*\((?P<type>\w+)\)", key
+            )
+            assert match
+            index, name, type = match.groups()
+            assert type in ("audio", "video")
+            output.append(
+                FFMpegIOType(name=name, type=cast(Literal["audio", "video"], type))
+            )
+    return output
+
+
+def _parse_filter(text: str) -> FFMpegFilter:
     """
     Parse the help text for a filter.
     """
+    if "Unknown filter" in text:
+        raise ValueError(f"Unknown filter: {filter}")
+
     tree = parse_section_tree(text)
-    for section in tree:
-        if "AVOptions" in section:
-            return parse_av_option(section, tree)
-    return []
+
+    is_framesync = False
+    if glob(tree, r"framesync AVOptions"):
+        is_framesync = True
+
+    is_slice_threading = False
+    if glob(tree, r"slice threading supported"):
+        is_slice_threading = True
+
+    is_timeline = False
+    if glob(tree, r"This filter has support for timeline"):
+        is_timeline = True
+
+    section, subtree = glob(tree, r"^Filter")[0]
+    name = section.split(" ")[1]
+    help = list(subtree.keys())[0]
+
+    section, subtree = glob(tree, r".*AVOptions")[0]
+    options = parse_av_option(section, tree)
+
+    section, subtree = glob(tree, "Inputs:")[0]
+    is_input_dynamic = False
+    input_types = []
+    if glob(subtree, r"dynamic \(depending on the options\)"):
+        is_input_dynamic = True
+    else:
+        input_types = _parse_filter_io(subtree)
+
+    section, subtree = glob(tree, "Outputs:")[0]
+    is_output_dynamic = False
+    output_types = []
+    if glob(subtree, r"dynamic \(depending on the options\)"):
+        is_output_dynamic = True
+    else:
+        output_types = _parse_filter_io(subtree)
+
+    return FFMpegFilter(
+        name=name,
+        help=help,
+        flags="",
+        io_flags="",
+        options=tuple(options),
+        stream_typings_input=tuple(input_types),
+        stream_typings_output=tuple(output_types),
+        is_framesync=is_framesync,
+        is_slice_threading=is_slice_threading,
+        is_timeline=is_timeline,
+        is_dynamic_input=is_input_dynamic,
+        is_dynamic_output=is_output_dynamic,
+    )
 
 
-def _extract_filter(filter: str) -> list[FFMpegAVOption]:
+def _extract_filter(filter: str) -> FFMpegFilter:
     """
     Get the help text for a filter.
     """
-    return _parse_filter_options(run_ffmpeg_command(["-h", f"filter={filter}"]))
+    return _parse_filter(run_ffmpeg_command(["-h", f"filter={filter}"]))
 
 
 def extract() -> list[FFMpegFilter]:
@@ -85,14 +155,7 @@ def extract() -> list[FFMpegFilter]:
     """
     output: list[FFMpegFilter] = []
     for filter in _extract_list():
-        options = _extract_filter(filter.name)
-        output.append(
-            FFMpegFilter(
-                name=filter.name,
-                flags=filter.flags,
-                io_flags=filter.io_flags,
-                help=filter.help,
-                options=tuple(options),
-            )
-        )
+        _filter = _extract_filter(filter.name)
+        _filter = replace(_filter, flags=filter.flags, io_flags=filter.io_flags)
+        output.append(_filter)
     return output

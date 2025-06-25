@@ -323,3 +323,12 @@ class FFMpegFilter(FFMpegOptionSet):
 
     is_dynamic_output: bool = False
     """Whether the filter can produce a variable number of outputs."""
+
+    is_framesync: bool = False
+    """Whether the filter supports framesync."""
+
+    is_slice_threading: bool = False
+    """Whether the filter supports slice threading."""
+
+    is_timeline: bool = False
+    """Whether the filter supports timeline."""

@@ -1,3 +1,5 @@
+from dataclasses import asdict
+
 import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
@@ -5,7 +7,7 @@ from syrupy.extensions.json import JSONSnapshotExtension
 from ..parse_filters import (
     _extract_filter,
     _extract_list,
-    _parse_filter_options,
+    _parse_filter,
     _parse_list,
     extract,
 )
@@ -82,20 +84,22 @@ scale(2ref) AVOptions:
     ],
 )
 def test_parse_filter_options(snapshot: SnapshotAssertion, text: str) -> None:
-    options = _parse_filter_options(text)
-    assert snapshot(extension_class=JSONSnapshotExtension) == options
+    options = _parse_filter(text)
+    assert snapshot(extension_class=JSONSnapshotExtension) == asdict(options)
 
 
 @pytest.mark.parametrize(
     "filter",
     [
-        "overlay",
+        "overlay",  # framesync, slice threading
         "scale",
+        "concat",  # dynamic input/output
+        "alphamerge",  # timeline
     ],
 )
-def test_extract_filter_options(snapshot: SnapshotAssertion, filter: str) -> None:
+def test_extract_filter(snapshot: SnapshotAssertion, filter: str) -> None:
     options = _extract_filter(filter)
-    assert snapshot(extension_class=JSONSnapshotExtension) == options
+    assert snapshot(extension_class=JSONSnapshotExtension) == asdict(options)
 
 
 @pytest.mark.dev_only
