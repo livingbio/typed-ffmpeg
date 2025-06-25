@@ -95,6 +95,8 @@ def test_parse_filter_options(snapshot: SnapshotAssertion, text: str) -> None:
         "scale",
         "concat",  # dynamic input/output
         "alphamerge",  # timeline
+        "acopy",  # no options
+        "ainterleave",
     ],
 )
 def test_extract_filter(snapshot: SnapshotAssertion, filter: str) -> None:

@@ -107,8 +107,10 @@ def _parse_filter(text: str) -> FFMpegFilter:
     name = section.split(" ")[1]
     help = list(subtree.keys())[0]
 
-    section, subtree = glob(tree, r".*AVOptions")[0]
-    options = parse_av_option(section, tree)
+    options = []
+    if glob(tree, r".*AVOptions"):
+        section, subtree = glob(tree, r".*AVOptions")[0]
+        options = parse_av_option(section, tree)
 
     section, subtree = glob(tree, "Inputs:")[0]
     is_input_dynamic = False

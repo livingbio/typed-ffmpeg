@@ -14,6 +14,8 @@ from ffmpeg.common.schema import (
     FFMpegFilterOption,
     FFMpegFilterOptionChoice,
     FFMpegFilterOptionType,
+    FFMpegIOType,
+    StreamType,
 )
 
 from . import parse_codecs, parse_filters, parse_formats
@@ -45,19 +47,25 @@ def all_filters() -> list[FFMpegFilter]:
                 name=filter_info.name,
                 description=filter_info.help,
                 # flags
-                is_support_timeline=False,
-                is_support_slice_threading=False,
+                is_support_timeline=filter_info.is_timeline,
+                is_support_slice_threading=filter_info.is_slice_threading,
                 is_support_command=False,
                 # NOTE: is_support_framesync can only be determined by filter_info_from_help
-                is_support_framesync=False,
+                is_support_framesync=filter_info.is_framesync,
                 is_filter_sink=filter_info.io_flags.endswith("->|"),
                 is_filter_source=filter_info.io_flags.startswith("|->"),
                 # IO Typing
                 is_dynamic_input="N->" in filter_info.io_flags,
                 is_dynamic_output="->N" in filter_info.io_flags,
                 # stream_typings's name can only be determined by filter_info_from_help
-                stream_typings_input=(),
-                stream_typings_output=(),
+                stream_typings_input=tuple(
+                    FFMpegIOType(name=i.name, type=StreamType(i.type))
+                    for i in filter_info.stream_typings_input
+                ),
+                stream_typings_output=tuple(
+                    FFMpegIOType(name=i.name, type=StreamType(i.type))
+                    for i in filter_info.stream_typings_output
+                ),
                 options=tuple(
                     FFMpegFilterOption(
                         name=option.name,
