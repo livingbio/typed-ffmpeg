@@ -2,9 +2,11 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from typing import Literal
 
+from ffmpeg.common.serialize import Serializable
+
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegOptionChoice:
+class FFMpegOptionChoice(Serializable):
     name: str
     help: str
     flags: str
@@ -12,7 +14,7 @@ class FFMpegOptionChoice:
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegAVOption:
+class FFMpegAVOption(Serializable):
     section: str
     name: str
     type: str
@@ -97,7 +99,7 @@ class FFMpegAVOption:
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegCodec:
+class FFMpegCodec(Serializable):
     name: str
     flags: str
     description: str
@@ -144,7 +146,7 @@ class FFMpegDecoder(FFMpegCodec):
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegFormat:
+class FFMpegFormat(Serializable):
     name: str
     flags: str
     description: str
