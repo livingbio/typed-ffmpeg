@@ -61,7 +61,7 @@ def _extract_list() -> list[FFMpegFilter]:
     return _parse_list(run_ffmpeg_command(["-filters"]))
 
 
-def _parse_filter(text: str) -> list[FFMpegAVOption]:
+def _parse_filter_options(text: str) -> list[FFMpegAVOption]:
     """
     Parse the help text for a filter.
     """
@@ -76,7 +76,7 @@ def _extract_filter(filter: str) -> list[FFMpegAVOption]:
     """
     Get the help text for a filter.
     """
-    return _parse_filter(run_ffmpeg_command(["-h", f"filter={filter}"]))
+    return _parse_filter_options(run_ffmpeg_command(["-h", f"filter={filter}"]))
 
 
 def extract() -> list[FFMpegFilter]:

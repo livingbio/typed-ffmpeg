@@ -72,6 +72,17 @@ ffvhuff AVOptions:
 """,
             id="multiple_sections",
         ),
+        pytest.param(
+            """Filter overlay
+  Overlay a video source on top of the input.
+    slice threading supported
+    Inputs:
+       #0: main (video)
+       #1: overlay (video)
+    Outputs:
+       #0: default (video)""",
+            id="filter_help_with_io",
+        ),
     ],
 )
 def test_parse_section_tree(text: str, snapshot: SnapshotAssertion) -> None:

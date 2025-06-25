@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Literal
 
 from ..code_gen.schema import FFMpegOptionType
 
@@ -255,6 +256,16 @@ class FFMpegMuxer(FFMpegFormat):
 
 
 @dataclass(frozen=True, kw_only=True)
+class FFMpegIOType:
+    """Represents an FFmpeg IO type."""
+
+    name: str | None = None
+    """The name of the IO type."""
+
+    type: Literal["audio", "video"]
+
+
+@dataclass(frozen=True, kw_only=True)
 class FFMpegFilter(FFMpegOptionSet):
     """
     Represents an FFmpeg filter.
@@ -300,3 +311,15 @@ class FFMpegFilter(FFMpegOptionSet):
     N->V: Dynamic number of inputs/outputs to video output
     ```
     """
+
+    stream_typings_input: tuple[FFMpegIOType, ...] = ()
+    """The types of input streams this filter accepts."""
+
+    stream_typings_output: tuple[FFMpegIOType, ...] = ()
+    """The types of output streams this filter produces."""
+
+    is_dynamic_input: bool = False
+    """Whether the filter can accept a variable number of inputs."""
+
+    is_dynamic_output: bool = False
+    """Whether the filter can produce a variable number of outputs."""

@@ -10,7 +10,7 @@ def {{codec.name | option_name_safe }}(
     {% endfor %}
 ) -> FFMpegEncoderOption:
     """
-    {{codec.description}}
+    {{codec.help}}
     {% if codec.options | length > 0 %}
     Args:
     {%- for option in codec.filterd_options() %}

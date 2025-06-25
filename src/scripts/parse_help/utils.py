@@ -60,7 +60,7 @@ def _count_indent(line: str) -> int:
     return len(line)
 
 
-def parse_section_tree(text: str) -> dict[str, dict[str, dict[str, None]]]:
+def parse_section_tree(text: str) -> dict[str, Any]:
     """
     Parse indented help text into a nested tree structure, preserving section hierarchy.
 

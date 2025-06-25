@@ -5,7 +5,7 @@ from syrupy.extensions.json import JSONSnapshotExtension
 from ..parse_filters import (
     _extract_filter,
     _extract_list,
-    _parse_filter,
+    _parse_filter_options,
     _parse_list,
     extract,
 )
@@ -81,8 +81,8 @@ scale(2ref) AVOptions:
         ),
     ],
 )
-def test_parse_filter(snapshot: SnapshotAssertion, text: str) -> None:
-    options = _parse_filter(text)
+def test_parse_filter_options(snapshot: SnapshotAssertion, text: str) -> None:
+    options = _parse_filter_options(text)
     assert snapshot(extension_class=JSONSnapshotExtension) == options
 
 
