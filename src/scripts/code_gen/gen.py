@@ -2,6 +2,7 @@ import keyword
 import pathlib
 from math import isnan
 from pathlib import Path
+from typing import Any
 
 import jinja2
 
@@ -12,8 +13,6 @@ from ffmpeg.common.schema import (
     FFMpegOption,
     FFMpegOptionType,
 )
-
-from ..parse_help.schema import FFMpegCodec, FFMpegFormat
 
 template_folder = Path(__file__).parent / "templates"
 
@@ -251,19 +250,13 @@ env.filters["filter_option_typings"] = filter_option_typings
 
 def render(
     *,
-    filters: list[FFMpegFilter],
-    options: list[FFMpegOption],
-    codecs: list[FFMpegCodec],
-    muxers: list[FFMpegFormat],
     outpath: pathlib.Path,
+    **kwargs: Any,
 ) -> list[pathlib.Path]:
     """
     Render the filter and option documents
 
     Args:
-        filters: The filters
-        options: The options
-        codecs: The codecs
         outpath: The output path
 
     Returns:
@@ -272,13 +265,11 @@ def render(
     outpath.mkdir(exist_ok=True)
     output = []
 
-    for template_file in template_folder.glob("**/*.py.jinja"):
+    for template_file in template_folder.glob("**/*.jinja"):
         template_path = template_file.relative_to(template_folder)
 
         template = env.get_template(str(template_path))
-        code = template.render(
-            filters=filters, options=options, codecs=codecs, muxers=muxers
-        )
+        code = template.render(**kwargs)
 
         opath = outpath / str(template_path).replace(".jinja", "")
         opath.parent.mkdir(parents=True, exist_ok=True)
