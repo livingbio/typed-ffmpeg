@@ -55,5 +55,5 @@ def input(
                 "{{ option.name}}": {{ option.name | option_name_safe }},
                 {% endif %}
                 {% endfor %}
-        }, decoder_options.kwargs if decoder_options else {}, demuxer_options.kwargs if demuxer_options else {}, extra_options )
+        }, decoder_options, demuxer_options, extra_options )
     ).stream()

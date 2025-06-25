@@ -43,5 +43,5 @@ def input(
         filename=str(filename),
         kwargs=merge({
             
-        }, decoder_options.kwargs if decoder_options else {}, demuxer_options.kwargs if demuxer_options else {}, extra_options )
+        }, decoder_options, demuxer_options, extra_options )
     ).stream()

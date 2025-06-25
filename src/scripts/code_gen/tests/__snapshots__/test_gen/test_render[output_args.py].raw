@@ -46,4 +46,4 @@ class OutputArgs(ABC):
 
         return self._output_node(*streams, filename=filename, **merge({
             
-        }, encoder_options.kwargs if encoder_options else {}, muxer_options.kwargs if muxer_options else {}, extra_options)).stream()
+        }, encoder_options, muxer_options, extra_options)).stream()
