@@ -1,0 +1,7 @@
+[
+  "FFMpegCodec(name='012v', flags='V....D', help='Uncompressed 4:2:2 10-bit', options=())",
+  "FFMpegCodec(name='4xm', flags='V....D', help='4X Movie', options=())",
+  "FFMpegCodec(name='8bps', flags='V....D', help='QuickTime 8BPS video', options=())",
+  "FFMpegCodec(name='aasc', flags='V....D', help='Autodesk RLE', options=())",
+  "FFMpegCodec(name='agm', flags='V....D', help='Amuse Graphics Movie', options=())"
+]

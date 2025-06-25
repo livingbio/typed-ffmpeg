@@ -31,9 +31,9 @@ def acrossfade(
     _crossfade0: AudioStream,
     _crossfade1: AudioStream,
     *,
-    nb_samples: Int = Default(44100),
-    duration: Duration = Default(0.0),
-    overlap: Boolean = Default(True),
+    nb_samples: Int = Default("44100"),
+    duration: Duration = Default("0"),
+    overlap: Boolean = Default("true"),
     curve1: Int
     | Literal[
         "nofade",
@@ -176,24 +176,11 @@ def ainterleave(
 def alphamerge(
     _main: VideoStream,
     _alpha: VideoStream,
-    *,
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
     Copy the luma value of the second input into the alpha channel of the first input.
-
-    Args:
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -210,16 +197,7 @@ def alphamerge(
         ),
         _main,
         _alpha,
-        **merge(
-            {
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            },
-            extra_options,
-        ),
+        **merge({}, extra_options),
     )
     return filter_node.video(0)
 
@@ -266,9 +244,9 @@ def amix(
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default(
         "longest"
     ),
-    dropout_transition: Float = Default(2.0),
+    dropout_transition: Float = Default("2"),
     weights: String = Default("1 1"),
-    normalize: Boolean = Default(True),
+    normalize: Boolean = Default("true"),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -343,12 +321,11 @@ def anlmf(
     _input: AudioStream,
     _desired: AudioStream,
     *,
-    order: Int = Default(256),
-    mu: Float = Default(0.75),
-    eps: Float = Default(1.0),
-    leakage: Float = Default(0.0),
+    order: Int = Default("256"),
+    mu: Float = Default("0.75"),
+    eps: Float = Default("1"),
+    leakage: Float = Default("0"),
     out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -361,7 +338,6 @@ def anlmf(
         eps: set the filter eps (from 0 to 1) (default 1)
         leakage: set the filter leakage (from 0 to 1) (default 0)
         out_mode: set output mode (from 0 to 4) (default o)
-        enable: timeline editing
 
     Returns:
         default: the audio stream
@@ -383,7 +359,6 @@ def anlmf(
                 "eps": eps,
                 "leakage": leakage,
                 "out_mode": out_mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -395,12 +370,11 @@ def anlms(
     _input: AudioStream,
     _desired: AudioStream,
     *,
-    order: Int = Default(256),
-    mu: Float = Default(0.75),
-    eps: Float = Default(1.0),
-    leakage: Float = Default(0.0),
+    order: Int = Default("256"),
+    mu: Float = Default("0.75"),
+    eps: Float = Default("1"),
+    leakage: Float = Default("0"),
     out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -413,7 +387,6 @@ def anlms(
         eps: set the filter eps (from 0 to 1) (default 1)
         leakage: set the filter leakage (from 0 to 1) (default 0)
         out_mode: set output mode (from 0 to 4) (default o)
-        enable: timeline editing
 
     Returns:
         default: the audio stream
@@ -435,7 +408,6 @@ def anlms(
                 "eps": eps,
                 "leakage": leakage,
                 "out_mode": out_mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -446,16 +418,11 @@ def anlms(
 def apsnr(
     _input0: AudioStream,
     _input1: AudioStream,
-    *,
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
     Measure Audio Peak Signal-to-Noise Ratio.
-
-    Args:
-        enable: timeline editing
 
     Returns:
         default: the audio stream
@@ -470,12 +437,7 @@ def apsnr(
         ),
         _input0,
         _input1,
-        **merge(
-            {
-                "enable": enable,
-            },
-            extra_options,
-        ),
+        **merge({}, extra_options),
     )
     return filter_node.audio(0)
 
@@ -484,11 +446,10 @@ def arls(
     _input: AudioStream,
     _desired: AudioStream,
     *,
-    order: Int = Default(16),
-    _lambda: Float = Default(1.0),
-    delta: Float = Default(2.0),
+    order: Int = Default("16"),
+    _lambda: Float = Default("1"),
+    delta: Float = Default("2"),
     out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -500,7 +461,6 @@ def arls(
         _lambda: set the filter lambda (from 0 to 1) (default 1)
         delta: set the filter delta (from 0 to 32767) (default 2)
         out_mode: set output mode (from 0 to 4) (default o)
-        enable: timeline editing
 
     Returns:
         default: the audio stream
@@ -521,7 +481,6 @@ def arls(
                 "lambda": _lambda,
                 "delta": delta,
                 "out_mode": out_mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -532,16 +491,11 @@ def arls(
 def asdr(
     _input0: AudioStream,
     _input1: AudioStream,
-    *,
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
     Measure Audio Signal-to-Distortion Ratio.
-
-    Args:
-        enable: timeline editing
 
     Returns:
         default: the audio stream
@@ -556,12 +510,7 @@ def asdr(
         ),
         _input0,
         _input1,
-        **merge(
-            {
-                "enable": enable,
-            },
-            extra_options,
-        ),
+        **merge({}, extra_options),
     )
     return filter_node.audio(0)
 
@@ -569,16 +518,11 @@ def asdr(
 def asisdr(
     _input0: AudioStream,
     _input1: AudioStream,
-    *,
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
     Measure Audio Scale-Invariant Signal-to-Distortion Ratio.
-
-    Args:
-        enable: timeline editing
 
     Returns:
         default: the audio stream
@@ -593,12 +537,7 @@ def asisdr(
         ),
         _input0,
         _input1,
-        **merge(
-            {
-                "enable": enable,
-            },
-            extra_options,
-        ),
+        **merge({}, extra_options),
     )
     return filter_node.audio(0)
 
@@ -648,7 +587,7 @@ def axcorrelate(
     _axcorrelate0: AudioStream,
     _axcorrelate1: AudioStream,
     *,
-    size: Int = Default(256),
+    size: Int = Default("256"),
     algo: Int | Literal["slow", "fast", "best"] | Default = Default("best"),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
@@ -919,22 +858,17 @@ def blend(
         "interpolate",
         "hardoverlay",
     ]
-    | Default = Default(-1),
+    | Default = Default("-1"),
     c0_expr: String = Default(None),
     c1_expr: String = Default(None),
     c2_expr: String = Default(None),
     c3_expr: String = Default(None),
     all_expr: String = Default(None),
-    c0_opacity: Double = Default(1.0),
-    c1_opacity: Double = Default(1.0),
-    c2_opacity: Double = Default(1.0),
-    c3_opacity: Double = Default(1.0),
-    all_opacity: Double = Default(1.0),
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
+    c0_opacity: Double = Default("1"),
+    c1_opacity: Double = Default("1"),
+    c2_opacity: Double = Default("1"),
+    c3_opacity: Double = Default("1"),
+    all_opacity: Double = Default("1"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -957,11 +891,6 @@ def blend(
         c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
         c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
         all_opacity: set opacity for all color components (from 0 to 1) (default 1)
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -993,11 +922,6 @@ def blend(
                 "c2_opacity": c2_opacity,
                 "c3_opacity": c3_opacity,
                 "all_opacity": all_opacity,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -1013,12 +937,12 @@ def blend_vulkan(
     c1_mode: Int | Literal["normal", "multiply"] | Default = Default("normal"),
     c2_mode: Int | Literal["normal", "multiply"] | Default = Default("normal"),
     c3_mode: Int | Literal["normal", "multiply"] | Default = Default("normal"),
-    all_mode: Int | Literal["normal", "multiply"] | Default = Default(-1),
-    c0_opacity: Double = Default(1.0),
-    c1_opacity: Double = Default(1.0),
-    c2_opacity: Double = Default(1.0),
-    c3_opacity: Double = Default(1.0),
-    all_opacity: Double = Default(1.0),
+    all_mode: Int | Literal["normal", "multiply"] | Default = Default("-1"),
+    c0_opacity: Double = Default("1"),
+    c1_opacity: Double = Default("1"),
+    c2_opacity: Double = Default("1"),
+    c3_opacity: Double = Default("1"),
+    all_opacity: Double = Default("1"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1073,18 +997,17 @@ def blend_vulkan(
 
 def bm3d(
     *streams: VideoStream,
-    sigma: Float = Default(1.0),
-    block: Int = Default(16),
-    bstep: Int = Default(4),
-    group: Int = Default(1),
-    range: Int = Default(9),
-    mstep: Int = Default(1),
-    thmse: Float = Default(0.0),
-    hdthr: Float = Default(2.7),
+    sigma: Float = Default("1"),
+    block: Int = Default("16"),
+    bstep: Int = Default("4"),
+    group: Int = Default("1"),
+    range: Int = Default("9"),
+    mstep: Int = Default("1"),
+    thmse: Float = Default("0"),
+    hdthr: Float = Default("2.7"),
     estim: Int | Literal["basic", "final"] | Default = Default("basic"),
-    ref: Boolean = Default(False),
-    planes: Int = Default(7),
-    enable: String = Default(None),
+    ref: Boolean = Default("false"),
+    planes: Int = Default("7"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1103,7 +1026,6 @@ def bm3d(
         estim: set filtering estimation mode (from 0 to 1) (default basic)
         ref: have reference stream (default false)
         planes: set planes to filter (from 0 to 15) (default 7)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -1132,7 +1054,6 @@ def bm3d(
                 "estim": estim,
                 "ref": ref,
                 "planes": planes,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -1146,10 +1067,9 @@ def colormap(
     _target: VideoStream,
     *,
     patch_size: Image_size = Default("64x64"),
-    nb_patches: Int = Default(0),
+    nb_patches: Int = Default("0"),
     type: Int | Literal["relative", "absolute"] | Default = Default("absolute"),
     kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1161,7 +1081,6 @@ def colormap(
         nb_patches: set number of patches (from 0 to 64) (default 0)
         type: set the target type used (from 0 to 1) (default absolute)
         kernel: set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -1185,7 +1104,6 @@ def colormap(
                 "nb_patches": nb_patches,
                 "type": type,
                 "kernel": kernel,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -1196,9 +1114,9 @@ def colormap(
 def concat(
     *streams: FilterableStream,
     n: Int = Auto("len(streams) // (int(v) + int(a))"),
-    v: Int = Default(1),
-    a: Int = Default(0),
-    unsafe: Boolean = Default(False),
+    v: Int = Default("1"),
+    a: Int = Default("0"),
+    unsafe: Boolean = Default("false"),
     extra_options: dict[str, Any] | None = None,
 ) -> FilterNode:
     """
@@ -1244,14 +1162,9 @@ def convolve(
     _main: VideoStream,
     _impulse: VideoStream,
     *,
-    planes: Int = Default(7),
+    planes: Int = Default("7"),
     impulse: Int | Literal["first", "all"] | Default = Default("all"),
-    noise: Float = Default(1e-07),
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
+    noise: Float = Default("1e-07"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1262,11 +1175,6 @@ def convolve(
         planes: set planes to convolve (from 0 to 15) (default 7)
         impulse: when to process impulses (from 0 to 1) (default all)
         noise: set noise (from 0 to 1) (default 1e-07)
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -1286,11 +1194,6 @@ def convolve(
                 "planes": planes,
                 "impulse": impulse,
                 "noise": noise,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -1301,24 +1204,11 @@ def convolve(
 def corr(
     _main: VideoStream,
     _reference: VideoStream,
-    *,
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
     Calculate the correlation between two video streams.
-
-    Args:
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -1333,30 +1223,21 @@ def corr(
         ),
         _main,
         _reference,
-        **merge(
-            {
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            },
-            extra_options,
-        ),
+        **merge({}, extra_options),
     )
     return filter_node.video(0)
 
 
 def decimate(
     *streams: VideoStream,
-    cycle: Int = Default(5),
-    dupthresh: Double = Default(1.1),
-    scthresh: Double = Default(15.0),
-    blockx: Int = Default(32),
-    blocky: Int = Default(32),
-    ppsrc: Boolean = Default(False),
-    chroma: Boolean = Default(True),
-    mixed: Boolean = Default(False),
+    cycle: Int = Default("5"),
+    dupthresh: Double = Default("1.1"),
+    scthresh: Double = Default("15"),
+    blockx: Int = Default("32"),
+    blocky: Int = Default("32"),
+    ppsrc: Boolean = Default("false"),
+    chroma: Boolean = Default("true"),
+    mixed: Boolean = Default("false"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1408,14 +1289,9 @@ def deconvolve(
     _main: VideoStream,
     _impulse: VideoStream,
     *,
-    planes: Int = Default(7),
+    planes: Int = Default("7"),
     impulse: Int | Literal["first", "all"] | Default = Default("all"),
-    noise: Float = Default(1e-07),
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
+    noise: Float = Default("1e-07"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1426,11 +1302,6 @@ def deconvolve(
         planes: set planes to deconvolve (from 0 to 15) (default 7)
         impulse: when to process impulses (from 0 to 1) (default all)
         noise: set noise (from 0 to 1) (default 1e-07)
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -1452,11 +1323,6 @@ def deconvolve(
                 "planes": planes,
                 "impulse": impulse,
                 "noise": noise,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -1472,7 +1338,6 @@ def displace(
     edge: Int | Literal["blank", "smear", "wrap", "mirror"] | Default = Default(
         "smear"
     ),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1481,7 +1346,6 @@ def displace(
 
     Args:
         edge: set edge mode (from 0 to 3) (default smear)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -1502,7 +1366,6 @@ def displace(
         **merge(
             {
                 "edge": edge,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -1514,8 +1377,8 @@ def feedback(
     _default: VideoStream,
     _feedin: VideoStream,
     *,
-    x: Int = Default(0),
-    w: Int = Default(0),
+    x: Int = Default("0"),
+    w: Int = Default("0"),
     extra_options: dict[str, Any] | None = None,
 ) -> tuple[
     VideoStream,
@@ -1565,18 +1428,18 @@ def fieldmatch(
     mode: Int
     | Literal["pc", "pc_n", "pc_u", "pc_n_ub", "pcn", "pcn_ub"]
     | Default = Default("pc_n"),
-    ppsrc: Boolean = Default(False),
+    ppsrc: Boolean = Default("false"),
     field: Int | Literal["auto", "bottom", "top"] | Default = Default("auto"),
-    mchroma: Boolean = Default(True),
-    y0: Int = Default(0),
-    scthresh: Double = Default(12.0),
+    mchroma: Boolean = Default("true"),
+    y0: Int = Default("0"),
+    scthresh: Double = Default("12"),
     combmatch: Int | Literal["none", "sc", "full"] | Default = Default("sc"),
     combdbg: Int | Literal["none", "pcn", "pcnub"] | Default = Default("none"),
-    cthresh: Int = Default(9),
-    chroma: Boolean = Default(False),
-    blockx: Int = Default(16),
-    blocky: Int = Default(16),
-    combpel: Int = Default(80),
+    cthresh: Int = Default("9"),
+    chroma: Boolean = Default("false"),
+    blockx: Int = Default("16"),
+    blocky: Int = Default("16"),
+    combpel: Int = Default("80"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1681,9 +1544,9 @@ def freezeframes(
     _source: VideoStream,
     _replace: VideoStream,
     *,
-    first: Int64 = Default(0),
-    last: Int64 = Default(0),
-    replace: Int64 = Default(0),
+    first: Int64 = Default("0"),
+    last: Int64 = Default("0"),
+    replace: Int64 = Default("0"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1724,13 +1587,12 @@ def freezeframes(
 
 def guided(
     *streams: VideoStream,
-    radius: Int = Default(3),
-    eps: Float = Default(0.01),
+    radius: Int = Default("3"),
+    eps: Float = Default("0.01"),
     mode: Int | Literal["basic", "fast"] | Default = Default("basic"),
-    sub: Int = Default(4),
+    sub: Int = Default("4"),
     guidance: Int | Literal["off", "on"] | Default = Default("off"),
-    planes: Int = Default(1),
-    enable: String = Default(None),
+    planes: Int = Default("1"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1744,7 +1606,6 @@ def guided(
         sub: subsampling ratio for fast mode (from 2 to 64) (default 4)
         guidance: set guidance mode (0: off mode; 1: on mode) (from 0 to 1) (default off)
         planes: set planes to filter (from 0 to 15) (default 1)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -1768,7 +1629,6 @@ def guided(
                 "sub": sub,
                 "guidance": guidance,
                 "planes": planes,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -1784,11 +1644,6 @@ def haldclut(
     interp: Int
     | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
     | Default = Default("tetrahedral"),
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1798,11 +1653,6 @@ def haldclut(
     Args:
         clut: when to process CLUT (from 0 to 1) (default all)
         interp: select interpolation mode (from 0 to 4) (default tetrahedral)
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -1821,11 +1671,6 @@ def haldclut(
             {
                 "clut": clut,
                 "interp": interp,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -1836,10 +1681,10 @@ def haldclut(
 def headphone(
     *streams: AudioStream,
     map: String = Default(None),
-    gain: Float = Default(0.0),
-    lfe: Float = Default(0.0),
+    gain: Float = Default("0"),
+    lfe: Float = Default("0"),
     type: Int | Literal["time", "freq"] | Default = Default("freq"),
-    size: Int = Default(1024),
+    size: Int = Default("1024"),
     hrir: Int | Literal["stereo", "multich"] | Default = Default("stereo"),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
@@ -1887,7 +1732,7 @@ def headphone(
 def hstack(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
-    shortest: Boolean = Default(False),
+    shortest: Boolean = Default("false"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1925,9 +1770,9 @@ def hstack(
 
 def hstack_vaapi(
     *streams: VideoStream,
-    inputs: Int = Default(2),
-    shortest: Boolean = Default(False),
-    height: Int = Default(0),
+    inputs: Int = Default("2"),
+    shortest: Boolean = Default("false"),
+    height: Int = Default("0"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1969,13 +1814,8 @@ def hysteresis(
     _base: VideoStream,
     _alt: VideoStream,
     *,
-    planes: Int = Default(15),
-    threshold: Int = Default(0),
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
+    planes: Int = Default("15"),
+    threshold: Int = Default("0"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1985,11 +1825,6 @@ def hysteresis(
     Args:
         planes: set planes (from 0 to 15) (default 15)
         threshold: set threshold (from 0 to 65535) (default 0)
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -2010,11 +1845,6 @@ def hysteresis(
             {
                 "planes": planes,
                 "threshold": threshold,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -2025,24 +1855,11 @@ def hysteresis(
 def identity(
     _main: VideoStream,
     _reference: VideoStream,
-    *,
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
     Calculate the Identity between two video streams.
-
-    Args:
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -2057,16 +1874,7 @@ def identity(
         ),
         _main,
         _reference,
-        **merge(
-            {
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            },
-            extra_options,
-        ),
+        **merge({}, extra_options),
     )
     return filter_node.video(0)
 
@@ -2159,10 +1967,10 @@ def ladspa(
     file: String = Default(None),
     plugin: String = Default(None),
     controls: String = Default(None),
-    sample_rate: Int = Default(44100),
-    nb_samples: Int = Default(1024),
-    duration: Duration = Default(-1e-06),
-    latency: Boolean = Default(False),
+    sample_rate: Int = Default("44100"),
+    nb_samples: Int = Default("1024"),
+    duration: Duration = Default("-0.000001"),
+    latency: Boolean = Default("false"),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -2212,23 +2020,23 @@ def libplacebo(
     w: String = Default("iw"),
     h: String = Default("ih"),
     fps: String = Default("none"),
-    crop_x: String = Default("(iw-cw"),
-    crop_y: String = Default("(ih-ch"),
+    crop_x: String = Default("(iw-cw)/2"),
+    crop_y: String = Default("(ih-ch)/2"),
     crop_w: String = Default("iw"),
     crop_h: String = Default("ih"),
-    pos_x: String = Default("(ow-pw"),
-    pos_y: String = Default("(oh-ph"),
+    pos_x: String = Default("(ow-pw)/2"),
+    pos_y: String = Default("(oh-ph)/2"),
     pos_w: String = Default("ow"),
     pos_h: String = Default("oh"),
     format: String = Default(None),
     force_original_aspect_ratio: Int
     | Literal["disable", "decrease", "increase"]
     | Default = Default("disable"),
-    force_divisible_by: Int = Default(1),
-    normalize_sar: Boolean = Default(False),
-    pad_crop_ratio: Float = Default(0.0),
+    force_divisible_by: Int = Default("1"),
+    normalize_sar: Boolean = Default("false"),
+    pad_crop_ratio: Float = Default("0"),
     fillcolor: String = Default("black"),
-    corner_rounding: Float = Default(0.0),
+    corner_rounding: Float = Default("0"),
     extra_opts: Dictionary = Default(None),
     colorspace: Int
     | Literal[
@@ -2264,7 +2072,7 @@ def libplacebo(
         "smpte428",
         "smpte431",
         "smpte432",
-        "p22",
+        "jedec-p22",
         "ebu3213",
     ]
     | Default = Default("auto"),
@@ -2278,39 +2086,39 @@ def libplacebo(
         "smpte170m",
         "smpte240m",
         "linear",
-        "4",
+        "iec61966-2-4",
         "bt1361e",
-        "1",
-        "10",
-        "12",
+        "iec61966-2-1",
+        "bt2020-10",
+        "bt2020-12",
         "smpte2084",
-        "b67",
+        "arib-std-b67",
     ]
     | Default = Default("auto"),
     upscaler: String = Default("spline36"),
     downscaler: String = Default("mitchell"),
     frame_mixer: String = Default("none"),
-    lut_entries: Int = Default(0),
-    antiringing: Float = Default(0.0),
-    sigmoid: Boolean = Default(True),
-    apply_filmgrain: Boolean = Default(True),
-    apply_dolbyvision: Boolean = Default(True),
-    deband: Boolean = Default(False),
-    deband_iterations: Int = Default(1),
-    deband_threshold: Float = Default(4.0),
-    deband_radius: Float = Default(16.0),
-    deband_grain: Float = Default(6.0),
-    brightness: Float = Default(0.0),
-    contrast: Float = Default(1.0),
-    saturation: Float = Default(1.0),
-    hue: Float = Default(0.0),
-    gamma: Float = Default(1.0),
-    peak_detect: Boolean = Default(True),
-    smoothing_period: Float = Default(100.0),
-    minimum_peak: Float = Default(1.0),
-    scene_threshold_low: Float = Default(5.5),
-    scene_threshold_high: Float = Default(10.0),
-    percentile: Float = Default(99.995),
+    lut_entries: Int = Default("0"),
+    antiringing: Float = Default("0"),
+    sigmoid: Boolean = Default("true"),
+    apply_filmgrain: Boolean = Default("true"),
+    apply_dolbyvision: Boolean = Default("true"),
+    deband: Boolean = Default("false"),
+    deband_iterations: Int = Default("1"),
+    deband_threshold: Float = Default("4"),
+    deband_radius: Float = Default("16"),
+    deband_grain: Float = Default("6"),
+    brightness: Float = Default("0"),
+    contrast: Float = Default("1"),
+    saturation: Float = Default("1"),
+    hue: Float = Default("0"),
+    gamma: Float = Default("1"),
+    peak_detect: Boolean = Default("true"),
+    smoothing_period: Float = Default("100"),
+    minimum_peak: Float = Default("1"),
+    scene_threshold_low: Float = Default("5.5"),
+    scene_threshold_high: Float = Default("10"),
+    percentile: Float = Default("99.995"),
     gamut_mode: Int
     | Literal[
         "clip",
@@ -2328,10 +2136,10 @@ def libplacebo(
     | Literal[
         "auto",
         "clip",
-        "40",
-        "10",
-        "2390",
-        "2446a",
+        "st2094-40",
+        "st2094-10",
+        "bt.2390",
+        "bt.2446a",
         "spline",
         "reinhard",
         "mobius",
@@ -2340,40 +2148,40 @@ def libplacebo(
         "linear",
     ]
     | Default = Default("auto"),
-    tonemapping_param: Float = Default(0.0),
-    inverse_tonemapping: Boolean = Default(False),
-    tonemapping_lut_size: Int = Default(256),
-    contrast_recovery: Float = Default(0.3),
-    contrast_smoothness: Float = Default(3.5),
-    desaturation_strength: Float = Default(-1.0),
-    desaturation_exponent: Float = Default(-1.0),
-    gamut_warning: Boolean = Default(False),
-    gamut_clipping: Boolean = Default(False),
+    tonemapping_param: Float = Default("0"),
+    inverse_tonemapping: Boolean = Default("false"),
+    tonemapping_lut_size: Int = Default("256"),
+    contrast_recovery: Float = Default("0.3"),
+    contrast_smoothness: Float = Default("3.5"),
+    desaturation_strength: Float = Default("-1"),
+    desaturation_exponent: Float = Default("-1"),
+    gamut_warning: Boolean = Default("false"),
+    gamut_clipping: Boolean = Default("false"),
     intent: Int
     | Literal["perceptual", "relative", "absolute", "saturation"]
     | Default = Default("perceptual"),
     tonemapping_mode: Int
     | Literal["auto", "rgb", "max", "hybrid", "luma"]
     | Default = Default("auto"),
-    tonemapping_crosstalk: Float = Default(0.04),
-    overshoot: Float = Default(0.05),
-    hybrid_mix: Float = Default(0.2),
+    tonemapping_crosstalk: Float = Default("0.04"),
+    overshoot: Float = Default("0.05"),
+    hybrid_mix: Float = Default("0.2"),
     dithering: Int
     | Literal["none", "blue", "ordered", "ordered_fixed", "white"]
     | Default = Default("blue"),
-    dither_lut_size: Int = Default(6),
-    dither_temporal: Boolean = Default(False),
+    dither_lut_size: Int = Default("6"),
+    dither_temporal: Boolean = Default("false"),
     cones: Flags | Literal["l", "m", "s"] | Default = Default("0"),
-    cone_strength: Float = Default(0.0),
+    cone_strength: Float = Default("0"),
     custom_shader_path: String = Default(None),
     custom_shader_bin: Binary = Default(None),
-    skip_aa: Boolean = Default(False),
-    polar_cutoff: Float = Default(0.0),
-    disable_linear: Boolean = Default(False),
-    disable_builtin: Boolean = Default(False),
-    force_icc_lut: Boolean = Default(False),
-    force_dither: Boolean = Default(False),
-    disable_fbos: Boolean = Default(False),
+    skip_aa: Boolean = Default("false"),
+    polar_cutoff: Float = Default("0"),
+    disable_linear: Boolean = Default("false"),
+    disable_builtin: Boolean = Default("false"),
+    force_icc_lut: Boolean = Default("false"),
+    force_dither: Boolean = Default("false"),
+    disable_fbos: Boolean = Default("false"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2563,11 +2371,10 @@ def libplacebo(
 
 def limitdiff(
     *streams: VideoStream,
-    threshold: Float = Default(0.00392157),
-    elasticity: Float = Default(2.0),
-    reference: Boolean = Default(False),
-    planes: Int = Default(15),
-    enable: String = Default(None),
+    threshold: Float = Default("0.00392157"),
+    elasticity: Float = Default("2"),
+    reference: Boolean = Default("false"),
+    planes: Int = Default("15"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2579,7 +2386,6 @@ def limitdiff(
         elasticity: set the elasticity (from 0 to 10) (default 2)
         reference: enable reference stream (default false)
         planes: set the planes to filter (from 0 to 15) (default 15)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -2601,7 +2407,6 @@ def limitdiff(
                 "elasticity": elasticity,
                 "reference": reference,
                 "planes": planes,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -2617,12 +2422,7 @@ def lut2(
     c1: String = Default("x"),
     c2: String = Default("x"),
     c3: String = Default("x"),
-    d: Int = Default(0),
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
+    d: Int = Default("0"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2635,11 +2435,6 @@ def lut2(
         c2: set component #2 expression (default "x")
         c3: set component #3 expression (default "x")
         d: set output depth (from 0 to 16) (default 0)
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -2661,11 +2456,6 @@ def lut2(
                 "c2": c2,
                 "c3": c3,
                 "d": d,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -2677,9 +2467,9 @@ def lv2(
     *streams: AudioStream,
     plugin: String = Default(None),
     controls: String = Default(None),
-    sample_rate: Int = Default(44100),
-    nb_samples: Int = Default(1024),
-    duration: Duration = Default(-1e-06),
+    sample_rate: Int = Default("44100"),
+    nb_samples: Int = Default("1024"),
+    duration: Duration = Default("-0.000001"),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -2724,10 +2514,9 @@ def maskedclamp(
     _dark: VideoStream,
     _bright: VideoStream,
     *,
-    undershoot: Int = Default(0),
-    overshoot: Int = Default(0),
-    planes: Int = Default(15),
-    enable: String = Default(None),
+    undershoot: Int = Default("0"),
+    overshoot: Int = Default("0"),
+    planes: Int = Default("15"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2738,7 +2527,6 @@ def maskedclamp(
         undershoot: set undershoot (from 0 to 65535) (default 0)
         overshoot: set overshoot (from 0 to 65535) (default 0)
         planes: set planes (from 0 to 15) (default 15)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -2761,7 +2549,6 @@ def maskedclamp(
                 "undershoot": undershoot,
                 "overshoot": overshoot,
                 "planes": planes,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -2774,8 +2561,7 @@ def maskedmax(
     _filter1: VideoStream,
     _filter2: VideoStream,
     *,
-    planes: Int = Default(15),
-    enable: String = Default(None),
+    planes: Int = Default("15"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2784,7 +2570,6 @@ def maskedmax(
 
     Args:
         planes: set planes (from 0 to 15) (default 15)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -2805,7 +2590,6 @@ def maskedmax(
         **merge(
             {
                 "planes": planes,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -2818,8 +2602,7 @@ def maskedmerge(
     _overlay: VideoStream,
     _mask: VideoStream,
     *,
-    planes: Int = Default(15),
-    enable: String = Default(None),
+    planes: Int = Default("15"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2828,7 +2611,6 @@ def maskedmerge(
 
     Args:
         planes: set planes (from 0 to 15) (default 15)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -2849,7 +2631,6 @@ def maskedmerge(
         **merge(
             {
                 "planes": planes,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -2862,8 +2643,7 @@ def maskedmin(
     _filter1: VideoStream,
     _filter2: VideoStream,
     *,
-    planes: Int = Default(15),
-    enable: String = Default(None),
+    planes: Int = Default("15"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2872,7 +2652,6 @@ def maskedmin(
 
     Args:
         planes: set planes (from 0 to 15) (default 15)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -2893,7 +2672,6 @@ def maskedmin(
         **merge(
             {
                 "planes": planes,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -2905,10 +2683,9 @@ def maskedthreshold(
     _source: VideoStream,
     _reference: VideoStream,
     *,
-    threshold: Int = Default(1),
-    planes: Int = Default(15),
+    threshold: Int = Default("1"),
+    planes: Int = Default("15"),
     mode: Int | Literal["abs", "diff"] | Default = Default("abs"),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2919,7 +2696,6 @@ def maskedthreshold(
         threshold: set threshold (from 0 to 65535) (default 1)
         planes: set planes (from 0 to 15) (default 15)
         mode: set mode (from 0 to 1) (default abs)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -2941,7 +2717,6 @@ def maskedthreshold(
                 "threshold": threshold,
                 "planes": planes,
                 "mode": mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -2951,16 +2726,16 @@ def maskedthreshold(
 
 def mergeplanes(
     *streams: VideoStream,
-    mapping: Int = Default(-1),
+    mapping: Int = Default("-1"),
     format: Pix_fmt = Default("yuva444p"),
-    map0s: Int = Default(0),
-    map0p: Int = Default(0),
-    map1s: Int = Default(0),
-    map1p: Int = Default(0),
-    map2s: Int = Default(0),
-    map2p: Int = Default(0),
-    map3s: Int = Default(0),
-    map3p: Int = Default(0),
+    map0s: Int = Default("0"),
+    map0p: Int = Default("0"),
+    map1s: Int = Default("0"),
+    map1p: Int = Default("0"),
+    map2s: Int = Default("0"),
+    map2p: Int = Default("0"),
+    map3s: Int = Default("0"),
+    map3p: Int = Default("0"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3016,8 +2791,7 @@ def midequalizer(
     _in0: VideoStream,
     _in1: VideoStream,
     *,
-    planes: Int = Default(15),
-    enable: String = Default(None),
+    planes: Int = Default("15"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3026,7 +2800,6 @@ def midequalizer(
 
     Args:
         planes: set planes (from 0 to 15) (default 15)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -3046,7 +2819,6 @@ def midequalizer(
         **merge(
             {
                 "planes": planes,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -3058,12 +2830,11 @@ def mix(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
     weights: String = Default("1 1"),
-    scale: Float = Default(0.0),
+    scale: Float = Default("0"),
     planes: Flags = Default("F"),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default(
         "longest"
     ),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3076,7 +2847,6 @@ def mix(
         scale: set scale (from 0 to 32767) (default 0)
         planes: set what planes to filter (default F)
         duration: how to determine end of stream (from 0 to 2) (default longest)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -3099,7 +2869,6 @@ def mix(
                 "scale": scale,
                 "planes": planes,
                 "duration": duration,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -3114,13 +2883,8 @@ def morpho(
     mode: Int
     | Literal["erode", "dilate", "open", "close", "gradient", "tophat", "blackhat"]
     | Default = Default("erode"),
-    planes: Int = Default(7),
+    planes: Int = Default("7"),
     structure: Int | Literal["first", "all"] | Default = Default("all"),
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3131,11 +2895,6 @@ def morpho(
         mode: set morphological transform (from 0 to 6) (default erode)
         planes: set planes to filter (from 0 to 15) (default 7)
         structure: when to process structures (from 0 to 1) (default all)
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -3155,11 +2914,6 @@ def morpho(
                 "mode": mode,
                 "planes": planes,
                 "structure": structure,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -3170,24 +2924,11 @@ def morpho(
 def msad(
     _main: VideoStream,
     _reference: VideoStream,
-    *,
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
     Calculate the MSAD between two video streams.
-
-    Args:
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -3202,16 +2943,7 @@ def msad(
         ),
         _main,
         _reference,
-        **merge(
-            {
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            },
-            extra_options,
-        ),
+        **merge({}, extra_options),
     )
     return filter_node.video(0)
 
@@ -3220,10 +2952,9 @@ def multiply(
     _source: VideoStream,
     _factor: VideoStream,
     *,
-    scale: Float = Default(1.0),
-    offset: Float = Default(0.5),
+    scale: Float = Default("1"),
+    offset: Float = Default("0.5"),
     planes: Flags = Default("F"),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3234,7 +2965,6 @@ def multiply(
         scale: set scale (from 0 to 9) (default 1)
         offset: set offset (from -1 to 1) (default 0.5)
         planes: set planes (default F)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -3254,7 +2984,6 @@ def multiply(
                 "scale": scale,
                 "offset": offset,
                 "planes": planes,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -3268,11 +2997,9 @@ def overlay(
     *,
     x: String = Default("0"),
     y: String = Default("0"),
-    eof_action: Int
-    | Literal["repeat", "endall", "pass", "repeat", "endall", "pass"]
-    | Default = Default("repeat"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
     eval: Int | Literal["init", "frame"] | Default = Default("frame"),
-    shortest: Boolean = Default(False),
+    shortest: Boolean = Default("false"),
     format: Int
     | Literal[
         "yuv420",
@@ -3286,10 +3013,8 @@ def overlay(
         "auto",
     ]
     | Default = Default("yuv420"),
-    repeatlast: Boolean = Default(True),
+    repeatlast: Boolean = Default("true"),
     alpha: Int | Literal["straight", "premultiplied"] | Default = Default("straight"),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3305,8 +3030,6 @@ def overlay(
         format: set output format (from 0 to 8) (default yuv420)
         repeatlast: repeat overlay of the last overlay frame (default true)
         alpha: alpha format (from 0 to 1) (default straight)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -3331,8 +3054,6 @@ def overlay(
                 "format": format,
                 "repeatlast": repeatlast,
                 "alpha": alpha,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -3344,8 +3065,8 @@ def overlay_opencl(
     _main: VideoStream,
     _overlay: VideoStream,
     *,
-    x: Int = Default(0),
-    y: Int = Default(0),
+    x: Int = Default("0"),
+    y: Int = Default("0"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3390,13 +3111,10 @@ def overlay_vaapi(
     y: String = Default("0"),
     w: String = Default("overlay_iw"),
     h: String = Default("overlay_ih*w/overlay_iw"),
-    alpha: Float = Default(1.0),
-    eof_action: Int
-    | Literal["repeat", "endall", "pass", "repeat", "endall", "pass"]
-    | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    alpha: Float = Default("1"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3412,7 +3130,6 @@ def overlay_vaapi(
         eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
         shortest: force termination when the shortest input terminates (default false)
         repeatlast: repeat overlay of the last overlay frame (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
 
     Returns:
         default: the video stream
@@ -3439,7 +3156,6 @@ def overlay_vaapi(
                 "eof_action": eof_action,
                 "shortest": shortest,
                 "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
             },
             extra_options,
         ),
@@ -3451,8 +3167,8 @@ def overlay_vulkan(
     _main: VideoStream,
     _overlay: VideoStream,
     *,
-    x: Int = Default(0),
-    y: Int = Default(0),
+    x: Int = Default("0"),
+    y: Int = Default("0"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3505,10 +3221,10 @@ def paletteuse(
         "atkinson",
     ]
     | Default = Default("sierra2_4a"),
-    bayer_scale: Int = Default(2),
-    diff_mode: Int | Literal["rectangle"] | Default = Default(0),
-    new: Boolean = Default(False),
-    alpha_threshold: Int = Default(128),
+    bayer_scale: Int = Default("2"),
+    diff_mode: Int | Literal["rectangle"] | Default = Default("0"),
+    new: Boolean = Default("false"),
+    alpha_threshold: Int = Default("128"),
     debug_kdtree: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
@@ -3556,9 +3272,8 @@ def paletteuse(
 
 def premultiply(
     *streams: VideoStream,
-    planes: Int = Default(15),
-    inplace: Boolean = Default(False),
-    enable: String = Default(None),
+    planes: Int = Default("15"),
+    inplace: Boolean = Default("false"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3568,7 +3283,6 @@ def premultiply(
     Args:
         planes: set planes (from 0 to 15) (default 15)
         inplace: enable inplace mode (default false)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -3588,7 +3302,6 @@ def premultiply(
             {
                 "planes": planes,
                 "inplace": inplace,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -3600,12 +3313,8 @@ def program_opencl(
     *streams: VideoStream,
     source: String = Default(None),
     kernel: String = Default(None),
-    inputs: Int = Default(1),
+    inputs: Int = Default("1"),
     size: Image_size = Default(None),
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3617,10 +3326,6 @@ def program_opencl(
         kernel: Kernel name in program
         inputs: Number of inputs (from 1 to INT_MAX) (default 1)
         size: Video size
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
 
     Returns:
         default: the video stream
@@ -3642,10 +3347,6 @@ def program_opencl(
                 "kernel": kernel,
                 "inputs": inputs,
                 "size": size,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
             },
             extra_options,
         ),
@@ -3658,13 +3359,8 @@ def psnr(
     _reference: VideoStream,
     *,
     stats_file: String = Default(None),
-    stats_version: Int = Default(1),
-    output_max: Boolean = Default(False),
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
+    stats_version: Int = Default("1"),
+    output_max: Boolean = Default("false"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3675,11 +3371,6 @@ def psnr(
         stats_file: Set file where to store per-frame difference information
         stats_version: Set the format version for the stats file. (from 1 to 2) (default 1)
         output_max: Add raw stats (max values) to the output log. (default false)
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -3699,11 +3390,6 @@ def psnr(
                 "stats_file": stats_file,
                 "stats_version": stats_version,
                 "output_max": output_max,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -3803,18 +3489,18 @@ def sidechaincompress(
     _main: AudioStream,
     _sidechain: AudioStream,
     *,
-    level_in: Double = Default(1.0),
+    level_in: Double = Default("1"),
     mode: Int | Literal["downward", "upward"] | Default = Default("downward"),
-    threshold: Double = Default(0.125),
-    ratio: Double = Default(2.0),
-    attack: Double = Default(20.0),
-    release: Double = Default(250.0),
-    makeup: Double = Default(1.0),
-    knee: Double = Default(2.82843),
+    threshold: Double = Default("0.125"),
+    ratio: Double = Default("2"),
+    attack: Double = Default("20"),
+    release: Double = Default("250"),
+    makeup: Double = Default("1"),
+    knee: Double = Default("2.82843"),
     link: Int | Literal["average", "maximum"] | Default = Default("average"),
     detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
-    level_sc: Double = Default(1.0),
-    mix: Double = Default(1.0),
+    level_sc: Double = Default("1"),
+    mix: Double = Default("1"),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -3875,19 +3561,18 @@ def sidechaingate(
     _main: AudioStream,
     _sidechain: AudioStream,
     *,
-    level_in: Double = Default(1.0),
+    level_in: Double = Default("1"),
     mode: Int | Literal["downward", "upward"] | Default = Default("downward"),
-    range: Double = Default(0.06125),
-    threshold: Double = Default(0.125),
-    ratio: Double = Default(2.0),
-    attack: Double = Default(20.0),
-    release: Double = Default(250.0),
-    makeup: Double = Default(1.0),
-    knee: Double = Default(2.82843),
+    range: Double = Default("0.06125"),
+    threshold: Double = Default("0.125"),
+    ratio: Double = Default("2"),
+    attack: Double = Default("20"),
+    release: Double = Default("250"),
+    makeup: Double = Default("1"),
+    knee: Double = Default("2.82843"),
     detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
     link: Int | Literal["average", "maximum"] | Default = Default("average"),
-    level_sc: Double = Default(1.0),
-    enable: String = Default(None),
+    level_sc: Double = Default("1"),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -3907,7 +3592,6 @@ def sidechaingate(
         detection: set detection (from 0 to 1) (default rms)
         link: set link (from 0 to 1) (default average)
         level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
-        enable: timeline editing
 
     Returns:
         default: the audio stream
@@ -3938,7 +3622,6 @@ def sidechaingate(
                 "detection": detection,
                 "link": link,
                 "level_sc": level_sc,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -3952,11 +3635,11 @@ def signature(
     nb_inputs: Int = Auto("len(streams)"),
     filename: String = Default(""),
     format: Int | Literal["binary", "xml"] | Default = Default("binary"),
-    th_d: Int = Default(9000),
-    th_dc: Int = Default(60000),
-    th_xh: Int = Default(116),
-    th_di: Int = Default(0),
-    th_it: Double = Default(0.5),
+    th_d: Int = Default("9000"),
+    th_dc: Int = Default("60000"),
+    th_xh: Int = Default("116"),
+    th_di: Int = Default("0"),
+    th_it: Double = Default("0.5"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4010,8 +3693,8 @@ def spectrumsynth(
     _magnitude: VideoStream,
     _phase: VideoStream,
     *,
-    sample_rate: Int = Default(44100),
-    channels: Int = Default(1),
+    sample_rate: Int = Default("44100"),
+    channels: Int = Default("1"),
     scale: Int | Literal["lin", "log"] | Default = Default("log"),
     slide: Int
     | Literal["replace", "scroll", "fullframe", "rscroll"]
@@ -4042,7 +3725,7 @@ def spectrumsynth(
         "kaiser",
     ]
     | Default = Default("rect"),
-    overlap: Float = Default(1.0),
+    overlap: Float = Default("1"),
     orientation: Int | Literal["vertical", "horizontal"] | Default = Default(
         "vertical"
     ),
@@ -4097,11 +3780,6 @@ def ssim(
     _reference: VideoStream,
     *,
     stats_file: String = Default(None),
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4110,11 +3788,6 @@ def ssim(
 
     Args:
         stats_file: Set file where to store per-frame difference information
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -4132,11 +3805,6 @@ def ssim(
         **merge(
             {
                 "stats_file": stats_file,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -4191,8 +3859,7 @@ def threshold(
     _min: VideoStream,
     _max: VideoStream,
     *,
-    planes: Int = Default(15),
-    enable: String = Default(None),
+    planes: Int = Default("15"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4201,7 +3868,6 @@ def threshold(
 
     Args:
         planes: set planes to filter (from 0 to 15) (default 15)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -4223,7 +3889,6 @@ def threshold(
         **merge(
             {
                 "planes": planes,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -4233,9 +3898,8 @@ def threshold(
 
 def unpremultiply(
     *streams: VideoStream,
-    planes: Int = Default(15),
-    inplace: Boolean = Default(False),
-    enable: String = Default(None),
+    planes: Int = Default("15"),
+    inplace: Boolean = Default("false"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4245,7 +3909,6 @@ def unpremultiply(
     Args:
         planes: set planes (from 0 to 15) (default 15)
         inplace: enable inplace mode (default false)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -4265,7 +3928,6 @@ def unpremultiply(
             {
                 "planes": planes,
                 "inplace": inplace,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -4277,14 +3939,9 @@ def varblur(
     _default: VideoStream,
     _radius: VideoStream,
     *,
-    min_r: Int = Default(0),
-    max_r: Int = Default(8),
-    planes: Int = Default(15),
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
+    min_r: Int = Default("0"),
+    max_r: Int = Default("8"),
+    planes: Int = Default("15"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4295,11 +3952,6 @@ def varblur(
         min_r: set min blur radius (from 0 to 254) (default 0)
         max_r: set max blur radius (from 1 to 255) (default 8)
         planes: set planes to filter (from 0 to 15) (default 15)
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -4319,11 +3971,6 @@ def varblur(
                 "min_r": min_r,
                 "max_r": max_r,
                 "planes": planes,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -4334,24 +3981,11 @@ def varblur(
 def vif(
     _main: VideoStream,
     _reference: VideoStream,
-    *,
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
     Calculate the VIF between two video streams.
-
-    Args:
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -4366,16 +4000,7 @@ def vif(
         ),
         _main,
         _reference,
-        **merge(
-            {
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
-            },
-            extra_options,
-        ),
+        **merge({}, extra_options),
     )
     return filter_node.video(0)
 
@@ -4383,7 +4008,7 @@ def vif(
 def vstack(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
-    shortest: Boolean = Default(False),
+    shortest: Boolean = Default("false"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4421,9 +4046,9 @@ def vstack(
 
 def vstack_vaapi(
     *streams: VideoStream,
-    inputs: Int = Default(2),
-    shortest: Boolean = Default(False),
-    width: Int = Default(0),
+    inputs: Int = Default("2"),
+    shortest: Boolean = Default("false"),
+    width: Int = Default("0"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4465,13 +4090,8 @@ def xcorrelate(
     _primary: VideoStream,
     _secondary: VideoStream,
     *,
-    planes: Int = Default(7),
+    planes: Int = Default("7"),
     secondary: Int | Literal["first", "all"] | Default = Default("all"),
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4481,11 +4101,6 @@ def xcorrelate(
     Args:
         planes: set planes to cross-correlate (from 0 to 15) (default 7)
         secondary: when to process secondary frame (from 0 to 1) (default all)
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -4506,11 +4121,6 @@ def xcorrelate(
             {
                 "planes": planes,
                 "secondary": secondary,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -4585,8 +4195,8 @@ def xfade(
         "revealdown",
     ]
     | Default = Default("fade"),
-    duration: Duration = Default(1.0),
-    offset: Duration = Default(0.0),
+    duration: Duration = Default("1"),
+    offset: Duration = Default("0"),
     expr: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
@@ -4646,8 +4256,8 @@ def xfade_opencl(
     | Default = Default("fade"),
     source: String = Default(None),
     kernel: String = Default(None),
-    duration: Duration = Default(1.0),
-    offset: Duration = Default(0.0),
+    duration: Duration = Default("1"),
+    offset: Duration = Default("0"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4693,13 +4303,8 @@ def xfade_opencl(
 def xmedian(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
-    planes: Int = Default(15),
-    percentile: Float = Default(0.5),
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: String = Default(None),
+    planes: Int = Default("15"),
+    percentile: Float = Default("0.5"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4710,11 +4315,6 @@ def xmedian(
         inputs: set number of inputs (from 3 to 255) (default 3)
         planes: set planes to filter (from 0 to 15) (default 15)
         percentile: set percentile (from 0 to 1) (default 0.5)
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-        enable: timeline editing
 
     Returns:
         default: the video stream
@@ -4735,11 +4335,6 @@ def xmedian(
                 "inputs": inputs,
                 "planes": planes,
                 "percentile": percentile,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-                "enable": enable,
             },
             extra_options,
         ),
@@ -4752,7 +4347,7 @@ def xstack(
     inputs: Int = Auto("len(streams)"),
     layout: String = Default(None),
     grid: Image_size = Default(None),
-    shortest: Boolean = Default(False),
+    shortest: Boolean = Default("false"),
     fill: String = Default("none"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
@@ -4797,8 +4392,8 @@ def xstack(
 
 def xstack_vaapi(
     *streams: VideoStream,
-    inputs: Int = Default(2),
-    shortest: Boolean = Default(False),
+    inputs: Int = Default("2"),
+    shortest: Boolean = Default("false"),
     layout: String = Default(None),
     grid: Image_size = Default(None),
     grid_tile_size: Image_size = Default(None),

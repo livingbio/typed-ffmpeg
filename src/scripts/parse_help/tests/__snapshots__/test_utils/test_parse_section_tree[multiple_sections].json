@@ -1,0 +1,21 @@
+{
+  "ffv1 encoder AVOptions:": {
+    "-slicecrc          <boolean>    E..V....... Protect slices with CRCs (default auto)": {},
+    "-coder             <int>        E..V....... Coder type (from -2 to 2) (default rice)": {
+      "rice            0            E..V....... Golomb rice": {},
+      "range_def       -2           E..V....... Range with default table": {},
+      "range_tab       2            E..V....... Range with custom table": {},
+      "ac              1            E..V....... Range with custom table (the ac option exists for compatibility and is deprecated)": {}
+    },
+    "-context           <int>        E..V....... Context model (from 0 to 1) (default 0)": {}
+  },
+  "ffvhuff AVOptions:": {
+    "-non_deterministic <boolean>    E..V....... Allow multithreading for e.g. context=1 at the expense of determinism (default false)": {},
+    "-pred              <int>        E..V....... Prediction method (from 0 to 2) (default left)": {
+      "left            0            E..V.......": {},
+      "plane           1            E..V.......": {},
+      "median          2            E..V.......": {}
+    },
+    "-context           <int>        E..V....... Set per-frame huffman tables (from 0 to 1) (default 0)": {}
+  }
+}

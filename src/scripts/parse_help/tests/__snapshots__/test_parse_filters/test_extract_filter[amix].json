@@ -1,0 +1,99 @@
+{
+  "flags": "",
+  "help": "Audio mixing.",
+  "io_flags": "",
+  "is_dynamic_input": true,
+  "is_dynamic_output": false,
+  "is_framesync": false,
+  "is_slice_threading": false,
+  "is_timeline": false,
+  "name": "amix",
+  "options": [
+    {
+      "argname": null,
+      "choices": [],
+      "default": "2",
+      "flags": "..F.A......",
+      "help": "Number of inputs. (from 1 to 32767) (default 2)",
+      "max": "32767",
+      "min": "1",
+      "name": "inputs",
+      "section": "amix AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "Duration of longest input.",
+          "name": "longest",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Duration of shortest input.",
+          "name": "shortest",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Duration of first input.",
+          "name": "first",
+          "value": "2"
+        }
+      ],
+      "default": "longest",
+      "flags": "..F.A......",
+      "help": "How to determine the end-of-stream. (from 0 to 2) (default longest)",
+      "max": "2",
+      "min": "0",
+      "name": "duration",
+      "section": "amix AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "2",
+      "flags": "..F.A......",
+      "help": "Transition time, in seconds, for volume renormalization when an input stream ends. (from 0 to INT_MAX) (default 2)",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "dropout_transition",
+      "section": "amix AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1 1",
+      "flags": "..F.A....T.",
+      "help": "Set weight for each input. (default \"1 1\")",
+      "max": null,
+      "min": null,
+      "name": "weights",
+      "section": "amix AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "true",
+      "flags": "..F.A....T.",
+      "help": "Scale inputs (default true)",
+      "max": null,
+      "min": null,
+      "name": "normalize",
+      "section": "amix AVOptions:",
+      "type": "boolean"
+    }
+  ],
+  "stream_typings_input": [],
+  "stream_typings_output": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

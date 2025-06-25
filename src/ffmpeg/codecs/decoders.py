@@ -3858,26 +3858,67 @@ def aac_latm() -> FFMpegDecoderOption:
     return FFMpegDecoderOption(kwargs=merge({}))
 
 
-def ac3() -> FFMpegDecoderOption:
+def ac3(
+    cons_noisegen: bool | None = None,
+    drc_scale: float | None = None,
+    heavy_compr: bool | None = None,
+    target_level: int | None = None,
+    downmix: str | None = None,
+) -> FFMpegDecoderOption:
     """
     ATSC A/52A (AC-3)
 
+    Args:
+        cons_noisegen: enable consistent noise generation (default false)
+        drc_scale: percentage of dynamic range compression to apply (from 0 to 6) (default 1)
+        heavy_compr: enable heavy dynamic range compression (default false)
+        target_level: target level in -dBFS (0 not applied) (from -31 to 0) (default 0)
+        downmix: Request a specific channel layout from the decoder
 
     Returns:
         the set codec options
     """
-    return FFMpegDecoderOption(kwargs=merge({}))
+    return FFMpegDecoderOption(
+        kwargs=merge(
+            {
+                "cons_noisegen": cons_noisegen,
+                "drc_scale": drc_scale,
+                "heavy_compr": heavy_compr,
+                "target_level": target_level,
+                "downmix": downmix,
+            }
+        )
+    )
 
 
-def ac3_fixed() -> FFMpegDecoderOption:
+def ac3_fixed(
+    cons_noisegen: bool | None = None,
+    drc_scale: float | None = None,
+    heavy_compr: bool | None = None,
+    downmix: str | None = None,
+) -> FFMpegDecoderOption:
     """
     ATSC A/52A (AC-3) (codec ac3)
 
+    Args:
+        cons_noisegen: enable consistent noise generation (default false)
+        drc_scale: percentage of dynamic range compression to apply (from 0 to 6) (default 1)
+        heavy_compr: enable heavy dynamic range compression (default false)
+        downmix: Request a specific channel layout from the decoder
 
     Returns:
         the set codec options
     """
-    return FFMpegDecoderOption(kwargs=merge({}))
+    return FFMpegDecoderOption(
+        kwargs=merge(
+            {
+                "cons_noisegen": cons_noisegen,
+                "drc_scale": drc_scale,
+                "heavy_compr": heavy_compr,
+                "downmix": downmix,
+            }
+        )
+    )
 
 
 def adpcm_4xm() -> FFMpegDecoderOption:
@@ -4893,15 +4934,37 @@ def dvaudio() -> FFMpegDecoderOption:
     return FFMpegDecoderOption(kwargs=merge({}))
 
 
-def eac3() -> FFMpegDecoderOption:
+def eac3(
+    cons_noisegen: bool | None = None,
+    drc_scale: float | None = None,
+    heavy_compr: bool | None = None,
+    target_level: int | None = None,
+    downmix: str | None = None,
+) -> FFMpegDecoderOption:
     """
     ATSC A/52B (AC-3, E-AC-3)
 
+    Args:
+        cons_noisegen: enable consistent noise generation (default false)
+        drc_scale: percentage of dynamic range compression to apply (from 0 to 6) (default 1)
+        heavy_compr: enable heavy dynamic range compression (default false)
+        target_level: target level in -dBFS (0 not applied) (from -31 to 0) (default 0)
+        downmix: Request a specific channel layout from the decoder
 
     Returns:
         the set codec options
     """
-    return FFMpegDecoderOption(kwargs=merge({}))
+    return FFMpegDecoderOption(
+        kwargs=merge(
+            {
+                "cons_noisegen": cons_noisegen,
+                "drc_scale": drc_scale,
+                "heavy_compr": heavy_compr,
+                "target_level": target_level,
+                "downmix": downmix,
+            }
+        )
+    )
 
 
 def evrc(
