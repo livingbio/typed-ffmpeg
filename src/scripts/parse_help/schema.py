@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from typing import Literal
 
+from ffmpeg.common.serialize import Serializable
+
 from ..code_gen.schema import FFMpegOptionType
 
 """
@@ -61,7 +63,7 @@ class FFMpegOption:
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegOptionChoice:
+class FFMpegOptionChoice(Serializable):
     """
     Represents a choice value for an AVOption.
 
@@ -99,7 +101,7 @@ class FFMpegOptionChoice:
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegAVOption(FFMpegOption):
+class FFMpegAVOption(FFMpegOption, Serializable):
     """
     Represents an FFmpeg AVOption with additional metadata.
 
@@ -133,6 +135,10 @@ class FFMpegAVOption(FFMpegOption):
 
     choices: tuple[FFMpegOptionChoice, ...] = ()
     """Available choices for this option (for enum or flags types)."""
+
+    @property
+    def code_gen_type(self) -> str:
+        return "str"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -168,7 +174,7 @@ class FFMpegOptionSet:
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegCodec(FFMpegOptionSet):
+class FFMpegCodec(FFMpegOptionSet, Serializable):
     """
     Represents an FFmpeg codec (encoder or decoder).
 
@@ -198,6 +204,14 @@ class FFMpegCodec(FFMpegOptionSet):
     ```
     """
 
+    @property
+    def is_encoder(self) -> bool:
+        return isinstance(self, FFMpegEncoder)
+
+    @property
+    def is_decoder(self) -> bool:
+        return isinstance(self, FFMpegDecoder)
+
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegEncoder(FFMpegCodec):
@@ -214,7 +228,7 @@ class FFMpegDecoder(FFMpegCodec):
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegFormat(FFMpegOptionSet):
+class FFMpegFormat(FFMpegOptionSet, Serializable):
     """
     Represents an FFmpeg format (demuxer or muxer).
 
@@ -239,6 +253,14 @@ class FFMpegFormat(FFMpegOptionSet):
     D  ac3             raw AC-3
     ```
     """
+
+    @property
+    def is_muxer(self) -> bool:
+        return "E" in self.flags
+
+    @property
+    def is_demuxer(self) -> bool:
+        return "D" in self.flags
 
 
 @dataclass(frozen=True, kw_only=True)
