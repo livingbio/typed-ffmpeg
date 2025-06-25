@@ -7,11 +7,9 @@ These components form the foundation of the type annotation system that
 enables static type checking in the FFmpeg filter graph.
 """
 
-from dataclasses import dataclass
+from typing import Any
 
 from .common.schema import StreamType
-from .common.serialize import Serializable
-from .utils.frozendict import FrozenDict
 
 
 class Default(str):
@@ -52,15 +50,14 @@ class Auto(Default):
     """
 
 
-@dataclass(frozen=True, kw_only=True)
-class FFMpegOptionGroup(Serializable):
+class FFMpegOptionGroup(dict[str, Any]):
     """
     Represents a group of FFmpeg options.
 
     This class is used to group options together, such as a codec or format.
     """
 
-    kwargs: FrozenDict[str, str | int | float | bool] = FrozenDict({})
+    ...
 
 
 __all__ = [

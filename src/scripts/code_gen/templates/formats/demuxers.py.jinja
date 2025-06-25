@@ -21,7 +21,7 @@ def {{codec.name | option_name_safe }}(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({
+    return FFMpegDemuxerOption(merge({
         {% for option in codec.options %}
         "{{ option.name}}": {{ option.name | option_name_safe }},
         {% endfor %}

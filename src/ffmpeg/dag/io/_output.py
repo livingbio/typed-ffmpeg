@@ -329,8 +329,8 @@ def output(
                 "dn": dn,
                 "top": top,
             },
-            encoder_options.kwargs if encoder_options else {},
-            muxer_options.kwargs if muxer_options else {},
+            encoder_options,
+            muxer_options,
             extra_options,
         ),
     ).stream()
