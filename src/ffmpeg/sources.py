@@ -31,7 +31,7 @@ from .utils.frozendict import merge
 
 def abuffer(
     *,
-    time_base: Rational = Default("0"),
+    time_base: Rational = Default("0/1"),
     sample_rate: Int = Default("0"),
     sample_fmt: Sample_fmt = Default("none"),
     channel_layout: String = Default(None),
@@ -76,8 +76,8 @@ def aevalsrc(
     *,
     exprs: String = Default(None),
     nb_samples: Int = Default("1024"),
-    sample_rate: String = Default(None),
-    duration: Duration = Default("-0"),
+    sample_rate: String = Default('"44100"'),
+    duration: Duration = Default("-0.000001"),
     channel_layout: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
@@ -121,7 +121,7 @@ def afdelaysrc(
     sample_rate: Int = Default("44100"),
     nb_samples: Int = Default("1024"),
     taps: Int = Default("0"),
-    channel_layout: String = Default(None),
+    channel_layout: String = Default('"stereo"'),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -183,8 +183,10 @@ def afireqsrc(
         "vocal booster",
     ]
     | Default = Default("flat"),
-    gains: String = Default(None),
-    bands: String = Default(None),
+    gains: String = Default('"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"'),
+    bands: String = Default(
+        '"25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000"'
+    ),
     taps: Int = Default("4096"),
     sample_rate: Int = Default("44100"),
     nb_samples: Int = Default("1024"),
@@ -235,9 +237,9 @@ def afireqsrc(
 def afirsrc(
     *,
     taps: Int = Default("1025"),
-    frequency: String = Default(None),
-    magnitude: String = Default(None),
-    phase: String = Default(None),
+    frequency: String = Default('"0 1"'),
+    magnitude: String = Default('"1 1"'),
+    phase: String = Default('"0 0"'),
     sample_rate: Int = Default("44100"),
     nb_samples: Int = Default("1024"),
     win_func: Int
@@ -349,9 +351,9 @@ def ainterleave(
 
 def allrgb(
     *,
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -386,9 +388,9 @@ def allrgb(
 
 def allyuv(
     *,
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -464,7 +466,7 @@ def amix(
         "longest"
     ),
     dropout_transition: Float = Default("2"),
-    weights: String = Default(None),
+    weights: String = Default('"1 1"'),
     normalize: Boolean = Default("true"),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
@@ -578,7 +580,7 @@ def anoisesrc(
     | Default = Default("white"),
     seed: Int64 = Default("-1"),
     nb_samples: Int = Default("1024"),
-    density: Double = Default("0"),
+    density: Double = Default("0.05"),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -621,10 +623,10 @@ def anoisesrc(
 
 def anullsrc(
     *,
-    channel_layout: String = Default(None),
-    sample_rate: String = Default(None),
+    channel_layout: String = Default('"stereo"'),
+    sample_rate: String = Default('"44100"'),
     nb_samples: Int = Default("1024"),
-    duration: Duration = Default("-0"),
+    duration: Duration = Default("-0.000001"),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -702,17 +704,17 @@ def astreamselect(
 
 def avsynctest(
     *,
-    size: Image_size = Default(None),
-    framerate: Video_rate = Default(None),
+    size: Image_size = Default('"hd720"'),
+    framerate: Video_rate = Default('"30"'),
     samplerate: Int = Default("44100"),
-    amplitude: Float = Default("0"),
+    amplitude: Float = Default("0.7"),
     period: Int = Default("3"),
     delay: Int = Default("0"),
     cycle: Boolean = Default("false"),
     duration: Duration = Default("0"),
-    fg: Color = Default(None),
-    bg: Color = Default(None),
-    ag: Color = Default(None),
+    fg: Color = Default('"white"'),
+    bg: Color = Default('"black"'),
+    ag: Color = Default('"gray"'),
     extra_options: dict[str, Any] | None = None,
 ) -> tuple[
     AudioStream,
@@ -779,7 +781,7 @@ def bm3d(
     range: Int = Default("9"),
     mstep: Int = Default("1"),
     thmse: Float = Default("0"),
-    hdthr: Float = Default("2"),
+    hdthr: Float = Default("2.7"),
     estim: Int | Literal["basic", "final"] | Default = Default("basic"),
     ref: Boolean = Default("false"),
     planes: Int = Default("7"),
@@ -842,8 +844,8 @@ def buffer(
     video_size: Image_size = Default(None),
     height: Int = Default("0"),
     pix_fmt: Pix_fmt = Default("none"),
-    sar: Rational = Default("0"),
-    time_base: Rational = Default("0"),
+    sar: Rational = Default("0/1"),
+    time_base: Rational = Default("0/1"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -886,10 +888,10 @@ def cellauto(
     *,
     filename: String = Default(None),
     pattern: String = Default(None),
-    rate: Video_rate = Default(None),
+    rate: Video_rate = Default('"25"'),
     size: Image_size = Default(None),
     rule: Int = Default("110"),
-    random_fill_ratio: Double = Default("0"),
+    random_fill_ratio: Double = Default("0.618034"),
     random_seed: Int64 = Default("-1"),
     scroll: Boolean = Default("true"),
     start_full: Boolean = Default("false"),
@@ -945,11 +947,11 @@ def cellauto(
 
 def color(
     *,
-    color: Color = Default(None),
-    size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
+    color: Color = Default('"black"'),
+    size: Image_size = Default('"320x240"'),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -988,11 +990,11 @@ def color(
 
 def color_vulkan(
     *,
-    color: Color = Default(None),
-    size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
+    color: Color = Default('"black"'),
+    size: Image_size = Default('"1920x1080"'),
+    rate: Video_rate = Default('"60"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
     format: String = Default(None),
     out_range: Int
     | Literal["full", "limited", "jpeg", "mpeg", "tv", "pc"]
@@ -1041,10 +1043,10 @@ def color_vulkan(
 
 def colorchart(
     *,
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
-    patch_size: Image_size = Default(None),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
+    patch_size: Image_size = Default('"64x64"'),
     preset: Int | Literal["reference", "skintones"] | Default = Default("reference"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
@@ -1084,10 +1086,10 @@ def colorchart(
 
 def colorspectrum(
     *,
-    size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
+    size: Image_size = Default('"320x240"'),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
     type: Int | Literal["black", "white", "all"] | Default = Default("black"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
@@ -1177,7 +1179,7 @@ def concat(
 def decimate(
     *streams: VideoStream,
     cycle: Int = Default("5"),
-    dupthresh: Double = Default("1"),
+    dupthresh: Double = Default("1.1"),
     scthresh: Double = Default("15"),
     blockx: Int = Default("32"),
     blocky: Int = Default("32"),
@@ -1314,7 +1316,7 @@ def flite(
     nb_samples: Int = Default("512"),
     text: String = Default(None),
     textfile: String = Default(None),
-    v: String = Default(None),
+    v: String = Default('"kal"'),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -1353,8 +1355,8 @@ def flite(
 
 def frei0r_src(
     *,
-    size: Image_size = Default(None),
-    framerate: Video_rate = Default(None),
+    size: Image_size = Default('"320x240"'),
+    framerate: Video_rate = Default('"25"'),
     filter_name: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
@@ -1390,24 +1392,24 @@ def frei0r_src(
 
 def gradients(
     *,
-    size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
-    c0: Color = Default(None),
-    c1: Color = Default(None),
-    c2: Color = Default(None),
-    c3: Color = Default(None),
-    c4: Color = Default(None),
-    c5: Color = Default(None),
-    c6: Color = Default(None),
-    c7: Color = Default(None),
+    size: Image_size = Default('"640x480"'),
+    rate: Video_rate = Default('"25"'),
+    c0: Color = Default('"random"'),
+    c1: Color = Default('"random"'),
+    c2: Color = Default('"random"'),
+    c3: Color = Default('"random"'),
+    c4: Color = Default('"random"'),
+    c5: Color = Default('"random"'),
+    c6: Color = Default('"random"'),
+    c7: Color = Default('"random"'),
     x0: Int = Default("-1"),
     y0: Int = Default("-1"),
     x1: Int = Default("-1"),
     y1: Int = Default("-1"),
     nb_colors: Int = Default("2"),
     seed: Int64 = Default("-1"),
-    duration: Duration = Default("-0"),
-    speed: Float = Default("0"),
+    duration: Duration = Default("-0.000001"),
+    speed: Float = Default("0.01"),
     type: Int | Literal["linear", "radial", "circular", "spiral"] | Default = Default(
         "linear"
     ),
@@ -1478,7 +1480,7 @@ def gradients(
 def guided(
     *streams: VideoStream,
     radius: Int = Default("3"),
-    eps: Float = Default("0"),
+    eps: Float = Default("0.01"),
     mode: Int | Literal["basic", "fast"] | Default = Default("basic"),
     sub: Int = Default("4"),
     guidance: Int | Literal["off", "on"] | Default = Default("off"),
@@ -1529,9 +1531,9 @@ def guided(
 def haldclutsrc(
     *,
     level: Int = Default("6"),
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1809,7 +1811,7 @@ def interleave(
 def join(
     *streams: AudioStream,
     inputs: Int = Auto("len(streams)"),
-    channel_layout: String = Default(None),
+    channel_layout: String = Default('"stereo"'),
     map: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
@@ -1855,7 +1857,7 @@ def ladspa(
     controls: String = Default(None),
     sample_rate: Int = Default("44100"),
     nb_samples: Int = Default("1024"),
-    duration: Duration = Default("-0"),
+    duration: Duration = Default("-0.000001"),
     latency: Boolean = Default("false"),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
@@ -1903,17 +1905,17 @@ def ladspa(
 def libplacebo(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
-    w: String = Default(None),
-    h: String = Default(None),
-    fps: String = Default(None),
-    crop_x: String = Default(None),
-    crop_y: String = Default(None),
-    crop_w: String = Default(None),
-    crop_h: String = Default(None),
-    pos_x: String = Default(None),
-    pos_y: String = Default(None),
-    pos_w: String = Default(None),
-    pos_h: String = Default(None),
+    w: String = Default('"iw"'),
+    h: String = Default('"ih"'),
+    fps: String = Default('"none"'),
+    crop_x: String = Default('"(iw-cw'),
+    crop_y: String = Default('"(ih-ch'),
+    crop_w: String = Default('"iw"'),
+    crop_h: String = Default('"ih"'),
+    pos_x: String = Default('"(ow-pw'),
+    pos_y: String = Default('"(oh-ph'),
+    pos_w: String = Default('"ow"'),
+    pos_h: String = Default('"oh"'),
     format: String = Default(None),
     force_original_aspect_ratio: Int
     | Literal["disable", "decrease", "increase"]
@@ -1921,7 +1923,7 @@ def libplacebo(
     force_divisible_by: Int = Default("1"),
     normalize_sar: Boolean = Default("false"),
     pad_crop_ratio: Float = Default("0"),
-    fillcolor: String = Default(None),
+    fillcolor: String = Default('"black"'),
     corner_rounding: Float = Default("0"),
     extra_opts: Dictionary = Default(None),
     colorspace: Int
@@ -1981,9 +1983,9 @@ def libplacebo(
         "arib-std-b67",
     ]
     | Default = Default("auto"),
-    upscaler: String = Default(None),
-    downscaler: String = Default(None),
-    frame_mixer: String = Default(None),
+    upscaler: String = Default('"spline36"'),
+    downscaler: String = Default('"mitchell"'),
+    frame_mixer: String = Default('"none"'),
     lut_entries: Int = Default("0"),
     antiringing: Float = Default("0"),
     sigmoid: Boolean = Default("true"),
@@ -2002,9 +2004,9 @@ def libplacebo(
     peak_detect: Boolean = Default("true"),
     smoothing_period: Float = Default("100"),
     minimum_peak: Float = Default("1"),
-    scene_threshold_low: Float = Default("5"),
+    scene_threshold_low: Float = Default("5.5"),
     scene_threshold_high: Float = Default("10"),
-    percentile: Float = Default("99"),
+    percentile: Float = Default("99.995"),
     gamut_mode: Int
     | Literal[
         "clip",
@@ -2037,8 +2039,8 @@ def libplacebo(
     tonemapping_param: Float = Default("0"),
     inverse_tonemapping: Boolean = Default("false"),
     tonemapping_lut_size: Int = Default("256"),
-    contrast_recovery: Float = Default("0"),
-    contrast_smoothness: Float = Default("3"),
+    contrast_recovery: Float = Default("0.3"),
+    contrast_smoothness: Float = Default("3.5"),
     desaturation_strength: Float = Default("-1"),
     desaturation_exponent: Float = Default("-1"),
     gamut_warning: Boolean = Default("false"),
@@ -2049,9 +2051,9 @@ def libplacebo(
     tonemapping_mode: Int
     | Literal["auto", "rgb", "max", "hybrid", "luma"]
     | Default = Default("auto"),
-    tonemapping_crosstalk: Float = Default("0"),
-    overshoot: Float = Default("0"),
-    hybrid_mix: Float = Default("0"),
+    tonemapping_crosstalk: Float = Default("0.04"),
+    overshoot: Float = Default("0.05"),
+    hybrid_mix: Float = Default("0.2"),
     dithering: Int
     | Literal["none", "blue", "ordered", "ordered_fixed", "white"]
     | Default = Default("blue"),
@@ -2259,15 +2261,15 @@ def life(
     *,
     filename: String = Default(None),
     size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
-    rule: String = Default(None),
-    random_fill_ratio: Double = Default("0"),
+    rate: Video_rate = Default('"25"'),
+    rule: String = Default('"B3/S23"'),
+    random_fill_ratio: Double = Default("0.618034"),
     random_seed: Int64 = Default("-1"),
     stitch: Boolean = Default("true"),
     mold: Int = Default("0"),
-    life_color: Color = Default(None),
-    death_color: Color = Default(None),
-    mold_color: Color = Default(None),
+    life_color: Color = Default('"white"'),
+    death_color: Color = Default('"black"'),
+    mold_color: Color = Default('"black"'),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2318,7 +2320,7 @@ def life(
 
 def limitdiff(
     *streams: VideoStream,
-    threshold: Float = Default("0"),
+    threshold: Float = Default("0.00392157"),
     elasticity: Float = Default("2"),
     reference: Boolean = Default("false"),
     planes: Int = Default("15"),
@@ -2367,7 +2369,7 @@ def lv2(
     controls: String = Default(None),
     sample_rate: Int = Default("44100"),
     nb_samples: Int = Default("1024"),
-    duration: Duration = Default("-0"),
+    duration: Duration = Default("-0.000001"),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -2409,17 +2411,17 @@ def lv2(
 
 def mandelbrot(
     *,
-    size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
+    size: Image_size = Default('"640x480"'),
+    rate: Video_rate = Default('"25"'),
     maxiter: Int = Default("7189"),
-    start_x: Double = Default("-0"),
-    start_y: Double = Default("-0"),
+    start_x: Double = Default("-0.743644"),
+    start_y: Double = Default("-0.131826"),
     start_scale: Double = Default("3"),
-    end_scale: Double = Default("0"),
+    end_scale: Double = Default("0.3"),
     end_pts: Double = Default("400"),
     bailout: Double = Default("10"),
-    morphxf: Double = Default("0"),
-    morphyf: Double = Default("0"),
+    morphxf: Double = Default("0.01"),
+    morphyf: Double = Default("0.0123"),
     morphamp: Double = Default("0"),
     outer: Int
     | Literal["iteration_count", "normalized_iteration_count", "white", "outz"]
@@ -2547,7 +2549,7 @@ def mergeplanes(
 def mix(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
-    weights: String = Default(None),
+    weights: String = Default('"1 1"'),
     scale: Float = Default("0"),
     planes: Flags = Default("F"),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default(
@@ -2657,8 +2659,8 @@ def movie(
 
 def mptestsrc(
     *,
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
     test: Int
     | Literal[
         "dc_luma",
@@ -2711,10 +2713,10 @@ def mptestsrc(
 
 def nullsrc(
     *,
-    size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
+    size: Image_size = Default('"320x240"'),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2755,7 +2757,7 @@ def openclsrc(
     kernel: String = Default(None),
     size: Image_size = Default(None),
     format: Pix_fmt = Default("none"),
-    rate: Video_rate = Default(None),
+    rate: Video_rate = Default('"25"'),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2794,10 +2796,10 @@ def openclsrc(
 
 def pal100bars(
     *,
-    size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
+    size: Image_size = Default('"320x240"'),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2834,10 +2836,10 @@ def pal100bars(
 
 def pal75bars(
     *,
-    size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
+    size: Image_size = Default('"320x240"'),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2958,10 +2960,10 @@ def program_opencl(
 
 def rgbtestsrc(
     *,
-    size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
+    size: Image_size = Default('"320x240"'),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
     complement: Boolean = Default("false"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
@@ -3001,8 +3003,8 @@ def rgbtestsrc(
 
 def sierpinski(
     *,
-    size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
+    size: Image_size = Default('"640x480"'),
+    rate: Video_rate = Default('"25"'),
     seed: Int64 = Default("-1"),
     jump: Int = Default("100"),
     type: Int | Literal["carpet", "triangle"] | Default = Default("carpet"),
@@ -3046,13 +3048,13 @@ def signature(
     *streams: VideoStream,
     detectmode: Int | Literal["off", "full", "fast"] | Default = Default("off"),
     nb_inputs: Int = Auto("len(streams)"),
-    filename: String = Default(None),
+    filename: String = Default('""'),
     format: Int | Literal["binary", "xml"] | Default = Default("binary"),
     th_d: Int = Default("9000"),
     th_dc: Int = Default("60000"),
     th_xh: Int = Default("116"),
     th_di: Int = Default("0"),
-    th_it: Double = Default("0"),
+    th_it: Double = Default("0.5"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3166,7 +3168,7 @@ def sine(
     beep_factor: Double = Default("0"),
     sample_rate: Int = Default("44100"),
     duration: Duration = Default("0"),
-    samples_per_frame: String = Default(None),
+    samples_per_frame: String = Default('"1024"'),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -3205,10 +3207,10 @@ def sine(
 
 def smptebars(
     *,
-    size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
+    size: Image_size = Default('"320x240"'),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3245,10 +3247,10 @@ def smptebars(
 
 def smptehdbars(
     *,
-    size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
+    size: Image_size = Default('"320x240"'),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3328,10 +3330,10 @@ def streamselect(
 
 def testsrc(
     *,
-    size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
+    size: Image_size = Default('"320x240"'),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
     decimals: Int = Default("0"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
@@ -3371,10 +3373,10 @@ def testsrc(
 
 def testsrc2(
     *,
-    size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
+    size: Image_size = Default('"320x240"'),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
     alpha: Int = Default("255"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
@@ -3536,7 +3538,7 @@ def xmedian(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
     planes: Int = Default("15"),
-    percentile: Float = Default("0"),
+    percentile: Float = Default("0.5"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3580,7 +3582,7 @@ def xstack(
     layout: String = Default(None),
     grid: Image_size = Default(None),
     shortest: Boolean = Default("false"),
-    fill: String = Default(None),
+    fill: String = Default('"none"'),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3629,7 +3631,7 @@ def xstack_vaapi(
     layout: String = Default(None),
     grid: Image_size = Default(None),
     grid_tile_size: Image_size = Default(None),
-    fill: String = Default(None),
+    fill: String = Default('"none"'),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3675,10 +3677,10 @@ def xstack_vaapi(
 
 def yuvtestsrc(
     *,
-    size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
+    size: Image_size = Default('"320x240"'),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3715,10 +3717,10 @@ def yuvtestsrc(
 
 def zoneplate(
     *,
-    size: Image_size = Default(None),
-    rate: Video_rate = Default(None),
-    duration: Duration = Default("-0"),
-    sar: Rational = Default("1"),
+    size: Image_size = Default('"320x240"'),
+    rate: Video_rate = Default('"25"'),
+    duration: Duration = Default("-0.000001"),
+    sar: Rational = Default("1/1"),
     precision: Int = Default("10"),
     xo: Int = Default("0"),
     yo: Int = Default("0"),
