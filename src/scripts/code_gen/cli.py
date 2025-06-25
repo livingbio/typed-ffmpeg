@@ -13,7 +13,16 @@ from ..parse_c.cli import parse_ffmpeg_options
 from ..parse_docs.cli import extract_docs
 from ..parse_help.cli import all_codecs, all_filters, all_formats
 from .gen import render
-from .schema import FFMpegAVOption, FFMpegCodec, FFMpegFormat, FFMpegOptionChoice
+from .schema import (
+    FFMpegAVOption,
+    FFMpegCodec,
+    FFMpegDecoder,
+    FFMpegDemuxer,
+    FFMpegEncoder,
+    FFMpegFormat,
+    FFMpegMuxer,
+    FFMpegOptionChoice,
+)
 
 app = typer.Typer()
 
@@ -107,36 +116,46 @@ def load_codecs(rebuild: bool) -> list[FFMpegCodec]:
         except Exception as e:
             logging.error(f"Failed to load codecs from cache: {e}")
 
-    codecs = [
-        FFMpegCodec(
-            name=k.name,
-            flags=k.flags,
-            description=k.help,
-            options=tuple(
-                FFMpegAVOption(
-                    section=i.section,
-                    name=i.name,
-                    type=str(i.type),
-                    flags=str(i.flags),
-                    help=i.help,
-                    min=i.min,
-                    max=i.max,
-                    default=i.default,
-                    choices=tuple(
-                        FFMpegOptionChoice(
-                            name=choice.name,
-                            help=choice.help,
-                            flags=choice.flags,
-                            value=choice.value,
-                        )
-                        for choice in i.choices
-                    ),
-                )
-                for i in k.options
-            ),
+    codecs: list[FFMpegCodec] = []
+    for k in all_codecs():
+        cls: type[FFMpegDecoder] | type[FFMpegEncoder]
+        if k.is_encoder:
+            cls = FFMpegEncoder
+        elif k.is_decoder:
+            cls = FFMpegDecoder
+        else:
+            raise ValueError(f"Invalid codec: {k.name}")
+
+        codecs.append(
+            cls(
+                name=k.name,
+                flags=k.flags,
+                description=k.help,
+                options=tuple(
+                    FFMpegAVOption(
+                        section=i.section,
+                        name=i.name,
+                        type=str(i.type),
+                        flags=str(i.flags),
+                        help=i.help,
+                        min=i.min,
+                        max=i.max,
+                        default=i.default,
+                        choices=tuple(
+                            FFMpegOptionChoice(
+                                name=choice.name,
+                                help=choice.help,
+                                flags=choice.flags,
+                                value=choice.value,
+                            )
+                            for choice in i.choices
+                        ),
+                    )
+                    for i in k.options
+                ),
+            )
         )
-        for k in all_codecs()
-    ]
+
     save(codecs, "codecs")
     return codecs
 
@@ -158,36 +177,46 @@ def load_formats(rebuild: bool) -> list[FFMpegFormat]:
         except Exception as e:
             logging.error(f"Failed to load muxers from cache: {e}")
 
-    formats = [
-        FFMpegFormat(
-            name=k.name,
-            flags=k.flags,
-            description=k.help,
-            options=tuple(
-                FFMpegAVOption(
-                    section=i.section,
-                    name=i.name,
-                    type=str(i.type),
-                    flags=str(i.flags),
-                    help=i.help,
-                    min=i.min,
-                    max=i.max,
-                    default=i.default,
-                    choices=tuple(
-                        FFMpegOptionChoice(
-                            name=choice.name,
-                            help=choice.help,
-                            flags=choice.flags,
-                            value=choice.value,
-                        )
-                        for choice in i.choices
-                    ),
-                )
-                for i in k.options
-            ),
+    formats: list[FFMpegFormat] = []
+    for k in all_formats():
+        cls: type[FFMpegDemuxer] | type[FFMpegMuxer]
+        if k.is_muxer:
+            cls = FFMpegMuxer
+        elif k.is_demuxer:
+            cls = FFMpegDemuxer
+        else:
+            raise ValueError(f"Invalid format: {k.name}")
+
+        formats.append(
+            cls(
+                name=k.name,
+                flags=k.flags,
+                description=k.help,
+                options=tuple(
+                    FFMpegAVOption(
+                        section=i.section,
+                        name=i.name,
+                        type=str(i.type),
+                        flags=str(i.flags),
+                        help=i.help,
+                        min=i.min,
+                        max=i.max,
+                        default=i.default,
+                        choices=tuple(
+                            FFMpegOptionChoice(
+                                name=choice.name,
+                                help=choice.help,
+                                flags=choice.flags,
+                                value=choice.value,
+                            )
+                            for choice in i.choices
+                        ),
+                    )
+                    for i in k.options
+                ),
+            )
         )
-        for k in all_formats()
-    ]
+
     save(formats, "formats")
     return formats
 

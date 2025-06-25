@@ -513,26 +513,46 @@ def apng(
     )
 
 
-def aptx() -> FFMpegDemuxerOption:
+def aptx(
+    sample_rate: int | None = None,
+) -> FFMpegDemuxerOption:
     """
     raw aptX
 
+    Args:
+        sample_rate: (from 0 to INT_MAX) (default 48000)
 
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({}))
+    return FFMpegDemuxerOption(
+        kwargs=merge(
+            {
+                "sample_rate": sample_rate,
+            }
+        )
+    )
 
 
-def aptx_hd() -> FFMpegDemuxerOption:
+def aptx_hd(
+    sample_rate: int | None = None,
+) -> FFMpegDemuxerOption:
     """
     raw aptX HD
 
+    Args:
+        sample_rate: (from 0 to INT_MAX) (default 48000)
 
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({}))
+    return FFMpegDemuxerOption(
+        kwargs=merge(
+            {
+                "sample_rate": sample_rate,
+            }
+        )
+    )
 
 
 def aqtitle(
@@ -1927,15 +1947,34 @@ def flic() -> FFMpegDemuxerOption:
     return FFMpegDemuxerOption(kwargs=merge({}))
 
 
-def flv() -> FFMpegDemuxerOption:
+def flv(
+    flv_metadata: bool | None = None,
+    flv_full_metadata: bool | None = None,
+    flv_ignore_prevtag: bool | None = None,
+    missing_streams: int | None = None,
+) -> FFMpegDemuxerOption:
     """
     FLV (Flash Video)
 
+    Args:
+        flv_metadata: Allocate streams according to the onMetaData array (default false)
+        flv_full_metadata: Dump full metadata of the onMetadata (default false)
+        flv_ignore_prevtag: Ignore the Size of previous tag (default false)
+        missing_streams: (from 0 to 255) (default 0)
 
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({}))
+    return FFMpegDemuxerOption(
+        kwargs=merge(
+            {
+                "flv_metadata": flv_metadata,
+                "flv_full_metadata": flv_full_metadata,
+                "flv_ignore_prevtag": flv_ignore_prevtag,
+                "missing_streams": missing_streams,
+            }
+        )
+    )
 
 
 def frm() -> FFMpegDemuxerOption:
@@ -2991,15 +3030,34 @@ def kmsgrab(
     )
 
 
-def kux() -> FFMpegDemuxerOption:
+def kux(
+    flv_metadata: bool | None = None,
+    flv_full_metadata: bool | None = None,
+    flv_ignore_prevtag: bool | None = None,
+    missing_streams: int | None = None,
+) -> FFMpegDemuxerOption:
     """
     KUX (YouKu)
 
+    Args:
+        flv_metadata: Allocate streams according to the onMetaData array (default false)
+        flv_full_metadata: Dump full metadata of the onMetadata (default false)
+        flv_ignore_prevtag: Ignore the Size of previous tag (default false)
+        missing_streams: (from 0 to 255) (default 0)
 
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({}))
+    return FFMpegDemuxerOption(
+        kwargs=merge(
+            {
+                "flv_metadata": flv_metadata,
+                "flv_full_metadata": flv_full_metadata,
+                "flv_ignore_prevtag": flv_ignore_prevtag,
+                "missing_streams": missing_streams,
+            }
+        )
+    )
 
 
 def kvag() -> FFMpegDemuxerOption:
@@ -3156,15 +3214,34 @@ def libopenmpt(
     )
 
 
-def live_flv() -> FFMpegDemuxerOption:
+def live_flv(
+    flv_metadata: bool | None = None,
+    flv_full_metadata: bool | None = None,
+    flv_ignore_prevtag: bool | None = None,
+    missing_streams: int | None = None,
+) -> FFMpegDemuxerOption:
     """
     live RTMP FLV (Flash Video)
 
+    Args:
+        flv_metadata: Allocate streams according to the onMetaData array (default false)
+        flv_full_metadata: Dump full metadata of the onMetadata (default false)
+        flv_ignore_prevtag: Ignore the Size of previous tag (default false)
+        missing_streams: (from 0 to 255) (default 0)
 
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({}))
+    return FFMpegDemuxerOption(
+        kwargs=merge(
+            {
+                "flv_metadata": flv_metadata,
+                "flv_full_metadata": flv_full_metadata,
+                "flv_ignore_prevtag": flv_ignore_prevtag,
+                "missing_streams": missing_streams,
+            }
+        )
+    )
 
 
 def lmlm4() -> FFMpegDemuxerOption:
@@ -5939,26 +6016,52 @@ def usm() -> FFMpegDemuxerOption:
     return FFMpegDemuxerOption(kwargs=merge({}))
 
 
-def v210() -> FFMpegDemuxerOption:
+def v210(
+    video_size: str | None = None,
+    framerate: str | None = None,
+) -> FFMpegDemuxerOption:
     """
     Uncompressed 4:2:2 10-bit
 
+    Args:
+        video_size: set frame size
+        framerate: set frame rate (default "25")
 
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({}))
+    return FFMpegDemuxerOption(
+        kwargs=merge(
+            {
+                "video_size": video_size,
+                "framerate": framerate,
+            }
+        )
+    )
 
 
-def v210x() -> FFMpegDemuxerOption:
+def v210x(
+    video_size: str | None = None,
+    framerate: str | None = None,
+) -> FFMpegDemuxerOption:
     """
     Uncompressed 4:2:2 10-bit
 
+    Args:
+        video_size: set frame size
+        framerate: set frame rate (default "25")
 
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({}))
+    return FFMpegDemuxerOption(
+        kwargs=merge(
+            {
+                "video_size": video_size,
+                "framerate": framerate,
+            }
+        )
+    )
 
 
 def vag() -> FFMpegDemuxerOption:
@@ -6488,15 +6591,31 @@ def xa() -> FFMpegDemuxerOption:
     return FFMpegDemuxerOption(kwargs=merge({}))
 
 
-def xbin() -> FFMpegDemuxerOption:
+def xbin(
+    linespeed: int | None = None,
+    video_size: str | None = None,
+    framerate: str | None = None,
+) -> FFMpegDemuxerOption:
     """
     eXtended BINary text (XBIN)
 
+    Args:
+        linespeed: set simulated line speed (bytes per second) (from 1 to INT_MAX) (default 6000)
+        video_size: set video size, such as 640x480 or hd720.
+        framerate: set framerate (frames per second) (default "25")
 
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({}))
+    return FFMpegDemuxerOption(
+        kwargs=merge(
+            {
+                "linespeed": linespeed,
+                "video_size": video_size,
+                "framerate": framerate,
+            }
+        )
+    )
 
 
 def xbm_pipe(

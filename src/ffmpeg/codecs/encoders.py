@@ -143,15 +143,31 @@ def amv(
     )
 
 
-def apng() -> FFMpegEncoderOption:
+def apng(
+    dpi: int | None = None,
+    dpm: int | None = None,
+    pred: int | None | Literal["none", "sub", "up", "avg", "paeth", "mixed"] = None,
+) -> FFMpegEncoderOption:
     """
     APNG (Animated Portable Network Graphics) image
 
+    Args:
+        dpi: Set image resolution (in dots per inch) (from 0 to 65536) (default 0)
+        dpm: Set image resolution (in dots per meter) (from 0 to 65536) (default 0)
+        pred: Prediction method (from 0 to 5) (default none)
 
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=merge({}))
+    return FFMpegEncoderOption(
+        kwargs=merge(
+            {
+                "dpi": dpi,
+                "dpm": dpm,
+                "pred": pred,
+            }
+        )
+    )
 
 
 def asv1() -> FFMpegEncoderOption:
@@ -649,15 +665,40 @@ def cljr(
     )
 
 
-def vc2() -> FFMpegEncoderOption:
+def vc2(
+    tolerance: float | None = None,
+    slice_width: int | None = None,
+    slice_height: int | None = None,
+    wavelet_depth: int | None = None,
+    wavelet_type: int | None | Literal["9_7", "5_3", "haar", "haar_noshift"] = None,
+    qm: int | None | Literal["default", "color", "flat"] = None,
+) -> FFMpegEncoderOption:
     """
     SMPTE VC-2 (codec dirac)
 
+    Args:
+        tolerance: Max undershoot in percent (from 0 to 45) (default 5)
+        slice_width: Slice width (from 32 to 1024) (default 32)
+        slice_height: Slice height (from 8 to 1024) (default 16)
+        wavelet_depth: Transform depth (from 1 to 5) (default 4)
+        wavelet_type: Transform type (from 0 to 7) (default 9_7)
+        qm: Custom quantization matrix (from 0 to 3) (default default)
 
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=merge({}))
+    return FFMpegEncoderOption(
+        kwargs=merge(
+            {
+                "tolerance": tolerance,
+                "slice_width": slice_width,
+                "slice_height": slice_height,
+                "wavelet_depth": wavelet_depth,
+                "wavelet_type": wavelet_type,
+                "qm": qm,
+            }
+        )
+    )
 
 
 def dnxhd(
@@ -1365,7 +1406,7 @@ def libx264(
     qp: int | None = None,
     aq_mode: int
     | None
-    | Literal["none", "variance", "autovariance", "autovariance-biased"] = None,
+    | Literal["none", "variance", "autovariance", "autovariance-biased 3"] = None,
     aq_strength: float | None = None,
     psy: bool | None = None,
     psy_rd: str | None = None,
@@ -1529,7 +1570,7 @@ def libx264rgb(
     qp: int | None = None,
     aq_mode: int
     | None
-    | Literal["none", "variance", "autovariance", "autovariance-biased"] = None,
+    | Literal["none", "variance", "autovariance", "autovariance-biased 3"] = None,
     aq_strength: float | None = None,
     psy: bool | None = None,
     psy_rd: str | None = None,
@@ -1742,7 +1783,7 @@ def h264_nvenc(
         "vbr",
         "cbr",
         "vbr_minqp",
-        "ll_2pass_quality",
+        "ll_2pass_quality 8388609",
         "ll_2pass_size",
         "vbr_2pass",
         "cbr_ld_hq",
@@ -1932,7 +1973,7 @@ def h264_vaapi(
     sei: str | None = None,
     profile: int
     | None
-    | Literal["constrained_baseline", "main", "high", "high10"] = None,
+    | Literal["constrained_baseline 578", "main", "high", "high10"] = None,
     level: int
     | None
     | Literal[
@@ -2140,7 +2181,7 @@ def hevc_nvenc(
         "vbr",
         "cbr",
         "vbr_minqp",
-        "ll_2pass_quality",
+        "ll_2pass_quality 8388609",
         "ll_2pass_size",
         "vbr_2pass",
         "cbr_ld_hq",
@@ -3557,15 +3598,31 @@ def phm() -> FFMpegEncoderOption:
     return FFMpegEncoderOption(kwargs=merge({}))
 
 
-def png() -> FFMpegEncoderOption:
+def png(
+    dpi: int | None = None,
+    dpm: int | None = None,
+    pred: int | None | Literal["none", "sub", "up", "avg", "paeth", "mixed"] = None,
+) -> FFMpegEncoderOption:
     """
     PNG (Portable Network Graphics) image
 
+    Args:
+        dpi: Set image resolution (in dots per inch) (from 0 to 65536) (default 0)
+        dpm: Set image resolution (in dots per meter) (from 0 to 65536) (default 0)
+        pred: Prediction method (from 0 to 5) (default none)
 
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=merge({}))
+    return FFMpegEncoderOption(
+        kwargs=merge(
+            {
+                "dpi": dpi,
+                "dpm": dpm,
+                "pred": pred,
+            }
+        )
+    )
 
 
 def ppm() -> FFMpegEncoderOption:
@@ -4369,15 +4426,91 @@ def vnull() -> FFMpegEncoderOption:
     return FFMpegEncoderOption(kwargs=merge({}))
 
 
-def libvpx() -> FFMpegEncoderOption:
+def libvpx(
+    lag_in_frames: int | None = None,
+    arnr_maxframes: int | None = None,
+    arnr_strength: int | None = None,
+    arnr_type: int | None | Literal["backward", "forward", "centered"] = None,
+    tune: int | None | Literal["psnr", "ssim"] = None,
+    deadline: int | None | Literal["best", "good", "realtime"] = None,
+    error_resilient: str | None = None,
+    max_intra_rate: int | None = None,
+    crf: int | None = None,
+    static_thresh: int | None = None,
+    drop_threshold: int | None = None,
+    noise_sensitivity: int | None = None,
+    undershoot_pct: int | None = None,
+    overshoot_pct: int | None = None,
+    ts_parameters: str | None = None,
+    auto_alt_ref: int | None = None,
+    cpu_used: int | None = None,
+    speed: int | None = None,
+    quality: int | None | Literal["best", "good", "realtime"] = None,
+    vp8flags: str | None = None,
+    arnr_max_frames: int | None = None,
+    rc_lookahead: int | None = None,
+    sharpness: int | None = None,
+) -> FFMpegEncoderOption:
     """
     libvpx VP8 (codec vp8)
 
+    Args:
+        lag_in_frames: Number of frames to look ahead for alternate reference frame selection (from -1 to INT_MAX) (default -1)
+        arnr_maxframes: altref noise reduction max frame count (from -1 to INT_MAX) (default -1)
+        arnr_strength: altref noise reduction filter strength (from -1 to INT_MAX) (default -1)
+        arnr_type: altref noise reduction filter type (from -1 to INT_MAX) (default -1)
+        tune: Tune the encoding to a specific scenario (from -1 to INT_MAX) (default -1)
+        deadline: Time to spend encoding, in microseconds. (from INT_MIN to INT_MAX) (default good)
+        error_resilient: Error resilience configuration (default 0)
+        max_intra_rate: Maximum I-frame bitrate (pct) 0=unlimited (from -1 to INT_MAX) (default -1)
+        crf: Select the quality for constant quality mode (from -1 to 63) (default -1)
+        static_thresh: A change threshold on blocks below which they will be skipped by the encoder (from 0 to INT_MAX) (default 0)
+        drop_threshold: Frame drop threshold (from INT_MIN to INT_MAX) (default 0)
+        noise_sensitivity: Noise sensitivity (from 0 to 4) (default 0)
+        undershoot_pct: Datarate undershoot (min) target (%) (from -1 to 100) (default -1)
+        overshoot_pct: Datarate overshoot (max) target (%) (from -1 to 1000) (default -1)
+        ts_parameters: Temporal scaling configuration using a :-separated list of key=value parameters
+        auto_alt_ref: Enable use of alternate reference frames (2-pass only) (from -1 to 2) (default -1)
+        cpu_used: Quality/Speed ratio modifier (from -16 to 16) (default 1)
+        speed: (from -16 to 16) (default 1)
+        quality: (from INT_MIN to INT_MAX) (default good)
+        vp8flags: (default 0)
+        arnr_max_frames: altref noise reduction max frame count (from 0 to 15) (default 0)
+        rc_lookahead: Number of frames to look ahead for alternate reference frame selection (from 0 to 25) (default 25)
+        sharpness: Increase sharpness at the expense of lower PSNR (from -1 to 7) (default -1)
 
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=merge({}))
+    return FFMpegEncoderOption(
+        kwargs=merge(
+            {
+                "lag-in-frames": lag_in_frames,
+                "arnr-maxframes": arnr_maxframes,
+                "arnr-strength": arnr_strength,
+                "arnr-type": arnr_type,
+                "tune": tune,
+                "deadline": deadline,
+                "error-resilient": error_resilient,
+                "max-intra-rate": max_intra_rate,
+                "crf": crf,
+                "static-thresh": static_thresh,
+                "drop-threshold": drop_threshold,
+                "noise-sensitivity": noise_sensitivity,
+                "undershoot-pct": undershoot_pct,
+                "overshoot-pct": overshoot_pct,
+                "ts-parameters": ts_parameters,
+                "auto-alt-ref": auto_alt_ref,
+                "cpu-used": cpu_used,
+                "speed": speed,
+                "quality": quality,
+                "vp8flags": vp8flags,
+                "arnr_max_frames": arnr_max_frames,
+                "rc_lookahead": rc_lookahead,
+                "sharpness": sharpness,
+            }
+        )
+    )
 
 
 def vp8_v4l2m2m(
@@ -4925,26 +5058,160 @@ def aac(
     )
 
 
-def ac3() -> FFMpegEncoderOption:
+def ac3(
+    center_mixlev: float | None = None,
+    surround_mixlev: float | None = None,
+    mixing_level: int | None = None,
+    room_type: int | None | Literal["notindicated", "large", "small"] = None,
+    per_frame_metadata: bool | None = None,
+    copyright: int | None = None,
+    dialnorm: int | None = None,
+    dsur_mode: int | None | Literal["notindicated", "on", "off"] = None,
+    original: int | None = None,
+    dmix_mode: int | None | Literal["notindicated", "ltrt", "loro", "dplii"] = None,
+    ltrt_cmixlev: float | None = None,
+    ltrt_surmixlev: float | None = None,
+    loro_cmixlev: float | None = None,
+    loro_surmixlev: float | None = None,
+    dsurex_mode: int | None | Literal["notindicated", "on", "off", "dpliiz"] = None,
+    dheadphone_mode: int | None | Literal["notindicated", "on", "off"] = None,
+    ad_conv_type: int | None | Literal["standard", "hdcd"] = None,
+    stereo_rematrixing: bool | None = None,
+    channel_coupling: int | None | Literal["auto"] = None,
+    cpl_start_band: int | None | Literal["auto"] = None,
+) -> FFMpegEncoderOption:
     """
     ATSC A/52A (AC-3)
 
+    Args:
+        center_mixlev: Center Mix Level (from 0 to 1) (default 0.594604)
+        surround_mixlev: Surround Mix Level (from 0 to 1) (default 0.5)
+        mixing_level: Mixing Level (from -1 to 111) (default -1)
+        room_type: Room Type (from -1 to 2) (default -1)
+        per_frame_metadata: Allow Changing Metadata Per-Frame (default false)
+        copyright: Copyright Bit (from -1 to 1) (default -1)
+        dialnorm: Dialogue Level (dB) (from -31 to -1) (default -31)
+        dsur_mode: Dolby Surround Mode (from -1 to 2) (default -1)
+        original: Original Bit Stream (from -1 to 1) (default -1)
+        dmix_mode: Preferred Stereo Downmix Mode (from -1 to 3) (default -1)
+        ltrt_cmixlev: Lt/Rt Center Mix Level (from -1 to 2) (default -1)
+        ltrt_surmixlev: Lt/Rt Surround Mix Level (from -1 to 2) (default -1)
+        loro_cmixlev: Lo/Ro Center Mix Level (from -1 to 2) (default -1)
+        loro_surmixlev: Lo/Ro Surround Mix Level (from -1 to 2) (default -1)
+        dsurex_mode: Dolby Surround EX Mode (from -1 to 3) (default -1)
+        dheadphone_mode: Dolby Headphone Mode (from -1 to 2) (default -1)
+        ad_conv_type: A/D Converter Type (from -1 to 1) (default -1)
+        stereo_rematrixing: Stereo Rematrixing (default true)
+        channel_coupling: Channel Coupling (from -1 to 1) (default auto)
+        cpl_start_band: Coupling Start Band (from -1 to 15) (default auto)
 
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=merge({}))
+    return FFMpegEncoderOption(
+        kwargs=merge(
+            {
+                "center_mixlev": center_mixlev,
+                "surround_mixlev": surround_mixlev,
+                "mixing_level": mixing_level,
+                "room_type": room_type,
+                "per_frame_metadata": per_frame_metadata,
+                "copyright": copyright,
+                "dialnorm": dialnorm,
+                "dsur_mode": dsur_mode,
+                "original": original,
+                "dmix_mode": dmix_mode,
+                "ltrt_cmixlev": ltrt_cmixlev,
+                "ltrt_surmixlev": ltrt_surmixlev,
+                "loro_cmixlev": loro_cmixlev,
+                "loro_surmixlev": loro_surmixlev,
+                "dsurex_mode": dsurex_mode,
+                "dheadphone_mode": dheadphone_mode,
+                "ad_conv_type": ad_conv_type,
+                "stereo_rematrixing": stereo_rematrixing,
+                "channel_coupling": channel_coupling,
+                "cpl_start_band": cpl_start_band,
+            }
+        )
+    )
 
 
-def ac3_fixed() -> FFMpegEncoderOption:
+def ac3_fixed(
+    center_mixlev: float | None = None,
+    surround_mixlev: float | None = None,
+    mixing_level: int | None = None,
+    room_type: int | None | Literal["notindicated", "large", "small"] = None,
+    per_frame_metadata: bool | None = None,
+    copyright: int | None = None,
+    dialnorm: int | None = None,
+    dsur_mode: int | None | Literal["notindicated", "on", "off"] = None,
+    original: int | None = None,
+    dmix_mode: int | None | Literal["notindicated", "ltrt", "loro", "dplii"] = None,
+    ltrt_cmixlev: float | None = None,
+    ltrt_surmixlev: float | None = None,
+    loro_cmixlev: float | None = None,
+    loro_surmixlev: float | None = None,
+    dsurex_mode: int | None | Literal["notindicated", "on", "off", "dpliiz"] = None,
+    dheadphone_mode: int | None | Literal["notindicated", "on", "off"] = None,
+    ad_conv_type: int | None | Literal["standard", "hdcd"] = None,
+    stereo_rematrixing: bool | None = None,
+    channel_coupling: int | None | Literal["auto"] = None,
+    cpl_start_band: int | None | Literal["auto"] = None,
+) -> FFMpegEncoderOption:
     """
     ATSC A/52A (AC-3) (codec ac3)
 
+    Args:
+        center_mixlev: Center Mix Level (from 0 to 1) (default 0.594604)
+        surround_mixlev: Surround Mix Level (from 0 to 1) (default 0.5)
+        mixing_level: Mixing Level (from -1 to 111) (default -1)
+        room_type: Room Type (from -1 to 2) (default -1)
+        per_frame_metadata: Allow Changing Metadata Per-Frame (default false)
+        copyright: Copyright Bit (from -1 to 1) (default -1)
+        dialnorm: Dialogue Level (dB) (from -31 to -1) (default -31)
+        dsur_mode: Dolby Surround Mode (from -1 to 2) (default -1)
+        original: Original Bit Stream (from -1 to 1) (default -1)
+        dmix_mode: Preferred Stereo Downmix Mode (from -1 to 3) (default -1)
+        ltrt_cmixlev: Lt/Rt Center Mix Level (from -1 to 2) (default -1)
+        ltrt_surmixlev: Lt/Rt Surround Mix Level (from -1 to 2) (default -1)
+        loro_cmixlev: Lo/Ro Center Mix Level (from -1 to 2) (default -1)
+        loro_surmixlev: Lo/Ro Surround Mix Level (from -1 to 2) (default -1)
+        dsurex_mode: Dolby Surround EX Mode (from -1 to 3) (default -1)
+        dheadphone_mode: Dolby Headphone Mode (from -1 to 2) (default -1)
+        ad_conv_type: A/D Converter Type (from -1 to 1) (default -1)
+        stereo_rematrixing: Stereo Rematrixing (default true)
+        channel_coupling: Channel Coupling (from -1 to 1) (default auto)
+        cpl_start_band: Coupling Start Band (from -1 to 15) (default auto)
 
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=merge({}))
+    return FFMpegEncoderOption(
+        kwargs=merge(
+            {
+                "center_mixlev": center_mixlev,
+                "surround_mixlev": surround_mixlev,
+                "mixing_level": mixing_level,
+                "room_type": room_type,
+                "per_frame_metadata": per_frame_metadata,
+                "copyright": copyright,
+                "dialnorm": dialnorm,
+                "dsur_mode": dsur_mode,
+                "original": original,
+                "dmix_mode": dmix_mode,
+                "ltrt_cmixlev": ltrt_cmixlev,
+                "ltrt_surmixlev": ltrt_surmixlev,
+                "loro_cmixlev": loro_cmixlev,
+                "loro_surmixlev": loro_surmixlev,
+                "dsurex_mode": dsurex_mode,
+                "dheadphone_mode": dheadphone_mode,
+                "ad_conv_type": ad_conv_type,
+                "stereo_rematrixing": stereo_rematrixing,
+                "channel_coupling": channel_coupling,
+                "cpl_start_band": cpl_start_band,
+            }
+        )
+    )
 
 
 def adpcm_adx() -> FFMpegEncoderOption:
@@ -5346,26 +5613,97 @@ def dfpwm() -> FFMpegEncoderOption:
     return FFMpegEncoderOption(kwargs=merge({}))
 
 
-def dca() -> FFMpegEncoderOption:
+def dca(
+    dca_adpcm: bool | None = None,
+) -> FFMpegEncoderOption:
     """
     DCA (DTS Coherent Acoustics) (codec dts)
 
+    Args:
+        dca_adpcm: Use ADPCM encoding (default false)
 
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=merge({}))
+    return FFMpegEncoderOption(
+        kwargs=merge(
+            {
+                "dca_adpcm": dca_adpcm,
+            }
+        )
+    )
 
 
-def eac3() -> FFMpegEncoderOption:
+def eac3(
+    mixing_level: int | None = None,
+    room_type: int | None | Literal["notindicated", "large", "small"] = None,
+    per_frame_metadata: bool | None = None,
+    copyright: int | None = None,
+    dialnorm: int | None = None,
+    dsur_mode: int | None | Literal["notindicated", "on", "off"] = None,
+    original: int | None = None,
+    dmix_mode: int | None | Literal["notindicated", "ltrt", "loro", "dplii"] = None,
+    ltrt_cmixlev: float | None = None,
+    ltrt_surmixlev: float | None = None,
+    loro_cmixlev: float | None = None,
+    loro_surmixlev: float | None = None,
+    dsurex_mode: int | None | Literal["notindicated", "on", "off", "dpliiz"] = None,
+    dheadphone_mode: int | None | Literal["notindicated", "on", "off"] = None,
+    ad_conv_type: int | None | Literal["standard", "hdcd"] = None,
+    stereo_rematrixing: bool | None = None,
+    channel_coupling: int | None | Literal["auto"] = None,
+    cpl_start_band: int | None | Literal["auto"] = None,
+) -> FFMpegEncoderOption:
     """
     ATSC A/52 E-AC-3
 
+    Args:
+        mixing_level: Mixing Level (from -1 to 111) (default -1)
+        room_type: Room Type (from -1 to 2) (default -1)
+        per_frame_metadata: Allow Changing Metadata Per-Frame (default false)
+        copyright: Copyright Bit (from -1 to 1) (default -1)
+        dialnorm: Dialogue Level (dB) (from -31 to -1) (default -31)
+        dsur_mode: Dolby Surround Mode (from -1 to 2) (default -1)
+        original: Original Bit Stream (from -1 to 1) (default -1)
+        dmix_mode: Preferred Stereo Downmix Mode (from -1 to 3) (default -1)
+        ltrt_cmixlev: Lt/Rt Center Mix Level (from -1 to 2) (default -1)
+        ltrt_surmixlev: Lt/Rt Surround Mix Level (from -1 to 2) (default -1)
+        loro_cmixlev: Lo/Ro Center Mix Level (from -1 to 2) (default -1)
+        loro_surmixlev: Lo/Ro Surround Mix Level (from -1 to 2) (default -1)
+        dsurex_mode: Dolby Surround EX Mode (from -1 to 3) (default -1)
+        dheadphone_mode: Dolby Headphone Mode (from -1 to 2) (default -1)
+        ad_conv_type: A/D Converter Type (from -1 to 1) (default -1)
+        stereo_rematrixing: Stereo Rematrixing (default true)
+        channel_coupling: Channel Coupling (from -1 to 1) (default auto)
+        cpl_start_band: Coupling Start Band (from -1 to 15) (default auto)
 
     Returns:
         the set codec options
     """
-    return FFMpegEncoderOption(kwargs=merge({}))
+    return FFMpegEncoderOption(
+        kwargs=merge(
+            {
+                "mixing_level": mixing_level,
+                "room_type": room_type,
+                "per_frame_metadata": per_frame_metadata,
+                "copyright": copyright,
+                "dialnorm": dialnorm,
+                "dsur_mode": dsur_mode,
+                "original": original,
+                "dmix_mode": dmix_mode,
+                "ltrt_cmixlev": ltrt_cmixlev,
+                "ltrt_surmixlev": ltrt_surmixlev,
+                "loro_cmixlev": loro_cmixlev,
+                "loro_surmixlev": loro_surmixlev,
+                "dsurex_mode": dsurex_mode,
+                "dheadphone_mode": dheadphone_mode,
+                "ad_conv_type": ad_conv_type,
+                "stereo_rematrixing": stereo_rematrixing,
+                "channel_coupling": channel_coupling,
+                "cpl_start_band": cpl_start_band,
+            }
+        )
+    )
 
 
 def flac(

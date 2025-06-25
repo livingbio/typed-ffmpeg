@@ -472,26 +472,46 @@ def argo_cvg(
     )
 
 
-def asf() -> FFMpegMuxerOption:
+def asf(
+    packet_size: int | None = None,
+) -> FFMpegMuxerOption:
     """
     ASF (Advanced / Active Streaming Format)
 
+    Args:
+        packet_size: Packet size (from 100 to 65536) (default 3200)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "packet_size": packet_size,
+            }
+        )
+    )
 
 
-def asf_stream() -> FFMpegMuxerOption:
+def asf_stream(
+    packet_size: int | None = None,
+) -> FFMpegMuxerOption:
     """
     ASF (Advanced / Active Streaming Format)
 
+    Args:
+        packet_size: Packet size (from 100 to 65536) (default 3200)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "packet_size": packet_size,
+            }
+        )
+    )
 
 
 def ass(
@@ -979,15 +999,28 @@ def dv() -> FFMpegMuxerOption:
     return FFMpegMuxerOption(kwargs=merge({}))
 
 
-def dvd() -> FFMpegMuxerOption:
+def dvd(
+    muxrate: int | None = None,
+    preload: int | None = None,
+) -> FFMpegMuxerOption:
     """
     MPEG-2 PS (DVD VOB)
 
+    Args:
+        muxrate: (from 0 to 1.67772e+09) (default 0)
+        preload: Initial demux-decode delay in microseconds. (from 0 to INT_MAX) (default 500000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "muxrate": muxrate,
+                "preload": preload,
+            }
+        )
+    )
 
 
 def eac3() -> FFMpegMuxerOption:
@@ -1519,15 +1552,25 @@ def h264() -> FFMpegMuxerOption:
     return FFMpegMuxerOption(kwargs=merge({}))
 
 
-def hash() -> FFMpegMuxerOption:
+def hash(
+    hash: str | None = None,
+) -> FFMpegMuxerOption:
     """
     Hash testing
 
+    Args:
+        hash: set hash to use (default "sha256")
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "hash": hash,
+            }
+        )
+    )
 
 
 def hds(
@@ -2389,15 +2432,28 @@ def mp4(
     )
 
 
-def mpeg() -> FFMpegMuxerOption:
+def mpeg(
+    muxrate: int | None = None,
+    preload: int | None = None,
+) -> FFMpegMuxerOption:
     """
     MPEG-1 Systems / MPEG program stream
 
+    Args:
+        muxrate: (from 0 to 1.67772e+09) (default 0)
+        preload: Initial demux-decode delay in microseconds. (from 0 to INT_MAX) (default 500000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "muxrate": muxrate,
+                "preload": preload,
+            }
+        )
+    )
 
 
 def mpeg1video() -> FFMpegMuxerOption:
@@ -2432,11 +2488,11 @@ def mpegts(
         "digital_tv",
         "digital_radio",
         "teletext",
-        "advanced_codec_digital_radio",
-        "mpeg2_digital_hdtv",
-        "advanced_codec_digital_sdtv",
-        "advanced_codec_digital_hdtv",
-        "hevc_digital_hdtv",
+        "advanced_codec_digital_radio 10",
+        "mpeg2_digital_hdtv 17",
+        "advanced_codec_digital_sdtv 22",
+        "advanced_codec_digital_hdtv 25",
+        "hevc_digital_hdtv 31",
     ] = None,
     mpegts_pmt_start_pid: int | None = None,
     mpegts_start_pid: int | None = None,
@@ -2568,26 +2624,78 @@ def mxf(
     )
 
 
-def mxf_d10() -> FFMpegMuxerOption:
+def mxf_d10(
+    d10_channelcount: int | None = None,
+    signal_standard: int
+    | None
+    | Literal[
+        "bt601",
+        "bt1358",
+        "smpte347m",
+        "smpte274m",
+        "smpte296m",
+        "smpte349m",
+        "smpte428",
+    ] = None,
+    store_user_comments: bool | None = None,
+) -> FFMpegMuxerOption:
     """
     MXF (Material eXchange Format) D-10 Mapping
 
+    Args:
+        d10_channelcount: Force/set channelcount in generic sound essence descriptor (from -1 to 8) (default -1)
+        signal_standard: Force/set Signal Standard (from -1 to 7) (default -1)
+        store_user_comments: (default false)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "d10_channelcount": d10_channelcount,
+                "signal_standard": signal_standard,
+                "store_user_comments": store_user_comments,
+            }
+        )
+    )
 
 
-def mxf_opatom() -> FFMpegMuxerOption:
+def mxf_opatom(
+    mxf_audio_edit_rate: str | None = None,
+    signal_standard: int
+    | None
+    | Literal[
+        "bt601",
+        "bt1358",
+        "smpte347m",
+        "smpte274m",
+        "smpte296m",
+        "smpte349m",
+        "smpte428",
+    ] = None,
+    store_user_comments: bool | None = None,
+) -> FFMpegMuxerOption:
     """
     MXF (Material eXchange Format) Operational Pattern Atom
 
+    Args:
+        mxf_audio_edit_rate: Audio edit rate for timecode (from 0 to INT_MAX) (default 25/1)
+        signal_standard: Force/set Signal Standard (from -1 to 7) (default -1)
+        store_user_comments: (default true)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "mxf_audio_edit_rate": mxf_audio_edit_rate,
+                "signal_standard": signal_standard,
+                "store_user_comments": store_user_comments,
+            }
+        )
+    )
 
 
 def null() -> FFMpegMuxerOption:
@@ -2636,37 +2744,94 @@ def obu() -> FFMpegMuxerOption:
     return FFMpegMuxerOption(kwargs=merge({}))
 
 
-def oga() -> FFMpegMuxerOption:
+def oga(
+    serial_offset: int | None = None,
+    oggpagesize: int | None = None,
+    pagesize: int | None = None,
+    page_duration: int | None = None,
+) -> FFMpegMuxerOption:
     """
     Ogg Audio
 
+    Args:
+        serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
+        oggpagesize: Set preferred Ogg page size. (from 0 to 65025) (default 0)
+        pagesize: preferred page size in bytes (deprecated) (from 0 to 65025) (default 0)
+        page_duration: preferred page duration, in microseconds (from 0 to I64_MAX) (default 1000000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "serial_offset": serial_offset,
+                "oggpagesize": oggpagesize,
+                "pagesize": pagesize,
+                "page_duration": page_duration,
+            }
+        )
+    )
 
 
-def ogg() -> FFMpegMuxerOption:
+def ogg(
+    serial_offset: int | None = None,
+    oggpagesize: int | None = None,
+    pagesize: int | None = None,
+    page_duration: int | None = None,
+) -> FFMpegMuxerOption:
     """
     Ogg
 
+    Args:
+        serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
+        oggpagesize: Set preferred Ogg page size. (from 0 to 65025) (default 0)
+        pagesize: preferred page size in bytes (deprecated) (from 0 to 65025) (default 0)
+        page_duration: preferred page duration, in microseconds (from 0 to I64_MAX) (default 1000000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "serial_offset": serial_offset,
+                "oggpagesize": oggpagesize,
+                "pagesize": pagesize,
+                "page_duration": page_duration,
+            }
+        )
+    )
 
 
-def ogv() -> FFMpegMuxerOption:
+def ogv(
+    serial_offset: int | None = None,
+    oggpagesize: int | None = None,
+    pagesize: int | None = None,
+    page_duration: int | None = None,
+) -> FFMpegMuxerOption:
     """
     Ogg Video
 
+    Args:
+        serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
+        oggpagesize: Set preferred Ogg page size. (from 0 to 65025) (default 0)
+        pagesize: preferred page size in bytes (deprecated) (from 0 to 65025) (default 0)
+        page_duration: preferred page duration, in microseconds (from 0 to I64_MAX) (default 1000000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "serial_offset": serial_offset,
+                "oggpagesize": oggpagesize,
+                "pagesize": pagesize,
+                "page_duration": page_duration,
+            }
+        )
+    )
 
 
 def oma() -> FFMpegMuxerOption:
@@ -2710,15 +2875,34 @@ def opengl(
     )
 
 
-def opus() -> FFMpegMuxerOption:
+def opus(
+    serial_offset: int | None = None,
+    oggpagesize: int | None = None,
+    pagesize: int | None = None,
+    page_duration: int | None = None,
+) -> FFMpegMuxerOption:
     """
     Ogg Opus
 
+    Args:
+        serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
+        oggpagesize: Set preferred Ogg page size. (from 0 to 65025) (default 0)
+        pagesize: preferred page size in bytes (deprecated) (from 0 to 65025) (default 0)
+        page_duration: preferred page duration, in microseconds (from 0 to I64_MAX) (default 1000000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "serial_offset": serial_offset,
+                "oggpagesize": oggpagesize,
+                "pagesize": pagesize,
+                "page_duration": page_duration,
+            }
+        )
+    )
 
 
 def oss() -> FFMpegMuxerOption:
@@ -3114,15 +3298,108 @@ def scc() -> FFMpegMuxerOption:
     return FFMpegMuxerOption(kwargs=merge({}))
 
 
-def segment() -> FFMpegMuxerOption:
+def segment(
+    reference_stream: str | None = None,
+    segment_format: str | None = None,
+    segment_format_options: str | None = None,
+    segment_list: str | None = None,
+    segment_header_filename: str | None = None,
+    segment_list_flags: str | None = None,
+    segment_list_size: int | None = None,
+    segment_list_type: int
+    | None
+    | Literal["flat", "csv", "ext", "ffconcat", "m3u8", "hls"] = None,
+    segment_atclocktime: bool | None = None,
+    segment_clocktime_offset: str | None = None,
+    segment_clocktime_wrap_duration: str | None = None,
+    segment_time: str | None = None,
+    segment_time_delta: str | None = None,
+    min_seg_duration: str | None = None,
+    segment_times: str | None = None,
+    segment_frames: str | None = None,
+    segment_wrap: int | None = None,
+    segment_list_entry_prefix: str | None = None,
+    segment_start_number: int | None = None,
+    segment_wrap_number: int | None = None,
+    strftime: bool | None = None,
+    increment_tc: bool | None = None,
+    break_non_keyframes: bool | None = None,
+    individual_header_trailer: bool | None = None,
+    write_header_trailer: bool | None = None,
+    reset_timestamps: bool | None = None,
+    initial_offset: str | None = None,
+    write_empty_segments: bool | None = None,
+) -> FFMpegMuxerOption:
     """
     segment
 
+    Args:
+        reference_stream: set reference stream (default "auto")
+        segment_format: set container format used for the segments
+        segment_format_options: set list of options for the container format used for the segments
+        segment_list: set the segment list filename
+        segment_header_filename: write a single file containing the header
+        segment_list_flags: set flags affecting segment list generation (default cache)
+        segment_list_size: set the maximum number of playlist entries (from 0 to INT_MAX) (default 0)
+        segment_list_type: set the segment list type (from -1 to 4) (default -1)
+        segment_atclocktime: set segment to be cut at clocktime (default false)
+        segment_clocktime_offset: set segment clocktime offset (default 0)
+        segment_clocktime_wrap_duration: set segment clocktime wrapping duration (default INT64_MAX)
+        segment_time: set segment duration (default 2)
+        segment_time_delta: set approximation value used for the segment times (default 0)
+        min_seg_duration: set minimum segment duration (default 0)
+        segment_times: set segment split time points
+        segment_frames: set segment split frame numbers
+        segment_wrap: set number after which the index wraps (from 0 to INT_MAX) (default 0)
+        segment_list_entry_prefix: set base url prefix for segments
+        segment_start_number: set the sequence number of the first segment (from 0 to INT_MAX) (default 0)
+        segment_wrap_number: set the number of wrap before the first segment (from 0 to INT_MAX) (default 0)
+        strftime: set filename expansion with strftime at segment creation (default false)
+        increment_tc: increment timecode between each segment (default false)
+        break_non_keyframes: allow breaking segments on non-keyframes (default false)
+        individual_header_trailer: write header/trailer to each segment (default true)
+        write_header_trailer: write a header to the first segment and a trailer to the last one (default true)
+        reset_timestamps: reset timestamps at the beginning of each segment (default false)
+        initial_offset: set initial timestamp offset (default 0)
+        write_empty_segments: allow writing empty 'filler' segments (default false)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "reference_stream": reference_stream,
+                "segment_format": segment_format,
+                "segment_format_options": segment_format_options,
+                "segment_list": segment_list,
+                "segment_header_filename": segment_header_filename,
+                "segment_list_flags": segment_list_flags,
+                "segment_list_size": segment_list_size,
+                "segment_list_type": segment_list_type,
+                "segment_atclocktime": segment_atclocktime,
+                "segment_clocktime_offset": segment_clocktime_offset,
+                "segment_clocktime_wrap_duration": segment_clocktime_wrap_duration,
+                "segment_time": segment_time,
+                "segment_time_delta": segment_time_delta,
+                "min_seg_duration": min_seg_duration,
+                "segment_times": segment_times,
+                "segment_frames": segment_frames,
+                "segment_wrap": segment_wrap,
+                "segment_list_entry_prefix": segment_list_entry_prefix,
+                "segment_start_number": segment_start_number,
+                "segment_wrap_number": segment_wrap_number,
+                "strftime": strftime,
+                "increment_tc": increment_tc,
+                "break_non_keyframes": break_non_keyframes,
+                "individual_header_trailer": individual_header_trailer,
+                "write_header_trailer": write_header_trailer,
+                "reset_timestamps": reset_timestamps,
+                "initial_offset": initial_offset,
+                "write_empty_segments": write_empty_segments,
+            }
+        )
+    )
 
 
 def smjpeg() -> FFMpegMuxerOption:
@@ -3207,15 +3484,34 @@ def spdif(
     )
 
 
-def spx() -> FFMpegMuxerOption:
+def spx(
+    serial_offset: int | None = None,
+    oggpagesize: int | None = None,
+    pagesize: int | None = None,
+    page_duration: int | None = None,
+) -> FFMpegMuxerOption:
     """
     Ogg Speex
 
+    Args:
+        serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
+        oggpagesize: Set preferred Ogg page size. (from 0 to 65025) (default 0)
+        pagesize: preferred page size in bytes (deprecated) (from 0 to 65025) (default 0)
+        page_duration: preferred page duration, in microseconds (from 0 to I64_MAX) (default 1000000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "serial_offset": serial_offset,
+                "oggpagesize": oggpagesize,
+                "pagesize": pagesize,
+                "page_duration": page_duration,
+            }
+        )
+    )
 
 
 def srt() -> FFMpegMuxerOption:
@@ -3229,15 +3525,25 @@ def srt() -> FFMpegMuxerOption:
     return FFMpegMuxerOption(kwargs=merge({}))
 
 
-def streamhash() -> FFMpegMuxerOption:
+def streamhash(
+    hash: str | None = None,
+) -> FFMpegMuxerOption:
     """
     Per-stream hash testing
 
+    Args:
+        hash: set hash to use (default "sha256")
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "hash": hash,
+            }
+        )
+    )
 
 
 def sup() -> FFMpegMuxerOption:
@@ -3251,15 +3557,28 @@ def sup() -> FFMpegMuxerOption:
     return FFMpegMuxerOption(kwargs=merge({}))
 
 
-def svcd() -> FFMpegMuxerOption:
+def svcd(
+    muxrate: int | None = None,
+    preload: int | None = None,
+) -> FFMpegMuxerOption:
     """
     MPEG-2 PS (SVCD)
 
+    Args:
+        muxrate: (from 0 to 1.67772e+09) (default 0)
+        preload: Initial demux-decode delay in microseconds. (from 0 to INT_MAX) (default 500000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "muxrate": muxrate,
+                "preload": preload,
+            }
+        )
+    )
 
 
 def swf() -> FFMpegMuxerOption:
@@ -3440,15 +3759,28 @@ def vc1test() -> FFMpegMuxerOption:
     return FFMpegMuxerOption(kwargs=merge({}))
 
 
-def vcd() -> FFMpegMuxerOption:
+def vcd(
+    muxrate: int | None = None,
+    preload: int | None = None,
+) -> FFMpegMuxerOption:
     """
     MPEG-1 Systems / MPEG program stream (VCD)
 
+    Args:
+        muxrate: (from 0 to 1.67772e+09) (default 0)
+        preload: Initial demux-decode delay in microseconds. (from 0 to INT_MAX) (default 500000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "muxrate": muxrate,
+                "preload": preload,
+            }
+        )
+    )
 
 
 def vidc() -> FFMpegMuxerOption:
@@ -3462,15 +3794,28 @@ def vidc() -> FFMpegMuxerOption:
     return FFMpegMuxerOption(kwargs=merge({}))
 
 
-def vob() -> FFMpegMuxerOption:
+def vob(
+    muxrate: int | None = None,
+    preload: int | None = None,
+) -> FFMpegMuxerOption:
     """
     MPEG-2 PS (VOB)
 
+    Args:
+        muxrate: (from 0 to 1.67772e+09) (default 0)
+        preload: Initial demux-decode delay in microseconds. (from 0 to INT_MAX) (default 500000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "muxrate": muxrate,
+                "preload": preload,
+            }
+        )
+    )
 
 
 def voc() -> FFMpegMuxerOption:
