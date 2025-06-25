@@ -1,17 +1,11 @@
 from dataclasses import dataclass
 
-from ..common.serialize import Serializable
-from ..utils.frozendict import FrozenDict
+from ..schema import FFMpegOptionGroup
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegCodecOption(Serializable):
-    kwargs: FrozenDict[str, str | int | float | bool] = FrozenDict({})
+class FFMpegEncoderOption(FFMpegOptionGroup): ...
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegEncoderOption(FFMpegCodecOption): ...
-
-
-@dataclass(frozen=True, kw_only=True)
-class FFMpegDecoderOption(FFMpegCodecOption): ...
+class FFMpegDecoderOption(FFMpegOptionGroup): ...
