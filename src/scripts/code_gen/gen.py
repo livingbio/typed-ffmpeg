@@ -265,7 +265,7 @@ def render(
     outpath.mkdir(exist_ok=True)
     output = []
 
-    for template_file in template_folder.glob("**/*.jinja"):
+    for template_file in template_folder.glob("**/*.*.jinja"):
         template_path = template_file.relative_to(template_folder)
 
         template = env.get_template(str(template_path))
