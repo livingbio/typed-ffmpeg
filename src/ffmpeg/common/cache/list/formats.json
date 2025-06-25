@@ -6761,36 +6761,36 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..........",
             "help": "Advanced Codec Digital Radio.",
-            "name": "advanced_codec_digital_radio 10",
-            "value": "advanced_codec_digital_radio 10"
+            "name": "advanced_codec_digital_radio",
+            "value": "10"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..........",
             "help": "MPEG2 Digital HDTV.",
-            "name": "mpeg2_digital_hdtv 17",
-            "value": "mpeg2_digital_hdtv 17"
+            "name": "mpeg2_digital_hdtv",
+            "value": "17"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..........",
             "help": "Advanced Codec Digital SDTV.",
-            "name": "advanced_codec_digital_sdtv 22",
-            "value": "advanced_codec_digital_sdtv 22"
+            "name": "advanced_codec_digital_sdtv",
+            "value": "22"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..........",
             "help": "Advanced Codec Digital HDTV.",
-            "name": "advanced_codec_digital_hdtv 25",
-            "value": "advanced_codec_digital_hdtv 25"
+            "name": "advanced_codec_digital_hdtv",
+            "value": "25"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..........",
             "help": "HEVC Digital Television Service.",
-            "name": "hevc_digital_hdtv 31",
-            "value": "hevc_digital_hdtv 31"
+            "name": "hevc_digital_hdtv",
+            "value": "31"
           }
         ],
         "default": "digital_tv",

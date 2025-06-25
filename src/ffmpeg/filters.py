@@ -3333,7 +3333,7 @@ def paletteuse(
     | Literal[
         "bayer",
         "heckbert",
-        "floyd_steinberg 3",
+        "floyd_steinberg",
         "sierra2",
         "sierra2_4a",
         "sierra3",

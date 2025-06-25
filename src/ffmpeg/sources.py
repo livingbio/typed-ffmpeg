@@ -2820,7 +2820,7 @@ def mandelbrot(
     morphyf: Double = Default("0"),
     morphamp: Double = Default("0"),
     outer: Int
-    | Literal["iteration_count 0", "normalized_iteration_count 1", "white", "outz"]
+    | Literal["iteration_count", "normalized_iteration_count", "white", "outz"]
     | Default = Default("normalized_iteration_count"),
     inner: Int
     | Literal["black", "period", "convergence", "mincol"]

@@ -1406,7 +1406,7 @@ def libx264(
     qp: int | None = None,
     aq_mode: int
     | None
-    | Literal["none", "variance", "autovariance", "autovariance-biased 3"] = None,
+    | Literal["none", "variance", "autovariance", "autovariance-biased"] = None,
     aq_strength: float | None = None,
     psy: bool | None = None,
     psy_rd: str | None = None,
@@ -1570,7 +1570,7 @@ def libx264rgb(
     qp: int | None = None,
     aq_mode: int
     | None
-    | Literal["none", "variance", "autovariance", "autovariance-biased 3"] = None,
+    | Literal["none", "variance", "autovariance", "autovariance-biased"] = None,
     aq_strength: float | None = None,
     psy: bool | None = None,
     psy_rd: str | None = None,
@@ -1783,7 +1783,7 @@ def h264_nvenc(
         "vbr",
         "cbr",
         "vbr_minqp",
-        "ll_2pass_quality 8388609",
+        "ll_2pass_quality",
         "ll_2pass_size",
         "vbr_2pass",
         "cbr_ld_hq",
@@ -1973,7 +1973,7 @@ def h264_vaapi(
     sei: str | None = None,
     profile: int
     | None
-    | Literal["constrained_baseline 578", "main", "high", "high10"] = None,
+    | Literal["constrained_baseline", "main", "high", "high10"] = None,
     level: int
     | None
     | Literal[
@@ -2181,7 +2181,7 @@ def hevc_nvenc(
         "vbr",
         "cbr",
         "vbr_minqp",
-        "ll_2pass_quality 8388609",
+        "ll_2pass_quality",
         "ll_2pass_size",
         "vbr_2pass",
         "cbr_ld_hq",

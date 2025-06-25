@@ -16424,15 +16424,15 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..F.A......",
             "help": "",
-            "name": "AUDIO_SERVICE_TYPE 10",
-            "value": "AUDIO_SERVICE_TYPE 10"
+            "name": "AUDIO_SERVICE_TYPE",
+            "value": "10"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..F.A......",
             "help": "",
-            "name": "MASTERING_DISPLAY_METADATA 11",
-            "value": "MASTERING_DISPLAY_METADATA 11"
+            "name": "MASTERING_DISPLAY_METADATA",
+            "value": "11"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
@@ -16452,8 +16452,8 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..F.A......",
             "help": "",
-            "name": "CONTENT_LIGHT_LEVEL 14",
-            "value": "CONTENT_LIGHT_LEVEL 14"
+            "name": "CONTENT_LIGHT_LEVEL",
+            "value": "14"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
@@ -16473,29 +16473,29 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..F.A......",
             "help": "",
-            "name": "DYNAMIC_HDR_PLUS 17",
-            "value": "DYNAMIC_HDR_PLUS 17"
+            "name": "DYNAMIC_HDR_PLUS",
+            "value": "17"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..F.A......",
             "help": "",
-            "name": "REGIONS_OF_INTEREST 18",
-            "value": "REGIONS_OF_INTEREST 18"
+            "name": "REGIONS_OF_INTEREST",
+            "value": "18"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..F.A......",
             "help": "",
-            "name": "DETECTION_BOUNDING_BOXES 22",
-            "value": "DETECTION_BOUNDING_BOXES 22"
+            "name": "DETECTION_BOUNDING_BOXES",
+            "value": "22"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..F.A......",
             "help": "",
-            "name": "SEI_UNREGISTERED 20",
-            "value": "SEI_UNREGISTERED 20"
+            "name": "SEI_UNREGISTERED",
+            "value": "20"
           }
         ],
         "default": "-1",
@@ -26858,15 +26858,15 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "send one frame for each frame, but skip spatial interlacing check",
-            "name": "send_frame_nospatial 2",
-            "value": "send_frame_nospatial 2"
+            "name": "send_frame_nospatial",
+            "value": "2"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "send one frame for each field, but skip spatial interlacing check",
-            "name": "send_field_nospatial 3",
-            "value": "send_field_nospatial 3"
+            "name": "send_field_nospatial",
+            "value": "3"
           }
         ],
         "default": "send_frame",
@@ -34826,8 +34826,8 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.....T.",
             "help": "",
-            "name": "increase_contrast 4",
-            "value": "increase_contrast 4"
+            "name": "increase_contrast",
+            "value": "4"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
@@ -34840,15 +34840,15 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.....T.",
             "help": "",
-            "name": "linear_contrast 6",
-            "value": "linear_contrast 6"
+            "name": "linear_contrast",
+            "value": "6"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.....T.",
             "help": "",
-            "name": "medium_contrast 7",
-            "value": "medium_contrast 7"
+            "name": "medium_contrast",
+            "value": "7"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
@@ -34861,8 +34861,8 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.....T.",
             "help": "",
-            "name": "strong_contrast 9",
-            "value": "strong_contrast 9"
+            "name": "strong_contrast",
+            "value": "9"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
@@ -61258,15 +61258,15 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "set iteration count mode",
-            "name": "iteration_count 0",
-            "value": "iteration_count 0"
+            "name": "iteration_count",
+            "value": "0"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "set normalized iteration count mode",
-            "name": "normalized_iteration_count 1",
-            "value": "normalized_iteration_count 1"
+            "name": "normalized_iteration_count",
+            "value": "1"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
@@ -68480,8 +68480,8 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "Floyd and Steingberg dithering (error diffusion)",
-            "name": "floyd_steinberg 3",
-            "value": "floyd_steinberg 3"
+            "name": "floyd_steinberg",
+            "value": "3"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
@@ -75346,15 +75346,15 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "chroma-derived-nc 12",
-            "value": "chroma-derived-nc 12"
+            "name": "chroma-derived-nc",
+            "value": "12"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "chroma-derived-c 13",
-            "value": "chroma-derived-c 13"
+            "name": "chroma-derived-c",
+            "value": "13"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
@@ -81407,15 +81407,15 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "AUDIO_SERVICE_TYPE 10",
-            "value": "AUDIO_SERVICE_TYPE 10"
+            "name": "AUDIO_SERVICE_TYPE",
+            "value": "10"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "MASTERING_DISPLAY_METADATA 11",
-            "value": "MASTERING_DISPLAY_METADATA 11"
+            "name": "MASTERING_DISPLAY_METADATA",
+            "value": "11"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
@@ -81435,8 +81435,8 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "CONTENT_LIGHT_LEVEL 14",
-            "value": "CONTENT_LIGHT_LEVEL 14"
+            "name": "CONTENT_LIGHT_LEVEL",
+            "value": "14"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
@@ -81456,29 +81456,29 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "DYNAMIC_HDR_PLUS 17",
-            "value": "DYNAMIC_HDR_PLUS 17"
+            "name": "DYNAMIC_HDR_PLUS",
+            "value": "17"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "REGIONS_OF_INTEREST 18",
-            "value": "REGIONS_OF_INTEREST 18"
+            "name": "REGIONS_OF_INTEREST",
+            "value": "18"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "DETECTION_BOUNDING_BOXES 22",
-            "value": "DETECTION_BOUNDING_BOXES 22"
+            "name": "DETECTION_BOUNDING_BOXES",
+            "value": "22"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "SEI_UNREGISTERED 20",
-            "value": "SEI_UNREGISTERED 20"
+            "name": "SEI_UNREGISTERED",
+            "value": "20"
           }
         ],
         "default": "-1",
@@ -91490,8 +91490,8 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "interleave bottom and top fields",
-            "name": "interleave_bottom 5",
-            "value": "interleave_bottom 5"
+            "name": "interleave_bottom",
+            "value": "5"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
@@ -101065,15 +101065,15 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "send one frame for each frame, but skip spatial interlacing check",
-            "name": "send_frame_nospatial 2",
-            "value": "send_frame_nospatial 2"
+            "name": "send_frame_nospatial",
+            "value": "2"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "send one frame for each field, but skip spatial interlacing check",
-            "name": "send_field_nospatial 3",
-            "value": "send_field_nospatial 3"
+            "name": "send_field_nospatial",
+            "value": "3"
           }
         ],
         "default": "send_frame",
@@ -102224,8 +102224,8 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "error_diffusion 3",
-            "value": "error_diffusion 3"
+            "name": "error_diffusion",
+            "value": "3"
           }
         ],
         "default": "none",
@@ -102269,8 +102269,8 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "error_diffusion 3",
-            "value": "error_diffusion 3"
+            "name": "error_diffusion",
+            "value": "3"
           }
         ],
         "default": "none",
@@ -103335,15 +103335,15 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "chroma-derived-nc 12",
-            "value": "chroma-derived-nc 12"
+            "name": "chroma-derived-nc",
+            "value": "12"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "chroma-derived-c 13",
-            "value": "chroma-derived-c 13"
+            "name": "chroma-derived-c",
+            "value": "13"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
@@ -103492,15 +103492,15 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "chroma-derived-nc 12",
-            "value": "chroma-derived-nc 12"
+            "name": "chroma-derived-nc",
+            "value": "12"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "chroma-derived-c 13",
-            "value": "chroma-derived-c 13"
+            "name": "chroma-derived-c",
+            "value": "13"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
@@ -104454,15 +104454,15 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "chroma-derived-nc 12",
-            "value": "chroma-derived-nc 12"
+            "name": "chroma-derived-nc",
+            "value": "12"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "chroma-derived-c 13",
-            "value": "chroma-derived-c 13"
+            "name": "chroma-derived-c",
+            "value": "13"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
@@ -104611,15 +104611,15 @@
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "chroma-derived-nc 12",
-            "value": "chroma-derived-nc 12"
+            "name": "chroma-derived-nc",
+            "value": "12"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",
             "flags": "..FV.......",
             "help": "",
-            "name": "chroma-derived-c 13",
-            "value": "chroma-derived-c 13"
+            "name": "chroma-derived-c",
+            "value": "13"
           },
           {
             "__class__": "FFMpegFilterOptionChoice",

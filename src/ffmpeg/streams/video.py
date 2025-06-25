@@ -1347,10 +1347,7 @@ class VideoStream(FilterableStream):
         *,
         mode: Int
         | Literal[
-            "send_frame",
-            "send_field",
-            "send_frame_nospatial 2",
-            "send_field_nospatial 3",
+            "send_frame", "send_field", "send_frame_nospatial", "send_field_nospatial"
         ]
         | Default = Default("send_frame"),
         parity: Int | Literal["tff", "bff", "auto"] | Default = Default("auto"),
@@ -3131,12 +3128,12 @@ class VideoStream(FilterableStream):
             "color_negative",
             "cross_process",
             "darker",
-            "increase_contrast 4",
+            "increase_contrast",
             "lighter",
-            "linear_contrast 6",
-            "medium_contrast 7",
+            "linear_contrast",
+            "medium_contrast",
             "negative",
-            "strong_contrast 9",
+            "strong_contrast",
             "vintage",
         ]
         | Default = Default("none"),
@@ -9780,7 +9777,7 @@ class VideoStream(FilterableStream):
         | Literal[
             "bayer",
             "heckbert",
-            "floyd_steinberg 3",
+            "floyd_steinberg",
             "sierra2",
             "sierra2_4a",
             "sierra3",
@@ -11760,8 +11757,8 @@ class VideoStream(FilterableStream):
             "bt2020nc",
             "bt2020c",
             "smpte2085",
-            "chroma-derived-nc 12",
-            "chroma-derived-c 13",
+            "chroma-derived-nc",
+            "chroma-derived-c",
             "ictcp",
         ]
         | Default = Default("auto"),
@@ -12241,17 +12238,17 @@ class VideoStream(FilterableStream):
             "AFD",
             "MOTION_VECTORS",
             "SKIP_SAMPLES",
-            "AUDIO_SERVICE_TYPE 10",
-            "MASTERING_DISPLAY_METADATA 11",
+            "AUDIO_SERVICE_TYPE",
+            "MASTERING_DISPLAY_METADATA",
             "GOP_TIMECODE",
             "SPHERICAL",
-            "CONTENT_LIGHT_LEVEL 14",
+            "CONTENT_LIGHT_LEVEL",
             "ICC_PROFILE",
             "S12M_TIMECOD",
-            "DYNAMIC_HDR_PLUS 17",
-            "REGIONS_OF_INTEREST 18",
-            "DETECTION_BOUNDING_BOXES 22",
-            "SEI_UNREGISTERED 20",
+            "DYNAMIC_HDR_PLUS",
+            "REGIONS_OF_INTEREST",
+            "DETECTION_BOUNDING_BOXES",
+            "SEI_UNREGISTERED",
         ]
         | Default = Default("-1"),
         extra_options: dict[str, Any] | None = None,
@@ -13580,7 +13577,7 @@ class VideoStream(FilterableStream):
             "drop_odd",
             "pad",
             "interleave_top",
-            "interleave_bottom 5",
+            "interleave_bottom",
             "interlacex2",
             "mergex2",
         ]
@@ -15672,10 +15669,7 @@ class VideoStream(FilterableStream):
         *,
         mode: Int
         | Literal[
-            "send_frame",
-            "send_field",
-            "send_frame_nospatial 2",
-            "send_field_nospatial 3",
+            "send_frame", "send_field", "send_frame_nospatial", "send_field_nospatial"
         ]
         | Default = Default("send_frame"),
         parity: Int | Literal["tff", "bff", "auto"] | Default = Default("auto"),
@@ -15862,10 +15856,10 @@ class VideoStream(FilterableStream):
         size: String = Default(None),
         s: String = Default(None),
         dither: Int
-        | Literal["none", "ordered", "random", "error_diffusion 3"]
+        | Literal["none", "ordered", "random", "error_diffusion"]
         | Default = Default("none"),
         d: Int
-        | Literal["none", "ordered", "random", "error_diffusion 3"]
+        | Literal["none", "ordered", "random", "error_diffusion"]
         | Default = Default("none"),
         filter: Int
         | Literal["point", "bilinear", "bicubic", "spline16", "spline36", "lanczos"]
@@ -15997,8 +15991,8 @@ class VideoStream(FilterableStream):
             "ycgco",
             "bt2020nc",
             "bt2020c",
-            "chroma-derived-nc 12",
-            "chroma-derived-c 13",
+            "chroma-derived-nc",
+            "chroma-derived-c",
             "ictcp",
         ]
         | Default = Default("input"),
@@ -16021,8 +16015,8 @@ class VideoStream(FilterableStream):
             "ycgco",
             "bt2020nc",
             "bt2020c",
-            "chroma-derived-nc 12",
-            "chroma-derived-c 13",
+            "chroma-derived-nc",
+            "chroma-derived-c",
             "ictcp",
         ]
         | Default = Default("input"),
@@ -16150,8 +16144,8 @@ class VideoStream(FilterableStream):
             "ycgco",
             "bt2020nc",
             "bt2020c",
-            "chroma-derived-nc 12",
-            "chroma-derived-c 13",
+            "chroma-derived-nc",
+            "chroma-derived-c",
             "ictcp",
         ]
         | Default = Default("input"),
@@ -16174,8 +16168,8 @@ class VideoStream(FilterableStream):
             "ycgco",
             "bt2020nc",
             "bt2020c",
-            "chroma-derived-nc 12",
-            "chroma-derived-c 13",
+            "chroma-derived-nc",
+            "chroma-derived-c",
             "ictcp",
         ]
         | Default = Default("input"),

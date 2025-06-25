@@ -5037,8 +5037,8 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "Auto-variance AQ with bias to dark scenes",
-            "name": "autovariance-biased 3",
-            "value": "autovariance-biased 3"
+            "name": "autovariance-biased",
+            "value": "3"
           }
         ],
         "default": "-1",
@@ -5853,8 +5853,8 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "Auto-variance AQ with bias to dark scenes",
-            "name": "autovariance-biased 3",
-            "value": "autovariance-biased 3"
+            "name": "autovariance-biased",
+            "value": "3"
           }
         ],
         "default": "-1",
@@ -6962,8 +6962,8 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "Multi-pass optimized for image quality (deprecated)",
-            "name": "ll_2pass_quality 8388609",
-            "value": "ll_2pass_quality 8388609"
+            "name": "ll_2pass_quality",
+            "value": "8388609"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -7901,8 +7901,8 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "constrained_baseline 578",
-            "value": "constrained_baseline 578"
+            "name": "constrained_baseline",
+            "value": "578"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -8729,8 +8729,8 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "Multi-pass optimized for image quality (deprecated)",
-            "name": "ll_2pass_quality 8388609",
-            "value": "ll_2pass_quality 8388609"
+            "name": "ll_2pass_quality",
+            "value": "8388609"
           },
           {
             "__class__": "FFMpegOptionChoice",
