@@ -4,6 +4,28 @@ from typing import Literal
 
 from ffmpeg.common.serialize import Serializable
 
+FFMpegOptionType = Literal[
+    "boolean",
+    "duration",
+    "color",
+    "flags",
+    "dictionary",
+    "pix_fmt",
+    "int",
+    "int64",
+    "double",
+    "float",
+    "string",
+    "video_rate",
+    "image_size",
+    "rational",
+    "sample_fmt",
+    "binary",
+    "channel_layout",
+    "pixel_format",
+    "sample_rate",
+]
+
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegOptionChoice(Serializable):

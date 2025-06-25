@@ -9,26 +9,19 @@ filter definitions with proper typing information.
 
 import typer
 
-from ffmpeg.common.schema import FFMpegFilter
+from ffmpeg.common.schema import (
+    FFMpegFilter,
+    FFMpegFilterOption,
+    FFMpegFilterOptionChoice,
+    FFMpegFilterOptionType,
+    FFMpegIOType,
+    StreamType,
+)
 
-from .parse_all_filter import extract as extract_all_filters
-from .parse_codecs import extract_all_codecs
-from .parse_filter import extract_avfilter_info_from_help
-from .parse_formats import extract_all_formats
-from .schema import FFMpegAVOption, FFMpegCodec, FFMpegFormat
-from .utils import extract_avoption_info_from_help
+from . import parse_codecs, parse_filters, parse_formats
+from .schema import FFMpegCodec, FFMpegFormat
 
 app = typer.Typer(help="Parse FFmpeg filter help information")
-
-
-@app.command()
-def all_options() -> list[FFMpegAVOption]:
-    """
-    Parse all options from FFmpeg help output
-    """
-    options = extract_avoption_info_from_help()
-    print(options)
-    return options
 
 
 @app.command()
@@ -48,32 +41,49 @@ def all_filters() -> list[FFMpegFilter]:
     """
     output = []
 
-    for filter_info in extract_all_filters():
-        try:
-            filter_info_from_help = extract_avfilter_info_from_help(filter_info.name)
-        except AssertionError:  # pragma: no cover
-            typer.echo(f"Failed to parse filter {filter_info.name}")  #
-            continue
-
+    for filter_info in parse_filters.extract():
         output.append(
             FFMpegFilter(
                 name=filter_info.name,
-                description=filter_info.description,
+                description=filter_info.help,
                 # flags
-                is_support_timeline=filter_info.is_support_timeline,
-                is_support_slice_threading=filter_info.is_support_slice_threading,
-                is_support_command=filter_info.is_support_command,
+                is_support_timeline=filter_info.is_timeline,
+                is_support_slice_threading=filter_info.is_slice_threading,
+                is_support_command=False,
                 # NOTE: is_support_framesync can only be determined by filter_info_from_help
-                is_support_framesync=filter_info_from_help.is_support_framesync,
-                is_filter_sink=filter_info.is_filter_sink,
-                is_filter_source=filter_info.is_filter_source,
+                is_support_framesync=filter_info.is_framesync,
+                is_filter_sink=filter_info.io_flags.endswith("->|"),
+                is_filter_source=filter_info.io_flags.startswith("|->"),
                 # IO Typing
-                is_dynamic_input=filter_info.is_dynamic_input,
-                is_dynamic_output=filter_info.is_dynamic_output,
+                is_dynamic_input="N->" in filter_info.io_flags,
+                is_dynamic_output="->N" in filter_info.io_flags,
                 # stream_typings's name can only be determined by filter_info_from_help
-                stream_typings_input=filter_info_from_help.stream_typings_input,
-                stream_typings_output=filter_info_from_help.stream_typings_output,
-                options=filter_info_from_help.options,
+                stream_typings_input=tuple(
+                    FFMpegIOType(name=i.name, type=StreamType(i.type))
+                    for i in filter_info.stream_typings_input
+                ),
+                stream_typings_output=tuple(
+                    FFMpegIOType(name=i.name, type=StreamType(i.type))
+                    for i in filter_info.stream_typings_output
+                ),
+                options=tuple(
+                    FFMpegFilterOption(
+                        name=option.name,
+                        type=FFMpegFilterOptionType(option.type),
+                        default=option.default,
+                        description=option.help,
+                        choices=tuple(
+                            FFMpegFilterOptionChoice(
+                                name=choice.name,
+                                help=choice.help,
+                                flags=choice.flags,
+                                value=choice.value,
+                            )
+                            for choice in option.choices
+                        ),
+                    )
+                    for option in filter_info.options
+                ),
             )
         )
 
@@ -85,7 +95,7 @@ def all_codecs() -> list[FFMpegCodec]:
     """
     Parse all codecs from FFmpeg help output
     """
-    return extract_all_codecs()
+    return parse_codecs.extract()
 
 
 @app.command()
@@ -93,4 +103,4 @@ def all_formats() -> list[FFMpegFormat]:
     """
     Parse all muxers from FFmpeg help output
     """
-    return extract_all_formats()
+    return parse_formats.extract()

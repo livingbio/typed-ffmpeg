@@ -1,0 +1,28 @@
+{
+  "flags": "",
+  "help": "Copy the luma value of the second input into the alpha channel of the first input.",
+  "io_flags": "",
+  "is_dynamic_input": false,
+  "is_dynamic_output": false,
+  "is_framesync": true,
+  "is_slice_threading": false,
+  "is_timeline": true,
+  "name": "alphamerge",
+  "options": [],
+  "stream_typings_input": [
+    {
+      "name": "main",
+      "type": "video"
+    },
+    {
+      "name": "alpha",
+      "type": "video"
+    }
+  ],
+  "stream_typings_output": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+[
+  "FFMpegFormat(name='3g2', flags='E', help='3GP2 (3GPP2 file format)', options=())",
+  "FFMpegFormat(name='3gp', flags='E', help='3GP (3GPP file format)', options=())",
+  "FFMpegFormat(name='a64', flags='E', help='a64 - video for Commodore 64', options=())",
+  "FFMpegFormat(name='ac3', flags='E', help='raw AC-3', options=())",
+  "FFMpegFormat(name='ac4', flags='E', help='raw AC-4', options=())",
+  "FFMpegFormat(name='adts', flags='E', help='ADTS AAC (Advanced Audio Coding)', options=())",
+  "FFMpegFormat(name='adx', flags='E', help='CRI ADX', options=())",
+  "FFMpegFormat(name='aiff', flags='E', help='Audio IFF', options=())",
+  "FFMpegFormat(name='alaw', flags='E', help='PCM A-law', options=())",
+  "FFMpegFormat(name='alp', flags='E', help='LEGO Racers ALP', options=())",
+  "FFMpegFormat(name='alsa', flags='E', help='ALSA audio output', options=())"
+]

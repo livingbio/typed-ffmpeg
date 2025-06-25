@@ -111,13 +111,13 @@ def load_codecs(rebuild: bool) -> list[FFMpegCodec]:
         FFMpegCodec(
             name=k.name,
             flags=k.flags,
-            description=k.description,
+            description=k.help,
             options=tuple(
                 FFMpegAVOption(
                     section=i.section,
                     name=i.name,
-                    type=i.type,
-                    flags=i.flags,
+                    type=str(i.type),
+                    flags=str(i.flags),
                     help=i.help,
                     min=i.min,
                     max=i.max,
@@ -162,13 +162,13 @@ def load_formats(rebuild: bool) -> list[FFMpegFormat]:
         FFMpegFormat(
             name=k.name,
             flags=k.flags,
-            description=k.description,
+            description=k.help,
             options=tuple(
                 FFMpegAVOption(
                     section=i.section,
                     name=i.name,
-                    type=i.type,
-                    flags=i.flags,
+                    type=str(i.type),
+                    flags=str(i.flags),
                     help=i.help,
                     min=i.min,
                     max=i.max,

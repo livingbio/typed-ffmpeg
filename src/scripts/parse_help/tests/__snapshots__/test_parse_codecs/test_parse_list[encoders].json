@@ -1,0 +1,7 @@
+[
+  "FFMpegCodec(name='a64multi', flags='V....D', help='Multicolor charset for Commodore 64 (codec a64_multi)', options=())",
+  "FFMpegCodec(name='a64multi5', flags='V....D', help='Multicolor charset for Commodore 64, extended with 5th color (colram) (codec a64_multi5)', options=())",
+  "FFMpegCodec(name='alias_pix', flags='V....D', help='Alias/Wavefront PIX image', options=())",
+  "FFMpegCodec(name='amv', flags='V.....', help='AMV Video', options=())",
+  "FFMpegCodec(name='apng', flags='V....D', help='APNG (Animated Portable Network Graphics) image', options=())"
+]
