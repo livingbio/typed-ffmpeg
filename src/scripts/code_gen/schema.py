@@ -105,7 +105,7 @@ class FFMpegCodec(Serializable):
     description: str
     options: tuple[FFMpegAVOption, ...] = ()
 
-    def filterd_options(self) -> Iterable[FFMpegAVOption]:
+    def filtered_options(self) -> Iterable[FFMpegAVOption]:
         # NOTE: the nvenv_hevc has alias for some options, so we need to filter them out
         passed = set()
         for option in self.options:
