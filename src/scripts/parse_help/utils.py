@@ -148,7 +148,7 @@ re_option_pattern = re.compile(
 )
 
 re_min_max = re.compile(r"\(from\s+(?P<min>.+?)\s+to\s+(?P<max>.+?)\)")
-re_default = re.compile(r"\(default\s+(?P<default>.+?)\)")
+re_default = re.compile(r"\(default\s+(?P<default>.+?)\)$")
 
 
 def _extract_match(match: re.Match[str]) -> dict[str, str]:
@@ -199,7 +199,7 @@ def _extract_min_max_default(help: str) -> tuple[str | None, str | None, str | N
 
     defaults = re_default.findall(help)
     if defaults:
-        default = defaults[0]
+        default = defaults[0].strip('"')
     else:
         default = None
     return min, max, default

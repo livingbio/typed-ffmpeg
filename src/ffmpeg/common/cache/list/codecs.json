@@ -4868,7 +4868,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"medium\"",
+        "default": "medium",
         "flags": "E..V.......",
         "help": "Set the encoding preset (cf. x264 --fullhelp) (default \"medium\")",
         "max": null,
@@ -5636,7 +5636,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"medium\"",
+        "default": "medium",
         "flags": "E..V.......",
         "help": "Set the encoding preset (cf. x264 --fullhelp) (default \"medium\")",
         "max": null,
@@ -13996,7 +13996,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"fmpg\"",
+        "default": "fmpg",
         "flags": "E..V.......",
         "help": "vendor ID (default \"fmpg\")",
         "max": null,
@@ -14016,7 +14016,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"fmpg\"",
+        "default": "fmpg",
         "flags": "E..V.......",
         "help": "vendor ID (default \"fmpg\")",
         "max": null,
@@ -14110,7 +14110,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"Lavc\"",
+        "default": "Lavc",
         "flags": "E..V.......",
         "help": "vendor ID (default \"Lavc\")",
         "max": null,
@@ -21973,7 +21973,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"\"",
+        "default": "",
         "flags": ".D.V.......",
         "help": "Set the decoding layer (default \"\")",
         "max": null,
@@ -27213,7 +27213,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"*\"",
+        "default": "*",
         "flags": ".D...S.....",
         "help": "page numbers to decode, subtitle for subtitles, * for all (default \"*\")",
         "max": null,

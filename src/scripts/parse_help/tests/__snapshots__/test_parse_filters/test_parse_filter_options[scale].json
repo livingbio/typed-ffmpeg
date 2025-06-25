@@ -36,7 +36,7 @@
     {
       "argname": null,
       "choices": [],
-      "default": "\"\"",
+      "default": "",
       "flags": "..FV.......",
       "help": "Flags to pass to libswscale (default \"\")",
       "max": null,
@@ -67,7 +67,7 @@
           "value": "auto"
         }
       ],
-      "default": "\"auto\"",
+      "default": "auto",
       "flags": "..FV.......",
       "help": "set input YCbCr type (default \"auto\")",
       "max": null,

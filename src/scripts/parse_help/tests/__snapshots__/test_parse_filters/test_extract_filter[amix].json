@@ -67,7 +67,7 @@
     {
       "argname": null,
       "choices": [],
-      "default": "\"1 1\"",
+      "default": "1 1",
       "flags": "..F.A....T.",
       "help": "Set weight for each input. (default \"1 1\")",
       "max": null,

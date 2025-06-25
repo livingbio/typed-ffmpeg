@@ -34,10 +34,10 @@ class VideoStream(FilterableStream):
     def addroi(
         self,
         *,
-        x: String = Default('"0"'),
-        y: String = Default('"0"'),
-        w: String = Default('"0"'),
-        h: String = Default('"0"'),
+        x: String = Default("0"),
+        y: String = Default("0"),
+        w: String = Default("0"),
+        h: String = Default("0"),
         qoffset: Rational = Default("-1/10"),
         clear: Boolean = Default("false"),
         extra_options: dict[str, Any] | None = None,
@@ -1149,7 +1149,7 @@ class VideoStream(FilterableStream):
     def boxblur(
         self,
         *,
-        luma_radius: String = Default('"2"'),
+        luma_radius: String = Default("2"),
         luma_power: Int = Default("2"),
         chroma_radius: String = Default(None),
         chroma_power: Int = Default("-1"),
@@ -1198,7 +1198,7 @@ class VideoStream(FilterableStream):
     def boxblur_opencl(
         self,
         *,
-        luma_radius: String = Default('"2"'),
+        luma_radius: String = Default("2"),
         luma_power: Int = Default("2"),
         chroma_radius: String = Default(None),
         chroma_power: Int = Default("-1"),
@@ -1435,7 +1435,7 @@ class VideoStream(FilterableStream):
     def chromahold(
         self,
         *,
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         similarity: Float = Default("0.01"),
         blend: Float = Default("0"),
         yuv: Boolean = Default("false"),
@@ -1478,7 +1478,7 @@ class VideoStream(FilterableStream):
     def chromakey(
         self,
         *,
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         similarity: Float = Default("0.01"),
         blend: Float = Default("0"),
         yuv: Boolean = Default("false"),
@@ -2023,7 +2023,7 @@ class VideoStream(FilterableStream):
     def colorhold(
         self,
         *,
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         similarity: Float = Default("0.01"),
         blend: Float = Default("0"),
         extra_options: dict[str, Any] | None = None,
@@ -2106,7 +2106,7 @@ class VideoStream(FilterableStream):
     def colorkey(
         self,
         *,
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         similarity: Float = Default("0.01"),
         blend: Float = Default("0"),
         extra_options: dict[str, Any] | None = None,
@@ -2146,7 +2146,7 @@ class VideoStream(FilterableStream):
     def colorkey_opencl(
         self,
         *,
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         similarity: Float = Default("0.01"),
         blend: Float = Default("0"),
         extra_options: dict[str, Any] | None = None,
@@ -2274,7 +2274,7 @@ class VideoStream(FilterableStream):
         _source: VideoStream,
         _target: VideoStream,
         *,
-        patch_size: Image_size = Default('"64x64"'),
+        patch_size: Image_size = Default("64x64"),
         nb_patches: Int = Default("0"),
         type: Int | Literal["relative", "absolute"] | Default = Default("absolute"),
         kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default(
@@ -2621,10 +2621,10 @@ class VideoStream(FilterableStream):
     def convolution(
         self,
         *,
-        _0m: String = Default('"0 0 0 0 1 0 0 0 0"'),
-        _1m: String = Default('"0 0 0 0 1 0 0 0 0"'),
-        _2m: String = Default('"0 0 0 0 1 0 0 0 0"'),
-        _3m: String = Default('"0 0 0 0 1 0 0 0 0"'),
+        _0m: String = Default("0 0 0 0 1 0 0 0 0"),
+        _1m: String = Default("0 0 0 0 1 0 0 0 0"),
+        _2m: String = Default("0 0 0 0 1 0 0 0 0"),
+        _3m: String = Default("0 0 0 0 1 0 0 0 0"),
         _0rdiv: Float = Default("0"),
         _1rdiv: Float = Default("0"),
         _2rdiv: Float = Default("0"),
@@ -2700,9 +2700,9 @@ class VideoStream(FilterableStream):
     def convolution_opencl(
         self,
         *,
-        _0m: String = Default('"0 0 0 0 1 0 0 0 0"'),
-        _2m: String = Default('"0 0 0 0 1 0 0 0 0"'),
-        _3m: String = Default('"0 0 0 0 1 0 0 0 0"'),
+        _0m: String = Default("0 0 0 0 1 0 0 0 0"),
+        _2m: String = Default("0 0 0 0 1 0 0 0 0"),
+        _3m: String = Default("0 0 0 0 1 0 0 0 0"),
         _0rdiv: Float = Default("1"),
         _1rdiv: Float = Default("1"),
         _2rdiv: Float = Default("1"),
@@ -2897,10 +2897,10 @@ class VideoStream(FilterableStream):
     def crop(
         self,
         *,
-        out_w: String = Default('"iw"'),
-        out_h: String = Default('"ih"'),
-        x: String = Default('"(in_w-out_w'),
-        y: String = Default('"(in_h-out_h'),
+        out_w: String = Default("iw"),
+        out_h: String = Default("ih"),
+        x: String = Default("(in_w-out_w)/2"),
+        y: String = Default("(in_h-out_h)/2"),
         keep_aspect: Boolean = Default("false"),
         exact: Boolean = Default("false"),
         extra_options: dict[str, Any] | None = None,
@@ -3119,7 +3119,7 @@ class VideoStream(FilterableStream):
     def datascope(
         self,
         *,
-        size: Image_size = Default('"hd720"'),
+        size: Image_size = Default("hd720"),
         x: Int = Default("0"),
         y: Int = Default("0"),
         mode: Int | Literal["mono", "color", "color2"] | Default = Default("mono"),
@@ -3575,10 +3575,10 @@ class VideoStream(FilterableStream):
     def delogo(
         self,
         *,
-        x: String = Default('"-1"'),
-        y: String = Default('"-1"'),
-        w: String = Default('"-1"'),
-        h: String = Default('"-1"'),
+        x: String = Default("-1"),
+        y: String = Default("-1"),
+        w: String = Default("-1"),
+        h: String = Default("-1"),
         show: Boolean = Default("false"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
@@ -3624,8 +3624,8 @@ class VideoStream(FilterableStream):
         filter_type: Int | Literal["derain", "dehaze"] | Default = Default("derain"),
         dnn_backend: Int = Default("1"),
         model: String = Default(None),
-        input: String = Default('"x"'),
-        output: String = Default('"y"'),
+        input: String = Default("x"),
+        output: String = Default("y"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -3845,7 +3845,7 @@ class VideoStream(FilterableStream):
         first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default(
             "top"
         ),
-        pattern: String = Default('"23"'),
+        pattern: String = Default("23"),
         start_frame: Int = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
@@ -4229,12 +4229,12 @@ class VideoStream(FilterableStream):
     def drawbox(
         self,
         *,
-        x: String = Default('"0"'),
-        y: String = Default('"0"'),
-        width: String = Default('"0"'),
-        height: String = Default('"0"'),
-        color: String = Default('"black"'),
-        thickness: String = Default('"3"'),
+        x: String = Default("0"),
+        y: String = Default("0"),
+        width: String = Default("0"),
+        height: String = Default("0"),
+        color: String = Default("black"),
+        thickness: String = Default("3"),
         replace: Boolean = Default("false"),
         box_source: String = Default(None),
         extra_options: dict[str, Any] | None = None,
@@ -4284,23 +4284,23 @@ class VideoStream(FilterableStream):
     def drawgraph(
         self,
         *,
-        m1: String = Default('""'),
-        fg1: String = Default('"0xffff0000"'),
-        m2: String = Default('""'),
-        fg2: String = Default('"0xff00ff00"'),
-        m3: String = Default('""'),
-        fg3: String = Default('"0xffff00ff"'),
-        m4: String = Default('""'),
-        fg4: String = Default('"0xffffff00"'),
-        bg: Color = Default('"white"'),
+        m1: String = Default(""),
+        fg1: String = Default("0xffff0000"),
+        m2: String = Default(""),
+        fg2: String = Default("0xff00ff00"),
+        m3: String = Default(""),
+        fg3: String = Default("0xffff00ff"),
+        m4: String = Default(""),
+        fg4: String = Default("0xffffff00"),
+        bg: Color = Default("white"),
         min: Float = Default("-1"),
         max: Float = Default("1"),
         mode: Int | Literal["bar", "dot", "line"] | Default = Default("line"),
         slide: Int
         | Literal["frame", "replace", "scroll", "rscroll", "picture"]
         | Default = Default("frame"),
-        size: Image_size = Default('"900x256"'),
-        rate: Video_rate = Default('"25"'),
+        size: Image_size = Default("900x256"),
+        rate: Video_rate = Default("25"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -4362,12 +4362,12 @@ class VideoStream(FilterableStream):
     def drawgrid(
         self,
         *,
-        x: String = Default('"0"'),
-        y: String = Default('"0"'),
-        width: String = Default('"0"'),
-        height: String = Default('"0"'),
-        color: String = Default('"black"'),
-        thickness: String = Default('"1"'),
+        x: String = Default("0"),
+        y: String = Default("0"),
+        width: String = Default("0"),
+        height: String = Default("0"),
+        color: String = Default("black"),
+        thickness: String = Default("1"),
         replace: Boolean = Default("false"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
@@ -4417,13 +4417,13 @@ class VideoStream(FilterableStream):
         fontfile: String = Default(None),
         text: String = Default(None),
         textfile: String = Default(None),
-        fontcolor: Color = Default('"black"'),
-        fontcolor_expr: String = Default('""'),
-        boxcolor: Color = Default('"white"'),
-        bordercolor: Color = Default('"black"'),
-        shadowcolor: Color = Default('"black"'),
+        fontcolor: Color = Default("black"),
+        fontcolor_expr: String = Default(""),
+        boxcolor: Color = Default("white"),
+        bordercolor: Color = Default("black"),
+        shadowcolor: Color = Default("black"),
         box: Boolean = Default("false"),
-        boxborderw: String = Default('"0"'),
+        boxborderw: String = Default("0"),
         line_spacing: Int = Default("0"),
         fontsize: String = Default(None),
         text_align: Flags
@@ -4442,8 +4442,8 @@ class VideoStream(FilterableStream):
             "M",
         ]
         | Default = Default("0"),
-        x: String = Default('"0"'),
-        y: String = Default('"0"'),
+        x: String = Default("0"),
+        y: String = Default("0"),
         boxw: Int = Default("0"),
         boxh: Int = Default("0"),
         shadowx: Int = Default("0"),
@@ -4451,7 +4451,7 @@ class VideoStream(FilterableStream):
         borderw: Int = Default("0"),
         tabsize: Int = Default("4"),
         basetime: Int64 = Default("I64_MIN"),
-        font: String = Default('"Sans"'),
+        font: String = Default("Sans"),
         expansion: Int | Literal["none", "normal", "strftime"] | Default = Default(
             "normal"
         ),
@@ -4460,7 +4460,7 @@ class VideoStream(FilterableStream):
         tc24hmax: Boolean = Default("false"),
         timecode_rate: Rational = Default("0/1"),
         reload: Int = Default("0"),
-        alpha: String = Default('"1"'),
+        alpha: String = Default("1"),
         fix_bounds: Boolean = Default("false"),
         start_number: Int = Default("0"),
         text_source: String = Default(None),
@@ -4744,14 +4744,14 @@ class VideoStream(FilterableStream):
     def eq(
         self,
         *,
-        contrast: String = Default('"1.0"'),
-        brightness: String = Default('"0.0"'),
-        saturation: String = Default('"1.0"'),
-        gamma: String = Default('"1.0"'),
-        gamma_r: String = Default('"1.0"'),
-        gamma_g: String = Default('"1.0"'),
-        gamma_b: String = Default('"1.0"'),
-        gamma_weight: String = Default('"1.0"'),
+        contrast: String = Default("1.0"),
+        brightness: String = Default("0.0"),
+        saturation: String = Default("1.0"),
+        gamma: String = Default("1.0"),
+        gamma_r: String = Default("1.0"),
+        gamma_g: String = Default("1.0"),
+        gamma_b: String = Default("1.0"),
+        gamma_weight: String = Default("1.0"),
         eval: Int | Literal["init", "frame"] | Default = Default("init"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
@@ -5037,7 +5037,7 @@ class VideoStream(FilterableStream):
         alpha: Boolean = Default("false"),
         start_time: Duration = Default("0"),
         duration: Duration = Default("0"),
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -5217,7 +5217,7 @@ class VideoStream(FilterableStream):
         dc_Y: Int = Default("0"),
         dc_U: Int = Default("0"),
         dc_V: Int = Default("0"),
-        weight_Y: String = Default('"1"'),
+        weight_Y: String = Default("1"),
         weight_U: String = Default(None),
         weight_V: String = Default(None),
         eval: Int | Literal["init", "frame"] | Default = Default("init"),
@@ -5380,7 +5380,7 @@ class VideoStream(FilterableStream):
         mode: Int
         | Literal["smear", "mirror", "fixed", "reflect", "wrap", "fade", "margins"]
         | Default = Default("smear"),
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -5589,7 +5589,7 @@ class VideoStream(FilterableStream):
     def fps(
         self,
         *,
-        fps: String = Default('"25"'),
+        fps: String = Default("25"),
         start_time: Double = Default("DBL_MAX"),
         round: Int | Literal["zero", "inf", "down", "up", "near"] | Default = Default(
             "near"
@@ -5674,7 +5674,7 @@ class VideoStream(FilterableStream):
     def framerate(
         self,
         *,
-        fps: Video_rate = Default('"50"'),
+        fps: Video_rate = Default("50"),
         interp_start: Int = Default("15"),
         interp_end: Int = Default("240"),
         scene: Double = Default("8.2"),
@@ -6100,7 +6100,7 @@ class VideoStream(FilterableStream):
     def graphmonitor(
         self,
         *,
-        size: Image_size = Default('"hd720"'),
+        size: Image_size = Default("hd720"),
         opacity: Float = Default("0.9"),
         mode: Flags
         | Literal["full", "compact", "nozero", "noeof", "nodisabled"]
@@ -6128,7 +6128,7 @@ class VideoStream(FilterableStream):
             "disabled",
         ]
         | Default = Default("all+queue"),
-        rate: Video_rate = Default('"25"'),
+        rate: Video_rate = Default("25"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6609,9 +6609,9 @@ class VideoStream(FilterableStream):
         self,
         *,
         h: String = Default(None),
-        s: String = Default('"1"'),
+        s: String = Default("1"),
         H: String = Default(None),
-        b: String = Default('"0"'),
+        b: String = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7253,7 +7253,7 @@ class VideoStream(FilterableStream):
         k1: Double = Default("0"),
         k2: Double = Default("0"),
         i: Int | Literal["nearest", "bilinear"] | Default = Default("nearest"),
-        fc: Color = Default('"black@0"'),
+        fc: Color = Default("black@0"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7422,17 +7422,17 @@ class VideoStream(FilterableStream):
     def lut(
         self,
         *,
-        c0: String = Default('"clipval"'),
-        c1: String = Default('"clipval"'),
-        c2: String = Default('"clipval"'),
-        c3: String = Default('"clipval"'),
-        y: String = Default('"clipval"'),
-        u: String = Default('"clipval"'),
-        v: String = Default('"clipval"'),
-        r: String = Default('"clipval"'),
-        g: String = Default('"clipval"'),
-        b: String = Default('"clipval"'),
-        a: String = Default('"clipval"'),
+        c0: String = Default("clipval"),
+        c1: String = Default("clipval"),
+        c2: String = Default("clipval"),
+        c3: String = Default("clipval"),
+        y: String = Default("clipval"),
+        u: String = Default("clipval"),
+        v: String = Default("clipval"),
+        r: String = Default("clipval"),
+        g: String = Default("clipval"),
+        b: String = Default("clipval"),
+        a: String = Default("clipval"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7526,10 +7526,10 @@ class VideoStream(FilterableStream):
         self,
         _srcy: VideoStream,
         *,
-        c0: String = Default('"x"'),
-        c1: String = Default('"x"'),
-        c2: String = Default('"x"'),
-        c3: String = Default('"x"'),
+        c0: String = Default("x"),
+        c1: String = Default("x"),
+        c2: String = Default("x"),
+        c3: String = Default("x"),
         d: Int = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
@@ -7615,17 +7615,17 @@ class VideoStream(FilterableStream):
     def lutrgb(
         self,
         *,
-        c0: String = Default('"clipval"'),
-        c1: String = Default('"clipval"'),
-        c2: String = Default('"clipval"'),
-        c3: String = Default('"clipval"'),
-        y: String = Default('"clipval"'),
-        u: String = Default('"clipval"'),
-        v: String = Default('"clipval"'),
-        r: String = Default('"clipval"'),
-        g: String = Default('"clipval"'),
-        b: String = Default('"clipval"'),
-        a: String = Default('"clipval"'),
+        c0: String = Default("clipval"),
+        c1: String = Default("clipval"),
+        c2: String = Default("clipval"),
+        c3: String = Default("clipval"),
+        y: String = Default("clipval"),
+        u: String = Default("clipval"),
+        v: String = Default("clipval"),
+        r: String = Default("clipval"),
+        g: String = Default("clipval"),
+        b: String = Default("clipval"),
+        a: String = Default("clipval"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7679,17 +7679,17 @@ class VideoStream(FilterableStream):
     def lutyuv(
         self,
         *,
-        c0: String = Default('"clipval"'),
-        c1: String = Default('"clipval"'),
-        c2: String = Default('"clipval"'),
-        c3: String = Default('"clipval"'),
-        y: String = Default('"clipval"'),
-        u: String = Default('"clipval"'),
-        v: String = Default('"clipval"'),
-        r: String = Default('"clipval"'),
-        g: String = Default('"clipval"'),
-        b: String = Default('"clipval"'),
-        a: String = Default('"clipval"'),
+        c0: String = Default("clipval"),
+        c1: String = Default("clipval"),
+        c2: String = Default("clipval"),
+        c3: String = Default("clipval"),
+        y: String = Default("clipval"),
+        u: String = Default("clipval"),
+        v: String = Default("clipval"),
+        r: String = Default("clipval"),
+        g: String = Default("clipval"),
+        b: String = Default("clipval"),
+        a: String = Default("clipval"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8222,7 +8222,7 @@ class VideoStream(FilterableStream):
     def minterpolate(
         self,
         *,
-        fps: Video_rate = Default('"60"'),
+        fps: Video_rate = Default("60"),
         mi_mode: Int | Literal["dup", "blend", "mci"] | Default = Default("mci"),
         mc_mode: Int | Literal["obmc", "aobmc"] | Default = Default("obmc"),
         me_mode: Int | Literal["bidir", "bilat"] | Default = Default("bilat"),
@@ -8692,7 +8692,7 @@ class VideoStream(FilterableStream):
     def nnedi(
         self,
         *,
-        weights: String = Default('"nnedi3_weights.bin"'),
+        weights: String = Default("nnedi3_weights.bin"),
         deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
         field: Int | Literal["af", "a", "t", "b", "tf", "bf"] | Default = Default("a"),
         planes: Int = Default("7"),
@@ -8866,8 +8866,8 @@ class VideoStream(FilterableStream):
     def normalize(
         self,
         *,
-        blackpt: Color = Default('"black"'),
-        whitept: Color = Default('"white"'),
+        blackpt: Color = Default("black"),
+        whitept: Color = Default("white"),
         smoothing: Int = Default("0"),
         independence: Float = Default("1"),
         strength: Float = Default("1"),
@@ -9007,8 +9007,8 @@ class VideoStream(FilterableStream):
         self,
         _overlay: VideoStream,
         *,
-        x: String = Default('"0"'),
-        y: String = Default('"0"'),
+        x: String = Default("0"),
+        y: String = Default("0"),
         eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
             "repeat"
         ),
@@ -9123,10 +9123,10 @@ class VideoStream(FilterableStream):
         self,
         _overlay: VideoStream,
         *,
-        x: String = Default('"0"'),
-        y: String = Default('"0"'),
-        w: String = Default('"overlay_iw"'),
-        h: String = Default('"overlay_ih*w/overlay_iw"'),
+        x: String = Default("0"),
+        y: String = Default("0"),
+        w: String = Default("overlay_iw"),
+        h: String = Default("overlay_ih*w/overlay_iw"),
         alpha: Float = Default("1"),
         eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
             "repeat"
@@ -9264,11 +9264,11 @@ class VideoStream(FilterableStream):
     def pad(
         self,
         *,
-        width: String = Default('"iw"'),
-        height: String = Default('"ih"'),
-        x: String = Default('"0"'),
-        y: String = Default('"0"'),
-        color: Color = Default('"black"'),
+        width: String = Default("iw"),
+        height: String = Default("ih"),
+        x: String = Default("0"),
+        y: String = Default("0"),
+        color: Color = Default("black"),
         eval: Int | Literal["init", "frame"] | Default = Default("init"),
         aspect: Rational = Default("0/1"),
         extra_options: dict[str, Any] | None = None,
@@ -9316,11 +9316,11 @@ class VideoStream(FilterableStream):
     def pad_opencl(
         self,
         *,
-        width: String = Default('"iw"'),
-        height: String = Default('"ih"'),
-        x: String = Default('"0"'),
-        y: String = Default('"0"'),
-        color: Color = Default('"black"'),
+        width: String = Default("iw"),
+        height: String = Default("ih"),
+        x: String = Default("0"),
+        y: String = Default("0"),
+        color: Color = Default("black"),
         aspect: Rational = Default("0/1"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
@@ -9367,7 +9367,7 @@ class VideoStream(FilterableStream):
         *,
         max_colors: Int = Default("256"),
         reserve_transparent: Boolean = Default("true"),
-        transparency_color: Color = Default('"lime"'),
+        transparency_color: Color = Default("lime"),
         stats_mode: Int | Literal["full", "diff", "single"] | Default = Default("full"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
@@ -9511,14 +9511,14 @@ class VideoStream(FilterableStream):
     def perspective(
         self,
         *,
-        x0: String = Default('"0"'),
-        y0: String = Default('"0"'),
-        x1: String = Default('"W"'),
-        y1: String = Default('"0"'),
-        x2: String = Default('"0"'),
-        y2: String = Default('"H"'),
-        x3: String = Default('"W"'),
-        y3: String = Default('"H"'),
+        x0: String = Default("0"),
+        y0: String = Default("0"),
+        x1: String = Default("W"),
+        y1: String = Default("0"),
+        x2: String = Default("0"),
+        y2: String = Default("H"),
+        x3: String = Default("W"),
+        y3: String = Default("H"),
         interpolation: Int | Literal["linear", "cubic"] | Default = Default("linear"),
         sense: Int | Literal["source", "destination"] | Default = Default("source"),
         eval: Int | Literal["init", "frame"] | Default = Default("init"),
@@ -9894,10 +9894,10 @@ class VideoStream(FilterableStream):
     def pseudocolor(
         self,
         *,
-        c0: String = Default('"val"'),
-        c1: String = Default('"val"'),
-        c2: String = Default('"val"'),
-        c3: String = Default('"val"'),
+        c0: String = Default("val"),
+        c1: String = Default("val"),
+        c2: String = Default("val"),
+        c3: String = Default("val"),
         index: Int = Default("0"),
         preset: Int
         | Literal[
@@ -10259,7 +10259,7 @@ class VideoStream(FilterableStream):
         _ymap: VideoStream,
         *,
         format: Int | Literal["color", "gray"] | Default = Default("color"),
-        fill: Color = Default('"black"'),
+        fill: Color = Default("black"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -10302,7 +10302,7 @@ class VideoStream(FilterableStream):
         _ymap: VideoStream,
         *,
         interp: Int | Literal["near", "linear"] | Default = Default("linear"),
-        fill: Color = Default('"black"'),
+        fill: Color = Default("black"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -10607,10 +10607,10 @@ class VideoStream(FilterableStream):
     def rotate(
         self,
         *,
-        angle: String = Default('"0"'),
-        out_w: String = Default('"iw"'),
-        out_h: String = Default('"ih"'),
-        fillcolor: String = Default('"black"'),
+        angle: String = Default("0"),
+        out_w: String = Default("iw"),
+        out_h: String = Default("ih"),
+        fillcolor: String = Default("black"),
         bilinear: Boolean = Default("true"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
@@ -10704,13 +10704,13 @@ class VideoStream(FilterableStream):
         *,
         w: String = Default(None),
         h: String = Default(None),
-        flags: String = Default('""'),
+        flags: String = Default(""),
         interl: Boolean = Default("false"),
         in_color_matrix: String
         | Literal[
             "auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"
         ]
-        | Default = Default('"auto"'),
+        | Default = Default("auto"),
         out_color_matrix: String
         | Literal[
             "auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"
@@ -10959,7 +10959,7 @@ class VideoStream(FilterableStream):
     def select(
         self,
         *,
-        expr: String = Default('"1"'),
+        expr: String = Default("1"),
         outputs: Int = Default("1"),
         extra_options: dict[str, Any] | None = None,
     ) -> FilterNode:
@@ -11131,7 +11131,7 @@ class VideoStream(FilterableStream):
     def setdar(
         self,
         *,
-        dar: String = Default('"0"'),
+        dar: String = Default("0"),
         max: Int = Default("100"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
@@ -11318,7 +11318,7 @@ class VideoStream(FilterableStream):
     def setpts(
         self,
         *,
-        expr: String = Default('"PTS"'),
+        expr: String = Default("PTS"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -11398,7 +11398,7 @@ class VideoStream(FilterableStream):
     def setsar(
         self,
         *,
-        sar: String = Default('"0"'),
+        sar: String = Default("0"),
         max: Int = Default("100"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
@@ -11435,7 +11435,7 @@ class VideoStream(FilterableStream):
     def settb(
         self,
         *,
-        expr: String = Default('"intb"'),
+        expr: String = Default("intb"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -11471,7 +11471,7 @@ class VideoStream(FilterableStream):
         *,
         shx: Float = Default("0"),
         shy: Float = Default("0"),
-        fillcolor: String = Default('"black"'),
+        fillcolor: String = Default("black"),
         interp: Int | Literal["nearest", "bilinear"] | Default = Default("bilinear"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
@@ -11580,7 +11580,7 @@ class VideoStream(FilterableStream):
     def shuffleframes(
         self,
         *,
-        mapping: String = Default('"0"'),
+        mapping: String = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -11774,7 +11774,7 @@ class VideoStream(FilterableStream):
         *,
         stat: Flags | Literal["tout", "vrep", "brng"] | Default = Default("0"),
         out: Int | Literal["tout", "vrep", "brng"] | Default = Default("-1"),
-        c: Color = Default('"yellow"'),
+        c: Color = Default("yellow"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -12144,8 +12144,8 @@ class VideoStream(FilterableStream):
         dnn_backend: Int = Default("1"),
         scale_factor: Int = Default("2"),
         model: String = Default(None),
-        input: String = Default('"x"'),
-        output: String = Default('"y"'),
+        input: String = Default("x"),
+        output: String = Default("y"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -12400,12 +12400,12 @@ class VideoStream(FilterableStream):
     def swaprect(
         self,
         *,
-        w: String = Default('"w/2"'),
-        h: String = Default('"h/2"'),
-        x1: String = Default('"w/2"'),
-        y1: String = Default('"h/2"'),
-        x2: String = Default('"0"'),
-        y2: String = Default('"0"'),
+        w: String = Default("w/2"),
+        h: String = Default("h/2"),
+        x1: String = Default("w/2"),
+        y1: String = Default("h/2"),
+        x2: String = Default("0"),
+        y2: String = Default("0"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -12777,7 +12777,7 @@ class VideoStream(FilterableStream):
         first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default(
             "top"
         ),
-        pattern: String = Default('"23"'),
+        pattern: String = Default("23"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -12823,7 +12823,7 @@ class VideoStream(FilterableStream):
         components: Int = Default("7"),
         bgopacity: Float = Default("0.9"),
         envelope: Boolean = Default("false"),
-        ecolor: Color = Default('"gold"'),
+        ecolor: Color = Default("gold"),
         slide: Int
         | Literal["frame", "replace", "scroll", "rscroll", "picture"]
         | Default = Default("replace"),
@@ -12953,11 +12953,11 @@ class VideoStream(FilterableStream):
     def tile(
         self,
         *,
-        layout: Image_size = Default('"6x5"'),
+        layout: Image_size = Default("6x5"),
         nb_frames: Int = Default("0"),
         margin: Int = Default("0"),
         padding: Int = Default("0"),
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         overlap: Int = Default("0"),
         init_padding: Int = Default("0"),
         extra_options: dict[str, Any] | None = None,
@@ -13050,10 +13050,10 @@ class VideoStream(FilterableStream):
     def tlut2(
         self,
         *,
-        c0: String = Default('"x"'),
-        c1: String = Default('"x"'),
-        c2: String = Default('"x"'),
-        c3: String = Default('"x"'),
+        c0: String = Default("x"),
+        c1: String = Default("x"),
+        c2: String = Default("x"),
+        c3: String = Default("x"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -13176,7 +13176,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         frames: Int = Default("3"),
-        weights: String = Default('"1 1 1"'),
+        weights: String = Default("1 1 1"),
         scale: Float = Default("0"),
         planes: Flags = Default("F"),
         extra_options: dict[str, Any] | None = None,
@@ -13379,7 +13379,7 @@ class VideoStream(FilterableStream):
         stop_mode: Int | Literal["add", "clone"] | Default = Default("add"),
         start_duration: Duration = Default("0"),
         stop_duration: Duration = Default("0"),
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -13670,7 +13670,7 @@ class VideoStream(FilterableStream):
     def untile(
         self,
         *,
-        layout: Image_size = Default('"6x5"'),
+        layout: Image_size = Default("6x5"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -13707,7 +13707,7 @@ class VideoStream(FilterableStream):
         quality: Int = Default("3"),
         qp: Int = Default("0"),
         use_bframe_qp: Boolean = Default("false"),
-        codec: String = Default('"snow"'),
+        codec: String = Default("snow"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -13836,10 +13836,10 @@ class VideoStream(FilterableStream):
         h: Int = Default("0"),
         in_stereo: Int | Literal["2d", "sbs", "tb"] | Default = Default("2d"),
         out_stereo: Int | Literal["2d", "sbs", "tb"] | Default = Default("2d"),
-        in_forder: String = Default('"rludfb"'),
-        out_forder: String = Default('"rludfb"'),
-        in_frot: String = Default('"000000"'),
-        out_frot: String = Default('"000000"'),
+        in_forder: String = Default("rludfb"),
+        out_forder: String = Default("rludfb"),
+        in_frot: String = Default("000000"),
+        out_frot: String = Default("000000"),
         in_pad: Float = Default("0"),
         out_pad: Float = Default("0"),
         fin_pad: Int = Default("0"),
@@ -13847,7 +13847,7 @@ class VideoStream(FilterableStream):
         yaw: Float = Default("0"),
         pitch: Float = Default("0"),
         roll: Float = Default("0"),
-        rorder: String = Default('"ypr"'),
+        rorder: String = Default("ypr"),
         h_fov: Float = Default("0"),
         v_fov: Float = Default("0"),
         d_fov: Float = Default("0"),
@@ -14269,7 +14269,7 @@ class VideoStream(FilterableStream):
     def vidstabdetect(
         self,
         *,
-        result: String = Default('"transforms.trf"'),
+        result: String = Default("transforms.trf"),
         shakiness: Int = Default("5"),
         accuracy: Int = Default("15"),
         stepsize: Int = Default("6"),
@@ -14323,7 +14323,7 @@ class VideoStream(FilterableStream):
     def vidstabtransform(
         self,
         *,
-        input: String = Default('"transforms.trf"'),
+        input: String = Default("transforms.trf"),
         smoothing: Int = Default("15"),
         optalgo: Int | Literal["opt", "gauss", "avg"] | Default = Default("opt"),
         maxshift: Int = Default("-1"),
@@ -14426,9 +14426,9 @@ class VideoStream(FilterableStream):
     def vignette(
         self,
         *,
-        angle: String = Default('"PI/5"'),
-        x0: String = Default('"w/2"'),
-        y0: String = Default('"h/2"'),
+        angle: String = Default("PI/5"),
+        x0: String = Default("w/2"),
+        y0: String = Default("h/2"),
         mode: Int | Literal["forward", "backward"] | Default = Default("forward"),
         eval: Int | Literal["init", "frame"] | Default = Default("init"),
         dither: Boolean = Default("true"),
@@ -15013,7 +15013,7 @@ class VideoStream(FilterableStream):
     def zmq(
         self,
         *,
-        bind_address: String = Default('"tcp://*:5555"'),
+        bind_address: String = Default("tcp://*:5555"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -15047,12 +15047,12 @@ class VideoStream(FilterableStream):
     def zoompan(
         self,
         *,
-        zoom: String = Default('"1"'),
-        x: String = Default('"0"'),
-        y: String = Default('"0"'),
-        d: String = Default('"90"'),
-        s: Image_size = Default('"hd720"'),
-        fps: Video_rate = Default('"25"'),
+        zoom: String = Default("1"),
+        x: String = Default("0"),
+        y: String = Default("0"),
+        d: String = Default("90"),
+        s: Image_size = Default("hd720"),
+        fps: Video_rate = Default("25"),
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """

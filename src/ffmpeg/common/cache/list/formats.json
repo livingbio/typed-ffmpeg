@@ -1617,7 +1617,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"default\"",
+        "default": "default",
         "flags": "E..........",
         "help": "set dithering algorithm (default \"default\")",
         "max": null,
@@ -1629,7 +1629,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"default\"",
+        "default": "default",
         "flags": "E..........",
         "help": "set antialias method (default \"default\")",
         "max": null,
@@ -1641,7 +1641,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"default\"",
+        "default": "default",
         "flags": "E..........",
         "help": "set charset used to render output (default \"default\")",
         "max": null,
@@ -1653,7 +1653,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"default\"",
+        "default": "default",
         "flags": "E..........",
         "help": "set color used to render output (default \"default\")",
         "max": null,
@@ -1988,7 +1988,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"init-stream$RepresentationID$.$ext$\"",
+        "default": "init-stream$RepresentationID$.$ext$",
         "flags": "E..........",
         "help": "DASH-templated name to used for the initialization segment (default \"init-stream$RepresentationID$.$ext$\")",
         "max": null,
@@ -2000,7 +2000,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"chunk-stream$RepresentationID$-$Number%05d$.$ext$\"",
+        "default": "chunk-stream$RepresentationID$-$Number%05d$.$ext$",
         "flags": "E..........",
         "help": "DASH-templated name to used for the media segments (default \"chunk-stream$RepresentationID$-$Number%05d$.$ext$\")",
         "max": null,
@@ -2072,7 +2072,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"master.m3u8\"",
+        "default": "master.m3u8",
         "flags": "E..........",
         "help": "HLS master playlist name (default \"master.m3u8\")",
         "max": null,
@@ -3304,7 +3304,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"sha256\"",
+        "default": "sha256",
         "flags": "E..........",
         "help": "set hash to use (default \"sha256\")",
         "max": null,
@@ -3336,7 +3336,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"md5\"",
+        "default": "md5",
         "flags": "E..........",
         "help": "set hash to use (default \"md5\")",
         "max": null,
@@ -3463,7 +3463,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"sha256\"",
+        "default": "sha256",
         "flags": "E..........",
         "help": "set hash to use (default \"sha256\")",
         "max": null,
@@ -3777,7 +3777,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"init.mp4\"",
+        "default": "init.mp4",
         "flags": "E..........",
         "help": "set fragment mp4 file init filename (default \"init.mp4\")",
         "max": null,
@@ -5506,7 +5506,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"md5\"",
+        "default": "md5",
         "flags": "E..........",
         "help": "set hash to use (default \"md5\")",
         "max": null,
@@ -7019,7 +7019,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"ffmpeg\"",
+        "default": "ffmpeg",
         "flags": "E..........",
         "help": "Boundary tag (default \"ffmpeg\")",
         "max": null,
@@ -7559,7 +7559,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"black\"",
+        "default": "black",
         "flags": "E..........",
         "help": "set background color (default \"black\")",
         "max": null,
@@ -8211,7 +8211,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"Lavf60.16.100\"",
+        "default": "Lavf60.16.100",
         "flags": "E..........",
         "help": "set application name (default \"Lavf60.16.100\")",
         "max": null,
@@ -8668,7 +8668,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"auto\"",
+        "default": "auto",
         "flags": "E..........",
         "help": "set reference stream (default \"auto\")",
         "max": null,
@@ -9267,7 +9267,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"sha256\"",
+        "default": "sha256",
         "flags": "E..........",
         "help": "set hash to use (default \"sha256\")",
         "max": null,
@@ -10250,7 +10250,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set framerate (frames per second) (default \"25\")",
         "max": null,
@@ -10474,7 +10474,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -10862,7 +10862,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -10916,7 +10916,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -10948,7 +10948,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -11025,7 +11025,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set framerate (frames per second) (default \"25\")",
         "max": null,
@@ -11066,7 +11066,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"yuv420p\"",
+        "default": "yuv420p",
         "flags": ".D.........",
         "help": "set pixel format (default \"yuv420p\")",
         "max": null,
@@ -11090,7 +11090,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set frame rate (default \"25\")",
         "max": null,
@@ -11122,7 +11122,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -11323,7 +11323,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -11400,7 +11400,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -11451,7 +11451,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"15\"",
+        "default": "15",
         "flags": ".D.........",
         "help": "(default \"15\")",
         "max": null,
@@ -11650,7 +11650,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -11706,7 +11706,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"aac,m4a,m4s,m4v,mov,mp4,webm,ts\"",
+        "default": "aac,m4a,m4s,m4v,mov,mp4,webm,ts",
         "flags": ".D.........",
         "help": "List of file extensions that dash is allowed to access (default \"aac,m4a,m4s,m4v,mov,mp4,webm,ts\")",
         "max": null,
@@ -11784,7 +11784,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -11905,7 +11905,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -11937,7 +11937,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -11981,7 +11981,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -12193,7 +12193,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -12225,7 +12225,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -12457,7 +12457,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -12498,7 +12498,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"1\"",
+        "default": "1",
         "flags": ".D.........",
         "help": "set the framerate (default \"1\")",
         "max": null,
@@ -12752,7 +12752,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -12883,7 +12883,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -12966,7 +12966,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -12998,7 +12998,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -13030,7 +13030,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -13125,7 +13125,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -13181,7 +13181,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -13237,7 +13237,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,wav\"",
+        "default": "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,wav",
         "flags": ".D.........",
         "help": "List of file extensions that hls is allowed to access (default \"3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,wav\")",
         "max": null,
@@ -13386,7 +13386,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set framerate (frames per second) (default \"25\")",
         "max": null,
@@ -13604,7 +13604,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -13672,7 +13672,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -13748,7 +13748,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -13854,7 +13854,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -13949,7 +13949,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -14017,7 +14017,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -14092,7 +14092,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -14155,7 +14155,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"/dev/dri/card0\"",
+        "default": "/dev/dri/card0",
         "flags": ".D.........",
         "help": "DRM device path (default \"/dev/dri/card0\")",
         "max": null,
@@ -14417,7 +14417,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"qvga\"",
+        "default": "qvga",
         "flags": ".D.........",
         "help": "A string describing frame size, such as 640x480 or hd720. (default \"qvga\")",
         "max": null,
@@ -14429,7 +14429,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"uyvy422\"",
+        "default": "uyvy422",
         "flags": ".D.........",
         "help": "(default \"uyvy422\")",
         "max": null,
@@ -14441,7 +14441,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"ntsc\"",
+        "default": "ntsc",
         "flags": ".D.........",
         "help": "(default \"ntsc\")",
         "max": null,
@@ -14517,7 +14517,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"stereo\"",
+        "default": "stereo",
         "flags": ".D..A......",
         "help": "set channel layout (default \"stereo\")",
         "max": null,
@@ -14675,7 +14675,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -14748,7 +14748,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -14780,7 +14780,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -15044,7 +15044,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -15279,7 +15279,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -15455,7 +15455,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -15523,7 +15523,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -15591,7 +15591,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -15666,7 +15666,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -15734,7 +15734,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -15802,7 +15802,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -15870,7 +15870,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -15938,7 +15938,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -16006,7 +16006,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -16074,7 +16074,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -16156,7 +16156,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -16231,7 +16231,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -16299,7 +16299,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -16374,7 +16374,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"Lavf60.16.100\"",
+        "default": "Lavf60.16.100",
         "flags": ".D.........",
         "help": "set application name (default \"Lavf60.16.100\")",
         "max": null,
@@ -16386,7 +16386,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"record\"",
+        "default": "record",
         "flags": ".D.........",
         "help": "set stream description (default \"record\")",
         "max": null,
@@ -16499,7 +16499,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -16567,7 +16567,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -16630,7 +16630,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"yuv420p\"",
+        "default": "yuv420p",
         "flags": ".D.........",
         "help": "set pixel format (default \"yuv420p\")",
         "max": null,
@@ -16654,7 +16654,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set frame rate (default \"25\")",
         "max": null,
@@ -17068,7 +17068,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"Lavf60.16.100\"",
+        "default": "Lavf60.16.100",
         "flags": ".D.........",
         "help": "override User-Agent header (default \"Lavf60.16.100\")",
         "max": null,
@@ -17642,7 +17642,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set frame rate (default \"25\")",
         "max": null,
@@ -17681,7 +17681,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -17897,7 +17897,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -17979,7 +17979,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -18115,7 +18115,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -18229,7 +18229,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -18590,7 +18590,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set frame rate (default \"25\")",
         "max": null,
@@ -18622,7 +18622,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set frame rate (default \"25\")",
         "max": null,
@@ -18661,7 +18661,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -18717,7 +18717,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -18869,7 +18869,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "(default \"25\")",
         "max": null,
@@ -19018,7 +19018,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -19250,7 +19250,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"ntsc\"",
+        "default": "ntsc",
         "flags": ".D.........",
         "help": "(default \"ntsc\")",
         "max": null,
@@ -19369,7 +19369,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set framerate (frames per second) (default \"25\")",
         "max": null,
@@ -19401,7 +19401,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -19483,7 +19483,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,
@@ -19558,7 +19558,7 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "\"25\"",
+        "default": "25",
         "flags": ".D.........",
         "help": "set the video framerate (default \"25\")",
         "max": null,

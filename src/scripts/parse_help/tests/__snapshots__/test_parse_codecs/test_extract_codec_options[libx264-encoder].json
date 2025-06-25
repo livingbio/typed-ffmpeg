@@ -1,5 +1,5 @@
 [
-  "FFMpegAVOption(section='libx264 AVOptions:', name='preset', type='string', flags='E..V.......', help='Set the encoding preset (cf. x264 --fullhelp) (default \"medium\")', argname=None, min=None, max=None, default='\"medium\"', choices=())",
+  "FFMpegAVOption(section='libx264 AVOptions:', name='preset', type='string', flags='E..V.......', help='Set the encoding preset (cf. x264 --fullhelp) (default \"medium\")', argname=None, min=None, max=None, default='medium', choices=())",
   "FFMpegAVOption(section='libx264 AVOptions:', name='tune', type='string', flags='E..V.......', help='Tune the encoding params (cf. x264 --fullhelp)', argname=None, min=None, max=None, default=None, choices=())",
   "FFMpegAVOption(section='libx264 AVOptions:', name='profile', type='string', flags='E..V.......', help='Set profile restrictions (cf. x264 --fullhelp)', argname=None, min=None, max=None, default=None, choices=())",
   "FFMpegAVOption(section='libx264 AVOptions:', name='fastfirstpass', type='boolean', flags='E..V.......', help='Use fast settings when encoding first pass (default true)', argname=None, min=None, max=None, default='true', choices=())",

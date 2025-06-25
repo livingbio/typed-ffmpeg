@@ -103,6 +103,7 @@ def test_parse_filter_options(snapshot: SnapshotAssertion, text: str) -> None:
         "abuffer",  # default value contains special characters  e.g. "time_base         <rational>   ..F.A...... (from 0 to INT_MAX) (default 0/1)"
         "amix",  # default value contains space e.g.  "weights           <string>     ..F.A....T. Set weight for each input. (default "1 1")"
         "bm3d",
+        "libplacebo",  # default value contains parentheses e.g. "   crop_y            <string>     ..FV.....T. Input video crop y (default "(ih-ch)/2")"
     ],
 )
 def test_extract_filter(snapshot: SnapshotAssertion, filter: str) -> None:

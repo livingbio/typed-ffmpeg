@@ -12,7 +12,7 @@
     {
       "argname": null,
       "choices": [],
-      "default": "\"0\"",
+      "default": "0",
       "flags": "..FV.......",
       "help": "set the x expression (default \"0\")",
       "max": null,
@@ -24,7 +24,7 @@
     {
       "argname": null,
       "choices": [],
-      "default": "\"0\"",
+      "default": "0",
       "flags": "..FV.......",
       "help": "set the y expression (default \"0\")",
       "max": null,

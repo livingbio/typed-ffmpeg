@@ -245,7 +245,7 @@ def amix(
         "longest"
     ),
     dropout_transition: Float = Default("2"),
-    weights: String = Default('"1 1"'),
+    weights: String = Default("1 1"),
     normalize: Boolean = Default("true"),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
@@ -1066,7 +1066,7 @@ def colormap(
     _source: VideoStream,
     _target: VideoStream,
     *,
-    patch_size: Image_size = Default('"64x64"'),
+    patch_size: Image_size = Default("64x64"),
     nb_patches: Int = Default("0"),
     type: Int | Literal["relative", "absolute"] | Default = Default("absolute"),
     kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
@@ -1923,7 +1923,7 @@ def interleave(
 def join(
     *streams: AudioStream,
     inputs: Int = Auto("len(streams)"),
-    channel_layout: String = Default('"stereo"'),
+    channel_layout: String = Default("stereo"),
     map: String = Default(None),
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
@@ -2017,17 +2017,17 @@ def ladspa(
 def libplacebo(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
-    w: String = Default('"iw"'),
-    h: String = Default('"ih"'),
-    fps: String = Default('"none"'),
-    crop_x: String = Default('"(iw-cw'),
-    crop_y: String = Default('"(ih-ch'),
-    crop_w: String = Default('"iw"'),
-    crop_h: String = Default('"ih"'),
-    pos_x: String = Default('"(ow-pw'),
-    pos_y: String = Default('"(oh-ph'),
-    pos_w: String = Default('"ow"'),
-    pos_h: String = Default('"oh"'),
+    w: String = Default("iw"),
+    h: String = Default("ih"),
+    fps: String = Default("none"),
+    crop_x: String = Default("(iw-cw)/2"),
+    crop_y: String = Default("(ih-ch)/2"),
+    crop_w: String = Default("iw"),
+    crop_h: String = Default("ih"),
+    pos_x: String = Default("(ow-pw)/2"),
+    pos_y: String = Default("(oh-ph)/2"),
+    pos_w: String = Default("ow"),
+    pos_h: String = Default("oh"),
     format: String = Default(None),
     force_original_aspect_ratio: Int
     | Literal["disable", "decrease", "increase"]
@@ -2035,7 +2035,7 @@ def libplacebo(
     force_divisible_by: Int = Default("1"),
     normalize_sar: Boolean = Default("false"),
     pad_crop_ratio: Float = Default("0"),
-    fillcolor: String = Default('"black"'),
+    fillcolor: String = Default("black"),
     corner_rounding: Float = Default("0"),
     extra_opts: Dictionary = Default(None),
     colorspace: Int
@@ -2095,9 +2095,9 @@ def libplacebo(
         "arib-std-b67",
     ]
     | Default = Default("auto"),
-    upscaler: String = Default('"spline36"'),
-    downscaler: String = Default('"mitchell"'),
-    frame_mixer: String = Default('"none"'),
+    upscaler: String = Default("spline36"),
+    downscaler: String = Default("mitchell"),
+    frame_mixer: String = Default("none"),
     lut_entries: Int = Default("0"),
     antiringing: Float = Default("0"),
     sigmoid: Boolean = Default("true"),
@@ -2418,10 +2418,10 @@ def lut2(
     _srcx: VideoStream,
     _srcy: VideoStream,
     *,
-    c0: String = Default('"x"'),
-    c1: String = Default('"x"'),
-    c2: String = Default('"x"'),
-    c3: String = Default('"x"'),
+    c0: String = Default("x"),
+    c1: String = Default("x"),
+    c2: String = Default("x"),
+    c3: String = Default("x"),
     d: Int = Default("0"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
@@ -2829,7 +2829,7 @@ def midequalizer(
 def mix(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
-    weights: String = Default('"1 1"'),
+    weights: String = Default("1 1"),
     scale: Float = Default("0"),
     planes: Flags = Default("F"),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default(
@@ -2995,8 +2995,8 @@ def overlay(
     _main: VideoStream,
     _overlay: VideoStream,
     *,
-    x: String = Default('"0"'),
-    y: String = Default('"0"'),
+    x: String = Default("0"),
+    y: String = Default("0"),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
     eval: Int | Literal["init", "frame"] | Default = Default("frame"),
     shortest: Boolean = Default("false"),
@@ -3107,10 +3107,10 @@ def overlay_vaapi(
     _main: VideoStream,
     _overlay: VideoStream,
     *,
-    x: String = Default('"0"'),
-    y: String = Default('"0"'),
-    w: String = Default('"overlay_iw"'),
-    h: String = Default('"overlay_ih*w/overlay_iw"'),
+    x: String = Default("0"),
+    y: String = Default("0"),
+    w: String = Default("overlay_iw"),
+    h: String = Default("overlay_ih*w/overlay_iw"),
     alpha: Float = Default("1"),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
     shortest: Boolean = Default("false"),
@@ -3403,7 +3403,7 @@ def remap(
     _ymap: VideoStream,
     *,
     format: Int | Literal["color", "gray"] | Default = Default("color"),
-    fill: Color = Default('"black"'),
+    fill: Color = Default("black"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3447,7 +3447,7 @@ def remap_opencl(
     _ymap: VideoStream,
     *,
     interp: Int | Literal["near", "linear"] | Default = Default("linear"),
-    fill: Color = Default('"black"'),
+    fill: Color = Default("black"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3633,7 +3633,7 @@ def signature(
     *streams: VideoStream,
     detectmode: Int | Literal["off", "full", "fast"] | Default = Default("off"),
     nb_inputs: Int = Auto("len(streams)"),
-    filename: String = Default('""'),
+    filename: String = Default(""),
     format: Int | Literal["binary", "xml"] | Default = Default("binary"),
     th_d: Int = Default("9000"),
     th_dc: Int = Default("60000"),
@@ -4348,7 +4348,7 @@ def xstack(
     layout: String = Default(None),
     grid: Image_size = Default(None),
     shortest: Boolean = Default("false"),
-    fill: String = Default('"none"'),
+    fill: String = Default("none"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4397,7 +4397,7 @@ def xstack_vaapi(
     layout: String = Default(None),
     grid: Image_size = Default(None),
     grid_tile_size: Image_size = Default(None),
-    fill: String = Default('"none"'),
+    fill: String = Default("none"),
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """

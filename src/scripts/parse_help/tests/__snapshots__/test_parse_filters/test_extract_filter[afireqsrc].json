@@ -139,7 +139,7 @@
     {
       "argname": null,
       "choices": [],
-      "default": "\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\"",
+      "default": "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0",
       "flags": "..F.A......",
       "help": "set gain values per band (default \"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\")",
       "max": null,
@@ -151,7 +151,7 @@
     {
       "argname": null,
       "choices": [],
-      "default": "\"25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000\"",
+      "default": "25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000",
       "flags": "..F.A......",
       "help": "set central frequency values per band (default \"25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000\")",
       "max": null,
