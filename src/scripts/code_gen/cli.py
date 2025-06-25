@@ -124,9 +124,12 @@ def load_codecs(rebuild: bool) -> list[FFMpegCodec]:
                     default=i.default,
                     choices=tuple(
                         FFMpegOptionChoice(
-                            name=i.name, help=i.help, flags=i.flags, value=i.value
+                            name=choice.name,
+                            help=choice.help,
+                            flags=choice.flags,
+                            value=choice.value,
                         )
-                        for i in i.choices
+                        for choice in i.choices
                     ),
                 )
                 for i in k.options
@@ -172,9 +175,12 @@ def load_formats(rebuild: bool) -> list[FFMpegFormat]:
                     default=i.default,
                     choices=tuple(
                         FFMpegOptionChoice(
-                            name=i.name, help=i.help, flags=i.flags, value=i.value
+                            name=choice.name,
+                            help=choice.help,
+                            flags=choice.flags,
+                            value=choice.value,
                         )
-                        for i in i.choices
+                        for choice in i.choices
                     ),
                 )
                 for i in k.options
