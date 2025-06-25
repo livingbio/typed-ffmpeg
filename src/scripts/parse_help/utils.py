@@ -138,7 +138,7 @@ def glob(tree: dict[str, Any], pattern: str) -> list[tuple[str, dict[str, Any]]]
 
 
 re_choice_pattern = re.compile(
-    r"^(?P<name>(?:(?!  ).)+)\s+(?P<value>[\d\-]+)?\s+(?P<flags>[\w\.]{11})(?P<help>\s+.*)?"
+    r"^(?P<name>[\w\_\-\.]+)\s+(?P<value>[\d\-]+)?\s+(?P<flags>[\w\.]{11})(?P<help>\s+.*)?"
 )
 re_option_pattern = re.compile(
     r"(?P<name>[\-\w]+)\s+\<(?P<type>[\w]+)\>\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"

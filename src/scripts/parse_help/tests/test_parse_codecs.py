@@ -117,6 +117,7 @@ amv encoder AVOptions:
         ("h263", "decoder"),
         ("tiff", "decoder"),
         ("h264_nvenc", "encoder"),
+        ("libx264", "encoder"),
     ],
 )
 def test_extract_codec_options(
