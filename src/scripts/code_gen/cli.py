@@ -12,8 +12,8 @@ from ..manual.cli import load_config
 from ..parse_c.cli import parse_ffmpeg_options
 from ..parse_docs.cli import extract_docs
 from ..parse_help.cli import all_codecs, all_filters, all_formats
-from ..parse_help.schema import FFMpegCodec, FFMpegFormat
 from .gen import render
+from .schema import FFMpegAVOption, FFMpegCodec, FFMpegFormat, FFMpegOptionChoice
 
 app = typer.Typer()
 
@@ -52,12 +52,11 @@ def gen_option_info() -> list[FFMpegOption]:
     return options
 
 
-def load_filters(outpath: Path, rebuild: bool) -> list[FFMpegFilter]:
+def load_filters(rebuild: bool) -> list[FFMpegFilter]:
     """
     Load filters from the output path
 
     Args:
-        outpath: The output path
         rebuild: Whether to use the cache
 
     Returns:
@@ -108,12 +107,41 @@ def load_codecs(rebuild: bool) -> list[FFMpegCodec]:
         except Exception as e:
             logging.error(f"Failed to load codecs from cache: {e}")
 
-    codecs = all_codecs()
+    codecs = [
+        FFMpegCodec(
+            name=k.name,
+            flags=k.flags,
+            description=k.description,
+            options=tuple(
+                FFMpegAVOption(
+                    section=i.section,
+                    name=i.name,
+                    type=i.type,
+                    flags=i.flags,
+                    help=i.help,
+                    min=i.min,
+                    max=i.max,
+                    default=i.default,
+                    choices=tuple(
+                        FFMpegOptionChoice(
+                            name=choice.name,
+                            help=choice.help,
+                            flags=choice.flags,
+                            value=choice.value,
+                        )
+                        for choice in i.choices
+                    ),
+                )
+                for i in k.options
+            ),
+        )
+        for k in all_codecs()
+    ]
     save(codecs, "codecs")
     return codecs
 
 
-def load_muxers(rebuild: bool) -> list[FFMpegFormat]:
+def load_formats(rebuild: bool) -> list[FFMpegFormat]:
     """
     Load muxers from the output path
 
@@ -130,7 +158,36 @@ def load_muxers(rebuild: bool) -> list[FFMpegFormat]:
         except Exception as e:
             logging.error(f"Failed to load muxers from cache: {e}")
 
-    formats = all_formats()
+    formats = [
+        FFMpegFormat(
+            name=k.name,
+            flags=k.flags,
+            description=k.description,
+            options=tuple(
+                FFMpegAVOption(
+                    section=i.section,
+                    name=i.name,
+                    type=i.type,
+                    flags=i.flags,
+                    help=i.help,
+                    min=i.min,
+                    max=i.max,
+                    default=i.default,
+                    choices=tuple(
+                        FFMpegOptionChoice(
+                            name=choice.name,
+                            help=choice.help,
+                            flags=choice.flags,
+                            value=choice.value,
+                        )
+                        for choice in i.choices
+                    ),
+                )
+                for i in k.options
+            ),
+        )
+        for k in all_formats()
+    ]
     save(formats, "formats")
     return formats
 
@@ -147,10 +204,10 @@ def generate(outpath: Path | None = None, rebuild: bool = False) -> None:
     if not outpath:
         outpath = Path(__file__).parent.parent.parent / "ffmpeg"
 
-    ffmpeg_filters = load_filters(outpath, rebuild)
+    ffmpeg_filters = load_filters(rebuild)
     ffmpeg_options = gen_option_info()
     ffmpeg_codecs = load_codecs(rebuild)
-    ffmpeg_muxers = load_muxers(rebuild)
+    ffmpeg_muxers = load_formats(rebuild)
 
     render(
         filters=ffmpeg_filters,
