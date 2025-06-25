@@ -1,6 +1,4 @@
 # NOTE: this file is auto-generated, do not modify
-from typing import Literal
-
 from ..utils.frozendict import merge
 from .schema import FFMpegDemuxerOption
 
@@ -28,7 +26,7 @@ def _4xm() -> FFMpegDemuxerOption:
 
 
 def aa(
-    aa_fixed_key: str | None = None,
+    aa_fixed_key: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Audible AA format files
@@ -71,7 +69,7 @@ def aax() -> FFMpegDemuxerOption:
 
 
 def ac3(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw AC-3
@@ -114,7 +112,7 @@ def ace() -> FFMpegDemuxerOption:
 
 
 def acm(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Interplay ACM
@@ -146,9 +144,9 @@ def act() -> FFMpegDemuxerOption:
 
 
 def adf(
-    linespeed: int | None = None,
-    video_size: str | None = None,
-    framerate: str | None = None,
+    linespeed: str = None,
+    video_size: str = None,
+    framerate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Artworx Data Format
@@ -250,9 +248,9 @@ def aix() -> FFMpegDemuxerOption:
 
 
 def alaw(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM A-law
@@ -277,17 +275,15 @@ def alaw(
 
 
 def alias_pix(
-    pattern_type: int
-    | None
-    | Literal["glob_sequence", "glob", "sequence", "none"] = None,
-    start_number: int | None = None,
-    start_number_range: int | None = None,
-    ts_from_file: int | None | Literal["none", "sec", "ns"] = None,
-    export_path_metadata: bool | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    pattern_type: str = None,
+    start_number: str = None,
+    start_number_range: str = None,
+    ts_from_file: str = None,
+    export_path_metadata: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Alias/Wavefront PIX image
@@ -335,8 +331,8 @@ def alp() -> FFMpegDemuxerOption:
 
 
 def alsa(
-    sample_rate: int | None = None,
-    channels: int | None = None,
+    sample_rate: str = None,
+    channels: str = None,
 ) -> FFMpegDemuxerOption:
     """
     ALSA audio input
@@ -359,7 +355,7 @@ def alsa(
 
 
 def amr(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     3GPP AMR
@@ -380,7 +376,7 @@ def amr(
 
 
 def amrnb(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw AMR-NB
@@ -401,7 +397,7 @@ def amrnb(
 
 
 def amrwb(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw AMR-WB
@@ -433,7 +429,7 @@ def anm() -> FFMpegDemuxerOption:
 
 
 def apac(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw APAC
@@ -487,9 +483,9 @@ def apm() -> FFMpegDemuxerOption:
 
 
 def apng(
-    ignore_loop: bool | None = None,
-    max_fps: int | None = None,
-    default_fps: int | None = None,
+    ignore_loop: str = None,
+    max_fps: str = None,
+    default_fps: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Animated Portable Network Graphics
@@ -513,30 +509,50 @@ def apng(
     )
 
 
-def aptx() -> FFMpegDemuxerOption:
+def aptx(
+    sample_rate: str = None,
+) -> FFMpegDemuxerOption:
     """
     raw aptX
 
+    Args:
+        sample_rate: (from 0 to INT_MAX) (default 48000)
 
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({}))
+    return FFMpegDemuxerOption(
+        kwargs=merge(
+            {
+                "sample_rate": sample_rate,
+            }
+        )
+    )
 
 
-def aptx_hd() -> FFMpegDemuxerOption:
+def aptx_hd(
+    sample_rate: str = None,
+) -> FFMpegDemuxerOption:
     """
     raw aptX HD
 
+    Args:
+        sample_rate: (from 0 to INT_MAX) (default 48000)
 
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({}))
+    return FFMpegDemuxerOption(
+        kwargs=merge(
+            {
+                "sample_rate": sample_rate,
+            }
+        )
+    )
 
 
 def aqtitle(
-    subfps: str | None = None,
+    subfps: str = None,
 ) -> FFMpegDemuxerOption:
     """
     AQTitle subtitles
@@ -590,8 +606,8 @@ def argo_cvg() -> FFMpegDemuxerOption:
 
 
 def asf(
-    no_resync_search: bool | None = None,
-    export_xmp: bool | None = None,
+    no_resync_search: str = None,
+    export_xmp: str = None,
 ) -> FFMpegDemuxerOption:
     """
     ASF (Advanced / Active Streaming Format)
@@ -658,7 +674,7 @@ def au() -> FFMpegDemuxerOption:
 
 
 def av1(
-    framerate: str | None = None,
+    framerate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     AV1 Annex B
@@ -679,7 +695,7 @@ def av1(
 
 
 def avi(
-    use_odml: bool | None = None,
+    use_odml: str = None,
 ) -> FFMpegDemuxerOption:
     """
     AVI (Audio Video Interleaved)
@@ -722,8 +738,8 @@ def avs() -> FFMpegDemuxerOption:
 
 
 def avs2(
-    framerate: str | None = None,
-    raw_packet_size: int | None = None,
+    framerate: str = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw AVS2-P2/IEEE1857.4
@@ -746,8 +762,8 @@ def avs2(
 
 
 def avs3(
-    framerate: str | None = None,
-    raw_packet_size: int | None = None,
+    framerate: str = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw AVS3-P2/IEEE1857.10
@@ -803,9 +819,9 @@ def bfstm() -> FFMpegDemuxerOption:
 
 
 def bin(
-    linespeed: int | None = None,
-    video_size: str | None = None,
-    framerate: str | None = None,
+    linespeed: str = None,
+    video_size: str = None,
+    framerate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Binary text
@@ -863,9 +879,9 @@ def bit() -> FFMpegDemuxerOption:
 
 
 def bitpacked(
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    framerate: str | None = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    framerate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Bitpacked
@@ -890,11 +906,11 @@ def bitpacked(
 
 
 def bmp_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped bmp sequence
@@ -945,7 +961,7 @@ def boa() -> FFMpegDemuxerOption:
 
 
 def bonk(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw Bonk
@@ -966,17 +982,15 @@ def bonk(
 
 
 def brender_pix(
-    pattern_type: int
-    | None
-    | Literal["glob_sequence", "glob", "sequence", "none"] = None,
-    start_number: int | None = None,
-    start_number_range: int | None = None,
-    ts_from_file: int | None | Literal["none", "sec", "ns"] = None,
-    export_path_metadata: bool | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    pattern_type: str = None,
+    start_number: str = None,
+    start_number_range: str = None,
+    ts_from_file: str = None,
+    export_path_metadata: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     BRender PIX image
@@ -1046,8 +1060,8 @@ def caf() -> FFMpegDemuxerOption:
 
 
 def cavsvideo(
-    framerate: str | None = None,
-    raw_packet_size: int | None = None,
+    framerate: str = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw Chinese AVS (Audio Video Standard)
@@ -1081,8 +1095,8 @@ def cdg() -> FFMpegDemuxerOption:
 
 
 def cdxl(
-    sample_rate: int | None = None,
-    frame_rate: str | None = None,
+    sample_rate: str = None,
+    frame_rate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Commodore CDXL video
@@ -1116,7 +1130,7 @@ def cine() -> FFMpegDemuxerOption:
 
 
 def codec2(
-    frames_per_packet: int | None = None,
+    frames_per_packet: str = None,
 ) -> FFMpegDemuxerOption:
     """
     codec2 .c2 demuxer
@@ -1137,12 +1151,8 @@ def codec2(
 
 
 def codec2raw(
-    mode: int
-    | None
-    | Literal[
-        "3200", "2400", "1600", "1400", "1300", "1200", "700", "700B", "700C"
-    ] = None,
-    frames_per_packet: int | None = None,
+    mode: str = None,
+    frames_per_packet: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw codec2 demuxer
@@ -1165,9 +1175,9 @@ def codec2raw(
 
 
 def concat(
-    safe: bool | None = None,
-    auto_convert: bool | None = None,
-    segment_time_metadata: bool | None = None,
+    safe: str = None,
+    auto_convert: str = None,
+    segment_time_metadata: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Virtual concatenation script
@@ -1192,11 +1202,11 @@ def concat(
 
 
 def cri_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped cri sequence
@@ -1225,8 +1235,8 @@ def cri_pipe(
 
 
 def dash(
-    allowed_extensions: str | None = None,
-    cenc_decryption_key: str | None = None,
+    allowed_extensions: str = None,
+    cenc_decryption_key: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Dynamic Adaptive Streaming over HTTP
@@ -1249,7 +1259,7 @@ def dash(
 
 
 def data(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw data
@@ -1292,11 +1302,11 @@ def dcstr() -> FFMpegDemuxerOption:
 
 
 def dds_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped dds sequence
@@ -1347,9 +1357,9 @@ def dfa() -> FFMpegDemuxerOption:
 
 
 def dfpwm(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw DFPWM1a
@@ -1385,8 +1395,8 @@ def dhav() -> FFMpegDemuxerOption:
 
 
 def dirac(
-    framerate: str | None = None,
-    raw_packet_size: int | None = None,
+    framerate: str = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw Dirac
@@ -1409,8 +1419,8 @@ def dirac(
 
 
 def dnxhd(
-    framerate: str | None = None,
-    raw_packet_size: int | None = None,
+    framerate: str = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw DNxHD (SMPTE VC-3)
@@ -1433,11 +1443,11 @@ def dnxhd(
 
 
 def dpx_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped dpx sequence
@@ -1499,7 +1509,7 @@ def dss() -> FFMpegDemuxerOption:
 
 
 def dts(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw DTS
@@ -1542,7 +1552,7 @@ def dv() -> FFMpegDemuxerOption:
 
 
 def dvbsub(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw dvbsub
@@ -1563,7 +1573,7 @@ def dvbsub(
 
 
 def dvbtxt(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     dvbtxt
@@ -1595,7 +1605,7 @@ def dxa() -> FFMpegDemuxerOption:
 
 
 def ea(
-    merge_alpha: bool | None = None,
+    merge_alpha: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Electronic Arts Multimedia
@@ -1627,7 +1637,7 @@ def ea_cdata() -> FFMpegDemuxerOption:
 
 
 def eac3(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw E-AC-3
@@ -1659,7 +1669,7 @@ def epaf() -> FFMpegDemuxerOption:
 
 
 def evc(
-    framerate: str | None = None,
+    framerate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     EVC Annex B
@@ -1680,11 +1690,11 @@ def evc(
 
 
 def exr_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped exr sequence
@@ -1713,9 +1723,9 @@ def exr_pipe(
 
 
 def f32be(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM 32-bit floating-point big-endian
@@ -1740,9 +1750,9 @@ def f32be(
 
 
 def f32le(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM 32-bit floating-point little-endian
@@ -1767,9 +1777,9 @@ def f32le(
 
 
 def f64be(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM 64-bit floating-point big-endian
@@ -1794,9 +1804,9 @@ def f64be(
 
 
 def f64le(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM 64-bit floating-point little-endian
@@ -1821,7 +1831,7 @@ def f64le(
 
 
 def fbdev(
-    framerate: str | None = None,
+    framerate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Linux framebuffer
@@ -1875,7 +1885,7 @@ def filmstrip() -> FFMpegDemuxerOption:
 
 
 def fits(
-    framerate: str | None = None,
+    framerate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Flexible Image Transport System
@@ -1896,7 +1906,7 @@ def fits(
 
 
 def flac(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw FLAC
@@ -1927,15 +1937,34 @@ def flic() -> FFMpegDemuxerOption:
     return FFMpegDemuxerOption(kwargs=merge({}))
 
 
-def flv() -> FFMpegDemuxerOption:
+def flv(
+    flv_metadata: str = None,
+    flv_full_metadata: str = None,
+    flv_ignore_prevtag: str = None,
+    missing_streams: str = None,
+) -> FFMpegDemuxerOption:
     """
     FLV (Flash Video)
 
+    Args:
+        flv_metadata: Allocate streams according to the onMetaData array (default false)
+        flv_full_metadata: Dump full metadata of the onMetadata (default false)
+        flv_ignore_prevtag: Ignore the Size of previous tag (default false)
+        missing_streams: (from 0 to 255) (default 0)
 
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({}))
+    return FFMpegDemuxerOption(
+        kwargs=merge(
+            {
+                "flv_metadata": flv_metadata,
+                "flv_full_metadata": flv_full_metadata,
+                "flv_ignore_prevtag": flv_ignore_prevtag,
+                "missing_streams": missing_streams,
+            }
+        )
+    )
 
 
 def frm() -> FFMpegDemuxerOption:
@@ -1972,7 +2001,7 @@ def fwse() -> FFMpegDemuxerOption:
 
 
 def g722(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw G.722
@@ -2004,8 +2033,8 @@ def g723_1() -> FFMpegDemuxerOption:
 
 
 def g726(
-    code_size: int | None = None,
-    sample_rate: int | None = None,
+    code_size: str = None,
+    sample_rate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw big-endian G.726 ("left aligned")
@@ -2028,8 +2057,8 @@ def g726(
 
 
 def g726le(
-    code_size: int | None = None,
-    sample_rate: int | None = None,
+    code_size: str = None,
+    sample_rate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw little-endian G.726 ("right aligned")
@@ -2052,7 +2081,7 @@ def g726le(
 
 
 def g729(
-    bit_rate: int | None = None,
+    bit_rate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     G.729 raw format demuxer
@@ -2084,11 +2113,11 @@ def gdv() -> FFMpegDemuxerOption:
 
 
 def gem_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped gem sequence
@@ -2128,10 +2157,10 @@ def genh() -> FFMpegDemuxerOption:
 
 
 def gif(
-    min_delay: int | None = None,
-    max_gif_delay: int | None = None,
-    default_delay: int | None = None,
-    ignore_loop: bool | None = None,
+    min_delay: str = None,
+    max_gif_delay: str = None,
+    default_delay: str = None,
+    ignore_loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     CompuServe Graphics Interchange Format (GIF)
@@ -2158,11 +2187,11 @@ def gif(
 
 
 def gif_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped gif sequence
@@ -2191,7 +2220,7 @@ def gif_pipe(
 
 
 def gsm(
-    sample_rate: int | None = None,
+    sample_rate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw GSM
@@ -2223,8 +2252,8 @@ def gxf() -> FFMpegDemuxerOption:
 
 
 def h261(
-    framerate: str | None = None,
-    raw_packet_size: int | None = None,
+    framerate: str = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw H.261
@@ -2247,8 +2276,8 @@ def h261(
 
 
 def h263(
-    framerate: str | None = None,
-    raw_packet_size: int | None = None,
+    framerate: str = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw H.263
@@ -2271,8 +2300,8 @@ def h263(
 
 
 def h264(
-    framerate: str | None = None,
-    raw_packet_size: int | None = None,
+    framerate: str = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw H.264 video
@@ -2295,9 +2324,9 @@ def h264(
 
 
 def hca(
-    hca_lowkey: int | None = None,
-    hca_highkey: int | None = None,
-    hca_subkey: int | None = None,
+    hca_lowkey: str = None,
+    hca_highkey: str = None,
+    hca_subkey: str = None,
 ) -> FFMpegDemuxerOption:
     """
     CRI HCA
@@ -2333,11 +2362,11 @@ def hcom() -> FFMpegDemuxerOption:
 
 
 def hdr_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped hdr sequence
@@ -2366,8 +2395,8 @@ def hdr_pipe(
 
 
 def hevc(
-    framerate: str | None = None,
-    raw_packet_size: int | None = None,
+    framerate: str = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw HEVC video
@@ -2390,16 +2419,16 @@ def hevc(
 
 
 def hls(
-    live_start_index: int | None = None,
-    prefer_x_start: bool | None = None,
-    allowed_extensions: str | None = None,
-    max_reload: int | None = None,
-    m3u8_hold_counters: int | None = None,
-    http_persistent: bool | None = None,
-    http_multiple: bool | None = None,
-    http_seekable: bool | None = None,
-    seg_format_options: str | None = None,
-    seg_max_retry: int | None = None,
+    live_start_index: str = None,
+    prefer_x_start: str = None,
+    allowed_extensions: str = None,
+    max_reload: str = None,
+    m3u8_hold_counters: str = None,
+    http_persistent: str = None,
+    http_multiple: str = None,
+    http_seekable: str = None,
+    seg_format_options: str = None,
+    seg_max_retry: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Apple HTTP Live Streaming
@@ -2471,9 +2500,9 @@ def idcin() -> FFMpegDemuxerOption:
 
 
 def idf(
-    linespeed: int | None = None,
-    video_size: str | None = None,
-    framerate: str | None = None,
+    linespeed: str = None,
+    video_size: str = None,
+    framerate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     iCE Draw File
@@ -2498,9 +2527,9 @@ def idf(
 
 
 def iec61883(
-    dvtype: int | None | Literal["auto", "dv", "hdv"] = None,
-    dvbuffer: int | None = None,
-    dvguid: str | None = None,
+    dvtype: str = None,
+    dvbuffer: str = None,
+    dvguid: str = None,
 ) -> FFMpegDemuxerOption:
     """
     libiec61883 (new DV1394) A/V input device
@@ -2558,17 +2587,15 @@ def ilbc() -> FFMpegDemuxerOption:
 
 
 def image2(
-    pattern_type: int
-    | None
-    | Literal["glob_sequence", "glob", "sequence", "none"] = None,
-    start_number: int | None = None,
-    start_number_range: int | None = None,
-    ts_from_file: int | None | Literal["none", "sec", "ns"] = None,
-    export_path_metadata: bool | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    pattern_type: str = None,
+    start_number: str = None,
+    start_number_range: str = None,
+    ts_from_file: str = None,
+    export_path_metadata: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     image2 sequence
@@ -2605,11 +2632,11 @@ def image2(
 
 
 def image2pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped image2 sequence
@@ -2638,7 +2665,7 @@ def image2pipe(
 
 
 def imf(
-    assetmaps: str | None = None,
+    assetmaps: str = None,
 ) -> FFMpegDemuxerOption:
     """
     IMF (Interoperable Master Format)
@@ -2659,8 +2686,8 @@ def imf(
 
 
 def ingenient(
-    framerate: str | None = None,
-    raw_packet_size: int | None = None,
+    framerate: str = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw Ingenient MJPEG
@@ -2694,7 +2721,7 @@ def ipmovie() -> FFMpegDemuxerOption:
 
 
 def ipu(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw IPU Video
@@ -2770,11 +2797,11 @@ def ivr() -> FFMpegDemuxerOption:
 
 
 def j2k_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped j2k sequence
@@ -2803,7 +2830,7 @@ def j2k_pipe(
 
 
 def jack(
-    channels: int | None = None,
+    channels: str = None,
 ) -> FFMpegDemuxerOption:
     """
     JACK Audio Connection Kit
@@ -2835,11 +2862,11 @@ def jacosub() -> FFMpegDemuxerOption:
 
 
 def jpeg_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped jpeg sequence
@@ -2868,11 +2895,11 @@ def jpeg_pipe(
 
 
 def jpegls_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped jpegls sequence
@@ -2912,11 +2939,11 @@ def jpegxl_anim() -> FFMpegDemuxerOption:
 
 
 def jpegxl_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped jpegxl sequence
@@ -2956,12 +2983,12 @@ def jv() -> FFMpegDemuxerOption:
 
 
 def kmsgrab(
-    device: str | None = None,
-    format: str | None = None,
-    format_modifier: int | None = None,
-    crtc_id: int | None = None,
-    plane_id: int | None = None,
-    framerate: str | None = None,
+    device: str = None,
+    format: str = None,
+    format_modifier: str = None,
+    crtc_id: str = None,
+    plane_id: str = None,
+    framerate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     KMS screen capture
@@ -2991,15 +3018,34 @@ def kmsgrab(
     )
 
 
-def kux() -> FFMpegDemuxerOption:
+def kux(
+    flv_metadata: str = None,
+    flv_full_metadata: str = None,
+    flv_ignore_prevtag: str = None,
+    missing_streams: str = None,
+) -> FFMpegDemuxerOption:
     """
     KUX (YouKu)
 
+    Args:
+        flv_metadata: Allocate streams according to the onMetaData array (default false)
+        flv_full_metadata: Dump full metadata of the onMetadata (default false)
+        flv_ignore_prevtag: Ignore the Size of previous tag (default false)
+        missing_streams: (from 0 to 255) (default 0)
 
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({}))
+    return FFMpegDemuxerOption(
+        kwargs=merge(
+            {
+                "flv_metadata": flv_metadata,
+                "flv_full_metadata": flv_full_metadata,
+                "flv_ignore_prevtag": flv_ignore_prevtag,
+                "missing_streams": missing_streams,
+            }
+        )
+    )
 
 
 def kvag() -> FFMpegDemuxerOption:
@@ -3025,9 +3071,9 @@ def laf() -> FFMpegDemuxerOption:
 
 
 def lavfi(
-    graph: str | None = None,
-    graph_file: str | None = None,
-    dumpgraph: str | None = None,
+    graph: str = None,
+    graph_file: str = None,
+    dumpgraph: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Libavfilter virtual input device
@@ -3052,8 +3098,8 @@ def lavfi(
 
 
 def libcdio(
-    speed: int | None = None,
-    paranoia_mode: str | None = None,
+    speed: str = None,
+    paranoia_mode: str = None,
 ) -> FFMpegDemuxerOption:
     """
 
@@ -3076,9 +3122,9 @@ def libcdio(
 
 
 def libdc1394(
-    video_size: str | None = None,
-    pixel_format: str | None = None,
-    framerate: str | None = None,
+    video_size: str = None,
+    pixel_format: str = None,
+    framerate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     dc1394 v.2 A/V grab
@@ -3103,9 +3149,9 @@ def libdc1394(
 
 
 def libgme(
-    track_index: int | None = None,
-    sample_rate: int | None = None,
-    max_size: int | None = None,
+    track_index: str = None,
+    sample_rate: str = None,
+    max_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Game Music Emu demuxer
@@ -3130,9 +3176,9 @@ def libgme(
 
 
 def libopenmpt(
-    sample_rate: int | None = None,
-    layout: str | None = None,
-    subsong: int | None | Literal["all", "auto"] = None,
+    sample_rate: str = None,
+    layout: str = None,
+    subsong: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Tracker formats (libopenmpt)
@@ -3156,15 +3202,34 @@ def libopenmpt(
     )
 
 
-def live_flv() -> FFMpegDemuxerOption:
+def live_flv(
+    flv_metadata: str = None,
+    flv_full_metadata: str = None,
+    flv_ignore_prevtag: str = None,
+    missing_streams: str = None,
+) -> FFMpegDemuxerOption:
     """
     live RTMP FLV (Flash Video)
 
+    Args:
+        flv_metadata: Allocate streams according to the onMetaData array (default false)
+        flv_full_metadata: Dump full metadata of the onMetadata (default false)
+        flv_ignore_prevtag: Ignore the Size of previous tag (default false)
+        missing_streams: (from 0 to 255) (default 0)
 
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({}))
+    return FFMpegDemuxerOption(
+        kwargs=merge(
+            {
+                "flv_metadata": flv_metadata,
+                "flv_full_metadata": flv_full_metadata,
+                "flv_ignore_prevtag": flv_ignore_prevtag,
+                "missing_streams": missing_streams,
+            }
+        )
+    )
 
 
 def lmlm4() -> FFMpegDemuxerOption:
@@ -3179,7 +3244,7 @@ def lmlm4() -> FFMpegDemuxerOption:
 
 
 def loas(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     LOAS AudioSyncStream
@@ -3244,8 +3309,8 @@ def lxf() -> FFMpegDemuxerOption:
 
 
 def m4v(
-    framerate: str | None = None,
-    raw_packet_size: int | None = None,
+    framerate: str = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw MPEG-4 video
@@ -3301,7 +3366,7 @@ def mgsts() -> FFMpegDemuxerOption:
 
 
 def microdvd(
-    subfps: str | None = None,
+    subfps: str = None,
 ) -> FFMpegDemuxerOption:
     """
     MicroDVD subtitle format
@@ -3322,8 +3387,8 @@ def microdvd(
 
 
 def mjpeg(
-    framerate: str | None = None,
-    raw_packet_size: int | None = None,
+    framerate: str = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw MJPEG video
@@ -3346,8 +3411,8 @@ def mjpeg(
 
 
 def mjpeg_2000(
-    framerate: str | None = None,
-    raw_packet_size: int | None = None,
+    framerate: str = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw MJPEG 2000 video
@@ -3370,7 +3435,7 @@ def mjpeg_2000(
 
 
 def mlp(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw MLP
@@ -3446,7 +3511,7 @@ def moflex() -> FFMpegDemuxerOption:
 
 
 def mp3(
-    usetoc: bool | None = None,
+    usetoc: str = None,
 ) -> FFMpegDemuxerOption:
     """
     MP2/3 (MPEG audio layer 2/3)
@@ -3500,13 +3565,13 @@ def mpeg() -> FFMpegDemuxerOption:
 
 
 def mpegts(
-    resync_size: int | None = None,
-    fix_teletext_pts: bool | None = None,
-    ts_packetsize: int | None = None,
-    scan_all_pmts: bool | None = None,
-    skip_unknown_pmt: bool | None = None,
-    merge_pmt_versions: bool | None = None,
-    max_packet_size: int | None = None,
+    resync_size: str = None,
+    fix_teletext_pts: str = None,
+    ts_packetsize: str = None,
+    scan_all_pmts: str = None,
+    skip_unknown_pmt: str = None,
+    merge_pmt_versions: str = None,
+    max_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     MPEG-TS (MPEG-2 Transport Stream)
@@ -3539,9 +3604,9 @@ def mpegts(
 
 
 def mpegtsraw(
-    resync_size: int | None = None,
-    compute_pcr: bool | None = None,
-    ts_packetsize: int | None = None,
+    resync_size: str = None,
+    compute_pcr: str = None,
+    ts_packetsize: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw MPEG-TS (MPEG-2 Transport Stream)
@@ -3566,8 +3631,8 @@ def mpegtsraw(
 
 
 def mpegvideo(
-    framerate: str | None = None,
-    raw_packet_size: int | None = None,
+    framerate: str = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw MPEG video
@@ -3590,7 +3655,7 @@ def mpegvideo(
 
 
 def mpjpeg(
-    strict_mime_boundary: bool | None = None,
+    strict_mime_boundary: str = None,
 ) -> FFMpegDemuxerOption:
     """
     MIME multipart JPEG
@@ -3688,9 +3753,9 @@ def mtv() -> FFMpegDemuxerOption:
 
 
 def mulaw(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM mu-law
@@ -3748,7 +3813,7 @@ def mvi() -> FFMpegDemuxerOption:
 
 
 def mxf(
-    eia608_extract: bool | None = None,
+    eia608_extract: str = None,
 ) -> FFMpegDemuxerOption:
     """
     MXF (Material eXchange Format)
@@ -3846,7 +3911,7 @@ def nuv() -> FFMpegDemuxerOption:
 
 
 def obu(
-    framerate: str | None = None,
+    framerate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     AV1 low overhead OBU
@@ -3889,10 +3954,10 @@ def oma() -> FFMpegDemuxerOption:
 
 
 def openal(
-    channels: int | None = None,
-    sample_rate: int | None = None,
-    sample_size: int | None = None,
-    list_devices: int | None | Literal["true", "false"] = None,
+    channels: str = None,
+    sample_rate: str = None,
+    sample_size: str = None,
+    list_devices: str = None,
 ) -> FFMpegDemuxerOption:
     """
     OpenAL audio capture device
@@ -3919,7 +3984,7 @@ def openal(
 
 
 def osq(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw OSQ
@@ -3940,8 +4005,8 @@ def osq(
 
 
 def oss(
-    sample_rate: int | None = None,
-    channels: int | None = None,
+    sample_rate: str = None,
+    channels: str = None,
 ) -> FFMpegDemuxerOption:
     """
     OSS (Open Sound System) capture
@@ -3975,11 +4040,11 @@ def paf() -> FFMpegDemuxerOption:
 
 
 def pam_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped pam sequence
@@ -4008,11 +4073,11 @@ def pam_pipe(
 
 
 def pbm_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped pbm sequence
@@ -4041,11 +4106,11 @@ def pbm_pipe(
 
 
 def pcx_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped pcx sequence
@@ -4085,11 +4150,11 @@ def pdv() -> FFMpegDemuxerOption:
 
 
 def pfm_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped pfm sequence
@@ -4118,11 +4183,11 @@ def pfm_pipe(
 
 
 def pgm_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped pgm sequence
@@ -4151,11 +4216,11 @@ def pgm_pipe(
 
 
 def pgmyuv_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped pgmyuv sequence
@@ -4184,11 +4249,11 @@ def pgmyuv_pipe(
 
 
 def pgx_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped pgx sequence
@@ -4217,11 +4282,11 @@ def pgx_pipe(
 
 
 def phm_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped phm sequence
@@ -4250,11 +4315,11 @@ def phm_pipe(
 
 
 def photocd_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped photocd sequence
@@ -4283,11 +4348,11 @@ def photocd_pipe(
 
 
 def pictor_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped pictor sequence
@@ -4338,11 +4403,11 @@ def pmp() -> FFMpegDemuxerOption:
 
 
 def png_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped png sequence
@@ -4382,11 +4447,11 @@ def pp_bnk() -> FFMpegDemuxerOption:
 
 
 def ppm_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped ppm sequence
@@ -4415,11 +4480,11 @@ def ppm_pipe(
 
 
 def psd_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped psd sequence
@@ -4459,14 +4524,14 @@ def psxstr() -> FFMpegDemuxerOption:
 
 
 def pulse(
-    server: str | None = None,
-    name: str | None = None,
-    stream_name: str | None = None,
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    frame_size: int | None = None,
-    fragment_size: int | None = None,
-    wallclock: int | None = None,
+    server: str = None,
+    name: str = None,
+    stream_name: str = None,
+    sample_rate: str = None,
+    channels: str = None,
+    frame_size: str = None,
+    fragment_size: str = None,
+    wallclock: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Pulse audio input
@@ -4534,11 +4599,11 @@ def qcp() -> FFMpegDemuxerOption:
 
 
 def qdraw_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped qdraw sequence
@@ -4567,11 +4632,11 @@ def qdraw_pipe(
 
 
 def qoi_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped qoi sequence
@@ -4611,9 +4676,9 @@ def r3d() -> FFMpegDemuxerOption:
 
 
 def rawvideo(
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    framerate: str | None = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    framerate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw video
@@ -4737,12 +4802,12 @@ def rso() -> FFMpegDemuxerOption:
 
 
 def rtp(
-    rtp_flags: str | None = None,
-    listen_timeout: str | None = None,
-    localaddr: str | None = None,
-    allowed_media_types: str | None = None,
-    reorder_queue_size: int | None = None,
-    buffer_size: int | None = None,
+    rtp_flags: str = None,
+    listen_timeout: str = None,
+    localaddr: str = None,
+    allowed_media_types: str = None,
+    reorder_queue_size: str = None,
+    buffer_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     RTP input
@@ -4773,17 +4838,17 @@ def rtp(
 
 
 def rtsp(
-    initial_pause: bool | None = None,
-    rtsp_transport: str | None = None,
-    rtsp_flags: str | None = None,
-    allowed_media_types: str | None = None,
-    min_port: int | None = None,
-    max_port: int | None = None,
-    listen_timeout: int | None = None,
-    timeout: int | None = None,
-    reorder_queue_size: int | None = None,
-    buffer_size: int | None = None,
-    user_agent: str | None = None,
+    initial_pause: str = None,
+    rtsp_transport: str = None,
+    rtsp_flags: str = None,
+    allowed_media_types: str = None,
+    min_port: str = None,
+    max_port: str = None,
+    listen_timeout: str = None,
+    timeout: str = None,
+    reorder_queue_size: str = None,
+    buffer_size: str = None,
+    user_agent: str = None,
 ) -> FFMpegDemuxerOption:
     """
     RTSP input
@@ -4824,9 +4889,9 @@ def rtsp(
 
 
 def s16be(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM signed 16-bit big-endian
@@ -4851,9 +4916,9 @@ def s16be(
 
 
 def s16le(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM signed 16-bit little-endian
@@ -4878,9 +4943,9 @@ def s16le(
 
 
 def s24be(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM signed 24-bit big-endian
@@ -4905,9 +4970,9 @@ def s24be(
 
 
 def s24le(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM signed 24-bit little-endian
@@ -4932,9 +4997,9 @@ def s24le(
 
 
 def s32be(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM signed 32-bit big-endian
@@ -4959,9 +5024,9 @@ def s32be(
 
 
 def s32le(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM signed 32-bit little-endian
@@ -4997,9 +5062,9 @@ def s337m() -> FFMpegDemuxerOption:
 
 
 def s8(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM signed 8-bit
@@ -5046,7 +5111,7 @@ def sap() -> FFMpegDemuxerOption:
 
 
 def sbc(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw SBC (low-complexity subband codec)
@@ -5067,9 +5132,9 @@ def sbc(
 
 
 def sbg(
-    sample_rate: int | None = None,
-    frame_size: int | None = None,
-    max_file_size: int | None = None,
+    sample_rate: str = None,
+    frame_size: str = None,
+    max_file_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     SBaGen binaural beats script
@@ -5127,12 +5192,12 @@ def sdns() -> FFMpegDemuxerOption:
 
 
 def sdp(
-    sdp_flags: str | None = None,
-    listen_timeout: str | None = None,
-    localaddr: str | None = None,
-    allowed_media_types: str | None = None,
-    reorder_queue_size: int | None = None,
-    buffer_size: int | None = None,
+    sdp_flags: str = None,
+    listen_timeout: str = None,
+    localaddr: str = None,
+    allowed_media_types: str = None,
+    reorder_queue_size: str = None,
+    buffer_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     SDP
@@ -5196,7 +5261,7 @@ def sdx() -> FFMpegDemuxerOption:
 
 
 def ser(
-    framerate: str | None = None,
+    framerate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     SER (Simple uncompressed video format for astronomical capturing)
@@ -5228,11 +5293,11 @@ def sga() -> FFMpegDemuxerOption:
 
 
 def sgi_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped sgi sequence
@@ -5261,7 +5326,7 @@ def sgi_pipe(
 
 
 def shn(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw Shorten
@@ -5304,9 +5369,9 @@ def simbiosis_imx() -> FFMpegDemuxerOption:
 
 
 def sln(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Asterisk raw pcm
@@ -5441,11 +5506,11 @@ def subviewer1() -> FFMpegDemuxerOption:
 
 
 def sunrast_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped sunrast sequence
@@ -5496,11 +5561,11 @@ def svag() -> FFMpegDemuxerOption:
 
 
 def svg_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped svg sequence
@@ -5551,7 +5616,7 @@ def swf() -> FFMpegDemuxerOption:
 
 
 def tak(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw TAK
@@ -5572,7 +5637,7 @@ def tak(
 
 
 def tedcaptions(
-    start_time: int | None = None,
+    start_time: str = None,
 ) -> FFMpegDemuxerOption:
     """
     TED Talks captions
@@ -5615,11 +5680,11 @@ def tiertexseq() -> FFMpegDemuxerOption:
 
 
 def tiff_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped tiff sequence
@@ -5659,7 +5724,7 @@ def tmv() -> FFMpegDemuxerOption:
 
 
 def truehd(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw TrueHD
@@ -5691,9 +5756,9 @@ def tta() -> FFMpegDemuxerOption:
 
 
 def tty(
-    chars_per_frame: int | None = None,
-    video_size: str | None = None,
-    framerate: str | None = None,
+    chars_per_frame: str = None,
+    video_size: str = None,
+    framerate: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Tele-typewriter
@@ -5740,9 +5805,9 @@ def ty() -> FFMpegDemuxerOption:
 
 
 def u16be(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM unsigned 16-bit big-endian
@@ -5767,9 +5832,9 @@ def u16be(
 
 
 def u16le(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM unsigned 16-bit little-endian
@@ -5794,9 +5859,9 @@ def u16le(
 
 
 def u24be(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM unsigned 24-bit big-endian
@@ -5821,9 +5886,9 @@ def u24be(
 
 
 def u24le(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM unsigned 24-bit little-endian
@@ -5848,9 +5913,9 @@ def u24le(
 
 
 def u32be(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM unsigned 32-bit big-endian
@@ -5875,9 +5940,9 @@ def u32be(
 
 
 def u32le(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM unsigned 32-bit little-endian
@@ -5902,9 +5967,9 @@ def u32le(
 
 
 def u8(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM unsigned 8-bit
@@ -5939,26 +6004,52 @@ def usm() -> FFMpegDemuxerOption:
     return FFMpegDemuxerOption(kwargs=merge({}))
 
 
-def v210() -> FFMpegDemuxerOption:
+def v210(
+    video_size: str = None,
+    framerate: str = None,
+) -> FFMpegDemuxerOption:
     """
     Uncompressed 4:2:2 10-bit
 
+    Args:
+        video_size: set frame size
+        framerate: set frame rate (default "25")
 
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({}))
+    return FFMpegDemuxerOption(
+        kwargs=merge(
+            {
+                "video_size": video_size,
+                "framerate": framerate,
+            }
+        )
+    )
 
 
-def v210x() -> FFMpegDemuxerOption:
+def v210x(
+    video_size: str = None,
+    framerate: str = None,
+) -> FFMpegDemuxerOption:
     """
     Uncompressed 4:2:2 10-bit
 
+    Args:
+        video_size: set frame size
+        framerate: set frame rate (default "25")
 
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({}))
+    return FFMpegDemuxerOption(
+        kwargs=merge(
+            {
+                "video_size": video_size,
+                "framerate": framerate,
+            }
+        )
+    )
 
 
 def vag() -> FFMpegDemuxerOption:
@@ -5973,11 +6064,11 @@ def vag() -> FFMpegDemuxerOption:
 
 
 def vbn_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped vbn sequence
@@ -6006,8 +6097,8 @@ def vbn_pipe(
 
 
 def vc1(
-    framerate: str | None = None,
-    raw_packet_size: int | None = None,
+    framerate: str = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw VC-1
@@ -6041,9 +6132,9 @@ def vc1test() -> FFMpegDemuxerOption:
 
 
 def vidc(
-    sample_rate: int | None = None,
-    channels: int | None = None,
-    ch_layout: str | None = None,
+    sample_rate: str = None,
+    channels: str = None,
+    ch_layout: str = None,
 ) -> FFMpegDemuxerOption:
     """
     PCM Archimedes VIDC
@@ -6101,7 +6192,7 @@ def vmd() -> FFMpegDemuxerOption:
 
 
 def vobsub(
-    sub_name: str | None = None,
+    sub_name: str = None,
 ) -> FFMpegDemuxerOption:
     """
     VobSub subtitle format
@@ -6166,8 +6257,8 @@ def vqf() -> FFMpegDemuxerOption:
 
 
 def vvc(
-    framerate: str | None = None,
-    raw_packet_size: int | None = None,
+    framerate: str = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     raw H.266/VVC video
@@ -6190,7 +6281,7 @@ def vvc(
 
 
 def w64(
-    max_size: int | None = None,
+    max_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Sony Wave64
@@ -6222,8 +6313,8 @@ def wady() -> FFMpegDemuxerOption:
 
 
 def wav(
-    ignore_length: bool | None = None,
-    max_size: int | None = None,
+    ignore_length: str = None,
+    max_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     WAV / WAVE (Waveform Audio)
@@ -6268,8 +6359,8 @@ def wc3movie() -> FFMpegDemuxerOption:
 
 
 def webm_dash_manifest(
-    live: bool | None = None,
-    bandwidth: int | None = None,
+    live: str = None,
+    bandwidth: str = None,
 ) -> FFMpegDemuxerOption:
     """
     WebM DASH Manifest
@@ -6292,11 +6383,11 @@ def webm_dash_manifest(
 
 
 def webp_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped webp sequence
@@ -6325,9 +6416,7 @@ def webp_pipe(
 
 
 def webvtt(
-    kind: int
-    | None
-    | Literal["subtitles", "captions", "descriptions", "metadata"] = None,
+    kind: str = None,
 ) -> FFMpegDemuxerOption:
     """
     WebVTT subtitle
@@ -6359,7 +6448,7 @@ def wsaud() -> FFMpegDemuxerOption:
 
 
 def wsd(
-    raw_packet_size: int | None = None,
+    raw_packet_size: str = None,
 ) -> FFMpegDemuxerOption:
     """
     Wideband Single-bit Data (WSD)
@@ -6424,18 +6513,18 @@ def wve() -> FFMpegDemuxerOption:
 
 
 def x11grab(
-    window_id: int | None = None,
-    x: int | None = None,
-    y: int | None = None,
-    grab_x: int | None = None,
-    grab_y: int | None = None,
-    video_size: str | None = None,
-    framerate: str | None = None,
-    draw_mouse: int | None = None,
-    follow_mouse: int | None | Literal["centered"] = None,
-    show_region: int | None = None,
-    region_border: int | None = None,
-    select_region: bool | None = None,
+    window_id: str = None,
+    x: str = None,
+    y: str = None,
+    grab_x: str = None,
+    grab_y: str = None,
+    video_size: str = None,
+    framerate: str = None,
+    draw_mouse: str = None,
+    follow_mouse: str = None,
+    show_region: str = None,
+    region_border: str = None,
+    select_region: str = None,
 ) -> FFMpegDemuxerOption:
     """
     X11 screen capture, using XCB
@@ -6488,23 +6577,39 @@ def xa() -> FFMpegDemuxerOption:
     return FFMpegDemuxerOption(kwargs=merge({}))
 
 
-def xbin() -> FFMpegDemuxerOption:
+def xbin(
+    linespeed: str = None,
+    video_size: str = None,
+    framerate: str = None,
+) -> FFMpegDemuxerOption:
     """
     eXtended BINary text (XBIN)
 
+    Args:
+        linespeed: set simulated line speed (bytes per second) (from 1 to INT_MAX) (default 6000)
+        video_size: set video size, such as 640x480 or hd720.
+        framerate: set framerate (frames per second) (default "25")
 
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(kwargs=merge({}))
+    return FFMpegDemuxerOption(
+        kwargs=merge(
+            {
+                "linespeed": linespeed,
+                "video_size": video_size,
+                "framerate": framerate,
+            }
+        )
+    )
 
 
 def xbm_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped xbm sequence
@@ -6555,11 +6660,11 @@ def xmv() -> FFMpegDemuxerOption:
 
 
 def xpm_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped xpm sequence
@@ -6599,11 +6704,11 @@ def xvag() -> FFMpegDemuxerOption:
 
 
 def xwd_pipe(
-    frame_size: int | None = None,
-    framerate: str | None = None,
-    pixel_format: str | None = None,
-    video_size: str | None = None,
-    loop: bool | None = None,
+    frame_size: str = None,
+    framerate: str = None,
+    pixel_format: str = None,
+    video_size: str = None,
+    loop: str = None,
 ) -> FFMpegDemuxerOption:
     """
     piped xwd sequence

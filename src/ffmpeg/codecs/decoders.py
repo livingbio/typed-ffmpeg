@@ -1,6 +1,4 @@
 # NOTE: this file is auto-generated, do not modify
-from typing import Literal
-
 from ..utils.frozendict import merge
 from .schema import FFMpegDecoderOption
 
@@ -193,12 +191,12 @@ def aura2() -> FFMpegDecoderOption:
 
 
 def libdav1d(
-    tilethreads: int | None = None,
-    framethreads: int | None = None,
-    max_frame_delay: int | None = None,
-    filmgrain: bool | None = None,
-    oppoint: int | None = None,
-    alllayers: bool | None = None,
+    tilethreads: str = None,
+    framethreads: str = None,
+    max_frame_delay: str = None,
+    filmgrain: str = None,
+    oppoint: str = None,
+    alllayers: str = None,
 ) -> FFMpegDecoderOption:
     """
     dav1d AV1 decoder by VideoLAN (codec av1)
@@ -229,7 +227,7 @@ def libdav1d(
 
 
 def av1(
-    operating_point: int | None = None,
+    operating_point: str = None,
 ) -> FFMpegDecoderOption:
     """
     Alliance for Open Media AV1
@@ -250,12 +248,12 @@ def av1(
 
 
 def av1_cuvid(
-    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
-    gpu: str | None = None,
-    surfaces: int | None = None,
-    drop_second_field: bool | None = None,
-    crop: str | None = None,
-    resize: str | None = None,
+    deint: str = None,
+    gpu: str = None,
+    surfaces: str = None,
+    drop_second_field: str = None,
+    crop: str = None,
+    resize: str = None,
 ) -> FFMpegDecoderOption:
     """
     Nvidia CUVID AV1 decoder (codec av1)
@@ -726,29 +724,10 @@ def escape130() -> FFMpegDecoderOption:
 
 
 def exr(
-    layer: str | None = None,
-    part: int | None = None,
-    gamma: float | None = None,
-    apply_trc: int
-    | None
-    | Literal[
-        "bt709",
-        "gamma",
-        "gamma22",
-        "gamma28",
-        "smpte170m",
-        "smpte240m",
-        "linear",
-        "log",
-        "log_sqrt",
-        "iec61966_2_4",
-        "bt1361",
-        "iec61966_2_1",
-        "bt2020_10bit",
-        "bt2020_12bit",
-        "smpte2084",
-        "smpte428_1",
-    ] = None,
+    layer: str = None,
+    part: str = None,
+    gamma: str = None,
+    apply_trc: str = None,
 ) -> FFMpegDecoderOption:
     """
     OpenEXR image
@@ -797,7 +776,7 @@ def ffvhuff() -> FFMpegDecoderOption:
 
 
 def fic(
-    skip_cursor: bool | None = None,
+    skip_cursor: str = None,
 ) -> FFMpegDecoderOption:
     """
     Mirillis FIC
@@ -818,7 +797,7 @@ def fic(
 
 
 def fits(
-    blank_value: int | None = None,
+    blank_value: str = None,
 ) -> FFMpegDecoderOption:
     """
     Flexible Image Transport System
@@ -905,7 +884,7 @@ def fraps() -> FFMpegDecoderOption:
 
 
 def frwu(
-    change_field_order: bool | None = None,
+    change_field_order: str = None,
 ) -> FFMpegDecoderOption:
     """
     Forward Uncompressed
@@ -959,7 +938,7 @@ def gem() -> FFMpegDecoderOption:
 
 
 def gif(
-    trans_color: int | None = None,
+    trans_color: str = None,
 ) -> FFMpegDecoderOption:
     """
     GIF (Graphics Interchange Format)
@@ -1002,8 +981,8 @@ def h263() -> FFMpegDecoderOption:
 
 
 def h263_v4l2m2m(
-    num_output_buffers: int | None = None,
-    num_capture_buffers: int | None = None,
+    num_output_buffers: str = None,
+    num_capture_buffers: str = None,
 ) -> FFMpegDecoderOption:
     """
     V4L2 mem2mem H.263 decoder wrapper (codec h263)
@@ -1048,10 +1027,10 @@ def h263p() -> FFMpegDecoderOption:
 
 
 def h264(
-    is_avc: bool | None = None,
-    nal_length_size: int | None = None,
-    enable_er: bool | None = None,
-    x264_build: int | None = None,
+    is_avc: str = None,
+    nal_length_size: str = None,
+    enable_er: str = None,
+    x264_build: str = None,
 ) -> FFMpegDecoderOption:
     """
     H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
@@ -1078,8 +1057,8 @@ def h264(
 
 
 def h264_v4l2m2m(
-    num_output_buffers: int | None = None,
-    num_capture_buffers: int | None = None,
+    num_output_buffers: str = None,
+    num_capture_buffers: str = None,
 ) -> FFMpegDecoderOption:
     """
     V4L2 mem2mem H.264 decoder wrapper (codec h264)
@@ -1102,12 +1081,12 @@ def h264_v4l2m2m(
 
 
 def h264_cuvid(
-    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
-    gpu: str | None = None,
-    surfaces: int | None = None,
-    drop_second_field: bool | None = None,
-    crop: str | None = None,
-    resize: str | None = None,
+    deint: str = None,
+    gpu: str = None,
+    surfaces: str = None,
+    drop_second_field: str = None,
+    crop: str = None,
+    resize: str = None,
 ) -> FFMpegDecoderOption:
     """
     Nvidia CUVID H264 decoder (codec h264)
@@ -1160,8 +1139,8 @@ def hdr() -> FFMpegDecoderOption:
 
 
 def hevc(
-    apply_defdispwin: bool | None = None,
-    strict_displaywin: bool | None = None,
+    apply_defdispwin: str = None,
+    strict_displaywin: str = None,
 ) -> FFMpegDecoderOption:
     """
     HEVC (High Efficiency Video Coding)
@@ -1184,8 +1163,8 @@ def hevc(
 
 
 def hevc_v4l2m2m(
-    num_output_buffers: int | None = None,
-    num_capture_buffers: int | None = None,
+    num_output_buffers: str = None,
+    num_capture_buffers: str = None,
 ) -> FFMpegDecoderOption:
     """
     V4L2 mem2mem HEVC decoder wrapper (codec hevc)
@@ -1208,12 +1187,12 @@ def hevc_v4l2m2m(
 
 
 def hevc_cuvid(
-    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
-    gpu: str | None = None,
-    surfaces: int | None = None,
-    drop_second_field: bool | None = None,
-    crop: str | None = None,
-    resize: str | None = None,
+    deint: str = None,
+    gpu: str = None,
+    surfaces: str = None,
+    drop_second_field: str = None,
+    crop: str = None,
+    resize: str = None,
 ) -> FFMpegDecoderOption:
     """
     Nvidia CUVID HEVC decoder (codec hevc)
@@ -1420,7 +1399,7 @@ def ipu() -> FFMpegDecoderOption:
 
 
 def jpeg2000(
-    lowres: int | None = None,
+    lowres: str = None,
 ) -> FFMpegDecoderOption:
     """
     JPEG 2000
@@ -1595,7 +1574,7 @@ def mimic() -> FFMpegDecoderOption:
 
 
 def mjpeg(
-    extern_huff: bool | None = None,
+    extern_huff: str = None,
 ) -> FFMpegDecoderOption:
     """
     MJPEG (Motion JPEG)
@@ -1616,12 +1595,12 @@ def mjpeg(
 
 
 def mjpeg_cuvid(
-    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
-    gpu: str | None = None,
-    surfaces: int | None = None,
-    drop_second_field: bool | None = None,
-    crop: str | None = None,
-    resize: str | None = None,
+    deint: str = None,
+    gpu: str = None,
+    surfaces: str = None,
+    drop_second_field: str = None,
+    crop: str = None,
+    resize: str = None,
 ) -> FFMpegDecoderOption:
     """
     Nvidia CUVID MJPEG decoder (codec mjpeg)
@@ -1707,8 +1686,8 @@ def mpeg1video() -> FFMpegDecoderOption:
 
 
 def mpeg1_v4l2m2m(
-    num_output_buffers: int | None = None,
-    num_capture_buffers: int | None = None,
+    num_output_buffers: str = None,
+    num_capture_buffers: str = None,
 ) -> FFMpegDecoderOption:
     """
     V4L2 mem2mem MPEG1 decoder wrapper (codec mpeg1video)
@@ -1731,12 +1710,12 @@ def mpeg1_v4l2m2m(
 
 
 def mpeg1_cuvid(
-    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
-    gpu: str | None = None,
-    surfaces: int | None = None,
-    drop_second_field: bool | None = None,
-    crop: str | None = None,
-    resize: str | None = None,
+    deint: str = None,
+    gpu: str = None,
+    surfaces: str = None,
+    drop_second_field: str = None,
+    crop: str = None,
+    resize: str = None,
 ) -> FFMpegDecoderOption:
     """
     Nvidia CUVID MPEG1VIDEO decoder (codec mpeg1video)
@@ -1789,8 +1768,8 @@ def mpegvideo() -> FFMpegDecoderOption:
 
 
 def mpeg2_v4l2m2m(
-    num_output_buffers: int | None = None,
-    num_capture_buffers: int | None = None,
+    num_output_buffers: str = None,
+    num_capture_buffers: str = None,
 ) -> FFMpegDecoderOption:
     """
     V4L2 mem2mem MPEG2 decoder wrapper (codec mpeg2video)
@@ -1813,12 +1792,12 @@ def mpeg2_v4l2m2m(
 
 
 def mpeg2_cuvid(
-    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
-    gpu: str | None = None,
-    surfaces: int | None = None,
-    drop_second_field: bool | None = None,
-    crop: str | None = None,
-    resize: str | None = None,
+    deint: str = None,
+    gpu: str = None,
+    surfaces: str = None,
+    drop_second_field: str = None,
+    crop: str = None,
+    resize: str = None,
 ) -> FFMpegDecoderOption:
     """
     Nvidia CUVID MPEG2VIDEO decoder (codec mpeg2video)
@@ -1860,8 +1839,8 @@ def mpeg4() -> FFMpegDecoderOption:
 
 
 def mpeg4_v4l2m2m(
-    num_output_buffers: int | None = None,
-    num_capture_buffers: int | None = None,
+    num_output_buffers: str = None,
+    num_capture_buffers: str = None,
 ) -> FFMpegDecoderOption:
     """
     V4L2 mem2mem MPEG4 decoder wrapper (codec mpeg4)
@@ -1884,12 +1863,12 @@ def mpeg4_v4l2m2m(
 
 
 def mpeg4_cuvid(
-    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
-    gpu: str | None = None,
-    surfaces: int | None = None,
-    drop_second_field: bool | None = None,
-    crop: str | None = None,
-    resize: str | None = None,
+    deint: str = None,
+    gpu: str = None,
+    surfaces: str = None,
+    drop_second_field: str = None,
+    crop: str = None,
+    resize: str = None,
 ) -> FFMpegDecoderOption:
     """
     Nvidia CUVID MPEG4 decoder (codec mpeg4)
@@ -2261,7 +2240,7 @@ def phm() -> FFMpegDecoderOption:
 
 
 def photocd(
-    lowres: int | None = None,
+    lowres: str = None,
 ) -> FFMpegDecoderOption:
     """
     Kodak Photo CD
@@ -2436,7 +2415,7 @@ def r210() -> FFMpegDecoderOption:
 
 
 def rasc(
-    skip_cursor: bool | None = None,
+    skip_cursor: str = None,
 ) -> FFMpegDecoderOption:
     """
     RemotelyAnywhere Screen Capture
@@ -2457,7 +2436,7 @@ def rasc(
 
 
 def rawvideo(
-    top: bool | None = None,
+    top: str = None,
 ) -> FFMpegDecoderOption:
     """
     raw video
@@ -2753,9 +2732,9 @@ def sunrast() -> FFMpegDecoderOption:
 
 
 def librsvg(
-    width: int | None = None,
-    height: int | None = None,
-    keep_ar: bool | None = None,
+    width: str = None,
+    height: str = None,
+    keep_ar: str = None,
 ) -> FFMpegDecoderOption:
     """
     Librsvg rasterizer (codec svg)
@@ -2890,9 +2869,9 @@ def tiertexseqvideo() -> FFMpegDecoderOption:
 
 
 def tiff(
-    subimage: bool | None = None,
-    thumbnail: bool | None = None,
-    page: int | None = None,
+    subimage: str = None,
+    thumbnail: str = None,
+    page: str = None,
 ) -> FFMpegDecoderOption:
     """
     TIFF image
@@ -3027,7 +3006,7 @@ def utvideo() -> FFMpegDecoderOption:
 
 
 def v210(
-    custom_stride: int | None = None,
+    custom_stride: str = None,
 ) -> FFMpegDecoderOption:
     """
     Uncompressed 4:2:2 10-bit
@@ -3136,8 +3115,8 @@ def vc1() -> FFMpegDecoderOption:
 
 
 def vc1_v4l2m2m(
-    num_output_buffers: int | None = None,
-    num_capture_buffers: int | None = None,
+    num_output_buffers: str = None,
+    num_capture_buffers: str = None,
 ) -> FFMpegDecoderOption:
     """
     V4L2 mem2mem VC1 decoder wrapper (codec vc1)
@@ -3160,12 +3139,12 @@ def vc1_v4l2m2m(
 
 
 def vc1_cuvid(
-    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
-    gpu: str | None = None,
-    surfaces: int | None = None,
-    drop_second_field: bool | None = None,
-    crop: str | None = None,
-    resize: str | None = None,
+    deint: str = None,
+    gpu: str = None,
+    surfaces: str = None,
+    drop_second_field: str = None,
+    crop: str = None,
+    resize: str = None,
 ) -> FFMpegDecoderOption:
     """
     Nvidia CUVID VC1 decoder (codec vc1)
@@ -3361,8 +3340,8 @@ def vp8() -> FFMpegDecoderOption:
 
 
 def vp8_v4l2m2m(
-    num_output_buffers: int | None = None,
-    num_capture_buffers: int | None = None,
+    num_output_buffers: str = None,
+    num_capture_buffers: str = None,
 ) -> FFMpegDecoderOption:
     """
     V4L2 mem2mem VP8 decoder wrapper (codec vp8)
@@ -3396,12 +3375,12 @@ def libvpx() -> FFMpegDecoderOption:
 
 
 def vp8_cuvid(
-    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
-    gpu: str | None = None,
-    surfaces: int | None = None,
-    drop_second_field: bool | None = None,
-    crop: str | None = None,
-    resize: str | None = None,
+    deint: str = None,
+    gpu: str = None,
+    surfaces: str = None,
+    drop_second_field: str = None,
+    crop: str = None,
+    resize: str = None,
 ) -> FFMpegDecoderOption:
     """
     Nvidia CUVID VP8 decoder (codec vp8)
@@ -3443,8 +3422,8 @@ def vp9() -> FFMpegDecoderOption:
 
 
 def vp9_v4l2m2m(
-    num_output_buffers: int | None = None,
-    num_capture_buffers: int | None = None,
+    num_output_buffers: str = None,
+    num_capture_buffers: str = None,
 ) -> FFMpegDecoderOption:
     """
     V4L2 mem2mem VP9 decoder wrapper (codec vp9)
@@ -3467,12 +3446,12 @@ def vp9_v4l2m2m(
 
 
 def vp9_cuvid(
-    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
-    gpu: str | None = None,
-    surfaces: int | None = None,
-    drop_second_field: bool | None = None,
-    crop: str | None = None,
-    resize: str | None = None,
+    deint: str = None,
+    gpu: str = None,
+    surfaces: str = None,
+    drop_second_field: str = None,
+    crop: str = None,
+    resize: str = None,
 ) -> FFMpegDecoderOption:
     """
     Nvidia CUVID VP9 decoder (codec vp9)
@@ -3800,8 +3779,8 @@ def _8svx_fib() -> FFMpegDecoderOption:
 
 
 def aac(
-    dual_mono_mode: int | None | Literal["auto", "main", "sub", "both"] = None,
-    channel_order: int | None | Literal["default", "coded"] = None,
+    dual_mono_mode: str = None,
+    channel_order: str = None,
 ) -> FFMpegDecoderOption:
     """
     AAC (Advanced Audio Coding)
@@ -3824,8 +3803,8 @@ def aac(
 
 
 def aac_fixed(
-    dual_mono_mode: int | None | Literal["auto", "main", "sub", "both"] = None,
-    channel_order: int | None | Literal["default", "coded"] = None,
+    dual_mono_mode: str = None,
+    channel_order: str = None,
 ) -> FFMpegDecoderOption:
     """
     AAC (Advanced Audio Coding) (codec aac)
@@ -3858,26 +3837,67 @@ def aac_latm() -> FFMpegDecoderOption:
     return FFMpegDecoderOption(kwargs=merge({}))
 
 
-def ac3() -> FFMpegDecoderOption:
+def ac3(
+    cons_noisegen: str = None,
+    drc_scale: str = None,
+    heavy_compr: str = None,
+    target_level: str = None,
+    downmix: str = None,
+) -> FFMpegDecoderOption:
     """
     ATSC A/52A (AC-3)
 
+    Args:
+        cons_noisegen: enable consistent noise generation (default false)
+        drc_scale: percentage of dynamic range compression to apply (from 0 to 6) (default 1)
+        heavy_compr: enable heavy dynamic range compression (default false)
+        target_level: target level in -dBFS (0 not applied) (from -31 to 0) (default 0)
+        downmix: Request a specific channel layout from the decoder
 
     Returns:
         the set codec options
     """
-    return FFMpegDecoderOption(kwargs=merge({}))
+    return FFMpegDecoderOption(
+        kwargs=merge(
+            {
+                "cons_noisegen": cons_noisegen,
+                "drc_scale": drc_scale,
+                "heavy_compr": heavy_compr,
+                "target_level": target_level,
+                "downmix": downmix,
+            }
+        )
+    )
 
 
-def ac3_fixed() -> FFMpegDecoderOption:
+def ac3_fixed(
+    cons_noisegen: str = None,
+    drc_scale: str = None,
+    heavy_compr: str = None,
+    downmix: str = None,
+) -> FFMpegDecoderOption:
     """
     ATSC A/52A (AC-3) (codec ac3)
 
+    Args:
+        cons_noisegen: enable consistent noise generation (default false)
+        drc_scale: percentage of dynamic range compression to apply (from 0 to 6) (default 1)
+        heavy_compr: enable heavy dynamic range compression (default false)
+        downmix: Request a specific channel layout from the decoder
 
     Returns:
         the set codec options
     """
-    return FFMpegDecoderOption(kwargs=merge({}))
+    return FFMpegDecoderOption(
+        kwargs=merge(
+            {
+                "cons_noisegen": cons_noisegen,
+                "drc_scale": drc_scale,
+                "heavy_compr": heavy_compr,
+                "downmix": downmix,
+            }
+        )
+    )
 
 
 def adpcm_4xm() -> FFMpegDecoderOption:
@@ -4035,7 +4055,7 @@ def adpcm_ea_xas() -> FFMpegDecoderOption:
 
 
 def g722(
-    bits_per_codeword: int | None = None,
+    bits_per_codeword: str = None,
 ) -> FFMpegDecoderOption:
     """
     G.722 ADPCM (codec adpcm_g722)
@@ -4463,7 +4483,7 @@ def adpcm_zork() -> FFMpegDecoderOption:
 
 
 def alac(
-    extra_bits_bug: bool | None = None,
+    extra_bits_bug: str = None,
 ) -> FFMpegDecoderOption:
     """
     ALAC (Apple Lossless Audio Codec)
@@ -4528,7 +4548,7 @@ def apac() -> FFMpegDecoderOption:
 
 
 def ape(
-    max_samples: int | None | Literal["all"] = None,
+    max_samples: str = None,
 ) -> FFMpegDecoderOption:
     """
     Monkey's Audio
@@ -4758,7 +4778,7 @@ def dfpwm() -> FFMpegDecoderOption:
 
 
 def dolby_e(
-    channel_order: int | None | Literal["default", "coded"] = None,
+    channel_order: str = None,
 ) -> FFMpegDecoderOption:
     """
     Dolby E
@@ -4856,9 +4876,9 @@ def dst() -> FFMpegDecoderOption:
 
 
 def dca(
-    core_only: bool | None = None,
-    channel_order: int | None | Literal["default", "coded"] = None,
-    downmix: str | None = None,
+    core_only: str = None,
+    channel_order: str = None,
+    downmix: str = None,
 ) -> FFMpegDecoderOption:
     """
     DCA (DTS Coherent Acoustics) (codec dts)
@@ -4893,19 +4913,41 @@ def dvaudio() -> FFMpegDecoderOption:
     return FFMpegDecoderOption(kwargs=merge({}))
 
 
-def eac3() -> FFMpegDecoderOption:
+def eac3(
+    cons_noisegen: str = None,
+    drc_scale: str = None,
+    heavy_compr: str = None,
+    target_level: str = None,
+    downmix: str = None,
+) -> FFMpegDecoderOption:
     """
     ATSC A/52B (AC-3, E-AC-3)
 
+    Args:
+        cons_noisegen: enable consistent noise generation (default false)
+        drc_scale: percentage of dynamic range compression to apply (from 0 to 6) (default 1)
+        heavy_compr: enable heavy dynamic range compression (default false)
+        target_level: target level in -dBFS (0 not applied) (from -31 to 0) (default 0)
+        downmix: Request a specific channel layout from the decoder
 
     Returns:
         the set codec options
     """
-    return FFMpegDecoderOption(kwargs=merge({}))
+    return FFMpegDecoderOption(
+        kwargs=merge(
+            {
+                "cons_noisegen": cons_noisegen,
+                "drc_scale": drc_scale,
+                "heavy_compr": heavy_compr,
+                "target_level": target_level,
+                "downmix": downmix,
+            }
+        )
+    )
 
 
 def evrc(
-    postfilter: bool | None = None,
+    postfilter: str = None,
 ) -> FFMpegDecoderOption:
     """
     EVRC (Enhanced Variable Rate Codec)
@@ -4937,7 +4979,7 @@ def fastaudio() -> FFMpegDecoderOption:
 
 
 def flac(
-    use_buggy_lpc: bool | None = None,
+    use_buggy_lpc: str = None,
 ) -> FFMpegDecoderOption:
     """
     FLAC (Free Lossless Audio Codec)
@@ -4969,7 +5011,7 @@ def ftr() -> FFMpegDecoderOption:
 
 
 def g723_1(
-    postfilter: bool | None = None,
+    postfilter: str = None,
 ) -> FFMpegDecoderOption:
     """
     G.723.1
@@ -5177,7 +5219,7 @@ def misc4() -> FFMpegDecoderOption:
 
 
 def mlp(
-    downmix: str | None = None,
+    downmix: str = None,
 ) -> FFMpegDecoderOption:
     """
     MLP (Meridian Lossless Packing)
@@ -5363,7 +5405,7 @@ def nellymoser() -> FFMpegDecoderOption:
 
 
 def opus(
-    apply_phase_inv: bool | None = None,
+    apply_phase_inv: str = None,
 ) -> FFMpegDecoderOption:
     """
     Opus
@@ -5384,7 +5426,7 @@ def opus(
 
 
 def libopus(
-    apply_phase_inv: bool | None = None,
+    apply_phase_inv: str = None,
 ) -> FFMpegDecoderOption:
     """
     libopus Opus (codec opus)
@@ -5900,9 +5942,7 @@ def roq_dpcm() -> FFMpegDecoderOption:
 
 
 def s302m(
-    non_pcm_mode: int
-    | None
-    | Literal["copy", "drop", "decode_copy", "decode_drop"] = None,
+    non_pcm_mode: str = None,
 ) -> FFMpegDecoderOption:
     """
     SMPTE 302M
@@ -6044,7 +6084,7 @@ def tak() -> FFMpegDecoderOption:
 
 
 def truehd(
-    downmix: str | None = None,
+    downmix: str = None,
 ) -> FFMpegDecoderOption:
     """
     TrueHD
@@ -6076,7 +6116,7 @@ def truespeech() -> FFMpegDecoderOption:
 
 
 def tta(
-    password: str | None = None,
+    password: str = None,
 ) -> FFMpegDecoderOption:
     """
     TTA (True Audio)
@@ -6306,9 +6346,9 @@ def ass() -> FFMpegDecoderOption:
 
 
 def dvbsub(
-    compute_edt: bool | None = None,
-    compute_clut: bool | None = None,
-    dvb_substream: int | None = None,
+    compute_edt: str = None,
+    compute_clut: str = None,
+    dvb_substream: str = None,
 ) -> FFMpegDecoderOption:
     """
     DVB subtitles (codec dvb_subtitle)
@@ -6333,16 +6373,16 @@ def dvbsub(
 
 
 def libzvbi_teletextdec(
-    txt_page: str | None = None,
-    txt_default_region: int | None = None,
-    txt_chop_top: int | None = None,
-    txt_format: int | None | Literal["bitmap", "text", "ass"] = None,
-    txt_left: int | None = None,
-    txt_top: int | None = None,
-    txt_chop_spaces: int | None = None,
-    txt_duration: int | None = None,
-    txt_transparent: int | None = None,
-    txt_opacity: int | None = None,
+    txt_page: str = None,
+    txt_default_region: str = None,
+    txt_chop_top: str = None,
+    txt_format: str = None,
+    txt_left: str = None,
+    txt_top: str = None,
+    txt_chop_spaces: str = None,
+    txt_duration: str = None,
+    txt_transparent: str = None,
+    txt_opacity: str = None,
 ) -> FFMpegDecoderOption:
     """
     Libzvbi DVB teletext decoder (codec dvb_teletext)
@@ -6381,9 +6421,9 @@ def libzvbi_teletextdec(
 
 
 def dvdsub(
-    palette: str | None = None,
-    ifo_palette: str | None = None,
-    forced_subs_only: bool | None = None,
+    palette: str = None,
+    ifo_palette: str = None,
+    forced_subs_only: str = None,
 ) -> FFMpegDecoderOption:
     """
     DVD subtitles (codec dvd_subtitle)
@@ -6408,9 +6448,9 @@ def dvdsub(
 
 
 def cc_dec(
-    real_time: bool | None = None,
-    real_time_latency_msec: int | None = None,
-    data_field: int | None | Literal["auto", "first", "second"] = None,
+    real_time: str = None,
+    real_time_latency_msec: str = None,
+    data_field: str = None,
 ) -> FFMpegDecoderOption:
     """
     Closed Caption (EIA-608 / CEA-708) (codec eia_608)
@@ -6435,7 +6475,7 @@ def cc_dec(
 
 
 def pgssub(
-    forced_subs_only: bool | None = None,
+    forced_subs_only: str = None,
 ) -> FFMpegDecoderOption:
     """
     HDMV Presentation Graphic Stream subtitles (codec hdmv_pgs_subtitle)
@@ -6478,8 +6518,8 @@ def microdvd() -> FFMpegDecoderOption:
 
 
 def mov_text(
-    width: int | None = None,
-    height: int | None = None,
+    width: str = None,
+    height: str = None,
 ) -> FFMpegDecoderOption:
     """
     3GPP Timed Text subtitle
@@ -6513,7 +6553,7 @@ def mpl2() -> FFMpegDecoderOption:
 
 
 def pjs(
-    keep_ass_markup: bool | None = None,
+    keep_ass_markup: str = None,
 ) -> FFMpegDecoderOption:
     """
     PJS subtitle
@@ -6556,7 +6596,7 @@ def sami() -> FFMpegDecoderOption:
 
 
 def stl(
-    keep_ass_markup: bool | None = None,
+    keep_ass_markup: str = None,
 ) -> FFMpegDecoderOption:
     """
     Spruce subtitle format
@@ -6610,7 +6650,7 @@ def subviewer() -> FFMpegDecoderOption:
 
 
 def subviewer1(
-    keep_ass_markup: bool | None = None,
+    keep_ass_markup: str = None,
 ) -> FFMpegDecoderOption:
     """
     SubViewer1 subtitle
@@ -6631,7 +6671,7 @@ def subviewer1(
 
 
 def text(
-    keep_ass_markup: bool | None = None,
+    keep_ass_markup: str = None,
 ) -> FFMpegDecoderOption:
     """
     Raw text subtitle
@@ -6652,7 +6692,7 @@ def text(
 
 
 def vplayer(
-    keep_ass_markup: bool | None = None,
+    keep_ass_markup: str = None,
 ) -> FFMpegDecoderOption:
     """
     VPlayer subtitle

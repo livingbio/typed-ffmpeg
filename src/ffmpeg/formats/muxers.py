@@ -1,36 +1,34 @@
 # NOTE: this file is auto-generated, do not modify
-from typing import Literal
-
 from ..utils.frozendict import merge
 from .schema import FFMpegMuxerOption
 
 
 def _3g2(
-    movflags: str | None = None,
-    moov_size: int | None = None,
-    rtpflags: str | None = None,
-    skip_iods: bool | None = None,
-    iods_audio_profile: int | None = None,
-    iods_video_profile: int | None = None,
-    frag_duration: int | None = None,
-    min_frag_duration: int | None = None,
-    frag_size: int | None = None,
-    ism_lookahead: int | None = None,
-    video_track_timescale: int | None = None,
-    brand: str | None = None,
-    use_editlist: bool | None = None,
-    fragment_index: int | None = None,
-    mov_gamma: float | None = None,
-    frag_interleave: int | None = None,
-    encryption_scheme: str | None = None,
-    encryption_key: str | None = None,
-    encryption_kid: str | None = None,
-    use_stream_ids_as_track_ids: bool | None = None,
-    write_btrt: bool | None = None,
-    write_tmcd: bool | None = None,
-    write_prft: int | None | Literal["wallclock", "pts"] = None,
-    empty_hdlr_name: bool | None = None,
-    movie_timescale: int | None = None,
+    movflags: str = None,
+    moov_size: str = None,
+    rtpflags: str = None,
+    skip_iods: str = None,
+    iods_audio_profile: str = None,
+    iods_video_profile: str = None,
+    frag_duration: str = None,
+    min_frag_duration: str = None,
+    frag_size: str = None,
+    ism_lookahead: str = None,
+    video_track_timescale: str = None,
+    brand: str = None,
+    use_editlist: str = None,
+    fragment_index: str = None,
+    mov_gamma: str = None,
+    frag_interleave: str = None,
+    encryption_scheme: str = None,
+    encryption_key: str = None,
+    encryption_kid: str = None,
+    use_stream_ids_as_track_ids: str = None,
+    write_btrt: str = None,
+    write_tmcd: str = None,
+    write_prft: str = None,
+    empty_hdlr_name: str = None,
+    movie_timescale: str = None,
 ) -> FFMpegMuxerOption:
     """
     3GP2 (3GPP2 file format)
@@ -99,31 +97,31 @@ def _3g2(
 
 
 def _3gp(
-    movflags: str | None = None,
-    moov_size: int | None = None,
-    rtpflags: str | None = None,
-    skip_iods: bool | None = None,
-    iods_audio_profile: int | None = None,
-    iods_video_profile: int | None = None,
-    frag_duration: int | None = None,
-    min_frag_duration: int | None = None,
-    frag_size: int | None = None,
-    ism_lookahead: int | None = None,
-    video_track_timescale: int | None = None,
-    brand: str | None = None,
-    use_editlist: bool | None = None,
-    fragment_index: int | None = None,
-    mov_gamma: float | None = None,
-    frag_interleave: int | None = None,
-    encryption_scheme: str | None = None,
-    encryption_key: str | None = None,
-    encryption_kid: str | None = None,
-    use_stream_ids_as_track_ids: bool | None = None,
-    write_btrt: bool | None = None,
-    write_tmcd: bool | None = None,
-    write_prft: int | None | Literal["wallclock", "pts"] = None,
-    empty_hdlr_name: bool | None = None,
-    movie_timescale: int | None = None,
+    movflags: str = None,
+    moov_size: str = None,
+    rtpflags: str = None,
+    skip_iods: str = None,
+    iods_audio_profile: str = None,
+    iods_video_profile: str = None,
+    frag_duration: str = None,
+    min_frag_duration: str = None,
+    frag_size: str = None,
+    ism_lookahead: str = None,
+    video_track_timescale: str = None,
+    brand: str = None,
+    use_editlist: str = None,
+    fragment_index: str = None,
+    mov_gamma: str = None,
+    frag_interleave: str = None,
+    encryption_scheme: str = None,
+    encryption_key: str = None,
+    encryption_kid: str = None,
+    use_stream_ids_as_track_ids: str = None,
+    write_btrt: str = None,
+    write_tmcd: str = None,
+    write_prft: str = None,
+    empty_hdlr_name: str = None,
+    movie_timescale: str = None,
 ) -> FFMpegMuxerOption:
     """
     3GP (3GPP file format)
@@ -214,7 +212,7 @@ def ac3() -> FFMpegMuxerOption:
 
 
 def ac4(
-    write_crc: bool | None = None,
+    write_crc: str = None,
 ) -> FFMpegMuxerOption:
     """
     raw AC-4
@@ -235,9 +233,9 @@ def ac4(
 
 
 def adts(
-    write_id3v2: bool | None = None,
-    write_apetag: bool | None = None,
-    write_mpeg2: bool | None = None,
+    write_id3v2: str = None,
+    write_apetag: str = None,
+    write_mpeg2: str = None,
 ) -> FFMpegMuxerOption:
     """
     ADTS AAC (Advanced Audio Coding)
@@ -273,8 +271,8 @@ def adx() -> FFMpegMuxerOption:
 
 
 def aiff(
-    write_id3v2: bool | None = None,
-    id3v2_version: int | None = None,
+    write_id3v2: str = None,
+    id3v2_version: str = None,
 ) -> FFMpegMuxerOption:
     """
     Audio IFF
@@ -308,7 +306,7 @@ def alaw() -> FFMpegMuxerOption:
 
 
 def alp(
-    type: int | None | Literal["auto", "tun", "pcm"] = None,
+    type: str = None,
 ) -> FFMpegMuxerOption:
     """
     LEGO Racers ALP
@@ -373,8 +371,8 @@ def apm() -> FFMpegMuxerOption:
 
 
 def apng(
-    plays: int | None = None,
-    final_delay: str | None = None,
+    plays: str = None,
+    final_delay: str = None,
 ) -> FFMpegMuxerOption:
     """
     Animated Portable Network Graphics
@@ -419,9 +417,9 @@ def aptx_hd() -> FFMpegMuxerOption:
 
 
 def argo_asf(
-    version_major: int | None = None,
-    version_minor: int | None = None,
-    name: str | None = None,
+    version_major: str = None,
+    version_minor: str = None,
+    name: str = None,
 ) -> FFMpegMuxerOption:
     """
     Argonaut Games ASF
@@ -446,9 +444,9 @@ def argo_asf(
 
 
 def argo_cvg(
-    skip_rate_check: bool | None = None,
-    loop: bool | None = None,
-    reverb: bool | None = None,
+    skip_rate_check: str = None,
+    loop: str = None,
+    reverb: str = None,
 ) -> FFMpegMuxerOption:
     """
     Argonaut Games CVG
@@ -472,30 +470,50 @@ def argo_cvg(
     )
 
 
-def asf() -> FFMpegMuxerOption:
+def asf(
+    packet_size: str = None,
+) -> FFMpegMuxerOption:
     """
     ASF (Advanced / Active Streaming Format)
 
+    Args:
+        packet_size: Packet size (from 100 to 65536) (default 3200)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "packet_size": packet_size,
+            }
+        )
+    )
 
 
-def asf_stream() -> FFMpegMuxerOption:
+def asf_stream(
+    packet_size: str = None,
+) -> FFMpegMuxerOption:
     """
     ASF (Advanced / Active Streaming Format)
 
+    Args:
+        packet_size: Packet size (from 100 to 65536) (default 3200)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "packet_size": packet_size,
+            }
+        )
+    )
 
 
 def ass(
-    ignore_readorder: bool | None = None,
+    ignore_readorder: str = None,
 ) -> FFMpegMuxerOption:
     """
     SSA (SubStation Alpha) subtitle
@@ -516,8 +534,8 @@ def ass(
 
 
 def ast(
-    loopstart: int | None = None,
-    loopend: int | None = None,
+    loopstart: str = None,
+    loopend: str = None,
 ) -> FFMpegMuxerOption:
     """
     AST (Audio Stream)
@@ -551,9 +569,9 @@ def au() -> FFMpegMuxerOption:
 
 
 def avi(
-    reserve_index_space: int | None = None,
-    write_channel_mask: bool | None = None,
-    flipped_raw_rgb: bool | None = None,
+    reserve_index_space: str = None,
+    write_channel_mask: str = None,
+    flipped_raw_rgb: str = None,
 ) -> FFMpegMuxerOption:
     """
     AVI (Audio Video Interleaved)
@@ -578,8 +596,8 @@ def avi(
 
 
 def avif(
-    movie_timescale: int | None = None,
-    loop: int | None = None,
+    movie_timescale: str = None,
+    loop: str = None,
 ) -> FFMpegMuxerOption:
     """
     AVIF
@@ -646,17 +664,15 @@ def bit() -> FFMpegMuxerOption:
 
 
 def caca(
-    window_size: str | None = None,
-    window_title: str | None = None,
-    driver: str | None = None,
-    algorithm: str | None = None,
-    antialias: str | None = None,
-    charset: str | None = None,
-    color: str | None = None,
-    list_drivers: bool | None = None,
-    list_dither: str
-    | None
-    | Literal["algorithms", "antialiases", "charsets", "colors"] = None,
+    window_size: str = None,
+    window_title: str = None,
+    driver: str = None,
+    algorithm: str = None,
+    antialias: str = None,
+    charset: str = None,
+    color: str = None,
+    list_drivers: str = None,
+    list_dither: str = None,
 ) -> FFMpegMuxerOption:
     """
     caca (color ASCII art) output device
@@ -715,9 +731,9 @@ def cavsvideo() -> FFMpegMuxerOption:
 
 
 def chromaprint(
-    silence_threshold: int | None = None,
-    algorithm: int | None = None,
-    fp_format: int | None | Literal["raw", "compressed", "base64"] = None,
+    silence_threshold: str = None,
+    algorithm: str = None,
+    fp_format: str = None,
 ) -> FFMpegMuxerOption:
     """
     Chromaprint
@@ -775,44 +791,42 @@ def crc() -> FFMpegMuxerOption:
 
 
 def dash(
-    adaptation_sets: str | None = None,
-    window_size: int | None = None,
-    extra_window_size: int | None = None,
-    seg_duration: str | None = None,
-    frag_duration: str | None = None,
-    frag_type: int
-    | None
-    | Literal["none", "every_frame", "duration", "pframes"] = None,
-    remove_at_exit: bool | None = None,
-    use_template: bool | None = None,
-    use_timeline: bool | None = None,
-    single_file: bool | None = None,
-    single_file_name: str | None = None,
-    init_seg_name: str | None = None,
-    media_seg_name: str | None = None,
-    utc_timing_url: str | None = None,
-    method: str | None = None,
-    http_user_agent: str | None = None,
-    http_persistent: bool | None = None,
-    hls_playlist: bool | None = None,
-    hls_master_name: str | None = None,
-    streaming: bool | None = None,
-    timeout: str | None = None,
-    index_correction: bool | None = None,
-    format_options: str | None = None,
-    global_sidx: bool | None = None,
-    dash_segment_type: int | None | Literal["auto", "mp4", "webm"] = None,
-    ignore_io_errors: bool | None = None,
-    lhls: bool | None = None,
-    ldash: bool | None = None,
-    master_m3u8_publish_rate: int | None = None,
-    write_prft: bool | None = None,
-    mpd_profile: str | None = None,
-    http_opts: str | None = None,
-    target_latency: str | None = None,
-    min_playback_rate: str | None = None,
-    max_playback_rate: str | None = None,
-    update_period: int | None = None,
+    adaptation_sets: str = None,
+    window_size: str = None,
+    extra_window_size: str = None,
+    seg_duration: str = None,
+    frag_duration: str = None,
+    frag_type: str = None,
+    remove_at_exit: str = None,
+    use_template: str = None,
+    use_timeline: str = None,
+    single_file: str = None,
+    single_file_name: str = None,
+    init_seg_name: str = None,
+    media_seg_name: str = None,
+    utc_timing_url: str = None,
+    method: str = None,
+    http_user_agent: str = None,
+    http_persistent: str = None,
+    hls_playlist: str = None,
+    hls_master_name: str = None,
+    streaming: str = None,
+    timeout: str = None,
+    index_correction: str = None,
+    format_options: str = None,
+    global_sidx: str = None,
+    dash_segment_type: str = None,
+    ignore_io_errors: str = None,
+    lhls: str = None,
+    ldash: str = None,
+    master_m3u8_publish_rate: str = None,
+    write_prft: str = None,
+    mpd_profile: str = None,
+    http_opts: str = None,
+    target_latency: str = None,
+    min_playback_rate: str = None,
+    max_playback_rate: str = None,
+    update_period: str = None,
 ) -> FFMpegMuxerOption:
     """
     DASH Muxer
@@ -979,15 +993,28 @@ def dv() -> FFMpegMuxerOption:
     return FFMpegMuxerOption(kwargs=merge({}))
 
 
-def dvd() -> FFMpegMuxerOption:
+def dvd(
+    muxrate: str = None,
+    preload: str = None,
+) -> FFMpegMuxerOption:
     """
     MPEG-2 PS (DVD VOB)
 
+    Args:
+        muxrate: (from 0 to 1.67772e+09) (default 0)
+        preload: Initial demux-decode delay in microseconds. (from 0 to INT_MAX) (default 500000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "muxrate": muxrate,
+                "preload": preload,
+            }
+        )
+    )
 
 
 def eac3() -> FFMpegMuxerOption:
@@ -1035,31 +1062,31 @@ def f32le() -> FFMpegMuxerOption:
 
 
 def f4v(
-    movflags: str | None = None,
-    moov_size: int | None = None,
-    rtpflags: str | None = None,
-    skip_iods: bool | None = None,
-    iods_audio_profile: int | None = None,
-    iods_video_profile: int | None = None,
-    frag_duration: int | None = None,
-    min_frag_duration: int | None = None,
-    frag_size: int | None = None,
-    ism_lookahead: int | None = None,
-    video_track_timescale: int | None = None,
-    brand: str | None = None,
-    use_editlist: bool | None = None,
-    fragment_index: int | None = None,
-    mov_gamma: float | None = None,
-    frag_interleave: int | None = None,
-    encryption_scheme: str | None = None,
-    encryption_key: str | None = None,
-    encryption_kid: str | None = None,
-    use_stream_ids_as_track_ids: bool | None = None,
-    write_btrt: bool | None = None,
-    write_tmcd: bool | None = None,
-    write_prft: int | None | Literal["wallclock", "pts"] = None,
-    empty_hdlr_name: bool | None = None,
-    movie_timescale: int | None = None,
+    movflags: str = None,
+    moov_size: str = None,
+    rtpflags: str = None,
+    skip_iods: str = None,
+    iods_audio_profile: str = None,
+    iods_video_profile: str = None,
+    frag_duration: str = None,
+    min_frag_duration: str = None,
+    frag_size: str = None,
+    ism_lookahead: str = None,
+    video_track_timescale: str = None,
+    brand: str = None,
+    use_editlist: str = None,
+    fragment_index: str = None,
+    mov_gamma: str = None,
+    frag_interleave: str = None,
+    encryption_scheme: str = None,
+    encryption_key: str = None,
+    encryption_kid: str = None,
+    use_stream_ids_as_track_ids: str = None,
+    write_btrt: str = None,
+    write_tmcd: str = None,
+    write_prft: str = None,
+    empty_hdlr_name: str = None,
+    movie_timescale: str = None,
 ) -> FFMpegMuxerOption:
     """
     F4V Adobe Flash Video
@@ -1150,8 +1177,8 @@ def f64le() -> FFMpegMuxerOption:
 
 
 def fbdev(
-    xoffset: int | None = None,
-    yoffset: int | None = None,
+    xoffset: str = None,
+    yoffset: str = None,
 ) -> FFMpegMuxerOption:
     """
     Linux framebuffer
@@ -1185,17 +1212,17 @@ def ffmetadata() -> FFMpegMuxerOption:
 
 
 def fifo(
-    fifo_format: str | None = None,
-    queue_size: int | None = None,
-    format_opts: str | None = None,
-    drop_pkts_on_overflow: bool | None = None,
-    restart_with_keyframe: bool | None = None,
-    attempt_recovery: bool | None = None,
-    max_recovery_attempts: int | None = None,
-    recovery_wait_time: str | None = None,
-    recovery_wait_streamtime: bool | None = None,
-    recover_any_error: bool | None = None,
-    timeshift: str | None = None,
+    fifo_format: str = None,
+    queue_size: str = None,
+    format_opts: str = None,
+    drop_pkts_on_overflow: str = None,
+    restart_with_keyframe: str = None,
+    attempt_recovery: str = None,
+    max_recovery_attempts: str = None,
+    recovery_wait_time: str = None,
+    recovery_wait_streamtime: str = None,
+    recover_any_error: str = None,
+    timeshift: str = None,
 ) -> FFMpegMuxerOption:
     """
     FIFO queue pseudo-muxer
@@ -1236,9 +1263,9 @@ def fifo(
 
 
 def fifo_test(
-    write_header_ret: int | None = None,
-    write_trailer_ret: int | None = None,
-    print_deinit_summary: bool | None = None,
+    write_header_ret: str = None,
+    write_trailer_ret: str = None,
+    print_deinit_summary: str = None,
 ) -> FFMpegMuxerOption:
     """
     Fifo test muxer
@@ -1296,7 +1323,7 @@ def fits() -> FFMpegMuxerOption:
 
 
 def flac(
-    write_header: bool | None = None,
+    write_header: str = None,
 ) -> FFMpegMuxerOption:
     """
     raw FLAC
@@ -1317,7 +1344,7 @@ def flac(
 
 
 def flv(
-    flvflags: str | None = None,
+    flvflags: str = None,
 ) -> FFMpegMuxerOption:
     """
     FLV (Flash Video)
@@ -1349,8 +1376,8 @@ def framecrc() -> FFMpegMuxerOption:
 
 
 def framehash(
-    hash: str | None = None,
-    format_version: int | None = None,
+    hash: str = None,
+    format_version: str = None,
 ) -> FFMpegMuxerOption:
     """
     Per-frame hash testing
@@ -1373,8 +1400,8 @@ def framehash(
 
 
 def framemd5(
-    hash: str | None = None,
-    format_version: int | None = None,
+    hash: str = None,
+    format_version: str = None,
 ) -> FFMpegMuxerOption:
     """
     Per-frame MD5 testing
@@ -1441,8 +1468,8 @@ def g726le() -> FFMpegMuxerOption:
 
 
 def gif(
-    loop: int | None = None,
-    final_delay: int | None = None,
+    loop: str = None,
+    final_delay: str = None,
 ) -> FFMpegMuxerOption:
     """
     CompuServe Graphics Interchange Format (GIF)
@@ -1519,22 +1546,32 @@ def h264() -> FFMpegMuxerOption:
     return FFMpegMuxerOption(kwargs=merge({}))
 
 
-def hash() -> FFMpegMuxerOption:
+def hash(
+    hash: str = None,
+) -> FFMpegMuxerOption:
     """
     Hash testing
 
+    Args:
+        hash: set hash to use (default "sha256")
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "hash": hash,
+            }
+        )
+    )
 
 
 def hds(
-    window_size: int | None = None,
-    extra_window_size: int | None = None,
-    min_frag_duration: int | None = None,
-    remove_at_exit: bool | None = None,
+    window_size: str = None,
+    extra_window_size: str = None,
+    min_frag_duration: str = None,
+    remove_at_exit: str = None,
 ) -> FFMpegMuxerOption:
     """
     HDS Muxer
@@ -1572,43 +1609,41 @@ def hevc() -> FFMpegMuxerOption:
 
 
 def hls(
-    start_number: int | None = None,
-    hls_time: str | None = None,
-    hls_init_time: str | None = None,
-    hls_list_size: int | None = None,
-    hls_delete_threshold: int | None = None,
-    hls_vtt_options: str | None = None,
-    hls_allow_cache: int | None = None,
-    hls_base_url: str | None = None,
-    hls_segment_filename: str | None = None,
-    hls_segment_options: str | None = None,
-    hls_segment_size: int | None = None,
-    hls_key_info_file: str | None = None,
-    hls_enc: bool | None = None,
-    hls_enc_key: str | None = None,
-    hls_enc_key_url: str | None = None,
-    hls_enc_iv: str | None = None,
-    hls_subtitle_path: str | None = None,
-    hls_segment_type: int | None | Literal["mpegts", "fmp4"] = None,
-    hls_fmp4_init_filename: str | None = None,
-    hls_fmp4_init_resend: bool | None = None,
-    hls_flags: str | None = None,
-    strftime: bool | None = None,
-    strftime_mkdir: bool | None = None,
-    hls_playlist_type: int | None | Literal["event", "vod"] = None,
-    method: str | None = None,
-    hls_start_number_source: int
-    | None
-    | Literal["generic", "epoch", "epoch_us", "datetime"] = None,
-    http_user_agent: str | None = None,
-    var_stream_map: str | None = None,
-    cc_stream_map: str | None = None,
-    master_pl_name: str | None = None,
-    master_pl_publish_rate: int | None = None,
-    http_persistent: bool | None = None,
-    timeout: str | None = None,
-    ignore_io_errors: bool | None = None,
-    headers: str | None = None,
+    start_number: str = None,
+    hls_time: str = None,
+    hls_init_time: str = None,
+    hls_list_size: str = None,
+    hls_delete_threshold: str = None,
+    hls_vtt_options: str = None,
+    hls_allow_cache: str = None,
+    hls_base_url: str = None,
+    hls_segment_filename: str = None,
+    hls_segment_options: str = None,
+    hls_segment_size: str = None,
+    hls_key_info_file: str = None,
+    hls_enc: str = None,
+    hls_enc_key: str = None,
+    hls_enc_key_url: str = None,
+    hls_enc_iv: str = None,
+    hls_subtitle_path: str = None,
+    hls_segment_type: str = None,
+    hls_fmp4_init_filename: str = None,
+    hls_fmp4_init_resend: str = None,
+    hls_flags: str = None,
+    strftime: str = None,
+    strftime_mkdir: str = None,
+    hls_playlist_type: str = None,
+    method: str = None,
+    hls_start_number_source: str = None,
+    http_user_agent: str = None,
+    var_stream_map: str = None,
+    cc_stream_map: str = None,
+    master_pl_name: str = None,
+    master_pl_publish_rate: str = None,
+    http_persistent: str = None,
+    timeout: str = None,
+    ignore_io_errors: str = None,
+    headers: str = None,
 ) -> FFMpegMuxerOption:
     """
     Apple HTTP Live Streaming
@@ -1719,12 +1754,12 @@ def ilbc() -> FFMpegMuxerOption:
 
 
 def image2(
-    update: bool | None = None,
-    start_number: int | None = None,
-    strftime: bool | None = None,
-    frame_pts: bool | None = None,
-    atomic_writing: bool | None = None,
-    protocol_opts: str | None = None,
+    update: str = None,
+    start_number: str = None,
+    strftime: str = None,
+    frame_pts: str = None,
+    atomic_writing: str = None,
+    protocol_opts: str = None,
 ) -> FFMpegMuxerOption:
     """
     image2 sequence
@@ -1766,31 +1801,31 @@ def image2pipe() -> FFMpegMuxerOption:
 
 
 def ipod(
-    movflags: str | None = None,
-    moov_size: int | None = None,
-    rtpflags: str | None = None,
-    skip_iods: bool | None = None,
-    iods_audio_profile: int | None = None,
-    iods_video_profile: int | None = None,
-    frag_duration: int | None = None,
-    min_frag_duration: int | None = None,
-    frag_size: int | None = None,
-    ism_lookahead: int | None = None,
-    video_track_timescale: int | None = None,
-    brand: str | None = None,
-    use_editlist: bool | None = None,
-    fragment_index: int | None = None,
-    mov_gamma: float | None = None,
-    frag_interleave: int | None = None,
-    encryption_scheme: str | None = None,
-    encryption_key: str | None = None,
-    encryption_kid: str | None = None,
-    use_stream_ids_as_track_ids: bool | None = None,
-    write_btrt: bool | None = None,
-    write_tmcd: bool | None = None,
-    write_prft: int | None | Literal["wallclock", "pts"] = None,
-    empty_hdlr_name: bool | None = None,
-    movie_timescale: int | None = None,
+    movflags: str = None,
+    moov_size: str = None,
+    rtpflags: str = None,
+    skip_iods: str = None,
+    iods_audio_profile: str = None,
+    iods_video_profile: str = None,
+    frag_duration: str = None,
+    min_frag_duration: str = None,
+    frag_size: str = None,
+    ism_lookahead: str = None,
+    video_track_timescale: str = None,
+    brand: str = None,
+    use_editlist: str = None,
+    fragment_index: str = None,
+    mov_gamma: str = None,
+    frag_interleave: str = None,
+    encryption_scheme: str = None,
+    encryption_key: str = None,
+    encryption_kid: str = None,
+    use_stream_ids_as_track_ids: str = None,
+    write_btrt: str = None,
+    write_tmcd: str = None,
+    write_prft: str = None,
+    empty_hdlr_name: str = None,
+    movie_timescale: str = None,
 ) -> FFMpegMuxerOption:
     """
     iPod H.264 MP4 (MPEG-4 Part 14)
@@ -1870,31 +1905,31 @@ def ircam() -> FFMpegMuxerOption:
 
 
 def ismv(
-    movflags: str | None = None,
-    moov_size: int | None = None,
-    rtpflags: str | None = None,
-    skip_iods: bool | None = None,
-    iods_audio_profile: int | None = None,
-    iods_video_profile: int | None = None,
-    frag_duration: int | None = None,
-    min_frag_duration: int | None = None,
-    frag_size: int | None = None,
-    ism_lookahead: int | None = None,
-    video_track_timescale: int | None = None,
-    brand: str | None = None,
-    use_editlist: bool | None = None,
-    fragment_index: int | None = None,
-    mov_gamma: float | None = None,
-    frag_interleave: int | None = None,
-    encryption_scheme: str | None = None,
-    encryption_key: str | None = None,
-    encryption_kid: str | None = None,
-    use_stream_ids_as_track_ids: bool | None = None,
-    write_btrt: bool | None = None,
-    write_tmcd: bool | None = None,
-    write_prft: int | None | Literal["wallclock", "pts"] = None,
-    empty_hdlr_name: bool | None = None,
-    movie_timescale: int | None = None,
+    movflags: str = None,
+    moov_size: str = None,
+    rtpflags: str = None,
+    skip_iods: str = None,
+    iods_audio_profile: str = None,
+    iods_video_profile: str = None,
+    frag_duration: str = None,
+    min_frag_duration: str = None,
+    frag_size: str = None,
+    ism_lookahead: str = None,
+    video_track_timescale: str = None,
+    brand: str = None,
+    use_editlist: str = None,
+    fragment_index: str = None,
+    mov_gamma: str = None,
+    frag_interleave: str = None,
+    encryption_scheme: str = None,
+    encryption_key: str = None,
+    encryption_kid: str = None,
+    use_stream_ids_as_track_ids: str = None,
+    write_btrt: str = None,
+    write_tmcd: str = None,
+    write_prft: str = None,
+    empty_hdlr_name: str = None,
+    movie_timescale: str = None,
 ) -> FFMpegMuxerOption:
     """
     ISMV/ISMA (Smooth Streaming)
@@ -1996,7 +2031,7 @@ def kvag() -> FFMpegMuxerOption:
 
 
 def latm(
-    smc_interval: int | None = None,
+    smc_interval: str = None,
 ) -> FFMpegMuxerOption:
     """
     LOAS/LATM
@@ -2039,17 +2074,17 @@ def m4v() -> FFMpegMuxerOption:
 
 
 def matroska(
-    reserve_index_space: int | None = None,
-    cues_to_front: bool | None = None,
-    cluster_size_limit: int | None = None,
-    cluster_time_limit: int | None = None,
-    dash: bool | None = None,
-    dash_track_number: int | None = None,
-    live: bool | None = None,
-    allow_raw_vfw: bool | None = None,
-    flipped_raw_rgb: bool | None = None,
-    write_crc32: bool | None = None,
-    default_mode: int | None | Literal["infer", "infer_no_subs", "passthrough"] = None,
+    reserve_index_space: str = None,
+    cues_to_front: str = None,
+    cluster_size_limit: str = None,
+    cluster_time_limit: str = None,
+    dash: str = None,
+    dash_track_number: str = None,
+    live: str = None,
+    allow_raw_vfw: str = None,
+    flipped_raw_rgb: str = None,
+    write_crc32: str = None,
+    default_mode: str = None,
 ) -> FFMpegMuxerOption:
     """
     Matroska
@@ -2090,7 +2125,7 @@ def matroska(
 
 
 def md5(
-    hash: str | None = None,
+    hash: str = None,
 ) -> FFMpegMuxerOption:
     """
     MD5 testing
@@ -2166,31 +2201,31 @@ def mmf() -> FFMpegMuxerOption:
 
 
 def mov(
-    movflags: str | None = None,
-    moov_size: int | None = None,
-    rtpflags: str | None = None,
-    skip_iods: bool | None = None,
-    iods_audio_profile: int | None = None,
-    iods_video_profile: int | None = None,
-    frag_duration: int | None = None,
-    min_frag_duration: int | None = None,
-    frag_size: int | None = None,
-    ism_lookahead: int | None = None,
-    video_track_timescale: int | None = None,
-    brand: str | None = None,
-    use_editlist: bool | None = None,
-    fragment_index: int | None = None,
-    mov_gamma: float | None = None,
-    frag_interleave: int | None = None,
-    encryption_scheme: str | None = None,
-    encryption_key: str | None = None,
-    encryption_kid: str | None = None,
-    use_stream_ids_as_track_ids: bool | None = None,
-    write_btrt: bool | None = None,
-    write_tmcd: bool | None = None,
-    write_prft: int | None | Literal["wallclock", "pts"] = None,
-    empty_hdlr_name: bool | None = None,
-    movie_timescale: int | None = None,
+    movflags: str = None,
+    moov_size: str = None,
+    rtpflags: str = None,
+    skip_iods: str = None,
+    iods_audio_profile: str = None,
+    iods_video_profile: str = None,
+    frag_duration: str = None,
+    min_frag_duration: str = None,
+    frag_size: str = None,
+    ism_lookahead: str = None,
+    video_track_timescale: str = None,
+    brand: str = None,
+    use_editlist: str = None,
+    fragment_index: str = None,
+    mov_gamma: str = None,
+    frag_interleave: str = None,
+    encryption_scheme: str = None,
+    encryption_key: str = None,
+    encryption_kid: str = None,
+    use_stream_ids_as_track_ids: str = None,
+    write_btrt: str = None,
+    write_tmcd: str = None,
+    write_prft: str = None,
+    empty_hdlr_name: str = None,
+    movie_timescale: str = None,
 ) -> FFMpegMuxerOption:
     """
     QuickTime / MOV
@@ -2270,9 +2305,9 @@ def mp2() -> FFMpegMuxerOption:
 
 
 def mp3(
-    id3v2_version: int | None = None,
-    write_id3v1: bool | None = None,
-    write_xing: bool | None = None,
+    id3v2_version: str = None,
+    write_id3v1: str = None,
+    write_xing: str = None,
 ) -> FFMpegMuxerOption:
     """
     MP3 (MPEG audio layer 3)
@@ -2297,31 +2332,31 @@ def mp3(
 
 
 def mp4(
-    movflags: str | None = None,
-    moov_size: int | None = None,
-    rtpflags: str | None = None,
-    skip_iods: bool | None = None,
-    iods_audio_profile: int | None = None,
-    iods_video_profile: int | None = None,
-    frag_duration: int | None = None,
-    min_frag_duration: int | None = None,
-    frag_size: int | None = None,
-    ism_lookahead: int | None = None,
-    video_track_timescale: int | None = None,
-    brand: str | None = None,
-    use_editlist: bool | None = None,
-    fragment_index: int | None = None,
-    mov_gamma: float | None = None,
-    frag_interleave: int | None = None,
-    encryption_scheme: str | None = None,
-    encryption_key: str | None = None,
-    encryption_kid: str | None = None,
-    use_stream_ids_as_track_ids: bool | None = None,
-    write_btrt: bool | None = None,
-    write_tmcd: bool | None = None,
-    write_prft: int | None | Literal["wallclock", "pts"] = None,
-    empty_hdlr_name: bool | None = None,
-    movie_timescale: int | None = None,
+    movflags: str = None,
+    moov_size: str = None,
+    rtpflags: str = None,
+    skip_iods: str = None,
+    iods_audio_profile: str = None,
+    iods_video_profile: str = None,
+    frag_duration: str = None,
+    min_frag_duration: str = None,
+    frag_size: str = None,
+    ism_lookahead: str = None,
+    video_track_timescale: str = None,
+    brand: str = None,
+    use_editlist: str = None,
+    fragment_index: str = None,
+    mov_gamma: str = None,
+    frag_interleave: str = None,
+    encryption_scheme: str = None,
+    encryption_key: str = None,
+    encryption_kid: str = None,
+    use_stream_ids_as_track_ids: str = None,
+    write_btrt: str = None,
+    write_tmcd: str = None,
+    write_prft: str = None,
+    empty_hdlr_name: str = None,
+    movie_timescale: str = None,
 ) -> FFMpegMuxerOption:
     """
     MP4 (MPEG-4 Part 14)
@@ -2389,15 +2424,28 @@ def mp4(
     )
 
 
-def mpeg() -> FFMpegMuxerOption:
+def mpeg(
+    muxrate: str = None,
+    preload: str = None,
+) -> FFMpegMuxerOption:
     """
     MPEG-1 Systems / MPEG program stream
 
+    Args:
+        muxrate: (from 0 to 1.67772e+09) (default 0)
+        preload: Initial demux-decode delay in microseconds. (from 0 to INT_MAX) (default 500000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "muxrate": muxrate,
+                "preload": preload,
+            }
+        )
+    )
 
 
 def mpeg1video() -> FFMpegMuxerOption:
@@ -2423,34 +2471,23 @@ def mpeg2video() -> FFMpegMuxerOption:
 
 
 def mpegts(
-    mpegts_transport_stream_id: int | None = None,
-    mpegts_original_network_id: int | None = None,
-    mpegts_service_id: int | None = None,
-    mpegts_service_type: int
-    | None
-    | Literal[
-        "digital_tv",
-        "digital_radio",
-        "teletext",
-        "advanced_codec_digital_radio",
-        "mpeg2_digital_hdtv",
-        "advanced_codec_digital_sdtv",
-        "advanced_codec_digital_hdtv",
-        "hevc_digital_hdtv",
-    ] = None,
-    mpegts_pmt_start_pid: int | None = None,
-    mpegts_start_pid: int | None = None,
-    mpegts_m2ts_mode: bool | None = None,
-    muxrate: int | None = None,
-    pes_payload_size: int | None = None,
-    mpegts_flags: str | None = None,
-    mpegts_copyts: bool | None = None,
-    tables_version: int | None = None,
-    omit_video_pes_length: bool | None = None,
-    pcr_period: int | None = None,
-    pat_period: str | None = None,
-    sdt_period: str | None = None,
-    nit_period: str | None = None,
+    mpegts_transport_stream_id: str = None,
+    mpegts_original_network_id: str = None,
+    mpegts_service_id: str = None,
+    mpegts_service_type: str = None,
+    mpegts_pmt_start_pid: str = None,
+    mpegts_start_pid: str = None,
+    mpegts_m2ts_mode: str = None,
+    muxrate: str = None,
+    pes_payload_size: str = None,
+    mpegts_flags: str = None,
+    mpegts_copyts: str = None,
+    tables_version: str = None,
+    omit_video_pes_length: str = None,
+    pcr_period: str = None,
+    pat_period: str = None,
+    sdt_period: str = None,
+    nit_period: str = None,
 ) -> FFMpegMuxerOption:
     """
     MPEG-TS (MPEG-2 Transport Stream)
@@ -2503,7 +2540,7 @@ def mpegts(
 
 
 def mpjpeg(
-    boundary_tag: str | None = None,
+    boundary_tag: str = None,
 ) -> FFMpegMuxerOption:
     """
     MIME multipart JPEG
@@ -2535,18 +2572,8 @@ def mulaw() -> FFMpegMuxerOption:
 
 
 def mxf(
-    signal_standard: int
-    | None
-    | Literal[
-        "bt601",
-        "bt1358",
-        "smpte347m",
-        "smpte274m",
-        "smpte296m",
-        "smpte349m",
-        "smpte428",
-    ] = None,
-    store_user_comments: bool | None = None,
+    signal_standard: str = None,
+    store_user_comments: str = None,
 ) -> FFMpegMuxerOption:
     """
     MXF (Material eXchange Format)
@@ -2568,26 +2595,58 @@ def mxf(
     )
 
 
-def mxf_d10() -> FFMpegMuxerOption:
+def mxf_d10(
+    d10_channelcount: str = None,
+    signal_standard: str = None,
+    store_user_comments: str = None,
+) -> FFMpegMuxerOption:
     """
     MXF (Material eXchange Format) D-10 Mapping
 
+    Args:
+        d10_channelcount: Force/set channelcount in generic sound essence descriptor (from -1 to 8) (default -1)
+        signal_standard: Force/set Signal Standard (from -1 to 7) (default -1)
+        store_user_comments: (default false)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "d10_channelcount": d10_channelcount,
+                "signal_standard": signal_standard,
+                "store_user_comments": store_user_comments,
+            }
+        )
+    )
 
 
-def mxf_opatom() -> FFMpegMuxerOption:
+def mxf_opatom(
+    mxf_audio_edit_rate: str = None,
+    signal_standard: str = None,
+    store_user_comments: str = None,
+) -> FFMpegMuxerOption:
     """
     MXF (Material eXchange Format) Operational Pattern Atom
 
+    Args:
+        mxf_audio_edit_rate: Audio edit rate for timecode (from 0 to INT_MAX) (default 25/1)
+        signal_standard: Force/set Signal Standard (from -1 to 7) (default -1)
+        store_user_comments: (default true)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "mxf_audio_edit_rate": mxf_audio_edit_rate,
+                "signal_standard": signal_standard,
+                "store_user_comments": store_user_comments,
+            }
+        )
+    )
 
 
 def null() -> FFMpegMuxerOption:
@@ -2602,8 +2661,8 @@ def null() -> FFMpegMuxerOption:
 
 
 def nut(
-    syncpoints: str | None = None,
-    write_index: bool | None = None,
+    syncpoints: str = None,
+    write_index: str = None,
 ) -> FFMpegMuxerOption:
     """
     NUT
@@ -2636,37 +2695,94 @@ def obu() -> FFMpegMuxerOption:
     return FFMpegMuxerOption(kwargs=merge({}))
 
 
-def oga() -> FFMpegMuxerOption:
+def oga(
+    serial_offset: str = None,
+    oggpagesize: str = None,
+    pagesize: str = None,
+    page_duration: str = None,
+) -> FFMpegMuxerOption:
     """
     Ogg Audio
 
+    Args:
+        serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
+        oggpagesize: Set preferred Ogg page size. (from 0 to 65025) (default 0)
+        pagesize: preferred page size in bytes (deprecated) (from 0 to 65025) (default 0)
+        page_duration: preferred page duration, in microseconds (from 0 to I64_MAX) (default 1000000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "serial_offset": serial_offset,
+                "oggpagesize": oggpagesize,
+                "pagesize": pagesize,
+                "page_duration": page_duration,
+            }
+        )
+    )
 
 
-def ogg() -> FFMpegMuxerOption:
+def ogg(
+    serial_offset: str = None,
+    oggpagesize: str = None,
+    pagesize: str = None,
+    page_duration: str = None,
+) -> FFMpegMuxerOption:
     """
     Ogg
 
+    Args:
+        serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
+        oggpagesize: Set preferred Ogg page size. (from 0 to 65025) (default 0)
+        pagesize: preferred page size in bytes (deprecated) (from 0 to 65025) (default 0)
+        page_duration: preferred page duration, in microseconds (from 0 to I64_MAX) (default 1000000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "serial_offset": serial_offset,
+                "oggpagesize": oggpagesize,
+                "pagesize": pagesize,
+                "page_duration": page_duration,
+            }
+        )
+    )
 
 
-def ogv() -> FFMpegMuxerOption:
+def ogv(
+    serial_offset: str = None,
+    oggpagesize: str = None,
+    pagesize: str = None,
+    page_duration: str = None,
+) -> FFMpegMuxerOption:
     """
     Ogg Video
 
+    Args:
+        serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
+        oggpagesize: Set preferred Ogg page size. (from 0 to 65025) (default 0)
+        pagesize: preferred page size in bytes (deprecated) (from 0 to 65025) (default 0)
+        page_duration: preferred page duration, in microseconds (from 0 to I64_MAX) (default 1000000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "serial_offset": serial_offset,
+                "oggpagesize": oggpagesize,
+                "pagesize": pagesize,
+                "page_duration": page_duration,
+            }
+        )
+    )
 
 
 def oma() -> FFMpegMuxerOption:
@@ -2681,10 +2797,10 @@ def oma() -> FFMpegMuxerOption:
 
 
 def opengl(
-    background: str | None = None,
-    no_window: int | None = None,
-    window_title: str | None = None,
-    window_size: str | None = None,
+    background: str = None,
+    no_window: str = None,
+    window_title: str = None,
+    window_size: str = None,
 ) -> FFMpegMuxerOption:
     """
     OpenGL output
@@ -2710,15 +2826,34 @@ def opengl(
     )
 
 
-def opus() -> FFMpegMuxerOption:
+def opus(
+    serial_offset: str = None,
+    oggpagesize: str = None,
+    pagesize: str = None,
+    page_duration: str = None,
+) -> FFMpegMuxerOption:
     """
     Ogg Opus
 
+    Args:
+        serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
+        oggpagesize: Set preferred Ogg page size. (from 0 to 65025) (default 0)
+        pagesize: preferred page size in bytes (deprecated) (from 0 to 65025) (default 0)
+        page_duration: preferred page duration, in microseconds (from 0 to I64_MAX) (default 1000000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "serial_offset": serial_offset,
+                "oggpagesize": oggpagesize,
+                "pagesize": pagesize,
+                "page_duration": page_duration,
+            }
+        )
+    )
 
 
 def oss() -> FFMpegMuxerOption:
@@ -2733,31 +2868,31 @@ def oss() -> FFMpegMuxerOption:
 
 
 def psp(
-    movflags: str | None = None,
-    moov_size: int | None = None,
-    rtpflags: str | None = None,
-    skip_iods: bool | None = None,
-    iods_audio_profile: int | None = None,
-    iods_video_profile: int | None = None,
-    frag_duration: int | None = None,
-    min_frag_duration: int | None = None,
-    frag_size: int | None = None,
-    ism_lookahead: int | None = None,
-    video_track_timescale: int | None = None,
-    brand: str | None = None,
-    use_editlist: bool | None = None,
-    fragment_index: int | None = None,
-    mov_gamma: float | None = None,
-    frag_interleave: int | None = None,
-    encryption_scheme: str | None = None,
-    encryption_key: str | None = None,
-    encryption_kid: str | None = None,
-    use_stream_ids_as_track_ids: bool | None = None,
-    write_btrt: bool | None = None,
-    write_tmcd: bool | None = None,
-    write_prft: int | None | Literal["wallclock", "pts"] = None,
-    empty_hdlr_name: bool | None = None,
-    movie_timescale: int | None = None,
+    movflags: str = None,
+    moov_size: str = None,
+    rtpflags: str = None,
+    skip_iods: str = None,
+    iods_audio_profile: str = None,
+    iods_video_profile: str = None,
+    frag_duration: str = None,
+    min_frag_duration: str = None,
+    frag_size: str = None,
+    ism_lookahead: str = None,
+    video_track_timescale: str = None,
+    brand: str = None,
+    use_editlist: str = None,
+    fragment_index: str = None,
+    mov_gamma: str = None,
+    frag_interleave: str = None,
+    encryption_scheme: str = None,
+    encryption_key: str = None,
+    encryption_kid: str = None,
+    use_stream_ids_as_track_ids: str = None,
+    write_btrt: str = None,
+    write_tmcd: str = None,
+    write_prft: str = None,
+    empty_hdlr_name: str = None,
+    movie_timescale: str = None,
 ) -> FFMpegMuxerOption:
     """
     PSP MP4 (MPEG-4 Part 14)
@@ -2826,14 +2961,14 @@ def psp(
 
 
 def pulse(
-    server: str | None = None,
-    name: str | None = None,
-    stream_name: str | None = None,
-    device: str | None = None,
-    buffer_size: int | None = None,
-    buffer_duration: int | None = None,
-    prebuf: int | None = None,
-    minreq: int | None = None,
+    server: str = None,
+    name: str = None,
+    stream_name: str = None,
+    device: str = None,
+    buffer_size: str = None,
+    buffer_duration: str = None,
+    prebuf: str = None,
+    minreq: str = None,
 ) -> FFMpegMuxerOption:
     """
     Pulse audio output
@@ -2912,11 +3047,11 @@ def rso() -> FFMpegMuxerOption:
 
 
 def rtp(
-    rtpflags: str | None = None,
-    payload_type: int | None = None,
-    ssrc: int | None = None,
-    cname: str | None = None,
-    seq: int | None = None,
+    rtpflags: str = None,
+    payload_type: str = None,
+    ssrc: str = None,
+    cname: str = None,
+    seq: str = None,
 ) -> FFMpegMuxerOption:
     """
     RTP output
@@ -2945,8 +3080,8 @@ def rtp(
 
 
 def rtp_mpegts(
-    mpegts_muxer_options: str | None = None,
-    rtp_muxer_options: str | None = None,
+    mpegts_muxer_options: str = None,
+    rtp_muxer_options: str = None,
 ) -> FFMpegMuxerOption:
     """
     RTP/mpegts output format
@@ -2969,12 +3104,12 @@ def rtp_mpegts(
 
 
 def rtsp(
-    rtpflags: str | None = None,
-    rtsp_transport: str | None = None,
-    min_port: int | None = None,
-    max_port: int | None = None,
-    buffer_size: int | None = None,
-    pkt_size: int | None = None,
+    rtpflags: str = None,
+    rtsp_transport: str = None,
+    min_port: str = None,
+    max_port: str = None,
+    buffer_size: str = None,
+    pkt_size: str = None,
 ) -> FFMpegMuxerOption:
     """
     RTSP output
@@ -3114,15 +3249,106 @@ def scc() -> FFMpegMuxerOption:
     return FFMpegMuxerOption(kwargs=merge({}))
 
 
-def segment() -> FFMpegMuxerOption:
+def segment(
+    reference_stream: str = None,
+    segment_format: str = None,
+    segment_format_options: str = None,
+    segment_list: str = None,
+    segment_header_filename: str = None,
+    segment_list_flags: str = None,
+    segment_list_size: str = None,
+    segment_list_type: str = None,
+    segment_atclocktime: str = None,
+    segment_clocktime_offset: str = None,
+    segment_clocktime_wrap_duration: str = None,
+    segment_time: str = None,
+    segment_time_delta: str = None,
+    min_seg_duration: str = None,
+    segment_times: str = None,
+    segment_frames: str = None,
+    segment_wrap: str = None,
+    segment_list_entry_prefix: str = None,
+    segment_start_number: str = None,
+    segment_wrap_number: str = None,
+    strftime: str = None,
+    increment_tc: str = None,
+    break_non_keyframes: str = None,
+    individual_header_trailer: str = None,
+    write_header_trailer: str = None,
+    reset_timestamps: str = None,
+    initial_offset: str = None,
+    write_empty_segments: str = None,
+) -> FFMpegMuxerOption:
     """
     segment
 
+    Args:
+        reference_stream: set reference stream (default "auto")
+        segment_format: set container format used for the segments
+        segment_format_options: set list of options for the container format used for the segments
+        segment_list: set the segment list filename
+        segment_header_filename: write a single file containing the header
+        segment_list_flags: set flags affecting segment list generation (default cache)
+        segment_list_size: set the maximum number of playlist entries (from 0 to INT_MAX) (default 0)
+        segment_list_type: set the segment list type (from -1 to 4) (default -1)
+        segment_atclocktime: set segment to be cut at clocktime (default false)
+        segment_clocktime_offset: set segment clocktime offset (default 0)
+        segment_clocktime_wrap_duration: set segment clocktime wrapping duration (default INT64_MAX)
+        segment_time: set segment duration (default 2)
+        segment_time_delta: set approximation value used for the segment times (default 0)
+        min_seg_duration: set minimum segment duration (default 0)
+        segment_times: set segment split time points
+        segment_frames: set segment split frame numbers
+        segment_wrap: set number after which the index wraps (from 0 to INT_MAX) (default 0)
+        segment_list_entry_prefix: set base url prefix for segments
+        segment_start_number: set the sequence number of the first segment (from 0 to INT_MAX) (default 0)
+        segment_wrap_number: set the number of wrap before the first segment (from 0 to INT_MAX) (default 0)
+        strftime: set filename expansion with strftime at segment creation (default false)
+        increment_tc: increment timecode between each segment (default false)
+        break_non_keyframes: allow breaking segments on non-keyframes (default false)
+        individual_header_trailer: write header/trailer to each segment (default true)
+        write_header_trailer: write a header to the first segment and a trailer to the last one (default true)
+        reset_timestamps: reset timestamps at the beginning of each segment (default false)
+        initial_offset: set initial timestamp offset (default 0)
+        write_empty_segments: allow writing empty 'filler' segments (default false)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "reference_stream": reference_stream,
+                "segment_format": segment_format,
+                "segment_format_options": segment_format_options,
+                "segment_list": segment_list,
+                "segment_header_filename": segment_header_filename,
+                "segment_list_flags": segment_list_flags,
+                "segment_list_size": segment_list_size,
+                "segment_list_type": segment_list_type,
+                "segment_atclocktime": segment_atclocktime,
+                "segment_clocktime_offset": segment_clocktime_offset,
+                "segment_clocktime_wrap_duration": segment_clocktime_wrap_duration,
+                "segment_time": segment_time,
+                "segment_time_delta": segment_time_delta,
+                "min_seg_duration": min_seg_duration,
+                "segment_times": segment_times,
+                "segment_frames": segment_frames,
+                "segment_wrap": segment_wrap,
+                "segment_list_entry_prefix": segment_list_entry_prefix,
+                "segment_start_number": segment_start_number,
+                "segment_wrap_number": segment_wrap_number,
+                "strftime": strftime,
+                "increment_tc": increment_tc,
+                "break_non_keyframes": break_non_keyframes,
+                "individual_header_trailer": individual_header_trailer,
+                "write_header_trailer": write_header_trailer,
+                "reset_timestamps": reset_timestamps,
+                "initial_offset": initial_offset,
+                "write_empty_segments": write_empty_segments,
+            }
+        )
+    )
 
 
 def smjpeg() -> FFMpegMuxerOption:
@@ -3137,11 +3363,11 @@ def smjpeg() -> FFMpegMuxerOption:
 
 
 def smoothstreaming(
-    window_size: int | None = None,
-    extra_window_size: int | None = None,
-    lookahead_count: int | None = None,
-    min_frag_duration: int | None = None,
-    remove_at_exit: bool | None = None,
+    window_size: str = None,
+    extra_window_size: str = None,
+    lookahead_count: str = None,
+    min_frag_duration: str = None,
+    remove_at_exit: str = None,
 ) -> FFMpegMuxerOption:
     """
     Smooth Streaming Muxer
@@ -3181,9 +3407,9 @@ def sox() -> FFMpegMuxerOption:
 
 
 def spdif(
-    spdif_flags: str | None = None,
-    dtshd_rate: int | None = None,
-    dtshd_fallback_time: int | None = None,
+    spdif_flags: str = None,
+    dtshd_rate: str = None,
+    dtshd_fallback_time: str = None,
 ) -> FFMpegMuxerOption:
     """
     IEC 61937 (used on S/PDIF - IEC958)
@@ -3207,15 +3433,34 @@ def spdif(
     )
 
 
-def spx() -> FFMpegMuxerOption:
+def spx(
+    serial_offset: str = None,
+    oggpagesize: str = None,
+    pagesize: str = None,
+    page_duration: str = None,
+) -> FFMpegMuxerOption:
     """
     Ogg Speex
 
+    Args:
+        serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
+        oggpagesize: Set preferred Ogg page size. (from 0 to 65025) (default 0)
+        pagesize: preferred page size in bytes (deprecated) (from 0 to 65025) (default 0)
+        page_duration: preferred page duration, in microseconds (from 0 to I64_MAX) (default 1000000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "serial_offset": serial_offset,
+                "oggpagesize": oggpagesize,
+                "pagesize": pagesize,
+                "page_duration": page_duration,
+            }
+        )
+    )
 
 
 def srt() -> FFMpegMuxerOption:
@@ -3229,15 +3474,25 @@ def srt() -> FFMpegMuxerOption:
     return FFMpegMuxerOption(kwargs=merge({}))
 
 
-def streamhash() -> FFMpegMuxerOption:
+def streamhash(
+    hash: str = None,
+) -> FFMpegMuxerOption:
     """
     Per-stream hash testing
 
+    Args:
+        hash: set hash to use (default "sha256")
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "hash": hash,
+            }
+        )
+    )
 
 
 def sup() -> FFMpegMuxerOption:
@@ -3251,15 +3506,28 @@ def sup() -> FFMpegMuxerOption:
     return FFMpegMuxerOption(kwargs=merge({}))
 
 
-def svcd() -> FFMpegMuxerOption:
+def svcd(
+    muxrate: str = None,
+    preload: str = None,
+) -> FFMpegMuxerOption:
     """
     MPEG-2 PS (SVCD)
 
+    Args:
+        muxrate: (from 0 to 1.67772e+09) (default 0)
+        preload: Initial demux-decode delay in microseconds. (from 0 to INT_MAX) (default 500000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "muxrate": muxrate,
+                "preload": preload,
+            }
+        )
+    )
 
 
 def swf() -> FFMpegMuxerOption:
@@ -3274,8 +3542,8 @@ def swf() -> FFMpegMuxerOption:
 
 
 def tee(
-    use_fifo: bool | None = None,
-    fifo_options: str | None = None,
+    use_fifo: str = None,
+    fifo_options: str = None,
 ) -> FFMpegMuxerOption:
     """
     Multiple muxer tee
@@ -3440,15 +3708,28 @@ def vc1test() -> FFMpegMuxerOption:
     return FFMpegMuxerOption(kwargs=merge({}))
 
 
-def vcd() -> FFMpegMuxerOption:
+def vcd(
+    muxrate: str = None,
+    preload: str = None,
+) -> FFMpegMuxerOption:
     """
     MPEG-1 Systems / MPEG program stream (VCD)
 
+    Args:
+        muxrate: (from 0 to 1.67772e+09) (default 0)
+        preload: Initial demux-decode delay in microseconds. (from 0 to INT_MAX) (default 500000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "muxrate": muxrate,
+                "preload": preload,
+            }
+        )
+    )
 
 
 def vidc() -> FFMpegMuxerOption:
@@ -3462,15 +3743,28 @@ def vidc() -> FFMpegMuxerOption:
     return FFMpegMuxerOption(kwargs=merge({}))
 
 
-def vob() -> FFMpegMuxerOption:
+def vob(
+    muxrate: str = None,
+    preload: str = None,
+) -> FFMpegMuxerOption:
     """
     MPEG-2 PS (VOB)
 
+    Args:
+        muxrate: (from 0 to 1.67772e+09) (default 0)
+        preload: Initial demux-decode delay in microseconds. (from 0 to INT_MAX) (default 500000)
 
     Returns:
         the set codec options
     """
-    return FFMpegMuxerOption(kwargs=merge({}))
+    return FFMpegMuxerOption(
+        kwargs=merge(
+            {
+                "muxrate": muxrate,
+                "preload": preload,
+            }
+        )
+    )
 
 
 def voc() -> FFMpegMuxerOption:
@@ -3507,12 +3801,12 @@ def w64() -> FFMpegMuxerOption:
 
 
 def wav(
-    write_bext: bool | None = None,
-    write_peak: int | None | Literal["off", "on", "only"] = None,
-    rf64: int | None | Literal["auto", "always", "never"] = None,
-    peak_block_size: int | None = None,
-    peak_format: int | None = None,
-    peak_ppv: int | None = None,
+    write_bext: str = None,
+    write_peak: str = None,
+    rf64: str = None,
+    peak_block_size: str = None,
+    peak_format: str = None,
+    peak_ppv: str = None,
 ) -> FFMpegMuxerOption:
     """
     WAV / WAVE (Waveform Audio)
@@ -3543,17 +3837,17 @@ def wav(
 
 
 def webm(
-    reserve_index_space: int | None = None,
-    cues_to_front: bool | None = None,
-    cluster_size_limit: int | None = None,
-    cluster_time_limit: int | None = None,
-    dash: bool | None = None,
-    dash_track_number: int | None = None,
-    live: bool | None = None,
-    allow_raw_vfw: bool | None = None,
-    flipped_raw_rgb: bool | None = None,
-    write_crc32: bool | None = None,
-    default_mode: int | None | Literal["infer", "infer_no_subs", "passthrough"] = None,
+    reserve_index_space: str = None,
+    cues_to_front: str = None,
+    cluster_size_limit: str = None,
+    cluster_time_limit: str = None,
+    dash: str = None,
+    dash_track_number: str = None,
+    live: str = None,
+    allow_raw_vfw: str = None,
+    flipped_raw_rgb: str = None,
+    write_crc32: str = None,
+    default_mode: str = None,
 ) -> FFMpegMuxerOption:
     """
     WebM
@@ -3594,10 +3888,10 @@ def webm(
 
 
 def webm_chunk(
-    chunk_start_index: int | None = None,
-    header: str | None = None,
-    audio_chunk_duration: int | None = None,
-    method: str | None = None,
+    chunk_start_index: str = None,
+    header: str = None,
+    audio_chunk_duration: str = None,
+    method: str = None,
 ) -> FFMpegMuxerOption:
     """
     WebM Chunk Muxer
@@ -3624,13 +3918,13 @@ def webm_chunk(
 
 
 def webm_dash_manifest(
-    adaptation_sets: str | None = None,
-    live: bool | None = None,
-    chunk_start_index: int | None = None,
-    chunk_duration_ms: int | None = None,
-    utc_timing_url: str | None = None,
-    time_shift_buffer_depth: float | None = None,
-    minimum_update_period: int | None = None,
+    adaptation_sets: str = None,
+    live: str = None,
+    chunk_start_index: str = None,
+    chunk_duration_ms: str = None,
+    utc_timing_url: str = None,
+    time_shift_buffer_depth: str = None,
+    minimum_update_period: str = None,
 ) -> FFMpegMuxerOption:
     """
     WebM DASH Manifest
@@ -3663,7 +3957,7 @@ def webm_dash_manifest(
 
 
 def webp(
-    loop: int | None = None,
+    loop: str = None,
 ) -> FFMpegMuxerOption:
     """
     WebP
@@ -3728,12 +4022,12 @@ def wv() -> FFMpegMuxerOption:
 
 
 def xv(
-    display_name: str | None = None,
-    window_id: int | None = None,
-    window_size: str | None = None,
-    window_title: str | None = None,
-    window_x: int | None = None,
-    window_y: int | None = None,
+    display_name: str = None,
+    window_id: str = None,
+    window_size: str = None,
+    window_title: str = None,
+    window_x: str = None,
+    window_y: str = None,
 ) -> FFMpegMuxerOption:
     """
     XV (XVideo) output device

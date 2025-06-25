@@ -1,3 +1,4 @@
+from collections.abc import Iterable
 from dataclasses import dataclass
 from typing import Literal
 
@@ -212,6 +213,14 @@ class FFMpegCodec(FFMpegOptionSet, Serializable):
     def is_decoder(self) -> bool:
         return isinstance(self, FFMpegDecoder)
 
+    def filterd_options(self) -> Iterable[FFMpegAVOption]:
+        passed = set()
+        for option in self.options:
+            if option.name in passed:
+                continue
+            passed.add(option.name)
+            yield option
+
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegEncoder(FFMpegCodec):
@@ -261,6 +270,14 @@ class FFMpegFormat(FFMpegOptionSet, Serializable):
     @property
     def is_demuxer(self) -> bool:
         return "D" in self.flags
+
+    def filterd_options(self) -> Iterable[FFMpegAVOption]:
+        passed = set()
+        for option in self.options:
+            if option.name.replace("-", "_") in passed:
+                continue
+            passed.add(option.name.replace("-", "_"))
+            yield option
 
 
 @dataclass(frozen=True, kw_only=True)
