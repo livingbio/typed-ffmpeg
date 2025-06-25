@@ -100,6 +100,9 @@ def test_parse_filter_options(snapshot: SnapshotAssertion, text: str) -> None:
         "stereotools",  # option choices contain special characters e.g. "lr>lr           0            ..F.A....T."
         "afireqsrc",  # option choices contains space e.g. "vocal booster   17           ..F.A......"
         "acrossfade",  # contains option alias e.g. nb_samples = ns
+        "abuffer",  # default value contains special characters  e.g. "time_base         <rational>   ..F.A...... (from 0 to INT_MAX) (default 0/1)"
+        "amix",  # default value contains space e.g.  "weights           <string>     ..F.A....T. Set weight for each input. (default "1 1")"
+        "bm3d",
     ],
 )
 def test_extract_filter(snapshot: SnapshotAssertion, filter: str) -> None:

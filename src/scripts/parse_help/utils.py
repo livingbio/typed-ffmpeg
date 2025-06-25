@@ -147,8 +147,8 @@ re_option_pattern = re.compile(
     r"(?P<name>[\-\w]+)\s+\<(?P<type>[\w]+)\>\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
 )
 
-re_min_max = re.compile(r"from\s+(?P<min>[\d\-]+)\s+to\s+(?P<max>[\d\-]+)")
-re_default = re.compile(r"default\s+(?P<default>[\d\w\-]+)")
+re_min_max = re.compile(r"\(from\s+(?P<min>.+?)\s+to\s+(?P<max>.+?)\)")
+re_default = re.compile(r"\(default\s+(?P<default>.+?)\)")
 
 
 def _extract_match(match: re.Match[str]) -> dict[str, str]:

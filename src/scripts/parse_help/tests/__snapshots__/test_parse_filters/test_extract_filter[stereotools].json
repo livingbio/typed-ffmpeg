@@ -15,8 +15,8 @@
       "default": "1",
       "flags": "..F.A....T.",
       "help": "set level in (from 0.015625 to 64) (default 1)",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "level_in",
       "section": "stereotools AVOptions:",
       "type": "double"
@@ -27,8 +27,8 @@
       "default": "1",
       "flags": "..F.A....T.",
       "help": "set level out (from 0.015625 to 64) (default 1)",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "level_out",
       "section": "stereotools AVOptions:",
       "type": "double"
@@ -187,7 +187,7 @@
           "value": "10"
         }
       ],
-      "default": "lr",
+      "default": "lr>lr",
       "flags": "..F.A....T.",
       "help": "set stereo mode (from 0 to 10) (default lr>lr)",
       "max": "10",
@@ -202,8 +202,8 @@
       "default": "1",
       "flags": "..F.A....T.",
       "help": "set side level (from 0.015625 to 64) (default 1)",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "slev",
       "section": "stereotools AVOptions:",
       "type": "double"
@@ -226,8 +226,8 @@
       "default": "1",
       "flags": "..F.A....T.",
       "help": "set middle level (from 0.015625 to 64) (default 1)",
-      "max": null,
-      "min": null,
+      "max": "64",
+      "min": "0.015625",
       "name": "mlev",
       "section": "stereotools AVOptions:",
       "type": "double"

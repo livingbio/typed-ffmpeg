@@ -1,4 +1,4 @@
 [
   "FFMpegAVOption(section='WAV demuxer AVOptions:', name='ignore_length', type='boolean', flags='.D.........', help='Ignore length (default false)', argname=None, min=None, max=None, default='false', choices=())",
-  "FFMpegAVOption(section='WAV demuxer AVOptions:', name='max_size', type='int', flags='.D.........', help='max size of single packet (from 1024 to 4.1943e+06) (default 4096)', argname=None, min='1024', max='4', default='4096', choices=())"
+  "FFMpegAVOption(section='WAV demuxer AVOptions:', name='max_size', type='int', flags='.D.........', help='max size of single packet (from 1024 to 4.1943e+06) (default 4096)', argname=None, min='1024', max='4.1943e+06', default='4096', choices=())"
 ]

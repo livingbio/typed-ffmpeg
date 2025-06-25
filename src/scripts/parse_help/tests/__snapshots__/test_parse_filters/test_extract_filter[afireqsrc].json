@@ -139,7 +139,7 @@
     {
       "argname": null,
       "choices": [],
-      "default": null,
+      "default": "\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\"",
       "flags": "..F.A......",
       "help": "set gain values per band (default \"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\")",
       "max": null,
@@ -151,7 +151,7 @@
     {
       "argname": null,
       "choices": [],
-      "default": null,
+      "default": "\"25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000\"",
       "flags": "..F.A......",
       "help": "set central frequency values per band (default \"25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000\")",
       "max": null,
@@ -178,8 +178,8 @@
       "default": "44100",
       "flags": "..F.A......",
       "help": "set sample rate (from 1 to INT_MAX) (default 44100)",
-      "max": null,
-      "min": null,
+      "max": "INT_MAX",
+      "min": "1",
       "name": "sample_rate",
       "section": "afireqsrc AVOptions:",
       "type": "int"
@@ -190,8 +190,8 @@
       "default": "1024",
       "flags": "..F.A......",
       "help": "set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)",
-      "max": null,
-      "min": null,
+      "max": "INT_MAX",
+      "min": "1",
       "name": "nb_samples",
       "section": "afireqsrc AVOptions:",
       "type": "int"

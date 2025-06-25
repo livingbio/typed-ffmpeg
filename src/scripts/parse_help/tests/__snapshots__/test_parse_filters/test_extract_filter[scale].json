@@ -36,7 +36,7 @@
     {
       "argname": null,
       "choices": [],
-      "default": null,
+      "default": "\"\"",
       "flags": "..FV.......",
       "help": "Flags to pass to libswscale (default \"\")",
       "max": null,
@@ -109,7 +109,7 @@
           "value": "bt2020"
         }
       ],
-      "default": null,
+      "default": "\"auto\"",
       "flags": "..FV.......",
       "help": "set input YCbCr type (default \"auto\")",
       "max": null,
@@ -398,8 +398,8 @@
       "default": "DBL_MAX",
       "flags": "..FV.......",
       "help": "Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
-      "max": null,
-      "min": null,
+      "max": "DBL_MAX",
+      "min": "-DBL_MAX",
       "name": "param0",
       "section": "scale(2ref) AVOptions:",
       "type": "double"
@@ -410,8 +410,8 @@
       "default": "DBL_MAX",
       "flags": "..FV.......",
       "help": "Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
-      "max": null,
-      "min": null,
+      "max": "DBL_MAX",
+      "min": "-DBL_MAX",
       "name": "param1",
       "section": "scale(2ref) AVOptions:",
       "type": "double"
