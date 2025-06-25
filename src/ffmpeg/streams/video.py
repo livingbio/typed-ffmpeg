@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, Any, Literal
 from ..common.schema import FFMpegFilterDef
 from ..dag.factory import filter_node_factory
 from ..dag.nodes import FilterableStream, FilterNode
+from ..options.framesync import FFMpegFrameSyncOption
 from ..schema import Default
 from ..types import (
     Boolean,
@@ -100,13 +101,17 @@ class VideoStream(FilterableStream):
                 name="alphaextract", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
     def alphamerge(
         self,
         _alpha: VideoStream,
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -128,7 +133,7 @@ class VideoStream(FilterableStream):
             ),
             self,
             _alpha,
-            **merge({}, extra_options),
+            **merge({}, extra_options, framesync_options),
         )
         return filter_node.video(0)
 
@@ -931,6 +936,7 @@ class VideoStream(FilterableStream):
         c2_opacity: Double = Default("1"),
         c3_opacity: Double = Default("1"),
         all_opacity: Double = Default("1"),
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -988,6 +994,7 @@ class VideoStream(FilterableStream):
                     "all_opacity": all_opacity,
                 },
                 extra_options,
+                framesync_options,
             ),
         )
         return filter_node.video(0)
@@ -1389,7 +1396,10 @@ class VideoStream(FilterableStream):
                 name="ccrepack", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -2770,6 +2780,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default("7"),
         impulse: Int | Literal["first", "all"] | Default = Default("all"),
         noise: Float = Default("1e-07"),
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -2803,6 +2814,7 @@ class VideoStream(FilterableStream):
                     "noise": noise,
                 },
                 extra_options,
+                framesync_options,
             ),
         )
         return filter_node.video(0)
@@ -2827,13 +2839,17 @@ class VideoStream(FilterableStream):
                 name="copy", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
     def corr(
         self,
         _reference: VideoStream,
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -2853,7 +2869,7 @@ class VideoStream(FilterableStream):
             ),
             self,
             _reference,
-            **merge({}, extra_options),
+            **merge({}, extra_options, framesync_options),
         )
         return filter_node.video(0)
 
@@ -3368,6 +3384,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default("7"),
         impulse: Int | Literal["first", "all"] | Default = Default("all"),
         noise: Float = Default("1e-07"),
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -3401,6 +3418,7 @@ class VideoStream(FilterableStream):
                     "noise": noise,
                 },
                 extra_options,
+                framesync_options,
             ),
         )
         return filter_node.video(0)
@@ -5487,7 +5505,10 @@ class VideoStream(FilterableStream):
                 name="flip_vulkan", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6187,7 +6208,10 @@ class VideoStream(FilterableStream):
                 name="grayworld", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6239,6 +6263,7 @@ class VideoStream(FilterableStream):
         interp: Int
         | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
         | Default = Default("tetrahedral"),
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6270,6 +6295,7 @@ class VideoStream(FilterableStream):
                     "interp": interp,
                 },
                 extra_options,
+                framesync_options,
             ),
         )
         return filter_node.video(0)
@@ -6294,7 +6320,10 @@ class VideoStream(FilterableStream):
                 name="hflip", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6318,7 +6347,10 @@ class VideoStream(FilterableStream):
                 name="hflip_vulkan", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6730,7 +6762,10 @@ class VideoStream(FilterableStream):
                 name="hwdownload", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -6852,6 +6887,7 @@ class VideoStream(FilterableStream):
         *,
         planes: Int = Default("15"),
         threshold: Int = Default("0"),
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6883,6 +6919,7 @@ class VideoStream(FilterableStream):
                     "threshold": threshold,
                 },
                 extra_options,
+                framesync_options,
             ),
         )
         return filter_node.video(0)
@@ -6890,6 +6927,7 @@ class VideoStream(FilterableStream):
     def identity(
         self,
         _reference: VideoStream,
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6911,7 +6949,7 @@ class VideoStream(FilterableStream):
             ),
             self,
             _reference,
-            **merge({}, extra_options),
+            **merge({}, extra_options, framesync_options),
         )
         return filter_node.video(0)
 
@@ -7241,7 +7279,10 @@ class VideoStream(FilterableStream):
                 name="latency", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7531,6 +7572,7 @@ class VideoStream(FilterableStream):
         c2: String = Default("x"),
         c3: String = Default("x"),
         d: Int = Default("0"),
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7566,6 +7608,7 @@ class VideoStream(FilterableStream):
                     "d": d,
                 },
                 extra_options,
+                framesync_options,
             ),
         )
         return filter_node.video(0)
@@ -8334,6 +8377,7 @@ class VideoStream(FilterableStream):
         | Default = Default("erode"),
         planes: Int = Default("7"),
         structure: Int | Literal["first", "all"] | Default = Default("all"),
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8367,6 +8411,7 @@ class VideoStream(FilterableStream):
                     "structure": structure,
                 },
                 extra_options,
+                framesync_options,
             ),
         )
         return filter_node.video(0)
@@ -8420,6 +8465,7 @@ class VideoStream(FilterableStream):
     def msad(
         self,
         _reference: VideoStream,
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8439,7 +8485,7 @@ class VideoStream(FilterableStream):
             ),
             self,
             _reference,
-            **merge({}, extra_options),
+            **merge({}, extra_options, framesync_options),
         )
         return filter_node.video(0)
 
@@ -8929,7 +8975,10 @@ class VideoStream(FilterableStream):
                 name="null", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9031,6 +9080,7 @@ class VideoStream(FilterableStream):
         alpha: Int | Literal["straight", "premultiplied"] | Default = Default(
             "straight"
         ),
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -9074,6 +9124,7 @@ class VideoStream(FilterableStream):
                     "alpha": alpha,
                 },
                 extra_options,
+                framesync_options,
             ),
         )
         return filter_node.video(0)
@@ -9133,6 +9184,7 @@ class VideoStream(FilterableStream):
         ),
         shortest: Boolean = Default("false"),
         repeatlast: Boolean = Default("true"),
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -9176,6 +9228,7 @@ class VideoStream(FilterableStream):
                     "repeatlast": repeatlast,
                 },
                 extra_options,
+                framesync_options,
             ),
         )
         return filter_node.video(0)
@@ -9673,7 +9726,10 @@ class VideoStream(FilterableStream):
                 name="pixdesctest", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -9975,6 +10031,7 @@ class VideoStream(FilterableStream):
         stats_file: String = Default(None),
         stats_version: Int = Default("1"),
         output_max: Boolean = Default("false"),
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -10006,6 +10063,7 @@ class VideoStream(FilterableStream):
                     "output_max": output_max,
                 },
                 extra_options,
+                framesync_options,
             ),
         )
         return filter_node.video(0)
@@ -10436,7 +10494,10 @@ class VideoStream(FilterableStream):
                 name="repeatfields", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -10460,7 +10521,10 @@ class VideoStream(FilterableStream):
                 name="reverse", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -11124,7 +11188,10 @@ class VideoStream(FilterableStream):
                 typings_output=("video",),
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -12189,6 +12256,7 @@ class VideoStream(FilterableStream):
         _reference: VideoStream,
         *,
         stats_file: String = Default(None),
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -12216,6 +12284,7 @@ class VideoStream(FilterableStream):
                     "stats_file": stats_file,
                 },
                 extra_options,
+                framesync_options,
             ),
         )
         return filter_node.video(0)
@@ -12393,7 +12462,10 @@ class VideoStream(FilterableStream):
                 name="super2xsai", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -12466,7 +12538,10 @@ class VideoStream(FilterableStream):
                 name="swapuv", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14023,6 +14098,7 @@ class VideoStream(FilterableStream):
         min_r: Int = Default("0"),
         max_r: Int = Default("8"),
         planes: Int = Default("15"),
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -14056,6 +14132,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                framesync_options,
             ),
         )
         return filter_node.video(0)
@@ -14159,7 +14236,10 @@ class VideoStream(FilterableStream):
                 name="vflip", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14183,7 +14263,10 @@ class VideoStream(FilterableStream):
                 name="vflip_vulkan", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14207,7 +14290,10 @@ class VideoStream(FilterableStream):
                 name="vfrdet", typings_input=("video",), typings_output=("video",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14400,6 +14486,7 @@ class VideoStream(FilterableStream):
     def vif(
         self,
         _reference: VideoStream,
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -14419,7 +14506,7 @@ class VideoStream(FilterableStream):
             ),
             self,
             _reference,
-            **merge({}, extra_options),
+            **merge({}, extra_options, framesync_options),
         )
         return filter_node.video(0)
 
@@ -14719,6 +14806,7 @@ class VideoStream(FilterableStream):
         *,
         planes: Int = Default("7"),
         secondary: Int | Literal["first", "all"] | Default = Default("all"),
+        framesync_options: FFMpegFrameSyncOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -14750,6 +14838,7 @@ class VideoStream(FilterableStream):
                     "secondary": secondary,
                 },
                 extra_options,
+                framesync_options,
             ),
         )
         return filter_node.video(0)

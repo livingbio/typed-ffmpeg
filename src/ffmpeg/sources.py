@@ -5,6 +5,7 @@ from typing import Any, Literal
 from .common.schema import FFMpegFilterDef
 from .dag.factory import filter_node_factory
 from .dag.nodes import FilterableStream, FilterNode
+from .options.framesync import FFMpegFrameSyncOption
 from .schema import Auto, Default
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
@@ -2920,6 +2921,7 @@ def program_opencl(
     inputs: Int = Default("1"),
     size: Image_size = Default(None),
     extra_options: dict[str, Any] | None = None,
+    framesync_options: FFMpegFrameSyncOption | None = None,
 ) -> VideoStream:
     """
 
@@ -2953,6 +2955,7 @@ def program_opencl(
                 "size": size,
             },
             extra_options,
+            framesync_options,
         ),
     )
     return filter_node.video(0)
@@ -3540,6 +3543,7 @@ def xmedian(
     planes: Int = Default("15"),
     percentile: Float = Default("0.5"),
     extra_options: dict[str, Any] | None = None,
+    framesync_options: FFMpegFrameSyncOption | None = None,
 ) -> VideoStream:
     """
 
@@ -3571,6 +3575,7 @@ def xmedian(
                 "percentile": percentile,
             },
             extra_options,
+            framesync_options,
         ),
     )
     return filter_node.video(0)

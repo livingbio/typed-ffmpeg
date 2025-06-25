@@ -112,7 +112,12 @@ filter_node = filter_node_factory(
         {% for option in f.options %}
         "{{ option.name}}": {{ option.name | option_name_safe }},
         {% endfor %}
-    }, extra_options)
+    },
+    extra_options,
+    {% if f.is_support_framesync %}
+    framesync_options
+    {% endif %}
+    )
 )
 {% if f.is_dynamic_output %}
 return filter_node
@@ -137,6 +142,9 @@ return (
     {{ stream_typings(f, "method") }}
     {% if not f.is_dynamic_input and f.options | length > 0 %}*,{% endif %}
     {{ f | filter_option_typings }}
+    {% if f.is_support_framesync %}
+    framesync_options: FFMpegFrameSyncOption | None = None,
+    {% endif %}
     extra_options: dict[str, Any] | None = None,
     ) {{- return_stream_typings(f) }}
         """
@@ -152,6 +160,9 @@ def {{f.name}}(
     {% if not f.is_dynamic_input and f.options | length > 0 %}*,{% endif %}
     {{ f | filter_option_typings }}
     extra_options: dict[str, Any] | None = None,
+    {% if f.is_support_framesync %}
+    framesync_options: FFMpegFrameSyncOption | None = None,
+    {% endif %}
 ) {{- return_stream_typings(f) }}
     """
     {{ docstring(f) }}

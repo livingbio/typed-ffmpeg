@@ -288,7 +288,10 @@ class AudioStream(FilterableStream):
                 name="acopy", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -783,7 +786,10 @@ class AudioStream(FilterableStream):
                 name="aderivative", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -1886,7 +1892,10 @@ class AudioStream(FilterableStream):
                 name="aintegral", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -1910,7 +1919,10 @@ class AudioStream(FilterableStream):
                 name="alatency", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2159,7 +2171,10 @@ class AudioStream(FilterableStream):
             ),
             self,
             _multiply1,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2384,7 +2399,10 @@ class AudioStream(FilterableStream):
                 name="anull", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2656,7 +2674,10 @@ class AudioStream(FilterableStream):
             ),
             self,
             _input1,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2869,7 +2890,10 @@ class AudioStream(FilterableStream):
                 name="areverse", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -2977,7 +3001,10 @@ class AudioStream(FilterableStream):
             ),
             self,
             _input1,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3259,7 +3286,10 @@ class AudioStream(FilterableStream):
                 name="ashowinfo", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -3348,7 +3378,10 @@ class AudioStream(FilterableStream):
             ),
             self,
             _input1,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -5064,7 +5097,10 @@ class AudioStream(FilterableStream):
                 name="earwax", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
 
@@ -8026,6 +8062,9 @@ class AudioStream(FilterableStream):
                 name="volumedetect", typings_input=("audio",), typings_output=("audio",)
             ),
             self,
-            **merge({}, extra_options),
+            **merge(
+                {},
+                extra_options,
+            ),
         )
         return filter_node.audio(0)
