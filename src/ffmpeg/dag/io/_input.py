@@ -205,8 +205,8 @@ def input(
                 "dn": dn,
                 "top": top,
             },
-            decoder_options.kwargs if decoder_options else {},
-            demuxer_options.kwargs if demuxer_options else {},
+            decoder_options,
+            demuxer_options,
             extra_options,
         ),
     ).stream()

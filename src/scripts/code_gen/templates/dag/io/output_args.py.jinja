@@ -58,4 +58,4 @@ class OutputArgs(ABC):
                 "{{ option.name}}": {{ option.name | option_name_safe }},
                 {% endif %}
             {% endfor %}
-        }, encoder_options.kwargs if encoder_options else {}, muxer_options.kwargs if muxer_options else {}, extra_options)).stream()
+        }, encoder_options, muxer_options, extra_options)).stream()
