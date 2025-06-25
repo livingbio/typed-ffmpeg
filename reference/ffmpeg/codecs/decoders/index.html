@@ -7791,29 +7791,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/parse_all_filter/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    parse_all_filter
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../scripts/parse_help/parse_codecs/" class="md-nav__link">
         
   
@@ -7837,12 +7814,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/parse_filter/" class="md-nav__link">
+      <a href="../../../scripts/parse_help/parse_filters/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    parse_filter
+    parse_filters
     
   </span>
   
@@ -7866,6 +7843,29 @@
   
   <span class="md-ellipsis">
     parse_formats
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scripts/parse_help/parse_help/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    parse_help
     
   </span>
   
@@ -17133,12 +17133,113 @@
 
 
 <a href="#ffmpeg.codecs.decoders.ac3" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">ac3</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegDecoderOption">FFMpegDecoderOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">ac3</span><span class="p">(</span>
+    <span class="n">cons_noisegen</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">drc_scale</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">heavy_compr</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">target_level</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">downmix</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegDecoderOption">FFMpegDecoderOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>ATSC A/52A (AC-3)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>cons_noisegen</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>enable consistent noise generation (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>drc_scale</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>percentage of dynamic range compression to apply (from 0 to 6) (default 1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>heavy_compr</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>enable heavy dynamic range compression (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>target_level</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>target level in -dBFS (0 not applied) (from -31 to 0) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>downmix</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Request a specific channel layout from the decoder</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -17176,12 +17277,96 @@
 
 
 <a href="#ffmpeg.codecs.decoders.ac3_fixed" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">ac3_fixed</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegDecoderOption">FFMpegDecoderOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">ac3_fixed</span><span class="p">(</span>
+    <span class="n">cons_noisegen</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">drc_scale</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">heavy_compr</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">downmix</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegDecoderOption">FFMpegDecoderOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>ATSC A/52A (AC-3) (codec ac3)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>cons_noisegen</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>enable consistent noise generation (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>drc_scale</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>percentage of dynamic range compression to apply (from 0 to 6) (default 1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>heavy_compr</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>enable heavy dynamic range compression (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>downmix</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Request a specific channel layout from the decoder</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -23765,12 +23950,113 @@
 
 
 <a href="#ffmpeg.codecs.decoders.eac3" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">eac3</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegDecoderOption">FFMpegDecoderOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">eac3</span><span class="p">(</span>
+    <span class="n">cons_noisegen</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">drc_scale</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">heavy_compr</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">target_level</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">downmix</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegDecoderOption">FFMpegDecoderOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>ATSC A/52B (AC-3, E-AC-3)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>cons_noisegen</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>enable consistent noise generation (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>drc_scale</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>percentage of dynamic range compression to apply (from 0 to 6) (default 1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>heavy_compr</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>enable heavy dynamic range compression (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>target_level</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>target level in -dBFS (0 not applied) (from -31 to 0) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>downmix</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Request a specific channel layout from the decoder</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>

@@ -16,7 +16,7 @@
         <link rel="prev" href="../">
       
       
-        <link rel="next" href="../parse_all_filter/">
+        <link rel="next" href="../parse_codecs/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -3140,42 +3140,10 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#scripts.parse_help.cli.all_options" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;all_options
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../parse_all_filter/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    parse_all_filter
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -3211,12 +3179,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_filter/" class="md-nav__link">
+      <a href="../parse_filters/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    parse_filter
+    parse_filters
     
   </span>
   
@@ -3240,6 +3208,29 @@
   
   <span class="md-ellipsis">
     parse_formats
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parse_help/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    parse_help
     
   </span>
   
@@ -3374,15 +3365,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#scripts.parse_help.cli.all_options" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;all_options
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3461,14 +3443,6 @@ filter definitions with proper typing information.</p>
                 </div>
               </td>
             </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="            all_options (scripts.parse_help.cli.all_options)" href="#scripts.parse_help.cli.all_options">all_options</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Parse all options from FFmpeg help output</p>
-                </div>
-              </td>
-            </tr>
       </tbody>
     </table>
 
@@ -3494,7 +3468,12 @@ filter definitions with proper typing information.</p>
 
 
 <a href="#scripts.parse_help.cli.all_codecs" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">all_codecs</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="scripts.parse_help.schema.FFMpegCodec">FFMpegCodec</span></span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">all_codecs</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            FFMpegCodec
+
+
+  
+      dataclass
+   (scripts.parse_help.schema.FFMpegCodec)" href="../schema/#scripts.parse_help.schema.FFMpegCodec">FFMpegCodec</a></span><span class="p">]</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3572,32 +3551,17 @@ both the high-level filter capabilities and detailed option information for each
 
 
 <a href="#scripts.parse_help.cli.all_formats" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">all_formats</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="scripts.parse_help.schema.FFMpegFormat">FFMpegFormat</span></span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">all_formats</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            FFMpegFormat
+
+
+  
+      dataclass
+   (scripts.parse_help.schema.FFMpegFormat)" href="../schema/#scripts.parse_help.schema.FFMpegFormat">FFMpegFormat</a></span><span class="p">]</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Parse all muxers from FFmpeg help output</p>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="scripts.parse_help.cli.all_options" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">all_options</span>
-
-
-<a href="#scripts.parse_help.cli.all_options" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">all_options</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="scripts.parse_help.schema.FFMpegAVOption">FFMpegAVOption</span></span><span class="p">]</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Parse all options from FFmpeg help output</p>
 
 
     </div>

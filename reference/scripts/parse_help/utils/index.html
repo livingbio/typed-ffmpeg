@@ -3083,29 +3083,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_all_filter/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    parse_all_filter
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../parse_codecs/" class="md-nav__link">
         
   
@@ -3129,12 +3106,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_filter/" class="md-nav__link">
+      <a href="../parse_filters/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    parse_filter
+    parse_filters
     
   </span>
   
@@ -3158,6 +3135,29 @@
   
   <span class="md-ellipsis">
     parse_formats
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parse_help/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    parse_help
     
   </span>
   
@@ -3250,18 +3250,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#scripts.parse_help.utils.extract_avoption_info_from_help" class="md-nav__link">
+  <a href="#scripts.parse_help.utils.glob" class="md-nav__link">
     <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_avoption_info_from_help
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;glob
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#scripts.parse_help.utils.parse_all_options" class="md-nav__link">
+  <a href="#scripts.parse_help.utils.parse_av_option" class="md-nav__link">
     <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;parse_all_options
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;parse_av_option
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.parse_help.utils.parse_general_option" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;parse_general_option
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.parse_help.utils.parse_section_tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;parse_section_tree
     </span>
   </a>
   
@@ -3337,18 +3355,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#scripts.parse_help.utils.extract_avoption_info_from_help" class="md-nav__link">
+  <a href="#scripts.parse_help.utils.glob" class="md-nav__link">
     <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_avoption_info_from_help
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;glob
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#scripts.parse_help.utils.parse_all_options" class="md-nav__link">
+  <a href="#scripts.parse_help.utils.parse_av_option" class="md-nav__link">
     <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;parse_all_options
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;parse_av_option
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.parse_help.utils.parse_general_option" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;parse_general_option
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.parse_help.utils.parse_section_tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;parse_section_tree
     </span>
   </a>
   
@@ -3413,18 +3449,34 @@
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="            extract_avoption_info_from_help (scripts.parse_help.utils.extract_avoption_info_from_help)" href="#scripts.parse_help.utils.extract_avoption_info_from_help">extract_avoption_info_from_help</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="            glob (scripts.parse_help.utils.glob)" href="#scripts.parse_help.utils.glob">glob</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Extract all AVOptions from ffmpeg help text.</p>
+                  <p>Glob a tree of sections and options.</p>
                 </div>
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="            parse_all_options (scripts.parse_help.utils.parse_all_options)" href="#scripts.parse_help.utils.parse_all_options">parse_all_options</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="            parse_av_option (scripts.parse_help.utils.parse_av_option)" href="#scripts.parse_help.utils.parse_av_option">parse_av_option</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Parse all options from ffmpeg help text.</p>
+                  <p>Parse a section of AVOptions from a tree structure into a list of FFMpegAVOption objects.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            parse_general_option (scripts.parse_help.utils.parse_general_option)" href="#scripts.parse_help.utils.parse_general_option">parse_general_option</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Parse a section of general options from a tree structure into a list of FFMpegOption objects.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            parse_section_tree (scripts.parse_help.utils.parse_section_tree)" href="#scripts.parse_help.utils.parse_section_tree">parse_section_tree</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Parse indented help text into a nested tree structure, preserving section hierarchy.</p>
                 </div>
               </td>
             </tr>
@@ -3432,7 +3484,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            run_ffmpeg_command (scripts.parse_help.utils.run_ffmpeg_command)" href="#scripts.parse_help.utils.run_ffmpeg_command">run_ffmpeg_command</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Run an ffmpeg command and return its output.</p>
+                  <p>Execute an ffmpeg command with the provided arguments and return its standard output as a string.</p>
                 </div>
               </td>
             </tr>
@@ -3456,60 +3508,19 @@
 <div class="doc doc-object doc-function">
 
 
-<h2 id="scripts.parse_help.utils.extract_avoption_info_from_help" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">extract_avoption_info_from_help</span>
+<h2 id="scripts.parse_help.utils.glob" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">glob</span>
 
 
-<a href="#scripts.parse_help.utils.extract_avoption_info_from_help" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">extract_avoption_info_from_help</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="scripts.parse_help.schema.FFMpegAVOption">FFMpegAVOption</span></span><span class="p">]</span>
+<a href="#scripts.parse_help.utils.glob" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">glob</span><span class="p">(</span>
+    <span class="n">tree</span><span class="p">:</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="typing.Any">Any</span></span><span class="p">],</span> <span class="n">pattern</span><span class="p">:</span> <span class="n"><span title="str">str</span></span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="typing.Any">Any</span></span><span class="p">]]]</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Extract all AVOptions from ffmpeg help text.</p>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="list">list</span>[<span title="scripts.parse_help.schema.FFMpegAVOption">FFMpegAVOption</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>A list of FFMpegAVOption objects</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="scripts.parse_help.utils.parse_all_options" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">parse_all_options</span>
-
-
-<a href="#scripts.parse_help.utils.parse_all_options" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">parse_all_options</span><span class="p">(</span><span class="n">help_text</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="scripts.parse_help.schema.FFMpegAVOption">FFMpegAVOption</span></span><span class="p">]</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Parse all options from ffmpeg help text.</p>
+        <p>Glob a tree of sections and options.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -3525,14 +3536,30 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>help_text</code>
+                <code>tree</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The tree to glob</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pattern</code>
             </td>
             <td>
                   <code><span title="str">str</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The help text to parse</p>
+                <p>The pattern to match</p>
               </div>
             </td>
             <td>
@@ -3554,17 +3581,364 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="list">list</span>[<span title="scripts.parse_help.schema.FFMpegAVOption">FFMpegAVOption</span>]</code>
+                  <code><span title="list">list</span>[<span title="tuple">tuple</span>[<span title="str">str</span>, <span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]]</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A list of FFMpegAVOption objects</p>
+                <p>An iterable of tuples containing the matched key and value</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
 
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="scripts.parse_help.utils.parse_av_option" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">parse_av_option</span>
+
+
+<a href="#scripts.parse_help.utils.parse_av_option" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">parse_av_option</span><span class="p">(</span>
+    <span class="n">section</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">,</span>
+    <span class="n">tree</span><span class="p">:</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="kc">None</span><span class="p">]]],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            FFMpegAVOption
+
+
+  
+      dataclass
+   (scripts.parse_help.schema.FFMpegAVOption)" href="../schema/#scripts.parse_help.schema.FFMpegAVOption">FFMpegAVOption</a></span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Parse a section of AVOptions from a tree structure into a list of FFMpegAVOption objects.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>section</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The section name to parse (e.g., 'AVOptions')</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>tree</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="dict">dict</span>[<span title="str">str</span>, <span title="dict">dict</span>[<span title="str">str</span>, None]]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The tree structure as produced by parse_section_tree()</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="            FFMpegAVOption
+
+
+  
+      dataclass
+   (scripts.parse_help.schema.FFMpegAVOption)" href="../schema/#scripts.parse_help.schema.FFMpegAVOption">FFMpegAVOption</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A list of FFMpegAVOption objects, each representing an option with its possible choices</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="AssertionError">AssertionError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the expected option or choice format is not matched</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="scripts.parse_help.utils.parse_general_option" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">parse_general_option</span>
+
+
+<a href="#scripts.parse_help.utils.parse_general_option" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">parse_general_option</span><span class="p">(</span>
+    <span class="n">section</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">,</span>
+    <span class="n">tree</span><span class="p">:</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="kc">None</span><span class="p">]]],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            FFMpegOption
+
+
+  
+      dataclass
+   (scripts.parse_help.schema.FFMpegOption)" href="../schema/#scripts.parse_help.schema.FFMpegOption">FFMpegOption</a></span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Parse a section of general options from a tree structure into a list of FFMpegOption objects.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>section</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The section name to parse (e.g., 'Main options')</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>tree</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="dict">dict</span>[<span title="str">str</span>, <span title="dict">dict</span>[<span title="str">str</span>, None]]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The tree structure as produced by parse_section_tree()</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="            FFMpegOption
+
+
+  
+      dataclass
+   (scripts.parse_help.schema.FFMpegOption)" href="../schema/#scripts.parse_help.schema.FFMpegOption">FFMpegOption</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A list of FFMpegOption objects, each representing a general ffmpeg option</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="AssertionError">AssertionError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If a general option is found to have choices (which is not expected)</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="scripts.parse_help.utils.parse_section_tree" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">parse_section_tree</span>
+
+
+<a href="#scripts.parse_help.utils.parse_section_tree" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">parse_section_tree</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="typing.Any">Any</span></span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Parse indented help text into a nested tree structure, preserving section hierarchy.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>text</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The help text to parse, typically from ffmpeg's help output</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A nested ordered dictionary representing the section hierarchy, where each key is a section or option name</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <p>Input text:
+<div class="language-text highlight"><pre><span></span><code>Section1
+  Option1
+    SubOption1
+Section2
+  Option2
+</code></pre></div></p>
+<p>Output:
+<div class="language-python highlight"><pre><span></span><code><span class="n">OrderedDict</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Section1&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">(</span>
+            <span class="p">{</span><span class="s2">&quot;Option1&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">({</span><span class="s2">&quot;SubOption1&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">()})}</span>
+        <span class="p">),</span>
+        <span class="s2">&quot;Section2&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">({</span><span class="s2">&quot;Option2&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">()}),</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div></p>
+</details>
 
     </div>
 
@@ -3583,7 +3957,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>Run an ffmpeg command and return its output.</p>
+        <p>Execute an ffmpeg command with the provided arguments and return its standard output as a string.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -3606,7 +3980,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The command line arguments to pass to ffmpeg (excluding 'ffmpeg' itself)</p>
+                <p>The command line arguments to pass to ffmpeg (excluding the 'ffmpeg' executable itself)</p>
               </div>
             </td>
             <td>
@@ -3632,13 +4006,20 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The command output as a string</p>
+                <p>The standard output produced by the ffmpeg command</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
 
+
+<details class="example" open>
+  <summary>Example</summary>
+  <div class="language-python highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">run_ffmpeg_command</span><span class="p">([</span><span class="s2">&quot;-version&quot;</span><span class="p">])</span>
+<span class="s1">&#39;ffmpeg version ...&#39;</span>
+</code></pre></div>
+</details>
 
     </div>
 

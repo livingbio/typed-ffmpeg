@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/reference/scripts/parse_help/parse_filter/">
+        <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/reference/scripts/parse_help/parse_filters/">
       
       
         <link rel="prev" href="../parse_codecs/">
@@ -24,7 +24,7 @@
     
     
       
-        <title>parse_filter - typed-ffmpeg</title>
+        <title>parse_filters - typed-ffmpeg</title>
       
     
     
@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#scripts.parse_help.parse_filter" class="md-skip">
+        <a href="#scripts.parse_help.parse_filters" class="md-skip">
           Skip to content
         </a>
       
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              parse_filter
+              parse_filters
             
           </span>
         </div>
@@ -3085,29 +3085,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_all_filter/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    parse_all_filter
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../parse_codecs/" class="md-nav__link">
         
   
@@ -3145,7 +3122,7 @@
   
   
   <span class="md-ellipsis">
-    parse_filter
+    parse_filters
     
   </span>
   
@@ -3158,7 +3135,7 @@
   
   
   <span class="md-ellipsis">
-    parse_filter
+    parse_filters
     
   </span>
   
@@ -3183,27 +3160,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#scripts.parse_help.parse_filter.extract_avfilter_info_from_help" class="md-nav__link">
+  <a href="#scripts.parse_help.parse_filters.extract" class="md-nav__link">
     <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_avfilter_info_from_help
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scripts.parse_help.parse_filter.extract_filter_help_text" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_filter_help_text
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scripts.parse_help.parse_filter.parse_section_tree" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;parse_section_tree
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract
     </span>
   </a>
   
@@ -3231,6 +3190,29 @@
   
   <span class="md-ellipsis">
     parse_formats
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parse_help/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    parse_help
     
   </span>
   
@@ -3339,27 +3321,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#scripts.parse_help.parse_filter.extract_avfilter_info_from_help" class="md-nav__link">
+  <a href="#scripts.parse_help.parse_filters.extract" class="md-nav__link">
     <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_avfilter_info_from_help
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scripts.parse_help.parse_filter.extract_filter_help_text" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract_filter_help_text
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scripts.parse_help.parse_filter.parse_section_tree" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;parse_section_tree
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;extract
     </span>
   </a>
   
@@ -3388,19 +3352,13 @@
 
 
 
-<h1 id="scripts.parse_help.parse_filter" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-module"></code>            <span class="doc doc-object-name doc-module-name">parse_filter</span>
+<h1 id="scripts.parse_help.parse_filters" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-module"></code>            <span class="doc doc-object-name doc-module-name">parse_filters</span>
 
 
-<a href="#scripts.parse_help.parse_filter" class="headerlink" title="Permanent link">&para;</a></h1>
+<a href="#scripts.parse_help.parse_filters" class="headerlink" title="Permanent link">&para;</a></h1>
 
     <div class="doc doc-contents first">
-
-        <p>Module for parsing detailed filter information from FFmpeg's filter help output.</p>
-<p>This module extracts detailed information about individual FFmpeg filters by parsing
-the output of 'ffmpeg -h filter=<filter_name>'. It extracts information about filter
-options, input/output stream types, and other metadata that isn't available from the
-general filters list.</p>
 
 
 
@@ -3421,26 +3379,10 @@ general filters list.</p>
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="            extract_avfilter_info_from_help (scripts.parse_help.parse_filter.extract_avfilter_info_from_help)" href="#scripts.parse_help.parse_filter.extract_avfilter_info_from_help">extract_avfilter_info_from_help</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="            extract (scripts.parse_help.parse_filters.extract)" href="#scripts.parse_help.parse_filters.extract">extract</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Extract the filter information from the help text.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="            extract_filter_help_text (scripts.parse_help.parse_filter.extract_filter_help_text)" href="#scripts.parse_help.parse_filter.extract_filter_help_text">extract_filter_help_text</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Get the help text for a filter.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="            parse_section_tree (scripts.parse_help.parse_filter.parse_section_tree)" href="#scripts.parse_help.parse_filter.parse_section_tree">parse_section_tree</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Parse the help text into a tree structure.</p>
+                  <p>Get the help text for all filters.</p>
                 </div>
               </td>
             </tr>
@@ -3464,231 +3406,22 @@ general filters list.</p>
 <div class="doc doc-object doc-function">
 
 
-<h2 id="scripts.parse_help.parse_filter.extract_avfilter_info_from_help" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">extract_avfilter_info_from_help</span>
+<h2 id="scripts.parse_help.parse_filters.extract" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">extract</span>
 
 
-<a href="#scripts.parse_help.parse_filter.extract_avfilter_info_from_help" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">extract_avfilter_info_from_help</span><span class="p">(</span>
-    <span class="n">filter_name</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            FFMpegFilter
-
-
-  
-      dataclass
-   (ffmpeg.common.schema.FFMpegFilter)" href="../../../ffmpeg/common/schema/#ffmpeg.common.schema.FFMpegFilter">FFMpegFilter</a></span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Extract the filter information from the help text.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>filter_name</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The name of the filter.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><a class="autorefs autorefs-internal" title="            FFMpegFilter
+<a href="#scripts.parse_help.parse_filters.extract" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">extract</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            FFMpegFilter
 
 
   
       dataclass
-   (ffmpeg.common.schema.FFMpegFilter)" href="../../../ffmpeg/common/schema/#ffmpeg.common.schema.FFMpegFilter">FFMpegFilter</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The filter information.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="scripts.parse_help.parse_filter.extract_filter_help_text" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">extract_filter_help_text</span>
-
-
-<a href="#scripts.parse_help.parse_filter.extract_filter_help_text" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">extract_filter_help_text</span><span class="p">(</span><span class="n">filter_name</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="str">str</span></span>
+   (scripts.parse_help.schema.FFMpegFilter)" href="../schema/#scripts.parse_help.schema.FFMpegFilter">FFMpegFilter</a></span><span class="p">]</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Get the help text for a filter.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>filter_name</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The name of the filter.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The help text.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="scripts.parse_help.parse_filter.parse_section_tree" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">parse_section_tree</span>
-
-
-<a href="#scripts.parse_help.parse_filter.parse_section_tree" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">parse_section_tree</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">]]</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Parse the help text into a tree structure.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>text</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The help text.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="list">list</span>[<span title="str">str</span>]]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The tree structure.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+        <p>Get the help text for all filters.</p>
 
 
     </div>

@@ -5064,29 +5064,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/parse_all_filter/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    parse_all_filter
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../scripts/parse_help/parse_codecs/" class="md-nav__link">
         
   
@@ -5110,12 +5087,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/parse_filter/" class="md-nav__link">
+      <a href="../../../scripts/parse_help/parse_filters/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    parse_filter
+    parse_filters
     
   </span>
   
@@ -5139,6 +5116,29 @@
   
   <span class="md-ellipsis">
     parse_formats
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scripts/parse_help/parse_help/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    parse_help
     
   </span>
   
@@ -9258,12 +9258,386 @@
 
 
 <a href="#ffmpeg.codecs.encoders.ac3" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">ac3</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">ac3</span><span class="p">(</span>
+    <span class="n">center_mixlev</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">surround_mixlev</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">mixing_level</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">room_type</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span>
+        <span class="o">|</span> <span class="kc">None</span>
+        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;notindicated&quot;</span><span class="p">,</span> <span class="s2">&quot;large&quot;</span><span class="p">,</span> <span class="s2">&quot;small&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">per_frame_metadata</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">copyright</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dialnorm</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dsur_mode</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;notindicated&quot;</span><span class="p">,</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span> <span class="s2">&quot;off&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">original</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dmix_mode</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span>
+        <span class="o">|</span> <span class="kc">None</span>
+        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;notindicated&quot;</span><span class="p">,</span> <span class="s2">&quot;ltrt&quot;</span><span class="p">,</span> <span class="s2">&quot;loro&quot;</span><span class="p">,</span> <span class="s2">&quot;dplii&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">ltrt_cmixlev</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">ltrt_surmixlev</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">loro_cmixlev</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">loro_surmixlev</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dsurex_mode</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span>
+        <span class="o">|</span> <span class="kc">None</span>
+        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;notindicated&quot;</span><span class="p">,</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span> <span class="s2">&quot;dpliiz&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dheadphone_mode</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;notindicated&quot;</span><span class="p">,</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span> <span class="s2">&quot;off&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">ad_conv_type</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span> <span class="s2">&quot;hdcd&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">stereo_rematrixing</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">channel_coupling</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;auto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">cpl_start_band</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;auto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>ATSC A/52A (AC-3)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>center_mixlev</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Center Mix Level (from 0 to 1) (default 0.594604)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>surround_mixlev</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Surround Mix Level (from 0 to 1) (default 0.5)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>mixing_level</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Mixing Level (from -1 to 111) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>room_type</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;notindicated&#39;, &#39;large&#39;, &#39;small&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Room Type (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>per_frame_metadata</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Allow Changing Metadata Per-Frame (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>copyright</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Copyright Bit (from -1 to 1) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dialnorm</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dialogue Level (dB) (from -31 to -1) (default -31)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dsur_mode</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;notindicated&#39;, &#39;on&#39;, &#39;off&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dolby Surround Mode (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>original</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Original Bit Stream (from -1 to 1) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dmix_mode</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;notindicated&#39;, &#39;ltrt&#39;, &#39;loro&#39;, &#39;dplii&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Preferred Stereo Downmix Mode (from -1 to 3) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>ltrt_cmixlev</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lt/Rt Center Mix Level (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>ltrt_surmixlev</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lt/Rt Surround Mix Level (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>loro_cmixlev</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lo/Ro Center Mix Level (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>loro_surmixlev</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lo/Ro Surround Mix Level (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dsurex_mode</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;notindicated&#39;, &#39;on&#39;, &#39;off&#39;, &#39;dpliiz&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dolby Surround EX Mode (from -1 to 3) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dheadphone_mode</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;notindicated&#39;, &#39;on&#39;, &#39;off&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dolby Headphone Mode (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>ad_conv_type</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;standard&#39;, &#39;hdcd&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A/D Converter Type (from -1 to 1) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>stereo_rematrixing</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Stereo Rematrixing (default true)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>channel_coupling</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;auto&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Channel Coupling (from -1 to 1) (default auto)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>cpl_start_band</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;auto&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Coupling Start Band (from -1 to 15) (default auto)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -9301,12 +9675,386 @@
 
 
 <a href="#ffmpeg.codecs.encoders.ac3_fixed" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">ac3_fixed</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">ac3_fixed</span><span class="p">(</span>
+    <span class="n">center_mixlev</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">surround_mixlev</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">mixing_level</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">room_type</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span>
+        <span class="o">|</span> <span class="kc">None</span>
+        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;notindicated&quot;</span><span class="p">,</span> <span class="s2">&quot;large&quot;</span><span class="p">,</span> <span class="s2">&quot;small&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">per_frame_metadata</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">copyright</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dialnorm</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dsur_mode</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;notindicated&quot;</span><span class="p">,</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span> <span class="s2">&quot;off&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">original</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dmix_mode</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span>
+        <span class="o">|</span> <span class="kc">None</span>
+        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;notindicated&quot;</span><span class="p">,</span> <span class="s2">&quot;ltrt&quot;</span><span class="p">,</span> <span class="s2">&quot;loro&quot;</span><span class="p">,</span> <span class="s2">&quot;dplii&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">ltrt_cmixlev</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">ltrt_surmixlev</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">loro_cmixlev</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">loro_surmixlev</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dsurex_mode</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span>
+        <span class="o">|</span> <span class="kc">None</span>
+        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;notindicated&quot;</span><span class="p">,</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span> <span class="s2">&quot;dpliiz&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dheadphone_mode</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;notindicated&quot;</span><span class="p">,</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span> <span class="s2">&quot;off&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">ad_conv_type</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span> <span class="s2">&quot;hdcd&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">stereo_rematrixing</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">channel_coupling</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;auto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">cpl_start_band</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;auto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>ATSC A/52A (AC-3) (codec ac3)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>center_mixlev</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Center Mix Level (from 0 to 1) (default 0.594604)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>surround_mixlev</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Surround Mix Level (from 0 to 1) (default 0.5)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>mixing_level</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Mixing Level (from -1 to 111) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>room_type</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;notindicated&#39;, &#39;large&#39;, &#39;small&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Room Type (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>per_frame_metadata</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Allow Changing Metadata Per-Frame (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>copyright</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Copyright Bit (from -1 to 1) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dialnorm</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dialogue Level (dB) (from -31 to -1) (default -31)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dsur_mode</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;notindicated&#39;, &#39;on&#39;, &#39;off&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dolby Surround Mode (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>original</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Original Bit Stream (from -1 to 1) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dmix_mode</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;notindicated&#39;, &#39;ltrt&#39;, &#39;loro&#39;, &#39;dplii&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Preferred Stereo Downmix Mode (from -1 to 3) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>ltrt_cmixlev</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lt/Rt Center Mix Level (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>ltrt_surmixlev</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lt/Rt Surround Mix Level (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>loro_cmixlev</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lo/Ro Center Mix Level (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>loro_surmixlev</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lo/Ro Surround Mix Level (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dsurex_mode</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;notindicated&#39;, &#39;on&#39;, &#39;off&#39;, &#39;dpliiz&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dolby Surround EX Mode (from -1 to 3) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dheadphone_mode</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;notindicated&#39;, &#39;on&#39;, &#39;off&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dolby Headphone Mode (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>ad_conv_type</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;standard&#39;, &#39;hdcd&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A/D Converter Type (from -1 to 1) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>stereo_rematrixing</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Stereo Rematrixing (default true)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>channel_coupling</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;auto&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Channel Coupling (from -1 to 1) (default auto)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>cpl_start_band</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;auto&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Coupling Start Band (from -1 to 15) (default auto)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -10874,12 +11622,85 @@
 
 
 <a href="#ffmpeg.codecs.encoders.apng" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">apng</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">apng</span><span class="p">(</span>
+    <span class="n">dpi</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dpm</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">pred</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span>
+        <span class="o">|</span> <span class="kc">None</span>
+        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span>
+            <span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;sub&quot;</span><span class="p">,</span> <span class="s2">&quot;up&quot;</span><span class="p">,</span> <span class="s2">&quot;avg&quot;</span><span class="p">,</span> <span class="s2">&quot;paeth&quot;</span><span class="p">,</span> <span class="s2">&quot;mixed&quot;</span>
+        <span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>APNG (Animated Portable Network Graphics) image</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>dpi</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Set image resolution (in dots per inch) (from 0 to 65536) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dpm</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Set image resolution (in dots per meter) (from 0 to 65536) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pred</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;none&#39;, &#39;sub&#39;, &#39;up&#39;, &#39;avg&#39;, &#39;paeth&#39;, &#39;mixed&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Prediction method (from 0 to 5) (default none)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -12765,12 +13586,43 @@
 
 
 <a href="#ffmpeg.codecs.encoders.dca" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">dca</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">dca</span><span class="p">(</span><span class="n">dca_adpcm</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>DCA (DTS Coherent Acoustics) (codec dts)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>dca_adpcm</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Use ADPCM encoding (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -13227,12 +14079,352 @@
 
 
 <a href="#ffmpeg.codecs.encoders.eac3" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">eac3</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">eac3</span><span class="p">(</span>
+    <span class="n">mixing_level</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">room_type</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span>
+        <span class="o">|</span> <span class="kc">None</span>
+        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;notindicated&quot;</span><span class="p">,</span> <span class="s2">&quot;large&quot;</span><span class="p">,</span> <span class="s2">&quot;small&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">per_frame_metadata</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">copyright</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dialnorm</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dsur_mode</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;notindicated&quot;</span><span class="p">,</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span> <span class="s2">&quot;off&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">original</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dmix_mode</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span>
+        <span class="o">|</span> <span class="kc">None</span>
+        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;notindicated&quot;</span><span class="p">,</span> <span class="s2">&quot;ltrt&quot;</span><span class="p">,</span> <span class="s2">&quot;loro&quot;</span><span class="p">,</span> <span class="s2">&quot;dplii&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">ltrt_cmixlev</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">ltrt_surmixlev</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">loro_cmixlev</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">loro_surmixlev</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dsurex_mode</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span>
+        <span class="o">|</span> <span class="kc">None</span>
+        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;notindicated&quot;</span><span class="p">,</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span> <span class="s2">&quot;dpliiz&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dheadphone_mode</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;notindicated&quot;</span><span class="p">,</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span> <span class="s2">&quot;off&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">ad_conv_type</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span> <span class="s2">&quot;hdcd&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">stereo_rematrixing</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">channel_coupling</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;auto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">cpl_start_band</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;auto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>ATSC A/52 E-AC-3</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>mixing_level</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Mixing Level (from -1 to 111) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>room_type</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;notindicated&#39;, &#39;large&#39;, &#39;small&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Room Type (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>per_frame_metadata</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Allow Changing Metadata Per-Frame (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>copyright</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Copyright Bit (from -1 to 1) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dialnorm</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dialogue Level (dB) (from -31 to -1) (default -31)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dsur_mode</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;notindicated&#39;, &#39;on&#39;, &#39;off&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dolby Surround Mode (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>original</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Original Bit Stream (from -1 to 1) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dmix_mode</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;notindicated&#39;, &#39;ltrt&#39;, &#39;loro&#39;, &#39;dplii&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Preferred Stereo Downmix Mode (from -1 to 3) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>ltrt_cmixlev</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lt/Rt Center Mix Level (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>ltrt_surmixlev</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lt/Rt Surround Mix Level (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>loro_cmixlev</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lo/Ro Center Mix Level (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>loro_surmixlev</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lo/Ro Surround Mix Level (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dsurex_mode</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;notindicated&#39;, &#39;on&#39;, &#39;off&#39;, &#39;dpliiz&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dolby Surround EX Mode (from -1 to 3) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dheadphone_mode</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;notindicated&#39;, &#39;on&#39;, &#39;off&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dolby Headphone Mode (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>ad_conv_type</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;standard&#39;, &#39;hdcd&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A/D Converter Type (from -1 to 1) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>stereo_rematrixing</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Stereo Rematrixing (default true)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>channel_coupling</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;auto&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Channel Coupling (from -1 to 1) (default auto)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>cpl_start_band</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;auto&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Coupling Start Band (from -1 to 15) (default auto)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -13660,7 +14852,6 @@
     <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">lpc_passes</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">min_partition_order</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">max_partition_order</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">prediction_order_method</span><span class="p">:</span> <span class="p">(</span>
         <span class="n"><span title="int">int</span></span>
         <span class="o">|</span> <span class="kc">None</span>
@@ -13687,7 +14878,6 @@
     <span class="n">exact_rice_parameters</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">multi_dim_quant</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">min_prediction_order</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">max_prediction_order</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
 </code></pre></div>
 
@@ -13773,22 +14963,6 @@
           </tr>
           <tr class="doc-section-item">
             <td>
-                <code>max_partition_order</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span> | None</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>(from -1 to 8) (default -1)</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
                 <code>prediction_order_method</code>
             </td>
             <td>
@@ -13854,22 +15028,6 @@
           <tr class="doc-section-item">
             <td>
                 <code>min_prediction_order</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span> | None</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>(from -1 to 32) (default -1)</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>max_prediction_order</code>
             </td>
             <td>
                   <code><span title="int">int</span> | None</code>
@@ -21370,12 +22528,427 @@
 
 
 <a href="#ffmpeg.codecs.encoders.libvpx" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">libvpx</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">libvpx</span><span class="p">(</span>
+    <span class="n">lag_in_frames</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">arnr_maxframes</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">arnr_strength</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">arnr_type</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span>
+        <span class="o">|</span> <span class="kc">None</span>
+        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;backward&quot;</span><span class="p">,</span> <span class="s2">&quot;forward&quot;</span><span class="p">,</span> <span class="s2">&quot;centered&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">tune</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;psnr&quot;</span><span class="p">,</span> <span class="s2">&quot;ssim&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">deadline</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;best&quot;</span><span class="p">,</span> <span class="s2">&quot;good&quot;</span><span class="p">,</span> <span class="s2">&quot;realtime&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">error_resilient</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_intra_rate</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">crf</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">static_thresh</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">drop_threshold</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">noise_sensitivity</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">undershoot_pct</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">overshoot_pct</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">ts_parameters</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">auto_alt_ref</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">cpu_used</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">speed</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">quality</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;best&quot;</span><span class="p">,</span> <span class="s2">&quot;good&quot;</span><span class="p">,</span> <span class="s2">&quot;realtime&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">vp8flags</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">arnr_max_frames</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">rc_lookahead</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">sharpness</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>libvpx VP8 (codec vp8)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>lag_in_frames</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Number of frames to look ahead for alternate reference frame selection (from -1 to INT_MAX) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>arnr_maxframes</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>altref noise reduction max frame count (from -1 to INT_MAX) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>arnr_strength</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>altref noise reduction filter strength (from -1 to INT_MAX) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>arnr_type</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;backward&#39;, &#39;forward&#39;, &#39;centered&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>altref noise reduction filter type (from -1 to INT_MAX) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>tune</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;psnr&#39;, &#39;ssim&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Tune the encoding to a specific scenario (from -1 to INT_MAX) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>deadline</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;best&#39;, &#39;good&#39;, &#39;realtime&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Time to spend encoding, in microseconds. (from INT_MIN to INT_MAX) (default good)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>error_resilient</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Error resilience configuration (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_intra_rate</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum I-frame bitrate (pct) 0=unlimited (from -1 to INT_MAX) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>crf</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Select the quality for constant quality mode (from -1 to 63) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>static_thresh</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A change threshold on blocks below which they will be skipped by the encoder (from 0 to INT_MAX) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>drop_threshold</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Frame drop threshold (from INT_MIN to INT_MAX) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>noise_sensitivity</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Noise sensitivity (from 0 to 4) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>undershoot_pct</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Datarate undershoot (min) target (%) (from -1 to 100) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>overshoot_pct</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Datarate overshoot (max) target (%) (from -1 to 1000) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>ts_parameters</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Temporal scaling configuration using a :-separated list of key=value parameters</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>auto_alt_ref</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Enable use of alternate reference frames (2-pass only) (from -1 to 2) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>cpu_used</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Quality/Speed ratio modifier (from -16 to 16) (default 1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>speed</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>(from -16 to 16) (default 1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>quality</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;best&#39;, &#39;good&#39;, &#39;realtime&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>(from INT_MIN to INT_MAX) (default good)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>vp8flags</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>(default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>arnr_max_frames</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>altref noise reduction max frame count (from 0 to 15) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>rc_lookahead</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Number of frames to look ahead for alternate reference frame selection (from 0 to 25) (default 25)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>sharpness</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Increase sharpness at the expense of lower PSNR (from -1 to 7) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -21783,11 +23356,6 @@
     <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">avcintra_class</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">me_method</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n"><span title="int">int</span></span>
-        <span class="o">|</span> <span class="kc">None</span>
-        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;dia&quot;</span><span class="p">,</span> <span class="s2">&quot;hex&quot;</span><span class="p">,</span> <span class="s2">&quot;umh&quot;</span><span class="p">,</span> <span class="s2">&quot;esa&quot;</span><span class="p">,</span> <span class="s2">&quot;tesa&quot;</span><span class="p">]</span>
-    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">motion_est</span><span class="p">:</span> <span class="p">(</span>
         <span class="n"><span title="int">int</span></span>
         <span class="o">|</span> <span class="kc">None</span>
         <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;dia&quot;</span><span class="p">,</span> <span class="s2">&quot;hex&quot;</span><span class="p">,</span> <span class="s2">&quot;umh&quot;</span><span class="p">,</span> <span class="s2">&quot;esa&quot;</span><span class="p">,</span> <span class="s2">&quot;tesa&quot;</span><span class="p">]</span>
@@ -22434,22 +24002,6 @@
           </tr>
           <tr class="doc-section-item">
             <td>
-                <code>motion_est</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;dia&#39;, &#39;hex&#39;, &#39;umh&#39;, &#39;esa&#39;, &#39;tesa&#39;]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Set motion estimation method (from -1 to 4) (default -1)</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
                 <code>forced_idr</code>
             </td>
             <td>
@@ -22689,11 +24241,6 @@
     <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">avcintra_class</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">me_method</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n"><span title="int">int</span></span>
-        <span class="o">|</span> <span class="kc">None</span>
-        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;dia&quot;</span><span class="p">,</span> <span class="s2">&quot;hex&quot;</span><span class="p">,</span> <span class="s2">&quot;umh&quot;</span><span class="p">,</span> <span class="s2">&quot;esa&quot;</span><span class="p">,</span> <span class="s2">&quot;tesa&quot;</span><span class="p">]</span>
-    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">motion_est</span><span class="p">:</span> <span class="p">(</span>
         <span class="n"><span title="int">int</span></span>
         <span class="o">|</span> <span class="kc">None</span>
         <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;dia&quot;</span><span class="p">,</span> <span class="s2">&quot;hex&quot;</span><span class="p">,</span> <span class="s2">&quot;umh&quot;</span><span class="p">,</span> <span class="s2">&quot;esa&quot;</span><span class="p">,</span> <span class="s2">&quot;tesa&quot;</span><span class="p">]</span>
@@ -23325,22 +24872,6 @@
           <tr class="doc-section-item">
             <td>
                 <code>me_method</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;dia&#39;, &#39;hex&#39;, &#39;umh&#39;, &#39;esa&#39;, &#39;tesa&#39;]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Set motion estimation method (from -1 to 4) (default -1)</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>motion_est</code>
             </td>
             <td>
                   <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;dia&#39;, &#39;hex&#39;, &#39;umh&#39;, &#39;esa&#39;, &#39;tesa&#39;]</code>
@@ -30222,12 +31753,85 @@
 
 
 <a href="#ffmpeg.codecs.encoders.png" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">png</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">png</span><span class="p">(</span>
+    <span class="n">dpi</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dpm</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">pred</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span>
+        <span class="o">|</span> <span class="kc">None</span>
+        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span>
+            <span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;sub&quot;</span><span class="p">,</span> <span class="s2">&quot;up&quot;</span><span class="p">,</span> <span class="s2">&quot;avg&quot;</span><span class="p">,</span> <span class="s2">&quot;paeth&quot;</span><span class="p">,</span> <span class="s2">&quot;mixed&quot;</span>
+        <span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>PNG (Portable Network Graphics) image</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>dpi</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Set image resolution (in dots per inch) (from 0 to 65536) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dpm</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Set image resolution (in dots per meter) (from 0 to 65536) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pred</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;none&#39;, &#39;sub&#39;, &#39;up&#39;, &#39;avg&#39;, &#39;paeth&#39;, &#39;mixed&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Prediction method (from 0 to 5) (default none)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -31019,7 +32623,6 @@
 <a href="#ffmpeg.codecs.encoders.rpza" class="headerlink" title="Permanent link">&para;</a></h2>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">rpza</span><span class="p">(</span>
     <span class="n">skip_frame_thresh</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">start_one_color_thresh</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">continue_one_color_thresh</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">sixteen_color_thresh</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
@@ -31044,22 +32647,6 @@
           <tr class="doc-section-item">
             <td>
                 <code>skip_frame_thresh</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span> | None</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>(from 0 to 24) (default 1)</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>start_one_color_thresh</code>
             </td>
             <td>
                   <code><span title="int">int</span> | None</code>
@@ -34290,12 +35877,136 @@
 
 
 <a href="#ffmpeg.codecs.encoders.vc2" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">vc2</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">vc2</span><span class="p">(</span>
+    <span class="n">tolerance</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">slice_width</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">slice_height</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">wavelet_depth</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">wavelet_type</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span>
+        <span class="o">|</span> <span class="kc">None</span>
+        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;9_7&quot;</span><span class="p">,</span> <span class="s2">&quot;5_3&quot;</span><span class="p">,</span> <span class="s2">&quot;haar&quot;</span><span class="p">,</span> <span class="s2">&quot;haar_noshift&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">qm</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="s2">&quot;flat&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>SMPTE VC-2 (codec dirac)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>tolerance</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Max undershoot in percent (from 0 to 45) (default 5)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>slice_width</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Slice width (from 32 to 1024) (default 32)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>slice_height</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Slice height (from 8 to 1024) (default 16)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>wavelet_depth</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Transform depth (from 1 to 5) (default 4)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>wavelet_type</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;9_7&#39;, &#39;5_3&#39;, &#39;haar&#39;, &#39;haar_noshift&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Transform type (from 0 to 7) (default 9_7)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>qm</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;default&#39;, &#39;color&#39;, &#39;flat&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Custom quantization matrix (from 0 to 3) (default default)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>

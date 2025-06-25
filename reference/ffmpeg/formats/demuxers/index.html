@@ -6387,29 +6387,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/parse_all_filter/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    parse_all_filter
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../scripts/parse_help/parse_codecs/" class="md-nav__link">
         
   
@@ -6433,12 +6410,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/parse_filter/" class="md-nav__link">
+      <a href="../../../scripts/parse_help/parse_filters/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    parse_filter
+    parse_filters
     
   </span>
   
@@ -6462,6 +6439,29 @@
   
   <span class="md-ellipsis">
     parse_formats
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scripts/parse_help/parse_help/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    parse_help
     
   </span>
   
@@ -14701,12 +14701,43 @@
 
 
 <a href="#ffmpeg.formats.demuxers.aptx" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">aptx</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">aptx</span><span class="p">(</span><span class="n">sample_rate</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>raw aptX</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>sample_rate</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>(from 0 to INT_MAX) (default 48000)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -14744,12 +14775,45 @@
 
 
 <a href="#ffmpeg.formats.demuxers.aptx_hd" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">aptx_hd</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">aptx_hd</span><span class="p">(</span>
+    <span class="n">sample_rate</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>raw aptX HD</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>sample_rate</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>(from 0 to INT_MAX) (default 48000)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -20261,12 +20325,96 @@
 
 
 <a href="#ffmpeg.formats.demuxers.flv" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">flv</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">flv</span><span class="p">(</span>
+    <span class="n">flv_metadata</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">flv_full_metadata</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">flv_ignore_prevtag</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">missing_streams</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>FLV (Flash Video)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>flv_metadata</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Allocate streams according to the onMetaData array (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>flv_full_metadata</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dump full metadata of the onMetadata (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>flv_ignore_prevtag</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Ignore the Size of previous tag (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>missing_streams</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>(from 0 to 255) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -24613,12 +24761,96 @@
 
 
 <a href="#ffmpeg.formats.demuxers.kux" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">kux</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">kux</span><span class="p">(</span>
+    <span class="n">flv_metadata</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">flv_full_metadata</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">flv_ignore_prevtag</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">missing_streams</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>KUX (YouKu)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>flv_metadata</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Allocate streams according to the onMetaData array (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>flv_full_metadata</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dump full metadata of the onMetadata (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>flv_ignore_prevtag</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Ignore the Size of previous tag (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>missing_streams</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>(from 0 to 255) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -25274,12 +25506,96 @@
 
 
 <a href="#ffmpeg.formats.demuxers.live_flv" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">live_flv</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">live_flv</span><span class="p">(</span>
+    <span class="n">flv_metadata</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">flv_full_metadata</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">flv_ignore_prevtag</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">missing_streams</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>live RTMP FLV (Flash Video)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>flv_metadata</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Allocate streams according to the onMetaData array (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>flv_full_metadata</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dump full metadata of the onMetadata (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>flv_ignore_prevtag</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Ignore the Size of previous tag (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>missing_streams</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>(from 0 to 255) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -33082,7 +33398,6 @@
 <a href="#ffmpeg.formats.demuxers.sbg" class="headerlink" title="Permanent link">&para;</a></h2>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">sbg</span><span class="p">(</span>
     <span class="n">sample_rate</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">frame_size</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">max_file_size</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
 </code></pre></div>
@@ -33106,22 +33421,6 @@
           <tr class="doc-section-item">
             <td>
                 <code>sample_rate</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span> | None</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>(from 0 to INT_MAX) (default 0)</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>frame_size</code>
             </td>
             <td>
                   <code><span title="int">int</span> | None</code>
@@ -36585,12 +36884,62 @@
 
 
 <a href="#ffmpeg.formats.demuxers.v210" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">v210</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">v210</span><span class="p">(</span>
+    <span class="n">video_size</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">framerate</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Uncompressed 4:2:2 10-bit</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>video_size</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set frame size</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>framerate</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set frame rate (default "25")</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -36628,12 +36977,62 @@
 
 
 <a href="#ffmpeg.formats.demuxers.v210x" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">v210x</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">v210x</span><span class="p">(</span>
+    <span class="n">video_size</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">framerate</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Uncompressed 4:2:2 10-bit</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>video_size</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set frame size</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>framerate</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set frame rate (default "25")</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -38786,12 +39185,79 @@
 
 
 <a href="#ffmpeg.formats.demuxers.xbin" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">xbin</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">xbin</span><span class="p">(</span>
+    <span class="n">linespeed</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">video_size</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">framerate</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>eXtended BINary text (XBIN)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>linespeed</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set simulated line speed (bytes per second) (from 1 to INT_MAX) (default 6000)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>video_size</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set video size, such as 640x480 or hd720.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>framerate</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set framerate (frames per second) (default "25")</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>

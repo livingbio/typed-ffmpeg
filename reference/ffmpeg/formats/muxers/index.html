@@ -4758,29 +4758,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/parse_all_filter/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    parse_all_filter
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../scripts/parse_help/parse_codecs/" class="md-nav__link">
         
   
@@ -4804,12 +4781,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/parse_filter/" class="md-nav__link">
+      <a href="../../../scripts/parse_help/parse_filters/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    parse_filter
+    parse_filters
     
   </span>
   
@@ -4833,6 +4810,29 @@
   
   <span class="md-ellipsis">
     parse_formats
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scripts/parse_help/parse_help/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    parse_help
     
   </span>
   
@@ -9186,12 +9186,43 @@
 
 
 <a href="#ffmpeg.formats.muxers.asf" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">asf</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">asf</span><span class="p">(</span><span class="n">packet_size</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>ASF (Advanced / Active Streaming Format)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>packet_size</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Packet size (from 100 to 65536) (default 3200)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -9229,12 +9260,45 @@
 
 
 <a href="#ffmpeg.formats.muxers.asf_stream" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">asf_stream</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">asf_stream</span><span class="p">(</span>
+    <span class="n">packet_size</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>ASF (Advanced / Active Streaming Format)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>packet_size</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Packet size (from 100 to 65536) (default 3200)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -11386,12 +11450,61 @@
 
 
 <a href="#ffmpeg.formats.muxers.dvd" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">dvd</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">dvd</span><span class="p">(</span>
+    <span class="n">muxrate</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">preload</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>MPEG-2 PS (DVD VOB)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>muxrate</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>(from 0 to 1.67772e+09) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>preload</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Initial demux-decode delay in microseconds. (from 0 to INT_MAX) (default 500000)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -13649,12 +13762,43 @@
 
 
 <a href="#ffmpeg.formats.muxers.hash" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">hash</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">hash</span><span class="p">(</span><span class="nb">hash</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Hash testing</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>hash</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set hash to use (default "sha256")</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -17784,12 +17928,61 @@
 
 
 <a href="#ffmpeg.formats.muxers.mpeg" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">mpeg</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">mpeg</span><span class="p">(</span>
+    <span class="n">muxrate</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">preload</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>MPEG-1 Systems / MPEG program stream</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>muxrate</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>(from 0 to 1.67772e+09) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>preload</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Initial demux-decode delay in microseconds. (from 0 to INT_MAX) (default 500000)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -18498,12 +18691,91 @@
 
 
 <a href="#ffmpeg.formats.muxers.mxf_d10" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">mxf_d10</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">mxf_d10</span><span class="p">(</span>
+    <span class="n">d10_channelcount</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">signal_standard</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span>
+        <span class="o">|</span> <span class="kc">None</span>
+        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span>
+            <span class="s2">&quot;bt601&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;bt1358&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;smpte347m&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;smpte274m&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;smpte296m&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;smpte349m&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;smpte428&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">store_user_comments</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>MXF (Material eXchange Format) D-10 Mapping</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>d10_channelcount</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Force/set channelcount in generic sound essence descriptor (from -1 to 8) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>signal_standard</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;bt601&#39;, &#39;bt1358&#39;, &#39;smpte347m&#39;, &#39;smpte274m&#39;, &#39;smpte296m&#39;, &#39;smpte349m&#39;, &#39;smpte428&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Force/set Signal Standard (from -1 to 7) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>store_user_comments</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>(default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -18541,12 +18813,91 @@
 
 
 <a href="#ffmpeg.formats.muxers.mxf_opatom" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">mxf_opatom</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">mxf_opatom</span><span class="p">(</span>
+    <span class="n">mxf_audio_edit_rate</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">signal_standard</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span>
+        <span class="o">|</span> <span class="kc">None</span>
+        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span>
+            <span class="s2">&quot;bt601&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;bt1358&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;smpte347m&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;smpte274m&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;smpte296m&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;smpte349m&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;smpte428&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">store_user_comments</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>MXF (Material eXchange Format) Operational Pattern Atom</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>mxf_audio_edit_rate</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Audio edit rate for timecode (from 0 to INT_MAX) (default 25/1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>signal_standard</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;bt601&#39;, &#39;bt1358&#39;, &#39;smpte347m&#39;, &#39;smpte274m&#39;, &#39;smpte296m&#39;, &#39;smpte349m&#39;, &#39;smpte428&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Force/set Signal Standard (from -1 to 7) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>store_user_comments</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>(default true)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -18763,12 +19114,96 @@
 
 
 <a href="#ffmpeg.formats.muxers.oga" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">oga</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">oga</span><span class="p">(</span>
+    <span class="n">serial_offset</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">oggpagesize</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">pagesize</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">page_duration</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Ogg Audio</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>serial_offset</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>serial number offset (from 0 to INT_MAX) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>oggpagesize</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Set preferred Ogg page size. (from 0 to 65025) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pagesize</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>preferred page size in bytes (deprecated) (from 0 to 65025) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>page_duration</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>preferred page duration, in microseconds (from 0 to I64_MAX) (default 1000000)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -18806,12 +19241,96 @@
 
 
 <a href="#ffmpeg.formats.muxers.ogg" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">ogg</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">ogg</span><span class="p">(</span>
+    <span class="n">serial_offset</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">oggpagesize</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">pagesize</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">page_duration</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Ogg</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>serial_offset</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>serial number offset (from 0 to INT_MAX) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>oggpagesize</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Set preferred Ogg page size. (from 0 to 65025) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pagesize</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>preferred page size in bytes (deprecated) (from 0 to 65025) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>page_duration</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>preferred page duration, in microseconds (from 0 to I64_MAX) (default 1000000)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -18849,12 +19368,96 @@
 
 
 <a href="#ffmpeg.formats.muxers.ogv" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">ogv</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">ogv</span><span class="p">(</span>
+    <span class="n">serial_offset</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">oggpagesize</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">pagesize</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">page_duration</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Ogg Video</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>serial_offset</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>serial number offset (from 0 to INT_MAX) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>oggpagesize</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Set preferred Ogg page size. (from 0 to 65025) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pagesize</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>preferred page size in bytes (deprecated) (from 0 to 65025) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>page_duration</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>preferred page duration, in microseconds (from 0 to I64_MAX) (default 1000000)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -19062,12 +19665,96 @@
 
 
 <a href="#ffmpeg.formats.muxers.opus" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">opus</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">opus</span><span class="p">(</span>
+    <span class="n">serial_offset</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">oggpagesize</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">pagesize</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">page_duration</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Ogg Opus</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>serial_offset</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>serial number offset (from 0 to INT_MAX) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>oggpagesize</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Set preferred Ogg page size. (from 0 to 65025) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pagesize</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>preferred page size in bytes (deprecated) (from 0 to 65025) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>page_duration</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>preferred page duration, in microseconds (from 0 to I64_MAX) (default 1000000)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -20829,12 +21516,510 @@
 
 
 <a href="#ffmpeg.formats.muxers.segment" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">segment</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">segment</span><span class="p">(</span>
+    <span class="n">reference_stream</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_format</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_format_options</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_list</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_header_filename</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_list_flags</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_list_size</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_list_type</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><span title="int">int</span></span>
+        <span class="o">|</span> <span class="kc">None</span>
+        <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span>
+            <span class="s2">&quot;flat&quot;</span><span class="p">,</span> <span class="s2">&quot;csv&quot;</span><span class="p">,</span> <span class="s2">&quot;ext&quot;</span><span class="p">,</span> <span class="s2">&quot;ffconcat&quot;</span><span class="p">,</span> <span class="s2">&quot;m3u8&quot;</span><span class="p">,</span> <span class="s2">&quot;hls&quot;</span>
+        <span class="p">]</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_atclocktime</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_clocktime_offset</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_clocktime_wrap_duration</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_time</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_time_delta</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">min_seg_duration</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_times</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_frames</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_wrap</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_list_entry_prefix</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_start_number</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">segment_wrap_number</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">strftime</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">increment_tc</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">break_non_keyframes</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">individual_header_trailer</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">write_header_trailer</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">reset_timestamps</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">initial_offset</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">write_empty_segments</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>segment</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>reference_stream</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set reference stream (default "auto")</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_format</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set container format used for the segments</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_format_options</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set list of options for the container format used for the segments</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_list</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set the segment list filename</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_header_filename</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>write a single file containing the header</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_list_flags</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set flags affecting segment list generation (default cache)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_list_size</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set the maximum number of playlist entries (from 0 to INT_MAX) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_list_type</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None | <span title="typing.Literal">Literal</span>[&#39;flat&#39;, &#39;csv&#39;, &#39;ext&#39;, &#39;ffconcat&#39;, &#39;m3u8&#39;, &#39;hls&#39;]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set the segment list type (from -1 to 4) (default -1)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_atclocktime</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set segment to be cut at clocktime (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_clocktime_offset</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set segment clocktime offset (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_clocktime_wrap_duration</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set segment clocktime wrapping duration (default INT64_MAX)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_time</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set segment duration (default 2)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_time_delta</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set approximation value used for the segment times (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>min_seg_duration</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set minimum segment duration (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_times</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set segment split time points</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_frames</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set segment split frame numbers</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_wrap</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set number after which the index wraps (from 0 to INT_MAX) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_list_entry_prefix</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set base url prefix for segments</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_start_number</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set the sequence number of the first segment (from 0 to INT_MAX) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>segment_wrap_number</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set the number of wrap before the first segment (from 0 to INT_MAX) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>strftime</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set filename expansion with strftime at segment creation (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>increment_tc</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>increment timecode between each segment (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>break_non_keyframes</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>allow breaking segments on non-keyframes (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>individual_header_trailer</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>write header/trailer to each segment (default true)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>write_header_trailer</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>write a header to the first segment and a trailer to the last one (default true)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>reset_timestamps</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>reset timestamps at the beginning of each segment (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>initial_offset</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set initial timestamp offset (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>write_empty_segments</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>allow writing empty 'filler' segments (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -21212,12 +22397,96 @@
 
 
 <a href="#ffmpeg.formats.muxers.spx" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">spx</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">spx</span><span class="p">(</span>
+    <span class="n">serial_offset</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">oggpagesize</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">pagesize</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">page_duration</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Ogg Speex</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>serial_offset</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>serial number offset (from 0 to INT_MAX) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>oggpagesize</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Set preferred Ogg page size. (from 0 to 65025) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pagesize</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>preferred page size in bytes (deprecated) (from 0 to 65025) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>page_duration</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>preferred page duration, in microseconds (from 0 to I64_MAX) (default 1000000)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -21298,12 +22567,43 @@
 
 
 <a href="#ffmpeg.formats.muxers.streamhash" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">streamhash</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">streamhash</span><span class="p">(</span><span class="nb">hash</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>Per-stream hash testing</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>hash</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set hash to use (default "sha256")</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -21384,12 +22684,61 @@
 
 
 <a href="#ffmpeg.formats.muxers.svcd" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">svcd</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">svcd</span><span class="p">(</span>
+    <span class="n">muxrate</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">preload</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>MPEG-2 PS (SVCD)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>muxrate</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>(from 0 to 1.67772e+09) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>preload</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Initial demux-decode delay in microseconds. (from 0 to INT_MAX) (default 500000)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -22122,12 +23471,61 @@
 
 
 <a href="#ffmpeg.formats.muxers.vcd" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">vcd</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">vcd</span><span class="p">(</span>
+    <span class="n">muxrate</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">preload</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>MPEG-1 Systems / MPEG program stream (VCD)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>muxrate</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>(from 0 to 1.67772e+09) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>preload</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Initial demux-decode delay in microseconds. (from 0 to INT_MAX) (default 500000)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -22208,12 +23606,61 @@
 
 
 <a href="#ffmpeg.formats.muxers.vob" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">vob</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">vob</span><span class="p">(</span>
+    <span class="n">muxrate</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">preload</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</span></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
         <p>MPEG-2 PS (VOB)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>muxrate</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>(from 0 to 1.67772e+09) (default 0)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>preload</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Initial demux-decode delay in microseconds. (from 0 to INT_MAX) (default 500000)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
