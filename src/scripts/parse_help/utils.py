@@ -137,8 +137,11 @@ def glob(tree: dict[str, Any], pattern: str) -> list[tuple[str, dict[str, Any]]]
     return list(_glob(tree, pattern))
 
 
-re_choice_pattern = re.compile(
-    r"^(?P<name>[\w\_\-\.]+)\s+(?P<value>[\d\-]+)?\s+(?P<flags>[\w\.]{11})(?P<help>\s+.*)?"
+re_choice_with_value_pattern = re.compile(
+    r"^(?P<name>(?:(?!  ).)+)\s+(?P<value>[\d\-]+)\s+(?P<flags>[\w\.]{11})(?P<help>\s+.*)?"
+)
+re_choice_without_value_pattern = re.compile(
+    r"^(?P<name>(?:(?!  ).)+)\s+(?P<flags>[\w\.]{11})(?P<help>\s+.*)?"
 )
 re_option_pattern = re.compile(
     r"(?P<name>[\-\w]+)\s+\<(?P<type>[\w]+)\>\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
@@ -229,7 +232,9 @@ def parse_av_option(
     for option in tree[section]:
         choices: list[FFMpegOptionChoice] = []
         for choice in tree[section][option]:
-            match = re_choice_pattern.match(choice)
+            match = re_choice_with_value_pattern.match(choice)
+            if not match:
+                match = re_choice_without_value_pattern.match(choice)
             assert match, f"No choice found in line: {choice}"
             r = _extract_match(match)
 

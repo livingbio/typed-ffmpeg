@@ -1,0 +1,370 @@
+{
+  "flags": "",
+  "help": "Apply various stereo tools.",
+  "io_flags": "",
+  "is_dynamic_input": false,
+  "is_dynamic_output": false,
+  "is_framesync": false,
+  "is_slice_threading": false,
+  "is_timeline": true,
+  "name": "stereotools",
+  "options": [
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1",
+      "flags": "..F.A....T.",
+      "help": "set level in (from 0.015625 to 64) (default 1)",
+      "max": null,
+      "min": null,
+      "name": "level_in",
+      "section": "stereotools AVOptions:",
+      "type": "double"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1",
+      "flags": "..F.A....T.",
+      "help": "set level out (from 0.015625 to 64) (default 1)",
+      "max": null,
+      "min": null,
+      "name": "level_out",
+      "section": "stereotools AVOptions:",
+      "type": "double"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..F.A....T.",
+      "help": "set balance in (from -1 to 1) (default 0)",
+      "max": "1",
+      "min": "-1",
+      "name": "balance_in",
+      "section": "stereotools AVOptions:",
+      "type": "double"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..F.A....T.",
+      "help": "set balance out (from -1 to 1) (default 0)",
+      "max": "1",
+      "min": "-1",
+      "name": "balance_out",
+      "section": "stereotools AVOptions:",
+      "type": "double"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..F.A....T.",
+      "help": "enable softclip (default false)",
+      "max": null,
+      "min": null,
+      "name": "softclip",
+      "section": "stereotools AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..F.A....T.",
+      "help": "mute L (default false)",
+      "max": null,
+      "min": null,
+      "name": "mutel",
+      "section": "stereotools AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..F.A....T.",
+      "help": "mute R (default false)",
+      "max": null,
+      "min": null,
+      "name": "muter",
+      "section": "stereotools AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..F.A....T.",
+      "help": "phase L (default false)",
+      "max": null,
+      "min": null,
+      "name": "phasel",
+      "section": "stereotools AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..F.A....T.",
+      "help": "phase R (default false)",
+      "max": null,
+      "min": null,
+      "name": "phaser",
+      "section": "stereotools AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "lr>lr",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "lr>ms",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "ms>lr",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "lr>ll",
+          "value": "3"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "lr>rr",
+          "value": "4"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "lr>l+r",
+          "value": "5"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "lr>rl",
+          "value": "6"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "ms>ll",
+          "value": "7"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "ms>rr",
+          "value": "8"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "ms>rl",
+          "value": "9"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "lr>l-r",
+          "value": "10"
+        }
+      ],
+      "default": "lr",
+      "flags": "..F.A....T.",
+      "help": "set stereo mode (from 0 to 10) (default lr>lr)",
+      "max": "10",
+      "min": "0",
+      "name": "mode",
+      "section": "stereotools AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1",
+      "flags": "..F.A....T.",
+      "help": "set side level (from 0.015625 to 64) (default 1)",
+      "max": null,
+      "min": null,
+      "name": "slev",
+      "section": "stereotools AVOptions:",
+      "type": "double"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..F.A....T.",
+      "help": "set side balance (from -1 to 1) (default 0)",
+      "max": "1",
+      "min": "-1",
+      "name": "sbal",
+      "section": "stereotools AVOptions:",
+      "type": "double"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1",
+      "flags": "..F.A....T.",
+      "help": "set middle level (from 0.015625 to 64) (default 1)",
+      "max": null,
+      "min": null,
+      "name": "mlev",
+      "section": "stereotools AVOptions:",
+      "type": "double"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..F.A....T.",
+      "help": "set middle pan (from -1 to 1) (default 0)",
+      "max": "1",
+      "min": "-1",
+      "name": "mpan",
+      "section": "stereotools AVOptions:",
+      "type": "double"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..F.A....T.",
+      "help": "set stereo base (from -1 to 1) (default 0)",
+      "max": "1",
+      "min": "-1",
+      "name": "base",
+      "section": "stereotools AVOptions:",
+      "type": "double"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..F.A....T.",
+      "help": "set delay (from -20 to 20) (default 0)",
+      "max": "20",
+      "min": "-20",
+      "name": "delay",
+      "section": "stereotools AVOptions:",
+      "type": "double"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1",
+      "flags": "..F.A....T.",
+      "help": "set S/C level (from 1 to 100) (default 1)",
+      "max": "100",
+      "min": "1",
+      "name": "sclevel",
+      "section": "stereotools AVOptions:",
+      "type": "double"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..F.A....T.",
+      "help": "set stereo phase (from 0 to 360) (default 0)",
+      "max": "360",
+      "min": "0",
+      "name": "phase",
+      "section": "stereotools AVOptions:",
+      "type": "double"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "balance",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "amplitude",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "power",
+          "value": "2"
+        }
+      ],
+      "default": "balance",
+      "flags": "..F.A....T.",
+      "help": "set balance in mode (from 0 to 2) (default balance)",
+      "max": "2",
+      "min": "0",
+      "name": "bmode_in",
+      "section": "stereotools AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "balance",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "amplitude",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "power",
+          "value": "2"
+        }
+      ],
+      "default": "balance",
+      "flags": "..F.A....T.",
+      "help": "set balance out mode (from 0 to 2) (default balance)",
+      "max": "2",
+      "min": "0",
+      "name": "bmode_out",
+      "section": "stereotools AVOptions:",
+      "type": "int"
+    }
+  ],
+  "stream_typings_input": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "stream_typings_output": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

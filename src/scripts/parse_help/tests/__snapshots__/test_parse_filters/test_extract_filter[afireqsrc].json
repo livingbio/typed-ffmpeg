@@ -1,0 +1,494 @@
+{
+  "flags": "",
+  "help": "Generate a FIR equalizer coefficients audio stream.",
+  "io_flags": "",
+  "is_dynamic_input": false,
+  "is_dynamic_output": false,
+  "is_framesync": false,
+  "is_slice_threading": false,
+  "is_timeline": false,
+  "name": "afireqsrc",
+  "options": [
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "custom",
+          "value": "-1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "flat",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "acoustic",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "bass",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "beats",
+          "value": "3"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "classic",
+          "value": "4"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "clear",
+          "value": "5"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "deep bass",
+          "value": "6"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "dubstep",
+          "value": "7"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "electronic",
+          "value": "8"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "hardstyle",
+          "value": "9"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "hip-hop",
+          "value": "10"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "jazz",
+          "value": "11"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "metal",
+          "value": "12"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "movie",
+          "value": "13"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "pop",
+          "value": "14"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "r&b",
+          "value": "15"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "rock",
+          "value": "16"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "vocal booster",
+          "value": "17"
+        }
+      ],
+      "default": "flat",
+      "flags": "..F.A......",
+      "help": "set equalizer preset (from -1 to 17) (default flat)",
+      "max": "17",
+      "min": "-1",
+      "name": "preset",
+      "section": "afireqsrc AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "custom",
+          "value": "-1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "flat",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "acoustic",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "bass",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "beats",
+          "value": "3"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "classic",
+          "value": "4"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "clear",
+          "value": "5"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "deep bass",
+          "value": "6"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "dubstep",
+          "value": "7"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "electronic",
+          "value": "8"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "hardstyle",
+          "value": "9"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "hip-hop",
+          "value": "10"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "jazz",
+          "value": "11"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "metal",
+          "value": "12"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "movie",
+          "value": "13"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "pop",
+          "value": "14"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "r&b",
+          "value": "15"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "rock",
+          "value": "16"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "vocal booster",
+          "value": "17"
+        }
+      ],
+      "default": "flat",
+      "flags": "..F.A......",
+      "help": "set equalizer preset (from -1 to 17) (default flat)",
+      "max": "17",
+      "min": "-1",
+      "name": "p",
+      "section": "afireqsrc AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": null,
+      "flags": "..F.A......",
+      "help": "set gain values per band (default \"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\")",
+      "max": null,
+      "min": null,
+      "name": "gains",
+      "section": "afireqsrc AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": null,
+      "flags": "..F.A......",
+      "help": "set gain values per band (default \"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\")",
+      "max": null,
+      "min": null,
+      "name": "g",
+      "section": "afireqsrc AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": null,
+      "flags": "..F.A......",
+      "help": "set central frequency values per band (default \"25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000\")",
+      "max": null,
+      "min": null,
+      "name": "bands",
+      "section": "afireqsrc AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": null,
+      "flags": "..F.A......",
+      "help": "set central frequency values per band (default \"25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000\")",
+      "max": null,
+      "min": null,
+      "name": "b",
+      "section": "afireqsrc AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "4096",
+      "flags": "..F.A......",
+      "help": "set number of taps (from 16 to 65535) (default 4096)",
+      "max": "65535",
+      "min": "16",
+      "name": "taps",
+      "section": "afireqsrc AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "4096",
+      "flags": "..F.A......",
+      "help": "set number of taps (from 16 to 65535) (default 4096)",
+      "max": "65535",
+      "min": "16",
+      "name": "t",
+      "section": "afireqsrc AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "44100",
+      "flags": "..F.A......",
+      "help": "set sample rate (from 1 to INT_MAX) (default 44100)",
+      "max": null,
+      "min": null,
+      "name": "sample_rate",
+      "section": "afireqsrc AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "44100",
+      "flags": "..F.A......",
+      "help": "set sample rate (from 1 to INT_MAX) (default 44100)",
+      "max": null,
+      "min": null,
+      "name": "r",
+      "section": "afireqsrc AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1024",
+      "flags": "..F.A......",
+      "help": "set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)",
+      "max": null,
+      "min": null,
+      "name": "nb_samples",
+      "section": "afireqsrc AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1024",
+      "flags": "..F.A......",
+      "help": "set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)",
+      "max": null,
+      "min": null,
+      "name": "n",
+      "section": "afireqsrc AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "linear",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "cubic",
+          "value": "1"
+        }
+      ],
+      "default": "linear",
+      "flags": "..F.A......",
+      "help": "set the interpolation (from 0 to 1) (default linear)",
+      "max": "1",
+      "min": "0",
+      "name": "interp",
+      "section": "afireqsrc AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "linear",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "cubic",
+          "value": "1"
+        }
+      ],
+      "default": "linear",
+      "flags": "..F.A......",
+      "help": "set the interpolation (from 0 to 1) (default linear)",
+      "max": "1",
+      "min": "0",
+      "name": "i",
+      "section": "afireqsrc AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "linear phase",
+          "name": "linear",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "minimum phase",
+          "name": "min",
+          "value": "1"
+        }
+      ],
+      "default": "min",
+      "flags": "..F.A......",
+      "help": "set the phase (from 0 to 1) (default min)",
+      "max": "1",
+      "min": "0",
+      "name": "phase",
+      "section": "afireqsrc AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "linear phase",
+          "name": "linear",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "minimum phase",
+          "name": "min",
+          "value": "1"
+        }
+      ],
+      "default": "min",
+      "flags": "..F.A......",
+      "help": "set the phase (from 0 to 1) (default min)",
+      "max": "1",
+      "min": "0",
+      "name": "h",
+      "section": "afireqsrc AVOptions:",
+      "type": "int"
+    }
+  ],
+  "stream_typings_input": [],
+  "stream_typings_output": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}
