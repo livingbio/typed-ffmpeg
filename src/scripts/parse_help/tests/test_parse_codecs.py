@@ -118,6 +118,10 @@ amv encoder AVOptions:
         ("tiff", "decoder"),
         ("h264_nvenc", "encoder"),
         ("libx264", "encoder"),
+        ("libvpx", "encoder"),  # contained duplicate options
+        #   -arnr-strength     <int>        E..V....... altref noise reduction filter strength (from -1 to INT_MAX) (default -1)
+        #   ...
+        #   -arnr_strength     <int>        E..V....... altref noise reduction filter strength (from 0 to 6) (default 3)
     ],
 )
 def test_extract_codec_options(

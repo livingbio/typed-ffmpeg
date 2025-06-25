@@ -16559,30 +16559,6 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "3",
-        "flags": "E..V.......",
-        "help": "altref noise reduction filter strength (from 0 to 6) (default 3)",
-        "max": "6",
-        "min": "0",
-        "name": "arnr_strength",
-        "section": "libvpx-vp8 encoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "3",
-        "flags": "E..V.......",
-        "help": "altref noise reduction filter type (from 1 to 3) (default 3)",
-        "max": "3",
-        "min": "1",
-        "name": "arnr_type",
-        "section": "libvpx-vp8 encoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
         "default": "25",
         "flags": "E..V.......",
         "help": "Number of frames to look ahead for alternate reference frame selection (from 0 to 25) (default 25)",

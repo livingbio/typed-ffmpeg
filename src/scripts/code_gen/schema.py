@@ -128,14 +128,7 @@ class FFMpegCodec(Serializable):
     options: tuple[FFMpegAVOption, ...] = ()
 
     def filtered_options(self) -> Iterable[FFMpegAVOption]:
-        # return self.options
-        # NOTE: the nvenv_hevc has alias for some options, so we need to filter them out
-        passed = set()
-        for option in self.options:
-            if option.name.replace("-", "_") in passed:
-                continue
-            passed.add(option.name.replace("-", "_"))
-            yield option
+        return self.options
 
     @property
     def codec_type(self) -> Literal["video", "audio", "subtitle"]:

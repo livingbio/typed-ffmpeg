@@ -231,6 +231,7 @@ def parse_av_option(
     output: list[FFMpegAVOption] = []
     previous_option: str | None = None
 
+    seen = set()
     for option in tree[section]:
         choices: list[FFMpegOptionChoice] = []
         for choice in tree[section][option]:
@@ -258,12 +259,23 @@ def parse_av_option(
             #    gains             <string>     ..F.A...... set gain values per band (default "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0")
             #    g                 <string>     ..F.A...... set gain values per band (default "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0")
             continue
+
         previous_option = option
 
         match = re_option_pattern.match(option)
         assert match, f"No option found in line: {option}"
         r = _extract_match(match)
         min, max, default = _extract_min_max_default(r.get("help", ""))
+
+        normalize_name = r["name"].strip("-").replace("-", "_")
+        if normalize_name in seen:
+            # skip duplicate option e.g.
+            #   -arnr-strength     <int>        E..V....... altref noise reduction filter strength (from -1 to INT_MAX) (default -1)
+            #   ...
+            #   -arnr_strength     <int>        E..V....... altref noise reduction filter strength (from 0 to 6) (default 3)
+            continue
+        seen.add(normalize_name)
+
         output.append(
             FFMpegAVOption(
                 section=section,
