@@ -1,0 +1,26 @@
+from typing import Literal
+from .schema import FFMpegMuxerOption
+from ..utils.frozendict import FrozenDict, merge
+
+
+
+def mp4(
+    
+    profile: String| Literal["baseline"] = None,
+    
+) -> FFMpegMuxerOption:
+    """
+    MP4 container format
+    
+    Args:
+        profile: Set MP4 profile (baseline, main, high)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegMuxerOption(kwargs=merge({
+        
+        "profile": profile,
+        
+    }))
+

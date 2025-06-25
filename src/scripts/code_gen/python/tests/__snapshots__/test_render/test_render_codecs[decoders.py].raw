@@ -1,0 +1,26 @@
+from typing import Literal
+from .schema import FFMpegDecoderOption
+from ..utils.frozendict import FrozenDict, merge
+
+
+
+def h264(
+    
+    profile: String| Literal["baseline"] = None,
+    
+) -> FFMpegDecoderOption:
+    """
+    H.264 video codec for encoding/decoding
+    
+    Args:
+        profile: Set H.264 profile (baseline, main, high)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=merge({
+        
+        "profile": profile,
+        
+    }))
+
