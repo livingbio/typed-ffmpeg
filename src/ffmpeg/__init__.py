@@ -23,7 +23,7 @@ Example:
 
 """
 
-from . import codecs, compile, dag, filters, formats, options, sources
+from . import codecs, compile, dag, expressions, filters, formats, options, sources
 from .base import afilter, filter_multi_output, input, merge_outputs, output, vfilter
 from .dag import Stream
 from .exceptions import FFMpegExecuteError, FFMpegTypeError, FFMpegValueError
@@ -58,4 +58,5 @@ __all__ = [
     "get_decoders",
     "get_encoders",
     "options",
+    "expressions",
 ]
