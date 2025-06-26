@@ -24,6 +24,7 @@
   "compile",
   "dag",
   "exceptions",
+  "expressions",
   "ffprobe",
   "filter_multi_output",
   "filters",
