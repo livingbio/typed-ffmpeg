@@ -25,7 +25,7 @@ if TYPE_CHECKING:
 
 
 class OutputArgs(ABC):
-    """Abstract base class for output argument handling."""
+    """Output arguments interface."""
 
     @abstractmethod
     def _output_node(

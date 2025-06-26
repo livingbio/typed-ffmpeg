@@ -3033,11 +3033,11 @@ def libcdio(
     paranoia_mode: str | None = None,
 ) -> FFMpegDemuxerOption:
     """
-    CD-ROM input using libcdio.
+    Libcdio.
 
     Args:
         speed: set drive reading speed (from 0 to INT_MAX) (default 0)
-        paranoia_mode: set error recovery mode (default 0).
+        paranoia_mode: set error recovery mode (default 0)
 
     Returns:
         the set codec options

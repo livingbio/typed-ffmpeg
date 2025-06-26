@@ -20,6 +20,8 @@ if TYPE_CHECKING:
 
 
 class OutputArgs(ABC):
+    """Output arguments interface."""
+
     @abstractmethod
     def _output_node(self, *streams: FilterableStream, filename: str | Path, **kwargs: Any) -> OutputNode:
         ...
