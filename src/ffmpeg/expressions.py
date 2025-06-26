@@ -336,7 +336,7 @@ def floor(expr: str) -> Expression:
     return Expression(f"floor({expr})")
 
 
-def guass(x: str) -> Expression:
+def gauss(x: str) -> Expression:
     """
     Compute Gauss function of x, corresponding to exp(-x*x/2) / sqrt(2*PI).
 
@@ -347,7 +347,7 @@ def guass(x: str) -> Expression:
         Expression representing the Gauss function.
 
     """
-    return Expression(f"guass({x})")
+    return Expression(f"gauss({x})")
 
 
 def gcd(x: str, y: str) -> Expression:
