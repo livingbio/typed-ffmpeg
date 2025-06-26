@@ -6,7 +6,8 @@ from .. import formats
 from ..base import input, merge_outputs, output, vfilter
 from ..codecs.decoders import h264
 from ..codecs.encoders import h263
-from ..filters import concat, join
+from ..filters import blend, concat, join
+from ..options import framesync
 from ..schema import StreamType
 from ..sources import color
 from ..streams.video import VideoStream
@@ -61,6 +62,17 @@ def test_filter_node(snapshot: SnapshotAssertion) -> None:
     with pytest.raises(TypeError) as te:
         concat(*(input1, input2.audio, input3.audio), n=3)
     assert snapshot == te
+
+
+def test_filter_node_with_framesync(snapshot: SnapshotAssertion) -> None:
+    input1 = input("input1")
+    input2 = input("input2")
+
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        blend(input1, input2, framesync_options=framesync(ts_sync_mode="nearest"))
+        .output(filename="out.mp4")
+        .compile()
+    )
 
 
 def test_compile(snapshot: SnapshotAssertion) -> None:

@@ -14,7 +14,7 @@ def framesync(
     ts_sync_mode: Literal["default", "nearest"] | None = None,
 ) -> FFMpegFrameSyncOption:
     return FFMpegFrameSyncOption(
-        kwargs=merge(
+        merge(
             {
                 "eof_action": eof_action,
                 "shortest": shortest,
