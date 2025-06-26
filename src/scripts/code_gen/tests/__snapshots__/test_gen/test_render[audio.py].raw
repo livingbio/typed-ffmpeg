@@ -60,7 +60,6 @@ description
 Args:
     order: set the filter order
     projection: set the filter projection
-
     extra_options: Extra options for the filter
 
 Returns:
