@@ -1,4 +1,8 @@
 # NOTE: this file is auto-generated, do not modify
+"""
+FFmpeg sources.
+"""
+
 
 from typing import Any, Literal
 

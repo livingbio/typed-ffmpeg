@@ -1,4 +1,7 @@
 # NOTE: this file is auto-generated, do not modify
+"""
+Audio stream.
+"""
 
 
 from __future__ import annotations
@@ -22,6 +25,10 @@ if TYPE_CHECKING:
 
 
 class AudioStream(FilterableStream):
+    """
+    Audio stream.
+    """
+
     
         
     
@@ -51,6 +58,7 @@ description
 Args:
     order: set the filter order
     projection: set the filter projection
+    extra_options: Extra options for the filter
 
 Returns:
     default: the audio stream
