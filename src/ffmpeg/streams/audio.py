@@ -1,5 +1,5 @@
 # NOTE: this file is auto-generated, do not modify
-
+"""Audio stream."""
 
 from __future__ import annotations
 
@@ -30,6 +30,8 @@ if TYPE_CHECKING:
 
 
 class AudioStream(FilterableStream):
+    """Audio stream."""
+
     def a3dscope(
         self,
         *,
@@ -59,6 +61,7 @@ class AudioStream(FilterableStream):
             xpos: set camera position (from -60 to 60) (default 0)
             length: set length (from 1 to 60) (default 15)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -102,6 +105,7 @@ class AudioStream(FilterableStream):
         Args:
             action: set action (from 0 to 1) (default start)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -145,6 +149,7 @@ class AudioStream(FilterableStream):
             colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
             mode: set output mode (from 0 to 1) (default bars)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -205,6 +210,7 @@ class AudioStream(FilterableStream):
             level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
             mix: set mix (from 0 to 1) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -251,6 +257,7 @@ class AudioStream(FilterableStream):
         Args:
             contrast: set contrast (from 0 to 100) (default 33)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -281,6 +288,8 @@ class AudioStream(FilterableStream):
 
         Copy the input audio unchanged to the output.
 
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -377,6 +386,7 @@ class AudioStream(FilterableStream):
             curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
             curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -431,6 +441,7 @@ class AudioStream(FilterableStream):
             gain: set output bands gain (default "1.f")
             precision: set processing precision (from 0 to 2) (default auto)
 
+            extra_options: Extra options for the filter
 
         Returns:
             filter_node: the filter node
@@ -494,6 +505,7 @@ class AudioStream(FilterableStream):
             lforange: set LFO depth (from 1 to 250) (default 20)
             lforate: set LFO rate (from 0.01 to 200) (default 0.3)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -543,6 +555,7 @@ class AudioStream(FilterableStream):
             preroll: preroll duration in seconds (default 0)
             buffer: buffer duration in seconds (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -590,6 +603,7 @@ class AudioStream(FilterableStream):
             burst: set burst fusion (from 0 to 10) (default 2)
             method: set overlap method (from 0 to 1) (default add)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -640,6 +654,7 @@ class AudioStream(FilterableStream):
             hsize: set histogram size (from 100 to 9999) (default 1000)
             method: set overlap method (from 0 to 1) (default add)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -682,6 +697,7 @@ class AudioStream(FilterableStream):
             stages: set filtering stages (from 1 to 16) (default 6)
             seed: set random seed (from -1 to UINT32_MAX) (default -1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -720,6 +736,7 @@ class AudioStream(FilterableStream):
             delays: set list of delays for each channel
             all: use last available delay for remained channels (default false)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -758,6 +775,7 @@ class AudioStream(FilterableStream):
             level: set level (from -451 to -90) (default -351)
             type: set type (from 0 to 3) (default dc)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -789,6 +807,8 @@ class AudioStream(FilterableStream):
 
         Compute derivative of input audio.
 
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -852,6 +872,7 @@ class AudioStream(FilterableStream):
             size: set graph size (default "900x256")
             rate: set video rate (default "25")
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -907,6 +928,7 @@ class AudioStream(FilterableStream):
             release: set the release (from 5 to 2000) (default 100)
             channels: set channels to filter (default "all")
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -979,6 +1001,7 @@ class AudioStream(FilterableStream):
             auto: set auto threshold (from -1 to 1) (default disabled)
             precision: set processing precision (from 0 to 2) (default auto)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -1033,6 +1056,7 @@ class AudioStream(FilterableStream):
             sensitivity: set smooth sensitivity (from 0 to 1e+06) (default 2)
             basefreq: set base frequency (from 2 to 1e+06) (default 22050)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -1077,6 +1101,7 @@ class AudioStream(FilterableStream):
             delays: set list of signal delays (default "1000")
             decays: set list of signal decays (default "0.5")
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -1125,6 +1150,7 @@ class AudioStream(FilterableStream):
             mode: set filter mode (from 0 to 1) (default reproduction)
             type: set filter type (from 0 to 8) (default cd)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -1165,6 +1191,7 @@ class AudioStream(FilterableStream):
             exprs: set the '|'-separated list of channels expressions
             channel_layout: set channel layout
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -1215,6 +1242,7 @@ class AudioStream(FilterableStream):
             ceil: set ceiling (from 9999 to 20000) (default 9999)
             listen: enable listen mode (default false)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -1298,6 +1326,7 @@ class AudioStream(FilterableStream):
             silence: set the silence gain (from 0 to 1) (default 0)
             unity: set the unity gain (from 0 to 1) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -1374,6 +1403,7 @@ class AudioStream(FilterableStream):
             sample_noise: set sample noise mode (from 0 to 2) (default none)
             gain_smooth: set gain smooth radius (from 0 to 50) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -1455,6 +1485,7 @@ class AudioStream(FilterableStream):
             win_func: set window function (from 0 to 20) (default hann)
             overlap: set window overlap (from 0 to 1) (default 0.75)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -1498,6 +1529,7 @@ class AudioStream(FilterableStream):
             sample_rates: A '|'-separated list of sample rates.
             channel_layouts: A '|'-separated list of channel layouts.
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -1539,6 +1571,7 @@ class AudioStream(FilterableStream):
             level: set output level (from 0 to 1) (default 1)
             order: set filter order (from 1 to 16) (default 8)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -1592,6 +1625,7 @@ class AudioStream(FilterableStream):
             samples: set frame size in number of samples (from 512 to 65536) (default 8192)
             softness: set thresholding softness (from 0 to 10) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -1656,6 +1690,7 @@ class AudioStream(FilterableStream):
             link: set link (from 0 to 1) (default average)
             level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -1734,6 +1769,7 @@ class AudioStream(FilterableStream):
             flags: set flags (default all+queue)
             rate: set video rate (default "25")
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1793,6 +1829,7 @@ class AudioStream(FilterableStream):
             slide: set sonogram sliding (from 0 to 1) (default replace)
             hmode: set histograms mode (from 0 to 1) (default abs)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1866,6 +1903,7 @@ class AudioStream(FilterableStream):
             size: set video size (default "hd720")
             rate: set video rate (default "25")
 
+            extra_options: Extra options for the filter
 
         Returns:
             filter_node: the filter node
@@ -1914,6 +1952,8 @@ class AudioStream(FilterableStream):
 
         Compute integral of input audio.
 
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -1942,6 +1982,8 @@ class AudioStream(FilterableStream):
 
         Report audio filtering latency.
 
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -1991,6 +2033,7 @@ class AudioStream(FilterableStream):
             level: auto level (default true)
             latency: compensate delay (default false)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2054,6 +2097,7 @@ class AudioStream(FilterableStream):
             transform: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2103,6 +2147,7 @@ class AudioStream(FilterableStream):
             start: set the loop start sample (from -1 to I64_MAX) (default 0)
             time: set the loop start time (default INT64_MAX)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2159,6 +2204,7 @@ class AudioStream(FilterableStream):
             file: set file where to print metadata information
             direct: reduce buffering when printing to user-set file or pipe (default false)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2196,6 +2242,8 @@ class AudioStream(FilterableStream):
 
         Multiply two audio streams.
 
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2244,6 +2292,7 @@ class AudioStream(FilterableStream):
             fscale: set frequency scale (from 0 to 1) (default log)
             colors: set channels curves colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
 
+            extra_options: Extra options for the filter
 
         Returns:
             filter_node: the filter node
@@ -2296,6 +2345,7 @@ class AudioStream(FilterableStream):
             output: set output mode (from 0 to 2) (default o)
             smooth: set smooth factor (from 1 to 1000) (default 11)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2344,6 +2394,7 @@ class AudioStream(FilterableStream):
             leakage: set the filter leakage (from 0 to 1) (default 0)
             out_mode: set output mode (from 0 to 4) (default o)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2395,6 +2446,7 @@ class AudioStream(FilterableStream):
             leakage: set the filter leakage (from 0 to 1) (default 0)
             out_mode: set output mode (from 0 to 4) (default o)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2432,6 +2484,8 @@ class AudioStream(FilterableStream):
 
         Pass the source unchanged to the output.
 
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2473,6 +2527,7 @@ class AudioStream(FilterableStream):
             pad_dur: set duration of silence to add (default -0.000001)
             whole_dur: set minimum target duration in the audio stream (default -0.000001)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2516,6 +2571,7 @@ class AudioStream(FilterableStream):
             mode: select permissions mode (from 0 to 4) (default none)
             seed: set the seed for the random mode (from -1 to UINT32_MAX) (default -1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2572,6 +2628,7 @@ class AudioStream(FilterableStream):
             angle: set angle threshold for out-of-phase detection (from 90 to 180) (default 170)
             duration: set minimum mono or out-of-phase duration in seconds (default 2)
 
+            extra_options: Extra options for the filter
 
         Returns:
             filter_node: the filter node
@@ -2633,6 +2690,7 @@ class AudioStream(FilterableStream):
             speed: set modulation speed (from 0.1 to 2) (default 0.5)
             type: set modulation type (from 0 to 1) (default triangular)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2677,6 +2735,7 @@ class AudioStream(FilterableStream):
             level: set output level (from 0 to 1) (default 1)
             order: set filter order (from 1 to 16) (default 8)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2710,6 +2769,8 @@ class AudioStream(FilterableStream):
 
         Measure Audio Peak Signal-to-Noise Ratio.
 
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2758,6 +2819,7 @@ class AudioStream(FilterableStream):
             iterations: set iterations (from 1 to 20) (default 10)
             level: set auto level (default false)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2821,6 +2883,7 @@ class AudioStream(FilterableStream):
             ms: set ms (from 10 to 2000) (default 500)
             hz: set frequency (from 0.01 to 100) (default 2)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2868,6 +2931,7 @@ class AudioStream(FilterableStream):
             limit: sleep time limit (default 2)
             speed: speed factor (from DBL_MIN to DBL_MAX) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2904,6 +2968,7 @@ class AudioStream(FilterableStream):
         Args:
             sample_rate: (from 0 to INT_MAX) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2934,6 +2999,8 @@ class AudioStream(FilterableStream):
 
         Reverse an audio clip.
 
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -2974,6 +3041,7 @@ class AudioStream(FilterableStream):
             delta: set the filter delta (from 0 to 32767) (default 2)
             out_mode: set output mode (from 0 to 4) (default o)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3015,6 +3083,7 @@ class AudioStream(FilterableStream):
             model: set model name
             mix: set output vs input mix (from -1 to 1) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3047,6 +3116,8 @@ class AudioStream(FilterableStream):
 
         Measure Audio Signal-to-Distortion Ratio.
 
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3083,6 +3154,7 @@ class AudioStream(FilterableStream):
             timestamps: timestamps of input at which to split input
             samples: samples at which to split input
 
+            extra_options: Extra options for the filter
 
         Returns:
             filter_node: the filter node
@@ -3125,6 +3197,7 @@ class AudioStream(FilterableStream):
             expr: set an expression to use for selecting frames (default "1")
             outputs: set the number of outputs (from 1 to INT_MAX) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             filter_node: the filter node
@@ -3167,6 +3240,7 @@ class AudioStream(FilterableStream):
             commands: set commands
             filename: set commands file
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3205,6 +3279,7 @@ class AudioStream(FilterableStream):
             nb_out_samples: set the number of per-frame output samples (from 1 to INT_MAX) (default 1024)
             pad: pad last frame with zeros (default true)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3241,6 +3316,7 @@ class AudioStream(FilterableStream):
         Args:
             expr: Expression determining the frame timestamp (default "PTS")
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3276,6 +3352,7 @@ class AudioStream(FilterableStream):
         Args:
             sample_rate: set the sample rate (from 1 to INT_MAX) (default 44100)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3311,6 +3388,7 @@ class AudioStream(FilterableStream):
         Args:
             expr: set expression determining the output timebase (default "intb")
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3341,6 +3419,8 @@ class AudioStream(FilterableStream):
 
         Show textual information for each audio frame.
 
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3400,6 +3480,7 @@ class AudioStream(FilterableStream):
             mode: set a mode of operation (from 0 to 1) (default select)
             type: set side data type (from -1 to INT_MAX) (default -1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3432,6 +3513,8 @@ class AudioStream(FilterableStream):
 
         Measure Audio Scale-Invariant Signal-to-Distortion Ratio.
 
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3480,6 +3563,7 @@ class AudioStream(FilterableStream):
             param: set softclip parameter (from 0.01 to 3) (default 1)
             oversample: set oversample factor (from 1 to 64) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3570,6 +3654,7 @@ class AudioStream(FilterableStream):
             overlap: set window overlap (from 0 to 1) (default 0.5)
             measure: select the parameters which are measured (default all+mean+variance+centroid+spread+skewness+kurtosis+entropy+flatness+crest+flux+slope+decrease+rolloff)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3610,6 +3695,7 @@ class AudioStream(FilterableStream):
         Args:
             outputs: set number of outputs (from 1 to INT_MAX) (default 2)
 
+            extra_options: Extra options for the filter
 
         Returns:
             filter_node: the filter node
@@ -3661,6 +3747,7 @@ class AudioStream(FilterableStream):
             lmname: set which language model to use
             logfn: set output for log messages (default "/dev/null")
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3776,6 +3863,7 @@ class AudioStream(FilterableStream):
             measure_perchannel: Select the parameters which are measured per channel (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count)
             measure_overall: Select the parameters which are measured overall (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3831,6 +3919,7 @@ class AudioStream(FilterableStream):
             delay: set delay (from 1 to 100) (default 20)
             channels: set channels to filter (default "all")
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3878,6 +3967,7 @@ class AudioStream(FilterableStream):
             order: set filter order (from 3 to 20) (default 10)
             level: set input level (from 0 to 1) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3919,6 +4009,7 @@ class AudioStream(FilterableStream):
             order: set filter order (from 3 to 20) (default 10)
             level: set input level (from 0 to 1) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -3962,6 +4053,7 @@ class AudioStream(FilterableStream):
             qfactor: set Q-factor (from 0.01 to 100) (default 1)
             level: set input level (from 0 to 2) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4006,6 +4098,7 @@ class AudioStream(FilterableStream):
             qfactor: set Q-factor (from 0.01 to 100) (default 1)
             level: set input level (from 0 to 2) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4044,6 +4137,7 @@ class AudioStream(FilterableStream):
         Args:
             tempo: set tempo scale factor (from 0.5 to 100) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4087,6 +4181,7 @@ class AudioStream(FilterableStream):
             order: set filter order (from 2 to 30) (default 5)
             level: set input level (from 0 to 4) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4138,6 +4233,7 @@ class AudioStream(FilterableStream):
             start_sample: Number of the first audio sample that should be passed to the output (from -1 to I64_MAX) (default -1)
             end_sample: Number of the first audio sample that should be dropped again (from 0 to I64_MAX) (default I64_MAX)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4211,6 +4307,7 @@ class AudioStream(FilterableStream):
             swap: swap x axis with y axis (default true)
             mirror: mirror axis (from 0 to 3) (default none)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4264,6 +4361,7 @@ class AudioStream(FilterableStream):
             size: set the segment size (from 2 to 131072) (default 256)
             algo: set the algorithm (from 0 to 2) (default best)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4303,6 +4401,7 @@ class AudioStream(FilterableStream):
         Args:
             bind_address: set bind address (default "tcp://*:5555")
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4360,6 +4459,7 @@ class AudioStream(FilterableStream):
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4424,6 +4524,7 @@ class AudioStream(FilterableStream):
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4491,6 +4592,7 @@ class AudioStream(FilterableStream):
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4554,6 +4656,7 @@ class AudioStream(FilterableStream):
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4602,6 +4705,7 @@ class AudioStream(FilterableStream):
             fcut: Set cut frequency (in Hz) (from 0 to 2000) (default 0)
             feed: Set feed level (in Hz) (from 0 to 150) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4641,6 +4745,7 @@ class AudioStream(FilterableStream):
             map: A comma-separated list of input channel numbers in output order.
             channel_layout: Output channel layout.
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4679,6 +4784,7 @@ class AudioStream(FilterableStream):
             channel_layout: Input channel layout. (default "stereo")
             channels: Channels to extract. (default "all")
 
+            extra_options: Extra options for the filter
 
         Returns:
             filter_node: the filter node
@@ -4729,6 +4835,7 @@ class AudioStream(FilterableStream):
             speeds: set speeds
             depths: set depths
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4781,6 +4888,7 @@ class AudioStream(FilterableStream):
             volume: set initial volume (from -900 to 0) (default 0)
             delay: set delay for samples before sending them to volume adjuster (from 0 to 20) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4832,6 +4940,7 @@ class AudioStream(FilterableStream):
             wet: set wet amount (from 0 to 1) (default 1)
             temp: set temperature °C (from -50 to 50) (default 20)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4884,6 +4993,7 @@ class AudioStream(FilterableStream):
             level_out: set level out (from 0 to 1) (default 1)
             block_size: set the block size (from 0 to 32768) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4926,6 +5036,7 @@ class AudioStream(FilterableStream):
             i: set intensity (from -10 to 10) (default 2)
             c: enable clipping (default true)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -4964,6 +5075,7 @@ class AudioStream(FilterableStream):
             shift: set DC shift (from -1 to 1) (default 0)
             limitergain: set limiter gain (from 0 to 1) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -5006,6 +5118,7 @@ class AudioStream(FilterableStream):
             f: set frequency (from 0 to 1) (default 0.5)
             s: set output mode (from 0 to 2) (default o)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -5048,6 +5161,7 @@ class AudioStream(FilterableStream):
             enhance: set dialogue enhance factor (from 0 to 3) (default 1)
             voice: set voice detection factor (from 2 to 32) (default 2)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -5087,6 +5201,7 @@ class AudioStream(FilterableStream):
         Args:
             length: set the window length (from 0.01 to 10) (default 3)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -5146,6 +5261,7 @@ class AudioStream(FilterableStream):
             overlap: set the frame overlap (from 0 to 1) (default 0)
             curve: set the custom peak mapping curve
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -5188,6 +5304,8 @@ class AudioStream(FilterableStream):
 
         Widen the stereo image.
 
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -5257,6 +5375,7 @@ class AudioStream(FilterableStream):
             sample_peak: sample peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)
             true_peak: true peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             filter_node: the filter node
@@ -5334,6 +5453,7 @@ class AudioStream(FilterableStream):
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -5380,6 +5500,7 @@ class AudioStream(FilterableStream):
             m: set the difference coefficient (from -10 to 10) (default 2.5)
             c: enable clipping (default true)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -5457,6 +5578,7 @@ class AudioStream(FilterableStream):
             fft2: set 2-channels fft (default false)
             min_phase: set minimum phase mode (default false)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -5520,6 +5642,7 @@ class AudioStream(FilterableStream):
             phase: swept wave percentage phase-shift for multi-channel (from 0 to 100) (default 25)
             interp: delay-line interpolation (from 0 to 1) (default linear)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -5588,6 +5711,7 @@ class AudioStream(FilterableStream):
             right_gain: set right gain (from 0.015625 to 64) (default 1)
             right_phase: set right phase (default true)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -5647,6 +5771,7 @@ class AudioStream(FilterableStream):
             analyze_mode: Replace audio with solid tone and signal some processing aspect in the amplitude. (from 0 to 4) (default off)
             bits_per_sample: Valid bits per sample (location of the true LSB). (from 16 to 24) (default 16)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -5709,6 +5834,7 @@ class AudioStream(FilterableStream):
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -5777,6 +5903,7 @@ class AudioStream(FilterableStream):
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -5829,7 +5956,7 @@ class AudioStream(FilterableStream):
     ) -> AudioStream:
         """
 
-        EBU R128 loudness normalization
+        EBU R128 loudness normalization.
 
         Args:
             I: set integrated loudness target (from -70 to -5) (default -24)
@@ -5844,6 +5971,7 @@ class AudioStream(FilterableStream):
             dual_mono: treat mono input as dual-mono (default false)
             print_format: set print format for stats (from 0 to 2) (default none)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -5911,6 +6039,7 @@ class AudioStream(FilterableStream):
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -5979,6 +6108,7 @@ class AudioStream(FilterableStream):
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -6026,6 +6156,7 @@ class AudioStream(FilterableStream):
         Args:
             args: set parameters for each band (default "0.005,0.1 6 -47/-40,-34/-34,-17/-33 100 | 0.003,0.05 6 -47/-40,-34/-34,-17/-33 400 | 0.000625,0.0125 6 -47/-40,-34/-34,-15/-33 1600 | 0.0001,0.025 6 -47/-40,-34/-34,-31/-31,-0/-30 6400 | 0,0.025 6 -38/-31,-28/-28,-0/-25 22000")
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -6061,6 +6192,7 @@ class AudioStream(FilterableStream):
         Args:
             args:
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -6098,6 +6230,7 @@ class AudioStream(FilterableStream):
             track_gain: track gain (dB) (from -FLT_MAX to FLT_MAX) (default 0)
             track_peak: track peak (from -FLT_MAX to FLT_MAX) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -6160,6 +6293,7 @@ class AudioStream(FilterableStream):
             pitchq: set pitch quality (from 0 to INT_MAX) (default speed)
             channels: set channels (from 0 to INT_MAX) (default apart)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -6266,6 +6400,7 @@ class AudioStream(FilterableStream):
             csp: set color space (from 0 to INT_MAX) (default unspecified)
             cscheme: set color scheme (default "1|0.5|0|0|0.5|1")
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6364,6 +6499,7 @@ class AudioStream(FilterableStream):
             bar: set bar ratio (from 0 to 1) (default 0)
             rotation: set color rotation (from -1 to 1) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6469,6 +6605,7 @@ class AudioStream(FilterableStream):
             data: set data mode (from 0 to 2) (default magnitude)
             channels: set channels to draw (default "all")
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6548,6 +6685,7 @@ class AudioStream(FilterableStream):
             win_func: set window function (from 0 to 20) (default hann)
             rate: set video rate (default "25")
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6675,6 +6813,7 @@ class AudioStream(FilterableStream):
             limit: set upper limit in dBFS (from -100 to 100) (default 0)
             opacity: set opacity strength (from 0 to 10) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6806,6 +6945,7 @@ class AudioStream(FilterableStream):
             limit: set upper limit in dBFS (from -100 to 100) (default 0)
             opacity: set opacity strength (from 0 to 10) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6886,6 +7026,7 @@ class AudioStream(FilterableStream):
             m: set mode (from 0 to 1) (default p)
             ds: set display scale (from 0 to 1) (default lin)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6953,6 +7094,7 @@ class AudioStream(FilterableStream):
             scale: set amplitude scale (from 0 to 3) (default lin)
             draw: set draw mode (from 0 to 1) (default scale)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7007,6 +7149,7 @@ class AudioStream(FilterableStream):
             draw: set draw mode (from 0 to 1) (default scale)
             filter: set filter mode (from 0 to 1) (default average)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7070,6 +7213,7 @@ class AudioStream(FilterableStream):
             level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
             mix: set mix (from 0 to 1) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -7142,6 +7286,7 @@ class AudioStream(FilterableStream):
             link: set link (from 0 to 1) (default average)
             level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -7195,6 +7340,7 @@ class AudioStream(FilterableStream):
             d: set minimum duration in seconds (default 2)
             mono: check each channel separately (default false)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -7260,6 +7406,7 @@ class AudioStream(FilterableStream):
             window: set duration of window for silence detection (default 0.02)
             timestamp: set how every output frame timestamp is processed (from 0 to 1) (default write)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -7335,6 +7482,7 @@ class AudioStream(FilterableStream):
             anglestep: set neighbor search angle step (from 0.01 to 10) (default 0.5)
             radstep: set neighbor search radius step (from 0.01 to 1) (default 0.01)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -7401,6 +7549,7 @@ class AudioStream(FilterableStream):
             link: set linked channels filtering (default false)
             rms: set the RMS value (from 0 to 1) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -7501,6 +7650,7 @@ class AudioStream(FilterableStream):
             bmode_in: set balance in mode (from 0 to 2) (default balance)
             bmode_out: set balance out mode (from 0 to 2) (default balance)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -7561,6 +7711,7 @@ class AudioStream(FilterableStream):
             crossfeed: set cross feed (from 0 to 0.8) (default 0.3)
             drymix: set dry-mix (from 0 to 1) (default 0.8)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -7633,6 +7784,7 @@ class AudioStream(FilterableStream):
             _17b: set 16744Hz band gain (from 0 to 20) (default 1)
             _18b: set 20000Hz band gain (from 0 to 20) (default 1)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -7810,6 +7962,7 @@ class AudioStream(FilterableStream):
             win_func: set window function (from 0 to 20) (default hann)
             overlap: set window overlap (from 0 to 1) (default 0.5)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -7918,6 +8071,7 @@ class AudioStream(FilterableStream):
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -7987,6 +8141,7 @@ class AudioStream(FilterableStream):
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -8034,6 +8189,7 @@ class AudioStream(FilterableStream):
             f: set frequency in hertz (from 0.1 to 20000) (default 5)
             d: set depth as percentage (from 0 to 1) (default 0.5)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -8072,6 +8228,7 @@ class AudioStream(FilterableStream):
             f: set frequency in hertz (from 0.1 to 20000) (default 5)
             d: set depth as percentage (from 0 to 1) (default 0.5)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -8110,6 +8267,7 @@ class AudioStream(FilterableStream):
             cutoff: set virtual bass cutoff (from 100 to 500) (default 250)
             strength: set virtual bass strength (from 0.5 to 3) (default 3)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -8160,6 +8318,7 @@ class AudioStream(FilterableStream):
             replaygain_preamp: Apply replaygain pre-amplification (from -15 to 15) (default 0)
             replaygain_noclip: Apply replaygain clipping prevention (default true)
 
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -8195,6 +8354,8 @@ class AudioStream(FilterableStream):
 
         Detect audio volume.
 
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream

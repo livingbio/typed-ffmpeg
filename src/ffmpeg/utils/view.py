@@ -32,6 +32,7 @@ def _get_node_color(node: Node) -> str | None:
 
     Returns:
         A hex color string or None if no specific color is assigned
+
     """
     if isinstance(node, InputNode):
         color = "#99cc00"
@@ -72,8 +73,8 @@ def view(node: Node, format: Literal["png", "svg", "dot"]) -> str:
         graph_path = ffmpeg.utils.view(output, format="png")
         print(f"Graph visualization saved to {graph_path}")
         ```
-    """
 
+    """
     try:
         import graphviz  # type: ignore
     except ImportError:

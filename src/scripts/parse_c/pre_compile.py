@@ -21,7 +21,11 @@ target_folder.mkdir(exist_ok=True)
 
 def precompile() -> None:
     """
-    Pre-compile the ffmpeg source code
+    Pre-compile the ffmpeg source code.
+
+    Raises:
+        CalledProcessError: If the configure script fails.
+
     """
     print("precompile")
     os.chdir(source_folder)

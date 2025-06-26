@@ -1,10 +1,13 @@
+"""Framesync options. Some filters with several inputs support a common set of options. These options can only be set by name, not with the short notation."""
+
 from typing import Literal
 
 from ..schema import FFMpegOptionGroup
 from ..utils.frozendict import merge
 
 
-class FFMpegFrameSyncOption(FFMpegOptionGroup): ...
+class FFMpegFrameSyncOption(FFMpegOptionGroup):
+    """Framesync options."""
 
 
 def framesync(
@@ -27,14 +30,13 @@ def framesync(
 
     Returns:
         FFMpegFrameSyncOption
+
     """
     return FFMpegFrameSyncOption(
-        merge(
-            {
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-            }
-        )
+        merge({
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+        })
     )

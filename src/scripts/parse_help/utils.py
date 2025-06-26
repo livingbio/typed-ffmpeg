@@ -1,3 +1,5 @@
+"""Utility functions for parsing FFmpeg help output."""
+
 import re
 import subprocess
 from collections import OrderedDict
@@ -23,6 +25,7 @@ def run_ffmpeg_command(args: Sequence[str]) -> str:
         >>> run_ffmpeg_command(["-version"])
         'ffmpeg version ...'
         ```
+
     """
     result = subprocess.run(
         ["ffmpeg", *args, "-hide_banner"],
@@ -49,6 +52,7 @@ def _count_indent(line: str) -> int:
         >>> _count_indent("  bar")
         2
         ```
+
     """
     for i in range(len(line)):
         if line[i] != " ":
@@ -82,15 +86,14 @@ def parse_section_tree(text: str) -> dict[str, Any]:
 
         Output:
         ```python
-        OrderedDict(
-            {
-                "Section1": OrderedDict(
-                    {"Option1": OrderedDict({"SubOption1": OrderedDict()})}
-                ),
-                "Section2": OrderedDict({"Option2": OrderedDict()}),
-            }
-        )
+        OrderedDict({
+            "Section1": OrderedDict({
+                "Option1": OrderedDict({"SubOption1": OrderedDict()})
+            }),
+            "Section2": OrderedDict({"Option2": OrderedDict()}),
+        })
         ```
+
     """
     output: OrderedDict[str, Any] = OrderedDict()
     paths: list[tuple[int, str]] = []
@@ -123,6 +126,7 @@ def glob(tree: dict[str, Any], pattern: str) -> list[tuple[str, dict[str, Any]]]
 
     Returns:
         An iterable of tuples containing the matched key and value
+
     """
 
     def _glob(
@@ -169,6 +173,7 @@ def _extract_match(match: re.Match[str]) -> dict[str, str]:
         >>> _extract_match(match)
         {'name': 'foo', 'value': '123'}
         ```
+
     """
     return {k: v.strip() for k, v in match.groupdict().items() if v}
 
@@ -190,6 +195,7 @@ def _extract_min_max_default(help: str) -> tuple[str | None, str | None, str | N
         >>> _extract_min_max_default("no limits specified")
         (None, None, None)
         ```
+
     """
     match = re_min_max.findall(help)
     if match:
@@ -227,6 +233,7 @@ def parse_av_option(
 
     Raises:
         AssertionError: If the expected option or choice format is not matched
+
     """
     output: list[FFMpegAVOption] = []
     previous_option: str | None = None
@@ -307,6 +314,7 @@ def parse_general_option(
 
     Raises:
         AssertionError: If a general option is found to have choices (which is not expected)
+
     """
     output: list[FFMpegOption] = []
 

@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+"""FFprobe XML parsing utilities."""
+
+# !/usr/bin/env python3
 
 import json
 import types
@@ -29,6 +31,7 @@ def _get_actual_type(type_hint: Any) -> type[Any]:
 
     Returns:
         The actual type
+
     """
     # If type_hint is a string, evaluate it in the schema's module context
     if isinstance(type_hint, str):
@@ -57,6 +60,7 @@ def is_dataclass_type(obj: type[Any]) -> TypeGuard[type[T]]:
 
     Returns:
         True if the object is a dataclass type, False otherwise
+
     """
     return is_dataclass(obj)
 
@@ -71,6 +75,7 @@ def _parse_obj_from_dict(data: Any, cls: type[T]) -> T | None:
 
     Returns:
         The parsed dataclass instance
+
     """
     if data is None:
         return None
@@ -125,6 +130,7 @@ def parse_ffprobe(xml_string: str) -> ffprobeType:
 
     Returns:
         The parsed ffprobeType instance
+
     """
     json_str = xml_string_to_json(xml_string)
     json_dict = json.loads(json_str)

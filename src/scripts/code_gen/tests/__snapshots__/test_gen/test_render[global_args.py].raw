@@ -1,4 +1,8 @@
 # NOTE: this file is auto-generated, do not modify
+"""
+Global arguments.
+"""
+
 
 
 from __future__ import annotations

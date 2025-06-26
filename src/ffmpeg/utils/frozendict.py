@@ -29,6 +29,7 @@ class FrozenDict(Mapping[K, V], Generic[K, V]):
 
         Args:
             data: Dictionary to create a frozen copy of
+
         """
         self._data = dict(data)
         self._hash: int | None = None  # lazy computed
@@ -45,6 +46,7 @@ class FrozenDict(Mapping[K, V], Generic[K, V]):
 
         Raises:
             KeyError: If the key is not found
+
         """
         return self._data[key]
 
@@ -54,6 +56,7 @@ class FrozenDict(Mapping[K, V], Generic[K, V]):
 
         Returns:
             An iterator yielding the dictionary keys
+
         """
         return iter(self._data)
 
@@ -63,6 +66,7 @@ class FrozenDict(Mapping[K, V], Generic[K, V]):
 
         Returns:
             The number of key-value pairs in the dictionary
+
         """
         return len(self._data)
 
@@ -72,6 +76,7 @@ class FrozenDict(Mapping[K, V], Generic[K, V]):
 
         Returns:
             A string representation showing the dictionary contents
+
         """
         return f"FrozenDict({self._data})"
 
@@ -87,6 +92,7 @@ class FrozenDict(Mapping[K, V], Generic[K, V]):
 
         Returns:
             True if the objects are equal, False otherwise
+
         """
         if isinstance(other, Mapping):
             return dict(self._data) == dict(other)
@@ -101,6 +107,7 @@ class FrozenDict(Mapping[K, V], Generic[K, V]):
 
         Returns:
             An integer hash value
+
         """
         if self._hash is None:
             # Create a stable hash based on sorted key-value pairs
@@ -108,9 +115,29 @@ class FrozenDict(Mapping[K, V], Generic[K, V]):
         return self._hash
 
     def __or__(self, other: Mapping[Any, Any]) -> dict[Any, Any]:
+        """
+        Merge this FrozenDict with another mapping using the | operator.
+
+        Args:
+            other: Mapping to merge with
+
+        Returns:
+            A new regular dict containing the merged contents
+
+        """
         return dict(self) | dict(other)
 
     def __ror__(self, other: Mapping[Any, Any]) -> dict[Any, Any]:
+        """
+        Merge another mapping with this FrozenDict using the | operator.
+
+        Args:
+            other: Mapping to merge with
+
+        Returns:
+            A new regular dict containing the merged contents
+
+        """
         return dict(other) | dict(self)
 
 
@@ -123,6 +150,7 @@ def merge(*maps: Mapping[Any, Any] | None) -> FrozenDict[Any, Any]:
 
     Returns:
         A new dictionary containing the merged contents of all input dictionaries
+
     """
     output = {}
 
@@ -145,13 +173,14 @@ def exclude(maps: Mapping[Any, Any], exclude: Iterable[Any]) -> FrozenDict[Any, 
 
     Returns:
         A new dictionary with the keys excluded
+
     """
     return FrozenDict({k: v for k, v in maps.items() if k not in exclude})
 
 
 def rekey(maps: Mapping[Any, Any], rekey: Mapping[Any, Any]) -> FrozenDict[Any, Any]:
     """
-    rekey the keys of a dictionary.
+    Rekey the keys of a dictionary.
 
     Args:
         maps: Dictionary to rekey
@@ -159,5 +188,6 @@ def rekey(maps: Mapping[Any, Any], rekey: Mapping[Any, Any]) -> FrozenDict[Any, 
 
     Returns:
         A new dictionary with the keys remapped
+
     """
     return FrozenDict({rekey.get(k, k): v for k, v in maps.items()})

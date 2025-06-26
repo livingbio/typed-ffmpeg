@@ -38,9 +38,9 @@ def is_dag(graph: dict[str, set[str]]) -> bool:
         graph = {"A": {"B"}, "B": {"C"}, "C": {"A"}}
         assert is_dag(graph) == False
         ```
-    """
 
-    in_degree = {u: 0 for u in graph}  # Initialize in-degree of each node to 0
+    """
+    in_degree = dict.fromkeys(graph, 0)  # Initialize in-degree of each node to 0
 
     # Calculate in-degree of each node
     for u in graph:

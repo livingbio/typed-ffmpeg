@@ -1,3 +1,5 @@
+"""Python code compilation utilities for FFmpeg streams."""
+
 from __future__ import annotations
 
 from collections.abc import Mapping
@@ -39,6 +41,7 @@ def filter_stream_typed_index(
 
     Returns:
         The index of the matched stream in the outgoing streams of the node.
+
     """
     matched_outgoing_streams = [
         k
@@ -69,6 +72,10 @@ def get_input_var_name(
 
     Returns:
         The input variable name for the stream.
+
+    Raises:
+        ValueError: If the stream type is unknown
+
     """
     match stream:
         case AVStream():
@@ -127,6 +134,10 @@ def get_output_var_name(node: Node, context: DAGContext) -> str:
 
     Returns:
         The output variable name for the node.
+
+    Raises:
+        ValueError: If the node type is unknown
+
     """
     match node:
         case InputNode():
@@ -153,6 +164,7 @@ def compile_kwargs(kwargs: Mapping[str, Any]) -> str:
 
     Returns:
         The compiled kwargs.
+
     """
     return ", ".join(f"{k}={repr(v)}" for k, v in kwargs.items())
 
@@ -169,6 +181,7 @@ def compile_fluent(code: list[str]) -> list[str]:
 
     Returns:
         The compiled code.
+
     """
     buffer = [k.split("=", 1)[:2] for k in code]
 
@@ -209,6 +222,7 @@ def compile(stream: Stream, auto_fix: bool = True, fluent: bool = True) -> str:
 
     Returns:
         The compiled python code.
+
     """
     stream = validate(stream, auto_fix=auto_fix)
     node = stream.node
@@ -314,6 +328,7 @@ def parse(code: str) -> Stream:
 
     Returns:
         The parsed stream.
+
     """
     local_vars: dict[str, Any] = {}
     exec(code, {}, local_vars)

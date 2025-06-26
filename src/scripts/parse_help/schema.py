@@ -1,4 +1,5 @@
-from collections.abc import Iterable
+"""Schema definitions for parsing FFmpeg help output."""
+
 from dataclasses import dataclass
 from typing import Literal
 
@@ -40,6 +41,7 @@ class FFMpegOption:
     radius            <int>        ..FV....... set median filter radius (from 1 to 127) (default 1)
     planes            <int>        ..FV.....T. set planes to filter (from 0 to 15) (default 15)
     ```
+
     """
 
     section: str
@@ -84,6 +86,7 @@ class FFMpegOptionChoice:
      flat            0            ..F.A......
      acoustic        1            ..F.A......
     ```
+
     """
 
     name: str
@@ -121,6 +124,7 @@ class FFMpegAVOption(FFMpegOption):
     radius            <int>        ..FV....... set median filter radius (from 1 to 127) (default 1)
     percentile        <float>      ..FV.....T. set percentile (from 0 to 1) (default 0.5)
     ```
+
     """
 
     min: str | None = None
@@ -137,6 +141,13 @@ class FFMpegAVOption(FFMpegOption):
 
     @property
     def code_gen_type(self) -> str:
+        """
+        Get the code generation type for this option.
+
+        Returns:
+            The type string for code generation.
+
+        """
         return "str"
 
 
@@ -157,6 +168,7 @@ class FFMpegOptionSet:
     --
     D  3dostr          3DO STR
     ```
+
     """
 
     name: str
@@ -201,23 +213,30 @@ class FFMpegCodec(FFMpegOptionSet):
     V....D 8bps                 QuickTime 8BPS video
     V....D aasc                 Autodesk RLE
     ```
+
     """
 
     @property
     def is_encoder(self) -> bool:
+        """
+        Whether this codec is an encoder.
+
+        Returns:
+            True if this codec is an encoder, False otherwise.
+
+        """
         return isinstance(self, FFMpegEncoder)
 
     @property
     def is_decoder(self) -> bool:
-        return isinstance(self, FFMpegDecoder)
+        """
+        Whether this codec is a decoder.
 
-    def filterd_options(self) -> Iterable[FFMpegAVOption]:
-        passed = set()
-        for option in self.options:
-            if option.name in passed:
-                continue
-            passed.add(option.name)
-            yield option
+        Returns:
+            True if this codec is a decoder, False otherwise.
+
+        """
+        return isinstance(self, FFMpegDecoder)
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -259,23 +278,30 @@ class FFMpegFormat(FFMpegOptionSet):
     D  aax             CRI AAX
     D  ac3             raw AC-3
     ```
+
     """
 
     @property
     def is_muxer(self) -> bool:
+        """
+        Check if this format is a muxer.
+
+        Returns:
+            True if this is a muxer, False otherwise.
+
+        """
         return "E" in self.flags
 
     @property
     def is_demuxer(self) -> bool:
-        return "D" in self.flags
+        """
+        Check if this format is a demuxer.
 
-    def filterd_options(self) -> Iterable[FFMpegAVOption]:
-        passed = set()
-        for option in self.options:
-            if option.name.replace("-", "_") in passed:
-                continue
-            passed.add(option.name.replace("-", "_"))
-            yield option
+        Returns:
+            True if this is a demuxer, False otherwise.
+
+        """
+        return "D" in self.flags
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -330,6 +356,7 @@ class FFMpegFilter(FFMpegOptionSet):
     T.C acrusher          A->A       Reduce audio bit resolution.
     TS. adeclick          A->A       Remove impulsive noise from input audio.
     ```
+
     """
 
     io_flags: str

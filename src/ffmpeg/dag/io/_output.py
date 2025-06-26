@@ -1,5 +1,5 @@
 # NOTE: this file is auto-generated, do not modify
-
+"""Output node."""
 
 from pathlib import Path
 from typing import Any
@@ -120,8 +120,8 @@ def output(
     muxer_options: FFMpegMuxerOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> OutputStream:
-    """
-    Output file URL
+    r"""
+    Output file URL.
 
     Args:
         *streams: the streams to output
@@ -142,8 +142,7 @@ def output(
         program: add program with specified streams
         stream_group: add stream group with specified streams and group type-specific arguments
         dframes: set the number of data frames to output
-        target: specify target file type (\"vcd\", \"svcd\", \"dvd\", \"dv\" or \"dv50\
-        "with optional prefixes \"pal-\", \"ntsc-\" or \"film-\")
+        target: specify target file type (\"vcd\", \"svcd\", \"dvd\", \"dv\" or \"dv50\ "with optional prefixes \"pal-\", \"ntsc-\" or \"film-\")
         shortest: finish encoding within shortest input
         shortest_buf_duration: maximum buffering duration (in seconds) for the -shortest option
         bitexact: bitexact mode
@@ -227,8 +226,8 @@ def output(
 
     Returns:
         the output stream
-    """
 
+    """
     return OutputNode(
         inputs=streams,
         filename=str(filename),

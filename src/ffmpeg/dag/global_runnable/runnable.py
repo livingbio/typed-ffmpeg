@@ -56,6 +56,7 @@ class GlobalRunable(GlobalArgs):
             merged = output1.merge_outputs(output2)
             merged.run()  # Creates both output files with one FFmpeg command
             ```
+
         """
         return self._global_node(*streams).stream()
 
@@ -75,6 +76,7 @@ class GlobalRunable(GlobalArgs):
             # Overwrite output file if it already exists
             ffmpeg.input("input.mp4").output("output.mp4").overwrite_output().run()
             ```
+
         """
         return self._global_node(y=True).stream()
 
@@ -113,6 +115,7 @@ class GlobalRunable(GlobalArgs):
             args = ffmpeg.input("input.mp4").output("output.mp4").compile()
             # Result: ['ffmpeg', '-i', 'input.mp4', 'output.mp4']
             ```
+
         """
         from ...compile.compile_cli import compile_as_list
 
@@ -171,6 +174,7 @@ class GlobalRunable(GlobalArgs):
             cmd_str = ffmpeg.input("input.mp4").output("output.mp4").compile_line()
             # Result: 'ffmpeg -i input.mp4 output.mp4'
             ```
+
         """
         return command_line(
             self.compile(
@@ -223,8 +227,8 @@ class GlobalRunable(GlobalArgs):
             # Do something while FFmpeg is running
             process.wait()  # Wait for completion
             ```
-        """
 
+        """
         args = self.compile(
             cmd,
             overwrite_output=overwrite_output,
@@ -294,8 +298,8 @@ class GlobalRunable(GlobalArgs):
             )
             print(stderr.decode())  # Print FFmpeg's progress information
             ```
-        """
 
+        """
         process = self.run_async(
             cmd,
             pipe_stdin=input is not None,

@@ -1,3 +1,5 @@
+"""FFmpeg stream utilities package."""
+
 from .audio import AudioStream
 from .av import AVStream
 from .subtitle import SubtitleStream

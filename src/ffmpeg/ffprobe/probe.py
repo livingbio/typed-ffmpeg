@@ -79,6 +79,7 @@ def _probe(
         print(f"Duration: {float(info['format']['duration']):.2f} seconds")
         print(f"Streams: {len(info['streams'])}")
         ```
+
     """
     args = [
         cmd,
@@ -172,6 +173,7 @@ def probe(
         print(f"Duration: {float(info['format']['duration']):.2f} seconds")
         print(f"Streams: {len(info['streams'])}")
         ```
+
     """
     return json.loads(
         _probe(
@@ -250,8 +252,8 @@ def probe_obj(
         print(f"Duration: {float(info.format.duration):.2f} seconds")
         print(f"Streams: {len(info.streams)}")
         ```
-    """
 
+    """
     xml = _probe(
         filename,
         show_program_version=show_program_version,

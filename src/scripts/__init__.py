@@ -1,5 +1,5 @@
 """
-Typed-FFmpeg Scripts Package
+Typed-FFmpeg Scripts Package.
 
 This package contains tools and utilities for parsing FFmpeg documentation,
 source code, and command output to generate typed Python wrappers around

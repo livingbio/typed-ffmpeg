@@ -20,6 +20,7 @@ Example:
     # Simple video transcoding
     (ffmpeg.input("input.mp4").output("output.mp4").run())
     ```
+
 """
 
 from . import codecs, compile, dag, filters, formats, options, sources

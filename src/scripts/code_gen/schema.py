@@ -1,3 +1,5 @@
+"""Schema definitions for code generation."""
+
 from collections.abc import Iterable
 from dataclasses import dataclass
 from typing import Literal
@@ -29,6 +31,8 @@ FFMpegOptionType = Literal[
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegOptionChoice(Serializable):
+    """A choice option for FFmpeg parameters."""
+
     name: str
     help: str
     flags: str
@@ -37,6 +41,8 @@ class FFMpegOptionChoice(Serializable):
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegAVOption(Serializable):
+    """An FFmpeg AV option with metadata."""
+
     section: str
     name: str
     type: str
@@ -49,6 +55,17 @@ class FFMpegAVOption(Serializable):
 
     @property
     def code_gen_type(self) -> str:
+        """
+        Get the code generation type for this option.
+
+        Returns:
+            The type string for code generation.
+
+        Raises:
+            ValueError: If the option type is invalid.
+
+        """
+
         def handle_choices() -> str:
             if self.type != "flags":
                 # NOTE: flags not supported for now
@@ -122,16 +139,35 @@ class FFMpegAVOption(Serializable):
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegCodec(Serializable):
+    """Base class for FFmpeg codecs."""
+
     name: str
     flags: str
     description: str
     options: tuple[FFMpegAVOption, ...] = ()
 
     def filtered_options(self) -> Iterable[FFMpegAVOption]:
+        """
+        Get the filtered options for this codec.
+
+        Returns:
+            An iterable of filtered options.
+
+        """
         return self.options
 
     @property
     def codec_type(self) -> Literal["video", "audio", "subtitle"]:
+        """
+        Get the type of this codec.
+
+        Returns:
+            The codec type.
+
+        Raises:
+            ValueError: If the stream type is invalid.
+
+        """
         match self.flags[0]:
             case "V":
                 return "video"
@@ -144,25 +180,45 @@ class FFMpegCodec(Serializable):
 
     @property
     def is_encoder(self) -> bool:
+        """
+        Check if this codec is an encoder.
+
+        Returns:
+            True if this is an encoder, False otherwise.
+
+        """
         return isinstance(self, FFMpegEncoder)
 
     @property
     def is_decoder(self) -> bool:
+        """
+        Check if this codec is a decoder.
+
+        Returns:
+            True if this is a decoder, False otherwise.
+
+        """
         return isinstance(self, FFMpegDecoder)
 
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegEncoder(FFMpegCodec):
+    """An FFmpeg encoder."""
+
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegDecoder(FFMpegCodec):
+    """An FFmpeg decoder."""
+
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegFormat(Serializable):
+    """Base class for FFmpeg formats."""
+
     name: str
     flags: str
     description: str
@@ -170,18 +226,36 @@ class FFMpegFormat(Serializable):
 
     @property
     def is_muxer(self) -> bool:
+        """
+        Check if this format is a muxer.
+
+        Returns:
+            True if this is a muxer, False otherwise.
+
+        """
         return isinstance(self, FFMpegMuxer)
 
     @property
     def is_demuxer(self) -> bool:
+        """
+        Check if this format is a demuxer.
+
+        Returns:
+            True if this is a demuxer, False otherwise.
+
+        """
         return isinstance(self, FFMpegDemuxer)
 
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegDemuxer(FFMpegFormat):
+    """An FFmpeg demuxer."""
+
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegMuxer(FFMpegFormat):
+    """An FFmpeg muxer."""
+
     pass

@@ -1,5 +1,5 @@
 """
-FFmpeg Documentation Parsing Package
+FFmpeg Documentation Parsing Package.
 
 This package contains modules for downloading, parsing, and extracting
 information from the official FFmpeg documentation. The main functionality includes:

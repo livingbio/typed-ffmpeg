@@ -34,6 +34,7 @@ class Add(LazyOperator):
         # Evaluate the expression with specific values
         result = expr.eval(width=1280, height=720)  # Returns 2000
         ```
+
     """
 
     def _eval(self, left: Any, right: Any) -> Any:
@@ -46,6 +47,7 @@ class Add(LazyOperator):
 
         Returns:
             The sum of the left and right operands
+
         """
         return left + right
 
@@ -55,122 +57,168 @@ class Add(LazyOperator):
 
         Returns:
             A string in the format "(left+right)"
+
         """
         return f"({self.left}+{self.right})"
 
 
 @dataclass(frozen=True, kw_only=True)
 class Sub(LazyOperator):
-    """
-    A lazy operator for subtraction.
-    """
+    """A lazy operator for subtraction."""
 
     def _eval(self, left: Any, right: Any) -> Any:
         return left - right
 
     def __str__(self) -> str:
+        """
+        Get a string representation of this subtraction operation.
+
+        Returns:
+            A string in the format "(left-right)"
+
+        """
         return f"({self.left}-{self.right})"
 
 
 @dataclass(frozen=True, kw_only=True)
 class Mul(LazyOperator):
-    """
-    A lazy operator for multiplication.
-    """
+    """A lazy operator for multiplication."""
 
     def _eval(self, left: Any, right: Any) -> Any:
         return left * right
 
     def __str__(self) -> str:
+        """
+        Get a string representation of this multiplication operation.
+
+        Returns:
+            A string in the format "(left*right)"
+
+        """
         return f"({self.left}*{self.right})"
 
 
 @dataclass(frozen=True, kw_only=True)
 class TrueDiv(LazyOperator):
-    """
-    A lazy operator for true division.
-    """
+    """A lazy operator for true division."""
 
     def _eval(self, left: Any, right: Any) -> Any:
         return left / right
 
     def __str__(self) -> str:
+        """
+        Get a string representation of this division operation.
+
+        Returns:
+            A string in the format "(left/right)"
+
+        """
         return f"({self.left}/{self.right})"
 
 
 @dataclass(frozen=True, kw_only=True)
 class Pow(LazyOperator):
-    """
-    A lazy operator for exponentiation.
-    """
+    """A lazy operator for exponentiation."""
 
     def _eval(self, left: Any, right: Any) -> Any:
         return left**right
 
     def __str__(self) -> str:
+        """
+        Get a string representation of this exponentiation operation.
+
+        Returns:
+            A string in the format "(left**right)"
+
+        """
         return f"({self.left}**{self.right})"
 
 
 @dataclass(frozen=True, kw_only=True)
 class Neg(LazyOperator):
-    """
-    A lazy operator for negation.
-    """
+    """A lazy operator for negation."""
 
     def _eval(self, left: Any, right: Any) -> Any:
         return -left
 
     def __str__(self) -> str:
+        """
+        Get a string representation of this negation operation.
+
+        Returns:
+            A string in the format "-left"
+
+        """
         return f"-{self.left}"
 
 
 @dataclass(frozen=True, kw_only=True)
 class Pos(LazyOperator):
-    """
-    A lazy operator for positive.
-    """
+    """A lazy operator for positive."""
 
     def _eval(self, left: Any, right: Any) -> Any:
         return +left
 
     def __str__(self) -> str:
+        """
+        Get a string representation of this positive operation.
+
+        Returns:
+            A string in the format "+left"
+
+        """
         return f"+{self.left}"
 
 
 @dataclass(frozen=True, kw_only=True)
 class Abs(LazyOperator):
-    """
-    A lazy operator for absolute value.
-    """
+    """A lazy operator for absolute value."""
 
     def _eval(self, left: Any, right: Any) -> Any:
         return abs(left)
 
     def __str__(self) -> str:
+        """
+        Get a string representation of this absolute value operation.
+
+        Returns:
+            A string in the format "abs(left)"
+
+        """
         return f"abs({self.left})"
 
 
 @dataclass(frozen=True, kw_only=True)
 class Mod(LazyOperator):
-    """
-    A lazy operator for modulo.
-    """
+    """A lazy operator for modulo."""
 
     def _eval(self, left: Any, right: Any) -> Any:
         return left % right
 
     def __str__(self) -> str:
+        """
+        Get a string representation of this modulo operation.
+
+        Returns:
+            A string in the format "(left%right)"
+
+        """
         return f"({self.left}%{self.right})"
 
 
 @dataclass(frozen=True, kw_only=True)
 class FloorDiv(LazyOperator):
-    """
-    A lazy operator for floor division.
-    """
+    """A lazy operator for floor division."""
 
     def _eval(self, left: Any, right: Any) -> Any:
         return left // right
 
     def __str__(self) -> str:
+        """
+        Get a string representation of this floor division operation.
+
+        Returns:
+            A string in the format "(left//right)"
+
+        """
         return f"({self.left}//{self.right})"

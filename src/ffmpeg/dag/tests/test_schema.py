@@ -11,9 +11,18 @@ from ..schema import Node, Stream
 
 @dataclass(frozen=True, kw_only=True, repr=False)
 class SimpleNode(Node):
+    """A simple test node for DAG testing."""
+
     name: str
 
     def __repr__(self) -> str:
+        """
+        Return the node name as string representation.
+
+        Returns:
+            The node name as a string
+
+        """
         return self.name
 
 

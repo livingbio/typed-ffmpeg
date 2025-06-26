@@ -101,9 +101,12 @@ disallow_untyped_defs = true
 line-length = 88
 exclude = ["**/cassettes/", "**/__snapshots__/"]
 src = ["src"]
+preview = true
 
 [tool.ruff.lint]
 select = [
+    "DOC",
+    "D",   # docstring 
     "E",   # pycodestyle errors
     "W",   # pycodestyle warnings
     "F",   # pyflakes
@@ -113,12 +116,20 @@ select = [
     "UP",  # pyupgrade
 ]
 ignore = [
+    "D417",
+    "D401",
+    "D203", 
+    "D212",
+    "DOC502", 
     "E741",  # Ambiguous variable name: `I`
     "E501",  # Line too long
     "E402",  # Module level import not at top of file
     "E712",  # not work for pandas
     "F811",  # FIXME: we relay on it to share fixture across app
 ]
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/**.py" = ["D103", "D104", "D100"]
 
 [tool.ruff.format]
 quote-style = "double"

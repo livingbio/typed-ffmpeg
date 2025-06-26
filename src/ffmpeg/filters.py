@@ -1,5 +1,5 @@
 # NOTE: this file is auto-generated, do not modify
-
+"""FFmpeg filters."""
 
 from typing import Any, Literal
 
@@ -104,6 +104,7 @@ def acrossfade(
         curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
         curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -150,6 +151,7 @@ def ainterleave(
         nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
         duration: how to determine the end-of-stream (from 0 to 2) (default longest)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -186,8 +188,10 @@ def alphamerge(
 
     Copy the luma value of the second input into the alpha channel of the first input.
 
-
+    Args:
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -221,6 +225,7 @@ def amerge(
     Args:
         inputs: specify the number of inputs (from 1 to 64) (default 2)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -268,6 +273,7 @@ def amix(
         weights: Set weight for each input. (default "1 1")
         normalize: Scale inputs (default true)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -306,6 +312,8 @@ def amultiply(
 
     Multiply two audio streams.
 
+    Args:
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -352,6 +360,7 @@ def anlmf(
         leakage: set the filter leakage (from 0 to 1) (default 0)
         out_mode: set output mode (from 0 to 4) (default o)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -402,6 +411,7 @@ def anlms(
         leakage: set the filter leakage (from 0 to 1) (default 0)
         out_mode: set output mode (from 0 to 4) (default o)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -439,6 +449,8 @@ def apsnr(
 
     Measure Audio Peak Signal-to-Noise Ratio.
 
+    Args:
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -481,6 +493,7 @@ def arls(
         delta: set the filter delta (from 0 to 32767) (default 2)
         out_mode: set output mode (from 0 to 4) (default o)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -517,6 +530,8 @@ def asdr(
 
     Measure Audio Signal-to-Distortion Ratio.
 
+    Args:
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -548,6 +563,8 @@ def asisdr(
 
     Measure Audio Scale-Invariant Signal-to-Distortion Ratio.
 
+    Args:
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -578,12 +595,13 @@ def astreamselect(
 ) -> FilterNode:
     """
 
-    Select audio streams
+    Select audio streams.
 
     Args:
         inputs: number of input streams (from 2 to INT_MAX) (default 2)
         map: input indexes to remap to outputs
 
+        extra_options: Extra options for the filter
 
     Returns:
         filter_node: the filter node
@@ -628,6 +646,7 @@ def axcorrelate(
         size: set the segment size (from 2 to 131072) (default 256)
         algo: set the algorithm (from 0 to 2) (default best)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -923,8 +942,9 @@ def blend(
         c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
         all_opacity: set opacity for all color components (from 0 to 1) (default 1)
 
-
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -982,7 +1002,7 @@ def blend_vulkan(
 ) -> VideoStream:
     """
 
-    Blend two video frames in Vulkan
+    Blend two video frames in Vulkan.
 
     Args:
         c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
@@ -996,6 +1016,7 @@ def blend_vulkan(
         c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
         all_opacity: set opacity for all color components (from 0 to 1) (default 1)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1063,6 +1084,7 @@ def bm3d(
         ref: have reference stream (default false)
         planes: set planes to filter (from 0 to 15) (default 7)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1119,6 +1141,7 @@ def colormap(
         type: set the target type used (from 0 to 1) (default absolute)
         kernel: set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1167,6 +1190,7 @@ def concat(
         a: specify the number of audio streams (from 0 to INT_MAX) (default 0)
         unsafe: enable unsafe mode (default false)
 
+        extra_options: Extra options for the filter
 
     Returns:
         filter_node: the filter node
@@ -1216,8 +1240,9 @@ def convolve(
         impulse: when to process impulses (from 0 to 1) (default all)
         noise: set noise (from 0 to 1) (default 1e-07)
 
-
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1255,8 +1280,10 @@ def corr(
 
     Calculate the correlation between two video streams.
 
-
+    Args:
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1302,6 +1329,7 @@ def decimate(
         chroma: set whether or not chroma is considered in the metric calculations (default true)
         mixed: set whether or not the input only partially contains content to be decimated (default false)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1353,8 +1381,9 @@ def deconvolve(
         impulse: when to process impulses (from 0 to 1) (default all)
         noise: set noise (from 0 to 1) (default 1e-07)
 
-
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1401,6 +1430,7 @@ def displace(
     Args:
         edge: set edge mode (from 0 to 3) (default smear)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1447,6 +1477,7 @@ def feedback(
         x: set top left crop position (from 0 to INT_MAX) (default 0)
         w: set crop size (from 0 to INT_MAX) (default 0)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1518,6 +1549,7 @@ def fieldmatch(
         blocky: set the y-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
         combpel: set the number of combed pixels inside any of the blocky by blockx size blocks on the frame for the frame to be detected as combed (from 0 to INT_MAX) (default 80)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1572,6 +1604,7 @@ def framepack(
     Args:
         format: Frame pack output format (from 0 to INT_MAX) (default sbs)
 
+        extra_options: Extra options for the filter
 
     Returns:
         packed: the video stream
@@ -1616,6 +1649,7 @@ def freezeframes(
         last: set last frame to freeze (from 0 to I64_MAX) (default 0)
         replace: set frame to replace (from 0 to I64_MAX) (default 0)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1666,6 +1700,7 @@ def guided(
         guidance: set guidance mode (0: off mode; 1: on mode) (from 0 to 1) (default off)
         planes: set planes to filter (from 0 to 15) (default 1)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1715,8 +1750,9 @@ def haldclut(
         clut: when to process CLUT (from 0 to 1) (default all)
         interp: select interpolation mode (from 0 to 4) (default tetrahedral)
 
-
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1765,6 +1801,7 @@ def headphone(
         size: set frame size (from 1024 to 96000) (default 1024)
         hrir: set hrir format (from 0 to 1) (default stereo)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -1809,6 +1846,7 @@ def hstack(
         inputs: set number of inputs (from 2 to INT_MAX) (default 2)
         shortest: force termination when the shortest input terminates (default false)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1844,13 +1882,14 @@ def hstack_vaapi(
 ) -> VideoStream:
     """
 
-    "VA-API" hstack
+    "VA-API" hstack.
 
     Args:
         inputs: Set number of inputs (from 2 to 65535) (default 2)
         shortest: Force termination when the shortest input terminates (default false)
         height: Set output height (0 to use the height of input 0) (from 0 to 65535) (default 0)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1895,8 +1934,9 @@ def hysteresis(
         planes: set planes (from 0 to 15) (default 15)
         threshold: set threshold (from 0 to 65535) (default 0)
 
-
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1935,8 +1975,10 @@ def identity(
 
     Calculate the Identity between two video streams.
 
-
+    Args:
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -1972,6 +2014,7 @@ def interleave(
         nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
         duration: how to determine the end-of-stream (from 0 to 2) (default longest)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -2014,6 +2057,7 @@ def join(
         channel_layout: Channel layout of the output stream. (default "stereo")
         map: A comma-separated list of channels maps in the format 'input_stream.input_channel-output_channel.
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -2065,6 +2109,7 @@ def ladspa(
         duration: set audio duration (default -0.000001)
         latency: enable latency compensation (default false)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -2266,7 +2311,7 @@ def libplacebo(
 ) -> VideoStream:
     """
 
-    Apply various GPU filters from libplacebo
+    Apply various GPU filters from libplacebo.
 
     Args:
         inputs: Number of inputs (from 1 to INT_MAX) (default 1)
@@ -2348,6 +2393,7 @@ def libplacebo(
         force_dither: Force dithering (default false)
         disable_fbos: Force-disable FBOs (default false)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -2468,6 +2514,7 @@ def limitdiff(
         reference: enable reference stream (default false)
         planes: set the planes to filter (from 0 to 15) (default 15)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -2519,8 +2566,9 @@ def lut2(
         c3: set component #3 expression (default "x")
         d: set output depth (from 0 to 16) (default 0)
 
-
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -2570,6 +2618,7 @@ def lv2(
         nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
         duration: set audio duration (default -0.000001)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -2616,6 +2665,7 @@ def maskedclamp(
         overshoot: set overshoot (from 0 to 65535) (default 0)
         planes: set planes (from 0 to 15) (default 15)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -2660,6 +2710,7 @@ def maskedmax(
     Args:
         planes: set planes (from 0 to 15) (default 15)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -2702,6 +2753,7 @@ def maskedmerge(
     Args:
         planes: set planes (from 0 to 15) (default 15)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -2744,6 +2796,7 @@ def maskedmin(
     Args:
         planes: set planes (from 0 to 15) (default 15)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -2789,6 +2842,7 @@ def maskedthreshold(
         planes: set planes (from 0 to 15) (default 15)
         mode: set mode (from 0 to 1) (default abs)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -2847,6 +2901,7 @@ def mergeplanes(
         map3s: set 4th input to output stream mapping (from 0 to 3) (default 0)
         map3p: set 4th input to output plane mapping (from 0 to 3) (default 0)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -2895,6 +2950,7 @@ def midequalizer(
     Args:
         planes: set planes (from 0 to 15) (default 15)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -2943,6 +2999,7 @@ def mix(
         planes: set what planes to filter (default F)
         duration: how to determine end of stream (from 0 to 2) (default longest)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -2993,8 +3050,9 @@ def morpho(
         planes: set planes to filter (from 0 to 15) (default 7)
         structure: when to process structures (from 0 to 1) (default all)
 
-
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -3032,8 +3090,10 @@ def msad(
 
     Calculate the MSAD between two video streams.
 
-
+    Args:
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -3071,6 +3131,7 @@ def multiply(
         offset: set offset (from -1 to 1) (default 0.5)
         planes: set planes (default F)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -3138,8 +3199,9 @@ def overlay(
         repeatlast: repeat overlay of the last overlay frame (default true)
         alpha: alpha format (from 0 to 1) (default straight)
 
-
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -3182,12 +3244,13 @@ def overlay_opencl(
 ) -> VideoStream:
     """
 
-    Overlay one video on top of another
+    Overlay one video on top of another.
 
     Args:
         x: Overlay x position (from 0 to INT_MAX) (default 0)
         y: Overlay y position (from 0 to INT_MAX) (default 0)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -3232,7 +3295,7 @@ def overlay_vaapi(
 ) -> VideoStream:
     """
 
-    Overlay one video on top of another
+    Overlay one video on top of another.
 
     Args:
         x: Overlay x position (default "0")
@@ -3244,8 +3307,9 @@ def overlay_vaapi(
         shortest: force termination when the shortest input terminates (default false)
         repeatlast: repeat overlay of the last overlay frame (default true)
 
-
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -3290,12 +3354,13 @@ def overlay_vulkan(
 ) -> VideoStream:
     """
 
-    Overlay a source on top of another
+    Overlay a source on top of another.
 
     Args:
         x: Set horizontal offset (from 0 to INT_MAX) (default 0)
         y: Set vertical offset (from 0 to INT_MAX) (default 0)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -3358,6 +3423,7 @@ def paletteuse(
         alpha_threshold: set the alpha threshold for transparency (from 0 to 255) (default 128)
         debug_kdtree: save Graphviz graph of the kdtree in specified file
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -3403,6 +3469,7 @@ def premultiply(
         planes: set planes (from 0 to 15) (default 15)
         inplace: enable inplace mode (default false)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -3440,7 +3507,7 @@ def program_opencl(
 ) -> VideoStream:
     """
 
-    Filter video using an OpenCL program
+    Filter video using an OpenCL program.
 
     Args:
         source: OpenCL program source file
@@ -3448,8 +3515,9 @@ def program_opencl(
         inputs: Number of inputs (from 1 to INT_MAX) (default 1)
         size: Video size
 
-
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -3498,8 +3566,9 @@ def psnr(
         stats_version: Set the format version for the stats file. (from 1 to 2) (default 1)
         output_max: Add raw stats (max values) to the output log. (default false)
 
-
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -3544,6 +3613,7 @@ def remap(
         format: set output format (from 0 to 1) (default color)
         fill: set the color of the unmapped pixels (default "black")
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -3589,6 +3659,7 @@ def remap_opencl(
         interp: set interpolation method (from 0 to 1) (default linear)
         fill: set the color of the unmapped pixels (default "black")
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -3653,6 +3724,7 @@ def sidechaincompress(
         level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
         mix: set mix (from 0 to 1) (default 1)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -3726,6 +3798,7 @@ def sidechaingate(
         link: set link (from 0 to 1) (default average)
         level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -3778,7 +3851,7 @@ def signature(
 ) -> VideoStream:
     """
 
-    Calculate the MPEG-7 video signature
+    Calculate the MPEG-7 video signature.
 
     Args:
         detectmode: set the detectmode (from 0 to 2) (default off)
@@ -3791,6 +3864,7 @@ def signature(
         th_di: minimum length of matching sequence in frames (from 0 to INT_MAX) (default 0)
         th_it: threshold for relation of good to all frames (from 0 to 1) (default 0.5)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -3879,6 +3953,7 @@ def spectrumsynth(
         overlap: set window overlap (from 0 to 1) (default 1)
         orientation: set orientation (from 0 to 1) (default vertical)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the audio stream
@@ -3926,8 +4001,9 @@ def ssim(
     Args:
         stats_file: Set file where to store per-frame difference information
 
-
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -3961,12 +4037,13 @@ def streamselect(
 ) -> FilterNode:
     """
 
-    Select video streams
+    Select video streams.
 
     Args:
         inputs: number of input streams (from 2 to INT_MAX) (default 2)
         map: input indexes to remap to outputs
 
+        extra_options: Extra options for the filter
 
     Returns:
         filter_node: the filter node
@@ -4011,6 +4088,7 @@ def threshold(
     Args:
         planes: set planes to filter (from 0 to 15) (default 15)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -4053,6 +4131,7 @@ def unpremultiply(
         planes: set planes (from 0 to 15) (default 15)
         inplace: enable inplace mode (default false)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -4098,8 +4177,9 @@ def varblur(
         max_r: set max blur radius (from 1 to 255) (default 8)
         planes: set planes to filter (from 0 to 15) (default 15)
 
-
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -4137,8 +4217,10 @@ def vif(
 
     Calculate the VIF between two video streams.
 
-
+    Args:
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -4172,6 +4254,7 @@ def vstack(
         inputs: set number of inputs (from 2 to INT_MAX) (default 2)
         shortest: force termination when the shortest input terminates (default false)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -4207,13 +4290,14 @@ def vstack_vaapi(
 ) -> VideoStream:
     """
 
-    "VA-API" vstack
+    "VA-API" vstack.
 
     Args:
         inputs: Set number of inputs (from 2 to 65535) (default 2)
         shortest: Force termination when the shortest input terminates (default false)
         width: Set output width (0 to use the width of input 0) (from 0 to 65535) (default 0)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -4258,8 +4342,9 @@ def xcorrelate(
         planes: set planes to cross-correlate (from 0 to 15) (default 7)
         secondary: when to process secondary frame (from 0 to 1) (default all)
 
-
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -4370,6 +4455,7 @@ def xfade(
         offset: set cross fade start relative to first input stream (default 0)
         expr: set expression for custom transition
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -4432,6 +4518,7 @@ def xfade_opencl(
         duration: set cross fade duration (default 1)
         offset: set cross fade start relative to first input stream (default 0)
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -4479,8 +4566,9 @@ def xmedian(
         planes: set planes to filter (from 0 to 15) (default 15)
         percentile: set percentile (from 0 to 1) (default 0.5)
 
-
         framesync_options: Framesync options
+
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -4529,6 +4617,7 @@ def xstack(
         shortest: force termination when the shortest input terminates (default false)
         fill: set the color for unused pixels (default "none")
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream
@@ -4570,7 +4659,7 @@ def xstack_vaapi(
 ) -> VideoStream:
     """
 
-    "VA-API" xstack
+    "VA-API" xstack.
 
     Args:
         inputs: Set number of inputs (from 2 to 65535) (default 2)
@@ -4580,6 +4669,7 @@ def xstack_vaapi(
         grid_tile_size: set tile size in grid layout
         fill: Set the color for unused pixels (default "none")
 
+        extra_options: Extra options for the filter
 
     Returns:
         default: the video stream

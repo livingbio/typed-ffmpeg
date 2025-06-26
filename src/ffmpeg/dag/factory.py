@@ -28,6 +28,7 @@ def eval_formula(formula: str, **kwargs: Any) -> list[StreamType]:
 
     Returns:
         The result of the formula evaluation
+
     """
     # Convert formula to Python code
     return eval(
@@ -57,6 +58,7 @@ def filter_node_factory(
     Note:
         This function is primarily used internally by the filter generation system
         to create filter nodes from the FFmpeg filter definitions.
+
     """
     for k, v in kwargs.items():
         if isinstance(v, Auto):

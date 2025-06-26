@@ -1,3 +1,5 @@
+"""Code generation CLI for typed-ffmpeg."""
+
 import logging
 import os
 from dataclasses import asdict, replace
@@ -29,13 +31,14 @@ app = typer.Typer()
 
 def gen_filter_info(ffmpeg_filter: FFMpegFilter) -> FFMpegFilter:
     """
-    Generate filter info
+    Generate filter info.
 
     Args:
         ffmpeg_filter: The filter
 
     Returns:
         The filter info
+
     """
     filter_doc = extract_docs(ffmpeg_filter.name)
 
@@ -46,10 +49,11 @@ def gen_filter_info(ffmpeg_filter: FFMpegFilter) -> FFMpegFilter:
 
 def gen_option_info() -> list[FFMpegOption]:
     """
-    Generate option info
+    Generate option info.
 
     Returns:
         The option info
+
     """
     try:
         return load(list[FFMpegOption], "options")
@@ -63,15 +67,15 @@ def gen_option_info() -> list[FFMpegOption]:
 
 def load_filters(rebuild: bool) -> list[FFMpegFilter]:
     """
-    Load filters from the output path
+    Load filters from the output path.
 
     Args:
         rebuild: Whether to use the cache
 
     Returns:
         The filters
-    """
 
+    """
     if not rebuild:
         try:
             return load(list[FFMpegFilter], "filters")
@@ -101,15 +105,18 @@ def load_filters(rebuild: bool) -> list[FFMpegFilter]:
 
 def load_codecs(rebuild: bool) -> list[FFMpegCodec]:
     """
-    Load codecs from the output path
+    Load codecs from the output path.
 
     Args:
         rebuild: Whether to use the cache
 
     Returns:
         The codecs
-    """
 
+    Raises:
+        ValueError: If a codec is invalid.
+
+    """
     if not rebuild:
         try:
             return load(list[FFMpegCodec], "codecs")
@@ -162,15 +169,18 @@ def load_codecs(rebuild: bool) -> list[FFMpegCodec]:
 
 def load_formats(rebuild: bool) -> list[FFMpegFormat]:
     """
-    Load muxers from the output path
+    Load muxers from the output path.
 
     Args:
         rebuild: Whether to use the cache
 
     Returns:
         The muxers
-    """
 
+    Raises:
+        ValueError: If a format is invalid.
+
+    """
     if not rebuild:
         try:
             return load(list[FFMpegFormat], "formats")
@@ -224,11 +234,12 @@ def load_formats(rebuild: bool) -> list[FFMpegFormat]:
 @app.command()
 def generate(outpath: Path | None = None, rebuild: bool = False) -> None:
     """
-    Generate filter and option documents
+    Generate filter and option documents.
 
     Args:
         outpath: The output path
         rebuild: Whether to rebuild the filters and options from scratch, ignoring the cache
+
     """
     if not outpath:
         outpath = Path(__file__).parent.parent.parent / "ffmpeg"

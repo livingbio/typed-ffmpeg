@@ -43,8 +43,8 @@ def remove_split(
         A tuple containing:
         - The new stream corresponding to the input stream but with splits removed
         - A mapping dictionary relating original streams to their new versions
-    """
 
+    """
     # remove all split nodes
     # add split nodes to the graph
     if mapping is None:
@@ -122,8 +122,8 @@ def add_split(
 
     Raises:
         FFMpegValueError: If an unsupported stream type is encountered
-    """
 
+    """
     if not context:
         context = DAGContext.build(current_stream.node)
 
@@ -202,8 +202,8 @@ def fix_graph(stream: Stream) -> Stream:
     Note:
         This function creates a new graph structure rather than modifying the
         existing one, preserving the original graph.
-    """
 
+    """
     stream, _ = remove_split(stream)
     stream, _ = add_split(stream)
     return stream
@@ -240,6 +240,7 @@ def validate(stream: Stream, auto_fix: bool = True) -> Stream:
         # Validate will automatically insert a split filter
         valid_stream = ffmpeg.dag.validate(scaled.output("output.mp4"))
         ```
+
     """
     if auto_fix:
         stream = fix_graph(stream)

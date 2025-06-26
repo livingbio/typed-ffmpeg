@@ -1,5 +1,5 @@
 """
-FFmpeg Help Output Parsing Package
+FFmpeg Help Output Parsing Package.
 
 This package contains modules for parsing the output of FFmpeg's help commands
 to extract detailed information about filters and their options. The main functionality includes:

@@ -47,6 +47,7 @@ def merge_outputs(*streams: OutputStream) -> GlobalStream:
         merged = ffmpeg.merge_outputs(output1, output2)
         merged.run()  # Executes both outputs in a single FFmpeg command
         ```
+
     """
     return GlobalNode(inputs=streams).stream()
 
@@ -82,6 +83,7 @@ def vfilter(
     Note:
         This function is for custom filters not implemented in typed-ffmpeg.
         Use the built-in filters from the filters module when available.
+
     """
     return FilterNode(
         name=name,
@@ -123,6 +125,7 @@ def afilter(
     Note:
         This function is for custom filters not implemented in typed-ffmpeg.
         Use the built-in filters from the filters module when available.
+
     """
     return FilterNode(
         name=name,
@@ -171,8 +174,8 @@ def filter_multi_output(
     Note:
         This function is for custom filters not implemented in typed-ffmpeg.
         Use the built-in filters from the filters module when available.
-    """
 
+    """
     return FilterNode(
         name=name,
         kwargs=FrozenDict(kwargs),

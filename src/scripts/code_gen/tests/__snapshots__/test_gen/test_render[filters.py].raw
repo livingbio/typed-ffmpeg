@@ -1,4 +1,8 @@
 # NOTE: this file is auto-generated, do not modify
+"""
+FFmpeg filters.
+"""
+
 
 
 from typing import Any, Literal
@@ -49,6 +53,7 @@ description
 Args:
     order: set the filter order
     projection: set the filter projection
+    extra_options: Extra options for the filter
 
 Returns:
     default: the audio stream
