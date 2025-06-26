@@ -50,6 +50,7 @@ def abuffer(
         channel_layout:
         channels: (from 0 to INT_MAX) (default 0)
 
+
     Returns:
         default: the audio stream
 
@@ -93,6 +94,7 @@ def aevalsrc(
         duration: set audio duration (default -0.000001)
         channel_layout: set channel layout
 
+
     Returns:
         default: the audio stream
 
@@ -135,6 +137,7 @@ def afdelaysrc(
         nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
         taps: set number of taps for delay filter (from 0 to 32768) (default 0)
         channel_layout: set channel layout (default "stereo")
+
 
     Returns:
         default: the audio stream
@@ -208,6 +211,7 @@ def afireqsrc(
         nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
         interp: set the interpolation (from 0 to 1) (default linear)
         phase: set the phase (from 0 to 1) (default min)
+
 
     Returns:
         default: the audio stream
@@ -284,6 +288,7 @@ def afirsrc(
         nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
         win_func: set window function (from 0 to 20) (default blackman)
 
+
     Returns:
         default: the audio stream
 
@@ -324,6 +329,7 @@ def ainterleave(
     Args:
         nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
         duration: how to determine the end-of-stream (from 0 to 2) (default longest)
+
 
     Returns:
         default: the audio stream
@@ -366,6 +372,7 @@ def allrgb(
         duration: set video duration (default -0.000001)
         sar: set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)
 
+
     Returns:
         default: the video stream
 
@@ -403,6 +410,7 @@ def allyuv(
         duration: set video duration (default -0.000001)
         sar: set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)
 
+
     Returns:
         default: the video stream
 
@@ -435,6 +443,7 @@ def amerge(
 
     Args:
         inputs: specify the number of inputs (from 1 to 64) (default 2)
+
 
     Returns:
         default: the audio stream
@@ -481,6 +490,7 @@ def amix(
         dropout_transition: Transition time, in seconds, for volume renormalization when an input stream ends. (from 0 to INT_MAX) (default 2)
         weights: Set weight for each input. (default "1 1")
         normalize: Scale inputs (default true)
+
 
     Returns:
         default: the audio stream
@@ -537,6 +547,7 @@ def amovie(
         discontinuity: set discontinuity threshold (default 0)
         dec_threads: set the number of threads for decoding (from 0 to INT_MAX) (default 0)
         format_opts: set format options for the opened file
+
 
     Returns:
         filter_node: the filter node
@@ -597,6 +608,7 @@ def anoisesrc(
         nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
         density: set density (from 0 to 1) (default 0.05)
 
+
     Returns:
         default: the audio stream
 
@@ -640,6 +652,7 @@ def anullsrc(
         nb_samples: set the number of samples per requested frame (from 1 to 65535) (default 1024)
         duration: set the audio duration (default -0.000001)
 
+
     Returns:
         default: the audio stream
 
@@ -675,6 +688,7 @@ def astreamselect(
     Args:
         inputs: number of input streams (from 2 to INT_MAX) (default 2)
         map: input indexes to remap to outputs
+
 
     Returns:
         filter_node: the filter node
@@ -737,6 +751,7 @@ def avsynctest(
         fg: set foreground color (default "white")
         bg: set background color (default "black")
         ag: set additional color (default "gray")
+
 
     Returns:
         audio: the audio stream
@@ -805,6 +820,7 @@ def bm3d(
         ref: have reference stream (default false)
         planes: set planes to filter (from 0 to 15) (default 7)
 
+
     Returns:
         default: the video stream
 
@@ -860,6 +876,7 @@ def buffer(
         pix_fmt: (default none)
         sar: sample aspect ratio (from 0 to DBL_MAX) (default 0/1)
         time_base: (from 0 to DBL_MAX) (default 0/1)
+
 
     Returns:
         default: the video stream
@@ -917,6 +934,7 @@ def cellauto(
         full: start filling the whole video (default true)
         stitch: stitch boundaries (default true)
 
+
     Returns:
         default: the video stream
 
@@ -965,6 +983,7 @@ def color(
         rate: set video rate (default "25")
         duration: set video duration (default -0.000001)
         sar: set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)
+
 
     Returns:
         default: the video stream
@@ -1015,6 +1034,7 @@ def color_vulkan(
         format: Output video format (software format of hardware frames)
         out_range: Output colour range (from 0 to 2) (default 0) (from 0 to 2) (default 0)
 
+
     Returns:
         default: the video stream
 
@@ -1062,6 +1082,7 @@ def colorchart(
         patch_size: set the single patch size (default "64x64")
         preset: set the color checker chart preset (from 0 to 1) (default reference)
 
+
     Returns:
         default: the video stream
 
@@ -1105,6 +1126,7 @@ def colorspectrum(
         sar: set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)
         type: set the color spectrum type (from 0 to 2) (default black)
 
+
     Returns:
         default: the video stream
 
@@ -1147,6 +1169,7 @@ def concat(
         v: specify the number of video streams (from 0 to INT_MAX) (default 1)
         a: specify the number of audio streams (from 0 to INT_MAX) (default 0)
         unsafe: enable unsafe mode (default false)
+
 
     Returns:
         filter_node: the filter node
@@ -1202,6 +1225,7 @@ def decimate(
         ppsrc: mark main input as a pre-processed input and activate clean source input stream (default false)
         chroma: set whether or not chroma is considered in the metric calculations (default true)
         mixed: set whether or not the input only partially contains content to be decimated (default false)
+
 
     Returns:
         default: the video stream
@@ -1274,6 +1298,7 @@ def fieldmatch(
         blocky: set the y-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
         combpel: set the number of combed pixels inside any of the blocky by blockx size blocks on the frame for the frame to be detected as combed (from 0 to INT_MAX) (default 80)
 
+
     Returns:
         default: the video stream
 
@@ -1331,6 +1356,7 @@ def flite(
         textfile: set filename of the text to speak
         v: set voice (default "kal")
 
+
     Returns:
         default: the audio stream
 
@@ -1369,6 +1395,7 @@ def frei0r_src(
         size: Dimensions of the generated video. (default "320x240")
         framerate: (default "25")
         filter_name:
+
 
     Returns:
         default: the video stream
@@ -1441,6 +1468,7 @@ def gradients(
         speed: set gradients rotation speed (from 1e-05 to 1) (default 0.01)
         type: set gradient type (from 0 to 3) (default linear)
 
+
     Returns:
         default: the video stream
 
@@ -1500,6 +1528,7 @@ def guided(
         guidance: set guidance mode (0: off mode; 1: on mode) (from 0 to 1) (default off)
         planes: set planes to filter (from 0 to 15) (default 1)
 
+
     Returns:
         default: the video stream
 
@@ -1547,6 +1576,7 @@ def haldclutsrc(
         duration: set video duration (default -0.000001)
         sar: set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)
 
+
     Returns:
         default: the video stream
 
@@ -1592,6 +1622,7 @@ def headphone(
         type: set processing (from 0 to 1) (default freq)
         size: set frame size (from 1024 to 96000) (default 1024)
         hrir: set hrir format (from 0 to 1) (default stereo)
+
 
     Returns:
         default: the audio stream
@@ -1665,6 +1696,7 @@ def hilbert(
         nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
         win_func: set window function (from 0 to 20) (default blackman)
 
+
     Returns:
         default: the audio stream
 
@@ -1700,6 +1732,7 @@ def hstack(
     Args:
         inputs: set number of inputs (from 2 to INT_MAX) (default 2)
         shortest: force termination when the shortest input terminates (default false)
+
 
     Returns:
         default: the video stream
@@ -1741,6 +1774,7 @@ def hstack_vaapi(
         inputs: Set number of inputs (from 2 to 65535) (default 2)
         shortest: Force termination when the shortest input terminates (default false)
         height: Set output height (0 to use the height of input 0) (from 0 to 65535) (default 0)
+
 
     Returns:
         default: the video stream
@@ -1784,6 +1818,7 @@ def interleave(
         nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
         duration: how to determine the end-of-stream (from 0 to 2) (default longest)
 
+
     Returns:
         default: the video stream
 
@@ -1824,6 +1859,7 @@ def join(
         inputs: Number of input streams. (from 1 to INT_MAX) (default 2)
         channel_layout: Channel layout of the output stream. (default "stereo")
         map: A comma-separated list of channels maps in the format 'input_stream.input_channel-output_channel.
+
 
     Returns:
         default: the audio stream
@@ -1874,6 +1910,7 @@ def ladspa(
         nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
         duration: set audio duration (default -0.000001)
         latency: enable latency compensation (default false)
+
 
     Returns:
         default: the audio stream
@@ -2157,6 +2194,7 @@ def libplacebo(
         force_dither: Force dithering (default false)
         disable_fbos: Force-disable FBOs (default false)
 
+
     Returns:
         default: the video stream
 
@@ -2290,6 +2328,7 @@ def life(
         death_color: set death color (default "black")
         mold_color: set mold color (default "black")
 
+
     Returns:
         default: the video stream
 
@@ -2337,6 +2376,7 @@ def limitdiff(
         reference: enable reference stream (default false)
         planes: set the planes to filter (from 0 to 15) (default 15)
 
+
     Returns:
         default: the video stream
 
@@ -2383,6 +2423,7 @@ def lv2(
         sample_rate: set sample rate (from 1 to INT_MAX) (default 44100)
         nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
         duration: set audio duration (default -0.000001)
+
 
     Returns:
         default: the audio stream
@@ -2452,6 +2493,7 @@ def mandelbrot(
         outer: set outer coloring mode (from 0 to INT_MAX) (default normalized_iteration_count)
         inner: set inner coloring mode (from 0 to INT_MAX) (default mincol)
 
+
     Returns:
         default: the video stream
 
@@ -2514,6 +2556,7 @@ def mergeplanes(
         map3s: set 4th input to output stream mapping (from 0 to 3) (default 0)
         map3p: set 4th input to output plane mapping (from 0 to 3) (default 0)
 
+
     Returns:
         default: the video stream
 
@@ -2568,6 +2611,7 @@ def mix(
         scale: set scale (from 0 to 32767) (default 0)
         planes: set what planes to filter (default F)
         duration: how to determine end of stream (from 0 to 2) (default longest)
+
 
     Returns:
         default: the video stream
@@ -2624,6 +2668,7 @@ def movie(
         discontinuity: set discontinuity threshold (default 0)
         dec_threads: set the number of threads for decoding (from 0 to INT_MAX) (default 0)
         format_opts: set format options for the opened file
+
 
     Returns:
         filter_node: the filter node
@@ -2690,6 +2735,7 @@ def mptestsrc(
         test: set test to perform (from 0 to INT_MAX) (default all)
         max_frames: Set the maximum number of frames generated for each test (from 1 to I64_MAX) (default 30)
 
+
     Returns:
         default: the video stream
 
@@ -2729,6 +2775,7 @@ def nullsrc(
         rate: set video rate (default "25")
         duration: set video duration (default -0.000001)
         sar: set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)
+
 
     Returns:
         default: the video stream
@@ -2772,6 +2819,7 @@ def openclsrc(
         format: Video format (default none)
         rate: Video frame rate (default "25")
 
+
     Returns:
         default: the video stream
 
@@ -2813,6 +2861,7 @@ def pal100bars(
         duration: set video duration (default -0.000001)
         sar: set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)
 
+
     Returns:
         default: the video stream
 
@@ -2853,6 +2902,7 @@ def pal75bars(
         duration: set video duration (default -0.000001)
         sar: set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)
 
+
     Returns:
         default: the video stream
 
@@ -2889,6 +2939,7 @@ def premultiply(
         planes: set planes (from 0 to 15) (default 15)
         inplace: enable inplace mode (default false)
 
+
     Returns:
         default: the video stream
 
@@ -2920,8 +2971,8 @@ def program_opencl(
     kernel: String = Default(None),
     inputs: Int = Default("1"),
     size: Image_size = Default(None),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2932,6 +2983,9 @@ def program_opencl(
         kernel: Kernel name in program
         inputs: Number of inputs (from 1 to INT_MAX) (default 1)
         size: Video size
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -2981,6 +3035,7 @@ def rgbtestsrc(
         sar: set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)
         complement: set complement colors (default false)
 
+
     Returns:
         default: the video stream
 
@@ -3023,6 +3078,7 @@ def sierpinski(
         seed: set the seed (from -1 to UINT32_MAX) (default -1)
         jump: set the jump (from 1 to 10000) (default 100)
         type: set fractal type (from 0 to 1) (default carpet)
+
 
     Returns:
         default: the video stream
@@ -3074,6 +3130,7 @@ def signature(
         th_xh: threshold to detect frames as similar (from 1 to INT_MAX) (default 116)
         th_di: minimum length of matching sequence in frames (from 0 to INT_MAX) (default 0)
         th_it: threshold for relation of good to all frames (from 0 to 1) (default 0.5)
+
 
     Returns:
         default: the video stream
@@ -3137,6 +3194,7 @@ def sinc(
         hptaps: set number of taps for high-pass filter (from 0 to 32768) (default 0)
         lptaps: set number of taps for low-pass filter (from 0 to 32768) (default 0)
 
+
     Returns:
         default: the audio stream
 
@@ -3185,6 +3243,7 @@ def sine(
         duration: set the audio duration (default 0)
         samples_per_frame: set the number of samples per frame (default "1024")
 
+
     Returns:
         default: the audio stream
 
@@ -3226,6 +3285,7 @@ def smptebars(
         duration: set video duration (default -0.000001)
         sar: set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)
 
+
     Returns:
         default: the video stream
 
@@ -3266,6 +3326,7 @@ def smptehdbars(
         duration: set video duration (default -0.000001)
         sar: set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)
 
+
     Returns:
         default: the video stream
 
@@ -3303,6 +3364,7 @@ def streamselect(
     Args:
         inputs: number of input streams (from 2 to INT_MAX) (default 2)
         map: input indexes to remap to outputs
+
 
     Returns:
         filter_node: the filter node
@@ -3351,6 +3413,7 @@ def testsrc(
         sar: set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)
         decimals: set number of decimals to show (from 0 to 17) (default 0)
 
+
     Returns:
         default: the video stream
 
@@ -3394,6 +3457,7 @@ def testsrc2(
         sar: set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)
         alpha: set global alpha (opacity) (from 0 to 255) (default 255)
 
+
     Returns:
         default: the video stream
 
@@ -3430,6 +3494,7 @@ def unpremultiply(
     Args:
         planes: set planes (from 0 to 15) (default 15)
         inplace: enable inplace mode (default false)
+
 
     Returns:
         default: the video stream
@@ -3469,6 +3534,7 @@ def vstack(
     Args:
         inputs: set number of inputs (from 2 to INT_MAX) (default 2)
         shortest: force termination when the shortest input terminates (default false)
+
 
     Returns:
         default: the video stream
@@ -3511,6 +3577,7 @@ def vstack_vaapi(
         shortest: Force termination when the shortest input terminates (default false)
         width: Set output width (0 to use the width of input 0) (from 0 to 65535) (default 0)
 
+
     Returns:
         default: the video stream
 
@@ -3542,8 +3609,8 @@ def xmedian(
     inputs: Int = Auto("len(streams)"),
     planes: Int = Default("15"),
     percentile: Float = Default("0.5"),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3553,6 +3620,9 @@ def xmedian(
         inputs: set number of inputs (from 3 to 255) (default 3)
         planes: set planes to filter (from 0 to 15) (default 15)
         percentile: set percentile (from 0 to 1) (default 0.5)
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -3600,6 +3670,7 @@ def xstack(
         grid: set fixed size grid layout
         shortest: force termination when the shortest input terminates (default false)
         fill: set the color for unused pixels (default "none")
+
 
     Returns:
         default: the video stream
@@ -3651,6 +3722,7 @@ def xstack_vaapi(
         grid_tile_size: set tile size in grid layout
         fill: Set the color for unused pixels (default "none")
 
+
     Returns:
         default: the video stream
 
@@ -3697,6 +3769,7 @@ def yuvtestsrc(
         rate: set video rate (default "25")
         duration: set video duration (default -0.000001)
         sar: set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)
+
 
     Returns:
         default: the video stream
@@ -3769,6 +3842,7 @@ def zoneplate(
         kt2: set 2-order T-axis phase (from INT_MIN to INT_MAX) (default 0)
         ku: set 0-order U-color phase (from INT_MIN to INT_MAX) (default 0)
         kv: set 0-order V-color phase (from INT_MIN to INT_MAX) (default 0)
+
 
     Returns:
         default: the video stream

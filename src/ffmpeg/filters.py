@@ -104,6 +104,7 @@ def acrossfade(
         curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
         curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
 
+
     Returns:
         default: the audio stream
 
@@ -149,6 +150,7 @@ def ainterleave(
         nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
         duration: how to determine the end-of-stream (from 0 to 2) (default longest)
 
+
     Returns:
         default: the audio stream
 
@@ -177,12 +179,15 @@ def ainterleave(
 def alphamerge(
     _main: VideoStream,
     _alpha: VideoStream,
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
     Copy the luma value of the second input into the alpha channel of the first input.
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -215,6 +220,7 @@ def amerge(
 
     Args:
         inputs: specify the number of inputs (from 1 to 64) (default 2)
+
 
     Returns:
         default: the audio stream
@@ -262,6 +268,7 @@ def amix(
         weights: Set weight for each input. (default "1 1")
         normalize: Scale inputs (default true)
 
+
     Returns:
         default: the audio stream
 
@@ -298,6 +305,7 @@ def amultiply(
     """
 
     Multiply two audio streams.
+
 
     Returns:
         default: the audio stream
@@ -343,6 +351,7 @@ def anlmf(
         eps: set the filter eps (from 0 to 1) (default 1)
         leakage: set the filter leakage (from 0 to 1) (default 0)
         out_mode: set output mode (from 0 to 4) (default o)
+
 
     Returns:
         default: the audio stream
@@ -393,6 +402,7 @@ def anlms(
         leakage: set the filter leakage (from 0 to 1) (default 0)
         out_mode: set output mode (from 0 to 4) (default o)
 
+
     Returns:
         default: the audio stream
 
@@ -428,6 +438,7 @@ def apsnr(
     """
 
     Measure Audio Peak Signal-to-Noise Ratio.
+
 
     Returns:
         default: the audio stream
@@ -470,6 +481,7 @@ def arls(
         delta: set the filter delta (from 0 to 32767) (default 2)
         out_mode: set output mode (from 0 to 4) (default o)
 
+
     Returns:
         default: the audio stream
 
@@ -505,6 +517,7 @@ def asdr(
 
     Measure Audio Signal-to-Distortion Ratio.
 
+
     Returns:
         default: the audio stream
 
@@ -534,6 +547,7 @@ def asisdr(
     """
 
     Measure Audio Scale-Invariant Signal-to-Distortion Ratio.
+
 
     Returns:
         default: the audio stream
@@ -569,6 +583,7 @@ def astreamselect(
     Args:
         inputs: number of input streams (from 2 to INT_MAX) (default 2)
         map: input indexes to remap to outputs
+
 
     Returns:
         filter_node: the filter node
@@ -612,6 +627,7 @@ def axcorrelate(
     Args:
         size: set the segment size (from 2 to 131072) (default 256)
         algo: set the algorithm (from 0 to 2) (default best)
+
 
     Returns:
         default: the audio stream
@@ -883,8 +899,8 @@ def blend(
     c2_opacity: Double = Default("1"),
     c3_opacity: Double = Default("1"),
     all_opacity: Double = Default("1"),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -906,6 +922,9 @@ def blend(
         c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
         c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
         all_opacity: set opacity for all color components (from 0 to 1) (default 1)
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -977,6 +996,7 @@ def blend_vulkan(
         c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
         all_opacity: set opacity for all color components (from 0 to 1) (default 1)
 
+
     Returns:
         default: the video stream
 
@@ -1043,6 +1063,7 @@ def bm3d(
         ref: have reference stream (default false)
         planes: set planes to filter (from 0 to 15) (default 7)
 
+
     Returns:
         default: the video stream
 
@@ -1098,6 +1119,7 @@ def colormap(
         type: set the target type used (from 0 to 1) (default absolute)
         kernel: set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
 
+
     Returns:
         default: the video stream
 
@@ -1145,6 +1167,7 @@ def concat(
         a: specify the number of audio streams (from 0 to INT_MAX) (default 0)
         unsafe: enable unsafe mode (default false)
 
+
     Returns:
         filter_node: the filter node
 
@@ -1181,8 +1204,8 @@ def convolve(
     planes: Int = Default("7"),
     impulse: Int | Literal["first", "all"] | Default = Default("all"),
     noise: Float = Default("1e-07"),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1192,6 +1215,9 @@ def convolve(
         planes: set planes to convolve (from 0 to 15) (default 7)
         impulse: when to process impulses (from 0 to 1) (default all)
         noise: set noise (from 0 to 1) (default 1e-07)
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -1222,12 +1248,15 @@ def convolve(
 def corr(
     _main: VideoStream,
     _reference: VideoStream,
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
     Calculate the correlation between two video streams.
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -1273,6 +1302,7 @@ def decimate(
         chroma: set whether or not chroma is considered in the metric calculations (default true)
         mixed: set whether or not the input only partially contains content to be decimated (default false)
 
+
     Returns:
         default: the video stream
 
@@ -1311,8 +1341,8 @@ def deconvolve(
     planes: Int = Default("7"),
     impulse: Int | Literal["first", "all"] | Default = Default("all"),
     noise: Float = Default("1e-07"),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1322,6 +1352,9 @@ def deconvolve(
         planes: set planes to deconvolve (from 0 to 15) (default 7)
         impulse: when to process impulses (from 0 to 1) (default all)
         noise: set noise (from 0 to 1) (default 1e-07)
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -1368,6 +1401,7 @@ def displace(
     Args:
         edge: set edge mode (from 0 to 3) (default smear)
 
+
     Returns:
         default: the video stream
 
@@ -1412,6 +1446,7 @@ def feedback(
     Args:
         x: set top left crop position (from 0 to INT_MAX) (default 0)
         w: set crop size (from 0 to INT_MAX) (default 0)
+
 
     Returns:
         default: the video stream
@@ -1483,6 +1518,7 @@ def fieldmatch(
         blocky: set the y-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
         combpel: set the number of combed pixels inside any of the blocky by blockx size blocks on the frame for the frame to be detected as combed (from 0 to INT_MAX) (default 80)
 
+
     Returns:
         default: the video stream
 
@@ -1536,6 +1572,7 @@ def framepack(
     Args:
         format: Frame pack output format (from 0 to INT_MAX) (default sbs)
 
+
     Returns:
         packed: the video stream
 
@@ -1578,6 +1615,7 @@ def freezeframes(
         first: set first frame to freeze (from 0 to I64_MAX) (default 0)
         last: set last frame to freeze (from 0 to I64_MAX) (default 0)
         replace: set frame to replace (from 0 to I64_MAX) (default 0)
+
 
     Returns:
         default: the video stream
@@ -1628,6 +1666,7 @@ def guided(
         guidance: set guidance mode (0: off mode; 1: on mode) (from 0 to 1) (default off)
         planes: set planes to filter (from 0 to 15) (default 1)
 
+
     Returns:
         default: the video stream
 
@@ -1665,8 +1704,8 @@ def haldclut(
     interp: Int
     | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
     | Default = Default("tetrahedral"),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1675,6 +1714,9 @@ def haldclut(
     Args:
         clut: when to process CLUT (from 0 to 1) (default all)
         interp: select interpolation mode (from 0 to 4) (default tetrahedral)
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -1723,6 +1765,7 @@ def headphone(
         size: set frame size (from 1024 to 96000) (default 1024)
         hrir: set hrir format (from 0 to 1) (default stereo)
 
+
     Returns:
         default: the audio stream
 
@@ -1766,6 +1809,7 @@ def hstack(
         inputs: set number of inputs (from 2 to INT_MAX) (default 2)
         shortest: force termination when the shortest input terminates (default false)
 
+
     Returns:
         default: the video stream
 
@@ -1807,6 +1851,7 @@ def hstack_vaapi(
         shortest: Force termination when the shortest input terminates (default false)
         height: Set output height (0 to use the height of input 0) (from 0 to 65535) (default 0)
 
+
     Returns:
         default: the video stream
 
@@ -1839,8 +1884,8 @@ def hysteresis(
     *,
     planes: Int = Default("15"),
     threshold: Int = Default("0"),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1849,6 +1894,9 @@ def hysteresis(
     Args:
         planes: set planes (from 0 to 15) (default 15)
         threshold: set threshold (from 0 to 65535) (default 0)
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -1880,12 +1928,15 @@ def hysteresis(
 def identity(
     _main: VideoStream,
     _reference: VideoStream,
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
     Calculate the Identity between two video streams.
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -1920,6 +1971,7 @@ def interleave(
     Args:
         nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
         duration: how to determine the end-of-stream (from 0 to 2) (default longest)
+
 
     Returns:
         default: the video stream
@@ -1961,6 +2013,7 @@ def join(
         inputs: Number of input streams. (from 1 to INT_MAX) (default 2)
         channel_layout: Channel layout of the output stream. (default "stereo")
         map: A comma-separated list of channels maps in the format 'input_stream.input_channel-output_channel.
+
 
     Returns:
         default: the audio stream
@@ -2011,6 +2064,7 @@ def ladspa(
         nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
         duration: set audio duration (default -0.000001)
         latency: enable latency compensation (default false)
+
 
     Returns:
         default: the audio stream
@@ -2294,6 +2348,7 @@ def libplacebo(
         force_dither: Force dithering (default false)
         disable_fbos: Force-disable FBOs (default false)
 
+
     Returns:
         default: the video stream
 
@@ -2413,6 +2468,7 @@ def limitdiff(
         reference: enable reference stream (default false)
         planes: set the planes to filter (from 0 to 15) (default 15)
 
+
     Returns:
         default: the video stream
 
@@ -2449,8 +2505,8 @@ def lut2(
     c2: String = Default("x"),
     c3: String = Default("x"),
     d: Int = Default("0"),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2462,6 +2518,9 @@ def lut2(
         c2: set component #2 expression (default "x")
         c3: set component #3 expression (default "x")
         d: set output depth (from 0 to 16) (default 0)
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -2511,6 +2570,7 @@ def lv2(
         nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
         duration: set audio duration (default -0.000001)
 
+
     Returns:
         default: the audio stream
 
@@ -2556,6 +2616,7 @@ def maskedclamp(
         overshoot: set overshoot (from 0 to 65535) (default 0)
         planes: set planes (from 0 to 15) (default 15)
 
+
     Returns:
         default: the video stream
 
@@ -2599,6 +2660,7 @@ def maskedmax(
     Args:
         planes: set planes (from 0 to 15) (default 15)
 
+
     Returns:
         default: the video stream
 
@@ -2640,6 +2702,7 @@ def maskedmerge(
     Args:
         planes: set planes (from 0 to 15) (default 15)
 
+
     Returns:
         default: the video stream
 
@@ -2680,6 +2743,7 @@ def maskedmin(
 
     Args:
         planes: set planes (from 0 to 15) (default 15)
+
 
     Returns:
         default: the video stream
@@ -2724,6 +2788,7 @@ def maskedthreshold(
         threshold: set threshold (from 0 to 65535) (default 1)
         planes: set planes (from 0 to 15) (default 15)
         mode: set mode (from 0 to 1) (default abs)
+
 
     Returns:
         default: the video stream
@@ -2782,6 +2847,7 @@ def mergeplanes(
         map3s: set 4th input to output stream mapping (from 0 to 3) (default 0)
         map3p: set 4th input to output plane mapping (from 0 to 3) (default 0)
 
+
     Returns:
         default: the video stream
 
@@ -2828,6 +2894,7 @@ def midequalizer(
 
     Args:
         planes: set planes (from 0 to 15) (default 15)
+
 
     Returns:
         default: the video stream
@@ -2876,6 +2943,7 @@ def mix(
         planes: set what planes to filter (default F)
         duration: how to determine end of stream (from 0 to 2) (default longest)
 
+
     Returns:
         default: the video stream
 
@@ -2913,8 +2981,8 @@ def morpho(
     | Default = Default("erode"),
     planes: Int = Default("7"),
     structure: Int | Literal["first", "all"] | Default = Default("all"),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2924,6 +2992,9 @@ def morpho(
         mode: set morphological transform (from 0 to 6) (default erode)
         planes: set planes to filter (from 0 to 15) (default 7)
         structure: when to process structures (from 0 to 1) (default all)
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -2954,12 +3025,15 @@ def morpho(
 def msad(
     _main: VideoStream,
     _reference: VideoStream,
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
     Calculate the MSAD between two video streams.
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -2996,6 +3070,7 @@ def multiply(
         scale: set scale (from 0 to 9) (default 1)
         offset: set offset (from -1 to 1) (default 0.5)
         planes: set planes (default F)
+
 
     Returns:
         default: the video stream
@@ -3046,8 +3121,8 @@ def overlay(
     | Default = Default("yuv420"),
     repeatlast: Boolean = Default("true"),
     alpha: Int | Literal["straight", "premultiplied"] | Default = Default("straight"),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3062,6 +3137,9 @@ def overlay(
         format: set output format (from 0 to 8) (default yuv420)
         repeatlast: repeat overlay of the last overlay frame (default true)
         alpha: alpha format (from 0 to 1) (default straight)
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -3110,6 +3188,7 @@ def overlay_opencl(
         x: Overlay x position (from 0 to INT_MAX) (default 0)
         y: Overlay y position (from 0 to INT_MAX) (default 0)
 
+
     Returns:
         default: the video stream
 
@@ -3148,8 +3227,8 @@ def overlay_vaapi(
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
     shortest: Boolean = Default("false"),
     repeatlast: Boolean = Default("true"),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3164,6 +3243,9 @@ def overlay_vaapi(
         eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
         shortest: force termination when the shortest input terminates (default false)
         repeatlast: repeat overlay of the last overlay frame (default true)
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -3213,6 +3295,7 @@ def overlay_vulkan(
     Args:
         x: Set horizontal offset (from 0 to INT_MAX) (default 0)
         y: Set vertical offset (from 0 to INT_MAX) (default 0)
+
 
     Returns:
         default: the video stream
@@ -3275,6 +3358,7 @@ def paletteuse(
         alpha_threshold: set the alpha threshold for transparency (from 0 to 255) (default 128)
         debug_kdtree: save Graphviz graph of the kdtree in specified file
 
+
     Returns:
         default: the video stream
 
@@ -3319,6 +3403,7 @@ def premultiply(
         planes: set planes (from 0 to 15) (default 15)
         inplace: enable inplace mode (default false)
 
+
     Returns:
         default: the video stream
 
@@ -3350,8 +3435,8 @@ def program_opencl(
     kernel: String = Default(None),
     inputs: Int = Default("1"),
     size: Image_size = Default(None),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3362,6 +3447,9 @@ def program_opencl(
         kernel: Kernel name in program
         inputs: Number of inputs (from 1 to INT_MAX) (default 1)
         size: Video size
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -3398,8 +3486,8 @@ def psnr(
     stats_file: String = Default(None),
     stats_version: Int = Default("1"),
     output_max: Boolean = Default("false"),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3409,6 +3497,9 @@ def psnr(
         stats_file: Set file where to store per-frame difference information
         stats_version: Set the format version for the stats file. (from 1 to 2) (default 1)
         output_max: Add raw stats (max values) to the output log. (default false)
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -3453,6 +3544,7 @@ def remap(
         format: set output format (from 0 to 1) (default color)
         fill: set the color of the unmapped pixels (default "black")
 
+
     Returns:
         default: the video stream
 
@@ -3496,6 +3588,7 @@ def remap_opencl(
     Args:
         interp: set interpolation method (from 0 to 1) (default linear)
         fill: set the color of the unmapped pixels (default "black")
+
 
     Returns:
         default: the video stream
@@ -3559,6 +3652,7 @@ def sidechaincompress(
         detection: set detection (from 0 to 1) (default rms)
         level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
         mix: set mix (from 0 to 1) (default 1)
+
 
     Returns:
         default: the audio stream
@@ -3632,6 +3726,7 @@ def sidechaingate(
         link: set link (from 0 to 1) (default average)
         level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
 
+
     Returns:
         default: the audio stream
 
@@ -3695,6 +3790,7 @@ def signature(
         th_xh: threshold to detect frames as similar (from 1 to INT_MAX) (default 116)
         th_di: minimum length of matching sequence in frames (from 0 to INT_MAX) (default 0)
         th_it: threshold for relation of good to all frames (from 0 to 1) (default 0.5)
+
 
     Returns:
         default: the video stream
@@ -3783,6 +3879,7 @@ def spectrumsynth(
         overlap: set window overlap (from 0 to 1) (default 1)
         orientation: set orientation (from 0 to 1) (default vertical)
 
+
     Returns:
         default: the audio stream
 
@@ -3819,8 +3916,8 @@ def ssim(
     _reference: VideoStream,
     *,
     stats_file: String = Default(None),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3828,6 +3925,9 @@ def ssim(
 
     Args:
         stats_file: Set file where to store per-frame difference information
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -3866,6 +3966,7 @@ def streamselect(
     Args:
         inputs: number of input streams (from 2 to INT_MAX) (default 2)
         map: input indexes to remap to outputs
+
 
     Returns:
         filter_node: the filter node
@@ -3910,6 +4011,7 @@ def threshold(
     Args:
         planes: set planes to filter (from 0 to 15) (default 15)
 
+
     Returns:
         default: the video stream
 
@@ -3951,6 +4053,7 @@ def unpremultiply(
         planes: set planes (from 0 to 15) (default 15)
         inplace: enable inplace mode (default false)
 
+
     Returns:
         default: the video stream
 
@@ -3983,8 +4086,8 @@ def varblur(
     min_r: Int = Default("0"),
     max_r: Int = Default("8"),
     planes: Int = Default("15"),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3994,6 +4097,9 @@ def varblur(
         min_r: set min blur radius (from 0 to 254) (default 0)
         max_r: set max blur radius (from 1 to 255) (default 8)
         planes: set planes to filter (from 0 to 15) (default 15)
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -4024,12 +4130,15 @@ def varblur(
 def vif(
     _main: VideoStream,
     _reference: VideoStream,
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
     Calculate the VIF between two video streams.
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -4062,6 +4171,7 @@ def vstack(
     Args:
         inputs: set number of inputs (from 2 to INT_MAX) (default 2)
         shortest: force termination when the shortest input terminates (default false)
+
 
     Returns:
         default: the video stream
@@ -4104,6 +4214,7 @@ def vstack_vaapi(
         shortest: Force termination when the shortest input terminates (default false)
         width: Set output width (0 to use the width of input 0) (from 0 to 65535) (default 0)
 
+
     Returns:
         default: the video stream
 
@@ -4136,8 +4247,8 @@ def xcorrelate(
     *,
     planes: Int = Default("7"),
     secondary: Int | Literal["first", "all"] | Default = Default("all"),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4146,6 +4257,9 @@ def xcorrelate(
     Args:
         planes: set planes to cross-correlate (from 0 to 15) (default 7)
         secondary: when to process secondary frame (from 0 to 1) (default all)
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -4256,6 +4370,7 @@ def xfade(
         offset: set cross fade start relative to first input stream (default 0)
         expr: set expression for custom transition
 
+
     Returns:
         default: the video stream
 
@@ -4317,6 +4432,7 @@ def xfade_opencl(
         duration: set cross fade duration (default 1)
         offset: set cross fade start relative to first input stream (default 0)
 
+
     Returns:
         default: the video stream
 
@@ -4351,8 +4467,8 @@ def xmedian(
     inputs: Int = Auto("len(streams)"),
     planes: Int = Default("15"),
     percentile: Float = Default("0.5"),
-    extra_options: dict[str, Any] | None = None,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4362,6 +4478,9 @@ def xmedian(
         inputs: set number of inputs (from 3 to 255) (default 3)
         planes: set planes to filter (from 0 to 15) (default 15)
         percentile: set percentile (from 0 to 1) (default 0.5)
+
+
+        framesync_options: Framesync options
 
     Returns:
         default: the video stream
@@ -4409,6 +4528,7 @@ def xstack(
         grid: set fixed size grid layout
         shortest: force termination when the shortest input terminates (default false)
         fill: set the color for unused pixels (default "none")
+
 
     Returns:
         default: the video stream
@@ -4459,6 +4579,7 @@ def xstack_vaapi(
         grid: set fixed size grid layout
         grid_tile_size: set tile size in grid layout
         fill: Set the color for unused pixels (default "none")
+
 
     Returns:
         default: the video stream

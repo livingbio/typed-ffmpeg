@@ -57,6 +57,9 @@ Args:
     {{option.name | option_name_safe}}: {{option.description | striptags }}
 {%- endfor %}
 {% endif %}
+{% if f.is_support_framesync %}
+    framesync_options: Framesync options
+{% endif %}
 Returns:
 {%- if f.is_dynamic_output %}
     filter_node: the filter node
@@ -159,10 +162,10 @@ def {{f.name}}(
     {{ stream_typings(f, "function") }}
     {% if not f.is_dynamic_input and f.options | length > 0 %}*,{% endif %}
     {{ f | filter_option_typings }}
-    extra_options: dict[str, Any] | None = None,
     {% if f.is_support_framesync %}
     framesync_options: FFMpegFrameSyncOption | None = None,
     {% endif %}
+    extra_options: dict[str, Any] | None = None,
 ) {{- return_stream_typings(f) }}
     """
     {{ docstring(f) }}

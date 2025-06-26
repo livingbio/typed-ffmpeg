@@ -13,6 +13,21 @@ def framesync(
     repeatlast: bool | None = None,
     ts_sync_mode: Literal["default", "nearest"] | None = None,
 ) -> FFMpegFrameSyncOption:
+    """
+    Framesync options. Some filters with several inputs support a common set of options. These options can only be set by name, not with the short notation.
+
+    Args:
+        eof_action: Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)
+        shortest: force termination when the shortest input terminates (default false)
+        repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+
+    References:
+        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framesync)
+
+    Returns:
+        FFMpegFrameSyncOption
+    """
     return FFMpegFrameSyncOption(
         merge(
             {
