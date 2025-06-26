@@ -43,8 +43,8 @@ def aap(
 
     *,
     order: Int = Default(None),projection: Int = Default(None),
-    extra_options: dict[str, Any] | None = None,
     
+    extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
     
@@ -53,6 +53,7 @@ description
 Args:
     order: set the filter order
     projection: set the filter projection
+
     extra_options: Extra options for the filter
 
 Returns:
