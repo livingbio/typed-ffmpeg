@@ -56,9 +56,9 @@ Args:
 {%- for option in f.options %}
     {{option.name | option_name_safe}}: {{option.description | striptags }}
 {%- endfor %}
-{% if f.is_support_framesync %}
+{%- if f.is_support_framesync %}
     framesync_options: Framesync options
-{% endif %}
+{%- endif %}
     extra_options: Extra options for the filter
 
 Returns:

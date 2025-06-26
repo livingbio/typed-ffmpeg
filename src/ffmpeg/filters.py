@@ -103,7 +103,6 @@ def acrossfade(
         overlap: overlap 1st stream end with 2nd stream start (default true)
         curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
         curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -150,7 +149,6 @@ def ainterleave(
     Args:
         nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
         duration: how to determine the end-of-stream (from 0 to 2) (default longest)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -190,7 +188,6 @@ def alphamerge(
 
     Args:
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -224,7 +221,6 @@ def amerge(
 
     Args:
         inputs: specify the number of inputs (from 1 to 64) (default 2)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -272,7 +268,6 @@ def amix(
         dropout_transition: Transition time, in seconds, for volume renormalization when an input stream ends. (from 0 to INT_MAX) (default 2)
         weights: Set weight for each input. (default "1 1")
         normalize: Scale inputs (default true)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -359,7 +354,6 @@ def anlmf(
         eps: set the filter eps (from 0 to 1) (default 1)
         leakage: set the filter leakage (from 0 to 1) (default 0)
         out_mode: set output mode (from 0 to 4) (default o)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -410,7 +404,6 @@ def anlms(
         eps: set the filter eps (from 0 to 1) (default 1)
         leakage: set the filter leakage (from 0 to 1) (default 0)
         out_mode: set output mode (from 0 to 4) (default o)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -492,7 +485,6 @@ def arls(
         _lambda: set the filter lambda (from 0 to 1) (default 1)
         delta: set the filter delta (from 0 to 32767) (default 2)
         out_mode: set output mode (from 0 to 4) (default o)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -600,7 +592,6 @@ def astreamselect(
     Args:
         inputs: number of input streams (from 2 to INT_MAX) (default 2)
         map: input indexes to remap to outputs
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -645,7 +636,6 @@ def axcorrelate(
     Args:
         size: set the segment size (from 2 to 131072) (default 256)
         algo: set the algorithm (from 0 to 2) (default best)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -941,9 +931,7 @@ def blend(
         c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
         c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
         all_opacity: set opacity for all color components (from 0 to 1) (default 1)
-
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1015,7 +1003,6 @@ def blend_vulkan(
         c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
         c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
         all_opacity: set opacity for all color components (from 0 to 1) (default 1)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1083,7 +1070,6 @@ def bm3d(
         estim: set filtering estimation mode (from 0 to 1) (default basic)
         ref: have reference stream (default false)
         planes: set planes to filter (from 0 to 15) (default 7)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1140,7 +1126,6 @@ def colormap(
         nb_patches: set number of patches (from 0 to 64) (default 0)
         type: set the target type used (from 0 to 1) (default absolute)
         kernel: set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1189,7 +1174,6 @@ def concat(
         v: specify the number of video streams (from 0 to INT_MAX) (default 1)
         a: specify the number of audio streams (from 0 to INT_MAX) (default 0)
         unsafe: enable unsafe mode (default false)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1239,9 +1223,7 @@ def convolve(
         planes: set planes to convolve (from 0 to 15) (default 7)
         impulse: when to process impulses (from 0 to 1) (default all)
         noise: set noise (from 0 to 1) (default 1e-07)
-
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1282,7 +1264,6 @@ def corr(
 
     Args:
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1328,7 +1309,6 @@ def decimate(
         ppsrc: mark main input as a pre-processed input and activate clean source input stream (default false)
         chroma: set whether or not chroma is considered in the metric calculations (default true)
         mixed: set whether or not the input only partially contains content to be decimated (default false)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1380,9 +1360,7 @@ def deconvolve(
         planes: set planes to deconvolve (from 0 to 15) (default 7)
         impulse: when to process impulses (from 0 to 1) (default all)
         noise: set noise (from 0 to 1) (default 1e-07)
-
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1429,7 +1407,6 @@ def displace(
 
     Args:
         edge: set edge mode (from 0 to 3) (default smear)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1476,7 +1453,6 @@ def feedback(
     Args:
         x: set top left crop position (from 0 to INT_MAX) (default 0)
         w: set crop size (from 0 to INT_MAX) (default 0)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1548,7 +1524,6 @@ def fieldmatch(
         blockx: set the x-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
         blocky: set the y-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
         combpel: set the number of combed pixels inside any of the blocky by blockx size blocks on the frame for the frame to be detected as combed (from 0 to INT_MAX) (default 80)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1603,7 +1578,6 @@ def framepack(
 
     Args:
         format: Frame pack output format (from 0 to INT_MAX) (default sbs)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1648,7 +1622,6 @@ def freezeframes(
         first: set first frame to freeze (from 0 to I64_MAX) (default 0)
         last: set last frame to freeze (from 0 to I64_MAX) (default 0)
         replace: set frame to replace (from 0 to I64_MAX) (default 0)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1699,7 +1672,6 @@ def guided(
         sub: subsampling ratio for fast mode (from 2 to 64) (default 4)
         guidance: set guidance mode (0: off mode; 1: on mode) (from 0 to 1) (default off)
         planes: set planes to filter (from 0 to 15) (default 1)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1749,9 +1721,7 @@ def haldclut(
     Args:
         clut: when to process CLUT (from 0 to 1) (default all)
         interp: select interpolation mode (from 0 to 4) (default tetrahedral)
-
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1800,7 +1770,6 @@ def headphone(
         type: set processing (from 0 to 1) (default freq)
         size: set frame size (from 1024 to 96000) (default 1024)
         hrir: set hrir format (from 0 to 1) (default stereo)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1845,7 +1814,6 @@ def hstack(
     Args:
         inputs: set number of inputs (from 2 to INT_MAX) (default 2)
         shortest: force termination when the shortest input terminates (default false)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1888,7 +1856,6 @@ def hstack_vaapi(
         inputs: Set number of inputs (from 2 to 65535) (default 2)
         shortest: Force termination when the shortest input terminates (default false)
         height: Set output height (0 to use the height of input 0) (from 0 to 65535) (default 0)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1933,9 +1900,7 @@ def hysteresis(
     Args:
         planes: set planes (from 0 to 15) (default 15)
         threshold: set threshold (from 0 to 65535) (default 0)
-
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -1977,7 +1942,6 @@ def identity(
 
     Args:
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -2013,7 +1977,6 @@ def interleave(
     Args:
         nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
         duration: how to determine the end-of-stream (from 0 to 2) (default longest)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -2056,7 +2019,6 @@ def join(
         inputs: Number of input streams. (from 1 to INT_MAX) (default 2)
         channel_layout: Channel layout of the output stream. (default "stereo")
         map: A comma-separated list of channels maps in the format 'input_stream.input_channel-output_channel.
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -2108,7 +2070,6 @@ def ladspa(
         nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
         duration: set audio duration (default -0.000001)
         latency: enable latency compensation (default false)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -2392,7 +2353,6 @@ def libplacebo(
         force_icc_lut: Deprecated, does nothing (default false)
         force_dither: Force dithering (default false)
         disable_fbos: Force-disable FBOs (default false)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -2513,7 +2473,6 @@ def limitdiff(
         elasticity: set the elasticity (from 0 to 10) (default 2)
         reference: enable reference stream (default false)
         planes: set the planes to filter (from 0 to 15) (default 15)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -2565,9 +2524,7 @@ def lut2(
         c2: set component #2 expression (default "x")
         c3: set component #3 expression (default "x")
         d: set output depth (from 0 to 16) (default 0)
-
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -2617,7 +2574,6 @@ def lv2(
         sample_rate: set sample rate (from 1 to INT_MAX) (default 44100)
         nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
         duration: set audio duration (default -0.000001)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -2664,7 +2620,6 @@ def maskedclamp(
         undershoot: set undershoot (from 0 to 65535) (default 0)
         overshoot: set overshoot (from 0 to 65535) (default 0)
         planes: set planes (from 0 to 15) (default 15)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -2709,7 +2664,6 @@ def maskedmax(
 
     Args:
         planes: set planes (from 0 to 15) (default 15)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -2752,7 +2706,6 @@ def maskedmerge(
 
     Args:
         planes: set planes (from 0 to 15) (default 15)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -2795,7 +2748,6 @@ def maskedmin(
 
     Args:
         planes: set planes (from 0 to 15) (default 15)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -2841,7 +2793,6 @@ def maskedthreshold(
         threshold: set threshold (from 0 to 65535) (default 1)
         planes: set planes (from 0 to 15) (default 15)
         mode: set mode (from 0 to 1) (default abs)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -2900,7 +2851,6 @@ def mergeplanes(
         map2p: set 3rd input to output plane mapping (from 0 to 3) (default 0)
         map3s: set 4th input to output stream mapping (from 0 to 3) (default 0)
         map3p: set 4th input to output plane mapping (from 0 to 3) (default 0)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -2949,7 +2899,6 @@ def midequalizer(
 
     Args:
         planes: set planes (from 0 to 15) (default 15)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -2998,7 +2947,6 @@ def mix(
         scale: set scale (from 0 to 32767) (default 0)
         planes: set what planes to filter (default F)
         duration: how to determine end of stream (from 0 to 2) (default longest)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3049,9 +2997,7 @@ def morpho(
         mode: set morphological transform (from 0 to 6) (default erode)
         planes: set planes to filter (from 0 to 15) (default 7)
         structure: when to process structures (from 0 to 1) (default all)
-
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3092,7 +3038,6 @@ def msad(
 
     Args:
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3130,7 +3075,6 @@ def multiply(
         scale: set scale (from 0 to 9) (default 1)
         offset: set offset (from -1 to 1) (default 0.5)
         planes: set planes (default F)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3198,9 +3142,7 @@ def overlay(
         format: set output format (from 0 to 8) (default yuv420)
         repeatlast: repeat overlay of the last overlay frame (default true)
         alpha: alpha format (from 0 to 1) (default straight)
-
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3249,7 +3191,6 @@ def overlay_opencl(
     Args:
         x: Overlay x position (from 0 to INT_MAX) (default 0)
         y: Overlay y position (from 0 to INT_MAX) (default 0)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3306,9 +3247,7 @@ def overlay_vaapi(
         eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
         shortest: force termination when the shortest input terminates (default false)
         repeatlast: repeat overlay of the last overlay frame (default true)
-
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3359,7 +3298,6 @@ def overlay_vulkan(
     Args:
         x: Set horizontal offset (from 0 to INT_MAX) (default 0)
         y: Set vertical offset (from 0 to INT_MAX) (default 0)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3422,7 +3360,6 @@ def paletteuse(
         new: take new palette for each output frame (default false)
         alpha_threshold: set the alpha threshold for transparency (from 0 to 255) (default 128)
         debug_kdtree: save Graphviz graph of the kdtree in specified file
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3468,7 +3405,6 @@ def premultiply(
     Args:
         planes: set planes (from 0 to 15) (default 15)
         inplace: enable inplace mode (default false)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3514,9 +3450,7 @@ def program_opencl(
         kernel: Kernel name in program
         inputs: Number of inputs (from 1 to INT_MAX) (default 1)
         size: Video size
-
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3565,9 +3499,7 @@ def psnr(
         stats_file: Set file where to store per-frame difference information
         stats_version: Set the format version for the stats file. (from 1 to 2) (default 1)
         output_max: Add raw stats (max values) to the output log. (default false)
-
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3612,7 +3544,6 @@ def remap(
     Args:
         format: set output format (from 0 to 1) (default color)
         fill: set the color of the unmapped pixels (default "black")
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3658,7 +3589,6 @@ def remap_opencl(
     Args:
         interp: set interpolation method (from 0 to 1) (default linear)
         fill: set the color of the unmapped pixels (default "black")
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3723,7 +3653,6 @@ def sidechaincompress(
         detection: set detection (from 0 to 1) (default rms)
         level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
         mix: set mix (from 0 to 1) (default 1)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3797,7 +3726,6 @@ def sidechaingate(
         detection: set detection (from 0 to 1) (default rms)
         link: set link (from 0 to 1) (default average)
         level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3863,7 +3791,6 @@ def signature(
         th_xh: threshold to detect frames as similar (from 1 to INT_MAX) (default 116)
         th_di: minimum length of matching sequence in frames (from 0 to INT_MAX) (default 0)
         th_it: threshold for relation of good to all frames (from 0 to 1) (default 0.5)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -3952,7 +3879,6 @@ def spectrumsynth(
         win_func: set window function (from 0 to 20) (default rect)
         overlap: set window overlap (from 0 to 1) (default 1)
         orientation: set orientation (from 0 to 1) (default vertical)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -4000,9 +3926,7 @@ def ssim(
 
     Args:
         stats_file: Set file where to store per-frame difference information
-
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -4042,7 +3966,6 @@ def streamselect(
     Args:
         inputs: number of input streams (from 2 to INT_MAX) (default 2)
         map: input indexes to remap to outputs
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -4087,7 +4010,6 @@ def threshold(
 
     Args:
         planes: set planes to filter (from 0 to 15) (default 15)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -4130,7 +4052,6 @@ def unpremultiply(
     Args:
         planes: set planes (from 0 to 15) (default 15)
         inplace: enable inplace mode (default false)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -4176,9 +4097,7 @@ def varblur(
         min_r: set min blur radius (from 0 to 254) (default 0)
         max_r: set max blur radius (from 1 to 255) (default 8)
         planes: set planes to filter (from 0 to 15) (default 15)
-
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -4219,7 +4138,6 @@ def vif(
 
     Args:
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -4253,7 +4171,6 @@ def vstack(
     Args:
         inputs: set number of inputs (from 2 to INT_MAX) (default 2)
         shortest: force termination when the shortest input terminates (default false)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -4296,7 +4213,6 @@ def vstack_vaapi(
         inputs: Set number of inputs (from 2 to 65535) (default 2)
         shortest: Force termination when the shortest input terminates (default false)
         width: Set output width (0 to use the width of input 0) (from 0 to 65535) (default 0)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -4341,9 +4257,7 @@ def xcorrelate(
     Args:
         planes: set planes to cross-correlate (from 0 to 15) (default 7)
         secondary: when to process secondary frame (from 0 to 1) (default all)
-
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -4454,7 +4368,6 @@ def xfade(
         duration: set cross fade duration (default 1)
         offset: set cross fade start relative to first input stream (default 0)
         expr: set expression for custom transition
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -4517,7 +4430,6 @@ def xfade_opencl(
         kernel: set kernel name in program file for custom transition
         duration: set cross fade duration (default 1)
         offset: set cross fade start relative to first input stream (default 0)
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -4565,9 +4477,7 @@ def xmedian(
         inputs: set number of inputs (from 3 to 255) (default 3)
         planes: set planes to filter (from 0 to 15) (default 15)
         percentile: set percentile (from 0 to 1) (default 0.5)
-
         framesync_options: Framesync options
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -4616,7 +4526,6 @@ def xstack(
         grid: set fixed size grid layout
         shortest: force termination when the shortest input terminates (default false)
         fill: set the color for unused pixels (default "none")
-
         extra_options: Extra options for the filter
 
     Returns:
@@ -4668,7 +4577,6 @@ def xstack_vaapi(
         grid: set fixed size grid layout
         grid_tile_size: set tile size in grid layout
         fill: Set the color for unused pixels (default "none")
-
         extra_options: Extra options for the filter
 
     Returns:
