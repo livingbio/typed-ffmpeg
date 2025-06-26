@@ -1,0 +1,12 @@
+[
+  "ffmpeg",
+  "-i",
+  "input1",
+  "-i",
+  "input2",
+  "-filter_complex",
+  "[0][1]blend=ts_sync_mode=nearest[s0]",
+  "-map",
+  "[s0]",
+  "out.mp4"
+]

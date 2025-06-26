@@ -18,6 +18,7 @@ from ..utils.typing import override
 from ..common.schema import FFMpegFilterDef
 from ..dag.factory import filter_node_factory
 from ..utils.frozendict import merge
+from ..options.framesync import FFMpegFrameSyncOption
 
 if TYPE_CHECKING:
     from .audio import AudioStream

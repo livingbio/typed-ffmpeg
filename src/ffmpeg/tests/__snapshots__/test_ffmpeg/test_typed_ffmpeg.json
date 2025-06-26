@@ -34,6 +34,7 @@
   "info",
   "input",
   "merge_outputs",
+  "options",
   "output",
   "probe",
   "probe_obj",

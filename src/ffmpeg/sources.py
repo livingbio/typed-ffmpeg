@@ -6,6 +6,7 @@ from typing import Any, Literal
 from .common.schema import FFMpegFilterDef
 from .dag.factory import filter_node_factory
 from .dag.nodes import FilterableStream, FilterNode
+from .options.framesync import FFMpegFrameSyncOption
 from .schema import Auto, Default
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
@@ -2971,6 +2972,7 @@ def program_opencl(
     kernel: String = Default(None),
     inputs: Int = Default("1"),
     size: Image_size = Default(None),
+    framesync_options: FFMpegFrameSyncOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2982,6 +2984,7 @@ def program_opencl(
         kernel: Kernel name in program
         inputs: Number of inputs (from 1 to INT_MAX) (default 1)
         size: Video size
+        framesync_options: Framesync options
         extra_options: Extra options for the filter
 
     Returns:
@@ -3006,6 +3009,7 @@ def program_opencl(
                 "size": size,
             },
             extra_options,
+            framesync_options,
         ),
     )
     return filter_node.video(0)
@@ -3605,6 +3609,7 @@ def xmedian(
     inputs: Int = Auto("len(streams)"),
     planes: Int = Default("15"),
     percentile: Float = Default("0.5"),
+    framesync_options: FFMpegFrameSyncOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3615,6 +3620,7 @@ def xmedian(
         inputs: set number of inputs (from 3 to 255) (default 3)
         planes: set planes to filter (from 0 to 15) (default 15)
         percentile: set percentile (from 0 to 1) (default 0.5)
+        framesync_options: Framesync options
         extra_options: Extra options for the filter
 
     Returns:
@@ -3638,6 +3644,7 @@ def xmedian(
                 "percentile": percentile,
             },
             extra_options,
+            framesync_options,
         ),
     )
     return filter_node.video(0)

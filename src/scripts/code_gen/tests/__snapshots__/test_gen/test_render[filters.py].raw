@@ -17,6 +17,7 @@ from .streams.audio import AudioStream
 from .streams.av import AVStream
 from .streams.channel_layout import CHANNEL_LAYOUT
 from .common.schema import FFMpegFilterDef
+from .options.framesync import FFMpegFrameSyncOption
 from .dag.factory import filter_node_factory
 from .utils.frozendict import merge
 
@@ -42,6 +43,7 @@ def aap(
 
     *,
     order: Int = Default(None),projection: Int = Default(None),
+    
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
@@ -81,7 +83,10 @@ References:
             
             "projection": projection,
             
-        }, extra_options)
+        },
+        extra_options,
+        
+        )
     )
     return filter_node.audio(0)
 
