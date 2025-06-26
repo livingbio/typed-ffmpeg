@@ -54,6 +54,7 @@ class FFMpegExecuteError(FFMpegError):
         stderr: The standard error output of the failed command
         cmd: The command string that was executed
         retcode: The process return code
+
     """
 
     def __init__(self, retcode: int | None, cmd: str, stdout: bytes, stderr: bytes):
@@ -65,8 +66,8 @@ class FFMpegExecuteError(FFMpegError):
             cmd: The FFmpeg command string that was executed
             stdout: The captured standard output from the process
             stderr: The captured standard error from the process
-        """
 
+        """
         self.stdout = stdout
         self.stderr = stderr
         self.cmd = cmd

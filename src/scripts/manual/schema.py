@@ -1,3 +1,5 @@
+"""Schema definitions for manual configuration."""
+
 from dataclasses import dataclass
 
 from ffmpeg.common.serialize import Serializable
@@ -6,7 +8,7 @@ from ffmpeg.common.serialize import Serializable
 @dataclass(kw_only=True)
 class FFMpegFilterManuallyDefined(Serializable):
     """
-    Manual definitions for FFmpeg filters
+    Manual definitions for FFmpeg filters.
 
     This class represents manually defined configuration for FFmpeg filters, particularly
     for complex filters that cannot be fully automatically typed through parsing alone.

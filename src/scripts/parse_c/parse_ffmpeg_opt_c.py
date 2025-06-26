@@ -17,13 +17,17 @@ from .parse_c_structure import parse_c_structure
 
 def parse_ffmpeg_opt_c(text: str) -> list[FFMpegOption]:
     """
-    Parse the ffmpeg option from C code
+    Parse the ffmpeg option from C code.
 
     Args:
         text: The text to parse
 
     Returns:
         The parsed options
+
+    Raises:
+        ValueError: If the option structure is invalid.
+
     """
     match = re.findall(
         r"const OptionDef options\[\] = (\{.*?\n\})", text, re.MULTILINE | re.DOTALL

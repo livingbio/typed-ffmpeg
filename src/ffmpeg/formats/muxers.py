@@ -1,4 +1,6 @@
 # NOTE: this file is auto-generated, do not modify
+"""FFmpeg muxers."""
+
 from typing import Literal
 
 from ..utils.frozendict import merge
@@ -33,7 +35,7 @@ def _3g2(
     movie_timescale: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    3GP2 (3GPP2 file format)
+    3GP2 (3GPP2 file format).
 
     Args:
         movflags: MOV muxer flags (default 0)
@@ -64,37 +66,36 @@ def _3g2(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "movflags": movflags,
-                "moov_size": moov_size,
-                "rtpflags": rtpflags,
-                "skip_iods": skip_iods,
-                "iods_audio_profile": iods_audio_profile,
-                "iods_video_profile": iods_video_profile,
-                "frag_duration": frag_duration,
-                "min_frag_duration": min_frag_duration,
-                "frag_size": frag_size,
-                "ism_lookahead": ism_lookahead,
-                "video_track_timescale": video_track_timescale,
-                "brand": brand,
-                "use_editlist": use_editlist,
-                "fragment_index": fragment_index,
-                "mov_gamma": mov_gamma,
-                "frag_interleave": frag_interleave,
-                "encryption_scheme": encryption_scheme,
-                "encryption_key": encryption_key,
-                "encryption_kid": encryption_kid,
-                "use_stream_ids_as_track_ids": use_stream_ids_as_track_ids,
-                "write_btrt": write_btrt,
-                "write_tmcd": write_tmcd,
-                "write_prft": write_prft,
-                "empty_hdlr_name": empty_hdlr_name,
-                "movie_timescale": movie_timescale,
-            }
-        )
+        merge({
+            "movflags": movflags,
+            "moov_size": moov_size,
+            "rtpflags": rtpflags,
+            "skip_iods": skip_iods,
+            "iods_audio_profile": iods_audio_profile,
+            "iods_video_profile": iods_video_profile,
+            "frag_duration": frag_duration,
+            "min_frag_duration": min_frag_duration,
+            "frag_size": frag_size,
+            "ism_lookahead": ism_lookahead,
+            "video_track_timescale": video_track_timescale,
+            "brand": brand,
+            "use_editlist": use_editlist,
+            "fragment_index": fragment_index,
+            "mov_gamma": mov_gamma,
+            "frag_interleave": frag_interleave,
+            "encryption_scheme": encryption_scheme,
+            "encryption_key": encryption_key,
+            "encryption_kid": encryption_kid,
+            "use_stream_ids_as_track_ids": use_stream_ids_as_track_ids,
+            "write_btrt": write_btrt,
+            "write_tmcd": write_tmcd,
+            "write_prft": write_prft,
+            "empty_hdlr_name": empty_hdlr_name,
+            "movie_timescale": movie_timescale,
+        })
     )
 
 
@@ -126,7 +127,7 @@ def _3gp(
     movie_timescale: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    3GP (3GPP file format)
+    3GP (3GPP file format).
 
     Args:
         movflags: MOV muxer flags (default 0)
@@ -157,58 +158,57 @@ def _3gp(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "movflags": movflags,
-                "moov_size": moov_size,
-                "rtpflags": rtpflags,
-                "skip_iods": skip_iods,
-                "iods_audio_profile": iods_audio_profile,
-                "iods_video_profile": iods_video_profile,
-                "frag_duration": frag_duration,
-                "min_frag_duration": min_frag_duration,
-                "frag_size": frag_size,
-                "ism_lookahead": ism_lookahead,
-                "video_track_timescale": video_track_timescale,
-                "brand": brand,
-                "use_editlist": use_editlist,
-                "fragment_index": fragment_index,
-                "mov_gamma": mov_gamma,
-                "frag_interleave": frag_interleave,
-                "encryption_scheme": encryption_scheme,
-                "encryption_key": encryption_key,
-                "encryption_kid": encryption_kid,
-                "use_stream_ids_as_track_ids": use_stream_ids_as_track_ids,
-                "write_btrt": write_btrt,
-                "write_tmcd": write_tmcd,
-                "write_prft": write_prft,
-                "empty_hdlr_name": empty_hdlr_name,
-                "movie_timescale": movie_timescale,
-            }
-        )
+        merge({
+            "movflags": movflags,
+            "moov_size": moov_size,
+            "rtpflags": rtpflags,
+            "skip_iods": skip_iods,
+            "iods_audio_profile": iods_audio_profile,
+            "iods_video_profile": iods_video_profile,
+            "frag_duration": frag_duration,
+            "min_frag_duration": min_frag_duration,
+            "frag_size": frag_size,
+            "ism_lookahead": ism_lookahead,
+            "video_track_timescale": video_track_timescale,
+            "brand": brand,
+            "use_editlist": use_editlist,
+            "fragment_index": fragment_index,
+            "mov_gamma": mov_gamma,
+            "frag_interleave": frag_interleave,
+            "encryption_scheme": encryption_scheme,
+            "encryption_key": encryption_key,
+            "encryption_kid": encryption_kid,
+            "use_stream_ids_as_track_ids": use_stream_ids_as_track_ids,
+            "write_btrt": write_btrt,
+            "write_tmcd": write_tmcd,
+            "write_prft": write_prft,
+            "empty_hdlr_name": empty_hdlr_name,
+            "movie_timescale": movie_timescale,
+        })
     )
 
 
 def a64() -> FFMpegMuxerOption:
     """
-    a64 - video for Commodore 64
-
+    a64 - video for Commodore 64.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def ac3() -> FFMpegMuxerOption:
     """
-    raw AC-3
-
+    Raw AC-3.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -217,20 +217,19 @@ def ac4(
     write_crc: bool | None = None,
 ) -> FFMpegMuxerOption:
     """
-    raw AC-4
+    Raw AC-4.
 
     Args:
         write_crc: enable checksum (default false)
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "write_crc": write_crc,
-            }
-        )
+        merge({
+            "write_crc": write_crc,
+        })
     )
 
 
@@ -240,7 +239,7 @@ def adts(
     write_mpeg2: bool | None = None,
 ) -> FFMpegMuxerOption:
     """
-    ADTS AAC (Advanced Audio Coding)
+    ADTS AAC (Advanced Audio Coding).
 
     Args:
         write_id3v2: Enable ID3v2 tag writing (default false)
@@ -249,25 +248,24 @@ def adts(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "write_id3v2": write_id3v2,
-                "write_apetag": write_apetag,
-                "write_mpeg2": write_mpeg2,
-            }
-        )
+        merge({
+            "write_id3v2": write_id3v2,
+            "write_apetag": write_apetag,
+            "write_mpeg2": write_mpeg2,
+        })
     )
 
 
 def adx() -> FFMpegMuxerOption:
     """
-    CRI ADX
-
+    CRI ADX.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -277,7 +275,7 @@ def aiff(
     id3v2_version: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Audio IFF
+    Audio IFF.
 
     Args:
         write_id3v2: Enable ID3 tags writing. (default false)
@@ -285,24 +283,23 @@ def aiff(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "write_id3v2": write_id3v2,
-                "id3v2_version": id3v2_version,
-            }
-        )
+        merge({
+            "write_id3v2": write_id3v2,
+            "id3v2_version": id3v2_version,
+        })
     )
 
 
 def alaw() -> FFMpegMuxerOption:
     """
-    PCM A-law
-
+    PCM A-law.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -311,63 +308,62 @@ def alp(
     type: int | None | Literal["auto", "tun", "pcm"] = None,
 ) -> FFMpegMuxerOption:
     """
-    LEGO Racers ALP
+    LEGO Racers ALP.
 
     Args:
         type: set file type (from 0 to 2) (default auto)
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "type": type,
-            }
-        )
+        merge({
+            "type": type,
+        })
     )
 
 
 def alsa() -> FFMpegMuxerOption:
     """
-    ALSA audio output
-
+    ALSA audio output.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def amr() -> FFMpegMuxerOption:
     """
-    3GPP AMR
-
+    3GPP AMR.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def amv() -> FFMpegMuxerOption:
     """
-    AMV
-
+    AMV.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def apm() -> FFMpegMuxerOption:
     """
-    Ubisoft Rayman 2 APM
-
+    Ubisoft Rayman 2 APM.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -377,7 +373,7 @@ def apng(
     final_delay: str | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Animated Portable Network Graphics
+    Animated Portable Network Graphics.
 
     Args:
         plays: Number of times to play the output: 0 - infinite loop, 1 - no loop (from 0 to 65535) (default 1)
@@ -385,35 +381,34 @@ def apng(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "plays": plays,
-                "final_delay": final_delay,
-            }
-        )
+        merge({
+            "plays": plays,
+            "final_delay": final_delay,
+        })
     )
 
 
 def aptx() -> FFMpegMuxerOption:
     """
-    raw aptX (Audio Processing Technology for Bluetooth)
-
+    Raw aptX (Audio Processing Technology for Bluetooth).
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def aptx_hd() -> FFMpegMuxerOption:
     """
-    raw aptX HD (Audio Processing Technology for Bluetooth)
-
+    Raw aptX HD (Audio Processing Technology for Bluetooth).
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -424,7 +419,7 @@ def argo_asf(
     name: str | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Argonaut Games ASF
+    Argonaut Games ASF.
 
     Args:
         version_major: override file major version (from 0 to 65535) (default 2)
@@ -433,15 +428,14 @@ def argo_asf(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "version_major": version_major,
-                "version_minor": version_minor,
-                "name": name,
-            }
-        )
+        merge({
+            "version_major": version_major,
+            "version_minor": version_minor,
+            "name": name,
+        })
     )
 
 
@@ -451,7 +445,7 @@ def argo_cvg(
     reverb: bool | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Argonaut Games CVG
+    Argonaut Games CVG.
 
     Args:
         skip_rate_check: skip sample rate check (default false)
@@ -460,15 +454,14 @@ def argo_cvg(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "skip_rate_check": skip_rate_check,
-                "loop": loop,
-                "reverb": reverb,
-            }
-        )
+        merge({
+            "skip_rate_check": skip_rate_check,
+            "loop": loop,
+            "reverb": reverb,
+        })
     )
 
 
@@ -476,20 +469,19 @@ def asf(
     packet_size: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    ASF (Advanced / Active Streaming Format)
+    ASF (Advanced / Active Streaming Format).
 
     Args:
         packet_size: Packet size (from 100 to 65536) (default 3200)
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "packet_size": packet_size,
-            }
-        )
+        merge({
+            "packet_size": packet_size,
+        })
     )
 
 
@@ -497,20 +489,19 @@ def asf_stream(
     packet_size: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    ASF (Advanced / Active Streaming Format)
+    ASF (Advanced / Active Streaming Format).
 
     Args:
         packet_size: Packet size (from 100 to 65536) (default 3200)
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "packet_size": packet_size,
-            }
-        )
+        merge({
+            "packet_size": packet_size,
+        })
     )
 
 
@@ -518,20 +509,19 @@ def ass(
     ignore_readorder: bool | None = None,
 ) -> FFMpegMuxerOption:
     """
-    SSA (SubStation Alpha) subtitle
+    SSA (SubStation Alpha) subtitle.
 
     Args:
         ignore_readorder: write events immediately, even if they're out-of-order (default false)
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "ignore_readorder": ignore_readorder,
-            }
-        )
+        merge({
+            "ignore_readorder": ignore_readorder,
+        })
     )
 
 
@@ -540,7 +530,7 @@ def ast(
     loopend: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    AST (Audio Stream)
+    AST (Audio Stream).
 
     Args:
         loopstart: Loopstart position in milliseconds. (from -1 to INT_MAX) (default -1)
@@ -548,24 +538,23 @@ def ast(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "loopstart": loopstart,
-                "loopend": loopend,
-            }
-        )
+        merge({
+            "loopstart": loopstart,
+            "loopend": loopend,
+        })
     )
 
 
 def au() -> FFMpegMuxerOption:
     """
-    Sun AU
-
+    Sun AU.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -576,7 +565,7 @@ def avi(
     flipped_raw_rgb: bool | None = None,
 ) -> FFMpegMuxerOption:
     """
-    AVI (Audio Video Interleaved)
+    AVI (Audio Video Interleaved).
 
     Args:
         reserve_index_space: reserve space (in bytes) at the beginning of the file for each stream index (from 0 to INT_MAX) (default 0)
@@ -585,15 +574,14 @@ def avi(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "reserve_index_space": reserve_index_space,
-                "write_channel_mask": write_channel_mask,
-                "flipped_raw_rgb": flipped_raw_rgb,
-            }
-        )
+        merge({
+            "reserve_index_space": reserve_index_space,
+            "write_channel_mask": write_channel_mask,
+            "flipped_raw_rgb": flipped_raw_rgb,
+        })
     )
 
 
@@ -602,7 +590,7 @@ def avif(
     loop: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    AVIF
+    AVIF.
 
     Args:
         movie_timescale: set movie timescale (from 1 to INT_MAX) (default 1000)
@@ -610,57 +598,56 @@ def avif(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "movie_timescale": movie_timescale,
-                "loop": loop,
-            }
-        )
+        merge({
+            "movie_timescale": movie_timescale,
+            "loop": loop,
+        })
     )
 
 
 def avm2() -> FFMpegMuxerOption:
     """
-    SWF (ShockWave Flash) (AVM2)
-
+    SWF (ShockWave Flash) (AVM2).
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def avs2() -> FFMpegMuxerOption:
     """
-    raw AVS2-P2/IEEE1857.4 video
-
+    Raw AVS2-P2/IEEE1857.4 video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def avs3() -> FFMpegMuxerOption:
     """
-    AVS3-P2/IEEE1857.10
-
+    AVS3-P2/IEEE1857.10.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def bit() -> FFMpegMuxerOption:
     """
-    G.729 BIT file format
-
+    G.729 BIT file format.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -679,7 +666,7 @@ def caca(
     | Literal["algorithms", "antialiases", "charsets", "colors"] = None,
 ) -> FFMpegMuxerOption:
     """
-    caca (color ASCII art) output device
+    Caca (color ASCII art) output device.
 
     Args:
         window_size: set window forced size
@@ -694,42 +681,41 @@ def caca(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "window_size": window_size,
-                "window_title": window_title,
-                "driver": driver,
-                "algorithm": algorithm,
-                "antialias": antialias,
-                "charset": charset,
-                "color": color,
-                "list_drivers": list_drivers,
-                "list_dither": list_dither,
-            }
-        )
+        merge({
+            "window_size": window_size,
+            "window_title": window_title,
+            "driver": driver,
+            "algorithm": algorithm,
+            "antialias": antialias,
+            "charset": charset,
+            "color": color,
+            "list_drivers": list_drivers,
+            "list_dither": list_dither,
+        })
     )
 
 
 def caf() -> FFMpegMuxerOption:
     """
-    Apple CAF (Core Audio Format)
-
+    Apple CAF (Core Audio Format).
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def cavsvideo() -> FFMpegMuxerOption:
     """
-    raw Chinese AVS (Audio Video Standard) video
-
+    Raw Chinese AVS (Audio Video Standard) video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -740,7 +726,7 @@ def chromaprint(
     fp_format: int | None | Literal["raw", "compressed", "base64"] = None,
 ) -> FFMpegMuxerOption:
     """
-    Chromaprint
+    Chromaprint.
 
     Args:
         silence_threshold: threshold for detecting silence (from -1 to 32767) (default -1)
@@ -749,47 +735,46 @@ def chromaprint(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "silence_threshold": silence_threshold,
-                "algorithm": algorithm,
-                "fp_format": fp_format,
-            }
-        )
+        merge({
+            "silence_threshold": silence_threshold,
+            "algorithm": algorithm,
+            "fp_format": fp_format,
+        })
     )
 
 
 def codec2() -> FFMpegMuxerOption:
     """
-    codec2 .c2 muxer
-
+    codec2 .c2 muxer.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def codec2raw() -> FFMpegMuxerOption:
     """
-    raw codec2 muxer
-
+    Raw codec2 muxer.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def crc() -> FFMpegMuxerOption:
     """
-    CRC testing
-
+    CRC testing.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -835,7 +820,7 @@ def dash(
     update_period: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    DASH Muxer
+    DASH Muxer.
 
     Args:
         adaptation_sets: Adaptation sets. Syntax: id=0,streams=0,1,2 id=1,streams=3,4 and so on
@@ -877,124 +862,123 @@ def dash(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "adaptation_sets": adaptation_sets,
-                "window_size": window_size,
-                "extra_window_size": extra_window_size,
-                "seg_duration": seg_duration,
-                "frag_duration": frag_duration,
-                "frag_type": frag_type,
-                "remove_at_exit": remove_at_exit,
-                "use_template": use_template,
-                "use_timeline": use_timeline,
-                "single_file": single_file,
-                "single_file_name": single_file_name,
-                "init_seg_name": init_seg_name,
-                "media_seg_name": media_seg_name,
-                "utc_timing_url": utc_timing_url,
-                "method": method,
-                "http_user_agent": http_user_agent,
-                "http_persistent": http_persistent,
-                "hls_playlist": hls_playlist,
-                "hls_master_name": hls_master_name,
-                "streaming": streaming,
-                "timeout": timeout,
-                "index_correction": index_correction,
-                "format_options": format_options,
-                "global_sidx": global_sidx,
-                "dash_segment_type": dash_segment_type,
-                "ignore_io_errors": ignore_io_errors,
-                "lhls": lhls,
-                "ldash": ldash,
-                "master_m3u8_publish_rate": master_m3u8_publish_rate,
-                "write_prft": write_prft,
-                "mpd_profile": mpd_profile,
-                "http_opts": http_opts,
-                "target_latency": target_latency,
-                "min_playback_rate": min_playback_rate,
-                "max_playback_rate": max_playback_rate,
-                "update_period": update_period,
-            }
-        )
+        merge({
+            "adaptation_sets": adaptation_sets,
+            "window_size": window_size,
+            "extra_window_size": extra_window_size,
+            "seg_duration": seg_duration,
+            "frag_duration": frag_duration,
+            "frag_type": frag_type,
+            "remove_at_exit": remove_at_exit,
+            "use_template": use_template,
+            "use_timeline": use_timeline,
+            "single_file": single_file,
+            "single_file_name": single_file_name,
+            "init_seg_name": init_seg_name,
+            "media_seg_name": media_seg_name,
+            "utc_timing_url": utc_timing_url,
+            "method": method,
+            "http_user_agent": http_user_agent,
+            "http_persistent": http_persistent,
+            "hls_playlist": hls_playlist,
+            "hls_master_name": hls_master_name,
+            "streaming": streaming,
+            "timeout": timeout,
+            "index_correction": index_correction,
+            "format_options": format_options,
+            "global_sidx": global_sidx,
+            "dash_segment_type": dash_segment_type,
+            "ignore_io_errors": ignore_io_errors,
+            "lhls": lhls,
+            "ldash": ldash,
+            "master_m3u8_publish_rate": master_m3u8_publish_rate,
+            "write_prft": write_prft,
+            "mpd_profile": mpd_profile,
+            "http_opts": http_opts,
+            "target_latency": target_latency,
+            "min_playback_rate": min_playback_rate,
+            "max_playback_rate": max_playback_rate,
+            "update_period": update_period,
+        })
     )
 
 
 def data() -> FFMpegMuxerOption:
     """
-    raw data
-
+    Raw data.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def daud() -> FFMpegMuxerOption:
     """
-    D-Cinema audio
-
+    D-Cinema audio.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def dfpwm() -> FFMpegMuxerOption:
     """
-    raw DFPWM1a
-
+    Raw DFPWM1a.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def dirac() -> FFMpegMuxerOption:
     """
-    raw Dirac
-
+    Raw Dirac.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def dnxhd() -> FFMpegMuxerOption:
     """
-    raw DNxHD (SMPTE VC-3)
-
+    Raw DNxHD (SMPTE VC-3).
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def dts() -> FFMpegMuxerOption:
     """
-    raw DTS
-
+    Raw DTS.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def dv() -> FFMpegMuxerOption:
     """
-    DV (Digital Video)
-
+    DV (Digital Video).
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -1004,7 +988,7 @@ def dvd(
     preload: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    MPEG-2 PS (DVD VOB)
+    MPEG-2 PS (DVD VOB).
 
     Args:
         muxrate: (from 0 to 1.67772e+09) (default 0)
@@ -1012,57 +996,56 @@ def dvd(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "muxrate": muxrate,
-                "preload": preload,
-            }
-        )
+        merge({
+            "muxrate": muxrate,
+            "preload": preload,
+        })
     )
 
 
 def eac3() -> FFMpegMuxerOption:
     """
-    raw E-AC-3
-
+    Raw E-AC-3.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def evc() -> FFMpegMuxerOption:
     """
-    raw EVC video
-
+    Raw EVC video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def f32be() -> FFMpegMuxerOption:
     """
-    PCM 32-bit floating-point big-endian
-
+    PCM 32-bit floating-point big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def f32le() -> FFMpegMuxerOption:
     """
-    PCM 32-bit floating-point little-endian
-
+    PCM 32-bit floating-point little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -1095,7 +1078,7 @@ def f4v(
     movie_timescale: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    F4V Adobe Flash Video
+    F4V Adobe Flash Video.
 
     Args:
         movflags: MOV muxer flags (default 0)
@@ -1126,58 +1109,57 @@ def f4v(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "movflags": movflags,
-                "moov_size": moov_size,
-                "rtpflags": rtpflags,
-                "skip_iods": skip_iods,
-                "iods_audio_profile": iods_audio_profile,
-                "iods_video_profile": iods_video_profile,
-                "frag_duration": frag_duration,
-                "min_frag_duration": min_frag_duration,
-                "frag_size": frag_size,
-                "ism_lookahead": ism_lookahead,
-                "video_track_timescale": video_track_timescale,
-                "brand": brand,
-                "use_editlist": use_editlist,
-                "fragment_index": fragment_index,
-                "mov_gamma": mov_gamma,
-                "frag_interleave": frag_interleave,
-                "encryption_scheme": encryption_scheme,
-                "encryption_key": encryption_key,
-                "encryption_kid": encryption_kid,
-                "use_stream_ids_as_track_ids": use_stream_ids_as_track_ids,
-                "write_btrt": write_btrt,
-                "write_tmcd": write_tmcd,
-                "write_prft": write_prft,
-                "empty_hdlr_name": empty_hdlr_name,
-                "movie_timescale": movie_timescale,
-            }
-        )
+        merge({
+            "movflags": movflags,
+            "moov_size": moov_size,
+            "rtpflags": rtpflags,
+            "skip_iods": skip_iods,
+            "iods_audio_profile": iods_audio_profile,
+            "iods_video_profile": iods_video_profile,
+            "frag_duration": frag_duration,
+            "min_frag_duration": min_frag_duration,
+            "frag_size": frag_size,
+            "ism_lookahead": ism_lookahead,
+            "video_track_timescale": video_track_timescale,
+            "brand": brand,
+            "use_editlist": use_editlist,
+            "fragment_index": fragment_index,
+            "mov_gamma": mov_gamma,
+            "frag_interleave": frag_interleave,
+            "encryption_scheme": encryption_scheme,
+            "encryption_key": encryption_key,
+            "encryption_kid": encryption_kid,
+            "use_stream_ids_as_track_ids": use_stream_ids_as_track_ids,
+            "write_btrt": write_btrt,
+            "write_tmcd": write_tmcd,
+            "write_prft": write_prft,
+            "empty_hdlr_name": empty_hdlr_name,
+            "movie_timescale": movie_timescale,
+        })
     )
 
 
 def f64be() -> FFMpegMuxerOption:
     """
-    PCM 64-bit floating-point big-endian
-
+    PCM 64-bit floating-point big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def f64le() -> FFMpegMuxerOption:
     """
-    PCM 64-bit floating-point little-endian
-
+    PCM 64-bit floating-point little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -1187,7 +1169,7 @@ def fbdev(
     yoffset: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Linux framebuffer
+    Linux framebuffer.
 
     Args:
         xoffset: set x coordinate of top left corner (from INT_MIN to INT_MAX) (default 0)
@@ -1195,24 +1177,23 @@ def fbdev(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "xoffset": xoffset,
-                "yoffset": yoffset,
-            }
-        )
+        merge({
+            "xoffset": xoffset,
+            "yoffset": yoffset,
+        })
     )
 
 
 def ffmetadata() -> FFMpegMuxerOption:
     """
-    FFmpeg metadata in text
-
+    FFmpeg metadata in text.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -1231,7 +1212,7 @@ def fifo(
     timeshift: str | None = None,
 ) -> FFMpegMuxerOption:
     """
-    FIFO queue pseudo-muxer
+    FIFO queue pseudo-muxer.
 
     Args:
         fifo_format: Target muxer
@@ -1248,23 +1229,22 @@ def fifo(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "fifo_format": fifo_format,
-                "queue_size": queue_size,
-                "format_opts": format_opts,
-                "drop_pkts_on_overflow": drop_pkts_on_overflow,
-                "restart_with_keyframe": restart_with_keyframe,
-                "attempt_recovery": attempt_recovery,
-                "max_recovery_attempts": max_recovery_attempts,
-                "recovery_wait_time": recovery_wait_time,
-                "recovery_wait_streamtime": recovery_wait_streamtime,
-                "recover_any_error": recover_any_error,
-                "timeshift": timeshift,
-            }
-        )
+        merge({
+            "fifo_format": fifo_format,
+            "queue_size": queue_size,
+            "format_opts": format_opts,
+            "drop_pkts_on_overflow": drop_pkts_on_overflow,
+            "restart_with_keyframe": restart_with_keyframe,
+            "attempt_recovery": attempt_recovery,
+            "max_recovery_attempts": max_recovery_attempts,
+            "recovery_wait_time": recovery_wait_time,
+            "recovery_wait_streamtime": recovery_wait_streamtime,
+            "recover_any_error": recover_any_error,
+            "timeshift": timeshift,
+        })
     )
 
 
@@ -1274,7 +1254,7 @@ def fifo_test(
     print_deinit_summary: bool | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Fifo test muxer
+    Fifo test muxer.
 
     Args:
         write_header_ret: write_header() return value (from INT_MIN to INT_MAX) (default 0)
@@ -1283,47 +1263,46 @@ def fifo_test(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "write_header_ret": write_header_ret,
-                "write_trailer_ret": write_trailer_ret,
-                "print_deinit_summary": print_deinit_summary,
-            }
-        )
+        merge({
+            "write_header_ret": write_header_ret,
+            "write_trailer_ret": write_trailer_ret,
+            "print_deinit_summary": print_deinit_summary,
+        })
     )
 
 
 def film_cpk() -> FFMpegMuxerOption:
     """
-    Sega FILM / CPK
-
+    Sega FILM / CPK.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def filmstrip() -> FFMpegMuxerOption:
     """
-    Adobe Filmstrip
-
+    Adobe Filmstrip.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def fits() -> FFMpegMuxerOption:
     """
-    Flexible Image Transport System
-
+    Flexible Image Transport System.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -1332,20 +1311,19 @@ def flac(
     write_header: bool | None = None,
 ) -> FFMpegMuxerOption:
     """
-    raw FLAC
+    Raw FLAC.
 
     Args:
         write_header: Write the file header (default true)
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "write_header": write_header,
-            }
-        )
+        merge({
+            "write_header": write_header,
+        })
     )
 
 
@@ -1353,30 +1331,29 @@ def flv(
     flvflags: str | None = None,
 ) -> FFMpegMuxerOption:
     """
-    FLV (Flash Video)
+    FLV (Flash Video).
 
     Args:
         flvflags: FLV muxer flags (default 0)
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "flvflags": flvflags,
-            }
-        )
+        merge({
+            "flvflags": flvflags,
+        })
     )
 
 
 def framecrc() -> FFMpegMuxerOption:
     """
-    framecrc testing
-
+    Framecrc testing.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -1386,7 +1363,7 @@ def framehash(
     format_version: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Per-frame hash testing
+    Per-frame hash testing.
 
     Args:
         hash: set hash to use (default "sha256")
@@ -1394,14 +1371,13 @@ def framehash(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "hash": hash,
-                "format_version": format_version,
-            }
-        )
+        merge({
+            "hash": hash,
+            "format_version": format_version,
+        })
     )
 
 
@@ -1410,7 +1386,7 @@ def framemd5(
     format_version: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Per-frame MD5 testing
+    Per-frame MD5 testing.
 
     Args:
         hash: set hash to use (default "md5")
@@ -1418,57 +1394,56 @@ def framemd5(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "hash": hash,
-                "format_version": format_version,
-            }
-        )
+        merge({
+            "hash": hash,
+            "format_version": format_version,
+        })
     )
 
 
 def g722() -> FFMpegMuxerOption:
     """
-    raw G.722
-
+    Raw G.722.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def g723_1() -> FFMpegMuxerOption:
     """
-    raw G.723.1
-
+    Raw G.723.1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def g726() -> FFMpegMuxerOption:
     """
-    raw big-endian G.726 ("left-justified")
-
+    Raw big-endian G.726 ("left-justified").
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def g726le() -> FFMpegMuxerOption:
     """
-    raw little-endian G.726 ("right-justified")
-
+    Raw little-endian G.726 ("right-justified").
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -1478,7 +1453,7 @@ def gif(
     final_delay: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    CompuServe Graphics Interchange Format (GIF)
+    CompuServe Graphics Interchange Format (GIF).
 
     Args:
         loop: Number of times to loop the output: -1 - no loop, 0 - infinite loop (from -1 to 65535) (default 0)
@@ -1486,68 +1461,67 @@ def gif(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "loop": loop,
-                "final_delay": final_delay,
-            }
-        )
+        merge({
+            "loop": loop,
+            "final_delay": final_delay,
+        })
     )
 
 
 def gsm() -> FFMpegMuxerOption:
     """
-    raw GSM
-
+    Raw GSM.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def gxf() -> FFMpegMuxerOption:
     """
-    GXF (General eXchange Format)
-
+    GXF (General eXchange Format).
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def h261() -> FFMpegMuxerOption:
     """
-    raw H.261
-
+    Raw H.261.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def h263() -> FFMpegMuxerOption:
     """
-    raw H.263
-
+    Raw H.263.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def h264() -> FFMpegMuxerOption:
     """
-    raw H.264 video
-
+    Raw H.264 video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -1556,20 +1530,19 @@ def hash(
     hash: str | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Hash testing
+    Hash testing.
 
     Args:
         hash: set hash to use (default "sha256")
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "hash": hash,
-            }
-        )
+        merge({
+            "hash": hash,
+        })
     )
 
 
@@ -1580,7 +1553,7 @@ def hds(
     remove_at_exit: bool | None = None,
 ) -> FFMpegMuxerOption:
     """
-    HDS Muxer
+    HDS Muxer.
 
     Args:
         window_size: number of fragments kept in the manifest (from 0 to INT_MAX) (default 0)
@@ -1590,26 +1563,25 @@ def hds(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "window_size": window_size,
-                "extra_window_size": extra_window_size,
-                "min_frag_duration": min_frag_duration,
-                "remove_at_exit": remove_at_exit,
-            }
-        )
+        merge({
+            "window_size": window_size,
+            "extra_window_size": extra_window_size,
+            "min_frag_duration": min_frag_duration,
+            "remove_at_exit": remove_at_exit,
+        })
     )
 
 
 def hevc() -> FFMpegMuxerOption:
     """
-    raw HEVC video
-
+    Raw HEVC video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -1654,7 +1626,7 @@ def hls(
     headers: str | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Apple HTTP Live Streaming
+    Apple HTTP Live Streaming.
 
     Args:
         start_number: set first number in the sequence (from 0 to I64_MAX) (default 0)
@@ -1695,68 +1667,67 @@ def hls(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "start_number": start_number,
-                "hls_time": hls_time,
-                "hls_init_time": hls_init_time,
-                "hls_list_size": hls_list_size,
-                "hls_delete_threshold": hls_delete_threshold,
-                "hls_vtt_options": hls_vtt_options,
-                "hls_allow_cache": hls_allow_cache,
-                "hls_base_url": hls_base_url,
-                "hls_segment_filename": hls_segment_filename,
-                "hls_segment_options": hls_segment_options,
-                "hls_segment_size": hls_segment_size,
-                "hls_key_info_file": hls_key_info_file,
-                "hls_enc": hls_enc,
-                "hls_enc_key": hls_enc_key,
-                "hls_enc_key_url": hls_enc_key_url,
-                "hls_enc_iv": hls_enc_iv,
-                "hls_subtitle_path": hls_subtitle_path,
-                "hls_segment_type": hls_segment_type,
-                "hls_fmp4_init_filename": hls_fmp4_init_filename,
-                "hls_fmp4_init_resend": hls_fmp4_init_resend,
-                "hls_flags": hls_flags,
-                "strftime": strftime,
-                "strftime_mkdir": strftime_mkdir,
-                "hls_playlist_type": hls_playlist_type,
-                "method": method,
-                "hls_start_number_source": hls_start_number_source,
-                "http_user_agent": http_user_agent,
-                "var_stream_map": var_stream_map,
-                "cc_stream_map": cc_stream_map,
-                "master_pl_name": master_pl_name,
-                "master_pl_publish_rate": master_pl_publish_rate,
-                "http_persistent": http_persistent,
-                "timeout": timeout,
-                "ignore_io_errors": ignore_io_errors,
-                "headers": headers,
-            }
-        )
+        merge({
+            "start_number": start_number,
+            "hls_time": hls_time,
+            "hls_init_time": hls_init_time,
+            "hls_list_size": hls_list_size,
+            "hls_delete_threshold": hls_delete_threshold,
+            "hls_vtt_options": hls_vtt_options,
+            "hls_allow_cache": hls_allow_cache,
+            "hls_base_url": hls_base_url,
+            "hls_segment_filename": hls_segment_filename,
+            "hls_segment_options": hls_segment_options,
+            "hls_segment_size": hls_segment_size,
+            "hls_key_info_file": hls_key_info_file,
+            "hls_enc": hls_enc,
+            "hls_enc_key": hls_enc_key,
+            "hls_enc_key_url": hls_enc_key_url,
+            "hls_enc_iv": hls_enc_iv,
+            "hls_subtitle_path": hls_subtitle_path,
+            "hls_segment_type": hls_segment_type,
+            "hls_fmp4_init_filename": hls_fmp4_init_filename,
+            "hls_fmp4_init_resend": hls_fmp4_init_resend,
+            "hls_flags": hls_flags,
+            "strftime": strftime,
+            "strftime_mkdir": strftime_mkdir,
+            "hls_playlist_type": hls_playlist_type,
+            "method": method,
+            "hls_start_number_source": hls_start_number_source,
+            "http_user_agent": http_user_agent,
+            "var_stream_map": var_stream_map,
+            "cc_stream_map": cc_stream_map,
+            "master_pl_name": master_pl_name,
+            "master_pl_publish_rate": master_pl_publish_rate,
+            "http_persistent": http_persistent,
+            "timeout": timeout,
+            "ignore_io_errors": ignore_io_errors,
+            "headers": headers,
+        })
     )
 
 
 def ico() -> FFMpegMuxerOption:
     """
-    Microsoft Windows ICO
-
+    Microsoft Windows ICO.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def ilbc() -> FFMpegMuxerOption:
     """
-    iLBC storage
-
+    ILBC storage.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -1770,7 +1741,7 @@ def image2(
     protocol_opts: str | None = None,
 ) -> FFMpegMuxerOption:
     """
-    image2 sequence
+    image2 sequence.
 
     Args:
         update: continuously overwrite one file (default false)
@@ -1782,28 +1753,27 @@ def image2(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "update": update,
-                "start_number": start_number,
-                "strftime": strftime,
-                "frame_pts": frame_pts,
-                "atomic_writing": atomic_writing,
-                "protocol_opts": protocol_opts,
-            }
-        )
+        merge({
+            "update": update,
+            "start_number": start_number,
+            "strftime": strftime,
+            "frame_pts": frame_pts,
+            "atomic_writing": atomic_writing,
+            "protocol_opts": protocol_opts,
+        })
     )
 
 
 def image2pipe() -> FFMpegMuxerOption:
     """
-    piped image2 sequence
-
+    Piped image2 sequence.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -1836,7 +1806,7 @@ def ipod(
     movie_timescale: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    iPod H.264 MP4 (MPEG-4 Part 14)
+    IPod H.264 MP4 (MPEG-4 Part 14).
 
     Args:
         movflags: MOV muxer flags (default 0)
@@ -1867,47 +1837,46 @@ def ipod(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "movflags": movflags,
-                "moov_size": moov_size,
-                "rtpflags": rtpflags,
-                "skip_iods": skip_iods,
-                "iods_audio_profile": iods_audio_profile,
-                "iods_video_profile": iods_video_profile,
-                "frag_duration": frag_duration,
-                "min_frag_duration": min_frag_duration,
-                "frag_size": frag_size,
-                "ism_lookahead": ism_lookahead,
-                "video_track_timescale": video_track_timescale,
-                "brand": brand,
-                "use_editlist": use_editlist,
-                "fragment_index": fragment_index,
-                "mov_gamma": mov_gamma,
-                "frag_interleave": frag_interleave,
-                "encryption_scheme": encryption_scheme,
-                "encryption_key": encryption_key,
-                "encryption_kid": encryption_kid,
-                "use_stream_ids_as_track_ids": use_stream_ids_as_track_ids,
-                "write_btrt": write_btrt,
-                "write_tmcd": write_tmcd,
-                "write_prft": write_prft,
-                "empty_hdlr_name": empty_hdlr_name,
-                "movie_timescale": movie_timescale,
-            }
-        )
+        merge({
+            "movflags": movflags,
+            "moov_size": moov_size,
+            "rtpflags": rtpflags,
+            "skip_iods": skip_iods,
+            "iods_audio_profile": iods_audio_profile,
+            "iods_video_profile": iods_video_profile,
+            "frag_duration": frag_duration,
+            "min_frag_duration": min_frag_duration,
+            "frag_size": frag_size,
+            "ism_lookahead": ism_lookahead,
+            "video_track_timescale": video_track_timescale,
+            "brand": brand,
+            "use_editlist": use_editlist,
+            "fragment_index": fragment_index,
+            "mov_gamma": mov_gamma,
+            "frag_interleave": frag_interleave,
+            "encryption_scheme": encryption_scheme,
+            "encryption_key": encryption_key,
+            "encryption_kid": encryption_kid,
+            "use_stream_ids_as_track_ids": use_stream_ids_as_track_ids,
+            "write_btrt": write_btrt,
+            "write_tmcd": write_tmcd,
+            "write_prft": write_prft,
+            "empty_hdlr_name": empty_hdlr_name,
+            "movie_timescale": movie_timescale,
+        })
     )
 
 
 def ircam() -> FFMpegMuxerOption:
     """
-    Berkeley/IRCAM/CARL Sound Format
-
+    Berkeley/IRCAM/CARL Sound Format.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -1940,7 +1909,7 @@ def ismv(
     movie_timescale: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    ISMV/ISMA (Smooth Streaming)
+    ISMV/ISMA (Smooth Streaming).
 
     Args:
         movflags: MOV muxer flags (default 0)
@@ -1971,69 +1940,68 @@ def ismv(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "movflags": movflags,
-                "moov_size": moov_size,
-                "rtpflags": rtpflags,
-                "skip_iods": skip_iods,
-                "iods_audio_profile": iods_audio_profile,
-                "iods_video_profile": iods_video_profile,
-                "frag_duration": frag_duration,
-                "min_frag_duration": min_frag_duration,
-                "frag_size": frag_size,
-                "ism_lookahead": ism_lookahead,
-                "video_track_timescale": video_track_timescale,
-                "brand": brand,
-                "use_editlist": use_editlist,
-                "fragment_index": fragment_index,
-                "mov_gamma": mov_gamma,
-                "frag_interleave": frag_interleave,
-                "encryption_scheme": encryption_scheme,
-                "encryption_key": encryption_key,
-                "encryption_kid": encryption_kid,
-                "use_stream_ids_as_track_ids": use_stream_ids_as_track_ids,
-                "write_btrt": write_btrt,
-                "write_tmcd": write_tmcd,
-                "write_prft": write_prft,
-                "empty_hdlr_name": empty_hdlr_name,
-                "movie_timescale": movie_timescale,
-            }
-        )
+        merge({
+            "movflags": movflags,
+            "moov_size": moov_size,
+            "rtpflags": rtpflags,
+            "skip_iods": skip_iods,
+            "iods_audio_profile": iods_audio_profile,
+            "iods_video_profile": iods_video_profile,
+            "frag_duration": frag_duration,
+            "min_frag_duration": min_frag_duration,
+            "frag_size": frag_size,
+            "ism_lookahead": ism_lookahead,
+            "video_track_timescale": video_track_timescale,
+            "brand": brand,
+            "use_editlist": use_editlist,
+            "fragment_index": fragment_index,
+            "mov_gamma": mov_gamma,
+            "frag_interleave": frag_interleave,
+            "encryption_scheme": encryption_scheme,
+            "encryption_key": encryption_key,
+            "encryption_kid": encryption_kid,
+            "use_stream_ids_as_track_ids": use_stream_ids_as_track_ids,
+            "write_btrt": write_btrt,
+            "write_tmcd": write_tmcd,
+            "write_prft": write_prft,
+            "empty_hdlr_name": empty_hdlr_name,
+            "movie_timescale": movie_timescale,
+        })
     )
 
 
 def ivf() -> FFMpegMuxerOption:
     """
-    On2 IVF
-
+    On2 IVF.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def jacosub() -> FFMpegMuxerOption:
     """
-    JACOsub subtitle format
-
+    JACOsub subtitle format.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def kvag() -> FFMpegMuxerOption:
     """
-    Simon & Schuster Interactive VAG
-
+    Simon & Schuster Interactive VAG.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -2042,41 +2010,40 @@ def latm(
     smc_interval: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    LOAS/LATM
+    LOAS/LATM.
 
     Args:
         smc_interval: StreamMuxConfig interval. (from 1 to 65535) (default 20)
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "smc-interval": smc_interval,
-            }
-        )
+        merge({
+            "smc-interval": smc_interval,
+        })
     )
 
 
 def lrc() -> FFMpegMuxerOption:
     """
-    LRC lyrics
-
+    LRC lyrics.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def m4v() -> FFMpegMuxerOption:
     """
-    raw MPEG-4 video
-
+    Raw MPEG-4 video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -2095,7 +2062,7 @@ def matroska(
     default_mode: int | None | Literal["infer", "infer_no_subs", "passthrough"] = None,
 ) -> FFMpegMuxerOption:
     """
-    Matroska
+    Matroska.
 
     Args:
         reserve_index_space: Reserve a given amount of space (in bytes) at the beginning of the file for the index (cues). (from 0 to INT_MAX) (default 0)
@@ -2112,23 +2079,22 @@ def matroska(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "reserve_index_space": reserve_index_space,
-                "cues_to_front": cues_to_front,
-                "cluster_size_limit": cluster_size_limit,
-                "cluster_time_limit": cluster_time_limit,
-                "dash": dash,
-                "dash_track_number": dash_track_number,
-                "live": live,
-                "allow_raw_vfw": allow_raw_vfw,
-                "flipped_raw_rgb": flipped_raw_rgb,
-                "write_crc32": write_crc32,
-                "default_mode": default_mode,
-            }
-        )
+        merge({
+            "reserve_index_space": reserve_index_space,
+            "cues_to_front": cues_to_front,
+            "cluster_size_limit": cluster_size_limit,
+            "cluster_time_limit": cluster_time_limit,
+            "dash": dash,
+            "dash_track_number": dash_track_number,
+            "live": live,
+            "allow_raw_vfw": allow_raw_vfw,
+            "flipped_raw_rgb": flipped_raw_rgb,
+            "write_crc32": write_crc32,
+            "default_mode": default_mode,
+        })
     )
 
 
@@ -2136,74 +2102,73 @@ def md5(
     hash: str | None = None,
 ) -> FFMpegMuxerOption:
     """
-    MD5 testing
+    MD5 testing.
 
     Args:
         hash: set hash to use (default "md5")
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "hash": hash,
-            }
-        )
+        merge({
+            "hash": hash,
+        })
     )
 
 
 def microdvd() -> FFMpegMuxerOption:
     """
-    MicroDVD subtitle format
-
+    MicroDVD subtitle format.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def mjpeg() -> FFMpegMuxerOption:
     """
-    raw MJPEG video
-
+    Raw MJPEG video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def mkvtimestamp_v2() -> FFMpegMuxerOption:
     """
-    extract pts as timecode v2 format, as defined by mkvtoolnix
-
+    Extract pts as timecode v2 format, as defined by mkvtoolnix.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def mlp() -> FFMpegMuxerOption:
     """
-    raw MLP
-
+    Raw MLP.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def mmf() -> FFMpegMuxerOption:
     """
-    Yamaha SMAF
-
+    Yamaha SMAF.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -2236,7 +2201,7 @@ def mov(
     movie_timescale: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    QuickTime / MOV
+    QuickTime / MOV.
 
     Args:
         movflags: MOV muxer flags (default 0)
@@ -2267,47 +2232,46 @@ def mov(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "movflags": movflags,
-                "moov_size": moov_size,
-                "rtpflags": rtpflags,
-                "skip_iods": skip_iods,
-                "iods_audio_profile": iods_audio_profile,
-                "iods_video_profile": iods_video_profile,
-                "frag_duration": frag_duration,
-                "min_frag_duration": min_frag_duration,
-                "frag_size": frag_size,
-                "ism_lookahead": ism_lookahead,
-                "video_track_timescale": video_track_timescale,
-                "brand": brand,
-                "use_editlist": use_editlist,
-                "fragment_index": fragment_index,
-                "mov_gamma": mov_gamma,
-                "frag_interleave": frag_interleave,
-                "encryption_scheme": encryption_scheme,
-                "encryption_key": encryption_key,
-                "encryption_kid": encryption_kid,
-                "use_stream_ids_as_track_ids": use_stream_ids_as_track_ids,
-                "write_btrt": write_btrt,
-                "write_tmcd": write_tmcd,
-                "write_prft": write_prft,
-                "empty_hdlr_name": empty_hdlr_name,
-                "movie_timescale": movie_timescale,
-            }
-        )
+        merge({
+            "movflags": movflags,
+            "moov_size": moov_size,
+            "rtpflags": rtpflags,
+            "skip_iods": skip_iods,
+            "iods_audio_profile": iods_audio_profile,
+            "iods_video_profile": iods_video_profile,
+            "frag_duration": frag_duration,
+            "min_frag_duration": min_frag_duration,
+            "frag_size": frag_size,
+            "ism_lookahead": ism_lookahead,
+            "video_track_timescale": video_track_timescale,
+            "brand": brand,
+            "use_editlist": use_editlist,
+            "fragment_index": fragment_index,
+            "mov_gamma": mov_gamma,
+            "frag_interleave": frag_interleave,
+            "encryption_scheme": encryption_scheme,
+            "encryption_key": encryption_key,
+            "encryption_kid": encryption_kid,
+            "use_stream_ids_as_track_ids": use_stream_ids_as_track_ids,
+            "write_btrt": write_btrt,
+            "write_tmcd": write_tmcd,
+            "write_prft": write_prft,
+            "empty_hdlr_name": empty_hdlr_name,
+            "movie_timescale": movie_timescale,
+        })
     )
 
 
 def mp2() -> FFMpegMuxerOption:
     """
-    MP2 (MPEG audio layer 2)
-
+    MP2 (MPEG audio layer 2).
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -2318,7 +2282,7 @@ def mp3(
     write_xing: bool | None = None,
 ) -> FFMpegMuxerOption:
     """
-    MP3 (MPEG audio layer 3)
+    MP3 (MPEG audio layer 3).
 
     Args:
         id3v2_version: Select ID3v2 version to write. Currently 3 and 4 are supported. (from 0 to 4) (default 4)
@@ -2327,15 +2291,14 @@ def mp3(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "id3v2_version": id3v2_version,
-                "write_id3v1": write_id3v1,
-                "write_xing": write_xing,
-            }
-        )
+        merge({
+            "id3v2_version": id3v2_version,
+            "write_id3v1": write_id3v1,
+            "write_xing": write_xing,
+        })
     )
 
 
@@ -2367,7 +2330,7 @@ def mp4(
     movie_timescale: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    MP4 (MPEG-4 Part 14)
+    MP4 (MPEG-4 Part 14).
 
     Args:
         movflags: MOV muxer flags (default 0)
@@ -2398,37 +2361,36 @@ def mp4(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "movflags": movflags,
-                "moov_size": moov_size,
-                "rtpflags": rtpflags,
-                "skip_iods": skip_iods,
-                "iods_audio_profile": iods_audio_profile,
-                "iods_video_profile": iods_video_profile,
-                "frag_duration": frag_duration,
-                "min_frag_duration": min_frag_duration,
-                "frag_size": frag_size,
-                "ism_lookahead": ism_lookahead,
-                "video_track_timescale": video_track_timescale,
-                "brand": brand,
-                "use_editlist": use_editlist,
-                "fragment_index": fragment_index,
-                "mov_gamma": mov_gamma,
-                "frag_interleave": frag_interleave,
-                "encryption_scheme": encryption_scheme,
-                "encryption_key": encryption_key,
-                "encryption_kid": encryption_kid,
-                "use_stream_ids_as_track_ids": use_stream_ids_as_track_ids,
-                "write_btrt": write_btrt,
-                "write_tmcd": write_tmcd,
-                "write_prft": write_prft,
-                "empty_hdlr_name": empty_hdlr_name,
-                "movie_timescale": movie_timescale,
-            }
-        )
+        merge({
+            "movflags": movflags,
+            "moov_size": moov_size,
+            "rtpflags": rtpflags,
+            "skip_iods": skip_iods,
+            "iods_audio_profile": iods_audio_profile,
+            "iods_video_profile": iods_video_profile,
+            "frag_duration": frag_duration,
+            "min_frag_duration": min_frag_duration,
+            "frag_size": frag_size,
+            "ism_lookahead": ism_lookahead,
+            "video_track_timescale": video_track_timescale,
+            "brand": brand,
+            "use_editlist": use_editlist,
+            "fragment_index": fragment_index,
+            "mov_gamma": mov_gamma,
+            "frag_interleave": frag_interleave,
+            "encryption_scheme": encryption_scheme,
+            "encryption_key": encryption_key,
+            "encryption_kid": encryption_kid,
+            "use_stream_ids_as_track_ids": use_stream_ids_as_track_ids,
+            "write_btrt": write_btrt,
+            "write_tmcd": write_tmcd,
+            "write_prft": write_prft,
+            "empty_hdlr_name": empty_hdlr_name,
+            "movie_timescale": movie_timescale,
+        })
     )
 
 
@@ -2437,7 +2399,7 @@ def mpeg(
     preload: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    MPEG-1 Systems / MPEG program stream
+    MPEG-1 Systems / MPEG program stream.
 
     Args:
         muxrate: (from 0 to 1.67772e+09) (default 0)
@@ -2445,35 +2407,34 @@ def mpeg(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "muxrate": muxrate,
-                "preload": preload,
-            }
-        )
+        merge({
+            "muxrate": muxrate,
+            "preload": preload,
+        })
     )
 
 
 def mpeg1video() -> FFMpegMuxerOption:
     """
-    raw MPEG-1 video
-
+    Raw MPEG-1 video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def mpeg2video() -> FFMpegMuxerOption:
     """
-    raw MPEG-2 video
-
+    Raw MPEG-2 video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -2509,7 +2470,7 @@ def mpegts(
     nit_period: str | None = None,
 ) -> FFMpegMuxerOption:
     """
-    MPEG-TS (MPEG-2 Transport Stream)
+    MPEG-TS (MPEG-2 Transport Stream).
 
     Args:
         mpegts_transport_stream_id: Set transport_stream_id field. (from 1 to 65535) (default 1)
@@ -2532,29 +2493,28 @@ def mpegts(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "mpegts_transport_stream_id": mpegts_transport_stream_id,
-                "mpegts_original_network_id": mpegts_original_network_id,
-                "mpegts_service_id": mpegts_service_id,
-                "mpegts_service_type": mpegts_service_type,
-                "mpegts_pmt_start_pid": mpegts_pmt_start_pid,
-                "mpegts_start_pid": mpegts_start_pid,
-                "mpegts_m2ts_mode": mpegts_m2ts_mode,
-                "muxrate": muxrate,
-                "pes_payload_size": pes_payload_size,
-                "mpegts_flags": mpegts_flags,
-                "mpegts_copyts": mpegts_copyts,
-                "tables_version": tables_version,
-                "omit_video_pes_length": omit_video_pes_length,
-                "pcr_period": pcr_period,
-                "pat_period": pat_period,
-                "sdt_period": sdt_period,
-                "nit_period": nit_period,
-            }
-        )
+        merge({
+            "mpegts_transport_stream_id": mpegts_transport_stream_id,
+            "mpegts_original_network_id": mpegts_original_network_id,
+            "mpegts_service_id": mpegts_service_id,
+            "mpegts_service_type": mpegts_service_type,
+            "mpegts_pmt_start_pid": mpegts_pmt_start_pid,
+            "mpegts_start_pid": mpegts_start_pid,
+            "mpegts_m2ts_mode": mpegts_m2ts_mode,
+            "muxrate": muxrate,
+            "pes_payload_size": pes_payload_size,
+            "mpegts_flags": mpegts_flags,
+            "mpegts_copyts": mpegts_copyts,
+            "tables_version": tables_version,
+            "omit_video_pes_length": omit_video_pes_length,
+            "pcr_period": pcr_period,
+            "pat_period": pat_period,
+            "sdt_period": sdt_period,
+            "nit_period": nit_period,
+        })
     )
 
 
@@ -2562,30 +2522,29 @@ def mpjpeg(
     boundary_tag: str | None = None,
 ) -> FFMpegMuxerOption:
     """
-    MIME multipart JPEG
+    MIME multipart JPEG.
 
     Args:
         boundary_tag: Boundary tag (default "ffmpeg")
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "boundary_tag": boundary_tag,
-            }
-        )
+        merge({
+            "boundary_tag": boundary_tag,
+        })
     )
 
 
 def mulaw() -> FFMpegMuxerOption:
     """
-    PCM mu-law
-
+    PCM mu-law.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -2605,7 +2564,7 @@ def mxf(
     store_user_comments: bool | None = None,
 ) -> FFMpegMuxerOption:
     """
-    MXF (Material eXchange Format)
+    MXF (Material eXchange Format).
 
     Args:
         signal_standard: Force/set Signal Standard (from -1 to 7) (default -1)
@@ -2613,14 +2572,13 @@ def mxf(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "signal_standard": signal_standard,
-                "store_user_comments": store_user_comments,
-            }
-        )
+        merge({
+            "signal_standard": signal_standard,
+            "store_user_comments": store_user_comments,
+        })
     )
 
 
@@ -2640,7 +2598,7 @@ def mxf_d10(
     store_user_comments: bool | None = None,
 ) -> FFMpegMuxerOption:
     """
-    MXF (Material eXchange Format) D-10 Mapping
+    MXF (Material eXchange Format) D-10 Mapping.
 
     Args:
         d10_channelcount: Force/set channelcount in generic sound essence descriptor (from -1 to 8) (default -1)
@@ -2649,15 +2607,14 @@ def mxf_d10(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "d10_channelcount": d10_channelcount,
-                "signal_standard": signal_standard,
-                "store_user_comments": store_user_comments,
-            }
-        )
+        merge({
+            "d10_channelcount": d10_channelcount,
+            "signal_standard": signal_standard,
+            "store_user_comments": store_user_comments,
+        })
     )
 
 
@@ -2677,7 +2634,7 @@ def mxf_opatom(
     store_user_comments: bool | None = None,
 ) -> FFMpegMuxerOption:
     """
-    MXF (Material eXchange Format) Operational Pattern Atom
+    MXF (Material eXchange Format) Operational Pattern Atom.
 
     Args:
         mxf_audio_edit_rate: Audio edit rate for timecode (from 0 to INT_MAX) (default 25/1)
@@ -2686,25 +2643,24 @@ def mxf_opatom(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "mxf_audio_edit_rate": mxf_audio_edit_rate,
-                "signal_standard": signal_standard,
-                "store_user_comments": store_user_comments,
-            }
-        )
+        merge({
+            "mxf_audio_edit_rate": mxf_audio_edit_rate,
+            "signal_standard": signal_standard,
+            "store_user_comments": store_user_comments,
+        })
     )
 
 
 def null() -> FFMpegMuxerOption:
     """
-    raw null video
-
+    Raw null video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -2714,7 +2670,7 @@ def nut(
     write_index: bool | None = None,
 ) -> FFMpegMuxerOption:
     """
-    NUT
+    NUT.
 
     Args:
         syncpoints: NUT syncpoint behaviour (default 0)
@@ -2722,24 +2678,23 @@ def nut(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "syncpoints": syncpoints,
-                "write_index": write_index,
-            }
-        )
+        merge({
+            "syncpoints": syncpoints,
+            "write_index": write_index,
+        })
     )
 
 
 def obu() -> FFMpegMuxerOption:
     """
-    AV1 low overhead OBU
-
+    AV1 low overhead OBU.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -2751,7 +2706,7 @@ def oga(
     page_duration: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Ogg Audio
+    Ogg Audio.
 
     Args:
         serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
@@ -2761,16 +2716,15 @@ def oga(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "serial_offset": serial_offset,
-                "oggpagesize": oggpagesize,
-                "pagesize": pagesize,
-                "page_duration": page_duration,
-            }
-        )
+        merge({
+            "serial_offset": serial_offset,
+            "oggpagesize": oggpagesize,
+            "pagesize": pagesize,
+            "page_duration": page_duration,
+        })
     )
 
 
@@ -2781,7 +2735,7 @@ def ogg(
     page_duration: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Ogg
+    Ogg.
 
     Args:
         serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
@@ -2791,16 +2745,15 @@ def ogg(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "serial_offset": serial_offset,
-                "oggpagesize": oggpagesize,
-                "pagesize": pagesize,
-                "page_duration": page_duration,
-            }
-        )
+        merge({
+            "serial_offset": serial_offset,
+            "oggpagesize": oggpagesize,
+            "pagesize": pagesize,
+            "page_duration": page_duration,
+        })
     )
 
 
@@ -2811,7 +2764,7 @@ def ogv(
     page_duration: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Ogg Video
+    Ogg Video.
 
     Args:
         serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
@@ -2821,26 +2774,25 @@ def ogv(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "serial_offset": serial_offset,
-                "oggpagesize": oggpagesize,
-                "pagesize": pagesize,
-                "page_duration": page_duration,
-            }
-        )
+        merge({
+            "serial_offset": serial_offset,
+            "oggpagesize": oggpagesize,
+            "pagesize": pagesize,
+            "page_duration": page_duration,
+        })
     )
 
 
 def oma() -> FFMpegMuxerOption:
     """
-    Sony OpenMG audio
-
+    Sony OpenMG audio.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -2852,7 +2804,7 @@ def opengl(
     window_size: str | None = None,
 ) -> FFMpegMuxerOption:
     """
-    OpenGL output
+    OpenGL output.
 
     Args:
         background: set background color (default "black")
@@ -2862,16 +2814,15 @@ def opengl(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "background": background,
-                "no_window": no_window,
-                "window_title": window_title,
-                "window_size": window_size,
-            }
-        )
+        merge({
+            "background": background,
+            "no_window": no_window,
+            "window_title": window_title,
+            "window_size": window_size,
+        })
     )
 
 
@@ -2882,7 +2833,7 @@ def opus(
     page_duration: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Ogg Opus
+    Ogg Opus.
 
     Args:
         serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
@@ -2892,26 +2843,25 @@ def opus(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "serial_offset": serial_offset,
-                "oggpagesize": oggpagesize,
-                "pagesize": pagesize,
-                "page_duration": page_duration,
-            }
-        )
+        merge({
+            "serial_offset": serial_offset,
+            "oggpagesize": oggpagesize,
+            "pagesize": pagesize,
+            "page_duration": page_duration,
+        })
     )
 
 
 def oss() -> FFMpegMuxerOption:
     """
-    OSS (Open Sound System) playback
-
+    OSS (Open Sound System) playback.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -2944,7 +2894,7 @@ def psp(
     movie_timescale: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    PSP MP4 (MPEG-4 Part 14)
+    PSP MP4 (MPEG-4 Part 14).
 
     Args:
         movflags: MOV muxer flags (default 0)
@@ -2975,37 +2925,36 @@ def psp(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "movflags": movflags,
-                "moov_size": moov_size,
-                "rtpflags": rtpflags,
-                "skip_iods": skip_iods,
-                "iods_audio_profile": iods_audio_profile,
-                "iods_video_profile": iods_video_profile,
-                "frag_duration": frag_duration,
-                "min_frag_duration": min_frag_duration,
-                "frag_size": frag_size,
-                "ism_lookahead": ism_lookahead,
-                "video_track_timescale": video_track_timescale,
-                "brand": brand,
-                "use_editlist": use_editlist,
-                "fragment_index": fragment_index,
-                "mov_gamma": mov_gamma,
-                "frag_interleave": frag_interleave,
-                "encryption_scheme": encryption_scheme,
-                "encryption_key": encryption_key,
-                "encryption_kid": encryption_kid,
-                "use_stream_ids_as_track_ids": use_stream_ids_as_track_ids,
-                "write_btrt": write_btrt,
-                "write_tmcd": write_tmcd,
-                "write_prft": write_prft,
-                "empty_hdlr_name": empty_hdlr_name,
-                "movie_timescale": movie_timescale,
-            }
-        )
+        merge({
+            "movflags": movflags,
+            "moov_size": moov_size,
+            "rtpflags": rtpflags,
+            "skip_iods": skip_iods,
+            "iods_audio_profile": iods_audio_profile,
+            "iods_video_profile": iods_video_profile,
+            "frag_duration": frag_duration,
+            "min_frag_duration": min_frag_duration,
+            "frag_size": frag_size,
+            "ism_lookahead": ism_lookahead,
+            "video_track_timescale": video_track_timescale,
+            "brand": brand,
+            "use_editlist": use_editlist,
+            "fragment_index": fragment_index,
+            "mov_gamma": mov_gamma,
+            "frag_interleave": frag_interleave,
+            "encryption_scheme": encryption_scheme,
+            "encryption_key": encryption_key,
+            "encryption_kid": encryption_kid,
+            "use_stream_ids_as_track_ids": use_stream_ids_as_track_ids,
+            "write_btrt": write_btrt,
+            "write_tmcd": write_tmcd,
+            "write_prft": write_prft,
+            "empty_hdlr_name": empty_hdlr_name,
+            "movie_timescale": movie_timescale,
+        })
     )
 
 
@@ -3020,7 +2969,7 @@ def pulse(
     minreq: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Pulse audio output
+    Pulse audio output.
 
     Args:
         server: set PulseAudio server
@@ -3034,63 +2983,62 @@ def pulse(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "server": server,
-                "name": name,
-                "stream_name": stream_name,
-                "device": device,
-                "buffer_size": buffer_size,
-                "buffer_duration": buffer_duration,
-                "prebuf": prebuf,
-                "minreq": minreq,
-            }
-        )
+        merge({
+            "server": server,
+            "name": name,
+            "stream_name": stream_name,
+            "device": device,
+            "buffer_size": buffer_size,
+            "buffer_duration": buffer_duration,
+            "prebuf": prebuf,
+            "minreq": minreq,
+        })
     )
 
 
 def rawvideo() -> FFMpegMuxerOption:
     """
-    raw video
-
+    Raw video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def rm() -> FFMpegMuxerOption:
     """
-    RealMedia
-
+    RealMedia.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def roq() -> FFMpegMuxerOption:
     """
-    raw id RoQ
-
+    Raw id RoQ.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def rso() -> FFMpegMuxerOption:
     """
-    Lego Mindstorms RSO
-
+    Lego Mindstorms RSO.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -3103,7 +3051,7 @@ def rtp(
     seq: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    RTP output
+    RTP output.
 
     Args:
         rtpflags: RTP muxer flags (default 0)
@@ -3114,17 +3062,16 @@ def rtp(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "rtpflags": rtpflags,
-                "payload_type": payload_type,
-                "ssrc": ssrc,
-                "cname": cname,
-                "seq": seq,
-            }
-        )
+        merge({
+            "rtpflags": rtpflags,
+            "payload_type": payload_type,
+            "ssrc": ssrc,
+            "cname": cname,
+            "seq": seq,
+        })
     )
 
 
@@ -3133,7 +3080,7 @@ def rtp_mpegts(
     rtp_muxer_options: str | None = None,
 ) -> FFMpegMuxerOption:
     """
-    RTP/mpegts output format
+    RTP/mpegts output format.
 
     Args:
         mpegts_muxer_options: set list of options for the MPEG-TS muxer
@@ -3141,14 +3088,13 @@ def rtp_mpegts(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "mpegts_muxer_options": mpegts_muxer_options,
-                "rtp_muxer_options": rtp_muxer_options,
-            }
-        )
+        merge({
+            "mpegts_muxer_options": mpegts_muxer_options,
+            "rtp_muxer_options": rtp_muxer_options,
+        })
     )
 
 
@@ -3161,7 +3107,7 @@ def rtsp(
     pkt_size: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    RTSP output
+    RTSP output.
 
     Args:
         rtpflags: RTP muxer flags (default 0)
@@ -3173,127 +3119,126 @@ def rtsp(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "rtpflags": rtpflags,
-                "rtsp_transport": rtsp_transport,
-                "min_port": min_port,
-                "max_port": max_port,
-                "buffer_size": buffer_size,
-                "pkt_size": pkt_size,
-            }
-        )
+        merge({
+            "rtpflags": rtpflags,
+            "rtsp_transport": rtsp_transport,
+            "min_port": min_port,
+            "max_port": max_port,
+            "buffer_size": buffer_size,
+            "pkt_size": pkt_size,
+        })
     )
 
 
 def s16be() -> FFMpegMuxerOption:
     """
-    PCM signed 16-bit big-endian
-
+    PCM signed 16-bit big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def s16le() -> FFMpegMuxerOption:
     """
-    PCM signed 16-bit little-endian
-
+    PCM signed 16-bit little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def s24be() -> FFMpegMuxerOption:
     """
-    PCM signed 24-bit big-endian
-
+    PCM signed 24-bit big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def s24le() -> FFMpegMuxerOption:
     """
-    PCM signed 24-bit little-endian
-
+    PCM signed 24-bit little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def s32be() -> FFMpegMuxerOption:
     """
-    PCM signed 32-bit big-endian
-
+    PCM signed 32-bit big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def s32le() -> FFMpegMuxerOption:
     """
-    PCM signed 32-bit little-endian
-
+    PCM signed 32-bit little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def s8() -> FFMpegMuxerOption:
     """
-    PCM signed 8-bit
-
+    PCM signed 8-bit.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def sap() -> FFMpegMuxerOption:
     """
-    SAP output
-
+    SAP output.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def sbc() -> FFMpegMuxerOption:
     """
-    raw SBC
-
+    Raw SBC.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def scc() -> FFMpegMuxerOption:
     """
-    Scenarist Closed Captions
-
+    Scenarist Closed Captions.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -3331,7 +3276,7 @@ def segment(
     write_empty_segments: bool | None = None,
 ) -> FFMpegMuxerOption:
     """
-    segment
+    Segment.
 
     Args:
         reference_stream: set reference stream (default "auto")
@@ -3365,50 +3310,49 @@ def segment(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "reference_stream": reference_stream,
-                "segment_format": segment_format,
-                "segment_format_options": segment_format_options,
-                "segment_list": segment_list,
-                "segment_header_filename": segment_header_filename,
-                "segment_list_flags": segment_list_flags,
-                "segment_list_size": segment_list_size,
-                "segment_list_type": segment_list_type,
-                "segment_atclocktime": segment_atclocktime,
-                "segment_clocktime_offset": segment_clocktime_offset,
-                "segment_clocktime_wrap_duration": segment_clocktime_wrap_duration,
-                "segment_time": segment_time,
-                "segment_time_delta": segment_time_delta,
-                "min_seg_duration": min_seg_duration,
-                "segment_times": segment_times,
-                "segment_frames": segment_frames,
-                "segment_wrap": segment_wrap,
-                "segment_list_entry_prefix": segment_list_entry_prefix,
-                "segment_start_number": segment_start_number,
-                "segment_wrap_number": segment_wrap_number,
-                "strftime": strftime,
-                "increment_tc": increment_tc,
-                "break_non_keyframes": break_non_keyframes,
-                "individual_header_trailer": individual_header_trailer,
-                "write_header_trailer": write_header_trailer,
-                "reset_timestamps": reset_timestamps,
-                "initial_offset": initial_offset,
-                "write_empty_segments": write_empty_segments,
-            }
-        )
+        merge({
+            "reference_stream": reference_stream,
+            "segment_format": segment_format,
+            "segment_format_options": segment_format_options,
+            "segment_list": segment_list,
+            "segment_header_filename": segment_header_filename,
+            "segment_list_flags": segment_list_flags,
+            "segment_list_size": segment_list_size,
+            "segment_list_type": segment_list_type,
+            "segment_atclocktime": segment_atclocktime,
+            "segment_clocktime_offset": segment_clocktime_offset,
+            "segment_clocktime_wrap_duration": segment_clocktime_wrap_duration,
+            "segment_time": segment_time,
+            "segment_time_delta": segment_time_delta,
+            "min_seg_duration": min_seg_duration,
+            "segment_times": segment_times,
+            "segment_frames": segment_frames,
+            "segment_wrap": segment_wrap,
+            "segment_list_entry_prefix": segment_list_entry_prefix,
+            "segment_start_number": segment_start_number,
+            "segment_wrap_number": segment_wrap_number,
+            "strftime": strftime,
+            "increment_tc": increment_tc,
+            "break_non_keyframes": break_non_keyframes,
+            "individual_header_trailer": individual_header_trailer,
+            "write_header_trailer": write_header_trailer,
+            "reset_timestamps": reset_timestamps,
+            "initial_offset": initial_offset,
+            "write_empty_segments": write_empty_segments,
+        })
     )
 
 
 def smjpeg() -> FFMpegMuxerOption:
     """
-    Loki SDL MJPEG
-
+    Loki SDL MJPEG.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -3421,7 +3365,7 @@ def smoothstreaming(
     remove_at_exit: bool | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Smooth Streaming Muxer
+    Smooth Streaming Muxer.
 
     Args:
         window_size: number of fragments kept in the manifest (from 0 to INT_MAX) (default 0)
@@ -3432,27 +3376,26 @@ def smoothstreaming(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "window_size": window_size,
-                "extra_window_size": extra_window_size,
-                "lookahead_count": lookahead_count,
-                "min_frag_duration": min_frag_duration,
-                "remove_at_exit": remove_at_exit,
-            }
-        )
+        merge({
+            "window_size": window_size,
+            "extra_window_size": extra_window_size,
+            "lookahead_count": lookahead_count,
+            "min_frag_duration": min_frag_duration,
+            "remove_at_exit": remove_at_exit,
+        })
     )
 
 
 def sox() -> FFMpegMuxerOption:
     """
-    SoX (Sound eXchange) native
-
+    SoX (Sound eXchange) native.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -3463,7 +3406,7 @@ def spdif(
     dtshd_fallback_time: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    IEC 61937 (used on S/PDIF - IEC958)
+    IEC 61937 (used on S/PDIF - IEC958).
 
     Args:
         spdif_flags: IEC 61937 encapsulation flags (default 0)
@@ -3472,15 +3415,14 @@ def spdif(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "spdif_flags": spdif_flags,
-                "dtshd_rate": dtshd_rate,
-                "dtshd_fallback_time": dtshd_fallback_time,
-            }
-        )
+        merge({
+            "spdif_flags": spdif_flags,
+            "dtshd_rate": dtshd_rate,
+            "dtshd_fallback_time": dtshd_fallback_time,
+        })
     )
 
 
@@ -3491,7 +3433,7 @@ def spx(
     page_duration: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Ogg Speex
+    Ogg Speex.
 
     Args:
         serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
@@ -3501,26 +3443,25 @@ def spx(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "serial_offset": serial_offset,
-                "oggpagesize": oggpagesize,
-                "pagesize": pagesize,
-                "page_duration": page_duration,
-            }
-        )
+        merge({
+            "serial_offset": serial_offset,
+            "oggpagesize": oggpagesize,
+            "pagesize": pagesize,
+            "page_duration": page_duration,
+        })
     )
 
 
 def srt() -> FFMpegMuxerOption:
     """
-    SubRip subtitle
-
+    SubRip subtitle.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -3529,30 +3470,29 @@ def streamhash(
     hash: str | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Per-stream hash testing
+    Per-stream hash testing.
 
     Args:
         hash: set hash to use (default "sha256")
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "hash": hash,
-            }
-        )
+        merge({
+            "hash": hash,
+        })
     )
 
 
 def sup() -> FFMpegMuxerOption:
     """
-    raw HDMV Presentation Graphic Stream subtitles
-
+    Raw HDMV Presentation Graphic Stream subtitles.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -3562,7 +3502,7 @@ def svcd(
     preload: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    MPEG-2 PS (SVCD)
+    MPEG-2 PS (SVCD).
 
     Args:
         muxrate: (from 0 to 1.67772e+09) (default 0)
@@ -3570,24 +3510,23 @@ def svcd(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "muxrate": muxrate,
-                "preload": preload,
-            }
-        )
+        merge({
+            "muxrate": muxrate,
+            "preload": preload,
+        })
     )
 
 
 def swf() -> FFMpegMuxerOption:
     """
-    SWF (ShockWave Flash)
-
+    SWF (ShockWave Flash).
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -3597,7 +3536,7 @@ def tee(
     fifo_options: str | None = None,
 ) -> FFMpegMuxerOption:
     """
-    Multiple muxer tee
+    Multiple muxer tee.
 
     Args:
         use_fifo: Use fifo pseudo-muxer to separate actual muxers from encoder (default false)
@@ -3605,156 +3544,155 @@ def tee(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "use_fifo": use_fifo,
-                "fifo_options": fifo_options,
-            }
-        )
+        merge({
+            "use_fifo": use_fifo,
+            "fifo_options": fifo_options,
+        })
     )
 
 
 def truehd() -> FFMpegMuxerOption:
     """
-    raw TrueHD
-
+    Raw TrueHD.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def tta() -> FFMpegMuxerOption:
     """
-    TTA (True Audio)
-
+    TTA (True Audio).
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def ttml() -> FFMpegMuxerOption:
     """
-    TTML subtitle
-
+    TTML subtitle.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def u16be() -> FFMpegMuxerOption:
     """
-    PCM unsigned 16-bit big-endian
-
+    PCM unsigned 16-bit big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def u16le() -> FFMpegMuxerOption:
     """
-    PCM unsigned 16-bit little-endian
-
+    PCM unsigned 16-bit little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def u24be() -> FFMpegMuxerOption:
     """
-    PCM unsigned 24-bit big-endian
-
+    PCM unsigned 24-bit big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def u24le() -> FFMpegMuxerOption:
     """
-    PCM unsigned 24-bit little-endian
-
+    PCM unsigned 24-bit little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def u32be() -> FFMpegMuxerOption:
     """
-    PCM unsigned 32-bit big-endian
-
+    PCM unsigned 32-bit big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def u32le() -> FFMpegMuxerOption:
     """
-    PCM unsigned 32-bit little-endian
-
+    PCM unsigned 32-bit little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def u8() -> FFMpegMuxerOption:
     """
-    PCM unsigned 8-bit
-
+    PCM unsigned 8-bit.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def uncodedframecrc() -> FFMpegMuxerOption:
     """
-    uncoded framecrc testing
-
+    Uncoded framecrc testing.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def vc1() -> FFMpegMuxerOption:
     """
-    raw VC-1 video
-
+    Raw VC-1 video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def vc1test() -> FFMpegMuxerOption:
     """
-    VC-1 test bitstream
-
+    VC-1 test bitstream.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -3764,7 +3702,7 @@ def vcd(
     preload: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    MPEG-1 Systems / MPEG program stream (VCD)
+    MPEG-1 Systems / MPEG program stream (VCD).
 
     Args:
         muxrate: (from 0 to 1.67772e+09) (default 0)
@@ -3772,24 +3710,23 @@ def vcd(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "muxrate": muxrate,
-                "preload": preload,
-            }
-        )
+        merge({
+            "muxrate": muxrate,
+            "preload": preload,
+        })
     )
 
 
 def vidc() -> FFMpegMuxerOption:
     """
-    PCM Archimedes VIDC
-
+    PCM Archimedes VIDC.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -3799,7 +3736,7 @@ def vob(
     preload: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    MPEG-2 PS (VOB)
+    MPEG-2 PS (VOB).
 
     Args:
         muxrate: (from 0 to 1.67772e+09) (default 0)
@@ -3807,46 +3744,45 @@ def vob(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "muxrate": muxrate,
-                "preload": preload,
-            }
-        )
+        merge({
+            "muxrate": muxrate,
+            "preload": preload,
+        })
     )
 
 
 def voc() -> FFMpegMuxerOption:
     """
-    Creative Voice
-
+    Creative Voice.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def vvc() -> FFMpegMuxerOption:
     """
-    raw H.266/VVC video
-
+    Raw H.266/VVC video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def w64() -> FFMpegMuxerOption:
     """
-    Sony Wave64
-
+    Sony Wave64.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -3860,7 +3796,7 @@ def wav(
     peak_ppv: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    WAV / WAVE (Waveform Audio)
+    WAV / WAVE (Waveform Audio).
 
     Args:
         write_bext: Write BEXT chunk. (default false)
@@ -3872,18 +3808,17 @@ def wav(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "write_bext": write_bext,
-                "write_peak": write_peak,
-                "rf64": rf64,
-                "peak_block_size": peak_block_size,
-                "peak_format": peak_format,
-                "peak_ppv": peak_ppv,
-            }
-        )
+        merge({
+            "write_bext": write_bext,
+            "write_peak": write_peak,
+            "rf64": rf64,
+            "peak_block_size": peak_block_size,
+            "peak_format": peak_format,
+            "peak_ppv": peak_ppv,
+        })
     )
 
 
@@ -3901,7 +3836,7 @@ def webm(
     default_mode: int | None | Literal["infer", "infer_no_subs", "passthrough"] = None,
 ) -> FFMpegMuxerOption:
     """
-    WebM
+    WebM.
 
     Args:
         reserve_index_space: Reserve a given amount of space (in bytes) at the beginning of the file for the index (cues). (from 0 to INT_MAX) (default 0)
@@ -3918,23 +3853,22 @@ def webm(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "reserve_index_space": reserve_index_space,
-                "cues_to_front": cues_to_front,
-                "cluster_size_limit": cluster_size_limit,
-                "cluster_time_limit": cluster_time_limit,
-                "dash": dash,
-                "dash_track_number": dash_track_number,
-                "live": live,
-                "allow_raw_vfw": allow_raw_vfw,
-                "flipped_raw_rgb": flipped_raw_rgb,
-                "write_crc32": write_crc32,
-                "default_mode": default_mode,
-            }
-        )
+        merge({
+            "reserve_index_space": reserve_index_space,
+            "cues_to_front": cues_to_front,
+            "cluster_size_limit": cluster_size_limit,
+            "cluster_time_limit": cluster_time_limit,
+            "dash": dash,
+            "dash_track_number": dash_track_number,
+            "live": live,
+            "allow_raw_vfw": allow_raw_vfw,
+            "flipped_raw_rgb": flipped_raw_rgb,
+            "write_crc32": write_crc32,
+            "default_mode": default_mode,
+        })
     )
 
 
@@ -3945,7 +3879,7 @@ def webm_chunk(
     method: str | None = None,
 ) -> FFMpegMuxerOption:
     """
-    WebM Chunk Muxer
+    WebM Chunk Muxer.
 
     Args:
         chunk_start_index: start index of the chunk (from 0 to INT_MAX) (default 0)
@@ -3955,16 +3889,15 @@ def webm_chunk(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "chunk_start_index": chunk_start_index,
-                "header": header,
-                "audio_chunk_duration": audio_chunk_duration,
-                "method": method,
-            }
-        )
+        merge({
+            "chunk_start_index": chunk_start_index,
+            "header": header,
+            "audio_chunk_duration": audio_chunk_duration,
+            "method": method,
+        })
     )
 
 
@@ -3978,7 +3911,7 @@ def webm_dash_manifest(
     minimum_update_period: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    WebM DASH Manifest
+    WebM DASH Manifest.
 
     Args:
         adaptation_sets: Adaptation sets. Syntax: id=0,streams=0,1,2 id=1,streams=3,4 and so on
@@ -3991,19 +3924,18 @@ def webm_dash_manifest(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "adaptation_sets": adaptation_sets,
-                "live": live,
-                "chunk_start_index": chunk_start_index,
-                "chunk_duration_ms": chunk_duration_ms,
-                "utc_timing_url": utc_timing_url,
-                "time_shift_buffer_depth": time_shift_buffer_depth,
-                "minimum_update_period": minimum_update_period,
-            }
-        )
+        merge({
+            "adaptation_sets": adaptation_sets,
+            "live": live,
+            "chunk_start_index": chunk_start_index,
+            "chunk_duration_ms": chunk_duration_ms,
+            "utc_timing_url": utc_timing_url,
+            "time_shift_buffer_depth": time_shift_buffer_depth,
+            "minimum_update_period": minimum_update_period,
+        })
     )
 
 
@@ -4011,63 +3943,62 @@ def webp(
     loop: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    WebP
+    WebP.
 
     Args:
         loop: Number of times to loop the output: 0 - infinite loop (from 0 to 65535) (default 1)
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "loop": loop,
-            }
-        )
+        merge({
+            "loop": loop,
+        })
     )
 
 
 def webvtt() -> FFMpegMuxerOption:
     """
-    WebVTT subtitle
-
+    WebVTT subtitle.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def wsaud() -> FFMpegMuxerOption:
     """
-    Westwood Studios audio
-
+    Westwood Studios audio.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def wtv() -> FFMpegMuxerOption:
     """
-    Windows Television (WTV)
-
+    Windows Television (WTV).
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
 
 def wv() -> FFMpegMuxerOption:
     """
-    raw WavPack
-
+    Raw WavPack.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))
 
@@ -4081,7 +4012,7 @@ def xv(
     window_y: int | None = None,
 ) -> FFMpegMuxerOption:
     """
-    XV (XVideo) output device
+    XV (XVideo) output device.
 
     Args:
         display_name: set display name
@@ -4093,27 +4024,26 @@ def xv(
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(
-        merge(
-            {
-                "display_name": display_name,
-                "window_id": window_id,
-                "window_size": window_size,
-                "window_title": window_title,
-                "window_x": window_x,
-                "window_y": window_y,
-            }
-        )
+        merge({
+            "display_name": display_name,
+            "window_id": window_id,
+            "window_size": window_size,
+            "window_title": window_title,
+            "window_x": window_x,
+            "window_y": window_y,
+        })
     )
 
 
 def yuv4mpegpipe() -> FFMpegMuxerOption:
     """
-    YUV4MPEG pipe
-
+    YUV4MPEG pipe.
 
     Returns:
         the set codec options
+
     """
     return FFMpegMuxerOption(merge({}))

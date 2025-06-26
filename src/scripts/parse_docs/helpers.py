@@ -1,3 +1,5 @@
+"""Helper functions for parsing FFmpeg filter documentation."""
+
 import html2text
 from bs4 import BeautifulSoup, Tag
 
@@ -6,7 +8,7 @@ from .schema import FilterDocument
 
 def convert_html_to_markdown(html: str) -> str:
     """
-    Convert HTML to Markdown
+    Convert HTML to Markdown.
 
     This function converts HTML content to Markdown format, making special handling
     for definition lists and other structures to ensure they're properly formatted
@@ -17,6 +19,7 @@ def convert_html_to_markdown(html: str) -> str:
 
     Returns:
         The converted Markdown text
+
     """
     soup = BeautifulSoup(html, "html.parser")
 
@@ -46,7 +49,7 @@ def convert_html_to_markdown(html: str) -> str:
 
 def parse_filter_document(body: str) -> FilterDocument:
     """
-    Parse filter document from HTML body content
+    Parse filter document from HTML body content.
 
     This function extracts structured filter information from the HTML body content
     of a filter documentation section. It identifies the filter title, names (as some
@@ -57,6 +60,7 @@ def parse_filter_document(body: str) -> FilterDocument:
 
     Returns:
         A FilterDocument object containing the structured filter information
+
     """
     soup = BeautifulSoup(body, "html.parser")
     h3 = soup.find("h3")
@@ -92,7 +96,7 @@ def parse_filter_document(body: str) -> FilterDocument:
 
 def parse_parameters(soup: Tag) -> dict[str, str]:
     """
-    Parse parameters from a filter document
+    Parse parameters from a filter document.
 
     This function extracts parameter information from a BeautifulSoup representation
     of a filter document. It specifically looks for definition lists (dt/dd tags) where
@@ -104,6 +108,7 @@ def parse_parameters(soup: Tag) -> dict[str, str]:
 
     Returns:
         A dictionary mapping parameter names to their HTML descriptions
+
     """
     parameters = []
     current_params = []

@@ -1,3 +1,6 @@
+"""
+Video stream.
+"""
 {% import "_components.jinja" as _components %}
 
 from __future__ import annotations
@@ -18,6 +21,10 @@ if TYPE_CHECKING:
 
 
 class VideoStream(FilterableStream):
+    """
+    Video stream.
+    """
+
     {% for f in filters %}
         {% if f.filter_type.value in ["vf", "vaf"] and not f.is_dynamic_input %}
     {{ _components.filter_method(f) }}

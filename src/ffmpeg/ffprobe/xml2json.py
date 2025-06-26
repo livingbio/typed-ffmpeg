@@ -1,10 +1,13 @@
+"""XML to JSON conversion utilities for FFprobe output."""
+
 import json
 import xml.etree.ElementTree as ET
 from typing import Any, cast
 
 
 def xml_to_dict(element: ET.Element) -> dict[str, Any]:
-    """Convert an XML Element to a dictionary representation.
+    """
+    Convert an XML Element to a dictionary representation.
 
     This function recursively converts an XML Element and its children into a nested
     dictionary structure. Attributes are preserved as dictionary keys, and text content
@@ -19,6 +22,7 @@ def xml_to_dict(element: ET.Element) -> dict[str, Any]:
             - Child elements are stored as nested dictionaries
             - Multiple elements with the same tag are stored as lists
             - Text content is stored under the 'text' key
+
     """
     node: dict[str, Any] = {}
     if element.attrib:
@@ -43,7 +47,8 @@ def xml_to_dict(element: ET.Element) -> dict[str, Any]:
 
 
 def xml_string_to_json(xml_string: str) -> str:
-    """Convert an XML string to a JSON string.
+    """
+    Convert an XML string to a JSON string.
 
     This function takes an XML string, parses it into an ElementTree structure,
     converts it to a dictionary using xml_to_dict, and then serializes it to a JSON string.
@@ -65,6 +70,7 @@ def xml_string_to_json(xml_string: str) -> str:
             }
           }
         }'
+
     """
     root = ET.fromstring(xml_string)
     return json.dumps({root.tag: xml_to_dict(root)}, indent=2)

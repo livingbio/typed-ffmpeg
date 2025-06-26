@@ -49,6 +49,7 @@ class Codec:
         name: The codec identifier used in FFmpeg commands
         flags: Bitmap of capabilities supported by the codec
         description: Human-readable description of the codec
+
     """
 
     name: str
@@ -68,6 +69,7 @@ def parse_codec_flags(flags: str) -> CodecFlags:
 
     Returns:
         A CodecFlags bitmap with the appropriate flags set
+
     """
     flags_enum = CodecFlags(0)
     if flags[0] == "V":
@@ -101,6 +103,7 @@ def get_codecs() -> tuple[Codec, ...]:
 
     Raises:
         FFMpegExecuteError: If the ffmpeg command fails
+
     """
     args = ["ffmpeg", "-hide_banner", "-codecs"]
     logger.info("Running ffmpeg command: %s", command_line(args))
@@ -161,6 +164,7 @@ def parse_coder_flags(flags: str) -> CoderFlags:
 
     Returns:
         A CoderFlags bitmap with the appropriate flags set
+
     """
     flags_enum = CoderFlags(0)
     if flags[0] == "V":
@@ -195,6 +199,7 @@ class Coder:
         name: The coder identifier used in FFmpeg commands
         flags: Bitmap of capabilities supported by the coder
         description: Human-readable description of the coder
+
     """
 
     name: str
@@ -214,6 +219,7 @@ def get_coders(codes: str) -> tuple[Coder, ...]:
 
     Returns:
         A tuple of Coder objects representing the available encoders/decoders
+
     """
     codecs_lines = codes.strip().split("\n")
     # Skip header lines until we find the separator
@@ -244,6 +250,7 @@ def get_decoders() -> tuple[Coder, ...]:
 
     Raises:
         FFMpegExecuteError: If the ffmpeg command fails
+
     """
     args = ["ffmpeg", "-hide_banner", "-decoders"]
     logger.info("Running ffmpeg command: %s", command_line(args))
@@ -272,6 +279,7 @@ def get_encoders() -> tuple[Coder, ...]:
 
     Raises:
         FFMpegExecuteError: If the ffmpeg command fails
+
     """
     args = ["ffmpeg", "-hide_banner", "-encoders"]
     logger.info("Running ffmpeg command: %s", command_line(args))

@@ -1,3 +1,5 @@
+"""Parse FFmpeg filter information from help output."""
+
 import re
 from dataclasses import replace
 from typing import Any, Literal, cast
@@ -34,6 +36,7 @@ def _parse_list(text: str) -> list[FFMpegFilter]:
         ... acrossfade        AA->A      Cross fade two input audio streams.
         .S. acrossover        A->N       Split audio into per-bands streams.
         ```
+
     """
     output: list[FFMpegFilter] = []
     lines = text.splitlines()
@@ -59,6 +62,7 @@ def _extract_list() -> list[FFMpegFilter]:
 
     Returns:
         A list of filters
+
     """
     return _parse_list(run_ffmpeg_command(["-filters"]))
 
@@ -66,6 +70,13 @@ def _extract_list() -> list[FFMpegFilter]:
 def _parse_filter_io(tree: dict[str, Any]) -> list[FFMpegIOType]:
     """
     Parse the help text for a filter's inputs and outputs.
+
+    Args:
+        tree: The parsed section tree
+
+    Returns:
+        List of input/output types.
+
     """
     output = []
     for key, value in tree.items():
@@ -74,7 +85,7 @@ def _parse_filter_io(tree: dict[str, Any]) -> list[FFMpegIOType]:
                 r"#(?P<index>\d+)\:\s*(?P<name>\w+)\s*\((?P<type>\w+)\)", key
             )
             assert match
-            index, name, type = match.groups()
+            _index, name, type = match.groups()
             assert type in ("audio", "video")
             output.append(
                 FFMpegIOType(name=name, type=cast(Literal["audio", "video"], type))
@@ -85,6 +96,16 @@ def _parse_filter_io(tree: dict[str, Any]) -> list[FFMpegIOType]:
 def _parse_filter(text: str) -> FFMpegFilter:
     """
     Parse the help text for a filter.
+
+    Args:
+        text: The help text to parse
+
+    Returns:
+        The parsed filter information.
+
+    Raises:
+        ValueError: If the filter is unknown.
+
     """
     if "Unknown filter" in text:
         raise ValueError(f"Unknown filter: {filter}")
@@ -147,6 +168,13 @@ def _parse_filter(text: str) -> FFMpegFilter:
 def _extract_filter(filter: str) -> FFMpegFilter:
     """
     Get the help text for a filter.
+
+    Args:
+        filter: The filter name
+
+    Returns:
+        The filter information.
+
     """
     return _parse_filter(run_ffmpeg_command(["-h", f"filter={filter}"]))
 
@@ -154,6 +182,10 @@ def _extract_filter(filter: str) -> FFMpegFilter:
 def extract() -> list[FFMpegFilter]:
     """
     Get the help text for all filters.
+
+    Returns:
+        List of all filter information.
+
     """
     output: list[FFMpegFilter] = []
     for filter in _extract_list():

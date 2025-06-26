@@ -32,6 +32,7 @@ def command_line(args: list[str]) -> str:
         cmd = ["ffmpeg", "-i", "input file.mp4", "-c:v", "libx264"]
         print(command_line(cmd))  # 'ffmpeg -i "input file.mp4" -c:v libx264'
         ```
+
     """
     return " ".join(shlex.quote(arg) for arg in args)
 
@@ -60,5 +61,6 @@ def ignore_default(
         options = {"width": 1920, "height": 1080, "format": Default("yuv420p")}
         filtered = ignore_default(options)  # {"width": 1920, "height": 1080}
         ```
+
     """
     return FrozenDict({k: v for k, v in kwargs.items() if not isinstance(v, Default)})

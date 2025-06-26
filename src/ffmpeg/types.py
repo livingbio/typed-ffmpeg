@@ -1,5 +1,6 @@
 """
-This module defines the various types of options that can be used with FFmpeg.
+Define the various types of options that can be used with FFmpeg.
+
 These option types can be one of several different categories.
 The source of these types is defined within the AVOptionType enumeration found in FFmpeg's opt.h header file.
 """
@@ -29,7 +30,7 @@ Color = str | Default | LazyValue | None
 """
 It can be the name of a color as defined below (case insensitive match) or a [0x|#]RRGGBB[AA] sequence, possibly followed by @ and a string representing the alpha component.
 The alpha component may be a string composed by "0x" followed by an hexadecimal number or a decimal number between 0.0 and 1.0, which represents the opacity value (‘0x00’ or ‘0.0’ means completely transparent, ‘0xff’ or ‘1.0’ completely opaque). If the alpha component is not specified then ‘0xff’ is assumed.
-The string ‘random’ will result in a random color.
+The string 'random' will result in a random color.
 
 Note:
     [Document](https://ffmpeg.org/ffmpeg-utils.html#Color)

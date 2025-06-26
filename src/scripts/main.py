@@ -21,7 +21,7 @@ from .parse_help.cli import app as parse_help_app
 
 
 def pdb_callback(value: bool) -> None:
-    """Callback for the --pdb option to enable debugger on exceptions."""
+    """Enable debugger on exceptions when the --pdb option is used."""
     if value:
 
         def debugger_hook(

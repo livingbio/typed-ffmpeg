@@ -1,5 +1,5 @@
 """
-Manual Filter Definition Package
+Manual Filter Definition Package.
 
 This package provides functionality for manually defining or augmenting filter
 information that cannot be automatically extracted from FFmpeg documentation,

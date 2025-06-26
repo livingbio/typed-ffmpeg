@@ -27,7 +27,7 @@ app = typer.Typer(help="Parse FFmpeg filter help information")
 @app.command()
 def all_filters() -> list[FFMpegFilter]:
     """
-    Parse all filters from FFmpeg help output
+    Parse all filters from FFmpeg help output.
 
     This function combines information from two sources:
     1. The general filter list from 'ffmpeg -filters'
@@ -38,6 +38,7 @@ def all_filters() -> list[FFMpegFilter]:
 
     Returns:
         A list of FFMpegFilter objects with complete filter information
+
     """
     output = []
 
@@ -93,7 +94,11 @@ def all_filters() -> list[FFMpegFilter]:
 @app.command()
 def all_codecs() -> list[FFMpegCodec]:
     """
-    Parse all codecs from FFmpeg help output
+    Parse all codecs from FFmpeg help output.
+
+    Returns:
+        List of parsed FFmpeg codecs.
+
     """
     return parse_codecs.extract()
 
@@ -101,6 +106,10 @@ def all_codecs() -> list[FFMpegCodec]:
 @app.command()
 def all_formats() -> list[FFMpegFormat]:
     """
-    Parse all muxers from FFmpeg help output
+    Parse all muxers from FFmpeg help output.
+
+    Returns:
+        List of parsed FFmpeg formats.
+
     """
     return parse_formats.extract()

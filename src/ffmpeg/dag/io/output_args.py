@@ -1,5 +1,5 @@
 # NOTE: this file is auto-generated, do not modify
-
+"""Output arguments."""
 
 from __future__ import annotations
 
@@ -25,6 +25,8 @@ if TYPE_CHECKING:
 
 
 class OutputArgs(ABC):
+    """Output arguments interface."""
+
     @abstractmethod
     def _output_node(
         self, *streams: FilterableStream, filename: str | Path, **kwargs: Any
@@ -132,8 +134,8 @@ class OutputArgs(ABC):
         muxer_options: FFMpegMuxerOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> OutputStream:
-        """
-        Output file URL
+        r"""
+        Output file URL.
 
         Args:
             *streams: the streams to output
@@ -239,8 +241,8 @@ class OutputArgs(ABC):
 
         Returns:
             the output stream
-        """
 
+        """
         return self._output_node(
             *streams,
             filename=filename,

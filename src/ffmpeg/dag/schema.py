@@ -1,3 +1,5 @@
+"""DAG schema definitions for FFmpeg filter graphs."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
@@ -12,15 +14,11 @@ from .utils import is_dag
 
 @dataclass(frozen=True, kw_only=True)
 class HashableBaseModel(Serializable):
-    """
-    A base class for hashable dataclasses.
-    """
+    """A base class for hashable dataclasses."""
 
     @cached_property
     def hex(self) -> str:
-        """
-        Get the hexadecimal hash of the object.
-        """
+        """Get the hexadecimal hash of the object."""
         return hex(abs(hash(self)))[2:]
 
 
@@ -31,6 +29,7 @@ class Stream(HashableBaseModel):
 
     Note:
         Each stream in the DAG is a sequence of operations that transforms the data from its input form to its output form. The stream is an essential component of the DAG, as it defines the order and the nature of the operations that are performed on the data.
+
     """
 
     node: Node
@@ -66,6 +65,7 @@ class Stream(HashableBaseModel):
 
         Returns:
             The file path of the visualization.
+
         """
         from ..utils.view import view
 
@@ -87,6 +87,7 @@ class Node(HashableBaseModel):
 
     Note:
         Each node in the DAG represents a single operation that transforms the data from its input form to its output form. The node is an essential component of the DAG, as it defines the nature of the operations that are performed on the data.
+
     """
 
     # Filter_Node_Option_Type
@@ -102,6 +103,13 @@ class Node(HashableBaseModel):
     """
 
     def __post_init__(self) -> None:
+        """
+        Validate that the graph is a DAG (Directed Acyclic Graph).
+
+        Raises:
+            ValueError: If the graph is not a DAG
+
+        """
         # Validate the DAG
         passed = set()
         nodes = [self]
@@ -127,6 +135,7 @@ class Node(HashableBaseModel):
 
         Returns:
             The representation of the node.
+
         """
         return repr(self)
 
@@ -140,6 +149,7 @@ class Node(HashableBaseModel):
 
         Returns:
             The new graph with the replaced node.
+
         """
         if self == old_node:
             return new_node
@@ -165,6 +175,7 @@ class Node(HashableBaseModel):
 
         Returns:
             The maximum depth of the node.
+
         """
         return max((i.node.max_depth for i in self.inputs), default=0) + 1
 
@@ -175,6 +186,7 @@ class Node(HashableBaseModel):
 
         Returns:
             The upstream nodes of the node.
+
         """
         output = {self}
         for input in self.inputs:
@@ -191,6 +203,7 @@ class Node(HashableBaseModel):
 
         Returns:
             The file path of the visualization.
+
         """
         from ..utils.view import view
 

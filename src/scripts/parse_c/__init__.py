@@ -1,5 +1,5 @@
 """
-FFmpeg C Source Code Parsing Package
+FFmpeg C Source Code Parsing Package.
 
 This package contains modules for parsing, pre-compiling, and extracting
 information from FFmpeg C source code. The main functionality includes:

@@ -1,3 +1,5 @@
+"""Schema definitions for parsing FFmpeg filter documentation."""
+
 from dataclasses import dataclass
 from functools import cached_property
 
@@ -6,9 +8,7 @@ from bs4 import BeautifulSoup, Tag
 
 @dataclass(frozen=True, kw_only=True)
 class FilterDocument:
-    """
-    A filter document
-    """
+    """A filter document."""
 
     section_index: str
     """
@@ -34,20 +34,22 @@ class FilterDocument:
     @property
     def url(self) -> str:
         """
-        The URL of the filter document
+        The URL of the filter document.
 
         Returns:
             The URL of the filter document
+
         """
         return f"https://ffmpeg.org/ffmpeg-filters.html#{self.hash}"
 
     @cached_property
     def description(self) -> str:
         """
-        The description of the filter document in Markdown
+        The description of the filter document in Markdown.
 
         Returns:
             The description of the filter document
+
         """
         from .helpers import convert_html_to_markdown
 
@@ -56,10 +58,11 @@ class FilterDocument:
     @cached_property
     def parameter_descs(self) -> dict[str, str]:
         """
-        The parameter descriptions of the filter document in Markdown
+        The parameter descriptions of the filter document in Markdown.
 
         Returns:
             The parameter descriptions of the filter document
+
         """
         from .helpers import parse_parameters
 

@@ -275,6 +275,7 @@ class FFMpegFilter(Serializable):
 
         Returns:
             A dictionary mapping parameter names to their values
+
         """
         return dict(self.pre)
 
@@ -288,6 +289,7 @@ class FFMpegFilter(Serializable):
 
         Returns:
             A simplified FFMpegFilterDef representation of this filter
+
         """
         return FFMpegFilterDef(
             name=self.name,
@@ -310,6 +312,7 @@ class FFMpegFilter(Serializable):
 
         Raises:
             AssertionError: If a dynamic input filter has no input formula
+
         """
         if self.is_filter_source:
             return set()
@@ -346,6 +349,7 @@ class FFMpegFilter(Serializable):
 
         Raises:
             AssertionError: If a dynamic output filter has no output formula
+
         """
         if self.is_filter_sink:
             return set()
@@ -386,6 +390,7 @@ class FFMpegFilter(Serializable):
                        any known filter type
             AssertionError: If a sink filter has multiple input types or
                            if a filter has no input types
+
         """
         if self.is_filter_sink:
             assert len(self.input_typings) == 1
@@ -423,6 +428,8 @@ class FFMpegFilter(Serializable):
 
 @serializable
 class FFMpegOptionFlag(int, Enum):
+    """FFmpeg option flags that define option behavior and characteristics."""
+
     OPT_FUNC_ARG = 1 << 0
     """
     The OPT_TYPE_FUNC option takes an argument.
@@ -567,6 +574,7 @@ class FFMpegOption(Serializable):
 
         Returns:
             True if this option is meant to be used with input files
+
         """
         return bool(self.flags & FFMpegOptionFlag.OPT_INPUT)
 
@@ -577,6 +585,7 @@ class FFMpegOption(Serializable):
 
         Returns:
             True if this option is meant to be used with output files
+
         """
         return bool(self.flags & FFMpegOptionFlag.OPT_OUTPUT)
 
@@ -588,6 +597,7 @@ class FFMpegOption(Serializable):
         Returns:
             True if this option is a global option that doesn't apply to
             specific input or output files
+
         """
         return (
             not self.is_input_option
@@ -605,5 +615,6 @@ class FFMpegOption(Serializable):
 
         Returns:
             True if this option can be used with stream specifiers
+
         """
         return bool(self.flags & FFMpegOptionFlag.OPT_SPEC)

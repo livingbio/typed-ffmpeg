@@ -1,4 +1,7 @@
 # NOTE: this file is auto-generated, do not modify
+"""
+FFmpeg demuxers.
+"""
 from typing import Literal
 from .schema import FFMpegDemuxerOption
 from ..utils.frozendict import FrozenDict, merge

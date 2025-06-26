@@ -1,3 +1,5 @@
+"""Parse FFmpeg format information from help output."""
+
 import re
 from typing import Literal
 
@@ -29,6 +31,7 @@ def _parse_list(text: str) -> list[FFMpegFormat]:
          D  aa              Audible AA format files
          D  aac             raw ADTS AAC (Advanced Audio Coding)
         ```
+
     """
     output: list[FFMpegFormat] = []
     lines = text.splitlines()
@@ -53,6 +56,7 @@ def _extract_list(
 
     Returns:
         A list of formats
+
     """
     return _parse_list(run_ffmpeg_command([f"-{type}"]))
 
@@ -82,6 +86,7 @@ def _parse_format(text: str) -> list[FFMpegAVOption]:
              frag_keyframe                E........... Fragment at video keyframes
              frag_custom                  E........... Enable custom fragmenting
         ```
+
     """
     tree = parse_section_tree(text)
     for section in tree:
@@ -103,6 +108,7 @@ def _extract_format(
 
     Returns:
         A list of format options
+
     """
     return _parse_format(run_ffmpeg_command(["-h", f"{type}={format}"]))
 
@@ -113,6 +119,7 @@ def extract() -> list[FFMpegFormat]:
 
     Returns:
         A list of format instances (muxers and demuxers) with their associated options
+
     """
     output: list[FFMpegFormat] = []
 

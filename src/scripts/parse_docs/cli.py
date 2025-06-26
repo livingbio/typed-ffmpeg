@@ -1,6 +1,4 @@
-"""
-Parse ffmpeg filter documents from the official ffmpeg documentation
-"""
+"""Parse ffmpeg filter documents from the official ffmpeg documentation."""
 
 import re
 import urllib.request
@@ -20,10 +18,11 @@ app = typer.Typer()
 @app.command()
 def download_ffmpeg_filter_documents() -> Path:
     """
-    Download ffmpeg filter documents
+    Download ffmpeg filter documents.
 
     Returns:
         Path to the downloaded document
+
     """
     document_path = cache_path / "docs"
     document_path.mkdir(exist_ok=True)
@@ -51,10 +50,11 @@ def download_ffmpeg_filter_documents() -> Path:
 @app.command()
 def process_docs() -> list[FilterDocument]:
     """
-    Process ffmpeg filter documents
+    Process ffmpeg filter documents.
 
     Returns:
         List of FilterDocument objects
+
     """
     # split documents into individual files for easier processing
     section_pattern = re.compile(
@@ -82,13 +82,17 @@ def process_docs() -> list[FilterDocument]:
 @app.command()
 def extract_docs(filter_name: str) -> FilterDocument:
     """
-    Extract ffmpeg filter document
+    Extract ffmpeg filter document.
 
     Args:
         filter_name: The name of the filter
 
     Returns:
         FilterDocument object
+
+    Raises:
+        ValueError: If the filter is not found.
+
     """
     for doc in process_docs():
         if filter_name in doc.filter_names:

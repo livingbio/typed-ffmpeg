@@ -1,3 +1,5 @@
+"""Audio-video stream utilities."""
+
 from ..dag.nodes import InputNode
 from .audio import AudioStream
 from .subtitle import SubtitleStream
@@ -5,9 +7,7 @@ from .video import VideoStream
 
 
 class AVStream(AudioStream, VideoStream):
-    """
-    A stream that contains both audio and video. This is for input nodes only.
-    """
+    """A stream that contains both audio and video. This is for input nodes only."""
 
     node: InputNode
 
@@ -18,6 +18,7 @@ class AVStream(AudioStream, VideoStream):
 
         Returns:
             VideoStream: The video stream from the input node.
+
         """
         return VideoStream(node=self.node, index=self.index)
 
@@ -28,6 +29,7 @@ class AVStream(AudioStream, VideoStream):
 
         Returns:
             AudioStream: The audio stream from the input node.
+
         """
         return AudioStream(node=self.node, index=self.index)
 
@@ -38,6 +40,7 @@ class AVStream(AudioStream, VideoStream):
 
         Returns:
             SubtitleStream: The subtitle stream from the input node.
+
         """
         return SubtitleStream(node=self.node, index=self.index)
 
@@ -53,6 +56,7 @@ class AVStream(AudioStream, VideoStream):
 
         Returns:
             VideoStream: The video stream from the input node.
+
         """
         return VideoStream(node=self.node, index=index, optional=optional)
 
@@ -68,6 +72,7 @@ class AVStream(AudioStream, VideoStream):
 
         Returns:
             AudioStream: The audio stream from the input node.
+
         """
         return AudioStream(node=self.node, index=index, optional=optional)
 
@@ -83,5 +88,6 @@ class AVStream(AudioStream, VideoStream):
 
         Returns:
             SubtitleStream: The subtitle stream from the input node.
+
         """
         return SubtitleStream(node=self.node, index=index, optional=optional)

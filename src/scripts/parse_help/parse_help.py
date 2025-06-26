@@ -69,6 +69,7 @@ def _parse(help_text: str) -> list[FFMpegOption]:
         options[0].name  # Returns 'b'
         options[0].type  # Returns 'int64'
         ```
+
     """
     tree = parse_section_tree(help_text)
     output: list[FFMpegOption] = []
@@ -116,6 +117,7 @@ def extract() -> list[FFMpegOption]:
         options_with_defaults = [opt for opt in options if opt.default is not None]
         len(options_with_defaults)  # Returns 200+
         ```
+
     """
     text = run_ffmpeg_command(["-h", "full"])
     return _parse(text)

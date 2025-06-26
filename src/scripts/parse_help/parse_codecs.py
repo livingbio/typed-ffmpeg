@@ -1,3 +1,5 @@
+"""Parse FFmpeg codec information from help output."""
+
 import re
 from typing import Literal
 
@@ -33,6 +35,7 @@ def _parse_list(text: str) -> list[FFMpegCodec]:
          D.V.L. 4xm                  4X Movie
          D.VI.S 8bps                 QuickTime 8BPS video
         ```
+
     """
     output: list[FFMpegCodec] = []
     lines = text.splitlines()
@@ -57,6 +60,7 @@ def _extract_list(
 
     Returns:
         A list of codecs
+
     """
     return _parse_list(run_ffmpeg_command([f"-{type}"]))
 
@@ -87,6 +91,7 @@ def _parse_codec(text: str) -> list[FFMpegAVOption]:
              mv0                          E..V....... always try a mb with mv=<0,0>
           -luma_elim_threshold <int>        E..V....... single coefficient elimination threshold for luminance (negative values also consider dc coefficient) (from INT_MIN to INT_MAX) (default 0)
         ```
+
     """
     tree = parse_section_tree(text)
     for section in tree:
@@ -107,6 +112,7 @@ def _extract_codec(
 
     Returns:
         A list of codec options
+
     """
     return _parse_codec(run_ffmpeg_command(["-h", f"{type}={codec}"]))
 
@@ -117,6 +123,7 @@ def extract() -> list[FFMpegCodec]:
 
     Returns:
         A list of codec instances (encoders and decoders) with their associated options
+
     """
     output: list[FFMpegCodec] = []
 

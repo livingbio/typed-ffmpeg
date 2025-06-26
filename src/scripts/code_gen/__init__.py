@@ -1,5 +1,5 @@
 """
-Code Generation Package for Typed-FFmpeg
+Code Generation Package for Typed-FFmpeg.
 
 This package is responsible for generating typed Python code based on
 FFmpeg filter and option definitions. It uses information gathered from

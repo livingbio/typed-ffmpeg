@@ -11,7 +11,7 @@ from typing import Any
 
 
 def escape(text: str | int | float, chars: str = "\\'=:") -> str:
-    """
+    r"""
     Escape special characters in a string for use in FFmpeg commands.
 
     This function adds backslash escaping to specified characters in a string,
@@ -34,6 +34,7 @@ def escape(text: str | int | float, chars: str = "\\'=:") -> str:
         # Escape a filter parameter value
         safe_value = escape("key=value", "=:")  # "key\\=value"
         ```
+
     """
     text = str(text)
     _chars = list(set(chars))
@@ -64,9 +65,11 @@ def convert_kwargs_to_cmd_line_args(kwargs: dict[str, Any]) -> list[str]:
 
     Example:
         ```python
-        args = convert_kwargs_to_cmd_line_args(
-            {"c:v": "libx264", "crf": 23, "preset": "medium"}
-        )
+        args = convert_kwargs_to_cmd_line_args({
+            "c:v": "libx264",
+            "crf": 23,
+            "preset": "medium",
+        })
         # Returns ['-c:v', 'libx264', '-crf', '23', '-preset', 'medium']
         ```
 
@@ -74,6 +77,7 @@ def convert_kwargs_to_cmd_line_args(kwargs: dict[str, Any]) -> list[str]:
         If a value is None, only the parameter name is included.
         If a value is an iterable (but not a string), the parameter is repeated
         for each value in the iterable.
+
     """
     args = []
     for k in sorted(kwargs.keys()):

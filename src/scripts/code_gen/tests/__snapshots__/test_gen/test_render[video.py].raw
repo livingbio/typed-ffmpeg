@@ -1,4 +1,7 @@
 # NOTE: this file is auto-generated, do not modify
+"""
+Video stream.
+"""
 
 
 from __future__ import annotations
@@ -21,6 +24,10 @@ if TYPE_CHECKING:
 
 
 class VideoStream(FilterableStream):
+    """
+    Video stream.
+    """
+
     
         
     
