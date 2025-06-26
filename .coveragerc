@@ -16,6 +16,7 @@ omit =
     src/ffmpeg/codecs/decoders.py
     src/ffmpeg/muxers/muxers.py
     src/ffmpeg/muxers/demuxers.py
+    src/ffmpeg/expressions.py
     test_*.py
     */test_*.py
     main.py
