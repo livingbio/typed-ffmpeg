@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/ffprobe/probe/">
+        <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/options/">
       
       
-        <link rel="prev" href="../parse/">
+        <link rel="prev" href="../info/">
       
       
-        <link rel="next" href="../schema/">
+        <link rel="next" href="framesync/">
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>probe - typed-ffmpeg</title>
+        <title>options - typed-ffmpeg</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,15 +50,15 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../../../css/ansi-colours.css">
+      <link rel="stylesheet" href="../../../css/ansi-colours.css">
     
-      <link rel="stylesheet" href="../../../../css/jupyter-cells.css">
+      <link rel="stylesheet" href="../../../css/jupyter-cells.css">
     
-      <link rel="stylesheet" href="../../../../css/pandas-dataframe.css">
+      <link rel="stylesheet" href="../../../css/pandas-dataframe.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ffmpeg.ffprobe.probe" class="md-skip">
+        <a href="#ffmpeg.options" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="typed-ffmpeg" class="md-header__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
+    <a href="../../.." title="typed-ffmpeg" class="md-header__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              probe
+              options
             
           </span>
         </div>
@@ -231,7 +231,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../.." class="md-tabs__link">
+        <a href="../../.." class="md-tabs__link">
           
   
   
@@ -251,7 +251,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../usage/basic-api-usage/" class="md-tabs__link">
+        <a href="../../../usage/basic-api-usage/" class="md-tabs__link">
           
   
   
@@ -273,7 +273,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -307,7 +307,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="typed-ffmpeg" class="md-nav__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
+    <a href="../../.." title="typed-ffmpeg" class="md-nav__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -378,7 +378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -401,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../faq/" class="md-nav__link">
+      <a href="../../../faq/" class="md-nav__link">
         
   
   
@@ -472,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../usage/basic-api-usage/" class="md-nav__link">
+      <a href="../../../usage/basic-api-usage/" class="md-nav__link">
         
   
   
@@ -495,7 +495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../usage/probe/" class="md-nav__link">
+      <a href="../../../usage/probe/" class="md-nav__link">
         
   
   
@@ -518,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../usage/complex-filtering/" class="md-nav__link">
+      <a href="../../../usage/complex-filtering/" class="md-nav__link">
         
   
   
@@ -541,7 +541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../usage/customizing-filters/" class="md-nav__link">
+      <a href="../../../usage/customizing-filters/" class="md-nav__link">
         
   
   
@@ -564,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../usage/execute/" class="md-nav__link">
+      <a href="../../../usage/execute/" class="md-nav__link">
         
   
   
@@ -657,7 +657,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -690,7 +690,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/" class="md-nav__link">
+      <a href="../base/" class="md-nav__link">
         
   
   
@@ -728,7 +728,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../codecs/" class="md-nav__link ">
+            <a href="../codecs/" class="md-nav__link ">
               
   
   
@@ -761,7 +761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../codecs/decoders/" class="md-nav__link">
+      <a href="../codecs/decoders/" class="md-nav__link">
         
   
   
@@ -784,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../codecs/encoders/" class="md-nav__link">
+      <a href="../codecs/encoders/" class="md-nav__link">
         
   
   
@@ -807,7 +807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../codecs/schema/" class="md-nav__link">
+      <a href="../codecs/schema/" class="md-nav__link">
         
   
   
@@ -853,7 +853,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../common/" class="md-nav__link ">
+            <a href="../common/" class="md-nav__link ">
               
   
   
@@ -886,7 +886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common/cache/" class="md-nav__link">
+      <a href="../common/cache/" class="md-nav__link">
         
   
   
@@ -909,7 +909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common/schema/" class="md-nav__link">
+      <a href="../common/schema/" class="md-nav__link">
         
   
   
@@ -932,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common/serialize/" class="md-nav__link">
+      <a href="../common/serialize/" class="md-nav__link">
         
   
   
@@ -978,7 +978,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../compile/" class="md-nav__link ">
+            <a href="../compile/" class="md-nav__link ">
               
   
   
@@ -1011,7 +1011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compile/compile_cli/" class="md-nav__link">
+      <a href="../compile/compile_cli/" class="md-nav__link">
         
   
   
@@ -1034,7 +1034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compile/compile_json/" class="md-nav__link">
+      <a href="../compile/compile_json/" class="md-nav__link">
         
   
   
@@ -1057,7 +1057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compile/compile_python/" class="md-nav__link">
+      <a href="../compile/compile_python/" class="md-nav__link">
         
   
   
@@ -1080,7 +1080,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compile/context/" class="md-nav__link">
+      <a href="../compile/context/" class="md-nav__link">
         
   
   
@@ -1103,7 +1103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compile/validate/" class="md-nav__link">
+      <a href="../compile/validate/" class="md-nav__link">
         
   
   
@@ -1149,7 +1149,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../dag/" class="md-nav__link ">
+            <a href="../dag/" class="md-nav__link ">
               
   
   
@@ -1182,7 +1182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/factory/" class="md-nav__link">
+      <a href="../dag/factory/" class="md-nav__link">
         
   
   
@@ -1220,7 +1220,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../dag/global_runnable/" class="md-nav__link ">
+            <a href="../dag/global_runnable/" class="md-nav__link ">
               
   
   
@@ -1253,7 +1253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/global_runnable/global_args/" class="md-nav__link">
+      <a href="../dag/global_runnable/global_args/" class="md-nav__link">
         
   
   
@@ -1276,7 +1276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/global_runnable/runnable/" class="md-nav__link">
+      <a href="../dag/global_runnable/runnable/" class="md-nav__link">
         
   
   
@@ -1322,7 +1322,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../dag/io/" class="md-nav__link ">
+            <a href="../dag/io/" class="md-nav__link ">
               
   
   
@@ -1355,7 +1355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/io/_input/" class="md-nav__link">
+      <a href="../dag/io/_input/" class="md-nav__link">
         
   
   
@@ -1378,7 +1378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/io/_output/" class="md-nav__link">
+      <a href="../dag/io/_output/" class="md-nav__link">
         
   
   
@@ -1401,7 +1401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/io/output_args/" class="md-nav__link">
+      <a href="../dag/io/output_args/" class="md-nav__link">
         
   
   
@@ -1432,7 +1432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/nodes/" class="md-nav__link">
+      <a href="../dag/nodes/" class="md-nav__link">
         
   
   
@@ -1455,7 +1455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/schema/" class="md-nav__link">
+      <a href="../dag/schema/" class="md-nav__link">
         
   
   
@@ -1478,7 +1478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/utils/" class="md-nav__link">
+      <a href="../dag/utils/" class="md-nav__link">
         
   
   
@@ -1509,7 +1509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../exceptions/" class="md-nav__link">
+      <a href="../exceptions/" class="md-nav__link">
         
   
   
@@ -1529,8 +1529,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1541,15 +1539,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_7" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../ffprobe/" class="md-nav__link ">
               
   
   
@@ -1568,7 +1566,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1_7">
             <span class="md-nav__icon md-icon"></span>
             ffprobe
@@ -1582,7 +1580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse/" class="md-nav__link">
+      <a href="../ffprobe/parse/" class="md-nav__link">
         
   
   
@@ -1602,32 +1600,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    probe
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../ffprobe/probe/" class="md-nav__link">
         
   
   
@@ -1638,46 +1614,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="Page contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Page contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ffmpeg.ffprobe.probe.probe" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;probe
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ffmpeg.ffprobe.probe.probe_obj" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;probe_obj
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1690,7 +1626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../schema/" class="md-nav__link">
+      <a href="../ffprobe/schema/" class="md-nav__link">
         
   
   
@@ -1713,7 +1649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../xml2json/" class="md-nav__link">
+      <a href="../ffprobe/xml2json/" class="md-nav__link">
         
   
   
@@ -1744,7 +1680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../filters/" class="md-nav__link">
+      <a href="../filters/" class="md-nav__link">
         
   
   
@@ -1782,7 +1718,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../formats/" class="md-nav__link ">
+            <a href="../formats/" class="md-nav__link ">
               
   
   
@@ -1815,7 +1751,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../formats/demuxers/" class="md-nav__link">
+      <a href="../formats/demuxers/" class="md-nav__link">
         
   
   
@@ -1838,7 +1774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../formats/muxers/" class="md-nav__link">
+      <a href="../formats/muxers/" class="md-nav__link">
         
   
   
@@ -1861,7 +1797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../formats/schema/" class="md-nav__link">
+      <a href="../formats/schema/" class="md-nav__link">
         
   
   
@@ -1892,7 +1828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../info/" class="md-nav__link">
+      <a href="../info/" class="md-nav__link">
         
   
   
@@ -1912,6 +1848,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1922,15 +1860,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_11" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../options/" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   
@@ -1943,13 +1881,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3_1_11" id="__nav_3_1_11_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_3_1_11" id="__nav_3_1_11_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_11_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_11_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_1_11">
             <span class="md-nav__icon md-icon"></span>
             options
@@ -1963,7 +1901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../options/framesync/" class="md-nav__link">
+      <a href="framesync/" class="md-nav__link">
         
   
   
@@ -1994,7 +1932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../schema/" class="md-nav__link">
+      <a href="../schema/" class="md-nav__link">
         
   
   
@@ -2017,7 +1955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sources/" class="md-nav__link">
+      <a href="../sources/" class="md-nav__link">
         
   
   
@@ -2055,7 +1993,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../streams/" class="md-nav__link ">
+            <a href="../streams/" class="md-nav__link ">
               
   
   
@@ -2088,7 +2026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../streams/audio/" class="md-nav__link">
+      <a href="../streams/audio/" class="md-nav__link">
         
   
   
@@ -2111,7 +2049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../streams/av/" class="md-nav__link">
+      <a href="../streams/av/" class="md-nav__link">
         
   
   
@@ -2134,7 +2072,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../streams/channel_layout/" class="md-nav__link">
+      <a href="../streams/channel_layout/" class="md-nav__link">
         
   
   
@@ -2157,7 +2095,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../streams/subtitle/" class="md-nav__link">
+      <a href="../streams/subtitle/" class="md-nav__link">
         
   
   
@@ -2180,7 +2118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../streams/video/" class="md-nav__link">
+      <a href="../streams/video/" class="md-nav__link">
         
   
   
@@ -2211,7 +2149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../types/" class="md-nav__link">
+      <a href="../types/" class="md-nav__link">
         
   
   
@@ -2249,7 +2187,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../utils/" class="md-nav__link ">
+            <a href="../utils/" class="md-nav__link ">
               
   
   
@@ -2282,7 +2220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../utils/escaping/" class="md-nav__link">
+      <a href="../utils/escaping/" class="md-nav__link">
         
   
   
@@ -2305,7 +2243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../utils/frozendict/" class="md-nav__link">
+      <a href="../utils/frozendict/" class="md-nav__link">
         
   
   
@@ -2343,7 +2281,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../utils/lazy_eval/" class="md-nav__link ">
+            <a href="../utils/lazy_eval/" class="md-nav__link ">
               
   
   
@@ -2376,7 +2314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../utils/lazy_eval/operator/" class="md-nav__link">
+      <a href="../utils/lazy_eval/operator/" class="md-nav__link">
         
   
   
@@ -2399,7 +2337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../utils/lazy_eval/schema/" class="md-nav__link">
+      <a href="../utils/lazy_eval/schema/" class="md-nav__link">
         
   
   
@@ -2430,7 +2368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../utils/run/" class="md-nav__link">
+      <a href="../utils/run/" class="md-nav__link">
         
   
   
@@ -2453,7 +2391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../utils/snapshot/" class="md-nav__link">
+      <a href="../utils/snapshot/" class="md-nav__link">
         
   
   
@@ -2476,7 +2414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../utils/typing/" class="md-nav__link">
+      <a href="../utils/typing/" class="md-nav__link">
         
   
   
@@ -2499,7 +2437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../utils/view/" class="md-nav__link">
+      <a href="../utils/view/" class="md-nav__link">
         
   
   
@@ -2553,7 +2491,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../scripts/" class="md-nav__link ">
+            <a href="../../scripts/" class="md-nav__link ">
               
   
   
@@ -2601,7 +2539,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../scripts/code_gen/" class="md-nav__link ">
+            <a href="../../scripts/code_gen/" class="md-nav__link ">
               
   
   
@@ -2634,7 +2572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/code_gen/cli/" class="md-nav__link">
+      <a href="../../scripts/code_gen/cli/" class="md-nav__link">
         
   
   
@@ -2657,7 +2595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/code_gen/gen/" class="md-nav__link">
+      <a href="../../scripts/code_gen/gen/" class="md-nav__link">
         
   
   
@@ -2680,7 +2618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/code_gen/schema/" class="md-nav__link">
+      <a href="../../scripts/code_gen/schema/" class="md-nav__link">
         
   
   
@@ -2711,7 +2649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/conftest/" class="md-nav__link">
+      <a href="../../scripts/conftest/" class="md-nav__link">
         
   
   
@@ -2734,7 +2672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/main/" class="md-nav__link">
+      <a href="../../scripts/main/" class="md-nav__link">
         
   
   
@@ -2772,7 +2710,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../scripts/manual/" class="md-nav__link ">
+            <a href="../../scripts/manual/" class="md-nav__link ">
               
   
   
@@ -2805,7 +2743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/manual/cli/" class="md-nav__link">
+      <a href="../../scripts/manual/cli/" class="md-nav__link">
         
   
   
@@ -2828,7 +2766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/manual/schema/" class="md-nav__link">
+      <a href="../../scripts/manual/schema/" class="md-nav__link">
         
   
   
@@ -2874,7 +2812,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../scripts/parse_c/" class="md-nav__link ">
+            <a href="../../scripts/parse_c/" class="md-nav__link ">
               
   
   
@@ -2907,7 +2845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_c/cli/" class="md-nav__link">
+      <a href="../../scripts/parse_c/cli/" class="md-nav__link">
         
   
   
@@ -2930,7 +2868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_c/parse_c_structure/" class="md-nav__link">
+      <a href="../../scripts/parse_c/parse_c_structure/" class="md-nav__link">
         
   
   
@@ -2953,7 +2891,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_c/parse_ffmpeg_opt_c/" class="md-nav__link">
+      <a href="../../scripts/parse_c/parse_ffmpeg_opt_c/" class="md-nav__link">
         
   
   
@@ -2976,7 +2914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_c/pre_compile/" class="md-nav__link">
+      <a href="../../scripts/parse_c/pre_compile/" class="md-nav__link">
         
   
   
@@ -2999,7 +2937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_c/xsd_to_dataclasses/" class="md-nav__link">
+      <a href="../../scripts/parse_c/xsd_to_dataclasses/" class="md-nav__link">
         
   
   
@@ -3045,7 +2983,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../scripts/parse_docs/" class="md-nav__link ">
+            <a href="../../scripts/parse_docs/" class="md-nav__link ">
               
   
   
@@ -3078,7 +3016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_docs/cli/" class="md-nav__link">
+      <a href="../../scripts/parse_docs/cli/" class="md-nav__link">
         
   
   
@@ -3101,7 +3039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_docs/helpers/" class="md-nav__link">
+      <a href="../../scripts/parse_docs/helpers/" class="md-nav__link">
         
   
   
@@ -3124,7 +3062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_docs/schema/" class="md-nav__link">
+      <a href="../../scripts/parse_docs/schema/" class="md-nav__link">
         
   
   
@@ -3170,7 +3108,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../scripts/parse_help/" class="md-nav__link ">
+            <a href="../../scripts/parse_help/" class="md-nav__link ">
               
   
   
@@ -3203,7 +3141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/cli/" class="md-nav__link">
+      <a href="../../scripts/parse_help/cli/" class="md-nav__link">
         
   
   
@@ -3226,7 +3164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/parse_codecs/" class="md-nav__link">
+      <a href="../../scripts/parse_help/parse_codecs/" class="md-nav__link">
         
   
   
@@ -3249,7 +3187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/parse_filters/" class="md-nav__link">
+      <a href="../../scripts/parse_help/parse_filters/" class="md-nav__link">
         
   
   
@@ -3272,7 +3210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/parse_formats/" class="md-nav__link">
+      <a href="../../scripts/parse_help/parse_formats/" class="md-nav__link">
         
   
   
@@ -3295,7 +3233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/parse_help/" class="md-nav__link">
+      <a href="../../scripts/parse_help/parse_help/" class="md-nav__link">
         
   
   
@@ -3318,7 +3256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/schema/" class="md-nav__link">
+      <a href="../../scripts/parse_help/schema/" class="md-nav__link">
         
   
   
@@ -3341,7 +3279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/utils/" class="md-nav__link">
+      <a href="../../scripts/parse_help/utils/" class="md-nav__link">
         
   
   
@@ -3402,32 +3340,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Page contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ffmpeg.ffprobe.probe.probe" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;probe
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ffmpeg.ffprobe.probe.probe_obj" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;probe_obj
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -3449,29 +3361,22 @@
 
 
 
-<h1 id="ffmpeg.ffprobe.probe" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-module"></code>            <span class="doc doc-object-name doc-module-name">probe</span>
+<h1 id="ffmpeg.options" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-module"></code>            <span class="doc doc-object-name doc-module-name">options</span>
 
 
-<a href="#ffmpeg.ffprobe.probe" class="headerlink" title="Permanent link">&para;</a></h1>
+<a href="#ffmpeg.options" class="headerlink" title="Permanent link">&para;</a></h1>
 
     <div class="doc doc-contents first">
 
-        <p>Module for analyzing media files with ffprobe.</p>
-<p>This module provides functionality to extract detailed metadata from media files
-using FFmpeg's ffprobe utility. It returns a structured representation of the
-file's format, streams, and other relevant information.</p>
+        <p>FFmpeg options.</p>
 
 
 
 
 
 
-
-
-
-
-<p><span class="doc-section-title">Functions:</span></p>
+<p><span class="doc-section-title">Modules:</span></p>
     <table>
       <thead>
         <tr>
@@ -3480,24 +3385,20 @@ file's format, streams, and other relevant information.</p>
         </tr>
       </thead>
       <tbody>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="            probe (ffmpeg.ffprobe.probe.probe)" href="#ffmpeg.ffprobe.probe.probe">probe</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Analyze a media file using ffprobe and return its metadata as a dictionary.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="            probe_obj (ffmpeg.ffprobe.probe.probe_obj)" href="#ffmpeg.ffprobe.probe.probe_obj">probe_obj</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Analyze a media file using ffprobe and return its metadata as a dataclass.</p>
-                </div>
-              </td>
-            </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            framesync (ffmpeg.options.framesync)" href="framesync/#ffmpeg.options.framesync">framesync</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Framesync options. Some filters with several inputs support a common set of options. These options can only be set by name, not with the short notation.</p>
+              </div>
+            </td>
+          </tr>
       </tbody>
     </table>
+
+
+
+
 
 
 
@@ -3512,708 +3413,6 @@ file's format, streams, and other relevant information.</p>
 
 
 
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="ffmpeg.ffprobe.probe.probe" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">probe</span>
-
-
-<a href="#ffmpeg.ffprobe.probe.probe" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">probe</span><span class="p">(</span>
-    <span class="n">filename</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="n"><span title="pathlib.Path">Path</span></span><span class="p">,</span>
-    <span class="o">*</span><span class="p">,</span>
-    <span class="n">show_program_version</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">show_library_versions</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">show_pixel_formats</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">show_packets</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">show_frames</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">show_programs</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">show_streams</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="n">show_chapters</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">show_format</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="n">show_error</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">cmd</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">=</span> <span class="s2">&quot;ffprobe&quot;</span><span class="p">,</span>
-    <span class="n">timeout</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n"><span title="typing.Any">Any</span></span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="typing.Any">Any</span></span><span class="p">]</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Analyze a media file using ffprobe and return its metadata as a dictionary.</p>
-<p>This function executes ffprobe to extract detailed information about a media file,
-including format metadata (container format, duration, bitrate) and stream information
-(codecs, resolution, sample rate, etc). The result is returned as a Python dictionary
-parsed from ffprobe's JSON output.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>filename</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span> | <span title="pathlib.Path">Path</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Path to the media file to analyze</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>cmd</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Path or name of the ffprobe executable</p>
-              </div>
-            </td>
-            <td>
-                  <code>&#39;ffprobe&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>timeout</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span> | None</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Maximum time in seconds to wait for ffprobe to complete (default: None, wait indefinitely)</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_program_version</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the program version</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_library_versions</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the library versions</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_pixel_formats</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the pixel formats</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_packets</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the packets. Note: When both show_packets and show_frames are True,
-ffprobe will output a combined "packets_and_frames" section instead of separate sections.</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_frames</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the frames. Note: When both show_packets and show_frames are True,
-ffprobe will output a combined "packets_and_frames" section instead of separate sections.</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_programs</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the programs</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_streams</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the streams</p>
-              </div>
-            </td>
-            <td>
-                  <code>True</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_chapters</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the chapters</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_format</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the format</p>
-              </div>
-            </td>
-            <td>
-                  <code>True</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_error</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the error</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>**kwargs</code>
-            </td>
-            <td>
-                  <code><span title="typing.Any">Any</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Additional arguments to pass to ffprobe as command line parameters
-(e.g., loglevel="quiet", skip_frame="nokey")</p>
-              </div>
-            </td>
-            <td>
-                  <code>{}</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>A dictionary containing the parsed JSON output from ffprobe with format and stream information</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><a class="autorefs autorefs-internal" title="            FFMpegExecuteError (ffmpeg.exceptions.FFMpegExecuteError)" href="../../exceptions/#ffmpeg.exceptions.FFMpegExecuteError">FFMpegExecuteError</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If ffprobe returns a non-zero exit code</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="subprocess.TimeoutExpired">TimeoutExpired</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If the timeout is reached before ffprobe completes</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<details class="example" open>
-  <summary>Example</summary>
-  <div class="language-python highlight"><pre><span></span><code><span class="n">info</span> <span class="o">=</span> <span class="n">probe</span><span class="p">(</span><span class="s2">&quot;video.mp4&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duration: </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">])</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Streams: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;streams&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div>
-</details>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="ffmpeg.ffprobe.probe.probe_obj" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">probe_obj</span>
-
-
-<a href="#ffmpeg.ffprobe.probe.probe_obj" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">probe_obj</span><span class="p">(</span>
-    <span class="n">filename</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="n"><span title="pathlib.Path">Path</span></span><span class="p">,</span>
-    <span class="o">*</span><span class="p">,</span>
-    <span class="n">show_program_version</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">show_library_versions</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">show_pixel_formats</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">show_packets</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">show_frames</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">show_programs</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">show_streams</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="n">show_chapters</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">show_format</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="n">show_error</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">cmd</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">=</span> <span class="s2">&quot;ffprobe&quot;</span><span class="p">,</span>
-    <span class="n">timeout</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n"><span title="typing.Any">Any</span></span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            ffprobeType
-
-
-  
-      dataclass
-   (ffmpeg.ffprobe.schema.ffprobeType)" href="../schema/#ffmpeg.ffprobe.schema.ffprobeType">ffprobeType</a></span> <span class="o">|</span> <span class="kc">None</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Analyze a media file using ffprobe and return its metadata as a dataclass.</p>
-<p>This function executes ffprobe to extract detailed information about a media file,
-including format metadata (container format, duration, bitrate) and stream information
-(codecs, resolution, sample rate, etc). The result is returned as a Python dataclass
-parsed from ffprobe's output.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>filename</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span> | <span title="pathlib.Path">Path</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Path to the media file to analyze</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>cmd</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Path or name of the ffprobe executable</p>
-              </div>
-            </td>
-            <td>
-                  <code>&#39;ffprobe&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>timeout</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span> | None</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Maximum time in seconds to wait for ffprobe to complete (default: None, wait indefinitely)</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_program_version</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the program version</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_library_versions</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the library versions</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_pixel_formats</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the pixel formats</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_packets</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the packets. Note: When both show_packets and show_frames are True,
-ffprobe will output a combined "packets_and_frames" section instead of separate sections.</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_frames</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the frames. Note: When both show_packets and show_frames are True,
-ffprobe will output a combined "packets_and_frames" section instead of separate sections.</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_programs</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the programs</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_streams</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the streams</p>
-              </div>
-            </td>
-            <td>
-                  <code>True</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_chapters</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the chapters</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_format</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the format</p>
-              </div>
-            </td>
-            <td>
-                  <code>True</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>show_error</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Show the error</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>**kwargs</code>
-            </td>
-            <td>
-                  <code><span title="typing.Any">Any</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Additional arguments to pass to ffprobe as command line parameters
-(e.g., loglevel="quiet", skip_frame="nokey")</p>
-              </div>
-            </td>
-            <td>
-                  <code>{}</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><a class="autorefs autorefs-internal" title="            ffprobeType
-
-
-  
-      dataclass
-   (ffmpeg.ffprobe.schema.ffprobeType)" href="../schema/#ffmpeg.ffprobe.schema.ffprobeType">ffprobeType</a> | None</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>A dataclass containing the parsed ffprobe output</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><a class="autorefs autorefs-internal" title="            FFMpegExecuteError (ffmpeg.exceptions.FFMpegExecuteError)" href="../../exceptions/#ffmpeg.exceptions.FFMpegExecuteError">FFMpegExecuteError</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If ffprobe returns a non-zero exit code</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="subprocess.TimeoutExpired">TimeoutExpired</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If the timeout is reached before ffprobe completes</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<details class="example" open>
-  <summary>Example</summary>
-  <div class="language-python highlight"><pre><span></span><code><span class="n">info</span> <span class="o">=</span> <span class="n">probe_obj</span><span class="p">(</span><span class="s2">&quot;video.mp4&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duration: </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">format</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Streams: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">streams</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div>
-</details>
-
-    </div>
-
-</div>
 
 
 
@@ -4272,10 +3471,10 @@ ffprobe will output a combined "packets_and_frames" section instead of separate 
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>
