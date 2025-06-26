@@ -3512,9 +3512,11 @@ separate argument.</p>
 
 <details class="example" open>
   <summary>Example</summary>
-  <div class="language-python highlight"><pre><span></span><code><span class="n">args</span> <span class="o">=</span> <span class="n">convert_kwargs_to_cmd_line_args</span><span class="p">(</span>
-    <span class="p">{</span><span class="s2">&quot;c:v&quot;</span><span class="p">:</span> <span class="s2">&quot;libx264&quot;</span><span class="p">,</span> <span class="s2">&quot;crf&quot;</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span> <span class="s2">&quot;preset&quot;</span><span class="p">:</span> <span class="s2">&quot;medium&quot;</span><span class="p">}</span>
-<span class="p">)</span>
+  <div class="language-python highlight"><pre><span></span><code><span class="n">args</span> <span class="o">=</span> <span class="n">convert_kwargs_to_cmd_line_args</span><span class="p">({</span>
+    <span class="s2">&quot;c:v&quot;</span><span class="p">:</span> <span class="s2">&quot;libx264&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;crf&quot;</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span>
+    <span class="s2">&quot;preset&quot;</span><span class="p">:</span> <span class="s2">&quot;medium&quot;</span><span class="p">,</span>
+<span class="p">})</span>
 <span class="c1"># Returns [&#39;-c:v&#39;, &#39;libx264&#39;, &#39;-crf&#39;, &#39;23&#39;, &#39;-preset&#39;, &#39;medium&#39;]</span>
 </code></pre></div>
 </details>
@@ -3625,10 +3627,10 @@ where certain characters have special meaning.</p>
 <details class="example" open>
   <summary>Example</summary>
   <div class="language-python highlight"><pre><span></span><code><span class="c1"># Escape a filename with spaces for FFmpeg</span>
-<span class="n">safe_filename</span> <span class="o">=</span> <span class="n">escape</span><span class="p">(</span><span class="s2">&quot;input file.mp4&quot;</span><span class="p">)</span>  <span class="c1"># &quot;input\ file.mp4&quot;</span>
+<span class="n">safe_filename</span> <span class="o">=</span> <span class="n">escape</span><span class="p">(</span><span class="s2">&quot;input file.mp4&quot;</span><span class="p">)</span>  <span class="c1"># &quot;input\\ file.mp4&quot;</span>
 
 <span class="c1"># Escape a filter parameter value</span>
-<span class="n">safe_value</span> <span class="o">=</span> <span class="n">escape</span><span class="p">(</span><span class="s2">&quot;key=value&quot;</span><span class="p">,</span> <span class="s2">&quot;=:&quot;</span><span class="p">)</span>  <span class="c1"># &quot;key\=value&quot;</span>
+<span class="n">safe_value</span> <span class="o">=</span> <span class="n">escape</span><span class="p">(</span><span class="s2">&quot;key=value&quot;</span><span class="p">,</span> <span class="s2">&quot;=:&quot;</span><span class="p">)</span>  <span class="c1"># &quot;key\\=value&quot;</span>
 </code></pre></div>
 </details>
 

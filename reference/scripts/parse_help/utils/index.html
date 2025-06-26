@@ -3430,6 +3430,8 @@
 
     <div class="doc doc-contents first">
 
+        <p>Utility functions for parsing FFmpeg help output.</p>
+
 
 
 
@@ -3929,14 +3931,12 @@ Section2
   Option2
 </code></pre></div></p>
 <p>Output:
-<div class="language-python highlight"><pre><span></span><code><span class="n">OrderedDict</span><span class="p">(</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;Section1&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">(</span>
-            <span class="p">{</span><span class="s2">&quot;Option1&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">({</span><span class="s2">&quot;SubOption1&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">()})}</span>
-        <span class="p">),</span>
-        <span class="s2">&quot;Section2&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">({</span><span class="s2">&quot;Option2&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">()}),</span>
-    <span class="p">}</span>
-<span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span class="n">OrderedDict</span><span class="p">({</span>
+    <span class="s2">&quot;Section1&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">({</span>
+        <span class="s2">&quot;Option1&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">({</span><span class="s2">&quot;SubOption1&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">()})</span>
+    <span class="p">}),</span>
+    <span class="s2">&quot;Section2&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">({</span><span class="s2">&quot;Option2&quot;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">()}),</span>
+<span class="p">})</span>
 </code></pre></div></p>
 </details>
 

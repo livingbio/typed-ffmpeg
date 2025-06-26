@@ -3396,6 +3396,8 @@
 
     <div class="doc doc-contents first">
 
+        <p>Manual configuration CLI for typed-ffmpeg.</p>
+
 
 
 
@@ -3418,7 +3420,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            init_config (scripts.manual.cli.init_config)" href="#scripts.manual.cli.init_config">init_config</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Initialize manual configuration files for filters</p>
+                  <p>Initialize manual configuration files for filters.</p>
                 </div>
               </td>
             </tr>
@@ -3426,7 +3428,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            load_config (scripts.manual.cli.load_config)" href="#scripts.manual.cli.load_config">load_config</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Load manual configuration for a specific filter</p>
+                  <p>Load manual configuration for a specific filter.</p>
                 </div>
               </td>
             </tr>
@@ -3434,7 +3436,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            migrate_config (scripts.manual.cli.migrate_config)" href="#scripts.manual.cli.migrate_config">migrate_config</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Migrate legacy configuration files to the current schema format</p>
+                  <p>Migrate legacy configuration files to the current schema format.</p>
                 </div>
               </td>
             </tr>
@@ -3468,7 +3470,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>Initialize manual configuration files for filters</p>
+        <p>Initialize manual configuration files for filters.</p>
 <p>This command creates default manual configuration files for all filters that have
 dynamic inputs or outputs. These configuration files can then be manually edited
 to provide custom typing information for complex filters.</p>
@@ -3498,7 +3500,7 @@ to provide custom typing information for complex filters.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Load manual configuration for a specific filter</p>
+        <p>Load manual configuration for a specific filter.</p>
 <p>This function attempts to load the manual configuration for a given filter by name.
 If the configuration exists in the cache, it returns the configuration object.
 If no configuration is found, it returns None.</p>
@@ -3580,7 +3582,7 @@ If no configuration is found, it returns None.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Migrate legacy configuration files to the current schema format</p>
+        <p>Migrate legacy configuration files to the current schema format.</p>
 <p>This command is meant to be run only once when transitioning from an older
 version of the schema format to the current one. It locates legacy JSON schema
 files, extracts relevant information, and saves them in the new format.</p>

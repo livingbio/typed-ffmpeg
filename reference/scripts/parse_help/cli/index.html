@@ -3423,7 +3423,7 @@ filter definitions with proper typing information.</p>
               <td><code><a class="autorefs autorefs-internal" title="            all_codecs (scripts.parse_help.cli.all_codecs)" href="#scripts.parse_help.cli.all_codecs">all_codecs</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Parse all codecs from FFmpeg help output</p>
+                  <p>Parse all codecs from FFmpeg help output.</p>
                 </div>
               </td>
             </tr>
@@ -3431,7 +3431,7 @@ filter definitions with proper typing information.</p>
               <td><code><a class="autorefs autorefs-internal" title="            all_filters (scripts.parse_help.cli.all_filters)" href="#scripts.parse_help.cli.all_filters">all_filters</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Parse all filters from FFmpeg help output</p>
+                  <p>Parse all filters from FFmpeg help output.</p>
                 </div>
               </td>
             </tr>
@@ -3439,7 +3439,7 @@ filter definitions with proper typing information.</p>
               <td><code><a class="autorefs autorefs-internal" title="            all_formats (scripts.parse_help.cli.all_formats)" href="#scripts.parse_help.cli.all_formats">all_formats</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Parse all muxers from FFmpeg help output</p>
+                  <p>Parse all muxers from FFmpeg help output.</p>
                 </div>
               </td>
             </tr>
@@ -3478,7 +3478,35 @@ filter definitions with proper typing information.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Parse all codecs from FFmpeg help output</p>
+        <p>Parse all codecs from FFmpeg help output.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="            FFMpegCodec
+
+
+  
+      dataclass
+   (scripts.parse_help.schema.FFMpegCodec)" href="../schema/#scripts.parse_help.schema.FFMpegCodec">FFMpegCodec</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of parsed FFmpeg codecs.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -3503,7 +3531,7 @@ filter definitions with proper typing information.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Parse all filters from FFmpeg help output</p>
+        <p>Parse all filters from FFmpeg help output.</p>
 <p>This function combines information from two sources:
 1. The general filter list from 'ffmpeg -filters'
 2. Detailed filter information from 'ffmpeg -h filter=<filter_name>'</p>
@@ -3561,7 +3589,35 @@ both the high-level filter capabilities and detailed option information for each
 
     <div class="doc doc-contents ">
 
-        <p>Parse all muxers from FFmpeg help output</p>
+        <p>Parse all muxers from FFmpeg help output.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="            FFMpegFormat
+
+
+  
+      dataclass
+   (scripts.parse_help.schema.FFMpegFormat)" href="../schema/#scripts.parse_help.schema.FFMpegFormat">FFMpegFormat</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of parsed FFmpeg formats.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>

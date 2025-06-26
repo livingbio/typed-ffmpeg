@@ -3832,7 +3832,7 @@ including handling of operands that may themselves be LazyValues.</p>
               <td><code><a class="autorefs autorefs-internal" title="            partial (ffmpeg.utils.lazy_eval.schema.LazyOperator.partial)" href="#ffmpeg.utils.lazy_eval.schema.LazyOperator.partial">partial</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Partially evaluate this operator with the given values.</p>
+                  <p>Evaluate this operator with the given values.</p>
                 </div>
               </td>
             </tr>
@@ -4027,7 +4027,7 @@ including handling of operands that may themselves be LazyValues.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Partially evaluate this operator with the given values.</p>
+        <p>Evaluate this operator with the given values.</p>
 <p>This method recursively evaluates the operands (which may themselves be
 LazyValues) with the provided values, then applies the operator's
 specific operation to the results.</p>
@@ -4247,7 +4247,7 @@ functionality.</p>
    (ffmpeg.utils.lazy_eval.schema.LazyValue.partial)" href="#ffmpeg.utils.lazy_eval.schema.LazyValue.partial">partial</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Partially evaluate the lazy value with the given values.</p>
+                  <p>Evaluate the lazy value with the given values.</p>
                 </div>
               </td>
             </tr>
@@ -4442,7 +4442,7 @@ this method would return {'width', 'height'}.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Partially evaluate the lazy value with the given values.</p>
+        <p>Evaluate the lazy value with the given values.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -4659,7 +4659,7 @@ expression creation time.</p>
               <td><code><a class="autorefs autorefs-internal" title="            partial (ffmpeg.utils.lazy_eval.schema.Symbol.partial)" href="#ffmpeg.utils.lazy_eval.schema.Symbol.partial">partial</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Partially evaluate this symbol with the given values.</p>
+                  <p>Evaluate this symbol with the given values.</p>
                 </div>
               </td>
             </tr>
@@ -4843,7 +4843,7 @@ expression creation time.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Partially evaluate this symbol with the given values.</p>
+        <p>Evaluate this symbol with the given values.</p>
 <p>If the symbol's key is present in the values dictionary, returns the
 corresponding value. Otherwise, returns the symbol itself (unchanged).</p>
 

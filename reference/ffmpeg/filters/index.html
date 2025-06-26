@@ -4798,6 +4798,8 @@
 
     <div class="doc doc-contents first">
 
+        <p>FFmpeg filters.</p>
+
 
 
 
@@ -4916,7 +4918,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            astreamselect (ffmpeg.filters.astreamselect)" href="#ffmpeg.filters.astreamselect">astreamselect</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Select audio streams</p>
+                  <p>Select audio streams.</p>
                 </div>
               </td>
             </tr>
@@ -4940,7 +4942,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            blend_vulkan (ffmpeg.filters.blend_vulkan)" href="#ffmpeg.filters.blend_vulkan">blend_vulkan</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Blend two video frames in Vulkan</p>
+                  <p>Blend two video frames in Vulkan.</p>
                 </div>
               </td>
             </tr>
@@ -5076,7 +5078,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            hstack_vaapi (ffmpeg.filters.hstack_vaapi)" href="#ffmpeg.filters.hstack_vaapi">hstack_vaapi</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>"VA-API" hstack</p>
+                  <p>"VA-API" hstack.</p>
                 </div>
               </td>
             </tr>
@@ -5124,7 +5126,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            libplacebo (ffmpeg.filters.libplacebo)" href="#ffmpeg.filters.libplacebo">libplacebo</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Apply various GPU filters from libplacebo</p>
+                  <p>Apply various GPU filters from libplacebo.</p>
                 </div>
               </td>
             </tr>
@@ -5252,7 +5254,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            overlay_opencl (ffmpeg.filters.overlay_opencl)" href="#ffmpeg.filters.overlay_opencl">overlay_opencl</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Overlay one video on top of another</p>
+                  <p>Overlay one video on top of another.</p>
                 </div>
               </td>
             </tr>
@@ -5260,7 +5262,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            overlay_vaapi (ffmpeg.filters.overlay_vaapi)" href="#ffmpeg.filters.overlay_vaapi">overlay_vaapi</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Overlay one video on top of another</p>
+                  <p>Overlay one video on top of another.</p>
                 </div>
               </td>
             </tr>
@@ -5268,7 +5270,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            overlay_vulkan (ffmpeg.filters.overlay_vulkan)" href="#ffmpeg.filters.overlay_vulkan">overlay_vulkan</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Overlay a source on top of another</p>
+                  <p>Overlay a source on top of another.</p>
                 </div>
               </td>
             </tr>
@@ -5292,7 +5294,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            program_opencl (ffmpeg.filters.program_opencl)" href="#ffmpeg.filters.program_opencl">program_opencl</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Filter video using an OpenCL program</p>
+                  <p>Filter video using an OpenCL program.</p>
                 </div>
               </td>
             </tr>
@@ -5340,7 +5342,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            signature (ffmpeg.filters.signature)" href="#ffmpeg.filters.signature">signature</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Calculate the MPEG-7 video signature</p>
+                  <p>Calculate the MPEG-7 video signature.</p>
                 </div>
               </td>
             </tr>
@@ -5364,7 +5366,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            streamselect (ffmpeg.filters.streamselect)" href="#ffmpeg.filters.streamselect">streamselect</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Select video streams</p>
+                  <p>Select video streams.</p>
                 </div>
               </td>
             </tr>
@@ -5412,7 +5414,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            vstack_vaapi (ffmpeg.filters.vstack_vaapi)" href="#ffmpeg.filters.vstack_vaapi">vstack_vaapi</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>"VA-API" vstack</p>
+                  <p>"VA-API" vstack.</p>
                 </div>
               </td>
             </tr>
@@ -5460,7 +5462,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            xstack_vaapi (ffmpeg.filters.xstack_vaapi)" href="#ffmpeg.filters.xstack_vaapi">xstack_vaapi</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>"VA-API" xstack</p>
+                  <p>"VA-API" xstack.</p>
                 </div>
               </td>
             </tr>
@@ -5721,6 +5723,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;tri&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -5860,6 +5878,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;longest&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -5934,6 +5968,37 @@
     <div class="doc doc-contents ">
 
         <p>Copy the luma value of the second input into the alpha channel of the first input.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -6038,6 +6103,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Auto (ffmpeg.schema.Auto)" href="../schema/#ffmpeg.schema.Auto">Auto</a>(&#39;len(streams)&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -6260,6 +6341,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;true&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -6334,6 +6431,37 @@
     <div class="doc doc-contents ">
 
         <p>Multiply two audio streams.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -6555,6 +6683,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;o&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -6782,6 +6926,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;o&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -6856,6 +7016,37 @@
     <div class="doc doc-contents ">
 
         <p>Measure Audio Peak Signal-to-Noise Ratio.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -7052,6 +7243,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;o&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -7128,6 +7335,37 @@
         <p>Measure Audio Signal-to-Distortion Ratio.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
     <p><span class="doc-section-title">Returns:</span></p>
     <table>
       <thead>
@@ -7198,6 +7436,37 @@
     <div class="doc doc-contents ">
 
         <p>Measure Audio Scale-Invariant Signal-to-Distortion Ratio.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -7275,7 +7544,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>Select audio streams</p>
+        <p>Select audio streams.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7329,6 +7598,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(None)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -7473,6 +7758,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;best&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -8203,6 +8504,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;1&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -8347,7 +8664,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>Blend two video frames in Vulkan</p>
+        <p>Blend two video frames in Vulkan.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8569,6 +8886,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;1&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -8951,6 +9284,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;7&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -9157,6 +9506,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;euclidean&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -9346,6 +9711,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;false&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -9517,6 +9898,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;1e-07&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -9591,6 +9988,37 @@
     <div class="doc doc-contents ">
 
         <p>Calculate the correlation between two video streams.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -9886,6 +10314,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;false&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -10057,6 +10501,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;1e-07&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -10180,6 +10640,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;smear&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -10327,6 +10803,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;0&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -10817,6 +11309,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;80&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -10936,6 +11444,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;sbs&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -11105,6 +11629,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;0&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -11354,6 +11894,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;1&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -11506,6 +12062,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;tetrahedral&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -11755,6 +12327,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;stereo&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -11890,6 +12478,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;false&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -11975,7 +12579,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>"VA-API" hstack</p>
+        <p>"VA-API" hstack.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -12050,6 +12654,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;0&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -12194,6 +12814,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;0&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -12268,6 +12904,37 @@
     <div class="doc doc-contents ">
 
         <p>Calculate the Identity between two video streams.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -12403,6 +13070,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;longest&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -12565,6 +13248,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(None)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -12835,6 +13534,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;false&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -13491,7 +14206,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>Apply various GPU filters from libplacebo</p>
+        <p>Apply various GPU filters from libplacebo.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -15133,6 +15848,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;false&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -15320,6 +16051,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;15&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -15545,6 +16292,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;0&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -15761,6 +16524,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;-0.000001&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -15936,6 +16715,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;15&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -16055,6 +16850,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;15&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -16178,6 +16989,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;15&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -16297,6 +17124,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;15&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -16468,6 +17311,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;abs&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -16821,6 +17680,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;0&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -16934,6 +17809,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;15&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -17156,6 +18047,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;longest&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -17339,6 +18246,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;all&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -17413,6 +18336,37 @@
     <div class="doc doc-contents ">
 
         <p>Calculate the MSAD between two video streams.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -17578,6 +18532,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;F&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -17904,6 +18874,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;straight&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -17990,7 +18976,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>Overlay one video on top of another</p>
+        <p>Overlay one video on top of another.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -18044,6 +19030,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;0&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -18170,7 +19172,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>Overlay one video on top of another</p>
+        <p>Overlay one video on top of another.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -18352,6 +19354,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;true&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -18438,7 +19456,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>Overlay a source on top of another</p>
+        <p>Overlay a source on top of another.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -18492,6 +19510,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;0&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -18759,6 +19793,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(None)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -18894,6 +19944,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;false&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -18985,7 +20051,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>Filter video using an OpenCL program</p>
+        <p>Filter video using an OpenCL program.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -19081,6 +20147,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(None)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -19252,6 +20334,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;false&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -19402,6 +20500,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;black&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -19550,6 +20664,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;black&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -19970,6 +21100,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;1&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -20388,6 +21534,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;1&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -20513,7 +21675,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>Calculate the MPEG-7 video signature</p>
+        <p>Calculate the MPEG-7 video signature.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -20714,6 +21876,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;0.5&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -21030,6 +22208,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;vertical&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -21145,6 +22339,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(None)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -21224,7 +22434,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>Select video streams</p>
+        <p>Select video streams.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -21278,6 +22488,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(None)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -21405,6 +22631,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;15&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -21540,6 +22782,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;false&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -21711,6 +22969,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;15&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -21785,6 +23059,37 @@
     <div class="doc doc-contents ">
 
         <p>Calculate the VIF between two video streams.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -21918,6 +23223,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;false&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -22003,7 +23324,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>"VA-API" vstack</p>
+        <p>"VA-API" vstack.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -22078,6 +23399,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;0&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -22222,6 +23559,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;all&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -22484,6 +23837,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(None)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -22722,6 +24091,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;0&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -22882,6 +24267,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;0.5&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -23100,6 +24501,22 @@
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;none&#39;)</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -23203,7 +24620,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>"VA-API" xstack</p>
+        <p>"VA-API" xstack.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -23341,6 +24758,22 @@
             </td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;none&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>

@@ -2577,6 +2577,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    conftest
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -2588,6 +2601,45 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Page contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.conftest.pytest_addoption" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;pytest_addoption
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.conftest.pytest_runtest_setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;pytest_runtest_setup
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3269,6 +3321,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.conftest.pytest_addoption" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;pytest_addoption
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.conftest.pytest_runtest_setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;pytest_runtest_setup
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3298,6 +3376,7 @@
 
     <div class="doc doc-contents first">
 
+        <p>Pytest configuration for typed-ffmpeg scripts.</p>
 
 
 
@@ -3305,6 +3384,36 @@
 
 
 
+
+
+
+<p><span class="doc-section-title">Functions:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            pytest_addoption (scripts.conftest.pytest_addoption)" href="#scripts.conftest.pytest_addoption">pytest_addoption</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Add custom command line options to pytest.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            pytest_runtest_setup (scripts.conftest.pytest_runtest_setup)" href="#scripts.conftest.pytest_runtest_setup">pytest_runtest_setup</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Set up test execution with custom options.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
 
 
 
@@ -3319,6 +3428,108 @@
 
 
 
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="scripts.conftest.pytest_addoption" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">pytest_addoption</span>
+
+
+<a href="#scripts.conftest.pytest_addoption" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">pytest_addoption</span><span class="p">(</span><span class="n">parser</span><span class="p">:</span> <span class="n"><span title="pytest.Parser">Parser</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Add custom command line options to pytest.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>parser</code>
+            </td>
+            <td>
+                  <code><span title="pytest.Parser">Parser</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The pytest argument parser</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="scripts.conftest.pytest_runtest_setup" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">pytest_runtest_setup</span>
+
+
+<a href="#scripts.conftest.pytest_runtest_setup" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">pytest_runtest_setup</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n"><span title="pytest.Item">Item</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Set up test execution with custom options.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>item</code>
+            </td>
+            <td>
+                  <code><span title="pytest.Item">Item</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The pytest test item</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
 
 
 

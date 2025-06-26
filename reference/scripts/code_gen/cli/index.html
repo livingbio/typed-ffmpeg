@@ -3450,6 +3450,8 @@
 
     <div class="doc doc-contents first">
 
+        <p>Code generation CLI for typed-ffmpeg.</p>
+
 
 
 
@@ -3472,7 +3474,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            gen_filter_info (scripts.code_gen.cli.gen_filter_info)" href="#scripts.code_gen.cli.gen_filter_info">gen_filter_info</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Generate filter info</p>
+                  <p>Generate filter info.</p>
                 </div>
               </td>
             </tr>
@@ -3480,7 +3482,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            gen_option_info (scripts.code_gen.cli.gen_option_info)" href="#scripts.code_gen.cli.gen_option_info">gen_option_info</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Generate option info</p>
+                  <p>Generate option info.</p>
                 </div>
               </td>
             </tr>
@@ -3488,7 +3490,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            generate (scripts.code_gen.cli.generate)" href="#scripts.code_gen.cli.generate">generate</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Generate filter and option documents</p>
+                  <p>Generate filter and option documents.</p>
                 </div>
               </td>
             </tr>
@@ -3496,7 +3498,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            load_codecs (scripts.code_gen.cli.load_codecs)" href="#scripts.code_gen.cli.load_codecs">load_codecs</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Load codecs from the output path</p>
+                  <p>Load codecs from the output path.</p>
                 </div>
               </td>
             </tr>
@@ -3504,7 +3506,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            load_filters (scripts.code_gen.cli.load_filters)" href="#scripts.code_gen.cli.load_filters">load_filters</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Load filters from the output path</p>
+                  <p>Load filters from the output path.</p>
                 </div>
               </td>
             </tr>
@@ -3512,7 +3514,7 @@
               <td><code><a class="autorefs autorefs-internal" title="            load_formats (scripts.code_gen.cli.load_formats)" href="#scripts.code_gen.cli.load_formats">load_formats</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Load muxers from the output path</p>
+                  <p>Load muxers from the output path.</p>
                 </div>
               </td>
             </tr>
@@ -3558,7 +3560,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>Generate filter info</p>
+        <p>Generate filter info.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -3647,7 +3649,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>Generate option info</p>
+        <p>Generate option info.</p>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -3697,7 +3699,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>Generate filter and option documents</p>
+        <p>Generate filter and option documents.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -3759,12 +3761,17 @@
 
 
 <a href="#scripts.code_gen.cli.load_codecs" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">load_codecs</span><span class="p">(</span><span class="n">rebuild</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="scripts.code_gen.schema.FFMpegCodec">FFMpegCodec</span></span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">load_codecs</span><span class="p">(</span><span class="n">rebuild</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            FFMpegCodec
+
+
+  
+      dataclass
+   (scripts.code_gen.schema.FFMpegCodec)" href="../schema/#scripts.code_gen.schema.FFMpegCodec">FFMpegCodec</a></span><span class="p">]</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Load codecs from the output path</p>
+        <p>Load codecs from the output path.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -3809,11 +3816,39 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="list">list</span>[<span title="scripts.code_gen.schema.FFMpegCodec">FFMpegCodec</span>]</code>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="            FFMpegCodec
+
+
+  
+      dataclass
+   (scripts.code_gen.schema.FFMpegCodec)" href="../schema/#scripts.code_gen.schema.FFMpegCodec">FFMpegCodec</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
                 <p>The codecs</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If a codec is invalid.</p>
               </div>
             </td>
           </tr>
@@ -3843,7 +3878,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>Load filters from the output path</p>
+        <p>Load filters from the output path.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -3917,12 +3952,17 @@
 
 
 <a href="#scripts.code_gen.cli.load_formats" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">load_formats</span><span class="p">(</span><span class="n">rebuild</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="scripts.code_gen.schema.FFMpegFormat">FFMpegFormat</span></span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">load_formats</span><span class="p">(</span><span class="n">rebuild</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            FFMpegFormat
+
+
+  
+      dataclass
+   (scripts.code_gen.schema.FFMpegFormat)" href="../schema/#scripts.code_gen.schema.FFMpegFormat">FFMpegFormat</a></span><span class="p">]</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Load muxers from the output path</p>
+        <p>Load muxers from the output path.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -3967,11 +4007,39 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="list">list</span>[<span title="scripts.code_gen.schema.FFMpegFormat">FFMpegFormat</span>]</code>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="            FFMpegFormat
+
+
+  
+      dataclass
+   (scripts.code_gen.schema.FFMpegFormat)" href="../schema/#scripts.code_gen.schema.FFMpegFormat">FFMpegFormat</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
                 <p>The muxers</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If a format is invalid.</p>
               </div>
             </td>
           </tr>

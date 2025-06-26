@@ -3887,9 +3887,10 @@ as frozen, as they can only contain immutable data.</p>
 <details class="example" open>
   <summary>Example</summary>
   <div class="language-python highlight"><pre><span></span><code><span class="c1"># Convert a nested structure to immutable form</span>
-<span class="n">frozen_data</span> <span class="o">=</span> <span class="n">frozen</span><span class="p">(</span>
-    <span class="p">{</span><span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;option1&quot;</span><span class="p">,</span> <span class="s2">&quot;option2&quot;</span><span class="p">],</span> <span class="s2">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">}}</span>
-<span class="p">)</span>
+<span class="n">frozen_data</span> <span class="o">=</span> <span class="n">frozen</span><span class="p">({</span>
+    <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;option1&quot;</span><span class="p">,</span> <span class="s2">&quot;option2&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">},</span>
+<span class="p">})</span>
 <span class="c1"># Result: FrozenDict with tuple instead of list and nested FrozenDict</span>
 </code></pre></div>
 </details>
