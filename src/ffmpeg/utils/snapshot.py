@@ -59,6 +59,7 @@ class DAGSnapshotExtension(JSONSnapshotExtension):
 
         Returns:
             The serialized representation of the DAG node
+
         """
         stream = Stream(node=data)
 

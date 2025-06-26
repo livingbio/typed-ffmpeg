@@ -26,6 +26,7 @@ class Default(str):
         # This will use FFmpeg's default crf value
         video.output("output.mp4", crf=Default("23"))
         ```
+
     """
 
     ...
@@ -47,6 +48,7 @@ class Auto(Default):
         # The number of inputs is automatically derived from the length of streams
         hstack(*streams, inputs=Auto("len(streams)"))
         ```
+
     """
 
 

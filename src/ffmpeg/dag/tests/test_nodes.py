@@ -50,9 +50,12 @@ from ..schema import Node
         pytest.param(
             FilterNode(
                 name="scale",
-                kwargs=FrozenDict(
-                    {"w": "1920", "h": "1080", "true": True, "false": False}
-                ),
+                kwargs=FrozenDict({
+                    "w": "1920",
+                    "h": "1080",
+                    "true": True,
+                    "false": False,
+                }),
             ),
             FilterNode,
             id="filter-node",
@@ -186,12 +189,10 @@ def test_output_run(datadir: Path) -> None:
 def test_filter_node_output_typings() -> None:
     f = FilterNode(
         name="scale",
-        kwargs=FrozenDict(
-            {
-                "w": "1920",
-                "h": "1080",
-            }
-        ),
+        kwargs=FrozenDict({
+            "w": "1920",
+            "h": "1080",
+        }),
         output_typings=(StreamType.video, StreamType.audio),
     )
     assert f.video(0).index == 0

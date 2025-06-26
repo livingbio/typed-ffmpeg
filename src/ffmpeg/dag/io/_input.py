@@ -1,5 +1,5 @@
 # NOTE: this file is auto-generated, do not modify
-
+"""Input node."""
 
 from pathlib import Path
 from typing import Any
@@ -79,7 +79,7 @@ def input(
     extra_options: dict[str, Any] | None = None,
 ) -> AVStream:
     """
-    Input file URL (ffmpeg ``-i`` option)
+    Input file URL (ffmpeg ``-i`` option).
 
     Args:
         filename: Input file URL
@@ -147,6 +147,7 @@ def input(
     >>> input('input.mp4')
     <AVStream:input.mp4:0>
     ```
+
     """
     return InputNode(
         filename=str(filename),

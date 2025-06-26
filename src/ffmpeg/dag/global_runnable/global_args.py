@@ -1,5 +1,5 @@
 # NOTE: this file is auto-generated, do not modify
-
+"""Global arguments."""
 
 from __future__ import annotations
 
@@ -136,8 +136,8 @@ class GlobalArgs(ABC):
 
         Returns:
             GlobalStream: GlobalStream instance
-        """
 
+        """
         return self._global_node(
             **merge(
                 {

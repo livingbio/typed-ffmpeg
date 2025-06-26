@@ -1,5 +1,5 @@
 # NOTE: this file is auto-generated, do not modify
-
+"""Video stream."""
 
 from __future__ import annotations
 
@@ -31,6 +31,8 @@ if TYPE_CHECKING:
 
 
 class VideoStream(FilterableStream):
+    """Video stream."""
+
     def addroi(
         self,
         *,
@@ -53,6 +55,7 @@ class VideoStream(FilterableStream):
             h: Region height. (default "0")
             qoffset: Quantisation offset to apply in the region. (from -1 to 1) (default -1/10)
             clear: Remove any existing regions of interest before adding the new one. (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -88,6 +91,9 @@ class VideoStream(FilterableStream):
 
         Extract an alpha channel as a grayscale image component.
 
+        Args:
+            extra_options: Extra options for the filter
+
         Returns:
             default: the video stream
 
@@ -112,6 +118,9 @@ class VideoStream(FilterableStream):
         """
 
         Copy the luma value of the second input into the alpha channel of the first input.
+
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -156,6 +165,7 @@ class VideoStream(FilterableStream):
             low: set low limit for amplification (from 0 to 65535) (default 65535)
             high: set high limit for amplification (from 0 to 65535) (default 65535)
             planes: set what planes to filter (default 7)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -204,6 +214,7 @@ class VideoStream(FilterableStream):
             fontsdir: set the directory containing the fonts to read
             alpha: enable processing of alpha channel (default false)
             shaping: set shaping engine (from -1 to 1) (default auto)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -264,6 +275,7 @@ class VideoStream(FilterableStream):
             _0s: set sigma for 1st plane (from 0 to 32767) (default 32767)
             _1s: set sigma for 2nd plane (from 0 to 32767) (default 32767)
             _2s: set sigma for 3rd plane (from 0 to 32767) (default 32767)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -313,6 +325,7 @@ class VideoStream(FilterableStream):
             sizeX: set horizontal size (from 1 to 1024) (default 1)
             planes: set planes to filter (from 0 to 15) (default 15)
             sizeY: set vertical size (from 0 to 1024) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -347,12 +360,13 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Apply average blur filter
+        Apply average blur filter.
 
         Args:
             sizeX: set horizontal size (from 1 to 1024) (default 1)
             planes: set planes to filter (from 0 to 15) (default 15)
             sizeY: set vertical size (from 0 to 1024) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -389,12 +403,13 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Apply avgblur mask to input video
+        Apply avgblur mask to input video.
 
         Args:
             sizeX: Set horizontal radius (from 1 to 32) (default 3)
             sizeY: Set vertical radius (from 1 to 32) (default 3)
             planes: Set planes to filter (bitmask) (from 0 to 15) (default 15)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -437,6 +452,7 @@ class VideoStream(FilterableStream):
             threshold: set the scene change threshold (from 0 to 1) (default 0.08)
             similarity: set the similarity (from 0 to 1) (default 0.1)
             blend: set the blend value (from 0 to 1) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -475,6 +491,7 @@ class VideoStream(FilterableStream):
 
         Args:
             min_val: set minimum luminance value for bounding box (from 0 to 65535) (default 16)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -509,6 +526,7 @@ class VideoStream(FilterableStream):
 
         Args:
             action: set action (from 0 to 1) (default start)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -547,6 +565,7 @@ class VideoStream(FilterableStream):
             sigmaS: set spatial sigma (from 0 to 512) (default 0.1)
             sigmaR: set range sigma (from 0 to 1) (default 0.1)
             planes: set planes to filter (from 0 to 15) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -585,6 +604,7 @@ class VideoStream(FilterableStream):
         Args:
             bitplane: set bit plane to use for measuring noise (from 1 to 16) (default 1)
             filter: show noisy pixels (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -626,6 +646,7 @@ class VideoStream(FilterableStream):
             d: set minimum detected black duration in seconds (from 0 to DBL_MAX) (default 2)
             picture_black_ratio_th: set the picture black ratio threshold (from 0 to 1) (default 0.98)
             pixel_black_th: set the pixel black threshold (from 0 to 1) (default 0.1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -664,6 +685,7 @@ class VideoStream(FilterableStream):
         Args:
             amount: percentage of the pixels that have to be below the threshold for the frame to be considered black (from 0 to 100) (default 98)
             threshold: threshold below which a pixel value is considered black (from 0 to 255) (default 32)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -953,6 +975,7 @@ class VideoStream(FilterableStream):
             c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
             c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
             all_opacity: set opacity for all color components (from 0 to 1) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1010,7 +1033,7 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Blend two video frames in Vulkan
+        Blend two video frames in Vulkan.
 
         Args:
             c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
@@ -1023,6 +1046,7 @@ class VideoStream(FilterableStream):
             c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
             c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
             all_opacity: set opacity for all color components (from 0 to 1) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1073,6 +1097,7 @@ class VideoStream(FilterableStream):
             period_min: Minimum period to search for (from 2 to 32) (default 3)
             period_max: Maximum period to search for (from 2 to 64) (default 24)
             planes: set planes to filter (from 0 to 15) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1119,6 +1144,7 @@ class VideoStream(FilterableStream):
             block_pct: block pooling threshold when calculating blurriness (from 1 to 100) (default 80)
             block_width: block size for block-based abbreviation of blurriness (from -1 to INT_MAX) (default -1)
             planes: set planes to filter (from 0 to 15) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1168,6 +1194,7 @@ class VideoStream(FilterableStream):
             chroma_power: How many times should the boxblur be applied to chroma (from -1 to INT_MAX) (default -1)
             alpha_radius: Radius of the alpha blurring box
             alpha_power: How many times should the boxblur be applied to alpha (from -1 to INT_MAX) (default -1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1208,7 +1235,7 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Apply boxblur filter to input video
+        Apply boxblur filter to input video.
 
         Args:
             luma_radius: Radius of the luma blurring box (default "2")
@@ -1217,6 +1244,7 @@ class VideoStream(FilterableStream):
             chroma_power: How many times should the boxblur be applied to chroma (from -1 to INT_MAX) (default -1)
             alpha_radius: Radius of the alpha blurring box
             alpha_power: How many times should the boxblur be applied to alpha (from -1 to INT_MAX) (default -1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1264,6 +1292,7 @@ class VideoStream(FilterableStream):
             mode: specify the interlacing mode (from 0 to 1) (default send_field)
             parity: specify the assumed picture field parity (from -1 to 1) (default auto)
             deint: specify which frames to deinterlace (from 0 to 1) (default all)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1302,12 +1331,13 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Deinterlace Vulkan frames via bwdif
+        Deinterlace Vulkan frames via bwdif.
 
         Args:
             mode: specify the interlacing mode (from 0 to 3) (default send_frame)
             parity: specify the assumed picture field parity (from -1 to 1) (default auto)
             deint: specify which frames to deinterlace (from 0 to 1) (default all)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1346,6 +1376,7 @@ class VideoStream(FilterableStream):
         Args:
             strength: set the sharpening strength (from 0 to 1) (default 0)
             planes: set what planes to filter (default 7)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1375,7 +1406,10 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Repack CEA-708 closed caption metadata
+        Repack CEA-708 closed caption metadata.
+
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1402,11 +1436,12 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Offset chroma of input video (chromatic aberration)
+        Offset chroma of input video (chromatic aberration).
 
         Args:
             dist_x: Set horizontal distortion amount (from -10 to 10) (default 0)
             dist_y: Set vertical distortion amount (from -10 to 10) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1450,6 +1485,7 @@ class VideoStream(FilterableStream):
             similarity: set the chromahold similarity value (from 1e-05 to 1) (default 0.01)
             blend: set the chromahold blend value (from 0 to 1) (default 0)
             yuv: color parameter is in yuv instead of rgb (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1493,6 +1529,7 @@ class VideoStream(FilterableStream):
             similarity: set the chromakey similarity value (from 1e-05 to 1) (default 0.01)
             blend: set the chromakey key blend value (from 0 to 1) (default 0)
             yuv: color parameter is in yuv instead of rgb (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1548,6 +1585,7 @@ class VideoStream(FilterableStream):
             threu: set u threshold (from 1 to 200) (default 200)
             threv: set v threshold (from 1 to 200) (default 200)
             distance: set distance type (from 0 to 1) (default manhattan)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1598,6 +1636,7 @@ class VideoStream(FilterableStream):
             crh: shift chroma-red horizontally (from -255 to 255) (default 0)
             crv: shift chroma-red vertically (from -255 to 255) (default 0)
             edge: set edge operation (from 0 to 1) (default smear)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1688,6 +1727,7 @@ class VideoStream(FilterableStream):
             showwhite: (default false)
             gamma: (from 0.1 to 6) (default 2.6)
             fill: fill with CIE colors (default true)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1739,6 +1779,7 @@ class VideoStream(FilterableStream):
             mv_type: set motion vectors type (default 0)
             frame_type: set frame types to visualize motion vectors of (default 0)
             block: set block partitioning structure to visualize (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1795,6 +1836,7 @@ class VideoStream(FilterableStream):
             gh: set green highlights (from -1 to 1) (default 0)
             bh: set blue highlights (from -1 to 1) (default 0)
             pl: preserve lightness (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1874,6 +1916,7 @@ class VideoStream(FilterableStream):
             aa: set the alpha gain for the alpha channel (from -2 to 2) (default 1)
             pc: set the preserve color mode (from 0 to 6) (default none)
             pa: set the preserve color amount (from 0 to 1) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1939,6 +1982,7 @@ class VideoStream(FilterableStream):
             gmw: set the green-magenta weight (from 0 to 1) (default 0)
             byw: set the blue-yellow weight (from 0 to 1) (default 0)
             pl: set the amount of preserving lightness (from 0 to 1) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -1993,6 +2037,7 @@ class VideoStream(FilterableStream):
             bh: set the blue highlight spot (from -1 to 1) (default 0)
             saturation: set the amount of saturation (from -3 to 3) (default 1)
             analyze: set the analyze mode (from 0 to 3) (default manual)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -2036,6 +2081,7 @@ class VideoStream(FilterableStream):
             color: set the colorhold key color (default "black")
             similarity: set the colorhold similarity value (from 1e-05 to 1) (default 0.01)
             blend: set the colorhold blend value (from 0 to 1) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -2078,6 +2124,7 @@ class VideoStream(FilterableStream):
             saturation: set the saturation (from 0 to 1) (default 0.5)
             lightness: set the lightness (from 0 to 1) (default 0.5)
             mix: set the mix of source lightness (from 0 to 1) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -2119,6 +2166,7 @@ class VideoStream(FilterableStream):
             color: set the colorkey key color (default "black")
             similarity: set the colorkey similarity value (from 1e-05 to 1) (default 0.01)
             blend: set the colorkey key blend value (from 0 to 1) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -2159,6 +2207,7 @@ class VideoStream(FilterableStream):
             color: set the colorkey key color (default "black")
             similarity: set the colorkey similarity value (from 0.01 to 1) (default 0.01)
             blend: set the colorkey key blend value (from 0 to 1) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -2231,6 +2280,7 @@ class VideoStream(FilterableStream):
             bomax: set output blue white point (from 0 to 1) (default 1)
             aomax: set output alpha white point (from 0 to 1) (default 1)
             preserve: set preserve color mode (from 0 to 6) (default none)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -2291,6 +2341,7 @@ class VideoStream(FilterableStream):
             nb_patches: set number of patches (from 0 to 64) (default 0)
             type: set the target type used (from 0 to 1) (default absolute)
             kernel: set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -2356,6 +2407,7 @@ class VideoStream(FilterableStream):
         Args:
             src: set source color matrix (from -1 to 4) (default -1)
             dst: set destination color matrix (from -1 to 4) (default -1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -2541,6 +2593,7 @@ class VideoStream(FilterableStream):
             irange: Input color range (from 0 to 2) (default 0)
             iprimaries: Input color primaries (from 0 to 22) (default 2)
             itrc: Input transfer characteristics (from 0 to 18) (default 2)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -2592,6 +2645,7 @@ class VideoStream(FilterableStream):
             temperature: set the temperature in Kelvin (from 1000 to 40000) (default 6500)
             mix: set the mix with filtered output (from 0 to 1) (default 1)
             pl: set the amount of preserving lightness (from 0 to 1) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -2660,6 +2714,7 @@ class VideoStream(FilterableStream):
             _1mode: set matrix mode for 2nd plane (from 0 to 2) (default square)
             _2mode: set matrix mode for 3rd plane (from 0 to 2) (default square)
             _3mode: set matrix mode for 4th plane (from 0 to 2) (default square)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -2715,7 +2770,7 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Apply convolution mask to input video
+        Apply convolution mask to input video.
 
         Args:
             _0m: set matrix for 2nd plane (default "0 0 0 0 1 0 0 0 0")
@@ -2729,6 +2784,7 @@ class VideoStream(FilterableStream):
             _1bias: set bias for 2nd plane (from 0 to INT_MAX) (default 0)
             _2bias: set bias for 3rd plane (from 0 to INT_MAX) (default 0)
             _3bias: set bias for 4th plane (from 0 to INT_MAX) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -2780,6 +2836,7 @@ class VideoStream(FilterableStream):
             planes: set planes to convolve (from 0 to 15) (default 7)
             impulse: when to process impulses (from 0 to 1) (default all)
             noise: set noise (from 0 to 1) (default 1e-07)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -2815,6 +2872,9 @@ class VideoStream(FilterableStream):
 
         Copy the input video unchanged to the output.
 
+        Args:
+            extra_options: Extra options for the filter
+
         Returns:
             default: the video stream
 
@@ -2839,6 +2899,9 @@ class VideoStream(FilterableStream):
         """
 
         Calculate the correlation between two video streams.
+
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -2871,6 +2934,7 @@ class VideoStream(FilterableStream):
         Args:
             cover: cover bitmap filename
             mode: set removal mode (from 0 to 1) (default blur)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -2916,6 +2980,7 @@ class VideoStream(FilterableStream):
             y: set the y crop area expression (default "(in_h-out_h)/2")
             keep_aspect: keep aspect ratio (default false)
             exact: do exact cropping (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -2973,6 +3038,7 @@ class VideoStream(FilterableStream):
             high: Set high threshold for edge detection (from 0 to 1) (default 0.0980392)
             low: Set low threshold for edge detection (from 0 to 1) (default 0.0588235)
             mv_threshold: motion vector threshold when estimating video window size (from 0 to 100) (default 8)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3020,6 +3086,7 @@ class VideoStream(FilterableStream):
             cue: cue unix timestamp in microseconds (from 0 to I64_MAX) (default 0)
             preroll: preroll duration in seconds (default 0)
             buffer: buffer duration in seconds (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3086,6 +3153,7 @@ class VideoStream(FilterableStream):
             psfile: set Photoshop curves file name
             plot: save Gnuplot script of the curves in specified file
             interp: specify the kind of interpolation (from 0 to 1) (default natural)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3142,6 +3210,7 @@ class VideoStream(FilterableStream):
             opacity: set background opacity (from 0 to 1) (default 0.75)
             format: set display number format (from 0 to 1) (default hex)
             components: set components to display (from 1 to 15) (default 15)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3187,6 +3256,7 @@ class VideoStream(FilterableStream):
             angle: set angle (from 0 to 360) (default 45)
             radius: set radius (from 0 to 8192) (default 5)
             planes: set planes to filter (from 0 to 15) (default 15)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3229,6 +3299,7 @@ class VideoStream(FilterableStream):
             overlap: set number of block overlapping pixels (from -1 to 15) (default -1)
             expr: set coefficient factor expression
             n: set the block size, expressed in bits (from 3 to 4) (default 3)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3280,6 +3351,7 @@ class VideoStream(FilterableStream):
             direction: set direction (from -6.28319 to 6.28319) (default 6.28319)
             blur: set blur (default true)
             coupling: set plane coupling (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3333,6 +3405,7 @@ class VideoStream(FilterableStream):
             gamma: set 3rd detection threshold (from 0 to 1) (default 0.05)
             delta: set 4th detection threshold (from 0 to 1) (default 0.05)
             planes: set planes to filter (from 0 to 15) (default 15)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3378,6 +3451,7 @@ class VideoStream(FilterableStream):
             planes: set planes to deconvolve (from 0 to 15) (default 7)
             impulse: when to process impulses (from 0 to 1) (default all)
             noise: set noise (from 0 to 1) (default 1e-07)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3427,6 +3501,7 @@ class VideoStream(FilterableStream):
             tl: set tolerance for temporal luma (from 0 to 1) (default 0.079)
             tc: set tolerance for chroma temporal variation (from 0 to 1) (default 0.058)
             ct: set temporal chroma threshold (from 0 to 1) (default 0.019)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3471,6 +3546,7 @@ class VideoStream(FilterableStream):
             threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
             threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
             threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3514,6 +3590,7 @@ class VideoStream(FilterableStream):
             size: set how many frames to use (from 2 to 129) (default 5)
             mode: set how to smooth luminance (from 0 to 6) (default am)
             bypass: leave frames unchanged (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3550,6 +3627,7 @@ class VideoStream(FilterableStream):
 
         Args:
             cycle: set the length of the cycle to use for dejuddering (from 2 to 240) (default 4)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3592,6 +3670,7 @@ class VideoStream(FilterableStream):
             w: set logo width (default "-1")
             h: set logo height (default "-1")
             show: show delogo area (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3638,6 +3717,7 @@ class VideoStream(FilterableStream):
             model: path to model file
             input: input name of the model (default "x")
             output: output name of the model (default "y")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3700,6 +3780,7 @@ class VideoStream(FilterableStream):
             search: set search strategy (from 0 to 1) (default exhaustive)
             filename: set motion search detailed log file name
             opencl: ignored (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3746,7 +3827,7 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Feature-point based video stabilization filter
+        Feature-point based video stabilization filter.
 
         Args:
             tripod: simulates a tripod by preventing any camera movement whatsoever from the original frame (default false)
@@ -3755,6 +3836,7 @@ class VideoStream(FilterableStream):
             refine_features: refine feature point locations at a sub-pixel level (default true)
             smooth_strength: smoothing strength (0 attempts to adaptively determine optimal strength) (from 0 to 1) (default 0)
             smooth_window_multiplier: multiplier for number of frames to buffer for motion data (from 0.1 to 10) (default 2)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3810,6 +3892,7 @@ class VideoStream(FilterableStream):
             blue: set blue scale (from -100 to 100) (default 0)
             brightness: set brightness (from -10 to 10) (default 0)
             alpha: change alpha component (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3857,6 +3940,7 @@ class VideoStream(FilterableStream):
             first_field: select first field (from 0 to 1) (default top)
             pattern: pattern that describe for how many fields a frame is to be displayed (default "23")
             start_frame: position of first frame with respect to the pattern if stream is cut (from 0 to 13) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3901,6 +3985,7 @@ class VideoStream(FilterableStream):
             threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
             threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
             threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3939,7 +4024,7 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Apply dilation effect
+        Apply dilation effect.
 
         Args:
             threshold0: set threshold for 1st plane (from 0 to 65535) (default 65535)
@@ -3947,6 +4032,7 @@ class VideoStream(FilterableStream):
             threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
             threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
             coordinates: set coordinates (from 0 to 255) (default 255)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -3991,6 +4077,7 @@ class VideoStream(FilterableStream):
 
         Args:
             edge: set edge mode (from 0 to 3) (default smear)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4047,6 +4134,7 @@ class VideoStream(FilterableStream):
             confidence: threshold of confidence (from 0 to 1) (default 0.5)
             labels: path to labels file
             target: which one to be classified
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4106,6 +4194,7 @@ class VideoStream(FilterableStream):
             _async: use DNN async inference (ignored, use backend_configs='async=1') (default true)
             confidence: threshold of confidence (from 0 to 1) (default 0.5)
             labels: path to labels file
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4160,6 +4249,7 @@ class VideoStream(FilterableStream):
             backend_configs: backend configs
             options: backend configs (deprecated, use backend_configs)
             _async: use DNN async inference (ignored, use backend_configs='async=1') (default true)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4204,6 +4294,7 @@ class VideoStream(FilterableStream):
 
         Args:
             first_field: set first field (from 0 to 1) (default top)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4252,6 +4343,7 @@ class VideoStream(FilterableStream):
             thickness: set the box thickness (default "3")
             replace: replace color & alpha (default false)
             box_source: use datas from bounding box in side data
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4323,6 +4415,7 @@ class VideoStream(FilterableStream):
             slide: set slide mode (from 0 to 4) (default frame)
             size: set graph size (default "900x256")
             rate: set video rate (default "25")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4383,6 +4476,7 @@ class VideoStream(FilterableStream):
             color: set color of the grid (default "black")
             thickness: set grid line thickness (default "1")
             replace: replace color & alpha (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4526,6 +4620,7 @@ class VideoStream(FilterableStream):
             text_source: the source of text
             text_shaping: attempt to shape text before drawing (default true)
             ft_load_flags: set font loading flags for libfreetype (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4602,6 +4697,7 @@ class VideoStream(FilterableStream):
             low: set low threshold (from 0 to 1) (default 0.0784314)
             mode: set mode (from 0 to 2) (default wires)
             planes: set planes to filter (default y+u+v+r+g+b)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4647,6 +4743,7 @@ class VideoStream(FilterableStream):
             seed: set the random seed (from -1 to UINT32_MAX) (default -1)
             pal8: set the pal8 output (default false)
             use_alpha: use alpha channel for mapping (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4685,6 +4782,7 @@ class VideoStream(FilterableStream):
 
         Args:
             mode: set kind of histogram entropy measurement (from 0 to 1) (default normal)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4719,6 +4817,7 @@ class VideoStream(FilterableStream):
 
         Args:
             n: set scale factor (from 2 to 3) (default 3)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4769,6 +4868,7 @@ class VideoStream(FilterableStream):
             gamma_b: gamma value for blue (default "1.0")
             gamma_weight: set the gamma weight which reduces the effect of gamma on bright areas (default "1.0")
             eval: specify when to evaluate expressions (from 0 to 1) (default init)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4819,6 +4919,7 @@ class VideoStream(FilterableStream):
             threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
             threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
             threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4857,7 +4958,7 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Apply erosion effect
+        Apply erosion effect.
 
         Args:
             threshold0: set threshold for 1st plane (from 0 to 65535) (default 65535)
@@ -4865,6 +4966,7 @@ class VideoStream(FilterableStream):
             threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
             threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
             coordinates: set coordinates (from 0 to 255) (default 255)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4921,6 +5023,7 @@ class VideoStream(FilterableStream):
             mcost: specify the middle cost for edge matching (from 0 to 50) (default 1)
             dcost: specify the distance cost for edge matching (from 0 to 50) (default 1)
             interp: specify the type of interpolation (from 0 to 2) (default 4p)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -4965,6 +5068,7 @@ class VideoStream(FilterableStream):
         Args:
             exposure: set the exposure correction (from -3 to 3) (default 0)
             black: set the black level correction (from -1 to 1) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5002,6 +5106,7 @@ class VideoStream(FilterableStream):
 
         Args:
             planes: set planes (default r)
+            extra_options: Extra options for the filter
 
         Returns:
             filter_node: the filter node
@@ -5052,6 +5157,7 @@ class VideoStream(FilterableStream):
             start_time: Number of seconds of the beginning of the effect. (default 0)
             duration: Duration of the effect in seconds. (default 0)
             color: set color (default "black")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5098,6 +5204,7 @@ class VideoStream(FilterableStream):
         Args:
             x: set top left crop position (from 0 to INT_MAX) (default 0)
             w: set crop size (from 0 to INT_MAX) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5181,6 +5288,7 @@ class VideoStream(FilterableStream):
             next: set number of next frames for temporal denoising (from 0 to 1) (default 0)
             planes: set planes to filter (from 0 to 15) (default 7)
             window: set window function (from 0 to 20) (default hann)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5235,6 +5343,7 @@ class VideoStream(FilterableStream):
             weight_U: set chrominance expression in U plane
             weight_V: set chrominance expression in V plane
             eval: specify when to evaluate expressions (from 0 to 1) (default init)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5275,6 +5384,7 @@ class VideoStream(FilterableStream):
 
         Args:
             type: set field type (top or bottom) (from 0 to 1) (default top)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5313,6 +5423,7 @@ class VideoStream(FilterableStream):
         Args:
             hint: set hint file
             mode: set hint mode (from 0 to 2) (default absolute)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5348,6 +5459,7 @@ class VideoStream(FilterableStream):
 
         Args:
             order: output field order (from 0 to 1) (default tff)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5394,6 +5506,7 @@ class VideoStream(FilterableStream):
             bottom: set the bottom fill border (from 0 to INT_MAX) (default 0)
             mode: set the fill borders mode (from 0 to 6) (default smear)
             color: set the color for the fixed/fade mode (default "black")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5441,6 +5554,7 @@ class VideoStream(FilterableStream):
             mipmaps: set mipmaps (from 1 to 5) (default 3)
             xmin: (from 0 to INT_MAX) (default 0)
             discard: (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5473,7 +5587,10 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Flip both horizontally and vertically
+        Flip both horizontally and vertically.
+
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5521,6 +5638,7 @@ class VideoStream(FilterableStream):
             d1: set destination #1 component value (from 0 to 65535) (default 0)
             d2: set destination #2 component value (from 0 to 65535) (default 0)
             d3: set destination #3 component value (from 0 to 65535) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5564,6 +5682,7 @@ class VideoStream(FilterableStream):
 
         Args:
             pix_fmts: A '|'-separated list of pixel formats
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5606,6 +5725,7 @@ class VideoStream(FilterableStream):
             start_time: Assume the first PTS should be this value. (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
             round: set rounding method for timestamps (from 0 to 5) (default near)
             eof_action: action performed for last frame (from 0 to 1) (default round)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5646,6 +5766,7 @@ class VideoStream(FilterableStream):
 
         Args:
             format: Frame pack output format (from 0 to INT_MAX) (default sbs)
+            extra_options: Extra options for the filter
 
         Returns:
             packed: the video stream
@@ -5693,6 +5814,7 @@ class VideoStream(FilterableStream):
             interp_end: point to end linear interpolation (from 0 to 255) (default 240)
             scene: scene change level (from 0 to 100) (default 8.2)
             flags: set flags (default scene_change_detect+scd)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5731,6 +5853,7 @@ class VideoStream(FilterableStream):
 
         Args:
             step: set frame step (from 1 to INT_MAX) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5767,6 +5890,7 @@ class VideoStream(FilterableStream):
         Args:
             n: set noise tolerance (from 0 to 1) (default 0.001)
             d: set minimum duration in seconds (default 2)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5807,6 +5931,7 @@ class VideoStream(FilterableStream):
             first: set first frame to freeze (from 0 to I64_MAX) (default 0)
             last: set last frame to freeze (from 0 to I64_MAX) (default 0)
             replace: set frame to replace (from 0 to I64_MAX) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5848,6 +5973,7 @@ class VideoStream(FilterableStream):
         Args:
             filter_name:
             filter_params:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5889,6 +6015,7 @@ class VideoStream(FilterableStream):
             qp: force a constant quantizer parameter (from 0 to 64) (default 0)
             strength: set filter strength (from -15 to 32) (default 0)
             use_bframe_qp: use B-frames' QP (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5932,6 +6059,7 @@ class VideoStream(FilterableStream):
             steps: set number of steps (from 1 to 6) (default 1)
             planes: set planes to filter (from 0 to 15) (default 15)
             sigmaV: set vertical sigma (from -1 to 1024) (default -1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -5969,7 +6097,7 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Gaussian Blur in Vulkan
+        Gaussian Blur in Vulkan.
 
         Args:
             sigma: Set sigma (from 0.01 to 1024) (default 0.5)
@@ -5977,6 +6105,7 @@ class VideoStream(FilterableStream):
             planes: Set planes to filter (from 0 to 15) (default 15)
             size: Set kernel size (from 1 to 127) (default 19)
             sizeV: Set vertical kernel size (from 0 to 127) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6031,6 +6160,7 @@ class VideoStream(FilterableStream):
             green_expr: set green expression
             blue_expr: set blue expression
             interpolation: set interpolation method (from 0 to 1) (default bilinear)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6074,6 +6204,7 @@ class VideoStream(FilterableStream):
         Args:
             strength: The maximum amount by which the filter will change any one pixel. (from 0.51 to 64) (default 1.2)
             radius: The neighborhood to fit the gradient to. (from 4 to 32) (default 16)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6141,6 +6272,7 @@ class VideoStream(FilterableStream):
             mode: set mode (default 0)
             flags: set flags (default all+queue)
             rate: set video rate (default "25")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6173,7 +6305,10 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Adjust white balance using LAB gray world algorithm
+        Adjust white balance using LAB gray world algorithm.
+
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6207,6 +6342,7 @@ class VideoStream(FilterableStream):
             difford: set differentiation order (from 0 to 2) (default 1)
             minknorm: set Minkowski norm (from 0 to 20) (default 1)
             sigma: set sigma (from 0 to 1024) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6248,6 +6384,7 @@ class VideoStream(FilterableStream):
         Args:
             clut: when to process CLUT (from 0 to 1) (default all)
             interp: select interpolation mode (from 0 to 4) (default tetrahedral)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6282,6 +6419,9 @@ class VideoStream(FilterableStream):
 
         Horizontally flip the input video.
 
+        Args:
+            extra_options: Extra options for the filter
+
         Returns:
             default: the video stream
 
@@ -6304,7 +6444,10 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Horizontally flip the input video in Vulkan
+        Horizontally flip the input video in Vulkan.
+
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6340,6 +6483,7 @@ class VideoStream(FilterableStream):
             strength: set the strength (from 0 to 1) (default 0.2)
             intensity: set the intensity (from 0 to 1) (default 0.21)
             antibanding: set the antibanding level (from 0 to 2) (default none)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6407,6 +6551,7 @@ class VideoStream(FilterableStream):
             fgopacity: set foreground opacity (from 0 to 1) (default 0.7)
             bgopacity: set background opacity (from 0 to 1) (default 0.5)
             colors_mode: set colors mode (from 0 to 9) (default whiteonblack)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6454,6 +6599,7 @@ class VideoStream(FilterableStream):
             chroma_spatial: spatial chroma strength (from 0 to DBL_MAX) (default 0)
             luma_tmp: temporal luma strength (from 0 to DBL_MAX) (default 0)
             chroma_tmp: temporal chroma strength (from 0 to DBL_MAX) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6491,6 +6637,7 @@ class VideoStream(FilterableStream):
 
         Args:
             n: set scale factor (from 2 to 4) (default 3)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6533,6 +6680,7 @@ class VideoStream(FilterableStream):
             val: set the value value (from -1 to 1) (default 0)
             similarity: set the hsvhold similarity value (from 1e-05 to 1) (default 0.01)
             blend: set the hsvhold blend value (from 0 to 1) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6579,6 +6727,7 @@ class VideoStream(FilterableStream):
             val: set the value value (from -1 to 1) (default 0)
             similarity: set the hsvkey similarity value (from 1e-05 to 1) (default 0.01)
             blend: set the hsvkey blend value (from 0 to 1) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6623,6 +6772,7 @@ class VideoStream(FilterableStream):
             s: set the saturation expression (default "1")
             H: set the hue angle radians expression
             b: set the brightness expression (default "0")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6678,6 +6828,7 @@ class VideoStream(FilterableStream):
             gw: set the green weight (from 0 to 1) (default 0.334)
             bw: set the blue weight (from 0 to 1) (default 0.333)
             lightness: set the preserve lightness (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6716,7 +6867,10 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Download a hardware frame to a normal frame
+        Download a hardware frame to a normal frame.
+
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6746,12 +6900,13 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Map hardware frames
+        Map hardware frames.
 
         Args:
             mode: Frame mapping mode (default read+write)
             derive_device: Derive a new device of this type
             reverse: Map in reverse (create and allocate in the sink) (from 0 to 1) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6784,10 +6939,11 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Upload a normal frame to a hardware frame
+        Upload a normal frame to a hardware frame.
 
         Args:
             derive_device: Derive a new device of this type
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6822,6 +6978,7 @@ class VideoStream(FilterableStream):
 
         Args:
             device: Number of the device to use (from 0 to INT_MAX) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6861,6 +7018,7 @@ class VideoStream(FilterableStream):
         Args:
             planes: set planes (from 0 to 15) (default 15)
             threshold: set threshold (from 0 to 65535) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6895,6 +7053,9 @@ class VideoStream(FilterableStream):
         """
 
         Calculate the Identity between two video streams.
+
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6935,6 +7096,7 @@ class VideoStream(FilterableStream):
             rep_thres: set repeat threshold (from -1 to FLT_MAX) (default 3)
             half_life: half life of cumulative statistics (from -1 to INT_MAX) (default 0)
             analyze_interlaced_flag: set number of frames to use to determine if the interlace flag is accurate (from 0 to INT_MAX) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -6989,6 +7151,7 @@ class VideoStream(FilterableStream):
             luma_swap: swap luma fields (default false)
             chroma_swap: swap chroma fields (default false)
             alpha_swap: swap alpha fields (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7034,6 +7197,7 @@ class VideoStream(FilterableStream):
             threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
             threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
             threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7075,6 +7239,7 @@ class VideoStream(FilterableStream):
         Args:
             scan: scanning mode (from 0 to 1) (default tff)
             lowpass: set vertical low-pass filter (from 0 to 2) (default linear)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7118,6 +7283,7 @@ class VideoStream(FilterableStream):
             order: set the order (default false)
             sharp: set sharpening (default false)
             twoway: set twoway (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7160,6 +7326,7 @@ class VideoStream(FilterableStream):
             planes: set planes to filter (from 0 to 15) (default 15)
             scale: set scale (from 0 to 65535) (default 1)
             delta: set delta (from -65535 to 65535) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7198,6 +7365,7 @@ class VideoStream(FilterableStream):
         Args:
             decay: set decay (from 0 to 1) (default 0.95)
             planes: set what planes to filter (default F)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7228,6 +7396,9 @@ class VideoStream(FilterableStream):
         """
 
         Report video filtering latency.
+
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7267,6 +7438,7 @@ class VideoStream(FilterableStream):
             k2: set double quadratic distortion factor (from -1 to 1) (default 0)
             i: set interpolation type (from 0 to 64) (default nearest)
             fc: set the color of the unmapped pixels (default "black@0")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7312,6 +7484,7 @@ class VideoStream(FilterableStream):
             min: set min value (from 0 to 65535) (default 0)
             max: set max value (from 0 to 65535) (default 65535)
             planes: set planes (from 0 to 15) (default 15)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7354,6 +7527,7 @@ class VideoStream(FilterableStream):
             size: max number of frames to loop (from 0 to 32767) (default 0)
             start: set the loop start frame (from -1 to I64_MAX) (default 0)
             time: set the loop start time (default INT64_MAX)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7395,6 +7569,7 @@ class VideoStream(FilterableStream):
             threshold: set the threshold value (from 0 to 1) (default 0)
             tolerance: set the tolerance value (from 0 to 1) (default 0.01)
             softness: set the softness value (from 0 to 1) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7451,6 +7626,7 @@ class VideoStream(FilterableStream):
             g: set G expression (default "clipval")
             b: set B expression (default "clipval")
             a: set A expression (default "clipval")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7499,6 +7675,7 @@ class VideoStream(FilterableStream):
         Args:
             file: set 1D LUT file name
             interp: select interpolation mode (from 0 to 4) (default linear)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7543,6 +7720,7 @@ class VideoStream(FilterableStream):
             c2: set component #2 expression (default "x")
             c3: set component #3 expression (default "x")
             d: set output depth (from 0 to 16) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7588,6 +7766,7 @@ class VideoStream(FilterableStream):
             file: set 3D LUT file name
             clut: when to process CLUT (from 0 to 1) (default all)
             interp: select interpolation mode (from 0 to 4) (default tetrahedral)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7644,6 +7823,7 @@ class VideoStream(FilterableStream):
             g: set G expression (default "clipval")
             b: set B expression (default "clipval")
             a: set A expression (default "clipval")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7708,6 +7888,7 @@ class VideoStream(FilterableStream):
             g: set G expression (default "clipval")
             b: set B expression (default "clipval")
             a: set A expression (default "clipval")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7758,6 +7939,7 @@ class VideoStream(FilterableStream):
             undershoot: set undershoot (from 0 to 65535) (default 0)
             overshoot: set overshoot (from 0 to 65535) (default 0)
             planes: set planes (from 0 to 15) (default 15)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7800,6 +7982,7 @@ class VideoStream(FilterableStream):
 
         Args:
             planes: set planes (from 0 to 15) (default 15)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7840,6 +8023,7 @@ class VideoStream(FilterableStream):
 
         Args:
             planes: set planes (from 0 to 15) (default 15)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7880,6 +8064,7 @@ class VideoStream(FilterableStream):
 
         Args:
             planes: set planes (from 0 to 15) (default 15)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7923,6 +8108,7 @@ class VideoStream(FilterableStream):
             threshold: set threshold (from 0 to 65535) (default 1)
             planes: set planes (from 0 to 15) (default 15)
             mode: set mode (from 0 to 1) (default abs)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -7970,6 +8156,7 @@ class VideoStream(FilterableStream):
             planes: set planes (from 0 to 15) (default 15)
             fill: set fill value (from 0 to 65535) (default 0)
             sum: set sum value (from 0 to 65535) (default 10)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8014,6 +8201,7 @@ class VideoStream(FilterableStream):
             mode: set mode (from 0 to 3) (default fast)
             parity: set the assumed picture field parity (from -1 to 1) (default bff)
             qp: set qp (from INT_MIN to INT_MAX) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8056,6 +8244,7 @@ class VideoStream(FilterableStream):
             planes: set planes to filter (from 0 to 15) (default 15)
             radiusV: set median vertical radius (from 0 to 127) (default 0)
             percentile: set median percentile (from 0 to 1) (default 0.5)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8099,6 +8288,7 @@ class VideoStream(FilterableStream):
             method: motion estimation method (from 1 to 9) (default esa)
             mb_size: macroblock size (from 8 to INT_MAX) (default 16)
             search_param: search parameter (from 4 to INT_MAX) (default 7)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8153,6 +8343,7 @@ class VideoStream(FilterableStream):
             expr: set expression for expr function
             file: set file where to print metadata information
             direct: reduce buffering when printing to user-set file or pipe (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8194,6 +8385,7 @@ class VideoStream(FilterableStream):
 
         Args:
             planes: set planes (from 0 to 15) (default 15)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8251,6 +8443,7 @@ class VideoStream(FilterableStream):
             vsbmc: variable-size block motion compensation (from 0 to 1) (default 0)
             scd: scene change detection method (from 0 to 1) (default fdiff)
             scd_threshold: scene change threshold (from 0 to 100) (default 10)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8300,6 +8493,7 @@ class VideoStream(FilterableStream):
             cr: set the chroma red spot (from -1 to 1) (default 0)
             size: set the color filter size (from 0.1 to 10) (default 1)
             high: set the highlights strength (from 0 to 1) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8344,6 +8538,7 @@ class VideoStream(FilterableStream):
             mode: set morphological transform (from 0 to 6) (default erode)
             planes: set planes to filter (from 0 to 15) (default 7)
             structure: when to process structures (from 0 to 1) (default all)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8391,6 +8586,7 @@ class VideoStream(FilterableStream):
             hi: set high dropping threshold (from INT_MIN to INT_MAX) (default 768)
             lo: set low dropping threshold (from INT_MIN to INT_MAX) (default 320)
             frac: set fraction dropping threshold (from 0 to 1) (default 0.33)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8426,6 +8622,9 @@ class VideoStream(FilterableStream):
 
         Calculate the MSAD between two video streams.
 
+        Args:
+            extra_options: Extra options for the filter
+
         Returns:
             default: the video stream
 
@@ -8460,6 +8659,7 @@ class VideoStream(FilterableStream):
             scale: set scale (from 0 to 9) (default 1)
             offset: set offset (from -1 to 1) (default 0.5)
             planes: set planes (default F)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8503,6 +8703,7 @@ class VideoStream(FilterableStream):
         Args:
             components: set components to negate (default y+u+v+r+g+b)
             negate_alpha: (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8546,6 +8747,7 @@ class VideoStream(FilterableStream):
             pc: patch size for chroma planes (from 0 to 99) (default 0)
             r: research window (from 0 to 99) (default 15)
             rc: research window for chroma planes (from 0 to 99) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8584,7 +8786,7 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Non-local means denoiser through OpenCL
+        Non-local means denoiser through OpenCL.
 
         Args:
             s: denoising strength (from 1 to 30) (default 1)
@@ -8592,6 +8794,7 @@ class VideoStream(FilterableStream):
             pc: patch size for chroma planes (from 0 to 99) (default 0)
             r: research window (from 0 to 99) (default 15)
             rc: research window for chroma planes (from 0 to 99) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8639,7 +8842,7 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Non-local means denoiser (Vulkan)
+        Non-local means denoiser (Vulkan).
 
         Args:
             s: denoising strength for all components (from 1 to 100) (default 1)
@@ -8654,6 +8857,7 @@ class VideoStream(FilterableStream):
             p2: patch size for component 2 (from 0 to 99) (default 0)
             p3: patch size for component 3 (from 0 to 99) (default 0)
             p4: patch size for component 4 (from 0 to 99) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8723,6 +8927,7 @@ class VideoStream(FilterableStream):
             qual: set quality (from 1 to 2) (default fast)
             etype: set which set of weights to use in the predictor (from 0 to 1) (default a)
             pscrn: set prescreening (from 0 to 4) (default new)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8765,6 +8970,7 @@ class VideoStream(FilterableStream):
 
         Args:
             pix_fmts: A '|'-separated list of pixel formats
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8827,6 +9033,7 @@ class VideoStream(FilterableStream):
             c3_seed: set component #3 noise seed (from -1 to INT_MAX) (default -1)
             c3_strength: set component #3 strength (from 0 to 100) (default 0)
             c3_flags: set component #3 flags (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8883,6 +9090,7 @@ class VideoStream(FilterableStream):
             smoothing: amount of temporal smoothing of the input range, to reduce flicker (from 0 to 2.68435e+08) (default 0)
             independence: proportion of independent to linked channel normalization (from 0 to 1) (default 1)
             strength: strength of filter, from no effect to full normalization (from 0 to 1) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8916,6 +9124,9 @@ class VideoStream(FilterableStream):
         """
 
         Pass the source unchanged to the output.
+
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -8969,6 +9180,7 @@ class VideoStream(FilterableStream):
             g: draw trace grid (default true)
             st: draw statistics (default true)
             sc: draw scope (default true)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9046,6 +9258,7 @@ class VideoStream(FilterableStream):
             format: set output format (from 0 to 8) (default yuv420)
             repeatlast: repeat overlay of the last overlay frame (default true)
             alpha: alpha format (from 0 to 1) (default straight)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9088,11 +9301,12 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Overlay one video on top of another
+        Overlay one video on top of another.
 
         Args:
             x: Overlay x position (from 0 to INT_MAX) (default 0)
             y: Overlay y position (from 0 to INT_MAX) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9137,7 +9351,7 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Overlay one video on top of another
+        Overlay one video on top of another.
 
         Args:
             x: Overlay x position (default "0")
@@ -9148,6 +9362,7 @@ class VideoStream(FilterableStream):
             eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
             shortest: force termination when the shortest input terminates (default false)
             repeatlast: repeat overlay of the last overlay frame (default true)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9190,11 +9405,12 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Overlay a source on top of another
+        Overlay a source on top of another.
 
         Args:
             x: Set horizontal offset (from 0 to INT_MAX) (default 0)
             y: Set vertical offset (from 0 to INT_MAX) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9237,6 +9453,7 @@ class VideoStream(FilterableStream):
             depth: set depth (from 8 to 16) (default 8)
             luma_strength: set luma strength (from 0 to 1000) (default 1)
             chroma_strength: set chroma strength (from 0 to 1000) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9285,6 +9502,7 @@ class VideoStream(FilterableStream):
             color: set the color of the padded area border (default "black")
             eval: specify when to evaluate expressions (from 0 to 1) (default init)
             aspect: pad to fit an aspect instead of a resolution (from 0 to DBL_MAX) (default 0/1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9335,6 +9553,7 @@ class VideoStream(FilterableStream):
             y: set the y offset for the input image position (default "0")
             color: set the color of the padded area border (default "black")
             aspect: pad to fit an aspect instead of a resolution (from 0 to 32767) (default 0/1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9380,6 +9599,7 @@ class VideoStream(FilterableStream):
             reserve_transparent: reserve a palette entry for transparency (default true)
             transparency_color: set a background color for transparency (default "lime")
             stats_mode: set statistics mode (from 0 to 2) (default full)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9439,6 +9659,7 @@ class VideoStream(FilterableStream):
             new: take new palette for each output frame (default false)
             alpha_threshold: set the alpha threshold for transparency (from 0 to 255) (default 128)
             debug_kdtree: save Graphviz graph of the kdtree in specified file
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9485,6 +9706,7 @@ class VideoStream(FilterableStream):
         Args:
             mode: select permissions mode (from 0 to 4) (default none)
             seed: set the seed for the random mode (from -1 to UINT32_MAX) (default -1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9540,6 +9762,7 @@ class VideoStream(FilterableStream):
             interpolation: set interpolation (from 0 to 1) (default linear)
             sense: specify the sense of the coordinates (from 0 to 1) (default source)
             eval: specify when to evaluate expressions (from 0 to 1) (default init)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9586,6 +9809,7 @@ class VideoStream(FilterableStream):
 
         Args:
             mode: set phase mode (from 0 to 8) (default A)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9626,6 +9850,7 @@ class VideoStream(FilterableStream):
             threshold: set detection threshold factor (lower is stricter) (from 0.1 to FLT_MAX) (default 1)
             skip: set pixels to skip when sampling frames (from 1 to 1024) (default 1)
             bypass: leave frames unchanged (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9661,6 +9886,9 @@ class VideoStream(FilterableStream):
 
         Test pixel format definitions.
 
+        Args:
+            extra_options: Extra options for the filter
+
         Returns:
             default: the video stream
 
@@ -9695,6 +9923,7 @@ class VideoStream(FilterableStream):
             height: set block height (from 1 to 1024) (default 16)
             mode: set the pixelize mode (from 0 to 2) (default avg)
             planes: set what planes to filter (default F)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9744,6 +9973,7 @@ class VideoStream(FilterableStream):
             o: set window opacity (from 0 to 1) (default 0.5)
             wx: set window x offset (from -1 to 1) (default -1)
             wy: set window y offset (from -1 to 1) (default -1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9786,6 +10016,7 @@ class VideoStream(FilterableStream):
         Args:
             qp: force a constant quantizer parameter (from 0 to 64) (default 0)
             mode: set thresholding mode (from 0 to 2) (default medium)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9825,6 +10056,7 @@ class VideoStream(FilterableStream):
             planes: set planes to filter (from 0 to 15) (default 15)
             scale: set scale (from 0 to 65535) (default 1)
             delta: set delta (from -65535 to 65535) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9859,12 +10091,13 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Apply prewitt operator
+        Apply prewitt operator.
 
         Args:
             planes: set planes to filter (from 0 to 15) (default 15)
             scale: set scale (from 0 to 65535) (default 1)
             delta: set delta (from -65535 to 65535) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9940,6 +10173,7 @@ class VideoStream(FilterableStream):
             index: set component as base (from 0 to 3) (default 0)
             preset: set preset (from -1 to 20) (default none)
             opacity: set pseudocolor opacity (from 0 to 1) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -9985,6 +10219,7 @@ class VideoStream(FilterableStream):
             stats_file: Set file where to store per-frame difference information
             stats_version: Set the format version for the stats file. (from 1 to 2) (default 1)
             output_max: Add raw stats (max values) to the output log. (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10032,6 +10267,7 @@ class VideoStream(FilterableStream):
             jb: set bottom junk size (from 1 to INT_MAX) (default 4)
             sb: set strict breaks (default false)
             mp: set metric plane (from 0 to 2) (default y)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10071,6 +10307,7 @@ class VideoStream(FilterableStream):
 
         Args:
             qp: set qp expression
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10107,6 +10344,7 @@ class VideoStream(FilterableStream):
         Args:
             frames: set number of frames in cache (from 2 to 512) (default 30)
             seed: set the seed (from -1 to UINT32_MAX) (default -1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10150,6 +10388,7 @@ class VideoStream(FilterableStream):
             spw: set ratio of width reserved for sync code detection (from 0.1 to 0.7) (default 0.27)
             chp: check and apply parity bit (default false)
             lp: lowpass line prior to processing (default true)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10192,6 +10431,7 @@ class VideoStream(FilterableStream):
             scan_max: maximum line numbers to scan for VITC data (from -1 to INT_MAX) (default 45)
             thr_b: black color threshold (from 0 to 1) (default 0.2)
             thr_w: white color threshold (from 0 to 1) (default 0.6)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10230,6 +10470,7 @@ class VideoStream(FilterableStream):
         Args:
             limit: sleep time limit (default 2)
             speed: speed factor (from DBL_MIN to DBL_MAX) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10269,6 +10510,7 @@ class VideoStream(FilterableStream):
         Args:
             format: set output format (from 0 to 1) (default color)
             fill: set the color of the unmapped pixels (default "black")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10312,6 +10554,7 @@ class VideoStream(FilterableStream):
         Args:
             interp: set interpolation method (from 0 to 1) (default linear)
             fill: set the color of the unmapped pixels (default "black")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10357,6 +10600,7 @@ class VideoStream(FilterableStream):
             m1: set mode for 2nd plane (from 0 to 24) (default 0)
             m2: set mode for 3rd plane (from 0 to 24) (default 0)
             m3: set mode for 4th plane (from 0 to 24) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10394,6 +10638,7 @@ class VideoStream(FilterableStream):
 
         Args:
             filename: set bitmap filename
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10424,6 +10669,9 @@ class VideoStream(FilterableStream):
 
         Hard repeat fields based on MPEG repeat field flag.
 
+        Args:
+            extra_options: Extra options for the filter
+
         Returns:
             default: the video stream
 
@@ -10447,6 +10695,9 @@ class VideoStream(FilterableStream):
         """
 
         Reverse a clip.
+
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10492,6 +10743,7 @@ class VideoStream(FilterableStream):
             ah: shift alpha horizontally (from -255 to 255) (default 0)
             av: shift alpha vertically (from -255 to 255) (default 0)
             edge: set edge operation (from 0 to 1) (default smear)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10538,6 +10790,7 @@ class VideoStream(FilterableStream):
             planes: set planes to filter (from 0 to 15) (default 15)
             scale: set scale (from 0 to 65535) (default 1)
             delta: set delta (from -65535 to 65535) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10572,12 +10825,13 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Apply roberts operator
+        Apply roberts operator.
 
         Args:
             planes: set planes to filter (from 0 to 15) (default 15)
             scale: set scale (from 0 to 65535) (default 1)
             delta: set delta (from -65535 to 65535) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10624,6 +10878,7 @@ class VideoStream(FilterableStream):
             out_h: set output height expression (default "ih")
             fillcolor: set background fill color (default "black")
             bilinear: use bilinear interpolation (default true)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10672,6 +10927,7 @@ class VideoStream(FilterableStream):
             chroma_radius: set chroma radius (from -0.9 to 4) (default -0.9)
             chroma_pre_filter_radius: set chroma pre-filter radius (from -0.9 to 2) (default -0.9)
             chroma_strength: set chroma strength (from -0.9 to 100) (default -0.9)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10757,6 +11013,7 @@ class VideoStream(FilterableStream):
             param0: Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
             param1: Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
             eval: specify when to evaluate expressions (from 0 to 1) (default init)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10804,11 +11061,12 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Detect video scene change
+        Detect video scene change.
 
         Args:
             threshold: set scene change detect threshold (from 0 to 100) (default 10)
             sc_pass: Set the flag to pass scene change frames (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10848,6 +11106,7 @@ class VideoStream(FilterableStream):
             planes: set planes to filter (from 0 to 15) (default 15)
             scale: set scale (from 0 to 65535) (default 1)
             delta: set delta (from -65535 to 65535) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10890,6 +11149,7 @@ class VideoStream(FilterableStream):
             vertical: set the vertical scrolling speed (from -1 to 1) (default 0)
             hpos: set initial horizontal position (from 0 to 1) (default 0)
             vpos: set initial vertical position (from 0 to 1) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -10929,6 +11189,7 @@ class VideoStream(FilterableStream):
         Args:
             timestamps: timestamps of input at which to split input
             frames: frames at which to split input
+            extra_options: Extra options for the filter
 
         Returns:
             filter_node: the filter node
@@ -10970,6 +11231,7 @@ class VideoStream(FilterableStream):
         Args:
             expr: set an expression to use for selecting frames (default "1")
             outputs: set the number of outputs (from 1 to INT_MAX) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
             filter_node: the filter node
@@ -11031,6 +11293,7 @@ class VideoStream(FilterableStream):
             neutrals: adjust neutral regions
             blacks: adjust black regions
             psfile: set Photoshop selectivecolor file name
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11079,6 +11342,7 @@ class VideoStream(FilterableStream):
         Args:
             commands: set commands
             filename: set commands file
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11109,6 +11373,9 @@ class VideoStream(FilterableStream):
         """
 
         Split input video frames into fields.
+
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11142,6 +11409,7 @@ class VideoStream(FilterableStream):
         Args:
             dar: set display aspect ratio (default "0")
             max: set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11177,6 +11445,7 @@ class VideoStream(FilterableStream):
 
         Args:
             mode: select interlace mode (from -1 to 2) (default auto)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11289,6 +11558,7 @@ class VideoStream(FilterableStream):
             color_primaries: select color primaries (from -1 to 22) (default auto)
             color_trc: select color transfer (from -1 to 18) (default auto)
             colorspace: select colorspace (from -1 to 14) (default auto)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11327,6 +11597,7 @@ class VideoStream(FilterableStream):
 
         Args:
             expr: Expression determining the frame timestamp (default "PTS")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11373,6 +11644,7 @@ class VideoStream(FilterableStream):
 
         Args:
             range: select color range (from -1 to 2) (default auto)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11409,6 +11681,7 @@ class VideoStream(FilterableStream):
         Args:
             sar: set sample (pixel) aspect ratio (default "0")
             max: set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11444,6 +11717,7 @@ class VideoStream(FilterableStream):
 
         Args:
             expr: set expression determining the output timebase (default "intb")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11484,6 +11758,7 @@ class VideoStream(FilterableStream):
             shy: set y shear factor (from -2 to 2) (default 0)
             fillcolor: set background fill color (default "black")
             interp: set interpolation (from 0 to 1) (default bilinear)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11521,6 +11796,7 @@ class VideoStream(FilterableStream):
 
         Args:
             checksum: calculate checksums (default true)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11555,6 +11831,7 @@ class VideoStream(FilterableStream):
 
         Args:
             s: set pixel box size (from 1 to 100) (default 30)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11589,6 +11866,7 @@ class VideoStream(FilterableStream):
 
         Args:
             mapping: set destination indexes of input frames (default "0")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11635,6 +11913,7 @@ class VideoStream(FilterableStream):
             width: set block width (from 1 to 8000) (default 10)
             height: set block height (from 1 to 8000) (default 10)
             seed: set random seed (from -1 to UINT32_MAX) (default -1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11681,6 +11960,7 @@ class VideoStream(FilterableStream):
             map1: Index of the input plane to be used as the second output plane (from 0 to 3) (default 1)
             map2: Index of the input plane to be used as the third output plane (from 0 to 3) (default 2)
             map3: Index of the input plane to be used as the fourth output plane (from 0 to 3) (default 3)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11746,6 +12026,7 @@ class VideoStream(FilterableStream):
         Args:
             mode: set a mode of operation (from 0 to 1) (default select)
             type: set side data type (from -1 to INT_MAX) (default -1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11785,6 +12066,7 @@ class VideoStream(FilterableStream):
             stat: set statistics filters (default 0)
             out: set video filter (from -1 to 2) (default -1)
             c: set highlight color (default "yellow")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11821,6 +12103,7 @@ class VideoStream(FilterableStream):
 
         Args:
             print_summary: Print summary showing average values (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11865,6 +12148,7 @@ class VideoStream(FilterableStream):
             chroma_radius: set chroma radius (from -0.9 to 5) (default -0.9)
             chroma_strength: set chroma strength (from -2 to 1) (default -2)
             chroma_threshold: set chroma threshold (from -31 to 30) (default -31)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11908,6 +12192,7 @@ class VideoStream(FilterableStream):
             planes: set planes to filter (from 0 to 15) (default 15)
             scale: set scale (from 0 to 65535) (default 1)
             delta: set delta (from -65535 to 65535) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -11942,12 +12227,13 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Apply sobel operator
+        Apply sobel operator.
 
         Args:
             planes: set planes to filter (from 0 to 15) (default 15)
             scale: set scale (from 0 to 65535) (default 1)
             delta: set delta (from -65535 to 65535) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -12026,6 +12312,7 @@ class VideoStream(FilterableStream):
             win_func: set window function (from 0 to 20) (default rect)
             overlap: set window overlap (from 0 to 1) (default 1)
             orientation: set orientation (from 0 to 1) (default vertical)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the audio stream
@@ -12069,6 +12356,7 @@ class VideoStream(FilterableStream):
 
         Args:
             outputs: set number of outputs (from 1 to INT_MAX) (default 2)
+            extra_options: Extra options for the filter
 
         Returns:
             filter_node: the filter node
@@ -12113,6 +12401,7 @@ class VideoStream(FilterableStream):
             qp: force a constant quantizer parameter (from 0 to 63) (default 0)
             mode: set thresholding mode (from 0 to 1) (default hard)
             use_bframe_qp: use B-frames' QP (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -12158,6 +12447,7 @@ class VideoStream(FilterableStream):
             model: path to model file specifying network architecture and its parameters
             input: input name of the model (default "x")
             output: output name of the model (default "y")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -12197,6 +12487,7 @@ class VideoStream(FilterableStream):
 
         Args:
             stats_file: Set file where to store per-frame difference information
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -12295,6 +12586,7 @@ class VideoStream(FilterableStream):
         Args:
             _in: set input format (from 16 to 32) (default sbsl)
             out: set output format (from 0 to 32) (default arcd)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -12344,6 +12636,7 @@ class VideoStream(FilterableStream):
             stream_index: set stream index (from -1 to INT_MAX) (default -1)
             force_style: force subtitle style
             wrap_unicode: break lines according to the Unicode Line Breaking Algorithm (default auto)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -12380,6 +12673,9 @@ class VideoStream(FilterableStream):
         """
 
         Scale the input by 2x using the Super2xSaI pixel art algorithm.
+
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -12419,6 +12715,7 @@ class VideoStream(FilterableStream):
             y1: set 1st rect y top left coordinate (default "h/2")
             x2: set 2nd rect x top left coordinate (default "0")
             y2: set 2nd rect y top left coordinate (default "0")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -12453,6 +12750,9 @@ class VideoStream(FilterableStream):
         """
 
         Swap U and V components.
+
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -12735,6 +13035,7 @@ class VideoStream(FilterableStream):
             c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
             c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
             all_opacity: set opacity for all color components (from 0 to 1) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -12787,6 +13088,7 @@ class VideoStream(FilterableStream):
         Args:
             first_field: select first field (from 0 to 1) (default top)
             pattern: pattern that describe for how many fields a frame is to be displayed (default "23")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -12842,6 +13144,7 @@ class VideoStream(FilterableStream):
             envelope: display envelope (default false)
             ecolor: set envelope color (default "gold")
             slide: set slide mode (from 0 to 4) (default replace)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -12886,6 +13189,7 @@ class VideoStream(FilterableStream):
 
         Args:
             planes: set planes to filter (from 0 to 15) (default 15)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -12927,6 +13231,7 @@ class VideoStream(FilterableStream):
         Args:
             n: set the frames batch size (from 2 to INT_MAX) (default 100)
             log: force stats logging level (from INT_MIN to INT_MAX) (default info)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -12974,6 +13279,7 @@ class VideoStream(FilterableStream):
             color: set the color of the unused area (default "black")
             overlap: set how many frames to overlap for each render (from 0 to INT_MAX) (default 0)
             init_padding: set how many frames to initially pad (from 0 to INT_MAX) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13025,6 +13331,7 @@ class VideoStream(FilterableStream):
 
         Args:
             mode: select interlace mode (from 0 to 7) (default merge)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13065,6 +13372,7 @@ class VideoStream(FilterableStream):
             c1: set component #1 expression (default "x")
             c2: set component #2 expression (default "x")
             c3: set component #3 expression (default "x")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13106,6 +13414,7 @@ class VideoStream(FilterableStream):
             radius: set median filter radius (from 1 to 127) (default 1)
             planes: set planes to filter (from 0 to 15) (default 15)
             percentile: set percentile (from 0 to 1) (default 0.5)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13146,6 +13455,7 @@ class VideoStream(FilterableStream):
             radius: set radius (from 1 to 127) (default 5)
             sigma: set sigma (from 0 to 1) (default 0.5)
             planes: set planes (from 0 to 15) (default 15)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13190,6 +13500,7 @@ class VideoStream(FilterableStream):
             weights: set weight for each frame (default "1 1 1")
             scale: set scale (from 0 to 32767) (default 0)
             planes: set what planes to filter (default F)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13235,6 +13546,7 @@ class VideoStream(FilterableStream):
             param: tonemap parameter (from DBL_MIN to DBL_MAX) (default nan)
             desat: desaturation strength (from 0 to DBL_MAX) (default 2)
             peak: signal peak override (from 0 to DBL_MAX) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13292,6 +13604,7 @@ class VideoStream(FilterableStream):
             param: tonemap parameter (from DBL_MIN to DBL_MAX) (default nan)
             desat: desaturation parameter (from 0 to DBL_MAX) (default 0.5)
             threshold: scene detection threshold (from 0 to DBL_MAX) (default 0.2)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13336,13 +13649,14 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        VAAPI VPP for tone-mapping
+        VAAPI VPP for tone-mapping.
 
         Args:
             format: Output pixel format set
             matrix: Output color matrix coefficient set
             primaries: Output color primaries set
             transfer: Output color transfer characteristics set
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13394,6 +13708,7 @@ class VideoStream(FilterableStream):
             start_duration: set the duration to delay input (default 0)
             stop_duration: set the duration to pad input (default 0)
             color: set the color of the added frames (default "black")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13440,6 +13755,7 @@ class VideoStream(FilterableStream):
         Args:
             dir: set transpose direction (from 0 to 7) (default cclock_flip)
             passthrough: do not apply transposition if the input matches the specified geometry (from 0 to INT_MAX) (default none)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13476,11 +13792,12 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Transpose Vulkan Filter
+        Transpose Vulkan Filter.
 
         Args:
             dir: set transpose direction (from 0 to 7) (default cclock_flip)
             passthrough: do not apply transposition if the input matches the specified geometry (from 0 to INT_MAX) (default none)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13530,6 +13847,7 @@ class VideoStream(FilterableStream):
             duration: Maximum duration of the output (default 0)
             start_frame: Number of the first frame that should be passed to the output (from -1 to I64_MAX) (default -1)
             end_frame: Number of the first frame that should be dropped again (from 0 to I64_MAX) (default I64_MAX)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13586,6 +13904,7 @@ class VideoStream(FilterableStream):
             alpha_msize_x: set alpha matrix horizontal size (from 3 to 23) (default 5)
             alpha_msize_y: set alpha matrix vertical size (from 3 to 23) (default 5)
             alpha_amount: set alpha effect strength (from -2 to 5) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13629,7 +13948,7 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Apply unsharp mask to input video
+        Apply unsharp mask to input video.
 
         Args:
             luma_msize_x: Set luma mask horizontal diameter (pixels) (from 1 to 23) (default 5)
@@ -13638,6 +13957,7 @@ class VideoStream(FilterableStream):
             chroma_msize_x: Set chroma mask horizontal diameter (pixels after subsampling) (from 1 to 23) (default 5)
             chroma_msize_y: Set chroma mask vertical diameter (pixels after subsampling) (from 1 to 23) (default 5)
             chroma_amount: Set chroma amount (multiplier) (from -10 to 10) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13679,6 +13999,7 @@ class VideoStream(FilterableStream):
 
         Args:
             layout: set grid size (default "6x5")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13719,6 +14040,7 @@ class VideoStream(FilterableStream):
             qp: force a constant quantizer parameter (from 0 to 63) (default 0)
             use_bframe_qp: use B-frames' QP (default false)
             codec: Codec name (default "snow")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13908,6 +14230,7 @@ class VideoStream(FilterableStream):
             v_offset: output vertical off-axis offset (from -1 to 1) (default 0)
             alpha_mask: build mask in alpha plane (default false)
             reset_rot: reset rotation (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -13987,6 +14310,7 @@ class VideoStream(FilterableStream):
             percent: set percent of full denoising (from 0 to 100) (default 85)
             planes: set planes to filter (from 0 to 15) (default 15)
             type: set threshold type (from 0 to 1) (default universal)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14033,6 +14357,7 @@ class VideoStream(FilterableStream):
             min_r: set min blur radius (from 0 to 254) (default 0)
             max_r: set max blur radius (from 1 to 255) (default 8)
             planes: set planes to filter (from 0 to 15) (default 15)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14104,6 +14429,7 @@ class VideoStream(FilterableStream):
             colorspace: set colorspace (from 0 to 2) (default auto)
             tint0: set 1st tint (from -1 to 1) (default 0)
             tint1: set 2nd tint (from -1 to 1) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14147,6 +14473,9 @@ class VideoStream(FilterableStream):
 
         Flip the input video vertically.
 
+        Args:
+            extra_options: Extra options for the filter
+
         Returns:
             default: the video stream
 
@@ -14169,7 +14498,10 @@ class VideoStream(FilterableStream):
     ) -> VideoStream:
         """
 
-        Vertically flip the input video in Vulkan
+        Vertically flip the input video in Vulkan.
+
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14194,6 +14526,9 @@ class VideoStream(FilterableStream):
         """
 
         Variable frame rate detect filter.
+
+        Args:
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14237,6 +14572,7 @@ class VideoStream(FilterableStream):
             glum: set the green luma coefficient (from 0 to 1) (default 0.715158)
             blum: set the blue luma coefficient (from 0 to 1) (default 0.212656)
             alternate: use alternate colors (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14290,6 +14626,7 @@ class VideoStream(FilterableStream):
             mincontrast: below this contrast a field is discarded (0-1) (from 0 to 1) (default 0.25)
             show: 0: draw nothing; 1,2: show fields and transforms (from 0 to 2) (default 0)
             tripod: virtual tripod mode (if >0): motion is compared to a reference reference frame (frame # is the value) (from 0 to INT_MAX) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14360,6 +14697,7 @@ class VideoStream(FilterableStream):
             interpol: set type of interpolation (from 0 to 3) (default bilinear)
             tripod: enable virtual tripod mode (same as relative=0:smoothing=0) (default false)
             debug: enable debug mode and writer global motions information to file (default false)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14406,6 +14744,9 @@ class VideoStream(FilterableStream):
 
         Calculate the VIF between two video streams.
 
+        Args:
+            extra_options: Extra options for the filter
+
         Returns:
             default: the video stream
 
@@ -14447,6 +14788,7 @@ class VideoStream(FilterableStream):
             eval: specify when to evaluate expressions (from 0 to 1) (default init)
             dither: set dithering (default true)
             aspect: set aspect ratio (from 0 to DBL_MAX) (default 1/1)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14487,6 +14829,7 @@ class VideoStream(FilterableStream):
 
         Args:
             stats_file: Set file where to store per-frame difference information
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14527,6 +14870,7 @@ class VideoStream(FilterableStream):
             mode: specify the interlacing mode (from 0 to 1) (default field)
             parity: specify the assumed picture field parity (from -1 to 1) (default auto)
             deint: specify which frames to deinterlace (from 0 to 1) (default all)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14606,6 +14950,7 @@ class VideoStream(FilterableStream):
             tint1: set 2nd tint (from -1 to 1) (default 0)
             fitmode: set fit mode (from 0 to 1) (default none)
             input: set input formats selection (from 0 to 1) (default first)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14657,6 +15002,7 @@ class VideoStream(FilterableStream):
 
         Args:
             first_field: set first field (from 0 to 1) (default top)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14691,6 +15037,7 @@ class VideoStream(FilterableStream):
 
         Args:
             n: set scale factor (from 2 to 4) (default 3)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14728,6 +15075,7 @@ class VideoStream(FilterableStream):
         Args:
             planes: set planes to cross-correlate (from 0 to 15) (default 7)
             secondary: when to process secondary frame (from 0 to 1) (default all)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14835,6 +15183,7 @@ class VideoStream(FilterableStream):
             duration: set cross fade duration (default 1)
             offset: set cross fade start relative to first input stream (default 0)
             expr: set expression for custom transition
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14897,6 +15246,7 @@ class VideoStream(FilterableStream):
             kernel: set kernel name in program file for custom transition
             duration: set cross fade duration (default 1)
             offset: set cross fade start relative to first input stream (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14946,6 +15296,7 @@ class VideoStream(FilterableStream):
             mode: specify the interlacing mode (from 0 to 3) (default send_frame)
             parity: specify the assumed picture field parity (from -1 to 1) (default auto)
             deint: specify which frames to deinterlace (from 0 to 1) (default all)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -14986,6 +15337,7 @@ class VideoStream(FilterableStream):
             radius: set window radius (from 0 to INT_MAX) (default 3)
             planes: set planes to filter (from 0 to 15) (default 1)
             sigma: set blur strength (from 1 to INT_MAX) (default 128)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -15022,6 +15374,7 @@ class VideoStream(FilterableStream):
 
         Args:
             bind_address: set bind address (default "tcp://*:5555")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -15066,6 +15419,7 @@ class VideoStream(FilterableStream):
             d: set the duration expression (default "90")
             s: set the output image size (default "hd720")
             fps: set the output framerate (default "25")
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream
@@ -15291,6 +15645,7 @@ class VideoStream(FilterableStream):
             agamma: allow approximate gamma (default true)
             param_a: parameter A, which is parameter "b" for bicubic, and the number of filter taps for lanczos (from -DBL_MAX to DBL_MAX) (default nan)
             param_b: parameter B, which is parameter "c" for bicubic (from -DBL_MAX to DBL_MAX) (default nan)
+            extra_options: Extra options for the filter
 
         Returns:
             default: the video stream

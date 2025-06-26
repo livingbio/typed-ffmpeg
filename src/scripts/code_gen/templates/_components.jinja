@@ -51,12 +51,13 @@
 
 {% macro docstring(f) %}
 {{ f.description }}
-{% if f.options | length > 0 %}
+
 Args:
 {%- for option in f.options %}
     {{option.name | option_name_safe}}: {{option.description | striptags }}
 {%- endfor %}
-{% endif %}
+    extra_options: Extra options for the filter
+
 Returns:
 {%- if f.is_dynamic_output %}
     filter_node: the filter node

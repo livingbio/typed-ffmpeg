@@ -22,16 +22,18 @@ app = typer.Typer(help="Parse FFmpeg C source code")
 
 @app.command()
 def pre_compile() -> None:
-    """
-    Pre-compile the ffmpeg source code
-    """
+    """Pre-compile the ffmpeg source code."""
     precompile()
 
 
 @app.command()
 def parse_ffmpeg_options() -> list[FFMpegOption]:
     """
-    Parse the ffmpeg options from C code
+    Parse the ffmpeg options from C code.
+
+    Returns:
+        List of parsed FFmpeg options.
+
     """
     precompile()
 
@@ -41,9 +43,7 @@ def parse_ffmpeg_options() -> list[FFMpegOption]:
 
 @app.command()
 def parse_ffprobe_xsd(xsd_file: Path, output_file: Path) -> None:
-    """
-    Parse the ffprobe XSD file
-    """
+    """Parse the ffprobe XSD file."""
     root, ns = parse_xsd_file(str(xsd_file))
     output, _ = generate_dataclasses(root, ns)
     output_file.write_text(output)

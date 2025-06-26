@@ -35,6 +35,7 @@ def _remove_duplicates(seq: Iterable[T]) -> list[T]:
 
     Returns:
         A new list with duplicates removed, preserving the original order
+
     """
     seen = set()
     output: list[T] = []
@@ -62,6 +63,7 @@ def _collect(node: Node) -> tuple[list[Node], list[Stream]]:
         A tuple containing two lists:
         - A list of all nodes in the upstream path (including the starting node)
         - A list of all streams connecting these nodes
+
     """
     nodes: list[Node] = [node]
     streams: list[Stream] = list(node.inputs)
@@ -124,6 +126,7 @@ class DAGContext:
 
         Returns:
             A fully initialized DAGContext containing all nodes and streams in the graph
+
         """
         nodes, streams = _collect(node)
 
@@ -144,6 +147,7 @@ class DAGContext:
 
         Returns:
             A sorted list of all nodes in the graph
+
         """
         return sorted(self.nodes, key=lambda node: len(node.upstream_nodes))
 
@@ -159,6 +163,7 @@ class DAGContext:
 
         Returns:
             A sorted list of all streams in the graph
+
         """
         return sorted(
             self.streams,
@@ -177,6 +182,7 @@ class DAGContext:
 
         Returns:
             A dictionary mapping streams to their destination nodes and connection indices
+
         """
         outgoing_nodes: dict[Stream, list[tuple[Node, int]]] = defaultdict(list)
 
@@ -197,8 +203,8 @@ class DAGContext:
 
         Returns:
             A dictionary mapping nodes to their output streams
-        """
 
+        """
         outgoing_streams: dict[Node, list[Stream]] = defaultdict(list)
 
         for stream in self.streams:
@@ -212,8 +218,10 @@ class DAGContext:
         Get a mapping of nodes to their unique integer IDs.
         This property assigns a unique integer ID to each node in the graph,
         based on the node type and its position in the processing chain.
+
         Returns:
-            A dictionary mapping nodes to their unique integer IDs
+            A dictionary mapping nodes to their unique integer IDs.
+
         """
         node_index: dict[type[Node], int] = defaultdict(int)
         node_ids: dict[Node, int] = {}
@@ -239,8 +247,8 @@ class DAGContext:
 
         Returns:
             A dictionary mapping nodes to their string labels
-        """
 
+        """
         input_node_index = 0
         filter_node_index = 0
         node_labels: dict[Node, str] = {}
@@ -271,6 +279,7 @@ class DAGContext:
 
         Returns:
             A list of (node, input_index) tuples for nodes that receive this stream
+
         """
         return self.outgoing_nodes[stream]
 
@@ -292,8 +301,8 @@ class DAGContext:
 
         Raises:
             AssertionError: If the node is not an InputNode or FilterNode
-        """
 
+        """
         return self.node_labels[node]
 
     @override
@@ -311,5 +320,6 @@ class DAGContext:
 
         Returns:
             A list of streams that originate from this node
+
         """
         return self.outgoing_streams[node]

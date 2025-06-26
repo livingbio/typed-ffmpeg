@@ -37,6 +37,7 @@ def serializable(
 
     Returns:
         The class itself
+
     """
     assert cls.__name__ not in CLASS_REGISTRY, (
         f"Class {cls.__name__} already registered"
@@ -47,9 +48,7 @@ def serializable(
 
 
 class Serializable:
-    """
-    A base class for all serializable classes.
-    """
+    """A base class for all serializable classes."""
 
     def __init_subclass__(cls, **kwargs: Any) -> None:
         super().__init_subclass__(**kwargs)
@@ -79,6 +78,7 @@ def load_class(name: str) -> type[Serializable] | type[Enum]:
         # Create an instance
         node = FilterNode(name='scale', ...)
         ```
+
     """
     assert name in CLASS_REGISTRY, f"Class {name} not registered"
     return CLASS_REGISTRY[name]
@@ -102,11 +102,13 @@ def frozen(v: Any) -> Any:
     Example:
         ```python
         # Convert a nested structure to immutable form
-        frozen_data = frozen(
-            {"options": ["option1", "option2"], "settings": {"key": "value"}}
-        )
+        frozen_data = frozen({
+            "options": ["option1", "option2"],
+            "settings": {"key": "value"},
+        })
         # Result: FrozenDict with tuple instead of list and nested FrozenDict
         ```
+
     """
     if isinstance(v, list):
         return tuple(frozen(i) for i in v)
@@ -141,6 +143,7 @@ def object_hook(obj: Any) -> Any:
         }
         # Will be converted to a FilterNode instance
         ```
+
     """
     if isinstance(obj, dict):
         if obj.get("__class__"):
@@ -176,6 +179,7 @@ def loads(raw: str) -> Any:
         filter_node = loads(json_str)
         # filter_node is now a FilterNode instance
         ```
+
     """
     return json.loads(raw, object_hook=object_hook)
 
@@ -202,8 +206,8 @@ def to_dict_with_class_info(instance: Any) -> Any:
         serializable = to_dict_with_class_info(filter_node)
         # serializable now contains class information and all attributes
         ```
-    """
 
+    """
     if isinstance(instance, dict | FrozenDict):
         return {k: to_dict_with_class_info(v) for k, v in instance.items()}
     elif isinstance(instance, list):
@@ -251,6 +255,7 @@ def dumps(instance: Any) -> str:
         # json_str can be saved to a file and later deserialized
         # with loads() to reconstruct the original object
         ```
+
     """
     obj = to_dict_with_class_info(instance)
     return json.dumps(obj, indent=2)

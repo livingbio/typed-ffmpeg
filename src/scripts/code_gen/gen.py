@@ -1,3 +1,5 @@
+"""Code generation utilities for typed-ffmpeg."""
+
 import keyword
 import pathlib
 from math import isnan
@@ -24,13 +26,14 @@ env = jinja2.Environment(
 
 def filter_option_typing(option: FFMpegFilterOption) -> str:
     """
-    The typing of the filter option
+    Get the typing of the filter option.
 
     Args:
         option: The filter option
 
     Returns:
         The typing of the filter option
+
     """
     base_type = None
     if option.type == FFMpegFilterOptionType.boolean:
@@ -76,13 +79,14 @@ def filter_option_typing(option: FFMpegFilterOption) -> str:
 
 def stream_name_safe(string: str) -> str:
     """
-    Convert stream name to safe name
+    Convert stream name to safe name.
 
     Args:
         string: The stream name
 
     Returns:
         The stream name safe
+
     """
     opt_name = option_name_safe(string)
     if not opt_name.startswith("_"):
@@ -92,13 +96,14 @@ def stream_name_safe(string: str) -> str:
 
 def option_name_safe(string: str) -> str:
     """
-    Convert option name to safe name
+    Convert option name to safe name.
 
     Args:
         string: The option name
 
     Returns:
         The option name safe
+
     """
     if string in keyword.kwlist:
         return "_" + string
@@ -112,13 +117,17 @@ def option_name_safe(string: str) -> str:
 
 def option_typing(option: FFMpegOption) -> str:
     """
-    The typing of the option
+    Get the typing of the option.
 
     Args:
         option: The option
 
     Returns:
         The typing of the option
+
+    Raises:
+        ValueError: If the option type is unknown.
+
     """
     match option.type:
         case FFMpegOptionType.OPT_TYPE_FUNC:
@@ -143,13 +152,14 @@ def option_typing(option: FFMpegOption) -> str:
 
 def input_typings(ffmpeg_filter: FFMpegFilter) -> str:
     """
-    The input typings of the filter
+    Get the input typings of the filter.
 
     Args:
         ffmpeg_filter: The filter
 
     Returns:
         The input typings of the filter
+
     """
     if ffmpeg_filter.formula_typings_input:
         return ffmpeg_filter.formula_typings_input
@@ -164,13 +174,14 @@ def input_typings(ffmpeg_filter: FFMpegFilter) -> str:
 
 def output_typings(ffmpeg_filter: FFMpegFilter) -> str:
     """
-    The output typings of the filter
+    Get the output typings of the filter.
 
     Args:
         ffmpeg_filter: The filter
 
     Returns:
         The output typings of the filter
+
     """
     if ffmpeg_filter.formula_typings_output:
         return ffmpeg_filter.formula_typings_output
@@ -185,7 +196,7 @@ def output_typings(ffmpeg_filter: FFMpegFilter) -> str:
 
 def default_value(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
     """
-    The default value of the filter option
+    Get the default value of the filter option.
 
     Args:
         option: The filter option
@@ -193,6 +204,7 @@ def default_value(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
 
     Returns:
         The default value of the filter option
+
     """
     if option.name in f.pre_dict:
         return f"Auto({repr(f.pre_dict[option.name])})"
@@ -203,7 +215,7 @@ def default_value(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
 
 def default_typings(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
     """
-    The default typing of the filter option
+    Get the default typing of the filter option.
 
     Args:
         option: The filter option
@@ -211,6 +223,7 @@ def default_typings(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
 
     Returns:
         The default typing of the filter option
+
     """
     if option.choices:
         return f"{filter_option_typing(option)} | Default = {default_value(option, f)}"
@@ -219,13 +232,14 @@ def default_typings(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
 
 def filter_option_typings(ffmpeg_filter: FFMpegFilter) -> str:
     """
-    The typing of the filter options
+    Get the typing of the filter options.
 
     Args:
         ffmpeg_filter: The filter
 
     Returns:
         The typing of the filter options
+
     """
     output = []
 
@@ -254,13 +268,15 @@ def render(
     **kwargs: Any,
 ) -> list[pathlib.Path]:
     """
-    Render the filter and option documents
+    Render the filter and option documents.
 
     Args:
         outpath: The output path
+        **kwargs: Additional keyword arguments to pass to the template
 
     Returns:
         The rendered files
+
     """
     outpath.mkdir(exist_ok=True)
     output = []

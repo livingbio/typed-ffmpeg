@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XSD to Python Dataclasses Generator
+XSD to Python Dataclasses Generator.
 
 This script converts XSD (XML Schema Definition) files to Python dataclasses.
 It's specifically designed to work with FFprobe's XSD schema but can be adapted for other XSD files.
@@ -60,6 +60,7 @@ def get_python_type(xsd_type: str) -> str:
         'int'
         >>> get_python_type("unknown")
         'Any'
+
     """
     type_mapping = {
         "string": "str",
@@ -80,6 +81,7 @@ def parse_xsd_element(element: ET.Element) -> XSDElement:
 
     Returns:
         An XSDElement object containing the parsed information
+
     """
     name = element.get("name", "")
     type_name = element.get("type", "").split(":")[-1]
@@ -96,6 +98,7 @@ def parse_xsd_attribute(attr: ET.Element) -> XSDAttribute:
 
     Returns:
         An XSDAttribute object containing the parsed information
+
     """
     name = attr.get("name", "")
     type_name = attr.get("type", "").split(":")[-1]
@@ -117,6 +120,7 @@ def get_field_type(element: XSDElement) -> str:
         'Optional["string"]'
         >>> get_field_type(XSDElement("test", "string", "unbounded"))
         'Optional[tuple["string", ...]]'
+
     """
     if element.max_occurs == "unbounded":
         return f'Optional[tuple["{element.type_name}", ...]]'
@@ -136,6 +140,7 @@ def find_elements_with_namespace(
 
     Returns:
         A list of matching elements
+
     """
     # Only support simple .//prefix:tag or //prefix:tag
     if xpath.startswith(".//"):
@@ -164,6 +169,7 @@ def get_choice_types(choice: ET.Element, ns: dict[str, str]) -> list[str]:
 
     Returns:
         A list of type names
+
     """
     types = []
     for element in choice.findall("./{*}element"):
@@ -185,6 +191,7 @@ def generate_dataclass_fields(
 
     Returns:
         A list of field definition strings
+
     """
     fields = []
 
@@ -235,6 +242,7 @@ def generate_dataclass(
 
     Returns:
         A string containing the dataclass definition
+
     """
     fields = generate_dataclass_fields(complex_type, ns)
     fields_str = "\n".join(fields)
@@ -254,6 +262,7 @@ def generate_registered_types(class_names: list[str]) -> str:
 
     Returns:
         A string containing the registered_types dictionary definition
+
     """
     # Add common Python types
     common_types = {
@@ -288,6 +297,7 @@ def parse_xsd_file(xsd_file: str) -> tuple[ET.Element, dict[str, str]]:
 
     Returns:
         A tuple containing the root element and namespace mapping
+
     """
     tree = ET.parse(xsd_file)
     root = tree.getroot()
@@ -317,6 +327,7 @@ def generate_dataclasses(root: ET.Element, ns: dict[str, str]) -> tuple[str, lis
 
     Returns:
         A tuple containing the generated code and list of class names
+
     """
     complex_types = find_elements_with_namespace(root, ".//xsd:complexType", ns)
     class_names = []
@@ -339,7 +350,7 @@ from typing import Optional, Union
 
 def main() -> None:
     """
-    Main function to convert XSD to Python dataclasses.
+    Convert XSD to Python dataclasses.
 
     Usage:
         python xsd_to_dataclasses.py <xsd_file>

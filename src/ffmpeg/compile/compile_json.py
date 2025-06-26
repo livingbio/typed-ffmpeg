@@ -16,6 +16,7 @@ def compile(stream: Stream, auto_fix: bool = True) -> str:
 
     Returns:
         A JSON string that can be passed to FFmpeg
+
     """
     stream = validate(stream, auto_fix=auto_fix)
 
@@ -34,5 +35,6 @@ def parse(json: str) -> Stream:
 
     Returns:
         A Stream object
+
     """
     return loads(json)

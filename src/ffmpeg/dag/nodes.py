@@ -60,6 +60,7 @@ class FilterNode(Node):
 
         Returns:
             The name of the filter
+
         """
         return self.name
 
@@ -81,6 +82,7 @@ class FilterNode(Node):
 
         Raises:
             FFMpegValueError: If the specified index is out of range
+
         """
         from ..streams.video import VideoStream
 
@@ -111,6 +113,7 @@ class FilterNode(Node):
 
         Raises:
             FFMpegValueError: If the specified index is out of range
+
         """
         from ..streams.audio import AudioStream
 
@@ -136,6 +139,7 @@ class FilterNode(Node):
         Raises:
             FFMpegValueError: If the number of inputs doesn't match input_typings
             FFMpegTypeError: If an input stream doesn't match its expected type
+
         """
         from ..streams.audio import AudioStream
         from ..streams.video import VideoStream
@@ -207,6 +211,7 @@ class FilterableStream(Stream, OutputArgs):
                 filename="output.mp4", c="libx264", crf=23
             )
             ```
+
         """
         return OutputNode(
             inputs=(self, *streams),
@@ -244,6 +249,7 @@ class FilterableStream(Stream, OutputArgs):
             # Apply a blur filter to a video stream
             blurred = stream.vfilter(name="boxblur", luma_radius=2)
             ```
+
         """
         return self.filter_multi_output(
             *streams,
@@ -283,6 +289,7 @@ class FilterableStream(Stream, OutputArgs):
             # Apply a volume filter to an audio stream
             louder = stream.afilter(name="volume", volume=2.0)
             ```
+
         """
         return self.filter_multi_output(
             *streams,
@@ -327,6 +334,7 @@ class FilterableStream(Stream, OutputArgs):
             stream1 = split_node.video(0)
             stream2 = split_node.video(1)
             ```
+
         """
         return FilterNode(
             name=name,
@@ -368,6 +376,7 @@ class InputNode(Node):
 
         Returns:
             The basename of the input file
+
         """
         return os.path.basename(self.filename)
 
@@ -390,6 +399,7 @@ class InputNode(Node):
             # Apply a filter to the video stream
             scaled = video.scale(width=1280, height=720)
             ```
+
         """
         from ..streams.video import VideoStream
 
@@ -414,6 +424,7 @@ class InputNode(Node):
             # Apply a filter to the audio stream
             volume_adjusted = audio.volume(volume=2.0)
             ```
+
         """
         from ..streams.audio import AudioStream
 
@@ -438,6 +449,7 @@ class InputNode(Node):
             # Output both audio and video to a new file
             output = av_stream.output("output.mp4")
             ```
+
         """
         from ..streams.av import AVStream
 
@@ -471,6 +483,7 @@ class OutputNode(Node):
 
         Returns:
             The basename of the output file
+
         """
         return os.path.basename(self.filename)
 
@@ -492,6 +505,7 @@ class OutputNode(Node):
             output_stream = output_node.stream()
             with_global_opts = output_stream.global_args(y=True)
             ```
+
         """
         return OutputStream(node=self)
 
@@ -531,6 +545,7 @@ class OutputStream(Stream, GlobalRunable):
             # Add global options to an output stream
             global_node = output_stream._global_node(y=True, loglevel="quiet")
             ```
+
         """
         return GlobalNode(inputs=(self, *streams), kwargs=FrozenDict(kwargs))
 
@@ -567,6 +582,7 @@ class GlobalNode(Node):
             # Execute the command
             global_stream.run()
             ```
+
         """
         return GlobalStream(node=self)
 
@@ -607,6 +623,7 @@ class GlobalStream(Stream, GlobalRunable):
             global_stream = ffmpeg.output("output.mp4").global_args(y=True)
             enhanced = global_stream._global_node(loglevel="quiet")
             ```
+
         """
         inputs = (*self.node.inputs, *streams)
         kwargs = dict(self.node.kwargs) | kwargs

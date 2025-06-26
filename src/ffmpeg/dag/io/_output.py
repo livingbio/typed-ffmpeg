@@ -1,5 +1,5 @@
 # NOTE: this file is auto-generated, do not modify
-
+"""Output node."""
 
 from pathlib import Path
 from typing import Any
@@ -120,8 +120,8 @@ def output(
     muxer_options: FFMpegMuxerOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> OutputStream:
-    """
-    Output file URL
+    r"""
+    Output file URL.
 
     Args:
         *streams: the streams to output
@@ -227,8 +227,8 @@ def output(
 
     Returns:
         the output stream
-    """
 
+    """
     return OutputNode(
         inputs=streams,
         filename=str(filename),

@@ -13,7 +13,7 @@ V = TypeVar("V")
 
 def override(func: V) -> V:
     """
-    Decorator to indicate a method that overrides a method in a superclass.
+    Indicate a method that overrides a method in a superclass.
 
     This decorator serves as a placeholder until Python 3.12, which introduces
     a built-in @override decorator. Using this decorator helps with code clarity
@@ -38,5 +38,6 @@ def override(func: V) -> V:
             def method(self):  # Correctly overrides Parent.method
                 pass
         ```
+
     """
     return func

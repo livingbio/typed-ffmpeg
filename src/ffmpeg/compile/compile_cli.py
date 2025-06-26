@@ -58,6 +58,7 @@ def get_options_dict() -> dict[str, FFMpegOption]:
 
     Returns:
         Dictionary mapping option names to their FFMpegOption definitions
+
     """
     options = load(list[FFMpegOption], "options")
     return {option.name: option for option in options}
@@ -69,6 +70,7 @@ def get_filter_dict() -> dict[str, FFMpegFilter]:
 
     Returns:
         Dictionary mapping filter names to their FFMpegFilter definitions
+
     """
     filters = load(list[FFMpegFilter], "filters")
     return {filter.name: filter for filter in filters}
@@ -89,6 +91,7 @@ def parse_options(tokens: list[str]) -> dict[str, list[str | None | bool]]:
 
     Returns:
         Dictionary mapping option names to lists of their values
+
     """
     parsed_options: dict[str, list[str | None | bool]] = defaultdict(list)
 
@@ -134,6 +137,7 @@ def parse_stream_selector(
 
     Raises:
         AssertionError: If the stream label is not found in the mapping
+
     """
     selector = selector.strip("[]")
 
@@ -182,6 +186,7 @@ def _is_filename(token: str) -> bool:
 
     Returns:
         True if the token is a filename, False otherwise
+
     """
     # not start with - and has ext
     return not token.startswith("-") and len(token.split(".")) > 1
@@ -205,6 +210,7 @@ def parse_output(
 
     Returns:
         List of OutputStream objects representing the output specifications
+
     """
     tokens = source.copy()
 
@@ -272,6 +278,7 @@ def parse_input(
 
     Returns:
         Dictionary mapping input indices to their FilterableStream objects
+
     """
     output: list[AVStream] = []
 
@@ -325,6 +332,7 @@ def parse_filter_complex(
 
     Returns:
         Updated stream mapping with new filter outputs added
+
     """
     # Use re.split with negative lookbehind to handle escaped semicolons
     filter_units = re.split(r"(?<!\\);", filter_complex)
@@ -425,6 +433,7 @@ def parse_global(
     Example:
         For tokens like ['-y', '-loglevel', 'quiet', '-i', 'input.mp4']:
         Returns ({'y': True, 'loglevel': 'quiet'}, ['-i', 'input.mp4'])
+
     """
     options = parse_options(tokens[: tokens.index("-i")])
     remaining_tokens = tokens[tokens.index("-i") :]
@@ -466,6 +475,7 @@ def parse(cli: str) -> Stream:
             "ffmpeg -i input.mp4 -filter_complex '[0:v]scale=1280:720[v]' -map '[v]' output.mp4"
         )
         ```
+
     """
     # ffmpeg [global_options] {[input_file_options] -i input_url} ... {[output_file_options] output_url} ...
     ffmpeg_options = get_options_dict()
@@ -523,6 +533,7 @@ def compile(
 
     Returns:
         A command-line string that can be passed to FFmpeg
+
     """
     return "ffmpeg " + command_line(
         compile_as_list(stream, auto_fix, use_filter_complex_script)
@@ -596,8 +607,8 @@ def compile_as_list(
             args
         )  # ['ffmpeg', '-i', 'input.mp4', '-filter_complex', '...', 'output.mp4']
         ```
-    """
 
+    """
     stream = validate(stream, auto_fix=auto_fix)
     node = stream.node
     context = DAGContext.build(node)
@@ -671,6 +682,7 @@ def get_stream_label(stream: Stream, context: DAGContext | None = None) -> str:
 
     Raises:
         FFMpegValueError: If the stream has an unknown type or node type
+
     """
     from ..streams.audio import AudioStream
     from ..streams.av import AVStream
@@ -741,8 +753,8 @@ def get_args_filter_node(node: FilterNode, context: DAGContext) -> list[str]:
     Example:
         For a scale filter with width=1280 and height=720, this might return:
         ['[0:v]', 'scale=', 'width=1280:height=720', '[s0]']
-    """
 
+    """
     incoming_labels = "".join(f"[{get_stream_label(k, context)}]" for k in node.inputs)
     outputs = context.get_outgoing_streams(node)
 
@@ -794,6 +806,7 @@ def get_args_input_node(node: InputNode, context: DAGContext) -> list[str]:
     Example:
         For an input file "input.mp4" with options like seeking to 10 seconds:
         ['-ss', '10', '-i', 'input.mp4']
+
     """
     commands = []
     for key, value in node.kwargs.items():
@@ -827,6 +840,7 @@ def get_args_output_node(node: OutputNode, context: DAGContext) -> list[str]:
     Example:
         For an output file "output.mp4" with H.264 video codec:
         ['-map', '[v0]', '-c:v', 'libx264', 'output.mp4']
+
     """
     # !handle mapping
     commands = []
@@ -888,6 +902,7 @@ def get_args_global_node(node: GlobalNode, context: DAGContext) -> list[str]:
     Example:
         For global options like overwrite and quiet logging:
         ['-y', '-loglevel', 'quiet']
+
     """
     commands = []
     for key, value in node.kwargs.items():
@@ -919,8 +934,8 @@ def get_args(node: Node, context: DAGContext | None = None) -> list[str]:
 
     Raises:
         FFMpegValueError: If the node type is not recognized
-    """
 
+    """
     context = context or DAGContext.build(node)
 
     match node:
@@ -955,8 +970,8 @@ def get_node_label(node: Node, context: DAGContext) -> str:
 
     Raises:
         AssertionError: If the node is not an InputNode or FilterNode
-    """
 
+    """
     node_id = context.node_ids[node]
     match node:
         case InputNode():

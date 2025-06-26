@@ -1,4 +1,6 @@
 # NOTE: this file is auto-generated, do not modify
+"""FFmpeg decoders."""
+
 from typing import Literal
 
 from ..utils.frozendict import merge
@@ -7,187 +9,187 @@ from .schema import FFMpegDecoderOption
 
 def _012v() -> FFMpegDecoderOption:
     """
-    Uncompressed 4:2:2 10-bit
-
+    Uncompressed 4:2:2 10-bit.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def _4xm() -> FFMpegDecoderOption:
     """
-    4X Movie
-
+    4X Movie.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def _8bps() -> FFMpegDecoderOption:
     """
-    QuickTime 8BPS video
-
+    QuickTime 8BPS video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def aasc() -> FFMpegDecoderOption:
     """
-    Autodesk RLE
-
+    Autodesk RLE.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def agm() -> FFMpegDecoderOption:
     """
-    Amuse Graphics Movie
-
+    Amuse Graphics Movie.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def aic() -> FFMpegDecoderOption:
     """
-    Apple Intermediate Codec
-
+    Apple Intermediate Codec.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def alias_pix() -> FFMpegDecoderOption:
     """
-    Alias/Wavefront PIX image
-
+    Alias/Wavefront PIX image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def amv() -> FFMpegDecoderOption:
     """
-    AMV Video
-
+    AMV Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def anm() -> FFMpegDecoderOption:
     """
-    Deluxe Paint Animation
-
+    Deluxe Paint Animation.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def ansi() -> FFMpegDecoderOption:
     """
-    ASCII/ANSI art
-
+    ASCII/ANSI art.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def apng() -> FFMpegDecoderOption:
     """
-    APNG (Animated Portable Network Graphics) image
-
+    APNG (Animated Portable Network Graphics) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def arbc() -> FFMpegDecoderOption:
     """
-    Gryphon's Anim Compressor
-
+    Gryphon's Anim Compressor.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def argo() -> FFMpegDecoderOption:
     """
-    Argonaut Games Video
-
+    Argonaut Games Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def asv1() -> FFMpegDecoderOption:
     """
-    ASUS V1
-
+    ASUS V1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def asv2() -> FFMpegDecoderOption:
     """
-    ASUS V2
-
+    ASUS V2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def aura() -> FFMpegDecoderOption:
     """
-    Auravision AURA
-
+    Auravision AURA.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def aura2() -> FFMpegDecoderOption:
     """
-    Auravision Aura 2
-
+    Auravision Aura 2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -201,7 +203,7 @@ def libdav1d(
     alllayers: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    dav1d AV1 decoder by VideoLAN (codec av1)
+    dav1d AV1 decoder by VideoLAN (codec av1).
 
     Args:
         tilethreads: Tile threads (from 0 to 256) (default 0)
@@ -213,18 +215,17 @@ def libdav1d(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "tilethreads": tilethreads,
-                "framethreads": framethreads,
-                "max_frame_delay": max_frame_delay,
-                "filmgrain": filmgrain,
-                "oppoint": oppoint,
-                "alllayers": alllayers,
-            }
-        )
+        merge({
+            "tilethreads": tilethreads,
+            "framethreads": framethreads,
+            "max_frame_delay": max_frame_delay,
+            "filmgrain": filmgrain,
+            "oppoint": oppoint,
+            "alllayers": alllayers,
+        })
     )
 
 
@@ -232,20 +233,19 @@ def av1(
     operating_point: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Alliance for Open Media AV1
+    Alliance for Open Media AV1.
 
     Args:
         operating_point: Select an operating point of the scalable bitstream (from 0 to 31) (default 0)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "operating_point": operating_point,
-            }
-        )
+        merge({
+            "operating_point": operating_point,
+        })
     )
 
 
@@ -258,7 +258,7 @@ def av1_cuvid(
     resize: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Nvidia CUVID AV1 decoder (codec av1)
+    Nvidia CUVID AV1 decoder (codec av1).
 
     Args:
         deint: Set deinterlacing mode (from 0 to 2) (default weave)
@@ -270,457 +270,456 @@ def av1_cuvid(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "deint": deint,
-                "gpu": gpu,
-                "surfaces": surfaces,
-                "drop_second_field": drop_second_field,
-                "crop": crop,
-                "resize": resize,
-            }
-        )
+        merge({
+            "deint": deint,
+            "gpu": gpu,
+            "surfaces": surfaces,
+            "drop_second_field": drop_second_field,
+            "crop": crop,
+            "resize": resize,
+        })
     )
 
 
 def avrn() -> FFMpegDecoderOption:
     """
-    Avid AVI Codec
-
+    Avid AVI Codec.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def avrp() -> FFMpegDecoderOption:
     """
-    Avid 1:1 10-bit RGB Packer
-
+    Avid 1:1 10-bit RGB Packer.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def avs() -> FFMpegDecoderOption:
     """
-    AVS (Audio Video Standard) video
-
+    AVS (Audio Video Standard) video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def avui() -> FFMpegDecoderOption:
     """
-    Avid Meridien Uncompressed
-
+    Avid Meridien Uncompressed.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def ayuv() -> FFMpegDecoderOption:
     """
-    Uncompressed packed MS 4:4:4:4
-
+    Uncompressed packed MS 4:4:4:4.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def bethsoftvid() -> FFMpegDecoderOption:
     """
-    Bethesda VID video
-
+    Bethesda VID video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def bfi() -> FFMpegDecoderOption:
     """
-    Brute Force & Ignorance
-
+    Brute Force & Ignorance.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def binkvideo() -> FFMpegDecoderOption:
     """
-    Bink video
-
+    Bink video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def bintext() -> FFMpegDecoderOption:
     """
-    Binary text
-
+    Binary text.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def bitpacked() -> FFMpegDecoderOption:
     """
-    Bitpacked
-
+    Bitpacked.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def bmp() -> FFMpegDecoderOption:
     """
-    BMP (Windows and OS/2 bitmap)
-
+    BMP (Windows and OS/2 bitmap).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def bmv_video() -> FFMpegDecoderOption:
     """
-    Discworld II BMV video
-
+    Discworld II BMV video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def brender_pix() -> FFMpegDecoderOption:
     """
-    BRender PIX image
-
+    BRender PIX image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def c93() -> FFMpegDecoderOption:
     """
-    Interplay C93
-
+    Interplay C93.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def cavs() -> FFMpegDecoderOption:
     """
-    Chinese AVS (Audio Video Standard) (AVS1-P2, JiZhun profile)
-
+    Chinese AVS (Audio Video Standard) (AVS1-P2, JiZhun profile).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def cdgraphics() -> FFMpegDecoderOption:
     """
-    CD Graphics video
-
+    CD Graphics video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def cdtoons() -> FFMpegDecoderOption:
     """
-    CDToons video
-
+    CDToons video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def cdxl() -> FFMpegDecoderOption:
     """
-    Commodore CDXL video
-
+    Commodore CDXL video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def cfhd() -> FFMpegDecoderOption:
     """
-    GoPro CineForm HD
-
+    GoPro CineForm HD.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def cinepak() -> FFMpegDecoderOption:
     """
-    Cinepak
-
+    Cinepak.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def clearvideo() -> FFMpegDecoderOption:
     """
-    Iterated Systems ClearVideo
-
+    Iterated Systems ClearVideo.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def cljr() -> FFMpegDecoderOption:
     """
-    Cirrus Logic AccuPak
-
+    Cirrus Logic AccuPak.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def cllc() -> FFMpegDecoderOption:
     """
-    Canopus Lossless Codec
-
+    Canopus Lossless Codec.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def eacmv() -> FFMpegDecoderOption:
     """
-    Electronic Arts CMV video (codec cmv)
-
+    Electronic Arts CMV video (codec cmv).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def cpia() -> FFMpegDecoderOption:
     """
-    CPiA video format
-
+    CPiA video format.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def cri() -> FFMpegDecoderOption:
     """
-    Cintel RAW
-
+    Cintel RAW.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def camstudio() -> FFMpegDecoderOption:
     """
-    CamStudio (codec cscd)
-
+    CamStudio (codec cscd).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def cyuv() -> FFMpegDecoderOption:
     """
-    Creative YUV (CYUV)
-
+    Creative YUV (CYUV).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dds() -> FFMpegDecoderOption:
     """
-    DirectDraw Surface image decoder
-
+    DirectDraw Surface image decoder.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dfa() -> FFMpegDecoderOption:
     """
-    Chronomaster DFA
-
+    Chronomaster DFA.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dirac() -> FFMpegDecoderOption:
     """
-    BBC Dirac VC-2
-
+    BBC Dirac VC-2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dnxhd() -> FFMpegDecoderOption:
     """
-    VC3/DNxHD
-
+    VC3/DNxHD.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dpx() -> FFMpegDecoderOption:
     """
-    DPX (Digital Picture Exchange) image
-
+    DPX (Digital Picture Exchange) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dsicinvideo() -> FFMpegDecoderOption:
     """
-    Delphine Software International CIN video
-
+    Delphine Software International CIN video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dvvideo() -> FFMpegDecoderOption:
     """
-    DV (Digital Video)
-
+    DV (Digital Video).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dxa() -> FFMpegDecoderOption:
     """
-    Feeble Files/ScummVM DXA
-
+    Feeble Files/ScummVM DXA.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dxtory() -> FFMpegDecoderOption:
     """
-    Dxtory
-
+    Dxtory.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dxv() -> FFMpegDecoderOption:
     """
-    Resolume DXV
-
+    Resolume DXV.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def escape124() -> FFMpegDecoderOption:
     """
-    Escape 124
-
+    Escape 124.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def escape130() -> FFMpegDecoderOption:
     """
-    Escape 130
-
+    Escape 130.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -751,7 +750,7 @@ def exr(
     ] = None,
 ) -> FFMpegDecoderOption:
     """
-    OpenEXR image
+    OpenEXR image.
 
     Args:
         layer: Set the decoding layer (default "")
@@ -761,37 +760,36 @@ def exr(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "layer": layer,
-                "part": part,
-                "gamma": gamma,
-                "apply_trc": apply_trc,
-            }
-        )
+        merge({
+            "layer": layer,
+            "part": part,
+            "gamma": gamma,
+            "apply_trc": apply_trc,
+        })
     )
 
 
 def ffv1() -> FFMpegDecoderOption:
     """
-    FFmpeg video codec #1
-
+    FFmpeg video codec #1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def ffvhuff() -> FFMpegDecoderOption:
     """
-    Huffyuv FFmpeg variant
-
+    Huffyuv FFmpeg variant.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -800,20 +798,19 @@ def fic(
     skip_cursor: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Mirillis FIC
+    Mirillis FIC.
 
     Args:
         skip_cursor: skip the cursor (default false)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "skip_cursor": skip_cursor,
-            }
-        )
+        merge({
+            "skip_cursor": skip_cursor,
+        })
     )
 
 
@@ -821,85 +818,84 @@ def fits(
     blank_value: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Flexible Image Transport System
+    Flexible Image Transport System.
 
     Args:
         blank_value: value that is used to replace BLANK pixels in data array (from 0 to 65535) (default 0)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "blank_value": blank_value,
-            }
-        )
+        merge({
+            "blank_value": blank_value,
+        })
     )
 
 
 def flashsv() -> FFMpegDecoderOption:
     """
-    Flash Screen Video v1
-
+    Flash Screen Video v1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def flashsv2() -> FFMpegDecoderOption:
     """
-    Flash Screen Video v2
-
+    Flash Screen Video v2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def flic() -> FFMpegDecoderOption:
     """
-    Autodesk Animator Flic video
-
+    Autodesk Animator Flic video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def flv() -> FFMpegDecoderOption:
     """
-    FLV / Sorenson Spark / Sorenson H.263 (Flash Video) (codec flv1)
-
+    FLV / Sorenson Spark / Sorenson H.263 (Flash Video) (codec flv1).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def fmvc() -> FFMpegDecoderOption:
     """
-    FM Screen Capture Codec
-
+    FM Screen Capture Codec.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def fraps() -> FFMpegDecoderOption:
     """
-    Fraps
-
+    Fraps.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -908,52 +904,51 @@ def frwu(
     change_field_order: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Forward Uncompressed
+    Forward Uncompressed.
 
     Args:
         change_field_order: Change field order (default false)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "change_field_order": change_field_order,
-            }
-        )
+        merge({
+            "change_field_order": change_field_order,
+        })
     )
 
 
 def g2m() -> FFMpegDecoderOption:
     """
-    Go2Meeting
-
+    Go2Meeting.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def gdv() -> FFMpegDecoderOption:
     """
-    Gremlin Digital Video
-
+    Gremlin Digital Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def gem() -> FFMpegDecoderOption:
     """
-    GEM Raster image
-
+    GEM Raster image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -962,41 +957,40 @@ def gif(
     trans_color: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    GIF (Graphics Interchange Format)
+    GIF (Graphics Interchange Format).
 
     Args:
         trans_color: color value (ARGB) that is used instead of transparent color (from 0 to UINT32_MAX) (default 16777215)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "trans_color": trans_color,
-            }
-        )
+        merge({
+            "trans_color": trans_color,
+        })
     )
 
 
 def h261() -> FFMpegDecoderOption:
     """
-    H.261
-
+    H.261.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def h263() -> FFMpegDecoderOption:
     """
-    H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2
-
+    H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -1006,7 +1000,7 @@ def h263_v4l2m2m(
     num_capture_buffers: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem H.263 decoder wrapper (codec h263)
+    V4L2 mem2mem H.263 decoder wrapper (codec h263).
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
@@ -1014,35 +1008,34 @@ def h263_v4l2m2m(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "num_output_buffers": num_output_buffers,
-                "num_capture_buffers": num_capture_buffers,
-            }
-        )
+        merge({
+            "num_output_buffers": num_output_buffers,
+            "num_capture_buffers": num_capture_buffers,
+        })
     )
 
 
 def h263i() -> FFMpegDecoderOption:
     """
-    Intel H.263
-
+    Intel H.263.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def h263p() -> FFMpegDecoderOption:
     """
-    H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2
-
+    H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -1054,7 +1047,7 @@ def h264(
     x264_build: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+    H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10.
 
     Args:
         is_avc: is avc (default false)
@@ -1064,16 +1057,15 @@ def h264(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "is_avc": is_avc,
-                "nal_length_size": nal_length_size,
-                "enable_er": enable_er,
-                "x264_build": x264_build,
-            }
-        )
+        merge({
+            "is_avc": is_avc,
+            "nal_length_size": nal_length_size,
+            "enable_er": enable_er,
+            "x264_build": x264_build,
+        })
     )
 
 
@@ -1082,7 +1074,7 @@ def h264_v4l2m2m(
     num_capture_buffers: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem H.264 decoder wrapper (codec h264)
+    V4L2 mem2mem H.264 decoder wrapper (codec h264).
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
@@ -1090,14 +1082,13 @@ def h264_v4l2m2m(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "num_output_buffers": num_output_buffers,
-                "num_capture_buffers": num_capture_buffers,
-            }
-        )
+        merge({
+            "num_output_buffers": num_output_buffers,
+            "num_capture_buffers": num_capture_buffers,
+        })
     )
 
 
@@ -1110,7 +1101,7 @@ def h264_cuvid(
     resize: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Nvidia CUVID H264 decoder (codec h264)
+    Nvidia CUVID H264 decoder (codec h264).
 
     Args:
         deint: Set deinterlacing mode (from 0 to 2) (default weave)
@@ -1122,39 +1113,38 @@ def h264_cuvid(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "deint": deint,
-                "gpu": gpu,
-                "surfaces": surfaces,
-                "drop_second_field": drop_second_field,
-                "crop": crop,
-                "resize": resize,
-            }
-        )
+        merge({
+            "deint": deint,
+            "gpu": gpu,
+            "surfaces": surfaces,
+            "drop_second_field": drop_second_field,
+            "crop": crop,
+            "resize": resize,
+        })
     )
 
 
 def hap() -> FFMpegDecoderOption:
     """
-    Vidvox Hap
-
+    Vidvox Hap.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def hdr() -> FFMpegDecoderOption:
     """
-    HDR (Radiance RGBE format) image
-
+    HDR (Radiance RGBE format) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -1164,7 +1154,7 @@ def hevc(
     strict_displaywin: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    HEVC (High Efficiency Video Coding)
+    HEVC (High Efficiency Video Coding).
 
     Args:
         apply_defdispwin: Apply default display window from VUI (default false)
@@ -1172,14 +1162,13 @@ def hevc(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "apply_defdispwin": apply_defdispwin,
-                "strict-displaywin": strict_displaywin,
-            }
-        )
+        merge({
+            "apply_defdispwin": apply_defdispwin,
+            "strict-displaywin": strict_displaywin,
+        })
     )
 
 
@@ -1188,7 +1177,7 @@ def hevc_v4l2m2m(
     num_capture_buffers: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem HEVC decoder wrapper (codec hevc)
+    V4L2 mem2mem HEVC decoder wrapper (codec hevc).
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
@@ -1196,14 +1185,13 @@ def hevc_v4l2m2m(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "num_output_buffers": num_output_buffers,
-                "num_capture_buffers": num_capture_buffers,
-            }
-        )
+        merge({
+            "num_output_buffers": num_output_buffers,
+            "num_capture_buffers": num_capture_buffers,
+        })
     )
 
 
@@ -1216,7 +1204,7 @@ def hevc_cuvid(
     resize: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Nvidia CUVID HEVC decoder (codec hevc)
+    Nvidia CUVID HEVC decoder (codec hevc).
 
     Args:
         deint: Set deinterlacing mode (from 0 to 2) (default weave)
@@ -1228,193 +1216,192 @@ def hevc_cuvid(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "deint": deint,
-                "gpu": gpu,
-                "surfaces": surfaces,
-                "drop_second_field": drop_second_field,
-                "crop": crop,
-                "resize": resize,
-            }
-        )
+        merge({
+            "deint": deint,
+            "gpu": gpu,
+            "surfaces": surfaces,
+            "drop_second_field": drop_second_field,
+            "crop": crop,
+            "resize": resize,
+        })
     )
 
 
 def hnm4video() -> FFMpegDecoderOption:
     """
-    HNM 4 video
-
+    HNM 4 video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def hq_hqa() -> FFMpegDecoderOption:
     """
-    Canopus HQ/HQA
-
+    Canopus HQ/HQA.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def hqx() -> FFMpegDecoderOption:
     """
-    Canopus HQX
-
+    Canopus HQX.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def huffyuv() -> FFMpegDecoderOption:
     """
-    Huffyuv / HuffYUV
-
+    Huffyuv / HuffYUV.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def hymt() -> FFMpegDecoderOption:
     """
-    HuffYUV MT
-
+    HuffYUV MT.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def idcinvideo() -> FFMpegDecoderOption:
     """
-    id Quake II CIN video (codec idcin)
-
+    Id Quake II CIN video (codec idcin).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def idf() -> FFMpegDecoderOption:
     """
-    iCEDraw text
-
+    ICEDraw text.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def iff() -> FFMpegDecoderOption:
     """
-    IFF ACBM/ANIM/DEEP/ILBM/PBM/RGB8/RGBN (codec iff_ilbm)
-
+    IFF ACBM/ANIM/DEEP/ILBM/PBM/RGB8/RGBN (codec iff_ilbm).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def imm4() -> FFMpegDecoderOption:
     """
-    Infinity IMM4
-
+    Infinity IMM4.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def imm5() -> FFMpegDecoderOption:
     """
-    Infinity IMM5
-
+    Infinity IMM5.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def indeo2() -> FFMpegDecoderOption:
     """
-    Intel Indeo 2
-
+    Intel Indeo 2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def indeo3() -> FFMpegDecoderOption:
     """
-    Intel Indeo 3
-
+    Intel Indeo 3.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def indeo4() -> FFMpegDecoderOption:
     """
-    Intel Indeo Video Interactive 4
-
+    Intel Indeo Video Interactive 4.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def indeo5() -> FFMpegDecoderOption:
     """
-    Intel Indeo Video Interactive 5
-
+    Intel Indeo Video Interactive 5.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def interplayvideo() -> FFMpegDecoderOption:
     """
-    Interplay MVE video
-
+    Interplay MVE video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def ipu() -> FFMpegDecoderOption:
     """
-    IPU Video
-
+    IPU Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -1423,173 +1410,172 @@ def jpeg2000(
     lowres: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    JPEG 2000
+    JPEG 2000.
 
     Args:
         lowres: Lower the decoding resolution by a power of two (from 0 to 33) (default 0)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "lowres": lowres,
-            }
-        )
+        merge({
+            "lowres": lowres,
+        })
     )
 
 
 def jpegls() -> FFMpegDecoderOption:
     """
-    JPEG-LS
-
+    JPEG-LS.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def libjxl() -> FFMpegDecoderOption:
     """
-    libjxl JPEG XL (codec jpegxl)
-
+    Libjxl JPEG XL (codec jpegxl).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def jv() -> FFMpegDecoderOption:
     """
-    Bitmap Brothers JV video
-
+    Bitmap Brothers JV video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def kgv1() -> FFMpegDecoderOption:
     """
-    Kega Game Video
-
+    Kega Game Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def kmvc() -> FFMpegDecoderOption:
     """
-    Karl Morton's video codec
-
+    Karl Morton's video codec.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def lagarith() -> FFMpegDecoderOption:
     """
-    Lagarith lossless
-
+    Lagarith lossless.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def loco() -> FFMpegDecoderOption:
     """
-    LOCO
-
+    LOCO.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def lscr() -> FFMpegDecoderOption:
     """
-    LEAD Screen Capture
-
+    LEAD Screen Capture.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def m101() -> FFMpegDecoderOption:
     """
-    Matrox Uncompressed SD
-
+    Matrox Uncompressed SD.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def eamad() -> FFMpegDecoderOption:
     """
-    Electronic Arts Madcow Video (codec mad)
-
+    Electronic Arts Madcow Video (codec mad).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def magicyuv() -> FFMpegDecoderOption:
     """
-    MagicYUV video
-
+    MagicYUV video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mdec() -> FFMpegDecoderOption:
     """
-    Sony PlayStation MDEC (Motion DECoder)
-
+    Sony PlayStation MDEC (Motion DECoder).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def media100() -> FFMpegDecoderOption:
     """
-    Media 100
-
+    Media 100.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mimic() -> FFMpegDecoderOption:
     """
-    Mimic
-
+    Mimic.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -1598,20 +1584,19 @@ def mjpeg(
     extern_huff: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    MJPEG (Motion JPEG)
+    MJPEG (Motion JPEG).
 
     Args:
         extern_huff: Use external huffman table. (default false)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "extern_huff": extern_huff,
-            }
-        )
+        merge({
+            "extern_huff": extern_huff,
+        })
     )
 
 
@@ -1624,7 +1609,7 @@ def mjpeg_cuvid(
     resize: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Nvidia CUVID MJPEG decoder (codec mjpeg)
+    Nvidia CUVID MJPEG decoder (codec mjpeg).
 
     Args:
         deint: Set deinterlacing mode (from 0 to 2) (default weave)
@@ -1636,72 +1621,71 @@ def mjpeg_cuvid(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "deint": deint,
-                "gpu": gpu,
-                "surfaces": surfaces,
-                "drop_second_field": drop_second_field,
-                "crop": crop,
-                "resize": resize,
-            }
-        )
+        merge({
+            "deint": deint,
+            "gpu": gpu,
+            "surfaces": surfaces,
+            "drop_second_field": drop_second_field,
+            "crop": crop,
+            "resize": resize,
+        })
     )
 
 
 def mjpegb() -> FFMpegDecoderOption:
     """
-    Apple MJPEG-B
-
+    Apple MJPEG-B.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mmvideo() -> FFMpegDecoderOption:
     """
-    American Laser Games MM Video
-
+    American Laser Games MM Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mobiclip() -> FFMpegDecoderOption:
     """
-    MobiClip Video
-
+    MobiClip Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def motionpixels() -> FFMpegDecoderOption:
     """
-    Motion Pixels video
-
+    Motion Pixels video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mpeg1video() -> FFMpegDecoderOption:
     """
-    MPEG-1 video
-
+    MPEG-1 video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -1711,7 +1695,7 @@ def mpeg1_v4l2m2m(
     num_capture_buffers: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem MPEG1 decoder wrapper (codec mpeg1video)
+    V4L2 mem2mem MPEG1 decoder wrapper (codec mpeg1video).
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
@@ -1719,14 +1703,13 @@ def mpeg1_v4l2m2m(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "num_output_buffers": num_output_buffers,
-                "num_capture_buffers": num_capture_buffers,
-            }
-        )
+        merge({
+            "num_output_buffers": num_output_buffers,
+            "num_capture_buffers": num_capture_buffers,
+        })
     )
 
 
@@ -1739,7 +1722,7 @@ def mpeg1_cuvid(
     resize: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Nvidia CUVID MPEG1VIDEO decoder (codec mpeg1video)
+    Nvidia CUVID MPEG1VIDEO decoder (codec mpeg1video).
 
     Args:
         deint: Set deinterlacing mode (from 0 to 2) (default weave)
@@ -1751,39 +1734,38 @@ def mpeg1_cuvid(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "deint": deint,
-                "gpu": gpu,
-                "surfaces": surfaces,
-                "drop_second_field": drop_second_field,
-                "crop": crop,
-                "resize": resize,
-            }
-        )
+        merge({
+            "deint": deint,
+            "gpu": gpu,
+            "surfaces": surfaces,
+            "drop_second_field": drop_second_field,
+            "crop": crop,
+            "resize": resize,
+        })
     )
 
 
 def mpeg2video() -> FFMpegDecoderOption:
     """
-    MPEG-2 video
-
+    MPEG-2 video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mpegvideo() -> FFMpegDecoderOption:
     """
-    MPEG-1 video (codec mpeg2video)
-
+    MPEG-1 video (codec mpeg2video).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -1793,7 +1775,7 @@ def mpeg2_v4l2m2m(
     num_capture_buffers: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem MPEG2 decoder wrapper (codec mpeg2video)
+    V4L2 mem2mem MPEG2 decoder wrapper (codec mpeg2video).
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
@@ -1801,14 +1783,13 @@ def mpeg2_v4l2m2m(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "num_output_buffers": num_output_buffers,
-                "num_capture_buffers": num_capture_buffers,
-            }
-        )
+        merge({
+            "num_output_buffers": num_output_buffers,
+            "num_capture_buffers": num_capture_buffers,
+        })
     )
 
 
@@ -1821,7 +1802,7 @@ def mpeg2_cuvid(
     resize: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Nvidia CUVID MPEG2VIDEO decoder (codec mpeg2video)
+    Nvidia CUVID MPEG2VIDEO decoder (codec mpeg2video).
 
     Args:
         deint: Set deinterlacing mode (from 0 to 2) (default weave)
@@ -1833,28 +1814,27 @@ def mpeg2_cuvid(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "deint": deint,
-                "gpu": gpu,
-                "surfaces": surfaces,
-                "drop_second_field": drop_second_field,
-                "crop": crop,
-                "resize": resize,
-            }
-        )
+        merge({
+            "deint": deint,
+            "gpu": gpu,
+            "surfaces": surfaces,
+            "drop_second_field": drop_second_field,
+            "crop": crop,
+            "resize": resize,
+        })
     )
 
 
 def mpeg4() -> FFMpegDecoderOption:
     """
-    MPEG-4 part 2
-
+    MPEG-4 part 2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -1864,7 +1844,7 @@ def mpeg4_v4l2m2m(
     num_capture_buffers: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem MPEG4 decoder wrapper (codec mpeg4)
+    V4L2 mem2mem MPEG4 decoder wrapper (codec mpeg4).
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
@@ -1872,14 +1852,13 @@ def mpeg4_v4l2m2m(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "num_output_buffers": num_output_buffers,
-                "num_capture_buffers": num_capture_buffers,
-            }
-        )
+        merge({
+            "num_output_buffers": num_output_buffers,
+            "num_capture_buffers": num_capture_buffers,
+        })
     )
 
 
@@ -1892,7 +1871,7 @@ def mpeg4_cuvid(
     resize: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Nvidia CUVID MPEG4 decoder (codec mpeg4)
+    Nvidia CUVID MPEG4 decoder (codec mpeg4).
 
     Args:
         deint: Set deinterlacing mode (from 0 to 2) (default weave)
@@ -1904,358 +1883,357 @@ def mpeg4_cuvid(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "deint": deint,
-                "gpu": gpu,
-                "surfaces": surfaces,
-                "drop_second_field": drop_second_field,
-                "crop": crop,
-                "resize": resize,
-            }
-        )
+        merge({
+            "deint": deint,
+            "gpu": gpu,
+            "surfaces": surfaces,
+            "drop_second_field": drop_second_field,
+            "crop": crop,
+            "resize": resize,
+        })
     )
 
 
 def msa1() -> FFMpegDecoderOption:
     """
-    MS ATC Screen
-
+    MS ATC Screen.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mscc() -> FFMpegDecoderOption:
     """
-    Mandsoft Screen Capture Codec
-
+    Mandsoft Screen Capture Codec.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def msmpeg4v1() -> FFMpegDecoderOption:
     """
-    MPEG-4 part 2 Microsoft variant version 1
-
+    MPEG-4 part 2 Microsoft variant version 1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def msmpeg4v2() -> FFMpegDecoderOption:
     """
-    MPEG-4 part 2 Microsoft variant version 2
-
+    MPEG-4 part 2 Microsoft variant version 2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def msmpeg4() -> FFMpegDecoderOption:
     """
-    MPEG-4 part 2 Microsoft variant version 3 (codec msmpeg4v3)
-
+    MPEG-4 part 2 Microsoft variant version 3 (codec msmpeg4v3).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def msp2() -> FFMpegDecoderOption:
     """
-    Microsoft Paint (MSP) version 2
-
+    Microsoft Paint (MSP) version 2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def msrle() -> FFMpegDecoderOption:
     """
-    Microsoft RLE
-
+    Microsoft RLE.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mss1() -> FFMpegDecoderOption:
     """
-    MS Screen 1
-
+    MS Screen 1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mss2() -> FFMpegDecoderOption:
     """
-    MS Windows Media Video V9 Screen
-
+    MS Windows Media Video V9 Screen.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def msvideo1() -> FFMpegDecoderOption:
     """
-    Microsoft Video 1
-
+    Microsoft Video 1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mszh() -> FFMpegDecoderOption:
     """
-    LCL (LossLess Codec Library) MSZH
-
+    LCL (LossLess Codec Library) MSZH.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mts2() -> FFMpegDecoderOption:
     """
-    MS Expression Encoder Screen
-
+    MS Expression Encoder Screen.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mv30() -> FFMpegDecoderOption:
     """
-    MidiVid 3.0
-
+    MidiVid 3.0.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mvc1() -> FFMpegDecoderOption:
     """
-    Silicon Graphics Motion Video Compressor 1
-
+    Silicon Graphics Motion Video Compressor 1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mvc2() -> FFMpegDecoderOption:
     """
-    Silicon Graphics Motion Video Compressor 2
-
+    Silicon Graphics Motion Video Compressor 2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mvdv() -> FFMpegDecoderOption:
     """
-    MidiVid VQ
-
+    MidiVid VQ.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mvha() -> FFMpegDecoderOption:
     """
-    MidiVid Archive Codec
-
+    MidiVid Archive Codec.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mwsc() -> FFMpegDecoderOption:
     """
-    MatchWare Screen Capture Codec
-
+    MatchWare Screen Capture Codec.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mxpeg() -> FFMpegDecoderOption:
     """
-    Mobotix MxPEG video
-
+    Mobotix MxPEG video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def notchlc() -> FFMpegDecoderOption:
     """
-    NotchLC
-
+    NotchLC.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def nuv() -> FFMpegDecoderOption:
     """
-    NuppelVideo/RTJPEG
-
+    NuppelVideo/RTJPEG.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def paf_video() -> FFMpegDecoderOption:
     """
-    Amazing Studio Packed Animation File Video
-
+    Amazing Studio Packed Animation File Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pam() -> FFMpegDecoderOption:
     """
-    PAM (Portable AnyMap) image
-
+    PAM (Portable AnyMap) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pbm() -> FFMpegDecoderOption:
     """
-    PBM (Portable BitMap) image
-
+    PBM (Portable BitMap) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcx() -> FFMpegDecoderOption:
     """
-    PC Paintbrush PCX image
-
+    PC Paintbrush PCX image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pdv() -> FFMpegDecoderOption:
     """
-    PDV (PlayDate Video)
-
+    PDV (PlayDate Video).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pfm() -> FFMpegDecoderOption:
     """
-    PFM (Portable FloatMap) image
-
+    PFM (Portable FloatMap) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pgm() -> FFMpegDecoderOption:
     """
-    PGM (Portable GrayMap) image
-
+    PGM (Portable GrayMap) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pgmyuv() -> FFMpegDecoderOption:
     """
-    PGMYUV (Portable GrayMap YUV) image
-
+    PGMYUV (Portable GrayMap YUV) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pgx() -> FFMpegDecoderOption:
     """
-    PGX (JPEG2000 Test Format)
-
+    PGX (JPEG2000 Test Format).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def phm() -> FFMpegDecoderOption:
     """
-    PHM (Portable HalfFloatMap) image
-
+    PHM (Portable HalfFloatMap) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -2264,173 +2242,172 @@ def photocd(
     lowres: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Kodak Photo CD
+    Kodak Photo CD.
 
     Args:
         lowres: Lower the decoding resolution by a power of two (from 0 to 4) (default 0)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "lowres": lowres,
-            }
-        )
+        merge({
+            "lowres": lowres,
+        })
     )
 
 
 def pictor() -> FFMpegDecoderOption:
     """
-    Pictor/PC Paint
-
+    Pictor/PC Paint.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pixlet() -> FFMpegDecoderOption:
     """
-    Apple Pixlet
-
+    Apple Pixlet.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def png() -> FFMpegDecoderOption:
     """
-    PNG (Portable Network Graphics) image
-
+    PNG (Portable Network Graphics) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def ppm() -> FFMpegDecoderOption:
     """
-    PPM (Portable PixelMap) image
-
+    PPM (Portable PixelMap) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def prores() -> FFMpegDecoderOption:
     """
-    Apple ProRes (iCodec Pro)
-
+    Apple ProRes (iCodec Pro).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def prosumer() -> FFMpegDecoderOption:
     """
-    Brooktree ProSumer Video
-
+    Brooktree ProSumer Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def psd() -> FFMpegDecoderOption:
     """
-    Photoshop PSD file
-
+    Photoshop PSD file.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def ptx() -> FFMpegDecoderOption:
     """
-    V.Flash PTX image
-
+    V.Flash PTX image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def qdraw() -> FFMpegDecoderOption:
     """
-    Apple QuickDraw
-
+    Apple QuickDraw.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def qoi() -> FFMpegDecoderOption:
     """
-    QOI (Quite OK Image format) image
-
+    QOI (Quite OK Image format) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def qpeg() -> FFMpegDecoderOption:
     """
-    Q-team QPEG
-
+    Q-team QPEG.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def qtrle() -> FFMpegDecoderOption:
     """
-    QuickTime Animation (RLE) video
-
+    QuickTime Animation (RLE) video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def r10k() -> FFMpegDecoderOption:
     """
-    AJA Kona 10-bit RGB Codec
-
+    AJA Kona 10-bit RGB Codec.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def r210() -> FFMpegDecoderOption:
     """
-    Uncompressed RGB 10-bit
-
+    Uncompressed RGB 10-bit.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -2439,20 +2416,19 @@ def rasc(
     skip_cursor: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    RemotelyAnywhere Screen Capture
+    RemotelyAnywhere Screen Capture.
 
     Args:
         skip_cursor: skip the cursor (default false)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "skip_cursor": skip_cursor,
-            }
-        )
+        merge({
+            "skip_cursor": skip_cursor,
+        })
     )
 
 
@@ -2460,294 +2436,293 @@ def rawvideo(
     top: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    raw video
+    Raw video.
 
     Args:
         top: top field first (default auto)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "top": top,
-            }
-        )
+        merge({
+            "top": top,
+        })
     )
 
 
 def rl2() -> FFMpegDecoderOption:
     """
-    RL2 video
-
+    RL2 video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def roqvideo() -> FFMpegDecoderOption:
     """
-    id RoQ video (codec roq)
-
+    Id RoQ video (codec roq).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def rpza() -> FFMpegDecoderOption:
     """
-    QuickTime video (RPZA)
-
+    QuickTime video (RPZA).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def rscc() -> FFMpegDecoderOption:
     """
-    innoHeim/Rsupport Screen Capture Codec
-
+    innoHeim/Rsupport Screen Capture Codec.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def rtv1() -> FFMpegDecoderOption:
     """
-    RTV1 (RivaTuner Video)
-
+    RTV1 (RivaTuner Video).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def rv10() -> FFMpegDecoderOption:
     """
-    RealVideo 1.0
-
+    RealVideo 1.0.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def rv20() -> FFMpegDecoderOption:
     """
-    RealVideo 2.0
-
+    RealVideo 2.0.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def rv30() -> FFMpegDecoderOption:
     """
-    RealVideo 3.0
-
+    RealVideo 3.0.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def rv40() -> FFMpegDecoderOption:
     """
-    RealVideo 4.0
-
+    RealVideo 4.0.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def sanm() -> FFMpegDecoderOption:
     """
-    LucasArts SANM/Smush video
-
+    LucasArts SANM/Smush video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def scpr() -> FFMpegDecoderOption:
     """
-    ScreenPressor
-
+    ScreenPressor.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def screenpresso() -> FFMpegDecoderOption:
     """
-    Screenpresso
-
+    Screenpresso.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def sga() -> FFMpegDecoderOption:
     """
-    Digital Pictures SGA Video
-
+    Digital Pictures SGA Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def sgi() -> FFMpegDecoderOption:
     """
-    SGI image
-
+    SGI image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def sgirle() -> FFMpegDecoderOption:
     """
-    Silicon Graphics RLE 8-bit video
-
+    Silicon Graphics RLE 8-bit video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def sheervideo() -> FFMpegDecoderOption:
     """
-    BitJazz SheerVideo
-
+    BitJazz SheerVideo.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def simbiosis_imx() -> FFMpegDecoderOption:
     """
-    Simbiosis Interactive IMX Video
-
+    Simbiosis Interactive IMX Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def smackvid() -> FFMpegDecoderOption:
     """
-    Smacker video (codec smackvideo)
-
+    Smacker video (codec smackvideo).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def smc() -> FFMpegDecoderOption:
     """
-    QuickTime Graphics (SMC)
-
+    QuickTime Graphics (SMC).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def smvjpeg() -> FFMpegDecoderOption:
     """
-    SMV JPEG
-
+    SMV JPEG.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def snow() -> FFMpegDecoderOption:
     """
-    Snow
-
+    Snow.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def sp5x() -> FFMpegDecoderOption:
     """
-    Sunplus JPEG (SP5X)
-
+    Sunplus JPEG (SP5X).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def speedhq() -> FFMpegDecoderOption:
     """
-    NewTek SpeedHQ
-
+    NewTek SpeedHQ.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def srgc() -> FFMpegDecoderOption:
     """
-    Screen Recorder Gold Codec
-
+    Screen Recorder Gold Codec.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def sunrast() -> FFMpegDecoderOption:
     """
-    Sun Rasterfile image
-
+    Sun Rasterfile image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -2758,7 +2733,7 @@ def librsvg(
     keep_ar: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Librsvg rasterizer (codec svg)
+    Librsvg rasterizer (codec svg).
 
     Args:
         width: Width to render to (0 for default) (from 0 to INT_MAX) (default 0)
@@ -2767,124 +2742,123 @@ def librsvg(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "width": width,
-                "height": height,
-                "keep_ar": keep_ar,
-            }
-        )
+        merge({
+            "width": width,
+            "height": height,
+            "keep_ar": keep_ar,
+        })
     )
 
 
 def svq1() -> FFMpegDecoderOption:
     """
-    Sorenson Vector Quantizer 1 / Sorenson Video 1 / SVQ1
-
+    Sorenson Vector Quantizer 1 / Sorenson Video 1 / SVQ1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def svq3() -> FFMpegDecoderOption:
     """
-    Sorenson Vector Quantizer 3 / Sorenson Video 3 / SVQ3
-
+    Sorenson Vector Quantizer 3 / Sorenson Video 3 / SVQ3.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def targa() -> FFMpegDecoderOption:
     """
-    Truevision Targa image
-
+    Truevision Targa image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def targa_y216() -> FFMpegDecoderOption:
     """
-    Pinnacle TARGA CineWave YUV16
-
+    Pinnacle TARGA CineWave YUV16.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def tdsc() -> FFMpegDecoderOption:
     """
-    TDSC
-
+    TDSC.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def eatgq() -> FFMpegDecoderOption:
     """
-    Electronic Arts TGQ video (codec tgq)
-
+    Electronic Arts TGQ video (codec tgq).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def eatgv() -> FFMpegDecoderOption:
     """
-    Electronic Arts TGV video (codec tgv)
-
+    Electronic Arts TGV video (codec tgv).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def theora() -> FFMpegDecoderOption:
     """
-    Theora
-
+    Theora.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def thp() -> FFMpegDecoderOption:
     """
-    Nintendo Gamecube THP video
-
+    Nintendo Gamecube THP video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def tiertexseqvideo() -> FFMpegDecoderOption:
     """
-    Tiertex Limited SEQ video
-
+    Tiertex Limited SEQ video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -2895,7 +2869,7 @@ def tiff(
     page: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    TIFF image
+    TIFF image.
 
     Args:
         subimage: decode subimage instead if available (default false)
@@ -2904,124 +2878,123 @@ def tiff(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "subimage": subimage,
-                "thumbnail": thumbnail,
-                "page": page,
-            }
-        )
+        merge({
+            "subimage": subimage,
+            "thumbnail": thumbnail,
+            "page": page,
+        })
     )
 
 
 def tmv() -> FFMpegDecoderOption:
     """
-    8088flex TMV
-
+    8088flex TMV.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def eatqi() -> FFMpegDecoderOption:
     """
-    Electronic Arts TQI Video (codec tqi)
-
+    Electronic Arts TQI Video (codec tqi).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def truemotion1() -> FFMpegDecoderOption:
     """
-    Duck TrueMotion 1.0
-
+    Duck TrueMotion 1.0.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def truemotion2() -> FFMpegDecoderOption:
     """
-    Duck TrueMotion 2.0
-
+    Duck TrueMotion 2.0.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def truemotion2rt() -> FFMpegDecoderOption:
     """
-    Duck TrueMotion 2.0 Real Time
-
+    Duck TrueMotion 2.0 Real Time.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def camtasia() -> FFMpegDecoderOption:
     """
-    TechSmith Screen Capture Codec (codec tscc)
-
+    TechSmith Screen Capture Codec (codec tscc).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def tscc2() -> FFMpegDecoderOption:
     """
-    TechSmith Screen Codec 2
-
+    TechSmith Screen Codec 2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def txd() -> FFMpegDecoderOption:
     """
-    Renderware TXD (TeXture Dictionary) image
-
+    Renderware TXD (TeXture Dictionary) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def ultimotion() -> FFMpegDecoderOption:
     """
-    IBM UltiMotion (codec ulti)
-
+    IBM UltiMotion (codec ulti).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def utvideo() -> FFMpegDecoderOption:
     """
-    Ut Video
-
+    Ut Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -3030,107 +3003,106 @@ def v210(
     custom_stride: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Uncompressed 4:2:2 10-bit
+    Uncompressed 4:2:2 10-bit.
 
     Args:
         custom_stride: Custom V210 stride (from -1 to INT_MAX) (default 0)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "custom_stride": custom_stride,
-            }
-        )
+        merge({
+            "custom_stride": custom_stride,
+        })
     )
 
 
 def v210x() -> FFMpegDecoderOption:
     """
-    Uncompressed 4:2:2 10-bit
-
+    Uncompressed 4:2:2 10-bit.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def v308() -> FFMpegDecoderOption:
     """
-    Uncompressed packed 4:4:4
-
+    Uncompressed packed 4:4:4.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def v408() -> FFMpegDecoderOption:
     """
-    Uncompressed packed QT 4:4:4:4
-
+    Uncompressed packed QT 4:4:4:4.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def v410() -> FFMpegDecoderOption:
     """
-    Uncompressed 4:4:4 10-bit
-
+    Uncompressed 4:4:4 10-bit.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vb() -> FFMpegDecoderOption:
     """
-    Beam Software VB
-
+    Beam Software VB.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vble() -> FFMpegDecoderOption:
     """
-    VBLE Lossless Codec
-
+    VBLE Lossless Codec.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vbn() -> FFMpegDecoderOption:
     """
-    Vizrt Binary Image
-
+    Vizrt Binary Image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vc1() -> FFMpegDecoderOption:
     """
-    SMPTE VC-1
-
+    SMPTE VC-1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -3140,7 +3112,7 @@ def vc1_v4l2m2m(
     num_capture_buffers: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem VC1 decoder wrapper (codec vc1)
+    V4L2 mem2mem VC1 decoder wrapper (codec vc1).
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
@@ -3148,14 +3120,13 @@ def vc1_v4l2m2m(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "num_output_buffers": num_output_buffers,
-                "num_capture_buffers": num_capture_buffers,
-            }
-        )
+        merge({
+            "num_output_buffers": num_output_buffers,
+            "num_capture_buffers": num_capture_buffers,
+        })
     )
 
 
@@ -3168,7 +3139,7 @@ def vc1_cuvid(
     resize: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Nvidia CUVID VC1 decoder (codec vc1)
+    Nvidia CUVID VC1 decoder (codec vc1).
 
     Args:
         deint: Set deinterlacing mode (from 0 to 2) (default weave)
@@ -3180,182 +3151,181 @@ def vc1_cuvid(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "deint": deint,
-                "gpu": gpu,
-                "surfaces": surfaces,
-                "drop_second_field": drop_second_field,
-                "crop": crop,
-                "resize": resize,
-            }
-        )
+        merge({
+            "deint": deint,
+            "gpu": gpu,
+            "surfaces": surfaces,
+            "drop_second_field": drop_second_field,
+            "crop": crop,
+            "resize": resize,
+        })
     )
 
 
 def vc1image() -> FFMpegDecoderOption:
     """
-    Windows Media Video 9 Image v2
-
+    Windows Media Video 9 Image v2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vcr1() -> FFMpegDecoderOption:
     """
-    ATI VCR1
-
+    ATI VCR1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def xl() -> FFMpegDecoderOption:
     """
-    Miro VideoXL (codec vixl)
-
+    Miro VideoXL (codec vixl).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vmdvideo() -> FFMpegDecoderOption:
     """
-    Sierra VMD video
-
+    Sierra VMD video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vmix() -> FFMpegDecoderOption:
     """
-    vMix Video
-
+    VMix Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vmnc() -> FFMpegDecoderOption:
     """
-    VMware Screen Codec / VMware Video
-
+    VMware Screen Codec / VMware Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vnull() -> FFMpegDecoderOption:
     """
-    null video
-
+    Null video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vp3() -> FFMpegDecoderOption:
     """
-    On2 VP3
-
+    On2 VP3.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vp4() -> FFMpegDecoderOption:
     """
-    On2 VP4
-
+    On2 VP4.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vp5() -> FFMpegDecoderOption:
     """
-    On2 VP5
-
+    On2 VP5.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vp6() -> FFMpegDecoderOption:
     """
-    On2 VP6
-
+    On2 VP6.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vp6a() -> FFMpegDecoderOption:
     """
-    On2 VP6 (Flash version, with alpha channel)
-
+    On2 VP6 (Flash version, with alpha channel).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vp6f() -> FFMpegDecoderOption:
     """
-    On2 VP6 (Flash version)
-
+    On2 VP6 (Flash version).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vp7() -> FFMpegDecoderOption:
     """
-    On2 VP7
-
+    On2 VP7.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vp8() -> FFMpegDecoderOption:
     """
-    On2 VP8
-
+    On2 VP8.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -3365,7 +3335,7 @@ def vp8_v4l2m2m(
     num_capture_buffers: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem VP8 decoder wrapper (codec vp8)
+    V4L2 mem2mem VP8 decoder wrapper (codec vp8).
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
@@ -3373,24 +3343,23 @@ def vp8_v4l2m2m(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "num_output_buffers": num_output_buffers,
-                "num_capture_buffers": num_capture_buffers,
-            }
-        )
+        merge({
+            "num_output_buffers": num_output_buffers,
+            "num_capture_buffers": num_capture_buffers,
+        })
     )
 
 
 def libvpx() -> FFMpegDecoderOption:
     """
-    libvpx VP8 (codec vp8)
-
+    Libvpx VP8 (codec vp8).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -3404,7 +3373,7 @@ def vp8_cuvid(
     resize: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Nvidia CUVID VP8 decoder (codec vp8)
+    Nvidia CUVID VP8 decoder (codec vp8).
 
     Args:
         deint: Set deinterlacing mode (from 0 to 2) (default weave)
@@ -3416,28 +3385,27 @@ def vp8_cuvid(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "deint": deint,
-                "gpu": gpu,
-                "surfaces": surfaces,
-                "drop_second_field": drop_second_field,
-                "crop": crop,
-                "resize": resize,
-            }
-        )
+        merge({
+            "deint": deint,
+            "gpu": gpu,
+            "surfaces": surfaces,
+            "drop_second_field": drop_second_field,
+            "crop": crop,
+            "resize": resize,
+        })
     )
 
 
 def vp9() -> FFMpegDecoderOption:
     """
-    Google VP9
-
+    Google VP9.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -3447,7 +3415,7 @@ def vp9_v4l2m2m(
     num_capture_buffers: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem VP9 decoder wrapper (codec vp9)
+    V4L2 mem2mem VP9 decoder wrapper (codec vp9).
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
@@ -3455,14 +3423,13 @@ def vp9_v4l2m2m(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "num_output_buffers": num_output_buffers,
-                "num_capture_buffers": num_capture_buffers,
-            }
-        )
+        merge({
+            "num_output_buffers": num_output_buffers,
+            "num_capture_buffers": num_capture_buffers,
+        })
     )
 
 
@@ -3475,7 +3442,7 @@ def vp9_cuvid(
     resize: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Nvidia CUVID VP9 decoder (codec vp9)
+    Nvidia CUVID VP9 decoder (codec vp9).
 
     Args:
         deint: Set deinterlacing mode (from 0 to 2) (default weave)
@@ -3487,314 +3454,313 @@ def vp9_cuvid(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "deint": deint,
-                "gpu": gpu,
-                "surfaces": surfaces,
-                "drop_second_field": drop_second_field,
-                "crop": crop,
-                "resize": resize,
-            }
-        )
+        merge({
+            "deint": deint,
+            "gpu": gpu,
+            "surfaces": surfaces,
+            "drop_second_field": drop_second_field,
+            "crop": crop,
+            "resize": resize,
+        })
     )
 
 
 def vqc() -> FFMpegDecoderOption:
     """
-    ViewQuest VQC
-
+    ViewQuest VQC.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wbmp() -> FFMpegDecoderOption:
     """
-    WBMP (Wireless Application Protocol Bitmap) image
-
+    WBMP (Wireless Application Protocol Bitmap) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wcmv() -> FFMpegDecoderOption:
     """
-    WinCAM Motion Video
-
+    WinCAM Motion Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def webp() -> FFMpegDecoderOption:
     """
-    WebP image
-
+    WebP image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wmv1() -> FFMpegDecoderOption:
     """
-    Windows Media Video 7
-
+    Windows Media Video 7.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wmv2() -> FFMpegDecoderOption:
     """
-    Windows Media Video 8
-
+    Windows Media Video 8.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wmv3() -> FFMpegDecoderOption:
     """
-    Windows Media Video 9
-
+    Windows Media Video 9.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wmv3image() -> FFMpegDecoderOption:
     """
-    Windows Media Video 9 Image
-
+    Windows Media Video 9 Image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wnv1() -> FFMpegDecoderOption:
     """
-    Winnov WNV1
-
+    Winnov WNV1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wrapped_avframe() -> FFMpegDecoderOption:
     """
-    AVPacket to AVFrame passthrough
-
+    AVPacket to AVFrame passthrough.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vqavideo() -> FFMpegDecoderOption:
     """
-    Westwood Studios VQA (Vector Quantized Animation) video (codec ws_vqa)
-
+    Westwood Studios VQA (Vector Quantized Animation) video (codec ws_vqa).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def xan_wc3() -> FFMpegDecoderOption:
     """
-    Wing Commander III / Xan
-
+    Wing Commander III / Xan.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def xan_wc4() -> FFMpegDecoderOption:
     """
-    Wing Commander IV / Xxan
-
+    Wing Commander IV / Xxan.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def xbin() -> FFMpegDecoderOption:
     """
-    eXtended BINary text
-
+    EXtended BINary text.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def xbm() -> FFMpegDecoderOption:
     """
-    XBM (X BitMap) image
-
+    XBM (X BitMap) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def xface() -> FFMpegDecoderOption:
     """
-    X-face image
-
+    X-face image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def xpm() -> FFMpegDecoderOption:
     """
-    XPM (X PixMap) image
-
+    XPM (X PixMap) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def xwd() -> FFMpegDecoderOption:
     """
-    XWD (X Window Dump) image
-
+    XWD (X Window Dump) image.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def y41p() -> FFMpegDecoderOption:
     """
-    Uncompressed YUV 4:1:1 12-bit
-
+    Uncompressed YUV 4:1:1 12-bit.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def ylc() -> FFMpegDecoderOption:
     """
-    YUY2 Lossless Codec
-
+    YUY2 Lossless Codec.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def yop() -> FFMpegDecoderOption:
     """
-    Psygnosis YOP Video
-
+    Psygnosis YOP Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def yuv4() -> FFMpegDecoderOption:
     """
-    Uncompressed packed 4:2:0
-
+    Uncompressed packed 4:2:0.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def zerocodec() -> FFMpegDecoderOption:
     """
-    ZeroCodec Lossless Video
-
+    ZeroCodec Lossless Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def zlib() -> FFMpegDecoderOption:
     """
-    LCL (LossLess Codec Library) ZLIB
-
+    LCL (LossLess Codec Library) ZLIB.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def zmbv() -> FFMpegDecoderOption:
     """
-    Zip Motion Blocks Video
-
+    Zip Motion Blocks Video.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def _8svx_exp() -> FFMpegDecoderOption:
     """
-    8SVX exponential
-
+    8SVX exponential.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def _8svx_fib() -> FFMpegDecoderOption:
     """
-    8SVX fibonacci
-
+    8SVX fibonacci.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -3804,7 +3770,7 @@ def aac(
     channel_order: int | None | Literal["default", "coded"] = None,
 ) -> FFMpegDecoderOption:
     """
-    AAC (Advanced Audio Coding)
+    AAC (Advanced Audio Coding).
 
     Args:
         dual_mono_mode: Select the channel to decode for dual mono (from -1 to 2) (default auto)
@@ -3812,14 +3778,13 @@ def aac(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "dual_mono_mode": dual_mono_mode,
-                "channel_order": channel_order,
-            }
-        )
+        merge({
+            "dual_mono_mode": dual_mono_mode,
+            "channel_order": channel_order,
+        })
     )
 
 
@@ -3828,7 +3793,7 @@ def aac_fixed(
     channel_order: int | None | Literal["default", "coded"] = None,
 ) -> FFMpegDecoderOption:
     """
-    AAC (Advanced Audio Coding) (codec aac)
+    AAC (Advanced Audio Coding) (codec aac).
 
     Args:
         dual_mono_mode: Select the channel to decode for dual mono (from -1 to 2) (default auto)
@@ -3836,24 +3801,23 @@ def aac_fixed(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "dual_mono_mode": dual_mono_mode,
-                "channel_order": channel_order,
-            }
-        )
+        merge({
+            "dual_mono_mode": dual_mono_mode,
+            "channel_order": channel_order,
+        })
     )
 
 
 def aac_latm() -> FFMpegDecoderOption:
     """
-    AAC LATM (Advanced Audio Coding LATM syntax)
-
+    AAC LATM (Advanced Audio Coding LATM syntax).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -3866,7 +3830,7 @@ def ac3(
     downmix: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    ATSC A/52A (AC-3)
+    ATSC A/52A (AC-3).
 
     Args:
         cons_noisegen: enable consistent noise generation (default false)
@@ -3877,17 +3841,16 @@ def ac3(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "cons_noisegen": cons_noisegen,
-                "drc_scale": drc_scale,
-                "heavy_compr": heavy_compr,
-                "target_level": target_level,
-                "downmix": downmix,
-            }
-        )
+        merge({
+            "cons_noisegen": cons_noisegen,
+            "drc_scale": drc_scale,
+            "heavy_compr": heavy_compr,
+            "target_level": target_level,
+            "downmix": downmix,
+        })
     )
 
 
@@ -3898,7 +3861,7 @@ def ac3_fixed(
     downmix: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    ATSC A/52A (AC-3) (codec ac3)
+    ATSC A/52A (AC-3) (codec ac3).
 
     Args:
         cons_noisegen: enable consistent noise generation (default false)
@@ -3908,169 +3871,168 @@ def ac3_fixed(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "cons_noisegen": cons_noisegen,
-                "drc_scale": drc_scale,
-                "heavy_compr": heavy_compr,
-                "downmix": downmix,
-            }
-        )
+        merge({
+            "cons_noisegen": cons_noisegen,
+            "drc_scale": drc_scale,
+            "heavy_compr": heavy_compr,
+            "downmix": downmix,
+        })
     )
 
 
 def adpcm_4xm() -> FFMpegDecoderOption:
     """
-    ADPCM 4X Movie
-
+    ADPCM 4X Movie.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_adx() -> FFMpegDecoderOption:
     """
-    SEGA CRI ADX ADPCM
-
+    SEGA CRI ADX ADPCM.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_afc() -> FFMpegDecoderOption:
     """
-    ADPCM Nintendo Gamecube AFC
-
+    ADPCM Nintendo Gamecube AFC.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_agm() -> FFMpegDecoderOption:
     """
-    ADPCM AmuseGraphics Movie
-
+    ADPCM AmuseGraphics Movie.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_aica() -> FFMpegDecoderOption:
     """
-    ADPCM Yamaha AICA
-
+    ADPCM Yamaha AICA.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_argo() -> FFMpegDecoderOption:
     """
-    ADPCM Argonaut Games
-
+    ADPCM Argonaut Games.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ct() -> FFMpegDecoderOption:
     """
-    ADPCM Creative Technology
-
+    ADPCM Creative Technology.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_dtk() -> FFMpegDecoderOption:
     """
-    ADPCM Nintendo Gamecube DTK
-
+    ADPCM Nintendo Gamecube DTK.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ea() -> FFMpegDecoderOption:
     """
-    ADPCM Electronic Arts
-
+    ADPCM Electronic Arts.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ea_maxis_xa() -> FFMpegDecoderOption:
     """
-    ADPCM Electronic Arts Maxis CDROM XA
-
+    ADPCM Electronic Arts Maxis CDROM XA.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ea_r1() -> FFMpegDecoderOption:
     """
-    ADPCM Electronic Arts R1
-
+    ADPCM Electronic Arts R1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ea_r2() -> FFMpegDecoderOption:
     """
-    ADPCM Electronic Arts R2
-
+    ADPCM Electronic Arts R2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ea_r3() -> FFMpegDecoderOption:
     """
-    ADPCM Electronic Arts R3
-
+    ADPCM Electronic Arts R3.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ea_xas() -> FFMpegDecoderOption:
     """
-    ADPCM Electronic Arts XAS
-
+    ADPCM Electronic Arts XAS.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -4079,426 +4041,425 @@ def g722(
     bits_per_codeword: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    G.722 ADPCM (codec adpcm_g722)
+    G.722 ADPCM (codec adpcm_g722).
 
     Args:
         bits_per_codeword: Bits per G722 codeword (from 6 to 8) (default 8)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "bits_per_codeword": bits_per_codeword,
-            }
-        )
+        merge({
+            "bits_per_codeword": bits_per_codeword,
+        })
     )
 
 
 def g726() -> FFMpegDecoderOption:
     """
-    G.726 ADPCM (codec adpcm_g726)
-
+    G.726 ADPCM (codec adpcm_g726).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def g726le() -> FFMpegDecoderOption:
     """
-    G.726 ADPCM little-endian (codec adpcm_g726le)
-
+    G.726 ADPCM little-endian (codec adpcm_g726le).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_acorn() -> FFMpegDecoderOption:
     """
-    ADPCM IMA Acorn Replay
-
+    ADPCM IMA Acorn Replay.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_alp() -> FFMpegDecoderOption:
     """
-    ADPCM IMA High Voltage Software ALP
-
+    ADPCM IMA High Voltage Software ALP.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_amv() -> FFMpegDecoderOption:
     """
-    ADPCM IMA AMV
-
+    ADPCM IMA AMV.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_apc() -> FFMpegDecoderOption:
     """
-    ADPCM IMA CRYO APC
-
+    ADPCM IMA CRYO APC.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_apm() -> FFMpegDecoderOption:
     """
-    ADPCM IMA Ubisoft APM
-
+    ADPCM IMA Ubisoft APM.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_cunning() -> FFMpegDecoderOption:
     """
-    ADPCM IMA Cunning Developments
-
+    ADPCM IMA Cunning Developments.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_dat4() -> FFMpegDecoderOption:
     """
-    ADPCM IMA Eurocom DAT4
-
+    ADPCM IMA Eurocom DAT4.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_dk3() -> FFMpegDecoderOption:
     """
-    ADPCM IMA Duck DK3
-
+    ADPCM IMA Duck DK3.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_dk4() -> FFMpegDecoderOption:
     """
-    ADPCM IMA Duck DK4
-
+    ADPCM IMA Duck DK4.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_ea_eacs() -> FFMpegDecoderOption:
     """
-    ADPCM IMA Electronic Arts EACS
-
+    ADPCM IMA Electronic Arts EACS.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_ea_sead() -> FFMpegDecoderOption:
     """
-    ADPCM IMA Electronic Arts SEAD
-
+    ADPCM IMA Electronic Arts SEAD.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_iss() -> FFMpegDecoderOption:
     """
-    ADPCM IMA Funcom ISS
-
+    ADPCM IMA Funcom ISS.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_moflex() -> FFMpegDecoderOption:
     """
-    ADPCM IMA MobiClip MOFLEX
-
+    ADPCM IMA MobiClip MOFLEX.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_mtf() -> FFMpegDecoderOption:
     """
-    ADPCM IMA Capcom's MT Framework
-
+    ADPCM IMA Capcom's MT Framework.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_oki() -> FFMpegDecoderOption:
     """
-    ADPCM IMA Dialogic OKI
-
+    ADPCM IMA Dialogic OKI.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_qt() -> FFMpegDecoderOption:
     """
-    ADPCM IMA QuickTime
-
+    ADPCM IMA QuickTime.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_rad() -> FFMpegDecoderOption:
     """
-    ADPCM IMA Radical
-
+    ADPCM IMA Radical.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_smjpeg() -> FFMpegDecoderOption:
     """
-    ADPCM IMA Loki SDL MJPEG
-
+    ADPCM IMA Loki SDL MJPEG.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_ssi() -> FFMpegDecoderOption:
     """
-    ADPCM IMA Simon & Schuster Interactive
-
+    ADPCM IMA Simon & Schuster Interactive.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_wav() -> FFMpegDecoderOption:
     """
-    ADPCM IMA WAV
-
+    ADPCM IMA WAV.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ima_ws() -> FFMpegDecoderOption:
     """
-    ADPCM IMA Westwood
-
+    ADPCM IMA Westwood.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_ms() -> FFMpegDecoderOption:
     """
-    ADPCM Microsoft
-
+    ADPCM Microsoft.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_mtaf() -> FFMpegDecoderOption:
     """
-    ADPCM MTAF
-
+    ADPCM MTAF.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_psx() -> FFMpegDecoderOption:
     """
-    ADPCM Playstation
-
+    ADPCM Playstation.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_sbpro_2() -> FFMpegDecoderOption:
     """
-    ADPCM Sound Blaster Pro 2-bit
-
+    ADPCM Sound Blaster Pro 2-bit.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_sbpro_3() -> FFMpegDecoderOption:
     """
-    ADPCM Sound Blaster Pro 2.6-bit
-
+    ADPCM Sound Blaster Pro 2.6-bit.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_sbpro_4() -> FFMpegDecoderOption:
     """
-    ADPCM Sound Blaster Pro 4-bit
-
+    ADPCM Sound Blaster Pro 4-bit.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_swf() -> FFMpegDecoderOption:
     """
-    ADPCM Shockwave Flash
-
+    ADPCM Shockwave Flash.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_thp() -> FFMpegDecoderOption:
     """
-    ADPCM Nintendo THP
-
+    ADPCM Nintendo THP.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_thp_le() -> FFMpegDecoderOption:
     """
-    ADPCM Nintendo THP (little-endian)
-
+    ADPCM Nintendo THP (little-endian).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_vima() -> FFMpegDecoderOption:
     """
-    LucasArts VIMA audio
-
+    LucasArts VIMA audio.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_xa() -> FFMpegDecoderOption:
     """
-    ADPCM CDROM XA
-
+    ADPCM CDROM XA.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_xmd() -> FFMpegDecoderOption:
     """
-    ADPCM Konami XMD
-
+    ADPCM Konami XMD.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_yamaha() -> FFMpegDecoderOption:
     """
-    ADPCM Yamaha
-
+    ADPCM Yamaha.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def adpcm_zork() -> FFMpegDecoderOption:
     """
-    ADPCM Zork
-
+    ADPCM Zork.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -4507,63 +4468,62 @@ def alac(
     extra_bits_bug: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    ALAC (Apple Lossless Audio Codec)
+    ALAC (Apple Lossless Audio Codec).
 
     Args:
         extra_bits_bug: Force non-standard decoding process (default false)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "extra_bits_bug": extra_bits_bug,
-            }
-        )
+        merge({
+            "extra_bits_bug": extra_bits_bug,
+        })
     )
 
 
 def amrnb() -> FFMpegDecoderOption:
     """
-    AMR-NB (Adaptive Multi-Rate NarrowBand) (codec amr_nb)
-
+    AMR-NB (Adaptive Multi-Rate NarrowBand) (codec amr_nb).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def amrwb() -> FFMpegDecoderOption:
     """
-    AMR-WB (Adaptive Multi-Rate WideBand) (codec amr_wb)
-
+    AMR-WB (Adaptive Multi-Rate WideBand) (codec amr_wb).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def anull() -> FFMpegDecoderOption:
     """
-    null audio
-
+    Null audio.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def apac() -> FFMpegDecoderOption:
     """
-    Marian's A-pac audio
-
+    Marian's A-pac audio.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -4572,228 +4532,227 @@ def ape(
     max_samples: int | None | Literal["all"] = None,
 ) -> FFMpegDecoderOption:
     """
-    Monkey's Audio
+    Monkey's Audio.
 
     Args:
         max_samples: maximum number of samples decoded per call (from 1 to INT_MAX) (default 4608)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "max_samples": max_samples,
-            }
-        )
+        merge({
+            "max_samples": max_samples,
+        })
     )
 
 
 def aptx() -> FFMpegDecoderOption:
     """
-    aptX (Audio Processing Technology for Bluetooth)
-
+    AptX (Audio Processing Technology for Bluetooth).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def aptx_hd() -> FFMpegDecoderOption:
     """
-    aptX HD (Audio Processing Technology for Bluetooth)
-
+    AptX HD (Audio Processing Technology for Bluetooth).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def atrac1() -> FFMpegDecoderOption:
     """
-    ATRAC1 (Adaptive TRansform Acoustic Coding)
-
+    ATRAC1 (Adaptive TRansform Acoustic Coding).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def atrac3() -> FFMpegDecoderOption:
     """
-    ATRAC3 (Adaptive TRansform Acoustic Coding 3)
-
+    ATRAC3 (Adaptive TRansform Acoustic Coding 3).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def atrac3al() -> FFMpegDecoderOption:
     """
-    ATRAC3 AL (Adaptive TRansform Acoustic Coding 3 Advanced Lossless)
-
+    ATRAC3 AL (Adaptive TRansform Acoustic Coding 3 Advanced Lossless).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def atrac3plus() -> FFMpegDecoderOption:
     """
-    ATRAC3+ (Adaptive TRansform Acoustic Coding 3+) (codec atrac3p)
-
+    ATRAC3+ (Adaptive TRansform Acoustic Coding 3+) (codec atrac3p).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def atrac3plusal() -> FFMpegDecoderOption:
     """
-    ATRAC3+ AL (Adaptive TRansform Acoustic Coding 3+ Advanced Lossless) (codec atrac3pal)
-
+    ATRAC3+ AL (Adaptive TRansform Acoustic Coding 3+ Advanced Lossless) (codec atrac3pal).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def atrac9() -> FFMpegDecoderOption:
     """
-    ATRAC9 (Adaptive TRansform Acoustic Coding 9)
-
+    ATRAC9 (Adaptive TRansform Acoustic Coding 9).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def on2avc() -> FFMpegDecoderOption:
     """
-    On2 Audio for Video Codec (codec avc)
-
+    On2 Audio for Video Codec (codec avc).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def binkaudio_dct() -> FFMpegDecoderOption:
     """
-    Bink Audio (DCT)
-
+    Bink Audio (DCT).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def binkaudio_rdft() -> FFMpegDecoderOption:
     """
-    Bink Audio (RDFT)
-
+    Bink Audio (RDFT).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def bmv_audio() -> FFMpegDecoderOption:
     """
-    Discworld II BMV audio
-
+    Discworld II BMV audio.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def bonk() -> FFMpegDecoderOption:
     """
-    Bonk audio
-
+    Bonk audio.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def cbd2_dpcm() -> FFMpegDecoderOption:
     """
-    DPCM Cuberoot-Delta-Exact
-
+    DPCM Cuberoot-Delta-Exact.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def libcodec2() -> FFMpegDecoderOption:
     """
-    codec2 decoder using libcodec2 (codec codec2)
-
+    codec2 decoder using libcodec2 (codec codec2).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def comfortnoise() -> FFMpegDecoderOption:
     """
-    RFC 3389 comfort noise generator
-
+    RFC 3389 comfort noise generator.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def cook() -> FFMpegDecoderOption:
     """
-    Cook / Cooker / Gecko (RealAudio G2)
-
+    Cook / Cooker / Gecko (RealAudio G2).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def derf_dpcm() -> FFMpegDecoderOption:
     """
-    DPCM Xilam DERF
-
+    DPCM Xilam DERF.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dfpwm() -> FFMpegDecoderOption:
     """
-    DFPWM1a audio
-
+    DFPWM1a audio.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -4802,96 +4761,95 @@ def dolby_e(
     channel_order: int | None | Literal["default", "coded"] = None,
 ) -> FFMpegDecoderOption:
     """
-    Dolby E
+    Dolby E.
 
     Args:
         channel_order: Order in which the channels are to be exported (from 0 to 1) (default default)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "channel_order": channel_order,
-            }
-        )
+        merge({
+            "channel_order": channel_order,
+        })
     )
 
 
 def dsd_lsbf() -> FFMpegDecoderOption:
     """
-    DSD (Direct Stream Digital), least significant bit first
-
+    DSD (Direct Stream Digital), least significant bit first.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dsd_lsbf_planar() -> FFMpegDecoderOption:
     """
-    DSD (Direct Stream Digital), least significant bit first, planar
-
+    DSD (Direct Stream Digital), least significant bit first, planar.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dsd_msbf() -> FFMpegDecoderOption:
     """
-    DSD (Direct Stream Digital), most significant bit first
-
+    DSD (Direct Stream Digital), most significant bit first.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dsd_msbf_planar() -> FFMpegDecoderOption:
     """
-    DSD (Direct Stream Digital), most significant bit first, planar
-
+    DSD (Direct Stream Digital), most significant bit first, planar.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dsicinaudio() -> FFMpegDecoderOption:
     """
-    Delphine Software International CIN audio
-
+    Delphine Software International CIN audio.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dss_sp() -> FFMpegDecoderOption:
     """
-    Digital Speech Standard - Standard Play mode (DSS SP)
-
+    Digital Speech Standard - Standard Play mode (DSS SP).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def dst() -> FFMpegDecoderOption:
     """
-    DST (Digital Stream Transfer)
-
+    DST (Digital Stream Transfer).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -4902,7 +4860,7 @@ def dca(
     downmix: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    DCA (DTS Coherent Acoustics) (codec dts)
+    DCA (DTS Coherent Acoustics) (codec dts).
 
     Args:
         core_only: Decode core only without extensions (default false)
@@ -4911,25 +4869,24 @@ def dca(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "core_only": core_only,
-                "channel_order": channel_order,
-                "downmix": downmix,
-            }
-        )
+        merge({
+            "core_only": core_only,
+            "channel_order": channel_order,
+            "downmix": downmix,
+        })
     )
 
 
 def dvaudio() -> FFMpegDecoderOption:
     """
-    Ulead DV Audio
-
+    Ulead DV Audio.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -4942,7 +4899,7 @@ def eac3(
     downmix: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    ATSC A/52B (AC-3, E-AC-3)
+    ATSC A/52B (AC-3, E-AC-3).
 
     Args:
         cons_noisegen: enable consistent noise generation (default false)
@@ -4953,17 +4910,16 @@ def eac3(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "cons_noisegen": cons_noisegen,
-                "drc_scale": drc_scale,
-                "heavy_compr": heavy_compr,
-                "target_level": target_level,
-                "downmix": downmix,
-            }
-        )
+        merge({
+            "cons_noisegen": cons_noisegen,
+            "drc_scale": drc_scale,
+            "heavy_compr": heavy_compr,
+            "target_level": target_level,
+            "downmix": downmix,
+        })
     )
 
 
@@ -4971,30 +4927,29 @@ def evrc(
     postfilter: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    EVRC (Enhanced Variable Rate Codec)
+    EVRC (Enhanced Variable Rate Codec).
 
     Args:
         postfilter: enable postfilter (default true)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "postfilter": postfilter,
-            }
-        )
+        merge({
+            "postfilter": postfilter,
+        })
     )
 
 
 def fastaudio() -> FFMpegDecoderOption:
     """
-    MobiClip FastAudio
-
+    MobiClip FastAudio.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -5003,30 +4958,29 @@ def flac(
     use_buggy_lpc: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    FLAC (Free Lossless Audio Codec)
+    FLAC (Free Lossless Audio Codec).
 
     Args:
         use_buggy_lpc: emulate old buggy lavc behavior (default false)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "use_buggy_lpc": use_buggy_lpc,
-            }
-        )
+        merge({
+            "use_buggy_lpc": use_buggy_lpc,
+        })
     )
 
 
 def ftr() -> FFMpegDecoderOption:
     """
-    FTR Voice
-
+    FTR Voice.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -5035,206 +4989,205 @@ def g723_1(
     postfilter: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    G.723.1
+    G.723.1.
 
     Args:
         postfilter: enable postfilter (default true)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "postfilter": postfilter,
-            }
-        )
+        merge({
+            "postfilter": postfilter,
+        })
     )
 
 
 def g729() -> FFMpegDecoderOption:
     """
-    G.729
-
+    G.729.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def gremlin_dpcm() -> FFMpegDecoderOption:
     """
-    DPCM Gremlin
-
+    DPCM Gremlin.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def gsm() -> FFMpegDecoderOption:
     """
-    GSM
-
+    GSM.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def libgsm() -> FFMpegDecoderOption:
     """
-    libgsm GSM (codec gsm)
-
+    Libgsm GSM (codec gsm).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def gsm_ms() -> FFMpegDecoderOption:
     """
-    GSM Microsoft variant
-
+    GSM Microsoft variant.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def libgsm_ms() -> FFMpegDecoderOption:
     """
-    libgsm GSM Microsoft variant (codec gsm_ms)
-
+    Libgsm GSM Microsoft variant (codec gsm_ms).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def hca() -> FFMpegDecoderOption:
     """
-    CRI HCA
-
+    CRI HCA.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def hcom() -> FFMpegDecoderOption:
     """
-    HCOM Audio
-
+    HCOM Audio.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def iac() -> FFMpegDecoderOption:
     """
-    IAC (Indeo Audio Coder)
-
+    IAC (Indeo Audio Coder).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def ilbc() -> FFMpegDecoderOption:
     """
-    iLBC (Internet Low Bitrate Codec)
-
+    ILBC (Internet Low Bitrate Codec).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def imc() -> FFMpegDecoderOption:
     """
-    IMC (Intel Music Coder)
-
+    IMC (Intel Music Coder).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def interplay_dpcm() -> FFMpegDecoderOption:
     """
-    DPCM Interplay
-
+    DPCM Interplay.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def interplayacm() -> FFMpegDecoderOption:
     """
-    Interplay ACM
-
+    Interplay ACM.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mace3() -> FFMpegDecoderOption:
     """
-    MACE (Macintosh Audio Compression/Expansion) 3:1
-
+    MACE (Macintosh Audio Compression/Expansion) 3:1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mace6() -> FFMpegDecoderOption:
     """
-    MACE (Macintosh Audio Compression/Expansion) 6:1
-
+    MACE (Macintosh Audio Compression/Expansion) 6:1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def metasound() -> FFMpegDecoderOption:
     """
-    Voxware MetaSound
-
+    Voxware MetaSound.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def misc4() -> FFMpegDecoderOption:
     """
-    Micronas SC-4 Audio
-
+    Micronas SC-4 Audio.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -5243,184 +5196,183 @@ def mlp(
     downmix: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    MLP (Meridian Lossless Packing)
+    MLP (Meridian Lossless Packing).
 
     Args:
         downmix: Request a specific channel layout from the decoder
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "downmix": downmix,
-            }
-        )
+        merge({
+            "downmix": downmix,
+        })
     )
 
 
 def mp1() -> FFMpegDecoderOption:
     """
-    MP1 (MPEG audio layer 1)
-
+    MP1 (MPEG audio layer 1).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mp1float() -> FFMpegDecoderOption:
     """
-    MP1 (MPEG audio layer 1) (codec mp1)
-
+    MP1 (MPEG audio layer 1) (codec mp1).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mp2() -> FFMpegDecoderOption:
     """
-    MP2 (MPEG audio layer 2)
-
+    MP2 (MPEG audio layer 2).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mp2float() -> FFMpegDecoderOption:
     """
-    MP2 (MPEG audio layer 2) (codec mp2)
-
+    MP2 (MPEG audio layer 2) (codec mp2).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mp3float() -> FFMpegDecoderOption:
     """
-    MP3 (MPEG audio layer 3) (codec mp3)
-
+    MP3 (MPEG audio layer 3) (codec mp3).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mp3() -> FFMpegDecoderOption:
     """
-    MP3 (MPEG audio layer 3)
-
+    MP3 (MPEG audio layer 3).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mp3adufloat() -> FFMpegDecoderOption:
     """
-    ADU (Application Data Unit) MP3 (MPEG audio layer 3) (codec mp3adu)
-
+    ADU (Application Data Unit) MP3 (MPEG audio layer 3) (codec mp3adu).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mp3adu() -> FFMpegDecoderOption:
     """
-    ADU (Application Data Unit) MP3 (MPEG audio layer 3)
-
+    ADU (Application Data Unit) MP3 (MPEG audio layer 3).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mp3on4float() -> FFMpegDecoderOption:
     """
-    MP3onMP4 (codec mp3on4)
-
+    MP3onMP4 (codec mp3on4).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mp3on4() -> FFMpegDecoderOption:
     """
-    MP3onMP4
-
+    MP3onMP4.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def als() -> FFMpegDecoderOption:
     """
-    MPEG-4 Audio Lossless Coding (ALS) (codec mp4als)
-
+    MPEG-4 Audio Lossless Coding (ALS) (codec mp4als).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def msnsiren() -> FFMpegDecoderOption:
     """
-    MSN Siren
-
+    MSN Siren.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mpc7() -> FFMpegDecoderOption:
     """
-    Musepack SV7 (codec musepack7)
-
+    Musepack SV7 (codec musepack7).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def mpc8() -> FFMpegDecoderOption:
     """
-    Musepack SV8 (codec musepack8)
-
+    Musepack SV8 (codec musepack8).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def nellymoser() -> FFMpegDecoderOption:
     """
-    Nellymoser Asao
-
+    Nellymoser Asao.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -5429,20 +5381,19 @@ def opus(
     apply_phase_inv: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Opus
+    Opus.
 
     Args:
         apply_phase_inv: Apply intensity stereo phase inversion (default true)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "apply_phase_inv": apply_phase_inv,
-            }
-        )
+        merge({
+            "apply_phase_inv": apply_phase_inv,
+        })
     )
 
 
@@ -5450,514 +5401,513 @@ def libopus(
     apply_phase_inv: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    libopus Opus (codec opus)
+    Libopus Opus (codec opus).
 
     Args:
         apply_phase_inv: Apply intensity stereo phase inversion (default true)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "apply_phase_inv": apply_phase_inv,
-            }
-        )
+        merge({
+            "apply_phase_inv": apply_phase_inv,
+        })
     )
 
 
 def osq() -> FFMpegDecoderOption:
     """
-    OSQ (Original Sound Quality)
-
+    OSQ (Original Sound Quality).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def paf_audio() -> FFMpegDecoderOption:
     """
-    Amazing Studio Packed Animation File Audio
-
+    Amazing Studio Packed Animation File Audio.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_alaw() -> FFMpegDecoderOption:
     """
-    PCM A-law / G.711 A-law
-
+    PCM A-law / G.711 A-law.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_bluray() -> FFMpegDecoderOption:
     """
-    PCM signed 16|20|24-bit big-endian for Blu-ray media
-
+    PCM signed 16|20|24-bit big-endian for Blu-ray media.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_dvd() -> FFMpegDecoderOption:
     """
-    PCM signed 16|20|24-bit big-endian for DVD media
-
+    PCM signed 16|20|24-bit big-endian for DVD media.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_f16le() -> FFMpegDecoderOption:
     """
-    PCM 16.8 floating point little-endian
-
+    PCM 16.8 floating point little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_f24le() -> FFMpegDecoderOption:
     """
-    PCM 24.0 floating point little-endian
-
+    PCM 24.0 floating point little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_f32be() -> FFMpegDecoderOption:
     """
-    PCM 32-bit floating point big-endian
-
+    PCM 32-bit floating point big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_f32le() -> FFMpegDecoderOption:
     """
-    PCM 32-bit floating point little-endian
-
+    PCM 32-bit floating point little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_f64be() -> FFMpegDecoderOption:
     """
-    PCM 64-bit floating point big-endian
-
+    PCM 64-bit floating point big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_f64le() -> FFMpegDecoderOption:
     """
-    PCM 64-bit floating point little-endian
-
+    PCM 64-bit floating point little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_lxf() -> FFMpegDecoderOption:
     """
-    PCM signed 20-bit little-endian planar
-
+    PCM signed 20-bit little-endian planar.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_mulaw() -> FFMpegDecoderOption:
     """
-    PCM mu-law / G.711 mu-law
-
+    PCM mu-law / G.711 mu-law.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_s16be() -> FFMpegDecoderOption:
     """
-    PCM signed 16-bit big-endian
-
+    PCM signed 16-bit big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_s16be_planar() -> FFMpegDecoderOption:
     """
-    PCM signed 16-bit big-endian planar
-
+    PCM signed 16-bit big-endian planar.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_s16le() -> FFMpegDecoderOption:
     """
-    PCM signed 16-bit little-endian
-
+    PCM signed 16-bit little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_s16le_planar() -> FFMpegDecoderOption:
     """
-    PCM signed 16-bit little-endian planar
-
+    PCM signed 16-bit little-endian planar.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_s24be() -> FFMpegDecoderOption:
     """
-    PCM signed 24-bit big-endian
-
+    PCM signed 24-bit big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_s24daud() -> FFMpegDecoderOption:
     """
-    PCM D-Cinema audio signed 24-bit
-
+    PCM D-Cinema audio signed 24-bit.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_s24le() -> FFMpegDecoderOption:
     """
-    PCM signed 24-bit little-endian
-
+    PCM signed 24-bit little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_s24le_planar() -> FFMpegDecoderOption:
     """
-    PCM signed 24-bit little-endian planar
-
+    PCM signed 24-bit little-endian planar.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_s32be() -> FFMpegDecoderOption:
     """
-    PCM signed 32-bit big-endian
-
+    PCM signed 32-bit big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_s32le() -> FFMpegDecoderOption:
     """
-    PCM signed 32-bit little-endian
-
+    PCM signed 32-bit little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_s32le_planar() -> FFMpegDecoderOption:
     """
-    PCM signed 32-bit little-endian planar
-
+    PCM signed 32-bit little-endian planar.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_s64be() -> FFMpegDecoderOption:
     """
-    PCM signed 64-bit big-endian
-
+    PCM signed 64-bit big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_s64le() -> FFMpegDecoderOption:
     """
-    PCM signed 64-bit little-endian
-
+    PCM signed 64-bit little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_s8() -> FFMpegDecoderOption:
     """
-    PCM signed 8-bit
-
+    PCM signed 8-bit.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_s8_planar() -> FFMpegDecoderOption:
     """
-    PCM signed 8-bit planar
-
+    PCM signed 8-bit planar.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_sga() -> FFMpegDecoderOption:
     """
-    PCM SGA
-
+    PCM SGA.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_u16be() -> FFMpegDecoderOption:
     """
-    PCM unsigned 16-bit big-endian
-
+    PCM unsigned 16-bit big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_u16le() -> FFMpegDecoderOption:
     """
-    PCM unsigned 16-bit little-endian
-
+    PCM unsigned 16-bit little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_u24be() -> FFMpegDecoderOption:
     """
-    PCM unsigned 24-bit big-endian
-
+    PCM unsigned 24-bit big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_u24le() -> FFMpegDecoderOption:
     """
-    PCM unsigned 24-bit little-endian
-
+    PCM unsigned 24-bit little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_u32be() -> FFMpegDecoderOption:
     """
-    PCM unsigned 32-bit big-endian
-
+    PCM unsigned 32-bit big-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_u32le() -> FFMpegDecoderOption:
     """
-    PCM unsigned 32-bit little-endian
-
+    PCM unsigned 32-bit little-endian.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_u8() -> FFMpegDecoderOption:
     """
-    PCM unsigned 8-bit
-
+    PCM unsigned 8-bit.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def pcm_vidc() -> FFMpegDecoderOption:
     """
-    PCM Archimedes VIDC
-
+    PCM Archimedes VIDC.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def qcelp() -> FFMpegDecoderOption:
     """
-    QCELP / PureVoice
-
+    QCELP / PureVoice.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def qdm2() -> FFMpegDecoderOption:
     """
-    QDesign Music Codec 2
-
+    QDesign Music Codec 2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def qdmc() -> FFMpegDecoderOption:
     """
-    QDesign Music Codec 1
-
+    QDesign Music Codec 1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def real_144() -> FFMpegDecoderOption:
     """
-    RealAudio 1.0 (14.4K) (codec ra_144)
-
+    RealAudio 1.0 (14.4K) (codec ra_144).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def real_288() -> FFMpegDecoderOption:
     """
-    RealAudio 2.0 (28.8K) (codec ra_288)
-
+    RealAudio 2.0 (28.8K) (codec ra_288).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def ralf() -> FFMpegDecoderOption:
     """
-    RealAudio Lossless
-
+    RealAudio Lossless.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def rka() -> FFMpegDecoderOption:
     """
-    RKA (RK Audio)
-
+    RKA (RK Audio).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def roq_dpcm() -> FFMpegDecoderOption:
     """
-    DPCM id RoQ
-
+    DPCM id RoQ.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -5968,140 +5918,139 @@ def s302m(
     | Literal["copy", "drop", "decode_copy", "decode_drop"] = None,
 ) -> FFMpegDecoderOption:
     """
-    SMPTE 302M
+    SMPTE 302M.
 
     Args:
         non_pcm_mode: Chooses what to do with NON-PCM (from 0 to 3) (default decode_drop)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "non_pcm_mode": non_pcm_mode,
-            }
-        )
+        merge({
+            "non_pcm_mode": non_pcm_mode,
+        })
     )
 
 
 def sbc() -> FFMpegDecoderOption:
     """
-    SBC (low-complexity subband codec)
-
+    SBC (low-complexity subband codec).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def sdx2_dpcm() -> FFMpegDecoderOption:
     """
-    DPCM Squareroot-Delta-Exact
-
+    DPCM Squareroot-Delta-Exact.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def shorten() -> FFMpegDecoderOption:
     """
-    Shorten
-
+    Shorten.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def sipr() -> FFMpegDecoderOption:
     """
-    RealAudio SIPR / ACELP.NET
-
+    RealAudio SIPR / ACELP.NET.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def siren() -> FFMpegDecoderOption:
     """
-    Siren
-
+    Siren.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def smackaud() -> FFMpegDecoderOption:
     """
-    Smacker audio (codec smackaudio)
-
+    Smacker audio (codec smackaudio).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def sol_dpcm() -> FFMpegDecoderOption:
     """
-    DPCM Sol
-
+    DPCM Sol.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def sonic() -> FFMpegDecoderOption:
     """
-    Sonic
-
+    Sonic.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def speex() -> FFMpegDecoderOption:
     """
-    Speex
-
+    Speex.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def libspeex() -> FFMpegDecoderOption:
     """
-    libspeex Speex (codec speex)
-
+    Libspeex Speex (codec speex).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def tak() -> FFMpegDecoderOption:
     """
-    TAK (Tom's lossless Audio Kompressor)
-
+    TAK (Tom's lossless Audio Kompressor).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -6110,30 +6059,29 @@ def truehd(
     downmix: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    TrueHD
+    TrueHD.
 
     Args:
         downmix: Request a specific channel layout from the decoder
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "downmix": downmix,
-            }
-        )
+        merge({
+            "downmix": downmix,
+        })
     )
 
 
 def truespeech() -> FFMpegDecoderOption:
     """
-    DSP Group TrueSpeech
-
+    DSP Group TrueSpeech.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -6142,228 +6090,227 @@ def tta(
     password: str | None = None,
 ) -> FFMpegDecoderOption:
     """
-    TTA (True Audio)
+    TTA (True Audio).
 
     Args:
         password: Set decoding password
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "password": password,
-            }
-        )
+        merge({
+            "password": password,
+        })
     )
 
 
 def twinvq() -> FFMpegDecoderOption:
     """
-    VQF TwinVQ
-
+    VQF TwinVQ.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vmdaudio() -> FFMpegDecoderOption:
     """
-    Sierra VMD audio
-
+    Sierra VMD audio.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def vorbis() -> FFMpegDecoderOption:
     """
-    Vorbis
-
+    Vorbis.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def libvorbis() -> FFMpegDecoderOption:
     """
-    libvorbis (codec vorbis)
-
+    Libvorbis (codec vorbis).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wady_dpcm() -> FFMpegDecoderOption:
     """
-    DPCM Marble WADY
-
+    DPCM Marble WADY.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wavarc() -> FFMpegDecoderOption:
     """
-    Waveform Archiver
-
+    Waveform Archiver.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wavesynth() -> FFMpegDecoderOption:
     """
-    Wave synthesis pseudo-codec
-
+    Wave synthesis pseudo-codec.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wavpack() -> FFMpegDecoderOption:
     """
-    WavPack
-
+    WavPack.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def ws_snd1() -> FFMpegDecoderOption:
     """
-    Westwood Audio (SND1) (codec westwood_snd1)
-
+    Westwood Audio (SND1) (codec westwood_snd1).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wmalossless() -> FFMpegDecoderOption:
     """
-    Windows Media Audio Lossless
-
+    Windows Media Audio Lossless.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wmapro() -> FFMpegDecoderOption:
     """
-    Windows Media Audio 9 Professional
-
+    Windows Media Audio 9 Professional.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wmav1() -> FFMpegDecoderOption:
     """
-    Windows Media Audio 1
-
+    Windows Media Audio 1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wmav2() -> FFMpegDecoderOption:
     """
-    Windows Media Audio 2
-
+    Windows Media Audio 2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def wmavoice() -> FFMpegDecoderOption:
     """
-    Windows Media Audio Voice
-
+    Windows Media Audio Voice.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def xan_dpcm() -> FFMpegDecoderOption:
     """
-    DPCM Xan
-
+    DPCM Xan.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def xma1() -> FFMpegDecoderOption:
     """
-    Xbox Media Audio 1
-
+    Xbox Media Audio 1.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def xma2() -> FFMpegDecoderOption:
     """
-    Xbox Media Audio 2
-
+    Xbox Media Audio 2.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def ssa() -> FFMpegDecoderOption:
     """
-    ASS (Advanced SubStation Alpha) subtitle (codec ass)
-
+    ASS (Advanced SubStation Alpha) subtitle (codec ass).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def ass() -> FFMpegDecoderOption:
     """
-    ASS (Advanced SubStation Alpha) subtitle
-
+    ASS (Advanced SubStation Alpha) subtitle.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -6374,7 +6321,7 @@ def dvbsub(
     dvb_substream: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    DVB subtitles (codec dvb_subtitle)
+    DVB subtitles (codec dvb_subtitle).
 
     Args:
         compute_edt: compute end of time using pts or timeout (default false)
@@ -6383,15 +6330,14 @@ def dvbsub(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "compute_edt": compute_edt,
-                "compute_clut": compute_clut,
-                "dvb_substream": dvb_substream,
-            }
-        )
+        merge({
+            "compute_edt": compute_edt,
+            "compute_clut": compute_clut,
+            "dvb_substream": dvb_substream,
+        })
     )
 
 
@@ -6408,7 +6354,7 @@ def libzvbi_teletextdec(
     txt_opacity: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Libzvbi DVB teletext decoder (codec dvb_teletext)
+    Libzvbi DVB teletext decoder (codec dvb_teletext).
 
     Args:
         txt_page: page numbers to decode, subtitle for subtitles, * for all (default "*")
@@ -6424,22 +6370,21 @@ def libzvbi_teletextdec(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "txt_page": txt_page,
-                "txt_default_region": txt_default_region,
-                "txt_chop_top": txt_chop_top,
-                "txt_format": txt_format,
-                "txt_left": txt_left,
-                "txt_top": txt_top,
-                "txt_chop_spaces": txt_chop_spaces,
-                "txt_duration": txt_duration,
-                "txt_transparent": txt_transparent,
-                "txt_opacity": txt_opacity,
-            }
-        )
+        merge({
+            "txt_page": txt_page,
+            "txt_default_region": txt_default_region,
+            "txt_chop_top": txt_chop_top,
+            "txt_format": txt_format,
+            "txt_left": txt_left,
+            "txt_top": txt_top,
+            "txt_chop_spaces": txt_chop_spaces,
+            "txt_duration": txt_duration,
+            "txt_transparent": txt_transparent,
+            "txt_opacity": txt_opacity,
+        })
     )
 
 
@@ -6449,7 +6394,7 @@ def dvdsub(
     forced_subs_only: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    DVD subtitles (codec dvd_subtitle)
+    DVD subtitles (codec dvd_subtitle).
 
     Args:
         palette: set the global palette
@@ -6458,15 +6403,14 @@ def dvdsub(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "palette": palette,
-                "ifo_palette": ifo_palette,
-                "forced_subs_only": forced_subs_only,
-            }
-        )
+        merge({
+            "palette": palette,
+            "ifo_palette": ifo_palette,
+            "forced_subs_only": forced_subs_only,
+        })
     )
 
 
@@ -6476,7 +6420,7 @@ def cc_dec(
     data_field: int | None | Literal["auto", "first", "second"] = None,
 ) -> FFMpegDecoderOption:
     """
-    Closed Caption (EIA-608 / CEA-708) (codec eia_608)
+    Closed Caption (EIA-608 / CEA-708) (codec eia_608).
 
     Args:
         real_time: emit subtitle events as they are decoded for real-time display (default false)
@@ -6485,15 +6429,14 @@ def cc_dec(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "real_time": real_time,
-                "real_time_latency_msec": real_time_latency_msec,
-                "data_field": data_field,
-            }
-        )
+        merge({
+            "real_time": real_time,
+            "real_time_latency_msec": real_time_latency_msec,
+            "data_field": data_field,
+        })
     )
 
 
@@ -6501,41 +6444,40 @@ def pgssub(
     forced_subs_only: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    HDMV Presentation Graphic Stream subtitles (codec hdmv_pgs_subtitle)
+    HDMV Presentation Graphic Stream subtitles (codec hdmv_pgs_subtitle).
 
     Args:
         forced_subs_only: Only show forced subtitles (default false)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "forced_subs_only": forced_subs_only,
-            }
-        )
+        merge({
+            "forced_subs_only": forced_subs_only,
+        })
     )
 
 
 def jacosub() -> FFMpegDecoderOption:
     """
-    JACOsub subtitle
-
+    JACOsub subtitle.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def microdvd() -> FFMpegDecoderOption:
     """
-    MicroDVD subtitle
-
+    MicroDVD subtitle.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -6545,7 +6487,7 @@ def mov_text(
     height: int | None = None,
 ) -> FFMpegDecoderOption:
     """
-    3GPP Timed Text subtitle
+    3GPP Timed Text subtitle.
 
     Args:
         width: Frame width, usually video width (from 0 to INT_MAX) (default 0)
@@ -6553,24 +6495,23 @@ def mov_text(
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "width": width,
-                "height": height,
-            }
-        )
+        merge({
+            "width": width,
+            "height": height,
+        })
     )
 
 
 def mpl2() -> FFMpegDecoderOption:
     """
-    MPL2 subtitle
-
+    MPL2 subtitle.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -6579,41 +6520,40 @@ def pjs(
     keep_ass_markup: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    PJS subtitle
+    PJS subtitle.
 
     Args:
         keep_ass_markup: Set if ASS tags must be escaped (default false)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "keep_ass_markup": keep_ass_markup,
-            }
-        )
+        merge({
+            "keep_ass_markup": keep_ass_markup,
+        })
     )
 
 
 def realtext() -> FFMpegDecoderOption:
     """
-    RealText subtitle
-
+    RealText subtitle.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def sami() -> FFMpegDecoderOption:
     """
-    SAMI subtitle
-
+    SAMI subtitle.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -6622,52 +6562,51 @@ def stl(
     keep_ass_markup: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Spruce subtitle format
+    Spruce subtitle format.
 
     Args:
         keep_ass_markup: Set if ASS tags must be escaped (default false)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "keep_ass_markup": keep_ass_markup,
-            }
-        )
+        merge({
+            "keep_ass_markup": keep_ass_markup,
+        })
     )
 
 
 def srt() -> FFMpegDecoderOption:
     """
-    SubRip subtitle (codec subrip)
-
+    SubRip subtitle (codec subrip).
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def subrip() -> FFMpegDecoderOption:
     """
-    SubRip subtitle
-
+    SubRip subtitle.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def subviewer() -> FFMpegDecoderOption:
     """
-    SubViewer subtitle
-
+    SubViewer subtitle.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
@@ -6676,20 +6615,19 @@ def subviewer1(
     keep_ass_markup: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    SubViewer1 subtitle
+    SubViewer1 subtitle.
 
     Args:
         keep_ass_markup: Set if ASS tags must be escaped (default false)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "keep_ass_markup": keep_ass_markup,
-            }
-        )
+        merge({
+            "keep_ass_markup": keep_ass_markup,
+        })
     )
 
 
@@ -6697,20 +6635,19 @@ def text(
     keep_ass_markup: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    Raw text subtitle
+    Raw text subtitle.
 
     Args:
         keep_ass_markup: Set if ASS tags must be escaped (default false)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "keep_ass_markup": keep_ass_markup,
-            }
-        )
+        merge({
+            "keep_ass_markup": keep_ass_markup,
+        })
     )
 
 
@@ -6718,40 +6655,39 @@ def vplayer(
     keep_ass_markup: bool | None = None,
 ) -> FFMpegDecoderOption:
     """
-    VPlayer subtitle
+    VPlayer subtitle.
 
     Args:
         keep_ass_markup: Set if ASS tags must be escaped (default false)
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(
-        merge(
-            {
-                "keep_ass_markup": keep_ass_markup,
-            }
-        )
+        merge({
+            "keep_ass_markup": keep_ass_markup,
+        })
     )
 
 
 def webvtt() -> FFMpegDecoderOption:
     """
-    WebVTT subtitle
-
+    WebVTT subtitle.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))
 
 
 def xsub() -> FFMpegDecoderOption:
     """
-    XSUB
-
+    XSUB.
 
     Returns:
         the set codec options
+
     """
     return FFMpegDecoderOption(merge({}))

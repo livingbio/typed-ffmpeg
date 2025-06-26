@@ -31,86 +31,247 @@ class LazyValue(ABC):
     """
 
     def __add__(self, v: Any) -> LazyValue:
+        """
+        Create an addition operation with this value and another.
+
+        Args:
+            v: The value to add
+
+        Returns:
+            A new LazyValue representing the addition operation
+
+        """
         from .operator import Add
 
         return Add(left=self, right=v)
 
     def __radd__(self, v: Any) -> LazyValue:
+        """
+        Create an addition operation with another value and this one.
+
+        Args:
+            v: The value to add
+
+        Returns:
+            A new LazyValue representing the addition operation
+
+        """
         from .operator import Add
 
         return Add(left=v, right=self)
 
     def __sub__(self, v: Any) -> LazyValue:
+        """
+        Create a subtraction operation with this value and another.
+
+        Args:
+            v: The value to subtract
+
+        Returns:
+            A new LazyValue representing the subtraction operation
+
+        """
         from .operator import Sub
 
         return Sub(left=self, right=v)
 
     def __rsub__(self, v: Any) -> LazyValue:
+        """
+        Create a subtraction operation with another value and this one.
+
+        Args:
+            v: The value to subtract from
+
+        Returns:
+            A new LazyValue representing the subtraction operation
+
+        """
         from .operator import Sub
 
         return Sub(left=v, right=self)
 
     def __mul__(self, v: Any) -> LazyValue:
+        """
+        Create a multiplication operation with this value and another.
+
+        Args:
+            v: The value to multiply by
+
+        Returns:
+            A new LazyValue representing the multiplication operation
+
+        """
         from .operator import Mul
 
         return Mul(left=self, right=v)
 
     def __rmul__(self, v: Any) -> LazyValue:
+        """
+        Create a multiplication operation with another value and this one.
+
+        Args:
+            v: The value to multiply by
+
+        Returns:
+            A new LazyValue representing the multiplication operation
+
+        """
         from .operator import Mul
 
         return Mul(left=v, right=self)
 
     def __truediv__(self, v: Any) -> LazyValue:
+        """
+        Create a division operation with this value and another.
+
+        Args:
+            v: The value to divide by
+
+        Returns:
+            A new LazyValue representing the division operation
+
+        """
         from .operator import TrueDiv
 
         return TrueDiv(left=self, right=v)
 
     def __rtruediv__(self, v: Any) -> LazyValue:
+        """
+        Create a division operation with another value and this one.
+
+        Args:
+            v: The value to divide
+
+        Returns:
+            A new LazyValue representing the division operation
+
+        """
         from .operator import TrueDiv
 
         return TrueDiv(left=v, right=self)
 
     def __pow__(self, v: Any) -> LazyValue:
+        """
+        Create an exponentiation operation with this value and another.
+
+        Args:
+            v: The exponent
+
+        Returns:
+            A new LazyValue representing the exponentiation operation
+
+        """
         from .operator import Pow
 
         return Pow(left=self, right=v)
 
     def __rpow__(self, v: Any) -> LazyValue:
+        """
+        Create an exponentiation operation with another value and this one.
+
+        Args:
+            v: The base
+
+        Returns:
+            A new LazyValue representing the exponentiation operation
+
+        """
         from .operator import Pow
 
         return Pow(left=v, right=self)
 
     def __neg__(self) -> LazyValue:
+        """
+        Create a negation operation for this value.
+
+        Returns:
+            A new LazyValue representing the negation operation
+
+        """
         from .operator import Neg
 
         return Neg(left=self)
 
     def __pos__(self) -> LazyValue:
+        """
+        Create a positive operation for this value.
+
+        Returns:
+            A new LazyValue representing the positive operation
+
+        """
         from .operator import Pos
 
         return Pos(left=self)
 
     def __abs__(self) -> LazyValue:
+        """
+        Create an absolute value operation for this value.
+
+        Returns:
+            A new LazyValue representing the absolute value operation
+
+        """
         from .operator import Abs
 
         return Abs(left=self)
 
     def __mod__(self, v: Any) -> LazyValue:
+        """
+        Create a modulo operation with this value and another.
+
+        Args:
+            v: The value to take modulo with
+
+        Returns:
+            A new LazyValue representing the modulo operation
+
+        """
         from .operator import Mod
 
         return Mod(left=self, right=v)
 
     def __rmod__(self, v: Any) -> LazyValue:
+        """
+        Create a modulo operation with another value and this one.
+
+        Args:
+            v: The value to take modulo of
+
+        Returns:
+            A new LazyValue representing the modulo operation
+
+        """
         from .operator import Mod
 
         return Mod(left=v, right=self)
 
     def __floordiv__(self, v: Any) -> LazyValue:
+        """
+        Create a floor division operation with this value and another.
+
+        Args:
+            v: The value to divide by
+
+        Returns:
+            A new LazyValue representing the floor division operation
+
+        """
         from .operator import FloorDiv
 
         return FloorDiv(left=self, right=v)
 
     def __rfloordiv__(self, v: Any) -> LazyValue:
+        """
+        Create a floor division operation with another value and this one.
+
+        Args:
+            v: The value to divide
+
+        Returns:
+            A new LazyValue representing the floor division operation
+
+        """
         from .operator import FloorDiv
 
         return FloorDiv(left=v, right=self)
@@ -127,6 +288,7 @@ class LazyValue(ABC):
 
         Raises:
             ValueError: If the lazy value is not ready to be evaluated.
+
         """
         v = self.partial(**values)
         if isinstance(v, LazyValue):
@@ -136,15 +298,15 @@ class LazyValue(ABC):
     @abstractmethod
     def partial(self, **values: Any) -> Any:
         """
-        Partially evaluate the lazy value with the given values.
+        Evaluate the lazy value with the given values.
 
         Args:
             **values: Values to be used for evaluation.
 
         Returns:
             Any: The partially evaluated value.
-        """
 
+        """
         ...
 
     def ready(self) -> bool:
@@ -158,6 +320,7 @@ class LazyValue(ABC):
         Returns:
             True if the lazy value can be evaluated without additional values,
             False otherwise
+
         """
         return not self.keys()
 
@@ -173,6 +336,7 @@ class LazyValue(ABC):
 
         Returns:
             A set of strings representing the required symbol names
+
         """
         ...
 
@@ -192,6 +356,7 @@ class Symbol(LazyValue):
 
     Attributes:
         key: The name of the variable this symbol represents
+
     """
 
     key: str
@@ -202,13 +367,14 @@ class Symbol(LazyValue):
 
         Returns:
             The symbol's key as a string
+
         """
         return str(self.key)
 
     @override
     def partial(self, **values: Any) -> Any:
         """
-        Partially evaluate this symbol with the given values.
+        Evaluate this symbol with the given values.
 
         If the symbol's key is present in the values dictionary, returns the
         corresponding value. Otherwise, returns the symbol itself (unchanged).
@@ -218,6 +384,7 @@ class Symbol(LazyValue):
 
         Returns:
             The value for this symbol if available, otherwise the symbol itself
+
         """
         if self.key in values:
             return values[self.key]
@@ -232,6 +399,7 @@ class Symbol(LazyValue):
 
         Returns:
             A set containing the symbol's key
+
         """
         return {self.key}
 
@@ -254,6 +422,7 @@ class LazyOperator(LazyValue):
 
     Concrete implementations include:
         Add, Sub, Mul, TrueDiv, Pow, Neg, Pos, Abs, Mod, FloorDiv
+
     """
 
     left: Any = None
@@ -273,13 +442,14 @@ class LazyOperator(LazyValue):
 
         Returns:
             The result of applying the operation to the operands
+
         """
         ...
 
     @override
     def partial(self, **values: Any) -> Any:
         """
-        Partially evaluate this operator with the given values.
+        Evaluate this operator with the given values.
 
         This method recursively evaluates the operands (which may themselves be
         LazyValues) with the provided values, then applies the operator's
@@ -292,6 +462,7 @@ class LazyOperator(LazyValue):
             The result of applying the operation to the partially evaluated operands,
             which may be a concrete value or another LazyValue if some symbols
             remain unevaluated
+
         """
         if isinstance(self.left, LazyValue):
             left = self.left.partial(**values)
@@ -316,6 +487,7 @@ class LazyOperator(LazyValue):
         Returns:
             A set of strings representing all symbol names required to
             fully evaluate this operator
+
         """
         r = set()
         if isinstance(self.left, LazyValue):
