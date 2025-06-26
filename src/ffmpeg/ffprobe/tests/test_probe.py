@@ -11,7 +11,16 @@ test_data = Path(__file__).parent / "test_probe"
 
 
 def is_static_image(format_name: str) -> bool:
-    """Check if the format is a static image format."""
+    """
+    Check if the format is a static image format.
+
+    Args:
+        format_name: The format name to check
+
+    Returns:
+        True if the format is a static image format, False otherwise
+
+    """
     return format_name in {"jpeg_pipe", "png_pipe", "webp_pipe"}
 
 

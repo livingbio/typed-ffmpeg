@@ -137,6 +137,7 @@ def parse_stream_selector(
 
     Raises:
         AssertionError: If the stream label is not found in the mapping
+        FFMpegValueError: If the stream type is unknown
 
     """
     selector = selector.strip("[]")
@@ -332,6 +333,9 @@ def parse_filter_complex(
 
     Returns:
         Updated stream mapping with new filter outputs added
+
+    Raises:
+        FFMpegValueError: If the stream type is unknown
 
     """
     # Use re.split with negative lookbehind to handle escaped semicolons

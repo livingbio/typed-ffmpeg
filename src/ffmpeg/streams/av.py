@@ -1,3 +1,5 @@
+"""Audio-video stream utilities."""
+
 from ..dag.nodes import InputNode
 from .audio import AudioStream
 from .subtitle import SubtitleStream

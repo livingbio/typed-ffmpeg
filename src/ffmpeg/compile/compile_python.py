@@ -1,3 +1,5 @@
+"""Python code compilation utilities for FFmpeg streams."""
+
 from __future__ import annotations
 
 from collections.abc import Mapping
@@ -71,6 +73,9 @@ def get_input_var_name(
     Returns:
         The input variable name for the stream.
 
+    Raises:
+        ValueError: If the stream type is unknown
+
     """
     match stream:
         case AVStream():
@@ -129,6 +134,9 @@ def get_output_var_name(node: Node, context: DAGContext) -> str:
 
     Returns:
         The output variable name for the node.
+
+    Raises:
+        ValueError: If the node type is unknown
 
     """
     match node:

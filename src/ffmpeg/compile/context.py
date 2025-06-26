@@ -216,6 +216,7 @@ class DAGContext:
     def node_ids(self) -> dict[Node, int]:
         """
         Get a mapping of nodes to their unique integer IDs.
+
         This property assigns a unique integer ID to each node in the graph,
         based on the node type and its position in the processing chain.
 

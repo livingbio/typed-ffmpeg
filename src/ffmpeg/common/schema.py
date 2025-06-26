@@ -428,6 +428,8 @@ class FFMpegFilter(Serializable):
 
 @serializable
 class FFMpegOptionFlag(int, Enum):
+    """FFmpeg option flags that define option behavior and characteristics."""
+
     OPT_FUNC_ARG = 1 << 0
     """
     The OPT_TYPE_FUNC option takes an argument.

@@ -1,3 +1,5 @@
+"""XML to JSON conversion utilities for FFprobe output."""
+
 import json
 import xml.etree.ElementTree as ET
 from typing import Any, cast

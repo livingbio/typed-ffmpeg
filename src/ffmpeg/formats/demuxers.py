@@ -3033,7 +3033,7 @@ def libcdio(
     paranoia_mode: str | None = None,
 ) -> FFMpegDemuxerOption:
     """
-
+    CD-ROM input using libcdio.
 
     Args:
         speed: set drive reading speed (from 0 to INT_MAX) (default 0)

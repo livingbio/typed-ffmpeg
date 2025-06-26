@@ -12,10 +12,9 @@ from ..context import DAGContext
 def render(context: DAGContext, obj: Any) -> Any:
     """
     Recursively convert graph objects to a human-readable representation.
+
     This method processes arbitrary objects, with special handling for graph
-    elements like nodes and streams. It converts them to a readable string format.
-
-
+    elements like nodes and streams. It converts them to a readable string format
     that includes node labels. It recursively handles nested structures like
     lists, tuples, and dictionaries.
     This is primarily used for debugging, logging, and visualization purposes.
@@ -23,6 +22,7 @@ def render(context: DAGContext, obj: Any) -> Any:
     Args:
         obj: The object to render, which may be a Node, Stream, or a container
             with these objects nested inside
+
     Returns:
         The rendered representation of the object:
         - For nodes: "Node(repr#label)"

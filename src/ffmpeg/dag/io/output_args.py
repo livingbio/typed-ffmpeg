@@ -25,6 +25,8 @@ if TYPE_CHECKING:
 
 
 class OutputArgs(ABC):
+    """Abstract base class for output argument handling."""
+
     @abstractmethod
     def _output_node(
         self, *streams: FilterableStream, filename: str | Path, **kwargs: Any

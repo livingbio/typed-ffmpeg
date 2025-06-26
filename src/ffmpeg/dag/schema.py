@@ -1,3 +1,5 @@
+"""DAG schema definitions for FFmpeg filter graphs."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
@@ -101,6 +103,13 @@ class Node(HashableBaseModel):
     """
 
     def __post_init__(self) -> None:
+        """
+        Validate that the graph is a DAG (Directed Acyclic Graph).
+
+        Raises:
+            ValueError: If the graph is not a DAG
+
+        """
         # Validate the DAG
         passed = set()
         nodes = [self]

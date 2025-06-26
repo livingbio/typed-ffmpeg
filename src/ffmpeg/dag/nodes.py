@@ -1,3 +1,5 @@
+"""DAG node definitions for FFmpeg filter graphs."""
+
 from __future__ import annotations
 
 import logging
@@ -345,6 +347,7 @@ class FilterableStream(Stream, OutputArgs):
         )
 
     def __post_init__(self) -> None:
+        """Validate that filter streams have an index."""
         if not isinstance(self.node, InputNode):
             assert self.index is not None, "Filter streams must have an index"
 

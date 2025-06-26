@@ -1,3 +1,5 @@
+"""Subtitle stream utilities."""
+
 from ..dag.nodes import FilterableStream
 
 

@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+"""FFprobe XML parsing utilities."""
+
+# !/usr/bin/env python3
 
 import json
 import types

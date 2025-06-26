@@ -51,6 +51,7 @@ class Serializable:
     """A base class for all serializable classes."""
 
     def __init_subclass__(cls, **kwargs: Any) -> None:
+        """Register the subclass in the serialization registry."""
         super().__init_subclass__(**kwargs)
         serializable(cls)
 

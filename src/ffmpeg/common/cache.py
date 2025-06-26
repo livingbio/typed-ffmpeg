@@ -1,3 +1,5 @@
+"""Cache utilities for FFmpeg operations."""
+
 from pathlib import Path
 from typing import TypeVar
 

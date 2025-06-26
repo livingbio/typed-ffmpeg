@@ -1,7 +1,11 @@
+"""FFmpeg codec schema definitions."""
+
 from ..schema import FFMpegOptionGroup
 
 
-class FFMpegEncoderOption(FFMpegOptionGroup): ...
+class FFMpegEncoderOption(FFMpegOptionGroup):
+    """FFmpeg encoder option group."""
 
 
-class FFMpegDecoderOption(FFMpegOptionGroup): ...
+class FFMpegDecoderOption(FFMpegOptionGroup):
+    """FFmpeg decoder option group."""
