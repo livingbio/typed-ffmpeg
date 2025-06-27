@@ -16,7 +16,11 @@ from ...types import (
     Time,
 )
 from ...utils.frozendict import merge
-from ..nodes import FilterableStream, OutputNode, OutputStream
+from ..nodes import (
+    FilterableStream,
+    OutputNode,
+    OutputStream,
+)
 
 
 def output(

@@ -4,15 +4,9 @@ Output node.
 {% import "_components.jinja" as _components %}
 
 from pathlib import Path
-from ...codecs.schema import FFMpegEncoderOption
-from ...formats.schema import FFMpegMuxerOption
-
-from ..nodes import OutputNode, OutputStream, FilterableStream
 from typing import Any
-{{ _components.import_types('...types') }}
 
-from ...utils.frozendict import FrozenDict
-from ...utils.frozendict import merge
+{{ _components.import_all(template_path) }}
 
 def output(
     *streams: FilterableStream,

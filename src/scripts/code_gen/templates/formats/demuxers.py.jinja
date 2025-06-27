@@ -1,9 +1,12 @@
 """
 FFmpeg demuxers.
 """
+
+{% import "_components.jinja" as _components %}
+
 from typing import Literal
-from .schema import FFMpegDemuxerOption
-from ..utils.frozendict import FrozenDict, merge
+
+{{ _components.import_all(template_path) }}
 
 {% for codec in muxers %}
 {% if codec.is_demuxer %}

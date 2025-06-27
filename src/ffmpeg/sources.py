@@ -5,7 +5,10 @@ from typing import Any, Literal
 
 from .common.schema import FFMpegFilterDef
 from .dag.factory import filter_node_factory
-from .dag.nodes import FilterableStream, FilterNode
+from .dag.nodes import (
+    FilterableStream,
+    FilterNode,
+)
 from .options.framesync import FFMpegFrameSyncOption
 from .schema import Auto, Default
 from .streams.audio import AudioStream

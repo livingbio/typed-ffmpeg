@@ -16,6 +16,8 @@ from ffmpeg.common.schema import (
     FFMpegOptionType,
 )
 
+from .utils import get_relative_import
+
 template_folder = Path(__file__).parent / "templates"
 
 loader = jinja2.FileSystemLoader(template_folder)
@@ -260,6 +262,7 @@ env.filters["option_typing"] = option_typing
 env.filters["input_typings"] = input_typings
 env.filters["output_typings"] = output_typings
 env.filters["filter_option_typings"] = filter_option_typings
+env.globals["get_relative_import"] = get_relative_import
 
 
 def render(
@@ -285,7 +288,7 @@ def render(
         template_path = template_file.relative_to(template_folder)
 
         template = env.get_template(str(template_path))
-        code = template.render(**kwargs)
+        code = template.render(template_path=template_path, **kwargs)
 
         opath = outpath / str(template_path).replace(".jinja", "")
         opath.parent.mkdir(parents=True, exist_ok=True)

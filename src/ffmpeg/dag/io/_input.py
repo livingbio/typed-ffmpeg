@@ -16,7 +16,9 @@ from ...types import (
     Time,
 )
 from ...utils.frozendict import merge
-from ..nodes import InputNode
+from ..nodes import (
+    InputNode,
+)
 
 
 def input(

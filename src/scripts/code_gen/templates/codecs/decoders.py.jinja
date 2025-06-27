@@ -2,9 +2,11 @@
 FFmpeg decoders.
 """
 
+{% import "_components.jinja" as _components %}
+
 from typing import Literal
-from .schema import FFMpegDecoderOption
-from ..utils.frozendict import FrozenDict, merge
+
+{{ _components.import_all(template_path) }}
 
 {% for codec in codecs %}
 {% if codec.is_decoder %}
