@@ -15,6 +15,7 @@ from ..utils.typing import override
 from ..schema import Default, StreamType, Auto
 from ..common.schema import FFMpegFilterDef
 from ..options.framesync import FFMpegFrameSyncOption
+from ..options.timeline import FFMpegTimelineOption
 from ..streams.av import AVStream
 from ..streams.channel_layout import CHANNEL_LAYOUT
 from .schema import FFMpegEncoderOption, FFMpegDecoderOption
