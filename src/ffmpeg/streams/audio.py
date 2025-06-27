@@ -11,6 +11,7 @@ from ..dag.nodes import (
     FilterableStream,
     FilterNode,
 )
+from ..options.timeline import FFMpegTimelineOption
 from ..schema import Default
 from ..types import (
     Boolean,
@@ -482,6 +483,7 @@ class AudioStream(FilterableStream):
         lfo: Boolean = Default("false"),
         lforange: Double = Default("20"),
         lforate: Double = Default("0.3"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -500,6 +502,7 @@ class AudioStream(FilterableStream):
             lfo: enable LFO (default false)
             lforange: set LFO depth (from 1 to 250) (default 20)
             lforate: set LFO rate (from 0.01 to 200) (default 0.3)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -529,6 +532,7 @@ class AudioStream(FilterableStream):
                     "lforate": lforate,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -583,6 +587,7 @@ class AudioStream(FilterableStream):
         threshold: Double = Default("2"),
         burst: Double = Default("2"),
         method: Int | Literal["add", "a", "save", "s"] | Default = Default("add"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -596,6 +601,7 @@ class AudioStream(FilterableStream):
             threshold: set threshold (from 1 to 100) (default 2)
             burst: set burst fusion (from 0 to 10) (default 2)
             method: set overlap method (from 0 to 1) (default add)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -620,6 +626,7 @@ class AudioStream(FilterableStream):
                     "method": method,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -633,6 +640,7 @@ class AudioStream(FilterableStream):
         threshold: Double = Default("10"),
         hsize: Int = Default("1000"),
         method: Int | Literal["add", "a", "save", "s"] | Default = Default("add"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -646,6 +654,7 @@ class AudioStream(FilterableStream):
             threshold: set threshold (from 1 to 100) (default 10)
             hsize: set histogram size (from 100 to 9999) (default 1000)
             method: set overlap method (from 0 to 1) (default add)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -670,6 +679,7 @@ class AudioStream(FilterableStream):
                     "method": method,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -679,6 +689,7 @@ class AudioStream(FilterableStream):
         *,
         stages: Int = Default("6"),
         seed: Int64 = Default("-1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -688,6 +699,7 @@ class AudioStream(FilterableStream):
         Args:
             stages: set filtering stages (from 1 to 16) (default 6)
             seed: set random seed (from -1 to UINT32_MAX) (default -1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -708,6 +720,7 @@ class AudioStream(FilterableStream):
                     "seed": seed,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -717,6 +730,7 @@ class AudioStream(FilterableStream):
         *,
         delays: String = Default(None),
         all: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -726,6 +740,7 @@ class AudioStream(FilterableStream):
         Args:
             delays: set list of delays for each channel
             all: use last available delay for remained channels (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -746,6 +761,7 @@ class AudioStream(FilterableStream):
                     "all": all,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -755,6 +771,7 @@ class AudioStream(FilterableStream):
         *,
         level: Double = Default("-351"),
         type: Int | Literal["dc", "ac", "square", "pulse"] | Default = Default("dc"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -764,6 +781,7 @@ class AudioStream(FilterableStream):
         Args:
             level: set level (from -451 to -90) (default -351)
             type: set type (from 0 to 3) (default dc)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -784,12 +802,14 @@ class AudioStream(FilterableStream):
                     "type": type,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
 
     def aderivative(
         self,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -797,6 +817,7 @@ class AudioStream(FilterableStream):
         Compute derivative of input audio.
 
         Args:
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -814,6 +835,7 @@ class AudioStream(FilterableStream):
             **merge(
                 {},
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -904,6 +926,7 @@ class AudioStream(FilterableStream):
         attack: Double = Default("50"),
         release: Double = Default("100"),
         channels: String = Default("all"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -915,6 +938,7 @@ class AudioStream(FilterableStream):
             attack: set the attack (from 1 to 1000) (default 50)
             release: set the release (from 5 to 2000) (default 100)
             channels: set channels to filter (default "all")
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -937,6 +961,7 @@ class AudioStream(FilterableStream):
                     "channels": channels,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -964,6 +989,7 @@ class AudioStream(FilterableStream):
         direction: Int | Literal["downward", "upward"] | Default = Default("downward"),
         auto: Int | Literal["disabled", "off", "on"] | Default = Default("disabled"),
         precision: Int | Literal["auto", "float", "double"] | Default = Default("auto"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -987,6 +1013,7 @@ class AudioStream(FilterableStream):
             direction: set direction (from 0 to 1) (default downward)
             auto: set auto threshold (from -1 to 1) (default disabled)
             precision: set processing precision (from 0 to 2) (default auto)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1023,6 +1050,7 @@ class AudioStream(FilterableStream):
                     "precision": precision,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -1032,6 +1060,7 @@ class AudioStream(FilterableStream):
         *,
         sensitivity: Double = Default("2"),
         basefreq: Double = Default("22050"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -1041,6 +1070,7 @@ class AudioStream(FilterableStream):
         Args:
             sensitivity: set smooth sensitivity (from 0 to 1e+06) (default 2)
             basefreq: set base frequency (from 2 to 1e+06) (default 22050)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1063,6 +1093,7 @@ class AudioStream(FilterableStream):
                     "basefreq": basefreq,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -1122,6 +1153,7 @@ class AudioStream(FilterableStream):
         type: Int
         | Literal["col", "emi", "bsi", "riaa", "cd", "50fm", "75fm", "50kf", "75kf"]
         | Default = Default("cd"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -1133,6 +1165,7 @@ class AudioStream(FilterableStream):
             level_out: set output gain (from 0 to 64) (default 1)
             mode: set filter mode (from 0 to 1) (default reproduction)
             type: set filter type (from 0 to 8) (default cd)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1155,6 +1188,7 @@ class AudioStream(FilterableStream):
                     "type": type,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -1164,6 +1198,7 @@ class AudioStream(FilterableStream):
         *,
         exprs: String = Default(None),
         channel_layout: String = Default(None),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -1173,6 +1208,7 @@ class AudioStream(FilterableStream):
         Args:
             exprs: set the '|'-separated list of channels expressions
             channel_layout: set channel layout
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1193,6 +1229,7 @@ class AudioStream(FilterableStream):
                     "channel_layout": channel_layout,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -1208,6 +1245,7 @@ class AudioStream(FilterableStream):
         freq: Double = Default("7500"),
         ceil: Double = Default("9999"),
         listen: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -1223,6 +1261,7 @@ class AudioStream(FilterableStream):
             freq: set scope (from 2000 to 12000) (default 7500)
             ceil: set ceiling (from 9999 to 20000) (default 9999)
             listen: enable listen mode (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1249,6 +1288,7 @@ class AudioStream(FilterableStream):
                     "listen": listen,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -1291,6 +1331,7 @@ class AudioStream(FilterableStream):
         | Default = Default("tri"),
         silence: Double = Default("0"),
         unity: Double = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -1306,6 +1347,7 @@ class AudioStream(FilterableStream):
             curve: set fade curve type (from -1 to 22) (default tri)
             silence: set the silence gain (from 0 to 1) (default 0)
             unity: set the unity gain (from 0 to 1) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1332,6 +1374,7 @@ class AudioStream(FilterableStream):
                     "unity": unity,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -1361,6 +1404,7 @@ class AudioStream(FilterableStream):
         | Literal["none", "start", "begin", "stop", "end"]
         | Default = Default("none"),
         gain_smooth: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -1382,6 +1426,7 @@ class AudioStream(FilterableStream):
             band_multiplier: set band multiplier (from 0.2 to 5) (default 1.25)
             sample_noise: set sample noise mode (from 0 to 2) (default none)
             gain_smooth: set gain smooth radius (from 0 to 50) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1414,6 +1459,7 @@ class AudioStream(FilterableStream):
                     "gain_smooth": gain_smooth,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -1451,6 +1497,7 @@ class AudioStream(FilterableStream):
         ]
         | Default = Default("hann"),
         overlap: Float = Default("0.75"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -1463,6 +1510,7 @@ class AudioStream(FilterableStream):
             win_size: set window size (from 16 to 131072) (default 4096)
             win_func: set window function (from 0 to 20) (default hann)
             overlap: set window overlap (from 0 to 1) (default 0.75)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1486,6 +1534,7 @@ class AudioStream(FilterableStream):
                     "overlap": overlap,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -1537,6 +1586,7 @@ class AudioStream(FilterableStream):
         shift: Double = Default("0"),
         level: Double = Default("1"),
         order: Int = Default("8"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -1547,6 +1597,7 @@ class AudioStream(FilterableStream):
             shift: set frequency shift (from -2.14748e+09 to INT_MAX) (default 0)
             level: set output level (from 0 to 1) (default 1)
             order: set filter order (from 1 to 16) (default 8)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1568,6 +1619,7 @@ class AudioStream(FilterableStream):
                     "order": order,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -1585,6 +1637,7 @@ class AudioStream(FilterableStream):
         adaptive: Boolean = Default("false"),
         samples: Int = Default("8192"),
         softness: Double = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -1600,6 +1653,7 @@ class AudioStream(FilterableStream):
             adaptive: adaptive profiling of noise (default false)
             samples: set frame size in number of samples (from 512 to 65536) (default 8192)
             softness: set thresholding softness (from 0 to 10) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1626,6 +1680,7 @@ class AudioStream(FilterableStream):
                     "softness": softness,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -1645,6 +1700,7 @@ class AudioStream(FilterableStream):
         detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
         link: Int | Literal["average", "maximum"] | Default = Default("average"),
         level_sc: Double = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -1664,6 +1720,7 @@ class AudioStream(FilterableStream):
             detection: set detection (from 0 to 1) (default rms)
             link: set link (from 0 to 1) (default average)
             level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1694,6 +1751,7 @@ class AudioStream(FilterableStream):
                     "level_sc": level_sc,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -1917,6 +1975,7 @@ class AudioStream(FilterableStream):
 
     def aintegral(
         self,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -1924,6 +1983,7 @@ class AudioStream(FilterableStream):
         Compute integral of input audio.
 
         Args:
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1941,12 +2001,14 @@ class AudioStream(FilterableStream):
             **merge(
                 {},
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
 
     def alatency(
         self,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -1954,6 +2016,7 @@ class AudioStream(FilterableStream):
         Report audio filtering latency.
 
         Args:
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1971,6 +2034,7 @@ class AudioStream(FilterableStream):
             **merge(
                 {},
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -1987,6 +2051,7 @@ class AudioStream(FilterableStream):
         asc_level: Double = Default("0.5"),
         level: Boolean = Default("true"),
         latency: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -2003,6 +2068,7 @@ class AudioStream(FilterableStream):
             asc_level: set asc level (from 0 to 1) (default 0.5)
             level: auto level (default true)
             latency: compensate delay (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2030,6 +2096,7 @@ class AudioStream(FilterableStream):
                     "latency": latency,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -2050,6 +2117,7 @@ class AudioStream(FilterableStream):
         precision: Int
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -2066,6 +2134,7 @@ class AudioStream(FilterableStream):
             order: set filter order (from 1 to 2) (default 2)
             transform: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2093,6 +2162,7 @@ class AudioStream(FilterableStream):
                     "precision": precision,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -2157,6 +2227,7 @@ class AudioStream(FilterableStream):
         expr: String = Default(None),
         file: String = Default(None),
         direct: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -2171,6 +2242,7 @@ class AudioStream(FilterableStream):
             expr: set expression for expr function
             file: set file where to print metadata information
             direct: reduce buffering when printing to user-set file or pipe (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2196,6 +2268,7 @@ class AudioStream(FilterableStream):
                     "direct": direct,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -2245,6 +2318,7 @@ class AudioStream(FilterableStream):
         colors: String = Default(
             "red|green|blue|yellow|orange|lime|pink|magenta|brown"
         ),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> FilterNode:
         """
@@ -2258,6 +2332,7 @@ class AudioStream(FilterableStream):
             mgain: set max gain (from -900 to 900) (default 60)
             fscale: set frequency scale (from 0 to 1) (default log)
             colors: set channels curves colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2285,6 +2360,7 @@ class AudioStream(FilterableStream):
                     "colors": colors,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
 
@@ -2298,6 +2374,7 @@ class AudioStream(FilterableStream):
         research: Duration = Default("0.006"),
         output: Int | Literal["i", "o", "n"] | Default = Default("o"),
         smooth: Float = Default("11"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -2310,6 +2387,7 @@ class AudioStream(FilterableStream):
             research: set research duration (default 0.006)
             output: set output mode (from 0 to 2) (default o)
             smooth: set smooth factor (from 1 to 1000) (default 11)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2333,6 +2411,7 @@ class AudioStream(FilterableStream):
                     "smooth": smooth,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -2346,6 +2425,7 @@ class AudioStream(FilterableStream):
         eps: Float = Default("1"),
         leakage: Float = Default("0"),
         out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -2358,6 +2438,7 @@ class AudioStream(FilterableStream):
             eps: set the filter eps (from 0 to 1) (default 1)
             leakage: set the filter leakage (from 0 to 1) (default 0)
             out_mode: set output mode (from 0 to 4) (default o)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2384,6 +2465,7 @@ class AudioStream(FilterableStream):
                     "out_mode": out_mode,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -2397,6 +2479,7 @@ class AudioStream(FilterableStream):
         eps: Float = Default("1"),
         leakage: Float = Default("0"),
         out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -2409,6 +2492,7 @@ class AudioStream(FilterableStream):
             eps: set the filter eps (from 0 to 1) (default 1)
             leakage: set the filter leakage (from 0 to 1) (default 0)
             out_mode: set output mode (from 0 to 4) (default o)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2435,6 +2519,7 @@ class AudioStream(FilterableStream):
                     "out_mode": out_mode,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -2477,6 +2562,7 @@ class AudioStream(FilterableStream):
         whole_len: Int64 = Default("-1"),
         pad_dur: Duration = Default("-0.000001"),
         whole_dur: Duration = Default("-0.000001"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -2489,6 +2575,7 @@ class AudioStream(FilterableStream):
             whole_len: set minimum target number of samples in the audio stream (from -1 to I64_MAX) (default -1)
             pad_dur: set duration of silence to add (default -0.000001)
             whole_dur: set minimum target duration in the audio stream (default -0.000001)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2512,6 +2599,7 @@ class AudioStream(FilterableStream):
                     "whole_dur": whole_dur,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -2523,6 +2611,7 @@ class AudioStream(FilterableStream):
             "none"
         ),
         seed: Int64 = Default("-1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -2532,6 +2621,7 @@ class AudioStream(FilterableStream):
         Args:
             mode: select permissions mode (from 0 to 4) (default none)
             seed: set the seed for the random mode (from -1 to UINT32_MAX) (default -1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2552,6 +2642,7 @@ class AudioStream(FilterableStream):
                     "seed": seed,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -2683,6 +2774,7 @@ class AudioStream(FilterableStream):
         shift: Double = Default("0"),
         level: Double = Default("1"),
         order: Int = Default("8"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -2693,6 +2785,7 @@ class AudioStream(FilterableStream):
             shift: set phase shift (from -1 to 1) (default 0)
             level: set output level (from 0 to 1) (default 1)
             order: set filter order (from 1 to 16) (default 8)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2714,6 +2807,7 @@ class AudioStream(FilterableStream):
                     "order": order,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -2721,6 +2815,7 @@ class AudioStream(FilterableStream):
     def apsnr(
         self,
         _input1: AudioStream,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -2728,6 +2823,7 @@ class AudioStream(FilterableStream):
         Measure Audio Peak Signal-to-Noise Ratio.
 
         Args:
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2748,6 +2844,7 @@ class AudioStream(FilterableStream):
             **merge(
                 {},
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -2762,6 +2859,7 @@ class AudioStream(FilterableStream):
         adaptive: Double = Default("0.5"),
         iterations: Int = Default("10"),
         level: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -2776,6 +2874,7 @@ class AudioStream(FilterableStream):
             adaptive: set adaptive distortion (from 0 to 1) (default 0.5)
             iterations: set iterations (from 1 to 20) (default 10)
             level: set auto level (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2801,6 +2900,7 @@ class AudioStream(FilterableStream):
                     "level": level,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -2983,6 +3083,7 @@ class AudioStream(FilterableStream):
         _lambda: Float = Default("1"),
         delta: Float = Default("2"),
         out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -2994,6 +3095,7 @@ class AudioStream(FilterableStream):
             _lambda: set the filter lambda (from 0 to 1) (default 1)
             delta: set the filter delta (from 0 to 32767) (default 2)
             out_mode: set output mode (from 0 to 4) (default o)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3017,6 +3119,7 @@ class AudioStream(FilterableStream):
                     "out_mode": out_mode,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -3026,6 +3129,7 @@ class AudioStream(FilterableStream):
         *,
         model: String = Default(None),
         mix: Float = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -3035,6 +3139,7 @@ class AudioStream(FilterableStream):
         Args:
             model: set model name
             mix: set output vs input mix (from -1 to 1) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3055,6 +3160,7 @@ class AudioStream(FilterableStream):
                     "mix": mix,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -3062,6 +3168,7 @@ class AudioStream(FilterableStream):
     def asdr(
         self,
         _input1: AudioStream,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -3069,6 +3176,7 @@ class AudioStream(FilterableStream):
         Measure Audio Signal-to-Distortion Ratio.
 
         Args:
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3087,6 +3195,7 @@ class AudioStream(FilterableStream):
             **merge(
                 {},
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -3218,6 +3327,7 @@ class AudioStream(FilterableStream):
         *,
         nb_out_samples: Int = Default("1024"),
         pad: Boolean = Default("true"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -3227,6 +3337,7 @@ class AudioStream(FilterableStream):
         Args:
             nb_out_samples: set the number of per-frame output samples (from 1 to INT_MAX) (default 1024)
             pad: pad last frame with zeros (default true)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3247,6 +3358,7 @@ class AudioStream(FilterableStream):
                     "pad": pad,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -3415,6 +3527,7 @@ class AudioStream(FilterableStream):
             "SEI_UNREGISTERED",
         ]
         | Default = Default("-1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -3424,6 +3537,7 @@ class AudioStream(FilterableStream):
         Args:
             mode: set a mode of operation (from 0 to 1) (default select)
             type: set side data type (from -1 to INT_MAX) (default -1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3444,6 +3558,7 @@ class AudioStream(FilterableStream):
                     "type": type,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -3451,6 +3566,7 @@ class AudioStream(FilterableStream):
     def asisdr(
         self,
         _input1: AudioStream,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -3458,6 +3574,7 @@ class AudioStream(FilterableStream):
         Measure Audio Scale-Invariant Signal-to-Distortion Ratio.
 
         Args:
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3478,6 +3595,7 @@ class AudioStream(FilterableStream):
             **merge(
                 {},
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -3494,6 +3612,7 @@ class AudioStream(FilterableStream):
         output: Double = Default("1"),
         param: Double = Default("1"),
         oversample: Int = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -3506,6 +3625,7 @@ class AudioStream(FilterableStream):
             output: set softclip output gain (from 1e-06 to 16) (default 1)
             param: set softclip parameter (from 0.01 to 3) (default 1)
             oversample: set oversample factor (from 1 to 64) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3529,6 +3649,7 @@ class AudioStream(FilterableStream):
                     "oversample": oversample,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -3841,6 +3962,7 @@ class AudioStream(FilterableStream):
         slope: Double = Default("0.5"),
         delay: Double = Default("20"),
         channels: String = Default("all"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -3857,6 +3979,7 @@ class AudioStream(FilterableStream):
             slope: set slope (from 0.0001 to 1) (default 0.5)
             delay: set delay (from 1 to 100) (default 20)
             channels: set channels to filter (default "all")
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3884,6 +4007,7 @@ class AudioStream(FilterableStream):
                     "channels": channels,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -3894,6 +4018,7 @@ class AudioStream(FilterableStream):
         cutoff: Double = Default("20"),
         order: Int = Default("10"),
         level: Double = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -3904,6 +4029,7 @@ class AudioStream(FilterableStream):
             cutoff: set cutoff frequency (from 2 to 200) (default 20)
             order: set filter order (from 3 to 20) (default 10)
             level: set input level (from 0 to 1) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3925,6 +4051,7 @@ class AudioStream(FilterableStream):
                     "level": level,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -3935,6 +4062,7 @@ class AudioStream(FilterableStream):
         cutoff: Double = Default("20000"),
         order: Int = Default("10"),
         level: Double = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -3945,6 +4073,7 @@ class AudioStream(FilterableStream):
             cutoff: set cutoff frequency (from 20000 to 192000) (default 20000)
             order: set filter order (from 3 to 20) (default 10)
             level: set input level (from 0 to 1) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3966,6 +4095,7 @@ class AudioStream(FilterableStream):
                     "level": level,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -3977,6 +4107,7 @@ class AudioStream(FilterableStream):
         order: Int = Default("4"),
         qfactor: Double = Default("1"),
         level: Double = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -3988,6 +4119,7 @@ class AudioStream(FilterableStream):
             order: set filter order (from 4 to 20) (default 4)
             qfactor: set Q-factor (from 0.01 to 100) (default 1)
             level: set input level (from 0 to 2) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4010,6 +4142,7 @@ class AudioStream(FilterableStream):
                     "level": level,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -4021,6 +4154,7 @@ class AudioStream(FilterableStream):
         order: Int = Default("4"),
         qfactor: Double = Default("1"),
         level: Double = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -4032,6 +4166,7 @@ class AudioStream(FilterableStream):
             order: set filter order (from 4 to 20) (default 4)
             qfactor: set Q-factor (from 0.01 to 100) (default 1)
             level: set input level (from 0 to 2) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4054,6 +4189,7 @@ class AudioStream(FilterableStream):
                     "level": level,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -4101,6 +4237,7 @@ class AudioStream(FilterableStream):
         width: Double = Default("1000"),
         order: Int = Default("5"),
         level: Double = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -4113,6 +4250,7 @@ class AudioStream(FilterableStream):
             width: set filter width (from 100 to 10000) (default 1000)
             order: set filter order (from 2 to 30) (default 5)
             level: set input level (from 0 to 4) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4136,6 +4274,7 @@ class AudioStream(FilterableStream):
                     "level": level,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -4369,6 +4508,7 @@ class AudioStream(FilterableStream):
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
         blocksize: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -4386,6 +4526,7 @@ class AudioStream(FilterableStream):
             transform: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4414,6 +4555,7 @@ class AudioStream(FilterableStream):
                     "blocksize": blocksize,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -4434,6 +4576,7 @@ class AudioStream(FilterableStream):
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
         blocksize: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -4450,6 +4593,7 @@ class AudioStream(FilterableStream):
             transform: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4477,6 +4621,7 @@ class AudioStream(FilterableStream):
                     "blocksize": blocksize,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -4499,6 +4644,7 @@ class AudioStream(FilterableStream):
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
         blocksize: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -4517,6 +4663,7 @@ class AudioStream(FilterableStream):
             transform: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4546,6 +4693,7 @@ class AudioStream(FilterableStream):
                     "blocksize": blocksize,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -4565,6 +4713,7 @@ class AudioStream(FilterableStream):
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
         blocksize: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -4580,6 +4729,7 @@ class AudioStream(FilterableStream):
             transform: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4606,6 +4756,7 @@ class AudioStream(FilterableStream):
                     "blocksize": blocksize,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -4845,6 +4996,7 @@ class AudioStream(FilterableStream):
         dry: Double = Default("0"),
         wet: Double = Default("1"),
         temp: Int = Default("20"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -4858,6 +5010,7 @@ class AudioStream(FilterableStream):
             dry: set dry amount (from 0 to 1) (default 0)
             wet: set wet amount (from 0 to 1) (default 1)
             temp: set temperature °C (from -50 to 50) (default 20)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4884,6 +5037,7 @@ class AudioStream(FilterableStream):
                     "temp": temp,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -4897,6 +5051,7 @@ class AudioStream(FilterableStream):
         level_in: Double = Default("0.9"),
         level_out: Double = Default("1"),
         block_size: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -4910,6 +5065,7 @@ class AudioStream(FilterableStream):
             level_in: set level in (from 0 to 1) (default 0.9)
             level_out: set level out (from 0 to 1) (default 1)
             block_size: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4934,6 +5090,7 @@ class AudioStream(FilterableStream):
                     "block_size": block_size,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -4943,6 +5100,7 @@ class AudioStream(FilterableStream):
         *,
         i: Float = Default("2"),
         c: Boolean = Default("true"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -4952,6 +5110,7 @@ class AudioStream(FilterableStream):
         Args:
             i: set intensity (from -10 to 10) (default 2)
             c: enable clipping (default true)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4972,6 +5131,7 @@ class AudioStream(FilterableStream):
                     "c": c,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -4981,6 +5141,7 @@ class AudioStream(FilterableStream):
         *,
         shift: Double = Default("0"),
         limitergain: Double = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -4990,6 +5151,7 @@ class AudioStream(FilterableStream):
         Args:
             shift: set DC shift (from -1 to 1) (default 0)
             limitergain: set limiter gain (from 0 to 1) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5010,6 +5172,7 @@ class AudioStream(FilterableStream):
                     "limitergain": limitergain,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -5021,6 +5184,7 @@ class AudioStream(FilterableStream):
         m: Double = Default("0.5"),
         f: Double = Default("0.5"),
         s: Int | Literal["i", "o", "e"] | Default = Default("o"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -5032,6 +5196,7 @@ class AudioStream(FilterableStream):
             m: set max deessing (from 0 to 1) (default 0.5)
             f: set frequency (from 0 to 1) (default 0.5)
             s: set output mode (from 0 to 2) (default o)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5054,6 +5219,7 @@ class AudioStream(FilterableStream):
                     "s": s,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -5064,6 +5230,7 @@ class AudioStream(FilterableStream):
         original: Double = Default("1"),
         enhance: Double = Default("1"),
         voice: Double = Default("2"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -5074,6 +5241,7 @@ class AudioStream(FilterableStream):
             original: set original center factor (from 0 to 1) (default 1)
             enhance: set dialogue enhance factor (from 0 to 3) (default 1)
             voice: set voice detection factor (from 2 to 32) (default 2)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5097,6 +5265,7 @@ class AudioStream(FilterableStream):
                     "voice": voice,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -5152,6 +5321,7 @@ class AudioStream(FilterableStream):
         channels: String = Default("all"),
         overlap: Double = Default("0"),
         curve: String = Default(None),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -5172,6 +5342,7 @@ class AudioStream(FilterableStream):
             channels: set channels to filter (default "all")
             overlap: set the frame overlap (from 0 to 1) (default 0)
             curve: set the custom peak mapping curve
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5203,6 +5374,7 @@ class AudioStream(FilterableStream):
                     "curve": curve,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -5345,6 +5517,7 @@ class AudioStream(FilterableStream):
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
         blocksize: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -5362,6 +5535,7 @@ class AudioStream(FilterableStream):
             transform: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5390,6 +5564,7 @@ class AudioStream(FilterableStream):
                     "blocksize": blocksize,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -5399,6 +5574,7 @@ class AudioStream(FilterableStream):
         *,
         m: Float = Default("2.5"),
         c: Boolean = Default("true"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -5408,6 +5584,7 @@ class AudioStream(FilterableStream):
         Args:
             m: set the difference coefficient (from -10 to 10) (default 2.5)
             c: enable clipping (default true)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5428,6 +5605,7 @@ class AudioStream(FilterableStream):
                     "c": c,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -5720,6 +5898,7 @@ class AudioStream(FilterableStream):
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
         blocksize: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -5737,6 +5916,7 @@ class AudioStream(FilterableStream):
             transform: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5765,6 +5945,7 @@ class AudioStream(FilterableStream):
                     "blocksize": blocksize,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -5787,6 +5968,7 @@ class AudioStream(FilterableStream):
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
         blocksize: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -5805,6 +5987,7 @@ class AudioStream(FilterableStream):
             transform: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5834,6 +6017,7 @@ class AudioStream(FilterableStream):
                     "blocksize": blocksize,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -5922,6 +6106,7 @@ class AudioStream(FilterableStream):
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
         blocksize: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -5939,6 +6124,7 @@ class AudioStream(FilterableStream):
             transform: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5967,6 +6153,7 @@ class AudioStream(FilterableStream):
                     "blocksize": blocksize,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -5989,6 +6176,7 @@ class AudioStream(FilterableStream):
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
         blocksize: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -6007,6 +6195,7 @@ class AudioStream(FilterableStream):
             transform: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -6036,6 +6225,7 @@ class AudioStream(FilterableStream):
                     "blocksize": blocksize,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -7151,6 +7341,7 @@ class AudioStream(FilterableStream):
         detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
         link: Int | Literal["average", "maximum"] | Default = Default("average"),
         level_sc: Double = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -7170,6 +7361,7 @@ class AudioStream(FilterableStream):
             detection: set detection (from 0 to 1) (default rms)
             link: set link (from 0 to 1) (default average)
             level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7203,6 +7395,7 @@ class AudioStream(FilterableStream):
                     "level_sc": level_sc,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -7268,6 +7461,7 @@ class AudioStream(FilterableStream):
         | Default = Default("rms"),
         window: Duration = Default("0.02"),
         timestamp: Int | Literal["write", "copy"] | Default = Default("write"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -7288,6 +7482,7 @@ class AudioStream(FilterableStream):
             detection: set how silence is detected (from 0 to 5) (default rms)
             window: set duration of window for silence detection (default 0.02)
             timestamp: set how every output frame timestamp is processed (from 0 to 1) (default write)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7321,6 +7516,7 @@ class AudioStream(FilterableStream):
                     "timestamp": timestamp,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -7412,6 +7608,7 @@ class AudioStream(FilterableStream):
         invert: Boolean = Default("false"),
         link: Boolean = Default("false"),
         rms: Double = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -7429,6 +7626,7 @@ class AudioStream(FilterableStream):
             invert: set inverted filtering (default false)
             link: set linked channels filtering (default false)
             rms: set the RMS value (from 0 to 1) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7457,6 +7655,7 @@ class AudioStream(FilterableStream):
                     "rms": rms,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -7502,6 +7701,7 @@ class AudioStream(FilterableStream):
         bmode_out: Int | Literal["balance", "amplitude", "power"] | Default = Default(
             "balance"
         ),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -7529,6 +7729,7 @@ class AudioStream(FilterableStream):
             phase: set stereo phase (from 0 to 360) (default 0)
             bmode_in: set balance in mode (from 0 to 2) (default balance)
             bmode_out: set balance out mode (from 0 to 2) (default balance)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7567,6 +7768,7 @@ class AudioStream(FilterableStream):
                     "bmode_out": bmode_out,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -7578,6 +7780,7 @@ class AudioStream(FilterableStream):
         feedback: Float = Default("0.3"),
         crossfeed: Float = Default("0.3"),
         drymix: Float = Default("0.8"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -7589,6 +7792,7 @@ class AudioStream(FilterableStream):
             feedback: set feedback gain (from 0 to 0.9) (default 0.3)
             crossfeed: set cross feed (from 0 to 0.8) (default 0.3)
             drymix: set dry-mix (from 0 to 1) (default 0.8)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7611,6 +7815,7 @@ class AudioStream(FilterableStream):
                     "drymix": drymix,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -7928,6 +8133,7 @@ class AudioStream(FilterableStream):
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
         blocksize: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -7946,6 +8152,7 @@ class AudioStream(FilterableStream):
             transform: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7975,6 +8182,7 @@ class AudioStream(FilterableStream):
                     "blocksize": blocksize,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -7997,6 +8205,7 @@ class AudioStream(FilterableStream):
         | Literal["auto", "s16", "s32", "f32", "f64"]
         | Default = Default("auto"),
         blocksize: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -8015,6 +8224,7 @@ class AudioStream(FilterableStream):
             transform: set transform type (from 0 to 6) (default di)
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8044,6 +8254,7 @@ class AudioStream(FilterableStream):
                     "blocksize": blocksize,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -8053,6 +8264,7 @@ class AudioStream(FilterableStream):
         *,
         f: Double = Default("5"),
         d: Double = Default("0.5"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -8062,6 +8274,7 @@ class AudioStream(FilterableStream):
         Args:
             f: set frequency in hertz (from 0.1 to 20000) (default 5)
             d: set depth as percentage (from 0 to 1) (default 0.5)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8082,6 +8295,7 @@ class AudioStream(FilterableStream):
                     "d": d,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -8091,6 +8305,7 @@ class AudioStream(FilterableStream):
         *,
         f: Double = Default("5"),
         d: Double = Default("0.5"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -8100,6 +8315,7 @@ class AudioStream(FilterableStream):
         Args:
             f: set frequency in hertz (from 0.1 to 20000) (default 5)
             d: set depth as percentage (from 0 to 1) (default 0.5)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8120,6 +8336,7 @@ class AudioStream(FilterableStream):
                     "d": d,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -8129,6 +8346,7 @@ class AudioStream(FilterableStream):
         *,
         cutoff: Double = Default("250"),
         strength: Double = Default("3"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -8138,6 +8356,7 @@ class AudioStream(FilterableStream):
         Args:
             cutoff: set virtual bass cutoff (from 100 to 500) (default 250)
             strength: set virtual bass strength (from 0.5 to 3) (default 3)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8158,6 +8377,7 @@ class AudioStream(FilterableStream):
                     "strength": strength,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)
@@ -8175,6 +8395,7 @@ class AudioStream(FilterableStream):
         | Default = Default("drop"),
         replaygain_preamp: Double = Default("0"),
         replaygain_noclip: Boolean = Default("true"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> AudioStream:
         """
@@ -8188,6 +8409,7 @@ class AudioStream(FilterableStream):
             replaygain: Apply replaygain side data when present (from 0 to 3) (default drop)
             replaygain_preamp: Apply replaygain pre-amplification (from -15 to 15) (default 0)
             replaygain_noclip: Apply replaygain clipping prevention (default true)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8212,6 +8434,7 @@ class AudioStream(FilterableStream):
                     "replaygain_noclip": replaygain_noclip,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.audio(0)

@@ -10,6 +10,7 @@ from .dag.nodes import (
     FilterNode,
 )
 from .options.framesync import FFMpegFrameSyncOption
+from .options.timeline import FFMpegTimelineOption
 from .schema import Auto, Default
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
@@ -183,6 +184,7 @@ def alphamerge(
     _main: VideoStream,
     _alpha: VideoStream,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -191,6 +193,7 @@ def alphamerge(
 
     Args:
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -208,7 +211,12 @@ def alphamerge(
         ),
         _main,
         _alpha,
-        **merge({}, extra_options, framesync_options),
+        **merge(
+            {},
+            extra_options,
+            framesync_options,
+            timeline_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -345,6 +353,7 @@ def anlmf(
     eps: Float = Default("1"),
     leakage: Float = Default("0"),
     out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -357,6 +366,7 @@ def anlmf(
         eps: set the filter eps (from 0 to 1) (default 1)
         leakage: set the filter leakage (from 0 to 1) (default 0)
         out_mode: set output mode (from 0 to 4) (default o)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -381,6 +391,7 @@ def anlmf(
                 "out_mode": out_mode,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.audio(0)
@@ -395,6 +406,7 @@ def anlms(
     eps: Float = Default("1"),
     leakage: Float = Default("0"),
     out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -407,6 +419,7 @@ def anlms(
         eps: set the filter eps (from 0 to 1) (default 1)
         leakage: set the filter leakage (from 0 to 1) (default 0)
         out_mode: set output mode (from 0 to 4) (default o)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -431,6 +444,7 @@ def anlms(
                 "out_mode": out_mode,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.audio(0)
@@ -439,6 +453,7 @@ def anlms(
 def apsnr(
     _input0: AudioStream,
     _input1: AudioStream,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -446,6 +461,7 @@ def apsnr(
     Measure Audio Peak Signal-to-Noise Ratio.
 
     Args:
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -464,6 +480,7 @@ def apsnr(
         **merge(
             {},
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.audio(0)
@@ -477,6 +494,7 @@ def arls(
     _lambda: Float = Default("1"),
     delta: Float = Default("2"),
     out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -488,6 +506,7 @@ def arls(
         _lambda: set the filter lambda (from 0 to 1) (default 1)
         delta: set the filter delta (from 0 to 32767) (default 2)
         out_mode: set output mode (from 0 to 4) (default o)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -511,6 +530,7 @@ def arls(
                 "out_mode": out_mode,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.audio(0)
@@ -519,6 +539,7 @@ def arls(
 def asdr(
     _input0: AudioStream,
     _input1: AudioStream,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -526,6 +547,7 @@ def asdr(
     Measure Audio Signal-to-Distortion Ratio.
 
     Args:
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -544,6 +566,7 @@ def asdr(
         **merge(
             {},
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.audio(0)
@@ -552,6 +575,7 @@ def asdr(
 def asisdr(
     _input0: AudioStream,
     _input1: AudioStream,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -559,6 +583,7 @@ def asisdr(
     Measure Audio Scale-Invariant Signal-to-Distortion Ratio.
 
     Args:
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -577,6 +602,7 @@ def asisdr(
         **merge(
             {},
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.audio(0)
@@ -912,6 +938,7 @@ def blend(
     c3_opacity: Double = Default("1"),
     all_opacity: Double = Default("1"),
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -935,6 +962,7 @@ def blend(
         c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
         all_opacity: set opacity for all color components (from 0 to 1) (default 1)
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -970,6 +998,7 @@ def blend(
             },
             extra_options,
             framesync_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -1055,6 +1084,7 @@ def bm3d(
     estim: Int | Literal["basic", "final"] | Default = Default("basic"),
     ref: Boolean = Default("false"),
     planes: Int = Default("7"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1073,6 +1103,7 @@ def bm3d(
         estim: set filtering estimation mode (from 0 to 1) (default basic)
         ref: have reference stream (default false)
         planes: set planes to filter (from 0 to 15) (default 7)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -1104,6 +1135,7 @@ def bm3d(
                 "planes": planes,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -1118,6 +1150,7 @@ def colormap(
     nb_patches: Int = Default("0"),
     type: Int | Literal["relative", "absolute"] | Default = Default("absolute"),
     kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1129,6 +1162,7 @@ def colormap(
         nb_patches: set number of patches (from 0 to 64) (default 0)
         type: set the target type used (from 0 to 1) (default absolute)
         kernel: set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -1155,6 +1189,7 @@ def colormap(
                 "kernel": kernel,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -1216,6 +1251,7 @@ def convolve(
     impulse: Int | Literal["first", "all"] | Default = Default("all"),
     noise: Float = Default("1e-07"),
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1227,6 +1263,7 @@ def convolve(
         impulse: when to process impulses (from 0 to 1) (default all)
         noise: set noise (from 0 to 1) (default 1e-07)
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -1250,6 +1287,7 @@ def convolve(
             },
             extra_options,
             framesync_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -1259,6 +1297,7 @@ def corr(
     _main: VideoStream,
     _reference: VideoStream,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1267,6 +1306,7 @@ def corr(
 
     Args:
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -1282,7 +1322,12 @@ def corr(
         ),
         _main,
         _reference,
-        **merge({}, extra_options, framesync_options),
+        **merge(
+            {},
+            extra_options,
+            framesync_options,
+            timeline_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1353,6 +1398,7 @@ def deconvolve(
     impulse: Int | Literal["first", "all"] | Default = Default("all"),
     noise: Float = Default("1e-07"),
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1364,6 +1410,7 @@ def deconvolve(
         impulse: when to process impulses (from 0 to 1) (default all)
         noise: set noise (from 0 to 1) (default 1e-07)
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -1389,6 +1436,7 @@ def deconvolve(
             },
             extra_options,
             framesync_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -1402,6 +1450,7 @@ def displace(
     edge: Int | Literal["blank", "smear", "wrap", "mirror"] | Default = Default(
         "smear"
     ),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1410,6 +1459,7 @@ def displace(
 
     Args:
         edge: set edge mode (from 0 to 3) (default smear)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -1433,6 +1483,7 @@ def displace(
                 "edge": edge,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -1662,6 +1713,7 @@ def guided(
     sub: Int = Default("4"),
     guidance: Int | Literal["off", "on"] | Default = Default("off"),
     planes: Int = Default("1"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1675,6 +1727,7 @@ def guided(
         sub: subsampling ratio for fast mode (from 2 to 64) (default 4)
         guidance: set guidance mode (0: off mode; 1: on mode) (from 0 to 1) (default off)
         planes: set planes to filter (from 0 to 15) (default 1)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -1701,6 +1754,7 @@ def guided(
                 "planes": planes,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -1715,6 +1769,7 @@ def haldclut(
     | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
     | Default = Default("tetrahedral"),
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1725,6 +1780,7 @@ def haldclut(
         clut: when to process CLUT (from 0 to 1) (default all)
         interp: select interpolation mode (from 0 to 4) (default tetrahedral)
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -1747,6 +1803,7 @@ def haldclut(
             },
             extra_options,
             framesync_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -1894,6 +1951,7 @@ def hysteresis(
     planes: Int = Default("15"),
     threshold: Int = Default("0"),
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1904,6 +1962,7 @@ def hysteresis(
         planes: set planes (from 0 to 15) (default 15)
         threshold: set threshold (from 0 to 65535) (default 0)
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -1928,6 +1987,7 @@ def hysteresis(
             },
             extra_options,
             framesync_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -1937,6 +1997,7 @@ def identity(
     _main: VideoStream,
     _reference: VideoStream,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1945,6 +2006,7 @@ def identity(
 
     Args:
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -1960,7 +2022,12 @@ def identity(
         ),
         _main,
         _reference,
-        **merge({}, extra_options, framesync_options),
+        **merge(
+            {},
+            extra_options,
+            framesync_options,
+            timeline_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2465,6 +2532,7 @@ def limitdiff(
     elasticity: Float = Default("2"),
     reference: Boolean = Default("false"),
     planes: Int = Default("15"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2476,6 +2544,7 @@ def limitdiff(
         elasticity: set the elasticity (from 0 to 10) (default 2)
         reference: enable reference stream (default false)
         planes: set the planes to filter (from 0 to 15) (default 15)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -2500,6 +2569,7 @@ def limitdiff(
                 "planes": planes,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -2515,6 +2585,7 @@ def lut2(
     c3: String = Default("x"),
     d: Int = Default("0"),
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2528,6 +2599,7 @@ def lut2(
         c3: set component #3 expression (default "x")
         d: set output depth (from 0 to 16) (default 0)
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -2553,6 +2625,7 @@ def lut2(
             },
             extra_options,
             framesync_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -2613,6 +2686,7 @@ def maskedclamp(
     undershoot: Int = Default("0"),
     overshoot: Int = Default("0"),
     planes: Int = Default("15"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2623,6 +2697,7 @@ def maskedclamp(
         undershoot: set undershoot (from 0 to 65535) (default 0)
         overshoot: set overshoot (from 0 to 65535) (default 0)
         planes: set planes (from 0 to 15) (default 15)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -2648,6 +2723,7 @@ def maskedclamp(
                 "planes": planes,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -2659,6 +2735,7 @@ def maskedmax(
     _filter2: VideoStream,
     *,
     planes: Int = Default("15"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2667,6 +2744,7 @@ def maskedmax(
 
     Args:
         planes: set planes (from 0 to 15) (default 15)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -2690,6 +2768,7 @@ def maskedmax(
                 "planes": planes,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -2701,6 +2780,7 @@ def maskedmerge(
     _mask: VideoStream,
     *,
     planes: Int = Default("15"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2709,6 +2789,7 @@ def maskedmerge(
 
     Args:
         planes: set planes (from 0 to 15) (default 15)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -2732,6 +2813,7 @@ def maskedmerge(
                 "planes": planes,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -2743,6 +2825,7 @@ def maskedmin(
     _filter2: VideoStream,
     *,
     planes: Int = Default("15"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2751,6 +2834,7 @@ def maskedmin(
 
     Args:
         planes: set planes (from 0 to 15) (default 15)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -2774,6 +2858,7 @@ def maskedmin(
                 "planes": planes,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -2786,6 +2871,7 @@ def maskedthreshold(
     threshold: Int = Default("1"),
     planes: Int = Default("15"),
     mode: Int | Literal["abs", "diff"] | Default = Default("abs"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2796,6 +2882,7 @@ def maskedthreshold(
         threshold: set threshold (from 0 to 65535) (default 1)
         planes: set planes (from 0 to 15) (default 15)
         mode: set mode (from 0 to 1) (default abs)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -2820,6 +2907,7 @@ def maskedthreshold(
                 "mode": mode,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -2894,6 +2982,7 @@ def midequalizer(
     _in1: VideoStream,
     *,
     planes: Int = Default("15"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2902,6 +2991,7 @@ def midequalizer(
 
     Args:
         planes: set planes (from 0 to 15) (default 15)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -2924,6 +3014,7 @@ def midequalizer(
                 "planes": planes,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -2938,6 +3029,7 @@ def mix(
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default(
         "longest"
     ),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2950,6 +3042,7 @@ def mix(
         scale: set scale (from 0 to 32767) (default 0)
         planes: set what planes to filter (default F)
         duration: how to determine end of stream (from 0 to 2) (default longest)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -2975,6 +3068,7 @@ def mix(
                 "duration": duration,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -2990,6 +3084,7 @@ def morpho(
     planes: Int = Default("7"),
     structure: Int | Literal["first", "all"] | Default = Default("all"),
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3001,6 +3096,7 @@ def morpho(
         planes: set planes to filter (from 0 to 15) (default 7)
         structure: when to process structures (from 0 to 1) (default all)
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -3024,6 +3120,7 @@ def morpho(
             },
             extra_options,
             framesync_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -3033,6 +3130,7 @@ def msad(
     _main: VideoStream,
     _reference: VideoStream,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3041,6 +3139,7 @@ def msad(
 
     Args:
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -3056,7 +3155,12 @@ def msad(
         ),
         _main,
         _reference,
-        **merge({}, extra_options, framesync_options),
+        **merge(
+            {},
+            extra_options,
+            framesync_options,
+            timeline_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3068,6 +3172,7 @@ def multiply(
     scale: Float = Default("1"),
     offset: Float = Default("0.5"),
     planes: Flags = Default("F"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3078,6 +3183,7 @@ def multiply(
         scale: set scale (from 0 to 9) (default 1)
         offset: set offset (from -1 to 1) (default 0.5)
         planes: set planes (default F)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -3100,6 +3206,7 @@ def multiply(
                 "planes": planes,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -3130,6 +3237,7 @@ def overlay(
     repeatlast: Boolean = Default("true"),
     alpha: Int | Literal["straight", "premultiplied"] | Default = Default("straight"),
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3146,6 +3254,7 @@ def overlay(
         repeatlast: repeat overlay of the last overlay frame (default true)
         alpha: alpha format (from 0 to 1) (default straight)
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -3174,6 +3283,7 @@ def overlay(
             },
             extra_options,
             framesync_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -3399,6 +3509,7 @@ def premultiply(
     *streams: VideoStream,
     planes: Int = Default("15"),
     inplace: Boolean = Default("false"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3408,6 +3519,7 @@ def premultiply(
     Args:
         planes: set planes (from 0 to 15) (default 15)
         inplace: enable inplace mode (default false)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -3430,6 +3542,7 @@ def premultiply(
                 "inplace": inplace,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -3492,6 +3605,7 @@ def psnr(
     stats_version: Int = Default("1"),
     output_max: Boolean = Default("false"),
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3503,6 +3617,7 @@ def psnr(
         stats_version: Set the format version for the stats file. (from 1 to 2) (default 1)
         output_max: Add raw stats (max values) to the output log. (default false)
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -3526,6 +3641,7 @@ def psnr(
             },
             extra_options,
             framesync_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -3710,6 +3826,7 @@ def sidechaingate(
     detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
     link: Int | Literal["average", "maximum"] | Default = Default("average"),
     level_sc: Double = Default("1"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
@@ -3729,6 +3846,7 @@ def sidechaingate(
         detection: set detection (from 0 to 1) (default rms)
         link: set link (from 0 to 1) (default average)
         level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -3762,6 +3880,7 @@ def sidechaingate(
                 "level_sc": level_sc,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.audio(0)
@@ -3921,6 +4040,7 @@ def ssim(
     *,
     stats_file: String = Default(None),
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3930,6 +4050,7 @@ def ssim(
     Args:
         stats_file: Set file where to store per-frame difference information
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -3951,6 +4072,7 @@ def ssim(
             },
             extra_options,
             framesync_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -4005,6 +4127,7 @@ def threshold(
     _max: VideoStream,
     *,
     planes: Int = Default("15"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4013,6 +4136,7 @@ def threshold(
 
     Args:
         planes: set planes to filter (from 0 to 15) (default 15)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -4037,6 +4161,7 @@ def threshold(
                 "planes": planes,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -4046,6 +4171,7 @@ def unpremultiply(
     *streams: VideoStream,
     planes: Int = Default("15"),
     inplace: Boolean = Default("false"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4055,6 +4181,7 @@ def unpremultiply(
     Args:
         planes: set planes (from 0 to 15) (default 15)
         inplace: enable inplace mode (default false)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -4077,6 +4204,7 @@ def unpremultiply(
                 "inplace": inplace,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -4090,6 +4218,7 @@ def varblur(
     max_r: Int = Default("8"),
     planes: Int = Default("15"),
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4101,6 +4230,7 @@ def varblur(
         max_r: set max blur radius (from 1 to 255) (default 8)
         planes: set planes to filter (from 0 to 15) (default 15)
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -4124,6 +4254,7 @@ def varblur(
             },
             extra_options,
             framesync_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -4133,6 +4264,7 @@ def vif(
     _main: VideoStream,
     _reference: VideoStream,
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4141,6 +4273,7 @@ def vif(
 
     Args:
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -4156,7 +4289,12 @@ def vif(
         ),
         _main,
         _reference,
-        **merge({}, extra_options, framesync_options),
+        **merge(
+            {},
+            extra_options,
+            framesync_options,
+            timeline_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -4251,6 +4389,7 @@ def xcorrelate(
     planes: Int = Default("7"),
     secondary: Int | Literal["first", "all"] | Default = Default("all"),
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4261,6 +4400,7 @@ def xcorrelate(
         planes: set planes to cross-correlate (from 0 to 15) (default 7)
         secondary: when to process secondary frame (from 0 to 1) (default all)
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -4285,6 +4425,7 @@ def xcorrelate(
             },
             extra_options,
             framesync_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -4470,6 +4611,7 @@ def xmedian(
     planes: Int = Default("15"),
     percentile: Float = Default("0.5"),
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -4481,6 +4623,7 @@ def xmedian(
         planes: set planes to filter (from 0 to 15) (default 15)
         percentile: set percentile (from 0 to 1) (default 0.5)
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -4505,6 +4648,7 @@ def xmedian(
             },
             extra_options,
             framesync_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)

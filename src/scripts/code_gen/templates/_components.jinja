@@ -59,6 +59,9 @@ Args:
 {%- if f.is_support_framesync %}
     framesync_options: Framesync options
 {%- endif %}
+{%- if f.is_support_timeline %}
+    timeline_options: Timeline options
+{%- endif %}
     extra_options: Extra options for the filter
 
 Returns:
@@ -119,7 +122,10 @@ filter_node = filter_node_factory(
     },
     extra_options,
     {% if f.is_support_framesync %}
-    framesync_options
+    framesync_options,
+    {% endif %}
+    {% if f.is_support_timeline %}
+    timeline_options,
     {% endif %}
     )
 )
@@ -149,6 +155,9 @@ return (
     {% if f.is_support_framesync %}
     framesync_options: FFMpegFrameSyncOption | None = None,
     {% endif %}
+    {% if f.is_support_timeline %}
+    timeline_options: FFMpegTimelineOption | None = None,
+    {% endif %}
     extra_options: dict[str, Any] | None = None,
     ) {{- return_stream_typings(f) }}
         """
@@ -165,6 +174,9 @@ def {{f.name}}(
     {{ f | filter_option_typings }}
     {% if f.is_support_framesync %}
     framesync_options: FFMpegFrameSyncOption | None = None,
+    {% endif %}
+    {% if f.is_support_timeline %}
+    timeline_options: FFMpegTimelineOption | None = None,
     {% endif %}
     extra_options: dict[str, Any] | None = None,
 ) {{- return_stream_typings(f) }}
@@ -186,6 +198,7 @@ from {{get_relative_path(f, template_path)}} import Binary, Boolean, Color, Dict
 {{get_relative_import("schema", template_path, "Default, StreamType, Auto")}}
 {{get_relative_import("common.schema", template_path, "FFMpegFilterDef")}}
 {{get_relative_import("options.framesync", template_path, "FFMpegFrameSyncOption")}}
+{{get_relative_import("options.timeline", template_path, "FFMpegTimelineOption")}}
 {{get_relative_import("streams.av", template_path, "AVStream")}}
 {{get_relative_import("streams.channel_layout", template_path, "CHANNEL_LAYOUT")}}
 {{get_relative_import("codecs.schema", template_path, "FFMpegEncoderOption, FFMpegDecoderOption")}}
