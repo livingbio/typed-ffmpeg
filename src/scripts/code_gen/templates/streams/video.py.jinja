@@ -10,7 +10,7 @@ from typing import TYPE_CHECKING, Any, Literal
 
 from ..dag.nodes import FilterableStream, FilterNode
 from ..schema import Default, StreamType, Auto
-{{ _components.import_types('..types') }}
+{{ _components.import_types('types', template_path) }}
 from ..utils.typing import override
 from ..common.schema import FFMpegFilterDef
 from ..dag.factory import filter_node_factory

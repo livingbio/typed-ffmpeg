@@ -14,7 +14,7 @@ from ...utils.frozendict import merge
 from ...codecs.schema import FFMpegDecoderOption
 from ...formats.schema import FFMpegDemuxerOption
 
-{{ _components.import_types('...types') }}
+{{ _components.import_types('types', template_path) }}
 
 def input(
     filename: str | Path,

@@ -9,7 +9,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
-{{ _components.import_types('...types') }}
+{{ _components.import_types('types', template_path) }}
 from ...utils.frozendict import merge
 from ...codecs.schema import FFMpegEncoderOption
 from ...formats.schema import FFMpegMuxerOption

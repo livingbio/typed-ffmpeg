@@ -7,7 +7,7 @@ from typing import Any, Literal
 
 from .dag.nodes import FilterNode, FilterableStream
 from .schema import Default, StreamType, Auto
-{{ _components.import_types('.types') }}
+{{ _components.import_types('types', template_path) }}
 from .streams.video import VideoStream
 from .streams.audio import AudioStream
 from .streams.av import AVStream
