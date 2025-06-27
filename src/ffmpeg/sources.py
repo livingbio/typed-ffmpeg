@@ -10,6 +10,7 @@ from .dag.nodes import (
     FilterNode,
 )
 from .options.framesync import FFMpegFrameSyncOption
+from .options.timeline import FFMpegTimelineOption
 from .schema import Auto, Default
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
@@ -805,6 +806,7 @@ def bm3d(
     estim: Int | Literal["basic", "final"] | Default = Default("basic"),
     ref: Boolean = Default("false"),
     planes: Int = Default("7"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -823,6 +825,7 @@ def bm3d(
         estim: set filtering estimation mode (from 0 to 1) (default basic)
         ref: have reference stream (default false)
         planes: set planes to filter (from 0 to 15) (default 7)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -854,6 +857,7 @@ def bm3d(
                 "planes": planes,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -1518,6 +1522,7 @@ def guided(
     sub: Int = Default("4"),
     guidance: Int | Literal["off", "on"] | Default = Default("off"),
     planes: Int = Default("1"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -1531,6 +1536,7 @@ def guided(
         sub: subsampling ratio for fast mode (from 2 to 64) (default 4)
         guidance: set guidance mode (0: off mode; 1: on mode) (from 0 to 1) (default off)
         planes: set planes to filter (from 0 to 15) (default 1)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -1557,6 +1563,7 @@ def guided(
                 "planes": planes,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -2368,6 +2375,7 @@ def limitdiff(
     elasticity: Float = Default("2"),
     reference: Boolean = Default("false"),
     planes: Int = Default("15"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2379,6 +2387,7 @@ def limitdiff(
         elasticity: set the elasticity (from 0 to 10) (default 2)
         reference: enable reference stream (default false)
         planes: set the planes to filter (from 0 to 15) (default 15)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -2403,6 +2412,7 @@ def limitdiff(
                 "planes": planes,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -2603,6 +2613,7 @@ def mix(
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default(
         "longest"
     ),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2615,6 +2626,7 @@ def mix(
         scale: set scale (from 0 to 32767) (default 0)
         planes: set what planes to filter (default F)
         duration: how to determine end of stream (from 0 to 2) (default longest)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -2640,6 +2652,7 @@ def mix(
                 "duration": duration,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -2933,6 +2946,7 @@ def premultiply(
     *streams: VideoStream,
     planes: Int = Default("15"),
     inplace: Boolean = Default("false"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -2942,6 +2956,7 @@ def premultiply(
     Args:
         planes: set planes (from 0 to 15) (default 15)
         inplace: enable inplace mode (default false)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -2964,6 +2979,7 @@ def premultiply(
                 "inplace": inplace,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -3488,6 +3504,7 @@ def unpremultiply(
     *streams: VideoStream,
     planes: Int = Default("15"),
     inplace: Boolean = Default("false"),
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3497,6 +3514,7 @@ def unpremultiply(
     Args:
         planes: set planes (from 0 to 15) (default 15)
         inplace: enable inplace mode (default false)
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -3519,6 +3537,7 @@ def unpremultiply(
                 "inplace": inplace,
             },
             extra_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)
@@ -3613,6 +3632,7 @@ def xmedian(
     planes: Int = Default("15"),
     percentile: Float = Default("0.5"),
     framesync_options: FFMpegFrameSyncOption | None = None,
+    timeline_options: FFMpegTimelineOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
@@ -3624,6 +3644,7 @@ def xmedian(
         planes: set planes to filter (from 0 to 15) (default 15)
         percentile: set percentile (from 0 to 1) (default 0.5)
         framesync_options: Framesync options
+        timeline_options: Timeline options
         extra_options: Extra options for the filter
 
     Returns:
@@ -3648,6 +3669,7 @@ def xmedian(
             },
             extra_options,
             framesync_options,
+            timeline_options,
         ),
     )
     return filter_node.video(0)

@@ -2,12 +2,12 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from .. import formats
+from .. import expressions, formats
 from ..base import input, merge_outputs, output, vfilter
 from ..codecs.decoders import h264
 from ..codecs.encoders import h263
 from ..filters import blend, concat, join
-from ..options import framesync
+from ..options import framesync, timeline
 from ..schema import StreamType
 from ..sources import color
 from ..streams.video import VideoStream
@@ -70,6 +70,20 @@ def test_filter_node_with_framesync(snapshot: SnapshotAssertion) -> None:
 
     assert snapshot(extension_class=JSONSnapshotExtension) == (
         blend(input1, input2, framesync_options=framesync(ts_sync_mode="nearest"))
+        .output(filename="out.mp4")
+        .compile()
+    )
+
+
+def test_filter_node_with_timeline(snapshot: SnapshotAssertion) -> None:
+    input1 = input("input1")
+
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        input1.smartblur(
+            timeline_options=timeline(
+                enable=expressions.between(expressions.Expression("t"), 10, "3*60")
+            )
+        )
         .output(filename="out.mp4")
         .compile()
     )

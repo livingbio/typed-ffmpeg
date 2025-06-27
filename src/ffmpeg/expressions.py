@@ -119,7 +119,7 @@ class Expression(str):
         return Expression(f"+{self.expression}")
 
 
-def abs(x: str) -> Expression:
+def abs(x: Any) -> Expression:
     """
     Compute absolute value of x.
 
@@ -133,7 +133,7 @@ def abs(x: str) -> Expression:
     return Expression(f"abs({x})")
 
 
-def acos(x: str) -> Expression:
+def acos(x: Any) -> Expression:
     """
     Compute arccosine of x.
 
@@ -147,7 +147,7 @@ def acos(x: str) -> Expression:
     return Expression(f"acos({x})")
 
 
-def asin(x: str) -> Expression:
+def asin(x: Any) -> Expression:
     """
     Compute arcsine of x.
 
@@ -161,7 +161,7 @@ def asin(x: str) -> Expression:
     return Expression(f"asin({x})")
 
 
-def atan(x: str) -> Expression:
+def atan(x: Any) -> Expression:
     """
     Compute arctangent of x.
 
@@ -175,7 +175,7 @@ def atan(x: str) -> Expression:
     return Expression(f"atan({x})")
 
 
-def atan2(x: str) -> Expression:
+def atan2(x: Any) -> Expression:
     """
     Compute principal value of the arc tangent of y/x.
 
@@ -189,7 +189,7 @@ def atan2(x: str) -> Expression:
     return Expression(f"atan2({x})")
 
 
-def between(x: str, min: str, max: str) -> Expression:
+def between(x: Any, min: Any, max: Any) -> Expression:
     """
     Return 1 if x is greater than or equal to min and lesser than or equal to max, 0 otherwise.
 
@@ -205,7 +205,7 @@ def between(x: str, min: str, max: str) -> Expression:
     return Expression(f"between({x},{min},{max})")
 
 
-def bitand(x: str, y: str) -> Expression:
+def bitand(x: Any, y: Any) -> Expression:
     """
     Compute bitwise and/or operation on x and y.
 
@@ -220,7 +220,7 @@ def bitand(x: str, y: str) -> Expression:
     return Expression(f"bitand({x},{y})")
 
 
-def bitor(x: str, y: str) -> Expression:
+def bitor(x: Any, y: Any) -> Expression:
     """
     Compute bitwise and/or operation on x and y.
 
@@ -235,7 +235,7 @@ def bitor(x: str, y: str) -> Expression:
     return Expression(f"bitor({x},{y})")
 
 
-def ceil(expr: str) -> Expression:
+def ceil(expr: Any) -> Expression:
     """
     Round the value of expression expr upwards to the nearest integer. For example, "ceil(1.5)" is "2.0".
 
@@ -249,7 +249,7 @@ def ceil(expr: str) -> Expression:
     return Expression(f"ceil({expr})")
 
 
-def clip(x: str, min: str, max: str) -> Expression:
+def clip(x: Any, min: Any, max: Any) -> Expression:
     """
     Return the value of x clipped between min and max.
 
@@ -265,7 +265,7 @@ def clip(x: str, min: str, max: str) -> Expression:
     return Expression(f"clip({x},{min},{max})")
 
 
-def cos(x: str) -> Expression:
+def cos(x: Any) -> Expression:
     """
     Compute cosine of x.
 
@@ -279,7 +279,7 @@ def cos(x: str) -> Expression:
     return Expression(f"cos({x})")
 
 
-def cosh(x: str) -> Expression:
+def cosh(x: Any) -> Expression:
     """
     Compute hyperbolic cosine of x.
 
@@ -293,7 +293,7 @@ def cosh(x: str) -> Expression:
     return Expression(f"cosh({x})")
 
 
-def eq(x: str, y: str) -> Expression:
+def eq(x: Any, y: Any) -> Expression:
     """
     Return 1 if x and y are equivalent, 0 otherwise.
 
@@ -308,7 +308,7 @@ def eq(x: str, y: str) -> Expression:
     return Expression(f"eq({x},{y})")
 
 
-def exp(x: str) -> Expression:
+def exp(x: Any) -> Expression:
     """
     Compute exponential of x (with base e, the Euler's number).
 
@@ -322,7 +322,7 @@ def exp(x: str) -> Expression:
     return Expression(f"exp({x})")
 
 
-def floor(expr: str) -> Expression:
+def floor(expr: Any) -> Expression:
     """
     Round the value of expression expr downwards to the nearest integer. For example, "floor(-1.5)" is "-2.0".
 
@@ -336,7 +336,7 @@ def floor(expr: str) -> Expression:
     return Expression(f"floor({expr})")
 
 
-def gauss(x: str) -> Expression:
+def gauss(x: Any) -> Expression:
     """
     Compute Gauss function of x, corresponding to exp(-x*x/2) / sqrt(2*PI).
 
@@ -350,7 +350,7 @@ def gauss(x: str) -> Expression:
     return Expression(f"gauss({x})")
 
 
-def gcd(x: str, y: str) -> Expression:
+def gcd(x: Any, y: Any) -> Expression:
     """
     Return the greatest common divisor of x and y. If both x and y are 0 or either or both are less than zero then behavior is undefined.
 
@@ -365,7 +365,7 @@ def gcd(x: str, y: str) -> Expression:
     return Expression(f"gcd({x},{y})")
 
 
-def gt(x: str, y: str) -> Expression:
+def gt(x: Any, y: Any) -> Expression:
     """
     Return 1 if x is greater than y, 0 otherwise.
 
@@ -380,7 +380,7 @@ def gt(x: str, y: str) -> Expression:
     return Expression(f"gt({x},{y})")
 
 
-def gte(x: str, y: str) -> Expression:
+def gte(x: Any, y: Any) -> Expression:
     """
     Return 1 if x is greater than or equal to y, 0 otherwise.
 
@@ -395,7 +395,7 @@ def gte(x: str, y: str) -> Expression:
     return Expression(f"gte({x},{y})")
 
 
-def hypot(x: str, y: str) -> Expression:
+def hypot(x: Any, y: Any) -> Expression:
     """
     Return sqrt(x*x + y*y), the length of the hypotenuse of a right triangle with sides of length x and y, or the distance of the point (x, y) from the origin.
 
@@ -410,7 +410,7 @@ def hypot(x: str, y: str) -> Expression:
     return Expression(f"hypot({x},{y})")
 
 
-def if_(x: str, y: str, z: str | None = None) -> Expression:
+def if_(x: Any, y: Any, z: Any | None = None) -> Expression:
     """
     Evaluate x, and if the result is non-zero return the result of the evaluation of y, return 0 otherwise.
 
@@ -429,7 +429,7 @@ def if_(x: str, y: str, z: str | None = None) -> Expression:
         return Expression(f"if({x},{y},{z})")
 
 
-def ifnot(x: str, y: str, z: str | None = None) -> Expression:
+def ifnot(x: Any, y: Any, z: Any | None = None) -> Expression:
     """
     Evaluate x, and if the result is zero return the result of the evaluation of y, return 0 otherwise.
 
@@ -448,7 +448,7 @@ def ifnot(x: str, y: str, z: str | None = None) -> Expression:
         return Expression(f"ifnot({x},{y},{z})")
 
 
-def isinf(x: str) -> Expression:
+def isinf(x: Any) -> Expression:
     """
     Return 1.0 if x is +/-INFINITY, 0.0 otherwise.
 
@@ -462,7 +462,7 @@ def isinf(x: str) -> Expression:
     return Expression(f"isinf({x})")
 
 
-def isnan(x: str) -> Expression:
+def isnan(x: Any) -> Expression:
     """
     Return 1.0 if x is NAN, 0.0 otherwise.
 
@@ -476,7 +476,7 @@ def isnan(x: str) -> Expression:
     return Expression(f"isnan({x})")
 
 
-def ld(idx: str) -> Expression:
+def ld(idx: Any) -> Expression:
     """
     Load the value of the internal variable with index idx, which was previously stored with st(idx, expr). The function returns the loaded value.
 
@@ -490,7 +490,7 @@ def ld(idx: str) -> Expression:
     return Expression(f"ld({idx})")
 
 
-def lerp(x: str, y: str, z: str) -> Expression:
+def lerp(x: Any, y: Any, z: Any) -> Expression:
     """
     Return linear interpolation between x and y by amount of z.
 
@@ -506,7 +506,7 @@ def lerp(x: str, y: str, z: str) -> Expression:
     return Expression(f"lerp({x},{y},{z})")
 
 
-def log(x: str) -> Expression:
+def log(x: Any) -> Expression:
     """
     Compute natural logarithm of x.
 
@@ -520,7 +520,7 @@ def log(x: str) -> Expression:
     return Expression(f"log({x})")
 
 
-def lt(x: str, y: str) -> Expression:
+def lt(x: Any, y: Any) -> Expression:
     """
     Return 1 if x is lesser than y, 0 otherwise.
 
@@ -535,7 +535,7 @@ def lt(x: str, y: str) -> Expression:
     return Expression(f"lt({x},{y})")
 
 
-def lte(x: str, y: str) -> Expression:
+def lte(x: Any, y: Any) -> Expression:
     """
     Return 1 if x is lesser than or equal to y, 0 otherwise.
 
@@ -550,7 +550,7 @@ def lte(x: str, y: str) -> Expression:
     return Expression(f"lte({x},{y})")
 
 
-def max(x: str, y: str) -> Expression:
+def max(x: Any, y: Any) -> Expression:
     """
     Return the maximum between x and y.
 
@@ -565,7 +565,7 @@ def max(x: str, y: str) -> Expression:
     return Expression(f"max({x},{y})")
 
 
-def min(x: str, y: str) -> Expression:
+def min(x: Any, y: Any) -> Expression:
     """
     Return the minimum between x and y.
 
@@ -580,7 +580,7 @@ def min(x: str, y: str) -> Expression:
     return Expression(f"min({x},{y})")
 
 
-def mod(x: str, y: str) -> Expression:
+def mod(x: Any, y: Any) -> Expression:
     """
     Compute the remainder of division of x by y.
 
@@ -595,7 +595,7 @@ def mod(x: str, y: str) -> Expression:
     return Expression(f"mod({x},{y})")
 
 
-def not_(expr: str) -> Expression:
+def not_(expr: Any) -> Expression:
     """
     Return 1.0 if expr is zero, 0.0 otherwise.
 
@@ -609,7 +609,7 @@ def not_(expr: str) -> Expression:
     return Expression(f"not({expr})")
 
 
-def pow(x: str, y: str) -> Expression:
+def pow(x: Any, y: Any) -> Expression:
     """
     Compute the power of x elevated y, it is equivalent to "(x)^(y)".
 
@@ -624,7 +624,7 @@ def pow(x: str, y: str) -> Expression:
     return Expression(f"pow({x},{y})")
 
 
-def print(t: str, l: str | None = None) -> Expression:
+def print(t: Any, l: Any | None = None) -> Expression:
     """
     Print the value of expression t with loglevel l. If l is not specified then a default log level is used. Return the value of the expression printed.
 
@@ -642,7 +642,7 @@ def print(t: str, l: str | None = None) -> Expression:
         return Expression(f"print({t},{l})")
 
 
-def random(idx: str) -> Expression:
+def random(idx: Any) -> Expression:
     """
     Return a pseudo random value between 0.0 and 1.0. idx is the index of the internal variable used to save the seed/state, which can be previously stored with st(idx).
 
@@ -656,7 +656,7 @@ def random(idx: str) -> Expression:
     return Expression(f"random({idx})")
 
 
-def randomi(idx: str, min: str, max: str) -> Expression:
+def randomi(idx: Any, min: Any, max: Any) -> Expression:
     """
     Return a pseudo random value in the interval between min and max. idx is the index of the internal variable which will be used to save the seed/state, which can be previously stored with st(idx).
 
@@ -672,7 +672,7 @@ def randomi(idx: str, min: str, max: str) -> Expression:
     return Expression(f"randomi({idx},{min},{max})")
 
 
-def root(expr: str, max: str) -> Expression:
+def root(expr: Any, max: Any) -> Expression:
     """
     Find an input value for which the function represented by expr with argument ld(0) is 0 in the interval 0..max.
 
@@ -687,7 +687,7 @@ def root(expr: str, max: str) -> Expression:
     return Expression(f"root({expr},{max})")
 
 
-def round(expr: str) -> Expression:
+def round(expr: Any) -> Expression:
     """
     Round the value of expression expr to the nearest integer. For example, "round(1.5)" is "2.0".
 
@@ -701,7 +701,7 @@ def round(expr: str) -> Expression:
     return Expression(f"round({expr})")
 
 
-def sgn(x: str) -> Expression:
+def sgn(x: Any) -> Expression:
     """
     Compute sign of x.
 
@@ -715,7 +715,7 @@ def sgn(x: str) -> Expression:
     return Expression(f"sgn({x})")
 
 
-def sin(x: str) -> Expression:
+def sin(x: Any) -> Expression:
     """
     Compute sine of x.
 
@@ -729,7 +729,7 @@ def sin(x: str) -> Expression:
     return Expression(f"sin({x})")
 
 
-def sinh(x: str) -> Expression:
+def sinh(x: Any) -> Expression:
     """
     Compute hyperbolic sine of x.
 
@@ -743,7 +743,7 @@ def sinh(x: str) -> Expression:
     return Expression(f"sinh({x})")
 
 
-def sqrt(expr: str) -> Expression:
+def sqrt(expr: Any) -> Expression:
     """
     Compute the square root of expr. This is equivalent to "(expr)^.5".
 
@@ -757,7 +757,7 @@ def sqrt(expr: str) -> Expression:
     return Expression(f"sqrt({expr})")
 
 
-def squish(x: str) -> Expression:
+def squish(x: Any) -> Expression:
     """
     Compute expression 1/(1 + exp(4*x)).
 
@@ -771,7 +771,7 @@ def squish(x: str) -> Expression:
     return Expression(f"squish({x})")
 
 
-def st(idx: str, expr: str) -> Expression:
+def st(idx: Any, expr: Any) -> Expression:
     """
     Store the value of the expression expr in an internal variable. idx specifies the index of the variable where to store the value, and it is a value ranging from 0 to 9. The function returns the value stored in the internal variable.
 
@@ -786,7 +786,7 @@ def st(idx: str, expr: str) -> Expression:
     return Expression(f"st({idx},{expr})")
 
 
-def tan(x: str) -> Expression:
+def tan(x: Any) -> Expression:
     """
     Compute tangent of x.
 
@@ -800,7 +800,7 @@ def tan(x: str) -> Expression:
     return Expression(f"tan({x})")
 
 
-def tanh(x: str) -> Expression:
+def tanh(x: Any) -> Expression:
     """
     Compute hyperbolic tangent of x.
 
@@ -814,7 +814,7 @@ def tanh(x: str) -> Expression:
     return Expression(f"tanh({x})")
 
 
-def taylor(expr: str, x: str, idx: str | None = None) -> Expression:
+def taylor(expr: Any, x: Any, idx: Any | None = None) -> Expression:
     """
     Evaluate a Taylor series at x, given an expression representing the ld(idx)-th derivative of a function at 0.
 
@@ -833,7 +833,7 @@ def taylor(expr: str, x: str, idx: str | None = None) -> Expression:
         return Expression(f"taylor({expr},{x},{idx})")
 
 
-def time(x: str) -> Expression:
+def time(x: Any) -> Expression:
     """
     Return the current (wallclock) time in seconds.
 
@@ -847,7 +847,7 @@ def time(x: str) -> Expression:
     return Expression(f"time({x})")
 
 
-def trunc(expr: str) -> Expression:
+def trunc(expr: Any) -> Expression:
     """
     Round the value of expression expr towards zero to the nearest integer. For example, "trunc(-1.5)" is "-1.0".
 
@@ -861,7 +861,7 @@ def trunc(expr: str) -> Expression:
     return Expression(f"trunc({expr})")
 
 
-def while_(cond: str, expr: str) -> Expression:
+def while_(cond: Any, expr: Any) -> Expression:
     """
     Evaluate expression expr while the expression cond is non-zero, and returns the value of the last expr evaluation, or NAN if cond was always false.
 

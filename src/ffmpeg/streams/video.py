@@ -12,6 +12,7 @@ from ..dag.nodes import (
     FilterNode,
 )
 from ..options.framesync import FFMpegFrameSyncOption
+from ..options.timeline import FFMpegTimelineOption
 from ..schema import Default
 from ..types import (
     Boolean,
@@ -121,6 +122,7 @@ class VideoStream(FilterableStream):
         self,
         _alpha: VideoStream,
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -129,6 +131,7 @@ class VideoStream(FilterableStream):
 
         Args:
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -146,7 +149,12 @@ class VideoStream(FilterableStream):
             ),
             self,
             _alpha,
-            **merge({}, extra_options, framesync_options),
+            **merge(
+                {},
+                extra_options,
+                framesync_options,
+                timeline_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -160,6 +168,7 @@ class VideoStream(FilterableStream):
         low: Float = Default("65535"),
         high: Float = Default("65535"),
         planes: Flags = Default("7"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -174,6 +183,7 @@ class VideoStream(FilterableStream):
             low: set low limit for amplification (from 0 to 65535) (default 65535)
             high: set high limit for amplification (from 0 to 65535) (default 65535)
             planes: set what planes to filter (default 7)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -199,6 +209,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -265,6 +276,7 @@ class VideoStream(FilterableStream):
         _0s: Float = Default("32767"),
         _1s: Float = Default("32767"),
         _2s: Float = Default("32767"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -284,6 +296,7 @@ class VideoStream(FilterableStream):
             _0s: set sigma for 1st plane (from 0 to 32767) (default 32767)
             _1s: set sigma for 2nd plane (from 0 to 32767) (default 32767)
             _2s: set sigma for 3rd plane (from 0 to 32767) (default 32767)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -314,6 +327,7 @@ class VideoStream(FilterableStream):
                     "2s": _2s,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -324,6 +338,7 @@ class VideoStream(FilterableStream):
         sizeX: Int = Default("1"),
         planes: Int = Default("15"),
         sizeY: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -334,6 +349,7 @@ class VideoStream(FilterableStream):
             sizeX: set horizontal size (from 1 to 1024) (default 1)
             planes: set planes to filter (from 0 to 15) (default 15)
             sizeY: set vertical size (from 0 to 1024) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -355,6 +371,7 @@ class VideoStream(FilterableStream):
                     "sizeY": sizeY,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -451,6 +468,7 @@ class VideoStream(FilterableStream):
         threshold: Float = Default("0.08"),
         similarity: Float = Default("0.1"),
         blend: Float = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -461,6 +479,7 @@ class VideoStream(FilterableStream):
             threshold: set the scene change threshold (from 0 to 1) (default 0.08)
             similarity: set the similarity (from 0 to 1) (default 0.1)
             blend: set the blend value (from 0 to 1) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -484,6 +503,7 @@ class VideoStream(FilterableStream):
                     "blend": blend,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -492,6 +512,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         min_val: Int = Default("16"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -500,6 +521,7 @@ class VideoStream(FilterableStream):
 
         Args:
             min_val: set minimum luminance value for bounding box (from 0 to 65535) (default 16)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -519,6 +541,7 @@ class VideoStream(FilterableStream):
                     "min_val": min_val,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -564,6 +587,7 @@ class VideoStream(FilterableStream):
         sigmaS: Float = Default("0.1"),
         sigmaR: Float = Default("0.1"),
         planes: Int = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -574,6 +598,7 @@ class VideoStream(FilterableStream):
             sigmaS: set spatial sigma (from 0 to 512) (default 0.1)
             sigmaR: set range sigma (from 0 to 1) (default 0.1)
             planes: set planes to filter (from 0 to 15) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -595,6 +620,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -604,6 +630,7 @@ class VideoStream(FilterableStream):
         *,
         bitplane: Int = Default("1"),
         filter: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -613,6 +640,7 @@ class VideoStream(FilterableStream):
         Args:
             bitplane: set bit plane to use for measuring noise (from 1 to 16) (default 1)
             filter: show noisy pixels (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -635,6 +663,7 @@ class VideoStream(FilterableStream):
                     "filter": filter,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -963,6 +992,7 @@ class VideoStream(FilterableStream):
         c3_opacity: Double = Default("1"),
         all_opacity: Double = Default("1"),
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -986,6 +1016,7 @@ class VideoStream(FilterableStream):
             c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
             all_opacity: set opacity for all color components (from 0 to 1) (default 1)
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1023,6 +1054,7 @@ class VideoStream(FilterableStream):
                 },
                 extra_options,
                 framesync_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -1193,6 +1225,7 @@ class VideoStream(FilterableStream):
         chroma_power: Int = Default("-1"),
         alpha_radius: String = Default(None),
         alpha_power: Int = Default("-1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -1206,6 +1239,7 @@ class VideoStream(FilterableStream):
             chroma_power: How many times should the boxblur be applied to chroma (from -1 to INT_MAX) (default -1)
             alpha_radius: Radius of the alpha blurring box
             alpha_power: How many times should the boxblur be applied to alpha (from -1 to INT_MAX) (default -1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1230,6 +1264,7 @@ class VideoStream(FilterableStream):
                     "alpha_power": alpha_power,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -1294,6 +1329,7 @@ class VideoStream(FilterableStream):
         ),
         parity: Int | Literal["tff", "bff", "auto"] | Default = Default("auto"),
         deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -1304,6 +1340,7 @@ class VideoStream(FilterableStream):
             mode: specify the interlacing mode (from 0 to 1) (default send_field)
             parity: specify the assumed picture field parity (from -1 to 1) (default auto)
             deint: specify which frames to deinterlace (from 0 to 1) (default all)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1325,6 +1362,7 @@ class VideoStream(FilterableStream):
                     "deint": deint,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -1339,6 +1377,7 @@ class VideoStream(FilterableStream):
         | Default = Default("send_frame"),
         parity: Int | Literal["tff", "bff", "auto"] | Default = Default("auto"),
         deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -1349,6 +1388,7 @@ class VideoStream(FilterableStream):
             mode: specify the interlacing mode (from 0 to 3) (default send_frame)
             parity: specify the assumed picture field parity (from -1 to 1) (default auto)
             deint: specify which frames to deinterlace (from 0 to 1) (default all)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1370,6 +1410,7 @@ class VideoStream(FilterableStream):
                     "deint": deint,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -1379,6 +1420,7 @@ class VideoStream(FilterableStream):
         *,
         strength: Float = Default("0"),
         planes: Flags = Default("7"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -1388,6 +1430,7 @@ class VideoStream(FilterableStream):
         Args:
             strength: set the sharpening strength (from 0 to 1) (default 0)
             planes: set what planes to filter (default 7)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1408,6 +1451,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -1489,6 +1533,7 @@ class VideoStream(FilterableStream):
         similarity: Float = Default("0.01"),
         blend: Float = Default("0"),
         yuv: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -1500,6 +1545,7 @@ class VideoStream(FilterableStream):
             similarity: set the chromahold similarity value (from 1e-05 to 1) (default 0.01)
             blend: set the chromahold blend value (from 0 to 1) (default 0)
             yuv: color parameter is in yuv instead of rgb (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1522,6 +1568,7 @@ class VideoStream(FilterableStream):
                     "yuv": yuv,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -1533,6 +1580,7 @@ class VideoStream(FilterableStream):
         similarity: Float = Default("0.01"),
         blend: Float = Default("0"),
         yuv: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -1544,6 +1592,7 @@ class VideoStream(FilterableStream):
             similarity: set the chromakey similarity value (from 1e-05 to 1) (default 0.01)
             blend: set the chromakey key blend value (from 0 to 1) (default 0)
             yuv: color parameter is in yuv instead of rgb (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1566,6 +1615,7 @@ class VideoStream(FilterableStream):
                     "yuv": yuv,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -1584,6 +1634,7 @@ class VideoStream(FilterableStream):
         distance: Int | Literal["manhattan", "euclidean"] | Default = Default(
             "manhattan"
         ),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -1600,6 +1651,7 @@ class VideoStream(FilterableStream):
             threu: set u threshold (from 1 to 200) (default 200)
             threv: set v threshold (from 1 to 200) (default 200)
             distance: set distance type (from 0 to 1) (default manhattan)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1627,6 +1679,7 @@ class VideoStream(FilterableStream):
                     "distance": distance,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -1639,6 +1692,7 @@ class VideoStream(FilterableStream):
         crh: Int = Default("0"),
         crv: Int = Default("0"),
         edge: Int | Literal["smear", "wrap"] | Default = Default("smear"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -1651,6 +1705,7 @@ class VideoStream(FilterableStream):
             crh: shift chroma-red horizontally (from -255 to 255) (default 0)
             crv: shift chroma-red vertically (from -255 to 255) (default 0)
             edge: set edge operation (from 0 to 1) (default smear)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1674,6 +1729,7 @@ class VideoStream(FilterableStream):
                     "edge": edge,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -1782,6 +1838,7 @@ class VideoStream(FilterableStream):
         mv_type: Flags | Literal["fp", "bp"] | Default = Default("0"),
         frame_type: Flags | Literal["if", "pf", "bf"] | Default = Default("0"),
         block: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -1794,6 +1851,7 @@ class VideoStream(FilterableStream):
             mv_type: set motion vectors type (default 0)
             frame_type: set frame types to visualize motion vectors of (default 0)
             block: set block partitioning structure to visualize (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1817,6 +1875,7 @@ class VideoStream(FilterableStream):
                     "block": block,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -1834,6 +1893,7 @@ class VideoStream(FilterableStream):
         gh: Float = Default("0"),
         bh: Float = Default("0"),
         pl: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -1851,6 +1911,7 @@ class VideoStream(FilterableStream):
             gh: set green highlights (from -1 to 1) (default 0)
             bh: set blue highlights (from -1 to 1) (default 0)
             pl: preserve lightness (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1879,6 +1940,7 @@ class VideoStream(FilterableStream):
                     "pl": pl,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -1906,6 +1968,7 @@ class VideoStream(FilterableStream):
         | Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"]
         | Default = Default("none"),
         pa: Double = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -1931,6 +1994,7 @@ class VideoStream(FilterableStream):
             aa: set the alpha gain for the alpha channel (from -2 to 2) (default 1)
             pc: set the preserve color mode (from 0 to 6) (default none)
             pa: set the preserve color amount (from 0 to 1) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -1969,6 +2033,7 @@ class VideoStream(FilterableStream):
                     "pa": pa,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -1983,6 +2048,7 @@ class VideoStream(FilterableStream):
         gmw: Float = Default("0"),
         byw: Float = Default("0"),
         pl: Float = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -1997,6 +2063,7 @@ class VideoStream(FilterableStream):
             gmw: set the green-magenta weight (from 0 to 1) (default 0)
             byw: set the blue-yellow weight (from 0 to 1) (default 0)
             pl: set the amount of preserving lightness (from 0 to 1) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2024,6 +2091,7 @@ class VideoStream(FilterableStream):
                     "pl": pl,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -2039,6 +2107,7 @@ class VideoStream(FilterableStream):
         analyze: Int
         | Literal["manual", "average", "minmax", "median"]
         | Default = Default("manual"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -2052,6 +2121,7 @@ class VideoStream(FilterableStream):
             bh: set the blue highlight spot (from -1 to 1) (default 0)
             saturation: set the amount of saturation (from -3 to 3) (default 1)
             analyze: set the analyze mode (from 0 to 3) (default manual)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2076,6 +2146,7 @@ class VideoStream(FilterableStream):
                     "analyze": analyze,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -2086,6 +2157,7 @@ class VideoStream(FilterableStream):
         color: Color = Default("black"),
         similarity: Float = Default("0.01"),
         blend: Float = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -2096,6 +2168,7 @@ class VideoStream(FilterableStream):
             color: set the colorhold key color (default "black")
             similarity: set the colorhold similarity value (from 1e-05 to 1) (default 0.01)
             blend: set the colorhold blend value (from 0 to 1) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2117,6 +2190,7 @@ class VideoStream(FilterableStream):
                     "blend": blend,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -2128,6 +2202,7 @@ class VideoStream(FilterableStream):
         saturation: Float = Default("0.5"),
         lightness: Float = Default("0.5"),
         mix: Float = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -2139,6 +2214,7 @@ class VideoStream(FilterableStream):
             saturation: set the saturation (from 0 to 1) (default 0.5)
             lightness: set the lightness (from 0 to 1) (default 0.5)
             mix: set the mix of source lightness (from 0 to 1) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2161,6 +2237,7 @@ class VideoStream(FilterableStream):
                     "mix": mix,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -2171,6 +2248,7 @@ class VideoStream(FilterableStream):
         color: Color = Default("black"),
         similarity: Float = Default("0.01"),
         blend: Float = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -2181,6 +2259,7 @@ class VideoStream(FilterableStream):
             color: set the colorkey key color (default "black")
             similarity: set the colorkey similarity value (from 1e-05 to 1) (default 0.01)
             blend: set the colorkey key blend value (from 0 to 1) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2202,6 +2281,7 @@ class VideoStream(FilterableStream):
                     "blend": blend,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -2271,6 +2351,7 @@ class VideoStream(FilterableStream):
         preserve: Int
         | Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"]
         | Default = Default("none"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -2295,6 +2376,7 @@ class VideoStream(FilterableStream):
             bomax: set output blue white point (from 0 to 1) (default 1)
             aomax: set output alpha white point (from 0 to 1) (default 1)
             preserve: set preserve color mode (from 0 to 6) (default none)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2330,6 +2412,7 @@ class VideoStream(FilterableStream):
                     "preserve": preserve,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -2345,6 +2428,7 @@ class VideoStream(FilterableStream):
         kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default(
             "euclidean"
         ),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -2356,6 +2440,7 @@ class VideoStream(FilterableStream):
             nb_patches: set number of patches (from 0 to 64) (default 0)
             type: set the target type used (from 0 to 1) (default absolute)
             kernel: set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2382,6 +2467,7 @@ class VideoStream(FilterableStream):
                     "kernel": kernel,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -2413,6 +2499,7 @@ class VideoStream(FilterableStream):
             "bt2020",
         ]
         | Default = Default("-1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -2422,6 +2509,7 @@ class VideoStream(FilterableStream):
         Args:
             src: set source color matrix (from -1 to 4) (default -1)
             dst: set destination color matrix (from -1 to 4) (default -1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2442,6 +2530,7 @@ class VideoStream(FilterableStream):
                     "dst": dst,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -2587,6 +2676,7 @@ class VideoStream(FilterableStream):
             "bt2020-12",
         ]
         | Default = Default("2"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -2608,6 +2698,7 @@ class VideoStream(FilterableStream):
             irange: Input color range (from 0 to 2) (default 0)
             iprimaries: Input color primaries (from 0 to 22) (default 2)
             itrc: Input transfer characteristics (from 0 to 18) (default 2)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2640,6 +2731,7 @@ class VideoStream(FilterableStream):
                     "itrc": itrc,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -2650,6 +2742,7 @@ class VideoStream(FilterableStream):
         temperature: Float = Default("6500"),
         mix: Float = Default("1"),
         pl: Float = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -2660,6 +2753,7 @@ class VideoStream(FilterableStream):
             temperature: set the temperature in Kelvin (from 1000 to 40000) (default 6500)
             mix: set the mix with filtered output (from 0 to 1) (default 1)
             pl: set the amount of preserving lightness (from 0 to 1) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2683,6 +2777,7 @@ class VideoStream(FilterableStream):
                     "pl": pl,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -2706,6 +2801,7 @@ class VideoStream(FilterableStream):
         _1mode: Int | Literal["square", "row", "column"] | Default = Default("square"),
         _2mode: Int | Literal["square", "row", "column"] | Default = Default("square"),
         _3mode: Int | Literal["square", "row", "column"] | Default = Default("square"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -2729,6 +2825,7 @@ class VideoStream(FilterableStream):
             _1mode: set matrix mode for 2nd plane (from 0 to 2) (default square)
             _2mode: set matrix mode for 3rd plane (from 0 to 2) (default square)
             _3mode: set matrix mode for 4th plane (from 0 to 2) (default square)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2763,6 +2860,7 @@ class VideoStream(FilterableStream):
                     "3mode": _3mode,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -2842,6 +2940,7 @@ class VideoStream(FilterableStream):
         impulse: Int | Literal["first", "all"] | Default = Default("all"),
         noise: Float = Default("1e-07"),
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -2853,6 +2952,7 @@ class VideoStream(FilterableStream):
             impulse: when to process impulses (from 0 to 1) (default all)
             noise: set noise (from 0 to 1) (default 1e-07)
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2878,6 +2978,7 @@ class VideoStream(FilterableStream):
                 },
                 extra_options,
                 framesync_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -2916,6 +3017,7 @@ class VideoStream(FilterableStream):
         self,
         _reference: VideoStream,
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -2924,6 +3026,7 @@ class VideoStream(FilterableStream):
 
         Args:
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -2939,7 +3042,12 @@ class VideoStream(FilterableStream):
             ),
             self,
             _reference,
-            **merge({}, extra_options, framesync_options),
+            **merge(
+                {},
+                extra_options,
+                framesync_options,
+                timeline_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -3044,6 +3152,7 @@ class VideoStream(FilterableStream):
         high: Float = Default("0.0980392"),
         low: Float = Default("0.0588235"),
         mv_threshold: Int = Default("8"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -3061,6 +3170,7 @@ class VideoStream(FilterableStream):
             high: Set high threshold for edge detection (from 0 to 1) (default 0.0980392)
             low: Set low threshold for edge detection (from 0 to 1) (default 0.0588235)
             mv_threshold: motion vector threshold when estimating video window size (from 0 to 100) (default 8)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3089,6 +3199,7 @@ class VideoStream(FilterableStream):
                     "mv_threshold": mv_threshold,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -3160,6 +3271,7 @@ class VideoStream(FilterableStream):
         psfile: String = Default(None),
         plot: String = Default(None),
         interp: Int | Literal["natural", "pchip"] | Default = Default("natural"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -3176,6 +3288,7 @@ class VideoStream(FilterableStream):
             psfile: set Photoshop curves file name
             plot: save Gnuplot script of the curves in specified file
             interp: specify the kind of interpolation (from 0 to 1) (default natural)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3203,6 +3316,7 @@ class VideoStream(FilterableStream):
                     "interp": interp,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -3269,6 +3383,7 @@ class VideoStream(FilterableStream):
         angle: Float = Default("45"),
         radius: Float = Default("5"),
         planes: Int = Default("15"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -3279,6 +3394,7 @@ class VideoStream(FilterableStream):
             angle: set angle (from 0 to 360) (default 45)
             radius: set radius (from 0 to 8192) (default 5)
             planes: set planes to filter (from 0 to 15) (default 15)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3300,6 +3416,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -3311,6 +3428,7 @@ class VideoStream(FilterableStream):
         overlap: Int = Default("-1"),
         expr: String = Default(None),
         n: Int = Default("3"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -3322,6 +3440,7 @@ class VideoStream(FilterableStream):
             overlap: set number of block overlapping pixels (from -1 to 15) (default -1)
             expr: set coefficient factor expression
             n: set the block size, expressed in bits (from 3 to 4) (default 3)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3344,6 +3463,7 @@ class VideoStream(FilterableStream):
                     "n": n,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -3359,6 +3479,7 @@ class VideoStream(FilterableStream):
         direction: Float = Default("6.28319"),
         blur: Boolean = Default("true"),
         coupling: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -3374,6 +3495,7 @@ class VideoStream(FilterableStream):
             direction: set direction (from -6.28319 to 6.28319) (default 6.28319)
             blur: set blur (default true)
             coupling: set plane coupling (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3400,6 +3522,7 @@ class VideoStream(FilterableStream):
                     "coupling": coupling,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -3414,6 +3537,7 @@ class VideoStream(FilterableStream):
         gamma: Float = Default("0.05"),
         delta: Float = Default("0.05"),
         planes: Int = Default("15"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -3428,6 +3552,7 @@ class VideoStream(FilterableStream):
             gamma: set 3rd detection threshold (from 0 to 1) (default 0.05)
             delta: set 4th detection threshold (from 0 to 1) (default 0.05)
             planes: set planes to filter (from 0 to 15) (default 15)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3453,6 +3578,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -3465,6 +3591,7 @@ class VideoStream(FilterableStream):
         impulse: Int | Literal["first", "all"] | Default = Default("all"),
         noise: Float = Default("1e-07"),
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -3476,6 +3603,7 @@ class VideoStream(FilterableStream):
             impulse: when to process impulses (from 0 to 1) (default all)
             noise: set noise (from 0 to 1) (default 1e-07)
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3501,6 +3629,7 @@ class VideoStream(FilterableStream):
                 },
                 extra_options,
                 framesync_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -3515,6 +3644,7 @@ class VideoStream(FilterableStream):
         tl: Float = Default("0.079"),
         tc: Float = Default("0.058"),
         ct: Float = Default("0.019"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -3527,6 +3657,7 @@ class VideoStream(FilterableStream):
             tl: set tolerance for temporal luma (from 0 to 1) (default 0.079)
             tc: set tolerance for chroma temporal variation (from 0 to 1) (default 0.058)
             ct: set temporal chroma threshold (from 0 to 1) (default 0.019)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3550,6 +3681,7 @@ class VideoStream(FilterableStream):
                     "ct": ct,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -3561,6 +3693,7 @@ class VideoStream(FilterableStream):
         threshold1: Int = Default("65535"),
         threshold2: Int = Default("65535"),
         threshold3: Int = Default("65535"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -3572,6 +3705,7 @@ class VideoStream(FilterableStream):
             threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
             threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
             threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3594,6 +3728,7 @@ class VideoStream(FilterableStream):
                     "threshold3": threshold3,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -3684,6 +3819,7 @@ class VideoStream(FilterableStream):
         w: String = Default("-1"),
         h: String = Default("-1"),
         show: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -3696,6 +3832,7 @@ class VideoStream(FilterableStream):
             w: set logo width (default "-1")
             h: set logo height (default "-1")
             show: show delogo area (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3719,6 +3856,7 @@ class VideoStream(FilterableStream):
                     "show": show,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -3731,6 +3869,7 @@ class VideoStream(FilterableStream):
         model: String = Default(None),
         input: String = Default("x"),
         output: String = Default("y"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -3743,6 +3882,7 @@ class VideoStream(FilterableStream):
             model: path to model file
             input: input name of the model (default "x")
             output: output name of the model (default "y")
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3766,6 +3906,7 @@ class VideoStream(FilterableStream):
                     "output": output,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -3903,6 +4044,7 @@ class VideoStream(FilterableStream):
         blue: Float = Default("0"),
         brightness: Float = Default("0"),
         alpha: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -3918,6 +4060,7 @@ class VideoStream(FilterableStream):
             blue: set blue scale (from -100 to 100) (default 0)
             brightness: set brightness (from -10 to 10) (default 0)
             alpha: change alpha component (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -3944,6 +4087,7 @@ class VideoStream(FilterableStream):
                     "alpha": alpha,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -3999,6 +4143,7 @@ class VideoStream(FilterableStream):
         threshold1: Int = Default("65535"),
         threshold2: Int = Default("65535"),
         threshold3: Int = Default("65535"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -4011,6 +4156,7 @@ class VideoStream(FilterableStream):
             threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
             threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
             threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4034,6 +4180,7 @@ class VideoStream(FilterableStream):
                     "threshold3": threshold3,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -4095,6 +4242,7 @@ class VideoStream(FilterableStream):
         edge: Int | Literal["blank", "smear", "wrap", "mirror"] | Default = Default(
             "smear"
         ),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -4103,6 +4251,7 @@ class VideoStream(FilterableStream):
 
         Args:
             edge: set edge mode (from 0 to 3) (default smear)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4126,6 +4275,7 @@ class VideoStream(FilterableStream):
                     "edge": edge,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -4354,6 +4504,7 @@ class VideoStream(FilterableStream):
         thickness: String = Default("3"),
         replace: Boolean = Default("false"),
         box_source: String = Default(None),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -4369,6 +4520,7 @@ class VideoStream(FilterableStream):
             thickness: set the box thickness (default "3")
             replace: replace color & alpha (default false)
             box_source: use datas from bounding box in side data
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4395,6 +4547,7 @@ class VideoStream(FilterableStream):
                     "box_source": box_source,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -4488,6 +4641,7 @@ class VideoStream(FilterableStream):
         color: String = Default("black"),
         thickness: String = Default("1"),
         replace: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -4502,6 +4656,7 @@ class VideoStream(FilterableStream):
             color: set color of the grid (default "black")
             thickness: set grid line thickness (default "1")
             replace: replace color & alpha (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4527,6 +4682,7 @@ class VideoStream(FilterableStream):
                     "replace": replace,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -4604,6 +4760,7 @@ class VideoStream(FilterableStream):
             "no_autohint",
         ]
         | Default = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -4646,6 +4803,7 @@ class VideoStream(FilterableStream):
             text_source: the source of text
             text_shaping: attempt to shape text before drawing (default true)
             ft_load_flags: set font loading flags for libfreetype (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4699,6 +4857,7 @@ class VideoStream(FilterableStream):
                     "ft_load_flags": ft_load_flags,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -4712,6 +4871,7 @@ class VideoStream(FilterableStream):
         planes: Flags | Literal["y", "u", "v", "r", "g", "b"] | Default = Default(
             "y+u+v+r+g+b"
         ),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -4723,6 +4883,7 @@ class VideoStream(FilterableStream):
             low: set low threshold (from 0 to 1) (default 0.0784314)
             mode: set mode (from 0 to 2) (default wires)
             planes: set planes to filter (default y+u+v+r+g+b)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4745,6 +4906,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -4800,6 +4962,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         mode: Int | Literal["normal", "diff"] | Default = Default("normal"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -4808,6 +4971,7 @@ class VideoStream(FilterableStream):
 
         Args:
             mode: set kind of histogram entropy measurement (from 0 to 1) (default normal)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4827,6 +4991,7 @@ class VideoStream(FilterableStream):
                     "mode": mode,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -4878,6 +5043,7 @@ class VideoStream(FilterableStream):
         gamma_b: String = Default("1.0"),
         gamma_weight: String = Default("1.0"),
         eval: Int | Literal["init", "frame"] | Default = Default("init"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -4894,6 +5060,7 @@ class VideoStream(FilterableStream):
             gamma_b: gamma value for blue (default "1.0")
             gamma_weight: set the gamma weight which reduces the effect of gamma on bright areas (default "1.0")
             eval: specify when to evaluate expressions (from 0 to 1) (default init)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4921,6 +5088,7 @@ class VideoStream(FilterableStream):
                     "eval": eval,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -4933,6 +5101,7 @@ class VideoStream(FilterableStream):
         threshold1: Int = Default("65535"),
         threshold2: Int = Default("65535"),
         threshold3: Int = Default("65535"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -4945,6 +5114,7 @@ class VideoStream(FilterableStream):
             threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
             threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
             threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -4968,6 +5138,7 @@ class VideoStream(FilterableStream):
                     "threshold3": threshold3,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -5033,6 +5204,7 @@ class VideoStream(FilterableStream):
         mcost: Int = Default("1"),
         dcost: Int = Default("1"),
         interp: Int | Literal["2p", "4p", "6p"] | Default = Default("4p"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -5049,6 +5221,7 @@ class VideoStream(FilterableStream):
             mcost: specify the middle cost for edge matching (from 0 to 50) (default 1)
             dcost: specify the distance cost for edge matching (from 0 to 50) (default 1)
             interp: specify the type of interpolation (from 0 to 2) (default 4p)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5076,6 +5249,7 @@ class VideoStream(FilterableStream):
                     "interp": interp,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -5085,6 +5259,7 @@ class VideoStream(FilterableStream):
         *,
         exposure: Float = Default("0"),
         black: Float = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -5094,6 +5269,7 @@ class VideoStream(FilterableStream):
         Args:
             exposure: set the exposure correction (from -3 to 3) (default 0)
             black: set the black level correction (from -1 to 1) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5114,6 +5290,7 @@ class VideoStream(FilterableStream):
                     "black": black,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -5169,6 +5346,7 @@ class VideoStream(FilterableStream):
         start_time: Duration = Default("0"),
         duration: Duration = Default("0"),
         color: Color = Default("black"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -5183,6 +5361,7 @@ class VideoStream(FilterableStream):
             start_time: Number of seconds of the beginning of the effect. (default 0)
             duration: Duration of the effect in seconds. (default 0)
             color: set color (default "black")
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5208,6 +5387,7 @@ class VideoStream(FilterableStream):
                     "color": color,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -5298,6 +5478,7 @@ class VideoStream(FilterableStream):
             "kaiser",
         ]
         | Default = Default("hann"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -5314,6 +5495,7 @@ class VideoStream(FilterableStream):
             next: set number of next frames for temporal denoising (from 0 to 1) (default 0)
             planes: set planes to filter (from 0 to 15) (default 7)
             window: set window function (from 0 to 20) (default hann)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5341,6 +5523,7 @@ class VideoStream(FilterableStream):
                     "window": window,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -5355,6 +5538,7 @@ class VideoStream(FilterableStream):
         weight_U: String = Default(None),
         weight_V: String = Default(None),
         eval: Int | Literal["init", "frame"] | Default = Default("init"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -5369,6 +5553,7 @@ class VideoStream(FilterableStream):
             weight_U: set chrominance expression in U plane
             weight_V: set chrominance expression in V plane
             eval: specify when to evaluate expressions (from 0 to 1) (default init)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5394,6 +5579,7 @@ class VideoStream(FilterableStream):
                     "eval": eval,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -5477,6 +5663,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         order: Int | Literal["bff", "tff"] | Default = Default("tff"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -5485,6 +5672,7 @@ class VideoStream(FilterableStream):
 
         Args:
             order: output field order (from 0 to 1) (default tff)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5504,6 +5692,7 @@ class VideoStream(FilterableStream):
                     "order": order,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -5519,6 +5708,7 @@ class VideoStream(FilterableStream):
         | Literal["smear", "mirror", "fixed", "reflect", "wrap", "fade", "margins"]
         | Default = Default("smear"),
         color: Color = Default("black"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -5532,6 +5722,7 @@ class VideoStream(FilterableStream):
             bottom: set the bottom fill border (from 0 to INT_MAX) (default 0)
             mode: set the fill borders mode (from 0 to 6) (default smear)
             color: set the color for the fixed/fade mode (default "black")
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5556,6 +5747,7 @@ class VideoStream(FilterableStream):
                     "color": color,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -5650,6 +5842,7 @@ class VideoStream(FilterableStream):
         d1: Int = Default("0"),
         d2: Int = Default("0"),
         d3: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -5667,6 +5860,7 @@ class VideoStream(FilterableStream):
             d1: set destination #1 component value (from 0 to 65535) (default 0)
             d2: set destination #2 component value (from 0 to 65535) (default 0)
             d3: set destination #3 component value (from 0 to 65535) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5695,6 +5889,7 @@ class VideoStream(FilterableStream):
                     "d3": d3,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -5874,6 +6069,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         step: Int = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -5882,6 +6078,7 @@ class VideoStream(FilterableStream):
 
         Args:
             step: set frame step (from 1 to INT_MAX) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -5901,6 +6098,7 @@ class VideoStream(FilterableStream):
                     "step": step,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -5993,6 +6191,7 @@ class VideoStream(FilterableStream):
         *,
         filter_name: String = Default(None),
         filter_params: String = Default(None),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6002,6 +6201,7 @@ class VideoStream(FilterableStream):
         Args:
             filter_name:
             filter_params:
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -6022,6 +6222,7 @@ class VideoStream(FilterableStream):
                     "filter_params": filter_params,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -6033,6 +6234,7 @@ class VideoStream(FilterableStream):
         qp: Int = Default("0"),
         strength: Int = Default("0"),
         use_bframe_qp: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6044,6 +6246,7 @@ class VideoStream(FilterableStream):
             qp: force a constant quantizer parameter (from 0 to 64) (default 0)
             strength: set filter strength (from -15 to 32) (default 0)
             use_bframe_qp: use B-frames' QP (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -6066,6 +6269,7 @@ class VideoStream(FilterableStream):
                     "use_bframe_qp": use_bframe_qp,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -6077,6 +6281,7 @@ class VideoStream(FilterableStream):
         steps: Int = Default("1"),
         planes: Int = Default("15"),
         sigmaV: Float = Default("-1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6088,6 +6293,7 @@ class VideoStream(FilterableStream):
             steps: set number of steps (from 1 to 6) (default 1)
             planes: set planes to filter (from 0 to 15) (default 15)
             sigmaV: set vertical sigma (from -1 to 1024) (default -1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -6110,6 +6316,7 @@ class VideoStream(FilterableStream):
                     "sigmaV": sigmaV,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -6174,6 +6381,7 @@ class VideoStream(FilterableStream):
         interpolation: Int
         | Literal["nearest", "n", "bilinear", "b"]
         | Default = Default("bilinear"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6189,6 +6397,7 @@ class VideoStream(FilterableStream):
             green_expr: set green expression
             blue_expr: set blue expression
             interpolation: set interpolation method (from 0 to 1) (default bilinear)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -6215,6 +6424,7 @@ class VideoStream(FilterableStream):
                     "interpolation": interpolation,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -6224,6 +6434,7 @@ class VideoStream(FilterableStream):
         *,
         strength: Float = Default("1.2"),
         radius: Int = Default("16"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6233,6 +6444,7 @@ class VideoStream(FilterableStream):
         Args:
             strength: The maximum amount by which the filter will change any one pixel. (from 0.51 to 64) (default 1.2)
             radius: The neighborhood to fit the gradient to. (from 4 to 32) (default 16)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -6253,6 +6465,7 @@ class VideoStream(FilterableStream):
                     "radius": radius,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -6330,6 +6543,7 @@ class VideoStream(FilterableStream):
 
     def grayworld(
         self,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6337,6 +6551,7 @@ class VideoStream(FilterableStream):
         Adjust white balance using LAB gray world algorithm.
 
         Args:
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -6354,6 +6569,7 @@ class VideoStream(FilterableStream):
             **merge(
                 {},
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -6364,6 +6580,7 @@ class VideoStream(FilterableStream):
         difford: Int = Default("1"),
         minknorm: Int = Default("1"),
         sigma: Double = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6374,6 +6591,7 @@ class VideoStream(FilterableStream):
             difford: set differentiation order (from 0 to 2) (default 1)
             minknorm: set Minkowski norm (from 0 to 20) (default 1)
             sigma: set sigma (from 0 to 1024) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -6395,6 +6613,7 @@ class VideoStream(FilterableStream):
                     "sigma": sigma,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -6408,6 +6627,7 @@ class VideoStream(FilterableStream):
         | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
         | Default = Default("tetrahedral"),
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6418,6 +6638,7 @@ class VideoStream(FilterableStream):
             clut: when to process CLUT (from 0 to 1) (default all)
             interp: select interpolation mode (from 0 to 4) (default tetrahedral)
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -6442,12 +6663,14 @@ class VideoStream(FilterableStream):
                 },
                 extra_options,
                 framesync_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
 
     def hflip(
         self,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6455,6 +6678,7 @@ class VideoStream(FilterableStream):
         Horizontally flip the input video.
 
         Args:
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -6472,6 +6696,7 @@ class VideoStream(FilterableStream):
             **merge(
                 {},
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -6514,6 +6739,7 @@ class VideoStream(FilterableStream):
         antibanding: Int | Literal["none", "weak", "strong"] | Default = Default(
             "none"
         ),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6524,6 +6750,7 @@ class VideoStream(FilterableStream):
             strength: set the strength (from 0 to 1) (default 0.2)
             intensity: set the intensity (from 0 to 1) (default 0.21)
             antibanding: set the antibanding level (from 0 to 2) (default none)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -6545,6 +6772,7 @@ class VideoStream(FilterableStream):
                     "antibanding": antibanding,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -6629,6 +6857,7 @@ class VideoStream(FilterableStream):
         chroma_spatial: Double = Default("0"),
         luma_tmp: Double = Default("0"),
         chroma_tmp: Double = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6640,6 +6869,7 @@ class VideoStream(FilterableStream):
             chroma_spatial: spatial chroma strength (from 0 to DBL_MAX) (default 0)
             luma_tmp: temporal luma strength (from 0 to DBL_MAX) (default 0)
             chroma_tmp: temporal chroma strength (from 0 to DBL_MAX) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -6662,6 +6892,7 @@ class VideoStream(FilterableStream):
                     "chroma_tmp": chroma_tmp,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -6709,6 +6940,7 @@ class VideoStream(FilterableStream):
         val: Float = Default("0"),
         similarity: Float = Default("0.01"),
         blend: Float = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6721,6 +6953,7 @@ class VideoStream(FilterableStream):
             val: set the value value (from -1 to 1) (default 0)
             similarity: set the hsvhold similarity value (from 1e-05 to 1) (default 0.01)
             blend: set the hsvhold blend value (from 0 to 1) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -6744,6 +6977,7 @@ class VideoStream(FilterableStream):
                     "blend": blend,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -6756,6 +6990,7 @@ class VideoStream(FilterableStream):
         val: Float = Default("0"),
         similarity: Float = Default("0.01"),
         blend: Float = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6768,6 +7003,7 @@ class VideoStream(FilterableStream):
             val: set the value value (from -1 to 1) (default 0)
             similarity: set the hsvkey similarity value (from 1e-05 to 1) (default 0.01)
             blend: set the hsvkey blend value (from 0 to 1) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -6791,6 +7027,7 @@ class VideoStream(FilterableStream):
                     "blend": blend,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -6802,6 +7039,7 @@ class VideoStream(FilterableStream):
         s: String = Default("1"),
         H: String = Default(None),
         b: String = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6813,6 +7051,7 @@ class VideoStream(FilterableStream):
             s: set the saturation expression (default "1")
             H: set the hue angle radians expression
             b: set the brightness expression (default "0")
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -6835,6 +7074,7 @@ class VideoStream(FilterableStream):
                     "b": b,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -6853,6 +7093,7 @@ class VideoStream(FilterableStream):
         gw: Float = Default("0.334"),
         bw: Float = Default("0.333"),
         lightness: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -6869,6 +7110,7 @@ class VideoStream(FilterableStream):
             gw: set the green weight (from 0 to 1) (default 0.334)
             bw: set the blue weight (from 0 to 1) (default 0.333)
             lightness: set the preserve lightness (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -6898,6 +7140,7 @@ class VideoStream(FilterableStream):
                     "lightness": lightness,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -7054,6 +7297,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default("15"),
         threshold: Int = Default("0"),
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7064,6 +7308,7 @@ class VideoStream(FilterableStream):
             planes: set planes (from 0 to 15) (default 15)
             threshold: set threshold (from 0 to 65535) (default 0)
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7088,6 +7333,7 @@ class VideoStream(FilterableStream):
                 },
                 extra_options,
                 framesync_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -7096,6 +7342,7 @@ class VideoStream(FilterableStream):
         self,
         _reference: VideoStream,
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7104,6 +7351,7 @@ class VideoStream(FilterableStream):
 
         Args:
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7121,7 +7369,12 @@ class VideoStream(FilterableStream):
             ),
             self,
             _reference,
-            **merge({}, extra_options, framesync_options),
+            **merge(
+                {},
+                extra_options,
+                framesync_options,
+                timeline_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -7187,6 +7440,7 @@ class VideoStream(FilterableStream):
         luma_swap: Boolean = Default("false"),
         chroma_swap: Boolean = Default("false"),
         alpha_swap: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7200,6 +7454,7 @@ class VideoStream(FilterableStream):
             luma_swap: swap luma fields (default false)
             chroma_swap: swap chroma fields (default false)
             alpha_swap: swap alpha fields (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7224,6 +7479,7 @@ class VideoStream(FilterableStream):
                     "alpha_swap": alpha_swap,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -7235,6 +7491,7 @@ class VideoStream(FilterableStream):
         threshold1: Int = Default("65535"),
         threshold2: Int = Default("65535"),
         threshold3: Int = Default("65535"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7246,6 +7503,7 @@ class VideoStream(FilterableStream):
             threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
             threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
             threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7268,6 +7526,7 @@ class VideoStream(FilterableStream):
                     "threshold3": threshold3,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -7365,6 +7624,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default("15"),
         scale: Float = Default("1"),
         delta: Float = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7375,6 +7635,7 @@ class VideoStream(FilterableStream):
             planes: set planes to filter (from 0 to 15) (default 15)
             scale: set scale (from 0 to 65535) (default 1)
             delta: set delta (from -65535 to 65535) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7396,6 +7657,7 @@ class VideoStream(FilterableStream):
                     "delta": delta,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -7405,6 +7667,7 @@ class VideoStream(FilterableStream):
         *,
         decay: Float = Default("0.95"),
         planes: Flags = Default("F"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7414,6 +7677,7 @@ class VideoStream(FilterableStream):
         Args:
             decay: set decay (from 0 to 1) (default 0.95)
             planes: set what planes to filter (default F)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7434,12 +7698,14 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
 
     def latency(
         self,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7447,6 +7713,7 @@ class VideoStream(FilterableStream):
         Report video filtering latency.
 
         Args:
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7464,6 +7731,7 @@ class VideoStream(FilterableStream):
             **merge(
                 {},
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -7477,6 +7745,7 @@ class VideoStream(FilterableStream):
         k2: Double = Default("0"),
         i: Int | Literal["nearest", "bilinear"] | Default = Default("nearest"),
         fc: Color = Default("black@0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7490,6 +7759,7 @@ class VideoStream(FilterableStream):
             k2: set double quadratic distortion factor (from -1 to 1) (default 0)
             i: set interpolation type (from 0 to 64) (default nearest)
             fc: set the color of the unmapped pixels (default "black@0")
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7516,6 +7786,7 @@ class VideoStream(FilterableStream):
                     "fc": fc,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -7526,6 +7797,7 @@ class VideoStream(FilterableStream):
         min: Int = Default("0"),
         max: Int = Default("65535"),
         planes: Int = Default("15"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7536,6 +7808,7 @@ class VideoStream(FilterableStream):
             min: set min value (from 0 to 65535) (default 0)
             max: set max value (from 0 to 65535) (default 65535)
             planes: set planes (from 0 to 15) (default 15)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7557,6 +7830,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -7611,6 +7885,7 @@ class VideoStream(FilterableStream):
         threshold: Double = Default("0"),
         tolerance: Double = Default("0.01"),
         softness: Double = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7621,6 +7896,7 @@ class VideoStream(FilterableStream):
             threshold: set the threshold value (from 0 to 1) (default 0)
             tolerance: set the tolerance value (from 0 to 1) (default 0.01)
             softness: set the softness value (from 0 to 1) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7642,6 +7918,7 @@ class VideoStream(FilterableStream):
                     "softness": softness,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -7660,6 +7937,7 @@ class VideoStream(FilterableStream):
         g: String = Default("clipval"),
         b: String = Default("clipval"),
         a: String = Default("clipval"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7678,6 +7956,7 @@ class VideoStream(FilterableStream):
             g: set G expression (default "clipval")
             b: set B expression (default "clipval")
             a: set A expression (default "clipval")
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7707,6 +7986,7 @@ class VideoStream(FilterableStream):
                     "a": a,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -7718,6 +7998,7 @@ class VideoStream(FilterableStream):
         interp: Int
         | Literal["nearest", "linear", "cosine", "cubic", "spline"]
         | Default = Default("linear"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7727,6 +8008,7 @@ class VideoStream(FilterableStream):
         Args:
             file: set 1D LUT file name
             interp: select interpolation mode (from 0 to 4) (default linear)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7747,6 +8029,7 @@ class VideoStream(FilterableStream):
                     "interp": interp,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -7761,6 +8044,7 @@ class VideoStream(FilterableStream):
         c3: String = Default("x"),
         d: Int = Default("0"),
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7774,6 +8058,7 @@ class VideoStream(FilterableStream):
             c3: set component #3 expression (default "x")
             d: set output depth (from 0 to 16) (default 0)
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7799,6 +8084,7 @@ class VideoStream(FilterableStream):
                 },
                 extra_options,
                 framesync_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -7811,6 +8097,7 @@ class VideoStream(FilterableStream):
         interp: Int
         | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
         | Default = Default("tetrahedral"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7821,6 +8108,7 @@ class VideoStream(FilterableStream):
             file: set 3D LUT file name
             clut: when to process CLUT (from 0 to 1) (default all)
             interp: select interpolation mode (from 0 to 4) (default tetrahedral)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7842,6 +8130,7 @@ class VideoStream(FilterableStream):
                     "interp": interp,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -7860,6 +8149,7 @@ class VideoStream(FilterableStream):
         g: String = Default("clipval"),
         b: String = Default("clipval"),
         a: String = Default("clipval"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7878,6 +8168,7 @@ class VideoStream(FilterableStream):
             g: set G expression (default "clipval")
             b: set B expression (default "clipval")
             a: set A expression (default "clipval")
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7907,6 +8198,7 @@ class VideoStream(FilterableStream):
                     "a": a,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -7925,6 +8217,7 @@ class VideoStream(FilterableStream):
         g: String = Default("clipval"),
         b: String = Default("clipval"),
         a: String = Default("clipval"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7943,6 +8236,7 @@ class VideoStream(FilterableStream):
             g: set G expression (default "clipval")
             b: set B expression (default "clipval")
             a: set A expression (default "clipval")
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -7972,6 +8266,7 @@ class VideoStream(FilterableStream):
                     "a": a,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -7984,6 +8279,7 @@ class VideoStream(FilterableStream):
         undershoot: Int = Default("0"),
         overshoot: Int = Default("0"),
         planes: Int = Default("15"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -7994,6 +8290,7 @@ class VideoStream(FilterableStream):
             undershoot: set undershoot (from 0 to 65535) (default 0)
             overshoot: set overshoot (from 0 to 65535) (default 0)
             planes: set planes (from 0 to 15) (default 15)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8019,6 +8316,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -8029,6 +8327,7 @@ class VideoStream(FilterableStream):
         _filter2: VideoStream,
         *,
         planes: Int = Default("15"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8037,6 +8336,7 @@ class VideoStream(FilterableStream):
 
         Args:
             planes: set planes (from 0 to 15) (default 15)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8060,6 +8360,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -8070,6 +8371,7 @@ class VideoStream(FilterableStream):
         _mask: VideoStream,
         *,
         planes: Int = Default("15"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8078,6 +8380,7 @@ class VideoStream(FilterableStream):
 
         Args:
             planes: set planes (from 0 to 15) (default 15)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8101,6 +8404,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -8111,6 +8415,7 @@ class VideoStream(FilterableStream):
         _filter2: VideoStream,
         *,
         planes: Int = Default("15"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8119,6 +8424,7 @@ class VideoStream(FilterableStream):
 
         Args:
             planes: set planes (from 0 to 15) (default 15)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8142,6 +8448,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -8153,6 +8460,7 @@ class VideoStream(FilterableStream):
         threshold: Int = Default("1"),
         planes: Int = Default("15"),
         mode: Int | Literal["abs", "diff"] | Default = Default("abs"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8163,6 +8471,7 @@ class VideoStream(FilterableStream):
             threshold: set threshold (from 0 to 65535) (default 1)
             planes: set planes (from 0 to 15) (default 15)
             mode: set mode (from 0 to 1) (default abs)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8187,6 +8496,7 @@ class VideoStream(FilterableStream):
                     "mode": mode,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -8199,6 +8509,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default("15"),
         fill: Int = Default("0"),
         sum: Int = Default("10"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8211,6 +8522,7 @@ class VideoStream(FilterableStream):
             planes: set planes (from 0 to 15) (default 15)
             fill: set fill value (from 0 to 65535) (default 0)
             sum: set sum value (from 0 to 65535) (default 10)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8234,6 +8546,7 @@ class VideoStream(FilterableStream):
                     "sum": sum,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -8288,6 +8601,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default("15"),
         radiusV: Int = Default("0"),
         percentile: Float = Default("0.5"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8299,6 +8613,7 @@ class VideoStream(FilterableStream):
             planes: set planes to filter (from 0 to 15) (default 15)
             radiusV: set median vertical radius (from 0 to 127) (default 0)
             percentile: set median percentile (from 0 to 1) (default 0.5)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8321,6 +8636,7 @@ class VideoStream(FilterableStream):
                     "percentile": percentile,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -8384,6 +8700,7 @@ class VideoStream(FilterableStream):
         expr: String = Default(None),
         file: String = Default(None),
         direct: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8398,6 +8715,7 @@ class VideoStream(FilterableStream):
             expr: set expression for expr function
             file: set file where to print metadata information
             direct: reduce buffering when printing to user-set file or pipe (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8423,6 +8741,7 @@ class VideoStream(FilterableStream):
                     "direct": direct,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -8432,6 +8751,7 @@ class VideoStream(FilterableStream):
         _in1: VideoStream,
         *,
         planes: Int = Default("15"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8440,6 +8760,7 @@ class VideoStream(FilterableStream):
 
         Args:
             planes: set planes (from 0 to 15) (default 15)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8462,6 +8783,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -8537,6 +8859,7 @@ class VideoStream(FilterableStream):
         cr: Float = Default("0"),
         size: Float = Default("1"),
         high: Float = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8548,6 +8871,7 @@ class VideoStream(FilterableStream):
             cr: set the chroma red spot (from -1 to 1) (default 0)
             size: set the color filter size (from 0.1 to 10) (default 1)
             high: set the highlights strength (from 0 to 1) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8570,6 +8894,7 @@ class VideoStream(FilterableStream):
                     "high": high,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -8584,6 +8909,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default("7"),
         structure: Int | Literal["first", "all"] | Default = Default("all"),
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8595,6 +8921,7 @@ class VideoStream(FilterableStream):
             planes: set planes to filter (from 0 to 15) (default 7)
             structure: when to process structures (from 0 to 1) (default all)
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8620,6 +8947,7 @@ class VideoStream(FilterableStream):
                 },
                 extra_options,
                 framesync_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -8675,6 +9003,7 @@ class VideoStream(FilterableStream):
         self,
         _reference: VideoStream,
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8683,6 +9012,7 @@ class VideoStream(FilterableStream):
 
         Args:
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8698,7 +9028,12 @@ class VideoStream(FilterableStream):
             ),
             self,
             _reference,
-            **merge({}, extra_options, framesync_options),
+            **merge(
+                {},
+                extra_options,
+                framesync_options,
+                timeline_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -8709,6 +9044,7 @@ class VideoStream(FilterableStream):
         scale: Float = Default("1"),
         offset: Float = Default("0.5"),
         planes: Flags = Default("F"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8719,6 +9055,7 @@ class VideoStream(FilterableStream):
             scale: set scale (from 0 to 9) (default 1)
             offset: set offset (from -1 to 1) (default 0.5)
             planes: set planes (default F)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8743,6 +9080,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -8754,6 +9092,7 @@ class VideoStream(FilterableStream):
         | Literal["y", "u", "v", "r", "g", "b", "a"]
         | Default = Default("y+u+v+r+g+b"),
         negate_alpha: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8763,6 +9102,7 @@ class VideoStream(FilterableStream):
         Args:
             components: set components to negate (default y+u+v+r+g+b)
             negate_alpha: (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8783,6 +9123,7 @@ class VideoStream(FilterableStream):
                     "negate_alpha": negate_alpha,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -8795,6 +9136,7 @@ class VideoStream(FilterableStream):
         pc: Int = Default("0"),
         r: Int = Default("15"),
         rc: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8807,6 +9149,7 @@ class VideoStream(FilterableStream):
             pc: patch size for chroma planes (from 0 to 99) (default 0)
             r: research window (from 0 to 99) (default 15)
             rc: research window for chroma planes (from 0 to 99) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -8830,6 +9173,7 @@ class VideoStream(FilterableStream):
                     "rc": rc,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -8971,6 +9315,7 @@ class VideoStream(FilterableStream):
         pscrn: Int
         | Literal["none", "original", "new", "new2", "new3"]
         | Default = Default("new"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -8987,6 +9332,7 @@ class VideoStream(FilterableStream):
             qual: set quality (from 1 to 2) (default fast)
             etype: set which set of weights to use in the predictor (from 0 to 1) (default a)
             pscrn: set prescreening (from 0 to 4) (default new)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -9014,6 +9360,7 @@ class VideoStream(FilterableStream):
                     "pscrn": pscrn,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -9071,6 +9418,7 @@ class VideoStream(FilterableStream):
         c3_seed: Int = Default("-1"),
         c3_strength: Int = Default("0"),
         c3_flags: Flags | Literal["a", "p", "t", "u"] | Default = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -9093,6 +9441,7 @@ class VideoStream(FilterableStream):
             c3_seed: set component #3 noise seed (from -1 to INT_MAX) (default -1)
             c3_strength: set component #3 strength (from 0 to 100) (default 0)
             c3_flags: set component #3 flags (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -9126,6 +9475,7 @@ class VideoStream(FilterableStream):
                     "c3_flags": c3_flags,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -9138,6 +9488,7 @@ class VideoStream(FilterableStream):
         smoothing: Int = Default("0"),
         independence: Float = Default("1"),
         strength: Float = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -9150,6 +9501,7 @@ class VideoStream(FilterableStream):
             smoothing: amount of temporal smoothing of the input range, to reduce flicker (from 0 to 2.68435e+08) (default 0)
             independence: proportion of independent to linked channel normalization (from 0 to 1) (default 1)
             strength: strength of filter, from no effect to full normalization (from 0 to 1) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -9173,6 +9525,7 @@ class VideoStream(FilterableStream):
                     "strength": strength,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -9223,6 +9576,7 @@ class VideoStream(FilterableStream):
         g: Boolean = Default("true"),
         st: Boolean = Default("true"),
         sc: Boolean = Default("true"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -9243,6 +9597,7 @@ class VideoStream(FilterableStream):
             g: draw trace grid (default true)
             st: draw statistics (default true)
             sc: draw scope (default true)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -9274,6 +9629,7 @@ class VideoStream(FilterableStream):
                     "sc": sc,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -9307,6 +9663,7 @@ class VideoStream(FilterableStream):
             "straight"
         ),
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -9323,6 +9680,7 @@ class VideoStream(FilterableStream):
             repeatlast: repeat overlay of the last overlay frame (default true)
             alpha: alpha format (from 0 to 1) (default straight)
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -9353,6 +9711,7 @@ class VideoStream(FilterableStream):
                 },
                 extra_options,
                 framesync_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -9512,6 +9871,7 @@ class VideoStream(FilterableStream):
         depth: Int = Default("8"),
         luma_strength: Double = Default("1"),
         chroma_strength: Double = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -9522,6 +9882,7 @@ class VideoStream(FilterableStream):
             depth: set depth (from 8 to 16) (default 8)
             luma_strength: set luma strength (from 0 to 1000) (default 1)
             chroma_strength: set chroma strength (from 0 to 1000) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -9543,6 +9904,7 @@ class VideoStream(FilterableStream):
                     "chroma_strength": chroma_strength,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -9766,6 +10128,7 @@ class VideoStream(FilterableStream):
             "none"
         ),
         seed: Int64 = Default("-1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -9775,6 +10138,7 @@ class VideoStream(FilterableStream):
         Args:
             mode: select permissions mode (from 0 to 4) (default none)
             seed: set the seed for the random mode (from -1 to UINT32_MAX) (default -1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -9795,6 +10159,7 @@ class VideoStream(FilterableStream):
                     "seed": seed,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -9813,6 +10178,7 @@ class VideoStream(FilterableStream):
         interpolation: Int | Literal["linear", "cubic"] | Default = Default("linear"),
         sense: Int | Literal["source", "destination"] | Default = Default("source"),
         eval: Int | Literal["init", "frame"] | Default = Default("init"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -9831,6 +10197,7 @@ class VideoStream(FilterableStream):
             interpolation: set interpolation (from 0 to 1) (default linear)
             sense: specify the sense of the coordinates (from 0 to 1) (default source)
             eval: specify when to evaluate expressions (from 0 to 1) (default init)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -9860,6 +10227,7 @@ class VideoStream(FilterableStream):
                     "eval": eval,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -9870,6 +10238,7 @@ class VideoStream(FilterableStream):
         mode: Int
         | Literal["p", "t", "b", "T", "B", "u", "U", "a", "A"]
         | Default = Default("A"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -9878,6 +10247,7 @@ class VideoStream(FilterableStream):
 
         Args:
             mode: set phase mode (from 0 to 8) (default A)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -9897,6 +10267,7 @@ class VideoStream(FilterableStream):
                     "mode": mode,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -9984,6 +10355,7 @@ class VideoStream(FilterableStream):
         height: Int = Default("16"),
         mode: Int | Literal["avg", "min", "max"] | Default = Default("avg"),
         planes: Flags = Default("F"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -9995,6 +10367,7 @@ class VideoStream(FilterableStream):
             height: set block height (from 1 to 1024) (default 16)
             mode: set the pixelize mode (from 0 to 2) (default avg)
             planes: set what planes to filter (default F)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -10017,6 +10390,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -10031,6 +10405,7 @@ class VideoStream(FilterableStream):
         o: Float = Default("0.5"),
         wx: Float = Default("-1"),
         wy: Float = Default("-1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -10045,6 +10420,7 @@ class VideoStream(FilterableStream):
             o: set window opacity (from 0 to 1) (default 0.5)
             wx: set window x offset (from -1 to 1) (default -1)
             wy: set window y offset (from -1 to 1) (default -1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -10070,6 +10446,7 @@ class VideoStream(FilterableStream):
                     "wy": wy,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -10079,6 +10456,7 @@ class VideoStream(FilterableStream):
         *,
         qp: Int = Default("0"),
         mode: Int | Literal["hard", "soft", "medium"] | Default = Default("medium"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -10088,6 +10466,7 @@ class VideoStream(FilterableStream):
         Args:
             qp: force a constant quantizer parameter (from 0 to 64) (default 0)
             mode: set thresholding mode (from 0 to 2) (default medium)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -10108,6 +10487,7 @@ class VideoStream(FilterableStream):
                     "mode": mode,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -10118,6 +10498,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default("15"),
         scale: Float = Default("1"),
         delta: Float = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -10128,6 +10509,7 @@ class VideoStream(FilterableStream):
             planes: set planes to filter (from 0 to 15) (default 15)
             scale: set scale (from 0 to 65535) (default 1)
             delta: set delta (from -65535 to 65535) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -10149,6 +10531,7 @@ class VideoStream(FilterableStream):
                     "delta": delta,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -10231,6 +10614,7 @@ class VideoStream(FilterableStream):
         ]
         | Default = Default("none"),
         opacity: Float = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -10245,6 +10629,7 @@ class VideoStream(FilterableStream):
             index: set component as base (from 0 to 3) (default 0)
             preset: set preset (from -1 to 20) (default none)
             opacity: set pseudocolor opacity (from 0 to 1) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -10270,6 +10655,7 @@ class VideoStream(FilterableStream):
                     "opacity": opacity,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -10282,6 +10668,7 @@ class VideoStream(FilterableStream):
         stats_version: Int = Default("1"),
         output_max: Boolean = Default("false"),
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -10293,6 +10680,7 @@ class VideoStream(FilterableStream):
             stats_version: Set the format version for the stats file. (from 1 to 2) (default 1)
             output_max: Add raw stats (max values) to the output log. (default false)
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -10316,6 +10704,7 @@ class VideoStream(FilterableStream):
                 },
                 extra_options,
                 framesync_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -10374,6 +10763,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         qp: String = Default(None),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -10382,6 +10772,7 @@ class VideoStream(FilterableStream):
 
         Args:
             qp: set qp expression
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -10401,6 +10792,7 @@ class VideoStream(FilterableStream):
                     "qp": qp,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -10451,6 +10843,7 @@ class VideoStream(FilterableStream):
         spw: Float = Default("0.27"),
         chp: Boolean = Default("false"),
         lp: Boolean = Default("true"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -10463,6 +10856,7 @@ class VideoStream(FilterableStream):
             spw: set ratio of width reserved for sync code detection (from 0.1 to 0.7) (default 0.27)
             chp: check and apply parity bit (default false)
             lp: lowpass line prior to processing (default true)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -10486,6 +10880,7 @@ class VideoStream(FilterableStream):
                     "lp": lp,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -10664,6 +11059,7 @@ class VideoStream(FilterableStream):
         m1: Int = Default("0"),
         m2: Int = Default("0"),
         m3: Int = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -10675,6 +11071,7 @@ class VideoStream(FilterableStream):
             m1: set mode for 2nd plane (from 0 to 24) (default 0)
             m2: set mode for 3rd plane (from 0 to 24) (default 0)
             m3: set mode for 4th plane (from 0 to 24) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -10697,6 +11094,7 @@ class VideoStream(FilterableStream):
                     "m3": m3,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -10705,6 +11103,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         filename: String = Default(None),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -10713,6 +11112,7 @@ class VideoStream(FilterableStream):
 
         Args:
             filename: set bitmap filename
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -10732,6 +11132,7 @@ class VideoStream(FilterableStream):
                     "filename": filename,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -10808,6 +11209,7 @@ class VideoStream(FilterableStream):
         ah: Int = Default("0"),
         av: Int = Default("0"),
         edge: Int | Literal["smear", "wrap"] | Default = Default("smear"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -10824,6 +11226,7 @@ class VideoStream(FilterableStream):
             ah: shift alpha horizontally (from -255 to 255) (default 0)
             av: shift alpha vertically (from -255 to 255) (default 0)
             edge: set edge operation (from 0 to 1) (default smear)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -10851,6 +11254,7 @@ class VideoStream(FilterableStream):
                     "edge": edge,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -10861,6 +11265,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default("15"),
         scale: Float = Default("1"),
         delta: Float = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -10871,6 +11276,7 @@ class VideoStream(FilterableStream):
             planes: set planes to filter (from 0 to 15) (default 15)
             scale: set scale (from 0 to 65535) (default 1)
             delta: set delta (from -65535 to 65535) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -10892,6 +11298,7 @@ class VideoStream(FilterableStream):
                     "delta": delta,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -10947,6 +11354,7 @@ class VideoStream(FilterableStream):
         out_h: String = Default("ih"),
         fillcolor: String = Default("black"),
         bilinear: Boolean = Default("true"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -10959,6 +11367,7 @@ class VideoStream(FilterableStream):
             out_h: set output height expression (default "ih")
             fillcolor: set background fill color (default "black")
             bilinear: use bilinear interpolation (default true)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -10982,6 +11391,7 @@ class VideoStream(FilterableStream):
                     "bilinear": bilinear,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -10995,6 +11405,7 @@ class VideoStream(FilterableStream):
         chroma_radius: Float = Default("-0.9"),
         chroma_pre_filter_radius: Float = Default("-0.9"),
         chroma_strength: Float = Default("-0.9"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -11008,6 +11419,7 @@ class VideoStream(FilterableStream):
             chroma_radius: set chroma radius (from -0.9 to 4) (default -0.9)
             chroma_pre_filter_radius: set chroma pre-filter radius (from -0.9 to 2) (default -0.9)
             chroma_strength: set chroma strength (from -0.9 to 100) (default -0.9)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -11032,6 +11444,7 @@ class VideoStream(FilterableStream):
                     "chroma_strength": chroma_strength,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -11177,6 +11590,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default("15"),
         scale: Float = Default("1"),
         delta: Float = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -11187,6 +11601,7 @@ class VideoStream(FilterableStream):
             planes: set planes to filter (from 0 to 15) (default 15)
             scale: set scale (from 0 to 65535) (default 1)
             delta: set delta (from -65535 to 65535) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -11208,6 +11623,7 @@ class VideoStream(FilterableStream):
                     "delta": delta,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -11219,6 +11635,7 @@ class VideoStream(FilterableStream):
         vertical: Float = Default("0"),
         hpos: Float = Default("0"),
         vpos: Float = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -11230,6 +11647,7 @@ class VideoStream(FilterableStream):
             vertical: set the vertical scrolling speed (from -1 to 1) (default 0)
             hpos: set initial horizontal position (from 0 to 1) (default 0)
             vpos: set initial vertical position (from 0 to 1) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -11252,6 +11670,7 @@ class VideoStream(FilterableStream):
                     "vpos": vpos,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -11356,6 +11775,7 @@ class VideoStream(FilterableStream):
         neutrals: String = Default(None),
         blacks: String = Default(None),
         psfile: String = Default(None),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -11374,6 +11794,7 @@ class VideoStream(FilterableStream):
             neutrals: adjust neutral regions
             blacks: adjust black regions
             psfile: set Photoshop selectivecolor file name
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -11405,6 +11826,7 @@ class VideoStream(FilterableStream):
                     "psfile": psfile,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -11831,6 +12253,7 @@ class VideoStream(FilterableStream):
         shy: Float = Default("0"),
         fillcolor: String = Default("black"),
         interp: Int | Literal["nearest", "bilinear"] | Default = Default("bilinear"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -11842,6 +12265,7 @@ class VideoStream(FilterableStream):
             shy: set y shear factor (from -2 to 2) (default 0)
             fillcolor: set background fill color (default "black")
             interp: set interpolation (from 0 to 1) (default bilinear)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -11864,6 +12288,7 @@ class VideoStream(FilterableStream):
                     "interp": interp,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -11942,6 +12367,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         mapping: String = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -11950,6 +12376,7 @@ class VideoStream(FilterableStream):
 
         Args:
             mapping: set destination indexes of input frames (default "0")
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -11971,6 +12398,7 @@ class VideoStream(FilterableStream):
                     "mapping": mapping,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -11985,6 +12413,7 @@ class VideoStream(FilterableStream):
         width: Int = Default("10"),
         height: Int = Default("10"),
         seed: Int64 = Default("-1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -11997,6 +12426,7 @@ class VideoStream(FilterableStream):
             width: set block width (from 1 to 8000) (default 10)
             height: set block height (from 1 to 8000) (default 10)
             seed: set random seed (from -1 to UINT32_MAX) (default -1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -12022,6 +12452,7 @@ class VideoStream(FilterableStream):
                     "seed": seed,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -12033,6 +12464,7 @@ class VideoStream(FilterableStream):
         map1: Int = Default("1"),
         map2: Int = Default("2"),
         map3: Int = Default("3"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -12044,6 +12476,7 @@ class VideoStream(FilterableStream):
             map1: Index of the input plane to be used as the second output plane (from 0 to 3) (default 1)
             map2: Index of the input plane to be used as the third output plane (from 0 to 3) (default 2)
             map3: Index of the input plane to be used as the fourth output plane (from 0 to 3) (default 3)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -12068,6 +12501,7 @@ class VideoStream(FilterableStream):
                     "map3": map3,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -12101,6 +12535,7 @@ class VideoStream(FilterableStream):
             "SEI_UNREGISTERED",
         ]
         | Default = Default("-1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -12110,6 +12545,7 @@ class VideoStream(FilterableStream):
         Args:
             mode: set a mode of operation (from 0 to 1) (default select)
             type: set side data type (from -1 to INT_MAX) (default -1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -12130,6 +12566,7 @@ class VideoStream(FilterableStream):
                     "type": type,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -12219,6 +12656,7 @@ class VideoStream(FilterableStream):
         chroma_radius: Float = Default("-0.9"),
         chroma_strength: Float = Default("-2"),
         chroma_threshold: Int = Default("-31"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -12232,6 +12670,7 @@ class VideoStream(FilterableStream):
             chroma_radius: set chroma radius (from -0.9 to 5) (default -0.9)
             chroma_strength: set chroma strength (from -2 to 1) (default -2)
             chroma_threshold: set chroma threshold (from -31 to 30) (default -31)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -12256,6 +12695,7 @@ class VideoStream(FilterableStream):
                     "chroma_threshold": chroma_threshold,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -12266,6 +12706,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default("15"),
         scale: Float = Default("1"),
         delta: Float = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -12276,6 +12717,7 @@ class VideoStream(FilterableStream):
             planes: set planes to filter (from 0 to 15) (default 15)
             scale: set scale (from 0 to 65535) (default 1)
             delta: set delta (from -65535 to 65535) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -12297,6 +12739,7 @@ class VideoStream(FilterableStream):
                     "delta": delta,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -12474,6 +12917,7 @@ class VideoStream(FilterableStream):
         qp: Int = Default("0"),
         mode: Int | Literal["hard", "soft"] | Default = Default("hard"),
         use_bframe_qp: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -12485,6 +12929,7 @@ class VideoStream(FilterableStream):
             qp: force a constant quantizer parameter (from 0 to 63) (default 0)
             mode: set thresholding mode (from 0 to 1) (default hard)
             use_bframe_qp: use B-frames' QP (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -12507,6 +12952,7 @@ class VideoStream(FilterableStream):
                     "use_bframe_qp": use_bframe_qp,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -12564,6 +13010,7 @@ class VideoStream(FilterableStream):
         *,
         stats_file: String = Default(None),
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -12573,6 +13020,7 @@ class VideoStream(FilterableStream):
         Args:
             stats_file: Set file where to store per-frame difference information
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -12594,6 +13042,7 @@ class VideoStream(FilterableStream):
                 },
                 extra_options,
                 framesync_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -12792,6 +13241,7 @@ class VideoStream(FilterableStream):
         y1: String = Default("h/2"),
         x2: String = Default("0"),
         y2: String = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -12805,6 +13255,7 @@ class VideoStream(FilterableStream):
             y1: set 1st rect y top left coordinate (default "h/2")
             x2: set 2nd rect x top left coordinate (default "0")
             y2: set 2nd rect y top left coordinate (default "0")
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -12829,12 +13280,14 @@ class VideoStream(FilterableStream):
                     "y2": y2,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
 
     def swapuv(
         self,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -12842,6 +13295,7 @@ class VideoStream(FilterableStream):
         Swap U and V components.
 
         Args:
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -12859,6 +13313,7 @@ class VideoStream(FilterableStream):
             **merge(
                 {},
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -13106,6 +13561,7 @@ class VideoStream(FilterableStream):
         c2_opacity: Double = Default("1"),
         c3_opacity: Double = Default("1"),
         all_opacity: Double = Default("1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -13128,6 +13584,7 @@ class VideoStream(FilterableStream):
             c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
             c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
             all_opacity: set opacity for all color components (from 0 to 1) (default 1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -13161,6 +13618,7 @@ class VideoStream(FilterableStream):
                     "all_opacity": all_opacity,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -13274,6 +13732,7 @@ class VideoStream(FilterableStream):
         _max: VideoStream,
         *,
         planes: Int = Default("15"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -13282,6 +13741,7 @@ class VideoStream(FilterableStream):
 
         Args:
             planes: set planes to filter (from 0 to 15) (default 15)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -13306,6 +13766,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -13315,6 +13776,7 @@ class VideoStream(FilterableStream):
         *,
         n: Int = Default("100"),
         log: Int | Literal["quiet", "info", "verbose"] | Default = Default("info"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -13324,6 +13786,7 @@ class VideoStream(FilterableStream):
         Args:
             n: set the frames batch size (from 2 to INT_MAX) (default 100)
             log: force stats logging level (from INT_MIN to INT_MAX) (default info)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -13344,6 +13807,7 @@ class VideoStream(FilterableStream):
                     "log": log,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -13454,6 +13918,7 @@ class VideoStream(FilterableStream):
         c1: String = Default("x"),
         c2: String = Default("x"),
         c3: String = Default("x"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -13465,6 +13930,7 @@ class VideoStream(FilterableStream):
             c1: set component #1 expression (default "x")
             c2: set component #2 expression (default "x")
             c3: set component #3 expression (default "x")
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -13487,6 +13953,7 @@ class VideoStream(FilterableStream):
                     "c3": c3,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -13497,6 +13964,7 @@ class VideoStream(FilterableStream):
         radius: Int = Default("1"),
         planes: Int = Default("15"),
         percentile: Float = Default("0.5"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -13507,6 +13975,7 @@ class VideoStream(FilterableStream):
             radius: set median filter radius (from 1 to 127) (default 1)
             planes: set planes to filter (from 0 to 15) (default 15)
             percentile: set percentile (from 0 to 1) (default 0.5)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -13528,6 +13997,7 @@ class VideoStream(FilterableStream):
                     "percentile": percentile,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -13538,6 +14008,7 @@ class VideoStream(FilterableStream):
         radius: Int = Default("5"),
         sigma: Float = Default("0.5"),
         planes: Int = Default("15"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -13548,6 +14019,7 @@ class VideoStream(FilterableStream):
             radius: set radius (from 1 to 127) (default 5)
             sigma: set sigma (from 0 to 1) (default 0.5)
             planes: set planes (from 0 to 15) (default 15)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -13571,6 +14043,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -13582,6 +14055,7 @@ class VideoStream(FilterableStream):
         weights: String = Default("1 1 1"),
         scale: Float = Default("0"),
         planes: Flags = Default("F"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -13593,6 +14067,7 @@ class VideoStream(FilterableStream):
             weights: set weight for each frame (default "1 1 1")
             scale: set scale (from 0 to 32767) (default 0)
             planes: set what planes to filter (default F)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -13615,6 +14090,7 @@ class VideoStream(FilterableStream):
                     "planes": planes,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -13981,6 +14457,7 @@ class VideoStream(FilterableStream):
         alpha_msize_x: Int = Default("5"),
         alpha_msize_y: Int = Default("5"),
         alpha_amount: Float = Default("0"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -13997,6 +14474,7 @@ class VideoStream(FilterableStream):
             alpha_msize_x: set alpha matrix horizontal size (from 3 to 23) (default 5)
             alpha_msize_y: set alpha matrix vertical size (from 3 to 23) (default 5)
             alpha_amount: set alpha effect strength (from -2 to 5) (default 0)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -14024,6 +14502,7 @@ class VideoStream(FilterableStream):
                     "alpha_amount": alpha_amount,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -14122,6 +14601,7 @@ class VideoStream(FilterableStream):
         qp: Int = Default("0"),
         use_bframe_qp: Boolean = Default("false"),
         codec: String = Default("snow"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -14133,6 +14613,7 @@ class VideoStream(FilterableStream):
             qp: force a constant quantizer parameter (from 0 to 63) (default 0)
             use_bframe_qp: use B-frames' QP (default false)
             codec: Codec name (default "snow")
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -14155,6 +14636,7 @@ class VideoStream(FilterableStream):
                     "codec": codec,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -14390,6 +14872,7 @@ class VideoStream(FilterableStream):
         percent: Float = Default("85"),
         planes: Int = Default("15"),
         type: Int | Literal["universal", "bayes"] | Default = Default("universal"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -14403,6 +14886,7 @@ class VideoStream(FilterableStream):
             percent: set percent of full denoising (from 0 to 100) (default 85)
             planes: set planes to filter (from 0 to 15) (default 15)
             type: set threshold type (from 0 to 1) (default universal)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -14429,6 +14913,7 @@ class VideoStream(FilterableStream):
                     "type": type,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -14441,6 +14926,7 @@ class VideoStream(FilterableStream):
         max_r: Int = Default("8"),
         planes: Int = Default("15"),
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -14452,6 +14938,7 @@ class VideoStream(FilterableStream):
             max_r: set max blur radius (from 1 to 255) (default 8)
             planes: set planes to filter (from 0 to 15) (default 15)
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -14477,6 +14964,7 @@ class VideoStream(FilterableStream):
                 },
                 extra_options,
                 framesync_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -14563,6 +15051,7 @@ class VideoStream(FilterableStream):
 
     def vflip(
         self,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -14570,6 +15059,7 @@ class VideoStream(FilterableStream):
         Flip the input video vertically.
 
         Args:
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -14587,6 +15077,7 @@ class VideoStream(FilterableStream):
             **merge(
                 {},
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -14662,6 +15153,7 @@ class VideoStream(FilterableStream):
         glum: Float = Default("0.715158"),
         blum: Float = Default("0.212656"),
         alternate: Boolean = Default("false"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -14677,6 +15169,7 @@ class VideoStream(FilterableStream):
             glum: set the green luma coefficient (from 0 to 1) (default 0.715158)
             blum: set the blue luma coefficient (from 0 to 1) (default 0.212656)
             alternate: use alternate colors (default false)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -14703,6 +15196,7 @@ class VideoStream(FilterableStream):
                     "alternate": alternate,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -14844,6 +15338,7 @@ class VideoStream(FilterableStream):
         self,
         _reference: VideoStream,
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -14852,6 +15347,7 @@ class VideoStream(FilterableStream):
 
         Args:
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -14867,7 +15363,12 @@ class VideoStream(FilterableStream):
             ),
             self,
             _reference,
-            **merge({}, extra_options, framesync_options),
+            **merge(
+                {},
+                extra_options,
+                framesync_options,
+                timeline_options,
+            ),
         )
         return filter_node.video(0)
 
@@ -14881,6 +15382,7 @@ class VideoStream(FilterableStream):
         eval: Int | Literal["init", "frame"] | Default = Default("init"),
         dither: Boolean = Default("true"),
         aspect: Rational = Default("1/1"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -14895,6 +15397,7 @@ class VideoStream(FilterableStream):
             eval: specify when to evaluate expressions (from 0 to 1) (default init)
             dither: set dithering (default true)
             aspect: set aspect ratio (from 0 to DBL_MAX) (default 1/1)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -14920,6 +15423,7 @@ class VideoStream(FilterableStream):
                     "aspect": aspect,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -14966,6 +15470,7 @@ class VideoStream(FilterableStream):
         mode: Int | Literal["frame", "field"] | Default = Default("field"),
         parity: Int | Literal["tff", "bff", "auto"] | Default = Default("auto"),
         deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -14977,6 +15482,7 @@ class VideoStream(FilterableStream):
             mode: specify the interlacing mode (from 0 to 1) (default field)
             parity: specify the assumed picture field parity (from -1 to 1) (default auto)
             deint: specify which frames to deinterlace (from 0 to 1) (default all)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -14999,6 +15505,7 @@ class VideoStream(FilterableStream):
                     "deint": deint,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -15174,6 +15681,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default("7"),
         secondary: Int | Literal["first", "all"] | Default = Default("all"),
         framesync_options: FFMpegFrameSyncOption | None = None,
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -15184,6 +15692,7 @@ class VideoStream(FilterableStream):
             planes: set planes to cross-correlate (from 0 to 15) (default 7)
             secondary: when to process secondary frame (from 0 to 1) (default all)
             framesync_options: Framesync options
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -15208,6 +15717,7 @@ class VideoStream(FilterableStream):
                 },
                 extra_options,
                 framesync_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -15396,6 +15906,7 @@ class VideoStream(FilterableStream):
         | Default = Default("send_frame"),
         parity: Int | Literal["tff", "bff", "auto"] | Default = Default("auto"),
         deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -15406,6 +15917,7 @@ class VideoStream(FilterableStream):
             mode: specify the interlacing mode (from 0 to 3) (default send_frame)
             parity: specify the assumed picture field parity (from -1 to 1) (default auto)
             deint: specify which frames to deinterlace (from 0 to 1) (default all)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -15427,6 +15939,7 @@ class VideoStream(FilterableStream):
                     "deint": deint,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
@@ -15437,6 +15950,7 @@ class VideoStream(FilterableStream):
         radius: Int = Default("3"),
         planes: Int = Default("1"),
         sigma: Int = Default("128"),
+        timeline_options: FFMpegTimelineOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> VideoStream:
         """
@@ -15447,6 +15961,7 @@ class VideoStream(FilterableStream):
             radius: set window radius (from 0 to INT_MAX) (default 3)
             planes: set planes to filter (from 0 to 15) (default 1)
             sigma: set blur strength (from 1 to INT_MAX) (default 128)
+            timeline_options: Timeline options
             extra_options: Extra options for the filter
 
         Returns:
@@ -15468,6 +15983,7 @@ class VideoStream(FilterableStream):
                     "sigma": sigma,
                 },
                 extra_options,
+                timeline_options,
             ),
         )
         return filter_node.video(0)
