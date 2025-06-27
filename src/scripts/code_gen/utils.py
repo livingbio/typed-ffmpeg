@@ -15,44 +15,25 @@ def get_relative_path(import_path: str, template_path: str) -> str | None:
         The relative path of the template, or None if importing from same file
 
     """
-    template_path_obj = Path(template_path)
-    template_parent = template_path_obj.parent
+    template_path_obj = Path(template_path.split(".")[0])
     import_path_obj = Path(import_path.replace(".", "/"))
 
-    print(
-        f"DEBUG: template_path={template_path}, template_parent='{template_parent}', str(template_parent)='{str(template_parent)}', stem='{template_path_obj.stem}'"
-    )
-
-    # Remove both .jinja and .py suffixes to get the module name
-    stem = template_path_obj.name
-    for ext in (".jinja", ".py"):
-        while stem.endswith(ext):
-            stem = stem[: -len(ext)]
-    print(f"DEBUG: final stem after suffix removal: '{stem}'")
-    template_module = (
-        ".".join(list(template_parent.parts) + [stem]) if str(template_parent) else stem
-    )
-
-    # If importing from the same file, return None
-    if import_path == template_module:
+    if template_path_obj == import_path_obj:
+        # NOTE: this is a special case that should not import itself
         return None
 
-    # If importing from a sibling module (same parent, but not the same module)
-    if template_parent == import_path_obj.parent and import_path != template_module:
-        return f".{import_path_obj.name}"
+    file_parts = template_path_obj.parts
+    import_parts = import_path_obj.parts
 
-    # If template is at root
-    if str(template_parent) in ("", "."):
-        if "." in import_path:
-            if "." in stem:
-                return f"..{import_path}"
-            else:
-                return f".{import_path}"
-        return f".{import_path}"
+    for idx in range(len(file_parts)):
+        if file_parts[idx] != import_parts[idx]:
+            return (
+                "."
+                + "." * (len(file_parts) - idx - 1)
+                + ".".join(import_path_obj.parts[idx:])
+            )
 
-    # Otherwise, number of dots = len(template_parent.parts) + 1
-    dots = "." * (len(template_parent.parts) + 1)
-    return f"{dots}{import_path}"
+    return str(import_path)
 
 
 def get_relative_import(import_path: str, template_path: str, imports: str) -> str:

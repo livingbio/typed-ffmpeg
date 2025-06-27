@@ -16,7 +16,7 @@ from ffmpeg.common.schema import (
     FFMpegOptionType,
 )
 
-from .utils import get_relative_import, get_relative_path
+from .utils import get_relative_path
 
 template_folder = Path(__file__).parent / "templates"
 
@@ -263,7 +263,6 @@ env.filters["input_typings"] = input_typings
 env.filters["output_typings"] = output_typings
 env.filters["filter_option_typings"] = filter_option_typings
 env.globals["get_relative_path"] = get_relative_path
-env.globals["get_relative_import"] = get_relative_import
 
 
 def render(

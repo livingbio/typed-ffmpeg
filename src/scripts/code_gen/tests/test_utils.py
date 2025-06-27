@@ -1,48 +1,26 @@
-from pathlib import Path
+import pytest
 
 from ..utils import get_relative_import, get_relative_path
 
 
-def test_get_relative_path() -> None:
-    print(
-        "types/options/framesync:",
-        get_relative_path("types", "options/framesync.py.jinja"),
-    )
-    assert get_relative_path("types", "options/framesync.py.jinja") == "..types"
-    print(
-        "types/dag/global_runnable/global_args:",
-        get_relative_path("types", "dag/global_runnable/global_args.py.jinja"),
-    )
-    assert (
-        get_relative_path("types", "dag/global_runnable/global_args.py.jinja")
-        == "...types"
-    )
-    print(
-        "streams.audio/streams/audio:",
-        get_relative_path("streams.audio", "streams/audio.py.jinja"),
-    )
-    assert get_relative_path("streams.audio", "streams/audio.py.jinja") is None
-    print(
-        "streams.video/streams/audio:",
-        get_relative_path("streams.video", "streams/audio.py.jinja"),
-    )
-    assert get_relative_path("streams.video", "streams/audio.py.jinja") == ".video"
-    print("dag.nodes/filters:", get_relative_path("dag.nodes", "filters.py.jinja"))
-    assert get_relative_path("dag.nodes", "filters.py.jinja") == ".dag.nodes"
-    print(
-        "dag.nodes/streams.audio:",
-        get_relative_path("dag.nodes", "streams.audio.py.jinja"),
-    )
-    print("import_path_obj.parts:", Path("dag/nodes").parts)
-    assert get_relative_path("dag.nodes", "streams.audio.py.jinja") == "..dag.nodes"
-    # New test case: importing from nested directory to root-level module
-    print("types/streams/audio:", get_relative_path("types", "streams/audio.py.jinja"))
-    assert get_relative_path("types", "streams/audio.py.jinja") == "..types"
-    # New test case: importing between different root-level modules
-    print(
-        "filters/streams/audio:", get_relative_path("filters", "streams/audio.py.jinja")
-    )
-    assert get_relative_path("filters", "streams/audio.py.jinja") == "..filters"
+@pytest.mark.parametrize(
+    "import_path, template_path, expected",
+    [
+        ("types", "options/framesync.py.jinja", "..types"),
+        ("types", "dag/global_runnable/global_args.py.jinja", "...types"),
+        ("streams.audio", "streams/audio.py.jinja", None),
+        ("streams.video", "streams/audio.py.jinja", ".video"),
+        ("dag.nodes", "filters.py.jinja", ".dag.nodes"),
+        ("dag.nodes", "streams/audio.py.jinja", "..dag.nodes"),
+        ("types", "streams/audio.py.jinja", "..types"),
+        ("filters", "streams/audio.py.jinja", "..filters"),
+        ("dag.nodes", "dag/io/_input.py.jinja", "..nodes"),
+    ],
+)
+def test_get_relative_path(
+    import_path: str, template_path: str, expected: str | None
+) -> None:
+    assert get_relative_path(import_path, template_path) == expected
 
 
 def test_get_relative_import() -> None:
