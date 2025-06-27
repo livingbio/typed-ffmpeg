@@ -29,7 +29,6 @@ from ..types import (
     Video_rate,
 )
 from ..utils.frozendict import merge
-from .audio import AudioStream
 
 if TYPE_CHECKING:
     from .audio import AudioStream

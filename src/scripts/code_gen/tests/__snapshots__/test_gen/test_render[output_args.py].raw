@@ -11,16 +11,29 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
-from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
 
-from ...utils.frozendict import merge
-from ...codecs.schema import FFMpegEncoderOption
-from ...formats.schema import FFMpegMuxerOption
+from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+from ..factory import filter_node_factory
+from ...utils.frozendict import FrozenDict, merge
+from ...utils.typing import override
+from ...schema import Default, StreamType, Auto
+from ...common.schema import FFMpegFilterDef
+from ...options.framesync import FFMpegFrameSyncOption
+from ...streams.av import AVStream
+from ...streams.channel_layout import CHANNEL_LAYOUT
+from ...codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
+from ...formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
+
+
+from ...streams.video import VideoStream
+
+
+from ...streams.audio import AudioStream
+
 
 
 if TYPE_CHECKING:
     from ..nodes import FilterableStream, OutputNode, OutputStream
-
 
 class OutputArgs(ABC):
     """Output arguments interface."""

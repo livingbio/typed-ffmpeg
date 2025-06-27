@@ -27,7 +27,6 @@ from ..types import (
     Video_rate,
 )
 from ..utils.frozendict import merge
-from .video import VideoStream
 
 if TYPE_CHECKING:
     from .video import VideoStream

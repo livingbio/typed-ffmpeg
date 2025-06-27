@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from ...types import (
     Boolean,
@@ -13,11 +13,9 @@ from ...types import (
     Int,
 )
 from ...utils.frozendict import merge
-from ..nodes import (
-    GlobalNode,
-    GlobalStream,
-    OutputStream,
-)
+
+if TYPE_CHECKING:
+    from ..nodes import GlobalNode, GlobalStream, OutputStream
 
 
 class GlobalArgs(ABC):

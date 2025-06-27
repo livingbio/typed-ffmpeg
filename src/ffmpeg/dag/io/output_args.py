@@ -5,7 +5,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from ...codecs.schema import FFMpegEncoderOption
 from ...formats.schema import FFMpegMuxerOption
@@ -19,11 +19,9 @@ from ...types import (
     Time,
 )
 from ...utils.frozendict import merge
-from ..nodes import (
-    FilterableStream,
-    OutputNode,
-    OutputStream,
-)
+
+if TYPE_CHECKING:
+    from ..nodes import FilterableStream, OutputNode, OutputStream
 
 
 class OutputArgs(ABC):
