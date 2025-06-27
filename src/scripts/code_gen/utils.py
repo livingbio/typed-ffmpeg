@@ -3,7 +3,7 @@
 from pathlib import Path
 
 
-def get_relative_path(import_path: str, template_path: str) -> str | None:
+def get_relative_path(import_path: str, template_path: str | Path) -> str | None:
     """
     Get the relative path of the template.
 
@@ -15,7 +15,7 @@ def get_relative_path(import_path: str, template_path: str) -> str | None:
         The relative path of the template, or None if importing from same file
 
     """
-    template_path_obj = Path(template_path.split(".")[0])
+    template_path_obj = Path(str(template_path).split(".")[0])
     import_path_obj = Path(import_path.replace(".", "/"))
 
     if template_path_obj == import_path_obj:

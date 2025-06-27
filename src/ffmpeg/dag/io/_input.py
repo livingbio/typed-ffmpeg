@@ -5,9 +5,6 @@ from pathlib import Path
 from typing import Any
 
 from ...codecs.schema import FFMpegDecoderOption
-from ...dag.nodes import (
-    InputNode,
-)
 from ...formats.schema import FFMpegDemuxerOption
 from ...streams.av import AVStream
 from ...types import (
@@ -19,6 +16,9 @@ from ...types import (
     Time,
 )
 from ...utils.frozendict import merge
+from ..nodes import (
+    InputNode,
+)
 
 
 def input(

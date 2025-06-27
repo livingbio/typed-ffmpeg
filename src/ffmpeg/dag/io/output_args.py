@@ -8,11 +8,6 @@ from pathlib import Path
 from typing import Any
 
 from ...codecs.schema import FFMpegEncoderOption
-from ...dag.nodes import (
-    FilterableStream,
-    OutputNode,
-    OutputStream,
-)
 from ...formats.schema import FFMpegMuxerOption
 from ...types import (
     Boolean,
@@ -24,6 +19,11 @@ from ...types import (
     Time,
 )
 from ...utils.frozendict import merge
+from ..nodes import (
+    FilterableStream,
+    OutputNode,
+    OutputStream,
+)
 
 
 class OutputArgs(ABC):

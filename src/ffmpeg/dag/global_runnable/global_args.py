@@ -6,11 +6,6 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any
 
-from ...dag.nodes import (
-    GlobalNode,
-    GlobalStream,
-    OutputStream,
-)
 from ...types import (
     Boolean,
     Float,
@@ -18,6 +13,11 @@ from ...types import (
     Int,
 )
 from ...utils.frozendict import merge
+from ..nodes import (
+    GlobalNode,
+    GlobalStream,
+    OutputStream,
+)
 
 
 class GlobalArgs(ABC):
