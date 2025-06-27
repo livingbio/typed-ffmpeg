@@ -1,3 +1,5 @@
+"""FFmpeg timeline options module."""
+
 from ..expressions import Expression
 from ..schema import FFMpegOptionGroup
 
@@ -7,5 +9,14 @@ class FFMpegTimelineOption(FFMpegOptionGroup):
 
 
 def timeline(enable: str | Expression) -> FFMpegTimelineOption:
-    """Timeline options."""
+    """
+    Create timeline options.
+
+    Args:
+        enable: The timeline enable parameter.
+
+    Returns:
+        FFMpegTimelineOption with the specified enable parameter.
+
+    """
     return FFMpegTimelineOption(enable=enable)
