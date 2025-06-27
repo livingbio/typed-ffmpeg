@@ -8,14 +8,7 @@ from __future__ import annotations
 import re
 from typing import TYPE_CHECKING, Any, Literal
 
-from ..dag.nodes import FilterableStream, FilterNode
-from ..schema import Default, StreamType, Auto
-{{ _components.import_types('types', template_path) }}
-from ..utils.typing import override
-from ..common.schema import FFMpegFilterDef
-from ..dag.factory import filter_node_factory
-from ..utils.frozendict import merge
-from ..options.framesync import FFMpegFrameSyncOption
+{{ _components.import_all(template_path) }}
 
 if TYPE_CHECKING:
     from .audio import AudioStream

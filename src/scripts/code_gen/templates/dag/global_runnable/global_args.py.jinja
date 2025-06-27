@@ -8,11 +8,8 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any
-{{ _components.import_types('types', template_path) }}
-from ...utils.frozendict import merge
 
-if TYPE_CHECKING:
-    from ..nodes import GlobalNode, GlobalStream, OutputStream
+{{ _components.import_all(template_path) }}
 
 class GlobalArgs(ABC):
     """

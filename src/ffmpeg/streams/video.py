@@ -7,7 +7,10 @@ from typing import TYPE_CHECKING, Any, Literal
 
 from ..common.schema import FFMpegFilterDef
 from ..dag.factory import filter_node_factory
-from ..dag.nodes import FilterableStream, FilterNode
+from ..dag.nodes import (
+    FilterableStream,
+    FilterNode,
+)
 from ..options.framesync import FFMpegFrameSyncOption
 from ..schema import Default
 from ..types import (
@@ -26,6 +29,7 @@ from ..types import (
     Video_rate,
 )
 from ..utils.frozendict import merge
+from .audio import AudioStream
 
 if TYPE_CHECKING:
     from .audio import AudioStream

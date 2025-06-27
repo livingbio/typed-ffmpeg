@@ -7,7 +7,10 @@ from typing import TYPE_CHECKING, Any, Literal
 
 from ..common.schema import FFMpegFilterDef
 from ..dag.factory import filter_node_factory
-from ..dag.nodes import FilterableStream, FilterNode
+from ..dag.nodes import (
+    FilterableStream,
+    FilterNode,
+)
 from ..schema import Default
 from ..types import (
     Boolean,
@@ -24,6 +27,7 @@ from ..types import (
     Video_rate,
 )
 from ..utils.frozendict import merge
+from .video import VideoStream
 
 if TYPE_CHECKING:
     from .video import VideoStream

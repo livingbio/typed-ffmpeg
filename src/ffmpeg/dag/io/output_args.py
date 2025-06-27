@@ -5,9 +5,14 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import Any
 
 from ...codecs.schema import FFMpegEncoderOption
+from ...dag.nodes import (
+    FilterableStream,
+    OutputNode,
+    OutputStream,
+)
 from ...formats.schema import FFMpegMuxerOption
 from ...types import (
     Boolean,
@@ -19,9 +24,6 @@ from ...types import (
     Time,
 )
 from ...utils.frozendict import merge
-
-if TYPE_CHECKING:
-    from ..nodes import FilterableStream, OutputNode, OutputStream
 
 
 class OutputArgs(ABC):

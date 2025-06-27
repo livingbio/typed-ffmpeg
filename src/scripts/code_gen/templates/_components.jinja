@@ -178,19 +178,19 @@ def {{f.name}}(
 from {{get_relative_path(f, template_path)}} import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
 {% endmacro %}
 
-{% macro import_all(f, template_path) %}
-from {{get_relative_path("types", template_path)}} import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
-from {{get_relative_path("dag.nodes", template_path)}} import FilterableStream, FilterNode, OutputStream, OutputNode, InputNode, GlobalNode, GlobalStream
-from {{get_relative_path("dag.factory", template_path)}} import filter_node_factory
-from {{get_relative_path("utils.frozendict", template_path)}} import FrozenDict, merge
-from {{get_relative_path("utils.typing", template_path)}} import override
-from {{get_relative_path("schema", template_path)}} import Default, StreamType, Auto
-from {{get_relative_path("common.schema", template_path)}} import FFMpegFilterDef
-from {{get_relative_path("options.framesync", template_path)}} import FFMpegFrameSyncOption
-from {{get_relative_path("streams.video", template_path)}} import VideoStream
-from {{get_relative_path("streams.audio", template_path)}} import AudioStream
-from {{get_relative_path("streams.av", template_path)}} import AVStream
-from {{get_relative_path("streams.channel_layout", template_path)}} import CHANNEL_LAYOUT
-from {{get_relative_path("codecs.schema", template_path)}} import FFMpegEncoderOption, FFMpegDecoderOption
-from {{get_relative_path("formats.schema", template_path)}} import FFMpegMuxerOption, FFMpegDemuxerOption
+{% macro import_all(template_path) %}
+{{get_relative_import("types", template_path, "Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate")}}
+{{get_relative_import("dag.nodes", template_path, "FilterableStream, FilterNode, OutputStream, OutputNode, InputNode, GlobalNode, GlobalStream")}}
+{{get_relative_import("dag.factory", template_path, "filter_node_factory")}}
+{{get_relative_import("utils.frozendict", template_path, "FrozenDict, merge")}}
+{{get_relative_import("utils.typing", template_path, "override")}}
+{{get_relative_import("schema", template_path, "Default, StreamType, Auto")}}
+{{get_relative_import("common.schema", template_path, "FFMpegFilterDef")}}
+{{get_relative_import("options.framesync", template_path, "FFMpegFrameSyncOption")}}
+{{get_relative_import("streams.video", template_path, "VideoStream")}}
+{{get_relative_import("streams.audio", template_path, "AudioStream")}}
+{{get_relative_import("streams.av", template_path, "AVStream")}}
+{{get_relative_import("streams.channel_layout", template_path, "CHANNEL_LAYOUT")}}
+{{get_relative_import("codecs.schema", template_path, "FFMpegEncoderOption, FFMpegDecoderOption")}}
+{{get_relative_import("formats.schema", template_path, "FFMpegMuxerOption, FFMpegDemuxerOption")}}
 {% endmacro %}
