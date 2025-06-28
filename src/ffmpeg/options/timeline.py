@@ -8,7 +8,7 @@ class FFMpegTimelineOption(FFMpegOptionGroup):
     """Timeline options."""
 
 
-def timeline(enable: str | Expression) -> FFMpegTimelineOption:
+def timeline(*, enable: str | Expression) -> FFMpegTimelineOption:
     """
     Create timeline options.
 

@@ -16,29 +16,30 @@ class FFMpegAVFormatContextDecoderOption(FFMpegOptionGroup):
 
 
 def encoder_format_context(
-    avioflags: str | None,
-    packetsize: int | None,
-    fflags: str | None,
-    fdebug: str | None,
-    max_delay: int | None,
-    start_time_realtime: int | None,
-    audio_preload: int | None,
-    chunk_duration: int | None,
-    chunk_size: int | None,
-    flush_packets: int | None,
-    metadata_header_padding: int | None,
-    output_ts_offset: str | None,
-    max_interleave_delta: int | None,
+    *,
+    avioflags: str | None = None,
+    packetsize: int | None = None,
+    fflags: str | None = None,
+    fdebug: str | None = None,
+    max_delay: int | None = None,
+    start_time_realtime: int | None = None,
+    audio_preload: int | None = None,
+    chunk_duration: int | None = None,
+    chunk_size: int | None = None,
+    flush_packets: int | None = None,
+    metadata_header_padding: int | None = None,
+    output_ts_offset: str | None = None,
+    max_interleave_delta: int | None = None,
     f_strict: int
     | None
-    | Literal["very", "strict", "normal", "unofficial", "experimental"],
+    | Literal["very", "strict", "normal", "unofficial", "experimental"] = None,
     strict: int
     | None
-    | Literal["very", "strict", "normal", "unofficial", "experimental"],
+    | Literal["very", "strict", "normal", "unofficial", "experimental"] = None,
     avoid_negative_ts: int
     | None
-    | Literal["auto", "disabled", "make_non_negative", "make_zero"],
-    dump_separator: str | None,
+    | Literal["auto", "disabled", "make_non_negative", "make_zero"] = None,
+    dump_separator: str | None = None,
 ) -> FFMpegAVFormatContextEncoderOption:
     """
     Encoder format context options.
@@ -90,38 +91,39 @@ def encoder_format_context(
 
 
 def decoder_format_context(
-    avioflags: str | None,
-    probesize: int | None,
-    formatprobesize: int | None,
-    fflags: str | None,
-    seek2any: bool | None,
-    analyzeduration: int | None,
-    cryptokey: str | None,
-    indexmem: int | None,
-    rtbufsize: int | None,
-    fdebug: str | None,
-    max_delay: int | None,
-    fpsprobesize: int | None,
-    f_err_detect: str | None,
-    err_detect: str | None,
-    use_wallclock_as_timestamps: bool | None,
-    skip_initial_bytes: int | None,
-    correct_ts_overflow: bool | None,
+    *,
+    avioflags: str | None = None,
+    probesize: int | None = None,
+    formatprobesize: int | None = None,
+    fflags: str | None = None,
+    seek2any: bool | None = None,
+    analyzeduration: int | None = None,
+    cryptokey: str | None = None,
+    indexmem: int | None = None,
+    rtbufsize: int | None = None,
+    fdebug: str | None = None,
+    max_delay: int | None = None,
+    fpsprobesize: int | None = None,
+    f_err_detect: str | None = None,
+    err_detect: str | None = None,
+    use_wallclock_as_timestamps: bool | None = None,
+    skip_initial_bytes: int | None = None,
+    correct_ts_overflow: bool | None = None,
     f_strict: int
     | None
-    | Literal["very", "strict", "normal", "unofficial", "experimental"],
+    | Literal["very", "strict", "normal", "unofficial", "experimental"] = None,
     strict: int
     | None
-    | Literal["very", "strict", "normal", "unofficial", "experimental"],
-    max_ts_probe: int | None,
-    dump_separator: str | None,
-    codec_whitelist: str | None,
-    format_whitelist: str | None,
-    protocol_whitelist: str | None,
-    protocol_blacklist: str | None,
-    max_streams: int | None,
-    skip_estimate_duration_from_pts: bool | None,
-    max_probe_packets: int | None,
+    | Literal["very", "strict", "normal", "unofficial", "experimental"] = None,
+    max_ts_probe: int | None = None,
+    dump_separator: str | None = None,
+    codec_whitelist: str | None = None,
+    format_whitelist: str | None = None,
+    protocol_whitelist: str | None = None,
+    protocol_blacklist: str | None = None,
+    max_streams: int | None = None,
+    skip_estimate_duration_from_pts: bool | None = None,
+    max_probe_packets: int | None = None,
 ) -> FFMpegAVFormatContextDecoderOption:
     """
     Decoder format context options.

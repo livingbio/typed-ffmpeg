@@ -41,6 +41,7 @@ class FFMpegAVCodecContextDecoderOption(FFMpegOptionGroup):
     """AVCodecContext Decoder options."""
 
 def encoder_codec_context(
+*,
 ) -> FFMpegAVCodecContextEncoderOption:
     """
         Encoder codec context options.
@@ -57,6 +58,7 @@ def encoder_codec_context(
 
 
 def decoder_codec_context(
+*,
 ) -> FFMpegAVCodecContextDecoderOption:
     """
         Decoder codec context options.

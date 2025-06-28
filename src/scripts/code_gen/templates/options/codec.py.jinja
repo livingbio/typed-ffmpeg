@@ -16,9 +16,10 @@ class FFMpegAVCodecContextDecoderOption(FFMpegOptionGroup):
     """AVCodecContext Decoder options."""
 
 def encoder_codec_context(
+*,
 {%- for option in av_option_sets %}
 {%- if option.section == "AVCodecContext AVOptions:" and "E" in option.flags %}
-{{ option.name }}: {{ option.code_gen_type }},
+{{ option.name }}: {{ option.code_gen_type }} = None,
 {%- endif %}
 {%- endfor %}
 ) -> FFMpegAVCodecContextEncoderOption:
@@ -47,9 +48,10 @@ def encoder_codec_context(
 
 
 def decoder_codec_context(
+*,
 {%- for option in av_option_sets %}
 {%- if option.section == "AVCodecContext AVOptions:" and "D" in option.flags %}
-{{ option.name }}: {{ option.code_gen_type }},
+{{ option.name }}: {{ option.code_gen_type }} = None,
 {%- endif %}
 {%- endfor %}
 ) -> FFMpegAVCodecContextDecoderOption:

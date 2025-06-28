@@ -16,39 +16,42 @@ class FFMpegAVCodecContextDecoderOption(FFMpegOptionGroup):
 
 
 def encoder_codec_context(
-    b: int | None,
-    ab: int | None,
-    bt: int | None,
-    flags: str | None,
-    export_side_data: str | None,
-    g: int | None,
-    ar: int | None,
-    ac: int | None,
-    cutoff: int | None,
-    frame_size: int | None,
-    qcomp: float | None,
-    qblur: float | None,
-    qmin: int | None,
-    qmax: int | None,
-    qdiff: int | None,
-    bf: int | None,
-    b_qfactor: float | None,
+    *,
+    b: int | None = None,
+    ab: int | None = None,
+    bt: int | None = None,
+    flags: str | None = None,
+    export_side_data: str | None = None,
+    g: int | None = None,
+    ar: int | None = None,
+    ac: int | None = None,
+    cutoff: int | None = None,
+    frame_size: int | None = None,
+    qcomp: float | None = None,
+    qblur: float | None = None,
+    qmin: int | None = None,
+    qmax: int | None = None,
+    qdiff: int | None = None,
+    bf: int | None = None,
+    b_qfactor: float | None = None,
     strict: int
     | None
-    | Literal["very", "strict", "normal", "unofficial", "experimental"],
-    b_qoffset: float | None,
-    err_detect: str | None,
-    maxrate: int | None,
-    minrate: int | None,
-    bufsize: int | None,
-    i_qfactor: float | None,
-    i_qoffset: float | None,
-    dct: int | None | Literal["auto", "fastint", "int", "mmx", "altivec", "faan"],
-    lumi_mask: float | None,
-    tcplx_mask: float | None,
-    scplx_mask: float | None,
-    p_mask: float | None,
-    dark_mask: float | None,
+    | Literal["very", "strict", "normal", "unofficial", "experimental"] = None,
+    b_qoffset: float | None = None,
+    err_detect: str | None = None,
+    maxrate: int | None = None,
+    minrate: int | None = None,
+    bufsize: int | None = None,
+    i_qfactor: float | None = None,
+    i_qoffset: float | None = None,
+    dct: int
+    | None
+    | Literal["auto", "fastint", "int", "mmx", "altivec", "faan"] = None,
+    lumi_mask: float | None = None,
+    tcplx_mask: float | None = None,
+    scplx_mask: float | None = None,
+    p_mask: float | None = None,
+    dark_mask: float | None = None,
     idct: int
     | None
     | Literal[
@@ -66,22 +69,22 @@ def encoder_codec_context(
         "xvidmmx",
         "faani",
         "simpleauto",
-    ],
-    aspect: str | None,
-    debug: str | None,
-    dia_size: int | None,
-    last_pred: int | None,
-    pre_dia_size: int | None,
-    subq: int | None,
-    me_range: int | None,
-    global_quality: int | None,
-    mbd: int | None | Literal["simple", "bits", "rd"],
-    rc_init_occupancy: int | None,
-    threads: int | None | Literal["auto"],
-    dc: int | None,
-    nssew: int | None,
-    profile: int | None | Literal["unknown", "main10"],
-    level: int | None | Literal["unknown"],
+    ] = None,
+    aspect: str | None = None,
+    debug: str | None = None,
+    dia_size: int | None = None,
+    last_pred: int | None = None,
+    pre_dia_size: int | None = None,
+    subq: int | None = None,
+    me_range: int | None = None,
+    global_quality: int | None = None,
+    mbd: int | None | Literal["simple", "bits", "rd"] = None,
+    rc_init_occupancy: int | None = None,
+    threads: int | None | Literal["auto"] = None,
+    dc: int | None = None,
+    nssew: int | None = None,
+    profile: int | None | Literal["unknown", "main10"] = None,
+    level: int | None | Literal["unknown"] = None,
     cmp: int
     | None
     | Literal[
@@ -101,7 +104,7 @@ def encoder_codec_context(
         "dctmax",
         "chroma",
         "msad",
-    ],
+    ] = None,
     subcmp: int
     | None
     | Literal[
@@ -121,7 +124,7 @@ def encoder_codec_context(
         "dctmax",
         "chroma",
         "msad",
-    ],
+    ] = None,
     mbcmp: int
     | None
     | Literal[
@@ -141,7 +144,7 @@ def encoder_codec_context(
         "dctmax",
         "chroma",
         "msad",
-    ],
+    ] = None,
     ildctcmp: int
     | None
     | Literal[
@@ -161,7 +164,7 @@ def encoder_codec_context(
         "dctmax",
         "chroma",
         "msad",
-    ],
+    ] = None,
     precmp: int
     | None
     | Literal[
@@ -181,20 +184,20 @@ def encoder_codec_context(
         "dctmax",
         "chroma",
         "msad",
-    ],
-    mblmin: int | None,
-    mblmax: int | None,
-    bidir_refine: int | None,
-    keyint_min: int | None,
-    refs: int | None,
-    trellis: int | None,
-    mv0_threshold: int | None,
-    compression_level: int | None,
-    ch_layout: str | None,
-    channel_layout: str | None,
-    rc_max_vbv_use: float | None,
-    rc_min_vbv_use: float | None,
-    ticks_per_frame: int | None,
+    ] = None,
+    mblmin: int | None = None,
+    mblmax: int | None = None,
+    bidir_refine: int | None = None,
+    keyint_min: int | None = None,
+    refs: int | None = None,
+    trellis: int | None = None,
+    mv0_threshold: int | None = None,
+    compression_level: int | None = None,
+    ch_layout: str | None = None,
+    channel_layout: str | None = None,
+    rc_max_vbv_use: float | None = None,
+    rc_min_vbv_use: float | None = None,
+    ticks_per_frame: int | None = None,
     color_primaries: int
     | None
     | Literal[
@@ -213,7 +216,7 @@ def encoder_codec_context(
         "jedec-p22",
         "ebu3213",
         "unspecified",
-    ],
+    ] = None,
     color_trc: int
     | None
     | Literal[
@@ -243,7 +246,7 @@ def encoder_codec_context(
         "bt2020_10bit",
         "bt2020_12bit",
         "smpte428_1",
-    ],
+    ] = None,
     colorspace: int
     | None
     | Literal[
@@ -265,10 +268,12 @@ def encoder_codec_context(
         "ycocg",
         "bt2020_ncl",
         "bt2020_cl",
-    ],
+    ] = None,
     color_range: int
     | None
-    | Literal["unknown", "tv", "pc", "unspecified", "mpeg", "jpeg", "limited", "full"],
+    | Literal[
+        "unknown", "tv", "pc", "unspecified", "mpeg", "jpeg", "limited", "full"
+    ] = None,
     chroma_sample_location: int
     | None
     | Literal[
@@ -280,16 +285,16 @@ def encoder_codec_context(
         "bottomleft",
         "bottom",
         "unspecified",
-    ],
-    slices: int | None,
-    thread_type: str | None,
+    ] = None,
+    slices: int | None = None,
+    thread_type: str | None = None,
     audio_service_type: int
     | None
-    | Literal["ma", "ef", "vi", "hi", "di", "co", "em", "vo", "ka"],
-    field_order: int | None | Literal["progressive", "tt", "bb", "tb", "bt"],
-    dump_separator: str | None,
-    max_pixels: int | None,
-    max_samples: int | None,
+    | Literal["ma", "ef", "vi", "hi", "di", "co", "em", "vo", "ka"] = None,
+    field_order: int | None | Literal["progressive", "tt", "bb", "tb", "bt"] = None,
+    dump_separator: str | None = None,
+    max_pixels: int | None = None,
+    max_samples: int | None = None,
 ) -> FFMpegAVCodecContextEncoderOption:
     """
     Encoder codec context options.
@@ -461,15 +466,16 @@ def encoder_codec_context(
 
 
 def decoder_codec_context(
-    flags: str | None,
-    export_side_data: str | None,
-    ar: int | None,
-    ac: int | None,
-    bug: str | None,
+    *,
+    flags: str | None = None,
+    export_side_data: str | None = None,
+    ar: int | None = None,
+    ac: int | None = None,
+    bug: str | None = None,
     strict: int
     | None
-    | Literal["very", "strict", "normal", "unofficial", "experimental"],
-    err_detect: str | None,
+    | Literal["very", "strict", "normal", "unofficial", "experimental"] = None,
+    err_detect: str | None = None,
     idct: int
     | None
     | Literal[
@@ -487,26 +493,26 @@ def decoder_codec_context(
         "xvidmmx",
         "faani",
         "simpleauto",
-    ],
-    ec: str | None,
-    debug: str | None,
-    threads: int | None | Literal["auto"],
-    skip_top: int | None,
-    skip_bottom: int | None,
-    lowres: int | None,
+    ] = None,
+    ec: str | None = None,
+    debug: str | None = None,
+    threads: int | None | Literal["auto"] = None,
+    skip_top: int | None = None,
+    skip_bottom: int | None = None,
+    lowres: int | None = None,
     skip_loop_filter: int
     | None
-    | Literal["none", "default", "noref", "bidir", "nointra", "nokey", "all"],
+    | Literal["none", "default", "noref", "bidir", "nointra", "nokey", "all"] = None,
     skip_idct: int
     | None
-    | Literal["none", "default", "noref", "bidir", "nointra", "nokey", "all"],
+    | Literal["none", "default", "noref", "bidir", "nointra", "nokey", "all"] = None,
     skip_frame: int
     | None
-    | Literal["none", "default", "noref", "bidir", "nointra", "nokey", "all"],
-    ch_layout: str | None,
-    channel_layout: str | None,
-    request_channel_layout: str | None,
-    ticks_per_frame: int | None,
+    | Literal["none", "default", "noref", "bidir", "nointra", "nokey", "all"] = None,
+    ch_layout: str | None = None,
+    channel_layout: str | None = None,
+    request_channel_layout: str | None = None,
+    ticks_per_frame: int | None = None,
     color_primaries: int
     | None
     | Literal[
@@ -525,7 +531,7 @@ def decoder_codec_context(
         "jedec-p22",
         "ebu3213",
         "unspecified",
-    ],
+    ] = None,
     color_trc: int
     | None
     | Literal[
@@ -555,7 +561,7 @@ def decoder_codec_context(
         "bt2020_10bit",
         "bt2020_12bit",
         "smpte428_1",
-    ],
+    ] = None,
     colorspace: int
     | None
     | Literal[
@@ -577,10 +583,12 @@ def decoder_codec_context(
         "ycocg",
         "bt2020_ncl",
         "bt2020_cl",
-    ],
+    ] = None,
     color_range: int
     | None
-    | Literal["unknown", "tv", "pc", "unspecified", "mpeg", "jpeg", "limited", "full"],
+    | Literal[
+        "unknown", "tv", "pc", "unspecified", "mpeg", "jpeg", "limited", "full"
+    ] = None,
     chroma_sample_location: int
     | None
     | Literal[
@@ -592,21 +600,21 @@ def decoder_codec_context(
         "bottomleft",
         "bottom",
         "unspecified",
-    ],
-    thread_type: str | None,
-    request_sample_fmt: str | None,
-    sub_charenc: str | None,
-    sub_charenc_mode: str | None,
-    apply_cropping: bool | None,
-    skip_alpha: bool | None,
-    field_order: int | None | Literal["progressive", "tt", "bb", "tb", "bt"],
-    dump_separator: str | None,
-    codec_whitelist: str | None,
-    max_pixels: int | None,
-    max_samples: int | None,
-    hwaccel_flags: str | None,
-    extra_hw_frames: int | None,
-    discard_damaged_percentage: int | None,
+    ] = None,
+    thread_type: str | None = None,
+    request_sample_fmt: str | None = None,
+    sub_charenc: str | None = None,
+    sub_charenc_mode: str | None = None,
+    apply_cropping: bool | None = None,
+    skip_alpha: bool | None = None,
+    field_order: int | None | Literal["progressive", "tt", "bb", "tb", "bt"] = None,
+    dump_separator: str | None = None,
+    codec_whitelist: str | None = None,
+    max_pixels: int | None = None,
+    max_samples: int | None = None,
+    hwaccel_flags: str | None = None,
+    extra_hw_frames: int | None = None,
+    discard_damaged_percentage: int | None = None,
 ) -> FFMpegAVCodecContextDecoderOption:
     """
     Decoder codec context options.
