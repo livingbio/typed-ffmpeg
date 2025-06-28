@@ -6,6 +6,12 @@ from typing import Any
 
 from ...codecs.schema import FFMpegDecoderOption
 from ...formats.schema import FFMpegDemuxerOption
+from ...options.codec import (
+    FFMpegAVCodecContextDecoderOption,
+)
+from ...options.format import (
+    FFMpegAVFormatContextDecoderOption,
+)
 from ...streams.av import AVStream
 from ...types import (
     Boolean,
@@ -78,6 +84,8 @@ def input(
     top: Int = None,
     decoder_options: FFMpegDecoderOption | None = None,
     demuxer_options: FFMpegDemuxerOption | None = None,
+    format_options: FFMpegAVFormatContextDecoderOption | None = None,
+    codec_options: FFMpegAVCodecContextDecoderOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> AVStream:
     """
@@ -139,6 +147,8 @@ def input(
         top: deprecated, use the setfield video filter
         decoder_options: ffmpeg's decoder options
         demuxer_options: ffmpeg's demuxer options
+        format_options: ffmpeg's AVFormatContext options
+        codec_options: ffmpeg's AVCodecContext options
         extra_options: ffmpeg's input file options
 
     Returns:
@@ -210,6 +220,8 @@ def input(
             },
             decoder_options,
             demuxer_options,
+            format_options,
+            codec_options,
             extra_options,
         ),
     ).stream()

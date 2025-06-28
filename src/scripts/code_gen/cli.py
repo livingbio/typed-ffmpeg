@@ -13,7 +13,7 @@ from ffmpeg.common.schema import FFMpegFilter, FFMpegOption
 from ..manual.cli import load_config
 from ..parse_c.cli import parse_ffmpeg_options
 from ..parse_docs.cli import extract_docs
-from ..parse_help.cli import all_codecs, all_filters, all_formats
+from ..parse_help.cli import all_av_option_sets, all_codecs, all_filters, all_formats
 from .gen import render
 from .schema import (
     FFMpegAVOption,
@@ -47,22 +47,71 @@ def gen_filter_info(ffmpeg_filter: FFMpegFilter) -> FFMpegFilter:
     return replace(ffmpeg_filter, ref=filter_doc.url)
 
 
-def gen_option_info() -> list[FFMpegOption]:
+def load_options(rebuild: bool) -> list[FFMpegOption]:
     """
-    Generate option info.
+    Load options from the output path.
+
+    Args:
+        rebuild: Whether to use the cache
 
     Returns:
         The option info
 
     """
-    try:
-        return load(list[FFMpegOption], "options")
-    except Exception as e:
-        logging.error(f"Failed to load options from cache: {e}")
+    if not rebuild:
+        try:
+            return load(list[FFMpegOption], "options")
+        except Exception as e:
+            logging.error(f"Failed to load options from cache: {e}")
 
     options = parse_ffmpeg_options()
     save(options, "options")
     return options
+
+
+def load_av_option_set(rebuild: bool) -> list[FFMpegAVOption]:
+    """
+    Load AV options from the output path.
+
+    Args:
+        rebuild: Whether to use the cache
+
+    Returns:
+        The options
+
+    """
+    if not rebuild:
+        try:
+            return load(list[FFMpegAVOption], "av_option_sets")
+        except Exception as e:
+            logging.error(f"Failed to load options from cache: {e}")
+
+    options = all_av_option_sets()
+    output: list[FFMpegAVOption] = []
+    for option in options:
+        _option = FFMpegAVOption(
+            section=option.section,
+            name=option.name,
+            type=str(option.type),
+            flags=str(option.flags),
+            help=option.help,
+            min=None,
+            max=None,
+            default=None,
+            choices=tuple(
+                FFMpegOptionChoice(
+                    name=choice.name,
+                    help=choice.help,
+                    flags=choice.flags,
+                    value=choice.value,
+                )
+                for choice in option.choices
+            ),
+        )
+        output.append(_option)
+
+    save(output, "av_option_sets")
+    return output
 
 
 def load_filters(rebuild: bool) -> list[FFMpegFilter]:
@@ -245,15 +294,17 @@ def generate(outpath: Path | None = None, rebuild: bool = False) -> None:
         outpath = Path(__file__).parent.parent.parent / "ffmpeg"
 
     ffmpeg_filters = load_filters(rebuild)
-    ffmpeg_options = gen_option_info()
+    ffmpeg_options = load_options(rebuild)
     ffmpeg_codecs = load_codecs(rebuild)
     ffmpeg_muxers = load_formats(rebuild)
+    ffmpeg_av_option_set = load_av_option_set(rebuild)
 
     render(
         filters=ffmpeg_filters,
         options=ffmpeg_options,
         codecs=ffmpeg_codecs,
         muxers=ffmpeg_muxers,
+        av_option_sets=ffmpeg_av_option_set,
         outpath=outpath,
     )
     os.system("pre-commit run -a")

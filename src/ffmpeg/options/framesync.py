@@ -11,6 +11,7 @@ class FFMpegFrameSyncOption(FFMpegOptionGroup):
 
 
 def framesync(
+    *,
     eof_action: Literal["repeat", "pass", "endall"] | None = None,
     shortest: bool | None = None,
     repeatlast: bool | None = None,

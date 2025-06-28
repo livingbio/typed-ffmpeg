@@ -12,10 +12,12 @@ from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags
 from ..factory import filter_node_factory
 from ...utils.frozendict import FrozenDict, merge
 from ...utils.typing import override
-from ...schema import Default, StreamType, Auto
+from ...schema import Default, StreamType, Auto, FFMpegOptionGroup
 from ...common.schema import FFMpegFilterDef
 from ...options.framesync import FFMpegFrameSyncOption
 from ...options.timeline import FFMpegTimelineOption
+from ...options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecContextDecoderOption
+from ...options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
 from ...streams.av import AVStream
 from ...streams.channel_layout import CHANNEL_LAYOUT
 from ...codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
@@ -35,6 +37,8 @@ def output(
     *streams: FilterableStream,
     filename: str | Path,encoder_options: FFMpegEncoderOption | None = None,
     muxer_options: FFMpegMuxerOption | None = None,
+    format_options: FFMpegAVFormatContextEncoderOption | None = None,
+    codec_options: FFMpegAVCodecContextEncoderOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> OutputStream:
     """
@@ -45,6 +49,8 @@ def output(
         filename: the filename to output to
         encoder_options: ffmpeg's encoder options
         muxer_options: ffmpeg's muxer options
+        format_options: ffmpeg's AVFormatContext options
+        codec_options: ffmpeg's AVCodecContext options
         extra_options: the arguments for the output
 
     Returns:
@@ -56,5 +62,5 @@ def output(
         filename=str(filename),
         kwargs=merge({
             
-        }, encoder_options, muxer_options, extra_options )
+        }, encoder_options, muxer_options, format_options, codec_options, extra_options )
     ).stream()

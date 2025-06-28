@@ -62,6 +62,11 @@ class FFMpegOption:
     argname: str | None = None
     """The variable name for the option (e.g., "flags", "count") or None if not specified."""
 
+    @property
+    def is_av_option(self) -> bool:
+        """Whether this option is an AV option."""
+        return isinstance(self, FFMpegAVOption)
+
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegOptionChoice:

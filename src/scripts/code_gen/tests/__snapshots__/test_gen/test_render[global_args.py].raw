@@ -15,10 +15,12 @@ from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags
 from ..factory import filter_node_factory
 from ...utils.frozendict import FrozenDict, merge
 from ...utils.typing import override
-from ...schema import Default, StreamType, Auto
+from ...schema import Default, StreamType, Auto, FFMpegOptionGroup
 from ...common.schema import FFMpegFilterDef
 from ...options.framesync import FFMpegFrameSyncOption
 from ...options.timeline import FFMpegTimelineOption
+from ...options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecContextDecoderOption
+from ...options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
 from ...streams.av import AVStream
 from ...streams.channel_layout import CHANNEL_LAYOUT
 from ...codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption

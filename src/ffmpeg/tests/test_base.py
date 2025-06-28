@@ -2,12 +2,19 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
+from ffmpeg.options.codec import decoder_codec_context, encoder_codec_context
+
 from .. import expressions, formats
 from ..base import input, merge_outputs, output, vfilter
 from ..codecs.decoders import h264
 from ..codecs.encoders import h263
 from ..filters import blend, concat, join
-from ..options import framesync, timeline
+from ..options import (
+    decoder_format_context,
+    encoder_format_context,
+    framesync,
+    timeline,
+)
 from ..schema import StreamType
 from ..sources import color
 from ..streams.video import VideoStream
@@ -87,6 +94,22 @@ def test_filter_node_with_timeline(snapshot: SnapshotAssertion) -> None:
         .output(filename="out.mp4")
         .compile()
     )
+
+
+def test_output_node_with_format_options(snapshot: SnapshotAssertion) -> None:
+    input1 = input("input1", format_options=decoder_format_context(probesize=1024))
+    out = input1.output(
+        filename="out.mp4", format_options=encoder_format_context(packetsize=1024)
+    )
+    assert snapshot(extension_class=JSONSnapshotExtension) == (out.compile())
+
+
+def test_output_node_with_codec_options(snapshot: SnapshotAssertion) -> None:
+    input1 = input("input1", codec_options=decoder_codec_context(strict="experimental"))
+    out = input1.output(
+        filename="out.mp4", codec_options=encoder_codec_context(frame_size=1024)
+    )
+    assert snapshot(extension_class=JSONSnapshotExtension) == (out.compile())
 
 
 def test_compile(snapshot: SnapshotAssertion) -> None:
