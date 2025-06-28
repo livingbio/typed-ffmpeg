@@ -2766,6 +2766,52 @@
   
   
     <li class="md-nav__item">
+      <a href="../../options/codec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    codec
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../options/format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    format
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../options/framesync/" class="md-nav__link">
         
   
@@ -7491,6 +7537,12 @@ itself, allowing access to multiple output streams.</p>
    (ffmpeg.types.Int)" href="../../types/#ffmpeg.types.Int">Int</a></span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">encoder_options</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            FFMpegEncoderOption (ffmpeg.codecs.schema.FFMpegEncoderOption)" href="../../codecs/schema/#ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">muxer_options</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            FFMpegMuxerOption (ffmpeg.formats.schema.FFMpegMuxerOption)" href="../../formats/schema/#ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">format_options</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><a class="autorefs autorefs-internal" title="            FFMpegAVFormatContextEncoderOption (ffmpeg.options.format.FFMpegAVFormatContextEncoderOption)" href="../../options/format/#ffmpeg.options.format.FFMpegAVFormatContextEncoderOption">FFMpegAVFormatContextEncoderOption</a></span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">codec_options</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><a class="autorefs autorefs-internal" title="            FFMpegAVCodecContextEncoderOption (ffmpeg.options.codec.FFMpegAVCodecContextEncoderOption)" href="../../options/codec/#ffmpeg.options.codec.FFMpegAVCodecContextEncoderOption">FFMpegAVCodecContextEncoderOption</a></span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">extra_options</span><span class="p">:</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="typing.Any">Any</span></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            OutputStream
 
@@ -7991,7 +8043,9 @@ itself, allowing access to multiple output streams.</p>
     dn: disable data
     top: deprecated, use the setfield video filter
     encoder_options: ffmpeg's encoder options
-    muxer_options: FFMpegMuxerOption | None = None,
+    muxer_options: FFMpegMuxerOption
+    format_options: FFMpegAVFormatContextEncoderOption
+    codec_options: FFMpegAVCodecContextEncoderOption
     extra_options: the arguments for the output</p>
 
 

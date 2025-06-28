@@ -2020,6 +2020,52 @@
   
   
     <li class="md-nav__item">
+      <a href="../options/codec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    codec
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../options/format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    format
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../options/framesync/" class="md-nav__link">
         
   
@@ -4384,6 +4430,12 @@ Use the built-in filters from the filters module when available.</p>
    (ffmpeg.types.Int)" href="../types/#ffmpeg.types.Int">Int</a></span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">decoder_options</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            FFMpegDecoderOption (ffmpeg.codecs.schema.FFMpegDecoderOption)" href="../codecs/schema/#ffmpeg.codecs.schema.FFMpegDecoderOption">FFMpegDecoderOption</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">demuxer_options</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            FFMpegDemuxerOption (ffmpeg.formats.schema.FFMpegDemuxerOption)" href="../formats/schema/#ffmpeg.formats.schema.FFMpegDemuxerOption">FFMpegDemuxerOption</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">format_options</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><a class="autorefs autorefs-internal" title="            FFMpegAVFormatContextDecoderOption (ffmpeg.options.format.FFMpegAVFormatContextDecoderOption)" href="../options/format/#ffmpeg.options.format.FFMpegAVFormatContextDecoderOption">FFMpegAVFormatContextDecoderOption</a></span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">codec_options</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><a class="autorefs autorefs-internal" title="            FFMpegAVCodecContextDecoderOption (ffmpeg.options.codec.FFMpegAVCodecContextDecoderOption)" href="../options/codec/#ffmpeg.options.codec.FFMpegAVCodecContextDecoderOption">FFMpegAVCodecContextDecoderOption</a></span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">extra_options</span><span class="p">:</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="typing.Any">Any</span></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            AVStream
 
@@ -5551,6 +5603,38 @@ Use the built-in filters from the filters module when available.</p>
           </tr>
           <tr class="doc-section-item">
             <td>
+                <code>format_options</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            FFMpegAVFormatContextDecoderOption (ffmpeg.options.format.FFMpegAVFormatContextDecoderOption)" href="../options/format/#ffmpeg.options.format.FFMpegAVFormatContextDecoderOption">FFMpegAVFormatContextDecoderOption</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>ffmpeg's AVFormatContext options</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>codec_options</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            FFMpegAVCodecContextDecoderOption (ffmpeg.options.codec.FFMpegAVCodecContextDecoderOption)" href="../options/codec/#ffmpeg.options.codec.FFMpegAVCodecContextDecoderOption">FFMpegAVCodecContextDecoderOption</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>ffmpeg's AVCodecContext options</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
                 <code>extra_options</code>
             </td>
             <td>
@@ -6295,6 +6379,12 @@ running separate commands.</p>
    (ffmpeg.types.Int)" href="../types/#ffmpeg.types.Int">Int</a></span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">encoder_options</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            FFMpegEncoderOption (ffmpeg.codecs.schema.FFMpegEncoderOption)" href="../codecs/schema/#ffmpeg.codecs.schema.FFMpegEncoderOption">FFMpegEncoderOption</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">muxer_options</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            FFMpegMuxerOption (ffmpeg.formats.schema.FFMpegMuxerOption)" href="../formats/schema/#ffmpeg.formats.schema.FFMpegMuxerOption">FFMpegMuxerOption</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">format_options</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><a class="autorefs autorefs-internal" title="            FFMpegAVFormatContextEncoderOption (ffmpeg.options.format.FFMpegAVFormatContextEncoderOption)" href="../options/format/#ffmpeg.options.format.FFMpegAVFormatContextEncoderOption">FFMpegAVFormatContextEncoderOption</a></span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">codec_options</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><a class="autorefs autorefs-internal" title="            FFMpegAVCodecContextEncoderOption (ffmpeg.options.codec.FFMpegAVCodecContextEncoderOption)" href="../options/codec/#ffmpeg.options.codec.FFMpegAVCodecContextEncoderOption">FFMpegAVCodecContextEncoderOption</a></span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">extra_options</span><span class="p">:</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="typing.Any">Any</span></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            OutputStream
 
@@ -8357,6 +8447,38 @@ running separate commands.</p>
             <td>
               <div class="doc-md-description">
                 <p>ffmpeg's muxer options</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>format_options</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            FFMpegAVFormatContextEncoderOption (ffmpeg.options.format.FFMpegAVFormatContextEncoderOption)" href="../options/format/#ffmpeg.options.format.FFMpegAVFormatContextEncoderOption">FFMpegAVFormatContextEncoderOption</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>ffmpeg's AVFormatContext options</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>codec_options</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            FFMpegAVCodecContextEncoderOption (ffmpeg.options.codec.FFMpegAVCodecContextEncoderOption)" href="../options/codec/#ffmpeg.options.codec.FFMpegAVCodecContextEncoderOption">FFMpegAVCodecContextEncoderOption</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>ffmpeg's AVCodecContext options</p>
               </div>
             </td>
             <td>

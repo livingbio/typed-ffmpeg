@@ -1920,6 +1920,52 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../ffmpeg/options/codec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    codec
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ffmpeg/options/format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    format
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../ffmpeg/options/framesync/" class="md-nav__link">
         
   
@@ -2679,18 +2725,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#scripts.code_gen.cli.gen_option_info" class="md-nav__link">
+  <a href="#scripts.code_gen.cli.generate" class="md-nav__link">
     <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;gen_option_info
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;generate
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#scripts.code_gen.cli.generate" class="md-nav__link">
+  <a href="#scripts.code_gen.cli.load_av_option_set" class="md-nav__link">
     <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;generate
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;load_av_option_set
     </span>
   </a>
   
@@ -2718,6 +2764,15 @@
   <a href="#scripts.code_gen.cli.load_formats" class="md-nav__link">
     <span class="md-ellipsis">
       <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;load_formats
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.code_gen.cli.load_options" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;load_options
     </span>
   </a>
   
@@ -3523,18 +3578,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#scripts.code_gen.cli.gen_option_info" class="md-nav__link">
+  <a href="#scripts.code_gen.cli.generate" class="md-nav__link">
     <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;gen_option_info
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;generate
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#scripts.code_gen.cli.generate" class="md-nav__link">
+  <a href="#scripts.code_gen.cli.load_av_option_set" class="md-nav__link">
     <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;generate
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;load_av_option_set
     </span>
   </a>
   
@@ -3562,6 +3617,15 @@
   <a href="#scripts.code_gen.cli.load_formats" class="md-nav__link">
     <span class="md-ellipsis">
       <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;load_formats
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.code_gen.cli.load_options" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;load_options
     </span>
   </a>
   
@@ -3627,18 +3691,18 @@
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="            gen_option_info (scripts.code_gen.cli.gen_option_info)" href="#scripts.code_gen.cli.gen_option_info">gen_option_info</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Generate option info.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
               <td><code><a class="autorefs autorefs-internal" title="            generate (scripts.code_gen.cli.generate)" href="#scripts.code_gen.cli.generate">generate</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Generate filter and option documents.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            load_av_option_set (scripts.code_gen.cli.load_av_option_set)" href="#scripts.code_gen.cli.load_av_option_set">load_av_option_set</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Load AV options from the output path.</p>
                 </div>
               </td>
             </tr>
@@ -3663,6 +3727,14 @@
               <td>
                 <div class="doc-md-description">
                   <p>Load muxers from the output path.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            load_options (scripts.code_gen.cli.load_options)" href="#scripts.code_gen.cli.load_options">load_options</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Load options from the output path.</p>
                 </div>
               </td>
             </tr>
@@ -3782,59 +3854,6 @@
 <div class="doc doc-object doc-function">
 
 
-<h2 id="scripts.code_gen.cli.gen_option_info" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">gen_option_info</span>
-
-
-<a href="#scripts.code_gen.cli.gen_option_info" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">gen_option_info</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            FFMpegOption
-
-
-  
-      dataclass
-   (ffmpeg.common.schema.FFMpegOption)" href="../../../ffmpeg/common/schema/#ffmpeg.common.schema.FFMpegOption">FFMpegOption</a></span><span class="p">]</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Generate option info.</p>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="            FFMpegOption
-
-
-  
-      dataclass
-   (ffmpeg.common.schema.FFMpegOption)" href="../../../ffmpeg/common/schema/#ffmpeg.common.schema.FFMpegOption">FFMpegOption</a>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The option info</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
 <h2 id="scripts.code_gen.cli.generate" class="doc doc-heading">
 <code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">generate</span>
 
@@ -3891,6 +3910,90 @@
             </td>
             <td>
                   <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="scripts.code_gen.cli.load_av_option_set" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">load_av_option_set</span>
+
+
+<a href="#scripts.code_gen.cli.load_av_option_set" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">load_av_option_set</span><span class="p">(</span><span class="n">rebuild</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            FFMpegAVOption
+
+
+  
+      dataclass
+   (scripts.code_gen.schema.FFMpegAVOption)" href="../schema/#scripts.code_gen.schema.FFMpegAVOption">FFMpegAVOption</a></span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Load AV options from the output path.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>rebuild</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to use the cache</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="            FFMpegAVOption
+
+
+  
+      dataclass
+   (scripts.code_gen.schema.FFMpegAVOption)" href="../schema/#scripts.code_gen.schema.FFMpegAVOption">FFMpegAVOption</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The options</p>
+              </div>
             </td>
           </tr>
       </tbody>
@@ -4188,6 +4291,90 @@
             <td>
               <div class="doc-md-description">
                 <p>If a format is invalid.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="scripts.code_gen.cli.load_options" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">load_options</span>
+
+
+<a href="#scripts.code_gen.cli.load_options" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">load_options</span><span class="p">(</span><span class="n">rebuild</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            FFMpegOption
+
+
+  
+      dataclass
+   (ffmpeg.common.schema.FFMpegOption)" href="../../../ffmpeg/common/schema/#ffmpeg.common.schema.FFMpegOption">FFMpegOption</a></span><span class="p">]</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Load options from the output path.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>rebuild</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to use the cache</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="            FFMpegOption
+
+
+  
+      dataclass
+   (ffmpeg.common.schema.FFMpegOption)" href="../../../ffmpeg/common/schema/#ffmpeg.common.schema.FFMpegOption">FFMpegOption</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The option info</p>
               </div>
             </td>
           </tr>
