@@ -199,6 +199,8 @@ from {{get_relative_path(f, template_path)}} import Binary, Boolean, Color, Dict
 {{get_relative_import("common.schema", template_path, "FFMpegFilterDef")}}
 {{get_relative_import("options.framesync", template_path, "FFMpegFrameSyncOption")}}
 {{get_relative_import("options.timeline", template_path, "FFMpegTimelineOption")}}
+{{get_relative_import("options.codec", template_path, "FFMpegAVCodecContextEncoderOption, FFMpegAVCodecContextDecoderOption")}}
+{{get_relative_import("options.format", template_path, "FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption")}}
 {{get_relative_import("streams.av", template_path, "AVStream")}}
 {{get_relative_import("streams.channel_layout", template_path, "CHANNEL_LAYOUT")}}
 {{get_relative_import("codecs.schema", template_path, "FFMpegEncoderOption, FFMpegDecoderOption")}}

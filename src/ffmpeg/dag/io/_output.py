@@ -6,6 +6,12 @@ from typing import Any
 
 from ...codecs.schema import FFMpegEncoderOption
 from ...formats.schema import FFMpegMuxerOption
+from ...options.codec import (
+    FFMpegAVCodecContextEncoderOption,
+)
+from ...options.format import (
+    FFMpegAVFormatContextEncoderOption,
+)
 from ...types import (
     Boolean,
     Float,
@@ -122,6 +128,8 @@ def output(
     top: Int = None,
     encoder_options: FFMpegEncoderOption | None = None,
     muxer_options: FFMpegMuxerOption | None = None,
+    format_options: FFMpegAVFormatContextEncoderOption | None = None,
+    codec_options: FFMpegAVCodecContextEncoderOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> OutputStream:
     r"""
@@ -226,6 +234,8 @@ def output(
         top: deprecated, use the setfield video filter
         encoder_options: ffmpeg's encoder options
         muxer_options: ffmpeg's muxer options
+        format_options: ffmpeg's AVFormatContext options
+        codec_options: ffmpeg's AVCodecContext options
         extra_options: the arguments for the output
 
     Returns:
@@ -334,6 +344,8 @@ def output(
             },
             encoder_options,
             muxer_options,
+            format_options,
+            codec_options,
             extra_options,
         ),
     ).stream()

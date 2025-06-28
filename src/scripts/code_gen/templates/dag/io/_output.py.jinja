@@ -18,6 +18,8 @@ def output(
     {%- endfor -%}
     encoder_options: FFMpegEncoderOption | None = None,
     muxer_options: FFMpegMuxerOption | None = None,
+    format_options: FFMpegAVFormatContextEncoderOption | None = None,
+    codec_options: FFMpegAVCodecContextEncoderOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> OutputStream:
     """
@@ -33,6 +35,8 @@ def output(
         {%- endfor -%}
         encoder_options: ffmpeg's encoder options
         muxer_options: ffmpeg's muxer options
+        format_options: ffmpeg's AVFormatContext options
+        codec_options: ffmpeg's AVCodecContext options
         extra_options: the arguments for the output
 
     Returns:
@@ -48,5 +52,5 @@ def output(
                 "{{ option.name}}": {{ option.name | option_name_safe }},
                 {% endif %}
                 {% endfor %}
-        }, encoder_options, muxer_options, extra_options )
+        }, encoder_options, muxer_options, format_options, codec_options, extra_options )
     ).stream()

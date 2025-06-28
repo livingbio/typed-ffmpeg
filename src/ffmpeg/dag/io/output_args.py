@@ -9,6 +9,12 @@ from typing import TYPE_CHECKING, Any
 
 from ...codecs.schema import FFMpegEncoderOption
 from ...formats.schema import FFMpegMuxerOption
+from ...options.codec import (
+    FFMpegAVCodecContextEncoderOption,
+)
+from ...options.format import (
+    FFMpegAVFormatContextEncoderOption,
+)
 from ...types import (
     Boolean,
     Float,
@@ -132,6 +138,8 @@ class OutputArgs(ABC):
         top: Int = None,
         encoder_options: FFMpegEncoderOption | None = None,
         muxer_options: FFMpegMuxerOption | None = None,
+        format_options: FFMpegAVFormatContextEncoderOption | None = None,
+        codec_options: FFMpegAVCodecContextEncoderOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> OutputStream:
         r"""
@@ -236,7 +244,9 @@ class OutputArgs(ABC):
             dn: disable data
             top: deprecated, use the setfield video filter
             encoder_options: ffmpeg's encoder options
-            muxer_options: FFMpegMuxerOption | None = None,
+            muxer_options: FFMpegMuxerOption
+            format_options: FFMpegAVFormatContextEncoderOption
+            codec_options: FFMpegAVCodecContextEncoderOption
             extra_options: the arguments for the output
 
         Returns:
@@ -345,6 +355,8 @@ class OutputArgs(ABC):
                 },
                 encoder_options,
                 muxer_options,
+                format_options,
+                codec_options,
                 extra_options,
             ),
         ).stream()

@@ -33,6 +33,8 @@ class OutputArgs(ABC):
         {%- endfor -%}
         encoder_options: FFMpegEncoderOption | None = None,
         muxer_options: FFMpegMuxerOption | None = None,
+        format_options: FFMpegAVFormatContextEncoderOption | None = None,
+        codec_options: FFMpegAVCodecContextEncoderOption | None = None,
         extra_options: dict[str, Any] | None = None,
     ) -> OutputStream:
         """
@@ -47,7 +49,9 @@ class OutputArgs(ABC):
             {% endif %}
             {%- endfor -%}
             encoder_options: ffmpeg's encoder options
-            muxer_options: FFMpegMuxerOption | None = None,
+            muxer_options: FFMpegMuxerOption
+            format_options: FFMpegAVFormatContextEncoderOption
+            codec_options: FFMpegAVCodecContextEncoderOption
             extra_options: the arguments for the output
 
         Returns:
@@ -60,4 +64,4 @@ class OutputArgs(ABC):
                 "{{ option.name}}": {{ option.name | option_name_safe }},
                 {% endif %}
             {% endfor %}
-        }, encoder_options, muxer_options, extra_options)).stream()
+        }, encoder_options, muxer_options, format_options, codec_options, extra_options)).stream()
