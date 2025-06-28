@@ -19,13 +19,13 @@ from ffmpeg.common.schema import (
 )
 
 from . import parse_codecs, parse_filters, parse_formats, parse_help
-from .schema import FFMpegCodec, FFMpegFormat, FFMpegOption
+from .schema import FFMpegAVOption, FFMpegCodec, FFMpegFormat
 
 app = typer.Typer(help="Parse FFmpeg filter help information")
 
 
 @app.command()
-def all_options() -> list[FFMpegOption]:
+def all_av_option_sets() -> list[FFMpegAVOption]:
     """
     Parse all options from FFmpeg help output.
 
@@ -33,7 +33,7 @@ def all_options() -> list[FFMpegOption]:
         List of parsed FFmpeg options.
 
     """
-    return parse_help.extract()
+    return [k for k in parse_help.extract() if isinstance(k, FFMpegAVOption)]
 
 
 @app.command()

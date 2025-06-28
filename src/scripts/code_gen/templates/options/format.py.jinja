@@ -1,0 +1,77 @@
+"""
+FFmpeg format options.
+"""
+
+{% import "_components.jinja" as _components %}
+
+from typing import Literal
+
+{{ _components.import_all(template_path) }}
+
+
+class FFMpegAVFormatContextEncoderOption(FFMpegOptionGroup):
+    """AVFormatContext Encoder options."""
+
+class FFMpegAVFormatContextDecoderOption(FFMpegOptionGroup):
+    """AVFormatContext Decoder options."""
+
+def encoder_format_context(
+{%- for option in av_option_sets %}
+{%- if option.section == "AVFormatContext AVOptions:" and "E" in option.flags %}
+{{ option.name }}: {{ option.code_gen_type }},
+{%- endif %}
+{%- endfor %}
+) -> FFMpegAVFormatContextEncoderOption:
+    """
+        Encoder format context options.
+
+        Args:
+            {%- for option in av_option_sets %}
+            {%- if option.section == "AVFormatContext AVOptions:" and "E" in option.flags %}
+            {{ option.name }}: {{ option.help }},
+            {%- endif %}
+            {%- endfor %}
+
+        Returns:
+            FFMpegAVFormatContextEncoderOption
+
+    """
+
+    return FFMpegAVFormatContextEncoderOption(merge({
+        {%- for option in av_option_sets %}
+        {%- if option.section == "AVFormatContext AVOptions:" and "E" in option.flags %}
+        "{{ option.name }}": {{ option.name }},
+        {%- endif %}
+        {%- endfor %}
+    }))
+
+
+def decoder_format_context(
+{%- for option in av_option_sets %}
+{%- if option.section == "AVFormatContext AVOptions:" and "D" in option.flags %}
+{{ option.name }}: {{ option.code_gen_type }},
+{%- endif %}
+{%- endfor %}
+) -> FFMpegAVFormatContextDecoderOption:
+    """
+        Decoder format context options.
+
+        Args:
+            {%- for option in av_option_sets %}
+            {%- if option.section == "AVFormatContext AVOptions:" and "D" in option.flags %}
+            {{ option.name }}: {{ option.help }},
+            {%- endif %}
+            {%- endfor %}
+
+        Returns:
+            FFMpegAVFormatContextDecoderOption
+
+    """
+
+    return FFMpegAVFormatContextDecoderOption(merge({
+        {%- for option in av_option_sets %}
+        {%- if option.section == "AVFormatContext AVOptions:" and "D" in option.flags %}
+        "{{ option.name }}": {{ option.name }},
+        {%- endif %}
+        {%- endfor %}
+    }))
