@@ -99,7 +99,7 @@ importlib-metadata==8.7.0
     # via keyring
 iniconfig==2.1.0
     # via pytest
-ipykernel==6.29.5
+ipykernel==6.27.1
     # via -r requirements.in
 ipython==8.37.0
     # via ipykernel
@@ -142,7 +142,7 @@ jupyterlab-pygments==0.3.0
     # via nbconvert
 keyring==25.6.0
     # via twine
-lxml==5.4.0
+lxml==6.0.0
     # via -r requirements.in
 markdown==3.8.2
     # via
@@ -216,12 +216,8 @@ more-itertools==10.7.0
     #   jaraco-functools
 multidict==6.5.0
     # via yarl
-mypy==1.16.1
-    # via -r requirements.in
 mypy-extensions==1.1.0
-    # via
-    #   black
-    #   mypy
+    # via black
 nbclient==0.10.2
     # via nbconvert
 nbconvert==7.16.6
@@ -256,7 +252,6 @@ pathspec==0.12.1
     # via
     #   black
     #   mkdocs
-    #   mypy
 pexpect==4.9.0
     # via ipython
 platformdirs==4.3.8
@@ -380,7 +375,6 @@ tomli==2.2.1
     #   black
     #   build
     #   coverage
-    #   mypy
     #   pytest
     #   setuptools-scm
 tornado==6.5.1
@@ -400,6 +394,8 @@ traitlets==5.14.3
     #   nbformat
 twine==6.1.0
     # via -r requirements.in
+ty==0.0.1a12
+    # via -r requirements.in
 typer==0.16.0
     # via -r requirements.in
 typing-extensions==4.14.0
@@ -411,7 +407,6 @@ typing-extensions==4.14.0
     #   mistune
     #   mkdocstrings-python
     #   multidict
-    #   mypy
     #   referencing
     #   rich
     #   typer
