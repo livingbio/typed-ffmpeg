@@ -44,10 +44,11 @@ from ..streams.av import AVStream
 from ..streams.subtitle import SubtitleStream
 from ..streams.video import VideoStream
 from ..utils.escaping import escape
+from ..utils.frozendict import FrozenDict
 from ..utils.lazy_eval.schema import LazyValue
 from ..utils.run import command_line
 from .context import DAGContext
-from .validate import validate
+from .validate import validate as validate_dag
 
 logger = logging.getLogger(__name__)
 
@@ -196,7 +197,6 @@ def _is_filename(token: str) -> bool:
 def parse_output(
     source: list[str],
     in_streams: Mapping[str, FilterableStream],
-    ffmpeg_options: dict[str, FFMpegOption],
 ) -> list[OutputStream]:
     """
     Parse output file specifications and their options.
@@ -207,7 +207,6 @@ def parse_output(
     Args:
         source: List of command-line tokens for output specifications
         in_streams: Dictionary of available input streams
-        ffmpeg_options: Dictionary of valid FFmpeg options
 
     Returns:
         List of OutputStream objects representing the output specifications
@@ -247,16 +246,11 @@ def parse_output(
         parameters: dict[str, str | bool] = {}
 
         for key, value in options.items():
-            key_base = key.split(":")[0]
-            if key_base in ffmpeg_options:
-                option = ffmpeg_options[key_base]
-
-                if option.is_output_option:
-                    # just ignore not input options
-                    if value[-1] is None:
-                        parameters[key] = True
-                    else:
-                        parameters[key] = value[-1]
+            # Store all options without validation
+            if value[-1] is None:
+                parameters[key] = True
+            else:
+                parameters[key] = value[-1]
 
         export.append(output(*inputs, filename=filename, extra_options=parameters))
         buffer = []
@@ -265,7 +259,7 @@ def parse_output(
 
 
 def parse_input(
-    tokens: list[str], ffmpeg_options: dict[str, FFMpegOption]
+    tokens: list[str]
 ) -> dict[str, FilterableStream]:
     """
     Parse input file specifications and their options.
@@ -275,7 +269,6 @@ def parse_input(
 
     Args:
         tokens: List of command-line tokens for input specifications
-        ffmpeg_options: Dictionary of valid FFmpeg options
 
     Returns:
         Dictionary mapping input indices to their FilterableStream objects
@@ -294,15 +287,11 @@ def parse_input(
         parameters: dict[str, str | bool] = {}
 
         for key, value in options.items():
-            if key in ffmpeg_options:
-                option = ffmpeg_options[key]
-
-                if option.is_input_option:
-                    # just ignore not input options
-                    if value[-1] is None:
-                        parameters[key] = True
-                    else:
-                        parameters[key] = value[-1]
+            # Store all options without validation
+            if value[-1] is None:
+                parameters[key] = True
+            else:
+                parameters[key] = value[-1]
 
         output.append(input(filename=filename, extra_options=parameters))
 
@@ -416,7 +405,7 @@ def parse_filter_complex(
 
 
 def parse_global(
-    tokens: list[str], ffmpeg_options: dict[str, FFMpegOption]
+    tokens: list[str]
 ) -> tuple[dict[str, str | bool], list[str]]:
     """
     Parse global FFmpeg options from command-line tokens.
@@ -427,7 +416,6 @@ def parse_global(
 
     Args:
         tokens: List of command-line tokens to parse
-        ffmpeg_options: Dictionary of valid FFmpeg options
 
     Returns:
         A tuple containing:
@@ -444,15 +432,11 @@ def parse_global(
     parameters: dict[str, str | bool] = {}
 
     for key, value in options.items():
-        if key in ffmpeg_options:
-            option = ffmpeg_options[key]
-
-            if option.is_global_option:
-                # Process only recognized global options
-                if value[-1] is None:
-                    parameters[key] = True
-                else:
-                    parameters[key] = value[-1]
+        # Store all options without validation
+        if value[-1] is None:
+            parameters[key] = True
+        else:
+            parameters[key] = value[-1]
     return parameters, remaining_tokens
 
 
@@ -482,7 +466,6 @@ def parse(cli: str) -> Stream:
 
     """
     # ffmpeg [global_options] {[input_file_options] -i input_url} ... {[output_file_options] output_url} ...
-    ffmpeg_options = get_options_dict()
     ffmpeg_filters = get_filter_dict()
 
     tokens = shlex.split(cli)
@@ -490,11 +473,11 @@ def parse(cli: str) -> Stream:
     tokens = tokens[1:]
 
     # Parse global options first
-    global_params, remaining_tokens = parse_global(tokens, ffmpeg_options)
+    global_params, remaining_tokens = parse_global(tokens)
 
     # find the index of the last -i option
     index = len(remaining_tokens) - 1 - list(reversed(remaining_tokens)).index("-i")
-    input_streams = parse_input(remaining_tokens[: index + 2], ffmpeg_options)
+    input_streams = parse_input(remaining_tokens[: index + 2])
     remaining_tokens = remaining_tokens[index + 2 :]
 
     if "-filter_complex" in remaining_tokens:
@@ -510,7 +493,6 @@ def parse(cli: str) -> Stream:
     output_streams = parse_output(
         remaining_tokens,
         input_streams | filterable_streams,
-        ffmpeg_options,
     )
 
     # Create a stream with global options
@@ -613,7 +595,7 @@ def compile_as_list(
         ```
 
     """
-    stream = validate(stream, auto_fix=auto_fix)
+    stream = validate_dag(stream, auto_fix=auto_fix)
     node = stream.node
     context = DAGContext.build(node)
 
@@ -984,3 +966,111 @@ def get_node_label(node: Node, context: DAGContext) -> str:
             return f"s{node_id}"
         case _:
             return "out"
+
+
+def validate_options(stream: Stream, ffmpeg_options: dict[str, FFMpegOption]) -> Stream:
+    """
+    Validate a stream's options against FFmpeg option definitions.
+
+    This function validates and filters options in the stream graph to ensure
+    they are recognized FFmpeg options. It traverses the entire stream graph
+    and validates options at each node level.
+
+    Args:
+        stream: The stream to validate
+        ffmpeg_options: Dictionary of valid FFmpeg options
+
+    Returns:
+        A new stream with validated options
+
+    """
+    context = DAGContext.build(stream.node)
+    
+    # Create a mapping of validated nodes
+    validated_nodes: dict[Node, Node] = {}
+    
+    def validate_node(node: Node) -> Node:
+        """Validate a single node's options."""
+        if node in validated_nodes:
+            return validated_nodes[node]
+        
+        # Validate options based on node type
+        validated_kwargs = {}
+        
+        for key, value in node.kwargs.items():
+            key_base = key.split(":")[0]
+            if key_base in ffmpeg_options:
+                option = ffmpeg_options[key_base]
+                
+                # Check if this option is valid for this node type
+                is_valid = False
+                if isinstance(node, GlobalNode) and option.is_global_option:
+                    is_valid = True
+                elif isinstance(node, InputNode) and option.is_input_option:
+                    is_valid = True
+                elif isinstance(node, OutputNode) and option.is_output_option:
+                    is_valid = True
+                # FilterNode options are handled differently - they're filter parameters
+                elif isinstance(node, FilterNode):
+                    is_valid = True  # Filter parameters are always valid
+                
+                if is_valid:
+                    validated_kwargs[key] = value
+        
+        # Create new node with validated options
+        validated_node = replace(node, kwargs=FrozenDict(validated_kwargs))
+        validated_nodes[node] = validated_node
+        
+        return validated_node
+    
+    # Validate all nodes in the graph
+    for node in context.all_nodes:
+        validate_node(node)
+    
+    # Rebuild the stream with validated nodes
+    def rebuild_stream(current_stream: Stream) -> Stream:
+        """Rebuild a stream with validated nodes."""
+        validated_node = validated_nodes.get(current_stream.node, current_stream.node)
+        
+        if validated_node != current_stream.node:
+            return replace(current_stream, node=validated_node)
+        
+        return current_stream
+    
+    return rebuild_stream(stream)
+
+
+def parse_with_validation(cli: str, should_validate: bool = True) -> Stream:
+    """
+    Parse a complete FFmpeg command line into a Stream object with optional validation.
+
+    This function takes a full FFmpeg command line string and converts it into
+    a Stream object representing the filter graph. It optionally validates
+    the parsed options against FFmpeg option definitions.
+
+    Args:
+        cli: Complete FFmpeg command line string
+        should_validate: Whether to validate options against FFmpeg definitions
+
+    Returns:
+        Stream object representing the parsed command line
+
+    Example:
+        ```python
+        # Parse without validation (accepts all options)
+        stream = parse_with_validation("ffmpeg -i input.mp4 -unknown_option value output.mp4", should_validate=False)
+        
+        # Parse with validation (filters out unknown options)
+        stream = parse_with_validation("ffmpeg -i input.mp4 -c:v libx264 output.mp4", should_validate=True)
+        ```
+
+    """
+    # Parse the command line first
+    stream = parse(cli)
+    
+    if not should_validate:
+        return stream
+    
+    # Validate options if requested
+    ffmpeg_options = get_options_dict()
+    return validate_options(stream, ffmpeg_options)

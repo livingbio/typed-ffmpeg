@@ -5,7 +5,7 @@ from syrupy.extensions.json import JSONSnapshotExtension
 from ...base import filter_multi_output, input
 from ...common.schema import StreamType
 from ...dag.schema import Stream
-from ..compile_cli import compile, compile_as_list, get_args, parse
+from ..compile_cli import compile, compile_as_list, get_args, parse, parse_with_validation
 from .cases import shared_cases
 
 
@@ -78,3 +78,4 @@ def test_parse_ffmpeg_commands(snapshot: SnapshotAssertion, command: str) -> Non
     parsed = parse(command)
     assert snapshot(name="parse-ffmpeg-commands") == parsed
     assert snapshot(name="build-ffmpeg-commands") == compile(parsed)
+    assert snapshot(name="parse-with-validation") == parse_with_validation(command)
