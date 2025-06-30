@@ -348,7 +348,7 @@ rpds-py==0.25.1
     # via
     #   jsonschema
     #   referencing
-ruff==0.12.0
+ruff==0.12.1
     # via -r requirements.in
 secretstorage==3.3.3
     # via keyring
