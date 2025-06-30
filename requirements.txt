@@ -142,7 +142,7 @@ jupyterlab-pygments==0.3.0
     # via nbconvert
 keyring==25.6.0
     # via twine
-lxml==5.4.0
+lxml==6.0.0
     # via -r requirements.in
 markdown==3.8.2
     # via
