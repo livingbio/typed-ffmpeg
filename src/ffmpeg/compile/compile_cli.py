@@ -86,6 +86,9 @@ def parse_options(tokens: list[str]) -> dict[str, list[str | None | bool]]:
     - '-option' becomes {'option': [None]}
     - '-nooption' becomes {'option': [False]}
 
+    This function performs pure syntax parsing without validation against the
+    loaded options dictionary. For validation, use the validate_* functions.
+
     Args:
         tokens: List of command-line tokens to parse
 
@@ -115,6 +118,111 @@ def parse_options(tokens: list[str]) -> dict[str, list[str | None | bool]]:
             tokens = tokens[2:]
 
     return parsed_options
+
+
+def validate_parsed_options(
+    parsed_options: dict[str, list[str | None | bool]],
+    ffmpeg_options: dict[str, FFMpegOption],
+    option_type: str = "any"
+) -> dict[str, str | bool]:
+    """
+    Validate parsed options against FFmpeg options dictionary and convert to final format.
+
+    This function takes the output of parse_options and validates each option
+    against the provided FFmpeg options dictionary. It also converts the parsed
+    format to the final parameter format expected by the nodes.
+
+    Args:
+        parsed_options: Dictionary from parse_options containing parsed option data
+        ffmpeg_options: Dictionary of valid FFmpeg options
+        option_type: Type of options to filter for ("input", "output", "global", "any")
+
+    Returns:
+        Dictionary of validated parameters in final format
+
+    """
+    parameters: dict[str, str | bool] = {}
+
+    for key, value in parsed_options.items():
+        key_base = key.split(":")[0]
+        if key_base in ffmpeg_options:
+            option = ffmpeg_options[key_base]
+
+            # Filter by option type if specified
+            if option_type == "input" and not option.is_input_option:
+                continue
+            elif option_type == "output" and not option.is_output_option:
+                continue
+            elif option_type == "global" and not option.is_global_option:
+                continue
+
+            # Convert to final parameter format
+            if value[-1] is None:
+                parameters[key] = True
+            else:
+                parameters[key] = value[-1]
+
+    return parameters
+
+
+def validate_input_options(
+    parsed_options: dict[str, list[str | None | bool]],
+    ffmpeg_options: dict[str, FFMpegOption] | None = None
+) -> dict[str, str | bool]:
+    """
+    Validate parsed options for input context.
+
+    Args:
+        parsed_options: Dictionary from parse_options containing parsed option data
+        ffmpeg_options: Dictionary of valid FFmpeg options (loaded if None)
+
+    Returns:
+        Dictionary of validated input parameters
+
+    """
+    if ffmpeg_options is None:
+        ffmpeg_options = get_options_dict()
+    return validate_parsed_options(parsed_options, ffmpeg_options, "input")
+
+
+def validate_output_options(
+    parsed_options: dict[str, list[str | None | bool]],
+    ffmpeg_options: dict[str, FFMpegOption] | None = None
+) -> dict[str, str | bool]:
+    """
+    Validate parsed options for output context.
+
+    Args:
+        parsed_options: Dictionary from parse_options containing parsed option data
+        ffmpeg_options: Dictionary of valid FFmpeg options (loaded if None)
+
+    Returns:
+        Dictionary of validated output parameters
+
+    """
+    if ffmpeg_options is None:
+        ffmpeg_options = get_options_dict()
+    return validate_parsed_options(parsed_options, ffmpeg_options, "output")
+
+
+def validate_global_options(
+    parsed_options: dict[str, list[str | None | bool]],
+    ffmpeg_options: dict[str, FFMpegOption] | None = None
+) -> dict[str, str | bool]:
+    """
+    Validate parsed options for global context.
+
+    Args:
+        parsed_options: Dictionary from parse_options containing parsed option data
+        ffmpeg_options: Dictionary of valid FFmpeg options (loaded if None)
+
+    Returns:
+        Dictionary of validated global parameters
+
+    """
+    if ffmpeg_options is None:
+        ffmpeg_options = get_options_dict()
+    return validate_parsed_options(parsed_options, ffmpeg_options, "global")
 
 
 def parse_stream_selector(
@@ -196,7 +304,8 @@ def _is_filename(token: str) -> bool:
 def parse_output(
     source: list[str],
     in_streams: Mapping[str, FilterableStream],
-    ffmpeg_options: dict[str, FFMpegOption],
+    ffmpeg_options: dict[str, FFMpegOption] | None = None,
+    validate: bool = True,
 ) -> list[OutputStream]:
     """
     Parse output file specifications and their options.
@@ -207,29 +316,23 @@ def parse_output(
     Args:
         source: List of command-line tokens for output specifications
         in_streams: Dictionary of available input streams
-        ffmpeg_options: Dictionary of valid FFmpeg options
+        ffmpeg_options: Dictionary of valid FFmpeg options (required if validate=True)
+        validate: Whether to validate options against ffmpeg_options
 
     Returns:
         List of OutputStream objects representing the output specifications
 
     """
-    tokens = source.copy()
-
+    if validate and ffmpeg_options is None:
+        ffmpeg_options = get_options_dict()
+    
     export: list[OutputStream] = []
-    buffer: list[str] = []
+    parsed_outputs = parse_output_syntax(source)
 
-    while tokens:
-        token = tokens.pop(0)
-
-        if not _is_filename(token):
-            buffer.append(token)
-            continue
-
-        filename = token
-        options = parse_options(buffer)
-
+    for filename, options in parsed_outputs:
         map_options = options.pop("map", [])
         inputs: list[FilterableStream] = []
+        
         for map_option in map_options:
             assert isinstance(map_option, str), f"Expected map option, got {map_option}"
             stream = parse_stream_selector(map_option, in_streams)
@@ -244,28 +347,115 @@ def parse_output(
                     if isinstance(in_streams[k], AVStream)
                 ]
 
-        parameters: dict[str, str | bool] = {}
-
-        for key, value in options.items():
-            key_base = key.split(":")[0]
-            if key_base in ffmpeg_options:
-                option = ffmpeg_options[key_base]
-
-                if option.is_output_option:
-                    # just ignore not input options
-                    if value[-1] is None:
-                        parameters[key] = True
-                    else:
-                        parameters[key] = value[-1]
+        if validate and ffmpeg_options is not None:
+            parameters = validate_parsed_options(options, ffmpeg_options, "output")
+        else:
+            # Convert parsed options to parameters format without validation
+            parameters = {}
+            for key, value in options.items():
+                if value[-1] is None:
+                    parameters[key] = True
+                else:
+                    parameters[key] = value[-1]
 
         export.append(output(*inputs, filename=filename, extra_options=parameters))
-        buffer = []
 
     return export
 
 
+def parse_input_syntax(tokens: list[str]) -> list[tuple[str, dict[str, list[str | None | bool]]]]:
+    """
+    Parse input file specifications and their options (syntax only, no validation).
+
+    This function processes the input portion of an FFmpeg command line,
+    extracting input file paths and input-specific options without validating
+    against the loaded options dictionary.
+
+    Args:
+        tokens: List of command-line tokens for input specifications
+
+    Returns:
+        List of tuples (filename, parsed_options) for each input file
+
+    """
+    result: list[tuple[str, dict[str, list[str | None | bool]]]] = []
+
+    while "-i" in tokens:
+        index = tokens.index("-i")
+        filename = tokens[index + 1]
+        assert filename[0] != "-", f"Expected filename, got {filename}"
+
+        input_options_args = tokens[:index]
+        options = parse_options(input_options_args)
+        
+        result.append((filename, options))
+        tokens = tokens[index + 2:]
+
+    return result
+
+
+def parse_output_syntax(
+    source: list[str],
+) -> list[tuple[str, dict[str, list[str | None | bool]]]]:
+    """
+    Parse output file specifications and their options (syntax only, no validation).
+
+    This function processes the output portion of an FFmpeg command line,
+    extracting output file paths and output-specific options without validating
+    against the loaded options dictionary.
+
+    Args:
+        source: List of command-line tokens for output specifications
+
+    Returns:
+        List of tuples (filename, parsed_options) for each output file
+
+    """
+    tokens = source.copy()
+    result: list[tuple[str, dict[str, list[str | None | bool]]]] = []
+    buffer: list[str] = []
+
+    while tokens:
+        token = tokens.pop(0)
+
+        if not _is_filename(token):
+            buffer.append(token)
+            continue
+
+        filename = token
+        options = parse_options(buffer)
+        result.append((filename, options))
+        buffer = []
+
+    return result
+
+
+def parse_global_syntax(tokens: list[str]) -> tuple[dict[str, list[str | None | bool]], list[str]]:
+    """
+    Parse global FFmpeg options from command-line tokens (syntax only, no validation).
+
+    This function processes the global options that appear before any input files
+    in the FFmpeg command line, extracting them without validating against the
+    loaded options dictionary.
+
+    Args:
+        tokens: List of command-line tokens to parse
+
+    Returns:
+        A tuple containing:
+        - Dictionary of parsed global options
+        - Remaining tokens after global options are consumed
+
+    """
+    options = parse_options(tokens[: tokens.index("-i")])
+    remaining_tokens = tokens[tokens.index("-i") :]
+    return options, remaining_tokens
+
+
 def parse_input(
-    tokens: list[str], ffmpeg_options: dict[str, FFMpegOption]
+    tokens: list[str], 
+    ffmpeg_options: dict[str, FFMpegOption] | None = None,
+    validate: bool = True
 ) -> dict[str, FilterableStream]:
     """
     Parse input file specifications and their options.
@@ -275,38 +465,32 @@ def parse_input(
 
     Args:
         tokens: List of command-line tokens for input specifications
-        ffmpeg_options: Dictionary of valid FFmpeg options
+        ffmpeg_options: Dictionary of valid FFmpeg options (required if validate=True)
+        validate: Whether to validate options against ffmpeg_options
 
     Returns:
         Dictionary mapping input indices to their FilterableStream objects
 
     """
+    if validate and ffmpeg_options is None:
+        ffmpeg_options = get_options_dict()
+    
     output: list[AVStream] = []
+    parsed_inputs = parse_input_syntax(tokens)
 
-    while "-i" in tokens:
-        index = tokens.index("-i")
-        filename = tokens[index + 1]
-        assert filename[0] != "-", f"Expected filename, got {filename}"
-
-        input_options_args = tokens[:index]
-
-        options = parse_options(input_options_args)
-        parameters: dict[str, str | bool] = {}
-
-        for key, value in options.items():
-            if key in ffmpeg_options:
-                option = ffmpeg_options[key]
-
-                if option.is_input_option:
-                    # just ignore not input options
-                    if value[-1] is None:
-                        parameters[key] = True
-                    else:
-                        parameters[key] = value[-1]
+    for filename, options in parsed_inputs:
+        if validate and ffmpeg_options is not None:
+            parameters = validate_parsed_options(options, ffmpeg_options, "input")
+        else:
+            # Convert parsed options to parameters format without validation
+            parameters = {}
+            for key, value in options.items():
+                if value[-1] is None:
+                    parameters[key] = True
+                else:
+                    parameters[key] = value[-1]
 
         output.append(input(filename=filename, extra_options=parameters))
-
-        tokens = tokens[index + 2 :]
 
     return {str(idx): stream for idx, stream in enumerate(output)}
 
@@ -416,7 +600,9 @@ def parse_filter_complex(
 
 
 def parse_global(
-    tokens: list[str], ffmpeg_options: dict[str, FFMpegOption]
+    tokens: list[str], 
+    ffmpeg_options: dict[str, FFMpegOption] | None = None,
+    validate: bool = True
 ) -> tuple[dict[str, str | bool], list[str]]:
     """
     Parse global FFmpeg options from command-line tokens.
@@ -427,7 +613,8 @@ def parse_global(
 
     Args:
         tokens: List of command-line tokens to parse
-        ffmpeg_options: Dictionary of valid FFmpeg options
+        ffmpeg_options: Dictionary of valid FFmpeg options (required if validate=True)
+        validate: Whether to validate options against ffmpeg_options
 
     Returns:
         A tuple containing:
@@ -439,24 +626,26 @@ def parse_global(
         Returns ({'y': True, 'loglevel': 'quiet'}, ['-i', 'input.mp4'])
 
     """
-    options = parse_options(tokens[: tokens.index("-i")])
-    remaining_tokens = tokens[tokens.index("-i") :]
-    parameters: dict[str, str | bool] = {}
+    if validate and ffmpeg_options is None:
+        ffmpeg_options = get_options_dict()
+    
+    options, remaining_tokens = parse_global_syntax(tokens)
 
-    for key, value in options.items():
-        if key in ffmpeg_options:
-            option = ffmpeg_options[key]
+    if validate and ffmpeg_options is not None:
+        parameters = validate_parsed_options(options, ffmpeg_options, "global")
+    else:
+        # Convert parsed options to parameters format without validation
+        parameters = {}
+        for key, value in options.items():
+            if value[-1] is None:
+                parameters[key] = True
+            else:
+                parameters[key] = value[-1]
 
-            if option.is_global_option:
-                # Process only recognized global options
-                if value[-1] is None:
-                    parameters[key] = True
-                else:
-                    parameters[key] = value[-1]
     return parameters, remaining_tokens
 
 
-def parse(cli: str) -> Stream:
+def parse(cli: str, validate: bool = True) -> Stream:
     """
     Parse a complete FFmpeg command line into a Stream object.
 
@@ -469,20 +658,30 @@ def parse(cli: str) -> Stream:
 
     Args:
         cli: Complete FFmpeg command line string
+        validate: Whether to validate options against loaded FFmpeg options dictionary.
+                 If False, the bundled options list is not required, enabling 
+                 package size reduction.
 
     Returns:
         Stream object representing the parsed command line
 
     Example:
         ```python
+        # With validation (default)
         stream = parse(
             "ffmpeg -i input.mp4 -filter_complex '[0:v]scale=1280:720[v]' -map '[v]' output.mp4"
+        )
+        
+        # Without validation (for parse-only use cases)
+        stream = parse(
+            "ffmpeg -i input.mp4 -filter_complex '[0:v]scale=1280:720[v]' -map '[v]' output.mp4",
+            validate=False
         )
         ```
 
     """
     # ffmpeg [global_options] {[input_file_options] -i input_url} ... {[output_file_options] output_url} ...
-    ffmpeg_options = get_options_dict()
+    ffmpeg_options = get_options_dict() if validate else None
     ffmpeg_filters = get_filter_dict()
 
     tokens = shlex.split(cli)
@@ -490,11 +689,11 @@ def parse(cli: str) -> Stream:
     tokens = tokens[1:]
 
     # Parse global options first
-    global_params, remaining_tokens = parse_global(tokens, ffmpeg_options)
+    global_params, remaining_tokens = parse_global(tokens, ffmpeg_options, validate)
 
     # find the index of the last -i option
     index = len(remaining_tokens) - 1 - list(reversed(remaining_tokens)).index("-i")
-    input_streams = parse_input(remaining_tokens[: index + 2], ffmpeg_options)
+    input_streams = parse_input(remaining_tokens[: index + 2], ffmpeg_options, validate)
     remaining_tokens = remaining_tokens[index + 2 :]
 
     if "-filter_complex" in remaining_tokens:
@@ -511,6 +710,7 @@ def parse(cli: str) -> Stream:
         remaining_tokens,
         input_streams | filterable_streams,
         ffmpeg_options,
+        validate,
     )
 
     # Create a stream with global options
