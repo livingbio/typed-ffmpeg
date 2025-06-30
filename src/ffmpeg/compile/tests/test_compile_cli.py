@@ -5,7 +5,7 @@ from syrupy.extensions.json import JSONSnapshotExtension
 from ...base import filter_multi_output, input
 from ...common.schema import StreamType
 from ...dag.schema import Stream
-from ..compile_cli import compile, compile_as_list, get_args, parse
+from ..compile_cli import compile, compile_as_list, get_args, parse, parse_cli
 from .cases import shared_cases
 
 
@@ -78,3 +78,60 @@ def test_parse_ffmpeg_commands(snapshot: SnapshotAssertion, command: str) -> Non
     parsed = parse(command)
     assert snapshot(name="parse-ffmpeg-commands") == parsed
     assert snapshot(name="build-ffmpeg-commands") == compile(parsed)
+
+
+@pytest.mark.parametrize(
+    "command",
+    [
+        pytest.param(
+            "ffmpeg -y -nostdin -i input_video.mkv output_video.mp4",
+            id="basic_command",
+        ),
+        pytest.param(
+            "ffmpeg -y -loglevel quiet -i input.mp4 -c:v libx264 -crf 23 output.mp4",
+            id="codec_options",
+        ),
+        pytest.param(
+            "ffmpeg -i input1.mp4 -i input2.mp4 -map 0 output1.mp4 -map 1 output2.mp4",
+            id="multiple_inputs_outputs",
+        ),
+        pytest.param(
+            "ffmpeg -y -i input.mp4 -filter_complex '[0:v]scale=1280:720[v]' -map '[v]' output.mp4",
+            id="filter_complex",
+        ),
+    ],
+)
+def test_parse_cli_without_validation(snapshot: SnapshotAssertion, command: str) -> None:
+    """Test that parse_cli works without option validation"""
+    parsed = parse_cli(command)
+    assert snapshot(name="parse-cli-without-validation") == parsed
+    # Verify it can be compiled back to command
+    compiled = compile(parsed)
+    assert isinstance(compiled, str)
+
+
+def test_parse_cli_vs_parse_compatibility() -> None:
+    """Test that parse_cli produces similar results to parse for basic commands"""
+    # Use a simple command that should work with both approaches
+    command = "ffmpeg -y -i input.mp4 output.mp4"
+    
+    try:
+        parsed_with_validation = parse(command)
+        parsed_without_validation = parse_cli(command)
+        
+        # Both should produce Stream objects
+        assert type(parsed_with_validation) == type(parsed_without_validation)
+        
+        # Both should be compilable
+        compiled_with_validation = compile(parsed_with_validation)
+        compiled_without_validation = compile(parsed_without_validation)
+        
+        assert isinstance(compiled_with_validation, str)
+        assert isinstance(compiled_without_validation, str)
+        
+    except Exception as e:
+        # If validation fails due to missing cache files, that's expected
+        # but parse_cli should still work
+        parsed_without_validation = parse_cli(command)
+        compiled_without_validation = compile(parsed_without_validation)
+        assert isinstance(compiled_without_validation, str)

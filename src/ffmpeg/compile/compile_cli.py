@@ -196,7 +196,7 @@ def _is_filename(token: str) -> bool:
 def parse_output(
     source: list[str],
     in_streams: Mapping[str, FilterableStream],
-    ffmpeg_options: dict[str, FFMpegOption],
+    ffmpeg_options: dict[str, FFMpegOption] | None = None,
 ) -> list[OutputStream]:
     """
     Parse output file specifications and their options.
@@ -207,7 +207,7 @@ def parse_output(
     Args:
         source: List of command-line tokens for output specifications
         in_streams: Dictionary of available input streams
-        ffmpeg_options: Dictionary of valid FFmpeg options
+        ffmpeg_options: Dictionary of valid FFmpeg options for validation (optional)
 
     Returns:
         List of OutputStream objects representing the output specifications
@@ -248,7 +248,13 @@ def parse_output(
 
         for key, value in options.items():
             key_base = key.split(":")[0]
-            if key_base in ffmpeg_options:
+            # If validation is disabled, accept all options
+            if ffmpeg_options is None:
+                if value[-1] is None:
+                    parameters[key] = True
+                else:
+                    parameters[key] = value[-1]
+            elif key_base in ffmpeg_options:
                 option = ffmpeg_options[key_base]
 
                 if option.is_output_option:
@@ -265,7 +271,7 @@ def parse_output(
 
 
 def parse_input(
-    tokens: list[str], ffmpeg_options: dict[str, FFMpegOption]
+    tokens: list[str], ffmpeg_options: dict[str, FFMpegOption] | None = None
 ) -> dict[str, FilterableStream]:
     """
     Parse input file specifications and their options.
@@ -275,7 +281,7 @@ def parse_input(
 
     Args:
         tokens: List of command-line tokens for input specifications
-        ffmpeg_options: Dictionary of valid FFmpeg options
+        ffmpeg_options: Dictionary of valid FFmpeg options for validation (optional)
 
     Returns:
         Dictionary mapping input indices to their FilterableStream objects
@@ -294,7 +300,13 @@ def parse_input(
         parameters: dict[str, str | bool] = {}
 
         for key, value in options.items():
-            if key in ffmpeg_options:
+            # If validation is disabled, accept all options
+            if ffmpeg_options is None:
+                if value[-1] is None:
+                    parameters[key] = True
+                else:
+                    parameters[key] = value[-1]
+            elif key in ffmpeg_options:
                 option = ffmpeg_options[key]
 
                 if option.is_input_option:
@@ -314,7 +326,7 @@ def parse_input(
 def parse_filter_complex(
     filter_complex: str,
     stream_mapping: dict[str, FilterableStream],
-    ffmpeg_filters: dict[str, FFMpegFilter],
+    ffmpeg_filters: dict[str, FFMpegFilter] | None = None,
 ) -> dict[str, FilterableStream]:
     """
     Parse an FFmpeg filter_complex string into a stream mapping.
@@ -374,14 +386,27 @@ def parse_filter_complex(
                     filter_params[key.strip()] = value.strip()
 
         assert isinstance(filter_name, str), f"Expected filter name, got {filter_name}"
-        ffmpeg_filter = ffmpeg_filters[filter_name]
-        filter_def = FFMpegFilterDef(
-            name=ffmpeg_filter.name,
-            typings_input=ffmpeg_filter.formula_typings_input
-            or tuple(k.type.value for k in ffmpeg_filter.stream_typings_input),
-            typings_output=ffmpeg_filter.formula_typings_output
-            or tuple(k.type.value for k in ffmpeg_filter.stream_typings_output),
-        )
+        
+        if ffmpeg_filters is None:
+            # When validation is disabled, create a generic filter definition
+            # This assumes basic video filter behavior - may need refinement for other filter types
+            filter_def = FFMpegFilterDef(
+                name=filter_name,
+                typings_input=(StreamType.video,),  # Default assumption
+                typings_output=(StreamType.video,),  # Default assumption
+            )
+            default_options = {}
+        else:
+            ffmpeg_filter = ffmpeg_filters[filter_name]
+            filter_def = FFMpegFilterDef(
+                name=ffmpeg_filter.name,
+                typings_input=ffmpeg_filter.formula_typings_input
+                or tuple(k.type.value for k in ffmpeg_filter.stream_typings_input),
+                typings_output=ffmpeg_filter.formula_typings_output
+                or tuple(k.type.value for k in ffmpeg_filter.stream_typings_output),
+            )
+            default_options = {k.name: Default(k.default) for k in ffmpeg_filter.options}
+            
         input_streams = [
             parse_stream_selector(label, stream_mapping) for label in input_labels
         ]
@@ -390,10 +415,7 @@ def parse_filter_complex(
         filter_node = filter_node_factory(
             filter_def,
             *input_streams,
-            **(
-                {k.name: Default(k.default) for k in ffmpeg_filter.options}
-                | filter_params
-            ),
+            **(default_options | filter_params),
         )
 
         # Map output streams to their labels
@@ -416,7 +438,7 @@ def parse_filter_complex(
 
 
 def parse_global(
-    tokens: list[str], ffmpeg_options: dict[str, FFMpegOption]
+    tokens: list[str], ffmpeg_options: dict[str, FFMpegOption] | None = None
 ) -> tuple[dict[str, str | bool], list[str]]:
     """
     Parse global FFmpeg options from command-line tokens.
@@ -427,7 +449,7 @@ def parse_global(
 
     Args:
         tokens: List of command-line tokens to parse
-        ffmpeg_options: Dictionary of valid FFmpeg options
+        ffmpeg_options: Dictionary of valid FFmpeg options for validation (optional)
 
     Returns:
         A tuple containing:
@@ -444,7 +466,13 @@ def parse_global(
     parameters: dict[str, str | bool] = {}
 
     for key, value in options.items():
-        if key in ffmpeg_options:
+        # If validation is disabled, accept all options
+        if ffmpeg_options is None:
+            if value[-1] is None:
+                parameters[key] = True
+            else:
+                parameters[key] = value[-1]
+        elif key in ffmpeg_options:
             option = ffmpeg_options[key]
 
             if option.is_global_option:
@@ -454,6 +482,31 @@ def parse_global(
                 else:
                     parameters[key] = value[-1]
     return parameters, remaining_tokens
+
+
+def parse_cli(cli: str) -> Stream:
+    """
+    Parse a complete FFmpeg command line into a Stream object without option validation.
+
+    This function only parses CLI arguments according to syntax rules and does not 
+    validate whether each option exists in the FFmpeg options database. This avoids
+    loading the full options list, reducing package size.
+
+    Args:
+        cli: Complete FFmpeg command line string
+
+    Returns:
+        Stream object representing the parsed command line
+
+    Example:
+        ```python
+        stream = parse_cli(
+            "ffmpeg -i input.mp4 -filter_complex '[0:v]scale=1280:720[v]' -map '[v]' output.mp4"
+        )
+        ```
+
+    """
+    return parse_with_validation(cli, validate_options=False)
 
 
 def parse(cli: str) -> Stream:
@@ -481,9 +534,31 @@ def parse(cli: str) -> Stream:
         ```
 
     """
+    return parse_with_validation(cli, validate_options=True)
+
+
+def parse_with_validation(cli: str, validate_options: bool = True) -> Stream:
+    """
+    Parse a complete FFmpeg command line into a Stream object with optional validation.
+
+    This function takes a full FFmpeg command line string and converts it into
+    a Stream object representing the filter graph. It handles all components:
+    - Global options
+    - Input files and their options
+    - Filter complex  
+    - Output files and their options
+
+    Args:
+        cli: Complete FFmpeg command line string
+        validate_options: Whether to validate option existence against FFmpeg options
+
+    Returns:
+        Stream object representing the parsed command line
+
+    """
     # ffmpeg [global_options] {[input_file_options] -i input_url} ... {[output_file_options] output_url} ...
-    ffmpeg_options = get_options_dict()
-    ffmpeg_filters = get_filter_dict()
+    ffmpeg_options = get_options_dict() if validate_options else None
+    ffmpeg_filters = get_filter_dict() if validate_options else None
 
     tokens = shlex.split(cli)
     assert tokens[0].lower().split(".")[0] == "ffmpeg"
