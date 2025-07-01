@@ -191,7 +191,7 @@ def _is_filename(token: str) -> bool:
 
     """
     # not start with - and has ext
-    return not token.startswith("-") and len(token.split(".")) > 1
+    return token == "-" or (not token.startswith("-") and len(token.split(".")) > 1)
 
 
 def parse_output(
@@ -986,7 +986,16 @@ def validate_options(stream: Stream, ffmpeg_options: dict[str, FFMpegOption]) ->
     validated_nodes: dict[Node, Node] = {}
 
     def validate_node(node: Node) -> Node:
-        """Validate a single node's options."""
+        """
+        Validate a single node's options.
+
+        Args:
+            node: The node to validate options for
+
+        Returns:
+            The validated node with filtered options
+
+        """
         if node in validated_nodes:
             return validated_nodes[node]
 
@@ -1025,7 +1034,16 @@ def validate_options(stream: Stream, ffmpeg_options: dict[str, FFMpegOption]) ->
 
     # Rebuild the stream with validated nodes
     def rebuild_stream(current_stream: Stream) -> Stream:
-        """Rebuild a stream with validated nodes."""
+        """
+        Rebuild a stream with validated nodes.
+
+        Args:
+            current_stream: The stream to rebuild with validated nodes
+
+        Returns:
+            The rebuilt stream with validated nodes
+
+        """
         validated_node = validated_nodes.get(current_stream.node, current_stream.node)
 
         if validated_node != current_stream.node:
