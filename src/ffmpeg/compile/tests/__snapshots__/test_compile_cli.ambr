@@ -9,17 +9,11 @@
 # name: test_parse_ffmpeg_commands[complex_command][build-ffmpeg-commands]
   'ffmpeg -nostdin -analyzeduration 100M -probesize 100M -i input_video.mkv -map 0 -vf \'scale=-1:-1:flags=lanczos,pad=1920:1080:-1:-1,subtitles=\'"\'"\'subtitles.srt\'"\'"\':stream_index=0:force_style=\'"\'"\'Fontname=Gotham Rounded Medium,Fontsize=17,Alignment=2,PrimaryColour=&Hffffff&,MarginV=25\'"\'"\'\' -map 0:a:0 -map 0:v:0 -sn -c:a aac -b:a 192k -ac 2 -c:v libx264 -crf 18 -preset slow -tune film -aq-strength 1.8 -map 0 -mbtree 0 -pix_fmt yuv420p -y -hide_banner -loglevel error -stats -map_metadata -1 -map_chapters output_video.mp4'
 # ---
-# name: test_parse_ffmpeg_commands[complex_command][parse-ffmpeg-commands]
-  GlobalStream(node=GlobalNode(kwargs=FrozenDict({'stdin': False, 'analyzeduration': '100M', 'probesize': '100M'}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({'vf': True}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None, optional=False),), filename="scale=-1:-1:flags=lanczos,pad=1920:1080:-1:-1,subtitles='subtitles.srt':stream_index=0:force_style='Fontname=Gotham Rounded Medium,Fontsize=17,Alignment=2,PrimaryColour=&Hffffff&,MarginV=25'"), index=None, optional=False), OutputStream(node=OutputNode(kwargs=FrozenDict({'sn': True, 'c:a': 'aac', 'b:a': '192k', 'ac': '2', 'c:v': 'libx264', 'crf': '18', 'preset': 'slow', 'tune': 'film', 'aq-strength': True}), inputs=(AudioStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=0, optional=False), VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=0, optional=False)), filename='1.8'), index=None, optional=False), OutputStream(node=OutputNode(kwargs=FrozenDict({'mbtree': '0', 'pix_fmt': 'yuv420p', 'y': True, 'hide_banner': True, 'loglevel': 'error', 'stats': True, 'map_metadata': True, '1': True, 'map_chapters': True}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None, optional=False),), filename='output_video.mp4'), index=None, optional=False))), index=None, optional=False)
-# ---
 # name: test_parse_ffmpeg_commands[complex_command][parse-with-validation]
   GlobalStream(node=GlobalNode(kwargs=FrozenDict({'stdin': False}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({'vf': True}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None, optional=False),), filename="scale=-1:-1:flags=lanczos,pad=1920:1080:-1:-1,subtitles='subtitles.srt':stream_index=0:force_style='Fontname=Gotham Rounded Medium,Fontsize=17,Alignment=2,PrimaryColour=&Hffffff&,MarginV=25'"), index=None, optional=False), OutputStream(node=OutputNode(kwargs=FrozenDict({'sn': True, 'c:a': 'aac', 'b:a': '192k', 'ac': '2', 'c:v': 'libx264', 'crf': '18', 'preset': 'slow', 'tune': 'film', 'aq-strength': True}), inputs=(AudioStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=0, optional=False), VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=0, optional=False)), filename='1.8'), index=None, optional=False), OutputStream(node=OutputNode(kwargs=FrozenDict({'mbtree': '0', 'pix_fmt': 'yuv420p', 'y': True, 'hide_banner': True, 'loglevel': 'error', 'stats': True, 'map_metadata': True, '1': True, 'map_chapters': True}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None, optional=False),), filename='output_video.mp4'), index=None, optional=False))), index=None, optional=False)
 # ---
 # name: test_parse_ffmpeg_commands[escaping][build-ffmpeg-commands]
   'ffmpeg -i input.mov -filter_complex \'[0:v]drawtext=fontfile=resources/fonts/arial.ttf:text=\\\\\\\'"\'"\'\\\\=\\\\\\\\\\;\\\\\\\\\\\\:\\\\\\\'"\'"\':fontcolor=white:fontsize=30:x=(W-tw)/2:y=text_h:borderw=2:timecode=00\\\\\\\\\\\\:00\\\\\\\\\\\\:00\\\\\\\\\\\\:00:r=25/1[s0]\' -map \'[s0]\' output.mp4'
-# ---
-# name: test_parse_ffmpeg_commands[escaping][parse-ffmpeg-commands]
-  GlobalStream(node=GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'fontfile': 'resources/fonts/arial.ttf', 'text': "'=\\;\\:'", 'fontcolor': 'white', 'fontsize': '30', 'x': '(W-tw)/2', 'y': 'text_h', 'borderw': '2', 'timecode': '00\\:00\\:00\\:00', 'r': '25/1'}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input.mov'), index=None, optional=False),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0, optional=False),), filename='output.mp4'), index=None, optional=False),)), index=None, optional=False)
 # ---
 # name: test_parse_ffmpeg_commands[escaping][parse-with-validation]
   GlobalStream(node=GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'fontfile': 'resources/fonts/arial.ttf', 'text': "'=\\;\\:'", 'fontcolor': 'white', 'fontsize': '30', 'x': '(W-tw)/2', 'y': 'text_h', 'borderw': '2', 'timecode': '00\\:00\\:00\\:00', 'r': '25/1'}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input.mov'), index=None, optional=False),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0, optional=False),), filename='output.mp4'), index=None, optional=False),)), index=None, optional=False)
@@ -27,17 +21,11 @@
 # name: test_parse_ffmpeg_commands[ffmpeg_exe][build-ffmpeg-commands]
   'ffmpeg -i input_video.mkv output_video.mp4'
 # ---
-# name: test_parse_ffmpeg_commands[ffmpeg_exe][parse-ffmpeg-commands]
-  GlobalStream(node=GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None, optional=False),), filename='output_video.mp4'), index=None, optional=False),)), index=None, optional=False)
-# ---
 # name: test_parse_ffmpeg_commands[ffmpeg_exe][parse-with-validation]
   GlobalStream(node=GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None, optional=False),), filename='output_video.mp4'), index=None, optional=False),)), index=None, optional=False)
 # ---
 # name: test_parse_ffmpeg_commands[global_binary_option][build-ffmpeg-commands]
   'ffmpeg -y -nostdin -i input_video.mkv output_video.mp4'
-# ---
-# name: test_parse_ffmpeg_commands[global_binary_option][parse-ffmpeg-commands]
-  GlobalStream(node=GlobalNode(kwargs=FrozenDict({'y': True, 'stdin': False}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None, optional=False),), filename='output_video.mp4'), index=None, optional=False),)), index=None, optional=False)
 # ---
 # name: test_parse_ffmpeg_commands[global_binary_option][parse-with-validation]
   GlobalStream(node=GlobalNode(kwargs=FrozenDict({'y': True, 'stdin': False}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None, optional=False),), filename='output_video.mp4'), index=None, optional=False),)), index=None, optional=False)
@@ -45,17 +33,11 @@
 # name: test_parse_ffmpeg_commands[ignore_not_exist_option][build-ffmpeg-commands]
   'ffmpeg -y -not-exist-global -nostdin -not-exist-output -b:v 1000k -b:a 128k output_video.mp4'
 # ---
-# name: test_parse_ffmpeg_commands[ignore_not_exist_option][parse-ffmpeg-commands]
-  GlobalStream(node=GlobalNode(kwargs=FrozenDict({'y': True, 't-exist-global': False, 'stdin': False}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({'t-exist-output': False, 'b:v': '1000k', 'b:a': '128k'}), inputs=(), filename='output_video.mp4'), index=None, optional=False),)), index=None, optional=False)
-# ---
 # name: test_parse_ffmpeg_commands[ignore_not_exist_option][parse-with-validation]
   GlobalStream(node=GlobalNode(kwargs=FrozenDict({'y': True, 'stdin': False}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({'t-exist-output': False, 'b:v': '1000k', 'b:a': '128k'}), inputs=(), filename='output_video.mp4'), index=None, optional=False),)), index=None, optional=False)
 # ---
 # name: test_parse_ffmpeg_commands[output_option_with_boolean_option][build-ffmpeg-commands]
   'ffmpeg -y -nostdin -i input_video.mkv -shortest -b:v 1000k -b:a 128k output_video.mp4'
-# ---
-# name: test_parse_ffmpeg_commands[output_option_with_boolean_option][parse-ffmpeg-commands]
-  GlobalStream(node=GlobalNode(kwargs=FrozenDict({'y': True, 'stdin': False}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({'shortest': True, 'b:v': '1000k', 'b:a': '128k'}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None, optional=False),), filename='output_video.mp4'), index=None, optional=False),)), index=None, optional=False)
 # ---
 # name: test_parse_ffmpeg_commands[output_option_with_boolean_option][parse-with-validation]
   GlobalStream(node=GlobalNode(kwargs=FrozenDict({'y': True, 'stdin': False}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({'shortest': True, 'b:v': '1000k', 'b:a': '128k'}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None, optional=False),), filename='output_video.mp4'), index=None, optional=False),)), index=None, optional=False)
@@ -63,17 +45,11 @@
 # name: test_parse_ffmpeg_commands[output_option_with_stream_selector][build-ffmpeg-commands]
   'ffmpeg -y -nostdin -i input_video.mkv -b:v 1000k output_video.mp4'
 # ---
-# name: test_parse_ffmpeg_commands[output_option_with_stream_selector][parse-ffmpeg-commands]
-  GlobalStream(node=GlobalNode(kwargs=FrozenDict({'y': True, 'stdin': False}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({'b:v': '1000k'}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None, optional=False),), filename='output_video.mp4'), index=None, optional=False),)), index=None, optional=False)
-# ---
 # name: test_parse_ffmpeg_commands[output_option_with_stream_selector][parse-with-validation]
   GlobalStream(node=GlobalNode(kwargs=FrozenDict({'y': True, 'stdin': False}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({'b:v': '1000k'}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None, optional=False),), filename='output_video.mp4'), index=None, optional=False),)), index=None, optional=False)
 # ---
 # name: test_parse_ffmpeg_commands[stream_selector_with_subtitle][build-ffmpeg-commands]
   'ffmpeg -i input.mov -map 0:s output.mp4'
-# ---
-# name: test_parse_ffmpeg_commands[stream_selector_with_subtitle][parse-ffmpeg-commands]
-  GlobalStream(node=GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(SubtitleStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input.mov'), index=None, optional=False),), filename='output.mp4'), index=None, optional=False),)), index=None, optional=False)
 # ---
 # name: test_parse_ffmpeg_commands[stream_selector_with_subtitle][parse-with-validation]
   GlobalStream(node=GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(SubtitleStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input.mov'), index=None, optional=False),), filename='output.mp4'), index=None, optional=False),)), index=None, optional=False)

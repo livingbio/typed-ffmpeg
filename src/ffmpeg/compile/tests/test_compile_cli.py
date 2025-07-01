@@ -1,3 +1,5 @@
+from dataclasses import asdict
+
 import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
@@ -82,6 +84,8 @@ def test_get_args_custom_filter(snapshot: SnapshotAssertion) -> None:
 )
 def test_parse_ffmpeg_commands(snapshot: SnapshotAssertion, command: str) -> None:
     parsed = parse(command)
-    assert snapshot(name="parse-ffmpeg-commands") == parsed
+    assert snapshot(
+        name="parse-ffmpeg-commands", extension_class=JSONSnapshotExtension
+    ) == asdict(parsed)
     assert snapshot(name="build-ffmpeg-commands") == compile(parsed)
     assert snapshot(name="parse-with-validation") == parse_with_validation(command)
