@@ -1,0 +1,75 @@
+{
+  "index": null,
+  "node": {
+    "inputs": [
+      {
+        "index": null,
+        "node": {
+          "filename": "scale=-1:-1:flags=lanczos,pad=1920:1080:-1:-1,subtitles='subtitles.srt':stream_index=0:force_style='Fontname=Gotham Rounded Medium,Fontsize=17,Alignment=2,PrimaryColour=&Hffffff&,MarginV=25'",
+          "inputs": [
+            {
+              "index": null,
+              "node": {
+                "filename": "input_video.mkv",
+                "inputs": [],
+                "kwargs": "FrozenDict({})"
+              },
+              "optional": false
+            }
+          ],
+          "kwargs": "FrozenDict({'vf': True})"
+        },
+        "optional": false
+      },
+      {
+        "index": null,
+        "node": {
+          "filename": "1.8",
+          "inputs": [
+            {
+              "index": 0,
+              "node": {
+                "filename": "input_video.mkv",
+                "inputs": [],
+                "kwargs": "FrozenDict({})"
+              },
+              "optional": false
+            },
+            {
+              "index": 0,
+              "node": {
+                "filename": "input_video.mkv",
+                "inputs": [],
+                "kwargs": "FrozenDict({})"
+              },
+              "optional": false
+            }
+          ],
+          "kwargs": "FrozenDict({'sn': True, 'c:a': 'aac', 'b:a': '192k', 'ac': '2', 'c:v': 'libx264', 'crf': '18', 'preset': 'slow', 'tune': 'film', 'aq-strength': True})"
+        },
+        "optional": false
+      },
+      {
+        "index": null,
+        "node": {
+          "filename": "output_video.mp4",
+          "inputs": [
+            {
+              "index": null,
+              "node": {
+                "filename": "input_video.mkv",
+                "inputs": [],
+                "kwargs": "FrozenDict({})"
+              },
+              "optional": false
+            }
+          ],
+          "kwargs": "FrozenDict({'mbtree': '0', 'pix_fmt': 'yuv420p', 'y': True, 'hide_banner': True, 'loglevel': 'error', 'stats': True, 'map_metadata': True, '1': True, 'map_chapters': True})"
+        },
+        "optional": false
+      }
+    ],
+    "kwargs": "FrozenDict({'stdin': False})"
+  },
+  "optional": false
+}

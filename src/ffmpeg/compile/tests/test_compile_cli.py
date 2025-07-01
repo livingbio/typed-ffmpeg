@@ -88,4 +88,6 @@ def test_parse_ffmpeg_commands(snapshot: SnapshotAssertion, command: str) -> Non
         name="parse-ffmpeg-commands", extension_class=JSONSnapshotExtension
     ) == asdict(parsed)
     assert snapshot(name="build-ffmpeg-commands") == compile(parsed)
-    assert snapshot(name="parse-with-validation") == parse_with_validation(command)
+    assert snapshot(
+        name="parse-with-validation", extension_class=JSONSnapshotExtension
+    ) == asdict(parse_with_validation(command))
