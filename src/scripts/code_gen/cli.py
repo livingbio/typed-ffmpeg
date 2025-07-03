@@ -8,12 +8,21 @@ from pathlib import Path
 import typer
 
 from ffmpeg.common.cache import load, save
-from ffmpeg.common.schema import FFMpegFilter, FFMpegOption
+from ffmpeg.common.schema import (
+    FFMpegFilter,
+    FFMpegFilterOption,
+    FFMpegFilterOptionChoice,
+    FFMpegFilterOptionType,
+    FFMpegIOType,
+    FFMpegOption,
+    StreamType,
+)
 
 from ..manual.cli import load_config
 from ..parse_c.cli import parse_ffmpeg_options
 from ..parse_docs.cli import extract_docs
-from ..parse_help.cli import all_av_option_sets, all_codecs, all_filters, all_formats
+from ..parse_help.cli import all_av_option_sets, all_codecs, all_formats
+from ..parse_help.parse_filters import extract as extract_filters
 from .gen import render
 from .schema import (
     FFMpegAVOption,
@@ -132,20 +141,64 @@ def load_filters(rebuild: bool) -> list[FFMpegFilter]:
             logging.error(f"Failed to load filters from cache: {e}")
 
     ffmpeg_filters = []
-    for f in sorted(all_filters(), key=lambda i: i.name):
+    for f in sorted(extract_filters(), key=lambda i: i.name):
         if f.name == "afir":
             continue
 
-        manual_config = load_config(f.name)
+        # Convert parse_help filter to main filter schema
+        converted_filter = FFMpegFilter(
+            name=f.name,
+            description=f.help,
+            # flags
+            is_support_timeline=f.is_timeline,
+            is_support_slice_threading=f.is_slice_threading,
+            is_support_command=False,
+            # NOTE: is_support_framesync can only be determined by filter_info_from_help
+            is_support_framesync=f.is_framesync,
+            is_filter_sink=f.io_flags.endswith("->|"),
+            is_filter_source=f.io_flags.startswith("|->"),
+            # IO Typing
+            is_dynamic_input="N->" in f.io_flags,
+            is_dynamic_output="->N" in f.io_flags,
+            # stream_typings's name can only be determined by filter_info_from_help
+            stream_typings_input=tuple(
+                FFMpegIOType(name=i.name, type=StreamType(i.type))
+                for i in f.stream_typings_input
+            ),
+            stream_typings_output=tuple(
+                FFMpegIOType(name=i.name, type=StreamType(i.type))
+                for i in f.stream_typings_output
+            ),
+            options=tuple(
+                FFMpegFilterOption(
+                    name=option.name,
+                    type=FFMpegFilterOptionType(option.type),
+                    default=option.default,
+                    description=option.help,
+                    choices=tuple(
+                        FFMpegFilterOptionChoice(
+                            name=choice.name,
+                            help=choice.help,
+                            flags=choice.flags,
+                            value=choice.value,
+                        )
+                        for choice in option.choices
+                    ),
+                )
+                for option in f.options
+            ),
+        )
+
+        manual_config = load_config(converted_filter.name)
         if manual_config:
-            f = replace(f, **asdict(manual_config))
+            converted_filter = replace(converted_filter, **asdict(manual_config))
 
         try:
-            filter_info = gen_filter_info(f)
+            filter_info = gen_filter_info(converted_filter)
             save(filter_info, filter_info.name)
             ffmpeg_filters.append(filter_info)
         except ValueError:
-            print(f"Failed to generate filter info for {f.name}")
+            print(f"Failed to generate filter info for {converted_filter.name}")
 
     save(ffmpeg_filters, "filters")
 
