@@ -9,17 +9,8 @@ filter definitions with proper typing information.
 
 import typer
 
-from ffmpeg.common.schema import (
-    FFMpegFilter,
-    FFMpegFilterOption,
-    FFMpegFilterOptionChoice,
-    FFMpegFilterOptionType,
-    FFMpegIOType,
-    StreamType,
-)
-
 from . import parse_codecs, parse_filters, parse_formats, parse_help
-from .schema import FFMpegAVOption, FFMpegCodec, FFMpegFormat
+from .schema import FFMpegAVOption, FFMpegCodec, FFMpegFilter, FFMpegFormat
 
 app = typer.Typer(help="Parse FFmpeg filter help information")
 
@@ -45,62 +36,13 @@ def all_filters() -> list[FFMpegFilter]:
     1. The general filter list from 'ffmpeg -filters'
     2. Detailed filter information from 'ffmpeg -h filter=<filter_name>'
 
-    It merges these sources to create comprehensive FFMpegFilter objects that include
-    both the high-level filter capabilities and detailed option information for each filter.
+    It merges these sources to create comprehensive filter information objects.
 
     Returns:
-        A list of FFMpegFilter objects with complete filter information
+        A list of parse_help FFMpegFilter objects with complete filter information
 
     """
-    output = []
-
-    for filter_info in parse_filters.extract():
-        output.append(
-            FFMpegFilter(
-                name=filter_info.name,
-                description=filter_info.help,
-                # flags
-                is_support_timeline=filter_info.is_timeline,
-                is_support_slice_threading=filter_info.is_slice_threading,
-                is_support_command=False,
-                # NOTE: is_support_framesync can only be determined by filter_info_from_help
-                is_support_framesync=filter_info.is_framesync,
-                is_filter_sink=filter_info.io_flags.endswith("->|"),
-                is_filter_source=filter_info.io_flags.startswith("|->"),
-                # IO Typing
-                is_dynamic_input="N->" in filter_info.io_flags,
-                is_dynamic_output="->N" in filter_info.io_flags,
-                # stream_typings's name can only be determined by filter_info_from_help
-                stream_typings_input=tuple(
-                    FFMpegIOType(name=i.name, type=StreamType(i.type))
-                    for i in filter_info.stream_typings_input
-                ),
-                stream_typings_output=tuple(
-                    FFMpegIOType(name=i.name, type=StreamType(i.type))
-                    for i in filter_info.stream_typings_output
-                ),
-                options=tuple(
-                    FFMpegFilterOption(
-                        name=option.name,
-                        type=FFMpegFilterOptionType(option.type),
-                        default=option.default,
-                        description=option.help,
-                        choices=tuple(
-                            FFMpegFilterOptionChoice(
-                                name=choice.name,
-                                help=choice.help,
-                                flags=choice.flags,
-                                value=choice.value,
-                            )
-                            for choice in option.choices
-                        ),
-                    )
-                    for option in filter_info.options
-                ),
-            )
-        )
-
-    return output
+    return parse_filters.extract()
 
 
 @app.command()
