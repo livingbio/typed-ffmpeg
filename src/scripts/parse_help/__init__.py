@@ -13,3 +13,7 @@ These modules provide the most detailed and accurate information about FFmpeg fi
 by directly querying the FFmpeg binary, ensuring the generated type annotations
 match the exact behavior of the installed FFmpeg version.
 """
+
+from . import cli, schema
+
+__all__ = ["cli", "schema"]

@@ -18,11 +18,7 @@ from ffmpeg.common.schema import (
     StreamType,
 )
 
-from ..manual.cli import load_config
-from ..parse_c.cli import parse_ffmpeg_options
-from ..parse_docs.cli import extract_docs
-from ..parse_help.cli import all_av_option_sets, all_codecs, all_formats
-from ..parse_help.parse_filters import extract as extract_filters
+from .. import manual, parse_c, parse_docs, parse_help
 from .gen import render
 from .schema import (
     FFMpegAVOption,
@@ -49,7 +45,7 @@ def gen_filter_info(ffmpeg_filter: FFMpegFilter) -> FFMpegFilter:
         The filter info
 
     """
-    filter_doc = extract_docs(ffmpeg_filter.name)
+    filter_doc = parse_docs.cli.extract_docs(ffmpeg_filter.name)
 
     # NOTE:
     # currently we only use filter_doc's url info
@@ -73,7 +69,7 @@ def load_options(rebuild: bool) -> list[FFMpegOption]:
         except Exception as e:
             logging.error(f"Failed to load options from cache: {e}")
 
-    options = parse_ffmpeg_options()
+    options = parse_c.cli.parse_ffmpeg_options()
     save(options, "options")
     return options
 
@@ -95,7 +91,7 @@ def load_av_option_set(rebuild: bool) -> list[FFMpegAVOption]:
         except Exception as e:
             logging.error(f"Failed to load options from cache: {e}")
 
-    options = all_av_option_sets()
+    options = parse_help.cli.all_av_option_sets()
     output: list[FFMpegAVOption] = []
     for option in options:
         _option = FFMpegAVOption(
@@ -141,7 +137,7 @@ def load_filters(rebuild: bool) -> list[FFMpegFilter]:
             logging.error(f"Failed to load filters from cache: {e}")
 
     ffmpeg_filters = []
-    for f in sorted(extract_filters(), key=lambda i: i.name):
+    for f in sorted(parse_help.cli.all_filters(), key=lambda i: i.name):
         if f.name == "afir":
             continue
 
@@ -189,7 +185,7 @@ def load_filters(rebuild: bool) -> list[FFMpegFilter]:
             ),
         )
 
-        manual_config = load_config(converted_filter.name)
+        manual_config = manual.cli.load_config(converted_filter.name)
         if manual_config:
             converted_filter = replace(converted_filter, **asdict(manual_config))
 
@@ -226,7 +222,7 @@ def load_codecs(rebuild: bool) -> list[FFMpegCodec]:
             logging.error(f"Failed to load codecs from cache: {e}")
 
     codecs: list[FFMpegCodec] = []
-    for k in all_codecs():
+    for k in parse_help.cli.all_codecs():
         cls: type[FFMpegDecoder] | type[FFMpegEncoder]
         if k.is_encoder:
             cls = FFMpegEncoder
@@ -290,7 +286,7 @@ def load_formats(rebuild: bool) -> list[FFMpegFormat]:
             logging.error(f"Failed to load muxers from cache: {e}")
 
     formats: list[FFMpegFormat] = []
-    for k in all_formats():
+    for k in parse_help.cli.all_formats():
         cls: type[FFMpegDemuxer] | type[FFMpegMuxer]
         if k.is_muxer:
             cls = FFMpegMuxer
