@@ -13,3 +13,7 @@ These modules help create the foundation for typed FFmpeg wrappers by
 extracting accurate information about FFmpeg's functionality directly from
 its source code.
 """
+
+from . import cli
+
+__all__ = ["cli"]

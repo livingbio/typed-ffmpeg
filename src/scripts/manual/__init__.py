@@ -14,3 +14,7 @@ These manual definitions supplement the automatically extracted information
 to handle edge cases and special filters that require custom type annotations
 beyond what can be parsed from standard sources.
 """
+
+from . import cli, schema
+
+__all__ = ["cli", "schema"]
