@@ -1,4 +1,4 @@
-name: CI Scripts
+name: CI Scripts - Test
 
 permissions:
   contents: read
@@ -7,14 +7,14 @@ on:
   push:
     branches: [main]
     paths:
-      - 'src/**'
+      - 'src/scripts/**'
   pull_request:
     branches: [main]
     paths:
-      - 'src/**'
+      - 'src/scripts/**'
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -53,13 +53,3 @@ jobs:
           name: scripts-coverage
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
-
-      - name: Build Mkdocs
-        run: |
-          source .venv/bin/activate
-          mkdocs build
-
-      # Run linting
-      - name: Linting
-        run: uv run pre-commit run --all-files
-        working-directory: src/scripts
