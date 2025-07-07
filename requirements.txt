@@ -344,7 +344,7 @@ rich==14.0.0
     # via
     #   twine
     #   typer
-rpds-py==0.25.1
+rpds-py==0.26.0
     # via
     #   jsonschema
     #   referencing
