@@ -6,13 +6,13 @@
   '''
   {
     "__class__": "Person",
-    "name": "John Doe",
-    "age": 30,
     "address": {
       "__class__": "Address",
-      "street": "123 Main St",
-      "city": "Anytown"
-    }
+      "city": "Anytown",
+      "street": "123 Main St"
+    },
+    "age": 30,
+    "name": "John Doe"
   }
   '''
 # ---
@@ -21,13 +21,13 @@
   [
     {
       "__class__": "AVStream",
+      "index": null,
       "node": {
         "__class__": "InputNode",
-        "kwargs": {},
+        "filename": "input.mp4",
         "inputs": [],
-        "filename": "input.mp4"
+        "kwargs": {}
       },
-      "index": null,
       "optional": false
     },
     true
@@ -38,172 +38,28 @@
   '''
   {
     "__class__": "OutputStream",
+    "index": null,
     "node": {
       "__class__": "OutputNode",
-      "kwargs": {},
+      "filename": "out.mp4",
       "inputs": [
         {
           "__class__": "VideoStream",
+          "index": 0,
           "node": {
             "__class__": "FilterNode",
-            "kwargs": {
-              "x": "50",
-              "y": "50",
-              "width": "120",
-              "height": "120",
-              "color": "red",
-              "thickness": "5"
-            },
+            "input_typings": [
+              {
+                "__class__": "StreamType",
+                "value": "video"
+              }
+            ],
             "inputs": [
               {
                 "__class__": "VideoStream",
+                "index": 0,
                 "node": {
                   "__class__": "FilterNode",
-                  "kwargs": {},
-                  "inputs": [
-                    {
-                      "__class__": "VideoStream",
-                      "node": {
-                        "__class__": "FilterNode",
-                        "kwargs": {
-                          "n": 2
-                        },
-                        "inputs": [
-                          {
-                            "__class__": "VideoStream",
-                            "node": {
-                              "__class__": "FilterNode",
-                              "kwargs": {
-                                "start_frame": 10,
-                                "end_frame": 20
-                              },
-                              "inputs": [
-                                {
-                                  "__class__": "AVStream",
-                                  "node": {
-                                    "__class__": "InputNode",
-                                    "kwargs": {},
-                                    "inputs": [],
-                                    "filename": "input.mp4"
-                                  },
-                                  "index": null,
-                                  "optional": false
-                                }
-                              ],
-                              "name": "trim",
-                              "input_typings": [
-                                {
-                                  "__class__": "StreamType",
-                                  "value": "video"
-                                }
-                              ],
-                              "output_typings": [
-                                {
-                                  "__class__": "StreamType",
-                                  "value": "video"
-                                }
-                              ]
-                            },
-                            "index": 0,
-                            "optional": false
-                          },
-                          {
-                            "__class__": "VideoStream",
-                            "node": {
-                              "__class__": "FilterNode",
-                              "kwargs": {
-                                "start_frame": 30,
-                                "end_frame": 40
-                              },
-                              "inputs": [
-                                {
-                                  "__class__": "AVStream",
-                                  "node": {
-                                    "__class__": "InputNode",
-                                    "kwargs": {},
-                                    "inputs": [],
-                                    "filename": "input.mp4"
-                                  },
-                                  "index": null,
-                                  "optional": false
-                                }
-                              ],
-                              "name": "trim",
-                              "input_typings": [
-                                {
-                                  "__class__": "StreamType",
-                                  "value": "video"
-                                }
-                              ],
-                              "output_typings": [
-                                {
-                                  "__class__": "StreamType",
-                                  "value": "video"
-                                }
-                              ]
-                            },
-                            "index": 0,
-                            "optional": false
-                          }
-                        ],
-                        "name": "concat",
-                        "input_typings": [
-                          {
-                            "__class__": "StreamType",
-                            "value": "video"
-                          },
-                          {
-                            "__class__": "StreamType",
-                            "value": "video"
-                          }
-                        ],
-                        "output_typings": [
-                          {
-                            "__class__": "StreamType",
-                            "value": "video"
-                          }
-                        ]
-                      },
-                      "index": 0,
-                      "optional": false
-                    },
-                    {
-                      "__class__": "VideoStream",
-                      "node": {
-                        "__class__": "FilterNode",
-                        "kwargs": {},
-                        "inputs": [
-                          {
-                            "__class__": "AVStream",
-                            "node": {
-                              "__class__": "InputNode",
-                              "kwargs": {},
-                              "inputs": [],
-                              "filename": "overlay.png"
-                            },
-                            "index": null,
-                            "optional": false
-                          }
-                        ],
-                        "name": "hflip",
-                        "input_typings": [
-                          {
-                            "__class__": "StreamType",
-                            "value": "video"
-                          }
-                        ],
-                        "output_typings": [
-                          {
-                            "__class__": "StreamType",
-                            "value": "video"
-                          }
-                        ]
-                      },
-                      "index": 0,
-                      "optional": false
-                    }
-                  ],
-                  "name": "overlay",
                   "input_typings": [
                     {
                       "__class__": "StreamType",
@@ -214,6 +70,151 @@
                       "value": "video"
                     }
                   ],
+                  "inputs": [
+                    {
+                      "__class__": "VideoStream",
+                      "index": 0,
+                      "node": {
+                        "__class__": "FilterNode",
+                        "input_typings": [
+                          {
+                            "__class__": "StreamType",
+                            "value": "video"
+                          },
+                          {
+                            "__class__": "StreamType",
+                            "value": "video"
+                          }
+                        ],
+                        "inputs": [
+                          {
+                            "__class__": "VideoStream",
+                            "index": 0,
+                            "node": {
+                              "__class__": "FilterNode",
+                              "input_typings": [
+                                {
+                                  "__class__": "StreamType",
+                                  "value": "video"
+                                }
+                              ],
+                              "inputs": [
+                                {
+                                  "__class__": "AVStream",
+                                  "index": null,
+                                  "node": {
+                                    "__class__": "InputNode",
+                                    "filename": "input.mp4",
+                                    "inputs": [],
+                                    "kwargs": {}
+                                  },
+                                  "optional": false
+                                }
+                              ],
+                              "kwargs": {
+                                "end_frame": 20,
+                                "start_frame": 10
+                              },
+                              "name": "trim",
+                              "output_typings": [
+                                {
+                                  "__class__": "StreamType",
+                                  "value": "video"
+                                }
+                              ]
+                            },
+                            "optional": false
+                          },
+                          {
+                            "__class__": "VideoStream",
+                            "index": 0,
+                            "node": {
+                              "__class__": "FilterNode",
+                              "input_typings": [
+                                {
+                                  "__class__": "StreamType",
+                                  "value": "video"
+                                }
+                              ],
+                              "inputs": [
+                                {
+                                  "__class__": "AVStream",
+                                  "index": null,
+                                  "node": {
+                                    "__class__": "InputNode",
+                                    "filename": "input.mp4",
+                                    "inputs": [],
+                                    "kwargs": {}
+                                  },
+                                  "optional": false
+                                }
+                              ],
+                              "kwargs": {
+                                "end_frame": 40,
+                                "start_frame": 30
+                              },
+                              "name": "trim",
+                              "output_typings": [
+                                {
+                                  "__class__": "StreamType",
+                                  "value": "video"
+                                }
+                              ]
+                            },
+                            "optional": false
+                          }
+                        ],
+                        "kwargs": {
+                          "n": 2
+                        },
+                        "name": "concat",
+                        "output_typings": [
+                          {
+                            "__class__": "StreamType",
+                            "value": "video"
+                          }
+                        ]
+                      },
+                      "optional": false
+                    },
+                    {
+                      "__class__": "VideoStream",
+                      "index": 0,
+                      "node": {
+                        "__class__": "FilterNode",
+                        "input_typings": [
+                          {
+                            "__class__": "StreamType",
+                            "value": "video"
+                          }
+                        ],
+                        "inputs": [
+                          {
+                            "__class__": "AVStream",
+                            "index": null,
+                            "node": {
+                              "__class__": "InputNode",
+                              "filename": "overlay.png",
+                              "inputs": [],
+                              "kwargs": {}
+                            },
+                            "optional": false
+                          }
+                        ],
+                        "kwargs": {},
+                        "name": "hflip",
+                        "output_typings": [
+                          {
+                            "__class__": "StreamType",
+                            "value": "video"
+                          }
+                        ]
+                      },
+                      "optional": false
+                    }
+                  ],
+                  "kwargs": {},
+                  "name": "overlay",
                   "output_typings": [
                     {
                       "__class__": "StreamType",
@@ -221,17 +222,18 @@
                     }
                   ]
                 },
-                "index": 0,
                 "optional": false
               }
             ],
+            "kwargs": {
+              "color": "red",
+              "height": "120",
+              "thickness": "5",
+              "width": "120",
+              "x": "50",
+              "y": "50"
+            },
             "name": "drawbox",
-            "input_typings": [
-              {
-                "__class__": "StreamType",
-                "value": "video"
-              }
-            ],
             "output_typings": [
               {
                 "__class__": "StreamType",
@@ -239,13 +241,11 @@
               }
             ]
           },
-          "index": 0,
           "optional": false
         }
       ],
-      "filename": "out.mp4"
+      "kwargs": {}
     },
-    "index": null,
     "optional": false
   }
   '''
