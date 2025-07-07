@@ -13,3 +13,7 @@ These modules help provide context and reference information for FFmpeg filters
 that may not be available through command-line help or source code alone,
 enriching the generated type annotations with more detailed documentation.
 """
+
+from . import cli, schema
+
+__all__ = ["cli", "schema"]
