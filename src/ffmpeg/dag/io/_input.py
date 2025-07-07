@@ -9,11 +9,22 @@ from ...formats.schema import FFMpegDemuxerOption
 from ...options.codec import (
     FFMpegAVCodecContextDecoderOption,
 )
-from ...options.format import FFMpegAVFormatContextDecoderOption
+from ...options.format import (
+    FFMpegAVFormatContextDecoderOption,
+)
 from ...streams.av import AVStream
-from ...types import Boolean, Double, Float, Int, String, Time
+from ...types import (
+    Boolean,
+    Double,
+    Float,
+    Int,
+    String,
+    Time,
+)
 from ...utils.frozendict import merge
-from ..nodes import InputNode
+from ..nodes import (
+    InputNode,
+)
 
 
 def input(

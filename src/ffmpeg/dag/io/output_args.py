@@ -12,8 +12,18 @@ from ...formats.schema import FFMpegMuxerOption
 from ...options.codec import (
     FFMpegAVCodecContextEncoderOption,
 )
-from ...options.format import FFMpegAVFormatContextEncoderOption
-from ...types import Boolean, Float, Func, Int, Int64, String, Time
+from ...options.format import (
+    FFMpegAVFormatContextEncoderOption,
+)
+from ...types import (
+    Boolean,
+    Float,
+    Func,
+    Int,
+    Int64,
+    String,
+    Time,
+)
 from ...utils.frozendict import merge
 
 if TYPE_CHECKING:

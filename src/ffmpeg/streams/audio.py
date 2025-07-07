@@ -55,22 +55,22 @@ class AudioStream(FilterableStream):
         Convert input audio to 3d scope video output.
 
         Args:
-        rate: set video rate (default "25")
-        size: set video size (default "hd720")
-        fov: set camera FoV (from 40 to 150) (default 90)
-        roll: set camera roll (from -180 to 180) (default 0)
-        pitch: set camera pitch (from -180 to 180) (default 0)
-        yaw: set camera yaw (from -180 to 180) (default 0)
-        xzoom: set camera zoom (from 0.01 to 10) (default 1)
-        xpos: set camera position (from -60 to 60) (default 0)
-        length: set length (from 1 to 60) (default 15)
-        extra_options: Extra options for the filter
+            rate: set video rate (default "25")
+            size: set video size (default "hd720")
+            fov: set camera FoV (from 40 to 150) (default 90)
+            roll: set camera roll (from -180 to 180) (default 0)
+            pitch: set camera pitch (from -180 to 180) (default 0)
+            yaw: set camera yaw (from -180 to 180) (default 0)
+            xzoom: set camera zoom (from 0.01 to 10) (default 1)
+            xpos: set camera position (from -60 to 60) (default 0)
+            length: set length (from 1 to 60) (default 15)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the video stream
+            default: the video stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#a3dscope)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#a3dscope)
 
         """
         filter_node = filter_node_factory(
@@ -106,14 +106,14 @@ class AudioStream(FilterableStream):
         Benchmark part of a filtergraph.
 
         Args:
-        action: set action (from 0 to 1) (default start)
-        extra_options: Extra options for the filter
+            action: set action (from 0 to 1) (default start)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bench_002c-abench)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bench_002c-abench)
 
         """
         filter_node = filter_node_factory(
@@ -146,17 +146,17 @@ class AudioStream(FilterableStream):
         Convert input audio to audio bit scope video output.
 
         Args:
-        rate: set video rate (default "25")
-        size: set video size (default "1024x256")
-        colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
-        mode: set output mode (from 0 to 1) (default bars)
-        extra_options: Extra options for the filter
+            rate: set video rate (default "25")
+            size: set video size (default "1024x256")
+            colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
+            mode: set output mode (from 0 to 1) (default bars)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the video stream
+            default: the video stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#abitscope)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#abitscope)
 
         """
         filter_node = filter_node_factory(
@@ -198,25 +198,25 @@ class AudioStream(FilterableStream):
         Audio compressor.
 
         Args:
-        level_in: set input gain (from 0.015625 to 64) (default 1)
-        mode: set mode (from 0 to 1) (default downward)
-        threshold: set threshold (from 0.000976563 to 1) (default 0.125)
-        ratio: set ratio (from 1 to 20) (default 2)
-        attack: set attack (from 0.01 to 2000) (default 20)
-        release: set release (from 0.01 to 9000) (default 250)
-        makeup: set make up gain (from 1 to 64) (default 1)
-        knee: set knee (from 1 to 8) (default 2.82843)
-        link: set link type (from 0 to 1) (default average)
-        detection: set detection (from 0 to 1) (default rms)
-        level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
-        mix: set mix (from 0 to 1) (default 1)
-        extra_options: Extra options for the filter
+            level_in: set input gain (from 0.015625 to 64) (default 1)
+            mode: set mode (from 0 to 1) (default downward)
+            threshold: set threshold (from 0.000976563 to 1) (default 0.125)
+            ratio: set ratio (from 1 to 20) (default 2)
+            attack: set attack (from 0.01 to 2000) (default 20)
+            release: set release (from 0.01 to 9000) (default 250)
+            makeup: set make up gain (from 1 to 64) (default 1)
+            knee: set knee (from 1 to 8) (default 2.82843)
+            link: set link type (from 0 to 1) (default average)
+            detection: set detection (from 0 to 1) (default rms)
+            level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
+            mix: set mix (from 0 to 1) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acompressor)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acompressor)
 
         """
         filter_node = filter_node_factory(
@@ -255,14 +255,14 @@ class AudioStream(FilterableStream):
         Simple audio dynamic range compression/expansion filter.
 
         Args:
-        contrast: set contrast (from 0 to 100) (default 33)
-        extra_options: Extra options for the filter
+            contrast: set contrast (from 0 to 100) (default 33)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acontrast)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acontrast)
 
         """
         filter_node = filter_node_factory(
@@ -288,13 +288,13 @@ class AudioStream(FilterableStream):
         Copy the input audio unchanged to the output.
 
         Args:
-        extra_options: Extra options for the filter
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acopy)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acopy)
 
         """
         filter_node = filter_node_factory(
@@ -379,18 +379,18 @@ class AudioStream(FilterableStream):
         Cross fade two input audio streams.
 
         Args:
-        nb_samples: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
-        duration: set cross fade duration (default 0)
-        overlap: overlap 1st stream end with 2nd stream start (default true)
-        curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
-        curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
-        extra_options: Extra options for the filter
+            nb_samples: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
+            duration: set cross fade duration (default 0)
+            overlap: overlap 1st stream end with 2nd stream start (default true)
+            curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
+            curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossfade)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossfade)
 
         """
         filter_node = filter_node_factory(
@@ -433,19 +433,19 @@ class AudioStream(FilterableStream):
         Split audio into per-bands streams.
 
         Args:
-        split: set split frequencies (default "500")
-        order: set filter order (from 0 to 9) (default 4th)
-        level: set input gain (from 0 to 1) (default 1)
-        gain: set output bands gain (default "1.f")
-        precision: set processing precision (from 0 to 2) (default auto)
-        extra_options: Extra options for the filter
+            split: set split frequencies (default "500")
+            order: set filter order (from 0 to 9) (default 4th)
+            level: set input gain (from 0 to 1) (default 1)
+            gain: set output bands gain (default "1.f")
+            precision: set processing precision (from 0 to 2) (default auto)
+            extra_options: Extra options for the filter
 
         Returns:
-        filter_node: the filter node
+            filter_node: the filter node
 
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossover)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossover)
 
         """
         filter_node = filter_node_factory(
@@ -491,25 +491,25 @@ class AudioStream(FilterableStream):
         Reduce audio bit resolution.
 
         Args:
-        level_in: set level in (from 0.015625 to 64) (default 1)
-        level_out: set level out (from 0.015625 to 64) (default 1)
-        bits: set bit reduction (from 1 to 64) (default 8)
-        mix: set mix (from 0 to 1) (default 0.5)
-        mode: set mode (from 0 to 1) (default lin)
-        dc: set DC (from 0.25 to 4) (default 1)
-        aa: set anti-aliasing (from 0 to 1) (default 0.5)
-        samples: set sample reduction (from 1 to 250) (default 1)
-        lfo: enable LFO (default false)
-        lforange: set LFO depth (from 1 to 250) (default 20)
-        lforate: set LFO rate (from 0.01 to 200) (default 0.3)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            level_in: set level in (from 0.015625 to 64) (default 1)
+            level_out: set level out (from 0.015625 to 64) (default 1)
+            bits: set bit reduction (from 1 to 64) (default 8)
+            mix: set mix (from 0 to 1) (default 0.5)
+            mode: set mode (from 0 to 1) (default lin)
+            dc: set DC (from 0.25 to 4) (default 1)
+            aa: set anti-aliasing (from 0 to 1) (default 0.5)
+            samples: set sample reduction (from 1 to 250) (default 1)
+            lfo: enable LFO (default false)
+            lforange: set LFO depth (from 1 to 250) (default 20)
+            lforate: set LFO rate (from 0.01 to 200) (default 0.3)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrusher)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrusher)
 
         """
         filter_node = filter_node_factory(
@@ -550,16 +550,16 @@ class AudioStream(FilterableStream):
         Delay filtering to match a cue.
 
         Args:
-        cue: cue unix timestamp in microseconds (from 0 to I64_MAX) (default 0)
-        preroll: preroll duration in seconds (default 0)
-        buffer: buffer duration in seconds (default 0)
-        extra_options: Extra options for the filter
+            cue: cue unix timestamp in microseconds (from 0 to I64_MAX) (default 0)
+            preroll: preroll duration in seconds (default 0)
+            buffer: buffer duration in seconds (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acue)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acue)
 
         """
         filter_node = filter_node_factory(
@@ -595,20 +595,20 @@ class AudioStream(FilterableStream):
         Remove impulsive noise from input audio.
 
         Args:
-        window: set window size (from 10 to 100) (default 55)
-        overlap: set window overlap (from 50 to 95) (default 75)
-        arorder: set autoregression order (from 0 to 25) (default 2)
-        threshold: set threshold (from 1 to 100) (default 2)
-        burst: set burst fusion (from 0 to 10) (default 2)
-        method: set overlap method (from 0 to 1) (default add)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            window: set window size (from 10 to 100) (default 55)
+            overlap: set window overlap (from 50 to 95) (default 75)
+            arorder: set autoregression order (from 0 to 25) (default 2)
+            threshold: set threshold (from 1 to 100) (default 2)
+            burst: set burst fusion (from 0 to 10) (default 2)
+            method: set overlap method (from 0 to 1) (default add)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adeclick)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adeclick)
 
         """
         filter_node = filter_node_factory(
@@ -648,20 +648,20 @@ class AudioStream(FilterableStream):
         Remove clipping from input audio.
 
         Args:
-        window: set window size (from 10 to 100) (default 55)
-        overlap: set window overlap (from 50 to 95) (default 75)
-        arorder: set autoregression order (from 0 to 25) (default 8)
-        threshold: set threshold (from 1 to 100) (default 10)
-        hsize: set histogram size (from 100 to 9999) (default 1000)
-        method: set overlap method (from 0 to 1) (default add)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            window: set window size (from 10 to 100) (default 55)
+            overlap: set window overlap (from 50 to 95) (default 75)
+            arorder: set autoregression order (from 0 to 25) (default 8)
+            threshold: set threshold (from 1 to 100) (default 10)
+            hsize: set histogram size (from 100 to 9999) (default 1000)
+            method: set overlap method (from 0 to 1) (default add)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adeclip)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adeclip)
 
         """
         filter_node = filter_node_factory(
@@ -697,16 +697,16 @@ class AudioStream(FilterableStream):
         Apply decorrelation to input audio.
 
         Args:
-        stages: set filtering stages (from 1 to 16) (default 6)
-        seed: set random seed (from -1 to UINT32_MAX) (default -1)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            stages: set filtering stages (from 1 to 16) (default 6)
+            seed: set random seed (from -1 to UINT32_MAX) (default -1)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adecorrelate)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adecorrelate)
 
         """
         filter_node = filter_node_factory(
@@ -738,16 +738,16 @@ class AudioStream(FilterableStream):
         Delay one or more audio channels.
 
         Args:
-        delays: set list of delays for each channel
-        all: use last available delay for remained channels (default false)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            delays: set list of delays for each channel
+            all: use last available delay for remained channels (default false)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adelay)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adelay)
 
         """
         filter_node = filter_node_factory(
@@ -779,16 +779,16 @@ class AudioStream(FilterableStream):
         Remedy denormals by adding extremely low-level noise.
 
         Args:
-        level: set level (from -451 to -90) (default -351)
-        type: set type (from 0 to 3) (default dc)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            level: set level (from -451 to -90) (default -351)
+            type: set type (from 0 to 3) (default dc)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adenorm)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adenorm)
 
         """
         filter_node = filter_node_factory(
@@ -817,14 +817,14 @@ class AudioStream(FilterableStream):
         Compute derivative of input audio.
 
         Args:
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aderivative_002c-aintegral)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aderivative_002c-aintegral)
 
         """
         filter_node = filter_node_factory(
@@ -867,28 +867,28 @@ class AudioStream(FilterableStream):
         Draw a graph using input audio metadata.
 
         Args:
-        m1: set 1st metadata key (default "")
-        fg1: set 1st foreground color expression (default "0xffff0000")
-        m2: set 2nd metadata key (default "")
-        fg2: set 2nd foreground color expression (default "0xff00ff00")
-        m3: set 3rd metadata key (default "")
-        fg3: set 3rd foreground color expression (default "0xffff00ff")
-        m4: set 4th metadata key (default "")
-        fg4: set 4th foreground color expression (default "0xffffff00")
-        bg: set background color (default "white")
-        min: set minimal value (from INT_MIN to INT_MAX) (default -1)
-        max: set maximal value (from INT_MIN to INT_MAX) (default 1)
-        mode: set graph mode (from 0 to 2) (default line)
-        slide: set slide mode (from 0 to 4) (default frame)
-        size: set graph size (default "900x256")
-        rate: set video rate (default "25")
-        extra_options: Extra options for the filter
+            m1: set 1st metadata key (default "")
+            fg1: set 1st foreground color expression (default "0xffff0000")
+            m2: set 2nd metadata key (default "")
+            fg2: set 2nd foreground color expression (default "0xff00ff00")
+            m3: set 3rd metadata key (default "")
+            fg3: set 3rd foreground color expression (default "0xffff00ff")
+            m4: set 4th metadata key (default "")
+            fg4: set 4th foreground color expression (default "0xffffff00")
+            bg: set background color (default "white")
+            min: set minimal value (from INT_MIN to INT_MAX) (default -1)
+            max: set maximal value (from INT_MIN to INT_MAX) (default 1)
+            mode: set graph mode (from 0 to 2) (default line)
+            slide: set slide mode (from 0 to 4) (default frame)
+            size: set graph size (default "900x256")
+            rate: set video rate (default "25")
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the video stream
+            default: the video stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adrawgraph)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adrawgraph)
 
         """
         filter_node = filter_node_factory(
@@ -934,18 +934,18 @@ class AudioStream(FilterableStream):
         Audio Spectral Dynamic Range Controller.
 
         Args:
-        transfer: set the transfer expression (default "p")
-        attack: set the attack (from 1 to 1000) (default 50)
-        release: set the release (from 5 to 2000) (default 100)
-        channels: set channels to filter (default "all")
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            transfer: set the transfer expression (default "p")
+            attack: set the attack (from 1 to 1000) (default 50)
+            release: set the release (from 5 to 2000) (default 100)
+            channels: set channels to filter (default "all")
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adrc)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adrc)
 
         """
         filter_node = filter_node_factory(
@@ -997,30 +997,30 @@ class AudioStream(FilterableStream):
         Apply Dynamic Equalization of input audio.
 
         Args:
-        threshold: set detection threshold (from 0 to 100) (default 0)
-        dfrequency: set detection frequency (from 2 to 1e+06) (default 1000)
-        dqfactor: set detection Q factor (from 0.001 to 1000) (default 1)
-        tfrequency: set target frequency (from 2 to 1e+06) (default 1000)
-        tqfactor: set target Q factor (from 0.001 to 1000) (default 1)
-        attack: set attack duration (from 1 to 2000) (default 20)
-        release: set release duration (from 1 to 2000) (default 200)
-        ratio: set ratio factor (from 0 to 30) (default 1)
-        makeup: set makeup gain (from 0 to 100) (default 0)
-        range: set max gain (from 1 to 200) (default 50)
-        mode: set mode (from -1 to 1) (default cut)
-        dftype: set detection filter type (from 0 to 3) (default bandpass)
-        tftype: set target filter type (from 0 to 2) (default bell)
-        direction: set direction (from 0 to 1) (default downward)
-        auto: set auto threshold (from -1 to 1) (default disabled)
-        precision: set processing precision (from 0 to 2) (default auto)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            threshold: set detection threshold (from 0 to 100) (default 0)
+            dfrequency: set detection frequency (from 2 to 1e+06) (default 1000)
+            dqfactor: set detection Q factor (from 0.001 to 1000) (default 1)
+            tfrequency: set target frequency (from 2 to 1e+06) (default 1000)
+            tqfactor: set target Q factor (from 0.001 to 1000) (default 1)
+            attack: set attack duration (from 1 to 2000) (default 20)
+            release: set release duration (from 1 to 2000) (default 200)
+            ratio: set ratio factor (from 0 to 30) (default 1)
+            makeup: set makeup gain (from 0 to 100) (default 0)
+            range: set max gain (from 1 to 200) (default 50)
+            mode: set mode (from -1 to 1) (default cut)
+            dftype: set detection filter type (from 0 to 3) (default bandpass)
+            tftype: set target filter type (from 0 to 2) (default bell)
+            direction: set direction (from 0 to 1) (default downward)
+            auto: set auto threshold (from -1 to 1) (default disabled)
+            precision: set processing precision (from 0 to 2) (default auto)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adynamicequalizer)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adynamicequalizer)
 
         """
         filter_node = filter_node_factory(
@@ -1068,16 +1068,16 @@ class AudioStream(FilterableStream):
         Apply Dynamic Smoothing of input audio.
 
         Args:
-        sensitivity: set smooth sensitivity (from 0 to 1e+06) (default 2)
-        basefreq: set base frequency (from 2 to 1e+06) (default 22050)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            sensitivity: set smooth sensitivity (from 0 to 1e+06) (default 2)
+            basefreq: set base frequency (from 2 to 1e+06) (default 22050)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adynamicsmooth)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adynamicsmooth)
 
         """
         filter_node = filter_node_factory(
@@ -1112,17 +1112,17 @@ class AudioStream(FilterableStream):
         Add echoing to the audio.
 
         Args:
-        in_gain: set signal input gain (from 0 to 1) (default 0.6)
-        out_gain: set signal output gain (from 0 to 1) (default 0.3)
-        delays: set list of signal delays (default "1000")
-        decays: set list of signal decays (default "0.5")
-        extra_options: Extra options for the filter
+            in_gain: set signal input gain (from 0 to 1) (default 0.6)
+            out_gain: set signal output gain (from 0 to 1) (default 0.3)
+            delays: set list of signal delays (default "1000")
+            decays: set list of signal decays (default "0.5")
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aecho)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aecho)
 
         """
         filter_node = filter_node_factory(
@@ -1161,18 +1161,18 @@ class AudioStream(FilterableStream):
         Audio emphasis.
 
         Args:
-        level_in: set input gain (from 0 to 64) (default 1)
-        level_out: set output gain (from 0 to 64) (default 1)
-        mode: set filter mode (from 0 to 1) (default reproduction)
-        type: set filter type (from 0 to 8) (default cd)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            level_in: set input gain (from 0 to 64) (default 1)
+            level_out: set output gain (from 0 to 64) (default 1)
+            mode: set filter mode (from 0 to 1) (default reproduction)
+            type: set filter type (from 0 to 8) (default cd)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aemphasis)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aemphasis)
 
         """
         filter_node = filter_node_factory(
@@ -1206,16 +1206,16 @@ class AudioStream(FilterableStream):
         Filter audio signal according to a specified expression.
 
         Args:
-        exprs: set the '|'-separated list of channels expressions
-        channel_layout: set channel layout
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            exprs: set the '|'-separated list of channels expressions
+            channel_layout: set channel layout
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aeval)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aeval)
 
         """
         filter_node = filter_node_factory(
@@ -1253,22 +1253,22 @@ class AudioStream(FilterableStream):
         Enhance high frequency part of audio.
 
         Args:
-        level_in: set level in (from 0 to 64) (default 1)
-        level_out: set level out (from 0 to 64) (default 1)
-        amount: set amount (from 0 to 64) (default 1)
-        drive: set harmonics (from 0.1 to 10) (default 8.5)
-        blend: set blend harmonics (from -10 to 10) (default 0)
-        freq: set scope (from 2000 to 12000) (default 7500)
-        ceil: set ceiling (from 9999 to 20000) (default 9999)
-        listen: enable listen mode (default false)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            level_in: set level in (from 0 to 64) (default 1)
+            level_out: set level out (from 0 to 64) (default 1)
+            amount: set amount (from 0 to 64) (default 1)
+            drive: set harmonics (from 0.1 to 10) (default 8.5)
+            blend: set blend harmonics (from -10 to 10) (default 0)
+            freq: set scope (from 2000 to 12000) (default 7500)
+            ceil: set ceiling (from 9999 to 20000) (default 9999)
+            listen: enable listen mode (default false)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aexciter)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aexciter)
 
         """
         filter_node = filter_node_factory(
@@ -1339,22 +1339,22 @@ class AudioStream(FilterableStream):
         Fade in/out input audio.
 
         Args:
-        type: set the fade direction (from 0 to 1) (default in)
-        start_sample: set number of first sample to start fading (from 0 to I64_MAX) (default 0)
-        nb_samples: set number of samples for fade duration (from 1 to I64_MAX) (default 44100)
-        start_time: set time to start fading (default 0)
-        duration: set fade duration (default 0)
-        curve: set fade curve type (from -1 to 22) (default tri)
-        silence: set the silence gain (from 0 to 1) (default 0)
-        unity: set the unity gain (from 0 to 1) (default 1)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            type: set the fade direction (from 0 to 1) (default in)
+            start_sample: set number of first sample to start fading (from 0 to I64_MAX) (default 0)
+            nb_samples: set number of samples for fade duration (from 1 to I64_MAX) (default 44100)
+            start_time: set time to start fading (default 0)
+            duration: set fade duration (default 0)
+            curve: set fade curve type (from -1 to 22) (default tri)
+            silence: set the silence gain (from 0 to 1) (default 0)
+            unity: set the unity gain (from 0 to 1) (default 1)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afade)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afade)
 
         """
         filter_node = filter_node_factory(
@@ -1412,28 +1412,28 @@ class AudioStream(FilterableStream):
         Denoise audio samples using FFT.
 
         Args:
-        noise_reduction: set the noise reduction (from 0.01 to 97) (default 12)
-        noise_floor: set the noise floor (from -80 to -20) (default -50)
-        noise_type: set the noise type (from 0 to 3) (default white)
-        band_noise: set the custom bands noise
-        residual_floor: set the residual floor (from -80 to -20) (default -38)
-        track_noise: track noise (default false)
-        track_residual: track residual (default false)
-        output_mode: set output mode (from 0 to 2) (default output)
-        adaptivity: set adaptivity factor (from 0 to 1) (default 0.5)
-        floor_offset: set noise floor offset factor (from -2 to 2) (default 1)
-        noise_link: set the noise floor link (from 0 to 3) (default min)
-        band_multiplier: set band multiplier (from 0.2 to 5) (default 1.25)
-        sample_noise: set sample noise mode (from 0 to 2) (default none)
-        gain_smooth: set gain smooth radius (from 0 to 50) (default 0)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            noise_reduction: set the noise reduction (from 0.01 to 97) (default 12)
+            noise_floor: set the noise floor (from -80 to -20) (default -50)
+            noise_type: set the noise type (from 0 to 3) (default white)
+            band_noise: set the custom bands noise
+            residual_floor: set the residual floor (from -80 to -20) (default -38)
+            track_noise: track noise (default false)
+            track_residual: track residual (default false)
+            output_mode: set output mode (from 0 to 2) (default output)
+            adaptivity: set adaptivity factor (from 0 to 1) (default 0.5)
+            floor_offset: set noise floor offset factor (from -2 to 2) (default 1)
+            noise_link: set the noise floor link (from 0 to 3) (default min)
+            band_multiplier: set band multiplier (from 0.2 to 5) (default 1.25)
+            sample_noise: set sample noise mode (from 0 to 2) (default none)
+            gain_smooth: set gain smooth radius (from 0 to 50) (default 0)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afftdn)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afftdn)
 
         """
         filter_node = filter_node_factory(
@@ -1505,19 +1505,19 @@ class AudioStream(FilterableStream):
         Apply arbitrary expressions to samples in frequency domain.
 
         Args:
-        real: set channels real expressions (default "re")
-        imag: set channels imaginary expressions (default "im")
-        win_size: set window size (from 16 to 131072) (default 4096)
-        win_func: set window function (from 0 to 20) (default hann)
-        overlap: set window overlap (from 0 to 1) (default 0.75)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            real: set channels real expressions (default "re")
+            imag: set channels imaginary expressions (default "im")
+            win_size: set window size (from 16 to 131072) (default 4096)
+            win_func: set window function (from 0 to 20) (default hann)
+            overlap: set window overlap (from 0 to 1) (default 0.75)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afftfilt)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afftfilt)
 
         """
         filter_node = filter_node_factory(
@@ -1552,16 +1552,16 @@ class AudioStream(FilterableStream):
         Convert the input audio to one of the specified formats.
 
         Args:
-        sample_fmts: A '|'-separated list of sample formats.
-        sample_rates: A '|'-separated list of sample rates.
-        channel_layouts: A '|'-separated list of channel layouts.
-        extra_options: Extra options for the filter
+            sample_fmts: A '|'-separated list of sample formats.
+            sample_rates: A '|'-separated list of sample rates.
+            channel_layouts: A '|'-separated list of channel layouts.
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aformat)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aformat)
 
         """
         filter_node = filter_node_factory(
@@ -1594,17 +1594,17 @@ class AudioStream(FilterableStream):
         Apply frequency shifting to input audio.
 
         Args:
-        shift: set frequency shift (from -2.14748e+09 to INT_MAX) (default 0)
-        level: set output level (from 0 to 1) (default 1)
-        order: set filter order (from 1 to 16) (default 8)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            shift: set frequency shift (from -2.14748e+09 to INT_MAX) (default 0)
+            level: set output level (from 0 to 1) (default 1)
+            order: set filter order (from 1 to 16) (default 8)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afreqshift)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afreqshift)
 
         """
         filter_node = filter_node_factory(
@@ -1645,22 +1645,22 @@ class AudioStream(FilterableStream):
         Denoise audio stream using Wavelets.
 
         Args:
-        sigma: set noise sigma (from 0 to 1) (default 0)
-        levels: set number of wavelet levels (from 1 to 12) (default 10)
-        wavet: set wavelet type (from 0 to 6) (default sym10)
-        percent: set percent of full denoising (from 0 to 100) (default 85)
-        profile: profile noise (default false)
-        adaptive: adaptive profiling of noise (default false)
-        samples: set frame size in number of samples (from 512 to 65536) (default 8192)
-        softness: set thresholding softness (from 0 to 10) (default 1)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            sigma: set noise sigma (from 0 to 1) (default 0)
+            levels: set number of wavelet levels (from 1 to 12) (default 10)
+            wavet: set wavelet type (from 0 to 6) (default sym10)
+            percent: set percent of full denoising (from 0 to 100) (default 85)
+            profile: profile noise (default false)
+            adaptive: adaptive profiling of noise (default false)
+            samples: set frame size in number of samples (from 512 to 65536) (default 8192)
+            softness: set thresholding softness (from 0 to 10) (default 1)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afwtdn)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afwtdn)
 
         """
         filter_node = filter_node_factory(
@@ -1708,26 +1708,26 @@ class AudioStream(FilterableStream):
         Audio gate.
 
         Args:
-        level_in: set input level (from 0.015625 to 64) (default 1)
-        mode: set mode (from 0 to 1) (default downward)
-        range: set max gain reduction (from 0 to 1) (default 0.06125)
-        threshold: set threshold (from 0 to 1) (default 0.125)
-        ratio: set ratio (from 1 to 9000) (default 2)
-        attack: set attack (from 0.01 to 9000) (default 20)
-        release: set release (from 0.01 to 9000) (default 250)
-        makeup: set makeup gain (from 1 to 64) (default 1)
-        knee: set knee (from 1 to 8) (default 2.82843)
-        detection: set detection (from 0 to 1) (default rms)
-        link: set link (from 0 to 1) (default average)
-        level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            level_in: set input level (from 0.015625 to 64) (default 1)
+            mode: set mode (from 0 to 1) (default downward)
+            range: set max gain reduction (from 0 to 1) (default 0.06125)
+            threshold: set threshold (from 0 to 1) (default 0.125)
+            ratio: set ratio (from 1 to 9000) (default 2)
+            attack: set attack (from 0.01 to 9000) (default 20)
+            release: set release (from 0.01 to 9000) (default 250)
+            makeup: set makeup gain (from 1 to 64) (default 1)
+            knee: set knee (from 1 to 8) (default 2.82843)
+            detection: set detection (from 0 to 1) (default rms)
+            link: set link (from 0 to 1) (default average)
+            level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#agate)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#agate)
 
         """
         filter_node = filter_node_factory(
@@ -1795,18 +1795,18 @@ class AudioStream(FilterableStream):
         Show various filtergraph stats.
 
         Args:
-        size: set monitor size (default "hd720")
-        opacity: set video opacity (from 0 to 1) (default 0.9)
-        mode: set mode (default 0)
-        flags: set flags (default all+queue)
-        rate: set video rate (default "25")
-        extra_options: Extra options for the filter
+            size: set monitor size (default "hd720")
+            opacity: set video opacity (from 0 to 1) (default 0.9)
+            mode: set mode (default 0)
+            flags: set flags (default all+queue)
+            rate: set video rate (default "25")
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the video stream
+            default: the video stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#agraphmonitor)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#agraphmonitor)
 
         """
         filter_node = filter_node_factory(
@@ -1850,22 +1850,22 @@ class AudioStream(FilterableStream):
         Convert input audio to histogram video output.
 
         Args:
-        dmode: set method to display channels (from 0 to 1) (default single)
-        rate: set video rate (default "25")
-        size: set video size (default "hd720")
-        scale: set display scale (from 0 to 4) (default log)
-        ascale: set amplitude scale (from 0 to 1) (default log)
-        acount: how much frames to accumulate (from -1 to 100) (default 1)
-        rheight: set histogram ratio of window height (from 0 to 1) (default 0.1)
-        slide: set sonogram sliding (from 0 to 1) (default replace)
-        hmode: set histograms mode (from 0 to 1) (default abs)
-        extra_options: Extra options for the filter
+            dmode: set method to display channels (from 0 to 1) (default single)
+            rate: set video rate (default "25")
+            size: set video size (default "hd720")
+            scale: set display scale (from 0 to 4) (default log)
+            ascale: set amplitude scale (from 0 to 1) (default log)
+            acount: how much frames to accumulate (from -1 to 100) (default 1)
+            rheight: set histogram ratio of window height (from 0 to 1) (default 0.1)
+            slide: set sonogram sliding (from 0 to 1) (default replace)
+            hmode: set histograms mode (from 0 to 1) (default abs)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the video stream
+            default: the video stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ahistogram)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ahistogram)
 
         """
         filter_node = filter_node_factory(
@@ -1917,29 +1917,29 @@ class AudioStream(FilterableStream):
         Apply Infinite Impulse Response filter with supplied coefficients.
 
         Args:
-        zeros: set B/numerator/zeros/reflection coefficients (default "1+0i 1-0i")
-        poles: set A/denominator/poles/ladder coefficients (default "1+0i 1-0i")
-        gains: set channels gains (default "1|1")
-        dry: set dry gain (from 0 to 1) (default 1)
-        wet: set wet gain (from 0 to 1) (default 1)
-        format: set coefficients format (from -2 to 4) (default zp)
-        process: set kind of processing (from 0 to 2) (default s)
-        precision: set filtering precision (from 0 to 3) (default dbl)
-        e: set precision (from 0 to 3) (default dbl)
-        normalize: normalize coefficients (default true)
-        mix: set mix (from 0 to 1) (default 1)
-        response: show IR frequency response (default false)
-        channel: set IR channel to display frequency response (from 0 to 1024) (default 0)
-        size: set video size (default "hd720")
-        rate: set video rate (default "25")
-        extra_options: Extra options for the filter
+            zeros: set B/numerator/zeros/reflection coefficients (default "1+0i 1-0i")
+            poles: set A/denominator/poles/ladder coefficients (default "1+0i 1-0i")
+            gains: set channels gains (default "1|1")
+            dry: set dry gain (from 0 to 1) (default 1)
+            wet: set wet gain (from 0 to 1) (default 1)
+            format: set coefficients format (from -2 to 4) (default zp)
+            process: set kind of processing (from 0 to 2) (default s)
+            precision: set filtering precision (from 0 to 3) (default dbl)
+            e: set precision (from 0 to 3) (default dbl)
+            normalize: normalize coefficients (default true)
+            mix: set mix (from 0 to 1) (default 1)
+            response: show IR frequency response (default false)
+            channel: set IR channel to display frequency response (from 0 to 1024) (default 0)
+            size: set video size (default "hd720")
+            rate: set video rate (default "25")
+            extra_options: Extra options for the filter
 
         Returns:
-        filter_node: the filter node
+            filter_node: the filter node
 
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aiir)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aiir)
 
         """
         filter_node = filter_node_factory(
@@ -1983,14 +1983,14 @@ class AudioStream(FilterableStream):
         Compute integral of input audio.
 
         Args:
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aderivative_002c-aintegral)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aderivative_002c-aintegral)
 
         """
         filter_node = filter_node_factory(
@@ -2016,14 +2016,14 @@ class AudioStream(FilterableStream):
         Report audio filtering latency.
 
         Args:
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#latency_002c-alatency)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#latency_002c-alatency)
 
         """
         filter_node = filter_node_factory(
@@ -2059,23 +2059,23 @@ class AudioStream(FilterableStream):
         Audio lookahead limiter.
 
         Args:
-        level_in: set input level (from 0.015625 to 64) (default 1)
-        level_out: set output level (from 0.015625 to 64) (default 1)
-        limit: set limit (from 0.0625 to 1) (default 1)
-        attack: set attack (from 0.1 to 80) (default 5)
-        release: set release (from 1 to 8000) (default 50)
-        asc: enable asc (default false)
-        asc_level: set asc level (from 0 to 1) (default 0.5)
-        level: auto level (default true)
-        latency: compensate delay (default false)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            level_in: set input level (from 0.015625 to 64) (default 1)
+            level_out: set output level (from 0.015625 to 64) (default 1)
+            limit: set limit (from 0.0625 to 1) (default 1)
+            attack: set attack (from 0.1 to 80) (default 5)
+            release: set release (from 1 to 8000) (default 50)
+            asc: enable asc (default false)
+            asc_level: set asc level (from 0 to 1) (default 0.5)
+            level: auto level (default true)
+            latency: compensate delay (default false)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alimiter)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alimiter)
 
         """
         filter_node = filter_node_factory(
@@ -2125,23 +2125,23 @@ class AudioStream(FilterableStream):
         Apply a two-pole all-pass filter.
 
         Args:
-        frequency: set central frequency (from 0 to 999999) (default 3000)
-        width_type: set filter-width type (from 1 to 5) (default q)
-        width: set width (from 0 to 99999) (default 0.707)
-        mix: set mix (from 0 to 1) (default 1)
-        channels: set channels to filter (default "all")
-        normalize: normalize coefficients (default false)
-        order: set filter order (from 1 to 2) (default 2)
-        transform: set transform type (from 0 to 6) (default di)
-        precision: set filtering precision (from -1 to 3) (default auto)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            frequency: set central frequency (from 0 to 999999) (default 3000)
+            width_type: set filter-width type (from 1 to 5) (default q)
+            width: set width (from 0 to 99999) (default 0.707)
+            mix: set mix (from 0 to 1) (default 1)
+            channels: set channels to filter (default "all")
+            normalize: normalize coefficients (default false)
+            order: set filter order (from 1 to 2) (default 2)
+            transform: set transform type (from 0 to 6) (default di)
+            precision: set filtering precision (from -1 to 3) (default auto)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allpass)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allpass)
 
         """
         filter_node = filter_node_factory(
@@ -2181,17 +2181,17 @@ class AudioStream(FilterableStream):
         Loop audio samples.
 
         Args:
-        loop: number of loops (from -1 to INT_MAX) (default 0)
-        size: max number of samples to loop (from 0 to INT_MAX) (default 0)
-        start: set the loop start sample (from -1 to I64_MAX) (default 0)
-        time: set the loop start time (default INT64_MAX)
-        extra_options: Extra options for the filter
+            loop: number of loops (from -1 to INT_MAX) (default 0)
+            size: max number of samples to loop (from 0 to INT_MAX) (default 0)
+            start: set the loop start sample (from -1 to I64_MAX) (default 0)
+            time: set the loop start time (default INT64_MAX)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aloop)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aloop)
 
         """
         filter_node = filter_node_factory(
@@ -2235,21 +2235,21 @@ class AudioStream(FilterableStream):
         Manipulate audio frame metadata.
 
         Args:
-        mode: set a mode of operation (from 0 to 4) (default select)
-        key: set metadata key
-        value: set metadata value
-        function: function for comparing values (from 0 to 6) (default same_str)
-        expr: set expression for expr function
-        file: set file where to print metadata information
-        direct: reduce buffering when printing to user-set file or pipe (default false)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            mode: set a mode of operation (from 0 to 4) (default select)
+            key: set metadata key
+            value: set metadata value
+            function: function for comparing values (from 0 to 6) (default same_str)
+            expr: set expression for expr function
+            file: set file where to print metadata information
+            direct: reduce buffering when printing to user-set file or pipe (default false)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#metadata_002c-ametadata)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#metadata_002c-ametadata)
 
         """
         filter_node = filter_node_factory(
@@ -2283,13 +2283,13 @@ class AudioStream(FilterableStream):
         Multiply two audio streams.
 
         Args:
-        extra_options: Extra options for the filter
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amultiply)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amultiply)
 
         """
         filter_node = filter_node_factory(
@@ -2326,21 +2326,21 @@ class AudioStream(FilterableStream):
         Apply high-order audio parametric multi band equalizer.
 
         Args:
-        params: (default "")
-        curves: draw frequency response curves (default false)
-        size: set video size (default "hd720")
-        mgain: set max gain (from -900 to 900) (default 60)
-        fscale: set frequency scale (from 0 to 1) (default log)
-        colors: set channels curves colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            params: (default "")
+            curves: draw frequency response curves (default false)
+            size: set video size (default "hd720")
+            mgain: set max gain (from -900 to 900) (default 60)
+            fscale: set frequency scale (from 0 to 1) (default log)
+            colors: set channels curves colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        filter_node: the filter node
+            filter_node: the filter node
 
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anequalizer)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anequalizer)
 
         """
         filter_node = filter_node_factory(
@@ -2382,19 +2382,19 @@ class AudioStream(FilterableStream):
         Reduce broadband noise from stream using Non-Local Means.
 
         Args:
-        strength: set denoising strength (from 1e-05 to 10000) (default 1e-05)
-        patch: set patch duration (default 0.002)
-        research: set research duration (default 0.006)
-        output: set output mode (from 0 to 2) (default o)
-        smooth: set smooth factor (from 1 to 1000) (default 11)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            strength: set denoising strength (from 1e-05 to 10000) (default 1e-05)
+            patch: set patch duration (default 0.002)
+            research: set research duration (default 0.006)
+            output: set output mode (from 0 to 2) (default o)
+            smooth: set smooth factor (from 1 to 1000) (default 11)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmdn)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmdn)
 
         """
         filter_node = filter_node_factory(
@@ -2433,19 +2433,19 @@ class AudioStream(FilterableStream):
         Apply Normalized Least-Mean-Fourth algorithm to first audio stream.
 
         Args:
-        order: set the filter order (from 1 to 32767) (default 256)
-        mu: set the filter mu (from 0 to 2) (default 0.75)
-        eps: set the filter eps (from 0 to 1) (default 1)
-        leakage: set the filter leakage (from 0 to 1) (default 0)
-        out_mode: set output mode (from 0 to 4) (default o)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            order: set the filter order (from 1 to 32767) (default 256)
+            mu: set the filter mu (from 0 to 2) (default 0.75)
+            eps: set the filter eps (from 0 to 1) (default 1)
+            leakage: set the filter leakage (from 0 to 1) (default 0)
+            out_mode: set output mode (from 0 to 4) (default o)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
 
         """
         filter_node = filter_node_factory(
@@ -2487,19 +2487,19 @@ class AudioStream(FilterableStream):
         Apply Normalized Least-Mean-Squares algorithm to first audio stream.
 
         Args:
-        order: set the filter order (from 1 to 32767) (default 256)
-        mu: set the filter mu (from 0 to 2) (default 0.75)
-        eps: set the filter eps (from 0 to 1) (default 1)
-        leakage: set the filter leakage (from 0 to 1) (default 0)
-        out_mode: set output mode (from 0 to 4) (default o)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            order: set the filter order (from 1 to 32767) (default 256)
+            mu: set the filter mu (from 0 to 2) (default 0.75)
+            eps: set the filter eps (from 0 to 1) (default 1)
+            leakage: set the filter leakage (from 0 to 1) (default 0)
+            out_mode: set output mode (from 0 to 4) (default o)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
 
         """
         filter_node = filter_node_factory(
@@ -2533,13 +2533,13 @@ class AudioStream(FilterableStream):
         Pass the source unchanged to the output.
 
         Args:
-        extra_options: Extra options for the filter
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anull)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anull)
 
         """
         filter_node = filter_node_factory(
@@ -2570,19 +2570,19 @@ class AudioStream(FilterableStream):
         Pad audio with silence.
 
         Args:
-        packet_size: set silence packet size (from 0 to INT_MAX) (default 4096)
-        pad_len: set number of samples of silence to add (from -1 to I64_MAX) (default -1)
-        whole_len: set minimum target number of samples in the audio stream (from -1 to I64_MAX) (default -1)
-        pad_dur: set duration of silence to add (default -0.000001)
-        whole_dur: set minimum target duration in the audio stream (default -0.000001)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            packet_size: set silence packet size (from 0 to INT_MAX) (default 4096)
+            pad_len: set number of samples of silence to add (from -1 to I64_MAX) (default -1)
+            whole_len: set minimum target number of samples in the audio stream (from -1 to I64_MAX) (default -1)
+            pad_dur: set duration of silence to add (default -0.000001)
+            whole_dur: set minimum target duration in the audio stream (default -0.000001)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apad)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apad)
 
         """
         filter_node = filter_node_factory(
@@ -2619,16 +2619,16 @@ class AudioStream(FilterableStream):
         Set permissions for the output audio frame.
 
         Args:
-        mode: select permissions mode (from 0 to 4) (default none)
-        seed: set the seed for the random mode (from -1 to UINT32_MAX) (default -1)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            mode: select permissions mode (from 0 to 4) (default none)
+            seed: set the seed for the random mode (from -1 to UINT32_MAX) (default -1)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#perms_002c-aperms)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#perms_002c-aperms)
 
         """
         filter_node = filter_node_factory(
@@ -2668,25 +2668,25 @@ class AudioStream(FilterableStream):
         Convert input audio to phase meter video output.
 
         Args:
-        rate: set video rate (default "25")
-        size: set video size (default "800x400")
-        rc: set red contrast (from 0 to 255) (default 2)
-        gc: set green contrast (from 0 to 255) (default 7)
-        bc: set blue contrast (from 0 to 255) (default 1)
-        mpc: set median phase color (default "none")
-        video: set video output (default true)
-        phasing: set mono and out-of-phase detection output (default false)
-        tolerance: set phase tolerance for mono detection (from 0 to 1) (default 0)
-        angle: set angle threshold for out-of-phase detection (from 90 to 180) (default 170)
-        duration: set minimum mono or out-of-phase duration in seconds (default 2)
-        extra_options: Extra options for the filter
+            rate: set video rate (default "25")
+            size: set video size (default "800x400")
+            rc: set red contrast (from 0 to 255) (default 2)
+            gc: set green contrast (from 0 to 255) (default 7)
+            bc: set blue contrast (from 0 to 255) (default 1)
+            mpc: set median phase color (default "none")
+            video: set video output (default true)
+            phasing: set mono and out-of-phase detection output (default false)
+            tolerance: set phase tolerance for mono detection (from 0 to 1) (default 0)
+            angle: set angle threshold for out-of-phase detection (from 90 to 180) (default 170)
+            duration: set minimum mono or out-of-phase duration in seconds (default 2)
+            extra_options: Extra options for the filter
 
         Returns:
-        filter_node: the filter node
+            filter_node: the filter node
 
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphasemeter)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphasemeter)
 
         """
         filter_node = filter_node_factory(
@@ -2734,19 +2734,19 @@ class AudioStream(FilterableStream):
         Add a phasing effect to the audio.
 
         Args:
-        in_gain: set input gain (from 0 to 1) (default 0.4)
-        out_gain: set output gain (from 0 to 1e+09) (default 0.74)
-        delay: set delay in milliseconds (from 0 to 5) (default 3)
-        decay: set decay (from 0 to 0.99) (default 0.4)
-        speed: set modulation speed (from 0.1 to 2) (default 0.5)
-        type: set modulation type (from 0 to 1) (default triangular)
-        extra_options: Extra options for the filter
+            in_gain: set input gain (from 0 to 1) (default 0.4)
+            out_gain: set output gain (from 0 to 1e+09) (default 0.74)
+            delay: set delay in milliseconds (from 0 to 5) (default 3)
+            decay: set decay (from 0 to 0.99) (default 0.4)
+            speed: set modulation speed (from 0.1 to 2) (default 0.5)
+            type: set modulation type (from 0 to 1) (default triangular)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphaser)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphaser)
 
         """
         filter_node = filter_node_factory(
@@ -2782,17 +2782,17 @@ class AudioStream(FilterableStream):
         Apply phase shifting to input audio.
 
         Args:
-        shift: set phase shift (from -1 to 1) (default 0)
-        level: set output level (from 0 to 1) (default 1)
-        order: set filter order (from 1 to 16) (default 8)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            shift: set phase shift (from -1 to 1) (default 0)
+            level: set output level (from 0 to 1) (default 1)
+            order: set filter order (from 1 to 16) (default 8)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphaseshift)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphaseshift)
 
         """
         filter_node = filter_node_factory(
@@ -2823,14 +2823,14 @@ class AudioStream(FilterableStream):
         Measure Audio Peak Signal-to-Noise Ratio.
 
         Args:
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsnr)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsnr)
 
         """
         filter_node = filter_node_factory(
@@ -2867,21 +2867,21 @@ class AudioStream(FilterableStream):
         Audio Psychoacoustic Clipper.
 
         Args:
-        level_in: set input level (from 0.015625 to 64) (default 1)
-        level_out: set output level (from 0.015625 to 64) (default 1)
-        clip: set clip level (from 0.015625 to 1) (default 1)
-        diff: enable difference (default false)
-        adaptive: set adaptive distortion (from 0 to 1) (default 0.5)
-        iterations: set iterations (from 1 to 20) (default 10)
-        level: set auto level (default false)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            level_in: set input level (from 0.015625 to 64) (default 1)
+            level_out: set output level (from 0.015625 to 64) (default 1)
+            clip: set clip level (from 0.015625 to 1) (default 1)
+            diff: enable difference (default false)
+            adaptive: set adaptive distortion (from 0 to 1) (default 0.5)
+            iterations: set iterations (from 1 to 20) (default 10)
+            level: set auto level (default false)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsyclip)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsyclip)
 
         """
         filter_node = filter_node_factory(
@@ -2928,24 +2928,24 @@ class AudioStream(FilterableStream):
         Audio pulsator.
 
         Args:
-        level_in: set input gain (from 0.015625 to 64) (default 1)
-        level_out: set output gain (from 0.015625 to 64) (default 1)
-        mode: set mode (from 0 to 4) (default sine)
-        amount: set modulation (from 0 to 1) (default 1)
-        offset_l: set offset L (from 0 to 1) (default 0)
-        offset_r: set offset R (from 0 to 1) (default 0.5)
-        width: set pulse width (from 0 to 2) (default 1)
-        timing: set timing (from 0 to 2) (default hz)
-        bpm: set BPM (from 30 to 300) (default 120)
-        ms: set ms (from 10 to 2000) (default 500)
-        hz: set frequency (from 0.01 to 100) (default 2)
-        extra_options: Extra options for the filter
+            level_in: set input gain (from 0.015625 to 64) (default 1)
+            level_out: set output gain (from 0.015625 to 64) (default 1)
+            mode: set mode (from 0 to 4) (default sine)
+            amount: set modulation (from 0 to 1) (default 1)
+            offset_l: set offset L (from 0 to 1) (default 0)
+            offset_r: set offset R (from 0 to 1) (default 0.5)
+            width: set pulse width (from 0 to 2) (default 1)
+            timing: set timing (from 0 to 2) (default hz)
+            bpm: set BPM (from 30 to 300) (default 120)
+            ms: set ms (from 10 to 2000) (default 500)
+            hz: set frequency (from 0.01 to 100) (default 2)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apulsator)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apulsator)
 
         """
         filter_node = filter_node_factory(
@@ -2984,15 +2984,15 @@ class AudioStream(FilterableStream):
         Slow down filtering to match realtime.
 
         Args:
-        limit: sleep time limit (default 2)
-        speed: speed factor (from DBL_MIN to DBL_MAX) (default 1)
-        extra_options: Extra options for the filter
+            limit: sleep time limit (default 2)
+            speed: speed factor (from DBL_MIN to DBL_MAX) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#realtime_002c-arealtime)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#realtime_002c-arealtime)
 
         """
         filter_node = filter_node_factory(
@@ -3021,14 +3021,14 @@ class AudioStream(FilterableStream):
         Resample audio data.
 
         Args:
-        sample_rate: (from 0 to INT_MAX) (default 0)
-        extra_options: Extra options for the filter
+            sample_rate: (from 0 to INT_MAX) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aresample)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aresample)
 
         """
         filter_node = filter_node_factory(
@@ -3054,13 +3054,13 @@ class AudioStream(FilterableStream):
         Reverse an audio clip.
 
         Args:
-        extra_options: Extra options for the filter
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#areverse)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#areverse)
 
         """
         filter_node = filter_node_factory(
@@ -3091,18 +3091,18 @@ class AudioStream(FilterableStream):
         Apply Recursive Least Squares algorithm to first audio stream.
 
         Args:
-        order: set the filter order (from 1 to 32767) (default 16)
-        _lambda: set the filter lambda (from 0 to 1) (default 1)
-        delta: set the filter delta (from 0 to 32767) (default 2)
-        out_mode: set output mode (from 0 to 4) (default o)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            order: set the filter order (from 1 to 32767) (default 16)
+            _lambda: set the filter lambda (from 0 to 1) (default 1)
+            delta: set the filter delta (from 0 to 32767) (default 2)
+            out_mode: set output mode (from 0 to 4) (default o)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arls)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arls)
 
         """
         filter_node = filter_node_factory(
@@ -3137,16 +3137,16 @@ class AudioStream(FilterableStream):
         Reduce noise from speech using Recurrent Neural Networks.
 
         Args:
-        model: set model name
-        mix: set output vs input mix (from -1 to 1) (default 1)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            model: set model name
+            mix: set output vs input mix (from -1 to 1) (default 1)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arnndn)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arnndn)
 
         """
         filter_node = filter_node_factory(
@@ -3176,14 +3176,14 @@ class AudioStream(FilterableStream):
         Measure Audio Signal-to-Distortion Ratio.
 
         Args:
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asdr)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asdr)
 
         """
         filter_node = filter_node_factory(
@@ -3212,16 +3212,16 @@ class AudioStream(FilterableStream):
         Segment audio stream.
 
         Args:
-        timestamps: timestamps of input at which to split input
-        samples: samples at which to split input
-        extra_options: Extra options for the filter
+            timestamps: timestamps of input at which to split input
+            samples: samples at which to split input
+            extra_options: Extra options for the filter
 
         Returns:
-        filter_node: the filter node
+            filter_node: the filter node
 
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#segment_002c-asegment)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#segment_002c-asegment)
 
         """
         filter_node = filter_node_factory(
@@ -3254,16 +3254,16 @@ class AudioStream(FilterableStream):
         Select audio frames to pass in output.
 
         Args:
-        expr: set an expression to use for selecting frames (default "1")
-        outputs: set the number of outputs (from 1 to INT_MAX) (default 1)
-        extra_options: Extra options for the filter
+            expr: set an expression to use for selecting frames (default "1")
+            outputs: set the number of outputs (from 1 to INT_MAX) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
-        filter_node: the filter node
+            filter_node: the filter node
 
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#select_002c-aselect)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#select_002c-aselect)
 
         """
         filter_node = filter_node_factory(
@@ -3296,15 +3296,15 @@ class AudioStream(FilterableStream):
         Send commands to filters.
 
         Args:
-        commands: set commands
-        filename: set commands file
-        extra_options: Extra options for the filter
+            commands: set commands
+            filename: set commands file
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sendcmd_002c-asendcmd)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sendcmd_002c-asendcmd)
 
         """
         filter_node = filter_node_factory(
@@ -3335,16 +3335,16 @@ class AudioStream(FilterableStream):
         Set the number of samples for each output audio frames.
 
         Args:
-        nb_out_samples: set the number of per-frame output samples (from 1 to INT_MAX) (default 1024)
-        pad: pad last frame with zeros (default true)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            nb_out_samples: set the number of per-frame output samples (from 1 to INT_MAX) (default 1024)
+            pad: pad last frame with zeros (default true)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asetnsamples)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asetnsamples)
 
         """
         filter_node = filter_node_factory(
@@ -3374,14 +3374,14 @@ class AudioStream(FilterableStream):
         Set PTS for the output audio frame.
 
         Args:
-        expr: Expression determining the frame timestamp (default "PTS")
-        extra_options: Extra options for the filter
+            expr: Expression determining the frame timestamp (default "PTS")
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setpts_002c-asetpts)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setpts_002c-asetpts)
 
         """
         filter_node = filter_node_factory(
@@ -3409,14 +3409,14 @@ class AudioStream(FilterableStream):
         Change the sample rate without altering the data.
 
         Args:
-        sample_rate: set the sample rate (from 1 to INT_MAX) (default 44100)
-        extra_options: Extra options for the filter
+            sample_rate: set the sample rate (from 1 to INT_MAX) (default 44100)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asetrate)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asetrate)
 
         """
         filter_node = filter_node_factory(
@@ -3444,14 +3444,14 @@ class AudioStream(FilterableStream):
         Set timebase for the audio output link.
 
         Args:
-        expr: set expression determining the output timebase (default "intb")
-        extra_options: Extra options for the filter
+            expr: set expression determining the output timebase (default "intb")
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#settb_002c-asettb)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#settb_002c-asettb)
 
         """
         filter_node = filter_node_factory(
@@ -3477,13 +3477,13 @@ class AudioStream(FilterableStream):
         Show textual information for each audio frame.
 
         Args:
-        extra_options: Extra options for the filter
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ashowinfo)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ashowinfo)
 
         """
         filter_node = filter_node_factory(
@@ -3535,16 +3535,16 @@ class AudioStream(FilterableStream):
         Manipulate audio frame side data.
 
         Args:
-        mode: set a mode of operation (from 0 to 1) (default select)
-        type: set side data type (from -1 to INT_MAX) (default -1)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            mode: set a mode of operation (from 0 to 1) (default select)
+            type: set side data type (from -1 to INT_MAX) (default -1)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidedata_002c-asidedata)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidedata_002c-asidedata)
 
         """
         filter_node = filter_node_factory(
@@ -3574,14 +3574,14 @@ class AudioStream(FilterableStream):
         Measure Audio Scale-Invariant Signal-to-Distortion Ratio.
 
         Args:
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asisdr)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asisdr)
 
         """
         filter_node = filter_node_factory(
@@ -3620,19 +3620,19 @@ class AudioStream(FilterableStream):
         Audio Soft Clipper.
 
         Args:
-        type: set softclip type (from -1 to 7) (default tanh)
-        threshold: set softclip threshold (from 1e-06 to 1) (default 1)
-        output: set softclip output gain (from 1e-06 to 16) (default 1)
-        param: set softclip parameter (from 0.01 to 3) (default 1)
-        oversample: set oversample factor (from 1 to 64) (default 1)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            type: set softclip type (from -1 to 7) (default tanh)
+            threshold: set softclip threshold (from 1e-06 to 1) (default 1)
+            output: set softclip output gain (from 1e-06 to 16) (default 1)
+            param: set softclip parameter (from 0.01 to 3) (default 1)
+            oversample: set oversample factor (from 1 to 64) (default 1)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asoftclip)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asoftclip)
 
         """
         filter_node = filter_node_factory(
@@ -3713,17 +3713,17 @@ class AudioStream(FilterableStream):
         Show frequency domain statistics about audio frames.
 
         Args:
-        win_size: set the window size (from 32 to 65536) (default 2048)
-        win_func: set window function (from 0 to 20) (default hann)
-        overlap: set window overlap (from 0 to 1) (default 0.5)
-        measure: select the parameters which are measured (default all+mean+variance+centroid+spread+skewness+kurtosis+entropy+flatness+crest+flux+slope+decrease+rolloff)
-        extra_options: Extra options for the filter
+            win_size: set the window size (from 32 to 65536) (default 2048)
+            win_func: set window function (from 0 to 20) (default hann)
+            overlap: set window overlap (from 0 to 1) (default 0.5)
+            measure: select the parameters which are measured (default all+mean+variance+centroid+spread+skewness+kurtosis+entropy+flatness+crest+flux+slope+decrease+rolloff)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aspectralstats)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aspectralstats)
 
         """
         filter_node = filter_node_factory(
@@ -3756,15 +3756,15 @@ class AudioStream(FilterableStream):
         Pass on the audio input to N audio outputs.
 
         Args:
-        outputs: set number of outputs (from 1 to INT_MAX) (default 2)
-        extra_options: Extra options for the filter
+            outputs: set number of outputs (from 1 to INT_MAX) (default 2)
+            extra_options: Extra options for the filter
 
         Returns:
-        filter_node: the filter node
+            filter_node: the filter node
 
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit)
 
         """
         filter_node = filter_node_factory(
@@ -3801,20 +3801,20 @@ class AudioStream(FilterableStream):
         Automatic Speech Recognition.
 
         Args:
-        rate: set sampling rate (from 0 to INT_MAX) (default 16000)
-        hmm: set directory containing acoustic model files
-        dict: set pronunciation dictionary
-        lm: set language model file
-        lmctl: set language model set
-        lmname: set which language model to use
-        logfn: set output for log messages (default "/dev/null")
-        extra_options: Extra options for the filter
+            rate: set sampling rate (from 0 to INT_MAX) (default 16000)
+            hmm: set directory containing acoustic model files
+            dict: set pronunciation dictionary
+            lm: set language model file
+            lmctl: set language model set
+            lmname: set which language model to use
+            logfn: set output for log messages (default "/dev/null")
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asr)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asr)
 
         """
         filter_node = filter_node_factory(
@@ -3918,18 +3918,18 @@ class AudioStream(FilterableStream):
         Show time domain statistics about audio frames.
 
         Args:
-        length: set the window length (from 0 to 10) (default 0.05)
-        metadata: inject metadata in the filtergraph (default false)
-        reset: Set the number of frames over which cumulative stats are calculated before being reset (from 0 to INT_MAX) (default 0)
-        measure_perchannel: Select the parameters which are measured per channel (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count)
-        measure_overall: Select the parameters which are measured overall (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count)
-        extra_options: Extra options for the filter
+            length: set the window length (from 0 to 10) (default 0.05)
+            metadata: inject metadata in the filtergraph (default false)
+            reset: Set the number of frames over which cumulative stats are calculated before being reset (from 0 to INT_MAX) (default 0)
+            measure_perchannel: Select the parameters which are measured per channel (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count)
+            measure_overall: Select the parameters which are measured overall (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#astats)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#astats)
 
         """
         filter_node = filter_node_factory(
@@ -3970,23 +3970,23 @@ class AudioStream(FilterableStream):
         Boost subwoofer frequencies.
 
         Args:
-        dry: set dry gain (from 0 to 1) (default 1)
-        wet: set wet gain (from 0 to 1) (default 1)
-        boost: set max boost (from 1 to 12) (default 2)
-        decay: set decay (from 0 to 1) (default 0)
-        feedback: set feedback (from 0 to 1) (default 0.9)
-        cutoff: set cutoff (from 50 to 900) (default 100)
-        slope: set slope (from 0.0001 to 1) (default 0.5)
-        delay: set delay (from 1 to 100) (default 20)
-        channels: set channels to filter (default "all")
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            dry: set dry gain (from 0 to 1) (default 1)
+            wet: set wet gain (from 0 to 1) (default 1)
+            boost: set max boost (from 1 to 12) (default 2)
+            decay: set decay (from 0 to 1) (default 0)
+            feedback: set feedback (from 0 to 1) (default 0.9)
+            cutoff: set cutoff (from 50 to 900) (default 100)
+            slope: set slope (from 0.0001 to 1) (default 0.5)
+            delay: set delay (from 1 to 100) (default 20)
+            channels: set channels to filter (default "all")
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asubboost)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asubboost)
 
         """
         filter_node = filter_node_factory(
@@ -4026,17 +4026,17 @@ class AudioStream(FilterableStream):
         Cut subwoofer frequencies.
 
         Args:
-        cutoff: set cutoff frequency (from 2 to 200) (default 20)
-        order: set filter order (from 3 to 20) (default 10)
-        level: set input level (from 0 to 1) (default 1)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            cutoff: set cutoff frequency (from 2 to 200) (default 20)
+            order: set filter order (from 3 to 20) (default 10)
+            level: set input level (from 0 to 1) (default 1)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asubcut)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asubcut)
 
         """
         filter_node = filter_node_factory(
@@ -4070,17 +4070,17 @@ class AudioStream(FilterableStream):
         Cut super frequencies.
 
         Args:
-        cutoff: set cutoff frequency (from 20000 to 192000) (default 20000)
-        order: set filter order (from 3 to 20) (default 10)
-        level: set input level (from 0 to 1) (default 1)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            cutoff: set cutoff frequency (from 20000 to 192000) (default 20000)
+            order: set filter order (from 3 to 20) (default 10)
+            level: set input level (from 0 to 1) (default 1)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asupercut)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asupercut)
 
         """
         filter_node = filter_node_factory(
@@ -4115,18 +4115,18 @@ class AudioStream(FilterableStream):
         Apply high order Butterworth band-pass filter.
 
         Args:
-        centerf: set center frequency (from 2 to 999999) (default 1000)
-        order: set filter order (from 4 to 20) (default 4)
-        qfactor: set Q-factor (from 0.01 to 100) (default 1)
-        level: set input level (from 0 to 2) (default 1)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            centerf: set center frequency (from 2 to 999999) (default 1000)
+            order: set filter order (from 4 to 20) (default 4)
+            qfactor: set Q-factor (from 0.01 to 100) (default 1)
+            level: set input level (from 0 to 2) (default 1)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asuperpass)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asuperpass)
 
         """
         filter_node = filter_node_factory(
@@ -4162,18 +4162,18 @@ class AudioStream(FilterableStream):
         Apply high order Butterworth band-stop filter.
 
         Args:
-        centerf: set center frequency (from 2 to 999999) (default 1000)
-        order: set filter order (from 4 to 20) (default 4)
-        qfactor: set Q-factor (from 0.01 to 100) (default 1)
-        level: set input level (from 0 to 2) (default 1)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            centerf: set center frequency (from 2 to 999999) (default 1000)
+            order: set filter order (from 4 to 20) (default 4)
+            qfactor: set Q-factor (from 0.01 to 100) (default 1)
+            level: set input level (from 0 to 2) (default 1)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asuperstop)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asuperstop)
 
         """
         filter_node = filter_node_factory(
@@ -4205,14 +4205,14 @@ class AudioStream(FilterableStream):
         Adjust audio tempo.
 
         Args:
-        tempo: set tempo scale factor (from 0.5 to 100) (default 1)
-        extra_options: Extra options for the filter
+            tempo: set tempo scale factor (from 0.5 to 100) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atempo)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atempo)
 
         """
         filter_node = filter_node_factory(
@@ -4245,19 +4245,19 @@ class AudioStream(FilterableStream):
         Apply spectral tilt to audio.
 
         Args:
-        freq: set central frequency (from 20 to 192000) (default 10000)
-        slope: set filter slope (from -1 to 1) (default 0)
-        width: set filter width (from 100 to 10000) (default 1000)
-        order: set filter order (from 2 to 30) (default 5)
-        level: set input level (from 0 to 4) (default 1)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            freq: set central frequency (from 20 to 192000) (default 10000)
+            slope: set filter slope (from -1 to 1) (default 0)
+            width: set filter width (from 100 to 10000) (default 1000)
+            order: set filter order (from 2 to 30) (default 5)
+            level: set input level (from 0 to 4) (default 1)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atilt)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atilt)
 
         """
         filter_node = filter_node_factory(
@@ -4296,20 +4296,20 @@ class AudioStream(FilterableStream):
         Pick one continuous section from the input, drop the rest.
 
         Args:
-        start: Timestamp of the first frame that should be passed (default INT64_MAX)
-        end: Timestamp of the first frame that should be dropped again (default INT64_MAX)
-        start_pts: Timestamp of the first frame that should be passed (from I64_MIN to I64_MAX) (default I64_MIN)
-        end_pts: Timestamp of the first frame that should be dropped again (from I64_MIN to I64_MAX) (default I64_MIN)
-        duration: Maximum duration of the output (default 0)
-        start_sample: Number of the first audio sample that should be passed to the output (from -1 to I64_MAX) (default -1)
-        end_sample: Number of the first audio sample that should be dropped again (from 0 to I64_MAX) (default I64_MAX)
-        extra_options: Extra options for the filter
+            start: Timestamp of the first frame that should be passed (default INT64_MAX)
+            end: Timestamp of the first frame that should be dropped again (default INT64_MAX)
+            start_pts: Timestamp of the first frame that should be passed (from I64_MIN to I64_MAX) (default I64_MIN)
+            end_pts: Timestamp of the first frame that should be dropped again (from I64_MIN to I64_MAX) (default I64_MIN)
+            duration: Maximum duration of the output (default 0)
+            start_sample: Number of the first audio sample that should be passed to the output (from -1 to I64_MAX) (default -1)
+            end_sample: Number of the first audio sample that should be dropped again (from 0 to I64_MAX) (default I64_MAX)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atrim)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atrim)
 
         """
         filter_node = filter_node_factory(
@@ -4360,29 +4360,29 @@ class AudioStream(FilterableStream):
         Convert input audio to vectorscope video output.
 
         Args:
-        mode: set mode (from 0 to 2) (default lissajous)
-        rate: set video rate (default "25")
-        size: set video size (default "400x400")
-        rc: set red contrast (from 0 to 255) (default 40)
-        gc: set green contrast (from 0 to 255) (default 160)
-        bc: set blue contrast (from 0 to 255) (default 80)
-        ac: set alpha contrast (from 0 to 255) (default 255)
-        rf: set red fade (from 0 to 255) (default 15)
-        gf: set green fade (from 0 to 255) (default 10)
-        bf: set blue fade (from 0 to 255) (default 5)
-        af: set alpha fade (from 0 to 255) (default 5)
-        zoom: set zoom factor (from 0 to 10) (default 1)
-        draw: set draw mode (from 0 to 2) (default dot)
-        scale: set amplitude scale mode (from 0 to 3) (default lin)
-        swap: swap x axis with y axis (default true)
-        mirror: mirror axis (from 0 to 3) (default none)
-        extra_options: Extra options for the filter
+            mode: set mode (from 0 to 2) (default lissajous)
+            rate: set video rate (default "25")
+            size: set video size (default "400x400")
+            rc: set red contrast (from 0 to 255) (default 40)
+            gc: set green contrast (from 0 to 255) (default 160)
+            bc: set blue contrast (from 0 to 255) (default 80)
+            ac: set alpha contrast (from 0 to 255) (default 255)
+            rf: set red fade (from 0 to 255) (default 15)
+            gf: set green fade (from 0 to 255) (default 10)
+            bf: set blue fade (from 0 to 255) (default 5)
+            af: set alpha fade (from 0 to 255) (default 5)
+            zoom: set zoom factor (from 0 to 10) (default 1)
+            draw: set draw mode (from 0 to 2) (default dot)
+            scale: set amplitude scale mode (from 0 to 3) (default lin)
+            swap: swap x axis with y axis (default true)
+            mirror: mirror axis (from 0 to 3) (default none)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the video stream
+            default: the video stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#avectorscope)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#avectorscope)
 
         """
         filter_node = filter_node_factory(
@@ -4427,15 +4427,15 @@ class AudioStream(FilterableStream):
         Cross-correlate two audio streams.
 
         Args:
-        size: set the segment size (from 2 to 131072) (default 256)
-        algo: set the algorithm (from 0 to 2) (default best)
-        extra_options: Extra options for the filter
+            size: set the segment size (from 2 to 131072) (default 256)
+            algo: set the algorithm (from 0 to 2) (default best)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#axcorrelate)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#axcorrelate)
 
         """
         filter_node = filter_node_factory(
@@ -4467,14 +4467,14 @@ class AudioStream(FilterableStream):
         Receive commands through ZMQ and broker them to filters.
 
         Args:
-        bind_address: set bind address (default "tcp://*:5555")
-        extra_options: Extra options for the filter
+            bind_address: set bind address (default "tcp://*:5555")
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zmq_002c-azmq)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zmq_002c-azmq)
 
         """
         filter_node = filter_node_factory(
@@ -4516,24 +4516,24 @@ class AudioStream(FilterableStream):
         Apply a two-pole Butterworth band-pass filter.
 
         Args:
-        frequency: set central frequency (from 0 to 999999) (default 3000)
-        width_type: set filter-width type (from 1 to 5) (default q)
-        width: set width (from 0 to 99999) (default 0.5)
-        csg: use constant skirt gain (default false)
-        mix: set mix (from 0 to 1) (default 1)
-        channels: set channels to filter (default "all")
-        normalize: normalize coefficients (default false)
-        transform: set transform type (from 0 to 6) (default di)
-        precision: set filtering precision (from -1 to 3) (default auto)
-        blocksize: set the block size (from 0 to 32768) (default 0)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            frequency: set central frequency (from 0 to 999999) (default 3000)
+            width_type: set filter-width type (from 1 to 5) (default q)
+            width: set width (from 0 to 99999) (default 0.5)
+            csg: use constant skirt gain (default false)
+            mix: set mix (from 0 to 1) (default 1)
+            channels: set channels to filter (default "all")
+            normalize: normalize coefficients (default false)
+            transform: set transform type (from 0 to 6) (default di)
+            precision: set filtering precision (from -1 to 3) (default auto)
+            blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bandpass)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bandpass)
 
         """
         filter_node = filter_node_factory(
@@ -4584,23 +4584,23 @@ class AudioStream(FilterableStream):
         Apply a two-pole Butterworth band-reject filter.
 
         Args:
-        frequency: set central frequency (from 0 to 999999) (default 3000)
-        width_type: set filter-width type (from 1 to 5) (default q)
-        width: set width (from 0 to 99999) (default 0.5)
-        mix: set mix (from 0 to 1) (default 1)
-        channels: set channels to filter (default "all")
-        normalize: normalize coefficients (default false)
-        transform: set transform type (from 0 to 6) (default di)
-        precision: set filtering precision (from -1 to 3) (default auto)
-        blocksize: set the block size (from 0 to 32768) (default 0)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            frequency: set central frequency (from 0 to 999999) (default 3000)
+            width_type: set filter-width type (from 1 to 5) (default q)
+            width: set width (from 0 to 99999) (default 0.5)
+            mix: set mix (from 0 to 1) (default 1)
+            channels: set channels to filter (default "all")
+            normalize: normalize coefficients (default false)
+            transform: set transform type (from 0 to 6) (default di)
+            precision: set filtering precision (from -1 to 3) (default auto)
+            blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bandreject)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bandreject)
 
         """
         filter_node = filter_node_factory(
@@ -4652,25 +4652,25 @@ class AudioStream(FilterableStream):
         Boost or cut lower frequencies.
 
         Args:
-        frequency: set central frequency (from 0 to 999999) (default 100)
-        width_type: set filter-width type (from 1 to 5) (default q)
-        width: set width (from 0 to 99999) (default 0.5)
-        gain: set gain (from -900 to 900) (default 0)
-        poles: set number of poles (from 1 to 2) (default 2)
-        mix: set mix (from 0 to 1) (default 1)
-        channels: set channels to filter (default "all")
-        normalize: normalize coefficients (default false)
-        transform: set transform type (from 0 to 6) (default di)
-        precision: set filtering precision (from -1 to 3) (default auto)
-        blocksize: set the block size (from 0 to 32768) (default 0)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            frequency: set central frequency (from 0 to 999999) (default 100)
+            width_type: set filter-width type (from 1 to 5) (default q)
+            width: set width (from 0 to 99999) (default 0.5)
+            gain: set gain (from -900 to 900) (default 0)
+            poles: set number of poles (from 1 to 2) (default 2)
+            mix: set mix (from 0 to 1) (default 1)
+            channels: set channels to filter (default "all")
+            normalize: normalize coefficients (default false)
+            transform: set transform type (from 0 to 6) (default di)
+            precision: set filtering precision (from -1 to 3) (default auto)
+            blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bass_002c-lowshelf)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bass_002c-lowshelf)
 
         """
         filter_node = filter_node_factory(
@@ -4721,22 +4721,22 @@ class AudioStream(FilterableStream):
         Apply a biquad IIR filter with the given coefficients.
 
         Args:
-        a0: (from INT_MIN to INT_MAX) (default 1)
-        a1: (from INT_MIN to INT_MAX) (default 0)
-        mix: set mix (from 0 to 1) (default 1)
-        channels: set channels to filter (default "all")
-        normalize: normalize coefficients (default false)
-        transform: set transform type (from 0 to 6) (default di)
-        precision: set filtering precision (from -1 to 3) (default auto)
-        blocksize: set the block size (from 0 to 32768) (default 0)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            a0: (from INT_MIN to INT_MAX) (default 1)
+            a1: (from INT_MIN to INT_MAX) (default 0)
+            mix: set mix (from 0 to 1) (default 1)
+            channels: set channels to filter (default "all")
+            normalize: normalize coefficients (default false)
+            transform: set transform type (from 0 to 6) (default di)
+            precision: set filtering precision (from -1 to 3) (default auto)
+            blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#biquad)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#biquad)
 
         """
         filter_node = filter_node_factory(
@@ -4776,16 +4776,16 @@ class AudioStream(FilterableStream):
         Bauer stereo-to-binaural filter.
 
         Args:
-        profile: Apply a pre-defined crossfeed level (from 0 to INT_MAX) (default default)
-        fcut: Set cut frequency (in Hz) (from 0 to 2000) (default 0)
-        feed: Set feed level (in Hz) (from 0 to 150) (default 0)
-        extra_options: Extra options for the filter
+            profile: Apply a pre-defined crossfeed level (from 0 to INT_MAX) (default default)
+            fcut: Set cut frequency (in Hz) (from 0 to 2000) (default 0)
+            feed: Set feed level (in Hz) (from 0 to 150) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bs2b)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bs2b)
 
         """
         filter_node = filter_node_factory(
@@ -4816,15 +4816,15 @@ class AudioStream(FilterableStream):
         Remap audio channels.
 
         Args:
-        map: A comma-separated list of input channel numbers in output order.
-        channel_layout: Output channel layout.
-        extra_options: Extra options for the filter
+            map: A comma-separated list of input channel numbers in output order.
+            channel_layout: Output channel layout.
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#channelmap)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#channelmap)
 
         """
         filter_node = filter_node_factory(
@@ -4854,16 +4854,16 @@ class AudioStream(FilterableStream):
         Split audio into per-channel streams.
 
         Args:
-        channel_layout: Input channel layout. (default "stereo")
-        channels: Channels to extract. (default "all")
-        extra_options: Extra options for the filter
+            channel_layout: Input channel layout. (default "stereo")
+            channels: Channels to extract. (default "all")
+            extra_options: Extra options for the filter
 
         Returns:
-        filter_node: the filter node
+            filter_node: the filter node
 
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#channelsplit)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#channelsplit)
 
         """
         filter_node = filter_node_factory(
@@ -4900,19 +4900,19 @@ class AudioStream(FilterableStream):
         Add a chorus effect to the audio.
 
         Args:
-        in_gain: set input gain (from 0 to 1) (default 0.4)
-        out_gain: set output gain (from 0 to 1) (default 0.4)
-        delays: set delays
-        decays: set decays
-        speeds: set speeds
-        depths: set depths
-        extra_options: Extra options for the filter
+            in_gain: set input gain (from 0 to 1) (default 0.4)
+            out_gain: set output gain (from 0 to 1) (default 0.4)
+            delays: set delays
+            decays: set decays
+            speeds: set speeds
+            depths: set depths
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chorus)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chorus)
 
         """
         filter_node = filter_node_factory(
@@ -4951,20 +4951,20 @@ class AudioStream(FilterableStream):
         Compress or expand audio dynamic range.
 
         Args:
-        attacks: set time over which increase of volume is determined (default "0")
-        decays: set time over which decrease of volume is determined (default "0.8")
-        points: set points of transfer function (default "-70/-70|-60/-20|1/0")
-        soft_knee: set soft-knee (from 0.01 to 900) (default 0.01)
-        gain: set output gain (from -900 to 900) (default 0)
-        volume: set initial volume (from -900 to 0) (default 0)
-        delay: set delay for samples before sending them to volume adjuster (from 0 to 20) (default 0)
-        extra_options: Extra options for the filter
+            attacks: set time over which increase of volume is determined (default "0")
+            decays: set time over which decrease of volume is determined (default "0.8")
+            points: set points of transfer function (default "-70/-70|-60/-20|1/0")
+            soft_knee: set soft-knee (from 0.01 to 900) (default 0.01)
+            gain: set output gain (from -900 to 900) (default 0)
+            volume: set initial volume (from -900 to 0) (default 0)
+            delay: set delay for samples before sending them to volume adjuster (from 0 to 20) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#compand)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#compand)
 
         """
         filter_node = filter_node_factory(
@@ -5004,20 +5004,20 @@ class AudioStream(FilterableStream):
         Audio Compensation Delay Line.
 
         Args:
-        mm: set mm distance (from 0 to 10) (default 0)
-        cm: set cm distance (from 0 to 100) (default 0)
-        m: set meter distance (from 0 to 100) (default 0)
-        dry: set dry amount (from 0 to 1) (default 0)
-        wet: set wet amount (from 0 to 1) (default 1)
-        temp: set temperature °C (from -50 to 50) (default 20)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            mm: set mm distance (from 0 to 10) (default 0)
+            cm: set cm distance (from 0 to 100) (default 0)
+            m: set meter distance (from 0 to 100) (default 0)
+            dry: set dry amount (from 0 to 1) (default 0)
+            wet: set wet amount (from 0 to 1) (default 1)
+            temp: set temperature °C (from -50 to 50) (default 20)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#compensationdelay)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#compensationdelay)
 
         """
         filter_node = filter_node_factory(
@@ -5059,20 +5059,20 @@ class AudioStream(FilterableStream):
         Apply headphone crossfeed filter.
 
         Args:
-        strength: set crossfeed strength (from 0 to 1) (default 0.2)
-        range: set soundstage wideness (from 0 to 1) (default 0.5)
-        slope: set curve slope (from 0.01 to 1) (default 0.5)
-        level_in: set level in (from 0 to 1) (default 0.9)
-        level_out: set level out (from 0 to 1) (default 1)
-        block_size: set the block size (from 0 to 32768) (default 0)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            strength: set crossfeed strength (from 0 to 1) (default 0.2)
+            range: set soundstage wideness (from 0 to 1) (default 0.5)
+            slope: set curve slope (from 0.01 to 1) (default 0.5)
+            level_in: set level in (from 0 to 1) (default 0.9)
+            level_out: set level out (from 0 to 1) (default 1)
+            block_size: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crossfeed)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crossfeed)
 
         """
         filter_node = filter_node_factory(
@@ -5108,16 +5108,16 @@ class AudioStream(FilterableStream):
         Simple audio noise sharpening filter.
 
         Args:
-        i: set intensity (from -10 to 10) (default 2)
-        c: enable clipping (default true)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            i: set intensity (from -10 to 10) (default 2)
+            c: enable clipping (default true)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crystalizer)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crystalizer)
 
         """
         filter_node = filter_node_factory(
@@ -5149,16 +5149,16 @@ class AudioStream(FilterableStream):
         Apply a DC shift to the audio.
 
         Args:
-        shift: set DC shift (from -1 to 1) (default 0)
-        limitergain: set limiter gain (from 0 to 1) (default 0)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            shift: set DC shift (from -1 to 1) (default 0)
+            limitergain: set limiter gain (from 0 to 1) (default 0)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dcshift)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dcshift)
 
         """
         filter_node = filter_node_factory(
@@ -5192,18 +5192,18 @@ class AudioStream(FilterableStream):
         Apply de-essing to the audio.
 
         Args:
-        i: set intensity (from 0 to 1) (default 0)
-        m: set max deessing (from 0 to 1) (default 0.5)
-        f: set frequency (from 0 to 1) (default 0.5)
-        s: set output mode (from 0 to 2) (default o)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            i: set intensity (from 0 to 1) (default 0)
+            m: set max deessing (from 0 to 1) (default 0.5)
+            f: set frequency (from 0 to 1) (default 0.5)
+            s: set output mode (from 0 to 2) (default o)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deesser)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deesser)
 
         """
         filter_node = filter_node_factory(
@@ -5238,17 +5238,17 @@ class AudioStream(FilterableStream):
         Audio Dialogue Enhancement.
 
         Args:
-        original: set original center factor (from 0 to 1) (default 1)
-        enhance: set dialogue enhance factor (from 0 to 3) (default 1)
-        voice: set voice detection factor (from 2 to 32) (default 2)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            original: set original center factor (from 0 to 1) (default 1)
+            enhance: set dialogue enhance factor (from 0 to 3) (default 1)
+            voice: set voice detection factor (from 2 to 32) (default 2)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dialoguenhance)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dialoguenhance)
 
         """
         filter_node = filter_node_factory(
@@ -5281,14 +5281,14 @@ class AudioStream(FilterableStream):
         Measure audio dynamic range.
 
         Args:
-        length: set the window length (from 0.01 to 10) (default 3)
-        extra_options: Extra options for the filter
+            length: set the window length (from 0.01 to 10) (default 3)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drmeter)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drmeter)
 
         """
         filter_node = filter_node_factory(
@@ -5329,27 +5329,27 @@ class AudioStream(FilterableStream):
         Dynamic Audio Normalizer.
 
         Args:
-        framelen: set the frame length in msec (from 10 to 8000) (default 500)
-        gausssize: set the filter size (from 3 to 301) (default 31)
-        peak: set the peak value (from 0 to 1) (default 0.95)
-        maxgain: set the max amplification (from 1 to 100) (default 10)
-        targetrms: set the target RMS (from 0 to 1) (default 0)
-        coupling: set channel coupling (default true)
-        correctdc: set DC correction (default false)
-        altboundary: set alternative boundary mode (default false)
-        compress: set the compress factor (from 0 to 30) (default 0)
-        threshold: set the threshold value (from 0 to 1) (default 0)
-        channels: set channels to filter (default "all")
-        overlap: set the frame overlap (from 0 to 1) (default 0)
-        curve: set the custom peak mapping curve
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            framelen: set the frame length in msec (from 10 to 8000) (default 500)
+            gausssize: set the filter size (from 3 to 301) (default 31)
+            peak: set the peak value (from 0 to 1) (default 0.95)
+            maxgain: set the max amplification (from 1 to 100) (default 10)
+            targetrms: set the target RMS (from 0 to 1) (default 0)
+            coupling: set channel coupling (default true)
+            correctdc: set DC correction (default false)
+            altboundary: set alternative boundary mode (default false)
+            compress: set the compress factor (from 0 to 30) (default 0)
+            threshold: set the threshold value (from 0 to 1) (default 0)
+            channels: set channels to filter (default "all")
+            overlap: set the frame overlap (from 0 to 1) (default 0)
+            curve: set the custom peak mapping curve
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dynaudnorm)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dynaudnorm)
 
         """
         filter_node = filter_node_factory(
@@ -5388,13 +5388,13 @@ class AudioStream(FilterableStream):
         Widen the stereo image.
 
         Args:
-        extra_options: Extra options for the filter
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#earwax)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#earwax)
 
         """
         filter_node = filter_node_factory(
@@ -5440,31 +5440,31 @@ class AudioStream(FilterableStream):
         EBU R128 scanner.
 
         Args:
-        video: set video output (default false)
-        size: set video size (default "640x480")
-        meter: set scale meter (+9 to +18) (from 9 to 18) (default 9)
-        framelog: force frame logging level (from INT_MIN to INT_MAX) (default -1)
-        metadata: inject metadata in the filtergraph (default false)
-        peak: set peak mode (default 0)
-        dualmono: treat mono input files as dual-mono (default false)
-        panlaw: set a specific pan law for dual-mono files (from -10 to 0) (default -3.0103)
-        target: set a specific target level in LUFS (-23 to 0) (from -23 to 0) (default -23)
-        gauge: set gauge display type (from 0 to 1) (default momentary)
-        scale: sets display method for the stats (from 0 to 1) (default absolute)
-        integrated: integrated loudness (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)
-        range: loudness range (LU) (from -DBL_MAX to DBL_MAX) (default 0)
-        lra_low: LRA low (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)
-        lra_high: LRA high (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)
-        sample_peak: sample peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)
-        true_peak: true peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)
-        extra_options: Extra options for the filter
+            video: set video output (default false)
+            size: set video size (default "640x480")
+            meter: set scale meter (+9 to +18) (from 9 to 18) (default 9)
+            framelog: force frame logging level (from INT_MIN to INT_MAX) (default -1)
+            metadata: inject metadata in the filtergraph (default false)
+            peak: set peak mode (default 0)
+            dualmono: treat mono input files as dual-mono (default false)
+            panlaw: set a specific pan law for dual-mono files (from -10 to 0) (default -3.0103)
+            target: set a specific target level in LUFS (-23 to 0) (from -23 to 0) (default -23)
+            gauge: set gauge display type (from 0 to 1) (default momentary)
+            scale: sets display method for the stats (from 0 to 1) (default absolute)
+            integrated: integrated loudness (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)
+            range: loudness range (LU) (from -DBL_MAX to DBL_MAX) (default 0)
+            lra_low: LRA low (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)
+            lra_high: LRA high (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)
+            sample_peak: sample peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)
+            true_peak: true peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
-        filter_node: the filter node
+            filter_node: the filter node
 
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ebur128)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ebur128)
 
         """
         filter_node = filter_node_factory(
@@ -5525,24 +5525,24 @@ class AudioStream(FilterableStream):
         Apply two-pole peaking equalization (EQ) filter.
 
         Args:
-        frequency: set central frequency (from 0 to 999999) (default 0)
-        width_type: set filter-width type (from 1 to 5) (default q)
-        width: set width (from 0 to 99999) (default 1)
-        gain: set gain (from -900 to 900) (default 0)
-        mix: set mix (from 0 to 1) (default 1)
-        channels: set channels to filter (default "all")
-        normalize: normalize coefficients (default false)
-        transform: set transform type (from 0 to 6) (default di)
-        precision: set filtering precision (from -1 to 3) (default auto)
-        blocksize: set the block size (from 0 to 32768) (default 0)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            frequency: set central frequency (from 0 to 999999) (default 0)
+            width_type: set filter-width type (from 1 to 5) (default q)
+            width: set width (from 0 to 99999) (default 1)
+            gain: set gain (from -900 to 900) (default 0)
+            mix: set mix (from 0 to 1) (default 1)
+            channels: set channels to filter (default "all")
+            normalize: normalize coefficients (default false)
+            transform: set transform type (from 0 to 6) (default di)
+            precision: set filtering precision (from -1 to 3) (default auto)
+            blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#equalizer)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#equalizer)
 
         """
         filter_node = filter_node_factory(
@@ -5582,16 +5582,16 @@ class AudioStream(FilterableStream):
         Increase difference between stereo audio channels.
 
         Args:
-        m: set the difference coefficient (from -10 to 10) (default 2.5)
-        c: enable clipping (default true)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            m: set the difference coefficient (from -10 to 10) (default 2.5)
+            c: enable clipping (default true)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#extrastereo)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#extrastereo)
 
         """
         filter_node = filter_node_factory(
@@ -5650,26 +5650,26 @@ class AudioStream(FilterableStream):
         Finite Impulse Response Equalizer.
 
         Args:
-        gain: set gain curve (default "gain_interpolate(f)")
-        gain_entry: set gain entry
-        delay: set delay (from 0 to 1e+10) (default 0.01)
-        accuracy: set accuracy (from 0 to 1e+10) (default 5)
-        wfunc: set window function (from 0 to 9) (default hann)
-        fixed: set fixed frame samples (default false)
-        multi: set multi channels mode (default false)
-        zero_phase: set zero phase mode (default false)
-        scale: set gain scale (from 0 to 3) (default linlog)
-        dumpfile: set dump file
-        dumpscale: set dump scale (from 0 to 3) (default linlog)
-        fft2: set 2-channels fft (default false)
-        min_phase: set minimum phase mode (default false)
-        extra_options: Extra options for the filter
+            gain: set gain curve (default "gain_interpolate(f)")
+            gain_entry: set gain entry
+            delay: set delay (from 0 to 1e+10) (default 0.01)
+            accuracy: set accuracy (from 0 to 1e+10) (default 5)
+            wfunc: set window function (from 0 to 9) (default hann)
+            fixed: set fixed frame samples (default false)
+            multi: set multi channels mode (default false)
+            zero_phase: set zero phase mode (default false)
+            scale: set gain scale (from 0 to 3) (default linlog)
+            dumpfile: set dump file
+            dumpscale: set dump scale (from 0 to 3) (default linlog)
+            fft2: set 2-channels fft (default false)
+            min_phase: set minimum phase mode (default false)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#firequalizer)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#firequalizer)
 
         """
         filter_node = filter_node_factory(
@@ -5718,21 +5718,21 @@ class AudioStream(FilterableStream):
         Apply a flanging effect to the audio.
 
         Args:
-        delay: base delay in milliseconds (from 0 to 30) (default 0)
-        depth: added swept delay in milliseconds (from 0 to 10) (default 2)
-        regen: percentage regeneration (delayed signal feedback) (from -95 to 95) (default 0)
-        width: percentage of delayed signal mixed with original (from 0 to 100) (default 71)
-        speed: sweeps per second (Hz) (from 0.1 to 10) (default 0.5)
-        shape: swept wave shape (from 0 to 1) (default sinusoidal)
-        phase: swept wave percentage phase-shift for multi-channel (from 0 to 100) (default 25)
-        interp: delay-line interpolation (from 0 to 1) (default linear)
-        extra_options: Extra options for the filter
+            delay: base delay in milliseconds (from 0 to 30) (default 0)
+            depth: added swept delay in milliseconds (from 0 to 10) (default 2)
+            regen: percentage regeneration (delayed signal feedback) (from -95 to 95) (default 0)
+            width: percentage of delayed signal mixed with original (from 0 to 100) (default 71)
+            speed: sweeps per second (Hz) (from 0.1 to 10) (default 0.5)
+            shape: swept wave shape (from 0 to 1) (default sinusoidal)
+            phase: swept wave percentage phase-shift for multi-channel (from 0 to 100) (default 25)
+            interp: delay-line interpolation (from 0 to 1) (default linear)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#flanger)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#flanger)
 
         """
         filter_node = filter_node_factory(
@@ -5781,26 +5781,26 @@ class AudioStream(FilterableStream):
         Apply Haas Stereo Enhancer.
 
         Args:
-        level_in: set level in (from 0.015625 to 64) (default 1)
-        level_out: set level out (from 0.015625 to 64) (default 1)
-        side_gain: set side gain (from 0.015625 to 64) (default 1)
-        middle_source: set middle source (from 0 to 3) (default mid)
-        middle_phase: set middle phase (default false)
-        left_delay: set left delay (from 0 to 40) (default 2.05)
-        left_balance: set left balance (from -1 to 1) (default -1)
-        left_gain: set left gain (from 0.015625 to 64) (default 1)
-        left_phase: set left phase (default false)
-        right_delay: set right delay (from 0 to 40) (default 2.12)
-        right_balance: set right balance (from -1 to 1) (default 1)
-        right_gain: set right gain (from 0.015625 to 64) (default 1)
-        right_phase: set right phase (default true)
-        extra_options: Extra options for the filter
+            level_in: set level in (from 0.015625 to 64) (default 1)
+            level_out: set level out (from 0.015625 to 64) (default 1)
+            side_gain: set side gain (from 0.015625 to 64) (default 1)
+            middle_source: set middle source (from 0 to 3) (default mid)
+            middle_phase: set middle phase (default false)
+            left_delay: set left delay (from 0 to 40) (default 2.05)
+            left_balance: set left balance (from -1 to 1) (default -1)
+            left_gain: set left gain (from 0.015625 to 64) (default 1)
+            left_phase: set left phase (default false)
+            right_delay: set right delay (from 0 to 40) (default 2.12)
+            right_balance: set right balance (from -1 to 1) (default 1)
+            right_gain: set right gain (from 0.015625 to 64) (default 1)
+            right_phase: set right phase (default true)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haas)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haas)
 
         """
         filter_node = filter_node_factory(
@@ -5847,19 +5847,19 @@ class AudioStream(FilterableStream):
         Apply High Definition Compatible Digital (HDCD) decoding.
 
         Args:
-        disable_autoconvert: Disable any format conversion or resampling in the filter graph. (default true)
-        process_stereo: Process stereo channels together. Only apply target_gain when both channels match. (default true)
-        cdt_ms: Code detect timer period in ms. (from 100 to 60000) (default 2000)
-        force_pe: Always extend peaks above -3dBFS even when PE is not signaled. (default false)
-        analyze_mode: Replace audio with solid tone and signal some processing aspect in the amplitude. (from 0 to 4) (default off)
-        bits_per_sample: Valid bits per sample (location of the true LSB). (from 16 to 24) (default 16)
-        extra_options: Extra options for the filter
+            disable_autoconvert: Disable any format conversion or resampling in the filter graph. (default true)
+            process_stereo: Process stereo channels together. Only apply target_gain when both channels match. (default true)
+            cdt_ms: Code detect timer period in ms. (from 100 to 60000) (default 2000)
+            force_pe: Always extend peaks above -3dBFS even when PE is not signaled. (default false)
+            analyze_mode: Replace audio with solid tone and signal some processing aspect in the amplitude. (from 0 to 4) (default off)
+            bits_per_sample: Valid bits per sample (location of the true LSB). (from 16 to 24) (default 16)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hdcd)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hdcd)
 
         """
         filter_node = filter_node_factory(
@@ -5906,24 +5906,24 @@ class AudioStream(FilterableStream):
         Apply a high-pass filter with 3dB point frequency.
 
         Args:
-        frequency: set frequency (from 0 to 999999) (default 3000)
-        width_type: set filter-width type (from 1 to 5) (default q)
-        width: set width (from 0 to 99999) (default 0.707)
-        poles: set number of poles (from 1 to 2) (default 2)
-        mix: set mix (from 0 to 1) (default 1)
-        channels: set channels to filter (default "all")
-        normalize: normalize coefficients (default false)
-        transform: set transform type (from 0 to 6) (default di)
-        precision: set filtering precision (from -1 to 3) (default auto)
-        blocksize: set the block size (from 0 to 32768) (default 0)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            frequency: set frequency (from 0 to 999999) (default 3000)
+            width_type: set filter-width type (from 1 to 5) (default q)
+            width: set width (from 0 to 99999) (default 0.707)
+            poles: set number of poles (from 1 to 2) (default 2)
+            mix: set mix (from 0 to 1) (default 1)
+            channels: set channels to filter (default "all")
+            normalize: normalize coefficients (default false)
+            transform: set transform type (from 0 to 6) (default di)
+            precision: set filtering precision (from -1 to 3) (default auto)
+            blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#highpass)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#highpass)
 
         """
         filter_node = filter_node_factory(
@@ -5976,25 +5976,25 @@ class AudioStream(FilterableStream):
         Apply a high shelf filter.
 
         Args:
-        frequency: set central frequency (from 0 to 999999) (default 3000)
-        width_type: set filter-width type (from 1 to 5) (default q)
-        width: set width (from 0 to 99999) (default 0.5)
-        gain: set gain (from -900 to 900) (default 0)
-        poles: set number of poles (from 1 to 2) (default 2)
-        mix: set mix (from 0 to 1) (default 1)
-        channels: set channels to filter (default "all")
-        normalize: normalize coefficients (default false)
-        transform: set transform type (from 0 to 6) (default di)
-        precision: set filtering precision (from -1 to 3) (default auto)
-        blocksize: set the block size (from 0 to 32768) (default 0)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            frequency: set central frequency (from 0 to 999999) (default 3000)
+            width_type: set filter-width type (from 1 to 5) (default q)
+            width: set width (from 0 to 99999) (default 0.5)
+            gain: set gain (from -900 to 900) (default 0)
+            poles: set number of poles (from 1 to 2) (default 2)
+            mix: set mix (from 0 to 1) (default 1)
+            channels: set channels to filter (default "all")
+            normalize: normalize coefficients (default false)
+            transform: set transform type (from 0 to 6) (default di)
+            precision: set filtering precision (from -1 to 3) (default auto)
+            blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#treble_002c-highshelf)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#treble_002c-highshelf)
 
         """
         filter_node = filter_node_factory(
@@ -6045,24 +6045,24 @@ class AudioStream(FilterableStream):
         EBU R128 loudness normalization.
 
         Args:
-        I: set integrated loudness target (from -70 to -5) (default -24)
-        LRA: set loudness range target (from 1 to 50) (default 7)
-        TP: set maximum true peak (from -9 to 0) (default -2)
-        measured_I: measured IL of input file (from -99 to 0) (default 0)
-        measured_LRA: measured LRA of input file (from 0 to 99) (default 0)
-        measured_TP: measured true peak of input file (from -99 to 99) (default 99)
-        measured_thresh: measured threshold of input file (from -99 to 0) (default -70)
-        offset: set offset gain (from -99 to 99) (default 0)
-        linear: normalize linearly if possible (default true)
-        dual_mono: treat mono input as dual-mono (default false)
-        print_format: set print format for stats (from 0 to 2) (default none)
-        extra_options: Extra options for the filter
+            I: set integrated loudness target (from -70 to -5) (default -24)
+            LRA: set loudness range target (from 1 to 50) (default 7)
+            TP: set maximum true peak (from -9 to 0) (default -2)
+            measured_I: measured IL of input file (from -99 to 0) (default 0)
+            measured_LRA: measured LRA of input file (from 0 to 99) (default 0)
+            measured_TP: measured true peak of input file (from -99 to 99) (default 99)
+            measured_thresh: measured threshold of input file (from -99 to 0) (default -70)
+            offset: set offset gain (from -99 to 99) (default 0)
+            linear: normalize linearly if possible (default true)
+            dual_mono: treat mono input as dual-mono (default false)
+            print_format: set print format for stats (from 0 to 2) (default none)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#loudnorm)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#loudnorm)
 
         """
         filter_node = filter_node_factory(
@@ -6114,24 +6114,24 @@ class AudioStream(FilterableStream):
         Apply a low-pass filter with 3dB point frequency.
 
         Args:
-        frequency: set frequency (from 0 to 999999) (default 500)
-        width_type: set filter-width type (from 1 to 5) (default q)
-        width: set width (from 0 to 99999) (default 0.707)
-        poles: set number of poles (from 1 to 2) (default 2)
-        mix: set mix (from 0 to 1) (default 1)
-        channels: set channels to filter (default "all")
-        normalize: normalize coefficients (default false)
-        transform: set transform type (from 0 to 6) (default di)
-        precision: set filtering precision (from -1 to 3) (default auto)
-        blocksize: set the block size (from 0 to 32768) (default 0)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            frequency: set frequency (from 0 to 999999) (default 500)
+            width_type: set filter-width type (from 1 to 5) (default q)
+            width: set width (from 0 to 99999) (default 0.707)
+            poles: set number of poles (from 1 to 2) (default 2)
+            mix: set mix (from 0 to 1) (default 1)
+            channels: set channels to filter (default "all")
+            normalize: normalize coefficients (default false)
+            transform: set transform type (from 0 to 6) (default di)
+            precision: set filtering precision (from -1 to 3) (default auto)
+            blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lowpass)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lowpass)
 
         """
         filter_node = filter_node_factory(
@@ -6184,25 +6184,25 @@ class AudioStream(FilterableStream):
         Apply a low shelf filter.
 
         Args:
-        frequency: set central frequency (from 0 to 999999) (default 100)
-        width_type: set filter-width type (from 1 to 5) (default q)
-        width: set width (from 0 to 99999) (default 0.5)
-        gain: set gain (from -900 to 900) (default 0)
-        poles: set number of poles (from 1 to 2) (default 2)
-        mix: set mix (from 0 to 1) (default 1)
-        channels: set channels to filter (default "all")
-        normalize: normalize coefficients (default false)
-        transform: set transform type (from 0 to 6) (default di)
-        precision: set filtering precision (from -1 to 3) (default auto)
-        blocksize: set the block size (from 0 to 32768) (default 0)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            frequency: set central frequency (from 0 to 999999) (default 100)
+            width_type: set filter-width type (from 1 to 5) (default q)
+            width: set width (from 0 to 99999) (default 0.5)
+            gain: set gain (from -900 to 900) (default 0)
+            poles: set number of poles (from 1 to 2) (default 2)
+            mix: set mix (from 0 to 1) (default 1)
+            channels: set channels to filter (default "all")
+            normalize: normalize coefficients (default false)
+            transform: set transform type (from 0 to 6) (default di)
+            precision: set filtering precision (from -1 to 3) (default auto)
+            blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bass_002c-lowshelf)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bass_002c-lowshelf)
 
         """
         filter_node = filter_node_factory(
@@ -6243,14 +6243,14 @@ class AudioStream(FilterableStream):
         Multiband Compress or expand audio dynamic range.
 
         Args:
-        args: set parameters for each band (default "0.005,0.1 6 -47/-40,-34/-34,-17/-33 100 | 0.003,0.05 6 -47/-40,-34/-34,-17/-33 400 | 0.000625,0.0125 6 -47/-40,-34/-34,-15/-33 1600 | 0.0001,0.025 6 -47/-40,-34/-34,-31/-31,-0/-30 6400 | 0,0.025 6 -38/-31,-28/-28,-0/-25 22000")
-        extra_options: Extra options for the filter
+            args: set parameters for each band (default "0.005,0.1 6 -47/-40,-34/-34,-17/-33 100 | 0.003,0.05 6 -47/-40,-34/-34,-17/-33 400 | 0.000625,0.0125 6 -47/-40,-34/-34,-15/-33 1600 | 0.0001,0.025 6 -47/-40,-34/-34,-31/-31,-0/-30 6400 | 0,0.025 6 -38/-31,-28/-28,-0/-25 22000")
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mcompand)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mcompand)
 
         """
         filter_node = filter_node_factory(
@@ -6278,14 +6278,14 @@ class AudioStream(FilterableStream):
         Remix channels with coefficients (panning).
 
         Args:
-        args:
-        extra_options: Extra options for the filter
+            args:
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pan)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pan)
 
         """
         filter_node = filter_node_factory(
@@ -6314,15 +6314,15 @@ class AudioStream(FilterableStream):
         ReplayGain scanner.
 
         Args:
-        track_gain: track gain (dB) (from -FLT_MAX to FLT_MAX) (default 0)
-        track_peak: track peak (from -FLT_MAX to FLT_MAX) (default 0)
-        extra_options: Extra options for the filter
+            track_gain: track gain (dB) (from -FLT_MAX to FLT_MAX) (default 0)
+            track_peak: track peak (from -FLT_MAX to FLT_MAX) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#replaygain)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#replaygain)
 
         """
         filter_node = filter_node_factory(
@@ -6368,23 +6368,23 @@ class AudioStream(FilterableStream):
         Apply time-stretching and pitch-shifting.
 
         Args:
-        tempo: set tempo scale factor (from 0.01 to 100) (default 1)
-        pitch: set pitch scale factor (from 0.01 to 100) (default 1)
-        transients: set transients (from 0 to INT_MAX) (default crisp)
-        detector: set detector (from 0 to INT_MAX) (default compound)
-        phase: set phase (from 0 to INT_MAX) (default laminar)
-        window: set window (from 0 to INT_MAX) (default standard)
-        smoothing: set smoothing (from 0 to INT_MAX) (default off)
-        formant: set formant (from 0 to INT_MAX) (default shifted)
-        pitchq: set pitch quality (from 0 to INT_MAX) (default speed)
-        channels: set channels (from 0 to INT_MAX) (default apart)
-        extra_options: Extra options for the filter
+            tempo: set tempo scale factor (from 0.01 to 100) (default 1)
+            pitch: set pitch scale factor (from 0.01 to 100) (default 1)
+            transients: set transients (from 0 to INT_MAX) (default crisp)
+            detector: set detector (from 0 to INT_MAX) (default compound)
+            phase: set phase (from 0 to INT_MAX) (default laminar)
+            window: set window (from 0 to INT_MAX) (default standard)
+            smoothing: set smoothing (from 0 to INT_MAX) (default off)
+            formant: set formant (from 0 to INT_MAX) (default shifted)
+            pitchq: set pitch quality (from 0 to INT_MAX) (default speed)
+            channels: set channels (from 0 to INT_MAX) (default apart)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#rubberband)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#rubberband)
 
         """
         filter_node = filter_node_factory(
@@ -6458,39 +6458,39 @@ class AudioStream(FilterableStream):
         Convert input audio to a CQT (Constant/Clamped Q Transform) spectrum video output.
 
         Args:
-        size: set video size (default "1920x1080")
-        fps: set video rate (default "25")
-        bar_h: set bargraph height (from -1 to INT_MAX) (default -1)
-        axis_h: set axis height (from -1 to INT_MAX) (default -1)
-        sono_h: set sonogram height (from -1 to INT_MAX) (default -1)
-        fullhd: set fullhd size (default true)
-        sono_v: set sonogram volume (default "16")
-        bar_v: set bargraph volume (default "sono_v")
-        sono_g: set sonogram gamma (from 1 to 7) (default 3)
-        bar_g: set bargraph gamma (from 1 to 7) (default 1)
-        bar_t: set bar transparency (from 0 to 1) (default 1)
-        timeclamp: set timeclamp (from 0.002 to 1) (default 0.17)
-        attack: set attack time (from 0 to 1) (default 0)
-        basefreq: set base frequency (from 10 to 100000) (default 20.0152)
-        endfreq: set end frequency (from 10 to 100000) (default 20495.6)
-        coeffclamp: set coeffclamp (from 0.1 to 10) (default 1)
-        tlength: set tlength (default "384*tc/(384+tc*f)")
-        count: set transform count (from 1 to 30) (default 6)
-        fcount: set frequency count (from 0 to 10) (default 0)
-        fontfile: set axis font file
-        font: set axis font
-        fontcolor: set font color (default "st(0, (midi(f)-59.5)/12);st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));r(1-ld(1)) + b(ld(1))")
-        axisfile: set axis image
-        axis: draw axis (default true)
-        csp: set color space (from 0 to INT_MAX) (default unspecified)
-        cscheme: set color scheme (default "1|0.5|0|0|0.5|1")
-        extra_options: Extra options for the filter
+            size: set video size (default "1920x1080")
+            fps: set video rate (default "25")
+            bar_h: set bargraph height (from -1 to INT_MAX) (default -1)
+            axis_h: set axis height (from -1 to INT_MAX) (default -1)
+            sono_h: set sonogram height (from -1 to INT_MAX) (default -1)
+            fullhd: set fullhd size (default true)
+            sono_v: set sonogram volume (default "16")
+            bar_v: set bargraph volume (default "sono_v")
+            sono_g: set sonogram gamma (from 1 to 7) (default 3)
+            bar_g: set bargraph gamma (from 1 to 7) (default 1)
+            bar_t: set bar transparency (from 0 to 1) (default 1)
+            timeclamp: set timeclamp (from 0.002 to 1) (default 0.17)
+            attack: set attack time (from 0 to 1) (default 0)
+            basefreq: set base frequency (from 10 to 100000) (default 20.0152)
+            endfreq: set end frequency (from 10 to 100000) (default 20495.6)
+            coeffclamp: set coeffclamp (from 0.1 to 10) (default 1)
+            tlength: set tlength (default "384*tc/(384+tc*f)")
+            count: set transform count (from 1 to 30) (default 6)
+            fcount: set frequency count (from 0 to 10) (default 0)
+            fontfile: set axis font file
+            font: set axis font
+            fontcolor: set font color (default "st(0, (midi(f)-59.5)/12);st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));r(1-ld(1)) + b(ld(1))")
+            axisfile: set axis image
+            axis: draw axis (default true)
+            csp: set color space (from 0 to INT_MAX) (default unspecified)
+            cscheme: set color scheme (default "1|0.5|0|0|0.5|1")
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the video stream
+            default: the video stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showcqt)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showcqt)
 
         """
         filter_node = filter_node_factory(
@@ -6566,29 +6566,29 @@ class AudioStream(FilterableStream):
         Convert input audio to a CWT (Continuous Wavelet Transform) spectrum video output.
 
         Args:
-        size: set video size (default "640x512")
-        rate: set video rate (default "25")
-        scale: set frequency scale (from 0 to 7) (default linear)
-        iscale: set intensity scale (from 0 to 4) (default log)
-        min: set minimum frequency (from 1 to 192000) (default 20)
-        max: set maximum frequency (from 1 to 192000) (default 20000)
-        imin: set minimum intensity (from 0 to 1) (default 0)
-        imax: set maximum intensity (from 0 to 1) (default 1)
-        logb: set logarithmic basis (from 0 to 1) (default 0.0001)
-        deviation: set frequency deviation (from 0 to 100) (default 1)
-        pps: set pixels per second (from 1 to 1024) (default 64)
-        mode: set output mode (from 0 to 4) (default magnitude)
-        slide: set slide mode (from 0 to 2) (default replace)
-        direction: set direction mode (from 0 to 3) (default lr)
-        bar: set bar ratio (from 0 to 1) (default 0)
-        rotation: set color rotation (from -1 to 1) (default 0)
-        extra_options: Extra options for the filter
+            size: set video size (default "640x512")
+            rate: set video rate (default "25")
+            scale: set frequency scale (from 0 to 7) (default linear)
+            iscale: set intensity scale (from 0 to 4) (default log)
+            min: set minimum frequency (from 1 to 192000) (default 20)
+            max: set maximum frequency (from 1 to 192000) (default 20000)
+            imin: set minimum intensity (from 0 to 1) (default 0)
+            imax: set maximum intensity (from 0 to 1) (default 1)
+            logb: set logarithmic basis (from 0 to 1) (default 0.0001)
+            deviation: set frequency deviation (from 0 to 100) (default 1)
+            pps: set pixels per second (from 1 to 1024) (default 64)
+            mode: set output mode (from 0 to 4) (default magnitude)
+            slide: set slide mode (from 0 to 2) (default replace)
+            direction: set direction mode (from 0 to 3) (default lr)
+            bar: set bar ratio (from 0 to 1) (default 0)
+            rotation: set color rotation (from -1 to 1) (default 0)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the video stream
+            default: the video stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showcwt)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showcwt)
 
         """
         filter_node = filter_node_factory(
@@ -6673,27 +6673,27 @@ class AudioStream(FilterableStream):
         Convert input audio to a frequencies video output.
 
         Args:
-        size: set video size (default "1024x512")
-        rate: set video rate (default "25")
-        mode: set display mode (from 0 to 2) (default bar)
-        ascale: set amplitude scale (from 0 to 3) (default log)
-        fscale: set frequency scale (from 0 to 2) (default lin)
-        win_size: set window size (from 16 to 65536) (default 2048)
-        win_func: set window function (from 0 to 20) (default hann)
-        overlap: set window overlap (from 0 to 1) (default 1)
-        averaging: set time averaging (from 0 to INT_MAX) (default 1)
-        colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
-        cmode: set channel mode (from 0 to 1) (default combined)
-        minamp: set minimum amplitude (from FLT_MIN to 1e-06) (default 1e-06)
-        data: set data mode (from 0 to 2) (default magnitude)
-        channels: set channels to draw (default "all")
-        extra_options: Extra options for the filter
+            size: set video size (default "1024x512")
+            rate: set video rate (default "25")
+            mode: set display mode (from 0 to 2) (default bar)
+            ascale: set amplitude scale (from 0 to 3) (default log)
+            fscale: set frequency scale (from 0 to 2) (default lin)
+            win_size: set window size (from 16 to 65536) (default 2048)
+            win_func: set window function (from 0 to 20) (default hann)
+            overlap: set window overlap (from 0 to 1) (default 1)
+            averaging: set time averaging (from 0 to INT_MAX) (default 1)
+            colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
+            cmode: set channel mode (from 0 to 1) (default combined)
+            minamp: set minimum amplitude (from FLT_MIN to 1e-06) (default 1e-06)
+            data: set data mode (from 0 to 2) (default magnitude)
+            channels: set channels to draw (default "all")
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the video stream
+            default: the video stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showfreqs)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showfreqs)
 
         """
         filter_node = filter_node_factory(
@@ -6762,17 +6762,17 @@ class AudioStream(FilterableStream):
         Convert input audio to a spatial video output.
 
         Args:
-        size: set video size (default "512x512")
-        win_size: set window size (from 1024 to 65536) (default 4096)
-        win_func: set window function (from 0 to 20) (default hann)
-        rate: set video rate (default "25")
-        extra_options: Extra options for the filter
+            size: set video size (default "512x512")
+            win_size: set window size (from 1024 to 65536) (default 4096)
+            win_func: set window function (from 0 to 20) (default hann)
+            rate: set video rate (default "25")
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the video stream
+            default: the video stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspatial)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspatial)
 
         """
         filter_node = filter_node_factory(
@@ -6873,33 +6873,33 @@ class AudioStream(FilterableStream):
         Convert input audio to a spectrum video output.
 
         Args:
-        size: set video size (default "640x512")
-        slide: set sliding mode (from 0 to 4) (default replace)
-        mode: set channel display mode (from 0 to 1) (default combined)
-        color: set channel coloring (from 0 to 14) (default channel)
-        scale: set display scale (from 0 to 5) (default sqrt)
-        fscale: set frequency scale (from 0 to 1) (default lin)
-        saturation: color saturation multiplier (from -10 to 10) (default 1)
-        win_func: set window function (from 0 to 20) (default hann)
-        orientation: set orientation (from 0 to 1) (default vertical)
-        overlap: set window overlap (from 0 to 1) (default 0)
-        gain: set scale gain (from 0 to 128) (default 1)
-        data: set data mode (from 0 to 2) (default magnitude)
-        rotation: color rotation (from -1 to 1) (default 0)
-        start: start frequency (from 0 to INT_MAX) (default 0)
-        stop: stop frequency (from 0 to INT_MAX) (default 0)
-        fps: set video rate (default "auto")
-        legend: draw legend (default false)
-        drange: set dynamic range in dBFS (from 10 to 200) (default 120)
-        limit: set upper limit in dBFS (from -100 to 100) (default 0)
-        opacity: set opacity strength (from 0 to 10) (default 1)
-        extra_options: Extra options for the filter
+            size: set video size (default "640x512")
+            slide: set sliding mode (from 0 to 4) (default replace)
+            mode: set channel display mode (from 0 to 1) (default combined)
+            color: set channel coloring (from 0 to 14) (default channel)
+            scale: set display scale (from 0 to 5) (default sqrt)
+            fscale: set frequency scale (from 0 to 1) (default lin)
+            saturation: color saturation multiplier (from -10 to 10) (default 1)
+            win_func: set window function (from 0 to 20) (default hann)
+            orientation: set orientation (from 0 to 1) (default vertical)
+            overlap: set window overlap (from 0 to 1) (default 0)
+            gain: set scale gain (from 0 to 128) (default 1)
+            data: set data mode (from 0 to 2) (default magnitude)
+            rotation: color rotation (from -1 to 1) (default 0)
+            start: start frequency (from 0 to INT_MAX) (default 0)
+            stop: stop frequency (from 0 to INT_MAX) (default 0)
+            fps: set video rate (default "auto")
+            legend: draw legend (default false)
+            drange: set dynamic range in dBFS (from 10 to 200) (default 120)
+            limit: set upper limit in dBFS (from -100 to 100) (default 0)
+            opacity: set opacity strength (from 0 to 10) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the video stream
+            default: the video stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspectrum)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspectrum)
 
         """
         filter_node = filter_node_factory(
@@ -7008,29 +7008,29 @@ class AudioStream(FilterableStream):
         Convert input audio to a spectrum video output single picture.
 
         Args:
-        size: set video size (default "4096x2048")
-        mode: set channel display mode (from 0 to 1) (default combined)
-        color: set channel coloring (from 0 to 14) (default intensity)
-        scale: set display scale (from 0 to 5) (default log)
-        fscale: set frequency scale (from 0 to 1) (default lin)
-        saturation: color saturation multiplier (from -10 to 10) (default 1)
-        win_func: set window function (from 0 to 20) (default hann)
-        orientation: set orientation (from 0 to 1) (default vertical)
-        gain: set scale gain (from 0 to 128) (default 1)
-        legend: draw legend (default true)
-        rotation: color rotation (from -1 to 1) (default 0)
-        start: start frequency (from 0 to INT_MAX) (default 0)
-        stop: stop frequency (from 0 to INT_MAX) (default 0)
-        drange: set dynamic range in dBFS (from 10 to 200) (default 120)
-        limit: set upper limit in dBFS (from -100 to 100) (default 0)
-        opacity: set opacity strength (from 0 to 10) (default 1)
-        extra_options: Extra options for the filter
+            size: set video size (default "4096x2048")
+            mode: set channel display mode (from 0 to 1) (default combined)
+            color: set channel coloring (from 0 to 14) (default intensity)
+            scale: set display scale (from 0 to 5) (default log)
+            fscale: set frequency scale (from 0 to 1) (default lin)
+            saturation: color saturation multiplier (from -10 to 10) (default 1)
+            win_func: set window function (from 0 to 20) (default hann)
+            orientation: set orientation (from 0 to 1) (default vertical)
+            gain: set scale gain (from 0 to 128) (default 1)
+            legend: draw legend (default true)
+            rotation: color rotation (from -1 to 1) (default 0)
+            start: start frequency (from 0 to INT_MAX) (default 0)
+            stop: stop frequency (from 0 to INT_MAX) (default 0)
+            drange: set dynamic range in dBFS (from 10 to 200) (default 120)
+            limit: set upper limit in dBFS (from -100 to 100) (default 0)
+            opacity: set opacity strength (from 0 to 10) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the video stream
+            default: the video stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspectrumpic)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspectrumpic)
 
         """
         filter_node = filter_node_factory(
@@ -7089,28 +7089,28 @@ class AudioStream(FilterableStream):
         Convert input audio volume to video output.
 
         Args:
-        rate: set video rate (default "25")
-        b: set border width (from 0 to 5) (default 1)
-        w: set channel width (from 80 to 8192) (default 400)
-        h: set channel height (from 1 to 900) (default 20)
-        f: set fade (from 0 to 1) (default 0.95)
-        c: set volume color expression (default "PEAK*255+floor((1-PEAK)*255)*256+0xff000000")
-        t: display channel names (default true)
-        v: display volume value (default true)
-        dm: duration for max value display (from 0 to 9000) (default 0)
-        dmc: set color of the max value line (default "orange")
-        o: set orientation (from 0 to 1) (default h)
-        s: set step size (from 0 to 5) (default 0)
-        p: set background opacity (from 0 to 1) (default 0)
-        m: set mode (from 0 to 1) (default p)
-        ds: set display scale (from 0 to 1) (default lin)
-        extra_options: Extra options for the filter
+            rate: set video rate (default "25")
+            b: set border width (from 0 to 5) (default 1)
+            w: set channel width (from 80 to 8192) (default 400)
+            h: set channel height (from 1 to 900) (default 20)
+            f: set fade (from 0 to 1) (default 0.95)
+            c: set volume color expression (default "PEAK*255+floor((1-PEAK)*255)*256+0xff000000")
+            t: display channel names (default true)
+            v: display volume value (default true)
+            dm: duration for max value display (from 0 to 9000) (default 0)
+            dmc: set color of the max value line (default "orange")
+            o: set orientation (from 0 to 1) (default h)
+            s: set step size (from 0 to 5) (default 0)
+            p: set background opacity (from 0 to 1) (default 0)
+            m: set mode (from 0 to 1) (default p)
+            ds: set display scale (from 0 to 1) (default lin)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the video stream
+            default: the video stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showvolume)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showvolume)
 
         """
         filter_node = filter_node_factory(
@@ -7163,21 +7163,21 @@ class AudioStream(FilterableStream):
         Convert input audio to a video output.
 
         Args:
-        size: set video size (default "600x240")
-        mode: select display mode (from 0 to 3) (default point)
-        n: set how many samples to show in the same point (from 0 to INT_MAX) (default 0/1)
-        rate: set video rate (default "25")
-        split_channels: draw channels separately (default false)
-        colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
-        scale: set amplitude scale (from 0 to 3) (default lin)
-        draw: set draw mode (from 0 to 1) (default scale)
-        extra_options: Extra options for the filter
+            size: set video size (default "600x240")
+            mode: select display mode (from 0 to 3) (default point)
+            n: set how many samples to show in the same point (from 0 to INT_MAX) (default 0/1)
+            rate: set video rate (default "25")
+            split_channels: draw channels separately (default false)
+            colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
+            scale: set amplitude scale (from 0 to 3) (default lin)
+            draw: set draw mode (from 0 to 1) (default scale)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the video stream
+            default: the video stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showwaves)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showwaves)
 
         """
         filter_node = filter_node_factory(
@@ -7219,19 +7219,19 @@ class AudioStream(FilterableStream):
         Convert input audio to a video output single picture.
 
         Args:
-        size: set video size (default "600x240")
-        split_channels: draw channels separately (default false)
-        colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
-        scale: set amplitude scale (from 0 to 3) (default lin)
-        draw: set draw mode (from 0 to 1) (default scale)
-        filter: set filter mode (from 0 to 1) (default average)
-        extra_options: Extra options for the filter
+            size: set video size (default "600x240")
+            split_channels: draw channels separately (default false)
+            colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
+            scale: set amplitude scale (from 0 to 3) (default lin)
+            draw: set draw mode (from 0 to 1) (default scale)
+            filter: set filter mode (from 0 to 1) (default average)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the video stream
+            default: the video stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showwavespic)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showwavespic)
 
         """
         filter_node = filter_node_factory(
@@ -7276,25 +7276,25 @@ class AudioStream(FilterableStream):
         Sidechain compressor.
 
         Args:
-        level_in: set input gain (from 0.015625 to 64) (default 1)
-        mode: set mode (from 0 to 1) (default downward)
-        threshold: set threshold (from 0.000976563 to 1) (default 0.125)
-        ratio: set ratio (from 1 to 20) (default 2)
-        attack: set attack (from 0.01 to 2000) (default 20)
-        release: set release (from 0.01 to 9000) (default 250)
-        makeup: set make up gain (from 1 to 64) (default 1)
-        knee: set knee (from 1 to 8) (default 2.82843)
-        link: set link type (from 0 to 1) (default average)
-        detection: set detection (from 0 to 1) (default rms)
-        level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
-        mix: set mix (from 0 to 1) (default 1)
-        extra_options: Extra options for the filter
+            level_in: set input gain (from 0.015625 to 64) (default 1)
+            mode: set mode (from 0 to 1) (default downward)
+            threshold: set threshold (from 0.000976563 to 1) (default 0.125)
+            ratio: set ratio (from 1 to 20) (default 2)
+            attack: set attack (from 0.01 to 2000) (default 20)
+            release: set release (from 0.01 to 9000) (default 250)
+            makeup: set make up gain (from 1 to 64) (default 1)
+            knee: set knee (from 1 to 8) (default 2.82843)
+            link: set link type (from 0 to 1) (default average)
+            detection: set detection (from 0 to 1) (default rms)
+            level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
+            mix: set mix (from 0 to 1) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaincompress)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaincompress)
 
         """
         filter_node = filter_node_factory(
@@ -7349,26 +7349,26 @@ class AudioStream(FilterableStream):
         Audio sidechain gate.
 
         Args:
-        level_in: set input level (from 0.015625 to 64) (default 1)
-        mode: set mode (from 0 to 1) (default downward)
-        range: set max gain reduction (from 0 to 1) (default 0.06125)
-        threshold: set threshold (from 0 to 1) (default 0.125)
-        ratio: set ratio (from 1 to 9000) (default 2)
-        attack: set attack (from 0.01 to 9000) (default 20)
-        release: set release (from 0.01 to 9000) (default 250)
-        makeup: set makeup gain (from 1 to 64) (default 1)
-        knee: set knee (from 1 to 8) (default 2.82843)
-        detection: set detection (from 0 to 1) (default rms)
-        link: set link (from 0 to 1) (default average)
-        level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            level_in: set input level (from 0.015625 to 64) (default 1)
+            mode: set mode (from 0 to 1) (default downward)
+            range: set max gain reduction (from 0 to 1) (default 0.06125)
+            threshold: set threshold (from 0 to 1) (default 0.125)
+            ratio: set ratio (from 1 to 9000) (default 2)
+            attack: set attack (from 0.01 to 9000) (default 20)
+            release: set release (from 0.01 to 9000) (default 250)
+            makeup: set makeup gain (from 1 to 64) (default 1)
+            knee: set knee (from 1 to 8) (default 2.82843)
+            detection: set detection (from 0 to 1) (default rms)
+            link: set link (from 0 to 1) (default average)
+            level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaingate)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaingate)
 
         """
         filter_node = filter_node_factory(
@@ -7413,16 +7413,16 @@ class AudioStream(FilterableStream):
         Detect silence.
 
         Args:
-        n: set noise tolerance (from 0 to DBL_MAX) (default 0.001)
-        d: set minimum duration in seconds (default 2)
-        mono: check each channel separately (default false)
-        extra_options: Extra options for the filter
+            n: set noise tolerance (from 0 to DBL_MAX) (default 0.001)
+            d: set minimum duration in seconds (default 2)
+            mono: check each channel separately (default false)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#silencedetect)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#silencedetect)
 
         """
         filter_node = filter_node_factory(
@@ -7469,27 +7469,27 @@ class AudioStream(FilterableStream):
         Remove silence.
 
         Args:
-        start_periods: set periods of silence parts to skip from start (from 0 to 9000) (default 0)
-        start_duration: set start duration of non-silence part (default 0)
-        start_threshold: set threshold for start silence detection (from 0 to DBL_MAX) (default 0)
-        start_silence: set start duration of silence part to keep (default 0)
-        start_mode: set which channel will trigger trimming from start (from 0 to 1) (default any)
-        stop_periods: set periods of silence parts to skip from end (from -9000 to 9000) (default 0)
-        stop_duration: set stop duration of silence part (default 0)
-        stop_threshold: set threshold for stop silence detection (from 0 to DBL_MAX) (default 0)
-        stop_silence: set stop duration of silence part to keep (default 0)
-        stop_mode: set which channel will trigger trimming from end (from 0 to 1) (default all)
-        detection: set how silence is detected (from 0 to 5) (default rms)
-        window: set duration of window for silence detection (default 0.02)
-        timestamp: set how every output frame timestamp is processed (from 0 to 1) (default write)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            start_periods: set periods of silence parts to skip from start (from 0 to 9000) (default 0)
+            start_duration: set start duration of non-silence part (default 0)
+            start_threshold: set threshold for start silence detection (from 0 to DBL_MAX) (default 0)
+            start_silence: set start duration of silence part to keep (default 0)
+            start_mode: set which channel will trigger trimming from start (from 0 to 1) (default any)
+            stop_periods: set periods of silence parts to skip from end (from -9000 to 9000) (default 0)
+            stop_duration: set stop duration of silence part (default 0)
+            stop_threshold: set threshold for stop silence detection (from 0 to DBL_MAX) (default 0)
+            stop_silence: set stop duration of silence part to keep (default 0)
+            stop_mode: set which channel will trigger trimming from end (from 0 to 1) (default all)
+            detection: set how silence is detected (from 0 to 5) (default rms)
+            window: set duration of window for silence detection (default 0.02)
+            timestamp: set how every output frame timestamp is processed (from 0 to 1) (default write)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#silenceremove)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#silenceremove)
 
         """
         filter_node = filter_node_factory(
@@ -7545,27 +7545,27 @@ class AudioStream(FilterableStream):
         SOFAlizer (Spatially Oriented Format for Acoustics).
 
         Args:
-        sofa: sofa filename
-        gain: set gain in dB (from -20 to 40) (default 0)
-        rotation: set rotation (from -360 to 360) (default 0)
-        elevation: set elevation (from -90 to 90) (default 0)
-        radius: set radius (from 0 to 5) (default 1)
-        type: set processing (from 0 to 1) (default freq)
-        speakers: set speaker custom positions
-        lfegain: set lfe gain (from -20 to 40) (default 0)
-        framesize: set frame size (from 1024 to 96000) (default 1024)
-        normalize: normalize IRs (default true)
-        interpolate: interpolate IRs from neighbors (default false)
-        minphase: minphase IRs (default false)
-        anglestep: set neighbor search angle step (from 0.01 to 10) (default 0.5)
-        radstep: set neighbor search radius step (from 0.01 to 1) (default 0.01)
-        extra_options: Extra options for the filter
+            sofa: sofa filename
+            gain: set gain in dB (from -20 to 40) (default 0)
+            rotation: set rotation (from -360 to 360) (default 0)
+            elevation: set elevation (from -90 to 90) (default 0)
+            radius: set radius (from 0 to 5) (default 1)
+            type: set processing (from 0 to 1) (default freq)
+            speakers: set speaker custom positions
+            lfegain: set lfe gain (from -20 to 40) (default 0)
+            framesize: set frame size (from 1024 to 96000) (default 1024)
+            normalize: normalize IRs (default true)
+            interpolate: interpolate IRs from neighbors (default false)
+            minphase: minphase IRs (default false)
+            anglestep: set neighbor search angle step (from 0.01 to 10) (default 0.5)
+            radstep: set neighbor search radius step (from 0.01 to 1) (default 0.01)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sofalizer)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sofalizer)
 
         """
         filter_node = filter_node_factory(
@@ -7616,24 +7616,24 @@ class AudioStream(FilterableStream):
         Speech Normalizer.
 
         Args:
-        peak: set the peak value (from 0 to 1) (default 0.95)
-        expansion: set the max expansion factor (from 1 to 50) (default 2)
-        compression: set the max compression factor (from 1 to 50) (default 2)
-        threshold: set the threshold value (from 0 to 1) (default 0)
-        _raise: set the expansion raising amount (from 0 to 1) (default 0.001)
-        fall: set the compression raising amount (from 0 to 1) (default 0.001)
-        channels: set channels to filter (default "all")
-        invert: set inverted filtering (default false)
-        link: set linked channels filtering (default false)
-        rms: set the RMS value (from 0 to 1) (default 0)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            peak: set the peak value (from 0 to 1) (default 0.95)
+            expansion: set the max expansion factor (from 1 to 50) (default 2)
+            compression: set the max compression factor (from 1 to 50) (default 2)
+            threshold: set the threshold value (from 0 to 1) (default 0)
+            _raise: set the expansion raising amount (from 0 to 1) (default 0.001)
+            fall: set the compression raising amount (from 0 to 1) (default 0.001)
+            channels: set channels to filter (default "all")
+            invert: set inverted filtering (default false)
+            link: set linked channels filtering (default false)
+            rms: set the RMS value (from 0 to 1) (default 0)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#speechnorm)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#speechnorm)
 
         """
         filter_node = filter_node_factory(
@@ -7709,34 +7709,34 @@ class AudioStream(FilterableStream):
         Apply various stereo tools.
 
         Args:
-        level_in: set level in (from 0.015625 to 64) (default 1)
-        level_out: set level out (from 0.015625 to 64) (default 1)
-        balance_in: set balance in (from -1 to 1) (default 0)
-        balance_out: set balance out (from -1 to 1) (default 0)
-        softclip: enable softclip (default false)
-        mutel: mute L (default false)
-        muter: mute R (default false)
-        phasel: phase L (default false)
-        phaser: phase R (default false)
-        mode: set stereo mode (from 0 to 10) (default lr>lr)
-        slev: set side level (from 0.015625 to 64) (default 1)
-        sbal: set side balance (from -1 to 1) (default 0)
-        mlev: set middle level (from 0.015625 to 64) (default 1)
-        mpan: set middle pan (from -1 to 1) (default 0)
-        base: set stereo base (from -1 to 1) (default 0)
-        delay: set delay (from -20 to 20) (default 0)
-        sclevel: set S/C level (from 1 to 100) (default 1)
-        phase: set stereo phase (from 0 to 360) (default 0)
-        bmode_in: set balance in mode (from 0 to 2) (default balance)
-        bmode_out: set balance out mode (from 0 to 2) (default balance)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            level_in: set level in (from 0.015625 to 64) (default 1)
+            level_out: set level out (from 0.015625 to 64) (default 1)
+            balance_in: set balance in (from -1 to 1) (default 0)
+            balance_out: set balance out (from -1 to 1) (default 0)
+            softclip: enable softclip (default false)
+            mutel: mute L (default false)
+            muter: mute R (default false)
+            phasel: phase L (default false)
+            phaser: phase R (default false)
+            mode: set stereo mode (from 0 to 10) (default lr>lr)
+            slev: set side level (from 0.015625 to 64) (default 1)
+            sbal: set side balance (from -1 to 1) (default 0)
+            mlev: set middle level (from 0.015625 to 64) (default 1)
+            mpan: set middle pan (from -1 to 1) (default 0)
+            base: set stereo base (from -1 to 1) (default 0)
+            delay: set delay (from -20 to 20) (default 0)
+            sclevel: set S/C level (from 1 to 100) (default 1)
+            phase: set stereo phase (from 0 to 360) (default 0)
+            bmode_in: set balance in mode (from 0 to 2) (default balance)
+            bmode_out: set balance out mode (from 0 to 2) (default balance)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereotools)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereotools)
 
         """
         filter_node = filter_node_factory(
@@ -7788,18 +7788,18 @@ class AudioStream(FilterableStream):
         Apply stereo widening effect.
 
         Args:
-        delay: set delay time (from 1 to 100) (default 20)
-        feedback: set feedback gain (from 0 to 0.9) (default 0.3)
-        crossfeed: set cross feed (from 0 to 0.8) (default 0.3)
-        drymix: set dry-mix (from 0 to 1) (default 0.8)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            delay: set delay time (from 1 to 100) (default 20)
+            feedback: set feedback gain (from 0 to 0.9) (default 0.3)
+            crossfeed: set cross feed (from 0 to 0.8) (default 0.3)
+            drymix: set dry-mix (from 0 to 1) (default 0.8)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereowiden)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereowiden)
 
         """
         filter_node = filter_node_factory(
@@ -7848,31 +7848,31 @@ class AudioStream(FilterableStream):
         Apply 18 band equalization filter.
 
         Args:
-        _1b: set 65Hz band gain (from 0 to 20) (default 1)
-        _2b: set 92Hz band gain (from 0 to 20) (default 1)
-        _3b: set 131Hz band gain (from 0 to 20) (default 1)
-        _4b: set 185Hz band gain (from 0 to 20) (default 1)
-        _5b: set 262Hz band gain (from 0 to 20) (default 1)
-        _6b: set 370Hz band gain (from 0 to 20) (default 1)
-        _7b: set 523Hz band gain (from 0 to 20) (default 1)
-        _8b: set 740Hz band gain (from 0 to 20) (default 1)
-        _9b: set 1047Hz band gain (from 0 to 20) (default 1)
-        _10b: set 1480Hz band gain (from 0 to 20) (default 1)
-        _11b: set 2093Hz band gain (from 0 to 20) (default 1)
-        _12b: set 2960Hz band gain (from 0 to 20) (default 1)
-        _13b: set 4186Hz band gain (from 0 to 20) (default 1)
-        _14b: set 5920Hz band gain (from 0 to 20) (default 1)
-        _15b: set 8372Hz band gain (from 0 to 20) (default 1)
-        _16b: set 11840Hz band gain (from 0 to 20) (default 1)
-        _17b: set 16744Hz band gain (from 0 to 20) (default 1)
-        _18b: set 20000Hz band gain (from 0 to 20) (default 1)
-        extra_options: Extra options for the filter
+            _1b: set 65Hz band gain (from 0 to 20) (default 1)
+            _2b: set 92Hz band gain (from 0 to 20) (default 1)
+            _3b: set 131Hz band gain (from 0 to 20) (default 1)
+            _4b: set 185Hz band gain (from 0 to 20) (default 1)
+            _5b: set 262Hz band gain (from 0 to 20) (default 1)
+            _6b: set 370Hz band gain (from 0 to 20) (default 1)
+            _7b: set 523Hz band gain (from 0 to 20) (default 1)
+            _8b: set 740Hz band gain (from 0 to 20) (default 1)
+            _9b: set 1047Hz band gain (from 0 to 20) (default 1)
+            _10b: set 1480Hz band gain (from 0 to 20) (default 1)
+            _11b: set 2093Hz band gain (from 0 to 20) (default 1)
+            _12b: set 2960Hz band gain (from 0 to 20) (default 1)
+            _13b: set 4186Hz band gain (from 0 to 20) (default 1)
+            _14b: set 5920Hz band gain (from 0 to 20) (default 1)
+            _15b: set 8372Hz band gain (from 0 to 20) (default 1)
+            _16b: set 11840Hz band gain (from 0 to 20) (default 1)
+            _17b: set 16744Hz band gain (from 0 to 20) (default 1)
+            _18b: set 20000Hz band gain (from 0 to 20) (default 1)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#superequalizer)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#superequalizer)
 
         """
         filter_node = filter_node_factory(
@@ -7993,63 +7993,63 @@ class AudioStream(FilterableStream):
         Apply audio surround upmix filter.
 
         Args:
-        chl_out: set output channel layout (default "5.1")
-        chl_in: set input channel layout (default "stereo")
-        level_in: set input level (from 0 to 10) (default 1)
-        level_out: set output level (from 0 to 10) (default 1)
-        lfe: output LFE (default true)
-        lfe_low: LFE low cut off (from 0 to 256) (default 128)
-        lfe_high: LFE high cut off (from 0 to 512) (default 256)
-        lfe_mode: set LFE channel mode (from 0 to 1) (default add)
-        smooth: set temporal smoothness strength (from 0 to 1) (default 0)
-        angle: set soundfield transform angle (from 0 to 360) (default 90)
-        focus: set soundfield transform focus (from -1 to 1) (default 0)
-        fc_in: set front center channel input level (from 0 to 10) (default 1)
-        fc_out: set front center channel output level (from 0 to 10) (default 1)
-        fl_in: set front left channel input level (from 0 to 10) (default 1)
-        fl_out: set front left channel output level (from 0 to 10) (default 1)
-        fr_in: set front right channel input level (from 0 to 10) (default 1)
-        fr_out: set front right channel output level (from 0 to 10) (default 1)
-        sl_in: set side left channel input level (from 0 to 10) (default 1)
-        sl_out: set side left channel output level (from 0 to 10) (default 1)
-        sr_in: set side right channel input level (from 0 to 10) (default 1)
-        sr_out: set side right channel output level (from 0 to 10) (default 1)
-        bl_in: set back left channel input level (from 0 to 10) (default 1)
-        bl_out: set back left channel output level (from 0 to 10) (default 1)
-        br_in: set back right channel input level (from 0 to 10) (default 1)
-        br_out: set back right channel output level (from 0 to 10) (default 1)
-        bc_in: set back center channel input level (from 0 to 10) (default 1)
-        bc_out: set back center channel output level (from 0 to 10) (default 1)
-        lfe_in: set lfe channel input level (from 0 to 10) (default 1)
-        lfe_out: set lfe channel output level (from 0 to 10) (default 1)
-        allx: set all channel's x spread (from -1 to 15) (default -1)
-        ally: set all channel's y spread (from -1 to 15) (default -1)
-        fcx: set front center channel x spread (from 0.06 to 15) (default 0.5)
-        flx: set front left channel x spread (from 0.06 to 15) (default 0.5)
-        frx: set front right channel x spread (from 0.06 to 15) (default 0.5)
-        blx: set back left channel x spread (from 0.06 to 15) (default 0.5)
-        brx: set back right channel x spread (from 0.06 to 15) (default 0.5)
-        slx: set side left channel x spread (from 0.06 to 15) (default 0.5)
-        srx: set side right channel x spread (from 0.06 to 15) (default 0.5)
-        bcx: set back center channel x spread (from 0.06 to 15) (default 0.5)
-        fcy: set front center channel y spread (from 0.06 to 15) (default 0.5)
-        fly: set front left channel y spread (from 0.06 to 15) (default 0.5)
-        fry: set front right channel y spread (from 0.06 to 15) (default 0.5)
-        bly: set back left channel y spread (from 0.06 to 15) (default 0.5)
-        bry: set back right channel y spread (from 0.06 to 15) (default 0.5)
-        sly: set side left channel y spread (from 0.06 to 15) (default 0.5)
-        sry: set side right channel y spread (from 0.06 to 15) (default 0.5)
-        bcy: set back center channel y spread (from 0.06 to 15) (default 0.5)
-        win_size: set window size (from 1024 to 65536) (default 4096)
-        win_func: set window function (from 0 to 20) (default hann)
-        overlap: set window overlap (from 0 to 1) (default 0.5)
-        extra_options: Extra options for the filter
+            chl_out: set output channel layout (default "5.1")
+            chl_in: set input channel layout (default "stereo")
+            level_in: set input level (from 0 to 10) (default 1)
+            level_out: set output level (from 0 to 10) (default 1)
+            lfe: output LFE (default true)
+            lfe_low: LFE low cut off (from 0 to 256) (default 128)
+            lfe_high: LFE high cut off (from 0 to 512) (default 256)
+            lfe_mode: set LFE channel mode (from 0 to 1) (default add)
+            smooth: set temporal smoothness strength (from 0 to 1) (default 0)
+            angle: set soundfield transform angle (from 0 to 360) (default 90)
+            focus: set soundfield transform focus (from -1 to 1) (default 0)
+            fc_in: set front center channel input level (from 0 to 10) (default 1)
+            fc_out: set front center channel output level (from 0 to 10) (default 1)
+            fl_in: set front left channel input level (from 0 to 10) (default 1)
+            fl_out: set front left channel output level (from 0 to 10) (default 1)
+            fr_in: set front right channel input level (from 0 to 10) (default 1)
+            fr_out: set front right channel output level (from 0 to 10) (default 1)
+            sl_in: set side left channel input level (from 0 to 10) (default 1)
+            sl_out: set side left channel output level (from 0 to 10) (default 1)
+            sr_in: set side right channel input level (from 0 to 10) (default 1)
+            sr_out: set side right channel output level (from 0 to 10) (default 1)
+            bl_in: set back left channel input level (from 0 to 10) (default 1)
+            bl_out: set back left channel output level (from 0 to 10) (default 1)
+            br_in: set back right channel input level (from 0 to 10) (default 1)
+            br_out: set back right channel output level (from 0 to 10) (default 1)
+            bc_in: set back center channel input level (from 0 to 10) (default 1)
+            bc_out: set back center channel output level (from 0 to 10) (default 1)
+            lfe_in: set lfe channel input level (from 0 to 10) (default 1)
+            lfe_out: set lfe channel output level (from 0 to 10) (default 1)
+            allx: set all channel's x spread (from -1 to 15) (default -1)
+            ally: set all channel's y spread (from -1 to 15) (default -1)
+            fcx: set front center channel x spread (from 0.06 to 15) (default 0.5)
+            flx: set front left channel x spread (from 0.06 to 15) (default 0.5)
+            frx: set front right channel x spread (from 0.06 to 15) (default 0.5)
+            blx: set back left channel x spread (from 0.06 to 15) (default 0.5)
+            brx: set back right channel x spread (from 0.06 to 15) (default 0.5)
+            slx: set side left channel x spread (from 0.06 to 15) (default 0.5)
+            srx: set side right channel x spread (from 0.06 to 15) (default 0.5)
+            bcx: set back center channel x spread (from 0.06 to 15) (default 0.5)
+            fcy: set front center channel y spread (from 0.06 to 15) (default 0.5)
+            fly: set front left channel y spread (from 0.06 to 15) (default 0.5)
+            fry: set front right channel y spread (from 0.06 to 15) (default 0.5)
+            bly: set back left channel y spread (from 0.06 to 15) (default 0.5)
+            bry: set back right channel y spread (from 0.06 to 15) (default 0.5)
+            sly: set side left channel y spread (from 0.06 to 15) (default 0.5)
+            sry: set side right channel y spread (from 0.06 to 15) (default 0.5)
+            bcy: set back center channel y spread (from 0.06 to 15) (default 0.5)
+            win_size: set window size (from 1024 to 65536) (default 4096)
+            win_func: set window function (from 0 to 20) (default hann)
+            overlap: set window overlap (from 0 to 1) (default 0.5)
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#surround)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#surround)
 
         """
         filter_node = filter_node_factory(
@@ -8141,25 +8141,25 @@ class AudioStream(FilterableStream):
         Apply a tilt shelf filter.
 
         Args:
-        frequency: set central frequency (from 0 to 999999) (default 3000)
-        width_type: set filter-width type (from 1 to 5) (default q)
-        width: set width (from 0 to 99999) (default 0.5)
-        gain: set gain (from -900 to 900) (default 0)
-        poles: set number of poles (from 1 to 2) (default 2)
-        mix: set mix (from 0 to 1) (default 1)
-        channels: set channels to filter (default "all")
-        normalize: normalize coefficients (default false)
-        transform: set transform type (from 0 to 6) (default di)
-        precision: set filtering precision (from -1 to 3) (default auto)
-        blocksize: set the block size (from 0 to 32768) (default 0)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            frequency: set central frequency (from 0 to 999999) (default 3000)
+            width_type: set filter-width type (from 1 to 5) (default q)
+            width: set width (from 0 to 99999) (default 0.5)
+            gain: set gain (from -900 to 900) (default 0)
+            poles: set number of poles (from 1 to 2) (default 2)
+            mix: set mix (from 0 to 1) (default 1)
+            channels: set channels to filter (default "all")
+            normalize: normalize coefficients (default false)
+            transform: set transform type (from 0 to 6) (default di)
+            precision: set filtering precision (from -1 to 3) (default auto)
+            blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tiltshelf)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tiltshelf)
 
         """
         filter_node = filter_node_factory(
@@ -8213,25 +8213,25 @@ class AudioStream(FilterableStream):
         Boost or cut upper frequencies.
 
         Args:
-        frequency: set central frequency (from 0 to 999999) (default 3000)
-        width_type: set filter-width type (from 1 to 5) (default q)
-        width: set width (from 0 to 99999) (default 0.5)
-        gain: set gain (from -900 to 900) (default 0)
-        poles: set number of poles (from 1 to 2) (default 2)
-        mix: set mix (from 0 to 1) (default 1)
-        channels: set channels to filter (default "all")
-        normalize: normalize coefficients (default false)
-        transform: set transform type (from 0 to 6) (default di)
-        precision: set filtering precision (from -1 to 3) (default auto)
-        blocksize: set the block size (from 0 to 32768) (default 0)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            frequency: set central frequency (from 0 to 999999) (default 3000)
+            width_type: set filter-width type (from 1 to 5) (default q)
+            width: set width (from 0 to 99999) (default 0.5)
+            gain: set gain (from -900 to 900) (default 0)
+            poles: set number of poles (from 1 to 2) (default 2)
+            mix: set mix (from 0 to 1) (default 1)
+            channels: set channels to filter (default "all")
+            normalize: normalize coefficients (default false)
+            transform: set transform type (from 0 to 6) (default di)
+            precision: set filtering precision (from -1 to 3) (default auto)
+            blocksize: set the block size (from 0 to 32768) (default 0)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#treble_002c-highshelf)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#treble_002c-highshelf)
 
         """
         filter_node = filter_node_factory(
@@ -8272,16 +8272,16 @@ class AudioStream(FilterableStream):
         Apply tremolo effect.
 
         Args:
-        f: set frequency in hertz (from 0.1 to 20000) (default 5)
-        d: set depth as percentage (from 0 to 1) (default 0.5)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            f: set frequency in hertz (from 0.1 to 20000) (default 5)
+            d: set depth as percentage (from 0 to 1) (default 0.5)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tremolo)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tremolo)
 
         """
         filter_node = filter_node_factory(
@@ -8313,16 +8313,16 @@ class AudioStream(FilterableStream):
         Apply vibrato effect.
 
         Args:
-        f: set frequency in hertz (from 0.1 to 20000) (default 5)
-        d: set depth as percentage (from 0 to 1) (default 0.5)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            f: set frequency in hertz (from 0.1 to 20000) (default 5)
+            d: set depth as percentage (from 0 to 1) (default 0.5)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vibrato)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vibrato)
 
         """
         filter_node = filter_node_factory(
@@ -8354,16 +8354,16 @@ class AudioStream(FilterableStream):
         Audio Virtual Bass.
 
         Args:
-        cutoff: set virtual bass cutoff (from 100 to 500) (default 250)
-        strength: set virtual bass strength (from 0.5 to 3) (default 3)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            cutoff: set virtual bass cutoff (from 100 to 500) (default 250)
+            strength: set virtual bass strength (from 0.5 to 3) (default 3)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#virtualbass)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#virtualbass)
 
         """
         filter_node = filter_node_factory(
@@ -8403,20 +8403,20 @@ class AudioStream(FilterableStream):
         Change input volume.
 
         Args:
-        volume: set volume adjustment expression (default "1.0")
-        precision: select mathematical precision (from 0 to 2) (default float)
-        eval: specify when to evaluate expressions (from 0 to 1) (default once)
-        replaygain: Apply replaygain side data when present (from 0 to 3) (default drop)
-        replaygain_preamp: Apply replaygain pre-amplification (from -15 to 15) (default 0)
-        replaygain_noclip: Apply replaygain clipping prevention (default true)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+            volume: set volume adjustment expression (default "1.0")
+            precision: select mathematical precision (from 0 to 2) (default float)
+            eval: specify when to evaluate expressions (from 0 to 1) (default once)
+            replaygain: Apply replaygain side data when present (from 0 to 3) (default drop)
+            replaygain_preamp: Apply replaygain pre-amplification (from -15 to 15) (default 0)
+            replaygain_noclip: Apply replaygain clipping prevention (default true)
+            timeline_options: Timeline options
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#volume)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#volume)
 
         """
         filter_node = filter_node_factory(
@@ -8448,13 +8448,13 @@ class AudioStream(FilterableStream):
         Detect audio volume.
 
         Args:
-        extra_options: Extra options for the filter
+            extra_options: Extra options for the filter
 
         Returns:
-        default: the audio stream
+            default: the audio stream
 
         References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#volumedetect)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#volumedetect)
 
         """
         filter_node = filter_node_factory(

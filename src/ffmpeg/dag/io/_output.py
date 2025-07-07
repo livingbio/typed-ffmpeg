@@ -154,7 +154,7 @@ def output(
         program: add program with specified streams
         stream_group: add stream group with specified streams and group type-specific arguments
         dframes: set the number of data frames to output
-        target: specify target file type (\"vcd\", \"svcd\", \"dvd\", \"dv\" or \"dv50\\ "with optional prefixes \"pal-\", \"ntsc-\" or \"film-\")
+        target: specify target file type (\"vcd\", \"svcd\", \"dvd\", \"dv\" or \"dv50\ "with optional prefixes \"pal-\", \"ntsc-\" or \"film-\")
         shortest: finish encoding within shortest input
         shortest_buf_duration: maximum buffering duration (in seconds) for the -shortest option
         bitexact: bitexact mode
