@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -2235,6 +2235,15 @@
   <a href="#ffmpeg.filters.overlay" class="md-nav__link">
     <span class="md-ellipsis">
       <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;overlay
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ffmpeg.filters.overlay_cuda" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;overlay_cuda
     </span>
   </a>
   
@@ -4719,6 +4728,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ffmpeg.filters.overlay_cuda" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;overlay_cuda
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ffmpeg.filters.overlay_opencl" class="md-nav__link">
     <span class="md-ellipsis">
       <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;overlay_opencl
@@ -5441,6 +5459,14 @@
               <td>
                 <div class="doc-md-description">
                   <p>Overlay a video source on top of the input.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            overlay_cuda (ffmpeg.filters.overlay_cuda)" href="#ffmpeg.filters.overlay_cuda">overlay_cuda</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Overlay one video on top of another using CUDA.</p>
                 </div>
               </td>
             </tr>
@@ -19859,6 +19885,293 @@
 <div class="doc doc-object doc-function">
 
 
+<h2 id="ffmpeg.filters.overlay_cuda" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">overlay_cuda</span>
+
+
+<a href="#ffmpeg.filters.overlay_cuda" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">overlay_cuda</span><span class="p">(</span>
+    <span class="n">_main</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            VideoStream
+
+
+  
+      dataclass
+   (ffmpeg.streams.video.VideoStream)" href="../streams/video/#ffmpeg.streams.video.VideoStream">VideoStream</a></span><span class="p">,</span>
+    <span class="n">_overlay</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            VideoStream
+
+
+  
+      dataclass
+   (ffmpeg.streams.video.VideoStream)" href="../streams/video/#ffmpeg.streams.video.VideoStream">VideoStream</a></span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            String
+
+
+  
+      module-attribute
+   (ffmpeg.types.String)" href="../types/#ffmpeg.types.String">String</a></span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a></span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">),</span>
+    <span class="n">y</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            String
+
+
+  
+      module-attribute
+   (ffmpeg.types.String)" href="../types/#ffmpeg.types.String">String</a></span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a></span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">),</span>
+    <span class="n">eof_action</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><a class="autorefs autorefs-internal" title="            Int
+
+
+  
+      module-attribute
+   (ffmpeg.types.Int)" href="../types/#ffmpeg.types.Int">Int</a></span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;repeat&quot;</span><span class="p">,</span> <span class="s2">&quot;endall&quot;</span><span class="p">,</span> <span class="s2">&quot;pass&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a></span>
+    <span class="p">)</span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a></span><span class="p">(</span><span class="s2">&quot;repeat&quot;</span><span class="p">),</span>
+    <span class="nb">eval</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n"><a class="autorefs autorefs-internal" title="            Int
+
+
+  
+      module-attribute
+   (ffmpeg.types.Int)" href="../types/#ffmpeg.types.Int">Int</a></span> <span class="o">|</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;init&quot;</span><span class="p">,</span> <span class="s2">&quot;frame&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a></span>
+    <span class="p">)</span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a></span><span class="p">(</span><span class="s2">&quot;frame&quot;</span><span class="p">),</span>
+    <span class="n">shortest</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Boolean
+
+
+  
+      module-attribute
+   (ffmpeg.types.Boolean)" href="../types/#ffmpeg.types.Boolean">Boolean</a></span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a></span><span class="p">(</span><span class="s2">&quot;false&quot;</span><span class="p">),</span>
+    <span class="n">repeatlast</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Boolean
+
+
+  
+      module-attribute
+   (ffmpeg.types.Boolean)" href="../types/#ffmpeg.types.Boolean">Boolean</a></span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a></span><span class="p">(</span><span class="s2">&quot;true&quot;</span><span class="p">),</span>
+    <span class="n">framesync_options</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            FFMpegFrameSyncOption (ffmpeg.options.framesync.FFMpegFrameSyncOption)" href="../options/framesync/#ffmpeg.options.framesync.FFMpegFrameSyncOption">FFMpegFrameSyncOption</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">extra_options</span><span class="p">:</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="typing.Any">Any</span></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            VideoStream
+
+
+  
+      dataclass
+   (ffmpeg.streams.video.VideoStream)" href="../streams/video/#ffmpeg.streams.video.VideoStream">VideoStream</a></span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Overlay one video on top of another using CUDA.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>x</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            String
+
+
+  
+      module-attribute
+   (ffmpeg.types.String)" href="../types/#ffmpeg.types.String">String</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set the x expression of overlay (default "0")</p>
+              </div>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;0&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>y</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            String
+
+
+  
+      module-attribute
+   (ffmpeg.types.String)" href="../types/#ffmpeg.types.String">String</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>set the y expression of overlay (default "0")</p>
+              </div>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;0&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>eof_action</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Int
+
+
+  
+      module-attribute
+   (ffmpeg.types.Int)" href="../types/#ffmpeg.types.Int">Int</a> | <span title="typing.Literal">Literal</span>[&#39;repeat&#39;, &#39;endall&#39;, &#39;pass&#39;] | <a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)</p>
+              </div>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;repeat&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>eval</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Int
+
+
+  
+      module-attribute
+   (ffmpeg.types.Int)" href="../types/#ffmpeg.types.Int">Int</a> | <span title="typing.Literal">Literal</span>[&#39;init&#39;, &#39;frame&#39;] | <a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>specify when to evaluate expressions (from 0 to 1) (default frame)</p>
+              </div>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;frame&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>shortest</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Boolean
+
+
+  
+      module-attribute
+   (ffmpeg.types.Boolean)" href="../types/#ffmpeg.types.Boolean">Boolean</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>force termination when the shortest input terminates (default false)</p>
+              </div>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;false&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>repeatlast</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Boolean
+
+
+  
+      module-attribute
+   (ffmpeg.types.Boolean)" href="../types/#ffmpeg.types.Boolean">Boolean</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>repeat overlay of the last overlay frame (default true)</p>
+              </div>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Default (ffmpeg.schema.Default)" href="../schema/#ffmpeg.schema.Default">Default</a>(&#39;true&#39;)</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>framesync_options</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            FFMpegFrameSyncOption (ffmpeg.options.framesync.FFMpegFrameSyncOption)" href="../options/framesync/#ffmpeg.options.framesync.FFMpegFrameSyncOption">FFMpegFrameSyncOption</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Framesync options</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extra_options</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra options for the filter</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>default</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="            VideoStream
+
+
+  
+      dataclass
+   (ffmpeg.streams.video.VideoStream)" href="../streams/video/#ffmpeg.streams.video.VideoStream">VideoStream</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>the video stream</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="references" open>
+  <summary>References</summary>
+  <p><a href="https://ffmpeg.org/ffmpeg-filters.html#overlay_005fcuda">FFmpeg Documentation</a></p>
+</details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h2 id="ffmpeg.filters.overlay_opencl" class="doc doc-heading">
 <code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">overlay_opencl</span>
 
@@ -26108,7 +26421,7 @@
       <script id="__config" type="application/json">{"base": "../../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
     
   </body>
