@@ -99,7 +99,7 @@ importlib-metadata==8.7.0
     # via keyring
 iniconfig==2.1.0
     # via pytest
-ipykernel==6.27.1
+ipykernel==6.29.5
     # via -r requirements.in
 ipython==8.37.0
     # via ipykernel
