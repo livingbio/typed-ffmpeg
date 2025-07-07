@@ -45,7 +45,7 @@ comm==0.2.2
     # via ipykernel
 coverage[toml]==7.8.2
     # via pytest-cov
-cryptography==45.0.4
+cryptography==45.0.5
     # via secretstorage
 debugpy==1.8.14
     # via ipykernel
