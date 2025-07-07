@@ -3289,6 +3289,64 @@ def overlay(
     return filter_node.video(0)
 
 
+def overlay_cuda(
+    _main: VideoStream,
+    _overlay: VideoStream,
+    *,
+    x: String = Default("0"),
+    y: String = Default("0"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    eval: Int | Literal["init", "frame"] | Default = Default("frame"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
+) -> VideoStream:
+    """
+
+    Overlay one video on top of another using CUDA.
+
+    Args:
+        x: set the x expression of overlay (default "0")
+        y: set the y expression of overlay (default "0")
+        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        eval: specify when to evaluate expressions (from 0 to 1) (default frame)
+        shortest: force termination when the shortest input terminates (default false)
+        repeatlast: repeat overlay of the last overlay frame (default true)
+        framesync_options: Framesync options
+        extra_options: Extra options for the filter
+
+    Returns:
+        default: the video stream
+
+    References:
+        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_005fcuda)
+
+    """
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="overlay_cuda",
+            typings_input=("video", "video"),
+            typings_output=("video",),
+        ),
+        _main,
+        _overlay,
+        **merge(
+            {
+                "x": x,
+                "y": y,
+                "eof_action": eof_action,
+                "eval": eval,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+            },
+            extra_options,
+            framesync_options,
+        ),
+    )
+    return filter_node.video(0)
+
+
 def overlay_opencl(
     _main: VideoStream,
     _overlay: VideoStream,
