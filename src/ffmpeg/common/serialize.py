@@ -259,4 +259,4 @@ def dumps(instance: Any) -> str:
 
     """
     obj = to_dict_with_class_info(instance)
-    return json.dumps(obj, indent=2)
+    return json.dumps(obj, indent=2, sort_keys=True)

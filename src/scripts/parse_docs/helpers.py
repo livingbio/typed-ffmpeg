@@ -63,7 +63,7 @@ def parse_filter_document(body: str) -> FilterDocument:
 
     """
     soup = BeautifulSoup(body, "html.parser")
-    h3 = soup.find("h3")
+    h3 = soup.find("h3") or soup.find("h4")
 
     assert isinstance(h3, Tag)
 
