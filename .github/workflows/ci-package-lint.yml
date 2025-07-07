@@ -1,0 +1,42 @@
+name: CI Package - Lint
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/ffmpeg/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/ffmpeg/**'
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Create virtual environment
+        run: uv venv
+
+      - name: Install dependencies
+        run: |
+          source .venv/bin/activate
+          uv pip install -r requirements.txt
+
+      - name: Run linting
+        run: uv run pre-commit run --all-files
+        working-directory: src/ffmpeg
