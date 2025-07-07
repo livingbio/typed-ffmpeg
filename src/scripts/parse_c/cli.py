@@ -11,10 +11,9 @@ from pathlib import Path
 
 import typer
 
-from ffmpeg.common.schema import FFMpegOption
-
 from .parse_ffmpeg_opt_c import parse_ffmpeg_opt_c
 from .pre_compile import precompile, target_folder
+from .schema import FFMpegOption
 from .xsd_to_dataclasses import generate_dataclasses, parse_xsd_file
 
 app = typer.Typer(help="Parse FFmpeg C source code")
