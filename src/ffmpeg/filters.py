@@ -5,10 +5,7 @@ from typing import Any, Literal
 
 from .common.schema import FFMpegFilterDef
 from .dag.factory import filter_node_factory
-from .dag.nodes import (
-    FilterableStream,
-    FilterNode,
-)
+from .dag.nodes import FilterableStream, FilterNode
 from .options.framesync import FFMpegFrameSyncOption
 from .options.timeline import FFMpegTimelineOption
 from .schema import Auto, Default
@@ -102,18 +99,18 @@ def acrossfade(
     Cross fade two input audio streams.
 
     Args:
-        nb_samples: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
-        duration: set cross fade duration (default 0)
-        overlap: overlap 1st stream end with 2nd stream start (default true)
-        curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
-        curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
-        extra_options: Extra options for the filter
+    nb_samples: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
+    duration: set cross fade duration (default 0)
+    overlap: overlap 1st stream end with 2nd stream start (default true)
+    curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
+    curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossfade)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossfade)
 
     """
     filter_node = filter_node_factory(
@@ -151,15 +148,15 @@ def ainterleave(
     Temporally interleave audio inputs.
 
     Args:
-        nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
-        duration: how to determine the end-of-stream (from 0 to 2) (default longest)
-        extra_options: Extra options for the filter
+    nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
+    duration: how to determine the end-of-stream (from 0 to 2) (default longest)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave)
 
     """
     filter_node = filter_node_factory(
@@ -192,15 +189,15 @@ def alphamerge(
     Copy the luma value of the second input into the alpha channel of the first input.
 
     Args:
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alphamerge)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alphamerge)
 
     """
     filter_node = filter_node_factory(
@@ -231,14 +228,14 @@ def amerge(
     Merge two or more audio streams into a single multi-channel stream.
 
     Args:
-        inputs: specify the number of inputs (from 1 to 64) (default 2)
-        extra_options: Extra options for the filter
+    inputs: specify the number of inputs (from 1 to 64) (default 2)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amerge)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amerge)
 
     """
     filter_node = filter_node_factory(
@@ -274,18 +271,18 @@ def amix(
     Audio mixing.
 
     Args:
-        inputs: Number of inputs. (from 1 to 32767) (default 2)
-        duration: How to determine the end-of-stream. (from 0 to 2) (default longest)
-        dropout_transition: Transition time, in seconds, for volume renormalization when an input stream ends. (from 0 to INT_MAX) (default 2)
-        weights: Set weight for each input. (default "1 1")
-        normalize: Scale inputs (default true)
-        extra_options: Extra options for the filter
+    inputs: Number of inputs. (from 1 to 32767) (default 2)
+    duration: How to determine the end-of-stream. (from 0 to 2) (default longest)
+    dropout_transition: Transition time, in seconds, for volume renormalization when an input stream ends. (from 0 to INT_MAX) (default 2)
+    weights: Set weight for each input. (default "1 1")
+    normalize: Scale inputs (default true)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amix)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amix)
 
     """
     filter_node = filter_node_factory(
@@ -319,13 +316,13 @@ def amultiply(
     Multiply two audio streams.
 
     Args:
-        extra_options: Extra options for the filter
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amultiply)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amultiply)
 
     """
     filter_node = filter_node_factory(
@@ -361,19 +358,19 @@ def anlmf(
     Apply Normalized Least-Mean-Fourth algorithm to first audio stream.
 
     Args:
-        order: set the filter order (from 1 to 32767) (default 256)
-        mu: set the filter mu (from 0 to 2) (default 0.75)
-        eps: set the filter eps (from 0 to 1) (default 1)
-        leakage: set the filter leakage (from 0 to 1) (default 0)
-        out_mode: set output mode (from 0 to 4) (default o)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    order: set the filter order (from 1 to 32767) (default 256)
+    mu: set the filter mu (from 0 to 2) (default 0.75)
+    eps: set the filter eps (from 0 to 1) (default 1)
+    leakage: set the filter leakage (from 0 to 1) (default 0)
+    out_mode: set output mode (from 0 to 4) (default o)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
 
     """
     filter_node = filter_node_factory(
@@ -414,19 +411,19 @@ def anlms(
     Apply Normalized Least-Mean-Squares algorithm to first audio stream.
 
     Args:
-        order: set the filter order (from 1 to 32767) (default 256)
-        mu: set the filter mu (from 0 to 2) (default 0.75)
-        eps: set the filter eps (from 0 to 1) (default 1)
-        leakage: set the filter leakage (from 0 to 1) (default 0)
-        out_mode: set output mode (from 0 to 4) (default o)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    order: set the filter order (from 1 to 32767) (default 256)
+    mu: set the filter mu (from 0 to 2) (default 0.75)
+    eps: set the filter eps (from 0 to 1) (default 1)
+    leakage: set the filter leakage (from 0 to 1) (default 0)
+    out_mode: set output mode (from 0 to 4) (default o)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
 
     """
     filter_node = filter_node_factory(
@@ -461,14 +458,14 @@ def apsnr(
     Measure Audio Peak Signal-to-Noise Ratio.
 
     Args:
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsnr)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsnr)
 
     """
     filter_node = filter_node_factory(
@@ -502,18 +499,18 @@ def arls(
     Apply Recursive Least Squares algorithm to first audio stream.
 
     Args:
-        order: set the filter order (from 1 to 32767) (default 16)
-        _lambda: set the filter lambda (from 0 to 1) (default 1)
-        delta: set the filter delta (from 0 to 32767) (default 2)
-        out_mode: set output mode (from 0 to 4) (default o)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    order: set the filter order (from 1 to 32767) (default 16)
+    _lambda: set the filter lambda (from 0 to 1) (default 1)
+    delta: set the filter delta (from 0 to 32767) (default 2)
+    out_mode: set output mode (from 0 to 4) (default o)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arls)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arls)
 
     """
     filter_node = filter_node_factory(
@@ -547,14 +544,14 @@ def asdr(
     Measure Audio Signal-to-Distortion Ratio.
 
     Args:
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asdr)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asdr)
 
     """
     filter_node = filter_node_factory(
@@ -583,14 +580,14 @@ def asisdr(
     Measure Audio Scale-Invariant Signal-to-Distortion Ratio.
 
     Args:
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asisdr)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asisdr)
 
     """
     filter_node = filter_node_factory(
@@ -619,16 +616,16 @@ def astreamselect(
     Select audio streams.
 
     Args:
-        inputs: number of input streams (from 2 to INT_MAX) (default 2)
-        map: input indexes to remap to outputs
-        extra_options: Extra options for the filter
+    inputs: number of input streams (from 2 to INT_MAX) (default 2)
+    map: input indexes to remap to outputs
+    extra_options: Extra options for the filter
 
     Returns:
-        filter_node: the filter node
+    filter_node: the filter node
 
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect)
 
     """
     filter_node = filter_node_factory(
@@ -663,15 +660,15 @@ def axcorrelate(
     Cross-correlate two audio streams.
 
     Args:
-        size: set the segment size (from 2 to 131072) (default 256)
-        algo: set the algorithm (from 0 to 2) (default best)
-        extra_options: Extra options for the filter
+    size: set the segment size (from 2 to 131072) (default 256)
+    algo: set the algorithm (from 0 to 2) (default best)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#axcorrelate)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#axcorrelate)
 
     """
     filter_node = filter_node_factory(
@@ -946,30 +943,30 @@ def blend(
     Blend two video frames into each other.
 
     Args:
-        c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
-        c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
-        c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
-        c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
-        all_mode: set blend mode for all components (from -1 to 39) (default -1)
-        c0_expr: set color component #0 expression
-        c1_expr: set color component #1 expression
-        c2_expr: set color component #2 expression
-        c3_expr: set color component #3 expression
-        all_expr: set expression for all color components
-        c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
-        c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
-        c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
-        c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
-        all_opacity: set opacity for all color components (from 0 to 1) (default 1)
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
+    c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
+    c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
+    c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
+    all_mode: set blend mode for all components (from -1 to 39) (default -1)
+    c0_expr: set color component #0 expression
+    c1_expr: set color component #1 expression
+    c2_expr: set color component #2 expression
+    c3_expr: set color component #3 expression
+    all_expr: set expression for all color components
+    c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
+    c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
+    c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
+    c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
+    all_opacity: set opacity for all color components (from 0 to 1) (default 1)
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blend)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blend)
 
     """
     filter_node = filter_node_factory(
@@ -1025,23 +1022,23 @@ def blend_vulkan(
     Blend two video frames in Vulkan.
 
     Args:
-        c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
-        c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
-        c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
-        c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
-        all_mode: set blend mode for all components (from -1 to 39) (default -1)
-        c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
-        c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
-        c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
-        c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
-        all_opacity: set opacity for all color components (from 0 to 1) (default 1)
-        extra_options: Extra options for the filter
+    c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
+    c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
+    c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
+    c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
+    all_mode: set blend mode for all components (from -1 to 39) (default -1)
+    c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
+    c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
+    c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
+    c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
+    all_opacity: set opacity for all color components (from 0 to 1) (default 1)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blend_005fvulkan)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blend_005fvulkan)
 
     """
     filter_node = filter_node_factory(
@@ -1092,25 +1089,25 @@ def bm3d(
     Block-Matching 3D denoiser.
 
     Args:
-        sigma: set denoising strength (from 0 to 99999.9) (default 1)
-        block: set size of local patch (from 8 to 64) (default 16)
-        bstep: set sliding step for processing blocks (from 1 to 64) (default 4)
-        group: set maximal number of similar blocks (from 1 to 256) (default 1)
-        range: set block matching range (from 1 to INT_MAX) (default 9)
-        mstep: set step for block matching (from 1 to 64) (default 1)
-        thmse: set threshold of mean square error for block matching (from 0 to INT_MAX) (default 0)
-        hdthr: set hard threshold for 3D transfer domain (from 0 to INT_MAX) (default 2.7)
-        estim: set filtering estimation mode (from 0 to 1) (default basic)
-        ref: have reference stream (default false)
-        planes: set planes to filter (from 0 to 15) (default 7)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    sigma: set denoising strength (from 0 to 99999.9) (default 1)
+    block: set size of local patch (from 8 to 64) (default 16)
+    bstep: set sliding step for processing blocks (from 1 to 64) (default 4)
+    group: set maximal number of similar blocks (from 1 to 256) (default 1)
+    range: set block matching range (from 1 to INT_MAX) (default 9)
+    mstep: set step for block matching (from 1 to 64) (default 1)
+    thmse: set threshold of mean square error for block matching (from 0 to INT_MAX) (default 0)
+    hdthr: set hard threshold for 3D transfer domain (from 0 to INT_MAX) (default 2.7)
+    estim: set filtering estimation mode (from 0 to 1) (default basic)
+    ref: have reference stream (default false)
+    planes: set planes to filter (from 0 to 15) (default 7)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bm3d)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bm3d)
 
     """
     filter_node = filter_node_factory(
@@ -1158,18 +1155,18 @@ def colormap(
     Apply custom Color Maps to video stream.
 
     Args:
-        patch_size: set patch size (default "64x64")
-        nb_patches: set number of patches (from 0 to 64) (default 0)
-        type: set the target type used (from 0 to 1) (default absolute)
-        kernel: set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    patch_size: set patch size (default "64x64")
+    nb_patches: set number of patches (from 0 to 64) (default 0)
+    type: set the target type used (from 0 to 1) (default absolute)
+    kernel: set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colormap)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colormap)
 
     """
     filter_node = filter_node_factory(
@@ -1208,18 +1205,18 @@ def concat(
     Concatenate audio and video streams.
 
     Args:
-        n: specify the number of segments (from 1 to INT_MAX) (default 2)
-        v: specify the number of video streams (from 0 to INT_MAX) (default 1)
-        a: specify the number of audio streams (from 0 to INT_MAX) (default 0)
-        unsafe: enable unsafe mode (default false)
-        extra_options: Extra options for the filter
+    n: specify the number of segments (from 1 to INT_MAX) (default 2)
+    v: specify the number of video streams (from 0 to INT_MAX) (default 1)
+    a: specify the number of audio streams (from 0 to INT_MAX) (default 0)
+    unsafe: enable unsafe mode (default false)
+    extra_options: Extra options for the filter
 
     Returns:
-        filter_node: the filter node
+    filter_node: the filter node
 
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#concat)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#concat)
 
     """
     filter_node = filter_node_factory(
@@ -1259,18 +1256,18 @@ def convolve(
     Convolve first video stream with second video stream.
 
     Args:
-        planes: set planes to convolve (from 0 to 15) (default 7)
-        impulse: when to process impulses (from 0 to 1) (default all)
-        noise: set noise (from 0 to 1) (default 1e-07)
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    planes: set planes to convolve (from 0 to 15) (default 7)
+    impulse: when to process impulses (from 0 to 1) (default all)
+    noise: set noise (from 0 to 1) (default 1e-07)
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolve)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolve)
 
     """
     filter_node = filter_node_factory(
@@ -1305,15 +1302,15 @@ def corr(
     Calculate the correlation between two video streams.
 
     Args:
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#corr)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#corr)
 
     """
     filter_node = filter_node_factory(
@@ -1349,21 +1346,21 @@ def decimate(
     Decimate frames (post field matching filter).
 
     Args:
-        cycle: set the number of frame from which one will be dropped (from 2 to 25) (default 5)
-        dupthresh: set duplicate threshold (from 0 to 100) (default 1.1)
-        scthresh: set scene change threshold (from 0 to 100) (default 15)
-        blockx: set the size of the x-axis blocks used during metric calculations (from 4 to 512) (default 32)
-        blocky: set the size of the y-axis blocks used during metric calculations (from 4 to 512) (default 32)
-        ppsrc: mark main input as a pre-processed input and activate clean source input stream (default false)
-        chroma: set whether or not chroma is considered in the metric calculations (default true)
-        mixed: set whether or not the input only partially contains content to be decimated (default false)
-        extra_options: Extra options for the filter
+    cycle: set the number of frame from which one will be dropped (from 2 to 25) (default 5)
+    dupthresh: set duplicate threshold (from 0 to 100) (default 1.1)
+    scthresh: set scene change threshold (from 0 to 100) (default 15)
+    blockx: set the size of the x-axis blocks used during metric calculations (from 4 to 512) (default 32)
+    blocky: set the size of the y-axis blocks used during metric calculations (from 4 to 512) (default 32)
+    ppsrc: mark main input as a pre-processed input and activate clean source input stream (default false)
+    chroma: set whether or not chroma is considered in the metric calculations (default true)
+    mixed: set whether or not the input only partially contains content to be decimated (default false)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#decimate)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#decimate)
 
     """
     filter_node = filter_node_factory(
@@ -1406,18 +1403,18 @@ def deconvolve(
     Deconvolve first video stream with second video stream.
 
     Args:
-        planes: set planes to deconvolve (from 0 to 15) (default 7)
-        impulse: when to process impulses (from 0 to 1) (default all)
-        noise: set noise (from 0 to 1) (default 1e-07)
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    planes: set planes to deconvolve (from 0 to 15) (default 7)
+    impulse: when to process impulses (from 0 to 1) (default all)
+    noise: set noise (from 0 to 1) (default 1e-07)
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deconvolve)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deconvolve)
 
     """
     filter_node = filter_node_factory(
@@ -1458,15 +1455,15 @@ def displace(
     Displace pixels.
 
     Args:
-        edge: set edge mode (from 0 to 3) (default smear)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    edge: set edge mode (from 0 to 3) (default smear)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#displace)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#displace)
 
     """
     filter_node = filter_node_factory(
@@ -1505,16 +1502,16 @@ def feedback(
     Apply feedback video filter.
 
     Args:
-        x: set top left crop position (from 0 to INT_MAX) (default 0)
-        w: set crop size (from 0 to INT_MAX) (default 0)
-        extra_options: Extra options for the filter
+    x: set top left crop position (from 0 to INT_MAX) (default 0)
+    w: set crop size (from 0 to INT_MAX) (default 0)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
-        feedout: the video stream
+    default: the video stream
+    feedout: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#feedback)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#feedback)
 
     """
     filter_node = filter_node_factory(
@@ -1564,27 +1561,27 @@ def fieldmatch(
     Field matching for inverse telecine.
 
     Args:
-        order: specify the assumed field order (from -1 to 1) (default auto)
-        mode: set the matching mode or strategy to use (from 0 to 5) (default pc_n)
-        ppsrc: mark main input as a pre-processed input and activate clean source input stream (default false)
-        field: set the field to match from (from -1 to 1) (default auto)
-        mchroma: set whether or not chroma is included during the match comparisons (default true)
-        y0: define an exclusion band which excludes the lines between y0 and y1 from the field matching decision (from 0 to INT_MAX) (default 0)
-        scthresh: set scene change detection threshold (from 0 to 100) (default 12)
-        combmatch: set combmatching mode (from 0 to 2) (default sc)
-        combdbg: enable comb debug (from 0 to 2) (default none)
-        cthresh: set the area combing threshold used for combed frame detection (from -1 to 255) (default 9)
-        chroma: set whether or not chroma is considered in the combed frame decision (default false)
-        blockx: set the x-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
-        blocky: set the y-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
-        combpel: set the number of combed pixels inside any of the blocky by blockx size blocks on the frame for the frame to be detected as combed (from 0 to INT_MAX) (default 80)
-        extra_options: Extra options for the filter
+    order: specify the assumed field order (from -1 to 1) (default auto)
+    mode: set the matching mode or strategy to use (from 0 to 5) (default pc_n)
+    ppsrc: mark main input as a pre-processed input and activate clean source input stream (default false)
+    field: set the field to match from (from -1 to 1) (default auto)
+    mchroma: set whether or not chroma is included during the match comparisons (default true)
+    y0: define an exclusion band which excludes the lines between y0 and y1 from the field matching decision (from 0 to INT_MAX) (default 0)
+    scthresh: set scene change detection threshold (from 0 to 100) (default 12)
+    combmatch: set combmatching mode (from 0 to 2) (default sc)
+    combdbg: enable comb debug (from 0 to 2) (default none)
+    cthresh: set the area combing threshold used for combed frame detection (from -1 to 255) (default 9)
+    chroma: set whether or not chroma is considered in the combed frame decision (default false)
+    blockx: set the x-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
+    blocky: set the y-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
+    combpel: set the number of combed pixels inside any of the blocky by blockx size blocks on the frame for the frame to be detected as combed (from 0 to INT_MAX) (default 80)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldmatch)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldmatch)
 
     """
     filter_node = filter_node_factory(
@@ -1631,14 +1628,14 @@ def framepack(
     Generate a frame packed stereoscopic video.
 
     Args:
-        format: Frame pack output format (from 0 to INT_MAX) (default sbs)
-        extra_options: Extra options for the filter
+    format: Frame pack output format (from 0 to INT_MAX) (default sbs)
+    extra_options: Extra options for the filter
 
     Returns:
-        packed: the video stream
+    packed: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framepack)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framepack)
 
     """
     filter_node = filter_node_factory(
@@ -1673,16 +1670,16 @@ def freezeframes(
     Freeze video frames.
 
     Args:
-        first: set first frame to freeze (from 0 to I64_MAX) (default 0)
-        last: set last frame to freeze (from 0 to I64_MAX) (default 0)
-        replace: set frame to replace (from 0 to I64_MAX) (default 0)
-        extra_options: Extra options for the filter
+    first: set first frame to freeze (from 0 to I64_MAX) (default 0)
+    last: set last frame to freeze (from 0 to I64_MAX) (default 0)
+    replace: set frame to replace (from 0 to I64_MAX) (default 0)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#freezeframes)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#freezeframes)
 
     """
     filter_node = filter_node_factory(
@@ -1721,20 +1718,20 @@ def guided(
     Apply Guided filter.
 
     Args:
-        radius: set the box radius (from 1 to 20) (default 3)
-        eps: set the regularization parameter (with square) (from 0 to 1) (default 0.01)
-        mode: set filtering mode (0: basic mode; 1: fast mode) (from 0 to 1) (default basic)
-        sub: subsampling ratio for fast mode (from 2 to 64) (default 4)
-        guidance: set guidance mode (0: off mode; 1: on mode) (from 0 to 1) (default off)
-        planes: set planes to filter (from 0 to 15) (default 1)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    radius: set the box radius (from 1 to 20) (default 3)
+    eps: set the regularization parameter (with square) (from 0 to 1) (default 0.01)
+    mode: set filtering mode (0: basic mode; 1: fast mode) (from 0 to 1) (default basic)
+    sub: subsampling ratio for fast mode (from 2 to 64) (default 4)
+    guidance: set guidance mode (0: off mode; 1: on mode) (from 0 to 1) (default off)
+    planes: set planes to filter (from 0 to 15) (default 1)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#guided)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#guided)
 
     """
     filter_node = filter_node_factory(
@@ -1777,17 +1774,17 @@ def haldclut(
     Adjust colors using a Hald CLUT.
 
     Args:
-        clut: when to process CLUT (from 0 to 1) (default all)
-        interp: select interpolation mode (from 0 to 4) (default tetrahedral)
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    clut: when to process CLUT (from 0 to 1) (default all)
+    interp: select interpolation mode (from 0 to 4) (default tetrahedral)
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haldclut)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haldclut)
 
     """
     filter_node = filter_node_factory(
@@ -1824,19 +1821,19 @@ def headphone(
     Apply headphone binaural spatialization with HRTFs in additional streams.
 
     Args:
-        map: set channels convolution mappings
-        gain: set gain in dB (from -20 to 40) (default 0)
-        lfe: set lfe gain in dB (from -20 to 40) (default 0)
-        type: set processing (from 0 to 1) (default freq)
-        size: set frame size (from 1024 to 96000) (default 1024)
-        hrir: set hrir format (from 0 to 1) (default stereo)
-        extra_options: Extra options for the filter
+    map: set channels convolution mappings
+    gain: set gain in dB (from -20 to 40) (default 0)
+    lfe: set lfe gain in dB (from -20 to 40) (default 0)
+    type: set processing (from 0 to 1) (default freq)
+    size: set frame size (from 1024 to 96000) (default 1024)
+    hrir: set hrir format (from 0 to 1) (default stereo)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#headphone)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#headphone)
 
     """
     filter_node = filter_node_factory(
@@ -1872,15 +1869,15 @@ def hstack(
     Stack video inputs horizontally.
 
     Args:
-        inputs: set number of inputs (from 2 to INT_MAX) (default 2)
-        shortest: force termination when the shortest input terminates (default false)
-        extra_options: Extra options for the filter
+    inputs: set number of inputs (from 2 to INT_MAX) (default 2)
+    shortest: force termination when the shortest input terminates (default false)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hstack)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hstack)
 
     """
     filter_node = filter_node_factory(
@@ -1913,16 +1910,16 @@ def hstack_vaapi(
     "VA-API" hstack.
 
     Args:
-        inputs: Set number of inputs (from 2 to 65535) (default 2)
-        shortest: Force termination when the shortest input terminates (default false)
-        height: Set output height (0 to use the height of input 0) (from 0 to 65535) (default 0)
-        extra_options: Extra options for the filter
+    inputs: Set number of inputs (from 2 to 65535) (default 2)
+    shortest: Force termination when the shortest input terminates (default false)
+    height: Set output height (0 to use the height of input 0) (from 0 to 65535) (default 0)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hstack_005fvaapi)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hstack_005fvaapi)
 
     """
     filter_node = filter_node_factory(
@@ -1959,17 +1956,17 @@ def hysteresis(
     Grow first stream into second stream by connecting components.
 
     Args:
-        planes: set planes (from 0 to 15) (default 15)
-        threshold: set threshold (from 0 to 65535) (default 0)
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    planes: set planes (from 0 to 15) (default 15)
+    threshold: set threshold (from 0 to 65535) (default 0)
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hysteresis)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hysteresis)
 
     """
     filter_node = filter_node_factory(
@@ -2005,15 +2002,15 @@ def identity(
     Calculate the Identity between two video streams.
 
     Args:
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#identity)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#identity)
 
     """
     filter_node = filter_node_factory(
@@ -2045,15 +2042,15 @@ def interleave(
     Temporally interleave video inputs.
 
     Args:
-        nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
-        duration: how to determine the end-of-stream (from 0 to 2) (default longest)
-        extra_options: Extra options for the filter
+    nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
+    duration: how to determine the end-of-stream (from 0 to 2) (default longest)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave)
 
     """
     filter_node = filter_node_factory(
@@ -2086,16 +2083,16 @@ def join(
     Join multiple audio streams into multi-channel output.
 
     Args:
-        inputs: Number of input streams. (from 1 to INT_MAX) (default 2)
-        channel_layout: Channel layout of the output stream. (default "stereo")
-        map: A comma-separated list of channels maps in the format 'input_stream.input_channel-output_channel.
-        extra_options: Extra options for the filter
+    inputs: Number of input streams. (from 1 to INT_MAX) (default 2)
+    channel_layout: Channel layout of the output stream. (default "stereo")
+    map: A comma-separated list of channels maps in the format 'input_stream.input_channel-output_channel.
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#join)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#join)
 
     """
     filter_node = filter_node_factory(
@@ -2133,20 +2130,20 @@ def ladspa(
     Apply LADSPA effect.
 
     Args:
-        file: set library name or full path
-        plugin: set plugin name
-        controls: set plugin options
-        sample_rate: set sample rate (from 1 to INT_MAX) (default 44100)
-        nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
-        duration: set audio duration (default -0.000001)
-        latency: enable latency compensation (default false)
-        extra_options: Extra options for the filter
+    file: set library name or full path
+    plugin: set plugin name
+    controls: set plugin options
+    sample_rate: set sample rate (from 1 to INT_MAX) (default 44100)
+    nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
+    duration: set audio duration (default -0.000001)
+    latency: enable latency compensation (default false)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ladspa)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ladspa)
 
     """
     filter_node = filter_node_factory(
@@ -2345,91 +2342,91 @@ def libplacebo(
     Apply various GPU filters from libplacebo.
 
     Args:
-        inputs: Number of inputs (from 1 to INT_MAX) (default 1)
-        w: Output video frame width (default "iw")
-        h: Output video frame height (default "ih")
-        fps: Output video frame rate (default "none")
-        crop_x: Input video crop x (default "(iw-cw)/2")
-        crop_y: Input video crop y (default "(ih-ch)/2")
-        crop_w: Input video crop w (default "iw")
-        crop_h: Input video crop h (default "ih")
-        pos_x: Output video placement x (default "(ow-pw)/2")
-        pos_y: Output video placement y (default "(oh-ph)/2")
-        pos_w: Output video placement w (default "ow")
-        pos_h: Output video placement h (default "oh")
-        format: Output video format
-        force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
-        force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)
-        normalize_sar: force SAR normalization to 1:1 by adjusting pos_x/y/w/h (default false)
-        pad_crop_ratio: ratio between padding and cropping when normalizing SAR (0=pad, 1=crop) (from 0 to 1) (default 0)
-        fillcolor: Background fill color (default "black")
-        corner_rounding: Corner rounding radius (from 0 to 1) (default 0)
-        extra_opts: Pass extra libplacebo-specific options using a :-separated list of key=value pairs
-        colorspace: select colorspace (from -1 to 14) (default auto)
-        range: select color range (from -1 to 2) (default auto)
-        color_primaries: select color primaries (from -1 to 22) (default auto)
-        color_trc: select color transfer (from -1 to 18) (default auto)
-        upscaler: Upscaler function (default "spline36")
-        downscaler: Downscaler function (default "mitchell")
-        frame_mixer: Frame mixing function (default "none")
-        lut_entries: Number of scaler LUT entries (from 0 to 256) (default 0)
-        antiringing: Antiringing strength (for non-EWA filters) (from 0 to 1) (default 0)
-        sigmoid: Enable sigmoid upscaling (default true)
-        apply_filmgrain: Apply film grain metadata (default true)
-        apply_dolbyvision: Apply Dolby Vision metadata (default true)
-        deband: Enable debanding (default false)
-        deband_iterations: Deband iterations (from 0 to 16) (default 1)
-        deband_threshold: Deband threshold (from 0 to 1024) (default 4)
-        deband_radius: Deband radius (from 0 to 1024) (default 16)
-        deband_grain: Deband grain (from 0 to 1024) (default 6)
-        brightness: Brightness boost (from -1 to 1) (default 0)
-        contrast: Contrast gain (from 0 to 16) (default 1)
-        saturation: Saturation gain (from 0 to 16) (default 1)
-        hue: Hue shift (from -3.14159 to 3.14159) (default 0)
-        gamma: Gamma adjustment (from 0 to 16) (default 1)
-        peak_detect: Enable dynamic peak detection for HDR tone-mapping (default true)
-        smoothing_period: Peak detection smoothing period (from 0 to 1000) (default 100)
-        minimum_peak: Peak detection minimum peak (from 0 to 100) (default 1)
-        scene_threshold_low: Scene change low threshold (from -1 to 100) (default 5.5)
-        scene_threshold_high: Scene change high threshold (from -1 to 100) (default 10)
-        percentile: Peak detection percentile (from 0 to 100) (default 99.995)
-        gamut_mode: Gamut-mapping mode (from 0 to 8) (default perceptual)
-        tonemapping: Tone-mapping algorithm (from 0 to 11) (default auto)
-        tonemapping_param: Tunable parameter for some tone-mapping functions (from 0 to 100) (default 0)
-        inverse_tonemapping: Inverse tone mapping (range expansion) (default false)
-        tonemapping_lut_size: Tone-mapping LUT size (from 2 to 1024) (default 256)
-        contrast_recovery: HDR contrast recovery strength (from 0 to 3) (default 0.3)
-        contrast_smoothness: HDR contrast recovery smoothness (from 1 to 32) (default 3.5)
-        desaturation_strength: Desaturation strength (from -1 to 1) (default -1)
-        desaturation_exponent: Desaturation exponent (from -1 to 10) (default -1)
-        gamut_warning: Highlight out-of-gamut colors (default false)
-        gamut_clipping: Enable desaturating colorimetric gamut clipping (default false)
-        intent: Rendering intent (from 0 to 3) (default perceptual)
-        tonemapping_mode: Tone-mapping mode (from 0 to 4) (default auto)
-        tonemapping_crosstalk: Crosstalk factor for tone-mapping (from 0 to 0.3) (default 0.04)
-        overshoot: Tone-mapping overshoot margin (from 0 to 1) (default 0.05)
-        hybrid_mix: Tone-mapping hybrid LMS mixing coefficient (from 0 to 1) (default 0.2)
-        dithering: Dither method to use (from -1 to 3) (default blue)
-        dither_lut_size: Dithering LUT size (from 1 to 8) (default 6)
-        dither_temporal: Enable temporal dithering (default false)
-        cones: Colorblindness adaptation model (default 0)
-        cone_strength: Colorblindness adaptation strength (from 0 to 10) (default 0)
-        custom_shader_path: Path to custom user shader (mpv .hook format)
-        custom_shader_bin: Custom user shader as binary (mpv .hook format)
-        skip_aa: Skip anti-aliasing (default false)
-        polar_cutoff: Polar LUT cutoff (from 0 to 1) (default 0)
-        disable_linear: Disable linear scaling (default false)
-        disable_builtin: Disable built-in scalers (default false)
-        force_icc_lut: Deprecated, does nothing (default false)
-        force_dither: Force dithering (default false)
-        disable_fbos: Force-disable FBOs (default false)
-        extra_options: Extra options for the filter
+    inputs: Number of inputs (from 1 to INT_MAX) (default 1)
+    w: Output video frame width (default "iw")
+    h: Output video frame height (default "ih")
+    fps: Output video frame rate (default "none")
+    crop_x: Input video crop x (default "(iw-cw)/2")
+    crop_y: Input video crop y (default "(ih-ch)/2")
+    crop_w: Input video crop w (default "iw")
+    crop_h: Input video crop h (default "ih")
+    pos_x: Output video placement x (default "(ow-pw)/2")
+    pos_y: Output video placement y (default "(oh-ph)/2")
+    pos_w: Output video placement w (default "ow")
+    pos_h: Output video placement h (default "oh")
+    format: Output video format
+    force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
+    force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)
+    normalize_sar: force SAR normalization to 1:1 by adjusting pos_x/y/w/h (default false)
+    pad_crop_ratio: ratio between padding and cropping when normalizing SAR (0=pad, 1=crop) (from 0 to 1) (default 0)
+    fillcolor: Background fill color (default "black")
+    corner_rounding: Corner rounding radius (from 0 to 1) (default 0)
+    extra_opts: Pass extra libplacebo-specific options using a :-separated list of key=value pairs
+    colorspace: select colorspace (from -1 to 14) (default auto)
+    range: select color range (from -1 to 2) (default auto)
+    color_primaries: select color primaries (from -1 to 22) (default auto)
+    color_trc: select color transfer (from -1 to 18) (default auto)
+    upscaler: Upscaler function (default "spline36")
+    downscaler: Downscaler function (default "mitchell")
+    frame_mixer: Frame mixing function (default "none")
+    lut_entries: Number of scaler LUT entries (from 0 to 256) (default 0)
+    antiringing: Antiringing strength (for non-EWA filters) (from 0 to 1) (default 0)
+    sigmoid: Enable sigmoid upscaling (default true)
+    apply_filmgrain: Apply film grain metadata (default true)
+    apply_dolbyvision: Apply Dolby Vision metadata (default true)
+    deband: Enable debanding (default false)
+    deband_iterations: Deband iterations (from 0 to 16) (default 1)
+    deband_threshold: Deband threshold (from 0 to 1024) (default 4)
+    deband_radius: Deband radius (from 0 to 1024) (default 16)
+    deband_grain: Deband grain (from 0 to 1024) (default 6)
+    brightness: Brightness boost (from -1 to 1) (default 0)
+    contrast: Contrast gain (from 0 to 16) (default 1)
+    saturation: Saturation gain (from 0 to 16) (default 1)
+    hue: Hue shift (from -3.14159 to 3.14159) (default 0)
+    gamma: Gamma adjustment (from 0 to 16) (default 1)
+    peak_detect: Enable dynamic peak detection for HDR tone-mapping (default true)
+    smoothing_period: Peak detection smoothing period (from 0 to 1000) (default 100)
+    minimum_peak: Peak detection minimum peak (from 0 to 100) (default 1)
+    scene_threshold_low: Scene change low threshold (from -1 to 100) (default 5.5)
+    scene_threshold_high: Scene change high threshold (from -1 to 100) (default 10)
+    percentile: Peak detection percentile (from 0 to 100) (default 99.995)
+    gamut_mode: Gamut-mapping mode (from 0 to 8) (default perceptual)
+    tonemapping: Tone-mapping algorithm (from 0 to 11) (default auto)
+    tonemapping_param: Tunable parameter for some tone-mapping functions (from 0 to 100) (default 0)
+    inverse_tonemapping: Inverse tone mapping (range expansion) (default false)
+    tonemapping_lut_size: Tone-mapping LUT size (from 2 to 1024) (default 256)
+    contrast_recovery: HDR contrast recovery strength (from 0 to 3) (default 0.3)
+    contrast_smoothness: HDR contrast recovery smoothness (from 1 to 32) (default 3.5)
+    desaturation_strength: Desaturation strength (from -1 to 1) (default -1)
+    desaturation_exponent: Desaturation exponent (from -1 to 10) (default -1)
+    gamut_warning: Highlight out-of-gamut colors (default false)
+    gamut_clipping: Enable desaturating colorimetric gamut clipping (default false)
+    intent: Rendering intent (from 0 to 3) (default perceptual)
+    tonemapping_mode: Tone-mapping mode (from 0 to 4) (default auto)
+    tonemapping_crosstalk: Crosstalk factor for tone-mapping (from 0 to 0.3) (default 0.04)
+    overshoot: Tone-mapping overshoot margin (from 0 to 1) (default 0.05)
+    hybrid_mix: Tone-mapping hybrid LMS mixing coefficient (from 0 to 1) (default 0.2)
+    dithering: Dither method to use (from -1 to 3) (default blue)
+    dither_lut_size: Dithering LUT size (from 1 to 8) (default 6)
+    dither_temporal: Enable temporal dithering (default false)
+    cones: Colorblindness adaptation model (default 0)
+    cone_strength: Colorblindness adaptation strength (from 0 to 10) (default 0)
+    custom_shader_path: Path to custom user shader (mpv .hook format)
+    custom_shader_bin: Custom user shader as binary (mpv .hook format)
+    skip_aa: Skip anti-aliasing (default false)
+    polar_cutoff: Polar LUT cutoff (from 0 to 1) (default 0)
+    disable_linear: Disable linear scaling (default false)
+    disable_builtin: Disable built-in scalers (default false)
+    force_icc_lut: Deprecated, does nothing (default false)
+    force_dither: Force dithering (default false)
+    disable_fbos: Force-disable FBOs (default false)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#libplacebo)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#libplacebo)
 
     """
     filter_node = filter_node_factory(
@@ -2540,18 +2537,18 @@ def limitdiff(
     Apply filtering with limiting difference.
 
     Args:
-        threshold: set the threshold (from 0 to 1) (default 0.00392157)
-        elasticity: set the elasticity (from 0 to 10) (default 2)
-        reference: enable reference stream (default false)
-        planes: set the planes to filter (from 0 to 15) (default 15)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    threshold: set the threshold (from 0 to 1) (default 0.00392157)
+    elasticity: set the elasticity (from 0 to 10) (default 2)
+    reference: enable reference stream (default false)
+    planes: set the planes to filter (from 0 to 15) (default 15)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#limitdiff)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#limitdiff)
 
     """
     filter_node = filter_node_factory(
@@ -2593,20 +2590,20 @@ def lut2(
     Compute and apply a lookup table from two video inputs.
 
     Args:
-        c0: set component #0 expression (default "x")
-        c1: set component #1 expression (default "x")
-        c2: set component #2 expression (default "x")
-        c3: set component #3 expression (default "x")
-        d: set output depth (from 0 to 16) (default 0)
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    c0: set component #0 expression (default "x")
+    c1: set component #1 expression (default "x")
+    c2: set component #2 expression (default "x")
+    c3: set component #3 expression (default "x")
+    d: set output depth (from 0 to 16) (default 0)
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2)
 
     """
     filter_node = filter_node_factory(
@@ -2645,18 +2642,18 @@ def lv2(
     Apply LV2 effect.
 
     Args:
-        plugin: set plugin uri
-        controls: set plugin options
-        sample_rate: set sample rate (from 1 to INT_MAX) (default 44100)
-        nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
-        duration: set audio duration (default -0.000001)
-        extra_options: Extra options for the filter
+    plugin: set plugin uri
+    controls: set plugin options
+    sample_rate: set sample rate (from 1 to INT_MAX) (default 44100)
+    nb_samples: set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)
+    duration: set audio duration (default -0.000001)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lv2)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lv2)
 
     """
     filter_node = filter_node_factory(
@@ -2694,17 +2691,17 @@ def maskedclamp(
     Clamp first stream with second stream and third stream.
 
     Args:
-        undershoot: set undershoot (from 0 to 65535) (default 0)
-        overshoot: set overshoot (from 0 to 65535) (default 0)
-        planes: set planes (from 0 to 15) (default 15)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    undershoot: set undershoot (from 0 to 65535) (default 0)
+    overshoot: set overshoot (from 0 to 65535) (default 0)
+    planes: set planes (from 0 to 15) (default 15)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedclamp)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedclamp)
 
     """
     filter_node = filter_node_factory(
@@ -2743,15 +2740,15 @@ def maskedmax(
     Apply filtering with maximum difference of two streams.
 
     Args:
-        planes: set planes (from 0 to 15) (default 15)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    planes: set planes (from 0 to 15) (default 15)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmax)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmax)
 
     """
     filter_node = filter_node_factory(
@@ -2788,15 +2785,15 @@ def maskedmerge(
     Merge first stream with second stream using third stream as mask.
 
     Args:
-        planes: set planes (from 0 to 15) (default 15)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    planes: set planes (from 0 to 15) (default 15)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmerge)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmerge)
 
     """
     filter_node = filter_node_factory(
@@ -2833,15 +2830,15 @@ def maskedmin(
     Apply filtering with minimum difference of two streams.
 
     Args:
-        planes: set planes (from 0 to 15) (default 15)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    planes: set planes (from 0 to 15) (default 15)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmin)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmin)
 
     """
     filter_node = filter_node_factory(
@@ -2879,17 +2876,17 @@ def maskedthreshold(
     Pick pixels comparing absolute difference of two streams with threshold.
 
     Args:
-        threshold: set threshold (from 0 to 65535) (default 1)
-        planes: set planes (from 0 to 15) (default 15)
-        mode: set mode (from 0 to 1) (default abs)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    threshold: set threshold (from 0 to 65535) (default 1)
+    planes: set planes (from 0 to 15) (default 15)
+    mode: set mode (from 0 to 1) (default abs)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold)
 
     """
     filter_node = filter_node_factory(
@@ -2932,23 +2929,23 @@ def mergeplanes(
     Merge planes.
 
     Args:
-        mapping: set input to output plane mapping (from -1 to 8.58993e+08) (default -1)
-        format: set output pixel format (default yuva444p)
-        map0s: set 1st input to output stream mapping (from 0 to 3) (default 0)
-        map0p: set 1st input to output plane mapping (from 0 to 3) (default 0)
-        map1s: set 2nd input to output stream mapping (from 0 to 3) (default 0)
-        map1p: set 2nd input to output plane mapping (from 0 to 3) (default 0)
-        map2s: set 3rd input to output stream mapping (from 0 to 3) (default 0)
-        map2p: set 3rd input to output plane mapping (from 0 to 3) (default 0)
-        map3s: set 4th input to output stream mapping (from 0 to 3) (default 0)
-        map3p: set 4th input to output plane mapping (from 0 to 3) (default 0)
-        extra_options: Extra options for the filter
+    mapping: set input to output plane mapping (from -1 to 8.58993e+08) (default -1)
+    format: set output pixel format (default yuva444p)
+    map0s: set 1st input to output stream mapping (from 0 to 3) (default 0)
+    map0p: set 1st input to output plane mapping (from 0 to 3) (default 0)
+    map1s: set 2nd input to output stream mapping (from 0 to 3) (default 0)
+    map1p: set 2nd input to output plane mapping (from 0 to 3) (default 0)
+    map2s: set 3rd input to output stream mapping (from 0 to 3) (default 0)
+    map2p: set 3rd input to output plane mapping (from 0 to 3) (default 0)
+    map3s: set 4th input to output stream mapping (from 0 to 3) (default 0)
+    map3p: set 4th input to output plane mapping (from 0 to 3) (default 0)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mergeplanes)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mergeplanes)
 
     """
     filter_node = filter_node_factory(
@@ -2990,15 +2987,15 @@ def midequalizer(
     Apply Midway Equalization.
 
     Args:
-        planes: set planes (from 0 to 15) (default 15)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    planes: set planes (from 0 to 15) (default 15)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#midequalizer)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#midequalizer)
 
     """
     filter_node = filter_node_factory(
@@ -3037,19 +3034,19 @@ def mix(
     Mix video inputs.
 
     Args:
-        inputs: set number of inputs (from 2 to 32767) (default 2)
-        weights: set weight for each input (default "1 1")
-        scale: set scale (from 0 to 32767) (default 0)
-        planes: set what planes to filter (default F)
-        duration: how to determine end of stream (from 0 to 2) (default longest)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    inputs: set number of inputs (from 2 to 32767) (default 2)
+    weights: set weight for each input (default "1 1")
+    scale: set scale (from 0 to 32767) (default 0)
+    planes: set what planes to filter (default F)
+    duration: how to determine end of stream (from 0 to 2) (default longest)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mix)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mix)
 
     """
     filter_node = filter_node_factory(
@@ -3092,18 +3089,18 @@ def morpho(
     Apply Morphological filter.
 
     Args:
-        mode: set morphological transform (from 0 to 6) (default erode)
-        planes: set planes to filter (from 0 to 15) (default 7)
-        structure: when to process structures (from 0 to 1) (default all)
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    mode: set morphological transform (from 0 to 6) (default erode)
+    planes: set planes to filter (from 0 to 15) (default 7)
+    structure: when to process structures (from 0 to 1) (default all)
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#morpho)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#morpho)
 
     """
     filter_node = filter_node_factory(
@@ -3138,15 +3135,15 @@ def msad(
     Calculate the MSAD between two video streams.
 
     Args:
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#msad)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#msad)
 
     """
     filter_node = filter_node_factory(
@@ -3180,17 +3177,17 @@ def multiply(
     Multiply first video stream with second video stream.
 
     Args:
-        scale: set scale (from 0 to 9) (default 1)
-        offset: set offset (from -1 to 1) (default 0.5)
-        planes: set planes (default F)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    scale: set scale (from 0 to 9) (default 1)
+    offset: set offset (from -1 to 1) (default 0.5)
+    planes: set planes (default F)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#multiply)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#multiply)
 
     """
     filter_node = filter_node_factory(
@@ -3245,23 +3242,23 @@ def overlay(
     Overlay a video source on top of the input.
 
     Args:
-        x: set the x expression (default "0")
-        y: set the y expression (default "0")
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        eval: specify when to evaluate expressions (from 0 to 1) (default frame)
-        shortest: force termination when the shortest input terminates (default false)
-        format: set output format (from 0 to 8) (default yuv420)
-        repeatlast: repeat overlay of the last overlay frame (default true)
-        alpha: alpha format (from 0 to 1) (default straight)
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    x: set the x expression (default "0")
+    y: set the y expression (default "0")
+    eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    eval: specify when to evaluate expressions (from 0 to 1) (default frame)
+    shortest: force termination when the shortest input terminates (default false)
+    format: set output format (from 0 to 8) (default yuv420)
+    repeatlast: repeat overlay of the last overlay frame (default true)
+    alpha: alpha format (from 0 to 1) (default straight)
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay)
 
     """
     filter_node = filter_node_factory(
@@ -3289,6 +3286,64 @@ def overlay(
     return filter_node.video(0)
 
 
+def overlay_cuda(
+    _main: VideoStream,
+    _overlay: VideoStream,
+    *,
+    x: String = Default("0"),
+    y: String = Default("0"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    eval: Int | Literal["init", "frame"] | Default = Default("frame"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    framesync_options: FFMpegFrameSyncOption | None = None,
+    extra_options: dict[str, Any] | None = None,
+) -> VideoStream:
+    """
+
+    Overlay one video on top of another using CUDA.
+
+    Args:
+    x: set the x expression of overlay (default "0")
+    y: set the y expression of overlay (default "0")
+    eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    eval: specify when to evaluate expressions (from 0 to 1) (default frame)
+    shortest: force termination when the shortest input terminates (default false)
+    repeatlast: repeat overlay of the last overlay frame (default true)
+    framesync_options: Framesync options
+    extra_options: Extra options for the filter
+
+    Returns:
+    default: the video stream
+
+    References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_005fcuda)
+
+    """
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="overlay_cuda",
+            typings_input=("video", "video"),
+            typings_output=("video",),
+        ),
+        _main,
+        _overlay,
+        **merge(
+            {
+                "x": x,
+                "y": y,
+                "eof_action": eof_action,
+                "eval": eval,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+            },
+            extra_options,
+            framesync_options,
+        ),
+    )
+    return filter_node.video(0)
+
+
 def overlay_opencl(
     _main: VideoStream,
     _overlay: VideoStream,
@@ -3302,15 +3357,15 @@ def overlay_opencl(
     Overlay one video on top of another.
 
     Args:
-        x: Overlay x position (from 0 to INT_MAX) (default 0)
-        y: Overlay y position (from 0 to INT_MAX) (default 0)
-        extra_options: Extra options for the filter
+    x: Overlay x position (from 0 to INT_MAX) (default 0)
+    y: Overlay y position (from 0 to INT_MAX) (default 0)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_005fopencl)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_005fopencl)
 
     """
     filter_node = filter_node_factory(
@@ -3352,22 +3407,22 @@ def overlay_vaapi(
     Overlay one video on top of another.
 
     Args:
-        x: Overlay x position (default "0")
-        y: Overlay y position (default "0")
-        w: Overlay width (default "overlay_iw")
-        h: Overlay height (default "overlay_ih*w/overlay_iw")
-        alpha: Overlay global alpha (from 0 to 1) (default 1)
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: repeat overlay of the last overlay frame (default true)
-        framesync_options: Framesync options
-        extra_options: Extra options for the filter
+    x: Overlay x position (default "0")
+    y: Overlay y position (default "0")
+    w: Overlay width (default "overlay_iw")
+    h: Overlay height (default "overlay_ih*w/overlay_iw")
+    alpha: Overlay global alpha (from 0 to 1) (default 1)
+    eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    shortest: force termination when the shortest input terminates (default false)
+    repeatlast: repeat overlay of the last overlay frame (default true)
+    framesync_options: Framesync options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_005fvaapi)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_005fvaapi)
 
     """
     filter_node = filter_node_factory(
@@ -3409,15 +3464,15 @@ def overlay_vulkan(
     Overlay a source on top of another.
 
     Args:
-        x: Set horizontal offset (from 0 to INT_MAX) (default 0)
-        y: Set vertical offset (from 0 to INT_MAX) (default 0)
-        extra_options: Extra options for the filter
+    x: Set horizontal offset (from 0 to INT_MAX) (default 0)
+    y: Set vertical offset (from 0 to INT_MAX) (default 0)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_005fvulkan)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_005fvulkan)
 
     """
     filter_node = filter_node_factory(
@@ -3467,19 +3522,19 @@ def paletteuse(
     Use a palette to downsample an input video stream.
 
     Args:
-        dither: select dithering mode (from 0 to 8) (default sierra2_4a)
-        bayer_scale: set scale for bayer dithering (from 0 to 5) (default 2)
-        diff_mode: set frame difference mode (from 0 to 1) (default 0)
-        new: take new palette for each output frame (default false)
-        alpha_threshold: set the alpha threshold for transparency (from 0 to 255) (default 128)
-        debug_kdtree: save Graphviz graph of the kdtree in specified file
-        extra_options: Extra options for the filter
+    dither: select dithering mode (from 0 to 8) (default sierra2_4a)
+    bayer_scale: set scale for bayer dithering (from 0 to 5) (default 2)
+    diff_mode: set frame difference mode (from 0 to 1) (default 0)
+    new: take new palette for each output frame (default false)
+    alpha_threshold: set the alpha threshold for transparency (from 0 to 255) (default 128)
+    debug_kdtree: save Graphviz graph of the kdtree in specified file
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#paletteuse)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#paletteuse)
 
     """
     filter_node = filter_node_factory(
@@ -3517,16 +3572,16 @@ def premultiply(
     PreMultiply first stream with first plane of second stream.
 
     Args:
-        planes: set planes (from 0 to 15) (default 15)
-        inplace: enable inplace mode (default false)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    planes: set planes (from 0 to 15) (default 15)
+    inplace: enable inplace mode (default false)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#premultiply)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#premultiply)
 
     """
     filter_node = filter_node_factory(
@@ -3562,18 +3617,18 @@ def program_opencl(
     Filter video using an OpenCL program.
 
     Args:
-        source: OpenCL program source file
-        kernel: Kernel name in program
-        inputs: Number of inputs (from 1 to INT_MAX) (default 1)
-        size: Video size
-        framesync_options: Framesync options
-        extra_options: Extra options for the filter
+    source: OpenCL program source file
+    kernel: Kernel name in program
+    inputs: Number of inputs (from 1 to INT_MAX) (default 1)
+    size: Video size
+    framesync_options: Framesync options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#program_005fopencl)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#program_005fopencl)
 
     """
     filter_node = filter_node_factory(
@@ -3613,18 +3668,18 @@ def psnr(
     Calculate the PSNR between two video streams.
 
     Args:
-        stats_file: Set file where to store per-frame difference information
-        stats_version: Set the format version for the stats file. (from 1 to 2) (default 1)
-        output_max: Add raw stats (max values) to the output log. (default false)
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    stats_file: Set file where to store per-frame difference information
+    stats_version: Set the format version for the stats file. (from 1 to 2) (default 1)
+    output_max: Add raw stats (max values) to the output log. (default false)
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#psnr)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#psnr)
 
     """
     filter_node = filter_node_factory(
@@ -3661,15 +3716,15 @@ def remap(
     Remap pixels.
 
     Args:
-        format: set output format (from 0 to 1) (default color)
-        fill: set the color of the unmapped pixels (default "black")
-        extra_options: Extra options for the filter
+    format: set output format (from 0 to 1) (default color)
+    fill: set the color of the unmapped pixels (default "black")
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#remap)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#remap)
 
     """
     filter_node = filter_node_factory(
@@ -3706,15 +3761,15 @@ def remap_opencl(
     Remap pixels using OpenCL.
 
     Args:
-        interp: set interpolation method (from 0 to 1) (default linear)
-        fill: set the color of the unmapped pixels (default "black")
-        extra_options: Extra options for the filter
+    interp: set interpolation method (from 0 to 1) (default linear)
+    fill: set the color of the unmapped pixels (default "black")
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#remap_005fopencl)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#remap_005fopencl)
 
     """
     filter_node = filter_node_factory(
@@ -3760,25 +3815,25 @@ def sidechaincompress(
     Sidechain compressor.
 
     Args:
-        level_in: set input gain (from 0.015625 to 64) (default 1)
-        mode: set mode (from 0 to 1) (default downward)
-        threshold: set threshold (from 0.000976563 to 1) (default 0.125)
-        ratio: set ratio (from 1 to 20) (default 2)
-        attack: set attack (from 0.01 to 2000) (default 20)
-        release: set release (from 0.01 to 9000) (default 250)
-        makeup: set make up gain (from 1 to 64) (default 1)
-        knee: set knee (from 1 to 8) (default 2.82843)
-        link: set link type (from 0 to 1) (default average)
-        detection: set detection (from 0 to 1) (default rms)
-        level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
-        mix: set mix (from 0 to 1) (default 1)
-        extra_options: Extra options for the filter
+    level_in: set input gain (from 0.015625 to 64) (default 1)
+    mode: set mode (from 0 to 1) (default downward)
+    threshold: set threshold (from 0.000976563 to 1) (default 0.125)
+    ratio: set ratio (from 1 to 20) (default 2)
+    attack: set attack (from 0.01 to 2000) (default 20)
+    release: set release (from 0.01 to 9000) (default 250)
+    makeup: set make up gain (from 1 to 64) (default 1)
+    knee: set knee (from 1 to 8) (default 2.82843)
+    link: set link type (from 0 to 1) (default average)
+    detection: set detection (from 0 to 1) (default rms)
+    level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
+    mix: set mix (from 0 to 1) (default 1)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaincompress)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaincompress)
 
     """
     filter_node = filter_node_factory(
@@ -3834,26 +3889,26 @@ def sidechaingate(
     Audio sidechain gate.
 
     Args:
-        level_in: set input level (from 0.015625 to 64) (default 1)
-        mode: set mode (from 0 to 1) (default downward)
-        range: set max gain reduction (from 0 to 1) (default 0.06125)
-        threshold: set threshold (from 0 to 1) (default 0.125)
-        ratio: set ratio (from 1 to 9000) (default 2)
-        attack: set attack (from 0.01 to 9000) (default 20)
-        release: set release (from 0.01 to 9000) (default 250)
-        makeup: set makeup gain (from 1 to 64) (default 1)
-        knee: set knee (from 1 to 8) (default 2.82843)
-        detection: set detection (from 0 to 1) (default rms)
-        link: set link (from 0 to 1) (default average)
-        level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    level_in: set input level (from 0.015625 to 64) (default 1)
+    mode: set mode (from 0 to 1) (default downward)
+    range: set max gain reduction (from 0 to 1) (default 0.06125)
+    threshold: set threshold (from 0 to 1) (default 0.125)
+    ratio: set ratio (from 1 to 9000) (default 2)
+    attack: set attack (from 0.01 to 9000) (default 20)
+    release: set release (from 0.01 to 9000) (default 250)
+    makeup: set makeup gain (from 1 to 64) (default 1)
+    knee: set knee (from 1 to 8) (default 2.82843)
+    detection: set detection (from 0 to 1) (default rms)
+    link: set link (from 0 to 1) (default average)
+    level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaingate)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaingate)
 
     """
     filter_node = filter_node_factory(
@@ -3904,22 +3959,22 @@ def signature(
     Calculate the MPEG-7 video signature.
 
     Args:
-        detectmode: set the detectmode (from 0 to 2) (default off)
-        nb_inputs: number of inputs (from 1 to INT_MAX) (default 1)
-        filename: filename for output files (default "")
-        format: set output format (from 0 to 1) (default binary)
-        th_d: threshold to detect one word as similar (from 1 to INT_MAX) (default 9000)
-        th_dc: threshold to detect all words as similar (from 1 to INT_MAX) (default 60000)
-        th_xh: threshold to detect frames as similar (from 1 to INT_MAX) (default 116)
-        th_di: minimum length of matching sequence in frames (from 0 to INT_MAX) (default 0)
-        th_it: threshold for relation of good to all frames (from 0 to 1) (default 0.5)
-        extra_options: Extra options for the filter
+    detectmode: set the detectmode (from 0 to 2) (default off)
+    nb_inputs: number of inputs (from 1 to INT_MAX) (default 1)
+    filename: filename for output files (default "")
+    format: set output format (from 0 to 1) (default binary)
+    th_d: threshold to detect one word as similar (from 1 to INT_MAX) (default 9000)
+    th_dc: threshold to detect all words as similar (from 1 to INT_MAX) (default 60000)
+    th_xh: threshold to detect frames as similar (from 1 to INT_MAX) (default 116)
+    th_di: minimum length of matching sequence in frames (from 0 to INT_MAX) (default 0)
+    th_it: threshold for relation of good to all frames (from 0 to 1) (default 0.5)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#signature)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#signature)
 
     """
     filter_node = filter_node_factory(
@@ -3994,20 +4049,20 @@ def spectrumsynth(
     Convert input spectrum videos to audio output.
 
     Args:
-        sample_rate: set sample rate (from 15 to INT_MAX) (default 44100)
-        channels: set channels (from 1 to 8) (default 1)
-        scale: set input amplitude scale (from 0 to 1) (default log)
-        slide: set input sliding mode (from 0 to 3) (default fullframe)
-        win_func: set window function (from 0 to 20) (default rect)
-        overlap: set window overlap (from 0 to 1) (default 1)
-        orientation: set orientation (from 0 to 1) (default vertical)
-        extra_options: Extra options for the filter
+    sample_rate: set sample rate (from 15 to INT_MAX) (default 44100)
+    channels: set channels (from 1 to 8) (default 1)
+    scale: set input amplitude scale (from 0 to 1) (default log)
+    slide: set input sliding mode (from 0 to 3) (default fullframe)
+    win_func: set window function (from 0 to 20) (default rect)
+    overlap: set window overlap (from 0 to 1) (default 1)
+    orientation: set orientation (from 0 to 1) (default vertical)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the audio stream
+    default: the audio stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#spectrumsynth)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#spectrumsynth)
 
     """
     filter_node = filter_node_factory(
@@ -4048,16 +4103,16 @@ def ssim(
     Calculate the SSIM between two video streams.
 
     Args:
-        stats_file: Set file where to store per-frame difference information
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    stats_file: Set file where to store per-frame difference information
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ssim)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ssim)
 
     """
     filter_node = filter_node_factory(
@@ -4089,16 +4144,16 @@ def streamselect(
     Select video streams.
 
     Args:
-        inputs: number of input streams (from 2 to INT_MAX) (default 2)
-        map: input indexes to remap to outputs
-        extra_options: Extra options for the filter
+    inputs: number of input streams (from 2 to INT_MAX) (default 2)
+    map: input indexes to remap to outputs
+    extra_options: Extra options for the filter
 
     Returns:
-        filter_node: the filter node
+    filter_node: the filter node
 
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect)
 
     """
     filter_node = filter_node_factory(
@@ -4135,15 +4190,15 @@ def threshold(
     Threshold first video stream using other video streams.
 
     Args:
-        planes: set planes to filter (from 0 to 15) (default 15)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    planes: set planes to filter (from 0 to 15) (default 15)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#threshold)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#threshold)
 
     """
     filter_node = filter_node_factory(
@@ -4179,16 +4234,16 @@ def unpremultiply(
     UnPreMultiply first stream with first plane of second stream.
 
     Args:
-        planes: set planes (from 0 to 15) (default 15)
-        inplace: enable inplace mode (default false)
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    planes: set planes (from 0 to 15) (default 15)
+    inplace: enable inplace mode (default false)
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#unpremultiply)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#unpremultiply)
 
     """
     filter_node = filter_node_factory(
@@ -4226,18 +4281,18 @@ def varblur(
     Apply Variable Blur filter.
 
     Args:
-        min_r: set min blur radius (from 0 to 254) (default 0)
-        max_r: set max blur radius (from 1 to 255) (default 8)
-        planes: set planes to filter (from 0 to 15) (default 15)
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    min_r: set min blur radius (from 0 to 254) (default 0)
+    max_r: set max blur radius (from 1 to 255) (default 8)
+    planes: set planes to filter (from 0 to 15) (default 15)
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#varblur)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#varblur)
 
     """
     filter_node = filter_node_factory(
@@ -4272,15 +4327,15 @@ def vif(
     Calculate the VIF between two video streams.
 
     Args:
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vif)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vif)
 
     """
     filter_node = filter_node_factory(
@@ -4310,15 +4365,15 @@ def vstack(
     Stack video inputs vertically.
 
     Args:
-        inputs: set number of inputs (from 2 to INT_MAX) (default 2)
-        shortest: force termination when the shortest input terminates (default false)
-        extra_options: Extra options for the filter
+    inputs: set number of inputs (from 2 to INT_MAX) (default 2)
+    shortest: force termination when the shortest input terminates (default false)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vstack)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vstack)
 
     """
     filter_node = filter_node_factory(
@@ -4351,16 +4406,16 @@ def vstack_vaapi(
     "VA-API" vstack.
 
     Args:
-        inputs: Set number of inputs (from 2 to 65535) (default 2)
-        shortest: Force termination when the shortest input terminates (default false)
-        width: Set output width (0 to use the width of input 0) (from 0 to 65535) (default 0)
-        extra_options: Extra options for the filter
+    inputs: Set number of inputs (from 2 to 65535) (default 2)
+    shortest: Force termination when the shortest input terminates (default false)
+    width: Set output width (0 to use the width of input 0) (from 0 to 65535) (default 0)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vstack_005fvaapi)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vstack_005fvaapi)
 
     """
     filter_node = filter_node_factory(
@@ -4397,17 +4452,17 @@ def xcorrelate(
     Cross-correlate first video stream with second video stream.
 
     Args:
-        planes: set planes to cross-correlate (from 0 to 15) (default 7)
-        secondary: when to process secondary frame (from 0 to 1) (default all)
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    planes: set planes to cross-correlate (from 0 to 15) (default 7)
+    secondary: when to process secondary frame (from 0 to 1) (default all)
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xcorrelate)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xcorrelate)
 
     """
     filter_node = filter_node_factory(
@@ -4508,17 +4563,17 @@ def xfade(
     Cross fade one video with another video.
 
     Args:
-        transition: set cross fade transition (from -1 to 57) (default fade)
-        duration: set cross fade duration (default 1)
-        offset: set cross fade start relative to first input stream (default 0)
-        expr: set expression for custom transition
-        extra_options: Extra options for the filter
+    transition: set cross fade transition (from -1 to 57) (default fade)
+    duration: set cross fade duration (default 1)
+    offset: set cross fade start relative to first input stream (default 0)
+    expr: set expression for custom transition
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xfade)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xfade)
 
     """
     filter_node = filter_node_factory(
@@ -4569,18 +4624,18 @@ def xfade_opencl(
     Cross fade one video with another video.
 
     Args:
-        transition: set cross fade transition (from 0 to 9) (default fade)
-        source: set OpenCL program source file for custom transition
-        kernel: set kernel name in program file for custom transition
-        duration: set cross fade duration (default 1)
-        offset: set cross fade start relative to first input stream (default 0)
-        extra_options: Extra options for the filter
+    transition: set cross fade transition (from 0 to 9) (default fade)
+    source: set OpenCL program source file for custom transition
+    kernel: set kernel name in program file for custom transition
+    duration: set cross fade duration (default 1)
+    offset: set cross fade start relative to first input stream (default 0)
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xfade_005fopencl)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xfade_005fopencl)
 
     """
     filter_node = filter_node_factory(
@@ -4619,18 +4674,18 @@ def xmedian(
     Pick median pixels from several video inputs.
 
     Args:
-        inputs: set number of inputs (from 3 to 255) (default 3)
-        planes: set planes to filter (from 0 to 15) (default 15)
-        percentile: set percentile (from 0 to 1) (default 0.5)
-        framesync_options: Framesync options
-        timeline_options: Timeline options
-        extra_options: Extra options for the filter
+    inputs: set number of inputs (from 3 to 255) (default 3)
+    planes: set planes to filter (from 0 to 15) (default 15)
+    percentile: set percentile (from 0 to 1) (default 0.5)
+    framesync_options: Framesync options
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xmedian)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xmedian)
 
     """
     filter_node = filter_node_factory(
@@ -4668,18 +4723,18 @@ def xstack(
     Stack video inputs into custom layout.
 
     Args:
-        inputs: set number of inputs (from 2 to INT_MAX) (default 2)
-        layout: set custom layout
-        grid: set fixed size grid layout
-        shortest: force termination when the shortest input terminates (default false)
-        fill: set the color for unused pixels (default "none")
-        extra_options: Extra options for the filter
+    inputs: set number of inputs (from 2 to INT_MAX) (default 2)
+    layout: set custom layout
+    grid: set fixed size grid layout
+    shortest: force termination when the shortest input terminates (default false)
+    fill: set the color for unused pixels (default "none")
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xstack)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xstack)
 
     """
     filter_node = filter_node_factory(
@@ -4718,19 +4773,19 @@ def xstack_vaapi(
     "VA-API" xstack.
 
     Args:
-        inputs: Set number of inputs (from 2 to 65535) (default 2)
-        shortest: Force termination when the shortest input terminates (default false)
-        layout: Set custom layout
-        grid: set fixed size grid layout
-        grid_tile_size: set tile size in grid layout
-        fill: Set the color for unused pixels (default "none")
-        extra_options: Extra options for the filter
+    inputs: Set number of inputs (from 2 to 65535) (default 2)
+    shortest: Force termination when the shortest input terminates (default false)
+    layout: Set custom layout
+    grid: set fixed size grid layout
+    grid_tile_size: set tile size in grid layout
+    fill: Set the color for unused pixels (default "none")
+    extra_options: Extra options for the filter
 
     Returns:
-        default: the video stream
+    default: the video stream
 
     References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xstack_005fvaapi)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xstack_005fvaapi)
 
     """
     filter_node = filter_node_factory(

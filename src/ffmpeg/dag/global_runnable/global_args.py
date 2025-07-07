@@ -6,12 +6,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any
 
-from ...types import (
-    Boolean,
-    Float,
-    Func,
-    Int,
-)
+from ...types import Boolean, Float, Func, Int
 from ...utils.frozendict import merge
 
 if TYPE_CHECKING:
