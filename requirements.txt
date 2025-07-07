@@ -394,7 +394,7 @@ traitlets==5.14.3
     #   nbformat
 twine==6.1.0
     # via -r requirements.in
-ty==0.0.1a12
+ty==0.0.1a13
     # via -r requirements.in
 typer==0.16.0
     # via -r requirements.in
