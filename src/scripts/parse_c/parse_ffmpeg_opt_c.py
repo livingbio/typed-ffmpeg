@@ -10,9 +10,8 @@ and other properties to build a structured representation of FFmpeg's CLI option
 import re
 from dataclasses import replace
 
-from ffmpeg.common.schema import FFMpegOption, FFMpegOptionFlag
-
 from .parse_c_structure import parse_c_structure
+from .schema import FFMpegOption, FFMpegOptionFlag
 
 
 def parse_ffmpeg_opt_c(text: str) -> list[FFMpegOption]:
