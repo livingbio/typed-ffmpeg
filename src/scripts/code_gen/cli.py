@@ -76,6 +76,8 @@ def load_options(rebuild: bool) -> list[FFMpegOption]:
             type=FFMpegOptionType(i.type.value),
             flags=i.flags,
             help=i.help,
+            argname=i.argname,
+            canon=i.canon,
         )
         for i in parse_c.cli.parse_ffmpeg_options()
     ]
