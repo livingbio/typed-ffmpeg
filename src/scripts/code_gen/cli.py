@@ -15,6 +15,7 @@ from ffmpeg.common.schema import (
     FFMpegFilterOptionType,
     FFMpegIOType,
     FFMpegOption,
+    FFMpegOptionType,
     StreamType,
 )
 
@@ -69,7 +70,17 @@ def load_options(rebuild: bool) -> list[FFMpegOption]:
         except Exception as e:
             logging.error(f"Failed to load options from cache: {e}")
 
-    options = parse_c.cli.parse_ffmpeg_options()
+    options = [
+        FFMpegOption(
+            name=i.name,
+            type=FFMpegOptionType(i.type.value),
+            flags=i.flags,
+            help=i.help,
+            argname=i.argname,
+            canon=i.canon,
+        )
+        for i in parse_c.cli.parse_ffmpeg_options()
+    ]
     save(options, "options")
     return options
 
