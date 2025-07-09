@@ -36,9 +36,7 @@ jobs:
         run: uv venv
 
       - name: Install dependencies
-        run: |
-          source .venv/bin/activate
-          uv pip install -r requirements.txt
+        run: uv pip install --group dev
 
       - name: Run tests
         run: |

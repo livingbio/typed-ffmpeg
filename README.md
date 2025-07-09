@@ -169,3 +169,12 @@ This project is dedicated to my son, Austin, on his seventh birthday (February 2
 ---
 
 Feel free to check the [Documentation](https://livingbio.github.io/typed-ffmpeg/) for detailed information and more advanced features.
+
+## Development Setup
+
+Install all development dependencies:
+```
+uv pip install --group dev
+```
+
+No need to use requirements.in or requirements.txt anymore. All dependencies are managed in `pyproject.toml` and locked in `uv.lock`.

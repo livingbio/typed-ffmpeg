@@ -42,6 +42,43 @@ Repository = "https://github.com/livingbio/typed-ffmpeg"
 [project.optional-dependencies]
 graph = ["graphviz"]
 
+[tool.uv]
+dev-dependencies = [
+    # Development tools
+    "ty",
+    "devtools",
+    "black",
+    "ruff>=0.9.6,<0.13.0",
+    "pre-commit",
+    "typer",
+    "jinja2",
+    "lxml",
+    
+    # Testing
+    "pytest-cov>=4.1,<7.0",
+    "pytest-datadir>=1.5.0",
+    "pytest-recording>=0.13.1",
+    "syrupy>=4.6.0",
+    
+    # Documentation
+    "beautifulsoup4",
+    "html2text",
+    "mkdocs",
+    "markdown-callouts>=0.4.0",
+    "mkdocs-material>=9.5.9",
+    "mkdocstrings>=0.24,<0.30",
+    "mkdocstrings-python>=1.8.0",
+    "pymdown-extensions>=10.7",
+    "mkdocs-gen-files",
+    "mkdocs-literate-nav",
+    "mkdocs-section-index",
+    "griffe_inherited_docstrings",
+    "ipykernel>=6.25.0,<6.30.0",
+    "mknotebooks",
+]
+
+
+
 [build-system]
 requires = ["setuptools>=61.0", "setuptools-scm>=6.2"]
 build-backend = "setuptools.build_meta"
