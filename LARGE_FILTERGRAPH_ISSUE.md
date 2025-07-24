@@ -4,7 +4,7 @@ This document tracks the recursion limit and performance issues that occur when 
 
 ## Issue Description
 
-The typed-ffmpeg package currently has both recursion limit and performance issues when working with very large filter graphs. This is demonstrated by the example in `x.py`:
+The typed-ffmpeg package currently has both recursion limit and performance issues when working with very large filter graphs. This is demonstrated by the following example:
 
 ```python
 import ffmpeg
@@ -78,7 +78,7 @@ The test suite includes:
    - Tests with various chain sizes
 
 4. **Edge Case Tests**
-   - Reproduces the exact scenario from x.py
+   - Reproduces the exact scenario from the example above
    - Tests with high recursion limits
    - Validates specific failure conditions
 
