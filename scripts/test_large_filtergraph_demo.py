@@ -135,7 +135,7 @@ def run_tests():
     print()
 
     # Set environment variable to enable tests
-    os.environ["SKIP_LARGE_FILTERGRAPH_TESTS"] = "false"
+    os.environ["RUN_LARGE_FILTERGRAPH_TESTS"] = "true"
 
     try:
         import pytest

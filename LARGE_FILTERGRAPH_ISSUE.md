@@ -88,10 +88,10 @@ Tests are designed to be skippable to avoid affecting CI results:
 
 ```bash
 # Disable tests (default behavior)
-export SKIP_LARGE_FILTERGRAPH_TESTS=true
+# No environment variable needed - tests are skipped by default
 
 # Enable tests for development/debugging
-export SKIP_LARGE_FILTERGRAPH_TESTS=false
+export RUN_LARGE_FILTERGRAPH_TESTS=true
 ```
 
 ## Usage
@@ -112,11 +112,11 @@ This will:
 ### Running Tests
 
 ```bash
-# Run specific test file
+# Run specific test file (tests will be skipped by default)
 pytest src/ffmpeg/tests/test_large_filtergraph.py -v
 
 # Run with tests enabled
-SKIP_LARGE_FILTERGRAPH_TESTS=false pytest src/ffmpeg/tests/test_large_filtergraph.py -v
+RUN_LARGE_FILTERGRAPH_TESTS=true pytest src/ffmpeg/tests/test_large_filtergraph.py -v
 ```
 
 ### Running Individual Tests

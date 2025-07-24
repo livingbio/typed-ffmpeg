@@ -74,8 +74,8 @@ class TestLargeFilterGraphIssues:
     """Test class for large filtergraph performance and recursion issues."""
 
     @pytest.mark.skipif(
-        os.environ.get("SKIP_LARGE_FILTERGRAPH_TESTS", "false").lower() == "true",
-        reason="Large filtergraph tests are disabled via environment variable",
+        os.environ.get("RUN_LARGE_FILTERGRAPH_TESTS", "false").lower() != "true",
+        reason="Large filtergraph tests are disabled by default - set RUN_LARGE_FILTERGRAPH_TESTS=true to enable",
     )
     def test_recursion_limit_with_drawtext_chain(self) -> None:
         """
@@ -104,8 +104,8 @@ class TestLargeFilterGraphIssues:
             pytest.fail(f"Recursion limit exceeded with 1000 drawtext filters: {e}")
 
     @pytest.mark.skipif(
-        os.environ.get("SKIP_LARGE_FILTERGRAPH_TESTS", "false").lower() == "true",
-        reason="Large filtergraph tests are disabled via environment variable",
+        os.environ.get("RUN_LARGE_FILTERGRAPH_TESTS", "false").lower() != "true",
+        reason="Large filtergraph tests are disabled by default - set RUN_LARGE_FILTERGRAPH_TESTS=true to enable",
     )
     def test_performance_with_large_filter_graph(self) -> None:
         """
@@ -154,8 +154,8 @@ class TestLargeFilterGraphIssues:
             )
 
     @pytest.mark.skipif(
-        os.environ.get("SKIP_LARGE_FILTERGRAPH_TESTS", "false").lower() == "true",
-        reason="Large filtergraph tests are disabled via environment variable",
+        os.environ.get("RUN_LARGE_FILTERGRAPH_TESTS", "false").lower() != "true",
+        reason="Large filtergraph tests are disabled by default - set RUN_LARGE_FILTERGRAPH_TESTS=true to enable",
     )
     def test_command_length_with_large_filter_graph(self) -> None:
         """
@@ -183,8 +183,8 @@ class TestLargeFilterGraphIssues:
                 )
 
     @pytest.mark.skipif(
-        os.environ.get("SKIP_LARGE_FILTERGRAPH_TESTS", "false").lower() == "true",
-        reason="Large filtergraph tests are disabled via environment variable",
+        os.environ.get("RUN_LARGE_FILTERGRAPH_TESTS", "false").lower() != "true",
+        reason="Large filtergraph tests are disabled by default - set RUN_LARGE_FILTERGRAPH_TESTS=true to enable",
     )
     def test_system_argument_limit(self) -> None:
         """
@@ -211,8 +211,8 @@ class TestLargeFilterGraphIssues:
             )
 
     @pytest.mark.skipif(
-        os.environ.get("SKIP_LARGE_FILTERGRAPH_TESTS", "false").lower() == "true",
-        reason="Large filtergraph tests are disabled via environment variable",
+        os.environ.get("RUN_LARGE_FILTERGRAPH_TESTS", "false").lower() != "true",
+        reason="Large filtergraph tests are disabled by default - set RUN_LARGE_FILTERGRAPH_TESTS=true to enable",
     )
     def test_recursion_limit_edge_case(self) -> None:
         """
@@ -261,8 +261,8 @@ class TestLargeFilterGraphIssues:
 
 
 @pytest.mark.skipif(
-    os.environ.get("SKIP_LARGE_FILTERGRAPH_TESTS", "false").lower() == "true",
-    reason="Large filtergraph tests are disabled via environment variable",
+    os.environ.get("RUN_LARGE_FILTERGRAPH_TESTS", "false").lower() != "true",
+    reason="Large filtergraph tests are disabled by default - set RUN_LARGE_FILTERGRAPH_TESTS=true to enable",
 )
 def test_issue_tracking_metadata() -> None:
     """
