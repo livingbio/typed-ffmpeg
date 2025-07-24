@@ -100,7 +100,7 @@ export SKIP_LARGE_FILTERGRAPH_TESTS=false
 
 ```bash
 # Run the demonstration script
-python test_large_filtergraph_demo.py
+python scripts/test_large_filtergraph_demo.py
 ```
 
 This will:
