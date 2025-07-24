@@ -53,6 +53,7 @@ dev-dependencies = [
     "typer",
     "jinja2",
     "lxml",
+    "build",
     
     # Testing
     "pytest-cov>=4.1,<7.0",
