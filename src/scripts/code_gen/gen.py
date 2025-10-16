@@ -2,6 +2,7 @@
 
 import keyword
 import pathlib
+import re
 from math import isnan
 from pathlib import Path
 from typing import Any
@@ -259,16 +260,21 @@ def normalize_help_text(text: str) -> str:
     """
     Normalize help text by replacing newlines and extra spaces.
 
+    This function handles cases where FFmpeg help text contains line breaks,
+    such as: 'text ("option1", "option2"\n        "continuation text")'
+    The pattern specifically targets the C-style string continuation where
+    a backslash-newline-whitespace-quote sequence should be replaced with
+    a single space to join the strings properly.
+
     Args:
         text: The help text to normalize
 
     Returns:
-        The normalized help text
+        The normalized help text with all content on a single line
 
     """
-    import re
     # Replace literal backslash-n followed by spaces and quote with space
-    # This handles cases like: "text\n        "more text"
+    # This handles C-style string continuation: "text\n        "more text"
     normalized = re.sub(r'\\\n\s*"', ' ', text)
     # Replace newlines and following whitespace with a single space
     normalized = re.sub(r'\n\s*', ' ', normalized)
