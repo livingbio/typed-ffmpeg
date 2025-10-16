@@ -255,6 +255,28 @@ def filter_option_typings(ffmpeg_filter: FFMpegFilter) -> str:
     return ""
 
 
+def normalize_help_text(text: str) -> str:
+    """
+    Normalize help text by replacing newlines and extra spaces.
+
+    Args:
+        text: The help text to normalize
+
+    Returns:
+        The normalized help text
+
+    """
+    import re
+    # Replace literal backslash-n followed by spaces and quote with space
+    # This handles cases like: "text\n        "more text"
+    normalized = re.sub(r'\\\n\s*"', ' ', text)
+    # Replace newlines and following whitespace with a single space
+    normalized = re.sub(r'\n\s*', ' ', normalized)
+    # Replace multiple spaces with a single space
+    normalized = re.sub(r'\s+', ' ', normalized)
+    return normalized.strip()
+
+
 env.filters["stream_name_safe"] = stream_name_safe
 env.filters["option_name_safe"] = option_name_safe
 env.filters["filter_option_typing"] = filter_option_typing
@@ -262,6 +284,7 @@ env.filters["option_typing"] = option_typing
 env.filters["input_typings"] = input_typings
 env.filters["output_typings"] = output_typings
 env.filters["filter_option_typings"] = filter_option_typings
+env.filters["normalize_help_text"] = normalize_help_text
 env.globals["get_relative_import"] = get_relative_import
 
 

@@ -45,7 +45,7 @@ class OutputArgs(ABC):
             filename: the filename to output to
             {% for option in options %}
             {%- if option.is_output_option -%}
-            {{option.name | option_name_safe}}: {{option.help }}
+            {{option.name | option_name_safe}}: {{option.help | normalize_help_text}}
             {% endif %}
             {%- endfor -%}
             encoder_options: ffmpeg's encoder options
