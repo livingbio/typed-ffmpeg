@@ -257,7 +257,7 @@ def filter_option_typings(ffmpeg_filter: FFMpegFilter) -> str:
 
 
 def normalize_help_text(text: str) -> str:
-    """
+    r"""
     Normalize help text by replacing newlines and extra spaces.
 
     This function handles cases where FFmpeg help text contains line breaks,
@@ -275,11 +275,11 @@ def normalize_help_text(text: str) -> str:
     """
     # Replace literal backslash-n followed by spaces and quote with space
     # This handles C-style string continuation: "text\n        "more text"
-    normalized = re.sub(r'\\\n\s*"', ' ', text)
+    normalized = re.sub(r'\\\n\s*"', " ", text)
     # Replace newlines and following whitespace with a single space
-    normalized = re.sub(r'\n\s*', ' ', normalized)
+    normalized = re.sub(r"\n\s*", " ", normalized)
     # Replace multiple spaces with a single space
-    normalized = re.sub(r'\s+', ' ', normalized)
+    normalized = re.sub(r"\s+", " ", normalized)
     return normalized.strip()
 
 
