@@ -257,7 +257,7 @@ def filter_option_typings(ffmpeg_filter: FFMpegFilter) -> str:
 
 
 def normalize_help_text(text: str) -> str:
-    """
+    r"""
     Normalize help text by replacing newlines and extra spaces.
 
     This function handles cases where FFmpeg help text contains line breaks,
