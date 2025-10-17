@@ -789,7 +789,7 @@ def avsynctest(
     )
     return (
         filter_node.audio(0),
-        filter_node.video(1),
+        filter_node.video(0),
     )
 
 

@@ -2,6 +2,7 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
+from ffmpeg.dag.nodes import FilterNode
 from ffmpeg.options.codec import decoder_codec_context, encoder_codec_context
 
 from .. import expressions, formats
@@ -323,4 +324,37 @@ def test_map(snapshot: SnapshotAssertion) -> None:
         )
         .overwrite_output()
         .compile()
+    )
+
+
+def test_avsynctest_mixed_outputs() -> None:
+    """Test that avsynctest correctly returns audio and video streams with proper indices."""
+    from ..sources import avsynctest
+    from ..streams.audio import AudioStream
+    from ..streams.video import VideoStream
+
+    # Call avsynctest which returns a tuple of (AudioStream, VideoStream)
+    audio, video = avsynctest(
+        size="1920x1080",
+        framerate="30",
+        samplerate=44100,
+        amplitude=0.7,
+        period=2,
+    )
+
+    # Verify that we got the correct stream types
+    assert isinstance(audio, AudioStream), "First output should be AudioStream"
+    assert isinstance(video, VideoStream), "Second output should be VideoStream"
+
+    # Verify that the streams have correct indices in the overall output list
+    # The .index attribute stores the overall position in node.output_typings
+    # Note: filter_node.video(0) means "first video output" but the resulting
+    # stream's .index will be 1 (its position in the overall output list)
+    assert audio.index == 0, "Audio stream should be at overall index 0"
+    assert video.index == 1, "Video stream should be at overall index 1"
+
+    # Verify they share the same filter node
+    assert audio.node == video.node, "Both streams should share the same filter node"
+    assert isinstance(audio.node, FilterNode) and audio.node.name == "avsynctest", (
+        "Filter node should be avsynctest"
     )

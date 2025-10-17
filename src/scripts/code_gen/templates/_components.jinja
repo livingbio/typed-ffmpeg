@@ -135,11 +135,15 @@ return filter_node
 return filter_node.{{return_type}}(0)
 {%- else -%}
 return (
+    {%- set video_index = namespace(count=0) %}
+    {%- set audio_index = namespace(count=0) %}
     {% for stream_typing in f.stream_typings_output %}
         {% if stream_typing.type.value == "video" %}
-            filter_node.video({{loop.index0}}),
+            filter_node.video({{video_index.count}}),
+            {%- set video_index.count = video_index.count + 1 %}
         {% else %}
-            filter_node.audio({{loop.index0}}),
+            filter_node.audio({{audio_index.count}}),
+            {%- set audio_index.count = audio_index.count + 1 %}
         {% endif %}
     {% endfor %}
 )
