@@ -2,6 +2,7 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
+from ffmpeg.dag.nodes import FilterNode
 from ffmpeg.options.codec import decoder_codec_context, encoder_codec_context
 
 from .. import expressions, formats
@@ -354,4 +355,6 @@ def test_avsynctest_mixed_outputs() -> None:
 
     # Verify they share the same filter node
     assert audio.node == video.node, "Both streams should share the same filter node"
-    assert audio.node.name == "avsynctest", "Filter node should be avsynctest"
+    assert isinstance(audio.node, FilterNode) and audio.node.name == "avsynctest", (
+        "Filter node should be avsynctest"
+    )
