@@ -324,3 +324,33 @@ def test_map(snapshot: SnapshotAssertion) -> None:
         .overwrite_output()
         .compile()
     )
+
+
+def test_avsynctest_mixed_outputs() -> None:
+    """Test that avsynctest correctly returns audio and video streams with proper indices."""
+    from ..sources import avsynctest
+    from ..streams.audio import AudioStream
+    from ..streams.video import VideoStream
+    
+    # Call avsynctest which returns a tuple of (AudioStream, VideoStream)
+    audio, video = avsynctest(
+        size="1920x1080",
+        framerate="30",
+        samplerate=44100,
+        amplitude=0.7,
+        period=2,
+    )
+    
+    # Verify that we got the correct stream types
+    assert isinstance(audio, AudioStream), "First output should be AudioStream"
+    assert isinstance(video, VideoStream), "Second output should be VideoStream"
+    
+    # Verify that the streams have correct indices
+    # audio should be index 0 among audio outputs
+    # video should be index 0 among video outputs (not 1!)
+    assert audio.index == 0, "Audio stream should be at index 0"
+    assert video.index == 1, "Video stream should be at overall index 1"
+    
+    # Verify they share the same filter node
+    assert audio.node == video.node, "Both streams should share the same filter node"
+    assert audio.node.name == "avsynctest", "Filter node should be avsynctest"
