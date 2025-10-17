@@ -345,10 +345,11 @@ def test_avsynctest_mixed_outputs() -> None:
     assert isinstance(audio, AudioStream), "First output should be AudioStream"
     assert isinstance(video, VideoStream), "Second output should be VideoStream"
     
-    # Verify that the streams have correct indices
-    # audio should be index 0 among audio outputs
-    # video should be index 0 among video outputs (not 1!)
-    assert audio.index == 0, "Audio stream should be at index 0"
+    # Verify that the streams have correct indices in the overall output list
+    # The .index attribute stores the overall position in node.output_typings
+    # Note: filter_node.video(0) means "first video output" but the resulting
+    # stream's .index will be 1 (its position in the overall output list)
+    assert audio.index == 0, "Audio stream should be at overall index 0"
     assert video.index == 1, "Video stream should be at overall index 1"
     
     # Verify they share the same filter node
