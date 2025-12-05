@@ -376,24 +376,25 @@ class GlobalRunable(GlobalArgs):
         # Handle stdout in the main thread if captured
         stdout_chunks: list[bytes] = []
 
-        if capture_stdout and process.stdout is not None:
-            try:
-                while True:
-                    chunk = process.stdout.read(4096)
-                    if not chunk:
-                        break
-                    stdout_chunks.append(chunk)
-            finally:
-                process.stdout.close()
+        try:
+            if capture_stdout and process.stdout is not None:
+                try:
+                    while True:
+                        chunk = process.stdout.read(4096)
+                        if not chunk:
+                            break
+                        stdout_chunks.append(chunk)
+                finally:
+                    process.stdout.close()
 
-        # Wait for process to finish
-        retcode = process.wait()
-
-        # Ensure stderr thread is done
-        # Note: After process.wait() returns, the stderr pipe is closed,
-        # so the thread should finish quickly after draining any remaining data
-        if stderr_thread is not None:
-            stderr_thread.join()
+            # Wait for process to finish
+            retcode = process.wait()
+        finally:
+            # Ensure stderr thread is joined even if an exception occurs
+            # Note: After process exits, the stderr pipe is closed,
+            # so the thread should finish quickly after draining any remaining data
+            if stderr_thread is not None:
+                stderr_thread.join()
 
         stdout = b"".join(stdout_chunks) if capture_stdout else b""
         stderr = b"".join(stderr_buffer)
