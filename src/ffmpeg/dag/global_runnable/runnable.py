@@ -424,12 +424,16 @@ class GlobalRunable(GlobalArgs):
             cmd: The FFmpeg executable name or path, or a list containing
                  the executable and initial arguments
             capture_stdout: Whether to capture and return the process's stdout
-            capture_stderr: Whether to capture and return the process's stderr
+            capture_stderr: Whether to capture and return the process's stderr.
+                           Note: This parameter is ignored when tee_stderr=True,
+                           as tee_stderr always captures stderr.
             input: Optional bytes to write to the process's stdin
             quiet: Whether to suppress output to the console
             tee_stderr: Whether to capture stderr and also pipe it to stderr.
                         When enabled, stderr will be captured and simultaneously
-                        displayed to the console. Implies capture_stderr=True.
+                        displayed to the console (unless quiet=True).
+                        When tee_stderr=True, the capture_stderr parameter is
+                        ignored and stderr is always captured.
             overwrite_output: If True, add the -y option to overwrite output files
                              If False, add the -n option to never overwrite
                              If None (default), use the current settings
