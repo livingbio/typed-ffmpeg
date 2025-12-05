@@ -5,9 +5,12 @@ This module tests the execution capabilities of FFmpeg filter graphs,
 including compilation, running, and the new use_filter_complex_script feature.
 """
 
+from unittest.mock import MagicMock, patch
+
 import pytest
 
 from ....base import input
+from ....exceptions import FFMpegExecuteError
 
 
 def test_use_filter_complex_script_parameter() -> None:
@@ -78,3 +81,57 @@ def test_use_filter_complex_script_with_compile_line() -> None:
     # When using filter_complex_script, it should use the script file instead of inline filter
     # The command should contain the script filename
     assert ".txt" in script_line
+
+
+def test_run_captures_stderr_on_error() -> None:
+    """Test that stderr is captured in FFMpegExecuteError when FFmpeg fails."""
+    stream = input("nonexistent.mp4").output(filename="output.mp4")
+
+    # Mock subprocess.Popen to simulate FFmpeg failure with stderr output
+    mock_process = MagicMock()
+    mock_process.communicate.return_value = (None, b"Error: Input file not found")
+    mock_process.poll.return_value = 1
+
+    with patch("subprocess.Popen", return_value=mock_process):
+        with pytest.raises(FFMpegExecuteError) as exc_info:
+            stream.run()
+
+        # Verify that stderr is captured in the exception
+        assert exc_info.value.stderr == b"Error: Input file not found"
+        assert exc_info.value.stdout == b""
+        assert exc_info.value.retcode == 1
+
+
+def test_run_returns_empty_bytes_when_not_capturing() -> None:
+    """Test that run() returns empty bytes when not capturing stdout/stderr."""
+    stream = input("test.mp4").output(filename="output.mp4")
+
+    # Mock subprocess.Popen to simulate successful FFmpeg run
+    mock_process = MagicMock()
+    mock_process.communicate.return_value = (None, b"Some FFmpeg output")
+    mock_process.poll.return_value = 0
+
+    with patch("subprocess.Popen", return_value=mock_process):
+        stdout, stderr = stream.run()
+
+        # Even though stderr was captured internally, it should return b""
+        # when capture_stderr=False (the default)
+        assert stdout == b""
+        assert stderr == b""
+
+
+def test_run_returns_stderr_when_capturing() -> None:
+    """Test that run() returns stderr when capture_stderr=True."""
+    stream = input("test.mp4").output(filename="output.mp4")
+
+    # Mock subprocess.Popen to simulate successful FFmpeg run
+    mock_process = MagicMock()
+    mock_process.communicate.return_value = (None, b"Some FFmpeg output")
+    mock_process.poll.return_value = 0
+
+    with patch("subprocess.Popen", return_value=mock_process):
+        stdout, stderr = stream.run(capture_stderr=True)
+
+        # When capture_stderr=True, stderr should be returned
+        assert stdout == b""
+        assert stderr == b"Some FFmpeg output"

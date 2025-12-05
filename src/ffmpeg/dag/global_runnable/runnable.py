@@ -304,7 +304,7 @@ class GlobalRunable(GlobalArgs):
             cmd,
             pipe_stdin=input is not None,
             pipe_stdout=capture_stdout,
-            pipe_stderr=capture_stderr,
+            pipe_stderr=True,  # Always capture stderr for error messages
             quiet=quiet,
             overwrite_output=overwrite_output,
             auto_fix=auto_fix,
@@ -322,8 +322,8 @@ class GlobalRunable(GlobalArgs):
                     auto_fix=auto_fix,
                     use_filter_complex_script=use_filter_complex_script,
                 ),
-                stdout=stdout,
-                stderr=stderr,
+                stdout=stdout or b"",
+                stderr=stderr or b"",
             )
 
-        return stdout, stderr
+        return stdout or b"", stderr if capture_stderr else b""
