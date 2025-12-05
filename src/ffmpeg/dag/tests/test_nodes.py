@@ -186,6 +186,95 @@ def test_output_run(datadir: Path) -> None:
         output.run()
 
 
+def test_output_run_with_tee_stderr(datadir: Path) -> None:
+    """Test that tee_stderr captures stderr while running FFmpeg."""
+    input1 = input(datadir / "input.mp4")
+    output = input1.output(filename="output.mp4")
+
+    # Run with tee_stderr=True - should capture stderr
+    _stdout, stderr = output.run(tee_stderr=True, overwrite_output=True)
+
+    # FFmpeg always writes something to stderr (version info, progress, etc.)
+    assert isinstance(stderr, bytes)
+    assert len(stderr) > 0
+
+    # Should contain FFmpeg-related output
+
+
+def test_output_run_with_tee_stderr_quiet(datadir: Path) -> None:
+    """Test that tee_stderr with quiet=True captures but doesn't display stderr."""
+    input1 = input(datadir / "input.mp4")
+    output = input1.output(filename="output.mp4")
+
+    # Run with tee_stderr=True and quiet=True
+    _stdout, stderr = output.run(tee_stderr=True, quiet=True, overwrite_output=True)
+
+    # Stderr should still be captured
+    assert isinstance(stderr, bytes)
+    assert len(stderr) > 0
+
+
+def test_output_run_with_tee_stderr_error(datadir: Path) -> None:
+    """Test that tee_stderr captures stderr on error."""
+    input_not_exists = input(datadir / "not-exists.mp4")
+    output = input_not_exists.output(filename="output.mp4")
+
+    with pytest.raises(FFMpegExecuteError) as exc_info:
+        output.run(tee_stderr=True)
+
+    # Error should contain captured stderr
+    assert exc_info.value.stderr is not None
+    assert len(exc_info.value.stderr) > 0
+
+
+def test_output_run_with_tee_stderr_and_capture_stdout(datadir: Path) -> None:
+    """Test that tee_stderr works correctly with capture_stdout=True."""
+    input1 = input(datadir / "input.mp4")
+    # Output to pipe to capture stdout
+    output = input1.output(filename="pipe:1", f="null")
+
+    # Run with both tee_stderr and capture_stdout
+    stdout, stderr = output.run(
+        tee_stderr=True, capture_stdout=True, overwrite_output=True
+    )
+
+    # Both should be captured
+    assert isinstance(stdout, bytes)
+    assert isinstance(stderr, bytes)
+    assert len(stderr) > 0  # FFmpeg always outputs to stderr
+
+
+def test_output_run_with_tee_stderr_without_capture_stdout(datadir: Path) -> None:
+    """Test that tee_stderr works correctly with capture_stdout=False."""
+    input1 = input(datadir / "input.mp4")
+    output = input1.output(filename="output.mp4")
+
+    # Run with tee_stderr but without capture_stdout
+    stdout, stderr = output.run(
+        tee_stderr=True, capture_stdout=False, overwrite_output=True
+    )
+
+    # stdout should be empty, stderr should be captured
+    assert stdout == b""
+    assert isinstance(stderr, bytes)
+    assert len(stderr) > 0
+
+
+def test_output_run_tee_stderr_ignores_capture_stderr(datadir: Path) -> None:
+    """Test that capture_stderr is ignored when tee_stderr=True."""
+    input1 = input(datadir / "input.mp4")
+    output = input1.output(filename="output.mp4")
+
+    # Even with capture_stderr=False, tee_stderr=True should capture stderr
+    _stdout, stderr = output.run(
+        tee_stderr=True, capture_stderr=False, overwrite_output=True
+    )
+
+    # stderr should still be captured because tee_stderr=True
+    assert isinstance(stderr, bytes)
+    assert len(stderr) > 0
+
+
 def test_filter_node_output_typings() -> None:
     f = FilterNode(
         name="scale",
