@@ -186,6 +186,48 @@ def test_output_run(datadir: Path) -> None:
         output.run()
 
 
+def test_output_run_with_tee_stderr(datadir: Path) -> None:
+    """Test that tee_stderr captures stderr while running FFmpeg."""
+    input1 = input(datadir / "input.mp4")
+    output = input1.output(filename="output.mp4")
+
+    # Run with tee_stderr=True - should capture stderr
+    _stdout, stderr = output.run(tee_stderr=True, overwrite_output=True)
+
+    # FFmpeg always writes something to stderr (version info, progress, etc.)
+    assert isinstance(stderr, bytes)
+    assert len(stderr) > 0
+
+    # Should contain FFmpeg-related output
+    assert b"" != stderr  # Non-empty
+
+
+def test_output_run_with_tee_stderr_quiet(datadir: Path) -> None:
+    """Test that tee_stderr with quiet=True captures but doesn't display stderr."""
+    input1 = input(datadir / "input.mp4")
+    output = input1.output(filename="output.mp4")
+
+    # Run with tee_stderr=True and quiet=True
+    _stdout, stderr = output.run(tee_stderr=True, quiet=True, overwrite_output=True)
+
+    # Stderr should still be captured
+    assert isinstance(stderr, bytes)
+    assert len(stderr) > 0
+
+
+def test_output_run_with_tee_stderr_error(datadir: Path) -> None:
+    """Test that tee_stderr captures stderr on error."""
+    input_not_exists = input(datadir / "not-exists.mp4")
+    output = input_not_exists.output(filename="output.mp4")
+
+    with pytest.raises(FFMpegExecuteError) as exc_info:
+        output.run(tee_stderr=True)
+
+    # Error should contain captured stderr
+    assert exc_info.value.stderr is not None
+    assert len(exc_info.value.stderr) > 0
+
+
 def test_filter_node_output_typings() -> None:
     f = FilterNode(
         name="scale",

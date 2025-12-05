@@ -9,6 +9,9 @@ import pytest
 
 from ....base import input
 
+# Note: Integration tests for tee_stderr that actually run FFmpeg are in
+# src/ffmpeg/dag/tests/test_nodes.py (test_output_run_with_tee_stderr*)
+
 
 def test_use_filter_complex_script_parameter() -> None:
     """Test that use_filter_complex_script parameter works correctly."""
