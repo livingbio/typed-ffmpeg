@@ -199,7 +199,6 @@ def test_output_run_with_tee_stderr(datadir: Path) -> None:
     assert len(stderr) > 0
 
     # Should contain FFmpeg-related output
-    assert b"" != stderr  # Non-empty
 
 
 def test_output_run_with_tee_stderr_quiet(datadir: Path) -> None:
