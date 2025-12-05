@@ -38,17 +38,17 @@ class GlobalRunable(GlobalArgs):
     def _start_stderr_tee_thread(
         stderr_pipe: IO[bytes],
         capture_buffer: list[bytes] | None = None,
-        lock: threading.Lock | None = None,
+        write_to_stderr: bool = True,
     ) -> threading.Thread:
         """
-        Start a thread that reads from stderr pipe and writes to sys.stderr.
+        Start a thread that reads from stderr pipe and optionally writes to sys.stderr.
 
         Optionally captures stderr to a buffer for later retrieval.
 
         Args:
             stderr_pipe: The stderr pipe from the subprocess
             capture_buffer: Optional list to append captured stderr chunks to
-            lock: Optional lock to synchronize access to capture_buffer
+            write_to_stderr: Whether to write stderr chunks to sys.stderr
 
         Returns:
             The started thread (daemon thread)
@@ -56,24 +56,30 @@ class GlobalRunable(GlobalArgs):
         """
 
         def read_stderr() -> None:
-            """Read from stderr pipe, optionally capture, and write to sys.stderr."""
+            """Read from stderr pipe, optionally capture, and optionally write to sys.stderr."""
             try:
+                # Safely get stderr binary output stream
+                out: IO[bytes] | None = None
+                if write_to_stderr:
+                    # sys.stderr.buffer is the binary buffer, which exists in normal Python
+                    # If it doesn't exist (e.g., sys.stderr was replaced), we can't write bytes
+                    out = getattr(sys.stderr, "buffer", None)
+
                 while True:
                     chunk = stderr_pipe.read(4096)
                     if not chunk:
                         break
+
                     # Capture to buffer if provided
                     if capture_buffer is not None:
-                        if lock is not None:
-                            with lock:
-                                capture_buffer.append(chunk)
-                        else:
-                            capture_buffer.append(chunk)
-                    # Always write to sys.stderr
-                    sys.stderr.buffer.write(chunk)
-                    sys.stderr.buffer.flush()
+                        capture_buffer.append(chunk)
+
+                    # Write to sys.stderr if enabled and buffer is available
+                    if out is not None:
+                        out.write(chunk)
+                        out.flush()
             except Exception:
-                pass
+                logger.exception("Error while reading FFmpeg stderr")
 
         thread = threading.Thread(target=read_stderr, daemon=True)
         thread.start()
@@ -304,12 +310,12 @@ class GlobalRunable(GlobalArgs):
         overwrite_output: bool | None,
         auto_fix: bool,
         use_filter_complex_script: bool,
-    ) -> tuple[bytes, bytes, int | None]:
+    ) -> tuple[bytes, bytes, int]:
         """
-        Run FFmpeg with tee_stderr enabled (POC logic).
+        Run FFmpeg with tee_stderr enabled.
 
         This method handles the tee_stderr flow: it captures stderr to a buffer
-        while simultaneously displaying it to the console.
+        while simultaneously displaying it to the console (unless quiet=True).
 
         Args:
             cmd: The FFmpeg executable name or path, or a list containing
@@ -328,53 +334,63 @@ class GlobalRunable(GlobalArgs):
             A tuple of (stdout_bytes, stderr_bytes, retcode)
 
         """
-        # Start process with stderr piped
+        # Decide pipes explicitly; ignore quiet here to avoid pipe complications
         process = self.run_async(
             cmd,
             pipe_stdin=input is not None,
             pipe_stdout=capture_stdout,
-            pipe_stderr=True,  # Always pipe when tee_stderr is True
-            quiet=quiet,
+            pipe_stderr=True,  # Always pipe stderr for tee
+            quiet=False,  # Handle quiet semantics in tee thread instead
             overwrite_output=overwrite_output,
             auto_fix=auto_fix,
             use_filter_complex_script=use_filter_complex_script,
         )
 
-        # Buffer to capture stderr for return value
-        stderr_buffer: list[bytes] = []
-        stderr_lock = threading.Lock()
+        # Send stdin (if any)
+        if input is not None and process.stdin is not None:
+            try:
+                process.stdin.write(input)
+                process.stdin.close()
+            except BrokenPipeError:
+                # FFmpeg exited early; we'll handle via return code
+                pass
 
-        # Start thread to read stderr, capture it, and display it
+        # stderr tee thread
+        stderr_buffer: list[bytes] = []
+
         if process.stderr is not None:
             stderr_thread = self._start_stderr_tee_thread(
                 process.stderr,
                 capture_buffer=stderr_buffer,
-                lock=stderr_lock,
+                write_to_stderr=not quiet,
             )
         else:
             stderr_thread = None
 
-        # Handle stdout and stdin
-        stdout = None
-        if capture_stdout or quiet:
-            stdout, _ = process.communicate(input)
-        else:
-            if input is not None:
-                if process.stdin:
-                    process.stdin.write(input)
-                    process.stdin.close()
-            process.wait()
+        # Handle stdout in the main thread if captured
+        stdout_chunks: list[bytes] = []
 
-        # Wait for stderr thread to finish (if it was started)
+        if capture_stdout and process.stdout is not None:
+            try:
+                while True:
+                    chunk = process.stdout.read(4096)
+                    if not chunk:
+                        break
+                    stdout_chunks.append(chunk)
+            finally:
+                process.stdout.close()
+
+        # Wait for process to finish
+        retcode = process.wait()
+
+        # Ensure stderr thread is done
         if stderr_thread is not None:
             stderr_thread.join()
 
-        # Combine stderr chunks
+        stdout = b"".join(stdout_chunks) if capture_stdout else b""
         stderr = b"".join(stderr_buffer)
-        # After wait() or communicate(), returncode is guaranteed to be set
-        retcode = process.returncode
 
-        return stdout or b"", stderr, retcode
+        return stdout, stderr, retcode
 
     def run(
         self,
