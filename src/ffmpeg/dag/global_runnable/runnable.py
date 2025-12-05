@@ -429,7 +429,7 @@ class GlobalRunable(GlobalArgs):
                            as tee_stderr always captures stderr.
             input: Optional bytes to write to the process's stdin
             quiet: Whether to suppress output to the console
-            tee_stderr: Whether to capture stderr and also pipe it to stderr.
+            tee_stderr: Whether to capture stderr and also display it to the console.
                         When enabled, stderr will be captured and simultaneously
                         displayed to the console (unless quiet=True).
                         When tee_stderr=True, the capture_stderr parameter is
