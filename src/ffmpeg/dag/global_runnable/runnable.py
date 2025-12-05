@@ -379,11 +379,15 @@ class GlobalRunable(GlobalArgs):
         try:
             if capture_stdout and process.stdout is not None:
                 try:
-                    while True:
-                        chunk = process.stdout.read(4096)
-                        if not chunk:
-                            break
-                        stdout_chunks.append(chunk)
+                    try:
+                        while True:
+                            chunk = process.stdout.read(4096)
+                            if not chunk:
+                                break
+                            stdout_chunks.append(chunk)
+                    except (OSError, BrokenPipeError):
+                        # Process terminated, stop reading
+                        pass
                 finally:
                     process.stdout.close()
 
