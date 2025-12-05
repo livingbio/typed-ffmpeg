@@ -384,6 +384,8 @@ class GlobalRunable(GlobalArgs):
         retcode = process.wait()
 
         # Ensure stderr thread is done
+        # Note: After process.wait() returns, the stderr pipe is closed,
+        # so the thread should finish quickly after draining any remaining data
         if stderr_thread is not None:
             stderr_thread.join()
 
@@ -455,7 +457,6 @@ class GlobalRunable(GlobalArgs):
 
         """
         if tee_stderr:
-            # Use POC method for tee_stderr flow
             stdout, stderr, retcode = self._run_with_tee_stderr(
                 cmd,
                 capture_stdout,
