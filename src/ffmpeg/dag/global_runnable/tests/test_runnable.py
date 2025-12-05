@@ -5,9 +5,14 @@ This module tests the execution capabilities of FFmpeg filter graphs,
 including compilation, running, and the new use_filter_complex_script feature.
 """
 
+import io
+import subprocess
+import sys
+
 import pytest
 
 from ....base import input
+from ..runnable import GlobalRunable
 
 # Note: Integration tests for tee_stderr that actually run FFmpeg are in
 # src/ffmpeg/dag/tests/test_nodes.py (test_output_run_with_tee_stderr*)
@@ -81,3 +86,223 @@ def test_use_filter_complex_script_with_compile_line() -> None:
     # When using filter_complex_script, it should use the script file instead of inline filter
     # The command should contain the script filename
     assert ".txt" in script_line
+
+
+class TestTeeStderrHelperMethods:
+    """Unit tests for tee_stderr helper methods."""
+
+    def test_start_stderr_tee_thread_captures_data(self) -> None:
+        """Test that _start_stderr_tee_thread captures stderr data."""
+        stderr_data = b"test stderr output\nline 2\n"
+        stderr_pipe = io.BytesIO(stderr_data)
+
+        capture_buffer: list[bytes] = []
+        thread = GlobalRunable._start_stderr_tee_thread(
+            stderr_pipe,
+            capture_buffer=capture_buffer,
+            write_to_stderr=False,
+        )
+        thread.join(timeout=5.0)
+
+        assert b"".join(capture_buffer) == stderr_data
+
+    def test_start_stderr_tee_thread_writes_to_stderr(self) -> None:
+        """Test that _start_stderr_tee_thread writes to sys.stderr when enabled."""
+        stderr_data = b"test output\n"
+        stderr_pipe = io.BytesIO(stderr_data)
+        captured_output = io.BytesIO()
+
+        original_buffer = sys.stderr.buffer
+        try:
+            sys.stderr.buffer = captured_output  # type: ignore[misc]
+
+            capture_buffer: list[bytes] = []
+            thread = GlobalRunable._start_stderr_tee_thread(
+                stderr_pipe,
+                capture_buffer=capture_buffer,
+                write_to_stderr=True,
+            )
+            thread.join(timeout=5.0)
+
+            assert b"".join(capture_buffer) == stderr_data
+            assert captured_output.getvalue() == stderr_data
+        finally:
+            sys.stderr.buffer = original_buffer  # type: ignore[misc]
+
+    def test_start_stderr_tee_thread_quiet_mode(self) -> None:
+        """Test that _start_stderr_tee_thread respects write_to_stderr=False."""
+        stderr_data = b"should not appear\n"
+        stderr_pipe = io.BytesIO(stderr_data)
+        captured_output = io.BytesIO()
+
+        original_buffer = sys.stderr.buffer
+        try:
+            sys.stderr.buffer = captured_output  # type: ignore[misc]
+
+            capture_buffer: list[bytes] = []
+            thread = GlobalRunable._start_stderr_tee_thread(
+                stderr_pipe,
+                capture_buffer=capture_buffer,
+                write_to_stderr=False,
+            )
+            thread.join(timeout=5.0)
+
+            # Data should be captured
+            assert b"".join(capture_buffer) == stderr_data
+            # But not written to stderr
+            assert captured_output.getvalue() == b""
+        finally:
+            sys.stderr.buffer = original_buffer  # type: ignore[misc]
+
+    def test_start_stderr_tee_thread_handles_empty_input(self) -> None:
+        """Test that _start_stderr_tee_thread handles empty input gracefully."""
+        stderr_pipe = io.BytesIO(b"")
+
+        capture_buffer: list[bytes] = []
+        thread = GlobalRunable._start_stderr_tee_thread(
+            stderr_pipe,
+            capture_buffer=capture_buffer,
+            write_to_stderr=False,
+        )
+        thread.join(timeout=5.0)
+
+        assert capture_buffer == []
+
+    def test_start_stderr_tee_thread_handles_large_data(self) -> None:
+        """Test that _start_stderr_tee_thread handles data larger than chunk size."""
+        # Create data larger than the 4096 byte chunk size
+        stderr_data = b"x" * 10000 + b"\n"
+        stderr_pipe = io.BytesIO(stderr_data)
+
+        capture_buffer: list[bytes] = []
+        thread = GlobalRunable._start_stderr_tee_thread(
+            stderr_pipe,
+            capture_buffer=capture_buffer,
+            write_to_stderr=False,
+        )
+        thread.join(timeout=5.0)
+
+        assert b"".join(capture_buffer) == stderr_data
+
+
+class TestTeeStderrWithRealSubprocess:
+    """Tests for tee_stderr using real subprocess (Python) to verify behavior."""
+
+    def test_tee_thread_with_real_process(self) -> None:
+        """Test tee thread with a real subprocess."""
+        stderr_message = b"test stderr message from python\n"
+
+        process = subprocess.Popen(
+            [
+                sys.executable,
+                "-c",
+                f"import sys; sys.stderr.buffer.write({stderr_message!r}); sys.stderr.flush()",
+            ],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+
+        capture_buffer: list[bytes] = []
+
+        if process.stderr is not None:
+            thread = GlobalRunable._start_stderr_tee_thread(
+                process.stderr,
+                capture_buffer=capture_buffer,
+                write_to_stderr=False,
+            )
+
+            process.wait()
+            thread.join(timeout=5.0)
+
+            assert b"".join(capture_buffer) == stderr_message
+
+    def test_tee_thread_captures_multiline_output(self) -> None:
+        """Test that tee thread captures multi-line output correctly."""
+        lines = [b"line 1\n", b"line 2\n", b"line 3\n"]
+        stderr_message = b"".join(lines)
+
+        process = subprocess.Popen(
+            [
+                sys.executable,
+                "-c",
+                f"import sys; sys.stderr.buffer.write({stderr_message!r}); sys.stderr.flush()",
+            ],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+
+        capture_buffer: list[bytes] = []
+
+        if process.stderr is not None:
+            thread = GlobalRunable._start_stderr_tee_thread(
+                process.stderr,
+                capture_buffer=capture_buffer,
+                write_to_stderr=False,
+            )
+
+            process.wait()
+            thread.join(timeout=5.0)
+
+            captured = b"".join(capture_buffer)
+            assert captured == stderr_message
+
+    def test_thread_cleanup_after_process_exit(self) -> None:
+        """Test that thread properly cleans up after process exits."""
+        process = subprocess.Popen(
+            [sys.executable, "-c", "import sys; sys.stderr.write('done')"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+
+        capture_buffer: list[bytes] = []
+
+        if process.stderr is not None:
+            thread = GlobalRunable._start_stderr_tee_thread(
+                process.stderr,
+                capture_buffer=capture_buffer,
+                write_to_stderr=False,
+            )
+
+            # Wait for process to finish
+            process.wait()
+
+            # Thread should finish quickly after process exits
+            thread.join(timeout=5.0)
+            assert not thread.is_alive()
+
+
+class TestTeeStderrParameterBehavior:
+    """Tests for tee_stderr parameter behavior and interactions."""
+
+    def test_tee_stderr_parameter_exists(self) -> None:
+        """Test that tee_stderr parameter is accepted by run method."""
+        import inspect
+
+        stream = input("test.mp4").output(filename="output.mp4")
+        sig = inspect.signature(stream.run)
+
+        assert "tee_stderr" in sig.parameters
+        assert sig.parameters["tee_stderr"].default is False
+        assert sig.parameters["tee_stderr"].annotation is bool
+
+    def test_tee_stderr_and_quiet_parameters_coexist(self) -> None:
+        """Test that tee_stderr and quiet parameters can be used together."""
+        import inspect
+
+        stream = input("test.mp4").output(filename="output.mp4")
+        sig = inspect.signature(stream.run)
+
+        assert "tee_stderr" in sig.parameters
+        assert "quiet" in sig.parameters
+        assert sig.parameters["quiet"].default is False
+
+    def test_tee_stderr_does_not_affect_compile(self) -> None:
+        """Test that tee_stderr parameter doesn't affect compilation."""
+        stream = input("test.mp4").output(filename="output.mp4")
+
+        # tee_stderr is an execution-time parameter, not a compilation parameter
+        args1 = stream.compile()
+        args2 = stream.compile()
+
+        assert args1 == args2
+        assert len(args1) > 0
