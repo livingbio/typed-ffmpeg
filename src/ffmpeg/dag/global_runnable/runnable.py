@@ -78,8 +78,14 @@ class GlobalRunable(GlobalArgs):
                     if out is not None:
                         out.write(chunk)
                         out.flush()
+            except (OSError, BrokenPipeError):
+                # Expected I/O errors (pipe closed, process terminated, etc.)
+                logger.debug(
+                    "I/O error while reading FFmpeg stderr (process may have terminated)"
+                )
             except Exception:
-                logger.exception("Error while reading FFmpeg stderr")
+                # Unexpected errors - log with full traceback for debugging
+                logger.exception("Unexpected error while reading FFmpeg stderr")
 
         thread = threading.Thread(target=read_stderr, daemon=True)
         thread.start()
