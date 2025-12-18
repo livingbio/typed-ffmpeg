@@ -1,7 +1,9 @@
 import subprocess
+import tempfile
 import time
 from dataclasses import asdict
 from pathlib import Path
+from unittest.mock import patch
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
@@ -156,58 +158,56 @@ def test_probe_timeout_cleanup() -> None:
     This test verifies that when a TimeoutExpired exception is raised,
     the subprocess is terminated and pipes are closed, preventing memory leaks.
     """
-    # Use unittest.mock to create a test scenario
-    # Create a test file that exists
-    import tempfile
-    from unittest.mock import patch
-
-    import psutil
-
     with tempfile.NamedTemporaryFile(suffix=".mp4", delete=False) as tmp:
         tmp_path = tmp.name
         # Write some minimal data so the file exists
         tmp.write(b"fake video data")
 
+    tracked_process = None
+
     try:
-        # Mock a long-running process that will timeout
+        # Mock subprocess to track the created process
         original_popen = subprocess.Popen
 
         def mock_popen(*args, **kwargs):
+            nonlocal tracked_process
             # Create a real subprocess that will take a long time
             # We'll use 'sleep' command instead of ffprobe
             if "ffprobe" in str(args[0]):
                 # Replace ffprobe with a sleep command that takes longer than timeout
                 new_args = ["sleep", "30"]
                 proc = original_popen(new_args, **kwargs)
+                tracked_process = proc
                 return proc
             return original_popen(*args, **kwargs)
 
         with patch("subprocess.Popen", side_effect=mock_popen):
-            # Get list of current sleep processes before the test
-            sleep_pids_before = {
-                p.pid for p in psutil.process_iter() if p.name() == "sleep"
-            }
-
             # Try to probe with a very short timeout
             # This should raise TimeoutExpired
             with pytest.raises(subprocess.TimeoutExpired):
                 probe(tmp_path, timeout=1)  # 1 second timeout
 
+            # Verify the tracked process was created and properly cleaned up
+            assert tracked_process is not None, "Process should have been created"
+
             # Give a moment for cleanup to complete
-            time.sleep(0.5)
+            time.sleep(0.2)
 
-            # Get list of current sleep processes after the test
-            sleep_pids_after = {
-                p.pid for p in psutil.process_iter() if p.name() == "sleep"
-            }
-
-            # There should be no new sleep processes lingering
-            # (all processes started should have been terminated)
-            new_sleep_pids = sleep_pids_after - sleep_pids_before
-            assert len(new_sleep_pids) == 0, (
-                f"Expected no new sleep processes, but found {len(new_sleep_pids)} lingering: {new_sleep_pids}"
+            # Check that the process has been terminated
+            # poll() returns None if process is still running, otherwise returns exit code
+            exit_code = tracked_process.poll()
+            assert exit_code is not None, (
+                f"Process should have been terminated but is still running (PID: {tracked_process.pid})"
             )
+
+            # Verify pipes were closed
+            assert tracked_process.stdout.closed, "stdout pipe should be closed"
+            assert tracked_process.stderr.closed, "stderr pipe should be closed"
 
     finally:
         # Clean up the temp file
         Path(tmp_path).unlink(missing_ok=True)
+        # Ensure process is terminated even if test fails
+        if tracked_process and tracked_process.poll() is None:
+            tracked_process.kill()
+            tracked_process.wait()
