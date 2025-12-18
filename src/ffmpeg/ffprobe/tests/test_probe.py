@@ -175,14 +175,18 @@ def test_probe_timeout_cleanup() -> None:
             # Check if this is an ffprobe command
             # args can be a list or string depending on shell parameter
             args_list = args[0] if args else []
-            cmd_str = " ".join(args_list) if isinstance(args_list, (list, tuple)) else str(args_list)
+            cmd_str = (
+                " ".join(args_list)
+                if isinstance(args_list, list | tuple)
+                else str(args_list)
+            )
             if "ffprobe" in cmd_str:
                 # Replace with a sleep command that takes longer than timeout
                 new_args = ["sleep", "30"]
-                proc = cast(subprocess.Popen[bytes], original_popen(new_args, **kwargs))
+                proc = cast(subprocess.Popen[bytes], original_popen(new_args, **kwargs))  # type: ignore[call-overload]
                 tracked_process = proc
                 return proc
-            return original_popen(*args, **kwargs)
+            return original_popen(*args, **kwargs)  # type: ignore[call-overload]
 
         with patch("subprocess.Popen", side_effect=mock_popen):
             # Try to probe with a very short timeout
@@ -209,8 +213,12 @@ def test_probe_timeout_cleanup() -> None:
                 )
 
             # Verify pipes were closed (after assertion, we know tracked_process is not None)
-            assert tracked_process.stdout is not None and tracked_process.stdout.closed, "stdout pipe should be closed"
-            assert tracked_process.stderr is not None and tracked_process.stderr.closed, "stderr pipe should be closed"
+            assert (
+                tracked_process.stdout is not None and tracked_process.stdout.closed
+            ), "stdout pipe should be closed"
+            assert (
+                tracked_process.stderr is not None and tracked_process.stderr.closed
+            ), "stderr pipe should be closed"
 
     finally:
         # Clean up the temp file
