@@ -3,6 +3,7 @@ import tempfile
 import time
 from dataclasses import asdict
 from pathlib import Path
+from typing import cast
 from unittest.mock import patch
 
 import pytest
@@ -163,20 +164,22 @@ def test_probe_timeout_cleanup() -> None:
         # Write some minimal data so the file exists
         tmp.write(b"fake video data")
 
-    tracked_process = None
+    tracked_process: subprocess.Popen[bytes] | None = None
 
     try:
         # Mock subprocess to track the created process
         original_popen = subprocess.Popen
 
-        def mock_popen(*args, **kwargs):
+        def mock_popen(*args: object, **kwargs: object) -> object:
             nonlocal tracked_process
-            # Create a real subprocess that will take a long time
-            # We'll use 'sleep' command instead of ffprobe
-            if "ffprobe" in str(args[0]):
-                # Replace ffprobe with a sleep command that takes longer than timeout
+            # Check if this is an ffprobe command
+            # args can be a list or string depending on shell parameter
+            args_list = args[0] if args else []
+            cmd_str = " ".join(args_list) if isinstance(args_list, (list, tuple)) else str(args_list)
+            if "ffprobe" in cmd_str:
+                # Replace with a sleep command that takes longer than timeout
                 new_args = ["sleep", "30"]
-                proc = original_popen(new_args, **kwargs)
+                proc = cast(subprocess.Popen[bytes], original_popen(new_args, **kwargs))
                 tracked_process = proc
                 return proc
             return original_popen(*args, **kwargs)
@@ -190,19 +193,24 @@ def test_probe_timeout_cleanup() -> None:
             # Verify the tracked process was created and properly cleaned up
             assert tracked_process is not None, "Process should have been created"
 
-            # Give a moment for cleanup to complete
-            time.sleep(0.2)
+            # Poll with timeout to check process termination
+            max_wait_time = 1.0  # Maximum time to wait for process termination
+            start_time = time.time()
+            while time.time() - start_time < max_wait_time:
+                exit_code = tracked_process.poll()
+                if exit_code is not None:
+                    # Process has terminated successfully
+                    break
+                time.sleep(0.05)  # Small polling interval
+            else:
+                # Timeout waiting for process to terminate
+                pytest.fail(
+                    f"Process should have been terminated but is still running after {max_wait_time}s (PID: {tracked_process.pid})"
+                )
 
-            # Check that the process has been terminated
-            # poll() returns None if process is still running, otherwise returns exit code
-            exit_code = tracked_process.poll()
-            assert exit_code is not None, (
-                f"Process should have been terminated but is still running (PID: {tracked_process.pid})"
-            )
-
-            # Verify pipes were closed
-            assert tracked_process.stdout.closed, "stdout pipe should be closed"
-            assert tracked_process.stderr.closed, "stderr pipe should be closed"
+            # Verify pipes were closed (after assertion, we know tracked_process is not None)
+            assert tracked_process.stdout is not None and tracked_process.stdout.closed, "stdout pipe should be closed"
+            assert tracked_process.stderr is not None and tracked_process.stderr.closed, "stderr pipe should be closed"
 
     finally:
         # Clean up the temp file
