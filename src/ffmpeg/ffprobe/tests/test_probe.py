@@ -1,3 +1,5 @@
+import subprocess
+import time
 from dataclasses import asdict
 from pathlib import Path
 
@@ -145,3 +147,67 @@ def test_probe_complete(path: Path, snapshot: SnapshotAssertion) -> None:
     )
     assert obj is not None
     snapshot(name="obj", extension_class=JSONSnapshotExtension) == asdict(obj)
+
+
+def test_probe_timeout_cleanup() -> None:
+    """
+    Test that ffprobe subprocess is properly cleaned up when timeout occurs.
+
+    This test verifies that when a TimeoutExpired exception is raised,
+    the subprocess is terminated and pipes are closed, preventing memory leaks.
+    """
+    # Use unittest.mock to create a test scenario
+    # Create a test file that exists
+    import tempfile
+    from unittest.mock import patch
+
+    import psutil
+
+    with tempfile.NamedTemporaryFile(suffix=".mp4", delete=False) as tmp:
+        tmp_path = tmp.name
+        # Write some minimal data so the file exists
+        tmp.write(b"fake video data")
+
+    try:
+        # Mock a long-running process that will timeout
+        original_popen = subprocess.Popen
+
+        def mock_popen(*args, **kwargs):
+            # Create a real subprocess that will take a long time
+            # We'll use 'sleep' command instead of ffprobe
+            if "ffprobe" in str(args[0]):
+                # Replace ffprobe with a sleep command that takes longer than timeout
+                new_args = ["sleep", "30"]
+                proc = original_popen(new_args, **kwargs)
+                return proc
+            return original_popen(*args, **kwargs)
+
+        with patch("subprocess.Popen", side_effect=mock_popen):
+            # Get list of current sleep processes before the test
+            sleep_pids_before = {
+                p.pid for p in psutil.process_iter() if p.name() == "sleep"
+            }
+
+            # Try to probe with a very short timeout
+            # This should raise TimeoutExpired
+            with pytest.raises(subprocess.TimeoutExpired):
+                probe(tmp_path, timeout=1)  # 1 second timeout
+
+            # Give a moment for cleanup to complete
+            time.sleep(0.5)
+
+            # Get list of current sleep processes after the test
+            sleep_pids_after = {
+                p.pid for p in psutil.process_iter() if p.name() == "sleep"
+            }
+
+            # There should be no new sleep processes lingering
+            # (all processes started should have been terminated)
+            new_sleep_pids = sleep_pids_after - sleep_pids_before
+            assert len(new_sleep_pids) == 0, (
+                f"Expected no new sleep processes, but found {len(new_sleep_pids)} lingering: {new_sleep_pids}"
+            )
+
+    finally:
+        # Clean up the temp file
+        Path(tmp_path).unlink(missing_ok=True)
