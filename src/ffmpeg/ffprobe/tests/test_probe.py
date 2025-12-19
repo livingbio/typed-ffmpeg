@@ -1,5 +1,10 @@
+import subprocess
+import tempfile
+import time
 from dataclasses import asdict
 from pathlib import Path
+from typing import cast
+from unittest.mock import patch
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
@@ -145,3 +150,80 @@ def test_probe_complete(path: Path, snapshot: SnapshotAssertion) -> None:
     )
     assert obj is not None
     snapshot(name="obj", extension_class=JSONSnapshotExtension) == asdict(obj)
+
+
+def test_probe_timeout_cleanup() -> None:
+    """
+    Test that ffprobe subprocess is properly cleaned up when timeout occurs.
+
+    This test verifies that when a TimeoutExpired exception is raised,
+    the subprocess is terminated and pipes are closed, preventing memory leaks.
+    """
+    with tempfile.NamedTemporaryFile(suffix=".mp4", delete=False) as tmp:
+        tmp_path = tmp.name
+        # Write some minimal data so the file exists
+        tmp.write(b"fake video data")
+
+    tracked_process: subprocess.Popen[bytes] | None = None
+
+    try:
+        # Mock subprocess to track the created process
+        original_popen = subprocess.Popen
+
+        def mock_popen(*args: object, **kwargs: object) -> object:
+            nonlocal tracked_process
+            # Check if this is an ffprobe command
+            # args can be a list or string depending on shell parameter
+            args_list = args[0] if args else []
+            cmd_str = (
+                " ".join(args_list)
+                if isinstance(args_list, list | tuple)
+                else str(args_list)
+            )
+            if "ffprobe" in cmd_str:
+                # Replace with a sleep command that takes longer than timeout
+                new_args = ["sleep", "30"]
+                proc = cast(subprocess.Popen[bytes], original_popen(new_args, **kwargs))  # type: ignore[call-overload]
+                tracked_process = proc
+                return proc
+            return original_popen(*args, **kwargs)  # type: ignore[call-overload]
+
+        with patch("subprocess.Popen", side_effect=mock_popen):
+            # Try to probe with a very short timeout
+            # This should raise TimeoutExpired
+            with pytest.raises(subprocess.TimeoutExpired):
+                probe(tmp_path, timeout=1)  # 1 second timeout
+
+            # Verify the tracked process was created and properly cleaned up
+            assert tracked_process is not None, "Process should have been created"
+
+            # Poll with timeout to check process termination
+            max_wait_time = 1.0  # Maximum time to wait for process termination
+            start_time = time.time()
+            while time.time() - start_time < max_wait_time:
+                exit_code = tracked_process.poll()
+                if exit_code is not None:
+                    # Process has terminated successfully
+                    break
+                time.sleep(0.05)  # Small polling interval
+            else:
+                # Timeout waiting for process to terminate
+                pytest.fail(
+                    f"Process should have been terminated but is still running after {max_wait_time}s (PID: {tracked_process.pid})"
+                )
+
+            # Verify pipes were closed (after assertion, we know tracked_process is not None)
+            assert (
+                tracked_process.stdout is not None and tracked_process.stdout.closed
+            ), "stdout pipe should be closed"
+            assert (
+                tracked_process.stderr is not None and tracked_process.stderr.closed
+            ), "stderr pipe should be closed"
+
+    finally:
+        # Clean up the temp file
+        Path(tmp_path).unlink(missing_ok=True)
+        # Ensure process is terminated even if test fails
+        if tracked_process and tracked_process.poll() is None:
+            tracked_process.kill()
+            tracked_process.wait()

@@ -102,10 +102,28 @@ def _probe(
     logger.info("Running ffprobe command: %s", command_line(args))
     p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-    if timeout is not None:
-        out, err = p.communicate(timeout=timeout)
-    else:
-        out, err = p.communicate()
+    try:
+        if timeout is not None:
+            out, err = p.communicate(timeout=timeout)
+        else:
+            out, err = p.communicate()
+    except subprocess.TimeoutExpired:
+        # Clean up the process when timeout occurs
+        p.terminate()
+        # Wait briefly for graceful termination
+        try:
+            p.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            # Force kill if termination didn't work
+            p.kill()
+            p.wait()
+        # Close the pipes to free resources
+        if p.stdout:
+            p.stdout.close()
+        if p.stderr:
+            p.stderr.close()
+        # Re-raise the original exception
+        raise
 
     retcode = p.poll()
     if p.returncode != 0:
