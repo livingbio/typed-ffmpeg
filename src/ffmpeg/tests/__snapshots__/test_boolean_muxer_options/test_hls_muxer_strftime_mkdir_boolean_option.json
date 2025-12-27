@@ -1,0 +1,9 @@
+[
+  "ffmpeg",
+  "-i",
+  "input1.mp4",
+  "-f",
+  "hls",
+  "-strftime_mkdir",
+  "out.m3u8"
+]
