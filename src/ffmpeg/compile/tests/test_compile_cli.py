@@ -39,6 +39,76 @@ def test_get_args_custom_filter(snapshot: SnapshotAssertion) -> None:
     assert snapshot == get_args(graph)
 
 
+def test_boolean_options_in_muxer() -> None:
+    """Test that boolean options in muxer context are converted to 1/0."""
+    from ...formats.muxers import segment
+
+    input_stream = input("input.mp4")
+    output_stream = input_stream.output(
+        filename="output_%03d.mp4",
+        muxer_options=segment(
+            strftime=True,
+            reset_timestamps=False,
+        ),
+    )
+
+    compiled = compile(output_stream)
+    # Boolean values should be converted to 1/0, not -option/-nooption
+    assert "-strftime 1" in compiled
+    assert "-reset_timestamps 0" in compiled
+    # Should not have Python's True/False or -option without value
+    assert "True" not in compiled
+    assert "False" not in compiled
+
+
+def test_boolean_options_in_output() -> None:
+    """Test that boolean options in output are converted to 1/0."""
+    input_stream = input("input.mp4")
+    output_stream = input_stream.output(
+        filename="output.mp4",
+        shortest=True,
+        an=False,
+    )
+
+    compiled = compile(output_stream)
+    # Boolean values should be converted to 1/0
+    assert "-shortest 1" in compiled
+    assert "-an 0" in compiled
+    # Should not have Python's True/False
+    assert "True" not in compiled
+    assert "False" not in compiled
+
+
+def test_boolean_options_in_input() -> None:
+    """Test that boolean options in input are converted to 1/0."""
+    input_stream = input("input.mp4", extra_options={"re": True, "nostdin": False})
+    output_stream = input_stream.output(filename="output.mp4")
+
+    compiled = compile(output_stream)
+    # Boolean values should be converted to 1/0
+    assert "-re 1" in compiled
+    assert "-nostdin 0" in compiled
+    # Should not have Python's True/False
+    assert "True" not in compiled
+    assert "False" not in compiled
+
+
+def test_boolean_options_in_global() -> None:
+    """Test that boolean options in global context are converted to 1/0."""
+    input_stream = input("input.mp4")
+    output_stream = input_stream.output(filename="output.mp4").global_args(
+        y=True, stats=False
+    )
+
+    compiled = compile(output_stream)
+    # Boolean values should be converted to 1/0
+    assert "-y 1" in compiled
+    assert "-stats 0" in compiled
+    # Should not have Python's True/False
+    assert "True" not in compiled
+    assert "False" not in compiled
+
+
 @pytest.mark.parametrize(
     "command",
     [

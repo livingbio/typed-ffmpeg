@@ -798,7 +798,7 @@ def get_args_input_node(node: InputNode, context: DAGContext) -> list[str]:
     This method creates the command-line arguments needed to specify
     this input file to FFmpeg, including any input-specific options.
     Options are converted to FFmpeg's command-line format, with boolean
-    options using -option or -nooption syntax.
+    options converted to 1/0 values as required by FFmpeg.
 
     Args:
         node: The InputNode to generate arguments for
@@ -814,11 +814,9 @@ def get_args_input_node(node: InputNode, context: DAGContext) -> list[str]:
     """
     commands = []
     for key, value in node.kwargs.items():
+        # Note: Convert boolean values to 1/0 as required by FFmpeg AVOptions
         if isinstance(value, bool):
-            if value is True:
-                commands += [f"-{key}"]
-            elif value is False:
-                commands += [f"-no{key}"]
+            commands += [f"-{key}", str(int(value))]
         else:
             commands += [f"-{key}", str(value)]
     commands += ["-i", node.filename]
@@ -876,11 +874,9 @@ def get_args_output_node(node: OutputNode, context: DAGContext) -> list[str]:
                 commands += ["-map", f"[{get_stream_label(input, context)}]"]
 
     for key, value in node.kwargs.items():
+        # Note: Convert boolean values to 1/0 as required by FFmpeg AVOptions
         if isinstance(value, bool):
-            if value is True:
-                commands += [f"-{key}"]
-            elif value is False:
-                commands += [f"-no{key}"]
+            commands += [f"-{key}", str(int(value))]
         else:
             commands += [f"-{key}", str(value)]
     commands += [node.filename]
@@ -893,8 +889,8 @@ def get_args_global_node(node: GlobalNode, context: DAGContext) -> list[str]:
 
     This method creates the command-line arguments needed to specify
     global options to FFmpeg, such as -y for overwrite or -loglevel for
-    controlling log output. Boolean options are converted to -option or
-    -nooption syntax.
+    controlling log output. Boolean options are converted to 1/0 values
+    as required by FFmpeg.
 
     Args:
         node: The GlobalNode to generate arguments for
@@ -905,16 +901,14 @@ def get_args_global_node(node: GlobalNode, context: DAGContext) -> list[str]:
 
     Example:
         For global options like overwrite and quiet logging:
-        ['-y', '-loglevel', 'quiet']
+        ['-y', '1', '-loglevel', 'quiet']
 
     """
     commands = []
     for key, value in node.kwargs.items():
+        # Note: Convert boolean values to 1/0 as required by FFmpeg AVOptions
         if isinstance(value, bool):
-            if value is True:
-                commands += [f"-{key}"]
-            elif value is False:
-                commands += [f"-no{key}"]
+            commands += [f"-{key}", str(int(value))]
         else:
             commands += [f"-{key}", str(value)]
     return commands
