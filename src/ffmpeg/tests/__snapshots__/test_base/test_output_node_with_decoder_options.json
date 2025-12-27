@@ -1,6 +1,7 @@
 [
   "ffmpeg",
   "-is_avc",
+  "1",
   "-i",
   "input1",
   "out.mp4"

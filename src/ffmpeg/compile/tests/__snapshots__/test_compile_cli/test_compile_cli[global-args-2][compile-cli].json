@@ -1,6 +1,8 @@
 [
   "-hide_banner",
+  "1",
   "-dump",
+  "1",
   "-i",
   "input1.mp4",
   "-map",
