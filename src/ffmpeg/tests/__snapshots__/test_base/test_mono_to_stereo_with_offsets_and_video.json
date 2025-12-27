@@ -1,6 +1,7 @@
 [
   "ffmpeg",
   "-y",
+  "1",
   "-i",
   "audio-left.wav",
   "-i",
@@ -14,6 +15,7 @@
   "-map",
   "2:v",
   "-shortest",
+  "1",
   "-vcodec",
   "copy",
   "output-video.mp4"

@@ -1,6 +1,7 @@
 [
   "ffmpeg",
   "-y",
+  "1",
   "-i",
   "input_video.mp4",
   "-i",
@@ -10,6 +11,7 @@
   "-map",
   "1:a",
   "-shortest",
+  "1",
   "-vcodec",
   "copy",
   "-acodec",
