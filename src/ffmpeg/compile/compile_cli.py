@@ -814,7 +814,7 @@ def get_args_input_node(node: InputNode, context: DAGContext) -> list[str]:
     """
     commands = []
     for key, value in node.kwargs.items():
-        # Note: Convert boolean values to 1/0 as required by FFmpeg AVOptions
+        # Note: the -nooption syntax cannot be used for boolean AVOptions, use -option 0/-option 1.
         if isinstance(value, bool):
             commands += [f"-{key}", str(int(value))]
         else:
@@ -874,7 +874,7 @@ def get_args_output_node(node: OutputNode, context: DAGContext) -> list[str]:
                 commands += ["-map", f"[{get_stream_label(input, context)}]"]
 
     for key, value in node.kwargs.items():
-        # Note: Convert boolean values to 1/0 as required by FFmpeg AVOptions
+        # Note: the -nooption syntax cannot be used for boolean AVOptions, use -option 0/-option 1.
         if isinstance(value, bool):
             commands += [f"-{key}", str(int(value))]
         else:
@@ -906,7 +906,7 @@ def get_args_global_node(node: GlobalNode, context: DAGContext) -> list[str]:
     """
     commands = []
     for key, value in node.kwargs.items():
-        # Note: Convert boolean values to 1/0 as required by FFmpeg AVOptions
+        # Note: the -nooption syntax cannot be used for boolean AVOptions, use -option 0/-option 1.
         if isinstance(value, bool):
             commands += [f"-{key}", str(int(value))]
         else:
