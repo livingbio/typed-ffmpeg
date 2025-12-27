@@ -69,7 +69,17 @@ class FFMpegOptionGroup(dict[str, Any]):
         Returns:
             A dictionary of AV options.
         """
-        return {k: v if isinstance(v, bool) else 0 if v is True else 1 if v is False else v for k, v in self.items() if v is not None}
+
+
+        output = {}
+        for k, v in self.items():
+            if v is None:
+                continue
+            if isinstance(v, bool):
+                output[k] = 1 if v is True else 0
+            else:
+                output[k] = v
+        return output
 
 
 __all__ = [

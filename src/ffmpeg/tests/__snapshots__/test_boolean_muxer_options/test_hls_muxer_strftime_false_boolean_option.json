@@ -4,6 +4,7 @@
   "input1.mp4",
   "-f",
   "hls",
-  "-nostrftime",
+  "-strftime",
+  "0",
   "out.m3u8"
 ]
