@@ -356,6 +356,6 @@ class OutputArgs(ABC):
                 muxer_options.as_av_options() if muxer_options else None,
                 format_options.as_av_options() if format_options else None,
                 codec_options.as_av_options() if codec_options else None,
-                extra_options.as_av_options() if extra_options else None,
+                extra_options,
             ),
         ).stream()
