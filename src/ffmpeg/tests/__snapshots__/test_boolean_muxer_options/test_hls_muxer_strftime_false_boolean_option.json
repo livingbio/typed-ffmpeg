@@ -1,0 +1,10 @@
+[
+  "ffmpeg",
+  "-i",
+  "input1.mp4",
+  "-f",
+  "hls",
+  "-strftime",
+  "0",
+  "out.m3u8"
+]

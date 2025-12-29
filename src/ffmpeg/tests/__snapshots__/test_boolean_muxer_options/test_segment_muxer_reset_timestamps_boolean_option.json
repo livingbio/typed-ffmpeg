@@ -1,0 +1,10 @@
+[
+  "ffmpeg",
+  "-i",
+  "input1.mp4",
+  "-f",
+  "segment",
+  "-reset_timestamps",
+  "1",
+  "out%03d.mp4"
+]

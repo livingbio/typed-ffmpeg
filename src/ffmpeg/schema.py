@@ -59,7 +59,26 @@ class FFMpegOptionGroup(dict[str, Any]):
     This class is used to group options together, such as a codec or format.
     """
 
-    ...
+    def as_av_options(self) -> dict[str, Any]:
+        """
+        Convert the option group to a dictionary of AV options.
+
+        AV options are the options that are used to configure the codec, format, or filter.
+        Boolean options are converted to their corresponding flags. if v is a boolean, it is converted to 0 or 1.
+
+        Returns:
+            A dictionary of AV options.
+
+        """
+        output = {}
+        for k, v in self.items():
+            if v is None:
+                continue
+            if isinstance(v, bool):
+                output[k] = 1 if v is True else 0
+            else:
+                output[k] = v
+        return output
 
 
 __all__ = [
