@@ -304,8 +304,7 @@ class TestRunAsync:
         """Test that run_async returns an asyncio.subprocess.Process."""
         stream = input("test.mp4").output(filename="output.mp4")
 
-        # Use a simple command that will fail but shows the method works
-        # We use 'echo' command to verify the async functionality
+        # Use a simple echo command to verify the async functionality works
         process = await stream.run_async(cmd=["echo", "test"])
 
         assert isinstance(process, asyncio.subprocess.Process)
