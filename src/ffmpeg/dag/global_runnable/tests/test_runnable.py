@@ -5,6 +5,7 @@ This module tests the execution capabilities of FFmpeg filter graphs,
 including compilation, running, and the new use_filter_complex_script feature.
 """
 
+import asyncio
 import io
 import subprocess
 import sys
@@ -293,3 +294,52 @@ class TestTeeStderrParameterBehavior:
 
         assert args1 == args2
         assert len(args1) > 0
+
+
+class TestRunAsyncAwaitable:
+    """Tests for the async run_async_awaitable method using asyncio.subprocess."""
+
+    @pytest.mark.asyncio
+    async def test_run_async_awaitable_returns_asyncio_process(self) -> None:
+        """Test that run_async_awaitable returns an asyncio.subprocess.Process."""
+        stream = input("test.mp4").output(filename="output.mp4")
+
+        # Use a simple echo command to verify the async functionality works
+        process = await stream.run_async_awaitable(cmd=["echo", "test"])
+
+        assert isinstance(process, asyncio.subprocess.Process)
+        await process.wait()
+
+    @pytest.mark.asyncio
+    async def test_run_async_awaitable_with_pipes(self) -> None:
+        """Test that run_async_awaitable works with pipe options."""
+        stream = input("test.mp4").output(filename="output.mp4")
+
+        # Use echo command to test piping
+        process = await stream.run_async_awaitable(
+            cmd=["echo", "hello"], pipe_stdout=True, pipe_stderr=True
+        )
+
+        assert isinstance(process, asyncio.subprocess.Process)
+        assert process.stdout is not None
+        assert process.stderr is not None
+
+        stdout, _stderr = await process.communicate()
+        assert b"hello" in stdout
+        assert process.returncode == 0
+
+    @pytest.mark.asyncio
+    async def test_run_async_awaitable_is_awaitable(self) -> None:
+        """Test that run_async_awaitable method is directly awaitable."""
+        stream = input("test.mp4").output(filename="output.mp4")
+
+        # The method should be awaitable without additional wrapper
+        result = stream.run_async_awaitable(cmd=["echo", "test"])
+
+        # result should be a coroutine
+        assert asyncio.iscoroutine(result)
+
+        # Consume the coroutine
+        process = await result
+        assert isinstance(process, asyncio.subprocess.Process)
+        await process.wait()

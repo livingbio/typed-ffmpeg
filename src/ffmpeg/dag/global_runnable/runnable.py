@@ -9,6 +9,7 @@ and asynchronously.
 
 from __future__ import annotations
 
+import asyncio
 import logging
 import subprocess
 import sys
@@ -302,6 +303,78 @@ class GlobalRunable(GlobalArgs):
 
         return subprocess.Popen(
             args,
+            stdin=stdin_stream,
+            stdout=stdout_stream,
+            stderr=stderr_stream,
+        )
+
+    async def run_async_awaitable(
+        self,
+        cmd: str | list[str] = "ffmpeg",
+        pipe_stdin: bool = False,
+        pipe_stdout: bool = False,
+        pipe_stderr: bool = False,
+        quiet: bool = False,
+        overwrite_output: bool | None = None,
+        auto_fix: bool = True,
+        use_filter_complex_script: bool = False,
+    ) -> asyncio.subprocess.Process:
+        """
+        Run FFmpeg asynchronously using asyncio.
+
+        This method executes the FFmpeg command as an asyncio subprocess,
+        returning an asyncio.subprocess.Process object that can be awaited.
+        This is useful for long-running operations in async code or when you
+        need to interact with the process while it's running in an async context.
+
+        Args:
+            cmd: The FFmpeg executable name or path, or a list containing
+                 the executable and initial arguments
+            pipe_stdin: Whether to create a pipe for writing to the process's stdin
+            pipe_stdout: Whether to create a pipe for reading from the process's stdout
+            pipe_stderr: Whether to create a pipe for reading from the process's stderr
+            quiet: Whether to capture stderr (implies pipe_stderr=True)
+            overwrite_output: If True, add the -y option to overwrite output files
+                             If False, add the -n option to never overwrite
+                             If None (default), use the current settings
+            auto_fix: Whether to automatically fix issues in the filter graph
+            use_filter_complex_script: If True, use -filter_complex_script with a
+                                      temporary file instead of -filter_complex
+
+        Returns:
+            An asyncio.subprocess.Process object representing the running FFmpeg process
+
+        Example:
+            ```python
+            async def main():
+                # Start FFmpeg process and interact with it
+                process = (
+                    await ffmpeg.input("input.mp4")
+                    .output("output.mp4")
+                    .run_async_awaitable()
+                )
+                # Do something while FFmpeg is running
+                await process.wait()  # Wait for completion
+
+
+            asyncio.run(main())
+            ```
+
+        """
+        args = self.compile(
+            cmd,
+            overwrite_output=overwrite_output,
+            auto_fix=auto_fix,
+            use_filter_complex_script=use_filter_complex_script,
+        )
+        stdin_stream = asyncio.subprocess.PIPE if pipe_stdin else None
+        stdout_stream = asyncio.subprocess.PIPE if pipe_stdout or quiet else None
+        stderr_stream = asyncio.subprocess.PIPE if pipe_stderr or quiet else None
+
+        logger.info(f"Running command: {' '.join(args)}")
+
+        return await asyncio.create_subprocess_exec(
+            *args,
             stdin=stdin_stream,
             stdout=stdout_stream,
             stderr=stderr_stream,
