@@ -5,6 +5,7 @@ This module tests the execution capabilities of FFmpeg filter graphs,
 including compilation, running, and the new use_filter_complex_script feature.
 """
 
+import asyncio
 import io
 import subprocess
 import sys
@@ -301,8 +302,6 @@ class TestRunAsync:
     @pytest.mark.asyncio
     async def test_run_async_returns_asyncio_process(self) -> None:
         """Test that run_async returns an asyncio.subprocess.Process."""
-        import asyncio
-
         stream = input("test.mp4").output(filename="output.mp4")
 
         # Use a simple command that will fail but shows the method works
@@ -315,8 +314,6 @@ class TestRunAsync:
     @pytest.mark.asyncio
     async def test_run_async_with_pipes(self) -> None:
         """Test that run_async works with pipe options."""
-        import asyncio
-
         stream = input("test.mp4").output(filename="output.mp4")
 
         # Use echo command to test piping
@@ -335,8 +332,6 @@ class TestRunAsync:
     @pytest.mark.asyncio
     async def test_run_async_is_awaitable(self) -> None:
         """Test that run_async method is directly awaitable."""
-        import asyncio
-
         stream = input("test.mp4").output(filename="output.mp4")
 
         # The method should be awaitable without additional wrapper

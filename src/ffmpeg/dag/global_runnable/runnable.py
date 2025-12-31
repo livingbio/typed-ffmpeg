@@ -337,9 +337,6 @@ class GlobalRunable(GlobalArgs):
 
         Example:
             ```python
-            import asyncio
-
-
             async def main():
                 # Start FFmpeg process and interact with it
                 process = (
