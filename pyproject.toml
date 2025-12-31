@@ -179,3 +179,4 @@ markers = [
     "dev_only: marks tests to be run only on the main branch"
 ]
 addopts = "--cov-report=term-missing"
+asyncio_mode = "auto"
