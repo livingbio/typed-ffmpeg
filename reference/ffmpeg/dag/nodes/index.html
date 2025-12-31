@@ -2238,6 +2238,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ffmpeg.dag.nodes.GlobalStream.run_async_awaitable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;run_async_awaitable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ffmpeg.dag.nodes.GlobalStream.view" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2656,6 +2667,17 @@
     <span class="md-ellipsis">
       
         <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;run_async
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ffmpeg.dag.nodes.OutputStream.run_async_awaitable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;run_async_awaitable
       
     </span>
   </a>
@@ -5640,6 +5662,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ffmpeg.dag.nodes.GlobalStream.run_async_awaitable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;run_async_awaitable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ffmpeg.dag.nodes.GlobalStream.view" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6058,6 +6091,17 @@
     <span class="md-ellipsis">
       
         <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;run_async
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ffmpeg.dag.nodes.OutputStream.run_async_awaitable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;run_async_awaitable
       
     </span>
   </a>
@@ -11757,6 +11801,19 @@ command construction process.</p>
               </td>
             </tr>
             <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            run_async_awaitable
+
+
+  
+      async
+   (ffmpeg.dag.nodes.GlobalStream.run_async_awaitable)" href="#ffmpeg.dag.nodes.GlobalStream.run_async_awaitable">run_async_awaitable</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Run FFmpeg asynchronously using asyncio.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
               <td><code><a class="autorefs autorefs-internal" title="            view (ffmpeg.dag.nodes.GlobalStream.view)" href="#ffmpeg.dag.nodes.GlobalStream.view">view</a></code></td>
               <td>
                 <div class="doc-md-description">
@@ -14233,6 +14290,230 @@ or when you need to interact with the process while it's running.</p>
 <div class="doc doc-object doc-function">
 
 
+<h3 id="ffmpeg.dag.nodes.GlobalStream.run_async_awaitable" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">run_async_awaitable</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+<a href="#ffmpeg.dag.nodes.GlobalStream.run_async_awaitable" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">run_async_awaitable</span><span class="p">(</span>
+    <span class="n">cmd</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ffmpeg&quot;</span><span class="p">,</span>
+    <span class="n">pipe_stdin</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">pipe_stdout</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">pipe_stderr</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">quiet</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">overwrite_output</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">auto_fix</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">use_filter_complex_script</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="asyncio.subprocess.Process">Process</span></span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Run FFmpeg asynchronously using asyncio.</p>
+<p>This method executes the FFmpeg command as an asyncio subprocess,
+returning an asyncio.subprocess.Process object that can be awaited.
+This is useful for long-running operations in async code or when you
+need to interact with the process while it's running in an async context.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>cmd</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | <span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The FFmpeg executable name or path, or a list containing
+ the executable and initial arguments</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;ffmpeg&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pipe_stdin</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to create a pipe for writing to the process's stdin</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pipe_stdout</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to create a pipe for reading from the process's stdout</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pipe_stderr</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to create a pipe for reading from the process's stderr</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>quiet</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to capture stderr (implies pipe_stderr=True)</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>overwrite_output</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If True, add the -y option to overwrite output files
+             If False, add the -n option to never overwrite
+             If None (default), use the current settings</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>auto_fix</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to automatically fix issues in the filter graph</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>use_filter_complex_script</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If True, use -filter_complex_script with a
+                      temporary file instead of -filter_complex</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="asyncio.subprocess.Process">Process</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>An asyncio.subprocess.Process object representing the running FFmpeg process</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <div class="language-python highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Start FFmpeg process and interact with it</span>
+    <span class="n">process</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="k">await</span> <span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">&quot;input.mp4&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="s2">&quot;output.mp4&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">run_async_awaitable</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="c1"># Do something while FFmpeg is running</span>
+    <span class="k">await</span> <span class="n">process</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>  <span class="c1"># Wait for completion</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+</details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h3 id="ffmpeg.dag.nodes.GlobalStream.view" class="doc doc-heading">
 <code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">view</span>
 
@@ -16090,6 +16371,19 @@ the FFmpeg command.</p>
               <td>
                 <div class="doc-md-description">
                   <p>Run FFmpeg asynchronously as a subprocess.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            run_async_awaitable
+
+
+  
+      async
+   (ffmpeg.dag.nodes.OutputStream.run_async_awaitable)" href="#ffmpeg.dag.nodes.OutputStream.run_async_awaitable">run_async_awaitable</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Run FFmpeg asynchronously using asyncio.</p>
                 </div>
               </td>
             </tr>
@@ -18560,6 +18854,230 @@ or when you need to interact with the process while it's running.</p>
 <span class="n">process</span> <span class="o">=</span> <span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">&quot;input.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="s2">&quot;output.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">run_async</span><span class="p">()</span>
 <span class="c1"># Do something while FFmpeg is running</span>
 <span class="n">process</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>  <span class="c1"># Wait for completion</span>
+</code></pre></div>
+</details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ffmpeg.dag.nodes.OutputStream.run_async_awaitable" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">run_async_awaitable</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+<a href="#ffmpeg.dag.nodes.OutputStream.run_async_awaitable" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">run_async_awaitable</span><span class="p">(</span>
+    <span class="n">cmd</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ffmpeg&quot;</span><span class="p">,</span>
+    <span class="n">pipe_stdin</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">pipe_stdout</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">pipe_stderr</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">quiet</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">overwrite_output</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">auto_fix</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">use_filter_complex_script</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="asyncio.subprocess.Process">Process</span></span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Run FFmpeg asynchronously using asyncio.</p>
+<p>This method executes the FFmpeg command as an asyncio subprocess,
+returning an asyncio.subprocess.Process object that can be awaited.
+This is useful for long-running operations in async code or when you
+need to interact with the process while it's running in an async context.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>cmd</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | <span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The FFmpeg executable name or path, or a list containing
+ the executable and initial arguments</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;ffmpeg&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pipe_stdin</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to create a pipe for writing to the process's stdin</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pipe_stdout</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to create a pipe for reading from the process's stdout</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pipe_stderr</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to create a pipe for reading from the process's stderr</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>quiet</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to capture stderr (implies pipe_stderr=True)</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>overwrite_output</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If True, add the -y option to overwrite output files
+             If False, add the -n option to never overwrite
+             If None (default), use the current settings</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>auto_fix</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to automatically fix issues in the filter graph</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>use_filter_complex_script</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If True, use -filter_complex_script with a
+                      temporary file instead of -filter_complex</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="asyncio.subprocess.Process">Process</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>An asyncio.subprocess.Process object representing the running FFmpeg process</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <div class="language-python highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Start FFmpeg process and interact with it</span>
+    <span class="n">process</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="k">await</span> <span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">&quot;input.mp4&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="s2">&quot;output.mp4&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">run_async_awaitable</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="c1"># Do something while FFmpeg is running</span>
+    <span class="k">await</span> <span class="n">process</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>  <span class="c1"># Wait for completion</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </code></pre></div>
 </details>
 
