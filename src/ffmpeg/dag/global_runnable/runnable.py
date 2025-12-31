@@ -245,7 +245,7 @@ class GlobalRunable(GlobalArgs):
             )
         )
 
-    def _run_async_subprocess(
+    def run_async(
         self,
         cmd: str | list[str] = "ffmpeg",
         pipe_stdin: bool = False,
@@ -257,10 +257,11 @@ class GlobalRunable(GlobalArgs):
         use_filter_complex_script: bool = False,
     ) -> subprocess.Popen[bytes]:
         """
-        Run FFmpeg as a subprocess using subprocess.Popen (internal method).
+        Run FFmpeg asynchronously as a subprocess.
 
-        This is an internal method used by synchronous execution methods.
-        For async execution, use the run_async() method instead.
+        This method executes the FFmpeg command in a separate process without
+        waiting for it to complete. This is useful for long-running operations
+        or when you need to interact with the process while it's running.
 
         Args:
             cmd: The FFmpeg executable name or path, or a list containing
@@ -278,6 +279,14 @@ class GlobalRunable(GlobalArgs):
 
         Returns:
             A subprocess.Popen object representing the running FFmpeg process
+
+        Example:
+            ```python
+            # Start FFmpeg process and interact with it
+            process = ffmpeg.input("input.mp4").output("output.mp4").run_async()
+            # Do something while FFmpeg is running
+            process.wait()  # Wait for completion
+            ```
 
         """
         args = self.compile(
@@ -299,7 +308,7 @@ class GlobalRunable(GlobalArgs):
             stderr=stderr_stream,
         )
 
-    async def run_async(
+    async def run_async_awaitable(
         self,
         cmd: str | list[str] = "ffmpeg",
         pipe_stdin: bool = False,
@@ -340,7 +349,10 @@ class GlobalRunable(GlobalArgs):
             async def main():
                 # Start FFmpeg process and interact with it
                 process = (
-                    await ffmpeg.input("input.mp4").output("output.mp4").run_async()
+                    await ffmpeg
+                    .input("input.mp4")
+                    .output("output.mp4")
+                    .run_async_awaitable()
                 )
                 # Do something while FFmpeg is running
                 await process.wait()  # Wait for completion
@@ -403,7 +415,7 @@ class GlobalRunable(GlobalArgs):
 
         """
         # Decide pipes explicitly; ignore quiet here to avoid pipe complications
-        process = self._run_async_subprocess(
+        process = self.run_async(
             cmd,
             pipe_stdin=input is not None,
             pipe_stdout=capture_stdout,
@@ -545,7 +557,7 @@ class GlobalRunable(GlobalArgs):
             )
         else:
             # Original behavior
-            process = self._run_async_subprocess(
+            process = self.run_async(
                 cmd,
                 pipe_stdin=input is not None,
                 pipe_stdout=capture_stdout,
