@@ -293,3 +293,59 @@ class TestTeeStderrParameterBehavior:
 
         assert args1 == args2
         assert len(args1) > 0
+
+
+class TestRunAsync:
+    """Tests for the async run_async method using asyncio.subprocess."""
+
+    @pytest.mark.asyncio
+    async def test_run_async_returns_asyncio_process(self) -> None:
+        """Test that run_async returns an asyncio.subprocess.Process."""
+        import asyncio
+
+        stream = input("test.mp4").output(filename="output.mp4")
+
+        # Use a simple command that will fail but shows the method works
+        # We use 'echo' command to verify the async functionality
+        process = await stream.run_async(cmd=["echo", "test"])
+
+        assert isinstance(process, asyncio.subprocess.Process)
+        await process.wait()
+
+    @pytest.mark.asyncio
+    async def test_run_async_with_pipes(self) -> None:
+        """Test that run_async works with pipe options."""
+        import asyncio
+
+        stream = input("test.mp4").output(filename="output.mp4")
+
+        # Use echo command to test piping
+        process = await stream.run_async(
+            cmd=["echo", "hello"], pipe_stdout=True, pipe_stderr=True
+        )
+
+        assert isinstance(process, asyncio.subprocess.Process)
+        assert process.stdout is not None
+        assert process.stderr is not None
+
+        stdout, stderr = await process.communicate()
+        assert b"hello" in stdout
+        assert process.returncode == 0
+
+    @pytest.mark.asyncio
+    async def test_run_async_is_awaitable(self) -> None:
+        """Test that run_async method is directly awaitable."""
+        import asyncio
+
+        stream = input("test.mp4").output(filename="output.mp4")
+
+        # The method should be awaitable without additional wrapper
+        result = stream.run_async(cmd=["echo", "test"])
+
+        # result should be a coroutine
+        assert asyncio.iscoroutine(result)
+
+        # Consume the coroutine
+        process = await result
+        assert isinstance(process, asyncio.subprocess.Process)
+        await process.wait()
