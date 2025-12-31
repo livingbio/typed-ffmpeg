@@ -324,7 +324,7 @@ class TestRunAsyncAwaitable:
         assert process.stdout is not None
         assert process.stderr is not None
 
-        stdout, stderr = await process.communicate()
+        stdout, _stderr = await process.communicate()
         assert b"hello" in stdout
         assert process.returncode == 0
 

@@ -349,8 +349,7 @@ class GlobalRunable(GlobalArgs):
             async def main():
                 # Start FFmpeg process and interact with it
                 process = (
-                    await ffmpeg
-                    .input("input.mp4")
+                    await ffmpeg.input("input.mp4")
                     .output("output.mp4")
                     .run_async_awaitable()
                 )
