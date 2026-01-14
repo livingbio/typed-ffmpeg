@@ -144,11 +144,8 @@ See the [Usage](https://livingbio.github.io/typed-ffmpeg/usage/typed/) section i
 
 Try out `typed-ffmpeg` directly in your browser with our [Interactive Playground](https://livingbio.github.io/typed-ffmpeg-playground/)! The playground provides a live environment where you can:
 
-![typed-ffmpeg demo](docs/media/demo.gif)
-
+![typed-ffmpeg demo](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/demo.gif)
 ![Interactive Playground](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/playground-screenshot.png)
-
-
 
 - Experiment with FFmpeg filters and commands
 - Visualize filter graphs in real-time
