@@ -25,15 +25,16 @@ class CodecFlags(Flag):
     These flags correspond to the character flags in FFmpeg's codec information
     output and indicate what features a codec supports.
     """
-
-    video = auto()  # Codec supports video encoding/decoding
-    audio = auto()  # Codec supports audio encoding/decoding
-    subtitle = auto()  # Codec supports subtitle processing
-    frame_level_multithreading = auto()  # Codec supports frame-level multithreading
-    slice_level_multithreading = auto()  # Codec supports slice-level multithreading
-    experimental = auto()  # Codec is considered experimental
-    draw_horiz_band = auto()  # Codec supports drawing horizontal bands
-    direct_rendering_method_1 = auto()  # Codec supports direct rendering method 1
+    decoding = auto()
+    encoding = auto()
+    video = auto()
+    audio = auto()
+    subtitle = auto()
+    data = auto()
+    attachment = auto()
+    intraframe_only = auto()
+    lossy = auto()
+    lossless = auto()
 
 
 @dataclass(frozen=True)
