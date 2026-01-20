@@ -18,6 +18,7 @@ def parse_codec_flags():
 
 def parse_coder_flags():
     flags="VFSXBD"
+    
     resuult=parse_coder_flags(flags)
     assert result & CoderFlags.video
     assert result & CoderFlags.experimental
