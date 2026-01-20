@@ -16,10 +16,22 @@ def test_parse_codec_flags() -> None:
     assert result & CodecFlags.encoding
     assert result & CodecFlags.video
     assert result & CodecFlags.audio
+    assert result & CodecFlags.subtitle
+    assert result & CodecFlags.data
+    assert result & CodecFlags.attachment
+    assert result & CodecFlags.intraframe_only
+    assert result & CodecFlags.lossy
+    assert result & CodecFlags.lossless
 
 
 def test_parse_coder_flags() -> None:
     flags = "VFSXBD"
     result = parse_coder_flags(flags)
     assert result & CoderFlags.video
+    assert result & CoderFlags.audio
+    assert result & CoderFlags.subtitle
+    assert result & CoderFlags.frame_level_multithreading
+    assert result & CoderFlags.slice_level_multithreading
     assert result & CoderFlags.experimental
+    assert result & CoderFlags.draw_horiz_band
+    assert result & CoderFlags.direct_rendering_method_1
