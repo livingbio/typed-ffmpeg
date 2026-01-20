@@ -175,9 +175,9 @@ def parse_coder_flags(flags: str) -> CoderFlags:
     flags_enum = CoderFlags(0)
     if flags[0] == "V":
         flags_enum |= CoderFlags.video
-    elif flags[0] == "A":
+    if flags[0] == "A":
         flags_enum |= CoderFlags.audio
-    elif flags[0] == "S":
+    if flags[0] == "S":
         flags_enum |= CoderFlags.subtitle
     if flags[1] == "F":
         flags_enum |= CoderFlags.frame_level_multithreading
