@@ -173,22 +173,22 @@ def parse_coder_flags(flags: str) -> CoderFlags:
 
     """
     flags_enum = CoderFlags(0)
-    if "V" in flags[0:3]:
+    if len(flags) > 0 and flags[0] == "V":
         flags_enum |= CoderFlags.video
-    if "A" in flags[0:3]:
+    if len(flags) > 1 and flags[1] == "A":
         flags_enum |= CoderFlags.audio
-    if "S" in flags[0:3]:
+    if len(flags) > 2 and flags[2] == "S":
         flags_enum |= CoderFlags.subtitle
 
-    if len(flags) > 1 and flags[1] == "F":
+    if len(flags) > 3 and flags[3] == "F":
         flags_enum |= CoderFlags.frame_level_multithreading
-    if len(flags) > 2 and flags[2] == "S":
+    if len(flags) > 4 and flags[4] == "S":
         flags_enum |= CoderFlags.slice_level_multithreading
-    if len(flags) > 3 and flags[3] == "X":
+    if len(flags) > 5 and flags[5] == "X":
         flags_enum |= CoderFlags.experimental
-    if len(flags) > 4 and flags[4] == "B":
+    if len(flags) > 6 and flags[6] == "B":
         flags_enum |= CoderFlags.draw_horiz_band
-    if len(flags) > 5 and flags[5] == "D":
+    if len(flags) > 7 and flags[7] == "D":
         flags_enum |= CoderFlags.direct_rendering_method_1
 
     return flags_enum
