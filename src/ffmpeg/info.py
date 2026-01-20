@@ -74,25 +74,25 @@ def parse_codec_flags(flags: str) -> CodecFlags:
 
     """
     flags_enum = CodecFlags(0)
-    if flags[0] == "D":
+    if len(flags) > 0 and flags[0] == "D":
         flags_enum |= CodecFlags.decoding
-    if flags[1] == "E":
+    if len(flags) > 1 and flags[1] == "E":
         flags_enum |= CodecFlags.encoding
-    if flags[2] == "V":
+    if len(flags) > 2 and flags[2] == "V":
         flags_enum |= CodecFlags.video
-    if flags[3] == "A":
+    if len(flags) > 3 and flags[3] == "A":
         flags_enum |= CodecFlags.audio
-    if flags[4] == "S":
+    if len(flags) > 4 and flags[4] == "S":
         flags_enum |= CodecFlags.subtitle
-    if flags[5] == "D":
+    if len(flags) > 5 and flags[5] == "D":
         flags_enum |= CodecFlags.data
-    if flags[6] == "T":
+    if len(flags) > 6 and flags[6] == "T":
         flags_enum |= CodecFlags.attachment
-    if flags[7] == "I":
+    if len(flags) > 7 and flags[7] == "I":
         flags_enum |= CodecFlags.intraframe_only
-    if flags[8] == "L":
+    if len(flags) > 8 and flags[8] == "L":
         flags_enum |= CodecFlags.lossy
-    if flags[9] == "S":
+    if len(flags) > 9 and flags[9] == "S":
         flags_enum |= CodecFlags.lossless
     return flags_enum
 
