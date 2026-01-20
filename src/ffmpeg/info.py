@@ -173,12 +173,11 @@ def parse_coder_flags(flags: str) -> CoderFlags:
 
     """
     flags_enum = CoderFlags(0)
-
-    if flags[0] == "V":
+    if "V" in flags[0:3]:
         flags_enum |= CoderFlags.video
-    if flags[0] == "A":
+    if "A" in flags[0:3]:
         flags_enum |= CoderFlags.audio
-    if flags[0] == "S":
+    if "S" in flags[0:3]:
         flags_enum |= CoderFlags.subtitle
 
     if flags[1] == "F":
