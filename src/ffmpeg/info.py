@@ -25,6 +25,7 @@ class CodecFlags(Flag):
     These flags correspond to the character flags in FFmpeg's codec information
     output and indicate what features a codec supports.
     """
+
     decoding = auto()
     encoding = auto()
     video = auto()
