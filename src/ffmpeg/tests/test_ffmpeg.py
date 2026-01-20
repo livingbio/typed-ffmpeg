@@ -25,9 +25,11 @@ def test_parse_codec_flags() -> None:
 
 
 def test_parse_coder_flags() -> None:
-    flags = "VFSXBD"
+    flags = "VASFSXBD"
     result = parse_coder_flags(flags)
     assert result & CoderFlags.video
+    assert result & CoderFlags.audio
+    assert result & CoderFlags.subtitle
     assert result & CoderFlags.frame_level_multithreading
     assert result & CoderFlags.slice_level_multithreading
     assert result & CoderFlags.experimental
