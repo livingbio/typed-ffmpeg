@@ -35,3 +35,13 @@ def test_parse_coder_flags() -> None:
     assert result & CoderFlags.experimental
     assert result & CoderFlags.draw_horiz_band
     assert result & CoderFlags.direct_rendering_method_1
+
+
+def test_parse_codec_flags_multiple() -> None:
+    result = parse_codec_flags("")
+    assert result == CodecFlags(0)
+
+
+def test_parse_coder_flags_multiple() -> None:
+    result = parse_coder_flags("")
+    assert result == CoderFlags(0)
