@@ -180,16 +180,17 @@ def parse_coder_flags(flags: str) -> CoderFlags:
     if "S" in flags[0:3]:
         flags_enum |= CoderFlags.subtitle
 
-    if flags[1] == "F":
+    if len(flags) > 1 and flags[1] == "F":
         flags_enum |= CoderFlags.frame_level_multithreading
-    if flags[2] == "S":
+    if len(flags) > 2 and flags[2] == "S":
         flags_enum |= CoderFlags.slice_level_multithreading
-    if flags[3] == "X":
+    if len(flags) > 3 and flags[3] == "X":
         flags_enum |= CoderFlags.experimental
-    if flags[4] == "B":
+    if len(flags) > 4 and flags[4] == "B":
         flags_enum |= CoderFlags.draw_horiz_band
-    if flags[5] == "D":
+    if len(flags) > 5 and flags[5] == "D":
         flags_enum |= CoderFlags.direct_rendering_method_1
+
     return flags_enum
 
 
