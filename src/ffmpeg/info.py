@@ -26,14 +26,16 @@ class CodecFlags(Flag):
     output and indicate what features a codec supports.
     """
 
-    video = auto()  # Codec supports video encoding/decoding
-    audio = auto()  # Codec supports audio encoding/decoding
-    subtitle = auto()  # Codec supports subtitle processing
-    frame_level_multithreading = auto()  # Codec supports frame-level multithreading
-    slice_level_multithreading = auto()  # Codec supports slice-level multithreading
-    experimental = auto()  # Codec is considered experimental
-    draw_horiz_band = auto()  # Codec supports drawing horizontal bands
-    direct_rendering_method_1 = auto()  # Codec supports direct rendering method 1
+    decoding = auto()
+    encoding = auto()
+    video = auto()
+    audio = auto()
+    subtitle = auto()
+    data = auto()
+    attachment = auto()
+    intraframe_only = auto()
+    lossy = auto()
+    lossless = auto()
 
 
 @dataclass(frozen=True)
@@ -72,22 +74,26 @@ def parse_codec_flags(flags: str) -> CodecFlags:
 
     """
     flags_enum = CodecFlags(0)
-    if flags[0] == "V":
+    if len(flags) > 0 and flags[0] == "D":
+        flags_enum |= CodecFlags.decoding
+    if len(flags) > 1 and flags[1] == "E":
+        flags_enum |= CodecFlags.encoding
+    if len(flags) > 2 and flags[2] == "V":
         flags_enum |= CodecFlags.video
-    if flags[0] == "A":
+    if len(flags) > 3 and flags[3] == "A":
         flags_enum |= CodecFlags.audio
-    if flags[0] == "S":
+    if len(flags) > 4 and flags[4] == "S":
         flags_enum |= CodecFlags.subtitle
-    if flags[1] == "F":
-        flags_enum |= CodecFlags.frame_level_multithreading
-    if flags[2] == "S":
-        flags_enum |= CodecFlags.slice_level_multithreading
-    if flags[3] == "X":
-        flags_enum |= CodecFlags.experimental
-    if flags[4] == "B":
-        flags_enum |= CodecFlags.draw_horiz_band
-    if flags[5] == "D":
-        flags_enum |= CodecFlags.direct_rendering_method_1
+    if len(flags) > 5 and flags[5] == "D":
+        flags_enum |= CodecFlags.data
+    if len(flags) > 6 and flags[6] == "T":
+        flags_enum |= CodecFlags.attachment
+    if len(flags) > 7 and flags[7] == "I":
+        flags_enum |= CodecFlags.intraframe_only
+    if len(flags) > 8 and flags[8] == "L":
+        flags_enum |= CodecFlags.lossy
+    if len(flags) > 9 and flags[9] == "S":
+        flags_enum |= CodecFlags.lossless
     return flags_enum
 
 
@@ -167,22 +173,24 @@ def parse_coder_flags(flags: str) -> CoderFlags:
 
     """
     flags_enum = CoderFlags(0)
-    if flags[0] == "V":
+    if len(flags) > 0 and flags[0] == "V":
         flags_enum |= CoderFlags.video
-    if flags[0] == "A":
+    if len(flags) > 1 and flags[1] == "A":
         flags_enum |= CoderFlags.audio
-    if flags[0] == "S":
+    if len(flags) > 2 and flags[2] == "S":
         flags_enum |= CoderFlags.subtitle
-    if flags[1] == "F":
+
+    if len(flags) > 3 and flags[3] == "F":
         flags_enum |= CoderFlags.frame_level_multithreading
-    if flags[2] == "S":
+    if len(flags) > 4 and flags[4] == "S":
         flags_enum |= CoderFlags.slice_level_multithreading
-    if flags[3] == "X":
+    if len(flags) > 5 and flags[5] == "X":
         flags_enum |= CoderFlags.experimental
-    if flags[4] == "B":
+    if len(flags) > 6 and flags[6] == "B":
         flags_enum |= CoderFlags.draw_horiz_band
-    if flags[5] == "D":
+    if len(flags) > 7 and flags[7] == "D":
         flags_enum |= CoderFlags.direct_rendering_method_1
+
     return flags_enum
 
 
