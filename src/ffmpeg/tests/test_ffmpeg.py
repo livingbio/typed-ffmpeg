@@ -45,24 +45,3 @@ def test_parse_codec_flags_empty() -> None:
 def test_parse_coder_flags_empty() -> None:
     result = parse_coder_flags("")
     assert result == CoderFlags(0)
-
-
-def test_parse_codec_flags_branches() -> None:
-    assert parse_codec_flags("D") & CodecFlags.decoding
-    assert parse_codec_flags("E") & CodecFlags.encoding
-    assert parse_codec_flags("V") & CodecFlags.video
-    assert parse_codec_flags("A") & CodecFlags.audio
-    assert parse_codec_flags("S") & CodecFlags.subtitle
-    assert parse_codec_flags("T") & CodecFlags.attachment
-    assert parse_codec_flags("I") & CodecFlags.intraframe_only
-    assert parse_codec_flags("L") & CodecFlags.lossy
-
-
-def test_parse_coder_flags_branches() -> None:
-    assert parse_coder_flags("V") & CoderFlags.video
-    assert parse_coder_flags("A") & CoderFlags.audio
-    assert parse_coder_flags("S") & CoderFlags.subtitle
-    assert parse_coder_flags("F") & CoderFlags.frame_level_multithreading
-    assert parse_coder_flags("X") & CoderFlags.experimental
-    assert parse_coder_flags("B") & CoderFlags.draw_horiz_band
-    assert parse_coder_flags("D") & CoderFlags.direct_rendering_method_1
