@@ -36,7 +36,6 @@ def test_parse_coder_flags() -> None:
     assert result & CoderFlags.draw_horiz_band
     assert result & CoderFlags.direct_rendering_method_1
 
-
 def test_parse_codec_flags_empty() -> None:
     result = parse_codec_flags("")
     assert result == CodecFlags(0)
