@@ -14,6 +14,8 @@ import logging
 import subprocess
 import sys
 import threading
+from asyncio.subprocess import PIPE as ASYNCIO_PIPE
+from asyncio.subprocess import Process as AsyncioProcess
 from typing import IO, TYPE_CHECKING
 
 from ...exceptions import FFMpegExecuteError
@@ -318,7 +320,7 @@ class GlobalRunable(GlobalArgs):
         overwrite_output: bool | None = None,
         auto_fix: bool = True,
         use_filter_complex_script: bool = False,
-    ) -> asyncio.subprocess.Process:
+    ) -> AsyncioProcess[str]:
         """
         Run FFmpeg asynchronously using asyncio.
 
@@ -367,14 +369,16 @@ class GlobalRunable(GlobalArgs):
             auto_fix=auto_fix,
             use_filter_complex_script=use_filter_complex_script,
         )
-        stdin_stream = asyncio.subprocess.PIPE if pipe_stdin else None
-        stdout_stream = asyncio.subprocess.PIPE if pipe_stdout or quiet else None
-        stderr_stream = asyncio.subprocess.PIPE if pipe_stderr or quiet else None
+        stdin_stream = ASYNCIO_PIPE if pipe_stdin else None
+        stdout_stream = ASYNCIO_PIPE if pipe_stdout or quiet else None
+        stderr_stream = ASYNCIO_PIPE if pipe_stderr or quiet else None
 
         logger.info(f"Running command: {' '.join(args)}")
 
+        program, *rest = args
         return await asyncio.create_subprocess_exec(
-            *args,
+            program,
+            *rest,
             stdin=stdin_stream,
             stdout=stdout_stream,
             stderr=stderr_stream,
