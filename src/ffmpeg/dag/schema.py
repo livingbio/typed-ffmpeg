@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field, replace
+from dataclasses import dataclass, replace
 from functools import cached_property
 from typing import Literal
 
@@ -55,8 +55,6 @@ class Stream(HashableBaseModel):
     Note:
         See Also: [Advanced options](https://ffmpeg.org/ffmpeg.html#Advanced-options)
     """
-
-    _hash: int = field(init=False, repr=False, compare=False, hash=False)
 
     def __post_init__(self) -> None:
         """Cache the hash value to avoid expensive recursive hash computation."""
@@ -118,8 +116,6 @@ class Node(HashableBaseModel):
     """
     Represents the input streams of the node.
     """
-
-    _hash: int = field(init=False, repr=False, compare=False, hash=False)
 
     def __post_init__(self) -> None:
         """
