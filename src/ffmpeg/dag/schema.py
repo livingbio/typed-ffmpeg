@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass, replace
+from dataclasses import dataclass, field, replace
 from functools import cached_property
 from typing import Literal
 
@@ -56,6 +56,23 @@ class Stream(HashableBaseModel):
         See Also: [Advanced options](https://ffmpeg.org/ffmpeg.html#Advanced-options)
     """
 
+    _hash: int = field(init=False, repr=False, compare=False, hash=False)
+
+    def __post_init__(self) -> None:
+        """Cache the hash value to avoid expensive recursive hash computation."""
+        # Compute hash based on all fields (using tuple hash like dataclass does)
+        object.__setattr__(self, "_hash", hash((self.node, self.index, self.optional)))
+
+    def __hash__(self) -> int:
+        """
+        Return the cached hash value.
+
+        Returns:
+            The cached hash computed in __post_init__.
+
+        """
+        return self._hash
+
     def view(self, format: Literal["png", "svg", "dot"] = "png") -> str:
         """
         Visualize the stream.
@@ -102,14 +119,20 @@ class Node(HashableBaseModel):
     Represents the input streams of the node.
     """
 
+    _hash: int = field(init=False, repr=False, compare=False, hash=False)
+
     def __post_init__(self) -> None:
         """
-        Validate that the graph is a DAG (Directed Acyclic Graph).
+        Validate that the graph is a DAG (Directed Acyclic Graph) and cache the hash value.
 
         Raises:
             ValueError: If the graph is not a DAG
 
         """
+        # Cache the hash value first to avoid expensive recursive hash computation
+        # Compute hash based on all fields (using tuple hash like dataclass does)
+        object.__setattr__(self, "_hash", hash((self.kwargs, self.inputs)))
+
         # Validate the DAG
         passed = set()
         nodes = [self]
@@ -128,6 +151,16 @@ class Node(HashableBaseModel):
 
         if not is_dag(output):
             raise ValueError(f"Graph is not a DAG: {output}")  # pragma: no cover
+
+    def __hash__(self) -> int:
+        """
+        Return the cached hash value.
+
+        Returns:
+            The cached hash computed in __post_init__.
+
+        """
+        return self._hash
 
     def repr(self) -> str:
         """
