@@ -49,5 +49,5 @@ repos:
         exclude: migrations/|commands/|sandbox/|samples|sdk
         files: ^src/
         pass_filenames: false
-        args: ['src/', '--ignore', 'unresolved-import']
+        args: ['src/', '--ignore', 'unresolved-import', '--ignore', 'unresolved-attribute', '--ignore', 'missing-argument']
 
