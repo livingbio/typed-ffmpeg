@@ -19,7 +19,7 @@ def get_cache_path() -> Path:
     relative to this module.
 
     Returns:
-        The path to the cache directory
+        Path: The cache directory path
 
     """
     if getattr(sys, "frozen", False):
