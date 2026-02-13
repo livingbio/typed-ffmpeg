@@ -10,6 +10,18 @@ T = TypeVar("T")
 
 
 def get_cache_path() -> Path:
+    """
+    Get the cache directory path.
+
+    Returns the cache directory path, creating it if it doesn't exist.
+    When running as a frozen application (e.g., PyInstaller), uses the
+    temporary extraction directory. Otherwise, uses the cache subdirectory
+    relative to this module.
+
+    Returns:
+        The path to the cache directory
+
+    """
     if getattr(sys, "frozen", False):
         base_path = Path(getattr(sys, "_MEIPASS", ""))
     else:
