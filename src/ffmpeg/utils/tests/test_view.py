@@ -26,7 +26,7 @@ def test_get_node_color_with_real_nodes() -> None:
     try:
         import graphviz  # type: ignore # noqa: F401
 
-        result = view(output, format="dot")
+        result = view(output.node, format="dot")
         assert isinstance(result, str)
     except ImportError:
         pytest.skip("graphviz not installed")
@@ -41,12 +41,12 @@ def test_view_requires_graphviz() -> None:
         import graphviz  # type: ignore # noqa: F401
 
         # If graphviz is available, test that view works
-        result = view(output, format="dot")
+        result = view(output.node, format="dot")
         assert isinstance(result, str)
     except ImportError:
         # If graphviz is not available, test that view raises ImportError
         with pytest.raises(ImportError) as exc_info:
-            view(output, format="dot")
+            view(output.node, format="dot")
         assert "graphviz" in str(exc_info.value).lower()
 
 
@@ -56,7 +56,7 @@ def test_view_with_simple_graph() -> None:
         import graphviz  # type: ignore # noqa: F401
 
         output = ffmpeg.input("input.mp4").output(filename="output.mp4")
-        result = view(output, format="dot")
+        result = view(output.node, format="dot")
         assert isinstance(result, str)
     except ImportError:
         pytest.skip("graphviz not installed")
@@ -69,11 +69,11 @@ def test_view_with_filter_chain() -> None:
 
         output = (
             ffmpeg.input("input.mp4")
-            .filter("scale", 1280, 720)
-            .filter("fps", fps=30)
+            .video.scale(w=1280, h=720)
+            .fps(fps=30)
             .output(filename="output.mp4")
         )
-        result = view(output, format="dot")
+        result = view(output.node, format="dot")
         assert isinstance(result, str)
     except ImportError:
         pytest.skip("graphviz not installed")
@@ -87,8 +87,13 @@ def test_view_format_options() -> None:
         output = ffmpeg.input("input.mp4").output(filename="output.mp4")
 
         # Test different format options
-        for fmt in ["png", "svg", "dot"]:
-            result = view(output, format=fmt)
-            assert isinstance(result, str)
+        result = view(output.node, format="png")
+        assert isinstance(result, str)
+
+        result = view(output.node, format="svg")
+        assert isinstance(result, str)
+
+        result = view(output.node, format="dot")
+        assert isinstance(result, str)
     except ImportError:
         pytest.skip("graphviz not installed")
