@@ -10,6 +10,13 @@ T = TypeVar("T")
 
 
 def get_cache_path() -> Path:
+    """
+    Return the cache directory path, creating it if needed.
+
+    Returns:
+        The cache directory path.
+
+    """
     if getattr(sys, "frozen", False):
         base_path = Path(getattr(sys, "_MEIPASS", ""))
     else:
