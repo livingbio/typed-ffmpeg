@@ -35,6 +35,17 @@ def test_get_actual_type_nested_union() -> None:
     )  # Should return the first non-None type
 
 
+def test_get_actual_type_types_union() -> None:
+    """Test _get_actual_type with types.UnionType (Python 3.10+)."""
+    import types
+
+    # Test that it can handle types.UnionType properly
+    if hasattr(types, "UnionType"):
+        # Create a union type using the | operator (Python 3.10+)
+        union_type = int | str | None
+        assert _get_actual_type(union_type) is int
+
+
 def test_get_actual_type_string_annotation() -> None:
     # Simulate string annotation as might be found in dataclasses
     assert _get_actual_type("int") is int
