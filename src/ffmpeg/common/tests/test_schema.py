@@ -30,12 +30,8 @@ def test_filter_to_def_property() -> None:
     filter_def = FFMpegFilter(
         name="scale",
         description="Scale video",
-        stream_typings_input=(
-            FFMpegIOType(name="default", type=StreamType.video),
-        ),
-        stream_typings_output=(
-            FFMpegIOType(name="default", type=StreamType.video),
-        ),
+        stream_typings_input=(FFMpegIOType(name="default", type=StreamType.video),),
+        stream_typings_output=(FFMpegIOType(name="default", type=StreamType.video),),
     )
 
     simple_def = filter_def.to_def
@@ -65,9 +61,7 @@ def test_filter_input_typings_static() -> None:
     filter_def = FFMpegFilter(
         name="scale",
         description="Scale video",
-        stream_typings_input=(
-            FFMpegIOType(name="default", type=StreamType.video),
-        ),
+        stream_typings_input=(FFMpegIOType(name="default", type=StreamType.video),),
         stream_typings_output=(),
     )
 
@@ -130,9 +124,7 @@ def test_filter_output_typings_static() -> None:
         name="scale",
         description="Scale video",
         stream_typings_input=(),
-        stream_typings_output=(
-            FFMpegIOType(name="default", type=StreamType.video),
-        ),
+        stream_typings_output=(FFMpegIOType(name="default", type=StreamType.video),),
     )
 
     typings = filter_def.output_typings

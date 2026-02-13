@@ -168,7 +168,7 @@ ignore = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"**/tests/**.py" = ["D103", "D104", "D100"]
+"**/tests/**.py" = ["D103", "D104", "D100", "DOC501"]
 
 [tool.ruff.format]
 quote-style = "double"

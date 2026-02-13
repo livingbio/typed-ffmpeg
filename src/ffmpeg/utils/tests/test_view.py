@@ -3,9 +3,10 @@
 import pytest
 
 import ffmpeg
-from ..view import _get_node_color, view
+
 from ...dag.nodes import InputNode
 from ...utils.frozendict import FrozenDict
+from ..view import _get_node_color, view
 
 
 def test_get_node_color_input() -> None:

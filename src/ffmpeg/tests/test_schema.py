@@ -27,9 +27,12 @@ def test_ffmpeg_option_group_basic() -> None:
 
 def test_ffmpeg_option_group_as_av_options() -> None:
     """Test as_av_options converts boolean to 0/1."""
-    options = FFMpegOptionGroup(
-        {"flag1": True, "flag2": False, "string": "value", "number": 42}
-    )
+    options = FFMpegOptionGroup({
+        "flag1": True,
+        "flag2": False,
+        "string": "value",
+        "number": 42,
+    })
 
     av_options = options.as_av_options()
 
@@ -41,9 +44,7 @@ def test_ffmpeg_option_group_as_av_options() -> None:
 
 def test_ffmpeg_option_group_as_av_options_none() -> None:
     """Test as_av_options filters out None values."""
-    options = FFMpegOptionGroup(
-        {"keep": "value", "remove": None, "also_keep": 123}
-    )
+    options = FFMpegOptionGroup({"keep": "value", "remove": None, "also_keep": 123})
 
     av_options = options.as_av_options()
 
