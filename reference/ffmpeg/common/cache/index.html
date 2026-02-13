@@ -1072,6 +1072,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ffmpeg.common.cache.get_cache_path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;get_cache_path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ffmpeg.common.cache.list_all" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4204,6 +4215,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ffmpeg.common.cache.get_cache_path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;get_cache_path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ffmpeg.common.cache.list_all" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4297,6 +4319,14 @@
               </td>
             </tr>
             <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            get_cache_path (ffmpeg.common.cache.get_cache_path)" href="#ffmpeg.common.cache.get_cache_path">get_cache_path</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Get the cache directory path.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
               <td><code><a class="autorefs autorefs-internal" title="            list_all (ffmpeg.common.cache.list_all)" href="#ffmpeg.common.cache.list_all">list_all</a></code></td>
               <td>
                 <div class="doc-md-description">
@@ -4351,6 +4381,53 @@
     <div class="doc doc-contents ">
 
         <p>Clean the cache for a class.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="ffmpeg.common.cache.get_cache_path" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">get_cache_path</span>
+
+
+<a href="#ffmpeg.common.cache.get_cache_path" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">get_cache_path</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="pathlib.Path">Path</span></span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Get the cache directory path.</p>
+<p>Returns the cache directory path, creating it if it doesn't exist.
+When running as a frozen application (e.g., PyInstaller), uses the
+temporary extraction directory. Otherwise, uses the cache subdirectory
+relative to this module.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>Path</code></td>            <td>
+                  <code><span title="pathlib.Path">Path</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The cache directory path</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
