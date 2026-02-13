@@ -343,3 +343,69 @@ class TestRunAsyncAwaitable:
         process = await result
         assert isinstance(process, asyncio.subprocess.Process)
         await process.wait()
+
+
+class TestMergeOutputs:
+    """Tests for the merge_outputs method."""
+
+    def test_merge_outputs_basic(self) -> None:
+        """Test that merge_outputs combines multiple output streams."""
+        video = input("input.mp4").video
+        output1 = video.output(filename="output1.mp4")
+        output2 = video.output(filename="output2.webm")
+
+        merged = output1.merge_outputs(output2)
+
+        # Verify that the merged output is a GlobalStream
+        from ...nodes import GlobalStream
+
+        assert isinstance(merged, GlobalStream)
+
+        # Verify compilation includes both outputs
+        args = merged.compile()
+        assert "output1.mp4" in args
+        assert "output2.webm" in args
+
+    def test_merge_outputs_multiple(self) -> None:
+        """Test that merge_outputs can handle multiple streams."""
+        video = input("input.mp4").video
+        output1 = video.output(filename="out1.mp4")
+        output2 = video.output(filename="out2.mp4")
+        output3 = video.output(filename="out3.mp4")
+
+        merged = output1.merge_outputs(output2, output3)
+
+        # Verify all three outputs are in the compiled command
+        args = merged.compile()
+        assert "out1.mp4" in args
+        assert "out2.mp4" in args
+        assert "out3.mp4" in args
+
+
+class TestOverwriteOutput:
+    """Tests for the overwrite_output method."""
+
+    def test_overwrite_output_adds_y_flag(self) -> None:
+        """Test that overwrite_output adds the -y flag."""
+        stream = input("input.mp4").output(filename="output.mp4")
+        overwrite_stream = stream.overwrite_output()
+
+        # Verify the compiled command includes -y
+        args = overwrite_stream.compile()
+        assert "-y" in args
+
+
+class TestRunWithInput:
+    """Tests for run method with input parameter."""
+
+    def test_run_with_stdin_input(self) -> None:
+        """Test that run method accepts input parameter."""
+        import inspect
+
+        stream = input("test.mp4").output(filename="output.mp4")
+        sig = inspect.signature(stream.run)
+
+        assert "input" in sig.parameters
+        # Check the type annotation
+        param = sig.parameters["input"]
+        assert param.default is None
