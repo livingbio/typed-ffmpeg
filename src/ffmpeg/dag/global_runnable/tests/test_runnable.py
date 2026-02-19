@@ -9,6 +9,7 @@ import asyncio
 import io
 import subprocess
 import sys
+from asyncio.subprocess import Process as AsyncioProcess
 
 import pytest
 
@@ -307,7 +308,7 @@ class TestRunAsyncAwaitable:
         # Use a simple echo command to verify the async functionality works
         process = await stream.run_async_awaitable(cmd=["echo", "test"])
 
-        assert isinstance(process, asyncio.subprocess.Process)
+        assert isinstance(process, AsyncioProcess)
         await process.wait()
 
     @pytest.mark.asyncio
@@ -320,7 +321,7 @@ class TestRunAsyncAwaitable:
             cmd=["echo", "hello"], pipe_stdout=True, pipe_stderr=True
         )
 
-        assert isinstance(process, asyncio.subprocess.Process)
+        assert isinstance(process, AsyncioProcess)
         assert process.stdout is not None
         assert process.stderr is not None
 
@@ -341,7 +342,7 @@ class TestRunAsyncAwaitable:
 
         # Consume the coroutine
         process = await result
-        assert isinstance(process, asyncio.subprocess.Process)
+        assert isinstance(process, AsyncioProcess)
         await process.wait()
 
 

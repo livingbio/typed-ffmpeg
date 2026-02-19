@@ -223,8 +223,10 @@ def test_output_run_with_tee_stderr_error(datadir: Path) -> None:
         output.run(tee_stderr=True)
 
     # Error should contain captured stderr
-    assert exc_info.value.stderr is not None
-    assert len(exc_info.value.stderr) > 0
+    err = exc_info.value
+    assert isinstance(err, FFMpegExecuteError)
+    assert err.stderr is not None
+    assert len(err.stderr) > 0
 
 
 def test_output_run_with_tee_stderr_and_capture_stdout(datadir: Path) -> None:
