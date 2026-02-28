@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_showwavespic
+  "ffmpeg -i test-input.mp4 -filter_complex '[0:a]showwavespic[s0]' -map '[s0]' -f image2 -vframes 1 -vcodec mjpeg pipe:"
+# ---

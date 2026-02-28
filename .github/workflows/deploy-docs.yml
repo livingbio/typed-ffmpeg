@@ -1,0 +1,38 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - name: Install uv
+        run: pip install uv
+      - name: Create virtual environment
+        run: uv venv
+      - name: Install dependencies
+        run: |
+          source .venv/bin/activate
+          uv pip install --group dev
+      - name: Deploy documentation
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          source .venv/bin/activate
+          mkdocs gh-deploy --force

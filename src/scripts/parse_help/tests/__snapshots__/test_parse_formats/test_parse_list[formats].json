@@ -1,0 +1,13 @@
+[
+  "FFMpegFormat(name='3dostr', flags='D', help='3DO STR', options=())",
+  "FFMpegFormat(name='3g2', flags='E', help='3GP2 (3GPP2 file format)', options=())",
+  "FFMpegFormat(name='3gp', flags='E', help='3GP (3GPP file format)', options=())",
+  "FFMpegFormat(name='4xm', flags='D', help='4X Technologies', options=())",
+  "FFMpegFormat(name='a64', flags='E', help='a64 - video for Commodore 64', options=())",
+  "FFMpegFormat(name='aa', flags='D', help='Audible AA format files', options=())",
+  "FFMpegFormat(name='aac', flags='D', help='raw ADTS AAC (Advanced Audio Coding)', options=())",
+  "FFMpegFormat(name='aax', flags='D', help='CRI AAX', options=())",
+  "FFMpegFormat(name='ac3', flags='DE', help='raw AC-3', options=())",
+  "FFMpegFormat(name='ac4', flags='DE', help='raw AC-4', options=())",
+  "FFMpegFormat(name='ace', flags='D', help='tri-Ace Audio Container', options=())"
+]

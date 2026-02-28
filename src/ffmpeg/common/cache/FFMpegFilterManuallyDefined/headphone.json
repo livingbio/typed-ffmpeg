@@ -1,0 +1,6 @@
+{
+  "__class__": "FFMpegFilterManuallyDefined",
+  "formula_typings_input": "[StreamType.audio] + [StreamType.audio] * (len(str(map).split('|')) - 1) if int(hrir) == 1 else []",
+  "formula_typings_output": null,
+  "name": "headphone"
+}

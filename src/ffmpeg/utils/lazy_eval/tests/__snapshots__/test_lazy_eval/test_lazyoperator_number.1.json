@@ -1,0 +1,88 @@
+{
+  "__class__": "Add",
+  "left": {
+    "__class__": "Add",
+    "left": {
+      "__class__": "Add",
+      "left": {
+        "__class__": "Add",
+        "left": {
+          "__class__": "Mul",
+          "left": {
+            "__class__": "TrueDiv",
+            "left": {
+              "__class__": "Mul",
+              "left": {
+                "__class__": "Sub",
+                "left": {
+                  "__class__": "Add",
+                  "left": {
+                    "__class__": "Add",
+                    "left": 1,
+                    "right": {
+                      "__class__": "Symbol",
+                      "key": "X"
+                    }
+                  },
+                  "right": {
+                    "__class__": "Symbol",
+                    "key": "Y"
+                  }
+                },
+                "right": 5
+              },
+              "right": 3
+            },
+            "right": 16
+          },
+          "right": {
+            "__class__": "Neg",
+            "left": {
+              "__class__": "Symbol",
+              "key": "X"
+            },
+            "right": null
+          }
+        },
+        "right": {
+          "__class__": "Pos",
+          "left": {
+            "__class__": "Symbol",
+            "key": "Y"
+          },
+          "right": null
+        }
+      },
+      "right": {
+        "__class__": "Abs",
+        "left": {
+          "__class__": "Symbol",
+          "key": "X"
+        },
+        "right": null
+      }
+    },
+    "right": {
+      "__class__": "Mod",
+      "left": {
+        "__class__": "Symbol",
+        "key": "X"
+      },
+      "right": {
+        "__class__": "Symbol",
+        "key": "Y"
+      }
+    }
+  },
+  "right": {
+    "__class__": "FloorDiv",
+    "left": {
+      "__class__": "Symbol",
+      "key": "X"
+    },
+    "right": {
+      "__class__": "Symbol",
+      "key": "Y"
+    }
+  }
+}

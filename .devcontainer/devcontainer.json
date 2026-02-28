@@ -1,0 +1,48 @@
+{
+  "containerEnv": {
+    "VIRTUAL_ENV": "/workspaces/typed-ffmpeg/.venv"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.mypy-type-checker",
+        "GitHub.copilot",
+        "GitHub.vscode-pull-request-github",
+        "mhutchie.git-graph",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ],
+      "settings": {
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "typescript.tsdk": "node_modules/typescript/lib"
+      }
+    }
+  },
+  "dockerFile": "Dockerfile",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/dhoeric/features/google-cloud-cli:1": {}
+  },
+  "forwardPorts": [
+    5000,
+    5173
+  ],
+  "mounts": [
+    "source=${localEnv:HOME}/.config/gcloud,target=/root/.config/gcloud,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+    "source=typed-ffmpeg-zshhistory,target=/root/commandhistory,type=volume"
+  ],
+  "name": "Python Development",
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "waitFor": "postCreateCommand",
+  "workspaceFolder": "/workspaces/typed-ffmpeg"
+}

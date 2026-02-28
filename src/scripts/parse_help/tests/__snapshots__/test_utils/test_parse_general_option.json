@@ -1,0 +1,5 @@
+[
+  "FFMpegOption(section='General options:', name='cpuflags', type=None, flags=None, help='force specific cpu flags', argname='flags')",
+  "FFMpegOption(section='General options:', name='cpucount', type=None, flags=None, help='force specific cpu count', argname='count')",
+  "FFMpegOption(section='General options:', name='copy_unknown', type=None, flags=None, help='Copy unknown stream types', argname=None)"
+]

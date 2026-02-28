@@ -1,0 +1,24 @@
+{
+  "flags": "",
+  "help": "Copy the input audio unchanged to the output.",
+  "io_flags": "",
+  "is_dynamic_input": false,
+  "is_dynamic_output": false,
+  "is_framesync": false,
+  "is_slice_threading": false,
+  "is_timeline": false,
+  "name": "acopy",
+  "options": [],
+  "stream_typings_input": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "stream_typings_output": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{% macro stream_typings(f, type) -%}
+{% if type == "method" %}
+    self,
+{% endif %}
+{% if f.is_dynamic_input %}
+    {% if f.input_typings | length > 1 %}
+    *streams: FilterableStream,
+    {% elif f.filter_type.value in ["vf", "vaf"] %}
+    *streams: VideoStream,
+    {% elif f.filter_type.value in ["af", "avf"] %}
+    *streams: AudioStream,
+    {% endif %}
+{% elif f.stream_typings_input | length == 1 %}
+{% else %}
+    {% for stream_typing in f.stream_typings_input %}
+        {% if type == "method" and loop.index0 == 0 %}
+        {% elif stream_typing.type.value == "video" %}
+        {{ stream_typing.name | stream_name_safe }}: VideoStream,
+        {% else %}
+        {{ stream_typing.name | stream_name_safe }}: AudioStream,
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% endmacro %}
+
+
+
+
+{%- macro return_stream_typings(f) -%}
+{%- if f.filter_type.value in ["vf", "avf", "vsrc"] -%}
+    {% set return_type = "VideoStream" %}
+{%- elif f.filter_type.value in ["af", "vaf", "asrc"] -%}
+    {% set return_type = "AudioStream" %}
+{%- endif -%}
+{%- if f.is_dynamic_output -%}
+-> FilterNode:
+{%- elif f.stream_typings_output | length == 1 -%}
+-> {{ return_type }}:
+{%- else -%}
+-> tuple[
+    {% for stream_typing in f.stream_typings_output %}
+        {% if stream_typing.type.value == "video" %}
+            VideoStream,
+        {% else %}
+            AudioStream,
+        {% endif %}
+    {% endfor %}
+]:
+{%- endif -%}
+{%- endmacro -%}
+
+{% macro docstring(f) %}
+{{ f.description }}
+
+Args:
+{%- for option in f.options %}
+    {{option.name | option_name_safe}}: {{option.description | striptags }}
+{%- endfor %}
+{%- if f.is_support_framesync %}
+    framesync_options: Framesync options
+{%- endif %}
+{%- if f.is_support_timeline %}
+    timeline_options: Timeline options
+{%- endif %}
+    extra_options: Extra options for the filter
+
+Returns:
+{%- if f.is_dynamic_output %}
+    filter_node: the filter node
+{% else -%}
+    {% for stream_typing in f.stream_typings_output %}
+    {%- if stream_typing.type.value == "video" %}
+    {{ stream_typing.name}}: the video stream
+    {%- else %}
+    {{ stream_typing.name}}: the audio stream
+    {%- endif -%}
+    {%- endfor %}
+{%- endif %}
+
+References:
+    [FFmpeg Documentation]({{ f.ref }})
+{% endmacro %}
+
+
+{% macro stream_params(f, type) -%}
+{% if type == "method" %}
+    self,
+{% endif %}
+{% if f.is_dynamic_input %}
+    {% if f.filter_type.value in ["vf", "vaf"] %}
+    *streams,
+    {% elif f.filter_type.value in ["af", "avf"] %}
+    *streams,
+    {% endif %}
+{% elif f.stream_typings_input | length == 1 %}
+{% else %}
+    {% for stream_typing in f.stream_typings_input %}
+        {% if type == "method" and loop.index0 == 0 %}
+        {% elif stream_typing.type.value == "video" %}
+        {{ stream_typing.name | stream_name_safe }},
+        {% else %}
+        {{ stream_typing.name | stream_name_safe }},
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% endmacro %}
+
+
+{% macro process(f, type) %}
+{%- if f.filter_type.value in ["vf", "avf", "vsrc"] -%}
+    {% set return_type = "video" %}
+{%- elif f.filter_type.value in ["af", "vaf", "asrc"] -%}
+    {% set return_type = "audio" %}
+{%- endif -%}
+filter_node = filter_node_factory(
+    {{f.to_def}},
+    {{ stream_params(f, type) }}
+    **merge({
+        {% for option in f.options %}
+        "{{ option.name}}": {{ option.name | option_name_safe }},
+        {% endfor %}
+    },
+    extra_options,
+    {% if f.is_support_framesync %}
+    framesync_options,
+    {% endif %}
+    {% if f.is_support_timeline %}
+    timeline_options,
+    {% endif %}
+    )
+)
+{% if f.is_dynamic_output %}
+return filter_node
+{%- elif f.stream_typings_output | length == 1 -%}
+return filter_node.{{return_type}}(0)
+{%- else -%}
+return (
+    {%- set video_index = namespace(count=0) %}
+    {%- set audio_index = namespace(count=0) %}
+    {% for stream_typing in f.stream_typings_output %}
+        {% if stream_typing.type.value == "video" %}
+            filter_node.video({{video_index.count}}),
+            {%- set video_index.count = video_index.count + 1 %}
+        {% else %}
+            filter_node.audio({{audio_index.count}}),
+            {%- set audio_index.count = audio_index.count + 1 %}
+        {% endif %}
+    {% endfor %}
+)
+{% endif %}
+{% endmacro %}
+
+
+{% macro filter_method(f) %}
+    def {{f.name}}(
+    {{ stream_typings(f, "method") }}
+    {% if not f.is_dynamic_input and f.options | length > 0 %}*,{% endif %}
+    {{ f | filter_option_typings }}
+    {% if f.is_support_framesync %}
+    framesync_options: FFMpegFrameSyncOption | None = None,
+    {% endif %}
+    {% if f.is_support_timeline %}
+    timeline_options: FFMpegTimelineOption | None = None,
+    {% endif %}
+    extra_options: dict[str, Any] | None = None,
+    ) {{- return_stream_typings(f) }}
+        """
+        {{ docstring(f) }}
+        """
+{{ process(f, "method") | indent(8, True) }}
+{% endmacro %}
+
+
+{% macro filter_function(f) %}
+def {{f.name}}(
+    {{ stream_typings(f, "function") }}
+    {% if not f.is_dynamic_input and f.options | length > 0 %}*,{% endif %}
+    {{ f | filter_option_typings }}
+    {% if f.is_support_framesync %}
+    framesync_options: FFMpegFrameSyncOption | None = None,
+    {% endif %}
+    {% if f.is_support_timeline %}
+    timeline_options: FFMpegTimelineOption | None = None,
+    {% endif %}
+    extra_options: dict[str, Any] | None = None,
+) {{- return_stream_typings(f) }}
+    """
+    {{ docstring(f) }}
+    """
+{{ process(f, "function") | indent(4, True) }}
+{% endmacro %}
+
+{% macro import_types(f, template_path) %}
+from {{get_relative_path(f, template_path)}} import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+{% endmacro %}
+
+{% macro import_all(template_path, import_video=True, import_audio=True, import_nodes=True) %}
+{{get_relative_import("types", template_path, "Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate")}}
+{{get_relative_import("dag.factory", template_path, "filter_node_factory")}}
+{{get_relative_import("utils.frozendict", template_path, "FrozenDict, merge")}}
+{{get_relative_import("utils.typing", template_path, "override")}}
+{{get_relative_import("schema", template_path, "Default, StreamType, Auto, FFMpegOptionGroup")}}
+{{get_relative_import("common.schema", template_path, "FFMpegFilterDef")}}
+{{get_relative_import("options.framesync", template_path, "FFMpegFrameSyncOption")}}
+{{get_relative_import("options.timeline", template_path, "FFMpegTimelineOption")}}
+{{get_relative_import("options.codec", template_path, "FFMpegAVCodecContextEncoderOption, FFMpegAVCodecContextDecoderOption")}}
+{{get_relative_import("options.format", template_path, "FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption")}}
+{{get_relative_import("streams.av", template_path, "AVStream")}}
+{{get_relative_import("streams.channel_layout", template_path, "CHANNEL_LAYOUT")}}
+{{get_relative_import("codecs.schema", template_path, "FFMpegEncoderOption, FFMpegDecoderOption")}}
+{{get_relative_import("formats.schema", template_path, "FFMpegMuxerOption, FFMpegDemuxerOption")}}
+{% if import_nodes %}
+{{get_relative_import("dag.nodes", template_path, "FilterableStream, FilterNode, OutputStream, OutputNode, InputNode, GlobalNode, GlobalStream")}}
+{% endif %}
+{% if import_video %}
+{{get_relative_import("streams.video", template_path, "VideoStream")}}
+{% endif %}
+{% if import_audio %}
+{{get_relative_import("streams.audio", template_path, "AudioStream")}}
+{% endif %}
+{% endmacro %}

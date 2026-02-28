@@ -1,0 +1,6 @@
+{
+  "__class__": "FFMpegFilterManuallyDefined",
+  "formula_typings_input": "[StreamType.video] * int(max(hex(int(mapping))[2::2]))",
+  "formula_typings_output": null,
+  "name": "mergeplanes"
+}

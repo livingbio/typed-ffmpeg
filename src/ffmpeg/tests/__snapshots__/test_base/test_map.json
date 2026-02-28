@@ -1,0 +1,18 @@
+[
+  "ffmpeg",
+  "-y",
+  "-i",
+  "input_video.mp4",
+  "-i",
+  "input_audio.mp3",
+  "-map",
+  "0:v",
+  "-map",
+  "1:a",
+  "-shortest",
+  "-vcodec",
+  "copy",
+  "-acodec",
+  "aac",
+  "output_video.mp4"
+]

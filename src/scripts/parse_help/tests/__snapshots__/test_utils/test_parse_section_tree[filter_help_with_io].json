@@ -1,0 +1,14 @@
+{
+  "Filter overlay": {
+    "Overlay a video source on top of the input.": {
+      "slice threading supported": {},
+      "Inputs:": {
+        "#0: main (video)": {},
+        "#1: overlay (video)": {}
+      },
+      "Outputs:": {
+        "#0: default (video)": {}
+      }
+    }
+  }
+}

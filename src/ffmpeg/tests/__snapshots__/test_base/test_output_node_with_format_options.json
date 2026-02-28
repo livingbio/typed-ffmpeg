@@ -1,0 +1,10 @@
+[
+  "ffmpeg",
+  "-probesize",
+  "1024",
+  "-i",
+  "input1",
+  "-packetsize",
+  "1024",
+  "out.mp4"
+]

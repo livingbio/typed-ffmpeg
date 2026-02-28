@@ -1,0 +1,110 @@
+site_name: typed-ffmpeg
+site_description: Data validation using Python type hints
+strict: true
+site_url: https://livingbio.github.io/typed-ffmpeg/
+
+theme:
+  name: 'material'
+  palette:
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
+      primary: pink
+      accent: pink
+      toggle:
+        icon: material/lightbulb-outline
+        name: 'Switch to dark mode'
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      primary: pink
+      accent: pink
+      toggle:
+        icon: material/lightbulb
+        name: 'Switch to light mode'
+  features:
+    - content.tabs.link
+    - content.code.annotate
+    - content.code.copy
+    - announce.dismiss
+    - navigation.tabs
+
+repo_name: livingbio/typed-ffmpeg
+repo_url: https://github.com/livingbio/typed-ffmpeg
+edit_uri: edit/main/docs/
+
+watch:
+  - 'src'
+  - 'docs'
+  - 'README.md'
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - callouts
+  - footnotes
+  - pymdownx.details
+  - pymdownx.magiclink
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      pygments_lang_class: true
+  - pymdownx.extra
+  - pymdownx.tilde
+  - tables
+  - toc:
+      permalink: true
+      title: Page contents
+
+nav:
+  - Get Started:
+      - Overview: index.md
+      - FAQ: faq.md
+  - Usage:
+      - Basic API Usage: usage/basic-api-usage.ipynb
+      - Probe: usage/probe.ipynb
+      - Complex Filtering: usage/complex-filtering.ipynb
+      - Customizing Filters: usage/customizing-filters.ipynb
+      - Execute: usage/execute.ipynb
+  - Code Reference: reference/
+
+plugins:
+  - search
+  - gen-files:
+      scripts:
+        - scripts/gen_ref_pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - section-index
+  - mknotebooks:
+      execute: false
+      timeout: 100
+      allow_errors: true
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            show_source: false
+            docstring_options:
+              ignore_init_summary: true
+            filters: ['!^_']
+            heading_level: 1
+            inherited_members: true
+            merge_init_into_class: true
+            separate_signature: true
+            show_root_heading: true
+            show_root_full_path: false
+            show_signature_annotations: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            signature_crossrefs: true
+            summary: true
+            docstring_section_style: table
+            order: source
+            docstring_style: google
+            extensions:
+              - griffe_inherited_docstrings

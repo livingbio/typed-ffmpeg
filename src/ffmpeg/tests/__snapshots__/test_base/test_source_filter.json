@@ -1,0 +1,8 @@
+[
+  "ffmpeg",
+  "-filter_complex",
+  "color=color=red:size=hd1080[s0]",
+  "-map",
+  "[s0]",
+  "output.mp4"
+]

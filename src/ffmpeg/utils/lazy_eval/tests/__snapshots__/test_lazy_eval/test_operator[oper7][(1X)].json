@@ -1,0 +1,8 @@
+{
+  "__class__": "Mul",
+  "left": 1,
+  "right": {
+    "__class__": "Symbol",
+    "key": "X"
+  }
+}

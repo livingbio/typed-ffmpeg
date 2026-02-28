@@ -1,0 +1,5 @@
+[
+  "FFMpegAVOption(section='TIFF decoder AVOptions:', name='subimage', type='boolean', flags='.D.V.......', help='decode subimage instead if available (default false)', argname=None, min=None, max=None, default='false', choices=())",
+  "FFMpegAVOption(section='TIFF decoder AVOptions:', name='thumbnail', type='boolean', flags='.D.V.......', help='decode embedded thumbnail subimage instead if available (default false)', argname=None, min=None, max=None, default='false', choices=())",
+  "FFMpegAVOption(section='TIFF decoder AVOptions:', name='page', type='int', flags='.D.V.......', help='page number of multi-page image to decode (starting from 1) (from 0 to 65535) (default 0)', argname=None, min='0', max='65535', default='0', choices=())"
+]

@@ -1,0 +1,53 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      # - id: check-added-large-files
+      - id: check-case-conflict
+        files: ^src/
+      - id: check-json
+        files: ^src/
+        exclude: '__snapshots__/|.eslintrc.json'
+      - id: check-merge-conflict
+        files: ^src/
+      - id: check-yaml
+        files: ^src/
+      - id: end-of-file-fixer
+        files: ^src/
+        exclude: '__snapshots__/'
+      - id: fix-encoding-pragma
+        files: ^src/
+        args: [--remove]
+      - id: mixed-line-ending
+        files: ^src/
+      - id: trailing-whitespace
+        files: ^src/
+        args: [--markdown-linebreak-ext=md]
+        exclude: '__snapshots__/'
+      - id: pretty-format-json
+        files: ^src/
+        args: [--autofix]
+        exclude: '__snapshots__/|.eslintrc.json'
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff version.
+    rev: v0.9.1
+    hooks:
+      # Run the formatter.
+      - id: ruff-format
+      # Run the linter.
+      - id: ruff
+        args: [--fix, --unsafe-fixes]
+
+  - repo: local
+    hooks:
+      - id: ty
+        name: ty check
+        entry: ty check
+        language: system
+        types: [python]
+        exclude: migrations/|commands/|sandbox/|samples|sdk
+        files: ^src/
+        pass_filenames: false
+        args: ['src/', '--ignore', 'unresolved-import', '--ignore', 'unresolved-attribute', '--ignore', 'missing-argument']
+

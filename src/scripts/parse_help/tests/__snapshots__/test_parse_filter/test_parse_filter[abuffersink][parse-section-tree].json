@@ -1,0 +1,27 @@
+{
+  "": [
+    "Filter abuffersink",
+    "abuffersink AVOptions:"
+  ],
+  "Buffer audio frames, and make them available to the end of the filter graph.": [
+    "Inputs:",
+    "Outputs:"
+  ],
+  "Filter abuffersink": [
+    "Buffer audio frames, and make them available to the end of the filter graph."
+  ],
+  "Inputs:": [
+    "#0: default (audio)"
+  ],
+  "Outputs:": [
+    "none (sink filter)"
+  ],
+  "abuffersink AVOptions:": [
+    "sample_fmts       <binary>     ..F.A...... set the supported sample formats",
+    "sample_rates      <binary>     ..F.A...... set the supported sample rates",
+    "channel_layouts   <binary>     ..F.A.....P set the supported channel layouts (deprecated, use ch_layouts)",
+    "channel_counts    <binary>     ..F.A.....P set the supported channel counts (deprecated, use ch_layouts)",
+    "ch_layouts        <string>     ..F.A...... set a '|'-separated list of supported channel layouts",
+    "all_channel_counts <boolean>    ..F.A...... accept all channel counts (default false)"
+  ]
+}

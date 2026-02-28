@@ -1,0 +1,10 @@
+[
+  "ffmpeg",
+  "-i",
+  "input.mp4",
+  "-filter_complex",
+  "[0]drawtext=fontfile=/path/to/font.ttf:text=this is a \\\\\\'string\\\\\\'\\\\: may contain one\\, or more\\, special characters[s0]",
+  "-map",
+  "[s0]",
+  "output.mp4"
+]
