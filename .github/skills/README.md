@@ -2,6 +2,16 @@
 
 This directory contains agent skills for the typed-ffmpeg project. Skills help AI agents (like GitHub Copilot) understand how to effectively use this package.
 
+## Multi-Location Support
+
+To ensure compatibility with all major AI agent systems, skills are provided in three standard locations:
+
+- **`.github/skills/`** (this directory) - GitHub Copilot, Cursor, and general use
+- **`.claude/skills/`** - Claude/Anthropic systems (also recognized by Copilot)
+- **`.agents/skills/`** - Universal, agent-agnostic location for any compliant system
+
+All three locations contain the same skills, maintained in sync for consistent experience across different AI agents.
+
 ## Available Skills
 
 ### typed-ffmpeg-usage
@@ -20,9 +30,11 @@ This directory contains agent skills for the typed-ffmpeg project. Skills help A
 ## About Agent Skills
 
 Agent skills follow the [Agent Skills Specification](https://agentskills.io/specification) and can be used by:
-- GitHub Copilot in VS Code
-- GitHub Copilot CLI
-- Claude and other compatible AI agents
+- **GitHub Copilot** (VS Code, CLI, Chat)
+- **Claude** (Anthropic's AI assistant and SDK)
+- **Cursor** (AI-powered code editor)
+- **Gemini CLI** and other Google AI tools
+- Any other agent system supporting the specification
 
 Each skill is stored in its own subdirectory with a `SKILL.md` file containing:
 - YAML frontmatter with metadata
