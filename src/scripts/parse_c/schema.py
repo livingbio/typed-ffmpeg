@@ -1,4 +1,11 @@
-"""Schema definitions for FFmpeg options."""
+"""
+Schema definitions for FFmpeg options.
+
+This module defines the data structures for representing FFmpeg options,
+including their types, flags, and other properties. It provides a
+structured way to model and manipulate FFmpeg command-line options.
+
+"""
 
 from dataclasses import dataclass
 from enum import Enum
