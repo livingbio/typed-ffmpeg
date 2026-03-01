@@ -20,7 +20,8 @@ SampleFmtLiteral = Literal[
     "s64p",
 ]
 
-SampleFmt = SampleFmtLiteral| str
+SampleFmt = SampleFmtLiteral | str
+
 
 @dataclass(kw_only=True, frozen=True)
 class ffprobeType:
