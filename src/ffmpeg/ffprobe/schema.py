@@ -1,9 +1,9 @@
 """FFprobe XML schema definitions."""
 
-# !/usr/bin/env python3
+#!/usr/bin/env python3
 
 from dataclasses import dataclass
-from typing import Optional , Literal , Union
+from typing import Optional, Literal
 
 SampleFmtLiteral = Literal[
     "u8",
@@ -20,7 +20,7 @@ SampleFmtLiteral = Literal[
     "s64p",
 ]
 
-SampleFmt = Union[SampleFmtLiteral,str]
+SampleFmt = SampleFmtLiteral | str
 
 @dataclass(kw_only=True, frozen=True)
 class ffprobeType:
