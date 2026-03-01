@@ -137,6 +137,7 @@ class frameType:
     duration_time: float | None = None
     pkt_pos: int | None = None
     pkt_size: int | None = None
+    SampleFmt = str
     sample_fmt: SampleFmt | None = None
     nb_samples: int | None = None
     channels: int | None = None
@@ -337,6 +338,7 @@ class streamType:
     chroma_location: str | None = None
     field_order: str | None = None
     refs: int | None = None
+    SampleFmt = str
     sample_fmt: SampleFmt | None = None
     sample_rate: int | None = None
     channels: int | None = None
