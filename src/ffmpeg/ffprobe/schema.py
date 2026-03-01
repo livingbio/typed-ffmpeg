@@ -20,7 +20,7 @@ SampleFmtLiteral = Literal[
     "s64p",
 ]
 
-SampleFmt =  str
+SampleFmt = str
 
 
 @dataclass(kw_only=True, frozen=True)
