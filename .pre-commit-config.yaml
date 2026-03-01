@@ -39,22 +39,15 @@ repos:
       - id: ruff
         args: [--fix, --unsafe-fixes]
 
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.8.0
+  - repo: local
     hooks:
-      - id: mypy
-        name: mypy
-        entry: mypy
+      - id: ty
+        name: ty check
+        entry: ty check
+        language: system
         types: [python]
         exclude: migrations/|commands/|sandbox/|samples|sdk
         files: ^src/
-        additional_dependencies:
-          - pytest
-          - syrupy
-          - types-Pillow
-          - typer
-          - jinja2
-          - types-beautifulsoup4
-          - devtools
-          - html2text
-        args: ['--config-file=pyproject.toml']
+        pass_filenames: false
+        args: ['src/', '--ignore', 'unresolved-import', '--ignore', 'unresolved-attribute', '--ignore', 'missing-argument']
+

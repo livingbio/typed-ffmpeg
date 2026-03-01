@@ -1,5 +1,6 @@
 """Cache utilities for FFmpeg operations."""
 
+import sys
 from pathlib import Path
 from typing import TypeVar
 
@@ -7,8 +8,31 @@ from .serialize import dumps, loads
 
 T = TypeVar("T")
 
-cache_path = Path(__file__).parent / "cache"
-cache_path.mkdir(exist_ok=True)
+
+def get_cache_path() -> Path:
+    """
+    Get the cache directory path.
+
+    Returns the cache directory path, creating it if it doesn't exist.
+    When running as a frozen application (e.g., PyInstaller), uses the
+    temporary extraction directory. Otherwise, uses the cache subdirectory
+    relative to this module.
+
+    Returns:
+        Path: The cache directory path
+
+    """
+    if getattr(sys, "frozen", False):
+        base_path = Path(getattr(sys, "_MEIPASS", ""))
+    else:
+        base_path = Path(__file__).parent
+
+    cache_path = base_path / "cache"
+    cache_path.mkdir(exist_ok=True)
+    return cache_path
+
+
+cache_path = get_cache_path()
 
 
 def load(cls: type[T], id: str) -> T:
