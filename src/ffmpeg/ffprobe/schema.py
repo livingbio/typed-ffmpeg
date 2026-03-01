@@ -3,7 +3,7 @@
 # !/usr/bin/env python3
 
 from dataclasses import dataclass
-from typing import Literal, Optional
+from typing import Literal, Optional, Union
 
 SampleFmtLiteral = Literal[
     "u8",
@@ -20,8 +20,7 @@ SampleFmtLiteral = Literal[
     "s64p",
 ]
 
-SampleFmt = SampleFmtLiteral | str
-
+SampleFmt = Union[SampleFmtLiteral, str]
 
 @dataclass(kw_only=True, frozen=True)
 class ffprobeType:
