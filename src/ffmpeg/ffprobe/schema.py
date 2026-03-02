@@ -19,8 +19,8 @@ SampleFmtLiteral = Literal[
     "s64",
     "s64p",
 ]
-
-SampleFmt = str
+# Keep str first to avoid instantiating Literal
+SampleFmt = str | SampleFmtLiteral
 
 
 @dataclass(kw_only=True, frozen=True)
