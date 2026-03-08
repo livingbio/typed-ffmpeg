@@ -1,0 +1,6 @@
+digraph {
+	rankdir=LR
+	fontname=Helvetica
+	fontsize=12
+	"3064ec056e14e614" [label=" color= color=black:duration=1:output_typings=(<StreamType.video\\: \\\'video\\\'>\,) " fillcolor="#ffcc00" fontname=Helvetica fontsize=12 shape=box style=filled]
+}

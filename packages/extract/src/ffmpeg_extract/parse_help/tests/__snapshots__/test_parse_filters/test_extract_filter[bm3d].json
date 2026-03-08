@@ -1,0 +1,165 @@
+{
+  "flags": "",
+  "help": "Block-Matching 3D denoiser.",
+  "io_flags": "",
+  "is_dynamic_input": true,
+  "is_dynamic_output": false,
+  "is_framesync": false,
+  "is_slice_threading": true,
+  "is_timeline": true,
+  "name": "bm3d",
+  "options": [
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1",
+      "flags": "..FV.......",
+      "help": "set denoising strength (from 0 to 99999.9) (default 1)",
+      "max": "99999.9",
+      "min": "0",
+      "name": "sigma",
+      "section": "bm3d AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "16",
+      "flags": "..FV.......",
+      "help": "set size of local patch (from 8 to 64) (default 16)",
+      "max": "64",
+      "min": "8",
+      "name": "block",
+      "section": "bm3d AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "4",
+      "flags": "..FV.......",
+      "help": "set sliding step for processing blocks (from 1 to 64) (default 4)",
+      "max": "64",
+      "min": "1",
+      "name": "bstep",
+      "section": "bm3d AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1",
+      "flags": "..FV.......",
+      "help": "set maximal number of similar blocks (from 1 to 256) (default 1)",
+      "max": "256",
+      "min": "1",
+      "name": "group",
+      "section": "bm3d AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "9",
+      "flags": "..FV.......",
+      "help": "set block matching range (from 1 to INT_MAX) (default 9)",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "range",
+      "section": "bm3d AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1",
+      "flags": "..FV.......",
+      "help": "set step for block matching (from 1 to 64) (default 1)",
+      "max": "64",
+      "min": "1",
+      "name": "mstep",
+      "section": "bm3d AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..FV.......",
+      "help": "set threshold of mean square error for block matching (from 0 to INT_MAX) (default 0)",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "thmse",
+      "section": "bm3d AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "2.7",
+      "flags": "..FV.......",
+      "help": "set hard threshold for 3D transfer domain (from 0 to INT_MAX) (default 2.7)",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "hdthr",
+      "section": "bm3d AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "basic estimate",
+          "name": "basic",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "final estimate",
+          "name": "final",
+          "value": "1"
+        }
+      ],
+      "default": "basic",
+      "flags": "..FV.......",
+      "help": "set filtering estimation mode (from 0 to 1) (default basic)",
+      "max": "1",
+      "min": "0",
+      "name": "estim",
+      "section": "bm3d AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..FV.......",
+      "help": "have reference stream (default false)",
+      "max": null,
+      "min": null,
+      "name": "ref",
+      "section": "bm3d AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "7",
+      "flags": "..FV.......",
+      "help": "set planes to filter (from 0 to 15) (default 7)",
+      "max": "15",
+      "min": "0",
+      "name": "planes",
+      "section": "bm3d AVOptions:",
+      "type": "int"
+    }
+  ],
+  "stream_typings_input": [],
+  "stream_typings_output": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

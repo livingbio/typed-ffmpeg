@@ -1,0 +1,9 @@
+{
+  "body": "<h3 class=\"section\"><a href=\"#toc-acrossfade\">8.5 acrossfade</a></h3>\n\n<p>Apply cross fade from one input audio stream to another input audio stream.\nThe cross fade is applied for specified duration near the end of first stream.\n</p>\n<p>The filter accepts the following options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>nb_samples, ns</samp></dt>\n<dd><p>Specify the number of samples for which the cross fade effect has to last.\nAt the end of the cross fade effect the first input audio will be completely\nsilent. Default is 44100.\n</p>\n</dd>\n<dt><samp>duration, d</samp></dt>\n<dd><p>Specify the duration of the cross fade effect. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nBy default the duration is determined by <var>nb_samples</var>.\nIf set this option is used instead of <var>nb_samples</var>.\n</p>\n</dd>\n<dt><samp>overlap, o</samp></dt>\n<dd><p>Should first stream end overlap with second stream start. Default is enabled.\n</p>\n</dd>\n<dt><samp>curve1</samp></dt>\n<dd><p>Set curve for cross fade transition for first stream.\n</p>\n</dd>\n<dt><samp>curve2</samp></dt>\n<dd><p>Set curve for cross fade transition for second stream.\n</p>\n<p>For description of available curve types see <a href=\"#afade\">afade</a> filter description.\n</p></dd>\n</dl>\n",
+  "filter_names": [
+    "acrossfade"
+  ],
+  "hash": "acrossfade",
+  "section_index": "8.5",
+  "title": "8.5 acrossfade"
+}

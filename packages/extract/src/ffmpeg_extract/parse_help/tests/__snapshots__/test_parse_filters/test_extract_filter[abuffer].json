@@ -1,0 +1,80 @@
+{
+  "flags": "",
+  "help": "Buffer audio frames, and make them accessible to the filterchain.",
+  "io_flags": "",
+  "is_dynamic_input": false,
+  "is_dynamic_output": false,
+  "is_framesync": false,
+  "is_slice_threading": false,
+  "is_timeline": false,
+  "name": "abuffer",
+  "options": [
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0/1",
+      "flags": "..F.A......",
+      "help": "(from 0 to INT_MAX) (default 0/1)",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "time_base",
+      "section": "abuffer AVOptions:",
+      "type": "rational"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..F.A......",
+      "help": "(from 0 to INT_MAX) (default 0)",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "sample_rate",
+      "section": "abuffer AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "none",
+      "flags": "..F.A......",
+      "help": "(default none)",
+      "max": null,
+      "min": null,
+      "name": "sample_fmt",
+      "section": "abuffer AVOptions:",
+      "type": "sample_fmt"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": null,
+      "flags": "..F.A......",
+      "help": "",
+      "max": null,
+      "min": null,
+      "name": "channel_layout",
+      "section": "abuffer AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..F.A......",
+      "help": "(from 0 to INT_MAX) (default 0)",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "channels",
+      "section": "abuffer AVOptions:",
+      "type": "int"
+    }
+  ],
+  "stream_typings_input": [],
+  "stream_typings_output": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

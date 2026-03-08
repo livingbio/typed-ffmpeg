@@ -1,0 +1,457 @@
+{
+  "flags": "",
+  "help": "Scale the input video size and/or convert the image format.",
+  "io_flags": "",
+  "is_dynamic_input": false,
+  "is_dynamic_output": false,
+  "is_framesync": false,
+  "is_slice_threading": false,
+  "is_timeline": false,
+  "name": "scale",
+  "options": [
+    {
+      "argname": null,
+      "choices": [],
+      "default": null,
+      "flags": "..FV.....T.",
+      "help": "Output video width",
+      "max": null,
+      "min": null,
+      "name": "w",
+      "section": "scale(2ref) AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": null,
+      "flags": "..FV.....T.",
+      "help": "Output video height",
+      "max": null,
+      "min": null,
+      "name": "h",
+      "section": "scale(2ref) AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "",
+      "flags": "..FV.......",
+      "help": "Flags to pass to libswscale (default \"\")",
+      "max": null,
+      "min": null,
+      "name": "flags",
+      "section": "scale(2ref) AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..FV.......",
+      "help": "set interlacing (default false)",
+      "max": null,
+      "min": null,
+      "name": "interl",
+      "section": "scale(2ref) AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "auto",
+          "value": "auto"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt601",
+          "value": "bt601"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt470",
+          "value": "bt470"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "smpte170m",
+          "value": "smpte170m"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt709",
+          "value": "bt709"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "fcc",
+          "value": "fcc"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "smpte240m",
+          "value": "smpte240m"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt2020",
+          "value": "bt2020"
+        }
+      ],
+      "default": "auto",
+      "flags": "..FV.......",
+      "help": "set input YCbCr type (default \"auto\")",
+      "max": null,
+      "min": null,
+      "name": "in_color_matrix",
+      "section": "scale(2ref) AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "auto",
+          "value": "auto"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt601",
+          "value": "bt601"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt470",
+          "value": "bt470"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "smpte170m",
+          "value": "smpte170m"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt709",
+          "value": "bt709"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "fcc",
+          "value": "fcc"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "smpte240m",
+          "value": "smpte240m"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt2020",
+          "value": "bt2020"
+        }
+      ],
+      "default": null,
+      "flags": "..FV.......",
+      "help": "set output YCbCr type",
+      "max": null,
+      "min": null,
+      "name": "out_color_matrix",
+      "section": "scale(2ref) AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "auto",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "unknown",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "full",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "limited",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "jpeg",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "mpeg",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "tv",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "pc",
+          "value": "2"
+        }
+      ],
+      "default": "auto",
+      "flags": "..FV.......",
+      "help": "set input color range (from 0 to 2) (default auto)",
+      "max": "2",
+      "min": "0",
+      "name": "in_range",
+      "section": "scale(2ref) AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "auto",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "unknown",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "full",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "limited",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "jpeg",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "mpeg",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "tv",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "pc",
+          "value": "2"
+        }
+      ],
+      "default": "auto",
+      "flags": "..FV.......",
+      "help": "set output color range (from 0 to 2) (default auto)",
+      "max": "2",
+      "min": "0",
+      "name": "out_range",
+      "section": "scale(2ref) AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "-513",
+      "flags": "..FV.......",
+      "help": "input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)",
+      "max": "512",
+      "min": "-513",
+      "name": "in_v_chr_pos",
+      "section": "scale(2ref) AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "-513",
+      "flags": "..FV.......",
+      "help": "input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)",
+      "max": "512",
+      "min": "-513",
+      "name": "in_h_chr_pos",
+      "section": "scale(2ref) AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "-513",
+      "flags": "..FV.......",
+      "help": "output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)",
+      "max": "512",
+      "min": "-513",
+      "name": "out_v_chr_pos",
+      "section": "scale(2ref) AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "-513",
+      "flags": "..FV.......",
+      "help": "output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)",
+      "max": "512",
+      "min": "-513",
+      "name": "out_h_chr_pos",
+      "section": "scale(2ref) AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "disable",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "decrease",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "increase",
+          "value": "2"
+        }
+      ],
+      "default": "disable",
+      "flags": "..FV.......",
+      "help": "decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)",
+      "max": "2",
+      "min": "0",
+      "name": "force_original_aspect_ratio",
+      "section": "scale(2ref) AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1",
+      "flags": "..FV.......",
+      "help": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)",
+      "max": "256",
+      "min": "1",
+      "name": "force_divisible_by",
+      "section": "scale(2ref) AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "DBL_MAX",
+      "flags": "..FV.......",
+      "help": "Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
+      "max": "DBL_MAX",
+      "min": "-DBL_MAX",
+      "name": "param0",
+      "section": "scale(2ref) AVOptions:",
+      "type": "double"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "DBL_MAX",
+      "flags": "..FV.......",
+      "help": "Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
+      "max": "DBL_MAX",
+      "min": "-DBL_MAX",
+      "name": "param1",
+      "section": "scale(2ref) AVOptions:",
+      "type": "double"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "eval expressions once during initialization",
+          "name": "init",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "eval expressions during initialization and per-frame",
+          "name": "frame",
+          "value": "1"
+        }
+      ],
+      "default": "init",
+      "flags": "..FV.......",
+      "help": "specify when to evaluate expressions (from 0 to 1) (default init)",
+      "max": "1",
+      "min": "0",
+      "name": "eval",
+      "section": "scale(2ref) AVOptions:",
+      "type": "int"
+    }
+  ],
+  "stream_typings_input": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "stream_typings_output": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

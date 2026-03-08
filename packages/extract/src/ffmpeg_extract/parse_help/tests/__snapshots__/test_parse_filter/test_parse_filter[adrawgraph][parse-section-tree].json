@@ -1,0 +1,50 @@
+{
+  "": [
+    "Filter adrawgraph",
+    "(a)drawgraph AVOptions:"
+  ],
+  "(a)drawgraph AVOptions:": [
+    "m1                <string>     ..FV....... set 1st metadata key (default \"\")",
+    "fg1               <string>     ..FV....... set 1st foreground color expression (default \"0xffff0000\")",
+    "m2                <string>     ..FV....... set 2nd metadata key (default \"\")",
+    "fg2               <string>     ..FV....... set 2nd foreground color expression (default \"0xff00ff00\")",
+    "m3                <string>     ..FV....... set 3rd metadata key (default \"\")",
+    "fg3               <string>     ..FV....... set 3rd foreground color expression (default \"0xffff00ff\")",
+    "m4                <string>     ..FV....... set 4th metadata key (default \"\")",
+    "fg4               <string>     ..FV....... set 4th foreground color expression (default \"0xffffff00\")",
+    "bg                <color>      ..FV....... set background color (default \"white\")",
+    "min               <float>      ..FV....... set minimal value (from INT_MIN to INT_MAX) (default -1)",
+    "max               <float>      ..FV....... set maximal value (from INT_MIN to INT_MAX) (default 1)",
+    "mode              <int>        ..FV....... set graph mode (from 0 to 2) (default line)",
+    "slide             <int>        ..FV....... set slide mode (from 0 to 4) (default frame)",
+    "size              <image_size> ..FV....... set graph size (default \"900x256\")",
+    "s                 <image_size> ..FV....... set graph size (default \"900x256\")",
+    "rate              <video_rate> ..FV....... set video rate (default \"25\")",
+    "r                 <video_rate> ..FV....... set video rate (default \"25\")"
+  ],
+  "Draw a graph using input audio metadata.": [
+    "Inputs:",
+    "Outputs:"
+  ],
+  "Filter adrawgraph": [
+    "Draw a graph using input audio metadata."
+  ],
+  "Inputs:": [
+    "#0: default (audio)"
+  ],
+  "Outputs:": [
+    "#0: default (video)"
+  ],
+  "mode              <int>        ..FV....... set graph mode (from 0 to 2) (default line)": [
+    "bar             0            ..FV....... draw bars",
+    "dot             1            ..FV....... draw dots",
+    "line            2            ..FV....... draw lines"
+  ],
+  "slide             <int>        ..FV....... set slide mode (from 0 to 4) (default frame)": [
+    "frame           0            ..FV....... draw new frames",
+    "replace         1            ..FV....... replace old columns with new",
+    "scroll          2            ..FV....... scroll from right to left",
+    "rscroll         3            ..FV....... scroll from left to right",
+    "picture         4            ..FV....... display graph in single frame"
+  ]
+}

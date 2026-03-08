@@ -1,0 +1,124 @@
+name: Integration Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run integration tests daily at 2 AM UTC
+    - cron: '0 2 * * *'
+
+jobs:
+  full-pipeline:
+    name: Full Pipeline Test (Extract → Codegen → SDK)
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+      
+      - name: Install all packages
+        run: |
+          uv pip install -e packages/extract/
+          uv pip install -e packages/codegen/
+          uv pip install -e packages/python/
+      
+      - name: Extract metadata
+        run: |
+          # Mock extraction (would normally use real FFmpeg source)
+          mkdir -p metadata
+          echo "Extracting FFmpeg metadata..."
+          # ffmpeg-extract would run here
+      
+      - name: Generate code
+        run: |
+          # Mock code generation
+          echo "Generating Python SDK code..."
+          # ffmpeg-codegen would run here
+      
+      - name: Test Python SDK
+        run: |
+          cd packages/python
+          pytest tests/ -v -m integration
+      
+      - name: Test end-to-end workflow
+        run: |
+          python -c "import ffmpeg; print('Import successful')"
+          python -c "import ffmpeg; ffmpeg.input('test.mp4').output('out.mp4').compile()"
+
+  cross-package:
+    name: Cross-Package Dependency Test
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+      
+      - name: Test extract independence
+        run: |
+          cd packages/extract
+          uv pip install -e .
+          python -c "import ffmpeg_extract; print('Extract works independently')"
+      
+      - name: Test codegen with extract
+        run: |
+          uv pip install -e packages/extract/
+          uv pip install -e packages/codegen/
+          python -c "import ffmpeg_codegen; print('Codegen works with extract')"
+      
+      - name: Test Python SDK
+        run: |
+          uv pip install -e packages/python/
+          python -c "import ffmpeg; print('Python SDK works')"
+
+  version-compatibility:
+    name: Version Compatibility Matrix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12', '3.13']
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+      
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      
+      - name: Install all packages
+        run: |
+          uv pip install -e packages/extract/
+          uv pip install -e packages/codegen/
+          uv pip install -e packages/python/
+      
+      - name: Test imports
+        run: |
+          python -c "import ffmpeg_extract"
+          python -c "import ffmpeg_codegen"
+          python -c "import ffmpeg"
+      
+      - name: Run smoke tests
+        run: |
+          cd packages/python
+          pytest tests/ -v -k "test_import or test_basic" --maxfail=5

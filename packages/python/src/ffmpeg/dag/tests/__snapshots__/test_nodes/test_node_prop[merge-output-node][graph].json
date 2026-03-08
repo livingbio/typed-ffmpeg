@@ -1,0 +1,47 @@
+{
+  "index": null,
+  "node": {
+    "inputs": [
+      {
+        "index": null,
+        "node": {
+          "filename": "out1.mp4",
+          "inputs": [
+            {
+              "index": null,
+              "node": {
+                "filename": "tmp1.mp4",
+                "inputs": [],
+                "kwargs": "FrozenDict({})"
+              },
+              "optional": false
+            }
+          ],
+          "kwargs": "FrozenDict({})"
+        },
+        "optional": false
+      },
+      {
+        "index": null,
+        "node": {
+          "filename": "out2.mp4",
+          "inputs": [
+            {
+              "index": null,
+              "node": {
+                "filename": "tmp2.mp4",
+                "inputs": [],
+                "kwargs": "FrozenDict({})"
+              },
+              "optional": false
+            }
+          ],
+          "kwargs": "FrozenDict({})"
+        },
+        "optional": false
+      }
+    ],
+    "kwargs": "FrozenDict({})"
+  },
+  "optional": false
+}

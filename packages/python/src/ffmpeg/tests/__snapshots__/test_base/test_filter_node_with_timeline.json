@@ -1,0 +1,10 @@
+[
+  "ffmpeg",
+  "-i",
+  "input1",
+  "-filter_complex",
+  "[0]smartblur=enable=between(t\\,10\\,3*60)[s0]",
+  "-map",
+  "[s0]",
+  "out.mp4"
+]

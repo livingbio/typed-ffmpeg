@@ -1,0 +1,76 @@
+<h3 class="section"><a href="#toc-coreimage-1">11.47 coreimage</a></h3>
+<p>Video filtering on GPU using Apple&rsquo;s CoreImage API on OSX.
+</p>
+<p>Hardware acceleration is based on an OpenGL context. Usually, this means it is
+processed by video hardware. However, software-based OpenGL implementations
+exist which means there is no guarantee for hardware processing. It depends on
+the respective OSX.
+</p>
+<p>There are many filters and image generators provided by Apple that come with a
+large variety of options. The filter has to be referenced by its name along
+with its options.
+</p>
+<p>The coreimage filter accepts the following options:
+</p><dl compact="compact">
+<dt><samp>list_filters</samp></dt>
+<dd><p>List all available filters and generators along with all their respective
+options as well as possible minimum and maximum values along with the default
+values.
+</p><div class="example">
+<pre class="example">list_filters=true
+</pre></div>
+
+</dd>
+<dt><samp>filter</samp></dt>
+<dd><p>Specify all filters by their respective name and options.
+Use <var>list_filters</var> to determine all valid filter names and options.
+Numerical options are specified by a float value and are automatically clamped
+to their respective value range.  Vector and color options have to be specified
+by a list of space separated float values. Character escaping has to be done.
+A special option name <code>default</code> is available to use default options for a
+filter.
+</p>
+<p>It is required to specify either <code>default</code> or at least one of the filter options.
+All omitted options are used with their default values.
+The syntax of the filter string is as follows:
+</p><div class="example">
+<pre class="example">filter=&lt;NAME&gt;@&lt;OPTION&gt;=&lt;VALUE&gt;[@&lt;OPTION&gt;=&lt;VALUE&gt;][@...][#&lt;NAME&gt;@&lt;OPTION&gt;=&lt;VALUE&gt;[@&lt;OPTION&gt;=&lt;VALUE&gt;][@...]][#...]
+</pre></div>
+
+</dd>
+<dt><samp>output_rect</samp></dt>
+<dd><p>Specify a rectangle where the output of the filter chain is copied into the
+input image. It is given by a list of space separated float values:
+</p><div class="example">
+<pre class="example">output_rect=x\ y\ width\ height
+</pre></div>
+<p>If not given, the output rectangle equals the dimensions of the input image.
+The output rectangle is automatically cropped at the borders of the input
+image. Negative values are valid for each component.
+</p><div class="example">
+<pre class="example">output_rect=25\ 25\ 100\ 100
+</pre></div>
+</dd>
+</dl>
+
+<p>Several filters can be chained for successive processing without GPU-HOST
+transfers allowing for fast processing of complex filter chains.
+Currently, only filters with zero (generators) or exactly one (filters) input
+image and one output image are supported. Also, transition filters are not yet
+usable as intended.
+</p>
+<p>Some filters generate output images with additional padding depending on the
+respective filter kernel. The padding is automatically removed to ensure the
+filter output has the same size as the input image.
+</p>
+<p>For image generators, the size of the output image is determined by the
+previous output image of the filter chain or the input image of the whole
+filterchain, respectively. The generators do not use the pixel information of
+this image to generate their output. However, the generated output is
+blended onto this image, resulting in partial or complete coverage of the
+output image.
+</p>
+<p>The <a href="#coreimagesrc">coreimagesrc</a> video source can be used for generating input images
+which are directly fed into the filter chain. By using it, providing input
+images by another video source or an input video is not required.
+</p>

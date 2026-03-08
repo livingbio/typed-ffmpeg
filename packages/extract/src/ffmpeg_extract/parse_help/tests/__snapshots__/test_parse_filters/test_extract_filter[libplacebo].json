@@ -1,0 +1,1507 @@
+{
+  "flags": "",
+  "help": "Apply various GPU filters from libplacebo",
+  "io_flags": "",
+  "is_dynamic_input": true,
+  "is_dynamic_output": false,
+  "is_framesync": false,
+  "is_slice_threading": false,
+  "is_timeline": false,
+  "name": "libplacebo",
+  "options": [
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1",
+      "flags": "..FV.......",
+      "help": "Number of inputs (from 1 to INT_MAX) (default 1)",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "inputs",
+      "section": "libplacebo AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "iw",
+      "flags": "..FV.......",
+      "help": "Output video frame width (default \"iw\")",
+      "max": null,
+      "min": null,
+      "name": "w",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "ih",
+      "flags": "..FV.......",
+      "help": "Output video frame height (default \"ih\")",
+      "max": null,
+      "min": null,
+      "name": "h",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "none",
+      "flags": "..FV.......",
+      "help": "Output video frame rate (default \"none\")",
+      "max": null,
+      "min": null,
+      "name": "fps",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "(iw-cw)/2",
+      "flags": "..FV.....T.",
+      "help": "Input video crop x (default \"(iw-cw)/2\")",
+      "max": null,
+      "min": null,
+      "name": "crop_x",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "(ih-ch)/2",
+      "flags": "..FV.....T.",
+      "help": "Input video crop y (default \"(ih-ch)/2\")",
+      "max": null,
+      "min": null,
+      "name": "crop_y",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "iw",
+      "flags": "..FV.....T.",
+      "help": "Input video crop w (default \"iw\")",
+      "max": null,
+      "min": null,
+      "name": "crop_w",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "ih",
+      "flags": "..FV.....T.",
+      "help": "Input video crop h (default \"ih\")",
+      "max": null,
+      "min": null,
+      "name": "crop_h",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "(ow-pw)/2",
+      "flags": "..FV.....T.",
+      "help": "Output video placement x (default \"(ow-pw)/2\")",
+      "max": null,
+      "min": null,
+      "name": "pos_x",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "(oh-ph)/2",
+      "flags": "..FV.....T.",
+      "help": "Output video placement y (default \"(oh-ph)/2\")",
+      "max": null,
+      "min": null,
+      "name": "pos_y",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "ow",
+      "flags": "..FV.....T.",
+      "help": "Output video placement w (default \"ow\")",
+      "max": null,
+      "min": null,
+      "name": "pos_w",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "oh",
+      "flags": "..FV.....T.",
+      "help": "Output video placement h (default \"oh\")",
+      "max": null,
+      "min": null,
+      "name": "pos_h",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": null,
+      "flags": "..FV.......",
+      "help": "Output video format",
+      "max": null,
+      "min": null,
+      "name": "format",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "disable",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "decrease",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "increase",
+          "value": "2"
+        }
+      ],
+      "default": "disable",
+      "flags": "..FV.......",
+      "help": "decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)",
+      "max": "2",
+      "min": "0",
+      "name": "force_original_aspect_ratio",
+      "section": "libplacebo AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1",
+      "flags": "..FV.......",
+      "help": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)",
+      "max": "256",
+      "min": "1",
+      "name": "force_divisible_by",
+      "section": "libplacebo AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..FV.......",
+      "help": "force SAR normalization to 1:1 by adjusting pos_x/y/w/h (default false)",
+      "max": null,
+      "min": null,
+      "name": "normalize_sar",
+      "section": "libplacebo AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..FV.....T.",
+      "help": "ratio between padding and cropping when normalizing SAR (0=pad, 1=crop) (from 0 to 1) (default 0)",
+      "max": "1",
+      "min": "0",
+      "name": "pad_crop_ratio",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "black",
+      "flags": "..FV.....T.",
+      "help": "Background fill color (default \"black\")",
+      "max": null,
+      "min": null,
+      "name": "fillcolor",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..FV.....T.",
+      "help": "Corner rounding radius (from 0 to 1) (default 0)",
+      "max": "1",
+      "min": "0",
+      "name": "corner_rounding",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": null,
+      "flags": "..FV.....T.",
+      "help": "Pass extra libplacebo-specific options using a :-separated list of key=value pairs",
+      "max": null,
+      "min": null,
+      "name": "extra_opts",
+      "section": "libplacebo AVOptions:",
+      "type": "dictionary"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "keep the same colorspace",
+          "name": "auto",
+          "value": "-1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "gbr",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt709",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "unknown",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt470bg",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "smpte170m",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "smpte240m",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "ycgco",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt2020nc",
+          "value": "9"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt2020c",
+          "value": "10"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "ictcp",
+          "value": "14"
+        }
+      ],
+      "default": "auto",
+      "flags": "..FV.....T.",
+      "help": "select colorspace (from -1 to 14) (default auto)",
+      "max": "14",
+      "min": "-1",
+      "name": "colorspace",
+      "section": "libplacebo AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "keep the same color range",
+          "name": "auto",
+          "value": "-1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "unspecified",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "unknown",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "limited",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "tv",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "mpeg",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "full",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "pc",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "jpeg",
+          "value": "2"
+        }
+      ],
+      "default": "auto",
+      "flags": "..FV.....T.",
+      "help": "select color range (from -1 to 2) (default auto)",
+      "max": "2",
+      "min": "-1",
+      "name": "range",
+      "section": "libplacebo AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "keep the same color primaries",
+          "name": "auto",
+          "value": "-1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt709",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "unknown",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt470m",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt470bg",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "smpte170m",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "smpte240m",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "film",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt2020",
+          "value": "9"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "smpte428",
+          "value": "10"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "smpte431",
+          "value": "11"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "smpte432",
+          "value": "12"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "jedec-p22",
+          "value": "22"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "ebu3213",
+          "value": "22"
+        }
+      ],
+      "default": "auto",
+      "flags": "..FV.....T.",
+      "help": "select color primaries (from -1 to 22) (default auto)",
+      "max": "22",
+      "min": "-1",
+      "name": "color_primaries",
+      "section": "libplacebo AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "keep the same color transfer",
+          "name": "auto",
+          "value": "-1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt709",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "unknown",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt470m",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt470bg",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "smpte170m",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "smpte240m",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "linear",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "iec61966-2-4",
+          "value": "11"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt1361e",
+          "value": "12"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "iec61966-2-1",
+          "value": "13"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt2020-10",
+          "value": "14"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "bt2020-12",
+          "value": "15"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "smpte2084",
+          "value": "16"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "arib-std-b67",
+          "value": "18"
+        }
+      ],
+      "default": "auto",
+      "flags": "..FV.....T.",
+      "help": "select color transfer (from -1 to 18) (default auto)",
+      "max": "18",
+      "min": "-1",
+      "name": "color_trc",
+      "section": "libplacebo AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "spline36",
+      "flags": "..FV.....T.",
+      "help": "Upscaler function (default \"spline36\")",
+      "max": null,
+      "min": null,
+      "name": "upscaler",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "mitchell",
+      "flags": "..FV.....T.",
+      "help": "Downscaler function (default \"mitchell\")",
+      "max": null,
+      "min": null,
+      "name": "downscaler",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "none",
+      "flags": "..FV.....T.",
+      "help": "Frame mixing function (default \"none\")",
+      "max": null,
+      "min": null,
+      "name": "frame_mixer",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..FV.....T.",
+      "help": "Number of scaler LUT entries (from 0 to 256) (default 0)",
+      "max": "256",
+      "min": "0",
+      "name": "lut_entries",
+      "section": "libplacebo AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..FV.....T.",
+      "help": "Antiringing strength (for non-EWA filters) (from 0 to 1) (default 0)",
+      "max": "1",
+      "min": "0",
+      "name": "antiringing",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "true",
+      "flags": "..FV.....T.",
+      "help": "Enable sigmoid upscaling (default true)",
+      "max": null,
+      "min": null,
+      "name": "sigmoid",
+      "section": "libplacebo AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "true",
+      "flags": "..FV.....T.",
+      "help": "Apply film grain metadata (default true)",
+      "max": null,
+      "min": null,
+      "name": "apply_filmgrain",
+      "section": "libplacebo AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "true",
+      "flags": "..FV.....T.",
+      "help": "Apply Dolby Vision metadata (default true)",
+      "max": null,
+      "min": null,
+      "name": "apply_dolbyvision",
+      "section": "libplacebo AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..FV.....T.",
+      "help": "Enable debanding (default false)",
+      "max": null,
+      "min": null,
+      "name": "deband",
+      "section": "libplacebo AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1",
+      "flags": "..FV.....T.",
+      "help": "Deband iterations (from 0 to 16) (default 1)",
+      "max": "16",
+      "min": "0",
+      "name": "deband_iterations",
+      "section": "libplacebo AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "4",
+      "flags": "..FV.....T.",
+      "help": "Deband threshold (from 0 to 1024) (default 4)",
+      "max": "1024",
+      "min": "0",
+      "name": "deband_threshold",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "16",
+      "flags": "..FV.....T.",
+      "help": "Deband radius (from 0 to 1024) (default 16)",
+      "max": "1024",
+      "min": "0",
+      "name": "deband_radius",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "6",
+      "flags": "..FV.....T.",
+      "help": "Deband grain (from 0 to 1024) (default 6)",
+      "max": "1024",
+      "min": "0",
+      "name": "deband_grain",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..FV.....T.",
+      "help": "Brightness boost (from -1 to 1) (default 0)",
+      "max": "1",
+      "min": "-1",
+      "name": "brightness",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1",
+      "flags": "..FV.....T.",
+      "help": "Contrast gain (from 0 to 16) (default 1)",
+      "max": "16",
+      "min": "0",
+      "name": "contrast",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1",
+      "flags": "..FV.....T.",
+      "help": "Saturation gain (from 0 to 16) (default 1)",
+      "max": "16",
+      "min": "0",
+      "name": "saturation",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..FV.....T.",
+      "help": "Hue shift (from -3.14159 to 3.14159) (default 0)",
+      "max": "3.14159",
+      "min": "-3.14159",
+      "name": "hue",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1",
+      "flags": "..FV.....T.",
+      "help": "Gamma adjustment (from 0 to 16) (default 1)",
+      "max": "16",
+      "min": "0",
+      "name": "gamma",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "true",
+      "flags": "..FV.....T.",
+      "help": "Enable dynamic peak detection for HDR tone-mapping (default true)",
+      "max": null,
+      "min": null,
+      "name": "peak_detect",
+      "section": "libplacebo AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "100",
+      "flags": "..FV.....T.",
+      "help": "Peak detection smoothing period (from 0 to 1000) (default 100)",
+      "max": "1000",
+      "min": "0",
+      "name": "smoothing_period",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "1",
+      "flags": "..FV.....T.",
+      "help": "Peak detection minimum peak (from 0 to 100) (default 1)",
+      "max": "100",
+      "min": "0",
+      "name": "minimum_peak",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "5.5",
+      "flags": "..FV.....T.",
+      "help": "Scene change low threshold (from -1 to 100) (default 5.5)",
+      "max": "100",
+      "min": "-1",
+      "name": "scene_threshold_low",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "10",
+      "flags": "..FV.....T.",
+      "help": "Scene change high threshold (from -1 to 100) (default 10)",
+      "max": "100",
+      "min": "-1",
+      "name": "scene_threshold_high",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "99.995",
+      "flags": "..FV.....T.",
+      "help": "Peak detection percentile (from 0 to 100) (default 99.995)",
+      "max": "100",
+      "min": "0",
+      "name": "percentile",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "Hard-clip (RGB per-channel)",
+          "name": "clip",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Colorimetric soft clipping",
+          "name": "perceptual",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Relative colorimetric clipping",
+          "name": "relative",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Saturation mapping (RGB -> RGB)",
+          "name": "saturation",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Absolute colorimetric clipping",
+          "name": "absolute",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Colorimetrically desaturate colors towards white",
+          "name": "desaturate",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Colorimetric clip with bias towards darkening image to fit gamut",
+          "name": "darken",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Highlight out-of-gamut colors",
+          "name": "warn",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Linearly reduce chromaticity to fit gamut",
+          "name": "linear",
+          "value": "8"
+        }
+      ],
+      "default": "perceptual",
+      "flags": "..FV.....T.",
+      "help": "Gamut-mapping mode (from 0 to 8) (default perceptual)",
+      "max": "8",
+      "min": "0",
+      "name": "gamut_mode",
+      "section": "libplacebo AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "Automatic selection",
+          "name": "auto",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "No tone mapping (clip",
+          "name": "clip",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "SMPTE ST 2094-40",
+          "name": "st2094-40",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "SMPTE ST 2094-10",
+          "name": "st2094-10",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "ITU-R BT.2390 EETF",
+          "name": "bt.2390",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "ITU-R BT.2446 Method A",
+          "name": "bt.2446a",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Single-pivot polynomial spline",
+          "name": "spline",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Reinhard",
+          "name": "reinhard",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Mobius",
+          "name": "mobius",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Filmic tone-mapping (Hable)",
+          "name": "hable",
+          "value": "9"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Gamma function with knee",
+          "name": "gamma",
+          "value": "10"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Perceptually linear stretch",
+          "name": "linear",
+          "value": "11"
+        }
+      ],
+      "default": "auto",
+      "flags": "..FV.....T.",
+      "help": "Tone-mapping algorithm (from 0 to 11) (default auto)",
+      "max": "11",
+      "min": "0",
+      "name": "tonemapping",
+      "section": "libplacebo AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..FV.....T.",
+      "help": "Tunable parameter for some tone-mapping functions (from 0 to 100) (default 0)",
+      "max": "100",
+      "min": "0",
+      "name": "tonemapping_param",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..FV.....T.",
+      "help": "Inverse tone mapping (range expansion) (default false)",
+      "max": null,
+      "min": null,
+      "name": "inverse_tonemapping",
+      "section": "libplacebo AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "256",
+      "flags": "..FV.....T.",
+      "help": "Tone-mapping LUT size (from 2 to 1024) (default 256)",
+      "max": "1024",
+      "min": "2",
+      "name": "tonemapping_lut_size",
+      "section": "libplacebo AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0.3",
+      "flags": "..FV.....T.",
+      "help": "HDR contrast recovery strength (from 0 to 3) (default 0.3)",
+      "max": "3",
+      "min": "0",
+      "name": "contrast_recovery",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "3.5",
+      "flags": "..FV.....T.",
+      "help": "HDR contrast recovery smoothness (from 1 to 32) (default 3.5)",
+      "max": "32",
+      "min": "1",
+      "name": "contrast_smoothness",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "-1",
+      "flags": "..FV.....TP",
+      "help": "Desaturation strength (from -1 to 1) (default -1)",
+      "max": "1",
+      "min": "-1",
+      "name": "desaturation_strength",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "-1",
+      "flags": "..FV.....TP",
+      "help": "Desaturation exponent (from -1 to 10) (default -1)",
+      "max": "10",
+      "min": "-1",
+      "name": "desaturation_exponent",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..FV.....TP",
+      "help": "Highlight out-of-gamut colors (default false)",
+      "max": null,
+      "min": null,
+      "name": "gamut_warning",
+      "section": "libplacebo AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..FV.....TP",
+      "help": "Enable desaturating colorimetric gamut clipping (default false)",
+      "max": null,
+      "min": null,
+      "name": "gamut_clipping",
+      "section": "libplacebo AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "Perceptual",
+          "name": "perceptual",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Relative colorimetric",
+          "name": "relative",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Absolute colorimetric",
+          "name": "absolute",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Saturation mapping",
+          "name": "saturation",
+          "value": "2"
+        }
+      ],
+      "default": "perceptual",
+      "flags": "..FV.....TP",
+      "help": "Rendering intent (from 0 to 3) (default perceptual)",
+      "max": "3",
+      "min": "0",
+      "name": "intent",
+      "section": "libplacebo AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "Automatic selection",
+          "name": "auto",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Per-channel (RGB)",
+          "name": "rgb",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Maximum component",
+          "name": "max",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Hybrid of Luma/RGB",
+          "name": "hybrid",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Luminance",
+          "name": "luma",
+          "value": "4"
+        }
+      ],
+      "default": "auto",
+      "flags": "..FV.....TP",
+      "help": "Tone-mapping mode (from 0 to 4) (default auto)",
+      "max": "4",
+      "min": "0",
+      "name": "tonemapping_mode",
+      "section": "libplacebo AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0.04",
+      "flags": "..FV.....TP",
+      "help": "Crosstalk factor for tone-mapping (from 0 to 0.3) (default 0.04)",
+      "max": "0.3",
+      "min": "0",
+      "name": "tonemapping_crosstalk",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0.05",
+      "flags": "..FV.....TP",
+      "help": "Tone-mapping overshoot margin (from 0 to 1) (default 0.05)",
+      "max": "1",
+      "min": "0",
+      "name": "overshoot",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0.2",
+      "flags": "..FV.....T.",
+      "help": "Tone-mapping hybrid LMS mixing coefficient (from 0 to 1) (default 0.2)",
+      "max": "1",
+      "min": "0",
+      "name": "hybrid_mix",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "Disable dithering",
+          "name": "none",
+          "value": "-1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Blue noise",
+          "name": "blue",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Ordered LUT",
+          "name": "ordered",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Fixed function ordered",
+          "name": "ordered_fixed",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "White noise",
+          "name": "white",
+          "value": "3"
+        }
+      ],
+      "default": "blue",
+      "flags": "..FV.....T.",
+      "help": "Dither method to use (from -1 to 3) (default blue)",
+      "max": "3",
+      "min": "-1",
+      "name": "dithering",
+      "section": "libplacebo AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "6",
+      "flags": "..FV.......",
+      "help": "Dithering LUT size (from 1 to 8) (default 6)",
+      "max": "8",
+      "min": "1",
+      "name": "dither_lut_size",
+      "section": "libplacebo AVOptions:",
+      "type": "int"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..FV.....T.",
+      "help": "Enable temporal dithering (default false)",
+      "max": null,
+      "min": null,
+      "name": "dither_temporal",
+      "section": "libplacebo AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "L cone",
+          "name": "l",
+          "value": "l"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "M cone",
+          "name": "m",
+          "value": "m"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "S cone",
+          "name": "s",
+          "value": "s"
+        }
+      ],
+      "default": "0",
+      "flags": "..FV.....T.",
+      "help": "Colorblindness adaptation model (default 0)",
+      "max": null,
+      "min": null,
+      "name": "cones",
+      "section": "libplacebo AVOptions:",
+      "type": "flags"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..FV.....T.",
+      "help": "Colorblindness adaptation strength (from 0 to 10) (default 0)",
+      "max": "10",
+      "min": "0",
+      "name": "cone-strength",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": null,
+      "flags": "..FV.......",
+      "help": "Path to custom user shader (mpv .hook format)",
+      "max": null,
+      "min": null,
+      "name": "custom_shader_path",
+      "section": "libplacebo AVOptions:",
+      "type": "string"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": null,
+      "flags": "..FV.......",
+      "help": "Custom user shader as binary (mpv .hook format)",
+      "max": null,
+      "min": null,
+      "name": "custom_shader_bin",
+      "section": "libplacebo AVOptions:",
+      "type": "binary"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..FV.....T.",
+      "help": "Skip anti-aliasing (default false)",
+      "max": null,
+      "min": null,
+      "name": "skip_aa",
+      "section": "libplacebo AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "0",
+      "flags": "..FV.....T.",
+      "help": "Polar LUT cutoff (from 0 to 1) (default 0)",
+      "max": "1",
+      "min": "0",
+      "name": "polar_cutoff",
+      "section": "libplacebo AVOptions:",
+      "type": "float"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..FV.....T.",
+      "help": "Disable linear scaling (default false)",
+      "max": null,
+      "min": null,
+      "name": "disable_linear",
+      "section": "libplacebo AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..FV.....T.",
+      "help": "Disable built-in scalers (default false)",
+      "max": null,
+      "min": null,
+      "name": "disable_builtin",
+      "section": "libplacebo AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..FV.....TP",
+      "help": "Deprecated, does nothing (default false)",
+      "max": null,
+      "min": null,
+      "name": "force_icc_lut",
+      "section": "libplacebo AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..FV.....T.",
+      "help": "Force dithering (default false)",
+      "max": null,
+      "min": null,
+      "name": "force_dither",
+      "section": "libplacebo AVOptions:",
+      "type": "boolean"
+    },
+    {
+      "argname": null,
+      "choices": [],
+      "default": "false",
+      "flags": "..FV.....T.",
+      "help": "Force-disable FBOs (default false)",
+      "max": null,
+      "min": null,
+      "name": "disable_fbos",
+      "section": "libplacebo AVOptions:",
+      "type": "boolean"
+    }
+  ],
+  "stream_typings_input": [],
+  "stream_typings_output": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

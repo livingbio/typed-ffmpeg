@@ -1,0 +1,9 @@
+{
+  "body": "<h3 class=\"section\"><a href=\"#toc-random\">11.203 random</a></h3>\n\n<p>Flush video frames from internal cache of frames into a random order.\nNo frame is discarded.\nInspired by <a href=\"#frei0r\">frei0r</a> nervous filter.\n</p>\n<dl compact=\"compact\">\n<dt><samp>frames</samp></dt>\n<dd><p>Set size in number of frames of internal cache, in range from <code>2</code> to\n<code>512</code>. Default is <code>30</code>.\n</p>\n</dd>\n<dt><samp>seed</samp></dt>\n<dd><p>Set seed for random number generator, must be an integer included between\n<code>0</code> and <code>UINT32_MAX</code>. If not specified, or if explicitly set to\nless than <code>0</code>, the filter will try to use a good random seed on a\nbest effort basis.\n</p></dd>\n</dl>\n",
+  "filter_names": [
+    "random"
+  ],
+  "hash": "random",
+  "section_index": "11.203",
+  "title": "11.203 random"
+}

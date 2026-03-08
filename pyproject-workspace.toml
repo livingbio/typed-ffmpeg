@@ -1,0 +1,79 @@
+# Monorepo Workspace Configuration
+# This file defines the workspace structure for the typed-ffmpeg monorepo
+
+[tool.uv.workspace]
+members = [
+    "packages/extract",
+    "packages/codegen",
+    "packages/python",
+]
+
+[project]
+name = "typed-ffmpeg-workspace"
+version = "1.0.0"
+description = "Monorepo workspace for typed-ffmpeg and related packages"
+authors = [
+    {name = "lucemia", email = "lucemia@gmail.com"}
+]
+requires-python = ">=3.10"
+readme = "README-WORKSPACE.md"
+
+[project.optional-dependencies]
+# Shared development dependencies for all packages
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.9.6",
+    "mypy>=1.0",
+    "black>=23.0",
+    "pre-commit>=3.0",
+]
+
+# All packages together
+all = [
+    "ffmpeg-extract",
+    "ffmpeg-codegen",
+    "typed-ffmpeg",
+]
+
+[tool.uv]
+# Shared UV configuration
+dev-dependencies = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.9.6",
+    "mypy>=1.0",
+]
+
+[tool.ruff]
+# Shared ruff configuration
+line-length = 88
+exclude = [
+    "**/cassettes/",
+    "**/__snapshots__/",
+    ".venv",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+
+[tool.pytest.ini_options]
+# Shared pytest configuration
+testpaths = ["packages/*/tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+markers = [
+    "integration: marks tests as integration tests (deselect with '-m \"not integration\"')",
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+]

@@ -1,0 +1,74 @@
+# NOTE: this file is auto-generated, do not modify
+"""
+FFmpeg codec options.
+"""
+
+
+
+from typing import Literal
+
+
+from ..types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+from ..dag.factory import filter_node_factory
+from ..utils.frozendict import FrozenDict, merge
+from ..utils.typing import override
+from ..schema import Default, StreamType, Auto, FFMpegOptionGroup
+from ..common.schema import FFMpegFilterDef
+from .framesync import FFMpegFrameSyncOption
+from .timeline import FFMpegTimelineOption
+
+from .format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
+from ..streams.av import AVStream
+from ..streams.channel_layout import CHANNEL_LAYOUT
+from ..codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
+from ..formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
+
+from ..dag.nodes import FilterableStream, FilterNode, OutputStream, OutputNode, InputNode, GlobalNode, GlobalStream
+
+
+from ..streams.video import VideoStream
+
+
+from ..streams.audio import AudioStream
+
+
+
+
+class FFMpegAVCodecContextEncoderOption(FFMpegOptionGroup):
+    """AVCodecContext Encoder options."""
+
+class FFMpegAVCodecContextDecoderOption(FFMpegOptionGroup):
+    """AVCodecContext Decoder options."""
+
+def encoder_codec_context(
+*,
+) -> FFMpegAVCodecContextEncoderOption:
+    """
+        Encoder codec context options.
+
+        Args:
+
+        Returns:
+            FFMpegAVCodecContextEncoderOption
+
+    """
+
+    return FFMpegAVCodecContextEncoderOption(merge({
+    }))
+
+
+def decoder_codec_context(
+*,
+) -> FFMpegAVCodecContextDecoderOption:
+    """
+        Decoder codec context options.
+
+        Args:
+
+        Returns:
+            FFMpegAVCodecContextDecoderOption
+
+    """
+
+    return FFMpegAVCodecContextDecoderOption(merge({
+    }))

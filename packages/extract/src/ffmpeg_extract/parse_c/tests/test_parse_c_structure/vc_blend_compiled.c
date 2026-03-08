@@ -1,0 +1,1 @@
+{ .class_name = "blend", .item_name = av_default_item_name, .option = blend_options, .version = ((58)<<16 | (36)<<8 | (100)), .category = AV_CLASS_CATEGORY_FILTER, .child_class_iterate = ff_framesync_child_class_iterate, .child_next = blend_child_next, }

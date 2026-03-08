@@ -1,0 +1,26 @@
+"""
+Audio stream.
+"""
+{% import "_components.jinja" as _components %}
+
+from __future__ import annotations
+
+import re
+from typing import TYPE_CHECKING, Any, Literal
+
+{{ _components.import_all(template_path, import_video=False) }}
+
+if TYPE_CHECKING:
+    from .video import VideoStream
+
+
+class AudioStream(FilterableStream):
+    """
+    Audio stream.
+    """
+
+    {% for f in filters %}
+        {% if f.filter_type.value in ["af", "avf"] and not f.is_dynamic_input %}
+    {{ _components.filter_method(f) }}
+        {% endif %}
+    {% endfor %}

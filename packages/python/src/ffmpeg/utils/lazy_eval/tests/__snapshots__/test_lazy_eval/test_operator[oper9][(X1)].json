@@ -1,0 +1,8 @@
+{
+  "__class__": "TrueDiv",
+  "left": {
+    "__class__": "Symbol",
+    "key": "X"
+  },
+  "right": 1
+}

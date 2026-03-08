@@ -1,0 +1,70 @@
+{
+  "": [
+    "Filter overlay",
+    "overlay AVOptions:",
+    "framesync AVOptions:",
+    "This filter has support for timeline through the 'enable' option."
+  ],
+  "Filter overlay": [
+    "Overlay a video source on top of the input."
+  ],
+  "Inputs:": [
+    "#0: main (video)",
+    "#1: overlay (video)"
+  ],
+  "Outputs:": [
+    "#0: default (video)"
+  ],
+  "Overlay a video source on top of the input.": [
+    "slice threading supported",
+    "Inputs:",
+    "Outputs:"
+  ],
+  "alpha             <int>        ..FV....... alpha format (from 0 to 1) (default straight)": [
+    "straight        0            ..FV.......",
+    "premultiplied   1            ..FV......."
+  ],
+  "eof_action        <int>        ..FV....... Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)": [
+    "repeat          0            ..FV....... Repeat the previous frame.",
+    "endall          1            ..FV....... End both streams.",
+    "pass            2            ..FV....... Pass through the main input.",
+    "repeat          0            ..FV....... Repeat the previous frame.",
+    "endall          1            ..FV....... End both streams.",
+    "pass            2            ..FV....... Pass through the main input."
+  ],
+  "eval              <int>        ..FV....... specify when to evaluate expressions (from 0 to 1) (default frame)": [
+    "init            0            ..FV....... eval expressions once during initialization",
+    "frame           1            ..FV....... eval expressions per-frame"
+  ],
+  "format            <int>        ..FV....... set output format (from 0 to 8) (default yuv420)": [
+    "yuv420          0            ..FV.......",
+    "yuv420p10       1            ..FV.......",
+    "yuv422          2            ..FV.......",
+    "yuv422p10       3            ..FV.......",
+    "yuv444          4            ..FV.......",
+    "yuv444p10       5            ..FV.......",
+    "rgb             6            ..FV.......",
+    "gbrp            7            ..FV.......",
+    "auto            8            ..FV......."
+  ],
+  "framesync AVOptions:": [
+    "eof_action        <int>        ..FV....... Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
+    "shortest          <boolean>    ..FV....... force termination when the shortest input terminates (default false)",
+    "repeatlast        <boolean>    ..FV....... extend last frame of secondary streams beyond EOF (default true)",
+    "ts_sync_mode      <int>        ..FV....... How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)"
+  ],
+  "overlay AVOptions:": [
+    "x                 <string>     ..FV....... set the x expression (default \"0\")",
+    "y                 <string>     ..FV....... set the y expression (default \"0\")",
+    "eof_action        <int>        ..FV....... Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
+    "eval              <int>        ..FV....... specify when to evaluate expressions (from 0 to 1) (default frame)",
+    "shortest          <boolean>    ..FV....... force termination when the shortest input terminates (default false)",
+    "format            <int>        ..FV....... set output format (from 0 to 8) (default yuv420)",
+    "repeatlast        <boolean>    ..FV....... repeat overlay of the last overlay frame (default true)",
+    "alpha             <int>        ..FV....... alpha format (from 0 to 1) (default straight)"
+  ],
+  "ts_sync_mode      <int>        ..FV....... How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)": [
+    "default         0            ..FV....... Frame from secondary input with the nearest lower or equal timestamp to the primary input frame",
+    "nearest         1            ..FV....... Frame from secondary input with the absolute nearest timestamp to the primary input frame"
+  ]
+}

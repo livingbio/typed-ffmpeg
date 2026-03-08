@@ -1,0 +1,10 @@
+[
+  "ffmpeg",
+  "-strict",
+  "experimental",
+  "-i",
+  "input1",
+  "-frame_size",
+  "1024",
+  "out.mp4"
+]

@@ -1,0 +1,66 @@
+"""
+Global arguments.
+"""
+
+{% import "_components.jinja" as _components %}
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from typing import TYPE_CHECKING, Any
+
+{{ _components.import_all(template_path, import_nodes=False) }}
+if TYPE_CHECKING:
+    from ..nodes import GlobalNode, GlobalStream, OutputStream
+
+class GlobalArgs(ABC):
+    """
+    Abstract base class for providing global FFmpeg command-line arguments.
+
+    This class defines an interface for setting global options that apply to the entire
+    FFmpeg command. These options control the general behavior of FFmpeg such as
+    logging levels, overwrite behavior, thread usage, and hardware acceleration.
+
+    Implementers must define the _global_node abstract method to apply these arguments
+    to actual FFmpeg command execution.
+    """
+
+    @abstractmethod
+    def _global_node(self, *streams: OutputStream, **kwargs: Any) -> GlobalNode:
+        ...
+
+    def global_args(
+        self,
+        *,
+
+        {%- for option in options -%}
+        {%- if option.is_global_option -%}
+        {{ option.name }}: {{ option | option_typing }} = None,
+        {%- endif -%}
+        {%- endfor -%}
+        extra_options: dict[str, Any] | None = None,
+    ) -> GlobalStream:
+        """
+        Set global options.
+
+        Args:
+            {% for option in options %}
+            {%- if option.is_global_option -%}
+            {{option.name | option_name_safe}}: {{option.help }}
+            {% endif %}
+            {%- endfor -%}
+            extra_options: Additional options
+
+        Returns:
+            GlobalStream: GlobalStream instance
+        """
+
+        return self._global_node(**merge(
+            {
+                {% for option in options %}
+                {%- if option.is_global_option -%}
+                "{{ option.name}}": {{ option.name | option_name_safe }},
+                {% endif %}
+                {% endfor %}
+            }, extra_options)
+        ).stream()

@@ -1,0 +1,56 @@
+"""
+Output node.
+"""
+{% import "_components.jinja" as _components %}
+
+from pathlib import Path
+from typing import Any
+
+{{ _components.import_all(template_path) }}
+
+def output(
+    *streams: FilterableStream,
+    filename: str | Path,
+    {%- for option in options -%}
+    {%- if option.is_output_option -%}
+    {{ option.name | option_name_safe }}: {{ option | option_typing }} = None,
+    {%- endif -%}
+    {%- endfor -%}
+    encoder_options: FFMpegEncoderOption | None = None,
+    muxer_options: FFMpegMuxerOption | None = None,
+    format_options: FFMpegAVFormatContextEncoderOption | None = None,
+    codec_options: FFMpegAVCodecContextEncoderOption | None = None,
+    extra_options: dict[str, Any] | None = None,
+) -> OutputStream:
+    """
+    Output file URL
+
+    Args:
+        *streams: the streams to output
+        filename: the filename to output to
+        {% for option in options %}
+        {%- if option.is_output_option -%}
+        {{option.name | option_name_safe}}: {{ option.help | striptags | normalize_help_text }}
+        {% endif %}
+        {%- endfor -%}
+        encoder_options: ffmpeg's encoder options
+        muxer_options: ffmpeg's muxer options
+        format_options: ffmpeg's AVFormatContext options
+        codec_options: ffmpeg's AVCodecContext options
+        extra_options: the arguments for the output
+
+    Returns:
+        the output stream
+    """
+
+    return OutputNode(
+        inputs=streams,
+        filename=str(filename),
+        kwargs=merge({
+            {% for option in options %}
+                {%- if option.is_output_option -%}
+                "{{ option.name}}": {{ option.name | option_name_safe }},
+                {% endif %}
+                {% endfor %}
+        }, encoder_options, muxer_options, format_options, codec_options, extra_options )
+    ).stream()

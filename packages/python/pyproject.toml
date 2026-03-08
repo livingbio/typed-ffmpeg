@@ -1,0 +1,182 @@
+[project]
+name = "typed-ffmpeg"
+dynamic = ["version"]
+description = "Modern Python FFmpeg wrappers offer comprehensive support for complex filters, complete with detailed typing and documentation."
+authors = [
+    {name = "lucemia", email = "lucemia@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = [
+    "ffmpeg",
+    "video",
+    "audio",
+    "multimedia",
+    "filter",
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Multimedia :: Sound/Audio",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+]
+
+[project.scripts]
+scripts = "scripts.main:app"
+
+[project.urls]
+Homepage = "https://livingbio.github.io/typed-ffmpeg/"
+Repository = "https://github.com/livingbio/typed-ffmpeg"
+
+[project.optional-dependencies]
+graph = ["graphviz"]
+
+[tool.uv]
+dev-dependencies = [
+    # Development tools
+    "ty",
+    "devtools",
+    "black",
+    "ruff>=0.9.6,<0.13.0",
+    "pre-commit",
+    "typer",
+    "jinja2",
+    "lxml",
+    "build",
+    
+    # Testing
+    "pytest-cov>=4.1,<7.0",
+    "pytest-datadir>=1.5.0",
+    "pytest-recording>=0.13.1",
+    "pytest-asyncio>=0.23.0",
+    "syrupy>=4.6.0",
+    
+    # Documentation
+    "beautifulsoup4",
+    "html2text",
+    "mkdocs",
+    "markdown-callouts>=0.4.0",
+    "mkdocs-material>=9.5.9",
+    "mkdocstrings>=0.24,<0.30",
+    "mkdocstrings-python>=1.8.0",
+    "pymdown-extensions>=10.7",
+    "mkdocs-gen-files",
+    "mkdocs-literate-nav",
+    "mkdocs-section-index",
+    "griffe_inherited_docstrings",
+    "ipykernel>=6.25.0,<6.30.0",
+    "mknotebooks",
+]
+
+
+
+[build-system]
+requires = ["setuptools>=61.0", "setuptools-scm>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["ffmpeg*"]
+exclude = [
+    "**/tests/**",
+    "**/scripts/**",
+    "**/__snapshots__/**",
+    "**/test_*",
+    "**/*_test.py",
+    "**/*.test.py",
+    "**/conftest.py"
+]
+
+[tool.setuptools.package-data]
+"ffmpeg" = ["py.typed"]
+"ffmpeg.common" = ["*"]
+"ffmpeg.common.cache" = ["*"]
+"ffmpeg.common.cache.list" = ["*"]
+"ffmpeg.common.cache.FFMpegFilterManuallyDefined" = ["*"]
+"ffmpeg.utils" = ["*"]
+"ffmpeg.utils.lazy_eval" = ["*"]
+exclude = [
+    "**/tests/**",
+    "**/scripts/**",
+    "**/__snapshots__/**",
+    "**/test_*",
+    "**/*_test.py",
+    "**/*.test.py",
+    "**/conftest.py"
+]
+
+[tool.setuptools_scm]
+version_scheme = "post-release"
+local_scheme = "node-and-timestamp"
+write_to = "src/ffmpeg/_version.py"
+
+[tool.mypy]
+exclude = "^(migrations|commands|sandbox|samples|sdk)/"
+show_error_codes = true
+implicit_optional = true
+follow_imports = "silent"
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_any_generics = true
+check_untyped_defs = true
+no_implicit_reexport = true
+disallow_untyped_defs = true
+
+[tool.ruff]
+line-length = 88
+exclude = ["**/cassettes/", "**/__snapshots__/"]
+src = ["src"]
+preview = true
+
+[tool.ruff.lint]
+select = [
+    "DOC",
+    "D",   # docstring 
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B006",   # flake8-bugbear: Do not use mutable data structures for argument defaults
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+ignore = [
+    "D417",
+    "D401",
+    "D203", 
+    "D212",
+    "DOC502", 
+    "E741",  # Ambiguous variable name: `I`
+    "E501",  # Line too long
+    "E402",  # Module level import not at top of file
+    "E712",  # not work for pandas
+    "F811",  # FIXME: we relay on it to share fixture across app
+]
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/**.py" = ["D103", "D104", "D100", "DOC501"]
+
+[tool.ruff.format]
+quote-style = "double"
+docstring-code-format = true
+
+[tool.pytest.ini_options]
+markers = [
+    "dev_only: marks tests to be run only on the main branch"
+]
+addopts = "--cov-report=term-missing"
+asyncio_mode = "auto"
