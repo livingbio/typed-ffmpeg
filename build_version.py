@@ -83,6 +83,7 @@ def build_version(version: str) -> None:
 
 
 def main() -> None:
+    """Build version-specific typed-ffmpeg packages."""
     parser = argparse.ArgumentParser(
         description="Build version-specific typed-ffmpeg packages"
     )

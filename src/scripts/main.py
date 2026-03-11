@@ -78,6 +78,9 @@ def collect(
     Example:
         scripts collect v7 --ffmpeg-binary /usr/local/bin/ffmpeg7
 
+    Raises:
+        typer.Exit: If the version is not supported.
+
     """
     if version not in SUPPORTED_VERSIONS:
         typer.echo(
