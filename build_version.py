@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Build a version-specific typed-ffmpeg package.
+"""
+Build a version-specific typed-ffmpeg package.
 
 This script builds a typed-ffmpeg package targeting a specific FFmpeg version.
 It copies the correct version cache, generates code, patches pyproject.toml
@@ -14,7 +15,6 @@ Usage:
 """
 
 import argparse
-import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -33,7 +33,9 @@ PYPROJECT_PATH = REPO_ROOT / "pyproject.toml"
 def build_version(version: str) -> None:
     """Build the package for a specific FFmpeg version."""
     if version not in VERSION_PACKAGE_NAMES:
-        print(f"Error: Unknown version '{version}'. Known: {list(VERSION_PACKAGE_NAMES)}")
+        print(
+            f"Error: Unknown version '{version}'. Known: {list(VERSION_PACKAGE_NAMES)}"
+        )
         sys.exit(1)
 
     package_name = VERSION_PACKAGE_NAMES[version]
@@ -47,8 +49,12 @@ def build_version(version: str) -> None:
         print(f"  [1/4] Generating code for {version}...")
         subprocess.run(
             [
-                sys.executable, "-m", "scripts.code_gen.cli",
-                "generate", "--version", version,
+                sys.executable,
+                "-m",
+                "scripts.code_gen.cli",
+                "generate",
+                "--version",
+                version,
             ],
             cwd=REPO_ROOT / "src",
             check=True,
@@ -63,10 +69,10 @@ def build_version(version: str) -> None:
             )
             PYPROJECT_PATH.write_text(patched)
         else:
-            print(f"  [2/4] Using default package name (typed-ffmpeg)")
+            print("  [2/4] Using default package name (typed-ffmpeg)")
 
         # Step 3: Build the package
-        print(f"  [3/4] Building package...")
+        print("  [3/4] Building package...")
         dist_dir = REPO_ROOT / "dist" / version
         dist_dir.mkdir(parents=True, exist_ok=True)
         subprocess.run(
