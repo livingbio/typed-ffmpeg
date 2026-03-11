@@ -1,0 +1,106 @@
+name: Collect FFmpeg Version Data
+
+on:
+  workflow_dispatch:
+    inputs:
+      ffmpeg_versions:
+        description: 'Comma-separated FFmpeg versions to collect (e.g., "5.1,6.0,7.0")'
+        required: false
+        default: '5.1,6.0,7.0'
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    strategy:
+      matrix:
+        ffmpeg: ${{ fromJson(format('[{0}]', inputs.ffmpeg_versions || '"5.1","6.0","7.0"')) }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
+      - name: Install FFmpeg build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential nasm yasm pkg-config
+
+      - name: Build FFmpeg ${{ matrix.ffmpeg }}
+        run: |
+          git clone --depth 1 --branch n${{ matrix.ffmpeg }} \
+            https://github.com/FFmpeg/FFmpeg.git /tmp/ffmpeg-${{ matrix.ffmpeg }}
+          cd /tmp/ffmpeg-${{ matrix.ffmpeg }}
+          ./configure --disable-doc --disable-debug --enable-gpl
+          make -j$(nproc)
+          sudo make install
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Create virtual environment and install dependencies
+        run: |
+          uv venv
+          uv pip install --group dev
+
+      - name: Determine version identifier
+        id: version
+        run: |
+          MAJOR=$(echo "${{ matrix.ffmpeg }}" | cut -d. -f1)
+          echo "id=v${MAJOR}" >> "$GITHUB_OUTPUT"
+
+      - name: Collect cache data
+        run: |
+          source .venv/bin/activate
+          python -m scripts.main collect ${{ steps.version.outputs.id }} \
+            --ffmpeg-binary /usr/local/bin/ffmpeg
+
+      - name: Upload version cache as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cache-${{ steps.version.outputs.id }}
+          path: versions/${{ steps.version.outputs.id }}/cache/
+
+  commit:
+    needs: collect
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
+      - name: Download all cache artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: /tmp/caches/
+
+      - name: Install cache data
+        run: |
+          for dir in /tmp/caches/cache-*/; do
+            version=$(basename "$dir" | sed 's/cache-//')
+            mkdir -p "versions/${version}/cache"
+            cp -r "${dir}"* "versions/${version}/cache/"
+          done
+
+      - name: Commit and push
+        run: |
+          git add versions/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update FFmpeg version cache data"
+            git push
+          fi

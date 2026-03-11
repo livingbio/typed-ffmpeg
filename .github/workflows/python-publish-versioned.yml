@@ -1,0 +1,62 @@
+name: Upload Versioned Python Packages
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    strategy:
+      matrix:
+        ffmpeg_version: ['v5', 'v6', 'v7']
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Install libxml2 and libxslt development packages
+        run: sudo apt-get update && sudo apt-get install -y libxml2-dev libxslt1-dev
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Create virtual environment
+        run: uv venv
+
+      - name: Install dependencies
+        run: uv pip install --group dev
+
+      - name: Check version cache exists
+        run: |
+          if [ ! -d "versions/${{ matrix.ffmpeg_version }}/cache/list" ]; then
+            echo "Error: Cache data not found for ${{ matrix.ffmpeg_version }}."
+            echo "Run the 'Collect FFmpeg Version Data' workflow first."
+            exit 1
+          fi
+
+      - name: Build versioned package
+        run: |
+          source .venv/bin/activate
+          python build_version.py ${{ matrix.ffmpeg_version }}
+        env:
+          SETUPTOOLS_SCM_PRETEND_VERSION: ${{ github.ref_name }}
+
+      - name: Publish package
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          packages-dir: dist/${{ matrix.ffmpeg_version }}/

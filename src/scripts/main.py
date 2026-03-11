@@ -9,15 +9,19 @@ different subcommands for each functionality area.
 
 import pdb
 import sys
+from pathlib import Path
 from types import TracebackType
+from typing import Annotated
 
 import typer
 
 from .code_gen.cli import app as code_gen_app
+from .code_gen.cli import generate
 from .manual.cli import app as manual_app
 from .parse_c.cli import app as parse_c_app
 from .parse_docs.cli import app as parse_docs_app
 from .parse_help.cli import app as parse_help_app
+from .version_utils import SUPPORTED_VERSIONS
 
 
 def pdb_callback(value: bool) -> None:
@@ -47,6 +51,47 @@ def main(
 ) -> None:
     """Typed-FFmpeg code generation and parsing utilities."""
     pdb_callback(pdb)
+
+
+@app.command()
+def collect(
+    version: Annotated[
+        str,
+        typer.Argument(help=f"Target FFmpeg version ({', '.join(SUPPORTED_VERSIONS)})"),
+    ],
+    ffmpeg_binary: Annotated[
+        str,
+        typer.Option(help="Path to the FFmpeg binary for this version"),
+    ] = "ffmpeg",
+    outpath: Annotated[
+        Path | None,
+        typer.Option(help="Output path for generated code"),
+    ] = None,
+) -> None:
+    """
+    Collect cache data for a specific FFmpeg version.
+
+    Parses the specified FFmpeg binary to extract filter, codec, and format
+    definitions, then stores the cache data in the version-specific directory
+    under versions/{version}/cache/.
+
+    Example:
+        scripts collect v7 --ffmpeg-binary /usr/local/bin/ffmpeg7
+
+    """
+    if version not in SUPPORTED_VERSIONS:
+        typer.echo(
+            f"Error: Unsupported version '{version}'. "
+            f"Supported: {', '.join(SUPPORTED_VERSIONS)}",
+            err=True,
+        )
+        raise typer.Exit(1)
+
+    typer.echo(f"Collecting data for FFmpeg {version} using binary: {ffmpeg_binary}")
+    generate(
+        outpath=outpath, rebuild=True, version=version, ffmpeg_binary=ffmpeg_binary
+    )
+    typer.echo(f"Cache data saved to versions/{version}/cache/")
 
 
 app.add_typer(parse_help_app, name="parse-help")

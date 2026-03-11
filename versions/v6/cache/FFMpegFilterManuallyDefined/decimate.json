@@ -1,0 +1,6 @@
+{
+  "__class__": "FFMpegFilterManuallyDefined",
+  "formula_typings_input": "[StreamType.video] + ([StreamType.video] if ppsrc else [])",
+  "formula_typings_output": null,
+  "name": "decimate"
+}

@@ -26,6 +26,7 @@ FFMpegOptionType = Literal[
     "channel_layout",
     "pixel_format",
     "sample_rate",
+    "unsigned",
 ]
 
 

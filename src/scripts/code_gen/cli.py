@@ -4,6 +4,7 @@ import logging
 import os
 from dataclasses import asdict, replace
 from pathlib import Path
+from typing import Annotated
 
 import typer
 
@@ -20,6 +21,12 @@ from ffmpeg.common.schema import (
 )
 
 from .. import manual, parse_c, parse_docs, parse_help
+from ..parse_help.utils import set_ffmpeg_binary
+from ..version_utils import (
+    SUPPORTED_VERSIONS,
+    install_version_cache,
+    save_version_cache,
+)
 from .gen import render
 from .schema import (
     FFMpegAVOption,
@@ -70,19 +77,30 @@ def load_options(rebuild: bool) -> list[FFMpegOption]:
         except Exception as e:
             logging.error(f"Failed to load options from cache: {e}")
 
-    options = [
-        FFMpegOption(
-            name=i.name,
-            type=FFMpegOptionType(i.type.value),
-            flags=i.flags,
-            help=i.help,
-            argname=i.argname,
-            canon=i.canon,
+    try:
+        options = [
+            FFMpegOption(
+                name=i.name,
+                type=FFMpegOptionType(i.type.value),
+                flags=i.flags,
+                help=i.help,
+                argname=i.argname,
+                canon=i.canon,
+            )
+            for i in parse_c.cli.parse_ffmpeg_options()
+        ]
+        save(options, "options")
+        return options
+    except Exception as e:
+        logging.warning(
+            f"Failed to parse options from FFmpeg source: {e}. "
+            "Falling back to cached options."
         )
-        for i in parse_c.cli.parse_ffmpeg_options()
-    ]
-    save(options, "options")
-    return options
+        try:
+            return load(list[FFMpegOption], "options")
+        except Exception as e2:
+            logging.error(f"Failed to load options from cache: {e2}")
+            return []
 
 
 def load_av_option_set(rebuild: bool) -> list[FFMpegAVOption]:
@@ -152,60 +170,61 @@ def load_filters(rebuild: bool) -> list[FFMpegFilter]:
         if f.name == "afir":
             continue
 
-        # Convert parse_help filter to main filter schema
-        converted_filter = FFMpegFilter(
-            name=f.name,
-            description=f.help,
-            # flags
-            is_support_timeline=f.is_timeline,
-            is_support_slice_threading=f.is_slice_threading,
-            is_support_command=False,
-            # NOTE: is_support_framesync can only be determined by filter_info_from_help
-            is_support_framesync=f.is_framesync,
-            is_filter_sink=f.io_flags.endswith("->|"),
-            is_filter_source=f.io_flags.startswith("|->"),
-            # IO Typing
-            is_dynamic_input="N->" in f.io_flags,
-            is_dynamic_output="->N" in f.io_flags,
-            # stream_typings's name can only be determined by filter_info_from_help
-            stream_typings_input=tuple(
-                FFMpegIOType(name=i.name, type=StreamType(i.type))
-                for i in f.stream_typings_input
-            ),
-            stream_typings_output=tuple(
-                FFMpegIOType(name=i.name, type=StreamType(i.type))
-                for i in f.stream_typings_output
-            ),
-            options=tuple(
-                FFMpegFilterOption(
-                    name=option.name,
-                    type=FFMpegFilterOptionType(option.type),
-                    default=option.default,
-                    description=option.help,
-                    choices=tuple(
-                        FFMpegFilterOptionChoice(
-                            name=choice.name,
-                            help=choice.help,
-                            flags=choice.flags,
-                            value=choice.value,
-                        )
-                        for choice in option.choices
-                    ),
-                )
-                for option in f.options
-            ),
-        )
-
-        manual_config = manual.cli.load_config(converted_filter.name)
-        if manual_config:
-            converted_filter = replace(converted_filter, **asdict(manual_config))
-
         try:
+            # Convert parse_help filter to main filter schema
+            converted_filter = FFMpegFilter(
+                name=f.name,
+                description=f.help,
+                # flags
+                is_support_timeline=f.is_timeline,
+                is_support_slice_threading=f.is_slice_threading,
+                is_support_command=False,
+                # NOTE: is_support_framesync can only be determined by filter_info_from_help
+                is_support_framesync=f.is_framesync,
+                is_filter_sink=f.io_flags.endswith("->|"),
+                is_filter_source=f.io_flags.startswith("|->"),
+                # IO Typing
+                is_dynamic_input="N->" in f.io_flags,
+                is_dynamic_output="->N" in f.io_flags,
+                # stream_typings's name can only be determined by filter_info_from_help
+                stream_typings_input=tuple(
+                    FFMpegIOType(name=i.name, type=StreamType(i.type))
+                    for i in f.stream_typings_input
+                ),
+                stream_typings_output=tuple(
+                    FFMpegIOType(name=i.name, type=StreamType(i.type))
+                    for i in f.stream_typings_output
+                ),
+                options=tuple(
+                    FFMpegFilterOption(
+                        name=option.name,
+                        type=FFMpegFilterOptionType(option.type),
+                        default=option.default,
+                        description=option.help,
+                        choices=tuple(
+                            FFMpegFilterOptionChoice(
+                                name=choice.name,
+                                help=choice.help,
+                                flags=choice.flags,
+                                value=choice.value,
+                            )
+                            for choice in option.choices
+                        ),
+                    )
+                    for option in f.options
+                    if option.type in {e.value for e in FFMpegFilterOptionType}
+                ),
+            )
+
+            manual_config = manual.cli.load_config(converted_filter.name)
+            if manual_config:
+                converted_filter = replace(converted_filter, **asdict(manual_config))
+
             filter_info = gen_filter_info(converted_filter)
             save(filter_info, filter_info.name)
             ffmpeg_filters.append(filter_info)
-        except ValueError:
-            print(f"Failed to generate filter info for {converted_filter.name}")
+        except Exception as e:
+            print(f"Warning: Skipping filter '{f.name}': {e}")
 
     save(ffmpeg_filters, "filters")
 
@@ -341,23 +360,65 @@ def load_formats(rebuild: bool) -> list[FFMpegFormat]:
 
 
 @app.command()
-def generate(outpath: Path | None = None, rebuild: bool = False) -> None:
+def generate(
+    outpath: Path | None = None,
+    rebuild: bool = False,
+    version: Annotated[
+        str | None,
+        typer.Option(
+            help=f"Target FFmpeg version ({', '.join(SUPPORTED_VERSIONS)}). "
+            "When specified, loads cache data for that version before generating."
+        ),
+    ] = None,
+    ffmpeg_binary: Annotated[
+        str | None,
+        typer.Option(
+            help="Path to the FFmpeg binary to use for parsing. "
+            "Only used when --rebuild is set."
+        ),
+    ] = None,
+) -> None:
     """
     Generate filter and option documents.
 
     Args:
         outpath: The output path
         rebuild: Whether to rebuild the filters and options from scratch, ignoring the cache
+        version: Target FFmpeg version (e.g., "v5", "v6", "v7")
+        ffmpeg_binary: Path to the FFmpeg binary to use for parsing
 
     """
     if not outpath:
         outpath = Path(__file__).parent.parent.parent / "ffmpeg"
 
+    if ffmpeg_binary:
+        set_ffmpeg_binary(ffmpeg_binary)
+
+    if version:
+        install_version_cache(version)
+
     ffmpeg_filters = load_filters(rebuild)
+
+    # Validate filters: skip any that can't determine their filter_type
+    # (e.g., new FFmpeg filters without proper IO typing definitions)
+    validated_filters = []
+    for f in ffmpeg_filters:
+        try:
+            _ = f.filter_type
+            validated_filters.append(f)
+        except Exception as e:
+            print(f"Warning: Excluding filter '{f.name}' from render: {e}")
+    ffmpeg_filters = validated_filters
+
     ffmpeg_options = load_options(rebuild)
     ffmpeg_codecs = load_codecs(rebuild)
     ffmpeg_muxers = load_formats(rebuild)
     ffmpeg_av_option_set = load_av_option_set(rebuild)
+
+    # Save version cache before render, since render rewrites source files
+    # and may cause import issues in the running process
+    if version and rebuild:
+        save_version_cache(version)
 
     render(
         filters=ffmpeg_filters,
@@ -367,6 +428,7 @@ def generate(outpath: Path | None = None, rebuild: bool = False) -> None:
         av_option_sets=ffmpeg_av_option_set,
         outpath=outpath,
     )
+
     os.system("pre-commit run -a")
 
 

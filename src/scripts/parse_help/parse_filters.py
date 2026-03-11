@@ -41,7 +41,7 @@ def _parse_list(text: str) -> list[FFMpegFilter]:
     output: list[FFMpegFilter] = []
     lines = text.splitlines()
     re_pattern = re.compile(
-        r"^\s*(?P<flag>[\w\.]{3})\s*(?P<name>\w+)\s+(?P<io_flags>[\w\|]+\-\>[\w\|]+)\s+(?P<help>.*)$"
+        r"^\s*(?P<flag>[\w\.]{2,3})\s+(?P<name>\w+)\s+(?P<io_flags>[\w\|]+\-\>[\w\|]+)\s+(?P<help>.*)$"
     )
 
     for line in lines:
@@ -189,7 +189,10 @@ def extract() -> list[FFMpegFilter]:
     """
     output: list[FFMpegFilter] = []
     for filter in _extract_list():
-        _filter = _extract_filter(filter.name)
-        _filter = replace(_filter, flags=filter.flags, io_flags=filter.io_flags)
-        output.append(_filter)
+        try:
+            _filter = _extract_filter(filter.name)
+            _filter = replace(_filter, flags=filter.flags, io_flags=filter.io_flags)
+            output.append(_filter)
+        except Exception as e:
+            print(f"Warning: Failed to parse filter '{filter.name}': {e}")
     return output

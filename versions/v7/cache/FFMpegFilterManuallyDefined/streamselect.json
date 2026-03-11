@@ -1,0 +1,9 @@
+{
+  "__class__": "FFMpegFilterManuallyDefined",
+  "formula_typings_input": "[StreamType.video] * int(inputs)",
+  "formula_typings_output": "[StreamType.video] * len(re.findall(r'\\d+', str(map)))",
+  "name": "streamselect",
+  "pre": {
+    "inputs": "len(streams)"
+  }
+}

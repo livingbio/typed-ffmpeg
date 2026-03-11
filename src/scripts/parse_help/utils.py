@@ -9,6 +9,31 @@ from typing import Any, cast, get_args
 from ..code_gen.schema import FFMpegOptionType
 from .schema import FFMpegAVOption, FFMpegOption, FFMpegOptionChoice
 
+_ffmpeg_binary: str = "ffmpeg"
+
+
+def set_ffmpeg_binary(path: str) -> None:
+    """
+    Set the path to the FFmpeg binary used for parsing.
+
+    Args:
+        path: Path to the FFmpeg binary (e.g., "/usr/local/bin/ffmpeg7")
+
+    """
+    global _ffmpeg_binary
+    _ffmpeg_binary = path
+
+
+def get_ffmpeg_binary() -> str:
+    """
+    Get the current FFmpeg binary path.
+
+    Returns:
+        The path to the FFmpeg binary
+
+    """
+    return _ffmpeg_binary
+
 
 def run_ffmpeg_command(args: Sequence[str]) -> str:
     """
@@ -28,7 +53,7 @@ def run_ffmpeg_command(args: Sequence[str]) -> str:
 
     """
     result = subprocess.run(
-        ["ffmpeg", *args, "-hide_banner"],
+        [_ffmpeg_binary, *args, "-hide_banner"],
         stdout=subprocess.PIPE,
         text=True,
     )
@@ -148,7 +173,7 @@ re_choice_without_value_pattern = re.compile(
     r"^(?P<name>(?:(?!  ).)+)\s+(?P<flags>[\w\.]{11})(?P<help>\s+.*)?"
 )
 re_option_pattern = re.compile(
-    r"(?P<name>[\-\w]+)\s+\<(?P<type>[\w]+)\>\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
+    r"(?P<name>[\-\w]+)\s+\[?\<(?P<type>[\w]+)\>\s*\]?\s*(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
 )
 
 re_min_max = re.compile(r"\(from\s+(?P<min>.+?)\s+to\s+(?P<max>.+?)\)")
