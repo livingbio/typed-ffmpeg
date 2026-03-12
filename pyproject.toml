@@ -49,7 +49,7 @@ dev-dependencies = [
     "devtools",
     "black",
     "ruff>=0.9.6,<0.13.0",
-    "pre-commit",
+    "prek>=0.1.0",
     "typer",
     "jinja2",
     "lxml",
