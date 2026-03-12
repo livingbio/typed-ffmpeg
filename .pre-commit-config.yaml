@@ -30,14 +30,16 @@ repos:
         exclude: '__snapshots__/|.eslintrc.json'
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    # Ruff version.
-    rev: v0.9.1
+    # Ruff version - updated for pref compatibility
+    rev: v0.9.6
     hooks:
       # Run the formatter.
       - id: ruff-format
+        files: ^src/
       # Run the linter.
       - id: ruff
         args: [--fix, --unsafe-fixes]
+        files: ^src/
 
   - repo: local
     hooks:
@@ -50,4 +52,3 @@ repos:
         files: ^src/
         pass_filenames: false
         args: ['src/', '--ignore', 'unresolved-import', '--ignore', 'unresolved-attribute', '--ignore', 'missing-argument']
-
