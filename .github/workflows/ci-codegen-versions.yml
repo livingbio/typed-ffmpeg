@@ -1,0 +1,102 @@
+name: CI CodeGen - Multi-Version FFmpeg
+
+permissions:
+  contents: read
+
+on:
+  # Manual trigger for generating version-specific bindings
+  workflow_dispatch:
+    inputs:
+      ffmpeg-version:
+        description: 'FFmpeg major version to generate (5, 6, 7, or all)'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - '5'
+          - '6'
+          - '7'
+          - 'all'
+  # Also run on changes to code gen scripts
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/scripts/code_gen/**'
+      - 'src/scripts/parse_help/**'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ffmpeg-version: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.ffmpeg-version == 'all' && fromJSON('["5", "6", "7"]') || fromJSON(format('["{0}"]', github.event.inputs.ffmpeg-version))) || fromJSON('["6", "7"]') }}
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+
+      - name: Install build tools
+        run: sudo apt-get update && sudo apt-get install -y build-essential nasm
+
+      - name: Install FFmpeg ${{ matrix.ffmpeg-version }}
+        run: |
+          FFMPEG_MAJOR=${{ matrix.ffmpeg-version }}
+
+          case "$FFMPEG_MAJOR" in
+            5) FFMPEG_URL="https://johnvansickle.com/ffmpeg/old-releases/ffmpeg-5.1.6-amd64-static.tar.xz" ;;
+            6) FFMPEG_URL="https://johnvansickle.com/ffmpeg/old-releases/ffmpeg-6.1.2-amd64-static.tar.xz" ;;
+            7) FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz" ;;
+          esac
+
+          wget -q "$FFMPEG_URL" -O /tmp/ffmpeg.tar.xz
+          mkdir -p /tmp/ffmpeg-static
+          tar xf /tmp/ffmpeg.tar.xz -C /tmp/ffmpeg-static --strip-components=1
+          sudo cp /tmp/ffmpeg-static/ffmpeg /usr/local/bin/ffmpeg
+          sudo cp /tmp/ffmpeg-static/ffprobe /usr/local/bin/ffprobe
+          ffmpeg -version | head -1
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Create virtual environment
+        run: uv venv
+
+      - name: Install dependencies
+        run: uv pip install --group dev
+
+      - name: Generate versioned bindings
+        run: |
+          source .venv/bin/activate
+          FFMPEG_VERSION=$(ffmpeg -version 2>/dev/null | head -1 | grep -oP '\d+\.\d+')
+          echo "::group::Generating bindings for FFmpeg $FFMPEG_VERSION"
+          python -m scripts.code_gen.cli generate --version-dir --rebuild
+          echo "::endgroup::"
+
+      - name: Show generated file stats
+        run: |
+          FFMPEG_MAJOR=${{ matrix.ffmpeg-version }}
+          echo "## Generated files for v${FFMPEG_MAJOR}" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          find src/ffmpeg/v${FFMPEG_MAJOR}/ -name '*.py' | xargs wc -l | tail -1 >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload generated bindings
+        uses: actions/upload-artifact@v4
+        with:
+          name: ffmpeg-v${{ matrix.ffmpeg-version }}-bindings
+          path: src/ffmpeg/v${{ matrix.ffmpeg-version }}/
+          retention-days: 30
+
+      - name: Upload version cache
+        uses: actions/upload-artifact@v4
+        with:
+          name: ffmpeg-v${{ matrix.ffmpeg-version }}-cache
+          path: src/ffmpeg/common/cache/list/*_${{ matrix.ffmpeg-version }}_*.json
+          retention-days: 30

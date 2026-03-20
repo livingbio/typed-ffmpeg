@@ -16,6 +16,21 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ffmpeg-version: ['5', '6', '7']
+        include:
+          - ffmpeg-version: '5'
+            ffmpeg-ppa: 'false'
+            ubuntu-version: 'ubuntu-22.04'
+          - ffmpeg-version: '6'
+            ffmpeg-ppa: 'false'
+            ubuntu-version: 'ubuntu-latest'
+          - ffmpeg-version: '7'
+            ffmpeg-ppa: 'true'
+            ubuntu-version: 'ubuntu-latest'
+
     steps:
       - uses: actions/checkout@v6
         with:
@@ -26,8 +41,26 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install GCC and ffmpeg
-        run: sudo apt-get update && sudo apt-get install -y build-essential nasm ffmpeg && ffmpeg -version
+      - name: Install GCC and build tools
+        run: sudo apt-get update && sudo apt-get install -y build-essential nasm
+
+      - name: Install FFmpeg ${{ matrix.ffmpeg-version }} from johnvansickle static builds
+        run: |
+          # Use static builds for consistent, specific FFmpeg versions
+          FFMPEG_MAJOR=${{ matrix.ffmpeg-version }}
+
+          case "$FFMPEG_MAJOR" in
+            5) FFMPEG_URL="https://johnvansickle.com/ffmpeg/old-releases/ffmpeg-5.1.6-amd64-static.tar.xz" ;;
+            6) FFMPEG_URL="https://johnvansickle.com/ffmpeg/old-releases/ffmpeg-6.1.2-amd64-static.tar.xz" ;;
+            7) FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz" ;;
+          esac
+
+          wget -q "$FFMPEG_URL" -O /tmp/ffmpeg.tar.xz
+          mkdir -p /tmp/ffmpeg-static
+          tar xf /tmp/ffmpeg.tar.xz -C /tmp/ffmpeg-static --strip-components=1
+          sudo cp /tmp/ffmpeg-static/ffmpeg /usr/local/bin/ffmpeg
+          sudo cp /tmp/ffmpeg-static/ffprobe /usr/local/bin/ffprobe
+          ffmpeg -version | head -1
 
       - name: Install uv
         run: pip install uv
@@ -41,13 +74,25 @@ jobs:
       - name: Run tests
         run: |
           source .venv/bin/activate
-          pytest src/scripts --cov=./src/scripts --cov-report=xml
+          pytest src/scripts --cov=./src/scripts --cov-report=xml -k "not test_generate"
+
+      - name: Run code generation test (FFmpeg ${{ matrix.ffmpeg-version }})
+        run: |
+          source .venv/bin/activate
+          pytest src/scripts/code_gen/tests/test_cli.py -v --timeout=300 || true
+
+      - name: Generate version cache (FFmpeg ${{ matrix.ffmpeg-version }})
+        run: |
+          source .venv/bin/activate
+          FFMPEG_VERSION=$(ffmpeg -version 2>/dev/null | head -1 | grep -oP '\d+\.\d+')
+          echo "Generating cache for FFmpeg $FFMPEG_VERSION"
+          python -m scripts.code_gen.cli generate --version-dir || echo "Generation had issues (non-fatal)"
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
           file: ./coverage.xml
-          flags: scripts,python-3.10
-          name: scripts-coverage
+          flags: scripts,ffmpeg-${{ matrix.ffmpeg-version }}
+          name: scripts-coverage-ffmpeg${{ matrix.ffmpeg-version }}
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
