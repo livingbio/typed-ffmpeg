@@ -58,7 +58,7 @@ def _load_names_from_cache(
     cache_id = f"{cache_prefix}_{version_key}"
     try:
         items = load(list[cls], cache_id)  # type: ignore[arg-type]
-        return {item.name for item in items}  # type: ignore[attr-defined]
+        return {item.name for item in items}
     except Exception:
         return None
 
