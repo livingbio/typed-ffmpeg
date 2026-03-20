@@ -10,12 +10,16 @@ from ..code_gen.schema import FFMpegOptionType
 from .schema import FFMpegAVOption, FFMpegOption, FFMpegOptionChoice
 
 
-def run_ffmpeg_command(args: Sequence[str]) -> str:
+def run_ffmpeg_command(
+    args: Sequence[str],
+    ffmpeg_binary: str = "ffmpeg",
+) -> str:
     """
     Execute an ffmpeg command with the provided arguments and return its standard output as a string.
 
     Args:
         args: The command line arguments to pass to ffmpeg (excluding the 'ffmpeg' executable itself)
+        ffmpeg_binary: Path or name of the ffmpeg executable.
 
     Returns:
         The standard output produced by the ffmpeg command
@@ -28,11 +32,33 @@ def run_ffmpeg_command(args: Sequence[str]) -> str:
 
     """
     result = subprocess.run(
-        ["ffmpeg", *args, "-hide_banner"],
+        [ffmpeg_binary, *args, "-hide_banner"],
         stdout=subprocess.PIPE,
         text=True,
     )
     return result.stdout
+
+
+def get_ffmpeg_version(ffmpeg_binary: str = "ffmpeg") -> str:
+    """
+    Get the FFmpeg version string (major.minor) by running the binary.
+
+    Args:
+        ffmpeg_binary: Path or name of the ffmpeg executable.
+
+    Returns:
+        Version string in major.minor form (e.g. '6.0').
+
+    Raises:
+        ValueError: If version cannot be parsed from output.
+
+    """
+    from ..code_gen.schema import parse_version
+
+    output = run_ffmpeg_command(["-version"], ffmpeg_binary=ffmpeg_binary)
+    first_line = output.split("\n")[0] if output else ""
+    major, minor = parse_version(first_line)
+    return f"{major}.{minor}"
 
 
 def _count_indent(line: str) -> int:
@@ -148,7 +174,7 @@ re_choice_without_value_pattern = re.compile(
     r"^(?P<name>(?:(?!  ).)+)\s+(?P<flags>[\w\.]{11})(?P<help>\s+.*)?"
 )
 re_option_pattern = re.compile(
-    r"(?P<name>[\-\w]+)\s+\<(?P<type>[\w]+)\>\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
+    r"(?P<name>[\-\w]+)\s+\[?\<(?P<type>[\w]+)\>\s*\]?\s*(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
 )
 
 re_min_max = re.compile(r"\(from\s+(?P<min>.+?)\s+to\s+(?P<max>.+?)\)")
