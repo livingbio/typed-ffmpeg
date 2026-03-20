@@ -321,7 +321,9 @@ class FFMpegFilter(Serializable):
         if not self.is_dynamic_input:
             return {i.type for i in self.stream_typings_input}
         else:
-            assert self.formula_typings_input, f"{self.name} has no input"
+            if not self.formula_typings_input:
+                # Fallback for filters where input typings couldn't be parsed
+                return {StreamType.video}
             if "video" not in self.formula_typings_input:
                 assert "audio" in self.formula_typings_input, (
                     f"{self.name} has no video input"

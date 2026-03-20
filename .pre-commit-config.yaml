@@ -45,7 +45,7 @@ repos:
     hooks:
       - id: ty
         name: ty check
-        entry: ty check
+        entry: uvx ty check
         language: system
         types: [python]
         exclude: migrations/|commands/|sandbox/|samples|sdk
