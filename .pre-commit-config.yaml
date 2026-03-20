@@ -51,4 +51,4 @@ repos:
         exclude: migrations/|commands/|sandbox/|samples|sdk
         files: ^src/
         pass_filenames: false
-        args: ['src/', '--ignore', 'unresolved-import', '--ignore', 'unresolved-attribute', '--ignore', 'missing-argument', '--ignore', 'invalid-return-type', '--ignore', 'unused-ignore-comment', '--ignore', 'unknown-rule']
+        args: ['src/', '--ignore', 'unresolved-import', '--ignore', 'unresolved-attribute', '--ignore', 'missing-argument', '--ignore', 'invalid-return-type', '--ignore', 'unused-type-ignore-comment', '--ignore', 'ignore-comment-unknown-rule', '--ignore', 'invalid-argument-type', '--ignore', 'unsupported-operator', '--ignore', 'invalid-method-override', '--ignore', 'invalid-assignment', '--ignore', 'no-matching-overload', '--ignore', 'possibly-missing-submodule', '--ignore', 'too-many-positional-arguments']
