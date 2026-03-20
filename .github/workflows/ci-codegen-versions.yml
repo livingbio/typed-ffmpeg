@@ -4,7 +4,6 @@ permissions:
   contents: read
 
 on:
-  # Manual trigger for generating version-specific bindings
   workflow_dispatch:
     inputs:
       ffmpeg-version:
@@ -17,12 +16,6 @@ on:
           - '6'
           - '7'
           - 'all'
-  # Also run on changes to code gen scripts
-  pull_request:
-    branches: [main]
-    paths:
-      - 'src/scripts/code_gen/**'
-      - 'src/scripts/parse_help/**'
 
 jobs:
   generate:
@@ -30,7 +23,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ffmpeg-version: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.ffmpeg-version == 'all' && fromJSON('["5", "6", "7"]') || fromJSON(format('["{0}"]', github.event.inputs.ffmpeg-version))) || fromJSON('["6", "7"]') }}
+        ffmpeg-version: ${{ github.event.inputs.ffmpeg-version == 'all' && fromJSON('["5", "6", "7"]') || fromJSON(format('["{0}"]', github.event.inputs.ffmpeg-version)) }}
+        include:
+          - ffmpeg-version: '5'
+            ffmpeg-image: 'jrottenberg/ffmpeg:5.1-ubuntu'
+          - ffmpeg-version: '6'
+            ffmpeg-image: 'jrottenberg/ffmpeg:6.1-ubuntu'
+          - ffmpeg-version: '7'
+            ffmpeg-image: 'jrottenberg/ffmpeg:7.1-ubuntu'
 
     steps:
       - uses: actions/checkout@v6
@@ -42,24 +42,16 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install build tools
-        run: sudo apt-get update && sudo apt-get install -y build-essential nasm
-
-      - name: Install FFmpeg ${{ matrix.ffmpeg-version }}
+      - name: Extract FFmpeg ${{ matrix.ffmpeg-version }} from Docker image
         run: |
-          FFMPEG_MAJOR=${{ matrix.ffmpeg-version }}
-
-          case "$FFMPEG_MAJOR" in
-            5) FFMPEG_URL="https://johnvansickle.com/ffmpeg/old-releases/ffmpeg-5.1.6-amd64-static.tar.xz" ;;
-            6) FFMPEG_URL="https://johnvansickle.com/ffmpeg/old-releases/ffmpeg-6.1.2-amd64-static.tar.xz" ;;
-            7) FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz" ;;
-          esac
-
-          wget -q "$FFMPEG_URL" -O /tmp/ffmpeg.tar.xz
-          mkdir -p /tmp/ffmpeg-static
-          tar xf /tmp/ffmpeg.tar.xz -C /tmp/ffmpeg-static --strip-components=1
-          sudo cp /tmp/ffmpeg-static/ffmpeg /usr/local/bin/ffmpeg
-          sudo cp /tmp/ffmpeg-static/ffprobe /usr/local/bin/ffprobe
+          # Pull the Docker image and copy ffmpeg/ffprobe binaries out
+          docker pull ${{ matrix.ffmpeg-image }}
+          CONTAINER_ID=$(docker create ${{ matrix.ffmpeg-image }})
+          docker cp "$CONTAINER_ID:/usr/local/bin/ffmpeg" /usr/local/bin/ffmpeg || \
+            docker cp "$CONTAINER_ID:/usr/bin/ffmpeg" /usr/local/bin/ffmpeg
+          docker cp "$CONTAINER_ID:/usr/local/bin/ffprobe" /usr/local/bin/ffprobe || \
+            docker cp "$CONTAINER_ID:/usr/bin/ffprobe" /usr/local/bin/ffprobe
+          docker rm "$CONTAINER_ID"
           ffmpeg -version | head -1
 
       - name: Install uv
@@ -75,16 +67,16 @@ jobs:
         run: |
           source .venv/bin/activate
           FFMPEG_VERSION=$(ffmpeg -version 2>/dev/null | head -1 | grep -oP '\d+\.\d+')
-          echo "::group::Generating bindings for FFmpeg $FFMPEG_VERSION"
+          echo "Generating bindings for FFmpeg $FFMPEG_VERSION"
           python -m scripts.code_gen.cli generate --version-dir --rebuild
-          echo "::endgroup::"
 
       - name: Show generated file stats
         run: |
           FFMPEG_MAJOR=${{ matrix.ffmpeg-version }}
           echo "## Generated files for v${FFMPEG_MAJOR}" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
-          find src/ffmpeg/v${FFMPEG_MAJOR}/ -name '*.py' | xargs wc -l | tail -1 >> $GITHUB_STEP_SUMMARY
+          find src/ffmpeg/v${FFMPEG_MAJOR}/ -name '*.py' | head -20 >> $GITHUB_STEP_SUMMARY
+          wc -l src/ffmpeg/v${FFMPEG_MAJOR}/**/*.py 2>/dev/null | tail -1 >> $GITHUB_STEP_SUMMARY || true
           echo '```' >> $GITHUB_STEP_SUMMARY
 
       - name: Upload generated bindings
