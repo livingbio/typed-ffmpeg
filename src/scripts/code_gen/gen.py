@@ -71,6 +71,10 @@ def filter_option_typing(option: FFMpegFilterOption) -> str:
         base_type = "Sample_fmt"
     elif option.type == FFMpegFilterOptionType.binary:
         base_type = "Binary"
+    elif option.type == FFMpegFilterOptionType.channel_layout:
+        base_type = "String"
+    elif option.type == FFMpegFilterOptionType.unsigned:
+        base_type = "Int"
 
     assert base_type, f"{option.type} not fit"
     if not option.choices:
@@ -292,11 +296,26 @@ env.filters["output_typings"] = output_typings
 env.filters["filter_option_typings"] = filter_option_typings
 env.filters["normalize_help_text"] = normalize_help_text
 env.globals["get_relative_import"] = get_relative_import
+env.globals["format_version_note"] = (
+    None  # Set at render time when version metadata exists
+)
+
+# Set of modules that are generated from templates (as opposed to hand-written).
+# This is derived from the template file names and used by the versioned import
+# resolver to decide between relative (generated→generated) and absolute
+# (generated→shared core) imports.
+GENERATED_MODULES: set[str] = set()
+for _tf in template_folder.glob("**/*.*.jinja"):
+    _rel = _tf.relative_to(template_folder)
+    # Convert path to module name: "streams/video.py.jinja" → "streams.video"
+    _mod = str(_rel).split(".")[0].replace("/", ".")
+    GENERATED_MODULES.add(_mod)
 
 
 def render(
     *,
     outpath: pathlib.Path,
+    version_prefix: str | None = None,
     **kwargs: Any,
 ) -> list[pathlib.Path]:
     """
@@ -304,28 +323,84 @@ def render(
 
     Args:
         outpath: The output path
+        version_prefix: Version subdirectory name (e.g., "v6") for versioned
+            output. When set, generated files use absolute imports for shared
+            core modules.
         **kwargs: Additional keyword arguments to pass to the template
 
     Returns:
         The rendered files
 
     """
-    outpath.mkdir(exist_ok=True)
+    outpath.mkdir(parents=True, exist_ok=True)
     output = []
 
-    for template_file in template_folder.glob("**/*.*.jinja"):
-        template_path = template_file.relative_to(template_folder)
+    # Create a version-aware import function for templates
+    def versioned_get_relative_import(
+        import_path: str, template_path: str, imports: str
+    ) -> str:
+        return get_relative_import(
+            import_path,
+            template_path,
+            imports,
+            version_prefix=version_prefix,
+            generated_modules=GENERATED_MODULES,
+        )
 
-        template = env.get_template(str(template_path))
-        code = template.render(template_path=template_path, **kwargs)
+    # Temporarily override globals for template rendering
+    env.globals["get_relative_import"] = versioned_get_relative_import
 
-        opath = outpath / str(template_path).replace(".jinja", "")
-        opath.parent.mkdir(parents=True, exist_ok=True)
+    # Wire up version note function if metadata is provided
+    version_metadata = kwargs.pop("version_metadata", None)
+    if version_metadata is not None:
+        from .version_diff import format_version_note as _fmt_note
 
-        with opath.open("w") as ofile:
-            ofile.write("# NOTE: this file is auto-generated, do not modify\n")
-            ofile.write(code)
+        current_major = version_prefix[1:] if version_prefix else None
 
-        output.append(opath)
+        def _version_note_for_filter(name: str) -> str | None:
+            return _fmt_note(
+                name,
+                version_metadata.filter_versions,
+                version_metadata.available_versions,
+                current_major or "",
+            )
+
+        env.globals["format_version_note"] = _version_note_for_filter
+    else:
+        env.globals["format_version_note"] = None
+
+    try:
+        for template_file in template_folder.glob("**/*.*.jinja"):
+            template_path = template_file.relative_to(template_folder)
+
+            template = env.get_template(str(template_path))
+            code = template.render(template_path=template_path, **kwargs)
+
+            opath = outpath / str(template_path).replace(".jinja", "")
+            opath.parent.mkdir(parents=True, exist_ok=True)
+
+            with opath.open("w") as ofile:
+                ofile.write("# NOTE: this file is auto-generated, do not modify\n")
+                ofile.write(code)
+
+            output.append(opath)
+
+        # Generate py.typed marker for type checker discovery
+        py_typed = outpath / "py.typed"
+        py_typed.touch()
+        output.append(py_typed)
+
+        # Generate __init__.py for the version subpackage
+        if version_prefix:
+            init_py = outpath / "__init__.py"
+            if not init_py.exists():
+                init_py.write_text(
+                    f'"""typed-ffmpeg bindings for FFmpeg {version_prefix}."""\n'
+                )
+                output.append(init_py)
+
+    finally:
+        # Restore the original non-versioned import function
+        env.globals["get_relative_import"] = get_relative_import
 
     return output

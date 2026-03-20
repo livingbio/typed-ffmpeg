@@ -1,10 +1,66 @@
 """Schema definitions for code generation."""
 
+import re
 from collections.abc import Iterable
 from dataclasses import dataclass
 from typing import Literal
 
 from ffmpeg.common.serialize import Serializable
+
+# Minimum FFmpeg version supported by codegen (major, minor).
+MIN_FFMPEG_VERSION_MAJOR = 5
+MIN_FFMPEG_VERSION_MINOR = 0
+
+
+def version_cache_key(version: str) -> str:
+    """
+    Convert a version string like '6.0' to a cache key like '6_0'.
+
+    Args:
+        version: Version string in major.minor form.
+
+    Returns:
+        Cache-safe key for use in cache ids.
+
+    """
+    return version.replace(".", "_")
+
+
+def parse_version(version_str: str) -> tuple[int, int]:
+    """
+    Parse major.minor from a version string or ffmpeg -version output.
+
+    Args:
+        version_str: Version string (e.g. '6.0' or first line of ffmpeg -version).
+
+    Returns:
+        (major, minor) tuple.
+
+    Raises:
+        ValueError: If version cannot be parsed.
+
+    """
+    # Match "6.0" or "ffmpeg version 6.0" style
+    m = re.search(r"(\d+)\.(\d+)", version_str)
+    if not m:
+        raise ValueError(f"Cannot parse version from: {version_str!r}")
+    return (int(m.group(1)), int(m.group(2)))
+
+
+def is_supported_version(version: str) -> bool:
+    """
+    Return True if the given version is >= MIN_FFMPEG_VERSION (5.0).
+
+    Args:
+        version: Version string in major.minor form.
+
+    Returns:
+        True if version is supported.
+
+    """
+    major, minor = parse_version(version)
+    return (major, minor) >= (MIN_FFMPEG_VERSION_MAJOR, MIN_FFMPEG_VERSION_MINOR)
+
 
 FFMpegOptionType = Literal[
     "boolean",
@@ -15,6 +71,7 @@ FFMpegOptionType = Literal[
     "pix_fmt",
     "int",
     "int64",
+    "unsigned",
     "double",
     "float",
     "string",
@@ -82,6 +139,8 @@ class FFMpegAVOption(Serializable):
                 case "int":
                     return "int | None"
                 case "int64":
+                    return "int | None"
+                case "unsigned":
                     return "int | None"
                 case "float":
                     return "float | None"
