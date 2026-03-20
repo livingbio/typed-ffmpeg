@@ -59,6 +59,8 @@ class FFMpegFilterOptionType(str, Enum):
     rational = "rational"
     sample_fmt = "sample_fmt"
     binary = "binary"
+    channel_layout = "channel_layout"
+    unsigned = "unsigned"
 
 
 @serializable
@@ -406,7 +408,13 @@ class FFMpegFilter(Serializable):
             if {StreamType.audio} == self.output_typings:
                 return FFMpegFilterType.asrc
 
-        assert self.input_typings
+        if not self.input_typings:
+            # Fallback: infer from output typings when input is unknown
+            if StreamType.video in self.output_typings:
+                return FFMpegFilterType.vf
+            if StreamType.audio in self.output_typings:
+                return FFMpegFilterType.af
+            return FFMpegFilterType.vf  # default fallback
 
         if self.input_typings == {StreamType.video}:
             if StreamType.audio in self.output_typings:

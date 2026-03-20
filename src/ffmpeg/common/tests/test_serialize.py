@@ -17,16 +17,13 @@ def test_serializable_decorator() -> None:
     # Test that classes can be loaded by name
     assert load_class("TestEnum") is TestEnum
 
-    # Test that duplicate registration raises an error
-    try:
+    # Test that re-registration overwrites (needed for multi-version support)
+    @serializable
+    class TestEnum(Enum):  # type: ignore[no-redef]
+        VALUE_NEW = "value_new"
 
-        @serializable
-        class TestEnum(Enum):  # type: ignore[no-redef]
-            pass
-
-        assert False, "Should have raised an AssertionError"
-    except AssertionError as e:
-        assert "Class TestEnum already registered" in str(e)
+    # The registry now points to the new class
+    assert load_class("TestEnum") is TestEnum
 
 
 def test_load_and_dump(snapshot: SnapshotAssertion) -> None:

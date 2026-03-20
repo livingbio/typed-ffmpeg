@@ -39,9 +39,6 @@ def serializable(
         The class itself
 
     """
-    assert cls.__name__ not in CLASS_REGISTRY, (
-        f"Class {cls.__name__} already registered"
-    )
     CLASS_REGISTRY[cls.__name__] = cls
 
     return cls
