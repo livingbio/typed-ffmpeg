@@ -108,8 +108,13 @@ exclude = [
 "ffmpeg.v7" = ["py.typed"]
 "ffmpeg.v8" = ["py.typed"]
 "ffmpeg.common" = ["*"]
-"ffmpeg.common.cache" = ["*"]
-"ffmpeg.common.cache.list" = ["*"]
+"ffmpeg.common.cache.list" = [
+    "options.json",
+    "filters.json",
+    "codecs.json",
+    "formats.json",
+    "av_option_sets.json",
+]
 "ffmpeg.common.cache.FFMpegFilterManuallyDefined" = ["*"]
 "ffmpeg.utils" = ["*"]
 "ffmpeg.utils.lazy_eval" = ["*"]
