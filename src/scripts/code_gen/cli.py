@@ -116,7 +116,7 @@ def load_options(rebuild: bool) -> list[FFMpegOption]:
     options = [
         FFMpegOption(
             name=i.name,
-            type=FFMpegOptionType(i.type.value),
+            type=FFMpegOptionType(i.type),
             flags=i.flags,
             help=i.help,
             argname=i.argname,
@@ -419,7 +419,8 @@ def generate(
         ffmpeg_version=version,
         version_prefix=version_prefix,
     )
-    os.system("pre-commit run -a")
+    if Path(".pre-commit-config.yaml").exists():
+        os.system("pre-commit run -a")
 
 
 @app.command()

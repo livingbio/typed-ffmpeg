@@ -4,6 +4,24 @@ permissions:
   contents: read
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/scripts/code_gen/**'
+      - 'src/scripts/parse_help/**'
+      - 'src/scripts/parse_c/**'
+      - 'src/scripts/parse_docs/**'
+      - 'src/scripts/manual/**'
+      - 'src/ffmpeg/common/schema.py'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/scripts/code_gen/**'
+      - 'src/scripts/parse_help/**'
+      - 'src/scripts/parse_c/**'
+      - 'src/scripts/parse_docs/**'
+      - 'src/scripts/manual/**'
+      - 'src/ffmpeg/common/schema.py'
   workflow_dispatch:
     inputs:
       ffmpeg-version:
@@ -23,7 +41,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ffmpeg-version: ${{ github.event.inputs.ffmpeg-version == 'all' && fromJSON('["5", "6", "7"]') || fromJSON(format('["{0}"]', github.event.inputs.ffmpeg-version)) }}
+        ffmpeg-version: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.ffmpeg-version != 'all') && fromJSON(format('["{0}"]', github.event.inputs.ffmpeg-version)) || fromJSON('["5", "6", "7"]') }}
         include:
           - ffmpeg-version: '5'
             ffmpeg-image: 'jrottenberg/ffmpeg:5.1-ubuntu'
@@ -69,6 +87,18 @@ jobs:
           FFMPEG_VERSION=$(ffmpeg -version 2>/dev/null | head -1 | grep -oP '\d+\.\d+')
           echo "Generating bindings for FFmpeg $FFMPEG_VERSION"
           python -m scripts.code_gen.cli generate --version-dir --rebuild
+
+      - name: Verify generated code imports
+        run: |
+          source .venv/bin/activate
+          FFMPEG_MAJOR=${{ matrix.ffmpeg-version }}
+          python -c "
+          from ffmpeg.v${FFMPEG_MAJOR} import filters, sources
+          from ffmpeg.v${FFMPEG_MAJOR}.codecs import encoders, decoders
+          from ffmpeg.v${FFMPEG_MAJOR}.formats import muxers, demuxers
+          from ffmpeg.v${FFMPEG_MAJOR}.streams import audio, video
+          print('All v${FFMPEG_MAJOR} submodules import OK')
+          "
 
       - name: Show generated file stats
         run: |

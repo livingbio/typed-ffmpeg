@@ -335,7 +335,11 @@ def render(
     outpath.mkdir(parents=True, exist_ok=True)
     output = []
 
-    # Create a version-aware import function for templates
+    # Create a version-aware import function for templates.
+    # NOTE: We pass this as a template variable (not env.globals) because
+    # Jinja2 caches imported macro modules with the globals from their first
+    # render. Passing via template.render() ensures each render gets the
+    # correct function regardless of macro caching.
     def versioned_get_relative_import(
         import_path: str, template_path: str, imports: str
     ) -> str:
@@ -347,17 +351,15 @@ def render(
             generated_modules=GENERATED_MODULES,
         )
 
-    # Temporarily override globals for template rendering
-    env.globals["get_relative_import"] = versioned_get_relative_import
-
     # Wire up version note function if metadata is provided
     version_metadata = kwargs.pop("version_metadata", None)
+    format_version_note_fn = None
     if version_metadata is not None:
         from .version_diff import format_version_note as _fmt_note
 
         current_major = version_prefix[1:] if version_prefix else None
 
-        def _version_note_for_filter(name: str) -> str | None:
+        def format_version_note_fn(name: str) -> str | None:  # type: ignore[no-redef]
             return _fmt_note(
                 name,
                 version_metadata.filter_versions,
@@ -365,42 +367,38 @@ def render(
                 current_major or "",
             )
 
-        env.globals["format_version_note"] = _version_note_for_filter
-    else:
-        env.globals["format_version_note"] = None
+    for template_file in template_folder.glob("**/*.*.jinja"):
+        template_path = template_file.relative_to(template_folder)
 
-    try:
-        for template_file in template_folder.glob("**/*.*.jinja"):
-            template_path = template_file.relative_to(template_folder)
+        template = env.get_template(str(template_path))
+        code = template.render(
+            template_path=template_path,
+            get_relative_import=versioned_get_relative_import,
+            format_version_note=format_version_note_fn,
+            **kwargs,
+        )
 
-            template = env.get_template(str(template_path))
-            code = template.render(template_path=template_path, **kwargs)
+        opath = outpath / str(template_path).replace(".jinja", "")
+        opath.parent.mkdir(parents=True, exist_ok=True)
 
-            opath = outpath / str(template_path).replace(".jinja", "")
-            opath.parent.mkdir(parents=True, exist_ok=True)
+        with opath.open("w") as ofile:
+            ofile.write("# NOTE: this file is auto-generated, do not modify\n")
+            ofile.write(code)
 
-            with opath.open("w") as ofile:
-                ofile.write("# NOTE: this file is auto-generated, do not modify\n")
-                ofile.write(code)
+        output.append(opath)
 
-            output.append(opath)
+    # Generate py.typed marker for type checker discovery
+    py_typed = outpath / "py.typed"
+    py_typed.touch()
+    output.append(py_typed)
 
-        # Generate py.typed marker for type checker discovery
-        py_typed = outpath / "py.typed"
-        py_typed.touch()
-        output.append(py_typed)
-
-        # Generate __init__.py for the version subpackage
-        if version_prefix:
-            init_py = outpath / "__init__.py"
-            if not init_py.exists():
-                init_py.write_text(
-                    f'"""typed-ffmpeg bindings for FFmpeg {version_prefix}."""\n'
-                )
-                output.append(init_py)
-
-    finally:
-        # Restore the original non-versioned import function
-        env.globals["get_relative_import"] = get_relative_import
+    # Generate __init__.py for the version subpackage
+    if version_prefix:
+        init_py = outpath / "__init__.py"
+        if not init_py.exists():
+            init_py.write_text(
+                f'"""typed-ffmpeg bindings for FFmpeg {version_prefix}."""\n'
+            )
+            output.append(init_py)
 
     return output
