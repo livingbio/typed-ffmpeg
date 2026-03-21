@@ -62,14 +62,18 @@ jobs:
 
       - name: Extract FFmpeg ${{ matrix.ffmpeg-version }} from Docker image
         run: |
-          # Pull the Docker image and copy ffmpeg/ffprobe binaries out
+          # Pull the Docker image and copy ffmpeg/ffprobe binaries + shared libs
           docker pull ${{ matrix.ffmpeg-image }}
           CONTAINER_ID=$(docker create ${{ matrix.ffmpeg-image }})
+          # Copy binaries
           docker cp "$CONTAINER_ID:/usr/local/bin/ffmpeg" /usr/local/bin/ffmpeg || \
             docker cp "$CONTAINER_ID:/usr/bin/ffmpeg" /usr/local/bin/ffmpeg
           docker cp "$CONTAINER_ID:/usr/local/bin/ffprobe" /usr/local/bin/ffprobe || \
             docker cp "$CONTAINER_ID:/usr/bin/ffprobe" /usr/local/bin/ffprobe
+          # Copy shared libraries needed by the binaries
+          docker cp "$CONTAINER_ID:/usr/local/lib/." /usr/local/lib/ 2>/dev/null || true
           docker rm "$CONTAINER_ID"
+          ldconfig
           ffmpeg -version | head -1
 
       - name: Install uv
