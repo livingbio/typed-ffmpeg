@@ -34,14 +34,14 @@ from ..formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
 
 
 
-from ..dag.nodes import FilterableStream
+from ..dag.base_streams import FilterableStream
 
 if TYPE_CHECKING:
     from .video import VideoStream
 
 
 
-from ..dag.nodes import FilterableStream
+from ..dag.base_streams import FilterableStream
 
 if TYPE_CHECKING:
     from ..dag.factory import filter_node_factory

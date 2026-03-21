@@ -15,6 +15,7 @@ from ..utils.typing import override
 from .global_runnable.runnable import GlobalRunable
 from .io.output_args import OutputArgs
 from .schema import Node, Stream
+from .base_streams import FilterableStream
 
 if TYPE_CHECKING:
     from ..streams.audio import AudioStream
