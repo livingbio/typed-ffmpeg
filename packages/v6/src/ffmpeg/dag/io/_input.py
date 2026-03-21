@@ -11,8 +11,9 @@ from pathlib import Path
 from typing import TYPE_CHECKING,  Any
 
 if TYPE_CHECKING:
-    from ..nodes import FilterableStream, FilterNode, OutputStream, OutputNode, InputNode, GlobalNode, GlobalStream
     from ...streams.av import AVStream
+    from ..nodes import InputNode
+
 
 
 
@@ -122,6 +123,7 @@ def input(
     <AVStream:input.mp4:0>
     ```
     """
+    from ..nodes import InputNode
     return InputNode(
         filename=str(filename),
         kwargs=merge({

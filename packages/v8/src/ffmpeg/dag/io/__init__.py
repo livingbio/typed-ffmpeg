@@ -1,6 +1,7 @@
-"""DAG I/O layer - input/output node creation."""
+"""Input/output utilities for FFmpeg DAG operations."""
 
 from ._input import input
-from ._output import merge_outputs, output
+from ._output import output
 
-__all__ = ["input", "output", "merge_outputs"]
+# merge_outputs is defined in base.py, not here
+__all__ = ["input", "output"]

@@ -1,6 +1,7 @@
 # NOTE: this file is auto-generated, do not modify
 from __future__ import annotations
 
+
 """
 Output node.
 """
@@ -155,6 +156,7 @@ def output(
         the output stream
     """
 
+    from ..nodes import OutputNode
     return OutputNode(
         inputs=streams,
         filename=str(filename),

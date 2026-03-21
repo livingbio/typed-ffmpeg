@@ -7,7 +7,8 @@ This package provides comprehensive type hints and IDE autocomplete for FFmpeg 7
 __version__ = "7.1.0"
 
 # Export main API functions and classes
-from .dag.io import input, output, merge_outputs
+from .dag.io import input, output
+from .base import merge_outputs
 from ffmpeg_core.ffprobe import probe
 
 # Make commonly used modules easily accessible

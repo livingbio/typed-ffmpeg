@@ -15,6 +15,7 @@ from ..schema import StreamType
 from ..utils.frozendict import FrozenDict
 from ..utils.typing import override
 from .schema import Stream
+from .io.output_args import OutputArgs
 
 if TYPE_CHECKING:
     from ..streams.audio import AudioStream
@@ -206,23 +207,3 @@ class FilterableStream(Stream):
         )
 
 
-# Mix in OutputArgs methods
-# This is done at runtime to avoid circular imports
-def _mixin_output_args():
-    """Mix OutputArgs methods into FilterableStream."""
-    try:
-        from .io.output_args import OutputArgs
-        
-        # Copy all OutputArgs methods to FilterableStream
-        for attr_name in dir(OutputArgs):
-            if not attr_name.startswith('_'):
-                attr = getattr(OutputArgs, attr_name)
-                if callable(attr) and not hasattr(FilterableStream, attr_name):
-                    setattr(FilterableStream, attr_name, attr)
-    except ImportError:
-        # OutputArgs not yet available, will be mixed in later
-        pass
-
-
-# Try to mixin immediately, but don't fail if not available
-_mixin_output_args()
