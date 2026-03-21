@@ -1,0 +1,6 @@
+{
+  "__class__": "FFMpegFilterManuallyDefined",
+  "formula_typings_input": null,
+  "formula_typings_output": "[StreamType.video] * int(outputs)",
+  "name": "split"
+}

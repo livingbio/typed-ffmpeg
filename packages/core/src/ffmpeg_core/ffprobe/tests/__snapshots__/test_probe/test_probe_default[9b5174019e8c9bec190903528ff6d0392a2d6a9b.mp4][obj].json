@@ -1,0 +1,135 @@
+{
+  "chapters": null,
+  "error": null,
+  "format": {
+    "bit_rate": 1479571,
+    "duration": 38.740617,
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/9b5174019e8c9bec190903528ff6d0392a2d6a9b.mp4",
+    "format_long_name": "QuickTime / MOV",
+    "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+    "nb_programs": 0,
+    "nb_stream_groups": null,
+    "nb_streams": 1,
+    "probe_score": 100,
+    "size": 7164941,
+    "start_time": 0.0,
+    "tags": {
+      "tag": [
+        {
+          "key": "major_brand",
+          "value": "isom"
+        },
+        {
+          "key": "minor_version",
+          "value": "512"
+        },
+        {
+          "key": "compatible_brands",
+          "value": "isomiso2avc1mp41"
+        },
+        {
+          "key": "encoder",
+          "value": "Lavf57.26.100"
+        }
+      ]
+    }
+  },
+  "frames": null,
+  "library_versions": null,
+  "packets": null,
+  "packets_and_frames": null,
+  "pixel_formats": null,
+  "program_version": null,
+  "programs": null,
+  "streams": {
+    "stream": [
+      {
+        "avg_frame_rate": "1199/50",
+        "bit_rate": 1477078,
+        "bits_per_raw_sample": 8,
+        "bits_per_sample": null,
+        "channel_layout": null,
+        "channels": null,
+        "chroma_location": "left",
+        "closed_captions": true,
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "codec_name": "h264",
+        "codec_tag": "0x31637661",
+        "codec_tag_string": "avc1",
+        "codec_type": "video",
+        "coded_height": 1080,
+        "coded_width": 1920,
+        "color_primaries": null,
+        "color_range": null,
+        "color_space": null,
+        "color_transfer": null,
+        "display_aspect_ratio": "16:9",
+        "disposition": {
+          "attached_pic": 0,
+          "captions": 0,
+          "clean_effects": 0,
+          "comment": 0,
+          "default": 1,
+          "dependent": 0,
+          "descriptions": 0,
+          "dub": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "karaoke": 0,
+          "lyrics": 0,
+          "metadata": 0,
+          "non_diegetic": 0,
+          "original": 0,
+          "still_image": 0,
+          "timed_thumbnails": 0,
+          "visual_impaired": 0
+        },
+        "duration": 38.740617,
+        "duration_ts": 743200,
+        "extradata": null,
+        "extradata_hash": null,
+        "extradata_size": 43,
+        "field_order": "progressive",
+        "film_grain": true,
+        "has_b_frames": 2,
+        "height": 1080,
+        "id": "0x1",
+        "index": 0,
+        "initial_padding": null,
+        "level": 40,
+        "max_bit_rate": null,
+        "nb_frames": 929,
+        "nb_read_frames": null,
+        "nb_read_packets": null,
+        "pix_fmt": "yuv420p",
+        "profile": "High",
+        "r_frame_rate": "1199/50",
+        "refs": 1,
+        "sample_aspect_ratio": "1:1",
+        "sample_fmt": null,
+        "sample_rate": null,
+        "side_data_list": null,
+        "start_pts": 0,
+        "start_time": 0.0,
+        "tags": {
+          "tag": [
+            {
+              "key": "language",
+              "value": "eng"
+            },
+            {
+              "key": "handler_name",
+              "value": "VideoHandler"
+            },
+            {
+              "key": "vendor_id",
+              "value": "[0][0][0][0]"
+            }
+          ]
+        },
+        "time_base": "1/19184",
+        "width": 1920
+      }
+    ]
+  }
+}

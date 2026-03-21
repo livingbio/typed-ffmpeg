@@ -1,0 +1,58 @@
+{
+  "format": {
+    "bit_rate": "128002",
+    "duration": "27.744750",
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/SampleAudio_0.4mb.mp3",
+    "format_long_name": "MP2/3 (MPEG audio layer 2/3)",
+    "format_name": "mp3",
+    "nb_programs": 0,
+    "nb_streams": 1,
+    "probe_score": 51,
+    "size": "443926",
+    "start_time": "0.000000"
+  },
+  "streams": [
+    {
+      "avg_frame_rate": "0/0",
+      "bit_rate": "128000",
+      "bits_per_sample": 0,
+      "channel_layout": "stereo",
+      "channels": 2,
+      "codec_long_name": "MP3 (MPEG audio layer 3)",
+      "codec_name": "mp3",
+      "codec_tag": "0x0000",
+      "codec_tag_string": "[0][0][0][0]",
+      "codec_type": "audio",
+      "disposition": {
+        "attached_pic": 0,
+        "captions": 0,
+        "clean_effects": 0,
+        "comment": 0,
+        "default": 0,
+        "dependent": 0,
+        "descriptions": 0,
+        "dub": 0,
+        "forced": 0,
+        "hearing_impaired": 0,
+        "karaoke": 0,
+        "lyrics": 0,
+        "metadata": 0,
+        "non_diegetic": 0,
+        "original": 0,
+        "still_image": 0,
+        "timed_thumbnails": 0,
+        "visual_impaired": 0
+      },
+      "duration": "27.744750",
+      "duration_ts": 391533912,
+      "index": 0,
+      "initial_padding": 0,
+      "r_frame_rate": "0/0",
+      "sample_fmt": "fltp",
+      "sample_rate": "44100",
+      "start_pts": 0,
+      "start_time": "0.000000",
+      "time_base": "1/14112000"
+    }
+  ]
+}

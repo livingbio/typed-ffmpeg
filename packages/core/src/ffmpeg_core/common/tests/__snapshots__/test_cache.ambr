@@ -1,0 +1,6 @@
+# serializer version: 1
+# name: test_save_and_load
+  list([
+    FFMpegFilter(id=None, name='foo', description='bar', ref=None, is_support_slice_threading=None, is_support_timeline=None, is_support_framesync=None, is_support_command=None, is_filter_sink=None, is_filter_source=None, is_dynamic_input=False, is_dynamic_output=False, stream_typings_input=(), stream_typings_output=(), formula_typings_input=None, formula_typings_output=None, pre=(), options=()),
+  ])
+# ---

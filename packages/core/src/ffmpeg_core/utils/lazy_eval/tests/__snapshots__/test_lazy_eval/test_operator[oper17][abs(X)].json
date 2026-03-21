@@ -1,0 +1,8 @@
+{
+  "__class__": "Abs",
+  "left": {
+    "__class__": "Symbol",
+    "key": "X"
+  },
+  "right": null
+}

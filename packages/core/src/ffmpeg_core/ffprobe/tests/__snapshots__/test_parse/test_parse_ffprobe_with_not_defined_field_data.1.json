@@ -1,0 +1,101 @@
+{
+  "chapters": null,
+  "error": null,
+  "format": {
+    "bit_rate": 1826963,
+    "duration": 5.0,
+    "filename": "src/ffmpeg/ffprobe/tests/test_probe/test-5sec.mp4",
+    "format_long_name": "QuickTime / MOV",
+    "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+    "nb_programs": 0,
+    "nb_stream_groups": null,
+    "nb_streams": 2,
+    "probe_score": 100,
+    "size": 1141852,
+    "start_time": 0.0,
+    "tags": {
+      "tag": [
+        {
+          "key": "major_brand",
+          "value": "isom"
+        },
+        {
+          "key": "minor_version",
+          "value": "512"
+        },
+        {
+          "key": "compatible_brands",
+          "value": "isomiso2avc1mp41"
+        },
+        {
+          "key": "encoder",
+          "value": "Lavf58.76.100"
+        }
+      ]
+    }
+  },
+  "frames": null,
+  "library_versions": null,
+  "packets": null,
+  "packets_and_frames": null,
+  "pixel_formats": null,
+  "program_version": null,
+  "programs": null,
+  "streams": {
+    "stream": [
+      {
+        "avg_frame_rate": null,
+        "bit_rate": null,
+        "bits_per_raw_sample": null,
+        "bits_per_sample": null,
+        "channel_layout": null,
+        "channels": null,
+        "chroma_location": null,
+        "closed_captions": null,
+        "codec_long_name": null,
+        "codec_name": null,
+        "codec_tag": null,
+        "codec_tag_string": null,
+        "codec_type": null,
+        "coded_height": null,
+        "coded_width": null,
+        "color_primaries": null,
+        "color_range": null,
+        "color_space": null,
+        "color_transfer": null,
+        "display_aspect_ratio": null,
+        "disposition": null,
+        "duration": null,
+        "duration_ts": null,
+        "extradata": null,
+        "extradata_hash": null,
+        "extradata_size": null,
+        "field_order": null,
+        "film_grain": null,
+        "has_b_frames": null,
+        "height": null,
+        "id": null,
+        "index": null,
+        "initial_padding": null,
+        "level": null,
+        "max_bit_rate": null,
+        "nb_frames": null,
+        "nb_read_frames": null,
+        "nb_read_packets": null,
+        "pix_fmt": null,
+        "profile": null,
+        "r_frame_rate": null,
+        "refs": null,
+        "sample_aspect_ratio": null,
+        "sample_fmt": null,
+        "sample_rate": null,
+        "side_data_list": null,
+        "start_pts": null,
+        "start_time": null,
+        "tags": null,
+        "time_base": null,
+        "width": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "index": null,
+  "node": {
+    "filename": "test.mp4",
+    "inputs": [],
+    "kwargs": "FrozenDict({'f': 'mp4'})"
+  },
+  "optional": false
+}

@@ -1,0 +1,6 @@
+{
+  "__class__": "FFMpegFilterManuallyDefined",
+  "formula_typings_input": "[StreamType.audio] * len(streams.split('+'))",
+  "formula_typings_output": "[StreamType.audio] * len(streams.split('+'))",
+  "name": "amovie"
+}

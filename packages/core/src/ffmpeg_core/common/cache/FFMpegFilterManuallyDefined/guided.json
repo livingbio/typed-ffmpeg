@@ -1,0 +1,6 @@
+{
+  "__class__": "FFMpegFilterManuallyDefined",
+  "formula_typings_input": "[StreamType.video] + [StreamType.video] if guidance else []",
+  "formula_typings_output": null,
+  "name": "guided"
+}

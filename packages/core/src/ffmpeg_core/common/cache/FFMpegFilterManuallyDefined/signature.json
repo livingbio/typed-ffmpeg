@@ -1,0 +1,9 @@
+{
+  "__class__": "FFMpegFilterManuallyDefined",
+  "formula_typings_input": "[StreamType.video] * int(nb_inputs)",
+  "formula_typings_output": null,
+  "name": "signature",
+  "pre": {
+    "nb_inputs": "len(streams)"
+  }
+}
