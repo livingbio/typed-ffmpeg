@@ -103,6 +103,10 @@ exclude = [
 
 [tool.setuptools.package-data]
 "ffmpeg" = ["py.typed"]
+"ffmpeg.v5" = ["py.typed"]
+"ffmpeg.v6" = ["py.typed"]
+"ffmpeg.v7" = ["py.typed"]
+"ffmpeg.v8" = ["py.typed"]
 "ffmpeg.common" = ["*"]
 "ffmpeg.common.cache" = ["*"]
 "ffmpeg.common.cache.list" = ["*"]
@@ -138,7 +142,7 @@ disallow_untyped_defs = true
 
 [tool.ruff]
 line-length = 88
-exclude = ["**/cassettes/", "**/__snapshots__/"]
+exclude = ["**/cassettes/", "**/__snapshots__/", "src/ffmpeg/v[0-9]*"]
 src = ["src"]
 preview = true
 
