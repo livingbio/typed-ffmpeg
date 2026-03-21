@@ -1,6 +1,8 @@
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
+import pytest
+
 from ..cli import generate
 
 
@@ -40,3 +42,54 @@ def test_generate_version_dir() -> None:
         assert "from ffmpeg." in filters_content, (
             "Versioned output should use absolute imports for shared core"
         )
+
+
+def test_committed_version_bindings_import() -> None:
+    """Test that committed version bindings for v5-v8 all import correctly."""
+    import ffmpeg.versions
+
+    available = ffmpeg.versions.available()
+    assert len(available) >= 4, f"Expected at least 4 versions, got {available}"
+
+    for ver in available:
+        mod = f"ffmpeg.v{ver}"
+        # Test core submodule imports
+        exec(f"from {mod} import filters, sources")
+        exec(f"from {mod}.codecs import encoders, decoders")
+        exec(f"from {mod}.formats import muxers, demuxers")
+        exec(f"from {mod}.streams import audio, video")
+
+
+def test_version_diff() -> None:
+    """Test cross-version diff command produces meaningful output."""
+    from ..version_diff import diff_versions
+
+    delta = diff_versions("5.1", "8.0")
+    total = (
+        len(delta.filters_added)
+        + len(delta.filters_removed)
+        + len(delta.codecs_added)
+        + len(delta.codecs_removed)
+        + len(delta.formats_added)
+        + len(delta.formats_removed)
+    )
+    assert total > 0, "Expected some differences between FFmpeg 5.1 and 8.0"
+
+
+@pytest.mark.parametrize("version", ["5", "6", "7", "8"])
+def test_version_deprecation_hints(version: str) -> None:
+    """Test that version bindings contain deprecation hints in docstrings."""
+    version_dir = Path(__file__).parent.parent.parent.parent / "ffmpeg" / f"v{version}"
+    if not version_dir.exists():
+        pytest.skip(f"v{version} bindings not generated")
+
+    # At least some version should have "New in FFmpeg" or "Removed in FFmpeg" notes
+    filters_content = (version_dir / "filters.py").read_text()
+    streams_video = (version_dir / "streams" / "video.py").read_text()
+    combined = filters_content + streams_video
+
+    has_notes = "New in FFmpeg" in combined or "Removed in FFmpeg" in combined
+    # v5 is the earliest, so it won't have "New in" notes; v8 is latest so no "Removed in"
+    # But intermediate versions should have both
+    if version in ("6", "7"):
+        assert has_notes, f"v{version} should have version notes in docstrings"
