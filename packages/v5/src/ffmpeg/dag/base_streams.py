@@ -15,7 +15,6 @@ from ..schema import StreamType
 from ..utils.frozendict import FrozenDict
 from ..utils.typing import override
 from .schema import Stream
-from .io.output_args import OutputArgs
 
 if TYPE_CHECKING:
     from ..streams.audio import AudioStream
@@ -24,7 +23,8 @@ if TYPE_CHECKING:
     from .nodes import FilterNode, InputNode, OutputNode
 
 
-class FilterableStream(Stream):
+# Base class without OutputArgs (to avoid circular import)
+class FilterableStreamBase(Stream):
     """
     A stream that can be used as input to an FFmpeg filter.
 
@@ -36,7 +36,7 @@ class FilterableStream(Stream):
     and AudioStream, providing common functionality for filter operations.
     
     Note: This class is defined separately from nodes.py to avoid circular
-    import dependencies.
+    import dependencies. OutputArgs methods are added dynamically after module load.
     """
 
     if TYPE_CHECKING:
@@ -207,3 +207,32 @@ class FilterableStream(Stream):
         )
 
 
+# Create the actual class that will have OutputArgs methods added
+# This will be done after module imports are complete
+FilterableStream = FilterableStreamBase
+
+
+def _add_output_args_methods():
+    """
+    Dynamically add OutputArgs methods to FilterableStream after imports are complete.
+    
+    This avoids circular import by importing OutputArgs only when called,
+    not at module load time.
+    """
+    try:
+        from .io.output_args import OutputArgs
+        
+        # Copy all methods from OutputArgs to FilterableStream
+        for attr_name in dir(OutputArgs):
+            if not attr_name.startswith('_'):
+                attr = getattr(OutputArgs, attr_name)
+                if callable(attr) and not hasattr(FilterableStream, attr_name):
+                    setattr(FilterableStream, attr_name, attr)
+                    
+        return True
+    except (ImportError, AttributeError):
+        return False
+
+
+# This will be called by __init__.py after all imports are done
+__all__ = ['FilterableStream', '_add_output_args_methods']
