@@ -45,5 +45,6 @@
   "tests",
   "types",
   "utils",
+  "versions",
   "vfilter"
 ]
