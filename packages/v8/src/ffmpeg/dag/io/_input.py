@@ -6,29 +6,31 @@ Input node.
 
 
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING,  Any
+
+if TYPE_CHECKING:
+    from ..nodes import FilterableStream, FilterNode, OutputStream, OutputNode, InputNode, GlobalNode, GlobalStream
+    from ...streams.av import AVStream
+
 
 
 from ffmpeg_core.types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
-from ..factory import filter_node_factory
 from ffmpeg_core.utils.frozendict import FrozenDict, merge
 from ffmpeg_core.utils.typing import override
 from ffmpeg_core.schema import Default, StreamType, Auto, FFMpegOptionGroup
 from ffmpeg_core.common.schema import FFMpegFilterDef
-from .options.framesync import FFMpegFrameSyncOption
-from .options.timeline import FFMpegTimelineOption
+from ...options.framesync import FFMpegFrameSyncOption
+from ...options.timeline import FFMpegTimelineOption
 
 from ...options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecContextDecoderOption
 
 
 from ...options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
 
-from .streams.av import AVStream
-from .streams.channel_layout import CHANNEL_LAYOUT
-from .codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
-from .formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
+from ...streams.channel_layout import CHANNEL_LAYOUT
+from ...codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
+from ...formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
 
-from .nodes import FilterableStream, FilterNode, OutputStream, OutputNode, InputNode, GlobalNode, GlobalStream
 
 
 from ...streams.video import VideoStream

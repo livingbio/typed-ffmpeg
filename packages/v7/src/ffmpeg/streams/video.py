@@ -8,7 +8,6 @@ from __future__ import annotations
 
 import re
 from typing import TYPE_CHECKING, Any, Literal
-from ..dag.factory import filter_node_factory
 
 
 from ffmpeg_core.types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
@@ -16,29 +15,42 @@ from ffmpeg_core.utils.frozendict import FrozenDict, merge
 from ffmpeg_core.utils.typing import override
 from ffmpeg_core.schema import Default, StreamType, Auto, FFMpegOptionGroup
 from ffmpeg_core.common.schema import FFMpegFilterDef
-from .options.framesync import FFMpegFrameSyncOption
-from .options.timeline import FFMpegTimelineOption
+from ..options.framesync import FFMpegFrameSyncOption
+from ..options.timeline import FFMpegTimelineOption
 
 from ..options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecContextDecoderOption
 
 
 from ..options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
 
-from .streams.av import AVStream
-from .streams.channel_layout import CHANNEL_LAYOUT
-from .codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
-from .formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
-
-from ..dag.nodes import FilterableStream, FilterNode, OutputStream, OutputNode, InputNode, GlobalNode, GlobalStream
+from ..streams.channel_layout import CHANNEL_LAYOUT
+from ..codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
+from ..formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
 
 
 
 
 
 
+
+
+from ..dag.nodes import FilterableStream
 
 if TYPE_CHECKING:
     from .audio import AudioStream
+
+
+
+from ..dag.nodes import FilterableStream
+
+if TYPE_CHECKING:
+    from ..dag.factory import filter_node_factory
+
+
+def _get_filter_factory():
+    """Lazy import to avoid circular dependency."""
+    from ..dag.factory import filter_node_factory
+    return filter_node_factory
 
 
 class VideoStream(FilterableStream):
@@ -109,7 +121,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#addroi)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='addroi', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -244,7 +256,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alphaextract)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='alphaextract', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -309,7 +321,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alphamerge)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='alphamerge', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -390,7 +402,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amplify)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='amplify', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -534,7 +546,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ass)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='ass', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -624,7 +636,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atadenoise)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='atadenoise', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -715,7 +727,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#avgblur)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='avgblur', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -786,7 +798,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#backgroundkey)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='backgroundkey', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -855,7 +867,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bbox)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='bbox', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -911,7 +923,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bench_002c-abench)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='bench', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -970,7 +982,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bilateral)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='bilateral', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -1036,7 +1048,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bitplanenoise)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='bitplanenoise', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -1096,7 +1108,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blackdetect_002c-blackdetect_005fvulkan)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='blackdetect', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -1155,7 +1167,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blackframe)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='blackframe', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -1239,7 +1251,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blend)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='blend', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -1335,7 +1347,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blockdetect)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='blockdetect', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -1398,7 +1410,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blurdetect)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='blurdetect', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -1472,7 +1484,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#boxblur)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='boxblur', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -1547,7 +1559,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bwdif)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='bwdif', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -1611,7 +1623,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cas)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='cas', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -1668,7 +1680,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ccrepack)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='ccrepack', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -1734,7 +1746,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromahold)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='chromahold', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -1802,7 +1814,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromakey)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='chromakey', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -1875,7 +1887,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromanr)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='chromanr', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -1954,7 +1966,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromashift)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='chromashift', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -2027,7 +2039,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ciescope)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='ciescope', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -2106,7 +2118,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#codecview)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='codecview', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -2184,7 +2196,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorbalance)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='colorbalance', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -2278,7 +2290,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorchannelmixer)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='colorchannelmixer', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -2379,7 +2391,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorcontrast)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='colorcontrast', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -2455,7 +2467,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorcorrect)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='colorcorrect', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -2526,7 +2538,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorhold)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='colorhold', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -2592,7 +2604,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorize)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='colorize', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -2659,7 +2671,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorkey)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='colorkey', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -2738,7 +2750,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorlevels)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='colorlevels', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -2844,7 +2856,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colormap)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='colormap', typings_input=('video', 'video', 'video'), typings_output=('video',)),
 
             self,
@@ -2922,7 +2934,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colormatrix)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='colormatrix', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -2996,7 +3008,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorspace)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='colorspace', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -3085,7 +3097,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colortemperature)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='colortemperature', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -3169,7 +3181,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolution)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='convolution', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -3271,7 +3283,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolve)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='convolve', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -3340,7 +3352,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#copy)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='copy', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -3405,7 +3417,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#corr)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='corr', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -3470,7 +3482,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cover_005frect)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='cover_rect', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -3531,7 +3543,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crop)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='crop', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -3607,7 +3619,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cropdetect)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='cropdetect', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -3687,7 +3699,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cue)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='cue', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -3756,7 +3768,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#curves)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='curves', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -3835,7 +3847,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#datascope)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='datascope', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -3908,7 +3920,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dblur)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='dblur', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -3976,7 +3988,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dctdnoiz)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='dctdnoiz', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -4048,7 +4060,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deband)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='deband', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -4127,7 +4139,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deblock)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='deblock', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -4213,7 +4225,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deconvolve)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='deconvolve', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -4290,7 +4302,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dedot)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='dedot', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -4362,7 +4374,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deflate)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='deflate', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -4426,7 +4438,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deflicker)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='deflicker', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -4484,7 +4496,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dejudder)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='dejudder', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -4545,7 +4557,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#delogo)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='delogo', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -4620,7 +4632,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deshake)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='deshake', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -4706,7 +4718,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#despill)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='despill', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -4778,7 +4790,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#detelecine)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='detelecine', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -4845,7 +4857,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dilation)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='dilation', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -4924,7 +4936,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#displace)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='displace', typings_input=('video', 'video', 'video'), typings_output=('video',)),
 
             self,
@@ -4992,7 +5004,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#weave_002c-doubleweave)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='doubleweave', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -5056,7 +5068,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawbox)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='drawbox', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -5135,7 +5147,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawbox_005fvaapi)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='drawbox_vaapi', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -5215,7 +5227,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawgraph)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='drawgraph', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -5306,7 +5318,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawgrid)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='drawgrid', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -5411,7 +5423,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawtext)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='drawtext', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -5549,7 +5561,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#edgedetect)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='edgedetect', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -5615,7 +5627,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#elbg)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='elbg', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -5680,7 +5692,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#entropy)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='entropy', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -5736,7 +5748,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#epx)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='epx', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -5801,7 +5813,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#eq)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='eq', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -5882,7 +5894,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#erosion)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='erosion', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -5957,7 +5969,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#estdif)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='estdif', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -6033,7 +6045,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#exposure)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='exposure', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -6092,7 +6104,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#extractplanes)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='extractplanes', typings_input=('video',), typings_output="[StreamType.video] * len(planes.split('+'))"),
 
             self,
@@ -6158,7 +6170,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fade)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='fade', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -6249,7 +6261,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#feedback)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='feedback', typings_input=('video', 'video'), typings_output=('video', 'video')),
 
             self,
@@ -6337,7 +6349,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fftdnoiz)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='fftdnoiz', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -6418,7 +6430,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fftfilt)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='fftfilt', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -6486,7 +6498,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#field)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='field', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -6541,7 +6553,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldhint)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='fieldhint', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -6602,7 +6614,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldorder)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='fieldorder', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -6666,7 +6678,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fillborders)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='fillborders', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -6736,7 +6748,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#find_005frect)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='find_rect', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -6814,7 +6826,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#floodfill)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='floodfill', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -6890,7 +6902,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#format)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='format', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -6951,7 +6963,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fps)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='fps', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -7019,7 +7031,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framepack)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='framepack', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -7085,7 +7097,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framerate)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='framerate', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -7150,7 +7162,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framestep)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='framestep', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -7207,7 +7219,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#freezedetect)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='freezedetect', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -7273,7 +7285,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#freezeframes)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='freezeframes', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -7345,7 +7357,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fspp)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='fspp', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -7410,7 +7422,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fsync)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='fsync', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -7470,7 +7482,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#gblur)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='gblur', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -7542,7 +7554,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#geq)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='geq', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -7616,7 +7628,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#gradfun)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='gradfun', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -7680,7 +7692,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#graphmonitor)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='graphmonitor', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -7744,7 +7756,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#grayworld)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='grayworld', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -7803,7 +7815,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#greyedge)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='greyedge', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -7882,7 +7894,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haldclut)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='haldclut', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -7958,7 +7970,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hflip)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='hflip', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -8023,7 +8035,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#histeq)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='histeq', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -8090,7 +8102,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#histogram)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='histogram', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -8164,7 +8176,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hqdn3d)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='hqdn3d', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -8226,7 +8238,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hqx)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='hqx', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -8291,7 +8303,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hsvhold)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='hsvhold', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -8362,7 +8374,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hsvkey)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='hsvkey', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -8432,7 +8444,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hue)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='hue', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -8505,7 +8517,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#huesaturation)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='huesaturation', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -8576,7 +8588,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hwdownload)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='hwdownload', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -8630,7 +8642,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hwmap)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='hwmap', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -8688,7 +8700,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hwupload)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='hwupload', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -8757,7 +8769,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hysteresis)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='hysteresis', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -8838,7 +8850,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#identity)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='identity', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -8906,7 +8918,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#idet)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='idet', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -8976,7 +8988,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#il)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='il', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -9048,7 +9060,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#inflate)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='inflate', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -9111,7 +9123,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interlace_002c-interlace_005fvulkan)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='interlace', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -9175,7 +9187,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#kerndeint)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='kerndeint', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -9242,7 +9254,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#kirsch)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='kirsch', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -9306,7 +9318,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lagfun)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='lagfun', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -9366,7 +9378,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#latency_002c-alatency)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='latency', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -9428,7 +9440,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lenscorrection)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='lenscorrection', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -9511,7 +9523,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#libvmaf)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='libvmaf', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -9596,7 +9608,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#limiter)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='limiter', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -9659,7 +9671,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#loop)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='loop', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -9730,7 +9742,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lumakey)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='lumakey', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -9803,7 +9815,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='lut', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -9883,7 +9895,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut1d)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='lut1d', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -9959,7 +9971,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='lut2', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -10038,7 +10050,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut3d)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='lut3d', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -10111,7 +10123,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='lutrgb', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -10200,7 +10212,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='lutyuv', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -10295,7 +10307,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedclamp)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='maskedclamp', typings_input=('video', 'video', 'video'), typings_output=('video',)),
 
             self,
@@ -10382,7 +10394,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmax)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='maskedmax', typings_input=('video', 'video', 'video'), typings_output=('video',)),
 
             self,
@@ -10465,7 +10477,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmerge)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='maskedmerge', typings_input=('video', 'video', 'video'), typings_output=('video',)),
 
             self,
@@ -10548,7 +10560,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmin)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='maskedmin', typings_input=('video', 'video', 'video'), typings_output=('video',)),
 
             self,
@@ -10629,7 +10641,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='maskedthreshold', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -10704,7 +10716,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskfun)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='maskfun', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -10770,7 +10782,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mcdeint)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='mcdeint', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -10836,7 +10848,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#median)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='median', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -10902,7 +10914,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mestimate)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='mestimate', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -10969,7 +10981,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#metadata_002c-ametadata)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='metadata', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -11048,7 +11060,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#midequalizer)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='midequalizer', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -11121,7 +11133,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#minterpolate)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='minterpolate', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -11201,7 +11213,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#monochrome)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='monochrome', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -11279,7 +11291,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#morpho)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='morpho', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -11355,7 +11367,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mpdecimate)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='mpdecimate', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -11432,7 +11444,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#msad)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='msad', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -11509,7 +11521,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#multiply)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='multiply', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -11581,7 +11593,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#negate)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='negate', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -11646,7 +11658,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#nlmeans)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='nlmeans', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -11721,7 +11733,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#nnedi)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='nnedi', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -11795,7 +11807,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#noformat)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='noformat', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -11870,7 +11882,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#noise)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='noise', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -11961,7 +11973,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#normalize)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='normalize', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -12024,7 +12036,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#null)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='null', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -12095,7 +12107,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#oscilloscope)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='oscilloscope', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -12196,7 +12208,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='overlay', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -12297,7 +12309,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_005fvaapi)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='overlay_vaapi', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -12380,7 +12392,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#owdenoise)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='owdenoise', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -12446,7 +12458,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pad)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='pad', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -12520,7 +12532,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pad_005fvaapi)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='pad_vaapi', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -12591,7 +12603,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#palettegen)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='palettegen', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -12664,7 +12676,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#paletteuse)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='paletteuse', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -12744,7 +12756,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#perms_002c-aperms)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='perms', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -12815,7 +12827,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#perspective)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='perspective', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -12894,7 +12906,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#phase)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='phase', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -12953,7 +12965,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#photosensitivity)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='photosensitivity', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -13012,7 +13024,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pixdesctest)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='pixdesctest', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -13070,7 +13082,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pixelize)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='pixelize', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -13141,7 +13153,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pixscope)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='pixscope', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -13213,7 +13225,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pp7)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='pp7', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -13278,7 +13290,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#prewitt)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='prewitt', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -13347,7 +13359,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pseudocolor)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='pseudocolor', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -13431,7 +13443,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#psnr)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='psnr', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -13506,7 +13518,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pullup)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='pullup', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -13573,7 +13585,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#qp)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='qp', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -13630,7 +13642,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#random)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='random', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -13693,7 +13705,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#readeia608)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='readeia608', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -13759,7 +13771,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#readvitc)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='readvitc', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -13818,7 +13830,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#realtime_002c-arealtime)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='realtime', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -13887,7 +13899,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#remap)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='remap', typings_input=('video', 'video', 'video'), typings_output=('video',)),
 
             self,
@@ -13961,7 +13973,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#removegrain)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='removegrain', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -14026,7 +14038,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#removelogo)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='removelogo', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -14081,7 +14093,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#repeatfields)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='repeatfields', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -14134,7 +14146,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#reverse)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='reverse', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -14197,7 +14209,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#rgbashift)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='rgbashift', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -14276,7 +14288,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#roberts)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='roberts', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -14343,7 +14355,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#rotate)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='rotate', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -14415,7 +14427,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sab)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='sab', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -14504,7 +14516,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scale)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='scale', typings_input=(), typings_output=('video',)),
 
             self,
@@ -14600,7 +14612,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scdet)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='scdet', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -14661,7 +14673,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scharr)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='scharr', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -14727,7 +14739,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scroll)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='scroll', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -14791,7 +14803,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#segment_002c-asegment)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='segment', typings_input=('video',), typings_output="[StreamType.video] * len((str(timestamps or frames)).split('|'))"),
 
             self,
@@ -14850,7 +14862,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#select_002c-aselect)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='select', typings_input=('video',), typings_output='[StreamType.video] * int(outputs)'),
 
             self,
@@ -14920,7 +14932,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#selectivecolor)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='selectivecolor', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -14997,7 +15009,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sendcmd_002c-asendcmd)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='sendcmd', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -15052,7 +15064,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#separatefields)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='separatefields', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -15105,7 +15117,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setdar_002c-setsar)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='setdar', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -15161,7 +15173,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setfield)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='setfield', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -15220,7 +15232,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setparams)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='setparams', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -15284,7 +15296,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setpts_002c-asetpts)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='setpts', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -15338,7 +15350,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setrange)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='setrange', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -15393,7 +15405,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setdar_002c-setsar)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='setsar', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -15449,7 +15461,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#settb_002c-asettb)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='settb', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -15509,7 +15521,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shear)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='shear', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -15578,7 +15590,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showinfo)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='showinfo', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -15634,7 +15646,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showpalette)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='showpalette', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -15703,7 +15715,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shuffleframes)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='shuffleframes', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -15766,7 +15778,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shufflepixels)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='shufflepixels', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -15836,7 +15848,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shuffleplanes)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='shuffleplanes', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -15906,7 +15918,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidedata_002c-asidedata)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='sidedata', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -15968,7 +15980,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#signalstats)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='signalstats', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -16036,7 +16048,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#siti)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='siti', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -16101,7 +16113,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#smartblur)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='smartblur', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -16182,7 +16194,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sobel)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='sobel', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -16256,7 +16268,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#spectrumsynth)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='spectrumsynth', typings_input=('video', 'video'), typings_output=('audio',)),
 
             self,
@@ -16333,7 +16345,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='split', typings_input=('video',), typings_output='[StreamType.video] * int(outputs)'),
 
             self,
@@ -16394,7 +16406,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#spp)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='spp', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -16470,7 +16482,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ssim)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='ssim', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -16537,7 +16549,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereo3d)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='stereo3d', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -16606,7 +16618,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#subtitles)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='subtitles', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -16673,7 +16685,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#super2xsai)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='super2xsai', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -16737,7 +16749,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#swaprect)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='swaprect', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -16805,7 +16817,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#swapuv)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='swapuv', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -16876,7 +16888,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tblend)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='tblend', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -16961,7 +16973,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#telecine)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='telecine', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -17028,7 +17040,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#thistogram)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='thistogram', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -17115,7 +17127,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#threshold)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='threshold', typings_input=('video', 'video', 'video', 'video'), typings_output=('video',)),
 
             self,
@@ -17191,7 +17203,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#thumbnail)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='thumbnail', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -17255,7 +17267,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tile)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='tile', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -17328,7 +17340,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tiltandshift)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='tiltandshift', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -17392,7 +17404,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tinterlace)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='tinterlace', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -17452,7 +17464,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='tlut2', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -17519,7 +17531,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tmedian)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='tmedian', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -17584,7 +17596,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tmidequalizer)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='tmidequalizer', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -17650,7 +17662,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tmix)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='tmix', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -17715,7 +17727,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tonemap)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='tonemap', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -17783,7 +17795,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tonemap_005fvaapi)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='tonemap_vaapi', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -17853,7 +17865,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tpad)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='tpad', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -17920,7 +17932,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#transpose)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='transpose', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -17986,7 +17998,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#trim)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='trim', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -18065,7 +18077,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#unsharp)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='unsharp', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -18137,7 +18149,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#untile)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='untile', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -18197,7 +18209,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#uspp)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='uspp', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -18294,7 +18306,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#v360)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='v360', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -18426,7 +18438,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vaguedenoiser)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='vaguedenoiser', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -18508,7 +18520,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#varblur)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='varblur', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -18591,7 +18603,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vectorscope)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='vectorscope', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -18673,7 +18685,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vflip)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='vflip', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -18726,7 +18738,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vfrdet)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='vfrdet', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -18788,7 +18800,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vibrance)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='vibrance', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -18866,7 +18878,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vidstabdetect)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='vidstabdetect', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -18945,7 +18957,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vidstabtransform)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='vidstabtransform', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -19038,7 +19050,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vif)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='vif', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -19111,7 +19123,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vignette)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='vignette', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -19181,7 +19193,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vmafmotion)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='vmafmotion', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -19249,7 +19261,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#w3fdif)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='w3fdif', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -19326,7 +19338,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#waveform)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='waveform', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -19410,7 +19422,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#weave_002c-doubleweave)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='weave', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -19464,7 +19476,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xbr)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='xbr', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -19533,7 +19545,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xcorrelate)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='xcorrelate', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -19612,7 +19624,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xfade)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='xfade', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -19699,7 +19711,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xpsnr)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='xpsnr', typings_input=('video', 'video'), typings_output=('video',)),
 
             self,
@@ -19774,7 +19786,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#yadif)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='yadif', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -19839,7 +19851,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#yaepblur)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='yaepblur', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -19901,7 +19913,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zmq_002c-azmq)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='zmq', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -19962,7 +19974,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zoompan)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='zoompan', typings_input=('video',), typings_output=('video',)),
 
             self,
@@ -20044,7 +20056,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zscale)
 
         """
-        filter_node = filter_node_factory(
+        filter_node = _get_filter_factory()(
             FFMpegFilterDef(name='zscale', typings_input=('video',), typings_output=('video',)),
 
             self,
