@@ -409,6 +409,23 @@ def generate(
     version_prefix = f"v{major_version}" if version_dir else None
     render_outpath = outpath / version_prefix if version_prefix else outpath
 
+    # Build cross-version metadata for deprecation hints in docstrings
+    version_metadata = None
+    if version_dir:
+        from .version_diff import build_version_metadata
+
+        cache_dir = (
+            Path(__file__).parent.parent.parent / "ffmpeg" / "common" / "cache" / "list"
+        )
+        available = set()
+        for cache_file in cache_dir.glob("filters_*.json"):
+            # "filters_7_1.json" → "7.1"
+            parts = cache_file.stem.replace("filters_", "").split("_")
+            if len(parts) == 2:
+                available.add(f"{parts[0]}.{parts[1]}")
+        if available:
+            version_metadata = build_version_metadata(sorted(available))
+
     render(
         filters=ffmpeg_filters,
         options=ffmpeg_options,
@@ -418,6 +435,7 @@ def generate(
         outpath=render_outpath,
         ffmpeg_version=version,
         version_prefix=version_prefix,
+        version_metadata=version_metadata,
     )
     if Path(".pre-commit-config.yaml").exists():
         os.system("pre-commit run -a")
