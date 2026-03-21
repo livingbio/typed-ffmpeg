@@ -89,6 +89,7 @@ jobs:
       - name: Generate versioned bindings
         run: |
           source .venv/bin/activate
+          export PYTHONPATH="$PWD/src:$PYTHONPATH"
           FFMPEG_VERSION=$(ffmpeg -version 2>/dev/null | head -1 | grep -oP '\d+\.\d+')
           echo "Generating bindings for FFmpeg $FFMPEG_VERSION"
           python -m scripts.code_gen.cli generate --version-dir --rebuild
@@ -96,6 +97,7 @@ jobs:
       - name: Verify generated code imports
         run: |
           source .venv/bin/activate
+          export PYTHONPATH="$PWD/src:$PYTHONPATH"
           FFMPEG_MAJOR=${{ matrix.ffmpeg-version }}
           python -c "
           from ffmpeg.v${FFMPEG_MAJOR} import filters, sources
