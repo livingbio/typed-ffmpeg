@@ -24,16 +24,10 @@ from ...options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecCon
 
 from ...options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
 
-from .streams.av import AVStream
-from .streams.channel_layout import CHANNEL_LAYOUT
-from .codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
-from .formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
 
 
-from ...streams.video import VideoStream
 
 
-from ...streams.audio import AudioStream
 
 
 if TYPE_CHECKING:

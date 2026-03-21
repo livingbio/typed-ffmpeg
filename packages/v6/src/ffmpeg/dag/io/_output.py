@@ -9,7 +9,7 @@ from typing import Any
 
 
 from ffmpeg_core.types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
-from .factory import filter_node_factory
+from ..factory import filter_node_factory
 from ffmpeg_core.utils.frozendict import FrozenDict, merge
 from ffmpeg_core.utils.typing import override
 from ffmpeg_core.schema import Default, StreamType, Auto, FFMpegOptionGroup
