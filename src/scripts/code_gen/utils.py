@@ -81,5 +81,6 @@ def get_relative_import(
         # Both files are in the version dir → relative import
         return f"from {relative_path} import {imports}"
     else:
-        # Target is shared core → absolute import from ffmpeg.{module}
-        return f"from ffmpeg.{import_path} import {imports}"
+        # Target is shared core → absolute import from ffmpeg_core.{module}
+        # Note: In monorepo, core modules are in ffmpeg_core package
+        return f"from ffmpeg_core.{import_path} import {imports}"
