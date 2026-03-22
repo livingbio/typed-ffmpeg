@@ -62,10 +62,3 @@ src = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-# Test on working commit base
-# Testing source activation
-# Trigger without matrix
-# Test without permissions
-# Simplified workflow
-# No job names
-# Trigger working copy
