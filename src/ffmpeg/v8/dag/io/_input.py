@@ -1,53 +1,96 @@
 # NOTE: this file is auto-generated, do not modify
-"""
-Input node.
-"""
-
-
+"""Input node."""
 
 from pathlib import Path
 from typing import Any
 
-
-from ffmpeg.types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
-from ffmpeg.dag.factory import filter_node_factory
-from ffmpeg.utils.frozendict import FrozenDict, merge
-from ffmpeg.utils.typing import override
-from ffmpeg.schema import Default, StreamType, Auto, FFMpegOptionGroup
-from ffmpeg.common.schema import FFMpegFilterDef
-from ffmpeg.options.framesync import FFMpegFrameSyncOption
-from ffmpeg.options.timeline import FFMpegTimelineOption
-
-from ...options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecContextDecoderOption
-
-
-from ...options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
-
+from ffmpeg.codecs.schema import FFMpegDecoderOption
+from ffmpeg.dag.nodes import (
+    InputNode,
+)
+from ffmpeg.formats.schema import FFMpegDemuxerOption
 from ffmpeg.streams.av import AVStream
-from ffmpeg.streams.channel_layout import CHANNEL_LAYOUT
-from ffmpeg.codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
-from ffmpeg.formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
+from ffmpeg.types import (
+    Boolean,
+    Double,
+    Float,
+    Int,
+    String,
+    Time,
+)
+from ffmpeg.utils.frozendict import merge
 
-from ffmpeg.dag.nodes import FilterableStream, FilterNode, OutputStream, OutputNode, InputNode, GlobalNode, GlobalStream
-
-
-from ...streams.video import VideoStream
-
-
-from ...streams.audio import AudioStream
-
+from ...options.codec import (
+    FFMpegAVCodecContextDecoderOption,
+)
+from ...options.format import (
+    FFMpegAVFormatContextDecoderOption,
+)
 
 
 def input(
     filename: str | Path,
-    *,f: String = None,c: String = None,codec: String = None,t: Time = None,to: Time = None,ss: Time = None,sseof: Time = None,seek_timestamp: Int = None,accurate_seek: Boolean = None,isync: Int = None,itsoffset: Time = None,itsscale: Double = None,re: Boolean = None,readrate: Float = None,readrate_initial_burst: Double = None,bitexact: Boolean = None,tag: String = None,reinit_filter: Int = None,dump_attachment: String = None,stream_loop: Int = None,discard: String = None,thread_queue_size: Int = None,find_stream_info: Boolean = None,r: String = None,s: String = None,pix_fmt: String = None,display_rotation: Double = None,display_hflip: Boolean = None,display_vflip: Boolean = None,vn: Boolean = None,vcodec: String = None,vtag: String = None,hwaccel: String = None,hwaccel_device: String = None,hwaccel_output_format: String = None,autorotate: Boolean = None,ar: Int = None,ac: Int = None,an: Boolean = None,acodec: String = None,sample_fmt: String = None,channel_layout: String = None,ch_layout: String = None,guess_layout_max: Int = None,sn: Boolean = None,scodec: String = None,fix_sub_duration: Boolean = None,canvas_size: String = None,bsf: String = None,dcodec: String = None,dn: Boolean = None,top: Int = None,decoder_options: FFMpegDecoderOption | None = None,
+    *,
+    f: String = None,
+    c: String = None,
+    codec: String = None,
+    t: Time = None,
+    to: Time = None,
+    ss: Time = None,
+    sseof: Time = None,
+    seek_timestamp: Int = None,
+    accurate_seek: Boolean = None,
+    isync: Int = None,
+    itsoffset: Time = None,
+    itsscale: Double = None,
+    re: Boolean = None,
+    readrate: Float = None,
+    readrate_initial_burst: Double = None,
+    bitexact: Boolean = None,
+    tag: String = None,
+    reinit_filter: Int = None,
+    dump_attachment: String = None,
+    stream_loop: Int = None,
+    discard: String = None,
+    thread_queue_size: Int = None,
+    find_stream_info: Boolean = None,
+    r: String = None,
+    s: String = None,
+    pix_fmt: String = None,
+    display_rotation: Double = None,
+    display_hflip: Boolean = None,
+    display_vflip: Boolean = None,
+    vn: Boolean = None,
+    vcodec: String = None,
+    vtag: String = None,
+    hwaccel: String = None,
+    hwaccel_device: String = None,
+    hwaccel_output_format: String = None,
+    autorotate: Boolean = None,
+    ar: Int = None,
+    ac: Int = None,
+    an: Boolean = None,
+    acodec: String = None,
+    sample_fmt: String = None,
+    channel_layout: String = None,
+    ch_layout: String = None,
+    guess_layout_max: Int = None,
+    sn: Boolean = None,
+    scodec: String = None,
+    fix_sub_duration: Boolean = None,
+    canvas_size: String = None,
+    bsf: String = None,
+    dcodec: String = None,
+    dn: Boolean = None,
+    top: Int = None,
+    decoder_options: FFMpegDecoderOption | None = None,
     demuxer_options: FFMpegDemuxerOption | None = None,
     format_options: FFMpegAVFormatContextDecoderOption | None = None,
     codec_options: FFMpegAVCodecContextDecoderOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> AVStream:
     """
-    Input file URL (ffmpeg ``-i`` option)
+    Input file URL (ffmpeg ``-i`` option).
 
     Args:
         filename: Input file URL
@@ -117,250 +160,69 @@ def input(
     >>> input('input.mp4')
     <AVStream:input.mp4:0>
     ```
+
     """
     return InputNode(
         filename=str(filename),
-        kwargs=merge({
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        kwargs=merge(
+            {
                 "f": f,
-
-
-
-
-
-
                 "c": c,
-
                 "codec": codec,
-
-
-
-
-
                 "t": t,
-
                 "to": to,
-
-
                 "ss": ss,
-
                 "sseof": sseof,
-
                 "seek_timestamp": seek_timestamp,
-
                 "accurate_seek": accurate_seek,
-
                 "isync": isync,
-
                 "itsoffset": itsoffset,
-
                 "itsscale": itsscale,
-
-
-
-
-
-
-
-
-
-
-
-
-
                 "re": re,
-
                 "readrate": readrate,
-
                 "readrate_initial_burst": readrate_initial_burst,
-
-
-
-
-
-
-
-
                 "bitexact": bitexact,
-
-
-
-
-
-
-
-
-
                 "tag": tag,
-
-
-
-
-
-
-
                 "reinit_filter": reinit_filter,
-
-
-
-
-
-
-
-
-
                 "dump_attachment": dump_attachment,
-
                 "stream_loop": stream_loop,
-
-
-
                 "discard": discard,
-
-
                 "thread_queue_size": thread_queue_size,
-
                 "find_stream_info": find_stream_info,
-
-
-
-
-
-
-
-
-
                 "r": r,
-
-
                 "s": s,
-
-
                 "pix_fmt": pix_fmt,
-
                 "display_rotation": display_rotation,
-
                 "display_hflip": display_hflip,
-
                 "display_vflip": display_vflip,
-
                 "vn": vn,
-
-
                 "vcodec": vcodec,
-
-
-
-
-
-
-
-
-
-
-
                 "vtag": vtag,
-
-
-
-
-
-
                 "hwaccel": hwaccel,
-
                 "hwaccel_device": hwaccel_device,
-
                 "hwaccel_output_format": hwaccel_output_format,
-
-
                 "autorotate": autorotate,
-
-
-
-
-
                 "ar": ar,
-
                 "ac": ac,
-
                 "an": an,
-
                 "acodec": acodec,
-
-
-
                 "sample_fmt": sample_fmt,
-
                 "channel_layout": channel_layout,
-
                 "ch_layout": ch_layout,
-
-
                 "guess_layout_max": guess_layout_max,
-
                 "sn": sn,
-
                 "scodec": scodec,
-
-
                 "fix_sub_duration": fix_sub_duration,
-
                 "canvas_size": canvas_size,
-
-
-
-
-
-
                 "bsf": bsf,
-
-
-
-
-
-
-
                 "dcodec": dcodec,
-
                 "dn": dn,
-
-
-
-
                 "top": top,
-
-
-
-
-        }, decoder_options, demuxer_options, format_options, codec_options, extra_options )
+            },
+            decoder_options,
+            demuxer_options,
+            format_options,
+            codec_options,
+            extra_options,
+        ),
     ).stream()

@@ -26,7 +26,12 @@ from dataclasses import replace
 
 from ..base import input, merge_outputs, output
 from ffmpeg_core.common.cache import load
-from ffmpeg_core.common.schema import FFMpegFilter, FFMpegFilterDef, FFMpegOption, StreamType
+from ffmpeg_core.common.schema import (
+    FFMpegFilter,
+    FFMpegFilterDef,
+    FFMpegOption,
+    StreamType,
+)
 from ..dag.factory import filter_node_factory
 from ..dag.nodes import (
     FilterableStream,

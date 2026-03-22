@@ -147,7 +147,7 @@ disallow_untyped_defs = true
 
 [tool.ruff]
 line-length = 88
-exclude = ["**/cassettes/", "**/__snapshots__/", "src/ffmpeg/v[0-9]*"]
+exclude = ["**/cassettes/", "**/__snapshots__/"]
 src = ["src"]
 preview = true
 
@@ -178,6 +178,14 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 "**/tests/**.py" = ["D103", "D104", "D100", "DOC501"]
+"src/ffmpeg/v[0-9]*/**" = ["D", "DOC", "F401", "F821"]
+"packages/v5/**" = ["D", "DOC", "F401", "F821"]
+"packages/v6/**" = ["D", "DOC", "F401", "F821"]
+"packages/v7/**" = ["D", "DOC", "F401", "F821"]
+"packages/v8/**" = ["D", "DOC", "F401", "F821"]
+"packages/core/**" = ["E741"]
+"scripts/**" = ["D", "DOC"]
+"ffmpeg/tools/**" = ["D"]
 
 [tool.ruff.format]
 quote-style = "double"

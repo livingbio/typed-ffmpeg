@@ -1,6 +1,7 @@
 """JSON compilation utilities for FFmpeg streams."""
 
 from ffmpeg_core.common.serialize import dumps, loads
+
 from ..dag.schema import Stream
 from .validate import validate
 

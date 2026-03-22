@@ -122,4 +122,3 @@ def setup_module_redirects() -> None:
     # Install the import hook
     finder = VersionRedirectFinder(version)
     sys.meta_path.insert(0, finder)
-

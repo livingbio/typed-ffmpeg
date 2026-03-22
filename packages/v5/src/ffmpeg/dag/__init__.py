@@ -16,10 +16,10 @@ from .nodes import (
     OutputStream,
     Stream,
 )
+
 # from .schema import EdgeInfo  # EdgeInfo not defined
 
 __all__ = [
-    
     "FilterNode",
     "FilterableStream",
     "GlobalNode",

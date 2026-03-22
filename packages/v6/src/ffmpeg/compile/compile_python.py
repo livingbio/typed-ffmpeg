@@ -7,6 +7,7 @@ from typing import Any
 
 from ffmpeg_core.common.cache import load
 from ffmpeg_core.common.schema import FFMpegFilter
+
 from ..dag.nodes import (
     FilterableStream,
     FilterNode,

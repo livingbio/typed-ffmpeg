@@ -5,17 +5,15 @@ from __future__ import annotations
 import logging
 import os.path
 from dataclasses import dataclass, replace
-from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
 from ..exceptions import FFMpegTypeError, FFMpegValueError
 from ..schema import StreamType
 from ..utils.frozendict import FrozenDict
 from ..utils.typing import override
-from .global_runnable.runnable import GlobalRunable
-from .io.output_args import OutputArgs
-from .schema import Node, Stream
 from .base_streams import FilterableStream
+from .global_runnable.runnable import GlobalRunable
+from .schema import Node, Stream
 
 if TYPE_CHECKING:
     from ..streams.audio import AudioStream
@@ -173,7 +171,6 @@ class FilterNode(Node):
 
 
 @dataclass(frozen=True, kw_only=True)
-
 class InputNode(Node):
     """
     A node that represents an input file in the FFmpeg filter graph.

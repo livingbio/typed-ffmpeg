@@ -74,10 +74,9 @@ def test_isinstance_across_imports():
         pytest.skip("No default version available")
 
     from ffmpeg.streams.video import VideoStream as RootVS
-    from ffmpeg.v8.streams.video import VideoStream as V8VS
 
     # Create instance using v8 class
-    from ffmpeg.v8.dag.nodes import FilterNode
+    from ffmpeg.v8.streams.video import VideoStream as V8VS
 
     # Mock a stream (we can't easily create real ones without full setup)
     # Just test that the classes are compatible
@@ -142,8 +141,8 @@ def test_class_registry_single_entry():
 def test_module_redirect_does_not_break_hand_written():
     """Test that module redirects don't break hand-written modules."""
     # These modules should NOT be redirected
-    import ffmpeg.dag
     import ffmpeg.common
+    import ffmpeg.dag
 
     # They should be the root modules, not versioned
     assert "v8" not in ffmpeg.dag.__name__
@@ -154,8 +153,6 @@ def test_import_from_root_works():
     """Test that importing from root still works after redirects."""
     # These should work without errors
     from ffmpeg.streams import AudioStream, VideoStream
-    from ffmpeg.codecs import decoders, encoders
-    from ffmpeg.formats import demuxers, muxers
 
     # Basic sanity checks
     assert VideoStream is not None

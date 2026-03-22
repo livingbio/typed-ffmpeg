@@ -5,7 +5,13 @@ from syrupy.assertion import SnapshotAssertion
 
 from ffmpeg.base import input
 from ffmpeg.filters import concat
-from ffmpeg_core.common.serialize import Serializable, dumps, load_class, loads, serializable
+from ffmpeg_core.common.serialize import (
+    Serializable,
+    dumps,
+    load_class,
+    loads,
+    serializable,
+)
 
 
 def test_serializable_decorator() -> None:

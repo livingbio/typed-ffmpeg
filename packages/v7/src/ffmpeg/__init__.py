@@ -7,12 +7,12 @@ This package provides comprehensive type hints and IDE autocomplete for FFmpeg 7
 __version__ = "7.1.0"
 
 # Export main API functions and classes
-from .dag.io import input, output
-from .base import merge_outputs
 from ffmpeg_core.ffprobe.probe import probe
 
 # Make commonly used modules easily accessible
-from . import filters, streams, codecs, formats
+from . import codecs, filters, formats, streams
+from .base import merge_outputs
+from .dag.io import input, output
 
 __all__ = [
     "__version__",
@@ -29,5 +29,6 @@ __all__ = [
 # Dynamically add OutputArgs methods to FilterableStream
 # This must be done after all imports to avoid circular dependencies
 from .dag.base_streams import _add_output_args_methods
+
 _add_output_args_methods()
 del _add_output_args_methods

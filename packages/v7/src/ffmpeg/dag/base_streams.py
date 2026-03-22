@@ -19,7 +19,6 @@ from .schema import Stream
 if TYPE_CHECKING:
     from ..streams.audio import AudioStream
     from ..streams.video import VideoStream
-    from .io.output_args import OutputArgs
     from .nodes import FilterNode, InputNode, OutputNode
 
 
@@ -34,7 +33,7 @@ class FilterableStreamBase(Stream):
 
     This class serves as a base for specific stream types like VideoStream
     and AudioStream, providing common functionality for filter operations.
-    
+
     Note: This class is defined separately from nodes.py to avoid circular
     import dependencies. OutputArgs methods are added dynamically after module load.
     """
@@ -72,7 +71,7 @@ class FilterableStreamBase(Stream):
 
         """
         from .nodes import OutputNode
-        
+
         return OutputNode(
             inputs=(self, *streams),
             filename=str(filename),
@@ -197,12 +196,13 @@ class FilterableStreamBase(Stream):
 
         """
         from .nodes import FilterNode
-        
+
         return FilterNode(
             name=name,
             inputs=(self, *streams),
             kwargs=FrozenDict(kwargs),
-            input_typings=input_typings or (self.stream_type, *(s.stream_type for s in streams)),
+            input_typings=input_typings
+            or (self.stream_type, *(s.stream_type for s in streams)),
             output_typings=output_typings,
         )
 
@@ -215,24 +215,24 @@ FilterableStream = FilterableStreamBase
 def _add_output_args_methods():
     """
     Dynamically add OutputArgs methods to FilterableStream after imports are complete.
-    
+
     This avoids circular import by importing OutputArgs only when called,
     not at module load time.
     """
     try:
         from .io.output_args import OutputArgs
-        
+
         # Copy all methods from OutputArgs to FilterableStream
         for attr_name in dir(OutputArgs):
-            if not attr_name.startswith('_'):
+            if not attr_name.startswith("_"):
                 attr = getattr(OutputArgs, attr_name)
                 if callable(attr) and not hasattr(FilterableStream, attr_name):
                     setattr(FilterableStream, attr_name, attr)
-                    
+
         return True
     except (ImportError, AttributeError):
         return False
 
 
 # This will be called by __init__.py after all imports are done
-__all__ = ['FilterableStream', '_add_output_args_methods']
+__all__ = ["FilterableStream", "_add_output_args_methods"]

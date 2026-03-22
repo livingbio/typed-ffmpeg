@@ -19,7 +19,6 @@ from .nodes import (
 # from .schema import EdgeInfo  # EdgeInfo not defined
 
 __all__ = [
-    
     "FilterNode",
     "FilterableStream",
     "GlobalNode",
