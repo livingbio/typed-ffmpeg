@@ -1,0 +1,4 @@
+[
+  "ffmpeg -dump -i input1.mp4 -i input2.mp4 -map 0 output1.mp4 -map 1 output2.mp4",
+  "ffmpeg -dump -i input1.mp4 -i input2.mp4 -map 0 output1.mp4 -map 1 output2.mp4"
+]

@@ -1,0 +1,4 @@
+[
+  "ffmpeg -i input1.mp4 -map 0:s tmp.mp4",
+  "ffmpeg -i input1.mp4 -map 0:s tmp.mp4"
+]
