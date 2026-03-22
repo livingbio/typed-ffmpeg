@@ -66,3 +66,4 @@ testpaths = ["tests"]
 # Testing source activation
 # Trigger without matrix
 # Test without permissions
+# Simplified workflow
