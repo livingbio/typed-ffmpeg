@@ -28,9 +28,6 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v4
-
       - name: Check import organization
         run: |
           # Verify no ffmpeg_core.dag imports in core package
@@ -42,27 +39,25 @@ jobs:
 
       - name: Check circular imports
         run: |
-          uv venv
+          python -m venv .venv
           source .venv/bin/activate
-          cd packages/core
-          uv pip install -e .
-          cd ../v8
-          uv pip install -e .
+          pip install -e packages/core
+          pip install -e packages/v8
           
           python -c "
-          import sys
-          import warnings
-          
-          # Try importing and detect circular import warnings
-          with warnings.catch_warnings(record=True) as w:
-              warnings.simplefilter('always')
-              import ffmpeg
-              
-              if w:
-                  print('Warnings detected:')
-                  for warning in w:
-                      print(f'  {warning.message}')
-                  sys.exit(1)
-              else:
-                  print('✅ No circular import warnings')
-          "
+import sys
+import warnings
+
+# Try importing and detect circular import warnings
+with warnings.catch_warnings(record=True) as w:
+    warnings.simplefilter('always')
+    import ffmpeg
+    
+    if w:
+        print('Warnings detected:')
+        for warning in w:
+            print(f'  {warning.message}')
+        sys.exit(1)
+    else:
+        print('✅ No circular import warnings')
+"
