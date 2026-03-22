@@ -64,3 +64,4 @@ MIT License - see LICENSE file for details
 # Trigger main workflow with simplified test setup
 # Final fix - POSIX activation
 # FFmpeg installed for tests
+
