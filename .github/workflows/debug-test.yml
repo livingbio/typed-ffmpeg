@@ -1,0 +1,46 @@
+name: Debug Test
+
+on:
+  push:
+    branches: [refactor/monorepo-architecture]
+    paths:
+      - 'packages/core/**'
+
+jobs:
+  debug-core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Show structure
+        run: |
+          echo "=== Repository structure ==="
+          ls -la
+          echo ""
+          echo "=== Packages directory ==="
+          ls -la packages/
+          echo ""
+          echo "=== Core package ==="
+          ls -la packages/core/
+      
+      - name: Install and test (Step by Step)
+        run: |
+          cd packages/core
+          echo "=== Creating venv ==="
+          python -m venv .venv
+          echo "✅ venv created"
+          
+          echo "=== Activating venv ==="
+          source .venv/bin/activate
+          echo "✅ venv activated"
+          
+          echo "=== Installing package ==="
+          pip install -e ".[dev]"
+          echo "✅ package installed"
+          
+          echo "=== Running pytest ==="
+          pytest src/ -v --maxfail=1 || echo "❌ pytest failed with exit code $?"
