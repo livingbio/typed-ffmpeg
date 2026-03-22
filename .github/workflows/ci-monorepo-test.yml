@@ -36,7 +36,7 @@ jobs:
         run: |
           cd packages/core
           python -m venv .venv
-          . .venv/bin/activate
+          source .venv/bin/activate
           pip install -e ".[dev]"
           pytest src/ -v
 
@@ -66,7 +66,7 @@ jobs:
       - name: Install packages and run tests
         run: |
           python -m venv .venv
-          . .venv/bin/activate
+          source .venv/bin/activate
           pip install -e packages/core
           pip install -e packages/v8[dev]
           cd packages/v8
@@ -93,7 +93,7 @@ jobs:
       - name: Test imports and build
         run: |
           python -m venv .venv
-          . .venv/bin/activate
+          source .venv/bin/activate
           pip install -e packages/core
           pip install -e packages/v8
           python -c "
@@ -105,7 +105,7 @@ jobs:
 
       - name: Test packages are buildable
         run: |
-          . .venv/bin/activate
+          source .venv/bin/activate
           pip install build
           for pkg in core v8 v7 v6 v5; do
             echo "Building packages/$pkg..."
