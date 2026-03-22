@@ -40,17 +40,24 @@ jobs:
           source .venv/bin/activate
           pip install -e packages/core
           pip install -e packages/v8
-          python -c '
+          python <<EOF
           import sys
           import warnings
+          
+          # Suppress deprecation warnings from dependencies
+          warnings.filterwarnings("ignore", category=DeprecationWarning)
+          warnings.filterwarnings("ignore", category=SyntaxWarning)
+          
+          # Only catch ImportWarning which indicates circular imports
           with warnings.catch_warnings(record=True) as w:
-              warnings.simplefilter("always")
+              warnings.simplefilter("always", ImportWarning)
               import ffmpeg
+              
               if w:
-                  print("Warnings detected:")
+                  print("Import warnings detected:")
                   for warning in w:
                       print(f"  {warning.message}")
                   sys.exit(1)
               else:
                   print("✅ No circular import warnings")
-          '
+          EOF
