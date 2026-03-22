@@ -40,21 +40,17 @@ jobs:
           source .venv/bin/activate
           pip install -e packages/core
           pip install -e packages/v8
-          
-          python -c "
-import sys
-import warnings
-
-# Try importing and detect circular import warnings
-with warnings.catch_warnings(record=True) as w:
-    warnings.simplefilter('always')
-    import ffmpeg
-    
-    if w:
-        print('Warnings detected:')
-        for warning in w:
-            print(f'  {warning.message}')
-        sys.exit(1)
-    else:
-        print('✅ No circular import warnings')
-"
+          python -c '
+          import sys
+          import warnings
+          with warnings.catch_warnings(record=True) as w:
+              warnings.simplefilter("always")
+              import ffmpeg
+              if w:
+                  print("Warnings detected:")
+                  for warning in w:
+                      print(f"  {warning.message}")
+                  sys.exit(1)
+              else:
+                  print("✅ No circular import warnings")
+          '
