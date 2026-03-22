@@ -1,0 +1,33 @@
+name: Test PWD
+
+on:
+  push:
+    branches: [refactor/monorepo-architecture]
+    paths:
+      - '.github/workflows/test-pwd.yml'
+
+jobs:
+  no-matrix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check PWD
+        run: |
+          echo "=== NO MATRIX ==="
+          pwd
+          ls -la
+          ls -la packages/core/ | head -5
+  
+  with-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ver: ['1']
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check PWD  
+        run: |
+          echo "=== WITH MATRIX ==="
+          pwd
+          ls -la
+          ls -la packages/core/ | head -5
