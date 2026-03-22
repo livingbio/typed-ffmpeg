@@ -68,3 +68,4 @@ testpaths = ["tests"]
 # Test without permissions
 # Simplified workflow
 # No job names
+# Trigger working copy
