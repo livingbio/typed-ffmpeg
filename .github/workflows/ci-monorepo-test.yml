@@ -33,10 +33,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install and test core package
-        working-directory: packages/core
         run: |
+          cd packages/core
           python -m venv .venv
-          source .venv/bin/activate
+          . .venv/bin/activate
           pip install -e ".[dev]"
           pytest src/ -v
 
@@ -66,12 +66,9 @@ jobs:
       - name: Install packages and run tests
         run: |
           python -m venv .venv
-          source .venv/bin/activate
-          # Install core first
+          . .venv/bin/activate
           pip install -e packages/core
-          # Install v8 with dev dependencies
           pip install -e packages/v8[dev]
-          # Run tests
           cd packages/v8
           pytest tests/ -v -k "not test_view"
 
@@ -93,16 +90,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ffmpeg
 
-      - name: Install packages
+      - name: Test imports and build
         run: |
           python -m venv .venv
-          source .venv/bin/activate
+          . .venv/bin/activate
           pip install -e packages/core
           pip install -e packages/v8
-
-      - name: Test import from v8
-        run: |
-          source .venv/bin/activate
           python -c "
           import ffmpeg
           inp = ffmpeg.input('test.mp4')
@@ -112,9 +105,8 @@ jobs:
 
       - name: Test packages are buildable
         run: |
-          source .venv/bin/activate
+          . .venv/bin/activate
           pip install build
-          # Test each package can be built
           for pkg in core v8 v7 v6 v5; do
             echo "Building packages/$pkg..."
             python -m build packages/$pkg

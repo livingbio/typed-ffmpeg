@@ -40,7 +40,7 @@ jobs:
       - name: Check circular imports
         run: |
           python -m venv .venv
-          source .venv/bin/activate
+          . .venv/bin/activate
           pip install -e packages/core
           pip install -e packages/v8
           
