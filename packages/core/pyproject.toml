@@ -67,3 +67,4 @@ testpaths = ["tests"]
 # Trigger without matrix
 # Test without permissions
 # Simplified workflow
+# No job names
