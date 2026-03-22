@@ -65,3 +65,4 @@ testpaths = ["tests"]
 # Test on working commit base
 # Testing source activation
 # Trigger without matrix
+# Test without permissions
