@@ -14,7 +14,6 @@ on:
 
 jobs:
   test-core:
-    name: Test Core Package  
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -31,7 +30,6 @@ jobs:
           pytest src/ -v
 
   test-v8:
-    name: Test V8 Package
     runs-on: ubuntu-latest
     needs: test-core
 
@@ -58,7 +56,6 @@ jobs:
           pytest tests/ -v -k "not test_view"
 
   test-integration:
-    name: Integration Tests
     runs-on: ubuntu-latest
     needs: [test-core, test-v8]
 
