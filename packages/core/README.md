@@ -60,3 +60,4 @@ MIT License - see LICENSE file for details
 # CI Test - workflow fixed
 # Workflow fixed - testing
 # Trigger debug workflow
+# Testing combined steps
