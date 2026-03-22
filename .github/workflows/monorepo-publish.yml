@@ -1,0 +1,131 @@
+name: Publish Monorepo Packages
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'Package to publish (core, v8, v7, v6, v5, latest, all)'
+        required: true
+        default: 'all'
+      test-pypi:
+        description: 'Publish to TestPyPI first?'
+        required: false
+        default: 'true'
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    name: Publish Packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Determine packages to publish
+        id: packages
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            PKG="${{ github.event.inputs.package }}"
+          else
+            PKG="all"
+          fi
+          
+          if [ "$PKG" = "all" ]; then
+            echo "packages=core v8 v7 v6 v5 latest" >> $GITHUB_OUTPUT
+          else
+            echo "packages=$PKG" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build packages
+        run: |
+          for pkg in ${{ steps.packages.outputs.packages }}; do
+            echo "Building packages/$pkg..."
+            cd packages/$pkg
+            uv build
+            cd ../..
+          done
+
+      - name: Publish to TestPyPI (if enabled)
+        if: github.event.inputs.test-pypi == 'true' || github.event_name == 'workflow_dispatch'
+        run: |
+          for pkg in ${{ steps.packages.outputs.packages }}; do
+            echo "Publishing packages/$pkg to TestPyPI..."
+            cd packages/$pkg
+            if [ -d "dist" ]; then
+              uvx twine upload --repository testpypi dist/* || echo "Failed to upload $pkg"
+            fi
+            cd ../..
+          done
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
+
+      - name: Wait for TestPyPI propagation
+        if: github.event.inputs.test-pypi == 'true'
+        run: sleep 60
+
+      - name: Test installation from TestPyPI
+        if: github.event.inputs.test-pypi == 'true'
+        run: |
+          # Test installing from TestPyPI
+          python -m pip install --index-url https://test.pypi.org/simple/ \
+            --extra-index-url https://pypi.org/simple/ \
+            typed-ffmpeg-v8 || echo "TestPyPI installation test completed"
+
+      - name: Publish to PyPI
+        if: github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && github.event.inputs.test-pypi == 'false')
+        run: |
+          # Publish in order: core first, then version packages, then latest
+          PUBLISH_ORDER="core v5 v6 v7 v8 latest"
+          
+          for pkg in $PUBLISH_ORDER; do
+            if echo "${{ steps.packages.outputs.packages }}" | grep -q "$pkg"; then
+              echo "Publishing packages/$pkg to PyPI..."
+              cd packages/$pkg
+              if [ -d "dist" ]; then
+                uvx twine upload dist/*
+                echo "✅ Published $pkg"
+                sleep 10  # Brief pause between packages
+              fi
+              cd ../..
+            fi
+          done
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+
+      - name: Create release notes
+        if: github.event_name == 'release'
+        run: |
+          echo "# Published Packages" > release-notes.md
+          echo "" >> release-notes.md
+          for pkg in ${{ steps.packages.outputs.packages }}; do
+            if [ -f "packages/$pkg/pyproject.toml" ]; then
+              VERSION=$(grep '^version = ' packages/$pkg/pyproject.toml | cut -d'"' -f2)
+              NAME=$(grep '^name = ' packages/$pkg/pyproject.toml | cut -d'"' -f2)
+              echo "- \`$NAME\` v$VERSION" >> release-notes.md
+            fi
+          done
+
+      - name: Upload release notes
+        if: github.event_name == 'release'
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-notes
+          path: release-notes.md

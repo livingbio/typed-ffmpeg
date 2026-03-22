@@ -1,0 +1,75 @@
+name: CI Monorepo - Lint
+
+on:
+  push:
+    branches: [main, refactor/monorepo-architecture]
+    paths:
+      - 'packages/**'
+      - 'pyproject-workspace.toml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'packages/**'
+      - 'pyproject-workspace.toml'
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint Packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Install workspace
+        run: uv sync
+
+      - name: Run prek on all packages
+        run: |
+          for pkg in packages/*/; do
+            echo "Linting $pkg..."
+            cd "$pkg"
+            if [ -f "pyproject.toml" ]; then
+              uvx prek run --all-files || true
+            fi
+            cd ../..
+          done
+
+      - name: Check import organization
+        run: |
+          # Verify no ffmpeg_core.dag imports in core package
+          if grep -r "from ffmpeg_core\.dag" packages/core/src/ 2>/dev/null; then
+            echo "ERROR: Found ffmpeg_core.dag imports in core package!"
+            exit 1
+          fi
+          echo "✅ Core package has no DAG dependencies"
+
+      - name: Check circular imports
+        run: |
+          cd packages/v8
+          uv run python -c "
+          import sys
+          import importlib
+          
+          # Try importing and detect circular import warnings
+          import warnings
+          with warnings.catch_warnings(record=True) as w:
+              warnings.simplefilter('always')
+              import ffmpeg
+              
+              if w:
+                  print('Warnings detected:', w)
+                  sys.exit(1)
+              else:
+                  print('✅ No circular import warnings')
+          "

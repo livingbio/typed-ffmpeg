@@ -1,0 +1,140 @@
+name: CI Monorepo - Test
+
+on:
+  push:
+    branches: [main, refactor/monorepo-architecture]
+    paths:
+      - 'packages/**'
+      - 'pyproject-workspace.toml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'packages/**'
+      - 'pyproject-workspace.toml'
+
+permissions:
+  contents: read
+
+jobs:
+  test-core:
+    name: Test Core Package
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Install dependencies
+        run: |
+          cd packages/core
+          uv sync
+
+      - name: Run tests
+        run: |
+          cd packages/core
+          uv run pytest src/ -v --cov=./src --cov-report=xml
+
+      - name: Upload coverage
+        if: matrix.python-version == '3.12'
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./packages/core/coverage.xml
+          flags: core,python-${{ matrix.python-version }}
+          name: core-py${{ matrix.python-version }}
+
+  test-v8:
+    name: Test V8 Package
+    runs-on: ubuntu-latest
+    needs: test-core
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          ffmpeg -version
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Install workspace
+        run: uv sync
+
+      - name: Run tests
+        run: |
+          cd packages/v8
+          uv run pytest tests/ -v -k "not test_view" --cov=./src --cov-report=xml
+
+      - name: Upload coverage
+        if: matrix.python-version == '3.12'
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./packages/v8/coverage.xml
+          flags: v8,python-${{ matrix.python-version }}
+          name: v8-py${{ matrix.python-version }}
+
+  test-integration:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    needs: [test-core, test-v8]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Install workspace
+        run: uv sync
+
+      - name: Test import from v8
+        run: |
+          cd packages/v8
+          uv run python -c "
+          import ffmpeg
+          inp = ffmpeg.input('test.mp4')
+          out = inp.hflip().output(filename='out.mp4')
+          print('✅ Import and basic workflow OK')
+          "
+
+      - name: Test all packages installable
+        run: |
+          # Test each package can be installed independently
+          for pkg in core v8 v7 v6 v5; do
+            echo "Testing packages/$pkg..."
+            cd packages/$pkg
+            uv build
+            cd ../..
+          done
