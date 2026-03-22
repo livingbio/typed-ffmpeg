@@ -62,3 +62,4 @@ MIT License - see LICENSE file for details
 # Trigger debug workflow
 # Testing combined steps
 # Trigger main workflow with simplified test setup
+# Final fix - POSIX activation
