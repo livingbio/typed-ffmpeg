@@ -35,15 +35,18 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v4
 
-      - name: Install dependencies
+      - name: Install core package with dev dependencies
         run: |
+          uv venv
+          source .venv/bin/activate
           cd packages/core
-          uv sync
+          uv pip install -e ".[dev]"
 
       - name: Run tests
         run: |
+          source .venv/bin/activate
           cd packages/core
-          uv run pytest src/ -v --cov=./src --cov-report=xml
+          pytest src/ -v --cov=./src --cov-report=xml
 
       - name: Upload coverage
         if: matrix.python-version == '3.12'
@@ -52,6 +55,7 @@ jobs:
           file: ./packages/core/coverage.xml
           flags: core,python-${{ matrix.python-version }}
           name: core-py${{ matrix.python-version }}
+        continue-on-error: true
 
   test-v8:
     name: Test V8 Package
@@ -79,13 +83,23 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v4
 
-      - name: Install workspace
-        run: uv sync
+      - name: Install packages
+        run: |
+          uv venv
+          source .venv/bin/activate
+          # Install core first
+          cd packages/core
+          uv pip install -e .
+          cd ../..
+          # Install v8 with dev dependencies
+          cd packages/v8
+          uv pip install -e ".[dev]"
 
       - name: Run tests
         run: |
+          source .venv/bin/activate
           cd packages/v8
-          uv run pytest tests/ -v -k "not test_view" --cov=./src --cov-report=xml
+          pytest tests/ -v -k "not test_view" --cov=./src --cov-report=xml
 
       - name: Upload coverage
         if: matrix.python-version == '3.12'
@@ -94,6 +108,7 @@ jobs:
           file: ./packages/v8/coverage.xml
           flags: v8,python-${{ matrix.python-version }}
           name: v8-py${{ matrix.python-version }}
+        continue-on-error: true
 
   test-integration:
     name: Integration Tests
@@ -116,22 +131,30 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v4
 
-      - name: Install workspace
-        run: uv sync
+      - name: Install packages
+        run: |
+          uv venv
+          source .venv/bin/activate
+          cd packages/core
+          uv pip install -e .
+          cd ../v8
+          uv pip install -e .
 
       - name: Test import from v8
         run: |
+          source .venv/bin/activate
           cd packages/v8
-          uv run python -c "
+          python -c "
           import ffmpeg
           inp = ffmpeg.input('test.mp4')
           out = inp.hflip().output(filename='out.mp4')
           print('✅ Import and basic workflow OK')
           "
 
-      - name: Test all packages installable
+      - name: Test all packages buildable
         run: |
-          # Test each package can be installed independently
+          source .venv/bin/activate
+          # Test each package can be built independently
           for pkg in core v8 v7 v6 v5; do
             echo "Testing packages/$pkg..."
             cd packages/$pkg
