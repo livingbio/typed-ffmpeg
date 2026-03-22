@@ -38,16 +38,7 @@ jobs:
           python -m venv .venv
           source .venv/bin/activate
           pip install -e ".[dev]"
-          pytest src/ -v --cov=./src --cov-report=xml
-
-      - name: Upload coverage
-        if: matrix.python-version == '3.12'
-        uses: codecov/codecov-action@v4
-        with:
-          file: ./packages/core/coverage.xml
-          flags: core,python-${{ matrix.python-version }}
-          name: core-py${{ matrix.python-version }}
-        continue-on-error: true
+          pytest src/ -v
 
   test-v8:
     name: Test V8 Package
@@ -82,16 +73,7 @@ jobs:
           pip install -e packages/v8[dev]
           # Run tests
           cd packages/v8
-          pytest tests/ -v -k "not test_view" --cov=./src --cov-report=xml
-
-      - name: Upload coverage
-        if: matrix.python-version == '3.12'
-        uses: codecov/codecov-action@v4
-        with:
-          file: ./packages/v8/coverage.xml
-          flags: v8,python-${{ matrix.python-version }}
-          name: v8-py${{ matrix.python-version }}
-        continue-on-error: true
+          pytest tests/ -v -k "not test_view"
 
   test-integration:
     name: Integration Tests
