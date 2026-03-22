@@ -12,9 +12,6 @@ on:
       - 'packages/**'
       - 'pyproject-workspace.toml'
 
-permissions:
-  contents: read
-
 jobs:
   test-core:
     name: Test Core Package
