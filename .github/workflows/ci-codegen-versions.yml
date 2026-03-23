@@ -103,7 +103,7 @@ jobs:
       - name: Verify generated code imports
         run: |
           source .venv/bin/activate
-          pip install -e packages/core -e "packages/v${{ matrix.ffmpeg-version }}[dev]"
+          uv pip install -e packages/core -e "packages/v${{ matrix.ffmpeg-version }}[dev]"
           FFMPEG_MAJOR=${{ matrix.ffmpeg-version }}
           # Hide ffmpeg submodule (C source) so it doesn't shadow the installed ffmpeg Python package
           trap 'mv ffmpeg.submodule.bak ffmpeg 2>/dev/null || true' EXIT
