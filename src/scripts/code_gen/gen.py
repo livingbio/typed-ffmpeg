@@ -111,14 +111,19 @@ def option_name_safe(string: str) -> str:
         The option name safe
 
     """
-    if string in keyword.kwlist:
-        return "_" + string
-    if string[0].isdigit():
-        return "_" + string
-    if "-" in string:
-        return string.replace("-", "_")
+    # Keep the shorthand help option readable.
+    if string == "?":
+        return "_q"
 
-    return string
+    safe = string.replace("-", "_")
+    safe = re.sub(r"\W", "_", safe)
+    if not safe:
+        return "_"
+    if safe[0].isdigit():
+        safe = "_" + safe
+    if safe in keyword.kwlist:
+        safe = "_" + safe
+    return safe
 
 
 def option_typing(option: FFMpegOption) -> str:

@@ -40,7 +40,7 @@ from ...streams.audio import AudioStream
 
 def input(
     filename: str | Path,
-    *,L: Func = None,h: Func = None,?: Func = None,help: Func = None,-help: Func = None,version: Func = None,buildconf: Func = None,formats: Func = None,muxers: Func = None,demuxers: Func = None,devices: Func = None,codecs: Func = None,decoders: Func = None,encoders: Func = None,bsfs: Func = None,protocols: Func = None,filters: Func = None,pix_fmts: Func = None,layouts: Func = None,sample_fmts: Func = None,dispositions: Func = None,colors: Func = None,sources: Func = None,sinks: Func = None,hwaccels: Func = None,decoder_options: FFMpegDecoderOption | None = None,
+    *,L: Func = None,h: Func = None,_q: Func = None,help: Func = None,_help: Func = None,version: Func = None,buildconf: Func = None,formats: Func = None,muxers: Func = None,demuxers: Func = None,devices: Func = None,codecs: Func = None,decoders: Func = None,encoders: Func = None,bsfs: Func = None,protocols: Func = None,filters: Func = None,pix_fmts: Func = None,layouts: Func = None,sample_fmts: Func = None,dispositions: Func = None,colors: Func = None,sources: Func = None,sinks: Func = None,hwaccels: Func = None,decoder_options: FFMpegDecoderOption | None = None,
     demuxer_options: FFMpegDemuxerOption | None = None,
     format_options: FFMpegAVFormatContextDecoderOption | None = None,
     codec_options: FFMpegAVCodecContextDecoderOption | None = None,
@@ -53,7 +53,7 @@ def input(
         filename: Input file URL
         L: show license
         h: show help
-        ?: show help
+        _q: show help
         help: show help
         _help: show help
         version: show version
@@ -98,7 +98,7 @@ def input(
 
                 "h": h,
 
-                "?": ?,
+                "?": _q,
 
                 "help": help,
 
