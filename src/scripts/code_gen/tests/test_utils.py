@@ -15,6 +15,8 @@ from ..utils import get_relative_import, get_relative_path
         ("types", "streams/audio.py.jinja", "..types"),
         ("filters", "streams/audio.py.jinja", "..filters"),
         ("dag.nodes", "dag/io/_input.py.jinja", "..nodes"),
+        ("codecs.schema", "codecs/encoders.py.jinja", ".schema"),
+        ("formats.schema", "formats/muxers.py.jinja", ".schema"),
     ],
 )
 def test_get_relative_path(

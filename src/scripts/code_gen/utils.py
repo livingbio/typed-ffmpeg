@@ -15,12 +15,20 @@ def get_relative_path(import_path: str, template_path: str | Path) -> str | None
         The relative path of the template, or None if importing from same file
 
     """
-    template_path_obj = Path(str(template_path).split(".")[0])
+    template_path_str = str(template_path).replace("\\", "/")
+    template_path_obj = Path(template_path_str.split(".")[0])
     import_path_obj = Path(import_path.replace(".", "/"))
 
     if template_path_obj == import_path_obj:
         # NOTE: this is a special case that should not import itself
         return None
+
+    # Same-package schema: codecs/encoders importing codecs.schema -> .schema
+    # (avoids .codecs.schema when template_path resolution differs across envs)
+    if import_path == "codecs.schema" and template_path_str.startswith("codecs/"):
+        return ".schema"
+    if import_path == "formats.schema" and template_path_str.startswith("formats/"):
+        return ".schema"
 
     file_parts = template_path_obj.parts
     import_parts = import_path_obj.parts
