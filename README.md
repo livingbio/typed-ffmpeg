@@ -37,12 +37,31 @@
 - **Partial Evaluation:** Enhance the flexibility of filter graphs by enabling partial evaluation, allowing for modular construction and reuse.
 - **Media File Analysis:** Built-in support for analyzing media files using FFmpeg's ffprobe utility, providing detailed metadata extraction with both dictionary and dataclass interfaces.
 
-### Planned Features
+### Multi-Version FFmpeg Support
 
-Please note that the following features are under consideration or development for future releases:
+`typed-ffmpeg` ships pre-generated typed bindings for FFmpeg **5.x, 6.x, 7.x, and 8.x**. By default, imports use the latest version:
 
-- **Extended FFmpeg Version Support:** While `typed-ffmpeg` is currently built with FFmpeg version 6.0 in mind, we are working to ensure compatibility across different FFmpeg versions. Feedback and issue reports are welcome to improve version support.
-- **Additional Filter Support:** We aim to expand the range of FFmpeg filters supported by `typed-ffmpeg`. Continuous updates will be made to include more complex and varied filters.
+```python
+from ffmpeg.filters import concat, overlay  # Uses FFmpeg 8.x types
+```
+
+To match your installed FFmpeg version, import from the version-specific submodule:
+
+```python
+from ffmpeg.v6.filters import concat, overlay
+from ffmpeg.v6.codecs.encoders import libx264
+from ffmpeg.v7.streams.video import VideoStream
+```
+
+Check available versions at runtime:
+
+```python
+import ffmpeg.versions
+ffmpeg.versions.available()  # ['5', '6', '7', '8']
+ffmpeg.versions.default      # '8'
+```
+
+Generated docstrings include version notes (e.g., "New in FFmpeg 7.0." or "Removed in FFmpeg 8.0.") to help with migration.
 
 ---
 

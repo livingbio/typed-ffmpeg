@@ -2,7 +2,7 @@
 Input node.
 """
 
-{% import "_components.jinja" as _components %}
+{% import "_components.jinja" as _components with context %}
 
 from pathlib import Path
 from typing import Any
@@ -14,7 +14,7 @@ def input(
     *,
     {%- for option in options -%}
     {%- if option.is_input_option -%}
-    {{ option.name }}: {{ option | option_typing }} = None,
+    {{ option.name | option_name_safe }}: {{ option | option_typing }} = None,
     {%- endif -%}
     {%- endfor -%}
     decoder_options: FFMpegDecoderOption | None = None,

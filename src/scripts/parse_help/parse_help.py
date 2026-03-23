@@ -84,7 +84,7 @@ def _parse(help_text: str) -> list[FFMpegOption]:
     return output
 
 
-def extract() -> list[FFMpegOption]:
+def extract(ffmpeg_binary: str = "ffmpeg") -> list[FFMpegOption]:
     """
     Extract and parse all options from FFmpeg's full help output.
 
@@ -92,6 +92,9 @@ def extract() -> list[FFMpegOption]:
     comprehensive list of all available FFmpeg options, including both general
     options and AVOptions. This is the main entry point for extracting FFmpeg
     option metadata.
+
+    Args:
+        ffmpeg_binary: Path or name of the ffmpeg executable.
 
     Returns:
         A complete list of all available FFmpeg options with
@@ -119,5 +122,5 @@ def extract() -> list[FFMpegOption]:
         ```
 
     """
-    text = run_ffmpeg_command(["-h", "full"])
+    text = run_ffmpeg_command(["-h", "full"], ffmpeg_binary=ffmpeg_binary)
     return _parse(text)

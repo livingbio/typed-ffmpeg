@@ -4,28 +4,28 @@ repos:
     hooks:
       # - id: check-added-large-files
       - id: check-case-conflict
-        files: ^src/
+        files: ^(src/|packages/)
       - id: check-json
-        files: ^src/
+        files: ^(src/|packages/)
         exclude: '__snapshots__/|.eslintrc.json'
       - id: check-merge-conflict
-        files: ^src/
+        files: ^(src/|packages/)
       - id: check-yaml
-        files: ^src/
+        files: ^(src/|packages/)
       - id: end-of-file-fixer
-        files: ^src/
+        files: ^(src/|packages/)
         exclude: '__snapshots__/'
       - id: fix-encoding-pragma
-        files: ^src/
+        files: ^(src/|packages/)
         args: [--remove]
       - id: mixed-line-ending
-        files: ^src/
+        files: ^(src/|packages/)
       - id: trailing-whitespace
-        files: ^src/
+        files: ^(src/|packages/)
         args: [--markdown-linebreak-ext=md]
         exclude: '__snapshots__/'
       - id: pretty-format-json
-        files: ^src/
+        files: ^(src/|packages/)
         args: [--autofix]
         exclude: '__snapshots__/|.eslintrc.json'
 
@@ -35,11 +35,13 @@ repos:
     hooks:
       # Run the formatter.
       - id: ruff-format
-        files: ^src/
+        files: ^(src/|packages/)
+        exclude: ^packages/v[5678]/src/ffmpeg/
       # Run the linter.
       - id: ruff
         args: [--fix, --unsafe-fixes]
-        files: ^src/
+        files: ^(src/|packages/)
+        exclude: ^packages/v[5678]/src/ffmpeg/
 
   - repo: local
     hooks:
@@ -49,11 +51,12 @@ repos:
         language: system
         types: [python]
         exclude: migrations/|commands/|sandbox/|samples|sdk
-        files: ^src/
+        files: ^(src/|packages/)
         pass_filenames: false
         # uvx: ty is not on PATH in CI; ignores align with known third-party / intentional patterns
         args:
           - 'src/'
+          - 'packages/'
           - '--ignore'
           - 'unresolved-import'
           - '--ignore'

@@ -2,11 +2,11 @@
 FFmpeg format options.
 """
 
-{% import "_components.jinja" as _components %}
+{% import "_components.jinja" as _components with context %}
 
 from typing import Literal
 
-{{ _components.import_all(template_path) }}
+{{ _components.import_all(template_path, import_video=False, import_audio=False, import_nodes=False, import_factory=False, import_codec_options=False, import_format_options=False, import_av_stream=False) }}
 
 
 class FFMpegAVFormatContextEncoderOption(FFMpegOptionGroup):

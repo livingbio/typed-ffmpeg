@@ -1,4 +1,0 @@
-[
-  "import ffmpeg",
-  "result = ffmpeg.input('input1.mp4').video_stream(None, optional=False).output(filename='tmp.mp4').global_args(hide_banner=True)"
-]

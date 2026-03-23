@@ -1,0 +1,5 @@
+[
+  "import ffmpeg",
+  "node_0 = ffmpeg.filters.feedback(ffmpeg.input('input1.mp4'), ffmpeg.input('input2.mp4'))",
+  "result = ffmpeg.merge_outputs(node_0[0].drawbox(x=10, y=10, width=180, height=60, color='red', thickness=2).output(filename='output1.mp4'), node_0[1].drawbox(x=10, y=10, width=180, height=60, color='red', thickness=2).output(filename='output2.mp4')).global_args()"
+]

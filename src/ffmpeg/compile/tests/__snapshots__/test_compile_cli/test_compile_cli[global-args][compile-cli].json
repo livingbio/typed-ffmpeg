@@ -1,8 +1,0 @@
-[
-  "-hide_banner",
-  "-i",
-  "input1.mp4",
-  "-map",
-  "0:v",
-  "tmp.mp4"
-]
