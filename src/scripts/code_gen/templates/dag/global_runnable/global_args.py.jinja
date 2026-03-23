@@ -9,7 +9,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any
 
-{{ _components.import_all(template_path, import_nodes=False) }}
+{{get_relative_import("types", template_path, "Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate")}}
+{{get_relative_import("utils.frozendict", template_path, "merge")}}
 if TYPE_CHECKING:
     from ..nodes import GlobalNode, GlobalStream, OutputStream
 

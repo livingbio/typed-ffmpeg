@@ -20,11 +20,6 @@ from .timeline import FFMpegTimelineOption
 
 
 
-from ..streams.av import AVStream
-from ..streams.channel_layout import CHANNEL_LAYOUT
-from ..codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
-from ..formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
-
 from ..dag.nodes import FilterableStream, FilterNode, OutputStream, OutputNode, InputNode, GlobalNode, GlobalStream
 
 

@@ -24,7 +24,6 @@ from ..options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecCont
 
 from ..options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
 
-from .av import AVStream
 from .channel_layout import CHANNEL_LAYOUT
 from ..codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
 from ..formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
