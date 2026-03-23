@@ -30,7 +30,7 @@ uv pip install --group dev
 pip install -e ".[dev]"
 ```
 
-3. **Install pre-commit hooks**
+3. **Install prek hooks**
 
 We use [prek](https://github.com/9999years/prek), a Rust-based drop-in replacement for pre-commit:
 

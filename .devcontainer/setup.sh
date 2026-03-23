@@ -6,8 +6,8 @@ uv venv
 uv pip install -r requirements.txt
 uv pip install -e .
 
-# Install pre-commit hooks
-uv run pre-commit install --install-hooks
+# Install prek hooks
+uv run prek install --install-hooks
 
 # Setup GitHub CLI if available
 if command -v gh &> /dev/null; then

@@ -438,7 +438,7 @@ def generate(
         version_metadata=version_metadata,
     )
     if Path(".pre-commit-config.yaml").exists():
-        os.system("pre-commit run -a")
+        os.system("prek run -a")
 
 
 @app.command()
