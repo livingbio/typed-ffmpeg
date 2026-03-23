@@ -11380,38 +11380,6 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "Dynamic Adaptive Streaming over HTTP",
-    "flags": "D",
-    "name": "dash",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "aac,m4a,m4s,m4v,mov,mp4,webm,ts",
-        "flags": ".D.........",
-        "help": "List of file extensions that dash is allowed to access (default \"aac,m4a,m4s,m4v,mov,mp4,webm,ts\")",
-        "max": null,
-        "min": null,
-        "name": "allowed_extensions",
-        "section": "dash AVOptions:",
-        "type": "string"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": null,
-        "flags": ".D.........",
-        "help": "Media decryption key (hex)",
-        "max": null,
-        "min": null,
-        "name": "cenc_decryption_key",
-        "section": "dash AVOptions:",
-        "type": "string"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDemuxer",
     "description": "raw data",
     "flags": "D",
     "name": "data",
@@ -13277,26 +13245,6 @@
         "name": "loop",
         "section": "imagepipe demuxer AVOptions:",
         "type": "boolean"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDemuxer",
-    "description": "IMF (Interoperable Master Format)",
-    "flags": "D",
-    "name": "imf",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": null,
-        "flags": ".D.........",
-        "help": "Comma-separated paths to ASSETMAP files.If not specified, the `ASSETMAP.xml` file in the same directory as the CPL is used.",
-        "max": null,
-        "min": null,
-        "name": "assetmaps",
-        "section": "imf AVOptions:",
-        "type": "string"
       }
     ]
   },
@@ -18011,13 +17959,6 @@
     "description": "Psion 3 audio",
     "flags": "D",
     "name": "wve",
-    "options": []
-  },
-  {
-    "__class__": "FFMpegDemuxer",
-    "description": "x11grab         X11 screen capture, using XCB",
-    "flags": "D",
-    "name": "d",
     "options": []
   },
   {

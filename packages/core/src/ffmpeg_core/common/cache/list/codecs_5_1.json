@@ -1,28 +1,28 @@
 [
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec a64_multi)",
+    "description": "Multicolor charset for Commodore 64 (codec a64_multi)",
     "flags": "V....D",
     "name": "a64multi",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec a64_multi5)",
+    "description": "Multicolor charset for Commodore 64, extended with 5th color (colram) (codec a64_multi5)",
     "flags": "V....D",
     "name": "a64multi5",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Alias/Wavefront PIX image",
     "flags": "V.....",
     "name": "alias_pix",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "AMV Video",
     "flags": "V.....",
     "name": "amv",
     "options": [
@@ -470,7 +470,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "APNG (Animated Portable Network Graphics) image",
     "flags": "V....D",
     "name": "apng",
     "options": [
@@ -557,56 +557,294 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ASUS V1",
     "flags": "V.....",
     "name": "asv1",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ASUS V2",
     "flags": "V.....",
     "name": "asv2",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "librav1e AV1 (codec av1)",
+    "flags": "V....D",
+    "name": "librav1e",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "-1",
+        "flags": "E..V.......",
+        "help": "use constant quantizer mode (from -1 to 255) (default -1)",
+        "max": "255",
+        "min": "-1",
+        "name": "qp",
+        "section": "librav1e AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "-1",
+        "flags": "E..V.......",
+        "help": "what speed preset to use (from -1 to 10) (default -1)",
+        "max": "10",
+        "min": "-1",
+        "name": "speed",
+        "section": "librav1e AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": "E..V.......",
+        "help": "number of tiles encode with (from -1 to I64_MAX) (default 0)",
+        "max": "I64_MAX",
+        "min": "-1",
+        "name": "tiles",
+        "section": "librav1e AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": "E..V.......",
+        "help": "number of tiles rows to encode with (from -1 to I64_MAX) (default 0)",
+        "max": "I64_MAX",
+        "min": "-1",
+        "name": "tile-rows",
+        "section": "librav1e AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": "E..V.......",
+        "help": "number of tiles columns to encode with (from -1 to I64_MAX) (default 0)",
+        "max": "I64_MAX",
+        "min": "-1",
+        "name": "tile-columns",
+        "section": "librav1e AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": null,
+        "flags": "E..V.......",
+        "help": "set the rav1e configuration using a :-separated list of key=value parameters",
+        "max": null,
+        "min": null,
+        "name": "rav1e-params",
+        "section": "librav1e AVOptions:",
+        "type": "dictionary"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegEncoder",
+    "description": "SVT-AV1(Scalable Video Technology for AV1) encoder (codec av1)",
+    "flags": "V.....",
+    "name": "libsvtav1",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "",
+            "name": "3level",
+            "value": "3"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "",
+            "name": "4level",
+            "value": "4"
+          }
+        ],
+        "default": "4level",
+        "flags": "E..V......P",
+        "help": "Hierarchical prediction levels setting (Deprecated, use svtav1-params) (from 3 to 4) (default 4level)",
+        "max": "4",
+        "min": "3",
+        "name": "hielevel",
+        "section": "libsvtav1 AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "-1",
+        "flags": "E..V......P",
+        "help": "Look ahead distance [0, 120] (Deprecated, use svtav1-params) (from -1 to 120) (default -1)",
+        "max": "120",
+        "min": "-1",
+        "name": "la_depth",
+        "section": "libsvtav1 AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "",
+            "name": "main",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "",
+            "name": "high",
+            "value": "1"
+          }
+        ],
+        "default": "main",
+        "flags": "E..V......P",
+        "help": "Set operating point tier (Deprecated, use svtav1-params) (from 0 to 1) (default main)",
+        "max": "1",
+        "min": "0",
+        "name": "tier",
+        "section": "libsvtav1 AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "-1",
+        "flags": "E..V.......",
+        "help": "Encoding preset (from -1 to 13) (default -1)",
+        "max": "13",
+        "min": "-1",
+        "name": "preset",
+        "section": "libsvtav1 AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": "E..V.......",
+        "help": "Constant Rate Factor value (from 0 to 63) (default 0)",
+        "max": "63",
+        "min": "0",
+        "name": "crf",
+        "section": "libsvtav1 AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": "E..V.......",
+        "help": "Initial Quantizer level value (from 0 to 63) (default 0)",
+        "max": "63",
+        "min": "0",
+        "name": "qp",
+        "section": "libsvtav1 AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": "E..V......P",
+        "help": "Scene change detection (Deprecated, use svtav1-params) (default false)",
+        "max": null,
+        "min": null,
+        "name": "sc_detection",
+        "section": "libsvtav1 AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": "E..V......P",
+        "help": "Log2 of number of tile columns to use (Deprecated, use svtav1-params) (from 0 to 4) (default 0)",
+        "max": "4",
+        "min": "0",
+        "name": "tile_columns",
+        "section": "libsvtav1 AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": "E..V......P",
+        "help": "Log2 of number of tile rows to use (Deprecated, use svtav1-params) (from 0 to 6) (default 0)",
+        "max": "6",
+        "min": "0",
+        "name": "tile_rows",
+        "section": "libsvtav1 AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": null,
+        "flags": "E..V.......",
+        "help": "Set the SVT-AV1 configuration using a :-separated list of key=value parameters",
+        "max": null,
+        "min": null,
+        "name": "svtav1-params",
+        "section": "libsvtav1 AVOptions:",
+        "type": "dictionary"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegEncoder",
+    "description": "Avid 1:1 10-bit RGB Packer",
     "flags": "V....D",
     "name": "avrp",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Avid Meridien Uncompressed",
     "flags": "V..X.D",
     "name": "avui",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Uncompressed packed MS 4:4:4:4",
     "flags": "V....D",
     "name": "ayuv",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Bitpacked",
     "flags": "VF...D",
     "name": "bitpacked",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "BMP (Windows and OS/2 bitmap)",
     "flags": "V....D",
     "name": "bmp",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "GoPro CineForm HD",
     "flags": "VF....",
     "name": "cfhd",
     "options": [
@@ -718,7 +956,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Cinepak",
     "flags": "V.....",
     "name": "cinepak",
     "options": [
@@ -786,7 +1024,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Cirrus Logic AccuPak",
     "flags": "V....D",
     "name": "cljr",
     "options": [
@@ -806,7 +1044,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec dirac)",
+    "description": "SMPTE VC-2 (codec dirac)",
     "flags": "V.S..D",
     "name": "vc2",
     "options": [
@@ -937,7 +1175,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "VC3/DNxHD",
     "flags": "VFS..D",
     "name": "dnxhd",
     "options": [
@@ -1024,14 +1262,14 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "DPX (Digital Picture Exchange) image",
     "flags": "V....D",
     "name": "dpx",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "DV (Digital Video)",
     "flags": "VFS..D",
     "name": "dvvideo",
     "options": [
@@ -1051,7 +1289,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "OpenEXR image",
     "flags": "VF...D",
     "name": "exr",
     "options": [
@@ -1139,7 +1377,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "FFmpeg video codec #1",
     "flags": "V.S...",
     "name": "ffv1",
     "options": [
@@ -1212,7 +1450,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Huffyuv FFmpeg variant",
     "flags": "VF....",
     "name": "ffvhuff",
     "options": [
@@ -1278,28 +1516,28 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Flexible Image Transport System",
     "flags": "V....D",
     "name": "fits",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Flash Screen Video",
     "flags": "V.....",
     "name": "flashsv",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Flash Screen Video Version 2",
     "flags": "V.....",
     "name": "flashsv2",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec flv1)",
+    "description": "FLV / Sorenson Spark / Sorenson H.263 (Flash Video) (codec flv1)",
     "flags": "V.....",
     "name": "flv",
     "options": [
@@ -1778,7 +2016,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "GIF (Graphics Interchange Format)",
     "flags": "V.....",
     "name": "gif",
     "options": [
@@ -1837,7 +2075,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "H.261",
     "flags": "V.....",
     "name": "h261",
     "options": [
@@ -2316,7 +2554,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "H.263 / H.263-1996",
     "flags": "V.....",
     "name": "h263",
     "options": [
@@ -2819,39 +3057,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec h263)",
-    "flags": "V.....",
-    "name": "h263_v4l2m2m",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "16",
-        "flags": "E..V.......",
-        "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-        "max": "INT_MAX",
-        "min": "6",
-        "name": "num_output_buffers",
-        "section": "h263_v4l2m2m_encoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "4",
-        "flags": "E..V.......",
-        "help": "Number of buffers in the capture context (from 4 to INT_MAX) (default 4)",
-        "max": "INT_MAX",
-        "min": "4",
-        "name": "num_capture_buffers",
-        "section": "h263_v4l2m2m_encoder AVOptions:",
-        "type": "int"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "H.263+ / H.263-1998 / H.263 version 2",
     "flags": "V.S...",
     "name": "h263p",
     "options": [
@@ -3378,7 +3584,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec h264)",
+    "description": "libx264 H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10 (codec h264)",
     "flags": "V....D",
     "name": "libx264",
     "options": [
@@ -4134,7 +4340,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec h264)",
+    "description": "libx264 H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10 RGB (codec h264)",
     "flags": "V....D",
     "name": "libx264rgb",
     "options": [
@@ -4890,39 +5096,345 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec h264)",
-    "flags": "V.....",
-    "name": "h264_v4l2m2m",
+    "description": "VideoToolbox H.264 Encoder (codec h264)",
+    "flags": "V....D",
+    "name": "h264_videotoolbox",
     "options": [
       {
         "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "16",
+        "choices": [
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Baseline Profile",
+            "name": "baseline",
+            "value": "baseline"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Main Profile",
+            "name": "main",
+            "value": "main"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "High Profile",
+            "name": "high",
+            "value": "high"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Extend Profile",
+            "name": "extended",
+            "value": "extended"
+          }
+        ],
+        "default": "0",
         "flags": "E..V.......",
-        "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-        "max": "INT_MAX",
-        "min": "6",
-        "name": "num_output_buffers",
-        "section": "h264_v4l2m2m_encoder AVOptions:",
+        "help": "Profile (from 0 to 5) (default 0)",
+        "max": "5",
+        "min": "0",
+        "name": "profile",
+        "section": "h264_videotoolbox AVOptions:",
+        "type": "int64"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Level 1.3, only available with Baseline Profile",
+            "name": "1.3",
+            "value": "13"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Level 3.0",
+            "name": "3.0",
+            "value": "30"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Level 3.1",
+            "name": "3.1",
+            "value": "31"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Level 3.2",
+            "name": "3.2",
+            "value": "32"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Level 4.0",
+            "name": "4.0",
+            "value": "40"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Level 4.1",
+            "name": "4.1",
+            "value": "41"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Level 4.2",
+            "name": "4.2",
+            "value": "42"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Level 5.0",
+            "name": "5.0",
+            "value": "50"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Level 5.1",
+            "name": "5.1",
+            "value": "51"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Level 5.2",
+            "name": "5.2",
+            "value": "52"
+          }
+        ],
+        "default": "0",
+        "flags": "E..V.......",
+        "help": "Level (from 0 to 52) (default 0)",
+        "max": "52",
+        "min": "0",
+        "name": "level",
+        "section": "h264_videotoolbox AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "CAVLC entropy coding",
+            "name": "cavlc",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "CAVLC entropy coding",
+            "name": "vlc",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "CABAC entropy coding",
+            "name": "cabac",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "CABAC entropy coding",
+            "name": "ac",
+            "value": "2"
+          }
+        ],
+        "default": "0",
+        "flags": "E..V.......",
+        "help": "Entropy coding (from 0 to 2) (default 0)",
+        "max": "2",
+        "min": "0",
+        "name": "coder",
+        "section": "h264_videotoolbox AVOptions:",
         "type": "int"
       },
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "4",
+        "default": "true",
         "flags": "E..V.......",
-        "help": "Number of buffers in the capture context (from 4 to INT_MAX) (default 4)",
-        "max": "INT_MAX",
-        "min": "4",
-        "name": "num_capture_buffers",
-        "section": "h264_v4l2m2m_encoder AVOptions:",
+        "help": "Use A53 Closed Captions (if available) (default true)",
+        "max": null,
+        "min": null,
+        "name": "a53cc",
+        "section": "h264_videotoolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": "E..V.......",
+        "help": "Allow software encoding (default false)",
+        "max": null,
+        "min": null,
+        "name": "allow_sw",
+        "section": "h264_videotoolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": "E..V.......",
+        "help": "Require software encoding (default false)",
+        "max": null,
+        "min": null,
+        "name": "require_sw",
+        "section": "h264_videotoolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": "E..V.......",
+        "help": "Hint that encoding should happen in real-time if not faster (e.g. capturing from camera). (default false)",
+        "max": null,
+        "min": null,
+        "name": "realtime",
+        "section": "h264_videotoolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": "E..V.......",
+        "help": "Other frames will come before the frames in this session. This helps smooth concatenation issues. (default false)",
+        "max": null,
+        "min": null,
+        "name": "frames_before",
+        "section": "h264_videotoolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": "E..V.......",
+        "help": "Other frames will come after the frames in this session. This helps smooth concatenation issues. (default false)",
+        "max": null,
+        "min": null,
+        "name": "frames_after",
+        "section": "h264_videotoolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "auto",
+        "flags": "E..V.......",
+        "help": "prioritize encoding speed (default auto)",
+        "max": null,
+        "min": null,
+        "name": "prio_speed",
+        "section": "h264_videotoolbox AVOptions:",
+        "type": "boolean"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegEncoder",
+    "description": "Vidvox Hap",
+    "flags": "V.S...",
+    "name": "hap",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Hap 1 (DXT1 textures)",
+            "name": "hap",
+            "value": "11"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Hap Alpha (DXT5 textures)",
+            "name": "hap_alpha",
+            "value": "14"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Hap Q (DXT5-YCoCg textures)",
+            "name": "hap_q",
+            "value": "15"
+          }
+        ],
+        "default": "hap",
+        "flags": "E..V.......",
+        "help": "(from 11 to 15) (default hap)",
+        "max": "15",
+        "min": "11",
+        "name": "format",
+        "section": "Hap encoder AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "1",
+        "flags": "E..V.......",
+        "help": "chunk count (from 1 to 64) (default 1)",
+        "max": "64",
+        "min": "1",
+        "name": "chunks",
+        "section": "Hap encoder AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "None",
+            "name": "none",
+            "value": "160"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Snappy",
+            "name": "snappy",
+            "value": "176"
+          }
+        ],
+        "default": "snappy",
+        "flags": "E..V.......",
+        "help": "second-stage compressor (from 160 to 176) (default snappy)",
+        "max": "176",
+        "min": "160",
+        "name": "compressor",
+        "section": "Hap encoder AVOptions:",
         "type": "int"
       }
     ]
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec hevc)",
+    "description": "libx265 H.265 / HEVC (codec hevc)",
     "flags": "V....D",
     "name": "libx265",
     "options": [
@@ -5026,59 +5538,126 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec hevc)",
-    "flags": "V.....",
-    "name": "hevc_v4l2m2m",
+    "description": "VideoToolbox H.265 Encoder (codec hevc)",
+    "flags": "V....D",
+    "name": "hevc_videotoolbox",
     "options": [
       {
         "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "16",
+        "choices": [
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Main Profile",
+            "name": "main",
+            "value": "main"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Main10 Profile",
+            "name": "main10",
+            "value": "main10"
+          }
+        ],
+        "default": "0",
         "flags": "E..V.......",
-        "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-        "max": "INT_MAX",
-        "min": "6",
-        "name": "num_output_buffers",
-        "section": "hevc_v4l2m2m_encoder AVOptions:",
-        "type": "int"
+        "help": "Profile (from 0 to 3) (default 0)",
+        "max": "3",
+        "min": "0",
+        "name": "profile",
+        "section": "hevc_videotoolbox AVOptions:",
+        "type": "int64"
       },
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "4",
+        "default": "0",
         "flags": "E..V.......",
-        "help": "Number of buffers in the capture context (from 4 to INT_MAX) (default 4)",
-        "max": "INT_MAX",
-        "min": "4",
-        "name": "num_capture_buffers",
-        "section": "hevc_v4l2m2m_encoder AVOptions:",
-        "type": "int"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegEncoder",
-    "description": "(codec hevc)",
-    "flags": "V....D",
-    "name": "libkvazaar",
-    "options": [
+        "help": "Compression quality for the alpha channel (from 0 to 1) (default 0)",
+        "max": "1",
+        "min": "0",
+        "name": "alpha_quality",
+        "section": "hevc_videotoolbox AVOptions:",
+        "type": "double"
+      },
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": null,
+        "default": "false",
         "flags": "E..V.......",
-        "help": "Set kvazaar parameters as a comma-separated list of key=value pairs.",
+        "help": "Allow software encoding (default false)",
         "max": null,
         "min": null,
-        "name": "kvazaar-params",
-        "section": "libkvazaar AVOptions:",
-        "type": "string"
+        "name": "allow_sw",
+        "section": "hevc_videotoolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": "E..V.......",
+        "help": "Require software encoding (default false)",
+        "max": null,
+        "min": null,
+        "name": "require_sw",
+        "section": "hevc_videotoolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": "E..V.......",
+        "help": "Hint that encoding should happen in real-time if not faster (e.g. capturing from camera). (default false)",
+        "max": null,
+        "min": null,
+        "name": "realtime",
+        "section": "hevc_videotoolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": "E..V.......",
+        "help": "Other frames will come before the frames in this session. This helps smooth concatenation issues. (default false)",
+        "max": null,
+        "min": null,
+        "name": "frames_before",
+        "section": "hevc_videotoolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": "E..V.......",
+        "help": "Other frames will come after the frames in this session. This helps smooth concatenation issues. (default false)",
+        "max": null,
+        "min": null,
+        "name": "frames_after",
+        "section": "hevc_videotoolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "auto",
+        "flags": "E..V.......",
+        "help": "prioritize encoding speed (default auto)",
+        "max": null,
+        "min": null,
+        "name": "prio_speed",
+        "section": "hevc_videotoolbox AVOptions:",
+        "type": "boolean"
       }
     ]
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Huffyuv / HuffYUV",
     "flags": "VF....",
     "name": "huffyuv",
     "options": [
@@ -5132,7 +5711,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "JPEG 2000",
     "flags": "V.....",
     "name": "jpeg2000",
     "options": [
@@ -5302,7 +5881,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec jpeg2000)",
+    "description": "OpenJPEG JPEG 2000 (codec jpeg2000)",
     "flags": "VF....",
     "name": "libopenjpeg",
     "options": [
@@ -5508,7 +6087,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "JPEG-LS",
     "flags": "VF...D",
     "name": "jpegls",
     "options": [
@@ -5550,7 +6129,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Lossless JPEG",
     "flags": "VF....",
     "name": "ljpeg",
     "options": [
@@ -5592,7 +6171,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "MagicYUV video",
     "flags": "VF....",
     "name": "magicyuv",
     "options": [
@@ -5634,7 +6213,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "MJPEG (Motion JPEG)",
     "flags": "VFS...",
     "name": "mjpeg",
     "options": [
@@ -6082,7 +6661,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "MPEG-1 video",
     "flags": "V.S...",
     "name": "mpeg1video",
     "options": [
@@ -6645,7 +7224,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "MPEG-2 video",
     "flags": "V.S...",
     "name": "mpeg2video",
     "options": [
@@ -7345,7 +7924,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "MPEG-4 part 2",
     "flags": "V.S...",
     "name": "mpeg4",
     "options": [
@@ -7896,7 +8475,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec mpeg4)",
+    "description": "libxvidcore MPEG-4 part 2 (codec mpeg4)",
     "flags": "V.....",
     "name": "libxvid",
     "options": [
@@ -8010,39 +8589,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec mpeg4)",
-    "flags": "V.....",
-    "name": "mpeg4_v4l2m2m",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "16",
-        "flags": "E..V.......",
-        "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-        "max": "INT_MAX",
-        "min": "6",
-        "name": "num_output_buffers",
-        "section": "mpeg4_v4l2m2m_encoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "4",
-        "flags": "E..V.......",
-        "help": "Number of buffers in the capture context (from 4 to INT_MAX) (default 4)",
-        "max": "INT_MAX",
-        "min": "4",
-        "name": "num_capture_buffers",
-        "section": "mpeg4_v4l2m2m_encoder AVOptions:",
-        "type": "int"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "MPEG-4 part 2 Microsoft variant version 2",
     "flags": "V.....",
     "name": "msmpeg4v2",
     "options": [
@@ -8521,7 +9068,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec msmpeg4v3)",
+    "description": "MPEG-4 part 2 Microsoft variant version 3 (codec msmpeg4v3)",
     "flags": "V.....",
     "name": "msmpeg4",
     "options": [
@@ -9000,63 +9547,63 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Microsoft Video-1",
     "flags": "V.....",
     "name": "msvideo1",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PAM (Portable AnyMap) image",
     "flags": "V....D",
     "name": "pam",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PBM (Portable BitMap) image",
     "flags": "V....D",
     "name": "pbm",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PC Paintbrush PCX image",
     "flags": "V.....",
     "name": "pcx",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PFM (Portable FloatMap) image",
     "flags": "V....D",
     "name": "pfm",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PGM (Portable GrayMap) image",
     "flags": "V....D",
     "name": "pgm",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PGMYUV (Portable GrayMap YUV) image",
     "flags": "V....D",
     "name": "pgmyuv",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PHM (Portable HalfFloatMap) image",
     "flags": "V....D",
     "name": "phm",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PNG (Portable Network Graphics) image",
     "flags": "VF....",
     "name": "png",
     "options": [
@@ -9143,14 +9690,14 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PPM (Portable PixelMap) image",
     "flags": "V....D",
     "name": "ppm",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Apple ProRes",
     "flags": "VF....",
     "name": "prores",
     "options": [
@@ -9170,7 +9717,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec prores)",
+    "description": "Apple ProRes (codec prores)",
     "flags": "VF....",
     "name": "prores_aw",
     "options": [
@@ -9190,7 +9737,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec prores)",
+    "description": "Apple ProRes (iCodec Pro) (codec prores)",
     "flags": "VFS...",
     "name": "prores_ks",
     "options": [
@@ -9363,42 +9910,184 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "VideoToolbox ProRes Encoder (codec prores)",
+    "flags": "V....D",
+    "name": "prores_videotoolbox",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "Automatically determine based on input format",
+            "name": "auto",
+            "value": "auto"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "ProRes 422 Proxy",
+            "name": "proxy",
+            "value": "proxy"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "ProRes 422 LT",
+            "name": "lt",
+            "value": "lt"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "ProRes 422",
+            "name": "standard",
+            "value": "standard"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "ProRes 422 HQ",
+            "name": "hq",
+            "value": "hq"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "ProRes 4444",
+            "name": "4444",
+            "value": "4444"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "ProRes 4444 XQ",
+            "name": "xq",
+            "value": "xq"
+          }
+        ],
+        "default": "auto",
+        "flags": "E..V.......",
+        "help": "Profile (from -99 to 5) (default auto)",
+        "max": "5",
+        "min": "-99",
+        "name": "profile",
+        "section": "prores_videotoolbox AVOptions:",
+        "type": "int64"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": "E..V.......",
+        "help": "Allow software encoding (default false)",
+        "max": null,
+        "min": null,
+        "name": "allow_sw",
+        "section": "prores_videotoolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": "E..V.......",
+        "help": "Require software encoding (default false)",
+        "max": null,
+        "min": null,
+        "name": "require_sw",
+        "section": "prores_videotoolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": "E..V.......",
+        "help": "Hint that encoding should happen in real-time if not faster (e.g. capturing from camera). (default false)",
+        "max": null,
+        "min": null,
+        "name": "realtime",
+        "section": "prores_videotoolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": "E..V.......",
+        "help": "Other frames will come before the frames in this session. This helps smooth concatenation issues. (default false)",
+        "max": null,
+        "min": null,
+        "name": "frames_before",
+        "section": "prores_videotoolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": "E..V.......",
+        "help": "Other frames will come after the frames in this session. This helps smooth concatenation issues. (default false)",
+        "max": null,
+        "min": null,
+        "name": "frames_after",
+        "section": "prores_videotoolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "auto",
+        "flags": "E..V.......",
+        "help": "prioritize encoding speed (default auto)",
+        "max": null,
+        "min": null,
+        "name": "prio_speed",
+        "section": "prores_videotoolbox AVOptions:",
+        "type": "boolean"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegEncoder",
+    "description": "QOI (Quite OK Image format) image",
     "flags": "VF....",
     "name": "qoi",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "QuickTime Animation (RLE) video",
     "flags": "V.....",
     "name": "qtrle",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "AJA Kona 10-bit RGB Codec",
     "flags": "V....D",
     "name": "r10k",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Uncompressed RGB 10-bit",
     "flags": "V....D",
     "name": "r210",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "raw video",
     "flags": "VF...D",
     "name": "rawvideo",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec roq)",
+    "description": "id RoQ video (codec roq)",
     "flags": "V.....",
     "name": "roqvideo",
     "options": [
@@ -9418,7 +10107,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "QuickTime video (RPZA)",
     "flags": "V.....",
     "name": "rpza",
     "options": [
@@ -9462,7 +10151,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "RealVideo 1.0",
     "flags": "V.....",
     "name": "rv10",
     "options": [
@@ -9941,7 +10630,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "RealVideo 2.0",
     "flags": "V.....",
     "name": "rv20",
     "options": [
@@ -10420,7 +11109,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "SGI image",
     "flags": "V.....",
     "name": "sgi",
     "options": [
@@ -10440,14 +11129,14 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "QuickTime Graphics (SMC)",
     "flags": "V.....",
     "name": "smc",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Snow",
     "flags": "V.....",
     "name": "snow",
     "options": [
@@ -10595,7 +11284,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "NewTek SpeedHQ",
     "flags": "V.....",
     "name": "speedhq",
     "options": [
@@ -11074,7 +11763,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Sun Rasterfile image",
     "flags": "V.....",
     "name": "sunrast",
     "options": [
@@ -11094,7 +11783,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Sorenson Vector Quantizer 1 / Sorenson Video 1 / SVQ1",
     "flags": "V.....",
     "name": "svq1",
     "options": [
@@ -11136,7 +11825,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Truevision Targa image",
     "flags": "V.....",
     "name": "targa",
     "options": [
@@ -11156,14 +11845,14 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec theora)",
+    "description": "libtheora Theora (codec theora)",
     "flags": "V....D",
     "name": "libtheora",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "TIFF image",
     "flags": "VF....",
     "name": "tiff",
     "options": [
@@ -11224,7 +11913,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Ut Video",
     "flags": "VF....",
     "name": "utvideo",
     "options": [
@@ -11273,35 +11962,35 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Uncompressed 4:2:2 10-bit",
     "flags": "VF...D",
     "name": "v210",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Uncompressed packed 4:4:4",
     "flags": "V....D",
     "name": "v308",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Uncompressed packed QT 4:4:4:4",
     "flags": "V....D",
     "name": "v408",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Uncompressed 4:4:4 10-bit",
     "flags": "V....D",
     "name": "v410",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Vizrt Binary Image",
     "flags": "V.S..D",
     "name": "vbn",
     "options": [
@@ -11343,7 +12032,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec vp8)",
+    "description": "libvpx VP8 (codec vp8)",
     "flags": "V....D",
     "name": "libvpx",
     "options": [
@@ -11738,39 +12427,125 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec vp8)",
-    "flags": "V.....",
-    "name": "vp8_v4l2m2m",
+    "description": "libwebp WebP image (codec webp)",
+    "flags": "V....D",
+    "name": "libwebp_anim",
     "options": [
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "16",
+        "default": "0",
         "flags": "E..V.......",
-        "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-        "max": "INT_MAX",
-        "min": "6",
-        "name": "num_output_buffers",
-        "section": "vp8_v4l2m2m_encoder AVOptions:",
+        "help": "Use lossless mode (from 0 to 1) (default 0)",
+        "max": "1",
+        "min": "0",
+        "name": "lossless",
+        "section": "libwebp encoder AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "do not use a preset",
+            "name": "none",
+            "value": "-1"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "default preset",
+            "name": "default",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "digital picture, like portrait, inner shot",
+            "name": "picture",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "outdoor photograph, with natural lighting",
+            "name": "photo",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "hand or line drawing, with high-contrast details",
+            "name": "drawing",
+            "value": "3"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "small-sized colorful images",
+            "name": "icon",
+            "value": "4"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E..V.......",
+            "help": "text-like",
+            "name": "text",
+            "value": "5"
+          }
+        ],
+        "default": "none",
+        "flags": "E..V.......",
+        "help": "Configuration preset (from -1 to 5) (default none)",
+        "max": "5",
+        "min": "-1",
+        "name": "preset",
+        "section": "libwebp encoder AVOptions:",
         "type": "int"
       },
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "4",
+        "default": "0",
         "flags": "E..V.......",
-        "help": "Number of buffers in the capture context (from 4 to INT_MAX) (default 4)",
+        "help": "Conditional replenishment threshold (from 0 to INT_MAX) (default 0)",
         "max": "INT_MAX",
-        "min": "4",
-        "name": "num_capture_buffers",
-        "section": "vp8_v4l2m2m_encoder AVOptions:",
+        "min": "0",
+        "name": "cr_threshold",
+        "section": "libwebp encoder AVOptions:",
         "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "16",
+        "flags": "E..V.......",
+        "help": "Conditional replenishment block size (from 0 to 256) (default 16)",
+        "max": "256",
+        "min": "0",
+        "name": "cr_size",
+        "section": "libwebp encoder AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "75",
+        "flags": "E..V.......",
+        "help": "Quality (from 0 to 100) (default 75)",
+        "max": "100",
+        "min": "0",
+        "name": "quality",
+        "section": "libwebp encoder AVOptions:",
+        "type": "float"
       }
     ]
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec webp)",
+    "description": "libwebp WebP image (codec webp)",
     "flags": "V....D",
     "name": "libwebp",
     "options": [
@@ -11888,7 +12663,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Windows Media Video 7",
     "flags": "V.....",
     "name": "wmv1",
     "options": [
@@ -12367,7 +13142,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Windows Media Video 8",
     "flags": "V.....",
     "name": "wmv2",
     "options": [
@@ -12846,63 +13621,63 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "AVFrame to AVPacket passthrough",
     "flags": "V.....",
     "name": "wrapped_avframe",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "XBM (X BitMap) image",
     "flags": "V.....",
     "name": "xbm",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "X-face image",
     "flags": "V....D",
     "name": "xface",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "XWD (X Window Dump) image",
     "flags": "V....D",
     "name": "xwd",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Uncompressed YUV 4:1:1 12-bit",
     "flags": "V....D",
     "name": "y41p",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Uncompressed packed 4:2:0",
     "flags": "V....D",
     "name": "yuv4",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "LCL (LossLess Codec Library) ZLIB",
     "flags": "VF....",
     "name": "zlib",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Zip Motion Blocks Video",
     "flags": "V....D",
     "name": "zmbv",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "AAC (Advanced Audio Coding)",
     "flags": "A.....",
     "name": "aac",
     "options": [
@@ -13028,73 +13803,56 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec aac)",
+    "description": "aac (AudioToolbox) (codec aac)",
     "flags": "A.....",
-    "name": "libfdk_aac",
+    "name": "aac_at",
     "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "1",
-        "flags": "E...A......",
-        "help": "Afterburner (improved quality) (from 0 to 1) (default 1)",
-        "max": "1",
-        "min": "0",
-        "name": "afterburner",
-        "section": "libfdk_aac AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "0",
-        "flags": "E...A......",
-        "help": "Enable SBR for ELD (for SBR in other configurations, use the -profile parameter) (from 0 to 1) (default 0)",
-        "max": "1",
-        "min": "0",
-        "name": "eld_sbr",
-        "section": "libfdk_aac AVOptions:",
-        "type": "int"
-      },
       {
         "__class__": "FFMpegAVOption",
         "choices": [
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E...A......",
-            "help": "Choose signaling implicitly (explicit hierarchical by default, implicit if global header is disabled)",
-            "name": "default",
+            "help": "VBR if global quality is given; CBR otherwise",
+            "name": "auto",
             "value": "-1"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E...A......",
-            "help": "Implicit backwards compatible signaling",
-            "name": "implicit",
+            "help": "constant bitrate",
+            "name": "cbr",
             "value": "0"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E...A......",
-            "help": "Explicit SBR, implicit PS signaling",
-            "name": "explicit_sbr",
+            "help": "long-term average bitrate",
+            "name": "abr",
             "value": "1"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E...A......",
-            "help": "Explicit hierarchical signaling",
-            "name": "explicit_hierarchical",
+            "help": "constrained variable bitrate",
+            "name": "cvbr",
             "value": "2"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "variable bitrate",
+            "name": "vbr",
+            "value": "3"
           }
         ],
-        "default": "default",
+        "default": "auto",
         "flags": "E...A......",
-        "help": "SBR/PS signaling style (from -1 to 2) (default default)",
-        "max": "2",
+        "help": "ratecontrol mode (from -1 to 3) (default auto)",
+        "max": "3",
         "min": "-1",
-        "name": "signaling",
-        "section": "libfdk_aac AVOptions:",
+        "name": "aac_at_mode",
+        "section": "at_aac_enc AVOptions:",
         "type": "int"
       },
       {
@@ -13102,42 +13860,18 @@
         "choices": [],
         "default": "0",
         "flags": "E...A......",
-        "help": "Output LATM/LOAS encapsulated data (from 0 to 1) (default 0)",
-        "max": "1",
+        "help": "quality vs speed control (from 0 to 2) (default 0)",
+        "max": "2",
         "min": "0",
-        "name": "latm",
-        "section": "libfdk_aac AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "0",
-        "flags": "E...A......",
-        "help": "StreamMuxConfig and PCE repetition period (in frames) (from 0 to 65535) (default 0)",
-        "max": "65535",
-        "min": "0",
-        "name": "header_period",
-        "section": "libfdk_aac AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "0",
-        "flags": "E...A......",
-        "help": "VBR mode (1-5) (from 0 to 5) (default 0)",
-        "max": "5",
-        "min": "0",
-        "name": "vbr",
-        "section": "libfdk_aac AVOptions:",
+        "name": "aac_at_quality",
+        "section": "at_aac_enc AVOptions:",
         "type": "int"
       }
     ]
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ATSC A/52A (AC-3)",
     "flags": "A....D",
     "name": "ac3",
     "options": [
@@ -13540,7 +14274,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec ac3)",
+    "description": "ATSC A/52A (AC-3) (codec ac3)",
     "flags": "A....D",
     "name": "ac3_fixed",
     "options": [
@@ -13943,14 +14677,14 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "SEGA CRI ADX ADPCM",
     "flags": "A....D",
     "name": "adpcm_adx",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ADPCM Argonaut Games",
     "flags": "A....D",
     "name": "adpcm_argo",
     "options": [
@@ -13970,14 +14704,14 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec adpcm_g722)",
+    "description": "G.722 ADPCM (codec adpcm_g722)",
     "flags": "A....D",
     "name": "g722",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec adpcm_g726)",
+    "description": "G.726 ADPCM (codec adpcm_g726)",
     "flags": "A....D",
     "name": "g726",
     "options": [
@@ -13997,7 +14731,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec adpcm_g726le)",
+    "description": "G.726 little endian ADPCM (\"right-justified\") (codec adpcm_g726le)",
     "flags": "A....D",
     "name": "g726le",
     "options": [
@@ -14017,7 +14751,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ADPCM IMA High Voltage Software ALP",
     "flags": "A....D",
     "name": "adpcm_ima_alp",
     "options": [
@@ -14037,7 +14771,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ADPCM IMA AMV",
     "flags": "A....D",
     "name": "adpcm_ima_amv",
     "options": [
@@ -14057,7 +14791,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ADPCM IMA Ubisoft APM",
     "flags": "A....D",
     "name": "adpcm_ima_apm",
     "options": [
@@ -14077,7 +14811,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ADPCM IMA QuickTime",
     "flags": "A....D",
     "name": "adpcm_ima_qt",
     "options": [
@@ -14097,7 +14831,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ADPCM IMA Simon & Schuster Interactive",
     "flags": "A....D",
     "name": "adpcm_ima_ssi",
     "options": [
@@ -14117,7 +14851,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ADPCM IMA WAV",
     "flags": "A....D",
     "name": "adpcm_ima_wav",
     "options": [
@@ -14137,7 +14871,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ADPCM IMA Westwood",
     "flags": "A....D",
     "name": "adpcm_ima_ws",
     "options": [
@@ -14157,7 +14891,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ADPCM Microsoft",
     "flags": "A....D",
     "name": "adpcm_ms",
     "options": [
@@ -14177,7 +14911,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ADPCM Shockwave Flash",
     "flags": "A....D",
     "name": "adpcm_swf",
     "options": [
@@ -14197,7 +14931,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ADPCM Yamaha",
     "flags": "A....D",
     "name": "adpcm_yamaha",
     "options": [
@@ -14217,7 +14951,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ALAC (Apple Lossless Audio Codec)",
     "flags": "A.....",
     "name": "alac",
     "options": [
@@ -14249,7 +14983,75 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec amr_nb)",
+    "description": "alac (AudioToolbox) (codec alac)",
+    "flags": "A.....",
+    "name": "alac_at",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "VBR if global quality is given; CBR otherwise",
+            "name": "auto",
+            "value": "-1"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "constant bitrate",
+            "name": "cbr",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "long-term average bitrate",
+            "name": "abr",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "constrained variable bitrate",
+            "name": "cvbr",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "variable bitrate",
+            "name": "vbr",
+            "value": "3"
+          }
+        ],
+        "default": "auto",
+        "flags": "E...A......",
+        "help": "ratecontrol mode (from -1 to 3) (default auto)",
+        "max": "3",
+        "min": "-1",
+        "name": "aac_at_mode",
+        "section": "at_alac_enc AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": "E...A......",
+        "help": "quality vs speed control (from 0 to 2) (default 0)",
+        "max": "2",
+        "min": "0",
+        "name": "aac_at_quality",
+        "section": "at_alac_enc AVOptions:",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegEncoder",
+    "description": "OpenCORE AMR-NB (Adaptive Multi-Rate Narrow-Band) (codec amr_nb)",
     "flags": "A.....",
     "name": "libopencore_amrnb",
     "options": [
@@ -14269,35 +15071,35 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "aptX (Audio Processing Technology for Bluetooth)",
     "flags": "A....D",
     "name": "aptx",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "aptX HD (Audio Processing Technology for Bluetooth)",
     "flags": "A....D",
     "name": "aptx_hd",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "RFC 3389 comfort noise generator",
     "flags": "A....D",
     "name": "comfortnoise",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "DFPWM1a audio",
     "flags": "A....D",
     "name": "dfpwm",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec dts)",
+    "description": "DCA (DTS Coherent Acoustics) (codec dts)",
     "flags": "A..X.D",
     "name": "dca",
     "options": [
@@ -14317,7 +15119,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ATSC A/52 E-AC-3",
     "flags": "A....D",
     "name": "eac3",
     "options": [
@@ -14696,7 +15498,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "FLAC (Free Lossless Audio Codec)",
     "flags": "A....D",
     "name": "flac",
     "options": [
@@ -14920,35 +15722,103 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "G.723.1",
     "flags": "A....D",
     "name": "g723_1",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ilbc (AudioToolbox) (codec ilbc)",
+    "flags": "A.....",
+    "name": "ilbc_at",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "VBR if global quality is given; CBR otherwise",
+            "name": "auto",
+            "value": "-1"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "constant bitrate",
+            "name": "cbr",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "long-term average bitrate",
+            "name": "abr",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "constrained variable bitrate",
+            "name": "cvbr",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "variable bitrate",
+            "name": "vbr",
+            "value": "3"
+          }
+        ],
+        "default": "auto",
+        "flags": "E...A......",
+        "help": "ratecontrol mode (from -1 to 3) (default auto)",
+        "max": "3",
+        "min": "-1",
+        "name": "aac_at_mode",
+        "section": "at_ilbc_enc AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": "E...A......",
+        "help": "quality vs speed control (from 0 to 2) (default 0)",
+        "max": "2",
+        "min": "0",
+        "name": "aac_at_quality",
+        "section": "at_ilbc_enc AVOptions:",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegEncoder",
+    "description": "MLP (Meridian Lossless Packing)",
     "flags": "A..X..",
     "name": "mlp",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "MP2 (MPEG audio layer 2)",
     "flags": "A.....",
     "name": "mp2",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec mp2)",
+    "description": "MP2 fixed point (MPEG audio layer 2) (codec mp2)",
     "flags": "A.....",
     "name": "mp2fixed",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec mp3)",
+    "description": "libmp3lame MP3 (MPEG audio layer 3) (codec mp3)",
     "flags": "A....D",
     "name": "libmp3lame",
     "options": [
@@ -14992,14 +15862,14 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Nellymoser Asao",
     "flags": "A....D",
     "name": "nellymoser",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Opus",
     "flags": "A..X..",
     "name": "opus",
     "options": [
@@ -15031,7 +15901,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec opus)",
+    "description": "libopus Opus (codec opus)",
     "flags": "A.....",
     "name": "libopus",
     "options": [
@@ -15167,245 +16037,381 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM A-law / G.711 A-law",
     "flags": "A....D",
     "name": "pcm_alaw",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "pcm_alaw (AudioToolbox) (codec pcm_alaw)",
+    "flags": "A.....",
+    "name": "pcm_alaw_at",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "VBR if global quality is given; CBR otherwise",
+            "name": "auto",
+            "value": "-1"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "constant bitrate",
+            "name": "cbr",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "long-term average bitrate",
+            "name": "abr",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "constrained variable bitrate",
+            "name": "cvbr",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "variable bitrate",
+            "name": "vbr",
+            "value": "3"
+          }
+        ],
+        "default": "auto",
+        "flags": "E...A......",
+        "help": "ratecontrol mode (from -1 to 3) (default auto)",
+        "max": "3",
+        "min": "-1",
+        "name": "aac_at_mode",
+        "section": "at_pcm_alaw_enc AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": "E...A......",
+        "help": "quality vs speed control (from 0 to 2) (default 0)",
+        "max": "2",
+        "min": "0",
+        "name": "aac_at_quality",
+        "section": "at_pcm_alaw_enc AVOptions:",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegEncoder",
+    "description": "PCM signed 16|20|24-bit big-endian for Blu-ray media",
     "flags": "A....D",
     "name": "pcm_bluray",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM signed 16|20|24-bit big-endian for DVD media",
     "flags": "A....D",
     "name": "pcm_dvd",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM 32-bit floating point big-endian",
     "flags": "A....D",
     "name": "pcm_f32be",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM 32-bit floating point little-endian",
     "flags": "A....D",
     "name": "pcm_f32le",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM 64-bit floating point big-endian",
     "flags": "A....D",
     "name": "pcm_f64be",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM 64-bit floating point little-endian",
     "flags": "A....D",
     "name": "pcm_f64le",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM mu-law / G.711 mu-law",
     "flags": "A....D",
     "name": "pcm_mulaw",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "pcm_mulaw (AudioToolbox) (codec pcm_mulaw)",
+    "flags": "A.....",
+    "name": "pcm_mulaw_at",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "VBR if global quality is given; CBR otherwise",
+            "name": "auto",
+            "value": "-1"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "constant bitrate",
+            "name": "cbr",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "long-term average bitrate",
+            "name": "abr",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "constrained variable bitrate",
+            "name": "cvbr",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": "E...A......",
+            "help": "variable bitrate",
+            "name": "vbr",
+            "value": "3"
+          }
+        ],
+        "default": "auto",
+        "flags": "E...A......",
+        "help": "ratecontrol mode (from -1 to 3) (default auto)",
+        "max": "3",
+        "min": "-1",
+        "name": "aac_at_mode",
+        "section": "at_pcm_mulaw_enc AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": "E...A......",
+        "help": "quality vs speed control (from 0 to 2) (default 0)",
+        "max": "2",
+        "min": "0",
+        "name": "aac_at_quality",
+        "section": "at_pcm_mulaw_enc AVOptions:",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegEncoder",
+    "description": "PCM signed 16-bit big-endian",
     "flags": "A....D",
     "name": "pcm_s16be",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM signed 16-bit big-endian planar",
     "flags": "A....D",
     "name": "pcm_s16be_planar",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM signed 16-bit little-endian",
     "flags": "A....D",
     "name": "pcm_s16le",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM signed 16-bit little-endian planar",
     "flags": "A....D",
     "name": "pcm_s16le_planar",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM signed 24-bit big-endian",
     "flags": "A....D",
     "name": "pcm_s24be",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM D-Cinema audio signed 24-bit",
     "flags": "A....D",
     "name": "pcm_s24daud",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM signed 24-bit little-endian",
     "flags": "A....D",
     "name": "pcm_s24le",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM signed 24-bit little-endian planar",
     "flags": "A....D",
     "name": "pcm_s24le_planar",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM signed 32-bit big-endian",
     "flags": "A....D",
     "name": "pcm_s32be",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM signed 32-bit little-endian",
     "flags": "A....D",
     "name": "pcm_s32le",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM signed 32-bit little-endian planar",
     "flags": "A....D",
     "name": "pcm_s32le_planar",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM signed 64-bit big-endian",
     "flags": "A....D",
     "name": "pcm_s64be",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM signed 64-bit little-endian",
     "flags": "A....D",
     "name": "pcm_s64le",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM signed 8-bit",
     "flags": "A....D",
     "name": "pcm_s8",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM signed 8-bit planar",
     "flags": "A....D",
     "name": "pcm_s8_planar",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM unsigned 16-bit big-endian",
     "flags": "A....D",
     "name": "pcm_u16be",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM unsigned 16-bit little-endian",
     "flags": "A....D",
     "name": "pcm_u16le",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM unsigned 24-bit big-endian",
     "flags": "A....D",
     "name": "pcm_u24be",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM unsigned 24-bit little-endian",
     "flags": "A....D",
     "name": "pcm_u24le",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM unsigned 32-bit big-endian",
     "flags": "A....D",
     "name": "pcm_u32be",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM unsigned 32-bit little-endian",
     "flags": "A....D",
     "name": "pcm_u32le",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM unsigned 8-bit",
     "flags": "A....D",
     "name": "pcm_u8",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "PCM Archimedes VIDC",
     "flags": "A....D",
     "name": "pcm_vidc",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec ra_144)",
+    "description": "RealAudio 1.0 (14.4K) (codec ra_144)",
     "flags": "A....D",
     "name": "real_144",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "id RoQ DPCM",
     "flags": "A....D",
     "name": "roq_dpcm",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "SMPTE 302M",
     "flags": "A..X.D",
     "name": "s302m",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "SBC (low-complexity subband codec)",
     "flags": "A....D",
     "name": "sbc",
     "options": [
@@ -15437,42 +16443,110 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Sonic",
     "flags": "A..X..",
     "name": "sonic",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Sonic lossless",
     "flags": "A..X..",
     "name": "sonicls",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "libspeex Speex (codec speex)",
+    "flags": "A.....",
+    "name": "libspeex",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": "E...A......",
+        "help": "Use average bit rate (from 0 to 1) (default 0)",
+        "max": "1",
+        "min": "0",
+        "name": "abr",
+        "section": "libspeex AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "8",
+        "flags": "E...A......",
+        "help": "Set quality value (0 to 10) for CBR (from 0 to 10) (default 8)",
+        "max": "10",
+        "min": "0",
+        "name": "cbr_quality",
+        "section": "libspeex AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "1",
+        "flags": "E...A......",
+        "help": "Number of frames to encode in each packet (from 1 to 8) (default 1)",
+        "max": "8",
+        "min": "1",
+        "name": "frames_per_packet",
+        "section": "libspeex AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": "E...A......",
+        "help": "Voice Activity Detection (from 0 to 1) (default 0)",
+        "max": "1",
+        "min": "0",
+        "name": "vad",
+        "section": "libspeex AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": "E...A......",
+        "help": "Discontinuous Transmission (from 0 to 1) (default 0)",
+        "max": "1",
+        "min": "0",
+        "name": "dtx",
+        "section": "libspeex AVOptions:",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegEncoder",
+    "description": "TrueHD",
     "flags": "A..X..",
     "name": "truehd",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "TTA (True Audio)",
     "flags": "A.....",
     "name": "tta",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Vorbis",
     "flags": "A..X..",
     "name": "vorbis",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec vorbis)",
+    "description": "libvorbis (codec vorbis)",
     "flags": "A....D",
     "name": "libvorbis",
     "options": [
@@ -15492,7 +16566,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "WavPack",
     "flags": "A.....",
     "name": "wavpack",
     "options": [
@@ -15524,42 +16598,42 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Windows Media Audio 1",
     "flags": "A.....",
     "name": "wmav1",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Windows Media Audio 2",
     "flags": "A.....",
     "name": "wmav2",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec ass)",
+    "description": "ASS (Advanced SubStation Alpha) subtitle (codec ass)",
     "flags": "S.....",
     "name": "ssa",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "ASS (Advanced SubStation Alpha) subtitle",
     "flags": "S.....",
     "name": "ass",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec dvb_subtitle)",
+    "description": "DVB subtitles (codec dvb_subtitle)",
     "flags": "S.....",
     "name": "dvbsub",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec dvd_subtitle)",
+    "description": "DVD subtitles (codec dvd_subtitle)",
     "flags": "S.....",
     "name": "dvdsub",
     "options": [
@@ -15591,7 +16665,7 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "3GPP Timed Text subtitle",
     "flags": "S.....",
     "name": "mov_text",
     "options": [
@@ -15611,168 +16685,236 @@
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "(codec subrip)",
+    "description": "SubRip subtitle (codec subrip)",
     "flags": "S.....",
     "name": "srt",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "SubRip subtitle",
     "flags": "S.....",
     "name": "subrip",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "Raw text subtitle",
     "flags": "S.....",
     "name": "text",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "TTML subtitle",
     "flags": "S.....",
     "name": "ttml",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "WebVTT subtitle",
     "flags": "S.....",
     "name": "webvtt",
     "options": []
   },
   {
     "__class__": "FFMpegEncoder",
-    "description": "",
+    "description": "DivX subtitles (XSUB)",
     "flags": "S.....",
     "name": "xsub",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Uncompressed 4:2:2 10-bit",
     "flags": "V....D",
     "name": "012v",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "4X Movie",
     "flags": "V....D",
     "name": "4xm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "QuickTime 8BPS video",
     "flags": "V....D",
     "name": "8bps",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Autodesk RLE",
     "flags": "V....D",
     "name": "aasc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Amuse Graphics Movie",
     "flags": "V....D",
     "name": "agm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Apple Intermediate Codec",
     "flags": "VF...D",
     "name": "aic",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Alias/Wavefront PIX image",
     "flags": "V....D",
     "name": "alias_pix",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "AMV Video",
     "flags": "V....D",
     "name": "amv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Deluxe Paint Animation",
     "flags": "V....D",
     "name": "anm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ASCII/ANSI art",
     "flags": "V....D",
     "name": "ansi",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "APNG (Animated Portable Network Graphics) image",
     "flags": "VF...D",
     "name": "apng",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Gryphon's Anim Compressor",
     "flags": "V....D",
     "name": "arbc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Argonaut Games Video",
     "flags": "V....D",
     "name": "argo",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ASUS V1",
     "flags": "V....D",
     "name": "asv1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ASUS V2",
     "flags": "V....D",
     "name": "asv2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Auravision AURA",
     "flags": "V....D",
     "name": "aura",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Auravision Aura 2",
     "flags": "V....D",
     "name": "aura2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "dav1d AV1 decoder by VideoLAN (codec av1)",
+    "flags": "V.....",
+    "name": "libdav1d",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": ".D.V......P",
+        "help": "Tile threads (from 0 to 256) (default 0)",
+        "max": "256",
+        "min": "0",
+        "name": "tilethreads",
+        "section": "libdav1d decoder AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": ".D.V......P",
+        "help": "Frame threads (from 0 to 256) (default 0)",
+        "max": "256",
+        "min": "0",
+        "name": "framethreads",
+        "section": "libdav1d decoder AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "auto",
+        "flags": ".D.V......P",
+        "help": "Apply Film Grain (default auto)",
+        "max": null,
+        "min": null,
+        "name": "filmgrain",
+        "section": "libdav1d decoder AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "-1",
+        "flags": ".D.V.......",
+        "help": "Select an operating point of the scalable bitstream (from -1 to 31) (default -1)",
+        "max": "31",
+        "min": "-1",
+        "name": "oppoint",
+        "section": "libdav1d decoder AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": ".D.V.......",
+        "help": "Output all spatial layers (default false)",
+        "max": null,
+        "min": null,
+        "name": "alllayers",
+        "section": "libdav1d decoder AVOptions:",
+        "type": "boolean"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegDecoder",
+    "description": "Alliance for Open Media AV1",
     "flags": "V....D",
     "name": "av1",
     "options": [
@@ -15792,287 +16934,287 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Avid AVI Codec",
     "flags": "V....D",
     "name": "avrn",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Avid 1:1 10-bit RGB Packer",
     "flags": "V....D",
     "name": "avrp",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "AVS (Audio Video Standard) video",
     "flags": "V....D",
     "name": "avs",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Avid Meridien Uncompressed",
     "flags": "V....D",
     "name": "avui",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Uncompressed packed MS 4:4:4:4",
     "flags": "V....D",
     "name": "ayuv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Bethesda VID video",
     "flags": "V....D",
     "name": "bethsoftvid",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Brute Force & Ignorance",
     "flags": "V....D",
     "name": "bfi",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Bink video",
     "flags": "V....D",
     "name": "binkvideo",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Binary text",
     "flags": "V....D",
     "name": "bintext",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Bitpacked",
     "flags": "VF....",
     "name": "bitpacked",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "BMP (Windows and OS/2 bitmap)",
     "flags": "V....D",
     "name": "bmp",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Discworld II BMV video",
     "flags": "V....D",
     "name": "bmv_video",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "BRender PIX image",
     "flags": "V....D",
     "name": "brender_pix",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Interplay C93",
     "flags": "V....D",
     "name": "c93",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Chinese AVS (Audio Video Standard) (AVS1-P2, JiZhun profile)",
     "flags": "V....D",
     "name": "cavs",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "CD Graphics video",
     "flags": "V....D",
     "name": "cdgraphics",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "CDToons video",
     "flags": "V....D",
     "name": "cdtoons",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Commodore CDXL video",
     "flags": "V....D",
     "name": "cdxl",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "GoPro CineForm HD",
     "flags": "VF...D",
     "name": "cfhd",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Cinepak",
     "flags": "V....D",
     "name": "cinepak",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Iterated Systems ClearVideo",
     "flags": "V....D",
     "name": "clearvideo",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Cirrus Logic AccuPak",
     "flags": "V....D",
     "name": "cljr",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Canopus Lossless Codec",
     "flags": "VF...D",
     "name": "cllc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec cmv)",
+    "description": "Electronic Arts CMV video (codec cmv)",
     "flags": "V....D",
     "name": "eacmv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "CPiA video format",
     "flags": "V....D",
     "name": "cpia",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Cintel RAW",
     "flags": "VF...D",
     "name": "cri",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec cscd)",
+    "description": "CamStudio (codec cscd)",
     "flags": "V....D",
     "name": "camstudio",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Creative YUV (CYUV)",
     "flags": "V....D",
     "name": "cyuv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DirectDraw Surface image decoder",
     "flags": "V.S..D",
     "name": "dds",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Chronomaster DFA",
     "flags": "V....D",
     "name": "dfa",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "BBC Dirac VC-2",
     "flags": "V.S..D",
     "name": "dirac",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "VC3/DNxHD",
     "flags": "VFS..D",
     "name": "dnxhd",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DPX (Digital Picture Exchange) image",
     "flags": "V....D",
     "name": "dpx",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Delphine Software International CIN video",
     "flags": "V....D",
     "name": "dsicinvideo",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DV (Digital Video)",
     "flags": "VFS..D",
     "name": "dvvideo",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Feeble Files/ScummVM DXA",
     "flags": "V....D",
     "name": "dxa",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Dxtory",
     "flags": "VF...D",
     "name": "dxtory",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Resolume DXV",
     "flags": "VFS..D",
     "name": "dxv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Escape 124",
     "flags": "V....D",
     "name": "escape124",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Escape 130",
     "flags": "V....D",
     "name": "escape130",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "OpenEXR image",
     "flags": "VFS..D",
     "name": "exr",
     "options": [
@@ -16241,21 +17383,21 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
-    "flags": "VFS..D",
+    "description": "FFmpeg video codec #1",
+    "flags": "V.S..D",
     "name": "ffv1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Huffyuv FFmpeg variant",
     "flags": "VF..BD",
     "name": "ffvhuff",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Mirillis FIC",
     "flags": "V.S..D",
     "name": "fic",
     "options": [
@@ -16275,7 +17417,7 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Flexible Image Transport System",
     "flags": "V....D",
     "name": "fits",
     "options": [
@@ -16295,49 +17437,49 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Flash Screen Video v1",
     "flags": "V....D",
     "name": "flashsv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Flash Screen Video v2",
     "flags": "V....D",
     "name": "flashsv2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Autodesk Animator Flic video",
     "flags": "V....D",
     "name": "flic",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec flv1)",
+    "description": "FLV / Sorenson Spark / Sorenson H.263 (Flash Video) (codec flv1)",
     "flags": "V...BD",
     "name": "flv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "FM Screen Capture Codec",
     "flags": "V....D",
     "name": "fmvc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Fraps",
     "flags": "VF...D",
     "name": "fraps",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Forward Uncompressed",
     "flags": "V....D",
     "name": "frwu",
     "options": [
@@ -16357,28 +17499,28 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Go2Meeting",
     "flags": "V....D",
     "name": "g2m",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Gremlin Digital Video",
     "flags": "V....D",
     "name": "gdv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "GEM Raster image",
     "flags": "V....D",
     "name": "gem",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "GIF (Graphics Interchange Format)",
     "flags": "V....D",
     "name": "gif",
     "options": [
@@ -16398,67 +17540,35 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "H.261",
     "flags": "V....D",
     "name": "h261",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2",
     "flags": "V...BD",
     "name": "h263",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec h263)",
-    "flags": "V.....",
-    "name": "h263_v4l2m2m",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "16",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-        "max": "INT_MAX",
-        "min": "6",
-        "name": "num_output_buffers",
-        "section": "h263_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "20",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-        "max": "INT_MAX",
-        "min": "20",
-        "name": "num_capture_buffers",
-        "section": "h263_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Intel H.263",
     "flags": "V...BD",
     "name": "h263i",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2",
     "flags": "V...BD",
     "name": "h263p",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
     "flags": "VFS..D",
     "name": "h264",
     "options": [
@@ -16514,46 +17624,14 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec h264)",
-    "flags": "V.....",
-    "name": "h264_v4l2m2m",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "16",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-        "max": "INT_MAX",
-        "min": "6",
-        "name": "num_output_buffers",
-        "section": "h264_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "20",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-        "max": "INT_MAX",
-        "min": "20",
-        "name": "num_capture_buffers",
-        "section": "h264_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Vidvox Hap",
     "flags": "VFS..D",
     "name": "hap",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "HEVC (High Efficiency Video Coding)",
     "flags": "VFS..D",
     "name": "hevc",
     "options": [
@@ -16585,151 +17663,119 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec hevc)",
-    "flags": "V.....",
-    "name": "hevc_v4l2m2m",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "16",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-        "max": "INT_MAX",
-        "min": "6",
-        "name": "num_output_buffers",
-        "section": "hevc_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "20",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-        "max": "INT_MAX",
-        "min": "20",
-        "name": "num_capture_buffers",
-        "section": "hevc_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "HNM 4 video",
     "flags": "V....D",
     "name": "hnm4video",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Canopus HQ/HQA",
     "flags": "V....D",
     "name": "hq_hqa",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Canopus HQX",
     "flags": "VFS..D",
     "name": "hqx",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Huffyuv / HuffYUV",
     "flags": "VF..BD",
     "name": "huffyuv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "HuffYUV MT",
     "flags": "VF..BD",
     "name": "hymt",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec idcin)",
+    "description": "id Quake II CIN video (codec idcin)",
     "flags": "V....D",
     "name": "idcinvideo",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "iCEDraw text",
     "flags": "V....D",
     "name": "idf",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec iff_ilbm)",
+    "description": "IFF ACBM/ANIM/DEEP/ILBM/PBM/RGB8/RGBN (codec iff_ilbm)",
     "flags": "V....D",
     "name": "iff",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Infinity IMM4",
     "flags": "V....D",
     "name": "imm4",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Infinity IMM5",
     "flags": "V.....",
     "name": "imm5",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Intel Indeo 2",
     "flags": "V....D",
     "name": "indeo2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Intel Indeo 3",
     "flags": "V....D",
     "name": "indeo3",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Intel Indeo Video Interactive 4",
     "flags": "V....D",
     "name": "indeo4",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Intel Indeo Video Interactive 5",
     "flags": "V....D",
     "name": "indeo5",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Interplay MVE video",
     "flags": "V....D",
     "name": "interplayvideo",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "IPU Video",
     "flags": "V....D",
     "name": "ipu",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "JPEG 2000",
     "flags": "VFS..D",
     "name": "jpeg2000",
     "options": [
@@ -16749,7 +17795,7 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec jpeg2000)",
+    "description": "OpenJPEG JPEG 2000 (codec jpeg2000)",
     "flags": "VF...D",
     "name": "libopenjpeg",
     "options": [
@@ -16769,91 +17815,91 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "JPEG-LS",
     "flags": "V....D",
     "name": "jpegls",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Bitmap Brothers JV video",
     "flags": "V....D",
     "name": "jv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Kega Game Video",
     "flags": "V....D",
     "name": "kgv1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Karl Morton's video codec",
     "flags": "V....D",
     "name": "kmvc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Lagarith lossless",
     "flags": "VF...D",
     "name": "lagarith",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "LOCO",
     "flags": "V....D",
     "name": "loco",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "LEAD Screen Capture",
     "flags": "V....D",
     "name": "lscr",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Matrox Uncompressed SD",
     "flags": "V....D",
     "name": "m101",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec mad)",
+    "description": "Electronic Arts Madcow Video (codec mad)",
     "flags": "V....D",
     "name": "eamad",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MagicYUV video",
     "flags": "VFS..D",
     "name": "magicyuv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Sony PlayStation MDEC (Motion DECoder)",
     "flags": "VF...D",
     "name": "mdec",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Mimic",
     "flags": "VF...D",
     "name": "mimic",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MJPEG (Motion JPEG)",
     "flags": "V....D",
     "name": "mjpeg",
     "options": [
@@ -16873,369 +17919,273 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Apple MJPEG-B",
     "flags": "V....D",
     "name": "mjpegb",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "American Laser Games MM Video",
     "flags": "V....D",
     "name": "mmvideo",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MobiClip Video",
     "flags": "V....D",
     "name": "mobiclip",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Motion Pixels video",
     "flags": "V....D",
     "name": "motionpixels",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MPEG-1 video",
     "flags": "V.S.BD",
     "name": "mpeg1video",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec mpeg1video)",
-    "flags": "V.....",
-    "name": "mpeg1_v4l2m2m",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "16",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-        "max": "INT_MAX",
-        "min": "6",
-        "name": "num_output_buffers",
-        "section": "mpeg1_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "20",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-        "max": "INT_MAX",
-        "min": "20",
-        "name": "num_capture_buffers",
-        "section": "mpeg1_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MPEG-2 video",
     "flags": "V.S.BD",
     "name": "mpeg2video",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec mpeg2video)",
+    "description": "MPEG-1 video (codec mpeg2video)",
     "flags": "V.S.BD",
     "name": "mpegvideo",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec mpeg2video)",
-    "flags": "V.....",
-    "name": "mpeg2_v4l2m2m",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "16",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-        "max": "INT_MAX",
-        "min": "6",
-        "name": "num_output_buffers",
-        "section": "mpeg2_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "20",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-        "max": "INT_MAX",
-        "min": "20",
-        "name": "num_capture_buffers",
-        "section": "mpeg2_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MPEG-4 part 2",
     "flags": "VF..BD",
     "name": "mpeg4",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec mpeg4)",
-    "flags": "V.....",
-    "name": "mpeg4_v4l2m2m",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "16",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-        "max": "INT_MAX",
-        "min": "6",
-        "name": "num_output_buffers",
-        "section": "mpeg4_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "20",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-        "max": "INT_MAX",
-        "min": "20",
-        "name": "num_capture_buffers",
-        "section": "mpeg4_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MS ATC Screen",
     "flags": "V....D",
     "name": "msa1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Mandsoft Screen Capture Codec",
     "flags": "V....D",
     "name": "mscc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MPEG-4 part 2 Microsoft variant version 1",
     "flags": "V...BD",
     "name": "msmpeg4v1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MPEG-4 part 2 Microsoft variant version 2",
     "flags": "V...BD",
     "name": "msmpeg4v2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec msmpeg4v3)",
+    "description": "MPEG-4 part 2 Microsoft variant version 3 (codec msmpeg4v3)",
     "flags": "V...BD",
     "name": "msmpeg4",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Microsoft Paint (MSP) version 2",
     "flags": "V....D",
     "name": "msp2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Microsoft RLE",
     "flags": "V....D",
     "name": "msrle",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MS Screen 1",
     "flags": "V....D",
     "name": "mss1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MS Windows Media Video V9 Screen",
     "flags": "V....D",
     "name": "mss2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Microsoft Video 1",
     "flags": "V....D",
     "name": "msvideo1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "LCL (LossLess Codec Library) MSZH",
     "flags": "VF...D",
     "name": "mszh",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MS Expression Encoder Screen",
     "flags": "V....D",
     "name": "mts2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MidiVid 3.0",
     "flags": "V....D",
     "name": "mv30",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Silicon Graphics Motion Video Compressor 1",
     "flags": "V....D",
     "name": "mvc1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Silicon Graphics Motion Video Compressor 2",
     "flags": "V....D",
     "name": "mvc2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MidiVid VQ",
     "flags": "V....D",
     "name": "mvdv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MidiVid Archive Codec",
     "flags": "V....D",
     "name": "mvha",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MatchWare Screen Capture Codec",
     "flags": "V....D",
     "name": "mwsc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Mobotix MxPEG video",
     "flags": "V....D",
     "name": "mxpeg",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "NotchLC",
     "flags": "VF...D",
     "name": "notchlc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "NuppelVideo/RTJPEG",
     "flags": "V....D",
     "name": "nuv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Amazing Studio Packed Animation File Video",
     "flags": "V....D",
     "name": "paf_video",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PAM (Portable AnyMap) image",
     "flags": "V....D",
     "name": "pam",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PBM (Portable BitMap) image",
     "flags": "V....D",
     "name": "pbm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PC Paintbrush PCX image",
     "flags": "V....D",
     "name": "pcx",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PFM (Portable FloatMap) image",
     "flags": "V....D",
     "name": "pfm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PGM (Portable GrayMap) image",
     "flags": "V....D",
     "name": "pgm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PGMYUV (Portable GrayMap YUV) image",
     "flags": "V....D",
     "name": "pgmyuv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PGX (JPEG2000 Test Format)",
     "flags": "V....D",
     "name": "pgx",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PHM (Portable HalfFloatMap) image",
     "flags": "V....D",
     "name": "phm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Kodak Photo CD",
     "flags": "VF...D",
     "name": "photocd",
     "options": [
@@ -17255,105 +18205,105 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Pictor/PC Paint",
     "flags": "V....D",
     "name": "pictor",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Apple Pixlet",
     "flags": "VF...D",
     "name": "pixlet",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PNG (Portable Network Graphics) image",
     "flags": "VF...D",
     "name": "png",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PPM (Portable PixelMap) image",
     "flags": "V....D",
     "name": "ppm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Apple ProRes (iCodec Pro)",
     "flags": "VFS..D",
     "name": "prores",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Brooktree ProSumer Video",
     "flags": "V....D",
     "name": "prosumer",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Photoshop PSD file",
     "flags": "VF...D",
     "name": "psd",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "V.Flash PTX image",
     "flags": "V....D",
     "name": "ptx",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Apple QuickDraw",
     "flags": "V....D",
     "name": "qdraw",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "QOI (Quite OK Image format) image",
     "flags": "VF...D",
     "name": "qoi",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Q-team QPEG",
     "flags": "V....D",
     "name": "qpeg",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "QuickTime Animation (RLE) video",
     "flags": "V....D",
     "name": "qtrle",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "AJA Kona 10-bit RGB Codec",
     "flags": "V....D",
     "name": "r10k",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Uncompressed RGB 10-bit",
     "flags": "V....D",
     "name": "r210",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "RemotelyAnywhere Screen Capture",
     "flags": "V....D",
     "name": "rasc",
     "options": [
@@ -17373,7 +18323,7 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "raw video",
     "flags": "V.....",
     "name": "rawvideo",
     "options": [
@@ -17393,245 +18343,245 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "RL2 video",
     "flags": "V....D",
     "name": "rl2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec roq)",
+    "description": "id RoQ video (codec roq)",
     "flags": "V....D",
     "name": "roqvideo",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "QuickTime video (RPZA)",
     "flags": "V....D",
     "name": "rpza",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "innoHeim/Rsupport Screen Capture Codec",
     "flags": "V....D",
     "name": "rscc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "RealVideo 1.0",
     "flags": "V....D",
     "name": "rv10",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "RealVideo 2.0",
     "flags": "V....D",
     "name": "rv20",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "RealVideo 3.0",
     "flags": "VF...D",
     "name": "rv30",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "RealVideo 4.0",
     "flags": "VF...D",
     "name": "rv40",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "LucasArts SANM/Smush video",
     "flags": "V....D",
     "name": "sanm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ScreenPressor",
     "flags": "V....D",
     "name": "scpr",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Screenpresso",
     "flags": "V....D",
     "name": "screenpresso",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Digital Pictures SGA Video",
     "flags": "V....D",
     "name": "sga",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "SGI image",
     "flags": "V....D",
     "name": "sgi",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Silicon Graphics RLE 8-bit video",
     "flags": "V....D",
     "name": "sgirle",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "BitJazz SheerVideo",
     "flags": "VF...D",
     "name": "sheervideo",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Simbiosis Interactive IMX Video",
     "flags": "V....D",
     "name": "simbiosis_imx",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec smackvideo)",
+    "description": "Smacker video (codec smackvideo)",
     "flags": "V....D",
     "name": "smackvid",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "QuickTime Graphics (SMC)",
     "flags": "V....D",
     "name": "smc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "SMV JPEG",
     "flags": "V....D",
     "name": "smvjpeg",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Snow",
     "flags": "V....D",
     "name": "snow",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Sunplus JPEG (SP5X)",
     "flags": "V....D",
     "name": "sp5x",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "NewTek SpeedHQ",
     "flags": "V....D",
     "name": "speedhq",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Screen Recorder Gold Codec",
     "flags": "V....D",
     "name": "srgc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Sun Rasterfile image",
     "flags": "V....D",
     "name": "sunrast",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Sorenson Vector Quantizer 1 / Sorenson Video 1 / SVQ1",
     "flags": "V....D",
     "name": "svq1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Sorenson Vector Quantizer 3 / Sorenson Video 3 / SVQ3",
     "flags": "V...BD",
     "name": "svq3",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Truevision Targa image",
     "flags": "V....D",
     "name": "targa",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Pinnacle TARGA CineWave YUV16",
     "flags": "V....D",
     "name": "targa_y216",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "TDSC",
     "flags": "V....D",
     "name": "tdsc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec tgq)",
+    "description": "Electronic Arts TGQ video (codec tgq)",
     "flags": "V....D",
     "name": "eatgq",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec tgv)",
+    "description": "Electronic Arts TGV video (codec tgv)",
     "flags": "V....D",
     "name": "eatgv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Theora",
     "flags": "VF..BD",
     "name": "theora",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Nintendo Gamecube THP video",
     "flags": "V....D",
     "name": "thp",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Tiertex Limited SEQ video",
     "flags": "V....D",
     "name": "tiertexseqvideo",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "TIFF image",
     "flags": "VF...D",
     "name": "tiff",
     "options": [
@@ -17675,77 +18625,77 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "8088flex TMV",
     "flags": "V....D",
     "name": "tmv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec tqi)",
+    "description": "Electronic Arts TQI Video (codec tqi)",
     "flags": "V....D",
     "name": "eatqi",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Duck TrueMotion 1.0",
     "flags": "V....D",
     "name": "truemotion1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Duck TrueMotion 2.0",
     "flags": "V....D",
     "name": "truemotion2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Duck TrueMotion 2.0 Real Time",
     "flags": "V....D",
     "name": "truemotion2rt",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec tscc)",
+    "description": "TechSmith Screen Capture Codec (codec tscc)",
     "flags": "V....D",
     "name": "camtasia",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "TechSmith Screen Codec 2",
     "flags": "V....D",
     "name": "tscc2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Renderware TXD (TeXture Dictionary) image",
     "flags": "V....D",
     "name": "txd",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec ulti)",
+    "description": "IBM UltiMotion (codec ulti)",
     "flags": "V....D",
     "name": "ultimotion",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Ut Video",
     "flags": "VF...D",
     "name": "utvideo",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Uncompressed 4:2:2 10-bit",
     "flags": "VFS..D",
     "name": "v210",
     "options": [
@@ -17765,439 +18715,343 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Uncompressed 4:2:2 10-bit",
     "flags": "V....D",
     "name": "v210x",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Uncompressed packed 4:4:4",
     "flags": "V....D",
     "name": "v308",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Uncompressed packed QT 4:4:4:4",
     "flags": "V....D",
     "name": "v408",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Uncompressed 4:4:4 10-bit",
     "flags": "VFS..D",
     "name": "v410",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Beam Software VB",
     "flags": "V....D",
     "name": "vb",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "VBLE Lossless Codec",
     "flags": "VF...D",
     "name": "vble",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Vizrt Binary Image",
     "flags": "V.S..D",
     "name": "vbn",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "SMPTE VC-1",
     "flags": "V....D",
     "name": "vc1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec vc1)",
-    "flags": "V.....",
-    "name": "vc1_v4l2m2m",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "16",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-        "max": "INT_MAX",
-        "min": "6",
-        "name": "num_output_buffers",
-        "section": "vc1_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "20",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-        "max": "INT_MAX",
-        "min": "20",
-        "name": "num_capture_buffers",
-        "section": "vc1_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Windows Media Video 9 Image v2",
     "flags": "V....D",
     "name": "vc1image",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ATI VCR1",
     "flags": "V....D",
     "name": "vcr1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec vixl)",
+    "description": "Miro VideoXL (codec vixl)",
     "flags": "V....D",
     "name": "xl",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Sierra VMD video",
     "flags": "V....D",
     "name": "vmdvideo",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "VMware Screen Codec / VMware Video",
     "flags": "V....D",
     "name": "vmnc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "On2 VP3",
     "flags": "VF..BD",
     "name": "vp3",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "On2 VP4",
     "flags": "VF..BD",
     "name": "vp4",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "On2 VP5",
     "flags": "V....D",
     "name": "vp5",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "On2 VP6",
     "flags": "V....D",
     "name": "vp6",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "On2 VP6 (Flash version, with alpha channel)",
     "flags": "V.S..D",
     "name": "vp6a",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "On2 VP6 (Flash version)",
     "flags": "V....D",
     "name": "vp6f",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "On2 VP7",
     "flags": "V....D",
     "name": "vp7",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "On2 VP8",
     "flags": "VFS..D",
     "name": "vp8",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec vp8)",
-    "flags": "V.....",
-    "name": "vp8_v4l2m2m",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "16",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-        "max": "INT_MAX",
-        "min": "6",
-        "name": "num_output_buffers",
-        "section": "vp8_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "20",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-        "max": "INT_MAX",
-        "min": "20",
-        "name": "num_capture_buffers",
-        "section": "vp8_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDecoder",
-    "description": "(codec vp8)",
+    "description": "libvpx VP8 (codec vp8)",
     "flags": "V....D",
     "name": "libvpx",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Google VP9",
     "flags": "VFS..D",
     "name": "vp9",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec vp9)",
-    "flags": "V.....",
-    "name": "vp9_v4l2m2m",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "16",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-        "max": "INT_MAX",
-        "min": "6",
-        "name": "num_output_buffers",
-        "section": "vp9_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "20",
-        "flags": ".D.V.......",
-        "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-        "max": "INT_MAX",
-        "min": "20",
-        "name": "num_capture_buffers",
-        "section": "vp9_v4l2m2m_decoder AVOptions:",
-        "type": "int"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "WinCAM Motion Video",
     "flags": "V....D",
     "name": "wcmv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "WebP image",
     "flags": "VF...D",
     "name": "webp",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Windows Media Video 7",
     "flags": "V...BD",
     "name": "wmv1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Windows Media Video 8",
     "flags": "V...BD",
     "name": "wmv2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Windows Media Video 9",
     "flags": "V....D",
     "name": "wmv3",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Windows Media Video 9 Image",
     "flags": "V....D",
     "name": "wmv3image",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Winnov WNV1",
     "flags": "V....D",
     "name": "wnv1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "AVPacket to AVFrame passthrough",
     "flags": "V.....",
     "name": "wrapped_avframe",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec ws_vqa)",
+    "description": "Westwood Studios VQA (Vector Quantized Animation) video (codec ws_vqa)",
     "flags": "V....D",
     "name": "vqavideo",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Wing Commander III / Xan",
     "flags": "V....D",
     "name": "xan_wc3",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Wing Commander IV / Xxan",
     "flags": "V....D",
     "name": "xan_wc4",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "eXtended BINary text",
     "flags": "V....D",
     "name": "xbin",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "XBM (X BitMap) image",
     "flags": "V....D",
     "name": "xbm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "X-face image",
     "flags": "V....D",
     "name": "xface",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "XPM (X PixMap) image",
     "flags": "V....D",
     "name": "xpm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "XWD (X Window Dump) image",
     "flags": "V....D",
     "name": "xwd",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Uncompressed YUV 4:1:1 12-bit",
     "flags": "V....D",
     "name": "y41p",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "YUY2 Lossless Codec",
     "flags": "VF...D",
     "name": "ylc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Psygnosis YOP Video",
     "flags": "V.....",
     "name": "yop",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Uncompressed packed 4:2:0",
     "flags": "V....D",
     "name": "yuv4",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ZeroCodec Lossless Video",
     "flags": "V....D",
     "name": "zerocodec",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "LCL (LossLess Codec Library) ZLIB",
     "flags": "VF...D",
     "name": "zlib",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Zip Motion Blocks Video",
     "flags": "V....D",
     "name": "zmbv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "8SVX exponential",
     "flags": "A....D",
     "name": "8svx_exp",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "8SVX fibonacci",
     "flags": "A....D",
     "name": "8svx_fib",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "AAC (Advanced Audio Coding)",
     "flags": "A....D",
     "name": "aac",
     "options": [
@@ -18273,135 +19127,28 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec aac)",
+    "description": "AAC (Advanced Audio Coding) (codec aac)",
     "flags": "A....D",
     "name": "aac_fixed",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec aac)",
+    "description": "aac (AudioToolbox) (codec aac)",
     "flags": "A....D",
-    "name": "libfdk_aac",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [
-          {
-            "__class__": "FFMpegOptionChoice",
-            "flags": ".D..A......",
-            "help": "Spectral muting",
-            "name": "spectral",
-            "value": "0"
-          },
-          {
-            "__class__": "FFMpegOptionChoice",
-            "flags": ".D..A......",
-            "help": "Noise Substitution",
-            "name": "noise",
-            "value": "1"
-          },
-          {
-            "__class__": "FFMpegOptionChoice",
-            "flags": ".D..A......",
-            "help": "Energy Interpolation",
-            "name": "energy",
-            "value": "2"
-          }
-        ],
-        "default": "noise",
-        "flags": ".D..A......",
-        "help": "Error concealment method (from 0 to 2) (default noise)",
-        "max": "2",
-        "min": "0",
-        "name": "conceal",
-        "section": "libfdk-aac decoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "-1",
-        "flags": ".D..A......",
-        "help": "Dynamic Range Control: boost, where [0] is none and [127] is max boost (from -1 to 127) (default -1)",
-        "max": "127",
-        "min": "-1",
-        "name": "drc_boost",
-        "section": "libfdk-aac decoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "-1",
-        "flags": ".D..A......",
-        "help": "Dynamic Range Control: attenuation factor, where [0] is none and [127] is max compression (from -1 to 127) (default -1)",
-        "max": "127",
-        "min": "-1",
-        "name": "drc_cut",
-        "section": "libfdk-aac decoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "-1",
-        "flags": ".D..A......",
-        "help": "Dynamic Range Control: reference level, quantized to 0.25dB steps where [0] is 0dB and [127] is -31.75dB, -1 for auto, and -2 for disabled (from -2 to 127) (default -1)",
-        "max": "127",
-        "min": "-2",
-        "name": "drc_level",
-        "section": "libfdk-aac decoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "-1",
-        "flags": ".D..A......",
-        "help": "Dynamic Range Control: heavy compression, where [1] is on (RF mode) and [0] is off (from -1 to 1) (default -1)",
-        "max": "1",
-        "min": "-1",
-        "name": "drc_heavy",
-        "section": "libfdk-aac decoder AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "auto",
-        "flags": ".D..A......",
-        "help": "Signal level limiting (default auto)",
-        "max": null,
-        "min": null,
-        "name": "level_limit",
-        "section": "libfdk-aac decoder AVOptions:",
-        "type": "boolean"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": null,
-        "flags": ".D..A......",
-        "help": "Request a specific channel layout from the decoder",
-        "max": null,
-        "min": null,
-        "name": "downmix",
-        "section": "libfdk-aac decoder AVOptions:",
-        "type": "channel_layout"
-      }
-    ]
+    "name": "aac_at",
+    "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "AAC LATM (Advanced Audio Coding LATM syntax)",
     "flags": "A....D",
     "name": "aac_latm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ATSC A/52A (AC-3)",
     "flags": "A....D",
     "name": "ac3",
     "options": [
@@ -18469,7 +19216,7 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec ac3)",
+    "description": "ATSC A/52A (AC-3) (codec ac3)",
     "flags": "A....D",
     "name": "ac3_fixed",
     "options": [
@@ -18525,105 +19272,112 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ac3 (AudioToolbox) (codec ac3)",
+    "flags": "A....D",
+    "name": "ac3_at",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegDecoder",
+    "description": "ADPCM 4X Movie",
     "flags": "A....D",
     "name": "adpcm_4xm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "SEGA CRI ADX ADPCM",
     "flags": "A....D",
     "name": "adpcm_adx",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Nintendo Gamecube AFC",
     "flags": "A....D",
     "name": "adpcm_afc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM AmuseGraphics Movie",
     "flags": "A....D",
     "name": "adpcm_agm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Yamaha AICA",
     "flags": "A....D",
     "name": "adpcm_aica",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Argonaut Games",
     "flags": "A....D",
     "name": "adpcm_argo",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Creative Technology",
     "flags": "A....D",
     "name": "adpcm_ct",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Nintendo Gamecube DTK",
     "flags": "A....D",
     "name": "adpcm_dtk",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Electronic Arts",
     "flags": "A....D",
     "name": "adpcm_ea",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Electronic Arts Maxis CDROM XA",
     "flags": "A....D",
     "name": "adpcm_ea_maxis_xa",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Electronic Arts R1",
     "flags": "A....D",
     "name": "adpcm_ea_r1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Electronic Arts R2",
     "flags": "A....D",
     "name": "adpcm_ea_r2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Electronic Arts R3",
     "flags": "A....D",
     "name": "adpcm_ea_r3",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Electronic Arts XAS",
     "flags": "A....D",
     "name": "adpcm_ea_xas",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec adpcm_g722)",
+    "description": "G.722 ADPCM (codec adpcm_g722)",
     "flags": "A....D",
     "name": "g722",
     "options": [
@@ -18643,259 +19397,266 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec adpcm_g726)",
+    "description": "G.726 ADPCM (codec adpcm_g726)",
     "flags": "A....D",
     "name": "g726",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec adpcm_g726le)",
+    "description": "G.726 ADPCM little-endian (codec adpcm_g726le)",
     "flags": "A....D",
     "name": "g726le",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA Acorn Replay",
     "flags": "A....D",
     "name": "adpcm_ima_acorn",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA High Voltage Software ALP",
     "flags": "A....D",
     "name": "adpcm_ima_alp",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA AMV",
     "flags": "A....D",
     "name": "adpcm_ima_amv",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA CRYO APC",
     "flags": "A....D",
     "name": "adpcm_ima_apc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA Ubisoft APM",
     "flags": "A....D",
     "name": "adpcm_ima_apm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA Cunning Developments",
     "flags": "A....D",
     "name": "adpcm_ima_cunning",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA Eurocom DAT4",
     "flags": "A....D",
     "name": "adpcm_ima_dat4",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA Duck DK3",
     "flags": "A....D",
     "name": "adpcm_ima_dk3",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA Duck DK4",
     "flags": "A....D",
     "name": "adpcm_ima_dk4",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA Electronic Arts EACS",
     "flags": "A....D",
     "name": "adpcm_ima_ea_eacs",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA Electronic Arts SEAD",
     "flags": "A....D",
     "name": "adpcm_ima_ea_sead",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA Funcom ISS",
     "flags": "A....D",
     "name": "adpcm_ima_iss",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA MobiClip MOFLEX",
     "flags": "A....D",
     "name": "adpcm_ima_moflex",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA Capcom's MT Framework",
     "flags": "A....D",
     "name": "adpcm_ima_mtf",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA Dialogic OKI",
     "flags": "A....D",
     "name": "adpcm_ima_oki",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA QuickTime",
     "flags": "A....D",
     "name": "adpcm_ima_qt",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "adpcm_ima_qt (AudioToolbox) (codec adpcm_ima_qt)",
+    "flags": "A....D",
+    "name": "adpcm_ima_qt_at",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegDecoder",
+    "description": "ADPCM IMA Radical",
     "flags": "A....D",
     "name": "adpcm_ima_rad",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA Loki SDL MJPEG",
     "flags": "A....D",
     "name": "adpcm_ima_smjpeg",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA Simon & Schuster Interactive",
     "flags": "A....D",
     "name": "adpcm_ima_ssi",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA WAV",
     "flags": "A....D",
     "name": "adpcm_ima_wav",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM IMA Westwood",
     "flags": "A....D",
     "name": "adpcm_ima_ws",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Microsoft",
     "flags": "A....D",
     "name": "adpcm_ms",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM MTAF",
     "flags": "A....D",
     "name": "adpcm_mtaf",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Playstation",
     "flags": "A....D",
     "name": "adpcm_psx",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Sound Blaster Pro 2-bit",
     "flags": "A....D",
     "name": "adpcm_sbpro_2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Sound Blaster Pro 2.6-bit",
     "flags": "A....D",
     "name": "adpcm_sbpro_3",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Sound Blaster Pro 4-bit",
     "flags": "A....D",
     "name": "adpcm_sbpro_4",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Shockwave Flash",
     "flags": "A....D",
     "name": "adpcm_swf",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Nintendo THP",
     "flags": "A....D",
     "name": "adpcm_thp",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Nintendo THP (little-endian)",
     "flags": "A....D",
     "name": "adpcm_thp_le",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "LucasArts VIMA audio",
     "flags": "A....D",
     "name": "adpcm_vima",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM CDROM XA",
     "flags": "A....D",
     "name": "adpcm_xa",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Yamaha",
     "flags": "A....D",
     "name": "adpcm_yamaha",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADPCM Zork",
     "flags": "A....D",
     "name": "adpcm_zork",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ALAC (Apple Lossless Audio Codec)",
     "flags": "AF...D",
     "name": "alac",
     "options": [
@@ -18915,35 +19676,49 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec amr_nb)",
+    "description": "alac (AudioToolbox) (codec alac)",
+    "flags": "A....D",
+    "name": "alac_at",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegDecoder",
+    "description": "AMR-NB (Adaptive Multi-Rate NarrowBand) (codec amr_nb)",
     "flags": "A....D",
     "name": "amrnb",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec amr_nb)",
+    "description": "amr_nb (AudioToolbox) (codec amr_nb)",
+    "flags": "A....D",
+    "name": "amr_nb_at",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegDecoder",
+    "description": "OpenCORE AMR-NB (Adaptive Multi-Rate Narrow-Band) (codec amr_nb)",
     "flags": "A....D",
     "name": "libopencore_amrnb",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec amr_wb)",
+    "description": "AMR-WB (Adaptive Multi-Rate WideBand) (codec amr_wb)",
     "flags": "A....D",
     "name": "amrwb",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec amr_wb)",
+    "description": "OpenCORE AMR-WB (Adaptive Multi-Rate Wide-Band) (codec amr_wb)",
     "flags": "A....D",
     "name": "libopencore_amrwb",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Monkey's Audio",
     "flags": "A....D",
     "name": "ape",
     "options": [
@@ -18971,119 +19746,119 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "aptX (Audio Processing Technology for Bluetooth)",
     "flags": "A....D",
     "name": "aptx",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "aptX HD (Audio Processing Technology for Bluetooth)",
     "flags": "A....D",
     "name": "aptx_hd",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ATRAC1 (Adaptive TRansform Acoustic Coding)",
     "flags": "A....D",
     "name": "atrac1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ATRAC3 (Adaptive TRansform Acoustic Coding 3)",
     "flags": "A....D",
     "name": "atrac3",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ATRAC3 AL (Adaptive TRansform Acoustic Coding 3 Advanced Lossless)",
     "flags": "A....D",
     "name": "atrac3al",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec atrac3p)",
+    "description": "ATRAC3+ (Adaptive TRansform Acoustic Coding 3+) (codec atrac3p)",
     "flags": "A....D",
     "name": "atrac3plus",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec atrac3pal)",
+    "description": "ATRAC3+ AL (Adaptive TRansform Acoustic Coding 3+ Advanced Lossless) (codec atrac3pal)",
     "flags": "A....D",
     "name": "atrac3plusal",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ATRAC9 (Adaptive TRansform Acoustic Coding 9)",
     "flags": "A....D",
     "name": "atrac9",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec avc)",
+    "description": "On2 Audio for Video Codec (codec avc)",
     "flags": "A....D",
     "name": "on2avc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Bink Audio (DCT)",
     "flags": "A....D",
     "name": "binkaudio_dct",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Bink Audio (RDFT)",
     "flags": "A....D",
     "name": "binkaudio_rdft",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Discworld II BMV audio",
     "flags": "A....D",
     "name": "bmv_audio",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "RFC 3389 comfort noise generator",
     "flags": "A....D",
     "name": "comfortnoise",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Cook / Cooker / Gecko (RealAudio G2)",
     "flags": "A....D",
     "name": "cook",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DPCM Xilam DERF",
     "flags": "A....D",
     "name": "derf_dpcm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DFPWM1a audio",
     "flags": "A....D",
     "name": "dfpwm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Dolby E",
     "flags": "A....D",
     "name": "dolby_e",
     "options": [
@@ -19118,56 +19893,56 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DSD (Direct Stream Digital), least significant bit first",
     "flags": "A.S..D",
     "name": "dsd_lsbf",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DSD (Direct Stream Digital), least significant bit first, planar",
     "flags": "A.S..D",
     "name": "dsd_lsbf_planar",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DSD (Direct Stream Digital), most significant bit first",
     "flags": "A.S..D",
     "name": "dsd_msbf",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DSD (Direct Stream Digital), most significant bit first, planar",
     "flags": "A.S..D",
     "name": "dsd_msbf_planar",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Delphine Software International CIN audio",
     "flags": "A....D",
     "name": "dsicinaudio",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Digital Speech Standard - Standard Play mode (DSS SP)",
     "flags": "A....D",
     "name": "dss_sp",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DST (Digital Stream Transfer)",
     "flags": "A....D",
     "name": "dst",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec dts)",
+    "description": "DCA (DTS Coherent Acoustics) (codec dts)",
     "flags": "A....D",
     "name": "dca",
     "options": [
@@ -19226,14 +20001,14 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Ulead DV Audio",
     "flags": "A....D",
     "name": "dvaudio",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ATSC A/52B (AC-3, E-AC-3)",
     "flags": "A....D",
     "name": "eac3",
     "options": [
@@ -19301,7 +20076,14 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "eac3 (AudioToolbox) (codec eac3)",
+    "flags": "A....D",
+    "name": "eac3_at",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegDecoder",
+    "description": "EVRC (Enhanced Variable Rate Codec)",
     "flags": "A....D",
     "name": "evrc",
     "options": [
@@ -19321,14 +20103,14 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MobiClip FastAudio",
     "flags": "A....D",
     "name": "fastaudio",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "FLAC (Free Lossless Audio Codec)",
     "flags": "AF...D",
     "name": "flac",
     "options": [
@@ -19348,7 +20130,7 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "G.723.1",
     "flags": "A....D",
     "name": "g723_1",
     "options": [
@@ -19368,105 +20150,119 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "G.729",
     "flags": "A....D",
     "name": "g729",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DPCM Gremlin",
     "flags": "A....D",
     "name": "gremlin_dpcm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "GSM",
     "flags": "A....D",
     "name": "gsm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "GSM Microsoft variant",
     "flags": "A....D",
     "name": "gsm_ms",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "gsm_ms (AudioToolbox) (codec gsm_ms)",
+    "flags": "A....D",
+    "name": "gsm_ms_at",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegDecoder",
+    "description": "CRI HCA",
     "flags": "A....D",
     "name": "hca",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "HCOM Audio",
     "flags": "A....D",
     "name": "hcom",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "IAC (Indeo Audio Coder)",
     "flags": "A....D",
     "name": "iac",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "iLBC (Internet Low Bitrate Codec)",
     "flags": "A....D",
     "name": "ilbc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ilbc (AudioToolbox) (codec ilbc)",
+    "flags": "A....D",
+    "name": "ilbc_at",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegDecoder",
+    "description": "IMC (Intel Music Coder)",
     "flags": "A....D",
     "name": "imc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DPCM Interplay",
     "flags": "A....D",
     "name": "interplay_dpcm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Interplay ACM",
     "flags": "A....D",
     "name": "interplayacm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MACE (Macintosh Audio Compression/Expansion) 3:1",
     "flags": "A....D",
     "name": "mace3",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MACE (Macintosh Audio Compression/Expansion) 6:1",
     "flags": "A....D",
     "name": "mace6",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Voxware MetaSound",
     "flags": "A....D",
     "name": "metasound",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MLP (Meridian Lossless Packing)",
     "flags": "A....D",
     "name": "mlp",
     "options": [
@@ -19486,112 +20282,133 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MP1 (MPEG audio layer 1)",
     "flags": "A....D",
     "name": "mp1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec mp1)",
+    "description": "MP1 (MPEG audio layer 1) (codec mp1)",
     "flags": "A....D",
     "name": "mp1float",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "mp1 (AudioToolbox) (codec mp1)",
+    "flags": "A....D",
+    "name": "mp1_at",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegDecoder",
+    "description": "MP2 (MPEG audio layer 2)",
     "flags": "A....D",
     "name": "mp2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec mp2)",
+    "description": "MP2 (MPEG audio layer 2) (codec mp2)",
     "flags": "A....D",
     "name": "mp2float",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec mp3)",
+    "description": "mp2 (AudioToolbox) (codec mp2)",
+    "flags": "A....D",
+    "name": "mp2_at",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegDecoder",
+    "description": "MP3 (MPEG audio layer 3) (codec mp3)",
     "flags": "A....D",
     "name": "mp3float",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MP3 (MPEG audio layer 3)",
     "flags": "A....D",
     "name": "mp3",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec mp3adu)",
+    "description": "mp3 (AudioToolbox) (codec mp3)",
+    "flags": "A....D",
+    "name": "mp3_at",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegDecoder",
+    "description": "ADU (Application Data Unit) MP3 (MPEG audio layer 3) (codec mp3adu)",
     "flags": "A....D",
     "name": "mp3adufloat",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ADU (Application Data Unit) MP3 (MPEG audio layer 3)",
     "flags": "A....D",
     "name": "mp3adu",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec mp3on4)",
+    "description": "MP3onMP4 (codec mp3on4)",
     "flags": "A....D",
     "name": "mp3on4float",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MP3onMP4",
     "flags": "A....D",
     "name": "mp3on4",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec mp4als)",
+    "description": "MPEG-4 Audio Lossless Coding (ALS) (codec mp4als)",
     "flags": "A....D",
     "name": "als",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MSN Siren",
     "flags": "A....D",
     "name": "msnsiren",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec musepack7)",
+    "description": "Musepack SV7 (codec musepack7)",
     "flags": "A....D",
     "name": "mpc7",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec musepack8)",
+    "description": "Musepack SV8 (codec musepack8)",
     "flags": "A....D",
     "name": "mpc8",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Nellymoser Asao",
     "flags": "A....D",
     "name": "nellymoser",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Opus",
     "flags": "A....D",
     "name": "opus",
     "options": [
@@ -19611,7 +20428,7 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec opus)",
+    "description": "libopus Opus (codec opus)",
     "flags": "A....D",
     "name": "libopus",
     "options": [
@@ -19631,308 +20448,336 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Amazing Studio Packed Animation File Audio",
     "flags": "A....D",
     "name": "paf_audio",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM A-law / G.711 A-law",
     "flags": "A....D",
     "name": "pcm_alaw",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "pcm_alaw (AudioToolbox) (codec pcm_alaw)",
+    "flags": "A....D",
+    "name": "pcm_alaw_at",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegDecoder",
+    "description": "PCM signed 16|20|24-bit big-endian for Blu-ray media",
     "flags": "A....D",
     "name": "pcm_bluray",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM signed 16|20|24-bit big-endian for DVD media",
     "flags": "A....D",
     "name": "pcm_dvd",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM 16.8 floating point little-endian",
     "flags": "A....D",
     "name": "pcm_f16le",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM 24.0 floating point little-endian",
     "flags": "A....D",
     "name": "pcm_f24le",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM 32-bit floating point big-endian",
     "flags": "A....D",
     "name": "pcm_f32be",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM 32-bit floating point little-endian",
     "flags": "A....D",
     "name": "pcm_f32le",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM 64-bit floating point big-endian",
     "flags": "A....D",
     "name": "pcm_f64be",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM 64-bit floating point little-endian",
     "flags": "A....D",
     "name": "pcm_f64le",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM signed 20-bit little-endian planar",
     "flags": "A....D",
     "name": "pcm_lxf",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM mu-law / G.711 mu-law",
     "flags": "A....D",
     "name": "pcm_mulaw",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "pcm_mulaw (AudioToolbox) (codec pcm_mulaw)",
+    "flags": "A....D",
+    "name": "pcm_mulaw_at",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegDecoder",
+    "description": "PCM signed 16-bit big-endian",
     "flags": "A....D",
     "name": "pcm_s16be",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM signed 16-bit big-endian planar",
     "flags": "A....D",
     "name": "pcm_s16be_planar",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM signed 16-bit little-endian",
     "flags": "A....D",
     "name": "pcm_s16le",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM signed 16-bit little-endian planar",
     "flags": "A....D",
     "name": "pcm_s16le_planar",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM signed 24-bit big-endian",
     "flags": "A....D",
     "name": "pcm_s24be",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM D-Cinema audio signed 24-bit",
     "flags": "A....D",
     "name": "pcm_s24daud",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM signed 24-bit little-endian",
     "flags": "A....D",
     "name": "pcm_s24le",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM signed 24-bit little-endian planar",
     "flags": "A....D",
     "name": "pcm_s24le_planar",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM signed 32-bit big-endian",
     "flags": "A....D",
     "name": "pcm_s32be",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM signed 32-bit little-endian",
     "flags": "A....D",
     "name": "pcm_s32le",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM signed 32-bit little-endian planar",
     "flags": "A....D",
     "name": "pcm_s32le_planar",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM signed 64-bit big-endian",
     "flags": "A....D",
     "name": "pcm_s64be",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM signed 64-bit little-endian",
     "flags": "A....D",
     "name": "pcm_s64le",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM signed 8-bit",
     "flags": "A....D",
     "name": "pcm_s8",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM signed 8-bit planar",
     "flags": "A....D",
     "name": "pcm_s8_planar",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM SGA",
     "flags": "A....D",
     "name": "pcm_sga",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM unsigned 16-bit big-endian",
     "flags": "A....D",
     "name": "pcm_u16be",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM unsigned 16-bit little-endian",
     "flags": "A....D",
     "name": "pcm_u16le",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM unsigned 24-bit big-endian",
     "flags": "A....D",
     "name": "pcm_u24be",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM unsigned 24-bit little-endian",
     "flags": "A....D",
     "name": "pcm_u24le",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM unsigned 32-bit big-endian",
     "flags": "A....D",
     "name": "pcm_u32be",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM unsigned 32-bit little-endian",
     "flags": "A....D",
     "name": "pcm_u32le",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM unsigned 8-bit",
     "flags": "A....D",
     "name": "pcm_u8",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PCM Archimedes VIDC",
     "flags": "A....D",
     "name": "pcm_vidc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "QCELP / PureVoice",
     "flags": "A....D",
     "name": "qcelp",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "QDesign Music Codec 2",
     "flags": "A....D",
     "name": "qdm2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "qdm2 (AudioToolbox) (codec qdm2)",
+    "flags": "A....D",
+    "name": "qdm2_at",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegDecoder",
+    "description": "QDesign Music Codec 1",
     "flags": "A....D",
     "name": "qdmc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec ra_144)",
+    "description": "qdmc (AudioToolbox) (codec qdmc)",
+    "flags": "A....D",
+    "name": "qdmc_at",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegDecoder",
+    "description": "RealAudio 1.0 (14.4K) (codec ra_144)",
     "flags": "A....D",
     "name": "real_144",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec ra_288)",
+    "description": "RealAudio 2.0 (28.8K) (codec ra_288)",
     "flags": "A....D",
     "name": "real_288",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "RealAudio Lossless",
     "flags": "A....D",
     "name": "ralf",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DPCM id RoQ",
     "flags": "A....D",
     "name": "roq_dpcm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "SMPTE 302M",
     "flags": "A....D",
     "name": "s302m",
     "options": [
@@ -19981,77 +20826,84 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "SBC (low-complexity subband codec)",
     "flags": "A....D",
     "name": "sbc",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DPCM Squareroot-Delta-Exact",
     "flags": "A....D",
     "name": "sdx2_dpcm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Shorten",
     "flags": "A....D",
     "name": "shorten",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "RealAudio SIPR / ACELP.NET",
     "flags": "A....D",
     "name": "sipr",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Siren",
     "flags": "A....D",
     "name": "siren",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec smackaudio)",
+    "description": "Smacker audio (codec smackaudio)",
     "flags": "A....D",
     "name": "smackaud",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DPCM Sol",
     "flags": "A....D",
     "name": "sol_dpcm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Sonic",
     "flags": "A..X.D",
     "name": "sonic",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Speex",
     "flags": "A....D",
     "name": "speex",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "libspeex Speex (codec speex)",
+    "flags": "A....D",
+    "name": "libspeex",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegDecoder",
+    "description": "TAK (Tom's lossless Audio Kompressor)",
     "flags": "AF...D",
     "name": "tak",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "TrueHD",
     "flags": "A....D",
     "name": "truehd",
     "options": [
@@ -20071,14 +20923,14 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DSP Group TrueSpeech",
     "flags": "A....D",
     "name": "truespeech",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "TTA (True Audio)",
     "flags": "AF...D",
     "name": "tta",
     "options": [
@@ -20098,112 +20950,112 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "VQF TwinVQ",
     "flags": "A....D",
     "name": "twinvq",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Sierra VMD audio",
     "flags": "A....D",
     "name": "vmdaudio",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Vorbis",
     "flags": "A....D",
     "name": "vorbis",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec vorbis)",
+    "description": "libvorbis (codec vorbis)",
     "flags": "A.....",
     "name": "libvorbis",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Wave synthesis pseudo-codec",
     "flags": "A....D",
     "name": "wavesynth",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "WavPack",
     "flags": "AFS..D",
     "name": "wavpack",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec westwood_snd1)",
+    "description": "Westwood Audio (SND1) (codec westwood_snd1)",
     "flags": "A....D",
     "name": "ws_snd1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Windows Media Audio Lossless",
     "flags": "A....D",
     "name": "wmalossless",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Windows Media Audio 9 Professional",
     "flags": "A....D",
     "name": "wmapro",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Windows Media Audio 1",
     "flags": "A....D",
     "name": "wmav1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Windows Media Audio 2",
     "flags": "A....D",
     "name": "wmav2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Windows Media Audio Voice",
     "flags": "A....D",
     "name": "wmavoice",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "DPCM Xan",
     "flags": "A....D",
     "name": "xan_dpcm",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Xbox Media Audio 1",
     "flags": "A....D",
     "name": "xma1",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Xbox Media Audio 2",
     "flags": "A....D",
     "name": "xma2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec arib_caption)",
+    "description": "libaribb24 ARIB STD-B24 caption decoder (codec arib_caption)",
     "flags": "S.....",
     "name": "libaribb24",
     "options": [
@@ -20235,21 +21087,21 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec ass)",
+    "description": "ASS (Advanced SubStation Alpha) subtitle (codec ass)",
     "flags": "S.....",
     "name": "ssa",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "ASS (Advanced SubStation Alpha) subtitle",
     "flags": "S.....",
     "name": "ass",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec dvb_subtitle)",
+    "description": "DVB subtitles (codec dvb_subtitle)",
     "flags": "S.....",
     "name": "dvbsub",
     "options": [
@@ -20293,7 +21145,7 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec dvd_subtitle)",
+    "description": "DVD subtitles (codec dvd_subtitle)",
     "flags": "S.....",
     "name": "dvdsub",
     "options": [
@@ -20337,7 +21189,7 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec eia_608)",
+    "description": "Closed Caption (EIA-608 / CEA-708) (codec eia_608)",
     "flags": "S.....",
     "name": "cc_dec",
     "options": [
@@ -20403,7 +21255,7 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec hdmv_pgs_subtitle)",
+    "description": "HDMV Presentation Graphic Stream subtitles (codec hdmv_pgs_subtitle)",
     "flags": "S.....",
     "name": "pgssub",
     "options": [
@@ -20423,21 +21275,21 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "JACOsub subtitle",
     "flags": "S.....",
     "name": "jacosub",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MicroDVD subtitle",
     "flags": "S.....",
     "name": "microdvd",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "3GPP Timed Text subtitle",
     "flags": "S.....",
     "name": "mov_text",
     "options": [
@@ -20469,14 +21321,14 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "MPL2 subtitle",
     "flags": "S.....",
     "name": "mpl2",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "PJS subtitle",
     "flags": "S.....",
     "name": "pjs",
     "options": [
@@ -20496,21 +21348,21 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "RealText subtitle",
     "flags": "S.....",
     "name": "realtext",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "SAMI subtitle",
     "flags": "S.....",
     "name": "sami",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Spruce subtitle format",
     "flags": "S.....",
     "name": "stl",
     "options": [
@@ -20530,28 +21382,28 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "(codec subrip)",
+    "description": "SubRip subtitle (codec subrip)",
     "flags": "S.....",
     "name": "srt",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "SubRip subtitle",
     "flags": "S.....",
     "name": "subrip",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "SubViewer subtitle",
     "flags": "S.....",
     "name": "subviewer",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "SubViewer1 subtitle",
     "flags": "S.....",
     "name": "subviewer1",
     "options": [
@@ -20571,7 +21423,7 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "Raw text subtitle",
     "flags": "S.....",
     "name": "text",
     "options": [
@@ -20591,7 +21443,7 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "VPlayer subtitle",
     "flags": "S.....",
     "name": "vplayer",
     "options": [
@@ -20611,14 +21463,14 @@
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "WebVTT subtitle",
     "flags": "S.....",
     "name": "webvtt",
     "options": []
   },
   {
     "__class__": "FFMpegDecoder",
-    "description": "",
+    "description": "XSUB",
     "flags": "S.....",
     "name": "xsub",
     "options": []

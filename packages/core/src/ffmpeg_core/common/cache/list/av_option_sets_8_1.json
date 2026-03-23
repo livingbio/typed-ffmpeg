@@ -1172,8 +1172,8 @@
     "__class__": "FFMpegAVOption",
     "choices": [],
     "default": "0",
-    "flags": "E..V.......",
-    "help": "intra_dc_precision (from -8 to 16) (default 0)",
+    "flags": "E..V......P",
+    "help": "deprecated; use intra_dc_precision for MPEG-2 instead (from -8 to 16) (default 0)",
     "max": "16",
     "min": "-8",
     "name": "dc",
@@ -2831,6 +2831,47 @@
   },
   {
     "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "ED.V.......",
+        "help": "Unspecified",
+        "name": "unknown",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "ED.V.......",
+        "help": "Unspecified",
+        "name": "unspecified",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "ED.V.......",
+        "help": "Premultiplied",
+        "name": "premultiplied",
+        "value": "1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "ED.V.......",
+        "help": "Straight",
+        "name": "straight",
+        "value": "2"
+      }
+    ],
+    "default": "unknown",
+    "flags": "ED.V.......",
+    "help": "alpha mode (from 0 to INT_MAX) (default unknown)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "alpha_mode",
+    "section": "AVCodecContext AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
     "choices": [],
     "default": "0",
     "flags": "E..V.......",
@@ -3252,6 +3293,13 @@
         "help": "",
         "name": "icc_profile",
         "value": "28"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": ".D..A......",
+        "help": "",
+        "name": "exif",
+        "value": "40"
       }
     ],
     "default": null,
@@ -7210,6 +7258,18 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
+    "default": "-1",
+    "flags": "E..V.......",
+    "help": "Precision of the DC coefficient - 8 (from -1 to 3) (default -1)",
+    "max": "3",
+    "min": "-1",
+    "name": "intra_dc_precision",
+    "section": "mpeg2video encoder AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
     "default": "false",
     "flags": "E..V.......",
     "help": "Use MPEG-2 intra VLC table. (default false)",
@@ -10319,18 +10379,6 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "1024",
-    "flags": "E...A......",
-    "help": "set the block size (from 32 to 8192) (default 1024)",
-    "max": "8192",
-    "min": "32",
-    "name": "block_size",
-    "section": "ADPCM encoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
     "default": "4",
     "flags": "E...A......",
     "help": "Bits per code (from 2 to 5) (default 4)",
@@ -10338,6 +10386,18 @@
     "min": "2",
     "name": "code_size",
     "section": "g726 AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "1024",
+    "flags": "E...A......",
+    "help": "set the block size (from 32 to 8192) (default 1024)",
+    "max": "8192",
+    "min": "32",
+    "name": "block_size",
+    "section": "ADPCM encoder AVOptions:",
     "type": "int"
   },
   {
@@ -13515,6 +13575,18 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
+    "default": null,
+    "flags": "E..V.......",
+    "help": "Filename for 2 pass stats",
+    "max": null,
+    "min": null,
+    "name": "x265-stats",
+    "section": "libx265 AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
     "default": "false",
     "flags": "E..V.......",
     "help": "Use user data unregistered SEI if available (default false)",
@@ -15348,30 +15420,6 @@
     "__class__": "FFMpegAVOption",
     "choices": [],
     "default": "0",
-    "flags": ".D.V......P",
-    "help": "Tile threads (from 0 to 256) (default 0)",
-    "max": "256",
-    "min": "0",
-    "name": "tilethreads",
-    "section": "libdav1d decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "0",
-    "flags": ".D.V......P",
-    "help": "Frame threads (from 0 to 256) (default 0)",
-    "max": "256",
-    "min": "0",
-    "name": "framethreads",
-    "section": "libdav1d decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "0",
     "flags": ".D.V.......",
     "help": "Max frame delay (from 0 to 256) (default 0)",
     "max": "256",
@@ -16383,6 +16431,18 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
+    "default": "0",
+    "flags": ".D.........",
+    "help": "Use a HTTP tunneling connection (RTMPTE). (from 0 to 1) (default 0)",
+    "max": "1",
+    "min": "0",
+    "name": "ffrtmpcrypt_tunneling",
+    "section": "ffrtmpcrypt AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
     "default": "false",
     "flags": ".D.........",
     "help": "Use a HTTPS tunneling connection (RTMPTS). (default false)",
@@ -16437,6 +16497,18 @@
     "max": "0",
     "min": "-1",
     "name": "seekable",
+    "section": "file AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "ED.........",
+    "help": "Maximum packet size (from 0 to INT_MAX) (default 0)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "pkt_size",
     "section": "file AVOptions:",
     "type": "int"
   },
@@ -16563,9 +16635,9 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "Lavf/62.3.100",
+    "default": "Lavf/62.12.100",
     "flags": ".D.........",
-    "help": "override User-Agent header (default \"Lavf/62.3.100\")",
+    "help": "override User-Agent header (default \"Lavf/62.12.100\")",
     "max": null,
     "min": null,
     "name": "user_agent",
@@ -16595,6 +16667,30 @@
     "name": "multiple_requests",
     "section": "http AVOptions:",
     "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": ".D.........",
+    "help": "size (in bytes) of requests to make (from 0 to I64_MAX) (default 0)",
+    "max": "I64_MAX",
+    "min": "0",
+    "name": "request_size",
+    "section": "http AVOptions:",
+    "type": "int64"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": ".D.........",
+    "help": "size (in bytes) of initial requests made during probing / header parsing (from 0 to I64_MAX) (default 0)",
+    "max": "I64_MAX",
+    "min": "0",
+    "name": "initial_request_size",
+    "section": "http AVOptions:",
+    "type": "int64"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -16872,6 +16968,18 @@
     "max": "INT_MAX",
     "min": "0",
     "name": "short_seek_size",
+    "section": "http AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "8",
+    "flags": ".D.........",
+    "help": "Maximum number of redirects (from 0 to INT_MAX) (default 8)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "max_redirects",
     "section": "http AVOptions:",
     "type": "int"
   },
@@ -16938,9 +17046,9 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "Lavf/62.3.100",
+    "default": "Lavf/62.12.100",
     "flags": ".D.........",
-    "help": "override User-Agent header (default \"Lavf/62.3.100\")",
+    "help": "override User-Agent header (default \"Lavf/62.12.100\")",
     "max": null,
     "min": null,
     "name": "user_agent",
@@ -16970,6 +17078,30 @@
     "name": "multiple_requests",
     "section": "https AVOptions:",
     "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": ".D.........",
+    "help": "size (in bytes) of requests to make (from 0 to I64_MAX) (default 0)",
+    "max": "I64_MAX",
+    "min": "0",
+    "name": "request_size",
+    "section": "https AVOptions:",
+    "type": "int64"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": ".D.........",
+    "help": "size (in bytes) of initial requests made during probing / header parsing (from 0 to I64_MAX) (default 0)",
+    "max": "I64_MAX",
+    "min": "0",
+    "name": "initial_request_size",
+    "section": "https AVOptions:",
+    "type": "int64"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -17247,6 +17379,18 @@
     "max": "INT_MAX",
     "min": "0",
     "name": "short_seek_size",
+    "section": "https AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "8",
+    "flags": ".D.........",
+    "help": "Maximum number of redirects (from 0 to INT_MAX) (default 8)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "max_redirects",
     "section": "https AVOptions:",
     "type": "int"
   },
@@ -17665,6 +17809,244 @@
     "max": null,
     "min": null,
     "name": "rtmp_app",
+    "section": "rtmpe AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "3000",
+    "flags": "ED.........",
+    "help": "Set buffer time in milliseconds. The default is 3000. (from 0 to INT_MAX) (default 3000)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "rtmp_buffer",
+    "section": "rtmpe AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "Append arbitrary AMF data to the Connect message",
+    "max": null,
+    "min": null,
+    "name": "rtmp_conn",
+    "section": "rtmpe AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "Version of the Flash plugin used to run the SWF player.",
+    "max": null,
+    "min": null,
+    "name": "rtmp_flashver",
+    "section": "rtmpe AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "10",
+    "flags": "E..........",
+    "help": "Number of packets flushed in the same request (RTMPT only). (from 0 to INT_MAX) (default 10)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "rtmp_flush_interval",
+    "section": "rtmpe AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "E..........",
+    "help": "Specify the codec(s) to use in an enhanced rtmp live stream",
+    "max": null,
+    "min": null,
+    "name": "rtmp_enhanced_codecs",
+    "section": "rtmpe AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": ".D.........",
+        "help": "both",
+        "name": "any",
+        "value": "-2"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": ".D.........",
+        "help": "live stream",
+        "name": "live",
+        "value": "-1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": ".D.........",
+        "help": "recorded stream",
+        "name": "recorded",
+        "value": "0"
+      }
+    ],
+    "default": "any",
+    "flags": ".D.........",
+    "help": "Specify that the media is a live stream. (from INT_MIN to INT_MAX) (default any)",
+    "max": "INT_MAX",
+    "min": "INT_MIN",
+    "name": "rtmp_live",
+    "section": "rtmpe AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": ".D.........",
+    "help": "URL of the web page in which the media was embedded. By default no value will be sent.",
+    "max": null,
+    "min": null,
+    "name": "rtmp_pageurl",
+    "section": "rtmpe AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "Stream identifier to play or to publish",
+    "max": null,
+    "min": null,
+    "name": "rtmp_playpath",
+    "section": "rtmpe AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": ".D.........",
+    "help": "Name of live stream to subscribe to. Defaults to rtmp_playpath.",
+    "max": null,
+    "min": null,
+    "name": "rtmp_subscribe",
+    "section": "rtmpe AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": ".D.........",
+    "help": "SHA256 hash of the decompressed SWF file (32 bytes).",
+    "max": null,
+    "min": null,
+    "name": "rtmp_swfhash",
+    "section": "rtmpe AVOptions:",
+    "type": "binary"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": ".D.........",
+    "help": "Size of the decompressed SWF file, required for SWFVerification. (from 0 to INT_MAX) (default 0)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "rtmp_swfsize",
+    "section": "rtmpe AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "URL of the SWF player. By default no value will be sent",
+    "max": null,
+    "min": null,
+    "name": "rtmp_swfurl",
+    "section": "rtmpe AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": ".D.........",
+    "help": "URL to player swf file, compute hash/size automatically.",
+    "max": null,
+    "min": null,
+    "name": "rtmp_swfverify",
+    "section": "rtmpe AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "URL of the target stream. Defaults to proto://host[:port]/app.",
+    "max": null,
+    "min": null,
+    "name": "rtmp_tcurl",
+    "section": "rtmpe AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": ".D.........",
+    "help": "Listen for incoming rtmp connections (from INT_MIN to INT_MAX) (default 0)",
+    "max": "INT_MAX",
+    "min": "INT_MIN",
+    "name": "rtmp_listen",
+    "section": "rtmpe AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "ED.........",
+    "help": "Use TCP_NODELAY to disable Nagle's algorithm (from 0 to 1) (default 0)",
+    "max": "1",
+    "min": "0",
+    "name": "tcp_nodelay",
+    "section": "rtmpe AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-1",
+    "flags": ".D.........",
+    "help": "Maximum timeout (in seconds) to wait for incoming connections. -1 is infinite. Implies -rtmp_listen 1 (from INT_MIN to INT_MAX) (default -1)",
+    "max": "INT_MAX",
+    "min": "INT_MIN",
+    "name": "timeout",
+    "section": "rtmpe AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "Name of application to connect to on the RTMP server",
+    "max": null,
+    "min": null,
+    "name": "rtmp_app",
     "section": "rtmps AVOptions:",
     "type": "string"
   },
@@ -18130,6 +18512,244 @@
     "min": "INT_MIN",
     "name": "timeout",
     "section": "rtmpt AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "Name of application to connect to on the RTMP server",
+    "max": null,
+    "min": null,
+    "name": "rtmp_app",
+    "section": "rtmpte AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "3000",
+    "flags": "ED.........",
+    "help": "Set buffer time in milliseconds. The default is 3000. (from 0 to INT_MAX) (default 3000)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "rtmp_buffer",
+    "section": "rtmpte AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "Append arbitrary AMF data to the Connect message",
+    "max": null,
+    "min": null,
+    "name": "rtmp_conn",
+    "section": "rtmpte AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "Version of the Flash plugin used to run the SWF player.",
+    "max": null,
+    "min": null,
+    "name": "rtmp_flashver",
+    "section": "rtmpte AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "10",
+    "flags": "E..........",
+    "help": "Number of packets flushed in the same request (RTMPT only). (from 0 to INT_MAX) (default 10)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "rtmp_flush_interval",
+    "section": "rtmpte AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "E..........",
+    "help": "Specify the codec(s) to use in an enhanced rtmp live stream",
+    "max": null,
+    "min": null,
+    "name": "rtmp_enhanced_codecs",
+    "section": "rtmpte AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": ".D.........",
+        "help": "both",
+        "name": "any",
+        "value": "-2"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": ".D.........",
+        "help": "live stream",
+        "name": "live",
+        "value": "-1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": ".D.........",
+        "help": "recorded stream",
+        "name": "recorded",
+        "value": "0"
+      }
+    ],
+    "default": "any",
+    "flags": ".D.........",
+    "help": "Specify that the media is a live stream. (from INT_MIN to INT_MAX) (default any)",
+    "max": "INT_MAX",
+    "min": "INT_MIN",
+    "name": "rtmp_live",
+    "section": "rtmpte AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": ".D.........",
+    "help": "URL of the web page in which the media was embedded. By default no value will be sent.",
+    "max": null,
+    "min": null,
+    "name": "rtmp_pageurl",
+    "section": "rtmpte AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "Stream identifier to play or to publish",
+    "max": null,
+    "min": null,
+    "name": "rtmp_playpath",
+    "section": "rtmpte AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": ".D.........",
+    "help": "Name of live stream to subscribe to. Defaults to rtmp_playpath.",
+    "max": null,
+    "min": null,
+    "name": "rtmp_subscribe",
+    "section": "rtmpte AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": ".D.........",
+    "help": "SHA256 hash of the decompressed SWF file (32 bytes).",
+    "max": null,
+    "min": null,
+    "name": "rtmp_swfhash",
+    "section": "rtmpte AVOptions:",
+    "type": "binary"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": ".D.........",
+    "help": "Size of the decompressed SWF file, required for SWFVerification. (from 0 to INT_MAX) (default 0)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "rtmp_swfsize",
+    "section": "rtmpte AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "URL of the SWF player. By default no value will be sent",
+    "max": null,
+    "min": null,
+    "name": "rtmp_swfurl",
+    "section": "rtmpte AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": ".D.........",
+    "help": "URL to player swf file, compute hash/size automatically.",
+    "max": null,
+    "min": null,
+    "name": "rtmp_swfverify",
+    "section": "rtmpte AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "URL of the target stream. Defaults to proto://host[:port]/app.",
+    "max": null,
+    "min": null,
+    "name": "rtmp_tcurl",
+    "section": "rtmpte AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": ".D.........",
+    "help": "Listen for incoming rtmp connections (from INT_MIN to INT_MAX) (default 0)",
+    "max": "INT_MAX",
+    "min": "INT_MIN",
+    "name": "rtmp_listen",
+    "section": "rtmpte AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "ED.........",
+    "help": "Use TCP_NODELAY to disable Nagle's algorithm (from 0 to 1) (default 0)",
+    "max": "1",
+    "min": "0",
+    "name": "tcp_nodelay",
+    "section": "rtmpte AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-1",
+    "flags": ".D.........",
+    "help": "Maximum timeout (in seconds) to wait for incoming connections. -1 is infinite. Implies -rtmp_listen 1 (from INT_MIN to INT_MAX) (default -1)",
+    "max": "INT_MAX",
+    "min": "INT_MIN",
+    "name": "timeout",
+    "section": "rtmpte AVOptions:",
     "type": "int"
   },
   {
@@ -18422,6 +19042,18 @@
     "__class__": "FFMpegAVOption",
     "choices": [],
     "default": "-1",
+    "flags": "ED........P",
+    "help": "Local rtp port (from -1 to INT_MAX) (default -1)",
+    "max": "INT_MAX",
+    "min": "-1",
+    "name": "localport",
+    "section": "rtp AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-1",
     "flags": "ED.........",
     "help": "Local rtcp port (from -1 to INT_MAX) (default -1)",
     "max": "INT_MAX",
@@ -18685,6 +19317,18 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
+    "default": "false",
+    "flags": "ED.........",
+    "help": "Use TCP keepalive to detect dead connections and keep long-lived connections active. (default false)",
+    "max": null,
+    "min": null,
+    "name": "tcp_keepalive",
+    "section": "tcp AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
     "default": "-1",
     "flags": "ED.........",
     "help": "Maximum segment size for outgoing TCP packets (from -1 to INT_MAX) (default -1)",
@@ -18721,14 +19365,26 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "0",
+    "default": "false",
     "flags": "ED.........",
-    "help": "Use external socket (from 0 to 1) (default 0)",
-    "max": "1",
-    "min": "0",
+    "help": "Use external socket (default false)",
+    "max": null,
+    "min": null,
     "name": "external_sock",
     "section": "tls AVOptions:",
-    "type": "int"
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "ED.........",
+    "help": "Enable use_srtp DTLS extension (default false)",
+    "max": null,
+    "min": null,
+    "name": "use_srtp",
+    "section": "tls AVOptions:",
+    "type": "boolean"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -18781,14 +19437,14 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "0",
+    "default": "false",
     "flags": "ED.........",
-    "help": "Verify the peer certificate (from 0 to 1) (default 0)",
-    "max": "1",
-    "min": "0",
+    "help": "Verify the peer certificate (default false)",
+    "max": null,
+    "min": null,
     "name": "tls_verify",
     "section": "tls AVOptions:",
-    "type": "int"
+    "type": "boolean"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -18824,6 +19480,150 @@
     "min": null,
     "name": "verifyhost",
     "section": "tls AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "ED.........",
+    "help": "Listen for incoming connections (from 0 to 1) (default 0)",
+    "max": "1",
+    "min": "0",
+    "name": "listen",
+    "section": "dtls AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "Set proxy to tunnel through",
+    "max": null,
+    "min": null,
+    "name": "http_proxy",
+    "section": "dtls AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "ED.........",
+    "help": "Use external socket (default false)",
+    "max": null,
+    "min": null,
+    "name": "external_sock",
+    "section": "dtls AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "ED.........",
+    "help": "Enable use_srtp DTLS extension (default false)",
+    "max": null,
+    "min": null,
+    "name": "use_srtp",
+    "section": "dtls AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "ED.........",
+    "help": "Maximum Transmission Unit (from 0 to INT_MAX) (default 0)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "mtu",
+    "section": "dtls AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "Certificate PEM string",
+    "max": null,
+    "min": null,
+    "name": "cert_pem",
+    "section": "dtls AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "Private key PEM string",
+    "max": null,
+    "min": null,
+    "name": "key_pem",
+    "section": "dtls AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "Certificate Authority database file",
+    "max": null,
+    "min": null,
+    "name": "ca_file",
+    "section": "dtls AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "ED.........",
+    "help": "Verify the peer certificate (default false)",
+    "max": null,
+    "min": null,
+    "name": "tls_verify",
+    "section": "dtls AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "Certificate file",
+    "max": null,
+    "min": null,
+    "name": "cert_file",
+    "section": "dtls AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "Private key file",
+    "max": null,
+    "min": null,
+    "name": "key_file",
+    "section": "dtls AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "Verify against a specific hostname",
+    "max": null,
+    "min": null,
+    "name": "verifyhost",
+    "section": "dtls AVOptions:",
     "type": "string"
   },
   {
@@ -18949,6 +19749,18 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
+    "default": "-1",
+    "flags": "E..........",
+    "help": "DSCP class for outgoing packets (from -1 to 63) (default -1)",
+    "max": "63",
+    "min": "-1",
+    "name": "dscp",
+    "section": "udp AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
     "default": "false",
     "flags": "ED.........",
     "help": "set if connect() should be called on socket (default false)",
@@ -18963,7 +19775,7 @@
     "choices": [],
     "default": "28672",
     "flags": ".D.........",
-    "help": "set the UDP receiving circular buffer size, expressed as a number of packets with size of 188 bytes (from 0 to INT_MAX) (default 28672)",
+    "help": "set the UDP circular buffer size (in 188-byte packets) (from 0 to INT_MAX) (default 28672)",
     "max": "INT_MAX",
     "min": "0",
     "name": "fifo_size",
@@ -19141,6 +19953,18 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
+    "default": "-1",
+    "flags": "E..........",
+    "help": "DSCP class for outgoing packets (from -1 to 63) (default -1)",
+    "max": "63",
+    "min": "-1",
+    "name": "dscp",
+    "section": "udplite AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
     "default": "false",
     "flags": "ED.........",
     "help": "set if connect() should be called on socket (default false)",
@@ -19155,7 +19979,7 @@
     "choices": [],
     "default": "28672",
     "flags": ".D.........",
-    "help": "set the UDP receiving circular buffer size, expressed as a number of packets with size of 188 bytes (from 0 to INT_MAX) (default 28672)",
+    "help": "set the UDP circular buffer size (in 188-byte packets) (from 0 to INT_MAX) (default 28672)",
     "max": "INT_MAX",
     "min": "0",
     "name": "fifo_size",
@@ -19254,7 +20078,7 @@
       {
         "__class__": "FFMpegOptionChoice",
         "flags": "ED.........",
-        "help": "Seqpacket (reliable packet-oriented",
+        "help": "Seqpacket (reliable packet-oriented)",
         "name": "seqpacket",
         "value": "5"
       }
@@ -19265,6 +20089,18 @@
     "max": "INT_MAX",
     "min": "INT_MIN",
     "name": "type",
+    "section": "unix AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "ED.........",
+    "help": "Maximum packet size (from 0 to INT_MAX) (default 0)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "pkt_size",
     "section": "unix AVOptions:",
     "type": "int"
   },
@@ -22530,7 +23366,7 @@
     "__class__": "FFMpegAVOption",
     "choices": [],
     "default": "0",
-    "flags": "E..........",
+    "flags": "E.........P",
     "help": "Set preferred Ogg page size. (from 0 to 65025) (default 0)",
     "max": "65025",
     "min": "0",
@@ -22542,8 +23378,8 @@
     "__class__": "FFMpegAVOption",
     "choices": [],
     "default": "0",
-    "flags": "E..........",
-    "help": "preferred page size in bytes (deprecated) (from 0 to 65025) (default 0)",
+    "flags": "E.........P",
+    "help": "preferred page size in bytes (from 0 to 65025) (default 0)",
     "max": "65025",
     "min": "0",
     "name": "pagesize",
@@ -22627,12 +23463,12 @@
     "choices": [],
     "default": "0",
     "flags": "E..........",
-    "help": "Stream identifier (from INT_MIN to INT_MAX) (default 0)",
-    "max": "INT_MAX",
-    "min": "INT_MIN",
+    "help": "Stream identifier (from 0 to UINT32_MAX) (default 0)",
+    "max": "UINT32_MAX",
+    "min": "0",
     "name": "ssrc",
     "section": "RTP muxer AVOptions:",
-    "type": "int"
+    "type": "unsigned"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -22959,9 +23795,9 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "Lavf62.3.100",
+    "default": "Lavf62.12.100",
     "flags": ".D.........",
-    "help": "override User-Agent header (default \"Lavf62.3.100\")",
+    "help": "override User-Agent header (default \"Lavf62.12.100\")",
     "max": null,
     "min": null,
     "name": "user_agent",
@@ -22983,14 +23819,14 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "0",
+    "default": "false",
     "flags": "ED.........",
-    "help": "Verify the peer certificate (from 0 to 1) (default 0)",
-    "max": "1",
-    "min": "0",
+    "help": "Verify the peer certificate (default false)",
+    "max": null,
+    "min": null,
     "name": "tls_verify",
     "section": "RTSP muxer AVOptions:",
-    "type": "int"
+    "type": "boolean"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -23813,6 +24649,110 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
+    "default": "5000",
+    "flags": "E..........",
+    "help": "Timeout in milliseconds for ICE and DTLS handshake. (from -1 to INT_MAX) (default 5000)",
+    "max": "INT_MAX",
+    "min": "-1",
+    "name": "handshake_timeout",
+    "section": "WHIP muxer AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "1200",
+    "flags": "E..........",
+    "help": "The maximum size, in bytes, of RTP packets that send out (from -1 to INT_MAX) (default 1200)",
+    "max": "INT_MAX",
+    "min": "-1",
+    "name": "pkt_size",
+    "section": "WHIP muxer AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-1",
+    "flags": "E..........",
+    "help": "The buffer size, in bytes, of underlying protocol (from -1 to INT_MAX) (default -1)",
+    "max": "INT_MAX",
+    "min": "-1",
+    "name": "ts_buffer_size",
+    "section": "WHIP muxer AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..........",
+        "help": "Set dtls role as active",
+        "name": "dtls_active",
+        "value": "dtls_active"
+      }
+    ],
+    "default": "0",
+    "flags": "E..........",
+    "help": "Set flags affecting WHIP connection behavior (default 0)",
+    "max": null,
+    "min": null,
+    "name": "whip_flags",
+    "section": "WHIP muxer AVOptions:",
+    "type": "flags"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "512",
+    "flags": "E..........",
+    "help": "The number of RTP history items to store (from 64 to 2048) (default 512)",
+    "max": "2048",
+    "min": "64",
+    "name": "rtp_history",
+    "section": "WHIP muxer AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "E..........",
+    "help": "The optional Bearer token for WHIP Authorization",
+    "max": null,
+    "min": null,
+    "name": "authorization",
+    "section": "WHIP muxer AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "E..........",
+    "help": "The optional certificate file path for DTLS",
+    "max": null,
+    "min": null,
+    "name": "cert_file",
+    "section": "WHIP muxer AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "E..........",
+    "help": "The optional private key file path for DTLS",
+    "max": null,
+    "min": null,
+    "name": "key_file",
+    "section": "WHIP muxer AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
     "default": "false",
     "flags": "E..........",
     "help": "list available audio devices (default false)",
@@ -24079,12 +25019,12 @@
     "choices": [],
     "default": "yuv420p",
     "flags": ".D.........",
-    "help": "set pixel format (default \"yuv420p\")",
+    "help": "set pixel format (default yuv420p)",
     "max": null,
     "min": null,
     "name": "pixel_format",
     "section": "bitpacked demuxer AVOptions:",
-    "type": "string"
+    "type": "pix_fmt"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -24684,13 +25624,6 @@
       {
         "__class__": "FFMpegOptionChoice",
         "flags": ".D.........",
-        "help": "select glob/sequence pattern type",
-        "name": "glob_sequence",
-        "value": "0"
-      },
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D.........",
         "help": "select glob pattern type",
         "name": "glob",
         "value": "1"
@@ -24903,13 +25836,6 @@
       {
         "__class__": "FFMpegOptionChoice",
         "flags": ".D.........",
-        "help": "select glob/sequence pattern type",
-        "name": "glob_sequence",
-        "value": "0"
-      },
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D.........",
         "help": "select glob pattern type",
         "name": "glob",
         "value": "1"
@@ -25059,13 +25985,6 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D.........",
-        "help": "select glob/sequence pattern type",
-        "name": "glob_sequence",
-        "value": "0"
-      },
       {
         "__class__": "FFMpegOptionChoice",
         "flags": ".D.........",
@@ -25422,12 +26341,24 @@
     "choices": [],
     "default": null,
     "flags": ".D.........",
-    "help": "The media decryption key (hex)",
+    "help": "The default media decryption key (hex)",
     "max": null,
     "min": null,
     "name": "decryption_key",
     "section": "mov,mp4,m4a,3gp,3g2,mj2 AVOptions:",
     "type": "binary"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": ".D.........",
+    "help": "The media decryption keys by KID (hex)",
+    "max": null,
+    "min": null,
+    "name": "decryption_keys",
+    "section": "mov,mp4,m4a,3gp,3g2,mj2 AVOptions:",
+    "type": "dictionary"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -25624,14 +26555,26 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
+    "default": null,
+    "flags": ".D.........",
+    "help": "frame line size in bytes",
+    "max": null,
+    "min": null,
+    "name": "stride",
+    "section": "rawvideo demuxer AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
     "default": "yuv420p",
     "flags": ".D.........",
-    "help": "set pixel format (default \"yuv420p\")",
+    "help": "set pixel format (default yuv420p)",
     "max": null,
     "min": null,
     "name": "pixel_format",
     "section": "rawvideo demuxer AVOptions:",
-    "type": "string"
+    "type": "pix_fmt"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -26055,9 +26998,9 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "Lavf62.3.100",
+    "default": "Lavf62.12.100",
     "flags": ".D.........",
-    "help": "override User-Agent header (default \"Lavf62.3.100\")",
+    "help": "override User-Agent header (default \"Lavf62.12.100\")",
     "max": null,
     "min": null,
     "name": "user_agent",
@@ -26079,14 +27022,14 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "0",
+    "default": "false",
     "flags": "ED.........",
-    "help": "Verify the peer certificate (from 0 to 1) (default 0)",
-    "max": "1",
-    "min": "0",
+    "help": "Verify the peer certificate (default false)",
+    "max": null,
+    "min": null,
     "name": "tls_verify",
     "section": "RTSP demuxer AVOptions:",
-    "type": "int"
+    "type": "boolean"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -26817,6 +27760,13 @@
         "help": "error diffusion dither",
         "name": "error_diffusion",
         "value": "error_diffusion"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "allow experimental new code",
+        "name": "unstable",
+        "value": "unstable"
       }
     ],
     "default": "bicubic",
@@ -28173,6 +29123,18 @@
     "name": "buffer",
     "section": "(a)cue AVOptions:",
     "type": "duration"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "2",
+    "flags": "..F.A......",
+    "help": "set number of input files to cross fade (from 1 to INT_MAX) (default 2)",
+    "max": "INT_MAX",
+    "min": "1",
+    "name": "inputs",
+    "section": "acrossfade AVOptions:",
+    "type": "int"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -32178,6 +33140,40 @@
       {
         "__class__": "FFMpegOptionChoice",
         "flags": "..F.A......",
+        "help": "",
+        "name": "legacy",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "reset",
+        "value": "1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "normal",
+        "value": "2"
+      }
+    ],
+    "default": "legacy",
+    "flags": "..F.A......",
+    "help": "method used to determine the output channel layout (from 0 to 2) (default legacy)",
+    "max": "2",
+    "min": "0",
+    "name": "layout_mode",
+    "section": "amerge AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
         "help": "select frame",
         "name": "select",
         "value": "0"
@@ -33708,9 +34704,16 @@
       },
       {
         "__class__": "FFMpegOptionChoice",
-        "flags": "..F.A......",
+        "flags": "..F.A.....P",
         "help": "",
         "name": "S12M_TIMECOD",
+        "value": "16"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "S12M_TIMECODE",
         "value": "16"
       },
       {
@@ -38837,6 +39840,18 @@
     "name": "print_format",
     "section": "loudnorm AVOptions:",
     "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "..F.A......",
+    "help": "set stats output file",
+    "max": null,
+    "min": null,
+    "name": "stats_file",
+    "section": "loudnorm AVOptions:",
+    "type": "string"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -47268,12 +48283,19 @@
         "help": "",
         "name": "ebu3213",
         "value": "22"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "vgamut",
+        "value": "256"
       }
     ],
     "default": "2",
     "flags": "..FV.......",
-    "help": "Output color primaries (from 0 to 22) (default 2)",
-    "max": "22",
+    "help": "Output color primaries (from 0 to 256) (default 2)",
+    "max": "256",
     "min": "0",
     "name": "primaries",
     "section": "colorspace AVOptions:",
@@ -47379,12 +48401,19 @@
         "help": "",
         "name": "bt2020-12",
         "value": "15"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "vlog",
+        "value": "256"
       }
     ],
     "default": "2",
     "flags": "..FV.......",
-    "help": "Output transfer characteristics (from 0 to 18) (default 2)",
-    "max": "18",
+    "help": "Output transfer characteristics (from 0 to 256) (default 2)",
+    "max": "256",
     "min": "0",
     "name": "trc",
     "section": "colorspace AVOptions:",
@@ -47536,6 +48565,33 @@
     "max": "2",
     "min": "0",
     "name": "wpadapt",
+    "section": "colorspace AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "none",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "rgb",
+        "value": "1"
+      }
+    ],
+    "default": "none",
+    "flags": "..FV.......",
+    "help": "Controls how to clip out-of-gamut colors that arise as a result of colorspace conversion. (from 0 to 1) (default none)",
+    "max": "1",
+    "min": "0",
+    "name": "clipgamut",
     "section": "colorspace AVOptions:",
     "type": "int"
   },
@@ -47811,12 +48867,19 @@
         "help": "",
         "name": "ebu3213",
         "value": "22"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "vgamut",
+        "value": "256"
       }
     ],
     "default": "2",
     "flags": "..FV.......",
-    "help": "Input color primaries (from 0 to 22) (default 2)",
-    "max": "22",
+    "help": "Input color primaries (from 0 to 256) (default 2)",
+    "max": "256",
     "min": "0",
     "name": "iprimaries",
     "section": "colorspace AVOptions:",
@@ -47922,12 +48985,19 @@
         "help": "",
         "name": "bt2020-12",
         "value": "15"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "vlog",
+        "value": "256"
       }
     ],
     "default": "2",
     "flags": "..FV.......",
-    "help": "Input transfer characteristics (from 0 to 18) (default 2)",
-    "max": "18",
+    "help": "Input transfer characteristics (from 0 to 256) (default 2)",
+    "max": "256",
     "min": "0",
     "name": "itrc",
     "section": "colorspace AVOptions:",
@@ -52234,6 +53304,18 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
+    "default": "INT_MAX",
+    "flags": "..FV.......",
+    "help": "(from 0 to INT_MAX) (default INT_MAX)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "xmax",
+    "section": "find_rect AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
     "default": "false",
     "flags": "..FV.......",
     "help": "(default false)",
@@ -52396,6 +53478,18 @@
     "max": null,
     "min": null,
     "name": "color_ranges",
+    "section": "(no)format AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "..FV.......",
+    "help": "A '|'-separated list of alpha modes",
+    "max": null,
+    "min": null,
+    "name": "alpha_modes",
     "section": "(no)format AVOptions:",
     "type": "string"
   },
@@ -57404,8 +58498,22 @@
         "__class__": "FFMpegOptionChoice",
         "flags": "..FV.......",
         "help": "",
-        "name": "straight",
+        "name": "auto",
         "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "unknown",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "straight",
+        "value": "2"
       },
       {
         "__class__": "FFMpegOptionChoice",
@@ -57415,10 +58523,10 @@
         "value": "1"
       }
     ],
-    "default": "straight",
+    "default": "auto",
     "flags": "..FV.......",
-    "help": "alpha format (from 0 to 1) (default straight)",
-    "max": "1",
+    "help": "alpha format (from 0 to 2) (default auto)",
+    "max": "2",
     "min": "0",
     "name": "alpha",
     "section": "overlay AVOptions:",
@@ -59241,6 +60349,13 @@
         "__class__": "FFMpegOptionChoice",
         "flags": "..FV.......",
         "help": "",
+        "name": "bt470bg",
+        "value": "5"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
         "name": "bt709",
         "value": "1"
       },
@@ -59263,6 +60378,13 @@
         "flags": "..FV.......",
         "help": "",
         "name": "bt2020",
+        "value": "9"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "bt2020nc",
         "value": "9"
       }
     ],
@@ -59310,6 +60432,13 @@
         "__class__": "FFMpegOptionChoice",
         "flags": "..FV.......",
         "help": "",
+        "name": "bt470bg",
+        "value": "5"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
         "name": "bt709",
         "value": "1"
       },
@@ -59332,6 +60461,13 @@
         "flags": "..FV.......",
         "help": "",
         "name": "bt2020",
+        "value": "9"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "bt2020nc",
         "value": "9"
       }
     ],
@@ -60286,6 +61422,13 @@
         "__class__": "FFMpegOptionChoice",
         "flags": "..FV.......",
         "help": "",
+        "name": "bt470bg",
+        "value": "5"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
         "name": "bt709",
         "value": "1"
       },
@@ -60308,6 +61451,13 @@
         "flags": "..FV.......",
         "help": "",
         "name": "bt2020",
+        "value": "9"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "bt2020nc",
         "value": "9"
       }
     ],
@@ -60355,6 +61505,13 @@
         "__class__": "FFMpegOptionChoice",
         "flags": "..FV.......",
         "help": "",
+        "name": "bt470bg",
+        "value": "5"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
         "name": "bt709",
         "value": "1"
       },
@@ -60377,6 +61534,13 @@
         "flags": "..FV.......",
         "help": "",
         "name": "bt2020",
+        "value": "9"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "bt2020nc",
         "value": "9"
       }
     ],
@@ -61725,12 +62889,19 @@
         "help": "",
         "name": "ebu3213",
         "value": "22"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "vgamut",
+        "value": "256"
       }
     ],
     "default": "auto",
     "flags": "..FV.......",
-    "help": "select color primaries (from -1 to 22) (default auto)",
-    "max": "22",
+    "help": "select color primaries (from -1 to 256) (default auto)",
+    "max": "256",
     "min": "-1",
     "name": "color_primaries",
     "section": "setparams AVOptions:",
@@ -61864,12 +63035,19 @@
         "help": "",
         "name": "arib-std-b67",
         "value": "18"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "vlog",
+        "value": "256"
       }
     ],
     "default": "auto",
     "flags": "..FV.......",
-    "help": "select color transfer (from -1 to 18) (default auto)",
-    "max": "18",
+    "help": "select color transfer (from -1 to 256) (default auto)",
+    "max": "256",
     "min": "-1",
     "name": "color_trc",
     "section": "setparams AVOptions:",
@@ -62087,6 +63265,54 @@
     "max": "6",
     "min": "-1",
     "name": "chroma_location",
+    "section": "setparams AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "keep the same alpha mode",
+        "name": "auto",
+        "value": "-1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "unspecified",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "unknown",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "premultiplied",
+        "value": "1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "straight",
+        "value": "2"
+      }
+    ],
+    "default": "auto",
+    "flags": "..FV.......",
+    "help": "select alpha moda (from -1 to 2) (default auto)",
+    "max": "2",
+    "min": "-1",
+    "name": "alpha_mode",
     "section": "setparams AVOptions:",
     "type": "int"
   },
@@ -62626,9 +63852,16 @@
       },
       {
         "__class__": "FFMpegOptionChoice",
-        "flags": "..FV.......",
+        "flags": "..FV......P",
         "help": "",
         "name": "S12M_TIMECOD",
+        "value": "16"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "S12M_TIMECODE",
         "value": "16"
       },
       {
@@ -77069,6 +78302,47 @@
   },
   {
     "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "unspecified",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "unknown",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "straight",
+        "value": "2"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "",
+        "name": "premultiplied",
+        "value": "1"
+      }
+    ],
+    "default": "unspecified",
+    "flags": "..FV.......",
+    "help": "select alpha mode (from 0 to 2) (default unspecified)",
+    "max": "2",
+    "min": "0",
+    "name": "alpha_mode",
+    "section": "buffer AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
     "choices": [],
     "default": null,
     "flags": "..F.A.....P",
@@ -78802,6 +80076,102 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
+    "default": "auto",
+    "flags": "...V....B..",
+    "help": "Set VUI overscan appropriate flag (default auto)",
+    "max": null,
+    "min": null,
+    "name": "overscan_appropriate_flag",
+    "section": "lcevc_metadata_bsf AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-1",
+    "flags": "...V....B..",
+    "help": "Set video format (table E-2) (from -1 to 5) (default -1)",
+    "max": "5",
+    "min": "-1",
+    "name": "video_format",
+    "section": "lcevc_metadata_bsf AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "auto",
+    "flags": "...V....B..",
+    "help": "Set video full range flag (default auto)",
+    "max": null,
+    "min": null,
+    "name": "video_full_range_flag",
+    "section": "lcevc_metadata_bsf AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-1",
+    "flags": "...V....B..",
+    "help": "Set colour primaries (table E-3) (from -1 to 255) (default -1)",
+    "max": "255",
+    "min": "-1",
+    "name": "colour_primaries",
+    "section": "lcevc_metadata_bsf AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-1",
+    "flags": "...V....B..",
+    "help": "Set transfer characteristics (table E-4) (from -1 to 255) (default -1)",
+    "max": "255",
+    "min": "-1",
+    "name": "transfer_characteristics",
+    "section": "lcevc_metadata_bsf AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-1",
+    "flags": "...V....B..",
+    "help": "Set matrix coefficients (table E-5) (from -1 to 255) (default -1)",
+    "max": "255",
+    "min": "-1",
+    "name": "matrix_coefficients",
+    "section": "lcevc_metadata_bsf AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-1",
+    "flags": "...V....B..",
+    "help": "Set chroma sample location type (figure E-1) (from -1 to 5) (default -1)",
+    "max": "5",
+    "min": "-1",
+    "name": "chroma_sample_loc_type",
+    "section": "lcevc_metadata_bsf AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "...V....B..",
+    "help": "Delete all filler (default false)",
+    "max": null,
+    "min": null,
+    "name": "delete_filler",
+    "section": "lcevc_metadata_bsf AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
     "default": "0/1",
     "flags": "...V....B..",
     "help": "Set display aspect ratio (table 6-3) (from 0 to 65535) (default 0/1)",
@@ -79184,6 +80554,18 @@
     "name": "time_base",
     "section": "setts_bsf AVOptions:",
     "type": "rational"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "...VAS..B..",
+    "help": "convert to output timebase before evaluation (default false)",
+    "max": null,
+    "min": null,
+    "name": "prescale",
+    "section": "setts_bsf AVOptions:",
+    "type": "boolean"
   },
   {
     "__class__": "FFMpegAVOption",

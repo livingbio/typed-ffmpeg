@@ -1,7 +1,7 @@
 [
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Benchmark part of a filtergraph.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -72,7 +72,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Convert input audio to audio bit scope video output.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -191,7 +191,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Buffer audio frames, and make them accessible to the filterchain.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -302,7 +302,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Buffer audio frames, and make them available to the end of the filter graph.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -429,7 +429,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Audio compressor.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -706,7 +706,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Simple audio dynamic range compression/expansion filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -762,7 +762,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Copy the input audio unchanged to the output.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -801,7 +801,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Cross fade two input audio streams.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -1211,7 +1211,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Split audio into per-bands streams.",
     "formula_typings_input": null,
     "formula_typings_output": "[StreamType.audio] * len(re.split(r'[ |]+', str(split)))",
     "id": null,
@@ -1415,7 +1415,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Reduce audio bit resolution.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -1646,7 +1646,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Delay filtering to match a cue.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -1734,7 +1734,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Add region of interest to frame.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -1870,7 +1870,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Remove impulsive noise from input audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -2035,7 +2035,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Remove clipping from input audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -2200,7 +2200,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply decorrelation to input audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -2272,7 +2272,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Delay one or more audio channels.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -2344,7 +2344,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Remedy denormals by adding extremely low-level noise.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -2445,7 +2445,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Compute derivative of input audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -2484,7 +2484,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Draw a graph using input audio metadata.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -2822,7 +2822,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply Dynamic Equalization of input audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -3130,7 +3130,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply Dynamic Smoothing of input audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -3202,7 +3202,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Add echoing to the audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -3306,7 +3306,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Audio emphasis.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -3489,7 +3489,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Filter audio signal according to a specified expression.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -3561,7 +3561,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate an audio signal generated by an expression.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -3672,7 +3672,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Enhance high frequency part of audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -3840,7 +3840,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Fade in/out input audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -4132,7 +4132,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Denoise audio samples using FFT.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -4561,7 +4561,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply arbitrary expressions to samples in frequency domain.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -4829,7 +4829,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate a FIR coefficients audio stream.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -5120,7 +5120,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Convert the input audio to one of the specified formats.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -5208,7 +5208,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply frequency shifting to input audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -5296,7 +5296,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Denoise audio stream using Wavelets.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -5514,7 +5514,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Audio gate.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -5791,7 +5791,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Show various filtergraph stats.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -6039,7 +6039,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Convert input audio to histogram video output.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -6319,7 +6319,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply Infinite Impulse Response filter with supplied coefficients.",
     "formula_typings_input": null,
     "formula_typings_output": "[StreamType.audio] + [StreamType.video] if response else []",
     "id": null,
@@ -6720,7 +6720,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Compute integral of input audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -6759,7 +6759,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Temporally interleave audio inputs.",
     "formula_typings_input": "[StreamType.audio] * int(nb_inputs)",
     "formula_typings_output": null,
     "id": null,
@@ -6846,7 +6846,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Report audio filtering latency.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -6885,7 +6885,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Audio lookahead limiter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -7069,7 +7069,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply a two-pole all-pass filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -7375,7 +7375,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate all RGB colors.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -7454,7 +7454,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate all yuv colors.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -7533,7 +7533,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Loop audio samples.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -7621,7 +7621,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Extract an alpha channel as a grayscale image component.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -7660,7 +7660,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Copy the luma value of the second input into the alpha channel of the first input.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -7707,7 +7707,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Merge two or more audio streams into a single multi-channel stream.",
     "formula_typings_input": "[StreamType.audio] * int(inputs)",
     "formula_typings_output": null,
     "id": null,
@@ -7756,7 +7756,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Manipulate audio frame metadata.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -7994,7 +7994,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Audio mixing.",
     "formula_typings_input": "[StreamType.audio] * int(inputs)",
     "formula_typings_output": null,
     "id": null,
@@ -8129,7 +8129,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Read audio from a movie source.",
     "formula_typings_input": "[StreamType.audio] * len(streams.split('+'))",
     "formula_typings_output": "[StreamType.audio] * len(streams.split('+'))",
     "id": null,
@@ -8295,7 +8295,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Amplify changes between successive video frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -8447,7 +8447,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Multiply two audio streams.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -8494,7 +8494,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply high-order audio parametric multi band equalizer.",
     "formula_typings_input": null,
     "formula_typings_output": "[StreamType.audio] + [StreamType.video] if curves else []",
     "id": null,
@@ -8636,7 +8636,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Reduce broadband noise from stream using Non-Local Means.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -8778,7 +8778,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply Normalized Least-Mean-Fourth algorithm to first audio stream.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -8935,7 +8935,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply Normalized Least-Mean-Squares algorithm to first audio stream.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -9092,7 +9092,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate a noise audio signal.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -9262,7 +9262,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Pass the source unchanged to the output.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -9301,7 +9301,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Do absolutely nothing with the input audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -9331,7 +9331,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Null audio source, return empty audio frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -9426,7 +9426,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Pad audio with silence.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -9546,7 +9546,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Set permissions for the output audio frame.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -9654,7 +9654,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Convert input audio to phase meter video output.",
     "formula_typings_input": null,
     "formula_typings_output": "[StreamType.audio] + ([StreamType.video] if video else [])",
     "id": null,
@@ -9861,7 +9861,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Add a phasing effect to the audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -10026,7 +10026,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply phase shifting to input audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -10114,7 +10114,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Audio Psychoacoustic Clipper.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -10266,7 +10266,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Audio pulsator.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -10540,7 +10540,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Slow down filtering to match realtime.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -10612,7 +10612,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Resample audio data.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -10668,7 +10668,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Reverse an audio clip.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -10707,7 +10707,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Reduce noise from speech using Recurrent Neural Networks.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -10779,7 +10779,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Measure Audio Signal-to-Distortion Ratio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -10826,7 +10826,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Segment audio stream.",
     "formula_typings_input": null,
     "formula_typings_output": "[StreamType.audio] * len(str(timestamps or samples).split('|'))",
     "id": null,
@@ -10889,7 +10889,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Select audio frames to pass in output.",
     "formula_typings_input": null,
     "formula_typings_output": "[StreamType.audio] * int(outputs)",
     "id": null,
@@ -10952,7 +10952,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Send commands to filters.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -11024,7 +11024,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Set the number of samples for each output audio frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -11096,7 +11096,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Set PTS for the output audio frame.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -11152,7 +11152,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Change the sample rate without altering the data.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -11208,7 +11208,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Set timebase for the audio output link.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -11264,7 +11264,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Show textual information for each audio frame.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -11303,7 +11303,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Manipulate audio frame side data.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -11538,7 +11538,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Audio Soft Clipper.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -11722,7 +11722,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Show frequency domain statistics about audio frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -11958,7 +11958,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Pass on the audio input to N audio outputs.",
     "formula_typings_input": null,
     "formula_typings_output": "[StreamType.audio] * int(outputs)",
     "id": null,
@@ -12005,7 +12005,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Render ASS subtitles onto input video using the libass library.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -12147,7 +12147,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Show time domain statistics about audio frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -12647,7 +12647,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Select audio streams",
     "formula_typings_input": "[StreamType.audio] * int(inputs)",
     "formula_typings_output": "[StreamType.audio] * len(re.findall(r'\\d+', str(map)))",
     "id": null,
@@ -12703,7 +12703,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Boost subwoofer frequencies.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -12887,7 +12887,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Cut subwoofer frequencies.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -12975,7 +12975,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Cut super frequencies.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -13063,7 +13063,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply high order Butterworth band-pass filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -13167,7 +13167,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply high order Butterworth band-stop filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -13271,7 +13271,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply an Adaptive Temporal Averaging Denoiser.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -13518,7 +13518,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Adjust audio tempo.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -13574,7 +13574,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply spectral tilt to audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -13694,7 +13694,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Pick one continuous section from the input, drop the rest.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -13846,7 +13846,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Convert input audio to vectorscope video output.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -14237,7 +14237,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply Average Blur filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -14325,7 +14325,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate an Audio Video Sync Test.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -14540,7 +14540,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Cross-correlate two audio streams.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -14635,7 +14635,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Receive commands through ZMQ and broker them to filters.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -14691,7 +14691,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply a two-pole Butterworth band-pass filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -15013,7 +15013,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply a two-pole Butterworth band-reject filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -15319,7 +15319,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Boost or cut lower frequencies.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -15657,7 +15657,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Compute bounding box for each frame.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -15713,7 +15713,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Benchmark part of a filtergraph.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -15784,7 +15784,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply Bilateral filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -15872,7 +15872,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply a biquad IIR filter with the given coefficients.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -16126,7 +16126,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Measure bit plane noise.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -16198,7 +16198,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Detect video intervals that are (almost) black.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -16286,7 +16286,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Detect frames that are (almost) black.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -16358,7 +16358,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Blend two video frames into each other.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -18121,7 +18121,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Blockdetect filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -18209,7 +18209,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Blurdetect filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -18345,7 +18345,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Block-Matching 3D denoiser.",
     "formula_typings_input": "[StreamType.video] + [StreamType.video] if ref else []",
     "formula_typings_output": null,
     "id": null,
@@ -18567,7 +18567,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Blur the input.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -18703,7 +18703,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Buffer video frames, and make them accessible to the filterchain.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -18846,7 +18846,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Buffer video frames, and make them available to the end of the filter graph.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -18893,7 +18893,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Deinterlace the input image.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -19033,7 +19033,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Contrast Adaptive Sharpen.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -19105,7 +19105,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Create pattern generated by an elementary cellular automaton.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -19312,7 +19312,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Remap audio channels.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -19384,7 +19384,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Split audio into per-channel streams.",
     "formula_typings_input": null,
     "formula_typings_output": "[StreamType.audio] * CHANNEL_LAYOUT[str(channel_layout)]",
     "id": null,
@@ -19447,7 +19447,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Add a chorus effect to the audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -19583,7 +19583,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Turns a certain color range into gray.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -19687,7 +19687,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Turns a certain color into transparency. Operates on YUV colors.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -19791,7 +19791,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Reduce chrominance noise.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -19990,7 +19990,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Shift chroma.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -20125,7 +20125,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Video CIE scope.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -20545,7 +20545,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Visualize information about some codecs.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -20724,7 +20724,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Provide an uniformly colored input.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -20835,7 +20835,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Adjust the color balance.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -21035,7 +21035,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Adjust colors by mixing color channels.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -21413,7 +21413,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate color checker chart.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -21539,7 +21539,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Adjust color contrast between RGB components.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -21691,7 +21691,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Adjust color white balance selectively for blacks and whites.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -21856,7 +21856,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Turns a certain color range into gray. Operates on RGB colors.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -21944,7 +21944,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Overlay a solid color on the video stream.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -22048,7 +22048,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Turns a certain color into transparency. Operates on RGB colors.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -22136,7 +22136,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Adjust the color levels.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -22498,7 +22498,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply custom Color Maps to video stream.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -22648,7 +22648,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Convert color matrix.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -22834,7 +22834,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Convert between colorspaces.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -23867,7 +23867,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate colors spectrum.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -24000,7 +24000,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Adjust color temperature of video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -24088,7 +24088,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Compress or expand audio dynamic range.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -24240,7 +24240,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Audio Compensation Delay Line.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -24376,7 +24376,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Concatenate audio and video streams.",
     "formula_typings_input": "([StreamType.video]*int(v) + [StreamType.audio]*int(a))*int(n)",
     "formula_typings_output": "[StreamType.video]*int(v) + [StreamType.audio]*int(a)",
     "id": null,
@@ -24464,7 +24464,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply convolution filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -24848,7 +24848,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Convolve first video stream with second video stream.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -24959,7 +24959,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Copy the input video unchanged to the output.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -24998,7 +24998,270 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Video filtering using CoreImage API.",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": false,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": false,
+    "name": "coreimage",
+    "options": [
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "false",
+        "description": "list available filters (default false)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "list_filters",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "boolean"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "false",
+        "description": "list available generators (default false)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "list_generators",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "boolean"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": null,
+        "description": "names and options of filters to apply",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "filter",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": null,
+        "description": "output rectangle within output image",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "output_rect",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      }
+    ],
+    "pre": [],
+    "ref": "https://ffmpeg.org/ffmpeg-filters.html#coreimage",
+    "stream_typings_input": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
+    "description": "Video source using image generators of CoreImage API.",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": true,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": false,
+    "name": "coreimagesrc",
+    "options": [
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "320x240",
+        "description": "set video size (default \"320x240\")",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "size",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "image_size"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "25",
+        "description": "set video rate (default \"25\")",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "rate",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "video_rate"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "-0.000001",
+        "description": "set video duration (default -0.000001)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "duration",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "duration"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "1/1",
+        "description": "set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "sar",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "rational"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "false",
+        "description": "list available filters (default false)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "list_filters",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "boolean"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "false",
+        "description": "list available generators (default false)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "list_generators",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "boolean"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": null,
+        "description": "names and options of filters to apply",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "filter",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": null,
+        "description": "output rectangle within output image",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "output_rect",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      }
+    ],
+    "pre": [],
+    "ref": "https://ffmpeg.org/ffmpeg-filters.html#coreimagesrc",
+    "stream_typings_input": [],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
+    "description": "Find and cover a user specified object.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -25085,7 +25348,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Crop the input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -25221,7 +25484,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Auto-detect crop size.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -25357,7 +25620,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply headphone crossfeed filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -25493,7 +25756,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Simple audio noise sharpening filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -25565,7 +25828,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Delay filtering to match a cue.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -25653,7 +25916,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Adjust components curves.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -25899,7 +26162,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Video data analysis.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -26104,7 +26367,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply Directional Blur filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -26192,7 +26455,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply a DC shift to the audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -26264,7 +26527,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Denoise frames using 2D DCT.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -26368,7 +26631,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Debands video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -26536,7 +26799,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Deblock video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -26703,7 +26966,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Decimate frames (post field matching filter).",
     "formula_typings_input": "[StreamType.video] + ([StreamType.video] if ppsrc else [])",
     "formula_typings_output": null,
     "id": null,
@@ -26846,7 +27109,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Deconvolve first video stream with second video stream.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -26957,7 +27220,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Reduce cross-luminance and cross-color.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -27092,7 +27355,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply de-essing to the audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -27218,7 +27481,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply deflate effect.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -27322,7 +27585,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Remove temporal frame luminance variations.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -27460,7 +27723,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Remove judder produced by pullup.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -27516,7 +27779,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Remove logo from input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -27636,7 +27899,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply derain filter to the input.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -27779,7 +28042,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Stabilize shaky video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -28055,7 +28318,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Despill video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -28238,7 +28501,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply an inverse telecine pattern.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -28355,7 +28618,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Audio Dialogue Enhancement.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -28443,7 +28706,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply dilation effect.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -28563,7 +28826,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Displace pixels.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -28664,7 +28927,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply DNN classify filter to the input.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -28864,7 +29127,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply DNN detect filter to the input.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -29048,7 +29311,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply DNN processing filter to the input.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -29208,7 +29471,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Weave input video fields into double number of frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -29293,7 +29556,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Draw a colored box on the input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -29461,7 +29724,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Draw a graph using input video metadata.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -29799,7 +30062,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Draw a colored grid on the input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -29951,7 +30214,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Draw text on top of video frames using libfreetype library.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -30599,7 +30862,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Measure audio dynamic range.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -30655,7 +30918,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Dynamic Audio Normalizer.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -30887,7 +31150,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Widen the stereo image.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -30926,7 +31189,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "EBU R128 scanner.",
     "formula_typings_input": null,
     "formula_typings_output": "[StreamType.video] if video else [] + [StreamType.audio]",
     "id": null,
@@ -31228,7 +31491,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Detect and draw edge.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -31397,7 +31660,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply posterize effect, using the ELBG algorithm.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -31517,7 +31780,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Measure video frames entropy.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -31588,7 +31851,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Scale the input using EPX algorithm.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -31644,7 +31907,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Adjust brightness, contrast, gamma, and saturation.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -31843,7 +32106,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply two-pole peaking equalization (EQ) filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -32165,7 +32428,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply erosion effect.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -32285,7 +32548,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply Edge Slope Tracing deinterlace.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -32543,7 +32806,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Adjust exposure of the video stream.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -32615,7 +32878,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Extract planes as grayscale frames.",
     "formula_typings_input": null,
     "formula_typings_output": "[StreamType.video] * len(planes.split('+'))",
     "id": null,
@@ -32712,7 +32975,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Increase difference between stereo audio channels.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -32784,7 +33047,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Fade in/out input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -32951,7 +33214,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply feedback video filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -33039,7 +33302,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Denoise frames using 3D FFT.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -33386,7 +33649,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply arbitrary expressions to pixels in frequency domain.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -33553,7 +33816,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Extract a field from the input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -33624,7 +33887,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Field matching using hints.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -33718,7 +33981,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Field matching for inverse telecine.",
     "formula_typings_input": "[StreamType.video] + [StreamType.video] if ppsrc else []",
     "formula_typings_output": null,
     "id": null,
@@ -34104,7 +34367,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Set the field order.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -34175,7 +34438,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Fill borders of the input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -34361,7 +34624,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Find a user specified object.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -34481,7 +34744,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Finite Impulse Response Equalizer.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -34858,7 +35121,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply a flanging effect to the audio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -35070,7 +35333,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Fill area with same color with another color.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -35270,7 +35533,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Convert the input video to one of the specified pixel formats.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -35326,7 +35589,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Force constant framerate.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -35481,7 +35744,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate a frame packed stereoscopic video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -35581,7 +35844,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Upsamples or downsamples progressive source between specified frame rates.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -35716,7 +35979,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Select one frame every N frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -35772,7 +36035,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Detects frozen video input.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -35844,7 +36107,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Freeze video frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -35940,7 +36203,158 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply a frei0r effect.",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": false,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": true,
+    "name": "frei0r",
+    "options": [
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": null,
+        "description": "",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "filter_name",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": null,
+        "description": "",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "filter_params",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      }
+    ],
+    "pre": [],
+    "ref": "https://ffmpeg.org/ffmpeg-filters.html#frei0r",
+    "stream_typings_input": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
+    "description": "Generate a frei0r source.",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": true,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": false,
+    "name": "frei0r_src",
+    "options": [
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "320x240",
+        "description": "Dimensions of the generated video. (default \"320x240\")",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "size",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "image_size"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "25",
+        "description": "(default \"25\")",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "framerate",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "video_rate"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": null,
+        "description": "",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "filter_name",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      }
+    ],
+    "pre": [],
+    "ref": "https://ffmpeg.org/ffmpeg-filters.html#frei0r_005fsrc",
+    "stream_typings_input": [],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
+    "description": "Apply Fast Simple Post-processing filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -36044,7 +36458,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply Gaussian Blur filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -36148,7 +36562,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply generic equation to each pixel.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -36345,7 +36759,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Debands video quickly using gradients.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -36417,7 +36831,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Draw a gradients.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -36781,7 +37195,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Show various filtergraph stats.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -37029,7 +37443,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Adjust white balance using LAB gray world algorithm",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -37068,7 +37482,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Estimates scene illumination by grey edge assumption.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -37156,7 +37570,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply Guided filter.",
     "formula_typings_input": "[StreamType.video] + [StreamType.video] if guidance else []",
     "formula_typings_output": null,
     "id": null,
@@ -37313,7 +37727,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply Haas Stereo Enhancer.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -37590,7 +38004,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Adjust colors using a Hald CLUT.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -37721,7 +38135,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Provide an identity Hald CLUT.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -37816,7 +38230,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply High Definition Compatible Digital (HDCD) decoding.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -38010,7 +38424,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply headphone binaural spatialization with HRTFs in additional streams.",
     "formula_typings_input": "[StreamType.audio] + [StreamType.audio] * (len(str(map).split('|')) - 1) if int(hrir) == 1 else []",
     "formula_typings_output": null,
     "id": null,
@@ -38167,7 +38581,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Horizontally flip the input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -38206,7 +38620,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply a high-pass filter with 3dB point frequency.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -38528,7 +38942,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply a high shelf filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -38866,7 +39280,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate a Hilbert transform FIR coefficients.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -39109,7 +39523,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply global color histogram equalization.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -39219,7 +39633,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Compute and draw a histogram.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -39495,7 +39909,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply a High Quality 3D Denoiser.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -39599,7 +40013,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Scale the input by 2, 3 or 4 using the hq*x magnification algorithm.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -39655,7 +40069,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Stack video inputs horizontally.",
     "formula_typings_input": "[StreamType.video] * int(inputs)",
     "formula_typings_output": null,
     "id": null,
@@ -39720,7 +40134,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Turns a certain HSV range into gray.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -39840,7 +40254,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Turns a certain HSV range into transparency. Operates on YUV colors.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -39960,7 +40374,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Adjust the hue and saturation of the input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -40064,7 +40478,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply hue-saturation-intensity adjustments.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -40298,7 +40712,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Download a hardware frame to a normal frame",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -40337,7 +40751,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Map hardware frames",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -40454,7 +40868,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Upload a normal frame to a hardware frame",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -40510,7 +40924,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Grow first stream into second stream by connecting components.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -40590,7 +41004,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Calculate the Identity between two video streams.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -40637,7 +41051,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Interlace detect Filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -40757,7 +41171,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Deinterleave or interleave fields.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -41001,7 +41415,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply inflate effect.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -41105,7 +41519,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Convert progressive video into interlaced.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -41214,7 +41628,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Temporally interleave video inputs.",
     "formula_typings_input": "[StreamType.video] * int(nb_inputs)",
     "formula_typings_output": null,
     "id": null,
@@ -41301,7 +41715,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Join multiple audio streams into multi-channel output.",
     "formula_typings_input": "[StreamType.audio] * int(inputs)",
     "formula_typings_output": null,
     "id": null,
@@ -41382,7 +41796,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply kernel deinterlacing to the input.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -41502,7 +41916,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply kirsch operator.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -41590,7 +42004,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Slowly update darker pixels.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -41662,7 +42076,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Report video filtering latency.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -41701,7 +42115,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Rectify the image by correcting for lens distortion.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -41852,7 +42266,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Calculate the VMAF between two video streams.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -42108,7 +42522,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Create life.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -42315,7 +42729,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply filtering with limiting difference.",
     "formula_typings_input": "[StreamType.video, StreamType.video] + ([StreamType.video] if reference else [])",
     "formula_typings_output": null,
     "id": null,
@@ -42410,7 +42824,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Limit pixels components to the specified range.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -42498,7 +42912,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Loop video frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -42586,7 +43000,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "EBU R128 loudness normalization",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -42824,7 +43238,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply a low-pass filter with 3dB point frequency.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -43146,7 +43560,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply a low shelf filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -43484,7 +43898,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Turns a certain luma into transparency.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -43572,7 +43986,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Compute and apply a lookup table to the RGB/YUV input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -43788,7 +44202,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Adjust colors using a 1D LUT.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -43896,7 +44310,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Compute and apply a lookup table from two video inputs.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -44024,7 +44438,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Adjust colors using a 3D LUT.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -44163,7 +44577,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Compute and apply a lookup table to the RGB input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -44379,7 +44793,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Compute and apply a lookup table to the YUV input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -44595,7 +45009,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Render a Mandelbrot fractal.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -44908,7 +45322,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Clamp first stream with second stream and third stream.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -45012,7 +45426,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply filtering with maximum difference of two streams.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -45084,7 +45498,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Merge first stream with second stream using third stream as mask.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -45156,7 +45570,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply filtering with minimum difference of two streams.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -45228,7 +45642,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Pick pixels comparing absolute difference of two streams with threshold.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -45308,7 +45722,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Create Mask.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -45428,7 +45842,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Multiband Compress or expand audio dynamic range.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -45484,7 +45898,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply Median filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -45588,7 +46002,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Merge planes.",
     "formula_typings_input": "[StreamType.video] * int(max(hex(int(mapping))[2::2]))",
     "formula_typings_output": null,
     "id": null,
@@ -45779,7 +46193,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate motion vectors.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -45931,7 +46345,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Manipulate video frame metadata.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -46169,7 +46583,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply Midway Equalization.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -46233,7 +46647,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Frame rate conversion using Motion Interpolation.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -46564,7 +46978,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Mix video inputs.",
     "formula_typings_input": "[StreamType.video] * int(inputs)",
     "formula_typings_output": null,
     "id": null,
@@ -46699,7 +47113,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Convert video to gray using custom color filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -46803,7 +47217,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply Morphological filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -46964,7 +47378,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Read from a movie source.",
     "formula_typings_input": "[StreamType.video] * len(streams.split('+'))",
     "formula_typings_output": "[StreamType.video] * len(streams.split('+'))",
     "id": null,
@@ -47130,7 +47544,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Remove near-duplicate frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -47234,7 +47648,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate various test pattern.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -47407,7 +47821,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Calculate the MSAD between two video streams.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -47454,7 +47868,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Multiply first video stream with second video stream.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -47550,7 +47964,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Negate input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -47672,7 +48086,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Non-local means denoiser.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -47792,7 +48206,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply neural network edge directed interpolation intra-only deinterlacer.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -48200,7 +48614,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Force libavfilter not to use any of the specified pixel formats for the input to the next filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -48256,7 +48670,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Add noise.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -48681,7 +49095,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Normalize RGB video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -48801,7 +49215,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Pass the source unchanged to the output.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -48840,7 +49254,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Do absolutely nothing with the input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -48870,7 +49284,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Null video source, return unprocessed video frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -48965,7 +49379,111 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Optical Character Recognition.",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": false,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": false,
+    "name": "ocr",
+    "options": [
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": null,
+        "description": "set datapath",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "datapath",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "eng",
+        "description": "set language (default \"eng\")",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "language",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}()<>|/\\=*&%$#@!~ ",
+        "description": "set character whitelist (default \"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}()<>|/\\=*&%$#@!~ \")",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "whitelist",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "",
+        "description": "set character blacklist (default \"\")",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "blacklist",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      }
+    ],
+    "pre": [],
+    "ref": "https://ffmpeg.org/ffmpeg-filters.html#ocr",
+    "stream_typings_input": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
+    "description": "2D Video Oscilloscope.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -49213,7 +49731,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Overlay a video source on top of the input.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -49498,7 +50016,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Denoise using wavelets.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -49586,7 +50104,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Pad the input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -49753,7 +50271,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate PAL 100% color bars.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -49848,7 +50366,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate PAL 75% color bars.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -49943,7 +50461,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Find the optimal palette for a given stream.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -50085,7 +50603,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Use a palette to downsample an input video stream.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -50359,7 +50877,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Remix channels with coefficients (panning).",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -50415,7 +50933,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Set permissions for the output video frame.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -50523,7 +51041,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Correct the perspective of video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -50784,7 +51302,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Phase shift fields.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -50904,7 +51422,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Filter out photosensitive epilepsy seizure-inducing flashes.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -51008,7 +51526,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Test pixel format definitions.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -51047,7 +51565,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Pixelize video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -51173,7 +51691,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Pixel data analysis.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -51325,7 +51843,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply Postprocessing 7 filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -51419,7 +51937,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "PreMultiply first stream with first plane of second stream.",
     "formula_typings_input": "[StreamType.video] + [StreamType.video] if inplace else []",
     "formula_typings_output": null,
     "id": null,
@@ -51482,7 +52000,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply prewitt operator.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -51570,7 +52088,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Make pseudocolored video frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -51828,7 +52346,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Calculate the PSNR between two video streams.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -51924,7 +52442,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Pullup from field sequence to frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -52082,7 +52600,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Change video quantization parameters.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -52138,7 +52656,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Return random frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -52210,7 +52728,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Read EIA-608 Closed Caption codes from input video and write them to frame metadata.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -52330,7 +52848,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Read vertical interval timecode and write it to frame metadata.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -52418,7 +52936,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Slow down filtering to match realtime.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -52490,7 +53008,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Remap pixels.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -52593,7 +53111,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Remove grain.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -52697,7 +53215,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Remove a TV logo based on a mask image.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -52753,7 +53271,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Hard repeat fields based on MPEG repeat field flag.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -52792,7 +53310,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "ReplayGain scanner.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -52831,7 +53349,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Reverse a clip.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -52870,7 +53388,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Shift RGBA.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -53069,7 +53587,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate RGB test pattern.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -53180,7 +53698,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply roberts cross operator.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -53268,7 +53786,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Rotate the input image.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -53388,7 +53906,355 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply time-stretching and pitch-shifting.",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": false,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": false,
+    "name": "rubberband",
+    "options": [
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "1",
+        "description": "set tempo scale factor (from 0.01 to 100) (default 1)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "tempo",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "double"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "1",
+        "description": "set pitch scale factor (from 0.01 to 100) (default 1)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "pitch",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "double"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "crisp",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "mixed",
+            "value": "256"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "smooth",
+            "value": "512"
+          }
+        ],
+        "default": "crisp",
+        "description": "set transients (from 0 to INT_MAX) (default crisp)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "transients",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "compound",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "percussive",
+            "value": "1024"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "soft",
+            "value": "2048"
+          }
+        ],
+        "default": "compound",
+        "description": "set detector (from 0 to INT_MAX) (default compound)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "detector",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "laminar",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "independent",
+            "value": "8192"
+          }
+        ],
+        "default": "laminar",
+        "description": "set phase (from 0 to INT_MAX) (default laminar)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "phase",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "standard",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "short",
+            "value": "1048576"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "long",
+            "value": "2097152"
+          }
+        ],
+        "default": "standard",
+        "description": "set window (from 0 to INT_MAX) (default standard)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "window",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "off",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "on",
+            "value": "8388608"
+          }
+        ],
+        "default": "off",
+        "description": "set smoothing (from 0 to INT_MAX) (default off)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "smoothing",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "shifted",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "preserved",
+            "value": "16777216"
+          }
+        ],
+        "default": "shifted",
+        "description": "set formant (from 0 to INT_MAX) (default shifted)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "formant",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "quality",
+            "value": "33554432"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "speed",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "consistency",
+            "value": "67108864"
+          }
+        ],
+        "default": "speed",
+        "description": "set pitch quality (from 0 to INT_MAX) (default speed)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "pitchq",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "apart",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..F.A......",
+            "help": "",
+            "name": "together",
+            "value": "268435456"
+          }
+        ],
+        "default": "apart",
+        "description": "set channels (from 0 to INT_MAX) (default apart)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "channels",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      }
+    ],
+    "pre": [],
+    "ref": "https://ffmpeg.org/ffmpeg-filters.html#rubberband",
+    "stream_typings_input": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "audio"
+        }
+      }
+    ],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "audio"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
+    "description": "Apply shape adaptive blur.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -53524,7 +54390,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Scale the input video size and/or convert the image format.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -54101,7 +54967,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Detect video scene change",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -54173,7 +55039,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply scharr operator.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -54261,7 +55127,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Scroll input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -54365,7 +55231,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Segment video stream.",
     "formula_typings_input": null,
     "formula_typings_output": "[StreamType.video] * len((str(timestamps or frames)).split('|'))",
     "id": null,
@@ -54428,7 +55294,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Select video frames to pass in output.",
     "formula_typings_input": null,
     "formula_typings_output": "[StreamType.video] * int(outputs)",
     "id": null,
@@ -54491,7 +55357,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply CMYK adjustments to specific color ranges.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -54722,7 +55588,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Send commands to filters.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -54794,7 +55660,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Split input video frames into fields.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -54833,7 +55699,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Set the frame display aspect ratio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -54905,7 +55771,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Force field for the output video frame.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -54990,7 +55856,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Force field, or color property for the output video frame.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -55535,7 +56401,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Set PTS for the output video frame.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -55591,7 +56457,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Force color range for the output video frame.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -55711,7 +56577,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Set the pixel sample aspect ratio.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -55783,7 +56649,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Set timebase for the video output link.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -55839,7 +56705,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Shear transform the input image.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -55958,7 +56824,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Convert input audio to a CQT (Constant/Clamped Q Transform) spectrum video output.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -56464,7 +57330,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Convert input audio to a frequencies video output.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -56986,7 +57852,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Show textual information for each video frame.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -57042,7 +57908,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Display frame palette.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -57098,7 +57964,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Convert input audio to a spatial video output.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -57350,7 +58216,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Convert input audio to a spectrum video output.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -58110,7 +58976,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Convert input audio to a spectrum video output single picture.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -58748,7 +59614,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Convert input audio volume to video output.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -59073,7 +59939,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Convert input audio to a video output.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -59314,7 +60180,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Convert input audio to a video output single picture.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -59509,7 +60375,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Shuffle video frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -59565,7 +60431,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Shuffle video pixels.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -59722,7 +60588,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Shuffle video planes.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -59826,7 +60692,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Sidechain compressor.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -60111,7 +60977,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Audio sidechain gate.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -60396,7 +61262,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Manipulate video frame side data.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -60631,7 +61497,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Render a Sierpinski fractal.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -60889,7 +61755,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Calculate the MPEG-7 video signature",
     "formula_typings_input": "[StreamType.video] * int(nb_inputs)",
     "formula_typings_output": null,
     "id": null,
@@ -61103,7 +61969,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Detect silence.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -61191,7 +62057,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Remove silence.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -61468,7 +62334,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate a sinc kaiser-windowed low-pass, high-pass, band-pass, or band-reject FIR coefficients.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -61659,7 +62525,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate sine wave audio signal.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -61770,7 +62636,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Calculate spatial information (SI) and temporal information (TI).",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -61826,7 +62692,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Blur the input video without impacting the outlines.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -61962,7 +62828,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate SMPTE color bars.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -62057,7 +62923,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate SMPTE HD color bars.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -62152,7 +63018,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply sobel operator.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -62240,7 +63106,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Convert input spectrum videos to audio output.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -62607,7 +63473,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Speech Normalizer.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -62791,7 +63657,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Pass on the input to N video outputs.",
     "formula_typings_input": null,
     "formula_typings_output": "[StreamType.video] * int(outputs)",
     "id": null,
@@ -62838,7 +63704,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply a simple post processing filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -62957,7 +63823,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply DNN-based image super resolution to the input.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -63085,7 +63951,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Calculate the SSIM between two video streams.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -63149,7 +64015,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Convert video stereoscopic 3D view.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -63608,7 +64474,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply various stereo tools.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -64090,7 +64956,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply stereo widening effect.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -64194,7 +65060,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Select video streams",
     "formula_typings_input": "[StreamType.video] * int(inputs)",
     "formula_typings_output": "[StreamType.video] * len(re.findall(r'\\d+', str(map)))",
     "id": null,
@@ -64250,7 +65116,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Render text subtitles onto input video using the libass library.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -64402,7 +65268,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Scale the input by 2x using the Super2xSaI pixel art algorithm.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -64441,7 +65307,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply 18 band equalization filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -64769,7 +65635,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply audio surround upmix filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -65740,7 +66606,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Swap 2 rectangular objects in video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -65876,7 +66742,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Swap U and V components.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -65915,7 +66781,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Blend successive frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -67670,7 +68536,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply a telecine pattern.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -67771,7 +68637,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate test pattern.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -67882,7 +68748,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate another test pattern.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -67993,7 +68859,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Compute and draw a temporal histogram.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -68234,7 +69100,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Threshold first video stream using other video streams.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -68314,7 +69180,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Select the most representative frame in a given sequence of consecutive frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -68370,7 +69236,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Tile several successive frames together.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -68522,7 +69388,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply a tilt shelf filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -68860,7 +69726,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Perform temporal field interlacing.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -68973,7 +69839,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Compute and apply a lookup table from two successive frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -69077,7 +69943,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Pick median pixels from successive frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -69165,7 +70031,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply Temporal Midway Equalization.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -69253,7 +70119,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Mix successive video frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -69357,7 +70223,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Conversion to/from different dynamic ranges.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -69511,7 +70377,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Temporarily pad video frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -69693,7 +70559,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Transpose input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -69816,7 +70682,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Boost or cut upper frequencies.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -70154,7 +71020,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply tremolo effect.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -70226,7 +71092,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Pick one continuous section from the input, drop the rest.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -70378,7 +71244,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "UnPreMultiply first stream with first plane of second stream.",
     "formula_typings_input": "[StreamType.video] + ([StreamType.video] if inplace else [])",
     "formula_typings_output": null,
     "id": null,
@@ -70441,7 +71307,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Sharpen or blur the input video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -70625,7 +71491,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Untile a frame into a sequence of frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -70681,7 +71547,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Convert 360 projection of video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -71855,7 +72721,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply a Wavelet based Denoiser.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -72028,7 +72894,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply Variable Blur filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -72124,7 +72990,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Video vectorscope.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -72540,7 +73406,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Flip the input video vertically.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -72579,7 +73445,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Variable frame rate detect filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -72618,7 +73484,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Boost or alter saturation.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -72786,7 +73652,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply vibrato effect.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -72858,7 +73724,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Extract relative transformations, pass 1 of 2 for stabilization (see vidstabtransform for pass 2).",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -73010,7 +73876,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Transform the frames, pass 2 of 2 for stabilization (see vidstabdetect for pass 1).",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -73340,7 +74206,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Calculate the VIF between two video streams.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -73387,7 +74253,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Make or reverse a vignette effect.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -73569,7 +74435,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Audio Virtual Bass.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -73641,7 +74507,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Calculate the VMAF Motion score.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -73697,7 +74563,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Change input volume.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -73899,7 +74765,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Detect audio volume.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -73938,7 +74804,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Stack video inputs vertically.",
     "formula_typings_input": "[StreamType.video] * int(inputs)",
     "formula_typings_output": null,
     "id": null,
@@ -74003,7 +74869,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply Martin Weston three field deinterlace.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -74174,7 +75040,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Video waveform monitor.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -74658,7 +75524,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Weave input video fields into frames.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -74743,7 +75609,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Scale the input using xBR algorithm.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -74799,7 +75665,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Cross-correlate first video stream with second video stream.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -74894,7 +75760,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Cross fade one video with another video.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -75336,7 +76202,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Pick median pixels from several video inputs.",
     "formula_typings_input": "[StreamType.video] * int(inputs)",
     "formula_typings_output": null,
     "id": null,
@@ -75417,7 +76283,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Stack video inputs into custom layout.",
     "formula_typings_input": "[StreamType.video] * int(inputs)",
     "formula_typings_output": null,
     "id": null,
@@ -75530,7 +76396,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Deinterlace the input image.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -75684,7 +76550,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Yet another edge preserving blur filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -75772,7 +76638,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Generate YUV test pattern.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -75867,7 +76733,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Receive commands through ZMQ and broker them to filters.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -75923,7 +76789,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "Inputs:",
+    "description": "Apply Zoom & Pan effect.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,
@@ -76059,7 +76925,7 @@
   },
   {
     "__class__": "FFMpegFilter",
-    "description": "slice threading supported",
+    "description": "Apply resizing, colorspace and bit depth conversion.",
     "formula_typings_input": null,
     "formula_typings_output": null,
     "id": null,

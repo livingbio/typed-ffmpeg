@@ -1,7 +1,7 @@
 [
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "3GP2 (3GPP2 file format)",
     "flags": "E",
     "name": "3g2",
     "options": [
@@ -522,7 +522,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "3GP (3GPP file format)",
     "flags": "E",
     "name": "3gp",
     "options": [
@@ -1043,21 +1043,21 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "a64 - video for Commodore 64",
     "flags": "E",
     "name": "a64",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw AC-3",
     "flags": "E",
     "name": "ac3",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "ADTS AAC (Advanced Audio Coding)",
     "flags": "E",
     "name": "adts",
     "options": [
@@ -1101,14 +1101,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "CRI ADX",
     "flags": "E",
     "name": "adx",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Audio IFF",
     "flags": "E",
     "name": "aiff",
     "options": [
@@ -1140,14 +1140,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM A-law",
     "flags": "E",
     "name": "alaw",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "LEGO Racers ALP",
     "flags": "E",
     "name": "alp",
     "options": [
@@ -1189,28 +1189,28 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "3GPP AMR",
     "flags": "E",
     "name": "amr",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "AMV",
     "flags": "E",
     "name": "amv",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Ubisoft Rayman 2 APM",
     "flags": "E",
     "name": "apm",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Animated Portable Network Graphics",
     "flags": "E",
     "name": "apng",
     "options": [
@@ -1242,21 +1242,21 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw aptX (Audio Processing Technology for Bluetooth)",
     "flags": "E",
     "name": "aptx",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw aptX HD (Audio Processing Technology for Bluetooth)",
     "flags": "E",
     "name": "aptx_hd",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Argonaut Games ASF",
     "flags": "E",
     "name": "argo_asf",
     "options": [
@@ -1300,7 +1300,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Argonaut Games CVG",
     "flags": "E",
     "name": "argo_cvg",
     "options": [
@@ -1320,7 +1320,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "ASF (Advanced / Active Streaming Format)",
     "flags": "E",
     "name": "asf",
     "options": [
@@ -1340,7 +1340,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "ASF (Advanced / Active Streaming Format)",
     "flags": "E",
     "name": "asf_stream",
     "options": [
@@ -1360,7 +1360,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "SSA (SubStation Alpha) subtitle",
     "flags": "E",
     "name": "ass",
     "options": [
@@ -1380,7 +1380,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "AST (Audio Stream)",
     "flags": "E",
     "name": "ast",
     "options": [
@@ -1412,14 +1412,46 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Sun AU",
     "flags": "E",
     "name": "au",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "AudioToolbox output device",
+    "flags": "E",
+    "name": "audiotoolbox",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": "E..........",
+        "help": "list available audio devices (default false)",
+        "max": null,
+        "min": null,
+        "name": "list_devices",
+        "section": "AudioToolbox AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "-1",
+        "flags": "E..........",
+        "help": "select audio device by index (starts at 0) (from -1 to INT_MAX) (default -1)",
+        "max": "INT_MAX",
+        "min": "-1",
+        "name": "audio_device_index",
+        "section": "AudioToolbox AVOptions:",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegMuxer",
+    "description": "AVI (Audio Video Interleaved)",
     "flags": "E",
     "name": "avi",
     "options": [
@@ -1463,77 +1495,77 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "AVIF",
     "flags": "E",
     "name": "avif",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "SWF (ShockWave Flash) (AVM2)",
     "flags": "E",
     "name": "avm2",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw AVS2-P2/IEEE1857.4 video",
     "flags": "E",
     "name": "avs2",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "AVS3-P2/IEEE1857.10",
     "flags": "E",
     "name": "avs3",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "G.729 BIT file format",
     "flags": "E",
     "name": "bit",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Apple CAF (Core Audio Format)",
     "flags": "E",
     "name": "caf",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw Chinese AVS (Audio Video Standard) video",
     "flags": "E",
     "name": "cavsvideo",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "codec2 .c2 muxer",
     "flags": "E",
     "name": "codec2",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw codec2 muxer",
     "flags": "E",
     "name": "codec2raw",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "CRC testing",
     "flags": "E",
     "name": "crc",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "DASH Muxer",
     "flags": "E",
     "name": "dash",
     "options": [
@@ -2039,56 +2071,56 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw data",
     "flags": "E",
     "name": "data",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "D-Cinema audio",
     "flags": "E",
     "name": "daud",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw DFPWM1a",
     "flags": "E",
     "name": "dfpwm",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw Dirac",
     "flags": "E",
     "name": "dirac",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw DNxHD (SMPTE VC-3)",
     "flags": "E",
     "name": "dnxhd",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw DTS",
     "flags": "E",
     "name": "dts",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "DV (Digital Video)",
     "flags": "E",
     "name": "dv",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "MPEG-2 PS (DVD VOB)",
     "flags": "E",
     "name": "dvd",
     "options": [
@@ -2120,28 +2152,28 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw E-AC-3",
     "flags": "E",
     "name": "eac3",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM 32-bit floating-point big-endian",
     "flags": "E",
     "name": "f32be",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM 32-bit floating-point little-endian",
     "flags": "E",
     "name": "f32le",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "F4V Adobe Flash Video",
     "flags": "E",
     "name": "f4v",
     "options": [
@@ -2662,60 +2694,28 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM 64-bit floating-point big-endian",
     "flags": "E",
     "name": "f64be",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM 64-bit floating-point little-endian",
     "flags": "E",
     "name": "f64le",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
-    "flags": "E",
-    "name": "fbdev",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "0",
-        "flags": "E..........",
-        "help": "set x coordinate of top left corner (from INT_MIN to INT_MAX) (default 0)",
-        "max": "INT_MAX",
-        "min": "INT_MIN",
-        "name": "xoffset",
-        "section": "fbdev outdev AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "0",
-        "flags": "E..........",
-        "help": "set y coordinate of top left corner (from INT_MIN to INT_MAX) (default 0)",
-        "max": "INT_MAX",
-        "min": "INT_MIN",
-        "name": "yoffset",
-        "section": "fbdev outdev AVOptions:",
-        "type": "int"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "FFmpeg metadata in text",
     "flags": "E",
     "name": "ffmetadata",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "FIFO queue pseudo-muxer",
     "flags": "E",
     "name": "fifo",
     "options": [
@@ -2855,7 +2855,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Fifo test muxer",
     "flags": "E",
     "name": "fifo_test",
     "options": [
@@ -2899,28 +2899,28 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Sega FILM / CPK",
     "flags": "E",
     "name": "film_cpk",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Adobe Filmstrip",
     "flags": "E",
     "name": "filmstrip",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Flexible Image Transport System",
     "flags": "E",
     "name": "fits",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw FLAC",
     "flags": "E",
     "name": "flac",
     "options": [
@@ -2940,7 +2940,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "FLV (Flash Video)",
     "flags": "E",
     "name": "flv",
     "options": [
@@ -2996,14 +2996,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "framecrc testing",
     "flags": "E",
     "name": "framecrc",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Per-frame hash testing",
     "flags": "E",
     "name": "framehash",
     "options": [
@@ -3035,7 +3035,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Per-frame MD5 testing",
     "flags": "E",
     "name": "framemd5",
     "options": [
@@ -3067,35 +3067,35 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw G.722",
     "flags": "E",
     "name": "g722",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw G.723.1",
     "flags": "E",
     "name": "g723_1",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw big-endian G.726 (\"left-justified\")",
     "flags": "E",
     "name": "g726",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw little-endian G.726 (\"right-justified\")",
     "flags": "E",
     "name": "g726le",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "CompuServe Graphics Interchange Format (GIF)",
     "flags": "E",
     "name": "gif",
     "options": [
@@ -3127,42 +3127,42 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw GSM",
     "flags": "E",
     "name": "gsm",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "GXF (General eXchange Format)",
     "flags": "E",
     "name": "gxf",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw H.261",
     "flags": "E",
     "name": "h261",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw H.263",
     "flags": "E",
     "name": "h263",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw H.264 video",
     "flags": "E",
     "name": "h264",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Hash testing",
     "flags": "E",
     "name": "hash",
     "options": [
@@ -3182,7 +3182,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "HDS Muxer",
     "flags": "E",
     "name": "hds",
     "options": [
@@ -3238,14 +3238,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw HEVC video",
     "flags": "E",
     "name": "hevc",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Apple HTTP Live Streaming",
     "flags": "E",
     "name": "hls",
     "options": [
@@ -3850,21 +3850,21 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Microsoft Windows ICO",
     "flags": "E",
     "name": "ico",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "iLBC storage",
     "flags": "E",
     "name": "ilbc",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "image2 sequence",
     "flags": "E",
     "name": "image2",
     "options": [
@@ -3944,14 +3944,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "piped image2 sequence",
     "flags": "E",
     "name": "image2pipe",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "iPod H.264 MP4 (MPEG-4 Part 14)",
     "flags": "E",
     "name": "ipod",
     "options": [
@@ -4472,14 +4472,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Berkeley/IRCAM/CARL Sound Format",
     "flags": "E",
     "name": "ircam",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "ISMV/ISMA (Smooth Streaming)",
     "flags": "E",
     "name": "ismv",
     "options": [
@@ -5000,28 +5000,28 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "On2 IVF",
     "flags": "E",
     "name": "ivf",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "JACOsub subtitle format",
     "flags": "E",
     "name": "jacosub",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Simon & Schuster Interactive VAG",
     "flags": "E",
     "name": "kvag",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "LOAS/LATM",
     "flags": "E",
     "name": "latm",
     "options": [
@@ -5041,21 +5041,21 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "LRC lyrics",
     "flags": "E",
     "name": "lrc",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw MPEG-4 video",
     "flags": "E",
     "name": "m4v",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Matroska",
     "flags": "E",
     "name": "matroska",
     "options": [
@@ -5217,7 +5217,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "MD5 testing",
     "flags": "E",
     "name": "md5",
     "options": [
@@ -5237,42 +5237,42 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "MicroDVD subtitle format",
     "flags": "E",
     "name": "microdvd",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw MJPEG video",
     "flags": "E",
     "name": "mjpeg",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "extract pts as timecode v2 format, as defined by mkvtoolnix",
     "flags": "E",
     "name": "mkvtimestamp_v2",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw MLP",
     "flags": "E",
     "name": "mlp",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Yamaha SMAF",
     "flags": "E",
     "name": "mmf",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "QuickTime / MOV",
     "flags": "E",
     "name": "mov",
     "options": [
@@ -5793,14 +5793,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "MP2 (MPEG audio layer 2)",
     "flags": "E",
     "name": "mp2",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "MP3 (MPEG audio layer 3)",
     "flags": "E",
     "name": "mp3",
     "options": [
@@ -5844,7 +5844,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "MP4 (MPEG-4 Part 14)",
     "flags": "E",
     "name": "mp4",
     "options": [
@@ -6365,7 +6365,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "MPEG-1 Systems / MPEG program stream",
     "flags": "E",
     "name": "mpeg",
     "options": [
@@ -6397,21 +6397,21 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw MPEG-1 video",
     "flags": "E",
     "name": "mpeg1video",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw MPEG-2 video",
     "flags": "E",
     "name": "mpeg2video",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "MPEG-TS (MPEG-2 Transport Stream)",
     "flags": "E",
     "name": "mpegts",
     "options": [
@@ -6723,7 +6723,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "MIME multipart JPEG",
     "flags": "E",
     "name": "mpjpeg",
     "options": [
@@ -6743,14 +6743,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM mu-law",
     "flags": "E",
     "name": "mulaw",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "MXF (Material eXchange Format)",
     "flags": "E",
     "name": "mxf",
     "options": [
@@ -6832,7 +6832,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "MXF (Material eXchange Format) D-10 Mapping",
     "flags": "E",
     "name": "mxf_d10",
     "options": [
@@ -6926,7 +6926,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "MXF (Material eXchange Format) Operational Pattern Atom",
     "flags": "E",
     "name": "mxf_opatom",
     "options": [
@@ -7020,14 +7020,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw null video",
     "flags": "E",
     "name": "null",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "NUT",
     "flags": "E",
     "name": "nut",
     "options": [
@@ -7081,14 +7081,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "AV1 low overhead OBU",
     "flags": "E",
     "name": "obu",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Ogg Audio",
     "flags": "E",
     "name": "oga",
     "options": [
@@ -7144,7 +7144,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Ogg",
     "flags": "E",
     "name": "ogg",
     "options": [
@@ -7200,7 +7200,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Ogg Video",
     "flags": "E",
     "name": "ogv",
     "options": [
@@ -7256,14 +7256,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Sony OpenMG audio",
     "flags": "E",
     "name": "oma",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Ogg Opus",
     "flags": "E",
     "name": "opus",
     "options": [
@@ -7319,14 +7319,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
-    "flags": "E",
-    "name": "oss",
-    "options": []
-  },
-  {
-    "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PSP MP4 (MPEG-4 Part 14)",
     "flags": "E",
     "name": "psp",
     "options": [
@@ -7847,35 +7840,35 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw video",
     "flags": "E",
     "name": "rawvideo",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "RealMedia",
     "flags": "E",
     "name": "rm",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw id RoQ",
     "flags": "E",
     "name": "roq",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Lego Mindstorms RSO",
     "flags": "E",
     "name": "rso",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "RTP output",
     "flags": "E",
     "name": "rtp",
     "options": [
@@ -7979,7 +7972,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "RTP/mpegts output format",
     "flags": "E",
     "name": "rtp_mpegts",
     "options": [
@@ -8011,7 +8004,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "RTSP output",
     "flags": "E",
     "name": "rtsp",
     "options": [
@@ -8142,77 +8135,77 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM signed 16-bit big-endian",
     "flags": "E",
     "name": "s16be",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM signed 16-bit little-endian",
     "flags": "E",
     "name": "s16le",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM signed 24-bit big-endian",
     "flags": "E",
     "name": "s24be",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM signed 24-bit little-endian",
     "flags": "E",
     "name": "s24le",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM signed 32-bit big-endian",
     "flags": "E",
     "name": "s32be",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM signed 32-bit little-endian",
     "flags": "E",
     "name": "s32le",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM signed 8-bit",
     "flags": "E",
     "name": "s8",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "SAP output",
     "flags": "E",
     "name": "sap",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw SBC",
     "flags": "E",
     "name": "sbc",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Scenarist Closed Captions",
     "flags": "E",
     "name": "scc",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "segment",
     "flags": "E",
     "name": "segment",
     "options": [
@@ -8602,14 +8595,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Loki SDL MJPEG",
     "flags": "E",
     "name": "smjpeg",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Smooth Streaming Muxer",
     "flags": "E",
     "name": "smoothstreaming",
     "options": [
@@ -8677,14 +8670,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "SoX native",
     "flags": "E",
     "name": "sox",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "IEC 61937 (used on S/PDIF - IEC958)",
     "flags": "E",
     "name": "spdif",
     "options": [
@@ -8736,7 +8729,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Ogg Speex",
     "flags": "E",
     "name": "spx",
     "options": [
@@ -8792,14 +8785,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "SubRip subtitle",
     "flags": "E",
     "name": "srt",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Per-stream hash testing",
     "flags": "E",
     "name": "streamhash",
     "options": [
@@ -8819,14 +8812,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw HDMV Presentation Graphic Stream subtitles",
     "flags": "E",
     "name": "sup",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "MPEG-2 PS (SVCD)",
     "flags": "E",
     "name": "svcd",
     "options": [
@@ -8858,14 +8851,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "SWF (ShockWave Flash)",
     "flags": "E",
     "name": "swf",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Multiple muxer tee",
     "flags": "E",
     "name": "tee",
     "options": [
@@ -8897,98 +8890,98 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw TrueHD",
     "flags": "E",
     "name": "truehd",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "TTA (True Audio)",
     "flags": "E",
     "name": "tta",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "TTML subtitle",
     "flags": "E",
     "name": "ttml",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM unsigned 16-bit big-endian",
     "flags": "E",
     "name": "u16be",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM unsigned 16-bit little-endian",
     "flags": "E",
     "name": "u16le",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM unsigned 24-bit big-endian",
     "flags": "E",
     "name": "u24be",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM unsigned 24-bit little-endian",
     "flags": "E",
     "name": "u24le",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM unsigned 32-bit big-endian",
     "flags": "E",
     "name": "u32be",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM unsigned 32-bit little-endian",
     "flags": "E",
     "name": "u32le",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM unsigned 8-bit",
     "flags": "E",
     "name": "u8",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "uncoded framecrc testing",
     "flags": "E",
     "name": "uncodedframecrc",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw VC-1 video",
     "flags": "E",
     "name": "vc1",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "VC-1 test bitstream",
     "flags": "E",
     "name": "vc1test",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "MPEG-1 Systems / MPEG program stream (VCD)",
     "flags": "E",
     "name": "vcd",
     "options": [
@@ -9020,14 +9013,14 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "PCM Archimedes VIDC",
     "flags": "E",
     "name": "vidc",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "MPEG-2 PS (VOB)",
     "flags": "E",
     "name": "vob",
     "options": [
@@ -9059,21 +9052,21 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Creative Voice",
     "flags": "E",
     "name": "voc",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Sony Wave64",
     "flags": "E",
     "name": "w64",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "WAV / WAVE (Waveform Audio)",
     "flags": "E",
     "name": "wav",
     "options": [
@@ -9197,7 +9190,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "WebM",
     "flags": "E",
     "name": "webm",
     "options": [
@@ -9359,7 +9352,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "WebM Chunk Muxer",
     "flags": "E",
     "name": "webm_chunk",
     "options": [
@@ -9415,7 +9408,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "WebM DASH Manifest",
     "flags": "E",
     "name": "webm_dash_manifest",
     "options": [
@@ -9507,7 +9500,7 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "WebP",
     "flags": "E",
     "name": "webp",
     "options": [
@@ -9527,56 +9520,56 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "WebVTT subtitle",
     "flags": "E",
     "name": "webvtt",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Westwood Studios audio",
     "flags": "E",
     "name": "wsaud",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "Windows Television (WTV)",
     "flags": "E",
     "name": "wtv",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "raw WavPack",
     "flags": "E",
     "name": "wv",
     "options": []
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "",
+    "description": "YUV4MPEG pipe",
     "flags": "E",
     "name": "yuv4mpegpipe",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "3DO STR",
     "flags": "D",
     "name": "3dostr",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "4X Technologies",
     "flags": "D",
     "name": "4xm",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Audible AA format files",
     "flags": "D",
     "name": "aa",
     "options": [
@@ -9596,21 +9589,21 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw ADTS AAC (Advanced Audio Coding)",
     "flags": "D",
     "name": "aac",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "CRI AAX",
     "flags": "D",
     "name": "aax",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw AC-3",
     "flags": "D",
     "name": "ac3",
     "options": [
@@ -9630,14 +9623,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "tri-Ace Audio Container",
     "flags": "D",
     "name": "ace",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Interplay ACM",
     "flags": "D",
     "name": "acm",
     "options": [
@@ -9664,7 +9657,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Artworx Data Format",
     "flags": "D",
     "name": "adf",
     "options": [
@@ -9708,56 +9701,56 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "ADP",
     "flags": "D",
     "name": "adp",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Sony PS2 ADS",
     "flags": "D",
     "name": "ads",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "CRI ADX",
     "flags": "D",
     "name": "adx",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MD STUDIO audio",
     "flags": "D",
     "name": "aea",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "AFC",
     "flags": "D",
     "name": "afc",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Audio IFF",
     "flags": "D",
     "name": "aiff",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "CRI AIX",
     "flags": "D",
     "name": "aix",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM A-law",
     "flags": "D",
     "name": "alaw",
     "options": [
@@ -9801,7 +9794,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Alias/Wavefront PIX image",
     "flags": "D",
     "name": "alias_pix",
     "options": [
@@ -9968,14 +9961,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "LEGO Racers ALP",
     "flags": "D",
     "name": "alp",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "3GPP AMR",
     "flags": "D",
     "name": "amr",
     "options": [
@@ -9995,7 +9988,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw AMR-NB",
     "flags": "D",
     "name": "amrnb",
     "options": [
@@ -10015,7 +10008,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw AMR-WB",
     "flags": "D",
     "name": "amrwb",
     "options": [
@@ -10035,35 +10028,35 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Deluxe Paint Animation",
     "flags": "D",
     "name": "anm",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "CRYO APC",
     "flags": "D",
     "name": "apc",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Monkey's Audio",
     "flags": "D",
     "name": "ape",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Ubisoft Rayman 2 APM",
     "flags": "D",
     "name": "apm",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Animated Portable Network Graphics",
     "flags": "D",
     "name": "apng",
     "options": [
@@ -10107,7 +10100,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw aptX",
     "flags": "D",
     "name": "aptx",
     "options": [
@@ -10127,7 +10120,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw aptX HD",
     "flags": "D",
     "name": "aptx_hd",
     "options": [
@@ -10147,7 +10140,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "AQTitle subtitles",
     "flags": "D",
     "name": "aqtitle",
     "options": [
@@ -10167,28 +10160,28 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Argonaut Games ASF",
     "flags": "D",
     "name": "argo_asf",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Argonaut Games BRP",
     "flags": "D",
     "name": "argo_brp",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Argonaut Games CVG",
     "flags": "D",
     "name": "argo_cvg",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "ASF (Advanced / Active Streaming Format)",
     "flags": "D",
     "name": "asf",
     "options": [
@@ -10220,35 +10213,35 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "ASF (Advanced / Active Streaming Format)",
     "flags": "D",
     "name": "asf_o",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "SSA (SubStation Alpha) subtitle",
     "flags": "D",
     "name": "ass",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "AST (Audio Stream)",
     "flags": "D",
     "name": "ast",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Sun AU",
     "flags": "D",
     "name": "au",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "AV1 Annex B",
     "flags": "D",
     "name": "av1",
     "options": [
@@ -10268,7 +10261,135 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "AVFoundation input device",
+    "flags": "D",
+    "name": "avfoundation",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": ".D.........",
+        "help": "list available devices (default false)",
+        "max": null,
+        "min": null,
+        "name": "list_devices",
+        "section": "AVFoundation indev AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "-1",
+        "flags": ".D.........",
+        "help": "select video device by index for devices with same name (starts at 0) (from -1 to INT_MAX) (default -1)",
+        "max": "INT_MAX",
+        "min": "-1",
+        "name": "video_device_index",
+        "section": "AVFoundation indev AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "-1",
+        "flags": ".D.........",
+        "help": "select audio device by index for devices with same name (starts at 0) (from -1 to INT_MAX) (default -1)",
+        "max": "INT_MAX",
+        "min": "-1",
+        "name": "audio_device_index",
+        "section": "AVFoundation indev AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "yuv420p",
+        "flags": ".D.........",
+        "help": "set pixel format (default yuv420p)",
+        "max": null,
+        "min": null,
+        "name": "pixel_format",
+        "section": "AVFoundation indev AVOptions:",
+        "type": "pix_fmt"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "ntsc",
+        "flags": ".D.........",
+        "help": "set frame rate (default \"ntsc\")",
+        "max": null,
+        "min": null,
+        "name": "framerate",
+        "section": "AVFoundation indev AVOptions:",
+        "type": "video_rate"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": null,
+        "flags": ".D.........",
+        "help": "set video size",
+        "max": null,
+        "min": null,
+        "name": "video_size",
+        "section": "AVFoundation indev AVOptions:",
+        "type": "image_size"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": ".D.........",
+        "help": "capture the screen cursor (default false)",
+        "max": null,
+        "min": null,
+        "name": "capture_cursor",
+        "section": "AVFoundation indev AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": ".D.........",
+        "help": "capture the screen mouse clicks (default false)",
+        "max": null,
+        "min": null,
+        "name": "capture_mouse_clicks",
+        "section": "AVFoundation indev AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": ".D.........",
+        "help": "capture the raw data from device connection (default false)",
+        "max": null,
+        "min": null,
+        "name": "capture_raw_data",
+        "section": "AVFoundation indev AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "true",
+        "flags": ".D.........",
+        "help": "drop frames that are available later than expected (default true)",
+        "max": null,
+        "min": null,
+        "name": "drop_late_frames",
+        "section": "AVFoundation indev AVOptions:",
+        "type": "boolean"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegDemuxer",
+    "description": "AVI (Audio Video Interleaved)",
     "flags": "D",
     "name": "avi",
     "options": [
@@ -10288,21 +10409,21 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "AVR (Audio Visual Research)",
     "flags": "D",
     "name": "avr",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Argonaut Games Creature Shock",
     "flags": "D",
     "name": "avs",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw AVS2-P2/IEEE1857.4",
     "flags": "D",
     "name": "avs2",
     "options": [
@@ -10334,7 +10455,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw AVS3-P2/IEEE1857.10",
     "flags": "D",
     "name": "avs3",
     "options": [
@@ -10366,28 +10487,28 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Bethesda Softworks VID",
     "flags": "D",
     "name": "bethsoftvid",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Brute Force & Ignorance",
     "flags": "D",
     "name": "bfi",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "BFSTM (Binary Cafe Stream)",
     "flags": "D",
     "name": "bfstm",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Binary text",
     "flags": "D",
     "name": "bin",
     "options": [
@@ -10431,28 +10552,28 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Bink",
     "flags": "D",
     "name": "bink",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Bink Audio",
     "flags": "D",
     "name": "binka",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "G.729 BIT file format",
     "flags": "D",
     "name": "bit",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Bitpacked",
     "flags": "D",
     "name": "bitpacked",
     "options": [
@@ -10496,7 +10617,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped bmp sequence",
     "flags": "D",
     "name": "bmp_pipe",
     "options": [
@@ -10564,21 +10685,21 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Discworld II BMV",
     "flags": "D",
     "name": "bmv",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Black Ops Audio",
     "flags": "D",
     "name": "boa",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "BRender PIX image",
     "flags": "D",
     "name": "brender_pix",
     "options": [
@@ -10745,28 +10866,28 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "BRSTM (Binary Revolution Stream)",
     "flags": "D",
     "name": "brstm",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Interplay C93",
     "flags": "D",
     "name": "c93",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Apple CAF (Core Audio Format)",
     "flags": "D",
     "name": "caf",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw Chinese AVS (Audio Video Standard)",
     "flags": "D",
     "name": "cavsvideo",
     "options": [
@@ -10798,14 +10919,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "CD Graphics",
     "flags": "D",
     "name": "cdg",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Commodore CDXL video",
     "flags": "D",
     "name": "cdxl",
     "options": [
@@ -10837,14 +10958,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Phantom Cine",
     "flags": "D",
     "name": "cine",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "codec2 .c2 demuxer",
     "flags": "D",
     "name": "codec2",
     "options": [
@@ -10864,7 +10985,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw codec2 demuxer",
     "flags": "D",
     "name": "codec2raw",
     "options": [
@@ -10960,7 +11081,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Virtual concatenation script",
     "flags": "D",
     "name": "concat",
     "options": [
@@ -11004,7 +11125,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped cri sequence",
     "flags": "D",
     "name": "cri_pipe",
     "options": [
@@ -11072,7 +11193,39 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Dynamic Adaptive Streaming over HTTP",
+    "flags": "D",
+    "name": "dash",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "aac,m4a,m4s,m4v,mov,mp4,webm,ts",
+        "flags": ".D.........",
+        "help": "List of file extensions that dash is allowed to access (default \"aac,m4a,m4s,m4v,mov,mp4,webm,ts\")",
+        "max": null,
+        "min": null,
+        "name": "allowed_extensions",
+        "section": "dash AVOptions:",
+        "type": "string"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": null,
+        "flags": ".D.........",
+        "help": "Media decryption key (hex)",
+        "max": null,
+        "min": null,
+        "name": "cenc_decryption_key",
+        "section": "dash AVOptions:",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegDemuxer",
+    "description": "raw data",
     "flags": "D",
     "name": "data",
     "options": [
@@ -11092,21 +11245,21 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "D-Cinema audio",
     "flags": "D",
     "name": "daud",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Sega DC STR",
     "flags": "D",
     "name": "dcstr",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped dds sequence",
     "flags": "D",
     "name": "dds_pipe",
     "options": [
@@ -11174,21 +11327,21 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Xilam DERF",
     "flags": "D",
     "name": "derf",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Chronomaster DFA",
     "flags": "D",
     "name": "dfa",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw DFPWM1a",
     "flags": "D",
     "name": "dfpwm",
     "options": [
@@ -11232,14 +11385,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Video DAV",
     "flags": "D",
     "name": "dhav",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw Dirac",
     "flags": "D",
     "name": "dirac",
     "options": [
@@ -11271,7 +11424,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw DNxHD (SMPTE VC-3)",
     "flags": "D",
     "name": "dnxhd",
     "options": [
@@ -11303,7 +11456,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped dpx sequence",
     "flags": "D",
     "name": "dpx_pipe",
     "options": [
@@ -11371,28 +11524,28 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "DSD Stream File (DSF)",
     "flags": "D",
     "name": "dsf",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Delphine Software International CIN",
     "flags": "D",
     "name": "dsicin",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Digital Speech Standard (DSS)",
     "flags": "D",
     "name": "dss",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw DTS",
     "flags": "D",
     "name": "dts",
     "options": [
@@ -11412,21 +11565,21 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw DTS-HD",
     "flags": "D",
     "name": "dtshd",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "DV (Digital Video)",
     "flags": "D",
     "name": "dv",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw dvbsub",
     "flags": "D",
     "name": "dvbsub",
     "options": [
@@ -11446,7 +11599,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "dvbtxt",
     "flags": "D",
     "name": "dvbtxt",
     "options": [
@@ -11466,28 +11619,28 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "DXA",
     "flags": "D",
     "name": "dxa",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Electronic Arts Multimedia",
     "flags": "D",
     "name": "ea",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Electronic Arts cdata",
     "flags": "D",
     "name": "ea_cdata",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw E-AC-3",
     "flags": "D",
     "name": "eac3",
     "options": [
@@ -11507,14 +11660,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Ensoniq Paris Audio File",
     "flags": "D",
     "name": "epaf",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped exr sequence",
     "flags": "D",
     "name": "exr_pipe",
     "options": [
@@ -11582,7 +11735,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM 32-bit floating-point big-endian",
     "flags": "D",
     "name": "f32be",
     "options": [
@@ -11626,7 +11779,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM 32-bit floating-point little-endian",
     "flags": "D",
     "name": "f32le",
     "options": [
@@ -11670,7 +11823,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM 64-bit floating-point big-endian",
     "flags": "D",
     "name": "f64be",
     "options": [
@@ -11714,7 +11867,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM 64-bit floating-point little-endian",
     "flags": "D",
     "name": "f64le",
     "options": [
@@ -11758,48 +11911,28 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
-    "flags": "D",
-    "name": "fbdev",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "25",
-        "flags": ".D.........",
-        "help": "(default \"25\")",
-        "max": null,
-        "min": null,
-        "name": "framerate",
-        "section": "fbdev indev AVOptions:",
-        "type": "video_rate"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "FFmpeg metadata in text",
     "flags": "D",
     "name": "ffmetadata",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Sega FILM / CPK",
     "flags": "D",
     "name": "film_cpk",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Adobe Filmstrip",
     "flags": "D",
     "name": "filmstrip",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Flexible Image Transport System",
     "flags": "D",
     "name": "fits",
     "options": [
@@ -11819,7 +11952,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw FLAC",
     "flags": "D",
     "name": "flac",
     "options": [
@@ -11839,14 +11972,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "FLI/FLC/FLX animation",
     "flags": "D",
     "name": "flic",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "FLV (Flash Video)",
     "flags": "D",
     "name": "flv",
     "options": [
@@ -11902,28 +12035,28 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Megalux Frame",
     "flags": "D",
     "name": "frm",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "FMOD Sample Bank",
     "flags": "D",
     "name": "fsb",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Capcom's MT Framework sound",
     "flags": "D",
     "name": "fwse",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw G.722",
     "flags": "D",
     "name": "g722",
     "options": [
@@ -11943,14 +12076,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "G.723.1",
     "flags": "D",
     "name": "g723_1",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw big-endian G.726 (\"left aligned\")",
     "flags": "D",
     "name": "g726",
     "options": [
@@ -11982,7 +12115,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw little-endian G.726 (\"right aligned\")",
     "flags": "D",
     "name": "g726le",
     "options": [
@@ -12014,7 +12147,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "G.729 raw format demuxer",
     "flags": "D",
     "name": "g729",
     "options": [
@@ -12034,14 +12167,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Gremlin Digital Video",
     "flags": "D",
     "name": "gdv",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped gem sequence",
     "flags": "D",
     "name": "gem_pipe",
     "options": [
@@ -12109,14 +12242,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "GENeric Header",
     "flags": "D",
     "name": "genh",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "CompuServe Graphics Interchange Format (GIF)",
     "flags": "D",
     "name": "gif",
     "options": [
@@ -12172,7 +12305,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped gif sequence",
     "flags": "D",
     "name": "gif_pipe",
     "options": [
@@ -12240,7 +12373,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw GSM",
     "flags": "D",
     "name": "gsm",
     "options": [
@@ -12260,14 +12393,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "GXF (General eXchange Format)",
     "flags": "D",
     "name": "gxf",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw H.261",
     "flags": "D",
     "name": "h261",
     "options": [
@@ -12299,7 +12432,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw H.263",
     "flags": "D",
     "name": "h263",
     "options": [
@@ -12331,7 +12464,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw H.264 video",
     "flags": "D",
     "name": "h264",
     "options": [
@@ -12363,21 +12496,21 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "CRI HCA",
     "flags": "D",
     "name": "hca",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Macintosh HCOM",
     "flags": "D",
     "name": "hcom",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw HEVC video",
     "flags": "D",
     "name": "hevc",
     "options": [
@@ -12409,7 +12542,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Apple HTTP Live Streaming",
     "flags": "D",
     "name": "hls",
     "options": [
@@ -12440,9 +12573,9 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,wav",
+        "default": "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt,cmfv,cmfa,ec3,fmp4",
         "flags": ".D.........",
-        "help": "List of file extensions that hls is allowed to access (default \"3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,wav\")",
+        "help": "List of file extensions that hls is allowed to access (default \"3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt,cmfv,cmfa,ec3,fmp4\")",
         "max": null,
         "min": null,
         "name": "allowed_extensions",
@@ -12452,9 +12585,33 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "3",
+        "default": "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt,cmfv,cmfa,ec3,fmp4,html",
         "flags": ".D.........",
-        "help": "Maximum number of times a insufficient list is attempted to be reloaded (from 0 to INT_MAX) (default 3)",
+        "help": "List of file extensions that hls is allowed to access (default \"3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt,cmfv,cmfa,ec3,fmp4,html\")",
+        "max": null,
+        "min": null,
+        "name": "allowed_segment_extensions",
+        "section": "hls demuxer AVOptions:",
+        "type": "string"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "true",
+        "flags": ".D.........",
+        "help": "Be picky with all extensions matching (default true)",
+        "max": null,
+        "min": null,
+        "name": "extension_picky",
+        "section": "hls demuxer AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "100",
+        "flags": ".D.........",
+        "help": "Maximum number of times a insufficient list is attempted to be reloaded (from 0 to INT_MAX) (default 100)",
         "max": "INT_MAX",
         "min": "0",
         "name": "max_reload",
@@ -12525,28 +12682,28 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Cryo HNM v4",
     "flags": "D",
     "name": "hnm",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Microsoft Windows ICO",
     "flags": "D",
     "name": "ico",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "id Cinematic",
     "flags": "D",
     "name": "idcin",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "iCE Draw File",
     "flags": "D",
     "name": "idf",
     "options": [
@@ -12590,28 +12747,28 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "IFF (Interchange File Format)",
     "flags": "D",
     "name": "iff",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "IFV CCTV DVR",
     "flags": "D",
     "name": "ifv",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "iLBC storage",
     "flags": "D",
     "name": "ilbc",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "image2 sequence",
     "flags": "D",
     "name": "image2",
     "options": [
@@ -12778,7 +12935,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped image2 sequence",
     "flags": "D",
     "name": "image2pipe",
     "options": [
@@ -12846,7 +13003,27 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "IMF (Interoperable Master Format)",
+    "flags": "D",
+    "name": "imf",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": null,
+        "flags": ".D.........",
+        "help": "Comma-separated paths to ASSETMAP files.If not specified, the `ASSETMAP.xml` file in the same directory as the CPL is used.",
+        "max": null,
+        "min": null,
+        "name": "assetmaps",
+        "section": "imf AVOptions:",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegDemuxer",
+    "description": "raw Ingenient MJPEG",
     "flags": "D",
     "name": "ingenient",
     "options": [
@@ -12878,14 +13055,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Interplay MVE",
     "flags": "D",
     "name": "ipmovie",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw IPU Video",
     "flags": "D",
     "name": "ipu",
     "options": [
@@ -12905,42 +13082,42 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Berkeley/IRCAM/CARL Sound Format",
     "flags": "D",
     "name": "ircam",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Funcom ISS",
     "flags": "D",
     "name": "iss",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "IndigoVision 8000 video",
     "flags": "D",
     "name": "iv8",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "On2 IVF",
     "flags": "D",
     "name": "ivf",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "IVR (Internet Video Recording)",
     "flags": "D",
     "name": "ivr",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped j2k sequence",
     "flags": "D",
     "name": "j2k_pipe",
     "options": [
@@ -13008,14 +13185,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "JACOsub subtitle format",
     "flags": "D",
     "name": "jacosub",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped jpeg sequence",
     "flags": "D",
     "name": "jpeg_pipe",
     "options": [
@@ -13083,7 +13260,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped jpegls sequence",
     "flags": "D",
     "name": "jpegls_pipe",
     "options": [
@@ -13151,7 +13328,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped jpegxl sequence",
     "flags": "D",
     "name": "jpegxl_pipe",
     "options": [
@@ -13219,14 +13396,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Bitmap Brothers JV",
     "flags": "D",
     "name": "jv",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "KUX (YouKu)",
     "flags": "D",
     "name": "kux",
     "options": [
@@ -13282,14 +13459,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Simon & Schuster Interactive VAG",
     "flags": "D",
     "name": "kvag",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Libavfilter virtual input device",
     "flags": "D",
     "name": "lavfi",
     "options": [
@@ -13333,7 +13510,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "live RTMP FLV (Flash Video)",
     "flags": "D",
     "name": "live_flv",
     "options": [
@@ -13389,14 +13566,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw lmlm4",
     "flags": "D",
     "name": "lmlm4",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "LOAS AudioSyncStream",
     "flags": "D",
     "name": "loas",
     "options": [
@@ -13416,35 +13593,35 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "LRC lyrics",
     "flags": "D",
     "name": "lrc",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Video CCTV DAT",
     "flags": "D",
     "name": "luodat",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "LVF",
     "flags": "D",
     "name": "lvf",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "VR native stream (LXF)",
     "flags": "D",
     "name": "lxf",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw MPEG-4 video",
     "flags": "D",
     "name": "m4v",
     "options": [
@@ -13476,28 +13653,28 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MCA Audio Format",
     "flags": "D",
     "name": "mca",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MacCaption",
     "flags": "D",
     "name": "mcc",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Metal Gear Solid: The Twin Snakes",
     "flags": "D",
     "name": "mgsts",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MicroDVD subtitle format",
     "flags": "D",
     "name": "microdvd",
     "options": [
@@ -13517,7 +13694,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw MJPEG video",
     "flags": "D",
     "name": "mjpeg",
     "options": [
@@ -13549,7 +13726,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw MJPEG 2000 video",
     "flags": "D",
     "name": "mjpeg_2000",
     "options": [
@@ -13581,7 +13758,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw MLP",
     "flags": "D",
     "name": "mlp",
     "options": [
@@ -13601,42 +13778,42 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Magic Lantern Video (MLV)",
     "flags": "D",
     "name": "mlv",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "American Laser Games MM",
     "flags": "D",
     "name": "mm",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Yamaha SMAF",
     "flags": "D",
     "name": "mmf",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MobiClip MODS",
     "flags": "D",
     "name": "mods",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MobiClip MOFLEX",
     "flags": "D",
     "name": "moflex",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MP2/3 (MPEG audio layer 2/3)",
     "flags": "D",
     "name": "mp3",
     "options": [
@@ -13656,28 +13833,28 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Musepack",
     "flags": "D",
     "name": "mpc",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Musepack SV8",
     "flags": "D",
     "name": "mpc8",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MPEG-PS (MPEG-2 Program Stream)",
     "flags": "D",
     "name": "mpeg",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MPEG-TS (MPEG-2 Transport Stream)",
     "flags": "D",
     "name": "mpegts",
     "options": [
@@ -13769,7 +13946,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw MPEG-TS (MPEG-2 Transport Stream)",
     "flags": "D",
     "name": "mpegtsraw",
     "options": [
@@ -13813,7 +13990,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw MPEG video",
     "flags": "D",
     "name": "mpegvideo",
     "options": [
@@ -13845,7 +14022,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MIME multipart JPEG",
     "flags": "D",
     "name": "mpjpeg",
     "options": [
@@ -13865,56 +14042,56 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MPL2 subtitles",
     "flags": "D",
     "name": "mpl2",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MPlayer subtitles",
     "flags": "D",
     "name": "mpsub",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Sony PS3 MSF",
     "flags": "D",
     "name": "msf",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MSN TCP Webcam stream",
     "flags": "D",
     "name": "msnwctcp",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Microsoft Paint (MSP))",
     "flags": "D",
     "name": "msp",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Konami PS2 MTAF",
     "flags": "D",
     "name": "mtaf",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MTV",
     "flags": "D",
     "name": "mtv",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM mu-law",
     "flags": "D",
     "name": "mulaw",
     "options": [
@@ -13958,28 +14135,28 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Eurocom MUSX",
     "flags": "D",
     "name": "musx",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Silicon Graphics Movie",
     "flags": "D",
     "name": "mv",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Motion Pixels MVI",
     "flags": "D",
     "name": "mvi",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MXF (Material eXchange Format)",
     "flags": "D",
     "name": "mxf",
     "options": [
@@ -13999,56 +14176,56 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MxPEG clip",
     "flags": "D",
     "name": "mxg",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "NC camera feed",
     "flags": "D",
     "name": "nc",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "NIST SPeech HEader REsources",
     "flags": "D",
     "name": "nistsphere",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Computerized Speech Lab NSP",
     "flags": "D",
     "name": "nsp",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Nullsoft Streaming Video",
     "flags": "D",
     "name": "nsv",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "NUT",
     "flags": "D",
     "name": "nut",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "NuppelVideo",
     "flags": "D",
     "name": "nuv",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "AV1 low overhead OBU",
     "flags": "D",
     "name": "obu",
     "options": [
@@ -14068,60 +14245,28 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Ogg",
     "flags": "D",
     "name": "ogg",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Sony OpenMG audio",
     "flags": "D",
     "name": "oma",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
-    "flags": "D",
-    "name": "oss",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "48000",
-        "flags": ".D.........",
-        "help": "(from 1 to INT_MAX) (default 48000)",
-        "max": "INT_MAX",
-        "min": "1",
-        "name": "sample_rate",
-        "section": "OSS indev AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "2",
-        "flags": ".D.........",
-        "help": "(from 1 to INT_MAX) (default 2)",
-        "max": "INT_MAX",
-        "min": "1",
-        "name": "channels",
-        "section": "OSS indev AVOptions:",
-        "type": "int"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Amazing Studio Packed Animation File",
     "flags": "D",
     "name": "paf",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped pam sequence",
     "flags": "D",
     "name": "pam_pipe",
     "options": [
@@ -14189,7 +14334,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped pbm sequence",
     "flags": "D",
     "name": "pbm_pipe",
     "options": [
@@ -14257,7 +14402,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped pcx sequence",
     "flags": "D",
     "name": "pcx_pipe",
     "options": [
@@ -14325,7 +14470,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped pfm sequence",
     "flags": "D",
     "name": "pfm_pipe",
     "options": [
@@ -14393,7 +14538,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped pgm sequence",
     "flags": "D",
     "name": "pgm_pipe",
     "options": [
@@ -14461,7 +14606,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped pgmyuv sequence",
     "flags": "D",
     "name": "pgmyuv_pipe",
     "options": [
@@ -14529,7 +14674,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped pgx sequence",
     "flags": "D",
     "name": "pgx_pipe",
     "options": [
@@ -14597,7 +14742,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped phm sequence",
     "flags": "D",
     "name": "phm_pipe",
     "options": [
@@ -14665,7 +14810,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped photocd sequence",
     "flags": "D",
     "name": "photocd_pipe",
     "options": [
@@ -14733,7 +14878,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped pictor sequence",
     "flags": "D",
     "name": "pictor_pipe",
     "options": [
@@ -14801,21 +14946,21 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PJS (Phoenix Japanimation Society) subtitles",
     "flags": "D",
     "name": "pjs",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Playstation Portable PMP",
     "flags": "D",
     "name": "pmp",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped png sequence",
     "flags": "D",
     "name": "png_pipe",
     "options": [
@@ -14883,14 +15028,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Pro Pinball Series Soundbank",
     "flags": "D",
     "name": "pp_bnk",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped ppm sequence",
     "flags": "D",
     "name": "ppm_pipe",
     "options": [
@@ -14958,7 +15103,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped psd sequence",
     "flags": "D",
     "name": "psd_pipe",
     "options": [
@@ -15026,35 +15171,35 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Sony Playstation STR",
     "flags": "D",
     "name": "psxstr",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "TechnoTrend PVA",
     "flags": "D",
     "name": "pva",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PVF (Portable Voice Format)",
     "flags": "D",
     "name": "pvf",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "QCP",
     "flags": "D",
     "name": "qcp",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped qdraw sequence",
     "flags": "D",
     "name": "qdraw_pipe",
     "options": [
@@ -15122,7 +15267,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped qoi sequence",
     "flags": "D",
     "name": "qoi_pipe",
     "options": [
@@ -15190,14 +15335,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "REDCODE R3D",
     "flags": "D",
     "name": "r3d",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw video",
     "flags": "D",
     "name": "rawvideo",
     "options": [
@@ -15241,63 +15386,63 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "RealText subtitle format",
     "flags": "D",
     "name": "realtext",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "RedSpark",
     "flags": "D",
     "name": "redspark",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "RL2",
     "flags": "D",
     "name": "rl2",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "RealMedia",
     "flags": "D",
     "name": "rm",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "id RoQ",
     "flags": "D",
     "name": "roq",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "RPL / ARMovie",
     "flags": "D",
     "name": "rpl",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "GameCube RSD",
     "flags": "D",
     "name": "rsd",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Lego Mindstorms RSO",
     "flags": "D",
     "name": "rso",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "RTP input",
     "flags": "D",
     "name": "rtp",
     "options": [
@@ -15414,7 +15559,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "RTSP input",
     "flags": "D",
     "name": "rtsp",
     "options": [
@@ -15648,7 +15793,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM signed 16-bit big-endian",
     "flags": "D",
     "name": "s16be",
     "options": [
@@ -15692,7 +15837,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM signed 16-bit little-endian",
     "flags": "D",
     "name": "s16le",
     "options": [
@@ -15736,7 +15881,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM signed 24-bit big-endian",
     "flags": "D",
     "name": "s24be",
     "options": [
@@ -15780,7 +15925,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM signed 24-bit little-endian",
     "flags": "D",
     "name": "s24le",
     "options": [
@@ -15824,7 +15969,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM signed 32-bit big-endian",
     "flags": "D",
     "name": "s32be",
     "options": [
@@ -15868,7 +16013,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM signed 32-bit little-endian",
     "flags": "D",
     "name": "s32le",
     "options": [
@@ -15912,14 +16057,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "SMPTE 337M",
     "flags": "D",
     "name": "s337m",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM signed 8-bit",
     "flags": "D",
     "name": "s8",
     "options": [
@@ -15963,21 +16108,21 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "SAMI subtitle format",
     "flags": "D",
     "name": "sami",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "SAP input",
     "flags": "D",
     "name": "sap",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw SBC (low-complexity subband codec)",
     "flags": "D",
     "name": "sbc",
     "options": [
@@ -15997,7 +16142,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "SBaGen binaural beats script",
     "flags": "D",
     "name": "sbg",
     "options": [
@@ -16029,21 +16174,21 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Scenarist Closed Captions",
     "flags": "D",
     "name": "scc",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Square Enix SCD",
     "flags": "D",
     "name": "scd",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "SDP",
     "flags": "D",
     "name": "sdp",
     "options": [
@@ -16174,28 +16319,28 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "SDR2",
     "flags": "D",
     "name": "sdr2",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "MIDI Sample Dump Standard",
     "flags": "D",
     "name": "sds",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Sample Dump eXchange",
     "flags": "D",
     "name": "sdx",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "SER (Simple uncompressed video format for astronomical capturing)",
     "flags": "D",
     "name": "ser",
     "options": [
@@ -16215,14 +16360,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Digital Pictures SGA",
     "flags": "D",
     "name": "sga",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped sgi sequence",
     "flags": "D",
     "name": "sgi_pipe",
     "options": [
@@ -16290,7 +16435,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw Shorten",
     "flags": "D",
     "name": "shn",
     "options": [
@@ -16310,21 +16455,21 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Beam Software SIFF",
     "flags": "D",
     "name": "siff",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Simbiosis Interactive IMX",
     "flags": "D",
     "name": "simbiosis_imx",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Asterisk raw pcm",
     "flags": "D",
     "name": "sln",
     "options": [
@@ -16368,77 +16513,77 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Loki SDL MJPEG",
     "flags": "D",
     "name": "smjpeg",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Smacker",
     "flags": "D",
     "name": "smk",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "LucasArts Smush",
     "flags": "D",
     "name": "smush",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Sierra SOL",
     "flags": "D",
     "name": "sol",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "SoX native",
     "flags": "D",
     "name": "sox",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "IEC 61937 (compressed data in S/PDIF)",
     "flags": "D",
     "name": "spdif",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "SubRip subtitle",
     "flags": "D",
     "name": "srt",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Spruce subtitle format",
     "flags": "D",
     "name": "stl",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "SubViewer subtitle format",
     "flags": "D",
     "name": "subviewer",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "SubViewer v1 subtitle format",
     "flags": "D",
     "name": "subviewer1",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped sunrast sequence",
     "flags": "D",
     "name": "sunrast_pipe",
     "options": [
@@ -16506,21 +16651,21 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw HDMV Presentation Graphic Stream subtitles",
     "flags": "D",
     "name": "sup",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Konami PS2 SVAG",
     "flags": "D",
     "name": "svag",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped svg sequence",
     "flags": "D",
     "name": "svg_pipe",
     "options": [
@@ -16588,21 +16733,21 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Square SVS",
     "flags": "D",
     "name": "svs",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "SWF (ShockWave Flash)",
     "flags": "D",
     "name": "swf",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw TAK",
     "flags": "D",
     "name": "tak",
     "options": [
@@ -16622,7 +16767,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "TED Talks captions",
     "flags": "D",
     "name": "tedcaptions",
     "options": [
@@ -16642,21 +16787,21 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "THP",
     "flags": "D",
     "name": "thp",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Tiertex Limited SEQ",
     "flags": "D",
     "name": "tiertexseq",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped tiff sequence",
     "flags": "D",
     "name": "tiff_pipe",
     "options": [
@@ -16724,14 +16869,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "8088flex TMV",
     "flags": "D",
     "name": "tmv",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw TrueHD",
     "flags": "D",
     "name": "truehd",
     "options": [
@@ -16751,14 +16896,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "TTA (True Audio)",
     "flags": "D",
     "name": "tta",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Tele-typewriter",
     "flags": "D",
     "name": "tty",
     "options": [
@@ -16802,21 +16947,21 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Renderware TeXture Dictionary",
     "flags": "D",
     "name": "txd",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "TiVo TY Stream",
     "flags": "D",
     "name": "ty",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM unsigned 16-bit big-endian",
     "flags": "D",
     "name": "u16be",
     "options": [
@@ -16860,7 +17005,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM unsigned 16-bit little-endian",
     "flags": "D",
     "name": "u16le",
     "options": [
@@ -16904,7 +17049,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM unsigned 24-bit big-endian",
     "flags": "D",
     "name": "u24be",
     "options": [
@@ -16948,7 +17093,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM unsigned 24-bit little-endian",
     "flags": "D",
     "name": "u24le",
     "options": [
@@ -16992,7 +17137,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM unsigned 32-bit big-endian",
     "flags": "D",
     "name": "u32be",
     "options": [
@@ -17036,7 +17181,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM unsigned 32-bit little-endian",
     "flags": "D",
     "name": "u32le",
     "options": [
@@ -17080,7 +17225,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM unsigned 8-bit",
     "flags": "D",
     "name": "u8",
     "options": [
@@ -17124,7 +17269,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Uncompressed 4:2:2 10-bit",
     "flags": "D",
     "name": "v210",
     "options": [
@@ -17156,7 +17301,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Uncompressed 4:2:2 10-bit",
     "flags": "D",
     "name": "v210x",
     "options": [
@@ -17188,14 +17333,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Sony PS2 VAG",
     "flags": "D",
     "name": "vag",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped vbn sequence",
     "flags": "D",
     "name": "vbn_pipe",
     "options": [
@@ -17263,7 +17408,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "raw VC-1",
     "flags": "D",
     "name": "vc1",
     "options": [
@@ -17295,14 +17440,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "VC-1 test bitstream",
     "flags": "D",
     "name": "vc1test",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "PCM Archimedes VIDC",
     "flags": "D",
     "name": "vidc",
     "options": [
@@ -17346,28 +17491,28 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Vividas VIV",
     "flags": "D",
     "name": "vividas",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Vivo",
     "flags": "D",
     "name": "vivo",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Sierra VMD",
     "flags": "D",
     "name": "vmd",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "VobSub subtitle format",
     "flags": "D",
     "name": "vobsub",
     "options": [
@@ -17387,35 +17532,35 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Creative Voice",
     "flags": "D",
     "name": "voc",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Sony PS2 VPK",
     "flags": "D",
     "name": "vpk",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "VPlayer subtitles",
     "flags": "D",
     "name": "vplayer",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Nippon Telegraph and Telephone Corporation (NTT) TwinVQ",
     "flags": "D",
     "name": "vqf",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Sony Wave64",
     "flags": "D",
     "name": "w64",
     "options": [
@@ -17435,7 +17580,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "WAV / WAVE (Waveform Audio)",
     "flags": "D",
     "name": "wav",
     "options": [
@@ -17467,14 +17612,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Wing Commander III movie",
     "flags": "D",
     "name": "wc3movie",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "WebM DASH Manifest",
     "flags": "D",
     "name": "webm_dash_manifest",
     "options": [
@@ -17506,7 +17651,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped webp sequence",
     "flags": "D",
     "name": "webp_pipe",
     "options": [
@@ -17574,7 +17719,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "WebVTT subtitle",
     "flags": "D",
     "name": "webvtt",
     "options": [
@@ -17623,14 +17768,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Westwood Studios audio",
     "flags": "D",
     "name": "wsaud",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Wideband Single-bit Data (WSD)",
     "flags": "D",
     "name": "wsd",
     "options": [
@@ -17650,42 +17795,202 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Westwood Studios VQA",
     "flags": "D",
     "name": "wsvqa",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Windows Television (WTV)",
     "flags": "D",
     "name": "wtv",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "WavPack",
     "flags": "D",
     "name": "wv",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Psion 3 audio",
     "flags": "D",
     "name": "wve",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "X11 screen capture, using XCB",
+    "flags": "D",
+    "name": "x11grab",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": ".D.........",
+        "help": "Window to capture. (from 0 to UINT32_MAX) (default 0)",
+        "max": "UINT32_MAX",
+        "min": "0",
+        "name": "window_id",
+        "section": "xcbgrab indev AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": ".D.........",
+        "help": "Initial x coordinate. (from 0 to INT_MAX) (default 0)",
+        "max": "INT_MAX",
+        "min": "0",
+        "name": "x",
+        "section": "xcbgrab indev AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": ".D.........",
+        "help": "Initial y coordinate. (from 0 to INT_MAX) (default 0)",
+        "max": "INT_MAX",
+        "min": "0",
+        "name": "y",
+        "section": "xcbgrab indev AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": ".D.........",
+        "help": "Initial x coordinate. (from 0 to INT_MAX) (default 0)",
+        "max": "INT_MAX",
+        "min": "0",
+        "name": "grab_x",
+        "section": "xcbgrab indev AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": ".D.........",
+        "help": "Initial y coordinate. (from 0 to INT_MAX) (default 0)",
+        "max": "INT_MAX",
+        "min": "0",
+        "name": "grab_y",
+        "section": "xcbgrab indev AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": null,
+        "flags": ".D.........",
+        "help": "A string describing frame size, such as 640x480 or hd720.",
+        "max": null,
+        "min": null,
+        "name": "video_size",
+        "section": "xcbgrab indev AVOptions:",
+        "type": "image_size"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "ntsc",
+        "flags": ".D.........",
+        "help": "(default \"ntsc\")",
+        "max": null,
+        "min": null,
+        "name": "framerate",
+        "section": "xcbgrab indev AVOptions:",
+        "type": "string"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "1",
+        "flags": ".D.........",
+        "help": "Draw the mouse pointer. (from 0 to 1) (default 1)",
+        "max": "1",
+        "min": "0",
+        "name": "draw_mouse",
+        "section": "xcbgrab indev AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [
+          {
+            "__class__": "FFMpegOptionChoice",
+            "flags": ".D.........",
+            "help": "Keep the mouse pointer at the center of grabbing region when following.",
+            "name": "centered",
+            "value": "-1"
+          }
+        ],
+        "default": "0",
+        "flags": ".D.........",
+        "help": "Move the grabbing region when the mouse pointer reaches within specified amount of pixels to the edge of region. (from -1 to INT_MAX) (default 0)",
+        "max": "INT_MAX",
+        "min": "-1",
+        "name": "follow_mouse",
+        "section": "xcbgrab indev AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": ".D.........",
+        "help": "Show the grabbing region. (from 0 to 1) (default 0)",
+        "max": "1",
+        "min": "0",
+        "name": "show_region",
+        "section": "xcbgrab indev AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "3",
+        "flags": ".D.........",
+        "help": "Set the region border thickness. (from 1 to 128) (default 3)",
+        "max": "128",
+        "min": "1",
+        "name": "region_border",
+        "section": "xcbgrab indev AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": ".D.........",
+        "help": "Select the grabbing region graphically using the pointer. (default false)",
+        "max": null,
+        "min": null,
+        "name": "select_region",
+        "section": "xcbgrab indev AVOptions:",
+        "type": "boolean"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegDemuxer",
+    "description": "Maxis XA",
     "flags": "D",
     "name": "xa",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "eXtended BINary text (XBIN)",
     "flags": "D",
     "name": "xbin",
     "options": [
@@ -17729,7 +18034,7 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped xbm sequence",
     "flags": "D",
     "name": "xbm_pipe",
     "options": [
@@ -17797,14 +18102,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Microsoft XMV",
     "flags": "D",
     "name": "xmv",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped xpm sequence",
     "flags": "D",
     "name": "xpm_pipe",
     "options": [
@@ -17872,14 +18177,14 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Sony PS3 XVAG",
     "flags": "D",
     "name": "xvag",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "piped xwd sequence",
     "flags": "D",
     "name": "xwd_pipe",
     "options": [
@@ -17947,21 +18252,21 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Microsoft xWMA",
     "flags": "D",
     "name": "xwma",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "Psygnosis YOP",
     "flags": "D",
     "name": "yop",
     "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "",
+    "description": "YUV4MPEG pipe",
     "flags": "D",
     "name": "yuv4mpegpipe",
     "options": []

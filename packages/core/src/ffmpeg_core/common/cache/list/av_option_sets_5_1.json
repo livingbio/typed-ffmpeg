@@ -5727,6 +5727,79 @@
   },
   {
     "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Hap 1 (DXT1 textures)",
+        "name": "hap",
+        "value": "11"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Hap Alpha (DXT5 textures)",
+        "name": "hap_alpha",
+        "value": "14"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Hap Q (DXT5-YCoCg textures)",
+        "name": "hap_q",
+        "value": "15"
+      }
+    ],
+    "default": "hap",
+    "flags": "E..V.......",
+    "help": "(from 11 to 15) (default hap)",
+    "max": "15",
+    "min": "11",
+    "name": "format",
+    "section": "Hap encoder AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "1",
+    "flags": "E..V.......",
+    "help": "chunk count (from 1 to 64) (default 1)",
+    "max": "64",
+    "min": "1",
+    "name": "chunks",
+    "section": "Hap encoder AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "None",
+        "name": "none",
+        "value": "160"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Snappy",
+        "name": "snappy",
+        "value": "176"
+      }
+    ],
+    "default": "snappy",
+    "flags": "E..V.......",
+    "help": "second-stage compressor (from 160 to 176) (default snappy)",
+    "max": "176",
+    "min": "160",
+    "name": "compressor",
+    "section": "Hap encoder AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
     "choices": [],
     "default": "false",
     "flags": "E..V.......",
@@ -10209,6 +10282,306 @@
   },
   {
     "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "VBR if global quality is given; CBR otherwise",
+        "name": "auto",
+        "value": "-1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "constant bitrate",
+        "name": "cbr",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "long-term average bitrate",
+        "name": "abr",
+        "value": "1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "constrained variable bitrate",
+        "name": "cvbr",
+        "value": "2"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "variable bitrate",
+        "name": "vbr",
+        "value": "3"
+      }
+    ],
+    "default": "auto",
+    "flags": "E...A......",
+    "help": "ratecontrol mode (from -1 to 3) (default auto)",
+    "max": "3",
+    "min": "-1",
+    "name": "aac_at_mode",
+    "section": "at_aac_enc AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "E...A......",
+    "help": "quality vs speed control (from 0 to 2) (default 0)",
+    "max": "2",
+    "min": "0",
+    "name": "aac_at_quality",
+    "section": "at_aac_enc AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "VBR if global quality is given; CBR otherwise",
+        "name": "auto",
+        "value": "-1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "constant bitrate",
+        "name": "cbr",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "long-term average bitrate",
+        "name": "abr",
+        "value": "1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "constrained variable bitrate",
+        "name": "cvbr",
+        "value": "2"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "variable bitrate",
+        "name": "vbr",
+        "value": "3"
+      }
+    ],
+    "default": "auto",
+    "flags": "E...A......",
+    "help": "ratecontrol mode (from -1 to 3) (default auto)",
+    "max": "3",
+    "min": "-1",
+    "name": "aac_at_mode",
+    "section": "at_alac_enc AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "E...A......",
+    "help": "quality vs speed control (from 0 to 2) (default 0)",
+    "max": "2",
+    "min": "0",
+    "name": "aac_at_quality",
+    "section": "at_alac_enc AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "VBR if global quality is given; CBR otherwise",
+        "name": "auto",
+        "value": "-1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "constant bitrate",
+        "name": "cbr",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "long-term average bitrate",
+        "name": "abr",
+        "value": "1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "constrained variable bitrate",
+        "name": "cvbr",
+        "value": "2"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "variable bitrate",
+        "name": "vbr",
+        "value": "3"
+      }
+    ],
+    "default": "auto",
+    "flags": "E...A......",
+    "help": "ratecontrol mode (from -1 to 3) (default auto)",
+    "max": "3",
+    "min": "-1",
+    "name": "aac_at_mode",
+    "section": "at_ilbc_enc AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "E...A......",
+    "help": "quality vs speed control (from 0 to 2) (default 0)",
+    "max": "2",
+    "min": "0",
+    "name": "aac_at_quality",
+    "section": "at_ilbc_enc AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "VBR if global quality is given; CBR otherwise",
+        "name": "auto",
+        "value": "-1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "constant bitrate",
+        "name": "cbr",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "long-term average bitrate",
+        "name": "abr",
+        "value": "1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "constrained variable bitrate",
+        "name": "cvbr",
+        "value": "2"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "variable bitrate",
+        "name": "vbr",
+        "value": "3"
+      }
+    ],
+    "default": "auto",
+    "flags": "E...A......",
+    "help": "ratecontrol mode (from -1 to 3) (default auto)",
+    "max": "3",
+    "min": "-1",
+    "name": "aac_at_mode",
+    "section": "at_pcm_alaw_enc AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "E...A......",
+    "help": "quality vs speed control (from 0 to 2) (default 0)",
+    "max": "2",
+    "min": "0",
+    "name": "aac_at_quality",
+    "section": "at_pcm_alaw_enc AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "VBR if global quality is given; CBR otherwise",
+        "name": "auto",
+        "value": "-1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "constant bitrate",
+        "name": "cbr",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "long-term average bitrate",
+        "name": "abr",
+        "value": "1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "constrained variable bitrate",
+        "name": "cvbr",
+        "value": "2"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E...A......",
+        "help": "variable bitrate",
+        "name": "vbr",
+        "value": "3"
+      }
+    ],
+    "default": "auto",
+    "flags": "E...A......",
+    "help": "ratecontrol mode (from -1 to 3) (default auto)",
+    "max": "3",
+    "min": "-1",
+    "name": "aac_at_mode",
+    "section": "at_pcm_mulaw_enc AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "E...A......",
+    "help": "quality vs speed control (from 0 to 2) (default 0)",
+    "max": "2",
+    "min": "0",
+    "name": "aac_at_quality",
+    "section": "at_pcm_mulaw_enc AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
     "choices": [],
     "default": "1",
     "flags": "E..V.......",
@@ -10968,107 +11341,6 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "1",
-    "flags": "E...A......",
-    "help": "Afterburner (improved quality) (from 0 to 1) (default 1)",
-    "max": "1",
-    "min": "0",
-    "name": "afterburner",
-    "section": "libfdk_aac AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "0",
-    "flags": "E...A......",
-    "help": "Enable SBR for ELD (for SBR in other configurations, use the -profile parameter) (from 0 to 1) (default 0)",
-    "max": "1",
-    "min": "0",
-    "name": "eld_sbr",
-    "section": "libfdk_aac AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": "E...A......",
-        "help": "Choose signaling implicitly (explicit hierarchical by default, implicit if global header is disabled)",
-        "name": "default",
-        "value": "-1"
-      },
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": "E...A......",
-        "help": "Implicit backwards compatible signaling",
-        "name": "implicit",
-        "value": "0"
-      },
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": "E...A......",
-        "help": "Explicit SBR, implicit PS signaling",
-        "name": "explicit_sbr",
-        "value": "1"
-      },
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": "E...A......",
-        "help": "Explicit hierarchical signaling",
-        "name": "explicit_hierarchical",
-        "value": "2"
-      }
-    ],
-    "default": "default",
-    "flags": "E...A......",
-    "help": "SBR/PS signaling style (from -1 to 2) (default default)",
-    "max": "2",
-    "min": "-1",
-    "name": "signaling",
-    "section": "libfdk_aac AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "0",
-    "flags": "E...A......",
-    "help": "Output LATM/LOAS encapsulated data (from 0 to 1) (default 0)",
-    "max": "1",
-    "min": "0",
-    "name": "latm",
-    "section": "libfdk_aac AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "0",
-    "flags": "E...A......",
-    "help": "StreamMuxConfig and PCE repetition period (in frames) (from 0 to 65535) (default 0)",
-    "max": "65535",
-    "min": "0",
-    "name": "header_period",
-    "section": "libfdk_aac AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "0",
-    "flags": "E...A......",
-    "help": "VBR mode (1-5) (from 0 to 5) (default 0)",
-    "max": "5",
-    "min": "0",
-    "name": "vbr",
-    "section": "libfdk_aac AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
     "default": "true",
     "flags": "E...A......",
     "help": "use bit reservoir (default true)",
@@ -11253,6 +11525,288 @@
     "name": "apply_phase_inv",
     "section": "libopus AVOptions:",
     "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-1",
+    "flags": "E..V.......",
+    "help": "use constant quantizer mode (from -1 to 255) (default -1)",
+    "max": "255",
+    "min": "-1",
+    "name": "qp",
+    "section": "librav1e AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-1",
+    "flags": "E..V.......",
+    "help": "what speed preset to use (from -1 to 10) (default -1)",
+    "max": "10",
+    "min": "-1",
+    "name": "speed",
+    "section": "librav1e AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "E..V.......",
+    "help": "number of tiles encode with (from -1 to I64_MAX) (default 0)",
+    "max": "I64_MAX",
+    "min": "-1",
+    "name": "tiles",
+    "section": "librav1e AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "E..V.......",
+    "help": "number of tiles rows to encode with (from -1 to I64_MAX) (default 0)",
+    "max": "I64_MAX",
+    "min": "-1",
+    "name": "tile-rows",
+    "section": "librav1e AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "E..V.......",
+    "help": "number of tiles columns to encode with (from -1 to I64_MAX) (default 0)",
+    "max": "I64_MAX",
+    "min": "-1",
+    "name": "tile-columns",
+    "section": "librav1e AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "E..V.......",
+    "help": "set the rav1e configuration using a :-separated list of key=value parameters",
+    "max": null,
+    "min": null,
+    "name": "rav1e-params",
+    "section": "librav1e AVOptions:",
+    "type": "dictionary"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "E...A......",
+    "help": "Use average bit rate (from 0 to 1) (default 0)",
+    "max": "1",
+    "min": "0",
+    "name": "abr",
+    "section": "libspeex AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "8",
+    "flags": "E...A......",
+    "help": "Set quality value (0 to 10) for CBR (from 0 to 10) (default 8)",
+    "max": "10",
+    "min": "0",
+    "name": "cbr_quality",
+    "section": "libspeex AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "1",
+    "flags": "E...A......",
+    "help": "Number of frames to encode in each packet (from 1 to 8) (default 1)",
+    "max": "8",
+    "min": "1",
+    "name": "frames_per_packet",
+    "section": "libspeex AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "E...A......",
+    "help": "Voice Activity Detection (from 0 to 1) (default 0)",
+    "max": "1",
+    "min": "0",
+    "name": "vad",
+    "section": "libspeex AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "E...A......",
+    "help": "Discontinuous Transmission (from 0 to 1) (default 0)",
+    "max": "1",
+    "min": "0",
+    "name": "dtx",
+    "section": "libspeex AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "",
+        "name": "3level",
+        "value": "3"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "",
+        "name": "4level",
+        "value": "4"
+      }
+    ],
+    "default": "4level",
+    "flags": "E..V......P",
+    "help": "Hierarchical prediction levels setting (Deprecated, use svtav1-params) (from 3 to 4) (default 4level)",
+    "max": "4",
+    "min": "3",
+    "name": "hielevel",
+    "section": "libsvtav1 AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-1",
+    "flags": "E..V......P",
+    "help": "Look ahead distance [0, 120] (Deprecated, use svtav1-params) (from -1 to 120) (default -1)",
+    "max": "120",
+    "min": "-1",
+    "name": "la_depth",
+    "section": "libsvtav1 AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "",
+        "name": "main",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "",
+        "name": "high",
+        "value": "1"
+      }
+    ],
+    "default": "main",
+    "flags": "E..V......P",
+    "help": "Set operating point tier (Deprecated, use svtav1-params) (from 0 to 1) (default main)",
+    "max": "1",
+    "min": "0",
+    "name": "tier",
+    "section": "libsvtav1 AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-1",
+    "flags": "E..V.......",
+    "help": "Encoding preset (from -1 to 13) (default -1)",
+    "max": "13",
+    "min": "-1",
+    "name": "preset",
+    "section": "libsvtav1 AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "E..V.......",
+    "help": "Constant Rate Factor value (from 0 to 63) (default 0)",
+    "max": "63",
+    "min": "0",
+    "name": "crf",
+    "section": "libsvtav1 AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "E..V.......",
+    "help": "Initial Quantizer level value (from 0 to 63) (default 0)",
+    "max": "63",
+    "min": "0",
+    "name": "qp",
+    "section": "libsvtav1 AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "E..V......P",
+    "help": "Scene change detection (Deprecated, use svtav1-params) (default false)",
+    "max": null,
+    "min": null,
+    "name": "sc_detection",
+    "section": "libsvtav1 AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "E..V......P",
+    "help": "Log2 of number of tile columns to use (Deprecated, use svtav1-params) (from 0 to 4) (default 0)",
+    "max": "4",
+    "min": "0",
+    "name": "tile_columns",
+    "section": "libsvtav1 AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "E..V......P",
+    "help": "Log2 of number of tile rows to use (Deprecated, use svtav1-params) (from 0 to 6) (default 0)",
+    "max": "6",
+    "min": "0",
+    "name": "tile_rows",
+    "section": "libsvtav1 AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "E..V.......",
+    "help": "Set the SVT-AV1 configuration using a :-separated list of key=value parameters",
+    "max": null,
+    "min": null,
+    "name": "svtav1-params",
+    "section": "libsvtav1 AVOptions:",
+    "type": "dictionary"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -14028,135 +14582,497 @@
   },
   {
     "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "16",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Baseline Profile",
+        "name": "baseline",
+        "value": "baseline"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Main Profile",
+        "name": "main",
+        "value": "main"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "High Profile",
+        "name": "high",
+        "value": "high"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Extend Profile",
+        "name": "extended",
+        "value": "extended"
+      }
+    ],
+    "default": "0",
     "flags": "E..V.......",
-    "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-    "max": "INT_MAX",
-    "min": "6",
-    "name": "num_output_buffers",
-    "section": "h263_v4l2m2m_encoder AVOptions:",
+    "help": "Profile (from 0 to 5) (default 0)",
+    "max": "5",
+    "min": "0",
+    "name": "profile",
+    "section": "h264_videotoolbox AVOptions:",
+    "type": "int64"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Level 1.3, only available with Baseline Profile",
+        "name": "1.3",
+        "value": "13"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Level 3.0",
+        "name": "3.0",
+        "value": "30"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Level 3.1",
+        "name": "3.1",
+        "value": "31"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Level 3.2",
+        "name": "3.2",
+        "value": "32"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Level 4.0",
+        "name": "4.0",
+        "value": "40"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Level 4.1",
+        "name": "4.1",
+        "value": "41"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Level 4.2",
+        "name": "4.2",
+        "value": "42"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Level 5.0",
+        "name": "5.0",
+        "value": "50"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Level 5.1",
+        "name": "5.1",
+        "value": "51"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Level 5.2",
+        "name": "5.2",
+        "value": "52"
+      }
+    ],
+    "default": "0",
+    "flags": "E..V.......",
+    "help": "Level (from 0 to 52) (default 0)",
+    "max": "52",
+    "min": "0",
+    "name": "level",
+    "section": "h264_videotoolbox AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "CAVLC entropy coding",
+        "name": "cavlc",
+        "value": "1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "CAVLC entropy coding",
+        "name": "vlc",
+        "value": "1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "CABAC entropy coding",
+        "name": "cabac",
+        "value": "2"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "CABAC entropy coding",
+        "name": "ac",
+        "value": "2"
+      }
+    ],
+    "default": "0",
+    "flags": "E..V.......",
+    "help": "Entropy coding (from 0 to 2) (default 0)",
+    "max": "2",
+    "min": "0",
+    "name": "coder",
+    "section": "h264_videotoolbox AVOptions:",
     "type": "int"
   },
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "4",
+    "default": "true",
     "flags": "E..V.......",
-    "help": "Number of buffers in the capture context (from 4 to INT_MAX) (default 4)",
-    "max": "INT_MAX",
-    "min": "4",
-    "name": "num_capture_buffers",
-    "section": "h263_v4l2m2m_encoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "16",
-    "flags": "E..V.......",
-    "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-    "max": "INT_MAX",
-    "min": "6",
-    "name": "num_output_buffers",
-    "section": "h264_v4l2m2m_encoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "4",
-    "flags": "E..V.......",
-    "help": "Number of buffers in the capture context (from 4 to INT_MAX) (default 4)",
-    "max": "INT_MAX",
-    "min": "4",
-    "name": "num_capture_buffers",
-    "section": "h264_v4l2m2m_encoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "16",
-    "flags": "E..V.......",
-    "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-    "max": "INT_MAX",
-    "min": "6",
-    "name": "num_output_buffers",
-    "section": "hevc_v4l2m2m_encoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "4",
-    "flags": "E..V.......",
-    "help": "Number of buffers in the capture context (from 4 to INT_MAX) (default 4)",
-    "max": "INT_MAX",
-    "min": "4",
-    "name": "num_capture_buffers",
-    "section": "hevc_v4l2m2m_encoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": "E..V.......",
-    "help": "Set kvazaar parameters as a comma-separated list of key=value pairs.",
+    "help": "Use A53 Closed Captions (if available) (default true)",
     "max": null,
     "min": null,
-    "name": "kvazaar-params",
-    "section": "libkvazaar AVOptions:",
-    "type": "string"
+    "name": "a53cc",
+    "section": "h264_videotoolbox AVOptions:",
+    "type": "boolean"
   },
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "16",
+    "default": "false",
     "flags": "E..V.......",
-    "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-    "max": "INT_MAX",
-    "min": "6",
-    "name": "num_output_buffers",
-    "section": "mpeg4_v4l2m2m_encoder AVOptions:",
-    "type": "int"
+    "help": "Allow software encoding (default false)",
+    "max": null,
+    "min": null,
+    "name": "allow_sw",
+    "section": "h264_videotoolbox AVOptions:",
+    "type": "boolean"
   },
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "4",
+    "default": "false",
     "flags": "E..V.......",
-    "help": "Number of buffers in the capture context (from 4 to INT_MAX) (default 4)",
-    "max": "INT_MAX",
-    "min": "4",
-    "name": "num_capture_buffers",
-    "section": "mpeg4_v4l2m2m_encoder AVOptions:",
-    "type": "int"
+    "help": "Require software encoding (default false)",
+    "max": null,
+    "min": null,
+    "name": "require_sw",
+    "section": "h264_videotoolbox AVOptions:",
+    "type": "boolean"
   },
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "16",
+    "default": "false",
     "flags": "E..V.......",
-    "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-    "max": "INT_MAX",
-    "min": "6",
-    "name": "num_output_buffers",
-    "section": "vp8_v4l2m2m_encoder AVOptions:",
-    "type": "int"
+    "help": "Hint that encoding should happen in real-time if not faster (e.g. capturing from camera). (default false)",
+    "max": null,
+    "min": null,
+    "name": "realtime",
+    "section": "h264_videotoolbox AVOptions:",
+    "type": "boolean"
   },
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "4",
+    "default": "false",
     "flags": "E..V.......",
-    "help": "Number of buffers in the capture context (from 4 to INT_MAX) (default 4)",
-    "max": "INT_MAX",
-    "min": "4",
-    "name": "num_capture_buffers",
-    "section": "vp8_v4l2m2m_encoder AVOptions:",
-    "type": "int"
+    "help": "Other frames will come before the frames in this session. This helps smooth concatenation issues. (default false)",
+    "max": null,
+    "min": null,
+    "name": "frames_before",
+    "section": "h264_videotoolbox AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "E..V.......",
+    "help": "Other frames will come after the frames in this session. This helps smooth concatenation issues. (default false)",
+    "max": null,
+    "min": null,
+    "name": "frames_after",
+    "section": "h264_videotoolbox AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "auto",
+    "flags": "E..V.......",
+    "help": "prioritize encoding speed (default auto)",
+    "max": null,
+    "min": null,
+    "name": "prio_speed",
+    "section": "h264_videotoolbox AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Main Profile",
+        "name": "main",
+        "value": "main"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Main10 Profile",
+        "name": "main10",
+        "value": "main10"
+      }
+    ],
+    "default": "0",
+    "flags": "E..V.......",
+    "help": "Profile (from 0 to 3) (default 0)",
+    "max": "3",
+    "min": "0",
+    "name": "profile",
+    "section": "hevc_videotoolbox AVOptions:",
+    "type": "int64"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "E..V.......",
+    "help": "Compression quality for the alpha channel (from 0 to 1) (default 0)",
+    "max": "1",
+    "min": "0",
+    "name": "alpha_quality",
+    "section": "hevc_videotoolbox AVOptions:",
+    "type": "double"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "E..V.......",
+    "help": "Allow software encoding (default false)",
+    "max": null,
+    "min": null,
+    "name": "allow_sw",
+    "section": "hevc_videotoolbox AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "E..V.......",
+    "help": "Require software encoding (default false)",
+    "max": null,
+    "min": null,
+    "name": "require_sw",
+    "section": "hevc_videotoolbox AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "E..V.......",
+    "help": "Hint that encoding should happen in real-time if not faster (e.g. capturing from camera). (default false)",
+    "max": null,
+    "min": null,
+    "name": "realtime",
+    "section": "hevc_videotoolbox AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "E..V.......",
+    "help": "Other frames will come before the frames in this session. This helps smooth concatenation issues. (default false)",
+    "max": null,
+    "min": null,
+    "name": "frames_before",
+    "section": "hevc_videotoolbox AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "E..V.......",
+    "help": "Other frames will come after the frames in this session. This helps smooth concatenation issues. (default false)",
+    "max": null,
+    "min": null,
+    "name": "frames_after",
+    "section": "hevc_videotoolbox AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "auto",
+    "flags": "E..V.......",
+    "help": "prioritize encoding speed (default auto)",
+    "max": null,
+    "min": null,
+    "name": "prio_speed",
+    "section": "hevc_videotoolbox AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "Automatically determine based on input format",
+        "name": "auto",
+        "value": "auto"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "ProRes 422 Proxy",
+        "name": "proxy",
+        "value": "proxy"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "ProRes 422 LT",
+        "name": "lt",
+        "value": "lt"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "ProRes 422",
+        "name": "standard",
+        "value": "standard"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "ProRes 422 HQ",
+        "name": "hq",
+        "value": "hq"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "ProRes 4444",
+        "name": "4444",
+        "value": "4444"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "E..V.......",
+        "help": "ProRes 4444 XQ",
+        "name": "xq",
+        "value": "xq"
+      }
+    ],
+    "default": "auto",
+    "flags": "E..V.......",
+    "help": "Profile (from -99 to 5) (default auto)",
+    "max": "5",
+    "min": "-99",
+    "name": "profile",
+    "section": "prores_videotoolbox AVOptions:",
+    "type": "int64"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "E..V.......",
+    "help": "Allow software encoding (default false)",
+    "max": null,
+    "min": null,
+    "name": "allow_sw",
+    "section": "prores_videotoolbox AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "E..V.......",
+    "help": "Require software encoding (default false)",
+    "max": null,
+    "min": null,
+    "name": "require_sw",
+    "section": "prores_videotoolbox AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "E..V.......",
+    "help": "Hint that encoding should happen in real-time if not faster (e.g. capturing from camera). (default false)",
+    "max": null,
+    "min": null,
+    "name": "realtime",
+    "section": "prores_videotoolbox AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "E..V.......",
+    "help": "Other frames will come before the frames in this session. This helps smooth concatenation issues. (default false)",
+    "max": null,
+    "min": null,
+    "name": "frames_before",
+    "section": "prores_videotoolbox AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "E..V.......",
+    "help": "Other frames will come after the frames in this session. This helps smooth concatenation issues. (default false)",
+    "max": null,
+    "min": null,
+    "name": "frames_after",
+    "section": "prores_videotoolbox AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "auto",
+    "flags": "E..V.......",
+    "help": "prioritize encoding speed (default auto)",
+    "max": null,
+    "min": null,
+    "name": "prio_speed",
+    "section": "prores_videotoolbox AVOptions:",
+    "type": "boolean"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -14370,30 +15286,6 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "16",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-    "max": "INT_MAX",
-    "min": "6",
-    "name": "num_output_buffers",
-    "section": "h263_v4l2m2m_decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "20",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-    "max": "INT_MAX",
-    "min": "20",
-    "name": "num_capture_buffers",
-    "section": "h263_v4l2m2m_decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
     "default": "false",
     "flags": ".D.V..X....",
     "help": "is avc (default false)",
@@ -14442,30 +15334,6 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "16",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-    "max": "INT_MAX",
-    "min": "6",
-    "name": "num_output_buffers",
-    "section": "h264_v4l2m2m_decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "20",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-    "max": "INT_MAX",
-    "min": "20",
-    "name": "num_capture_buffers",
-    "section": "h264_v4l2m2m_decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
     "default": "false",
     "flags": ".D.V.......",
     "help": "Apply default display window from VUI (default false)",
@@ -14490,30 +15358,6 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "16",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-    "max": "INT_MAX",
-    "min": "6",
-    "name": "num_output_buffers",
-    "section": "hevc_v4l2m2m_decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "20",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-    "max": "INT_MAX",
-    "min": "20",
-    "name": "num_capture_buffers",
-    "section": "hevc_v4l2m2m_decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
     "default": "0",
     "flags": ".D.V.......",
     "help": "Lower the decoding resolution by a power of two (from 0 to 33) (default 0)",
@@ -14534,78 +15378,6 @@
     "name": "extern_huff",
     "section": "MJPEG decoder AVOptions:",
     "type": "boolean"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "16",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-    "max": "INT_MAX",
-    "min": "6",
-    "name": "num_output_buffers",
-    "section": "mpeg4_v4l2m2m_decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "20",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-    "max": "INT_MAX",
-    "min": "20",
-    "name": "num_capture_buffers",
-    "section": "mpeg4_v4l2m2m_decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "16",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-    "max": "INT_MAX",
-    "min": "6",
-    "name": "num_output_buffers",
-    "section": "mpeg1_v4l2m2m_decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "20",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-    "max": "INT_MAX",
-    "min": "20",
-    "name": "num_capture_buffers",
-    "section": "mpeg1_v4l2m2m_decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "16",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-    "max": "INT_MAX",
-    "min": "6",
-    "name": "num_output_buffers",
-    "section": "mpeg2_v4l2m2m_decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "20",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-    "max": "INT_MAX",
-    "min": "20",
-    "name": "num_capture_buffers",
-    "section": "mpeg2_v4l2m2m_decoder AVOptions:",
-    "type": "int"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -14730,78 +15502,6 @@
     "min": "-1",
     "name": "custom_stride",
     "section": "V210 Decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "16",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-    "max": "INT_MAX",
-    "min": "6",
-    "name": "num_output_buffers",
-    "section": "vc1_v4l2m2m_decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "20",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-    "max": "INT_MAX",
-    "min": "20",
-    "name": "num_capture_buffers",
-    "section": "vc1_v4l2m2m_decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "16",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-    "max": "INT_MAX",
-    "min": "6",
-    "name": "num_output_buffers",
-    "section": "vp8_v4l2m2m_decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "20",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-    "max": "INT_MAX",
-    "min": "20",
-    "name": "num_capture_buffers",
-    "section": "vp8_v4l2m2m_decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "16",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the output context (from 6 to INT_MAX) (default 16)",
-    "max": "INT_MAX",
-    "min": "6",
-    "name": "num_output_buffers",
-    "section": "vp9_v4l2m2m_decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "20",
-    "flags": ".D.V.......",
-    "help": "Number of buffers in the capture context (from 20 to INT_MAX) (default 20)",
-    "max": "INT_MAX",
-    "min": "20",
-    "name": "num_capture_buffers",
-    "section": "vp9_v4l2m2m_decoder AVOptions:",
     "type": "int"
   },
   {
@@ -15390,109 +16090,63 @@
   },
   {
     "__class__": "FFMpegAVOption",
-    "choices": [
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D..A......",
-        "help": "Spectral muting",
-        "name": "spectral",
-        "value": "0"
-      },
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D..A......",
-        "help": "Noise Substitution",
-        "name": "noise",
-        "value": "1"
-      },
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D..A......",
-        "help": "Energy Interpolation",
-        "name": "energy",
-        "value": "2"
-      }
-    ],
-    "default": "noise",
-    "flags": ".D..A......",
-    "help": "Error concealment method (from 0 to 2) (default noise)",
-    "max": "2",
+    "choices": [],
+    "default": "0",
+    "flags": ".D.V......P",
+    "help": "Tile threads (from 0 to 256) (default 0)",
+    "max": "256",
     "min": "0",
-    "name": "conceal",
-    "section": "libfdk-aac decoder AVOptions:",
+    "name": "tilethreads",
+    "section": "libdav1d decoder AVOptions:",
     "type": "int"
   },
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "-1",
-    "flags": ".D..A......",
-    "help": "Dynamic Range Control: boost, where [0] is none and [127] is max boost (from -1 to 127) (default -1)",
-    "max": "127",
-    "min": "-1",
-    "name": "drc_boost",
-    "section": "libfdk-aac decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "-1",
-    "flags": ".D..A......",
-    "help": "Dynamic Range Control: attenuation factor, where [0] is none and [127] is max compression (from -1 to 127) (default -1)",
-    "max": "127",
-    "min": "-1",
-    "name": "drc_cut",
-    "section": "libfdk-aac decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "-1",
-    "flags": ".D..A......",
-    "help": "Dynamic Range Control: reference level, quantized to 0.25dB steps where [0] is 0dB and [127] is -31.75dB, -1 for auto, and -2 for disabled (from -2 to 127) (default -1)",
-    "max": "127",
-    "min": "-2",
-    "name": "drc_level",
-    "section": "libfdk-aac decoder AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "-1",
-    "flags": ".D..A......",
-    "help": "Dynamic Range Control: heavy compression, where [1] is on (RF mode) and [0] is off (from -1 to 1) (default -1)",
-    "max": "1",
-    "min": "-1",
-    "name": "drc_heavy",
-    "section": "libfdk-aac decoder AVOptions:",
+    "default": "0",
+    "flags": ".D.V......P",
+    "help": "Frame threads (from 0 to 256) (default 0)",
+    "max": "256",
+    "min": "0",
+    "name": "framethreads",
+    "section": "libdav1d decoder AVOptions:",
     "type": "int"
   },
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
     "default": "auto",
-    "flags": ".D..A......",
-    "help": "Signal level limiting (default auto)",
+    "flags": ".D.V......P",
+    "help": "Apply Film Grain (default auto)",
     "max": null,
     "min": null,
-    "name": "level_limit",
-    "section": "libfdk-aac decoder AVOptions:",
+    "name": "filmgrain",
+    "section": "libdav1d decoder AVOptions:",
     "type": "boolean"
   },
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": null,
-    "flags": ".D..A......",
-    "help": "Request a specific channel layout from the decoder",
+    "default": "-1",
+    "flags": ".D.V.......",
+    "help": "Select an operating point of the scalable bitstream (from -1 to 31) (default -1)",
+    "max": "31",
+    "min": "-1",
+    "name": "oppoint",
+    "section": "libdav1d decoder AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": ".D.V.......",
+    "help": "Output all spatial layers (default false)",
     "max": null,
     "min": null,
-    "name": "downmix",
-    "section": "libfdk-aac decoder AVOptions:",
-    "type": "channel_layout"
+    "name": "alllayers",
+    "section": "libdav1d decoder AVOptions:",
+    "type": "boolean"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -16464,18 +17118,6 @@
     "name": "encryption_iv",
     "section": "crypto AVOptions:",
     "type": "binary"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "0",
-    "flags": ".D.........",
-    "help": "Use a HTTP tunneling connection (RTMPTE). (from 0 to 1) (default 0)",
-    "max": "1",
-    "min": "0",
-    "name": "ffrtmpcrypt_tunneling",
-    "section": "ffrtmpcrypt AVOptions:",
-    "type": "int"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -17666,232 +18308,6 @@
     "max": null,
     "min": null,
     "name": "rtmp_app",
-    "section": "rtmpe AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "3000",
-    "flags": "ED.........",
-    "help": "Set buffer time in milliseconds. The default is 3000. (from 0 to INT_MAX) (default 3000)",
-    "max": "INT_MAX",
-    "min": "0",
-    "name": "rtmp_buffer",
-    "section": "rtmpe AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": "ED.........",
-    "help": "Append arbitrary AMF data to the Connect message",
-    "max": null,
-    "min": null,
-    "name": "rtmp_conn",
-    "section": "rtmpe AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": "ED.........",
-    "help": "Version of the Flash plugin used to run the SWF player.",
-    "max": null,
-    "min": null,
-    "name": "rtmp_flashver",
-    "section": "rtmpe AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "10",
-    "flags": "E..........",
-    "help": "Number of packets flushed in the same request (RTMPT only). (from 0 to INT_MAX) (default 10)",
-    "max": "INT_MAX",
-    "min": "0",
-    "name": "rtmp_flush_interval",
-    "section": "rtmpe AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D.........",
-        "help": "both",
-        "name": "any",
-        "value": "-2"
-      },
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D.........",
-        "help": "live stream",
-        "name": "live",
-        "value": "-1"
-      },
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D.........",
-        "help": "recorded stream",
-        "name": "recorded",
-        "value": "0"
-      }
-    ],
-    "default": "any",
-    "flags": ".D.........",
-    "help": "Specify that the media is a live stream. (from INT_MIN to INT_MAX) (default any)",
-    "max": "INT_MAX",
-    "min": "INT_MIN",
-    "name": "rtmp_live",
-    "section": "rtmpe AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": ".D.........",
-    "help": "URL of the web page in which the media was embedded. By default no value will be sent.",
-    "max": null,
-    "min": null,
-    "name": "rtmp_pageurl",
-    "section": "rtmpe AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": "ED.........",
-    "help": "Stream identifier to play or to publish",
-    "max": null,
-    "min": null,
-    "name": "rtmp_playpath",
-    "section": "rtmpe AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": ".D.........",
-    "help": "Name of live stream to subscribe to. Defaults to rtmp_playpath.",
-    "max": null,
-    "min": null,
-    "name": "rtmp_subscribe",
-    "section": "rtmpe AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": ".D.........",
-    "help": "SHA256 hash of the decompressed SWF file (32 bytes).",
-    "max": null,
-    "min": null,
-    "name": "rtmp_swfhash",
-    "section": "rtmpe AVOptions:",
-    "type": "binary"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "0",
-    "flags": ".D.........",
-    "help": "Size of the decompressed SWF file, required for SWFVerification. (from 0 to INT_MAX) (default 0)",
-    "max": "INT_MAX",
-    "min": "0",
-    "name": "rtmp_swfsize",
-    "section": "rtmpe AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": "ED.........",
-    "help": "URL of the SWF player. By default no value will be sent",
-    "max": null,
-    "min": null,
-    "name": "rtmp_swfurl",
-    "section": "rtmpe AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": ".D.........",
-    "help": "URL to player swf file, compute hash/size automatically.",
-    "max": null,
-    "min": null,
-    "name": "rtmp_swfverify",
-    "section": "rtmpe AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": "ED.........",
-    "help": "URL of the target stream. Defaults to proto://host[:port]/app.",
-    "max": null,
-    "min": null,
-    "name": "rtmp_tcurl",
-    "section": "rtmpe AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "0",
-    "flags": ".D.........",
-    "help": "Listen for incoming rtmp connections (from INT_MIN to INT_MAX) (default 0)",
-    "max": "INT_MAX",
-    "min": "INT_MIN",
-    "name": "rtmp_listen",
-    "section": "rtmpe AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "0",
-    "flags": "ED.........",
-    "help": "Use TCP_NODELAY to disable Nagle's algorithm (from 0 to 1) (default 0)",
-    "max": "1",
-    "min": "0",
-    "name": "tcp_nodelay",
-    "section": "rtmpe AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "-1",
-    "flags": ".D.........",
-    "help": "Maximum timeout (in seconds) to wait for incoming connections. -1 is infinite. Implies -rtmp_listen 1 (from INT_MIN to INT_MAX) (default -1)",
-    "max": "INT_MAX",
-    "min": "INT_MIN",
-    "name": "timeout",
-    "section": "rtmpe AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": "ED.........",
-    "help": "Name of application to connect to on the RTMP server",
-    "max": null,
-    "min": null,
-    "name": "rtmp_app",
     "section": "rtmps AVOptions:",
     "type": "string"
   },
@@ -18333,232 +18749,6 @@
     "min": "INT_MIN",
     "name": "timeout",
     "section": "rtmpt AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": "ED.........",
-    "help": "Name of application to connect to on the RTMP server",
-    "max": null,
-    "min": null,
-    "name": "rtmp_app",
-    "section": "rtmpte AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "3000",
-    "flags": "ED.........",
-    "help": "Set buffer time in milliseconds. The default is 3000. (from 0 to INT_MAX) (default 3000)",
-    "max": "INT_MAX",
-    "min": "0",
-    "name": "rtmp_buffer",
-    "section": "rtmpte AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": "ED.........",
-    "help": "Append arbitrary AMF data to the Connect message",
-    "max": null,
-    "min": null,
-    "name": "rtmp_conn",
-    "section": "rtmpte AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": "ED.........",
-    "help": "Version of the Flash plugin used to run the SWF player.",
-    "max": null,
-    "min": null,
-    "name": "rtmp_flashver",
-    "section": "rtmpte AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "10",
-    "flags": "E..........",
-    "help": "Number of packets flushed in the same request (RTMPT only). (from 0 to INT_MAX) (default 10)",
-    "max": "INT_MAX",
-    "min": "0",
-    "name": "rtmp_flush_interval",
-    "section": "rtmpte AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D.........",
-        "help": "both",
-        "name": "any",
-        "value": "-2"
-      },
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D.........",
-        "help": "live stream",
-        "name": "live",
-        "value": "-1"
-      },
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D.........",
-        "help": "recorded stream",
-        "name": "recorded",
-        "value": "0"
-      }
-    ],
-    "default": "any",
-    "flags": ".D.........",
-    "help": "Specify that the media is a live stream. (from INT_MIN to INT_MAX) (default any)",
-    "max": "INT_MAX",
-    "min": "INT_MIN",
-    "name": "rtmp_live",
-    "section": "rtmpte AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": ".D.........",
-    "help": "URL of the web page in which the media was embedded. By default no value will be sent.",
-    "max": null,
-    "min": null,
-    "name": "rtmp_pageurl",
-    "section": "rtmpte AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": "ED.........",
-    "help": "Stream identifier to play or to publish",
-    "max": null,
-    "min": null,
-    "name": "rtmp_playpath",
-    "section": "rtmpte AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": ".D.........",
-    "help": "Name of live stream to subscribe to. Defaults to rtmp_playpath.",
-    "max": null,
-    "min": null,
-    "name": "rtmp_subscribe",
-    "section": "rtmpte AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": ".D.........",
-    "help": "SHA256 hash of the decompressed SWF file (32 bytes).",
-    "max": null,
-    "min": null,
-    "name": "rtmp_swfhash",
-    "section": "rtmpte AVOptions:",
-    "type": "binary"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "0",
-    "flags": ".D.........",
-    "help": "Size of the decompressed SWF file, required for SWFVerification. (from 0 to INT_MAX) (default 0)",
-    "max": "INT_MAX",
-    "min": "0",
-    "name": "rtmp_swfsize",
-    "section": "rtmpte AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": "ED.........",
-    "help": "URL of the SWF player. By default no value will be sent",
-    "max": null,
-    "min": null,
-    "name": "rtmp_swfurl",
-    "section": "rtmpte AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": ".D.........",
-    "help": "URL to player swf file, compute hash/size automatically.",
-    "max": null,
-    "min": null,
-    "name": "rtmp_swfverify",
-    "section": "rtmpte AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": "ED.........",
-    "help": "URL of the target stream. Defaults to proto://host[:port]/app.",
-    "max": null,
-    "min": null,
-    "name": "rtmp_tcurl",
-    "section": "rtmpte AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "0",
-    "flags": ".D.........",
-    "help": "Listen for incoming rtmp connections (from INT_MIN to INT_MAX) (default 0)",
-    "max": "INT_MAX",
-    "min": "INT_MIN",
-    "name": "rtmp_listen",
-    "section": "rtmpte AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "0",
-    "flags": "ED.........",
-    "help": "Use TCP_NODELAY to disable Nagle's algorithm (from 0 to 1) (default 0)",
-    "max": "1",
-    "min": "0",
-    "name": "tcp_nodelay",
-    "section": "rtmpte AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "-1",
-    "flags": ".D.........",
-    "help": "Maximum timeout (in seconds) to wait for incoming connections. -1 is infinite. Implies -rtmp_listen 1 (from INT_MIN to INT_MAX) (default -1)",
-    "max": "INT_MAX",
-    "min": "INT_MIN",
-    "name": "timeout",
-    "section": "rtmpte AVOptions:",
     "type": "int"
   },
   {
@@ -19611,6 +19801,124 @@
     "min": "INT_MIN",
     "name": "type",
     "section": "unix AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "ED.........",
+        "help": "",
+        "name": "simple",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "ED.........",
+        "help": "",
+        "name": "main",
+        "value": "1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "ED.........",
+        "help": "",
+        "name": "advanced",
+        "value": "2"
+      }
+    ],
+    "default": "main",
+    "flags": "ED.........",
+    "help": "set profile (from 0 to 2) (default main)",
+    "max": "2",
+    "min": "0",
+    "name": "rist_profile",
+    "section": "librist AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "ED.........",
+    "help": "set buffer_size in ms (from 0 to 30000) (default 0)",
+    "max": "30000",
+    "min": "0",
+    "name": "buffer_size",
+    "section": "librist AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "8192",
+    "flags": "ED.........",
+    "help": "set fifo buffer size, must be a power of 2 (from 32 to 262144) (default 8192)",
+    "max": "262144",
+    "min": "32",
+    "name": "fifo_size",
+    "section": "librist AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": ".D.........",
+    "help": "survive in case of receiving fifo buffer overrun (default false)",
+    "max": null,
+    "min": null,
+    "name": "overrun_nonfatal",
+    "section": "librist AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "1316",
+    "flags": "ED.........",
+    "help": "set packet size (from 1 to 9972) (default 1316)",
+    "max": "9972",
+    "min": "1",
+    "name": "pkt_size",
+    "section": "librist AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "6",
+    "flags": "ED.........",
+    "help": "set loglevel (from -1 to INT_MAX) (default 6)",
+    "max": "INT_MAX",
+    "min": "-1",
+    "name": "log_level",
+    "section": "librist AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "ED.........",
+    "help": "set encryption secret",
+    "max": null,
+    "min": null,
+    "name": "secret",
+    "section": "librist AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": "ED.........",
+    "help": "set encryption type (from 0 to INT_MAX) (default 0)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "encryption",
+    "section": "librist AVOptions:",
     "type": "int"
   },
   {
@@ -24484,25 +24792,109 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "0",
+    "default": "false",
     "flags": "E..........",
-    "help": "set x coordinate of top left corner (from INT_MIN to INT_MAX) (default 0)",
+    "help": "list available audio devices (default false)",
+    "max": null,
+    "min": null,
+    "name": "list_devices",
+    "section": "AudioToolbox AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-1",
+    "flags": "E..........",
+    "help": "select audio device by index (starts at 0) (from -1 to INT_MAX) (default -1)",
     "max": "INT_MAX",
-    "min": "INT_MIN",
-    "name": "xoffset",
-    "section": "fbdev outdev AVOptions:",
+    "min": "-1",
+    "name": "audio_device_index",
+    "section": "AudioToolbox AVOptions:",
     "type": "int"
   },
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "0",
+    "default": null,
     "flags": "E..........",
-    "help": "set y coordinate of top left corner (from INT_MIN to INT_MAX) (default 0)",
+    "help": "set SDL window title",
+    "max": null,
+    "min": null,
+    "name": "window_title",
+    "section": "sdl2 outdev AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "E..........",
+    "help": "set SDL window forced size",
+    "max": null,
+    "min": null,
+    "name": "window_size",
+    "section": "sdl2 outdev AVOptions:",
+    "type": "image_size"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "805240832",
+    "flags": "E..........",
+    "help": "set SDL window x position (from INT_MIN to INT_MAX) (default 805240832)",
     "max": "INT_MAX",
     "min": "INT_MIN",
-    "name": "yoffset",
-    "section": "fbdev outdev AVOptions:",
+    "name": "window_x",
+    "section": "sdl2 outdev AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "805240832",
+    "flags": "E..........",
+    "help": "set SDL window y position (from INT_MIN to INT_MAX) (default 805240832)",
+    "max": "INT_MAX",
+    "min": "INT_MIN",
+    "name": "window_y",
+    "section": "sdl2 outdev AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "E..........",
+    "help": "set SDL window fullscreen (default false)",
+    "max": null,
+    "min": null,
+    "name": "window_fullscreen",
+    "section": "sdl2 outdev AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "E..........",
+    "help": "set SDL window border off (default false)",
+    "max": null,
+    "min": null,
+    "name": "window_borderless",
+    "section": "sdl2 outdev AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "1",
+    "flags": "E..........",
+    "help": "set if quit action is available (from 0 to 1) (default 1)",
+    "max": "1",
+    "min": "0",
+    "name": "window_enable_quit",
+    "section": "sdl2 outdev AVOptions:",
     "type": "int"
   },
   {
@@ -24932,6 +25324,30 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
+    "default": "aac,m4a,m4s,m4v,mov,mp4,webm,ts",
+    "flags": ".D.........",
+    "help": "List of file extensions that dash is allowed to access (default \"aac,m4a,m4s,m4v,mov,mp4,webm,ts\")",
+    "max": null,
+    "min": null,
+    "name": "allowed_extensions",
+    "section": "dash AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": ".D.........",
+    "help": "Media decryption key (hex)",
+    "max": null,
+    "min": null,
+    "name": "cenc_decryption_key",
+    "section": "dash AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
     "default": "48000",
     "flags": ".D.........",
     "help": "(from 0 to INT_MAX) (default 48000)",
@@ -25148,9 +25564,9 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,wav",
+    "default": "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt,cmfv,cmfa,ec3,fmp4",
     "flags": ".D.........",
-    "help": "List of file extensions that hls is allowed to access (default \"3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,wav\")",
+    "help": "List of file extensions that hls is allowed to access (default \"3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt,cmfv,cmfa,ec3,fmp4\")",
     "max": null,
     "min": null,
     "name": "allowed_extensions",
@@ -25160,9 +25576,33 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "3",
+    "default": "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt,cmfv,cmfa,ec3,fmp4,html",
     "flags": ".D.........",
-    "help": "Maximum number of times a insufficient list is attempted to be reloaded (from 0 to INT_MAX) (default 3)",
+    "help": "List of file extensions that hls is allowed to access (default \"3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt,cmfv,cmfa,ec3,fmp4,html\")",
+    "max": null,
+    "min": null,
+    "name": "allowed_segment_extensions",
+    "section": "hls demuxer AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "true",
+    "flags": ".D.........",
+    "help": "Be picky with all extensions matching (default true)",
+    "max": null,
+    "min": null,
+    "name": "extension_picky",
+    "section": "hls demuxer AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "100",
+    "flags": ".D.........",
+    "help": "Maximum number of times a insufficient list is attempted to be reloaded (from 0 to INT_MAX) (default 100)",
     "max": "INT_MAX",
     "min": "0",
     "name": "max_reload",
@@ -25801,6 +26241,18 @@
     "name": "loop",
     "section": "brender_pix demuxer AVOptions:",
     "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": ".D.........",
+    "help": "Comma-separated paths to ASSETMAP files.If not specified, the `ASSETMAP.xml` file in the same directory as the CPL is used.",
+    "max": null,
+    "min": null,
+    "name": "assetmaps",
+    "section": "imf AVOptions:",
+    "type": "string"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -27094,14 +27546,122 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "25",
+    "default": "false",
     "flags": ".D.........",
-    "help": "(default \"25\")",
+    "help": "list available devices (default false)",
+    "max": null,
+    "min": null,
+    "name": "list_devices",
+    "section": "AVFoundation indev AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-1",
+    "flags": ".D.........",
+    "help": "select video device by index for devices with same name (starts at 0) (from -1 to INT_MAX) (default -1)",
+    "max": "INT_MAX",
+    "min": "-1",
+    "name": "video_device_index",
+    "section": "AVFoundation indev AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-1",
+    "flags": ".D.........",
+    "help": "select audio device by index for devices with same name (starts at 0) (from -1 to INT_MAX) (default -1)",
+    "max": "INT_MAX",
+    "min": "-1",
+    "name": "audio_device_index",
+    "section": "AVFoundation indev AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "yuv420p",
+    "flags": ".D.........",
+    "help": "set pixel format (default yuv420p)",
+    "max": null,
+    "min": null,
+    "name": "pixel_format",
+    "section": "AVFoundation indev AVOptions:",
+    "type": "pix_fmt"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "ntsc",
+    "flags": ".D.........",
+    "help": "set frame rate (default \"ntsc\")",
     "max": null,
     "min": null,
     "name": "framerate",
-    "section": "fbdev indev AVOptions:",
+    "section": "AVFoundation indev AVOptions:",
     "type": "video_rate"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": ".D.........",
+    "help": "set video size",
+    "max": null,
+    "min": null,
+    "name": "video_size",
+    "section": "AVFoundation indev AVOptions:",
+    "type": "image_size"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": ".D.........",
+    "help": "capture the screen cursor (default false)",
+    "max": null,
+    "min": null,
+    "name": "capture_cursor",
+    "section": "AVFoundation indev AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": ".D.........",
+    "help": "capture the screen mouse clicks (default false)",
+    "max": null,
+    "min": null,
+    "name": "capture_mouse_clicks",
+    "section": "AVFoundation indev AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": ".D.........",
+    "help": "capture the raw data from device connection (default false)",
+    "max": null,
+    "min": null,
+    "name": "capture_raw_data",
+    "section": "AVFoundation indev AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "true",
+    "flags": ".D.........",
+    "help": "drop frames that are available later than expected (default true)",
+    "max": null,
+    "min": null,
+    "name": "drop_late_frames",
+    "section": "AVFoundation indev AVOptions:",
+    "type": "boolean"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -27142,25 +27702,61 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "48000",
+    "default": "0",
     "flags": ".D.........",
-    "help": "(from 1 to INT_MAX) (default 48000)",
-    "max": "INT_MAX",
-    "min": "1",
-    "name": "sample_rate",
-    "section": "OSS indev AVOptions:",
+    "help": "Window to capture. (from 0 to UINT32_MAX) (default 0)",
+    "max": "UINT32_MAX",
+    "min": "0",
+    "name": "window_id",
+    "section": "xcbgrab indev AVOptions:",
     "type": "int"
   },
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": "2",
+    "default": "0",
     "flags": ".D.........",
-    "help": "(from 1 to INT_MAX) (default 2)",
+    "help": "Initial x coordinate. (from 0 to INT_MAX) (default 0)",
     "max": "INT_MAX",
-    "min": "1",
-    "name": "channels",
-    "section": "OSS indev AVOptions:",
+    "min": "0",
+    "name": "x",
+    "section": "xcbgrab indev AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": ".D.........",
+    "help": "Initial y coordinate. (from 0 to INT_MAX) (default 0)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "y",
+    "section": "xcbgrab indev AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": ".D.........",
+    "help": "Initial x coordinate. (from 0 to INT_MAX) (default 0)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "grab_x",
+    "section": "xcbgrab indev AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": ".D.........",
+    "help": "Initial y coordinate. (from 0 to INT_MAX) (default 0)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "grab_y",
+    "section": "xcbgrab indev AVOptions:",
     "type": "int"
   },
   {
@@ -27168,125 +27764,35 @@
     "choices": [],
     "default": null,
     "flags": ".D.........",
-    "help": "set TV standard, used only by analog frame grabber",
-    "max": null,
-    "min": null,
-    "name": "standard",
-    "section": "V4L2 indev AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": "-1",
-    "flags": ".D.........",
-    "help": "set TV channel, used only by frame grabber (from -1 to INT_MAX) (default -1)",
-    "max": "INT_MAX",
-    "min": "-1",
-    "name": "channel",
-    "section": "V4L2 indev AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": ".D.........",
-    "help": "set frame size",
+    "help": "A string describing frame size, such as 640x480 or hd720.",
     "max": null,
     "min": null,
     "name": "video_size",
-    "section": "V4L2 indev AVOptions:",
+    "section": "xcbgrab indev AVOptions:",
     "type": "image_size"
   },
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
-    "default": null,
+    "default": "ntsc",
     "flags": ".D.........",
-    "help": "set preferred pixel format",
-    "max": null,
-    "min": null,
-    "name": "pixel_format",
-    "section": "V4L2 indev AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": ".D.........",
-    "help": "set preferred pixel format (for raw video) or codec name",
-    "max": null,
-    "min": null,
-    "name": "input_format",
-    "section": "V4L2 indev AVOptions:",
-    "type": "string"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [],
-    "default": null,
-    "flags": ".D.........",
-    "help": "set frame rate",
+    "help": "(default \"ntsc\")",
     "max": null,
     "min": null,
     "name": "framerate",
-    "section": "V4L2 indev AVOptions:",
+    "section": "xcbgrab indev AVOptions:",
     "type": "string"
   },
   {
     "__class__": "FFMpegAVOption",
-    "choices": [
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D.........",
-        "help": "show all available formats",
-        "name": "all",
-        "value": "3"
-      },
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D.........",
-        "help": "show only non-compressed formats",
-        "name": "raw",
-        "value": "1"
-      },
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D.........",
-        "help": "show only compressed formats",
-        "name": "compressed",
-        "value": "2"
-      }
-    ],
-    "default": "0",
+    "choices": [],
+    "default": "1",
     "flags": ".D.........",
-    "help": "list available formats and exit (from 0 to INT_MAX) (default 0)",
-    "max": "INT_MAX",
-    "min": "0",
-    "name": "list_formats",
-    "section": "V4L2 indev AVOptions:",
-    "type": "int"
-  },
-  {
-    "__class__": "FFMpegAVOption",
-    "choices": [
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D.........",
-        "help": "show all supported standards",
-        "name": "all",
-        "value": "1"
-      }
-    ],
-    "default": "0",
-    "flags": ".D.........",
-    "help": "list supported standards and exit (from 0 to 1) (default 0)",
+    "help": "Draw the mouse pointer. (from 0 to 1) (default 1)",
     "max": "1",
     "min": "0",
-    "name": "list_standards",
-    "section": "V4L2 indev AVOptions:",
+    "name": "draw_mouse",
+    "section": "xcbgrab indev AVOptions:",
     "type": "int"
   },
   {
@@ -27295,32 +27801,42 @@
       {
         "__class__": "FFMpegOptionChoice",
         "flags": ".D.........",
-        "help": "use timestamps from the kernel",
-        "name": "default",
-        "value": "0"
-      },
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D.........",
-        "help": "use absolute timestamps (wall clock)",
-        "name": "abs",
-        "value": "1"
-      },
-      {
-        "__class__": "FFMpegOptionChoice",
-        "flags": ".D.........",
-        "help": "force conversion from monotonic to absolute timestamps",
-        "name": "mono2abs",
-        "value": "2"
+        "help": "Keep the mouse pointer at the center of grabbing region when following.",
+        "name": "centered",
+        "value": "-1"
       }
     ],
-    "default": "default",
+    "default": "0",
     "flags": ".D.........",
-    "help": "set type of timestamps for grabbed frames (from 0 to 2) (default default)",
-    "max": "2",
+    "help": "Move the grabbing region when the mouse pointer reaches within specified amount of pixels to the edge of region. (from -1 to INT_MAX) (default 0)",
+    "max": "INT_MAX",
+    "min": "-1",
+    "name": "follow_mouse",
+    "section": "xcbgrab indev AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0",
+    "flags": ".D.........",
+    "help": "Show the grabbing region. (from 0 to 1) (default 0)",
+    "max": "1",
     "min": "0",
-    "name": "timestamps",
-    "section": "V4L2 indev AVOptions:",
+    "name": "show_region",
+    "section": "xcbgrab indev AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "3",
+    "flags": ".D.........",
+    "help": "Set the region border thickness. (from 1 to 128) (default 3)",
+    "max": "128",
+    "min": "1",
+    "name": "region_border",
+    "section": "xcbgrab indev AVOptions:",
     "type": "int"
   },
   {
@@ -27328,11 +27844,11 @@
     "choices": [],
     "default": "false",
     "flags": ".D.........",
-    "help": "use libv4l2 (v4l-utils) conversion functions (default false)",
+    "help": "Select the grabbing region graphically using the pointer. (default false)",
     "max": null,
     "min": null,
-    "name": "use_libv4l2",
-    "section": "V4L2 indev AVOptions:",
+    "name": "select_region",
+    "section": "xcbgrab indev AVOptions:",
     "type": "boolean"
   },
   {
@@ -38870,6 +39386,274 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
+    "default": "1",
+    "flags": "..F.A....T.",
+    "help": "set tempo scale factor (from 0.01 to 100) (default 1)",
+    "max": "100",
+    "min": "0.01",
+    "name": "tempo",
+    "section": "rubberband AVOptions:",
+    "type": "double"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "1",
+    "flags": "..F.A....T.",
+    "help": "set pitch scale factor (from 0.01 to 100) (default 1)",
+    "max": "100",
+    "min": "0.01",
+    "name": "pitch",
+    "section": "rubberband AVOptions:",
+    "type": "double"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "crisp",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "mixed",
+        "value": "256"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "smooth",
+        "value": "512"
+      }
+    ],
+    "default": "crisp",
+    "flags": "..F.A......",
+    "help": "set transients (from 0 to INT_MAX) (default crisp)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "transients",
+    "section": "rubberband AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "compound",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "percussive",
+        "value": "1024"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "soft",
+        "value": "2048"
+      }
+    ],
+    "default": "compound",
+    "flags": "..F.A......",
+    "help": "set detector (from 0 to INT_MAX) (default compound)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "detector",
+    "section": "rubberband AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "laminar",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "independent",
+        "value": "8192"
+      }
+    ],
+    "default": "laminar",
+    "flags": "..F.A......",
+    "help": "set phase (from 0 to INT_MAX) (default laminar)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "phase",
+    "section": "rubberband AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "standard",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "short",
+        "value": "1048576"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "long",
+        "value": "2097152"
+      }
+    ],
+    "default": "standard",
+    "flags": "..F.A......",
+    "help": "set window (from 0 to INT_MAX) (default standard)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "window",
+    "section": "rubberband AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "off",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "on",
+        "value": "8388608"
+      }
+    ],
+    "default": "off",
+    "flags": "..F.A......",
+    "help": "set smoothing (from 0 to INT_MAX) (default off)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "smoothing",
+    "section": "rubberband AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "shifted",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "preserved",
+        "value": "16777216"
+      }
+    ],
+    "default": "shifted",
+    "flags": "..F.A......",
+    "help": "set formant (from 0 to INT_MAX) (default shifted)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "formant",
+    "section": "rubberband AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "quality",
+        "value": "33554432"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "speed",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "consistency",
+        "value": "67108864"
+      }
+    ],
+    "default": "speed",
+    "flags": "..F.A......",
+    "help": "set pitch quality (from 0 to INT_MAX) (default speed)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "pitchq",
+    "section": "rubberband AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "apart",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..F.A......",
+        "help": "",
+        "name": "together",
+        "value": "268435456"
+      }
+    ],
+    "default": "apart",
+    "flags": "..F.A......",
+    "help": "set channels (from 0 to INT_MAX) (default apart)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "channels",
+    "section": "rubberband AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
     "default": "0.001",
     "flags": "..F.A......",
     "help": "set noise tolerance (from 0 to DBL_MAX) (default 0.001)",
@@ -47571,6 +48355,54 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
+    "default": "false",
+    "flags": "..FV.......",
+    "help": "list available filters (default false)",
+    "max": null,
+    "min": null,
+    "name": "list_filters",
+    "section": "coreimage AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "..FV.......",
+    "help": "list available generators (default false)",
+    "max": null,
+    "min": null,
+    "name": "list_generators",
+    "section": "coreimage AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "..FV.......",
+    "help": "names and options of filters to apply",
+    "max": null,
+    "min": null,
+    "name": "filter",
+    "section": "coreimage AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "..FV.......",
+    "help": "output rectangle within output image",
+    "max": null,
+    "min": null,
+    "name": "output_rect",
+    "section": "coreimage AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
     "default": null,
     "flags": "..FV.......",
     "help": "cover bitmap filename",
@@ -52674,6 +53506,30 @@
   {
     "__class__": "FFMpegAVOption",
     "choices": [],
+    "default": null,
+    "flags": "..FV.......",
+    "help": "",
+    "max": null,
+    "min": null,
+    "name": "filter_name",
+    "section": "frei0r AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "..FV.....T.",
+    "help": "",
+    "max": null,
+    "min": null,
+    "name": "filter_params",
+    "section": "frei0r AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
     "default": "4",
     "flags": "..FV.......",
     "help": "set quality (from 4 to 5) (default 4)",
@@ -57004,6 +57860,54 @@
     "name": "strength",
     "section": "normalize AVOptions:",
     "type": "float"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "..FV.......",
+    "help": "set datapath",
+    "max": null,
+    "min": null,
+    "name": "datapath",
+    "section": "ocr AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "eng",
+    "flags": "..FV.......",
+    "help": "set language (default \"eng\")",
+    "max": null,
+    "min": null,
+    "name": "language",
+    "section": "ocr AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}()<>|/\\=*&%$#@!~ ",
+    "flags": "..FV.......",
+    "help": "set character whitelist (default \"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}()<>|/\\=*&%$#@!~ \")",
+    "max": null,
+    "min": null,
+    "name": "whitelist",
+    "section": "ocr AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "",
+    "flags": "..FV.......",
+    "help": "set character blacklist (default \"\")",
+    "max": null,
+    "min": null,
+    "name": "blacklist",
+    "section": "ocr AVOptions:",
+    "type": "string"
   },
   {
     "__class__": "FFMpegAVOption",
@@ -67974,6 +68878,108 @@
   },
   {
     "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "send one frame for each frame",
+        "name": "send_frame",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "send one frame for each field",
+        "name": "send_field",
+        "value": "1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "send one frame for each frame, but skip spatial interlacing check",
+        "name": "send_frame_nospatial",
+        "value": "2"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "send one frame for each field, but skip spatial interlacing check",
+        "name": "send_field_nospatial",
+        "value": "3"
+      }
+    ],
+    "default": "send_frame",
+    "flags": "..FV.......",
+    "help": "specify the interlacing mode (from 0 to 3) (default send_frame)",
+    "max": "3",
+    "min": "0",
+    "name": "mode",
+    "section": "yadif_videotoolbox AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "assume top field first",
+        "name": "tff",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "assume bottom field first",
+        "name": "bff",
+        "value": "1"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "auto detect parity",
+        "name": "auto",
+        "value": "-1"
+      }
+    ],
+    "default": "auto",
+    "flags": "..FV.......",
+    "help": "specify the assumed picture field parity (from -1 to 1) (default auto)",
+    "max": "1",
+    "min": "-1",
+    "name": "parity",
+    "section": "yadif_videotoolbox AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "deinterlace all frames",
+        "name": "all",
+        "value": "0"
+      },
+      {
+        "__class__": "FFMpegOptionChoice",
+        "flags": "..FV.......",
+        "help": "only deinterlace frames marked as interlaced",
+        "name": "interlaced",
+        "value": "1"
+      }
+    ],
+    "default": "all",
+    "flags": "..FV.......",
+    "help": "specify which frames to deinterlace (from 0 to 1) (default all)",
+    "max": "1",
+    "min": "0",
+    "name": "deint",
+    "section": "yadif_videotoolbox AVOptions:",
+    "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
     "choices": [],
     "default": "3",
     "flags": "..FV.....T.",
@@ -69782,6 +70788,138 @@
     "name": "type",
     "section": "colorspectrum AVOptions:",
     "type": "int"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "320x240",
+    "flags": "..FV.......",
+    "help": "set video size (default \"320x240\")",
+    "max": null,
+    "min": null,
+    "name": "size",
+    "section": "coreimagesrc AVOptions:",
+    "type": "image_size"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "25",
+    "flags": "..FV.......",
+    "help": "set video rate (default \"25\")",
+    "max": null,
+    "min": null,
+    "name": "rate",
+    "section": "coreimagesrc AVOptions:",
+    "type": "video_rate"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "-0.000001",
+    "flags": "..FV.......",
+    "help": "set video duration (default -0.000001)",
+    "max": null,
+    "min": null,
+    "name": "duration",
+    "section": "coreimagesrc AVOptions:",
+    "type": "duration"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "1/1",
+    "flags": "..FV.......",
+    "help": "set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)",
+    "max": "INT_MAX",
+    "min": "0",
+    "name": "sar",
+    "section": "coreimagesrc AVOptions:",
+    "type": "rational"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "..FV.......",
+    "help": "list available filters (default false)",
+    "max": null,
+    "min": null,
+    "name": "list_filters",
+    "section": "coreimagesrc AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "false",
+    "flags": "..FV.......",
+    "help": "list available generators (default false)",
+    "max": null,
+    "min": null,
+    "name": "list_generators",
+    "section": "coreimagesrc AVOptions:",
+    "type": "boolean"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "..FV.......",
+    "help": "names and options of filters to apply",
+    "max": null,
+    "min": null,
+    "name": "filter",
+    "section": "coreimagesrc AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "..FV.......",
+    "help": "output rectangle within output image",
+    "max": null,
+    "min": null,
+    "name": "output_rect",
+    "section": "coreimagesrc AVOptions:",
+    "type": "string"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "320x240",
+    "flags": "..FV.......",
+    "help": "Dimensions of the generated video. (default \"320x240\")",
+    "max": null,
+    "min": null,
+    "name": "size",
+    "section": "frei0r_src AVOptions:",
+    "type": "image_size"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": "25",
+    "flags": "..FV.......",
+    "help": "(default \"25\")",
+    "max": null,
+    "min": null,
+    "name": "framerate",
+    "section": "frei0r_src AVOptions:",
+    "type": "video_rate"
+  },
+  {
+    "__class__": "FFMpegAVOption",
+    "choices": [],
+    "default": null,
+    "flags": "..FV.......",
+    "help": "",
+    "max": null,
+    "min": null,
+    "name": "filter_name",
+    "section": "frei0r_src AVOptions:",
+    "type": "string"
   },
   {
     "__class__": "FFMpegAVOption",
