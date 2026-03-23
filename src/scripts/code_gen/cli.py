@@ -95,20 +95,27 @@ def gen_filter_info(ffmpeg_filter: FFMpegFilter) -> FFMpegFilter:
     return replace(ffmpeg_filter, ref=filter_doc.url)
 
 
-def load_options(rebuild: bool) -> list[FFMpegOption]:
+def load_options(
+    rebuild: bool,
+    ffmpeg_binary: str,
+    version_key: str,
+) -> list[FFMpegOption]:
     """
     Load options from the output path.
 
     Args:
         rebuild: Whether to use the cache
+        ffmpeg_binary: Path or name of the ffmpeg executable
+        version_key: Cache key suffix for this FFmpeg version
 
     Returns:
         The option info
 
     """
+    cache_id = f"options_{version_key}"
     if not rebuild:
         try:
-            return load(list[FFMpegOption], "options")
+            return load(list[FFMpegOption], cache_id)
         except Exception as e:
             logging.error(f"Failed to load options from cache: {e}")
 
@@ -121,9 +128,9 @@ def load_options(rebuild: bool) -> list[FFMpegOption]:
             argname=i.argname,
             canon=i.canon,
         )
-        for i in parse_c.cli.parse_ffmpeg_options()
+        for i in parse_c.cli.parse_ffmpeg_options(ffmpeg_binary=ffmpeg_binary)
     ]
-    save(options, "options")
+    save(options, cache_id)
     return options
 
 
@@ -401,7 +408,7 @@ def generate(
     major_version = version_key.split("_")[0]
 
     ffmpeg_filters = load_filters(rebuild, ffmpeg_binary, version_key)
-    ffmpeg_options = load_options(rebuild)
+    ffmpeg_options = load_options(rebuild, ffmpeg_binary, version_key)
     ffmpeg_codecs = load_codecs(rebuild, ffmpeg_binary, version_key)
     ffmpeg_muxers = load_formats(rebuild, ffmpeg_binary, version_key)
     ffmpeg_av_option_set = load_av_option_set(rebuild, ffmpeg_binary, version_key)

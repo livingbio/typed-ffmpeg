@@ -54,8 +54,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
-        with:
-          submodules: recursive
 
       - name: Set up Python 3.10
         uses: actions/setup-python@v6
@@ -105,9 +103,6 @@ jobs:
           source .venv/bin/activate
           uv pip install -e packages/core -e "packages/v${{ matrix.ffmpeg-version }}[dev]"
           FFMPEG_MAJOR=${{ matrix.ffmpeg-version }}
-          # Hide ffmpeg submodule (C source) so it doesn't shadow the installed ffmpeg Python package
-          trap 'mv ffmpeg.submodule.bak ffmpeg 2>/dev/null || true' EXIT
-          mv ffmpeg ffmpeg.submodule.bak
           python -c "
           import ffmpeg
           from ffmpeg import filters, sources
