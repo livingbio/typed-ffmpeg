@@ -2405,14 +2405,18 @@ dependencies = [
 [package.optional-dependencies]
 dev = [
     { name = "pytest" },
+    { name = "pytest-cov" },
     { name = "ruff" },
+    { name = "syrupy" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "ffmpeg-core", editable = "packages/core" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
+    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.9.6" },
+    { name = "syrupy", marker = "extra == 'dev'", specifier = ">=5.0" },
 ]
 provides-extras = ["dev"]
 
@@ -2427,14 +2431,18 @@ dependencies = [
 [package.optional-dependencies]
 dev = [
     { name = "pytest" },
+    { name = "pytest-cov" },
     { name = "ruff" },
+    { name = "syrupy" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "ffmpeg-core", editable = "packages/core" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
+    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.9.6" },
+    { name = "syrupy", marker = "extra == 'dev'", specifier = ">=5.0" },
 ]
 provides-extras = ["dev"]
 
@@ -2449,14 +2457,18 @@ dependencies = [
 [package.optional-dependencies]
 dev = [
     { name = "pytest" },
+    { name = "pytest-cov" },
     { name = "ruff" },
+    { name = "syrupy" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "ffmpeg-core", editable = "packages/core" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
+    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.9.6" },
+    { name = "syrupy", marker = "extra == 'dev'", specifier = ">=5.0" },
 ]
 provides-extras = ["dev"]
 
