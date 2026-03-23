@@ -9,7 +9,9 @@ from typing import Any, Literal
 
 
 from .types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+
 from .dag.factory import filter_node_factory
+
 from .utils.frozendict import FrozenDict, merge
 from .utils.typing import override
 from .schema import Default, StreamType, Auto, FFMpegOptionGroup
@@ -22,7 +24,9 @@ from .options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecConte
 
 from .options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
 
+
 from .streams.av import AVStream
+
 from .streams.channel_layout import CHANNEL_LAYOUT
 from .codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
 from .formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
@@ -767,6 +771,9 @@ def apsnr(
 Measure Audio Peak Signal-to-Noise Ratio.
 
 
+.. note:: New in FFmpeg 6.0.
+
+
 Args:
     timeline_options: Timeline options
     extra_options: Extra options for the filter
@@ -845,6 +852,9 @@ def arls(
     """
 
 Apply Recursive Least Squares algorithm to first audio stream.
+
+
+.. note:: New in FFmpeg 6.0.
 
 
 Args:
@@ -1017,6 +1027,9 @@ def asisdr(
     """
 
 Measure Audio Scale-Invariant Signal-to-Distortion Ratio.
+
+
+.. note:: New in FFmpeg 6.0.
 
 
 Args:
@@ -1807,6 +1820,9 @@ def corr(
     """
 
 Calculate the correlation between two video streams.
+
+
+.. note:: New in FFmpeg 6.0.
 
 
 Args:
@@ -3218,6 +3234,9 @@ def libvmaf(
     """
 
 Calculate the VMAF between two video streams.
+
+
+.. note:: Removed in FFmpeg 8.0.
 
 
 Args:

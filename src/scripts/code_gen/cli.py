@@ -361,6 +361,80 @@ def load_formats(
     return formats
 
 
+def _get_version_metadata():  # type: ignore[no-untyped-def]
+    """
+    Build cross-version metadata from all available caches.
+
+    Returns:
+        VersionMetadata if caches exist, else None.
+
+    """
+    from ffmpeg_core.common.cache import get_cache_path
+
+    from .version_diff import build_version_metadata
+
+    cache_dir = get_cache_path() / "list"
+    available: set[str] = set()
+    for cache_file in cache_dir.glob("filters_*.json"):
+        # "filters_7_1.json" → "7.1"
+        parts = cache_file.stem.replace("filters_", "").split("_")
+        if len(parts) == 2:
+            available.add(f"{parts[0]}.{parts[1]}")
+    if available:
+        return build_version_metadata(sorted(available))
+    return None
+
+
+def _generate_for_version(
+    version: str,
+    outpath: Path | None,
+    rebuild: bool,
+    ffmpeg_binary: str,
+    version_dir: bool,
+    version_metadata: object = None,
+) -> None:
+    """
+    Generate code for a specific FFmpeg version from cache.
+
+    Args:
+        version: FFmpeg version string (e.g., "7.1").
+        outpath: Output path. If None, defaults to packages/vN/src/ffmpeg.
+        rebuild: Whether to rebuild from scratch (requires ffmpeg binary).
+        ffmpeg_binary: Path to ffmpeg binary (only used when rebuild=True).
+        version_dir: If True, output to a version subdirectory.
+        version_metadata: Pre-built version metadata for deprecation hints.
+
+    """
+    if not outpath:
+        repo_root = Path(__file__).resolve().parents[3]
+        major = version.split(".")[0]
+        outpath = repo_root / "packages" / f"v{major}" / "src" / "ffmpeg"
+
+    version_key = version_cache_key(version)
+    major_version = version_key.split("_")[0]
+
+    ffmpeg_filters = load_filters(rebuild, ffmpeg_binary, version_key)
+    ffmpeg_options = load_options(rebuild, ffmpeg_binary, version_key)
+    ffmpeg_codecs = load_codecs(rebuild, ffmpeg_binary, version_key)
+    ffmpeg_muxers = load_formats(rebuild, ffmpeg_binary, version_key)
+    ffmpeg_av_option_set = load_av_option_set(rebuild, ffmpeg_binary, version_key)
+
+    version_prefix = f"v{major_version}" if version_dir else None
+    render_outpath = outpath / version_prefix if version_prefix else outpath
+
+    render(
+        filters=ffmpeg_filters,
+        options=ffmpeg_options,
+        codecs=ffmpeg_codecs,
+        muxers=ffmpeg_muxers,
+        av_option_sets=ffmpeg_av_option_set,
+        outpath=render_outpath,
+        ffmpeg_version=version,
+        version_prefix=version_prefix,
+        version_metadata=version_metadata,
+    )
+
+
 @app.command()
 def generate(
     outpath: Path | None = None,
@@ -377,6 +451,12 @@ def generate(
             help="Generate into a version subdirectory (e.g., v7/) with absolute imports for shared core.",
         ),
     ] = False,
+    version: Annotated[
+        str,
+        typer.Option(
+            help="FFmpeg version to generate for (e.g., '7.1'). If omitted, detects from ffmpeg binary.",
+        ),
+    ] = "",
 ) -> None:
     """
     Generate filter and option documents.
@@ -388,64 +468,90 @@ def generate(
         rebuild: Whether to rebuild the filters and options from scratch, ignoring the cache
         ffmpeg_binary: Path or name of the ffmpeg executable
         version_dir: If True, output to a version subdirectory (e.g., outpath/v7/)
+        version: FFmpeg version string. If empty, detects from binary.
 
     Raises:
         BadParameter: If FFmpeg version is < 5.0.
 
     """
-    from ..parse_help.utils import get_ffmpeg_version
+    if not version:
+        from ..parse_help.utils import get_ffmpeg_version
 
-    version = get_ffmpeg_version(ffmpeg_binary)
-    if not outpath:
-        repo_root = Path(__file__).resolve().parents[4]
-        major = version.split(".")[0]
-        outpath = repo_root / "packages" / f"v{major}" / "src" / "ffmpeg"
+        version = get_ffmpeg_version(ffmpeg_binary)
+
     if not is_supported_version(version):
         raise typer.BadParameter(
             f"FFmpeg version {version} is not supported; need >= {MIN_FFMPEG_VERSION_MAJOR}.{MIN_FFMPEG_VERSION_MINOR}"
         )
-    version_key = version_cache_key(version)
-    major_version = version_key.split("_")[0]
 
-    ffmpeg_filters = load_filters(rebuild, ffmpeg_binary, version_key)
-    ffmpeg_options = load_options(rebuild, ffmpeg_binary, version_key)
-    ffmpeg_codecs = load_codecs(rebuild, ffmpeg_binary, version_key)
-    ffmpeg_muxers = load_formats(rebuild, ffmpeg_binary, version_key)
-    ffmpeg_av_option_set = load_av_option_set(rebuild, ffmpeg_binary, version_key)
+    version_metadata = _get_version_metadata() if version_dir else None
 
-    version_prefix = f"v{major_version}" if version_dir else None
-    render_outpath = outpath / version_prefix if version_prefix else outpath
-
-    # Build cross-version metadata for deprecation hints in docstrings
-    version_metadata = None
-    if version_dir:
-        from ffmpeg_core.common.cache import get_cache_path
-
-        from .version_diff import build_version_metadata
-
-        cache_dir = get_cache_path() / "list"
-        available = set()
-        for cache_file in cache_dir.glob("filters_*.json"):
-            # "filters_7_1.json" → "7.1"
-            parts = cache_file.stem.replace("filters_", "").split("_")
-            if len(parts) == 2:
-                available.add(f"{parts[0]}.{parts[1]}")
-        if available:
-            version_metadata = build_version_metadata(sorted(available))
-
-    render(
-        filters=ffmpeg_filters,
-        options=ffmpeg_options,
-        codecs=ffmpeg_codecs,
-        muxers=ffmpeg_muxers,
-        av_option_sets=ffmpeg_av_option_set,
-        outpath=render_outpath,
-        ffmpeg_version=version,
-        version_prefix=version_prefix,
+    _generate_for_version(
+        version=version,
+        outpath=outpath,
+        rebuild=rebuild,
+        ffmpeg_binary=ffmpeg_binary,
+        version_dir=version_dir,
         version_metadata=version_metadata,
     )
+
     if Path(".pre-commit-config.yaml").exists():
         os.system("prek run -a")
+
+
+@app.command()
+def generate_all(
+    rebuild: bool = False,
+) -> None:
+    """
+    Regenerate bindings for all cached FFmpeg versions.
+
+    Uses cached metadata (no FFmpeg binary needed). Outputs to
+    packages/vN/src/ffmpeg/ for each version with deprecation hints.
+
+    Raises:
+        Exit: If no cached versions are found.
+
+    """
+    from ffmpeg_core.common.cache import get_cache_path
+
+    cache_dir = get_cache_path() / "list"
+    versions: list[str] = []
+    for cache_file in sorted(cache_dir.glob("filters_*.json")):
+        parts = cache_file.stem.replace("filters_", "").split("_")
+        if len(parts) == 2:
+            versions.append(f"{parts[0]}.{parts[1]}")
+
+    if not versions:
+        print("No cached versions found. Run 'generate --rebuild' first.")
+        raise typer.Exit(1)
+
+    version_metadata = _get_version_metadata()
+
+    # Deduplicate by major version (use latest minor for each major)
+    major_versions: dict[str, str] = {}
+    for v in versions:
+        major = v.split(".")[0]
+        if major not in major_versions or v > major_versions[major]:
+            major_versions[major] = v
+
+    for major, ver in sorted(major_versions.items()):
+        print(f"  Generating v{major} from cache ({ver})...")
+        _generate_for_version(
+            version=ver,
+            outpath=None,
+            rebuild=False,
+            ffmpeg_binary="ffmpeg",
+            version_dir=False,
+            version_metadata=version_metadata,
+        )
+
+    if Path(".pre-commit-config.yaml").exists():
+        os.system("prek run -a")
+
+    print(
+        f"\n  Regenerated {len(major_versions)} versions: {', '.join(f'v{m}' for m in sorted(major_versions))}"
+    )
 
 
 @app.command()

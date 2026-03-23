@@ -1,9 +1,10 @@
 {
   "format": {
-    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/meda-file-without-ext/maxresdefault.jpg-sdafdeagwdsadf",
+    "filename": "/Users/davidchen/repo/typed-ffmpeg/packages/core/src/ffmpeg_core/ffprobe/tests/test_probe/test_data/meda-file-without-ext/maxresdefault.jpg-sdafdeagwdsadf",
     "format_long_name": "piped jpeg sequence",
     "format_name": "jpeg_pipe",
     "nb_programs": 0,
+    "nb_stream_groups": 0,
     "nb_streams": 1,
     "probe_score": 26,
     "size": "99802"
@@ -13,7 +14,6 @@
       "avg_frame_rate": "25/1",
       "bits_per_raw_sample": "8",
       "chroma_location": "center",
-      "closed_captions": 0,
       "codec_long_name": "Motion JPEG",
       "codec_name": "mjpeg",
       "codec_tag": "0x0000",
@@ -37,13 +37,13 @@
         "karaoke": 0,
         "lyrics": 0,
         "metadata": 0,
+        "multilayer": 0,
         "non_diegetic": 0,
         "original": 0,
         "still_image": 0,
         "timed_thumbnails": 0,
         "visual_impaired": 0
       },
-      "film_grain": 0,
       "has_b_frames": 0,
       "height": 720,
       "index": 0,

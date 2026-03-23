@@ -1,7 +1,8 @@
 """Tests for FFmpeg filter graph visualization utilities."""
 
-import ffmpeg
 import pytest
+
+import ffmpeg
 from ffmpeg.dag.nodes import InputNode
 from ffmpeg.utils.frozendict import FrozenDict
 from ffmpeg.utils.view import _get_node_color, view

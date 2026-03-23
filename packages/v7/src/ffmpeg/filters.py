@@ -9,7 +9,9 @@ from typing import Any, Literal
 
 
 from .types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+
 from .dag.factory import filter_node_factory
+
 from .utils.frozendict import FrozenDict, merge
 from .utils.typing import override
 from .schema import Default, StreamType, Auto, FFMpegOptionGroup
@@ -22,7 +24,9 @@ from .options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecConte
 
 from .options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
 
+
 from .streams.av import AVStream
+
 from .streams.channel_layout import CHANNEL_LAYOUT
 from .codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
 from .formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
@@ -70,6 +74,9 @@ def aap(
     """
 
 Apply Affine Projection algorithm to first audio stream.
+
+
+.. note:: New in FFmpeg 7.0.
 
 
 Args:
@@ -3316,6 +3323,9 @@ def libvmaf(
 Calculate the VMAF between two video streams.
 
 
+.. note:: Removed in FFmpeg 8.0.
+
+
 Args:
     log_path: Set the file path to be used to write log.
     log_fmt: Set the format of the log (csv, json, xml, or sub). (default "xml")
@@ -6299,6 +6309,9 @@ def xpsnr(
     """
 
 Calculate the extended perceptually weighted peak signal-to-noise ratio (XPSNR) between two video streams.
+
+
+.. note:: New in FFmpeg 7.0.
 
 
 Args:

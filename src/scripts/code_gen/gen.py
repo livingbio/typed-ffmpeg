@@ -361,15 +361,24 @@ def render(
     if version_metadata is not None:
         from .version_diff import format_version_note as _fmt_note
 
-        current_major = version_prefix[1:] if version_prefix else None
+        # Extract major version from version_prefix ("v7" → "7") or ffmpeg_version ("7.1" → "7")
+        ffmpeg_version = kwargs.get("ffmpeg_version", "")
+        if version_prefix:
+            current_major = version_prefix[1:]
+        elif ffmpeg_version:
+            current_major = ffmpeg_version.split(".")[0]
+        else:
+            current_major = None
 
-        def format_version_note_fn(name: str) -> str | None:  # type: ignore[no-redef]
-            return _fmt_note(
-                name,
-                version_metadata.filter_versions,
-                version_metadata.available_versions,
-                current_major or "",
-            )
+        if current_major:
+
+            def format_version_note_fn(name: str) -> str | None:  # type: ignore[no-redef]
+                return _fmt_note(
+                    name,
+                    version_metadata.filter_versions,
+                    version_metadata.available_versions,
+                    current_major or "",
+                )
 
     for template_file in template_folder.glob("**/*.*.jinja"):
         template_path = template_file.relative_to(template_folder)

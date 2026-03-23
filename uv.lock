@@ -2504,6 +2504,7 @@ version = "0.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "ffmpeg-core" },
+    { name = "typed-ffmpeg-v8" },
 ]
 
 [package.optional-dependencies]
@@ -2547,6 +2548,7 @@ dev = [
 requires-dist = [
     { name = "ffmpeg-core", editable = "packages/core" },
     { name = "graphviz", marker = "extra == 'graph'" },
+    { name = "typed-ffmpeg-v8", editable = "packages/v8" },
 ]
 provides-extras = ["graph"]
 

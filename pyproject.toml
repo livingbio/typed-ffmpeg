@@ -14,6 +14,7 @@ version = "0.0.0"
 description = "Monorepo root for typed-ffmpeg (workspace + dev scripts)"
 dependencies = [
     "ffmpeg-core",
+    "typed-ffmpeg-v8",
 ]
 authors = [
     {name = "lucemia", email = "lucemia@gmail.com"}
@@ -56,7 +57,7 @@ Repository = "https://github.com/livingbio/typed-ffmpeg"
 graph = ["graphviz"]
 
 [tool.uv]
-sources = { ffmpeg-core = { workspace = true } }
+sources = { ffmpeg-core = { workspace = true }, typed-ffmpeg-v8 = { workspace = true } }
 dev-dependencies = [
     # Development tools
     "ty",
@@ -181,6 +182,7 @@ quote-style = "double"
 docstring-code-format = true
 
 [tool.pytest.ini_options]
+testpaths = ["packages/tests-shared", "packages/core/src"]
 markers = [
     "dev_only: marks tests to be run only on the main branch"
 ]

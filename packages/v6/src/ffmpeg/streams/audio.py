@@ -11,7 +11,9 @@ from typing import TYPE_CHECKING, Any, Literal
 
 
 from ..types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+
 from ..dag.factory import filter_node_factory
+
 from ..utils.frozendict import FrozenDict, merge
 from ..utils.typing import override
 from ..schema import Default, StreamType, Auto, FFMpegOptionGroup
@@ -23,6 +25,7 @@ from ..options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecCont
 
 
 from ..options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
+
 
 from .channel_layout import CHANNEL_LAYOUT
 from ..codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
@@ -64,6 +67,9 @@ class AudioStream(FilterableStream):
         """
 
 Convert input audio to 3d scope video output.
+
+
+.. note:: New in FFmpeg 6.0.
 
 
 Args:
@@ -1244,6 +1250,9 @@ References:
         """
 
 Audio Spectral Dynamic Range Controller.
+
+
+.. note:: New in FFmpeg 6.0.
 
 
 Args:
@@ -3791,6 +3800,9 @@ References:
 Measure Audio Peak Signal-to-Noise Ratio.
 
 
+.. note:: New in FFmpeg 6.0.
+
+
 Args:
     timeline_options: Timeline options
     extra_options: Extra options for the filter
@@ -4184,6 +4196,9 @@ References:
         """
 
 Apply Recursive Least Squares algorithm to first audio stream.
+
+
+.. note:: New in FFmpeg 6.0.
 
 
 Args:
@@ -4914,6 +4929,9 @@ References:
         """
 
 Measure Audio Scale-Invariant Signal-to-Distortion Ratio.
+
+
+.. note:: New in FFmpeg 6.0.
 
 
 Args:
@@ -5960,6 +5978,9 @@ References:
         """
 
 Receive commands through ZMQ and broker them to filters.
+
+
+.. note:: Removed in FFmpeg 8.0.
 
 
 Args:
@@ -8839,6 +8860,9 @@ References:
 Apply time-stretching and pitch-shifting.
 
 
+.. note:: Removed in FFmpeg 8.0.
+
+
 Args:
     tempo: set tempo scale factor (from 0.01 to 100) (default 1)
     pitch: set pitch scale factor (from 0.01 to 100) (default 1)
@@ -9085,6 +9109,9 @@ References:
         """
 
 Convert input audio to a CWT (Continuous Wavelet Transform) spectrum video output.
+
+
+.. note:: New in FFmpeg 6.0.
 
 
 Args:

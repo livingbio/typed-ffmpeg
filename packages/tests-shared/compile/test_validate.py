@@ -1,9 +1,10 @@
 import pytest
+from syrupy.assertion import SnapshotAssertion
+
 from ffmpeg.compile.context import DAGContext
 from ffmpeg.compile.validate import add_split, remove_split
 from ffmpeg.dag.schema import Stream
 from ffmpeg.utils.snapshot import DAGSnapshotExtension
-from syrupy.assertion import SnapshotAssertion
 
 from .cases import shared_cases
 

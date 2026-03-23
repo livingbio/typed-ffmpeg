@@ -1,4 +1,5 @@
 import pytest
+
 from ffmpeg.base import input, merge_outputs
 from ffmpeg.dag.schema import Stream
 from ffmpeg.filters import amix, concat

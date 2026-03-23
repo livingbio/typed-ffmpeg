@@ -1,11 +1,12 @@
 from typing import Any
 
+from syrupy.assertion import SnapshotAssertion
+
 from ffmpeg.base import input
 from ffmpeg.compile.compile_cli import get_node_label
 from ffmpeg.compile.context import DAGContext
 from ffmpeg.dag.schema import Node, Stream
 from ffmpeg.filters import concat
-from syrupy.assertion import SnapshotAssertion
 
 
 def render(context: DAGContext, obj: Any) -> Any:

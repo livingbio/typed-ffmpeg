@@ -11,7 +11,9 @@ from typing import TYPE_CHECKING, Any, Literal
 
 
 from ..types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+
 from ..dag.factory import filter_node_factory
+
 from ..utils.frozendict import FrozenDict, merge
 from ..utils.typing import override
 from ..schema import Default, StreamType, Auto, FFMpegOptionGroup
@@ -23,6 +25,7 @@ from ..options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecCont
 
 
 from ..options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
+
 
 from .channel_layout import CHANNEL_LAYOUT
 from ..codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
@@ -500,6 +503,9 @@ References:
         """
 
 Render ASS subtitles onto input video using the libass library.
+
+
+.. note:: Removed in FFmpeg 8.0.
 
 
 Args:
@@ -4440,6 +4446,9 @@ References:
 Apply derain filter to the input.
 
 
+.. note:: Removed in FFmpeg 7.0.
+
+
 Args:
     filter_type: filter type(derain/dehaze) (from 0 to 1) (default derain)
     dnn_backend: DNN backend (from 0 to 1) (default native)
@@ -4892,6 +4901,9 @@ References:
 Apply DNN classify filter to the input.
 
 
+.. note:: Removed in FFmpeg 7.0.
+
+
 Args:
     dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default 2)
     model: path to model file
@@ -4973,6 +4985,9 @@ References:
 Apply DNN detect filter to the input.
 
 
+.. note:: Removed in FFmpeg 7.0.
+
+
 Args:
     dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default 2)
     model: path to model file
@@ -5049,6 +5064,9 @@ References:
         """
 
 Apply DNN processing filter to the input.
+
+
+.. note:: Removed in FFmpeg 7.0.
 
 
 Args:
@@ -5430,6 +5448,9 @@ References:
         """
 
 Draw text on top of video frames using libfreetype library.
+
+
+.. note:: Removed in FFmpeg 8.0.
 
 
 Args:
@@ -7369,6 +7390,9 @@ References:
         """
 
 Apply a frei0r effect.
+
+
+.. note:: Removed in FFmpeg 8.0.
 
 
 Args:
@@ -9537,6 +9561,9 @@ References:
         """
 
 Calculate the VMAF between two video streams.
+
+
+.. note:: Removed in FFmpeg 8.0.
 
 
 Args:
@@ -12056,6 +12083,9 @@ References:
         """
 
 Optical Character Recognition.
+
+
+.. note:: Removed in FFmpeg 8.0.
 
 
 Args:
@@ -16308,6 +16338,9 @@ References:
 Apply DNN-based image super resolution to the input.
 
 
+.. note:: Removed in FFmpeg 7.0.
+
+
 Args:
     dnn_backend: DNN backend used for model execution (from 0 to 1) (default native)
     scale_factor: scale factor for SRCNN model (from 2 to 4) (default 2)
@@ -16515,6 +16548,9 @@ References:
         """
 
 Render text subtitles onto input video using the libass library.
+
+
+.. note:: Removed in FFmpeg 8.0.
 
 
 Args:
@@ -18563,6 +18599,9 @@ References:
 Extract relative transformations, pass 1 of 2 for stabilization (see vidstabtransform for pass 2).
 
 
+.. note:: Removed in FFmpeg 8.0.
+
+
 Args:
     result: path to the file used to write the transforms (default "transforms.trf")
     shakiness: how shaky is the video and how quick is the camera? 1: little (fast) 10: very strong/quick (slow) (from 1 to 10) (default 5)
@@ -18633,6 +18672,9 @@ References:
         """
 
 Transform the frames, pass 2 of 2 for stabilization (see vidstabdetect for pass 1).
+
+
+.. note:: Removed in FFmpeg 8.0.
 
 
 Args:
@@ -19509,6 +19551,9 @@ References:
 Receive commands through ZMQ and broker them to filters.
 
 
+.. note:: Removed in FFmpeg 8.0.
+
+
 Args:
     bind_address: set bind address (default "tcp://*:5555")
     extra_options: Extra options for the filter
@@ -19630,6 +19675,9 @@ References:
         """
 
 Apply resizing, colorspace and bit depth conversion.
+
+
+.. note:: Removed in FFmpeg 8.0.
 
 
 Args:

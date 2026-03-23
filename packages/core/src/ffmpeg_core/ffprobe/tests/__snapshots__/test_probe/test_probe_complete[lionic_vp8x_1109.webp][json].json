@@ -1,78 +1,71 @@
 {
   "chapters": [],
   "format": {
-    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/54/lionic_vp8x_1109.webp",
+    "filename": "/Users/davidchen/repo/typed-ffmpeg/packages/core/src/ffmpeg_core/ffprobe/tests/test_probe/test_data/54/lionic_vp8x_1109.webp",
     "format_long_name": "piped webp sequence",
     "format_name": "webp_pipe",
     "nb_programs": 0,
+    "nb_stream_groups": 0,
     "nb_streams": 1,
     "probe_score": 99,
     "size": "344360"
   },
   "library_versions": [
     {
-      "ident": "Lavu58.29.100",
-      "major": 58,
+      "ident": "Lavu60.8.100",
+      "major": 60,
       "micro": 100,
-      "minor": 29,
+      "minor": 8,
       "name": "libavutil",
-      "version": 3808612
+      "version": 3934308
     },
     {
-      "ident": "Lavc60.31.102",
-      "major": 60,
-      "micro": 102,
-      "minor": 31,
-      "name": "libavcodec",
-      "version": 3940198
-    },
-    {
-      "ident": "Lavf60.16.100",
-      "major": 60,
+      "ident": "Lavc62.11.100",
+      "major": 62,
       "micro": 100,
-      "minor": 16,
-      "name": "libavformat",
-      "version": 3936356
+      "minor": 11,
+      "name": "libavcodec",
+      "version": 4066148
     },
     {
-      "ident": "Lavd60.3.100",
-      "major": 60,
+      "ident": "Lavf62.3.100",
+      "major": 62,
       "micro": 100,
       "minor": 3,
-      "name": "libavdevice",
-      "version": 3933028
+      "name": "libavformat",
+      "version": 4064100
     },
     {
-      "ident": "Lavfi9.12.100",
+      "ident": "Lavd62.1.100",
+      "major": 62,
+      "micro": 100,
+      "minor": 1,
+      "name": "libavdevice",
+      "version": 4063588
+    },
+    {
+      "ident": "Lavfi11.4.100",
+      "major": 11,
+      "micro": 100,
+      "minor": 4,
+      "name": "libavfilter",
+      "version": 722020
+    },
+    {
+      "ident": "SwS9.1.100",
       "major": 9,
       "micro": 100,
-      "minor": 12,
-      "name": "libavfilter",
-      "version": 592996
-    },
-    {
-      "ident": "SwS7.5.100",
-      "major": 7,
-      "micro": 100,
-      "minor": 5,
+      "minor": 1,
       "name": "libswscale",
-      "version": 460132
+      "version": 590180
     },
     {
-      "ident": "SwR4.12.100",
-      "major": 4,
+      "ident": "SwR6.1.100",
+      "major": 6,
       "micro": 100,
-      "minor": 12,
+      "minor": 1,
       "name": "libswresample",
-      "version": 265316
-    },
-    {
-      "ident": "postproc57.3.100",
-      "major": 57,
-      "micro": 100,
-      "minor": 3,
-      "name": "libpostproc",
-      "version": 3736420
+      "version": 393572
     }
   ],
   "packets_and_frames": [
@@ -93,24 +86,21 @@
     {
       "best_effort_timestamp": 0,
       "best_effort_timestamp_time": "0.000000",
-      "coded_picture_number": 0,
       "crop_bottom": 0,
       "crop_left": 0,
       "crop_right": 0,
       "crop_top": 0,
-      "display_picture_number": 0,
       "duration": 1,
       "duration_time": "0.040000",
       "height": 520,
       "interlaced_frame": 0,
       "key_frame": 1,
+      "lossless": 1,
       "media_type": "video",
       "pict_type": "I",
       "pix_fmt": "argb",
       "pkt_dts": 0,
       "pkt_dts_time": "0.000000",
-      "pkt_duration": 1,
-      "pkt_duration_time": "0.040000",
       "pkt_pos": "0",
       "pkt_size": "344360",
       "pts": 0,
@@ -677,7 +667,7 @@
       "bits_per_pixel": 8,
       "components": [
         {
-          "bit_depth": 2,
+          "bit_depth": 3,
           "index": 1
         },
         {
@@ -685,7 +675,7 @@
           "index": 2
         },
         {
-          "bit_depth": 3,
+          "bit_depth": 2,
           "index": 3
         }
       ],
@@ -4461,19 +4451,6 @@
       "nb_components": 3
     },
     {
-      "flags": {
-        "alpha": 0,
-        "big_endian": 0,
-        "bitstream": 0,
-        "hwaccel": 1,
-        "palette": 0,
-        "planar": 0,
-        "rgb": 0
-      },
-      "name": "xvmc",
-      "nb_components": 0
-    },
-    {
       "bits_per_pixel": 20,
       "components": [
         {
@@ -6586,19 +6563,1103 @@
       },
       "name": "gbrap14le",
       "nb_components": 4
+    },
+    {
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 1,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "name": "d3d12",
+      "nb_components": 0
+    },
+    {
+      "bits_per_pixel": 32,
+      "components": [
+        {
+          "bit_depth": 8,
+          "index": 1
+        },
+        {
+          "bit_depth": 8,
+          "index": 2
+        },
+        {
+          "bit_depth": 8,
+          "index": 3
+        },
+        {
+          "bit_depth": 8,
+          "index": 4
+        }
+      ],
+      "flags": {
+        "alpha": 1,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 0,
+      "name": "ayuv",
+      "nb_components": 4
+    },
+    {
+      "bits_per_pixel": 32,
+      "components": [
+        {
+          "bit_depth": 8,
+          "index": 1
+        },
+        {
+          "bit_depth": 8,
+          "index": 2
+        },
+        {
+          "bit_depth": 8,
+          "index": 3
+        },
+        {
+          "bit_depth": 8,
+          "index": 4
+        }
+      ],
+      "flags": {
+        "alpha": 1,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 0,
+      "name": "uyva",
+      "nb_components": 4
+    },
+    {
+      "bits_per_pixel": 24,
+      "components": [
+        {
+          "bit_depth": 8,
+          "index": 1
+        },
+        {
+          "bit_depth": 8,
+          "index": 2
+        },
+        {
+          "bit_depth": 8,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 0,
+      "name": "vyu444",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 30,
+      "components": [
+        {
+          "bit_depth": 10,
+          "index": 1
+        },
+        {
+          "bit_depth": 10,
+          "index": 2
+        },
+        {
+          "bit_depth": 10,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 1,
+        "bitstream": 1,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 0,
+      "name": "v30xbe",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 30,
+      "components": [
+        {
+          "bit_depth": 10,
+          "index": 1
+        },
+        {
+          "bit_depth": 10,
+          "index": 2
+        },
+        {
+          "bit_depth": 10,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 0,
+      "name": "v30xle",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 48,
+      "components": [
+        {
+          "bit_depth": 16,
+          "index": 1
+        },
+        {
+          "bit_depth": 16,
+          "index": 2
+        },
+        {
+          "bit_depth": 16,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 1
+      },
+      "name": "rgbf16be",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 48,
+      "components": [
+        {
+          "bit_depth": 16,
+          "index": 1
+        },
+        {
+          "bit_depth": 16,
+          "index": 2
+        },
+        {
+          "bit_depth": 16,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 1
+      },
+      "name": "rgbf16le",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 128,
+      "components": [
+        {
+          "bit_depth": 32,
+          "index": 1
+        },
+        {
+          "bit_depth": 32,
+          "index": 2
+        },
+        {
+          "bit_depth": 32,
+          "index": 3
+        },
+        {
+          "bit_depth": 32,
+          "index": 4
+        }
+      ],
+      "flags": {
+        "alpha": 1,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 1
+      },
+      "name": "rgba128be",
+      "nb_components": 4
+    },
+    {
+      "bits_per_pixel": 128,
+      "components": [
+        {
+          "bit_depth": 32,
+          "index": 1
+        },
+        {
+          "bit_depth": 32,
+          "index": 2
+        },
+        {
+          "bit_depth": 32,
+          "index": 3
+        },
+        {
+          "bit_depth": 32,
+          "index": 4
+        }
+      ],
+      "flags": {
+        "alpha": 1,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 1
+      },
+      "name": "rgba128le",
+      "nb_components": 4
+    },
+    {
+      "bits_per_pixel": 96,
+      "components": [
+        {
+          "bit_depth": 32,
+          "index": 1
+        },
+        {
+          "bit_depth": 32,
+          "index": 2
+        },
+        {
+          "bit_depth": 32,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 1
+      },
+      "name": "rgb96be",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 96,
+      "components": [
+        {
+          "bit_depth": 32,
+          "index": 1
+        },
+        {
+          "bit_depth": 32,
+          "index": 2
+        },
+        {
+          "bit_depth": 32,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 1
+      },
+      "name": "rgb96le",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 32,
+      "components": [
+        {
+          "bit_depth": 16,
+          "index": 1
+        },
+        {
+          "bit_depth": 16,
+          "index": 2
+        },
+        {
+          "bit_depth": 16,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 1,
+      "name": "y216be",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 32,
+      "components": [
+        {
+          "bit_depth": 16,
+          "index": 1
+        },
+        {
+          "bit_depth": 16,
+          "index": 2
+        },
+        {
+          "bit_depth": 16,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 1,
+      "name": "y216le",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 48,
+      "components": [
+        {
+          "bit_depth": 16,
+          "index": 1
+        },
+        {
+          "bit_depth": 16,
+          "index": 2
+        },
+        {
+          "bit_depth": 16,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 0,
+      "name": "xv48be",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 48,
+      "components": [
+        {
+          "bit_depth": 16,
+          "index": 1
+        },
+        {
+          "bit_depth": 16,
+          "index": 2
+        },
+        {
+          "bit_depth": 16,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 0,
+      "name": "xv48le",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 48,
+      "components": [
+        {
+          "bit_depth": 16,
+          "index": 1
+        },
+        {
+          "bit_depth": 16,
+          "index": 2
+        },
+        {
+          "bit_depth": 16,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 1
+      },
+      "name": "gbrpf16be",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 48,
+      "components": [
+        {
+          "bit_depth": 16,
+          "index": 1
+        },
+        {
+          "bit_depth": 16,
+          "index": 2
+        },
+        {
+          "bit_depth": 16,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 1
+      },
+      "name": "gbrpf16le",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 64,
+      "components": [
+        {
+          "bit_depth": 16,
+          "index": 1
+        },
+        {
+          "bit_depth": 16,
+          "index": 2
+        },
+        {
+          "bit_depth": 16,
+          "index": 3
+        },
+        {
+          "bit_depth": 16,
+          "index": 4
+        }
+      ],
+      "flags": {
+        "alpha": 1,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 1
+      },
+      "name": "gbrapf16be",
+      "nb_components": 4
+    },
+    {
+      "bits_per_pixel": 64,
+      "components": [
+        {
+          "bit_depth": 16,
+          "index": 1
+        },
+        {
+          "bit_depth": 16,
+          "index": 2
+        },
+        {
+          "bit_depth": 16,
+          "index": 3
+        },
+        {
+          "bit_depth": 16,
+          "index": 4
+        }
+      ],
+      "flags": {
+        "alpha": 1,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 1
+      },
+      "name": "gbrapf16le",
+      "nb_components": 4
+    },
+    {
+      "bits_per_pixel": 16,
+      "components": [
+        {
+          "bit_depth": 16,
+          "index": 1
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "name": "grayf16be",
+      "nb_components": 1
+    },
+    {
+      "bits_per_pixel": 16,
+      "components": [
+        {
+          "bit_depth": 16,
+          "index": 1
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "name": "grayf16le",
+      "nb_components": 1
+    },
+    {
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 1,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "name": "amf",
+      "nb_components": 0
+    },
+    {
+      "bits_per_pixel": 32,
+      "components": [
+        {
+          "bit_depth": 32,
+          "index": 1
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "name": "gray32be",
+      "nb_components": 1
+    },
+    {
+      "bits_per_pixel": 32,
+      "components": [
+        {
+          "bit_depth": 32,
+          "index": 1
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "name": "gray32le",
+      "nb_components": 1
+    },
+    {
+      "bits_per_pixel": 64,
+      "components": [
+        {
+          "bit_depth": 32,
+          "index": 1
+        },
+        {
+          "bit_depth": 32,
+          "index": 2
+        }
+      ],
+      "flags": {
+        "alpha": 1,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "name": "yaf32be",
+      "nb_components": 2
+    },
+    {
+      "bits_per_pixel": 64,
+      "components": [
+        {
+          "bit_depth": 32,
+          "index": 1
+        },
+        {
+          "bit_depth": 32,
+          "index": 2
+        }
+      ],
+      "flags": {
+        "alpha": 1,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "name": "yaf32le",
+      "nb_components": 2
+    },
+    {
+      "bits_per_pixel": 32,
+      "components": [
+        {
+          "bit_depth": 16,
+          "index": 1
+        },
+        {
+          "bit_depth": 16,
+          "index": 2
+        }
+      ],
+      "flags": {
+        "alpha": 1,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "name": "yaf16be",
+      "nb_components": 2
+    },
+    {
+      "bits_per_pixel": 32,
+      "components": [
+        {
+          "bit_depth": 16,
+          "index": 1
+        },
+        {
+          "bit_depth": 16,
+          "index": 2
+        }
+      ],
+      "flags": {
+        "alpha": 1,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "name": "yaf16le",
+      "nb_components": 2
+    },
+    {
+      "bits_per_pixel": 128,
+      "components": [
+        {
+          "bit_depth": 32,
+          "index": 1
+        },
+        {
+          "bit_depth": 32,
+          "index": 2
+        },
+        {
+          "bit_depth": 32,
+          "index": 3
+        },
+        {
+          "bit_depth": 32,
+          "index": 4
+        }
+      ],
+      "flags": {
+        "alpha": 1,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 1
+      },
+      "name": "gbrap32be",
+      "nb_components": 4
+    },
+    {
+      "bits_per_pixel": 128,
+      "components": [
+        {
+          "bit_depth": 32,
+          "index": 1
+        },
+        {
+          "bit_depth": 32,
+          "index": 2
+        },
+        {
+          "bit_depth": 32,
+          "index": 3
+        },
+        {
+          "bit_depth": 32,
+          "index": 4
+        }
+      ],
+      "flags": {
+        "alpha": 1,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 1
+      },
+      "name": "gbrap32le",
+      "nb_components": 4
+    },
+    {
+      "bits_per_pixel": 30,
+      "components": [
+        {
+          "bit_depth": 10,
+          "index": 1
+        },
+        {
+          "bit_depth": 10,
+          "index": 2
+        },
+        {
+          "bit_depth": 10,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 0,
+      "name": "yuv444p10msbbe",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 30,
+      "components": [
+        {
+          "bit_depth": 10,
+          "index": 1
+        },
+        {
+          "bit_depth": 10,
+          "index": 2
+        },
+        {
+          "bit_depth": 10,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 0,
+      "name": "yuv444p10msble",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 36,
+      "components": [
+        {
+          "bit_depth": 12,
+          "index": 1
+        },
+        {
+          "bit_depth": 12,
+          "index": 2
+        },
+        {
+          "bit_depth": 12,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 0,
+      "name": "yuv444p12msbbe",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 36,
+      "components": [
+        {
+          "bit_depth": 12,
+          "index": 1
+        },
+        {
+          "bit_depth": 12,
+          "index": 2
+        },
+        {
+          "bit_depth": 12,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 0,
+      "name": "yuv444p12msble",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 30,
+      "components": [
+        {
+          "bit_depth": 10,
+          "index": 1
+        },
+        {
+          "bit_depth": 10,
+          "index": 2
+        },
+        {
+          "bit_depth": 10,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 1
+      },
+      "name": "gbrp10msbbe",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 30,
+      "components": [
+        {
+          "bit_depth": 10,
+          "index": 1
+        },
+        {
+          "bit_depth": 10,
+          "index": 2
+        },
+        {
+          "bit_depth": 10,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 1
+      },
+      "name": "gbrp10msble",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 36,
+      "components": [
+        {
+          "bit_depth": 12,
+          "index": 1
+        },
+        {
+          "bit_depth": 12,
+          "index": 2
+        },
+        {
+          "bit_depth": 12,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 1
+      },
+      "name": "gbrp12msbbe",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 36,
+      "components": [
+        {
+          "bit_depth": 12,
+          "index": 1
+        },
+        {
+          "bit_depth": 12,
+          "index": 2
+        },
+        {
+          "bit_depth": 12,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 1
+      },
+      "name": "gbrp12msble",
+      "nb_components": 3
+    },
+    {
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 1,
+        "palette": 0,
+        "planar": 0,
+        "rgb": 0
+      },
+      "name": "ohcodec",
+      "nb_components": 0
     }
   ],
   "program_version": {
-    "compiler_ident": "gcc 13 (Ubuntu 13.2.0-23ubuntu3)",
-    "configuration": "--prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/aarch64-linux-gnu --incdir=/usr/include/aarch64-linux-gnu --arch=arm64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared",
-    "copyright": "Copyright (c) 2007-2023 the FFmpeg developers",
-    "version": "6.1.1-3ubuntu5"
+    "compiler_ident": "Apple clang version 17.0.0 (clang-1700.4.4.1)",
+    "configuration": "--prefix=/opt/homebrew/Cellar/ffmpeg/8.0.1 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags= --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox --enable-neon",
+    "copyright": "Copyright (c) 2007-2025 the FFmpeg developers",
+    "version": "8.0.1"
   },
   "programs": [],
   "streams": [
     {
       "avg_frame_rate": "25/1",
-      "closed_captions": 0,
       "codec_long_name": "WebP",
       "codec_name": "webp",
       "codec_tag": "0x0000",
@@ -6620,13 +7681,13 @@
         "karaoke": 0,
         "lyrics": 0,
         "metadata": 0,
+        "multilayer": 0,
         "non_diegetic": 0,
         "original": 0,
         "still_image": 0,
         "timed_thumbnails": 0,
         "visual_impaired": 0
       },
-      "film_grain": 0,
       "has_b_frames": 0,
       "height": 520,
       "index": 0,
