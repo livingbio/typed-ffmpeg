@@ -1,4 +1,0 @@
-[
-  "import ffmpeg",
-  "result = ffmpeg.input('input.mp4').output(filename='output.mp4').global_args()"
-]

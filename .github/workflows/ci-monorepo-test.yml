@@ -73,8 +73,6 @@ jobs:
           sudo apt-get install -y ffmpeg
 
       - name: Install packages and run shared tests
-        env:
-          TYPED_FFMPEG_VERSION: ${{ matrix.ffmpeg-version }}
         run: |
           python -m venv .venv
           source .venv/bin/activate
