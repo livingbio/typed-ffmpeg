@@ -4,11 +4,11 @@
   "format": {
     "bit_rate": 128002,
     "duration": 27.74475,
-    "filename": "/Users/davidchen/repo/typed-ffmpeg/packages/core/src/ffmpeg_core/ffprobe/tests/test_probe/test_data/SampleAudio_0.4mb.mp3",
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/SampleAudio_0.4mb.mp3",
     "format_long_name": "MP2/3 (MPEG audio layer 2/3)",
     "format_name": "mp3",
     "nb_programs": 0,
-    "nb_stream_groups": 0,
+    "nb_stream_groups": null,
     "nb_streams": 1,
     "probe_score": 51,
     "size": 443926,

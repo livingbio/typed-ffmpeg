@@ -1,10 +1,9 @@
 {
   "format": {
-    "filename": "/Users/davidchen/repo/typed-ffmpeg/packages/core/src/ffmpeg_core/ffprobe/tests/test_probe/test_data/54/animated-webp.webp",
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/54/animated-webp.webp",
     "format_long_name": "piped webp sequence",
     "format_name": "webp_pipe",
     "nb_programs": 0,
-    "nb_stream_groups": 0,
     "nb_streams": 1,
     "probe_score": 99,
     "size": "380850"
@@ -12,6 +11,7 @@
   "streams": [
     {
       "avg_frame_rate": "25/1",
+      "closed_captions": 0,
       "codec_long_name": "WebP",
       "codec_name": "webp",
       "codec_tag": "0x0000",
@@ -33,13 +33,13 @@
         "karaoke": 0,
         "lyrics": 0,
         "metadata": 0,
-        "multilayer": 0,
         "non_diegetic": 0,
         "original": 0,
         "still_image": 0,
         "timed_thumbnails": 0,
         "visual_impaired": 0
       },
+      "film_grain": 0,
       "has_b_frames": 0,
       "height": 0,
       "index": 0,

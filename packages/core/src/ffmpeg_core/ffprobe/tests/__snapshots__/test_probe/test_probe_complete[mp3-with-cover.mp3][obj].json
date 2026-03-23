@@ -4,13 +4,13 @@
   },
   "error": null,
   "format": {
-    "bit_rate": 5421384,
-    "duration": 1.0,
-    "filename": "/Users/davidchen/repo/typed-ffmpeg/packages/core/src/ffmpeg_core/ffprobe/tests/test_probe/test_data/34/mp3-with-cover.mp3",
+    "bit_rate": 5188433,
+    "duration": 1.044898,
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/34/mp3-with-cover.mp3",
     "format_long_name": "MP2/3 (MPEG audio layer 2/3)",
     "format_name": "mp3",
     "nb_programs": 0,
-    "nb_stream_groups": 0,
+    "nb_stream_groups": null,
     "nb_streams": 2,
     "probe_score": 51,
     "size": 677673,
@@ -36,60 +36,68 @@
   "library_versions": {
     "library_version": [
       {
-        "ident": "Lavu60.8.100",
+        "ident": "Lavu58.29.100",
+        "major": 58,
+        "micro": 100,
+        "minor": 29,
+        "name": "libavutil",
+        "version": 3808612
+      },
+      {
+        "ident": "Lavc60.31.102",
+        "major": 60,
+        "micro": 102,
+        "minor": 31,
+        "name": "libavcodec",
+        "version": 3940198
+      },
+      {
+        "ident": "Lavf60.16.100",
         "major": 60,
         "micro": 100,
-        "minor": 8,
-        "name": "libavutil",
-        "version": 3934308
+        "minor": 16,
+        "name": "libavformat",
+        "version": 3936356
       },
       {
-        "ident": "Lavc62.11.100",
-        "major": 62,
-        "micro": 100,
-        "minor": 11,
-        "name": "libavcodec",
-        "version": 4066148
-      },
-      {
-        "ident": "Lavf62.3.100",
-        "major": 62,
+        "ident": "Lavd60.3.100",
+        "major": 60,
         "micro": 100,
         "minor": 3,
-        "name": "libavformat",
-        "version": 4064100
-      },
-      {
-        "ident": "Lavd62.1.100",
-        "major": 62,
-        "micro": 100,
-        "minor": 1,
         "name": "libavdevice",
-        "version": 4063588
+        "version": 3933028
       },
       {
-        "ident": "Lavfi11.4.100",
-        "major": 11,
-        "micro": 100,
-        "minor": 4,
-        "name": "libavfilter",
-        "version": 722020
-      },
-      {
-        "ident": "SwS9.1.100",
+        "ident": "Lavfi9.12.100",
         "major": 9,
         "micro": 100,
-        "minor": 1,
-        "name": "libswscale",
-        "version": 590180
+        "minor": 12,
+        "name": "libavfilter",
+        "version": 592996
       },
       {
-        "ident": "SwR6.1.100",
-        "major": 6,
+        "ident": "SwS7.5.100",
+        "major": 7,
         "micro": 100,
-        "minor": 1,
+        "minor": 5,
+        "name": "libswscale",
+        "version": 460132
+      },
+      {
+        "ident": "SwR4.12.100",
+        "major": 4,
+        "micro": 100,
+        "minor": 12,
         "name": "libswresample",
-        "version": 393572
+        "version": 265316
+      },
+      {
+        "ident": "postproc57.3.100",
+        "major": 57,
+        "micro": 100,
+        "minor": 3,
+        "name": "libpostproc",
+        "version": 3736420
       }
     ]
   },
@@ -102,7 +110,7 @@
         "channel_layout": null,
         "channels": null,
         "chroma_location": null,
-        "coded_picture_number": null,
+        "coded_picture_number": 0,
         "color_primaries": null,
         "color_range": "pc",
         "color_space": "gbr",
@@ -111,7 +119,7 @@
         "crop_left": 0,
         "crop_right": 0,
         "crop_top": 0,
-        "display_picture_number": null,
+        "display_picture_number": 0,
         "duration": null,
         "duration_time": null,
         "height": 500,
@@ -167,8 +175,8 @@
         "pix_fmt": null,
         "pkt_dts": 353600,
         "pkt_dts_time": 0.025057,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 15040,
+        "pkt_duration_time": 0.001066,
         "pkt_pos": 660955,
         "pkt_size": 417,
         "pts": 353600,
@@ -210,8 +218,8 @@
         "pix_fmt": null,
         "pkt_dts": 368640,
         "pkt_dts_time": 0.026122,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 661372,
         "pkt_size": 418,
         "pts": 368640,
@@ -253,8 +261,8 @@
         "pix_fmt": null,
         "pkt_dts": 737280,
         "pkt_dts_time": 0.052245,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 661790,
         "pkt_size": 418,
         "pts": 737280,
@@ -296,8 +304,8 @@
         "pix_fmt": null,
         "pkt_dts": 1105920,
         "pkt_dts_time": 0.078367,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 662208,
         "pkt_size": 418,
         "pts": 1105920,
@@ -339,8 +347,8 @@
         "pix_fmt": null,
         "pkt_dts": 1474560,
         "pkt_dts_time": 0.10449,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 662626,
         "pkt_size": 418,
         "pts": 1474560,
@@ -382,8 +390,8 @@
         "pix_fmt": null,
         "pkt_dts": 1843200,
         "pkt_dts_time": 0.130612,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 663044,
         "pkt_size": 418,
         "pts": 1843200,
@@ -425,8 +433,8 @@
         "pix_fmt": null,
         "pkt_dts": 2211840,
         "pkt_dts_time": 0.156735,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 663462,
         "pkt_size": 418,
         "pts": 2211840,
@@ -468,8 +476,8 @@
         "pix_fmt": null,
         "pkt_dts": 2580480,
         "pkt_dts_time": 0.182857,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 663880,
         "pkt_size": 418,
         "pts": 2580480,
@@ -511,8 +519,8 @@
         "pix_fmt": null,
         "pkt_dts": 2949120,
         "pkt_dts_time": 0.20898,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 664298,
         "pkt_size": 418,
         "pts": 2949120,
@@ -554,8 +562,8 @@
         "pix_fmt": null,
         "pkt_dts": 3317760,
         "pkt_dts_time": 0.235102,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 664716,
         "pkt_size": 418,
         "pts": 3317760,
@@ -597,8 +605,8 @@
         "pix_fmt": null,
         "pkt_dts": 3686400,
         "pkt_dts_time": 0.261224,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 665134,
         "pkt_size": 418,
         "pts": 3686400,
@@ -640,8 +648,8 @@
         "pix_fmt": null,
         "pkt_dts": 4055040,
         "pkt_dts_time": 0.287347,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 665552,
         "pkt_size": 418,
         "pts": 4055040,
@@ -683,8 +691,8 @@
         "pix_fmt": null,
         "pkt_dts": 4423680,
         "pkt_dts_time": 0.313469,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 665970,
         "pkt_size": 418,
         "pts": 4423680,
@@ -726,8 +734,8 @@
         "pix_fmt": null,
         "pkt_dts": 4792320,
         "pkt_dts_time": 0.339592,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 666388,
         "pkt_size": 418,
         "pts": 4792320,
@@ -769,8 +777,8 @@
         "pix_fmt": null,
         "pkt_dts": 5160960,
         "pkt_dts_time": 0.365714,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 666806,
         "pkt_size": 418,
         "pts": 5160960,
@@ -812,8 +820,8 @@
         "pix_fmt": null,
         "pkt_dts": 5529600,
         "pkt_dts_time": 0.391837,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 667224,
         "pkt_size": 418,
         "pts": 5529600,
@@ -855,8 +863,8 @@
         "pix_fmt": null,
         "pkt_dts": 5898240,
         "pkt_dts_time": 0.417959,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 667642,
         "pkt_size": 418,
         "pts": 5898240,
@@ -898,8 +906,8 @@
         "pix_fmt": null,
         "pkt_dts": 6266880,
         "pkt_dts_time": 0.444082,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 668060,
         "pkt_size": 418,
         "pts": 6266880,
@@ -941,8 +949,8 @@
         "pix_fmt": null,
         "pkt_dts": 6635520,
         "pkt_dts_time": 0.470204,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 668478,
         "pkt_size": 418,
         "pts": 6635520,
@@ -984,8 +992,8 @@
         "pix_fmt": null,
         "pkt_dts": 7004160,
         "pkt_dts_time": 0.496327,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 668896,
         "pkt_size": 418,
         "pts": 7004160,
@@ -1027,8 +1035,8 @@
         "pix_fmt": null,
         "pkt_dts": 7372800,
         "pkt_dts_time": 0.522449,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 669314,
         "pkt_size": 418,
         "pts": 7372800,
@@ -1070,8 +1078,8 @@
         "pix_fmt": null,
         "pkt_dts": 7741440,
         "pkt_dts_time": 0.548571,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 669732,
         "pkt_size": 418,
         "pts": 7741440,
@@ -1113,8 +1121,8 @@
         "pix_fmt": null,
         "pkt_dts": 8110080,
         "pkt_dts_time": 0.574694,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 670150,
         "pkt_size": 418,
         "pts": 8110080,
@@ -1156,8 +1164,8 @@
         "pix_fmt": null,
         "pkt_dts": 8478720,
         "pkt_dts_time": 0.600816,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 670568,
         "pkt_size": 418,
         "pts": 8478720,
@@ -1199,8 +1207,8 @@
         "pix_fmt": null,
         "pkt_dts": 8847360,
         "pkt_dts_time": 0.626939,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 670986,
         "pkt_size": 418,
         "pts": 8847360,
@@ -1242,8 +1250,8 @@
         "pix_fmt": null,
         "pkt_dts": 9216000,
         "pkt_dts_time": 0.653061,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 671404,
         "pkt_size": 417,
         "pts": 9216000,
@@ -1285,8 +1293,8 @@
         "pix_fmt": null,
         "pkt_dts": 9584640,
         "pkt_dts_time": 0.679184,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 671821,
         "pkt_size": 418,
         "pts": 9584640,
@@ -1328,8 +1336,8 @@
         "pix_fmt": null,
         "pkt_dts": 9953280,
         "pkt_dts_time": 0.705306,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 672239,
         "pkt_size": 418,
         "pts": 9953280,
@@ -1371,8 +1379,8 @@
         "pix_fmt": null,
         "pkt_dts": 10321920,
         "pkt_dts_time": 0.731429,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 672657,
         "pkt_size": 418,
         "pts": 10321920,
@@ -1414,8 +1422,8 @@
         "pix_fmt": null,
         "pkt_dts": 10690560,
         "pkt_dts_time": 0.757551,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 673075,
         "pkt_size": 418,
         "pts": 10690560,
@@ -1457,8 +1465,8 @@
         "pix_fmt": null,
         "pkt_dts": 11059200,
         "pkt_dts_time": 0.783673,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 673493,
         "pkt_size": 418,
         "pts": 11059200,
@@ -1500,8 +1508,8 @@
         "pix_fmt": null,
         "pkt_dts": 11427840,
         "pkt_dts_time": 0.809796,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 673911,
         "pkt_size": 418,
         "pts": 11427840,
@@ -1543,8 +1551,8 @@
         "pix_fmt": null,
         "pkt_dts": 11796480,
         "pkt_dts_time": 0.835918,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 674329,
         "pkt_size": 418,
         "pts": 11796480,
@@ -1586,8 +1594,8 @@
         "pix_fmt": null,
         "pkt_dts": 12165120,
         "pkt_dts_time": 0.862041,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 674747,
         "pkt_size": 418,
         "pts": 12165120,
@@ -1629,8 +1637,8 @@
         "pix_fmt": null,
         "pkt_dts": 12533760,
         "pkt_dts_time": 0.888163,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 675165,
         "pkt_size": 418,
         "pts": 12533760,
@@ -1672,8 +1680,8 @@
         "pix_fmt": null,
         "pkt_dts": 12902400,
         "pkt_dts_time": 0.914286,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 675583,
         "pkt_size": 418,
         "pts": 12902400,
@@ -1715,8 +1723,8 @@
         "pix_fmt": null,
         "pkt_dts": 13271040,
         "pkt_dts_time": 0.940408,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 676001,
         "pkt_size": 418,
         "pts": 13271040,
@@ -1758,8 +1766,8 @@
         "pix_fmt": null,
         "pkt_dts": 13639680,
         "pkt_dts_time": 0.966531,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 676419,
         "pkt_size": 418,
         "pts": 13639680,
@@ -1801,8 +1809,8 @@
         "pix_fmt": null,
         "pkt_dts": 14008320,
         "pkt_dts_time": 0.992653,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 368640,
+        "pkt_duration_time": 0.026122,
         "pkt_pos": 676837,
         "pkt_size": 418,
         "pts": 14008320,
@@ -1844,8 +1852,8 @@
         "pix_fmt": null,
         "pkt_dts": 14376960,
         "pkt_dts_time": 1.018776,
-        "pkt_duration": null,
-        "pkt_duration_time": null,
+        "pkt_duration": 88640,
+        "pkt_duration_time": 0.006281,
         "pkt_pos": 677255,
         "pkt_size": 418,
         "pts": 14376960,
@@ -3232,7 +3240,7 @@
         "components": {
           "component": [
             {
-              "bit_depth": 3,
+              "bit_depth": 2,
               "index": 1
             },
             {
@@ -3240,7 +3248,7 @@
               "index": 2
             },
             {
-              "bit_depth": 2,
+              "bit_depth": 3,
               "index": 3
             }
           ]
@@ -7415,6 +7423,23 @@
         "nb_components": 3
       },
       {
+        "bits_per_pixel": null,
+        "components": null,
+        "flags": {
+          "alpha": 0,
+          "big_endian": 0,
+          "bitstream": 0,
+          "hwaccel": 1,
+          "palette": 0,
+          "planar": 0,
+          "rgb": 0
+        },
+        "log2_chroma_h": null,
+        "log2_chroma_w": null,
+        "name": "xvmc",
+        "nb_components": 0
+      },
+      {
         "bits_per_pixel": 20,
         "components": {
           "component": [
@@ -9751,1235 +9776,16 @@
         "log2_chroma_w": null,
         "name": "gbrap14le",
         "nb_components": 4
-      },
-      {
-        "bits_per_pixel": null,
-        "components": null,
-        "flags": {
-          "alpha": 0,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 1,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "d3d12",
-        "nb_components": 0
-      },
-      {
-        "bits_per_pixel": 32,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 8,
-              "index": 1
-            },
-            {
-              "bit_depth": 8,
-              "index": 2
-            },
-            {
-              "bit_depth": 8,
-              "index": 3
-            },
-            {
-              "bit_depth": 8,
-              "index": 4
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 1,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": 0,
-        "log2_chroma_w": 0,
-        "name": "ayuv",
-        "nb_components": 4
-      },
-      {
-        "bits_per_pixel": 32,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 8,
-              "index": 1
-            },
-            {
-              "bit_depth": 8,
-              "index": 2
-            },
-            {
-              "bit_depth": 8,
-              "index": 3
-            },
-            {
-              "bit_depth": 8,
-              "index": 4
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 1,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": 0,
-        "log2_chroma_w": 0,
-        "name": "uyva",
-        "nb_components": 4
-      },
-      {
-        "bits_per_pixel": 24,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 8,
-              "index": 1
-            },
-            {
-              "bit_depth": 8,
-              "index": 2
-            },
-            {
-              "bit_depth": 8,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": 0,
-        "log2_chroma_w": 0,
-        "name": "vyu444",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 30,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 10,
-              "index": 1
-            },
-            {
-              "bit_depth": 10,
-              "index": 2
-            },
-            {
-              "bit_depth": 10,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 1,
-          "bitstream": 1,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": 0,
-        "log2_chroma_w": 0,
-        "name": "v30xbe",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 30,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 10,
-              "index": 1
-            },
-            {
-              "bit_depth": 10,
-              "index": 2
-            },
-            {
-              "bit_depth": 10,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": 0,
-        "log2_chroma_w": 0,
-        "name": "v30xle",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 48,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 16,
-              "index": 1
-            },
-            {
-              "bit_depth": 16,
-              "index": 2
-            },
-            {
-              "bit_depth": 16,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 1,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 1
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "rgbf16be",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 48,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 16,
-              "index": 1
-            },
-            {
-              "bit_depth": 16,
-              "index": 2
-            },
-            {
-              "bit_depth": 16,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 1
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "rgbf16le",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 128,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 32,
-              "index": 1
-            },
-            {
-              "bit_depth": 32,
-              "index": 2
-            },
-            {
-              "bit_depth": 32,
-              "index": 3
-            },
-            {
-              "bit_depth": 32,
-              "index": 4
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 1,
-          "big_endian": 1,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 1
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "rgba128be",
-        "nb_components": 4
-      },
-      {
-        "bits_per_pixel": 128,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 32,
-              "index": 1
-            },
-            {
-              "bit_depth": 32,
-              "index": 2
-            },
-            {
-              "bit_depth": 32,
-              "index": 3
-            },
-            {
-              "bit_depth": 32,
-              "index": 4
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 1,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 1
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "rgba128le",
-        "nb_components": 4
-      },
-      {
-        "bits_per_pixel": 96,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 32,
-              "index": 1
-            },
-            {
-              "bit_depth": 32,
-              "index": 2
-            },
-            {
-              "bit_depth": 32,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 1,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 1
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "rgb96be",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 96,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 32,
-              "index": 1
-            },
-            {
-              "bit_depth": 32,
-              "index": 2
-            },
-            {
-              "bit_depth": 32,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 1
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "rgb96le",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 32,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 16,
-              "index": 1
-            },
-            {
-              "bit_depth": 16,
-              "index": 2
-            },
-            {
-              "bit_depth": 16,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 1,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": 0,
-        "log2_chroma_w": 1,
-        "name": "y216be",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 32,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 16,
-              "index": 1
-            },
-            {
-              "bit_depth": 16,
-              "index": 2
-            },
-            {
-              "bit_depth": 16,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": 0,
-        "log2_chroma_w": 1,
-        "name": "y216le",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 48,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 16,
-              "index": 1
-            },
-            {
-              "bit_depth": 16,
-              "index": 2
-            },
-            {
-              "bit_depth": 16,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 1,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": 0,
-        "log2_chroma_w": 0,
-        "name": "xv48be",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 48,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 16,
-              "index": 1
-            },
-            {
-              "bit_depth": 16,
-              "index": 2
-            },
-            {
-              "bit_depth": 16,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": 0,
-        "log2_chroma_w": 0,
-        "name": "xv48le",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 48,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 16,
-              "index": 1
-            },
-            {
-              "bit_depth": 16,
-              "index": 2
-            },
-            {
-              "bit_depth": 16,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 1,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 1,
-          "rgb": 1
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "gbrpf16be",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 48,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 16,
-              "index": 1
-            },
-            {
-              "bit_depth": 16,
-              "index": 2
-            },
-            {
-              "bit_depth": 16,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 1,
-          "rgb": 1
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "gbrpf16le",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 64,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 16,
-              "index": 1
-            },
-            {
-              "bit_depth": 16,
-              "index": 2
-            },
-            {
-              "bit_depth": 16,
-              "index": 3
-            },
-            {
-              "bit_depth": 16,
-              "index": 4
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 1,
-          "big_endian": 1,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 1,
-          "rgb": 1
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "gbrapf16be",
-        "nb_components": 4
-      },
-      {
-        "bits_per_pixel": 64,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 16,
-              "index": 1
-            },
-            {
-              "bit_depth": 16,
-              "index": 2
-            },
-            {
-              "bit_depth": 16,
-              "index": 3
-            },
-            {
-              "bit_depth": 16,
-              "index": 4
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 1,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 1,
-          "rgb": 1
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "gbrapf16le",
-        "nb_components": 4
-      },
-      {
-        "bits_per_pixel": 16,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 16,
-              "index": 1
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 1,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "grayf16be",
-        "nb_components": 1
-      },
-      {
-        "bits_per_pixel": 16,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 16,
-              "index": 1
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "grayf16le",
-        "nb_components": 1
-      },
-      {
-        "bits_per_pixel": null,
-        "components": null,
-        "flags": {
-          "alpha": 0,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 1,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "amf",
-        "nb_components": 0
-      },
-      {
-        "bits_per_pixel": 32,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 32,
-              "index": 1
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 1,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "gray32be",
-        "nb_components": 1
-      },
-      {
-        "bits_per_pixel": 32,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 32,
-              "index": 1
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "gray32le",
-        "nb_components": 1
-      },
-      {
-        "bits_per_pixel": 64,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 32,
-              "index": 1
-            },
-            {
-              "bit_depth": 32,
-              "index": 2
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 1,
-          "big_endian": 1,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "yaf32be",
-        "nb_components": 2
-      },
-      {
-        "bits_per_pixel": 64,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 32,
-              "index": 1
-            },
-            {
-              "bit_depth": 32,
-              "index": 2
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 1,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "yaf32le",
-        "nb_components": 2
-      },
-      {
-        "bits_per_pixel": 32,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 16,
-              "index": 1
-            },
-            {
-              "bit_depth": 16,
-              "index": 2
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 1,
-          "big_endian": 1,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "yaf16be",
-        "nb_components": 2
-      },
-      {
-        "bits_per_pixel": 32,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 16,
-              "index": 1
-            },
-            {
-              "bit_depth": 16,
-              "index": 2
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 1,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "yaf16le",
-        "nb_components": 2
-      },
-      {
-        "bits_per_pixel": 128,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 32,
-              "index": 1
-            },
-            {
-              "bit_depth": 32,
-              "index": 2
-            },
-            {
-              "bit_depth": 32,
-              "index": 3
-            },
-            {
-              "bit_depth": 32,
-              "index": 4
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 1,
-          "big_endian": 1,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 1,
-          "rgb": 1
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "gbrap32be",
-        "nb_components": 4
-      },
-      {
-        "bits_per_pixel": 128,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 32,
-              "index": 1
-            },
-            {
-              "bit_depth": 32,
-              "index": 2
-            },
-            {
-              "bit_depth": 32,
-              "index": 3
-            },
-            {
-              "bit_depth": 32,
-              "index": 4
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 1,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 1,
-          "rgb": 1
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "gbrap32le",
-        "nb_components": 4
-      },
-      {
-        "bits_per_pixel": 30,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 10,
-              "index": 1
-            },
-            {
-              "bit_depth": 10,
-              "index": 2
-            },
-            {
-              "bit_depth": 10,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 1,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 1,
-          "rgb": 0
-        },
-        "log2_chroma_h": 0,
-        "log2_chroma_w": 0,
-        "name": "yuv444p10msbbe",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 30,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 10,
-              "index": 1
-            },
-            {
-              "bit_depth": 10,
-              "index": 2
-            },
-            {
-              "bit_depth": 10,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 1,
-          "rgb": 0
-        },
-        "log2_chroma_h": 0,
-        "log2_chroma_w": 0,
-        "name": "yuv444p10msble",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 36,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 12,
-              "index": 1
-            },
-            {
-              "bit_depth": 12,
-              "index": 2
-            },
-            {
-              "bit_depth": 12,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 1,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 1,
-          "rgb": 0
-        },
-        "log2_chroma_h": 0,
-        "log2_chroma_w": 0,
-        "name": "yuv444p12msbbe",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 36,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 12,
-              "index": 1
-            },
-            {
-              "bit_depth": 12,
-              "index": 2
-            },
-            {
-              "bit_depth": 12,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 1,
-          "rgb": 0
-        },
-        "log2_chroma_h": 0,
-        "log2_chroma_w": 0,
-        "name": "yuv444p12msble",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 30,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 10,
-              "index": 1
-            },
-            {
-              "bit_depth": 10,
-              "index": 2
-            },
-            {
-              "bit_depth": 10,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 1,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 1,
-          "rgb": 1
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "gbrp10msbbe",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 30,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 10,
-              "index": 1
-            },
-            {
-              "bit_depth": 10,
-              "index": 2
-            },
-            {
-              "bit_depth": 10,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 1,
-          "rgb": 1
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "gbrp10msble",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 36,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 12,
-              "index": 1
-            },
-            {
-              "bit_depth": 12,
-              "index": 2
-            },
-            {
-              "bit_depth": 12,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 1,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 1,
-          "rgb": 1
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "gbrp12msbbe",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": 36,
-        "components": {
-          "component": [
-            {
-              "bit_depth": 12,
-              "index": 1
-            },
-            {
-              "bit_depth": 12,
-              "index": 2
-            },
-            {
-              "bit_depth": 12,
-              "index": 3
-            }
-          ]
-        },
-        "flags": {
-          "alpha": 0,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 0,
-          "palette": 0,
-          "planar": 1,
-          "rgb": 1
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "gbrp12msble",
-        "nb_components": 3
-      },
-      {
-        "bits_per_pixel": null,
-        "components": null,
-        "flags": {
-          "alpha": 0,
-          "big_endian": 0,
-          "bitstream": 0,
-          "hwaccel": 1,
-          "palette": 0,
-          "planar": 0,
-          "rgb": 0
-        },
-        "log2_chroma_h": null,
-        "log2_chroma_w": null,
-        "name": "ohcodec",
-        "nb_components": 0
       }
     ]
   },
   "program_version": {
     "build_date": null,
     "build_time": null,
-    "compiler_ident": "Apple clang version 17.0.0 (clang-1700.4.4.1)",
-    "configuration": "--prefix=/opt/homebrew/Cellar/ffmpeg/8.0.1 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags= --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox --enable-neon",
-    "copyright": "Copyright (c) 2007-2025 the FFmpeg developers",
-    "version": "8.0.1"
+    "compiler_ident": "gcc 13 (Ubuntu 13.2.0-23ubuntu3)",
+    "configuration": "--prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/aarch64-linux-gnu --incdir=/usr/include/aarch64-linux-gnu --arch=arm64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared",
+    "copyright": "Copyright (c) 2007-2023 the FFmpeg developers",
+    "version": "6.1.1-3ubuntu5"
   },
   "programs": {
     "program": []
@@ -11027,8 +9833,8 @@
           "timed_thumbnails": 0,
           "visual_impaired": 0
         },
-        "duration": 1.0,
-        "duration_ts": 14112000,
+        "duration": 1.044898,
+        "duration_ts": 14745600,
         "extradata": null,
         "extradata_hash": null,
         "extradata_size": null,
@@ -11073,7 +9879,7 @@
         "channel_layout": null,
         "channels": null,
         "chroma_location": null,
-        "closed_captions": null,
+        "closed_captions": true,
         "codec_long_name": "PNG (Portable Network Graphics) image",
         "codec_name": "png",
         "codec_tag": "0x0000",
@@ -11106,13 +9912,13 @@
           "timed_thumbnails": 0,
           "visual_impaired": 0
         },
-        "duration": 1.0,
-        "duration_ts": 90000,
+        "duration": 1.0449,
+        "duration_ts": 94041,
         "extradata": null,
         "extradata_hash": null,
         "extradata_size": null,
         "field_order": null,
-        "film_grain": null,
+        "film_grain": true,
         "has_b_frames": 0,
         "height": 500,
         "id": null,
