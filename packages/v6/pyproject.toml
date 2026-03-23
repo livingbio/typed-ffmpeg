@@ -23,7 +23,7 @@ dependencies = ["ffmpeg-core>=1.0,<2.0"]
 ffmpeg-core = { workspace = true }
 
 [project.optional-dependencies]
-dev = ["pytest>=7.0", "ruff>=0.9.6"]
+dev = ["pytest>=7.0", "syrupy>=5.0", "ruff>=0.9.6"]
 
 [build-system]
 requires = ["setuptools>=61.0"]

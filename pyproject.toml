@@ -167,6 +167,7 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 "**/tests/**.py" = ["D103", "D104", "D100", "DOC501"]
+"packages/tests-shared/**" = ["D", "DOC"]
 "packages/v5/**" = ["D", "DOC", "F401", "F821"]
 "packages/v6/**" = ["D", "DOC", "F401", "F821"]
 "packages/v7/**" = ["D", "DOC", "F401", "F821"]

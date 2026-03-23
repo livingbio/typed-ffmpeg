@@ -41,13 +41,23 @@ jobs:
           pip install -e ".[dev]"
           pytest src/ -v
 
-  test-v8:
+  test-versions:
     runs-on: ubuntu-latest
     needs: test-core
     strategy:
       fail-fast: false
       matrix:
-        python-version: ['3.10', '3.11', '3.12']
+        include:
+          - python-version: '3.10'
+            ffmpeg-version: v5
+          - python-version: '3.10'
+            ffmpeg-version: v6
+          - python-version: '3.10'
+            ffmpeg-version: v7
+          - python-version: '3.10'
+            ffmpeg-version: v8
+          - python-version: '3.12'
+            ffmpeg-version: v8
 
     steps:
       - uses: actions/checkout@v4
@@ -62,18 +72,19 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ffmpeg
 
-      - name: Install packages and run tests
+      - name: Install packages and run shared tests
+        env:
+          TYPED_FFMPEG_VERSION: ${{ matrix.ffmpeg-version }}
         run: |
           python -m venv .venv
           source .venv/bin/activate
           pip install -e packages/core
-          pip install -e packages/v8[dev]
-          cd packages/v8
-          pytest tests/ -v -k "not test_view"
+          pip install -e "packages/${{ matrix.ffmpeg-version }}[dev]"
+          pytest packages/tests-shared -v -k "not test_view"
 
   test-integration:
     runs-on: ubuntu-latest
-    needs: [test-core, test-v8]
+    needs: [test-core, test-versions]
 
     steps:
       - uses: actions/checkout@v4

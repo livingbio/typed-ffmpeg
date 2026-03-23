@@ -62,6 +62,3 @@ include = ["ffmpeg*"]
 [tool.ruff]
 line-length = 88
 src = ["src"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]

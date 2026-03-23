@@ -72,8 +72,8 @@ select = [
 ]
 
 [tool.pytest.ini_options]
-# Shared pytest configuration
-testpaths = ["packages/*/tests"]
+# Shared pytest configuration (tests-shared runs with TYPED_FFMPEG_VERSION env)
+testpaths = ["packages/tests-shared", "packages/core/src"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
