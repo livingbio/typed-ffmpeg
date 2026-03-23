@@ -367,7 +367,7 @@ def generate(outpath: Path | None = None, rebuild: bool = False) -> None:
         av_option_sets=ffmpeg_av_option_set,
         outpath=outpath,
     )
-    os.system("pre-commit run -a")
+    os.system("prek run -a")
 
 
 if __name__ == "__main__":
