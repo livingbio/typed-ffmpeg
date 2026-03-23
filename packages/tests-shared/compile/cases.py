@@ -6,7 +6,7 @@ from ffmpeg.filters import amix, concat
 
 def simple_global_args() -> Stream:
     input1 = input("input1.mp4")
-    return input1.output(filename="tmp.mp4").global_args(hide_banner=True)
+    return input1.output(filename="tmp.mp4").global_args(loglevel="info")
 
 
 def not_utilize_split() -> Stream:
@@ -92,7 +92,7 @@ def merged_output_1() -> Stream:
 
 def global_args() -> Stream:
     input1 = input("input1.mp4")
-    graph = input1.video.output(filename="tmp.mp4").global_args(hide_banner=True)
+    graph = input1.video.output(filename="tmp.mp4").global_args(loglevel="info")
     return graph
 
 
@@ -100,8 +100,8 @@ def global_args_2() -> Stream:
     input1 = input("input1.mp4")
     graph = (
         input1.video.output(filename="tmp.mp4")
-        .global_args(hide_banner=True)
         .global_args(loglevel="info")
+        .global_args(loglevel="warning")
     )
     return graph
 
@@ -113,12 +113,12 @@ def multi_output_filter() -> Stream:
     video, feedout = input1.feedback(input2)  # Generates two output streams
 
     # Process and output each stream separately
-    o1 = video.drawtext(text="Hello World", fontsize=12, x=10, y=10).output(
-        filename="output1.mp4"
-    )
-    o2 = feedout.drawtext(text="Hello World", fontsize=12, x=10, y=10).output(
-        filename="output2.mp4"
-    )
+    o1 = video.drawbox(
+        x=10, y=10, width=180, height=60, color="red", thickness=2
+    ).output(filename="output1.mp4")
+    o2 = feedout.drawbox(
+        x=10, y=10, width=180, height=60, color="red", thickness=2
+    ).output(filename="output2.mp4")
 
     # Merge the outputs
     return merge_outputs(o1, o2)
@@ -132,7 +132,7 @@ def stream_selector_with_filter() -> Stream:
     return (
         input("input1.mp4")
         .video_stream(0)
-        .drawtext(text="Hello World", fontsize=12, x=10, y=10)
+        .drawbox(x=10, y=10, width=180, height=60, color="red", thickness=2)
         .output(filename="tmp.mp4")
     )
 

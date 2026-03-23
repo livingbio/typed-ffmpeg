@@ -29,7 +29,7 @@
       }
     ],
     "kwargs": {
-      "hide_banner": true
+      "loglevel": "info"
     }
   },
   "optional": false

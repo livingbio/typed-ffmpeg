@@ -29,8 +29,7 @@
       }
     ],
     "kwargs": {
-      "dump": true,
-      "hide_banner": true
+      "loglevel": "warning"
     }
   },
   "optional": false

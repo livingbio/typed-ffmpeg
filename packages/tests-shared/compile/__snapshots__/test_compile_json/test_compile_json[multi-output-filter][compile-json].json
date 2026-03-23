@@ -79,12 +79,14 @@
                   }
                 ],
                 "kwargs": {
-                  "fontsize": 12,
-                  "text": "Hello World",
+                  "color": "red",
+                  "height": 60,
+                  "thickness": 2,
+                  "width": 180,
                   "x": 10,
                   "y": 10
                 },
-                "name": "drawtext",
+                "name": "drawbox",
                 "output_typings": [
                   {
                     "__class__": "StreamType",
@@ -174,12 +176,14 @@
                   }
                 ],
                 "kwargs": {
-                  "fontsize": 12,
-                  "text": "Hello World",
+                  "color": "red",
+                  "height": 60,
+                  "thickness": 2,
+                  "width": 180,
                   "x": 10,
                   "y": 10
                 },
-                "name": "drawtext",
+                "name": "drawbox",
                 "output_typings": [
                   {
                     "__class__": "StreamType",

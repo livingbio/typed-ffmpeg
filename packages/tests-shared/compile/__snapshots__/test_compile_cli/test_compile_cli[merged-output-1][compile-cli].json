@@ -1,5 +1,6 @@
 [
-  "-dump",
+  "-loglevel",
+  "info",
   "-i",
   "input1.mp4",
   "-i",

@@ -52,7 +52,7 @@
       }
     ],
     "kwargs": {
-      "dump": true
+      "loglevel": "info"
     }
   },
   "optional": false

@@ -22,7 +22,7 @@
         "optional": false
       }
     ],
-    "kwargs": "FrozenDict({'hide_banner': True})"
+    "kwargs": "FrozenDict({'loglevel': 'info'})"
   },
   "optional": false
 }

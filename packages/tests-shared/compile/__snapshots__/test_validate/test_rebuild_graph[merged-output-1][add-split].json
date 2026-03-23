@@ -41,7 +41,7 @@
         "optional": false
       }
     ],
-    "kwargs": "FrozenDict({'dump': True})"
+    "kwargs": "FrozenDict({'loglevel': 'info'})"
   },
   "optional": false
 }
