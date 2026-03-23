@@ -1,8 +1,0 @@
-{
-  "__class__": "Pos",
-  "left": {
-    "__class__": "Symbol",
-    "key": "X"
-  },
-  "right": null
-}

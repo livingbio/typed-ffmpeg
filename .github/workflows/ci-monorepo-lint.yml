@@ -5,11 +5,13 @@ on:
     branches: [main, refactor/monorepo-architecture]
     paths:
       - 'packages/**'
+      - 'pyproject.toml'
       - 'pyproject-workspace.toml'
   pull_request:
     branches: [main]
     paths:
       - 'packages/**'
+      - 'pyproject.toml'
       - 'pyproject-workspace.toml'
 
 jobs:

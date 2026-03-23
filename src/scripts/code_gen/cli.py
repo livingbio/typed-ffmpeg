@@ -7,9 +7,8 @@ from pathlib import Path
 from typing import Annotated
 
 import typer
-
-from ffmpeg.common.cache import load, save
-from ffmpeg.common.schema import (
+from ffmpeg_core.common.cache import load, save
+from ffmpeg_core.common.schema import (
     FFMpegFilter,
     FFMpegFilterOption,
     FFMpegFilterOptionChoice,
@@ -389,10 +388,11 @@ def generate(
     """
     from ..parse_help.utils import get_ffmpeg_version
 
-    if not outpath:
-        outpath = Path(__file__).parent.parent.parent / "ffmpeg"
-
     version = get_ffmpeg_version(ffmpeg_binary)
+    if not outpath:
+        repo_root = Path(__file__).resolve().parents[4]
+        major = version.split(".")[0]
+        outpath = repo_root / "packages" / f"v{major}" / "src" / "ffmpeg"
     if not is_supported_version(version):
         raise typer.BadParameter(
             f"FFmpeg version {version} is not supported; need >= {MIN_FFMPEG_VERSION_MAJOR}.{MIN_FFMPEG_VERSION_MINOR}"
@@ -412,11 +412,11 @@ def generate(
     # Build cross-version metadata for deprecation hints in docstrings
     version_metadata = None
     if version_dir:
+        from ffmpeg_core.common.cache import get_cache_path
+
         from .version_diff import build_version_metadata
 
-        cache_dir = (
-            Path(__file__).parent.parent.parent / "ffmpeg" / "common" / "cache" / "list"
-        )
+        cache_dir = get_cache_path() / "list"
         available = set()
         for cache_file in cache_dir.glob("filters_*.json"):
             # "filters_7_1.json" → "7.1"

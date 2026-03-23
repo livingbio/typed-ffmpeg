@@ -18,9 +18,6 @@ from ffmpeg_core.types import (
 from ffmpeg_core.utils.frozendict import merge
 
 
-
-
-
 if TYPE_CHECKING:
     from ..nodes import GlobalNode, GlobalStream, OutputStream
 

@@ -31,8 +31,11 @@ classifiers = [
 ]
 
 dependencies = [
-    "typed-ffmpeg-v8==8.*",
+    "typed-ffmpeg-v8>=8.0,<9",
 ]
+
+[tool.uv.sources]
+typed-ffmpeg-v8 = { workspace = true }
 
 [project.optional-dependencies]
 dev = [

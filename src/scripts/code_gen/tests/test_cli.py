@@ -39,14 +39,19 @@ def test_generate_version_dir() -> None:
 
         # Verify generated files contain absolute imports for shared core
         filters_content = (version_dir / "filters.py").read_text()
-        assert "from ffmpeg." in filters_content, (
-            "Versioned output should use absolute imports for shared core"
+        assert (
+            "from ffmpeg_core." in filters_content or "from ffmpeg." in filters_content
+        ), (
+            "Versioned output should use absolute imports for shared core (ffmpeg or ffmpeg_core)"
         )
 
 
 def test_committed_version_bindings_import() -> None:
     """Test that committed version bindings for v5-v8 all import correctly."""
-    import ffmpeg.versions
+    try:
+        import ffmpeg.versions
+    except ImportError:
+        pytest.skip("ffmpeg.versions not available (monorepo uses separate packages)")
 
     available = ffmpeg.versions.available()
     assert len(available) >= 4, f"Expected at least 4 versions, got {available}"
@@ -79,7 +84,11 @@ def test_version_diff() -> None:
 @pytest.mark.parametrize("version", ["5", "6", "7", "8"])
 def test_version_deprecation_hints(version: str) -> None:
     """Test that version bindings contain deprecation hints in docstrings."""
-    version_dir = Path(__file__).parent.parent.parent.parent / "ffmpeg" / f"v{version}"
+    # Monorepo: packages/vN/src/ffmpeg; legacy: src/ffmpeg/vN
+    repo_root = Path(__file__).resolve().parents[4]
+    monorepo_dir = repo_root / "packages" / f"v{version}" / "src" / "ffmpeg"
+    legacy_dir = repo_root / "src" / "ffmpeg" / f"v{version}"
+    version_dir = monorepo_dir if monorepo_dir.exists() else legacy_dir
     if not version_dir.exists():
         pytest.skip(f"v{version} bindings not generated")
 

@@ -34,6 +34,9 @@ dependencies = [
     "ffmpeg-core>=1.0,<2.0",
 ]
 
+[tool.uv.sources]
+ffmpeg-core = { workspace = true }
+
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0",

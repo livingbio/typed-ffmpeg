@@ -35,10 +35,6 @@ from ...codecs.schema import FFMpegEncoderOption
 from ...formats.schema import FFMpegMuxerOption
 
 
-
-
-
-
 def output(
     *streams: FilterableStream,
     filename: str | Path,

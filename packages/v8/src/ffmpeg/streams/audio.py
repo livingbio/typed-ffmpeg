@@ -29,15 +29,10 @@ from ffmpeg_core.common.schema import FFMpegFilterDef
 from ..options.timeline import FFMpegTimelineOption
 
 
-
-
-
-
 from ..dag.base_streams import FilterableStream
 
 if TYPE_CHECKING:
     from .video import VideoStream
-
 
 
 if TYPE_CHECKING:

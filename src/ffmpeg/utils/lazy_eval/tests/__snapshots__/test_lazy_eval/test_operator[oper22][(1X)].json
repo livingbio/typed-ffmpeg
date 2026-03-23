@@ -1,8 +1,0 @@
-{
-  "__class__": "FloorDiv",
-  "left": 1,
-  "right": {
-    "__class__": "Symbol",
-    "key": "X"
-  }
-}

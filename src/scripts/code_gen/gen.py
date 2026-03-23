@@ -8,8 +8,7 @@ from pathlib import Path
 from typing import Any
 
 import jinja2
-
-from ffmpeg.common.schema import (
+from ffmpeg_core.common.schema import (
     FFMpegFilter,
     FFMpegFilterOption,
     FFMpegFilterOptionType,

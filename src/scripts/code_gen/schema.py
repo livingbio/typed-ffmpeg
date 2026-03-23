@@ -5,7 +5,7 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from typing import Literal
 
-from ffmpeg.common.serialize import Serializable
+from ffmpeg_core.common.serialize import Serializable
 
 # Minimum FFmpeg version supported by codegen (major, minor).
 MIN_FFMPEG_VERSION_MAJOR = 5

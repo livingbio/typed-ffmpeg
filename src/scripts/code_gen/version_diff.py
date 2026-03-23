@@ -12,8 +12,8 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass, field
 
-from ffmpeg.common.cache import load
-from ffmpeg.common.schema import FFMpegFilter
+from ffmpeg_core.common.cache import load
+from ffmpeg_core.common.schema import FFMpegFilter
 
 from .schema import FFMpegCodec, FFMpegFormat, version_cache_key
 

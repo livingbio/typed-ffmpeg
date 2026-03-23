@@ -6,8 +6,7 @@ from functools import lru_cache
 from pathlib import Path
 
 import typer
-
-from ffmpeg.common.cache import cache_path, save
+from ffmpeg_core.common.cache import cache_path, save
 
 from .helpers import parse_filter_document
 from .schema import FilterDocument

@@ -34,10 +34,6 @@ from ...codecs.schema import FFMpegEncoderOption
 from ...formats.schema import FFMpegMuxerOption
 
 
-
-
-
-
 if TYPE_CHECKING:
     from ..nodes import FilterableStream, OutputNode, OutputStream
 

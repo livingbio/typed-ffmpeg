@@ -1,1 +1,0 @@
-"""FFmpeg compilation utilities package."""

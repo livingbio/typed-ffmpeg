@@ -1,8 +1,0 @@
-[
-  "ffmpeg",
-  "-i",
-  "input1",
-  "-skip_cmp",
-  "sad",
-  "out.mp4"
-]

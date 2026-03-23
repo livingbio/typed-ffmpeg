@@ -36,10 +36,6 @@ from ...codecs.schema import FFMpegDecoderOption
 from ...formats.schema import FFMpegDemuxerOption
 
 
-
-
-
-
 def input(
     filename: str | Path,
     *,
