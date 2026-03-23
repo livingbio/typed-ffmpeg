@@ -3,7 +3,7 @@ from tempfile import TemporaryDirectory
 
 import pytest
 
-from ..cli import generate
+from ..cli import _generate_for_version, _get_version_metadata, generate
 
 
 def test_generate() -> None:
@@ -44,6 +44,32 @@ def test_generate_version_dir() -> None:
         ), (
             "Versioned output should use absolute imports for shared core (ffmpeg or ffmpeg_core)"
         )
+
+
+def test_generate_from_cache() -> None:
+    """Test code generation from cache using --version flag (no FFmpeg binary needed)."""
+    with TemporaryDirectory() as tmpdir:
+        outpath = Path(tmpdir)
+        metadata = _get_version_metadata()
+
+        _generate_for_version(
+            version="8.1",
+            outpath=outpath,
+            rebuild=False,
+            ffmpeg_binary="ffmpeg",
+            version_dir=False,
+            version_metadata=metadata,
+        )
+
+        assert (outpath / "filters.py").exists()
+        assert (outpath / "sources.py").exists()
+        assert (outpath / "streams" / "video.py").exists()
+
+        # Should have deprecation hints
+        filters_content = (outpath / "filters.py").read_text()
+        streams_video = (outpath / "streams" / "video.py").read_text()
+        combined = filters_content + streams_video
+        assert "New in FFmpeg" in combined or "Removed in FFmpeg" in combined
 
 
 def test_committed_version_bindings_import() -> None:
