@@ -7,6 +7,7 @@ on:
   push:
     branches: [main]
     paths:
+      - '.github/workflows/ci-codegen-versions.yml'
       - 'src/scripts/code_gen/**'
       - 'src/scripts/parse_help/**'
       - 'src/scripts/parse_c/**'
@@ -16,6 +17,7 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - '.github/workflows/ci-codegen-versions.yml'
       - 'src/scripts/code_gen/**'
       - 'src/scripts/parse_help/**'
       - 'src/scripts/parse_c/**'
@@ -103,7 +105,8 @@ jobs:
           source .venv/bin/activate
           pip install -e packages/core -e "packages/v${{ matrix.ffmpeg-version }}[dev]"
           FFMPEG_MAJOR=${{ matrix.ffmpeg-version }}
-          python -c "
+          # Run from a dir without ./ffmpeg (submodule) so Python imports the installed package, not the C source
+          cd "$(mktemp -d)" && python -c "
           import ffmpeg
           from ffmpeg import filters, sources
           from ffmpeg.codecs import encoders, decoders
