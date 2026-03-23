@@ -5,13 +5,13 @@ permissions:
 
 on:
   push:
-    branches: [main]
+    branches: [main, v4]
     paths:
       - 'src/scripts/**'
       - 'docs/**'
       - 'mkdocs.yml'
   pull_request:
-    branches: [main]
+    branches: [main, v4]
     paths:
       - 'src/scripts/**'
       - 'docs/**'

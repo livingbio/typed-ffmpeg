@@ -2,13 +2,13 @@ name: CI Monorepo - Lint
 
 on:
   push:
-    branches: [main, refactor/monorepo-architecture]
+    branches: [main, v4]
     paths:
       - 'packages/**'
       - 'pyproject.toml'
       - 'pyproject-workspace.toml'
   pull_request:
-    branches: [main]
+    branches: [main, v4]
     paths:
       - 'packages/**'
       - 'pyproject.toml'
