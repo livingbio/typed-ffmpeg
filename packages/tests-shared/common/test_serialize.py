@@ -1,6 +1,10 @@
 from dataclasses import dataclass
 from enum import Enum
 
+from syrupy.assertion import SnapshotAssertion
+
+from ffmpeg.base import input
+from ffmpeg.filters import concat
 from ffmpeg_core.common.serialize import (
     Serializable,
     dumps,
@@ -8,10 +12,6 @@ from ffmpeg_core.common.serialize import (
     loads,
     serializable,
 )
-from syrupy.assertion import SnapshotAssertion
-
-from ffmpeg.base import input
-from ffmpeg.filters import concat
 
 
 def test_serializable_decorator() -> None:

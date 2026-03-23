@@ -141,6 +141,9 @@ exclude = [
 src = ["src", "packages"]
 preview = true
 
+[tool.ruff.lint.isort]
+known-first-party = ["ffmpeg", "ffmpeg_core", "scripts"]
+
 [tool.ruff.lint]
 select = [
     "DOC",

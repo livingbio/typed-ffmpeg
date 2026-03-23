@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Annotated
 
 import typer
+
 from ffmpeg_core.common.cache import load, save
 from ffmpeg_core.common.schema import (
     FFMpegFilter,
