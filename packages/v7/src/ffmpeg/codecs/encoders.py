@@ -5,7 +5,7 @@ from typing import Literal
 
 from ffmpeg_core.utils.frozendict import merge
 
-from .codecs.schema import FFMpegEncoderOption
+from .schema import FFMpegEncoderOption
 
 
 def a64multi() -> FFMpegEncoderOption:

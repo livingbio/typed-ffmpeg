@@ -36,10 +36,12 @@ repos:
       # Run the formatter.
       - id: ruff-format
         files: ^(src/|packages/)
+        exclude: ^packages/v[5678]/src/ffmpeg/
       # Run the linter.
       - id: ruff
         args: [--fix, --unsafe-fixes]
         files: ^(src/|packages/)
+        exclude: ^packages/v[5678]/src/ffmpeg/
 
   - repo: local
     hooks:

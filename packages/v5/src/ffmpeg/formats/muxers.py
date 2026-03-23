@@ -5,7 +5,7 @@ from typing import Literal
 
 from ffmpeg_core.utils.frozendict import merge
 
-from .formats.schema import FFMpegMuxerOption
+from .schema import FFMpegMuxerOption
 
 
 def _3g2(
