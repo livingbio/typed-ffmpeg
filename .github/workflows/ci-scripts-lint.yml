@@ -8,10 +8,14 @@ on:
     branches: [main]
     paths:
       - 'src/scripts/**'
+      - '.pre-commit-config.yaml'
+      - '.github/workflows/ci-scripts-lint.yml'
   pull_request:
     branches: [main]
     paths:
       - 'src/scripts/**'
+      - '.pre-commit-config.yaml'
+      - '.github/workflows/ci-scripts-lint.yml'
 
 jobs:
   lint:
