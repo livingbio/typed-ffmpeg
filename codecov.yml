@@ -6,14 +6,12 @@ coverage:
   status:
     project:
       default:
-        target: 80% # Set your desired coverage threshold
         if_ci_failed: error
         only_pulls: true
         flags:
           - backend # Only use backend coverage for status checks
     patch:
       default:
-        target: 80%
         if_ci_failed: error
         only_pulls: true
         flags:
