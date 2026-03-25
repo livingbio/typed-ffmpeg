@@ -56,11 +56,3 @@ pytest
 ## License
 
 MIT License - see LICENSE file for details
-# CI Test
-# CI Test - workflow fixed
-# Workflow fixed - testing
-# Trigger debug workflow
-# Testing combined steps
-# Trigger main workflow with simplified test setup
-# Final fix - POSIX activation
-# FFmpeg installed for tests
