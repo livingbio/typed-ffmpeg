@@ -85,3 +85,5 @@ repos:
           - 'possibly-missing-submodule'
           - '--ignore'
           - 'too-many-positional-arguments'
+          - '--ignore'
+          - 'invalid-type-form'
