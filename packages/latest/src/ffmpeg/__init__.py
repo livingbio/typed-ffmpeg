@@ -32,4 +32,4 @@ except ImportError:
         sys.path.insert(0, str(v8_path))
         from ffmpeg import *  # noqa: F401, F403
 
-__version__ = "8.0.0"
+__version__ = "1.0.0a1"

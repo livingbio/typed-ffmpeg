@@ -4,13 +4,13 @@ typed-ffmpeg v7: FFmpeg 7.x type-safe Python bindings.
 This package provides comprehensive type hints and IDE autocomplete for FFmpeg 7.x.
 """
 
-__version__ = "7.1.0"
+__version__ = "1.0.0a1"
 
 # Export main API functions and classes
-from ffmpeg_core.ffprobe.probe import probe
+from ffmpeg_core.ffprobe.probe import probe, probe_obj
 
 # Make commonly used modules easily accessible
-from . import codecs, filters, formats, streams
+from . import codecs, ffprobe, filters, formats, streams
 from .base import merge_outputs
 from .dag.io import input, output
 
@@ -20,10 +20,12 @@ __all__ = [
     "output",
     "merge_outputs",
     "probe",
+    "probe_obj",
     "filters",
     "streams",
     "codecs",
     "formats",
+    "ffprobe",
 ]
 
 # Dynamically add OutputArgs methods to FilterableStream
