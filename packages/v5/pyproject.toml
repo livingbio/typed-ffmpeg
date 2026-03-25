@@ -1,6 +1,6 @@
 [project]
 name = "typed-ffmpeg-v5"
-version = "5.1.0"
+version = "1.0.0"
 description = "Typed FFmpeg bindings for FFmpeg 5.x"
 authors = [
     {name = "lucemia", email = "lucemia@gmail.com"}
