@@ -41,7 +41,7 @@ def _parse_list(text: str) -> list[FFMpegFilter]:
     output: list[FFMpegFilter] = []
     lines = text.splitlines()
     re_pattern = re.compile(
-        r"^\s*(?P<flag>[\w\.]{3})\s*(?P<name>\w+)\s+(?P<io_flags>[\w\|]+\-\>[\w\|]+)\s+(?P<help>.*)$"
+        r"^\s*(?P<flag>[\w\.]{2,3})\s+(?P<name>\w+)\s+(?P<io_flags>[\w\|]+\-\>[\w\|]+)\s+(?P<help>.*)$"
     )
 
     for line in lines:
@@ -56,15 +56,18 @@ def _parse_list(text: str) -> list[FFMpegFilter]:
     return output
 
 
-def _extract_list() -> list[FFMpegFilter]:
+def _extract_list(ffmpeg_binary: str = "ffmpeg") -> list[FFMpegFilter]:
     """
     Get the help text for all filters.
+
+    Args:
+        ffmpeg_binary: Path or name of the ffmpeg executable.
 
     Returns:
         A list of filters
 
     """
-    return _parse_list(run_ffmpeg_command(["-filters"]))
+    return _parse_list(run_ffmpeg_command(["-filters"], ffmpeg_binary=ffmpeg_binary))
 
 
 def _parse_filter_io(tree: dict[str, Any]) -> list[FFMpegIOType]:
@@ -165,31 +168,37 @@ def _parse_filter(text: str) -> FFMpegFilter:
     )
 
 
-def _extract_filter(filter: str) -> FFMpegFilter:
+def _extract_filter(filter: str, ffmpeg_binary: str = "ffmpeg") -> FFMpegFilter:
     """
     Get the help text for a filter.
 
     Args:
         filter: The filter name
+        ffmpeg_binary: Path or name of the ffmpeg executable.
 
     Returns:
         The filter information.
 
     """
-    return _parse_filter(run_ffmpeg_command(["-h", f"filter={filter}"]))
+    return _parse_filter(
+        run_ffmpeg_command(["-h", f"filter={filter}"], ffmpeg_binary=ffmpeg_binary)
+    )
 
 
-def extract() -> list[FFMpegFilter]:
+def extract(ffmpeg_binary: str = "ffmpeg") -> list[FFMpegFilter]:
     """
     Get the help text for all filters.
+
+    Args:
+        ffmpeg_binary: Path or name of the ffmpeg executable.
 
     Returns:
         List of all filter information.
 
     """
     output: list[FFMpegFilter] = []
-    for filter in _extract_list():
-        _filter = _extract_filter(filter.name)
+    for filter in _extract_list(ffmpeg_binary=ffmpeg_binary):
+        _filter = _extract_filter(filter.name, ffmpeg_binary=ffmpeg_binary)
         _filter = replace(_filter, flags=filter.flags, io_flags=filter.io_flags)
         output.append(_filter)
     return output

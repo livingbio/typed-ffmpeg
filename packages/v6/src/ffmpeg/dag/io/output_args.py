@@ -1,0 +1,272 @@
+# NOTE: this file is auto-generated, do not modify
+"""
+Output arguments.
+"""
+
+
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from pathlib import Path
+from typing import TYPE_CHECKING, Any
+
+
+from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+from ..factory import filter_node_factory
+from ...utils.frozendict import FrozenDict, merge
+from ...utils.typing import override
+from ...schema import Default, StreamType, Auto, FFMpegOptionGroup
+from ...common.schema import FFMpegFilterDef
+from ...options.framesync import FFMpegFrameSyncOption
+from ...options.timeline import FFMpegTimelineOption
+
+from ...options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecContextDecoderOption
+
+
+from ...options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
+
+from ...streams.av import AVStream
+from ...streams.channel_layout import CHANNEL_LAYOUT
+from ...codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
+from ...formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
+
+
+from ...streams.video import VideoStream
+
+
+from ...streams.audio import AudioStream
+
+
+
+if TYPE_CHECKING:
+    from ..nodes import FilterableStream, OutputNode, OutputStream
+
+class OutputArgs(ABC):
+    """Output arguments interface."""
+
+    @abstractmethod
+    def _output_node(self, *streams: FilterableStream, filename: str | Path, **kwargs: Any) -> OutputNode:
+        ...
+
+    def output(
+        self,
+        *streams: "FilterableStream",
+        filename: str | Path,dcodec: Func = None,encoder_options: FFMpegEncoderOption | None = None,
+        muxer_options: FFMpegMuxerOption | None = None,
+        format_options: FFMpegAVFormatContextEncoderOption | None = None,
+        codec_options: FFMpegAVCodecContextEncoderOption | None = None,
+        extra_options: dict[str, Any] | None = None,
+    ) -> OutputStream:
+        """
+        Output file URL
+
+        Args:
+            *streams: the streams to output
+            filename: the filename to output to
+            dcodec: force data codec ('copy' to copy stream)
+            encoder_options: ffmpeg's encoder options
+            muxer_options: FFMpegMuxerOption
+            format_options: FFMpegAVFormatContextEncoderOption
+            codec_options: FFMpegAVCodecContextEncoderOption
+            extra_options: the arguments for the output
+
+        Returns:
+            the output stream
+        """
+
+        return self._output_node(*streams, filename=filename, **merge({
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            "dcodec": dcodec,
+
+
+
+
+
+        }, encoder_options, muxer_options, format_options, codec_options, extra_options)).stream()

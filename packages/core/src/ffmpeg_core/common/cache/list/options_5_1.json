@@ -1,0 +1,2174 @@
+[
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show license",
+    "name": "L",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "topic",
+    "canon": null,
+    "flags": 2048,
+    "help": "show help",
+    "name": "h",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "topic",
+    "canon": null,
+    "flags": 2048,
+    "help": "show help",
+    "name": "?",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "topic",
+    "canon": null,
+    "flags": 2048,
+    "help": "show help",
+    "name": "help",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "topic",
+    "canon": null,
+    "flags": 2048,
+    "help": "show help",
+    "name": "-help",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show version",
+    "name": "version",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show build configuration",
+    "name": "buildconf",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show available formats",
+    "name": "formats",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show available muxers",
+    "name": "muxers",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show available demuxers",
+    "name": "demuxers",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show available devices",
+    "name": "devices",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show available codecs",
+    "name": "codecs",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show available decoders",
+    "name": "decoders",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show available encoders",
+    "name": "encoders",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show available bit stream filters",
+    "name": "bsfs",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show available protocols",
+    "name": "protocols",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show available filters",
+    "name": "filters",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show available pixel formats",
+    "name": "pix_fmts",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show standard channel layouts",
+    "name": "layouts",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show available audio sample formats",
+    "name": "sample_fmts",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show available stream dispositions",
+    "name": "dispositions",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show available color names",
+    "name": "colors",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "loglevel",
+    "canon": null,
+    "flags": 1,
+    "help": "set logging level",
+    "name": "loglevel",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "loglevel",
+    "canon": null,
+    "flags": 1,
+    "help": "set logging level",
+    "name": "v",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 0,
+    "help": "generate a report",
+    "name": "report",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "bytes",
+    "canon": null,
+    "flags": 1,
+    "help": "set maximum size of a single allocated block",
+    "name": "max_alloc",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "flags",
+    "canon": null,
+    "flags": 5,
+    "help": "force specific cpu flags",
+    "name": "cpuflags",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "count",
+    "canon": null,
+    "flags": 5,
+    "help": "force specific cpu count",
+    "name": "cpucount",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "hide_banner",
+    "canon": null,
+    "flags": 6,
+    "help": "do not show program banner",
+    "name": "hide_banner",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "device",
+    "canon": null,
+    "flags": 2049,
+    "help": "list sources of the input device",
+    "name": "sources",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "device",
+    "canon": null,
+    "flags": 2049,
+    "help": "list sinks of the output device",
+    "name": "sinks",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "fmt",
+    "canon": null,
+    "flags": 802825,
+    "help": "force format",
+    "name": "f",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2,
+    "help": "overwrite output files",
+    "name": "y",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2,
+    "help": "never overwrite output files",
+    "name": "n",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2,
+    "help": "Ignore unknown stream types",
+    "name": "ignore_unknown",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 6,
+    "help": "Copy unknown stream types",
+    "name": "copy_unknown",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 6,
+    "help": "allow recasting stream type in order to force a decoder of different media type",
+    "name": "recast_media",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "codec",
+    "canon": null,
+    "flags": 819209,
+    "help": "codec name",
+    "name": "c",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "codec",
+    "canon": null,
+    "flags": 819209,
+    "help": "codec name",
+    "name": "codec",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "preset",
+    "canon": null,
+    "flags": 557065,
+    "help": "preset name",
+    "name": "pre",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "[-]input_file_id[:stream_specifier][,sync_file_id[:stream_specifier]]",
+    "canon": null,
+    "flags": 532485,
+    "help": "set input stream mapping",
+    "name": "map",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "file.stream.channel[:syncfile.syncstream]",
+    "canon": null,
+    "flags": 532485,
+    "help": "map an audio channel from one stream to another",
+    "name": "map_channel",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "outfile[,metadata]:infile[,metadata]",
+    "canon": null,
+    "flags": 557065,
+    "help": "set metadata information of outfile from infile",
+    "name": "map_metadata",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "input_file_index",
+    "canon": null,
+    "flags": 540805,
+    "help": "set chapters mapping",
+    "name": "map_chapters",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "duration",
+    "canon": null,
+    "flags": 868353,
+    "help": "record or transcode \\\"duration\\\" seconds of audio/video",
+    "name": "t",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "time_stop",
+    "canon": null,
+    "flags": 868353,
+    "help": "record or transcode stop time",
+    "name": "to",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "limit_size",
+    "canon": null,
+    "flags": 541697,
+    "help": "set the limit file size in bytes",
+    "name": "fs",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "time_off",
+    "canon": null,
+    "flags": 868353,
+    "help": "set the start time offset",
+    "name": "ss",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "time_off",
+    "canon": null,
+    "flags": 344065,
+    "help": "set the start time offset relative to EOF",
+    "name": "sseof",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 278657,
+    "help": "enable/disable seeking by timestamp with -ss",
+    "name": "seek_timestamp",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 278534,
+    "help": "enable/disable accurate seeking with -ss",
+    "name": "accurate_seek",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "sync ref",
+    "canon": null,
+    "flags": 278661,
+    "help": "Indicate the input index for sync reference",
+    "name": "isync",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "time_off",
+    "canon": null,
+    "flags": 344069,
+    "help": "set the input ts offset",
+    "name": "itsoffset",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "scale",
+    "canon": null,
+    "flags": 425989,
+    "help": "set the input ts scale",
+    "name": "itsscale",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "time",
+    "canon": null,
+    "flags": 532481,
+    "help": "set the recording timestamp ('now' to set the current time)",
+    "name": "timestamp",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "string=string",
+    "canon": null,
+    "flags": 557065,
+    "help": "add metadata",
+    "name": "metadata",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "title=string:st=number...",
+    "canon": null,
+    "flags": 557065,
+    "help": "add program with specified streams",
+    "name": "program",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "number",
+    "canon": null,
+    "flags": 532485,
+    "help": "set the number of data frames to output",
+    "name": "dframes",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 6,
+    "help": "add timings for benchmarking",
+    "name": "benchmark",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 6,
+    "help": "add timings for each task",
+    "name": "benchmark_all",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "url",
+    "canon": null,
+    "flags": 5,
+    "help": "write program-readable progress information",
+    "name": "progress",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 6,
+    "help": "enable or disable interaction on standard input",
+    "name": "stdin",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "limit",
+    "canon": null,
+    "flags": 5,
+    "help": "set max runtime in seconds in CPU user time",
+    "name": "timelimit",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 6,
+    "help": "dump each input packet",
+    "name": "dump",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 6,
+    "help": "when dumping packets, also dump the payload",
+    "name": "hex",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "",
+    "canon": null,
+    "flags": 278534,
+    "help": "read input at native frame rate; equivalent to -readrate 1",
+    "name": "re",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "speed",
+    "canon": null,
+    "flags": 278789,
+    "help": "read input at specified rate",
+    "name": "readrate",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "type",
+    "canon": null,
+    "flags": 532481,
+    "help": "specify target file type (\\\"vcd\\\", \\\"svcd\\\", \\\"dvd\\\", \\\"dv\\\" or \\\"dv50\\\n        \"with optional prefixes \\\"pal-\\\", \\\"ntsc-\\\" or \\\"film-\\\")",
+    "name": "target",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "",
+    "canon": null,
+    "flags": 5,
+    "help": "set video sync method globally; deprecated, use -fps_mode",
+    "name": "vsync",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "",
+    "canon": null,
+    "flags": 261,
+    "help": "frame drop threshold",
+    "name": "frame_drop_threshold",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "",
+    "canon": null,
+    "flags": 133,
+    "help": "audio sync method",
+    "name": "async",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "threshold",
+    "canon": null,
+    "flags": 261,
+    "help": "audio drift threshold",
+    "name": "adrift_threshold",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 6,
+    "help": "copy timestamps",
+    "name": "copyts",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 6,
+    "help": "shift input timestamps to start at 0 when using copyts",
+    "name": "start_at_zero",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "mode",
+    "canon": null,
+    "flags": 133,
+    "help": "copy input stream time base when stream copying",
+    "name": "copytb",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 540678,
+    "help": "finish encoding within shortest input",
+    "name": "shortest",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 802822,
+    "help": "bitexact mode",
+    "name": "bitexact",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "",
+    "canon": null,
+    "flags": 557065,
+    "help": "audio pad",
+    "name": "apad",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "threshold",
+    "canon": null,
+    "flags": 261,
+    "help": "timestamp discontinuity delta threshold",
+    "name": "dts_delta_threshold",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "threshold",
+    "canon": null,
+    "flags": 261,
+    "help": "timestamp error delta threshold",
+    "name": "dts_error_threshold",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "error",
+    "canon": null,
+    "flags": 6,
+    "help": "exit on error",
+    "name": "xerror",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "flags",
+    "canon": null,
+    "flags": 5,
+    "help": "abort on the specified condition flags",
+    "name": "abort_on",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 557062,
+    "help": "copy initial non-keyframes",
+    "name": "copyinkf",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 557189,
+    "help": "copy or discard frames before start time",
+    "name": "copypriorss",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "number",
+    "canon": null,
+    "flags": 558081,
+    "help": "set the number of frames to output",
+    "name": "frames",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "fourcc/tag",
+    "canon": null,
+    "flags": 819213,
+    "help": "force codec tag/fourcc",
+    "name": "tag",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "q",
+    "canon": null,
+    "flags": 688133,
+    "help": "use fixed quality scale (VBR)",
+    "name": "q",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "q",
+    "canon": null,
+    "flags": 532485,
+    "help": "use fixed quality scale (VBR)",
+    "name": "qscale",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "profile",
+    "canon": null,
+    "flags": 532485,
+    "help": "set profile",
+    "name": "profile",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "filter_graph",
+    "canon": null,
+    "flags": 557065,
+    "help": "set stream filtergraph",
+    "name": "filter",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 1,
+    "help": "number of non-complex filter threads",
+    "name": "filter_threads",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "filename",
+    "canon": null,
+    "flags": 557065,
+    "help": "read stream filtergraph description from a file",
+    "name": "filter_script",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "",
+    "canon": null,
+    "flags": 295041,
+    "help": "reinit filtergraph on input parameter changes",
+    "name": "reinit_filter",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "graph_description",
+    "canon": null,
+    "flags": 5,
+    "help": "create a complex filtergraph",
+    "name": "filter_complex",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 129,
+    "help": "number of threads for -filter_complex",
+    "name": "filter_complex_threads",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "graph_description",
+    "canon": null,
+    "flags": 5,
+    "help": "create a complex filtergraph",
+    "name": "lavfi",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "filename",
+    "canon": null,
+    "flags": 5,
+    "help": "read complex filtergraph description from a file",
+    "name": "filter_complex_script",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 6,
+    "help": "enable automatic conversion filters globally",
+    "name": "auto_conversion_filters",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2,
+    "help": "print progress report during encoding",
+    "name": "stats",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "time",
+    "canon": null,
+    "flags": 5,
+    "help": "set the period at which ffmpeg updates stats and -progress output",
+    "name": "stats_period",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "filename",
+    "canon": null,
+    "flags": 532485,
+    "help": "add an attachment to the output file",
+    "name": "attach",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "filename",
+    "canon": null,
+    "flags": 294925,
+    "help": "extract an attachment into a file",
+    "name": "dump_attachment",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "loop count",
+    "canon": null,
+    "flags": 278661,
+    "help": "set number of times input stream shall be looped",
+    "name": "stream_loop",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 6,
+    "help": "print timestamp debugging info",
+    "name": "debug_ts",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "maximum error rate",
+    "canon": null,
+    "flags": 257,
+    "help": "ratio of decoding errors (0.0: no errors, 1.0: 100% errors) above which ffmpeg returns an error instead of success.",
+    "name": "max_error_rate",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "",
+    "canon": null,
+    "flags": 294921,
+    "help": "discard",
+    "name": "discard",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "",
+    "canon": null,
+    "flags": 557065,
+    "help": "disposition",
+    "name": "disposition",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 278661,
+    "help": "set the maximum number of queued packets from the demuxer",
+    "name": "thread_queue_size",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 270342,
+    "help": "read and decode the streams to fill missing information with heuristics",
+    "name": "find_stream_info",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "number",
+    "canon": null,
+    "flags": 557189,
+    "help": "set the number of bits per raw sample",
+    "name": "bits_per_raw_sample",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "number",
+    "canon": null,
+    "flags": 532497,
+    "help": "set the number of video frames to output",
+    "name": "vframes",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "rate",
+    "canon": null,
+    "flags": 819225,
+    "help": "set frame rate (Hz value, fraction or abbreviation)",
+    "name": "r",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "rate",
+    "canon": null,
+    "flags": 557081,
+    "help": "set max frame rate (Hz value, fraction or abbreviation)",
+    "name": "fpsmax",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "size",
+    "canon": null,
+    "flags": 819737,
+    "help": "set frame size (WxH or abbreviation)",
+    "name": "s",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "aspect",
+    "canon": null,
+    "flags": 557081,
+    "help": "set aspect ratio (4:3, 16:9 or 1.3333, 1.7777)",
+    "name": "aspect",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "format",
+    "canon": null,
+    "flags": 819229,
+    "help": "set pixel format",
+    "name": "pix_fmt",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 802834,
+    "help": "disable video",
+    "name": "vn",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "override",
+    "canon": null,
+    "flags": 557085,
+    "help": "rate control override for specific intervals",
+    "name": "rc_override",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "codec",
+    "canon": null,
+    "flags": 794641,
+    "help": "force video codec ('copy' to copy stream)",
+    "name": "vcodec",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "hh:mm:ss[:;.]ff",
+    "canon": null,
+    "flags": 532497,
+    "help": "set initial TimeCode value.",
+    "name": "timecode",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "n",
+    "canon": null,
+    "flags": 557201,
+    "help": "select the pass number (1 to 3)",
+    "name": "pass",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "prefix",
+    "canon": null,
+    "flags": 557085,
+    "help": "select two pass log file name prefix",
+    "name": "passlogfile",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 22,
+    "help": "calculate PSNR of compressed frames",
+    "name": "psnr",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 20,
+    "help": "dump video coding statistics to file",
+    "name": "vstats",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "file",
+    "canon": null,
+    "flags": 21,
+    "help": "dump video coding statistics to file",
+    "name": "vstats_file",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 149,
+    "help": "Version of the vstats format to use.",
+    "name": "vstats_version",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "filter_graph",
+    "canon": null,
+    "flags": 532497,
+    "help": "set video filters",
+    "name": "vf",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "matrix",
+    "canon": null,
+    "flags": 557085,
+    "help": "specify intra matrix coeffs",
+    "name": "intra_matrix",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "matrix",
+    "canon": null,
+    "flags": 557085,
+    "help": "specify inter matrix coeffs",
+    "name": "inter_matrix",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "matrix",
+    "canon": null,
+    "flags": 557085,
+    "help": "specify intra matrix coeffs",
+    "name": "chroma_intra_matrix",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "",
+    "canon": null,
+    "flags": 819349,
+    "help": "top=1/bottom=0/auto=-1 field first",
+    "name": "top",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "fourcc/tag",
+    "canon": null,
+    "flags": 794645,
+    "help": "force video tag/fourcc",
+    "name": "vtag",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 22,
+    "help": "show QP histogram",
+    "name": "qphist",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 557085,
+    "help": "set framerate mode for matching video streams; overrides vsync",
+    "name": "fps_mode",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 557078,
+    "help": "force the selected framerate, disable the best supported framerate selection",
+    "name": "force_fps",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "streamIndex:value",
+    "canon": null,
+    "flags": 532501,
+    "help": "set the value of an outfile streamid",
+    "name": "streamid",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "timestamps",
+    "canon": null,
+    "flags": 557085,
+    "help": "force key frames at specified timestamps",
+    "name": "force_key_frames",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "bitrate",
+    "canon": null,
+    "flags": 532497,
+    "help": "audio bitrate (please use -b:a)",
+    "name": "ab",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "bitrate",
+    "canon": null,
+    "flags": 532497,
+    "help": "video bitrate (please use -b:v)",
+    "name": "b",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "hwaccel name",
+    "canon": null,
+    "flags": 294941,
+    "help": "use HW accelerated decoding",
+    "name": "hwaccel",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "devicename",
+    "canon": null,
+    "flags": 294941,
+    "help": "select a device for HW acceleration",
+    "name": "hwaccel_device",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "format",
+    "canon": null,
+    "flags": 294941,
+    "help": "select output format used with HW accelerated decoding",
+    "name": "hwaccel_output_format",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 2048,
+    "help": "show available HW acceleration methods",
+    "name": "hwaccels",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 294919,
+    "help": "automatically insert correct rotate filters",
+    "name": "autorotate",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 557063,
+    "help": "automatically insert a scale filter at the end of the filter graph",
+    "name": "autoscale",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "number",
+    "canon": null,
+    "flags": 532513,
+    "help": "set the number of audio frames to output",
+    "name": "aframes",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "quality",
+    "canon": null,
+    "flags": 532513,
+    "help": "set audio quality (codec-specific)",
+    "name": "aq",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "rate",
+    "canon": null,
+    "flags": 819361,
+    "help": "set audio sampling rate (in Hz)",
+    "name": "ar",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "channels",
+    "canon": null,
+    "flags": 819361,
+    "help": "set number of audio channels",
+    "name": "ac",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 802850,
+    "help": "disable audio",
+    "name": "an",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "codec",
+    "canon": null,
+    "flags": 794657,
+    "help": "force audio codec ('copy' to copy stream)",
+    "name": "acodec",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "fourcc/tag",
+    "canon": null,
+    "flags": 532517,
+    "help": "force audio tag/fourcc",
+    "name": "atag",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "volume",
+    "canon": null,
+    "flags": 161,
+    "help": "change audio volume (256=normal)",
+    "name": "vol",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "format",
+    "canon": null,
+    "flags": 819245,
+    "help": "set sample format",
+    "name": "sample_fmt",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "layout",
+    "canon": null,
+    "flags": 819245,
+    "help": "set channel layout",
+    "name": "channel_layout",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "layout",
+    "canon": null,
+    "flags": 819245,
+    "help": "set channel layout",
+    "name": "ch_layout",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "filter_graph",
+    "canon": null,
+    "flags": 532513,
+    "help": "set audio filters",
+    "name": "af",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 295077,
+    "help": "set the maximum number of channels to try to guess the channel layout",
+    "name": "guess_layout_max",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 803330,
+    "help": "disable subtitle",
+    "name": "sn",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "codec",
+    "canon": null,
+    "flags": 795137,
+    "help": "force subtitle codec ('copy' to copy stream)",
+    "name": "scodec",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "fourcc/tag",
+    "canon": null,
+    "flags": 532997,
+    "help": "force subtitle tag/fourcc",
+    "name": "stag",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 295430,
+    "help": "fix subtitles duration",
+    "name": "fix_sub_duration",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "size",
+    "canon": null,
+    "flags": 295433,
+    "help": "set canvas size (WxH or abbreviation)",
+    "name": "canvas_size",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "seconds",
+    "canon": null,
+    "flags": 540933,
+    "help": "set the maximum demux-decode delay",
+    "name": "muxdelay",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "seconds",
+    "canon": null,
+    "flags": 540933,
+    "help": "set the initial demux-decode delay",
+    "name": "muxpreload",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "file",
+    "canon": null,
+    "flags": 524293,
+    "help": "specify a file in which to print sdp information",
+    "name": "sdp_file",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "ratio",
+    "canon": null,
+    "flags": 557069,
+    "help": "set the desired time base hint for output stream (1:24, 1:48000 or 0.04166, 2.0833e-5)",
+    "name": "time_base",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "ratio",
+    "canon": null,
+    "flags": 557069,
+    "help": "set the desired time base for the encoder (1:24, 1:48000 or 0.04166, 2.0833e-5). two special values are defined - 0 = use frame rate (video) or sample rate (audio),-1 = match source time base",
+    "name": "enc_time_base",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "bitstream_filters",
+    "canon": null,
+    "flags": 557069,
+    "help": "A comma-separated list of bitstream filters",
+    "name": "bsf",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "audio bitstream_filters",
+    "canon": null,
+    "flags": 532517,
+    "help": "deprecated",
+    "name": "absf",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "video bitstream_filters",
+    "canon": null,
+    "flags": 532501,
+    "help": "deprecated",
+    "name": "vbsf",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "preset",
+    "canon": null,
+    "flags": 532517,
+    "help": "set the audio options to the indicated preset",
+    "name": "apre",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "preset",
+    "canon": null,
+    "flags": 532501,
+    "help": "set the video options to the indicated preset",
+    "name": "vpre",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "preset",
+    "canon": null,
+    "flags": 532997,
+    "help": "set the subtitle options to the indicated preset",
+    "name": "spre",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "filename",
+    "canon": null,
+    "flags": 532485,
+    "help": "set options from indicated preset file",
+    "name": "fpre",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "packets",
+    "canon": null,
+    "flags": 557189,
+    "help": "maximum number of packets that can be buffered while waiting for all streams to initialize",
+    "name": "max_muxing_queue_size",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "bytes",
+    "canon": null,
+    "flags": 557189,
+    "help": "set the threshold after which max_muxing_queue_size is taken into account",
+    "name": "muxing_queue_data_threshold",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "codec",
+    "canon": null,
+    "flags": 798725,
+    "help": "force data codec ('copy' to copy stream)",
+    "name": "dcodec",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 802834,
+    "help": "disable data",
+    "name": "dn",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "args",
+    "canon": null,
+    "flags": 5,
+    "help": "initialise hardware device",
+    "name": "init_hw_device",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "device",
+    "canon": null,
+    "flags": 5,
+    "help": "set hardware device used when filtering",
+    "name": "filter_hw_device",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FUNC"
+    }
+  }
+]

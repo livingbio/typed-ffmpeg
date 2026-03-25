@@ -1,16 +1,15 @@
 import tempfile
 from pathlib import Path
 
-from syrupy.assertion import SnapshotAssertion
-from syrupy.extensions.single_file import SingleFileSnapshotExtension
-
-from ffmpeg.common.schema import (
+from ffmpeg_core.common.schema import (
     FFMpegFilter,
     FFMpegFilterOption,
     FFMpegFilterOptionType,
     FFMpegIOType,
     StreamType,
 )
+from syrupy.assertion import SnapshotAssertion
+from syrupy.extensions.single_file import SingleFileSnapshotExtension
 
 from ..gen import render
 

@@ -1,7 +1,20 @@
+[tool.uv.workspace]
+members = [
+    "packages/core",
+    "packages/v5",
+    "packages/v6",
+    "packages/v7",
+    "packages/v8",
+    "packages/latest",
+]
+
 [project]
-name = "typed-ffmpeg"
-dynamic = ["version"]
-description = "Modern Python FFmpeg wrappers offer comprehensive support for complex filters, complete with detailed typing and documentation."
+name = "typed-ffmpeg-workspace"
+version = "0.0.0"
+description = "Monorepo root for typed-ffmpeg (workspace + dev scripts)"
+dependencies = [
+    "ffmpeg-core",
+]
 authors = [
     {name = "lucemia", email = "lucemia@gmail.com"}
 ]
@@ -43,6 +56,7 @@ Repository = "https://github.com/livingbio/typed-ffmpeg"
 graph = ["graphviz"]
 
 [tool.uv]
+sources = { ffmpeg-core = { workspace = true } }
 dev-dependencies = [
     # Development tools
     "ty",
@@ -82,7 +96,7 @@ dev-dependencies = [
 
 
 [build-system]
-requires = ["setuptools>=61.0", "setuptools-scm>=6.2"]
+requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
@@ -90,39 +104,15 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["ffmpeg*"]
+include = ["scripts"]
 exclude = [
     "**/tests/**",
-    "**/scripts/**",
     "**/__snapshots__/**",
     "**/test_*",
     "**/*_test.py",
     "**/*.test.py",
     "**/conftest.py"
 ]
-
-[tool.setuptools.package-data]
-"ffmpeg" = ["py.typed"]
-"ffmpeg.common" = ["*"]
-"ffmpeg.common.cache" = ["*"]
-"ffmpeg.common.cache.list" = ["*"]
-"ffmpeg.common.cache.FFMpegFilterManuallyDefined" = ["*"]
-"ffmpeg.utils" = ["*"]
-"ffmpeg.utils.lazy_eval" = ["*"]
-exclude = [
-    "**/tests/**",
-    "**/scripts/**",
-    "**/__snapshots__/**",
-    "**/test_*",
-    "**/*_test.py",
-    "**/*.test.py",
-    "**/conftest.py"
-]
-
-[tool.setuptools_scm]
-version_scheme = "post-release"
-local_scheme = "node-and-timestamp"
-write_to = "src/ffmpeg/_version.py"
 
 [tool.mypy]
 exclude = "^(migrations|commands|sandbox|samples|sdk)/"
@@ -138,8 +128,16 @@ disallow_untyped_defs = true
 
 [tool.ruff]
 line-length = 88
-exclude = ["**/cassettes/", "**/__snapshots__/"]
-src = ["src"]
+exclude = [
+    "**/cassettes/",
+    "**/__snapshots__/",
+    # Generated bindings (filters, codecs, formats, streams, dag/io)
+    "packages/v5/src/ffmpeg/**",
+    "packages/v6/src/ffmpeg/**",
+    "packages/v7/src/ffmpeg/**",
+    "packages/v8/src/ffmpeg/**",
+]
+src = ["src", "packages"]
 preview = true
 
 [tool.ruff.lint]
@@ -169,6 +167,14 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 "**/tests/**.py" = ["D103", "D104", "D100", "DOC501"]
+"packages/tests-shared/**" = ["D", "DOC"]
+"packages/v5/**" = ["D", "DOC", "F401", "F821"]
+"packages/v6/**" = ["D", "DOC", "F401", "F821"]
+"packages/v7/**" = ["D", "DOC", "F401", "F821"]
+"packages/v8/**" = ["D", "DOC", "F401", "F821"]
+"packages/core/**" = ["E741"]
+"scripts/**" = ["D", "DOC"]
+"ffmpeg/tools/**" = ["D"]
 
 [tool.ruff.format]
 quote-style = "double"
