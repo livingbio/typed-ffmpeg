@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/development/prek-migration/">
+        <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/designs/monorepo-multi-version/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Migrating from pre-commit to prek - typed-ffmpeg</title>
+        <title>Design: Monorepo Architecture for Multi-Version FFmpeg - typed-ffmpeg</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#migrating-from-pre-commit-to-prek" class="md-skip">
+        <a href="#design-monorepo-architecture-for-multi-version-ffmpeg" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Migrating from pre-commit to prek
+              Design: Monorepo Architecture for Multi-Version FFmpeg
             
           </span>
         </div>
@@ -1812,10 +1812,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-prek" class="md-nav__link">
+  <a href="#problem-statement" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is prek?
+        Problem Statement
       
     </span>
   </a>
@@ -1823,10 +1823,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#benefits-of-prek" class="md-nav__link">
+  <a href="#solution-monorepo-with-separate-packages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Benefits of prek
+        Solution: Monorepo with Separate Packages
       
     </span>
   </a>
@@ -1834,22 +1834,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#migration-steps" class="md-nav__link">
+  <a href="#architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Migration Steps
+        Architecture
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Migration Steps">
+    <nav class="md-nav" aria-label="Architecture">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-update-dependencies" class="md-nav__link">
+  <a href="#repository-structure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Update Dependencies
+        Repository Structure
       
     </span>
   </a>
@@ -1857,21 +1857,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-install-git-hooks" class="md-nav__link">
+  <a href="#package-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Install Git Hooks
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-verify-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Verify Installation
+        Package Dependencies
       
     </span>
   </a>
@@ -1884,55 +1873,66 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#benefits" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Usage
+        Benefits
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#performance-comparison" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Performance Comparison
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cicd-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CI/CD Integration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="CI/CD Integration">
+    <nav class="md-nav" aria-label="Benefits">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#github-actions" class="md-nav__link">
+  <a href="#1-no-class-identity-problem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GitHub Actions
+        1. No Class Identity Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-smaller-package-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Smaller Package Size
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-clear-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Clear Versioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-shared-core-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Shared Core Development
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-user-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. User Choice
       
     </span>
   </a>
@@ -1945,22 +1945,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-changed" class="md-nav__link">
+  <a href="#package-configurations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What Changed
+        Package Configurations
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="What Changed">
+    <nav class="md-nav" aria-label="Package Configurations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#dependencies-removed-8-packages" class="md-nav__link">
+  <a href="#core-package" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Dependencies Removed (8 packages)
+        Core Package
       
     </span>
   </a>
@@ -1968,10 +1968,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#added" class="md-nav__link">
+  <a href="#version-package-example-v6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Added
+        Version Package (Example: v6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latest-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Latest Package
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workspace-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workspace Configuration
       
     </span>
   </a>
@@ -1984,22 +2006,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
+  <a href="#import-path-changes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Troubleshooting
+        Import Path Changes
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Troubleshooting">
+    <nav class="md-nav" aria-label="Import Path Changes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#hook-not-found" class="md-nav__link">
+  <a href="#core-package-exports" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hook not found
+        Core Package Exports
       
     </span>
   </a>
@@ -2007,21 +2029,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#hooks-failing" class="md-nav__link">
+  <a href="#version-package-imports" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hooks failing
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#different-output-than-pre-commit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Different output than pre-commit
+        Version Package Imports
       
     </span>
   </a>
@@ -2034,22 +2045,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#compatibility-notes" class="md-nav__link">
+  <a href="#development-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Compatibility Notes
+        Development Workflow
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Compatibility Notes">
+    <nav class="md-nav" aria-label="Development Workflow">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fully-compatible" class="md-nav__link">
+  <a href="#setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fully Compatible
+        Setup
       
     </span>
   </a>
@@ -2057,10 +2068,43 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#known-differences" class="md-nav__link">
+  <a href="#code-generation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Known Differences
+        Code Generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publishing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publishing
       
     </span>
   </a>
@@ -2073,33 +2117,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rollback" class="md-nav__link">
+  <a href="#migration-plan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rollback
+        Migration Plan
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommended-workflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recommended Workflow
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Recommended Workflow">
+    <nav class="md-nav" aria-label="Migration Plan">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#for-local-development" class="md-nav__link">
+  <a href="#phase-1-create-monorepo-structure-week-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        For Local Development
+        Phase 1: Create Monorepo Structure (Week 1)
       
     </span>
   </a>
@@ -2107,10 +2140,65 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#for-ci" class="md-nav__link">
+  <a href="#phase-2-split-core-from-versions-week-1-2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        For CI
+        Phase 2: Split Core from Versions (Week 1-2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-update-import-paths-week-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3: Update Import Paths (Week 2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-4-create-latest-package-week-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 4: Create Latest Package (Week 2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-5-update-cicd-week-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 5: Update CI/CD (Week 3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-6-documentation-week-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 6: Documentation (Week 3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-7-cleanup-week-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 7: Cleanup (Week 3)
       
     </span>
   </a>
@@ -2123,33 +2211,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#additional-resources" class="md-nav__link">
+  <a href="#user-migration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Additional Resources
+        User Migration
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#faq" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FAQ
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="FAQ">
+    <nav class="md-nav" aria-label="User Migration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#do-i-need-to-change-pre-commit-configyaml" class="md-nav__link">
+  <a href="#for-new-users" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Do I need to change .pre-commit-config.yaml?
+        For New Users
       
     </span>
   </a>
@@ -2157,10 +2234,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#can-i-use-both-pre-commit-and-prek" class="md-nav__link">
+  <a href="#for-existing-users" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Can I use both pre-commit and prek?
+        For Existing Users
       
     </span>
   </a>
@@ -2168,32 +2245,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#will-this-affect-other-contributors" class="md-nav__link">
+  <a href="#for-version-specific-users" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Will this affect other contributors?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#is-prek-stable" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Is prek stable?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-about-hook-compatibility" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What about hook compatibility?
+        For Version-Specific Users
       
     </span>
   </a>
@@ -2206,10 +2261,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
+  <a href="#pypi-packages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Summary
+        PyPI Packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Success Criteria
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
       
     </span>
   </a>
@@ -2236,245 +2324,389 @@
   
 
 
-<h1 id="migrating-from-pre-commit-to-prek">Migrating from pre-commit to prek<a class="headerlink" href="#migrating-from-pre-commit-to-prek" title="Permanent link">&para;</a></h1>
-<h2 id="what-is-prek">What is prek?<a class="headerlink" href="#what-is-prek" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/9999years/prek">prek</a> is a Rust-based drop-in replacement for pre-commit with significantly better performance. It uses the same config format and is fully compatible with existing <code>.pre-commit-config.yaml</code> files.</p>
-<h2 id="benefits-of-prek">Benefits of prek<a class="headerlink" href="#benefits-of-prek" title="Permanent link">&para;</a></h2>
+<h1 id="design-monorepo-architecture-for-multi-version-ffmpeg">Design: Monorepo Architecture for Multi-Version FFmpeg<a class="headerlink" href="#design-monorepo-architecture-for-multi-version-ffmpeg" title="Permanent link">&para;</a></h1>
+<p><strong>Status:</strong> PROPOSED<br />
+<strong>Date:</strong> 2026-03-21<br />
+<strong>Supersedes:</strong> multi-version-bindings.md  </p>
+<h2 id="problem-statement">Problem Statement<a class="headerlink" href="#problem-statement" title="Permanent link">&para;</a></h2>
+<p>The current "single package with all versions" approach has several issues:</p>
 <ol>
-<li><strong>Single Rust binary</strong>: No virtualenv/nodeenv transitive dependencies</li>
-<li><strong>2-10x faster</strong>: Significantly faster hook execution</li>
-<li><strong>Parallel execution</strong>: Better handling of concurrent hooks</li>
-<li><strong>Parallel installation</strong>: Faster hook repository installation</li>
-<li><strong>100% compatible</strong>: Works with existing pre-commit configurations</li>
-<li><strong>Drop-in replacement</strong>: Same CLI commands and config format</li>
+<li><strong>Package Size</strong>: Single package contains all versions (v5, v6, v7, v8), resulting in &gt;10MB download</li>
+<li><strong>Class Identity</strong>: Having multiple versions in one package creates class identity problems</li>
+<li><strong>User Experience</strong>: Users running FFmpeg 6.x must download v5, v7, v8 code they don't need</li>
+<li><strong>Semantic Versioning</strong>: Package version doesn't match FFmpeg version</li>
 </ol>
-<h2 id="migration-steps">Migration Steps<a class="headerlink" href="#migration-steps" title="Permanent link">&para;</a></h2>
-<h3 id="1-update-dependencies">1. Update Dependencies<a class="headerlink" href="#1-update-dependencies" title="Permanent link">&para;</a></h3>
-<p>The project has already been updated to use prek. If you're working on a fresh clone:</p>
-<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Install dependencies (includes prek)</span>
-uv<span class="w"> </span>sync<span class="w"> </span>--dev
+<h2 id="solution-monorepo-with-separate-packages">Solution: Monorepo with Separate Packages<a class="headerlink" href="#solution-monorepo-with-separate-packages" title="Permanent link">&para;</a></h2>
+<p><strong>One repository, multiple packages.</strong> Each FFmpeg version gets its own PyPI package. Shared code lives in a core package.</p>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Users install only what they need</span>
+pip<span class="w"> </span>install<span class="w"> </span>typed-ffmpeg-v6<span class="w">  </span><span class="c1"># For FFmpeg 6.x (~2MB)</span>
+pip<span class="w"> </span>install<span class="w"> </span>typed-ffmpeg-v8<span class="w">  </span><span class="c1"># For FFmpeg 8.x (~2MB)</span>
+pip<span class="w"> </span>install<span class="w"> </span>typed-ffmpeg<span class="w">     </span><span class="c1"># Latest (installs v8)</span>
 </code></pre></div>
-<h3 id="2-install-git-hooks">2. Install Git Hooks<a class="headerlink" href="#2-install-git-hooks" title="Permanent link">&para;</a></h3>
-<p>If you previously had pre-commit installed, uninstall it first:</p>
-<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Uninstall old pre-commit hooks</span>
-pre-commit<span class="w"> </span>uninstall
-
-<span class="c1"># Install prek hooks</span>
-prek<span class="w"> </span>install
+<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
+<h3 id="repository-structure">Repository Structure<a class="headerlink" href="#repository-structure" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code>typed-ffmpeg/  (monorepo)
+├── pyproject.toml              # Workspace configuration
+├── uv.lock                     # Shared lock file
+├── README.md                   # Main README
+│
+├── packages/
+│   ├── core/                   # Shared core runtime
+│   │   ├── pyproject.toml      # name: ffmpeg-core
+│   │   ├── README.md
+│   │   └── src/
+│   │       └── ffmpeg_core/
+│   │           ├── dag/        # DAG layer (hand-written)
+│   │           ├── compile/    # Compilation (hand-written)
+│   │           ├── common/     # Common utilities
+│   │           ├── ir/         # IR layer
+│   │           └── schema.py   # Shared schemas
+│   │
+│   ├── v5/                     # FFmpeg 5.x bindings
+│   │   ├── pyproject.toml      # name: typed-ffmpeg-v5
+│   │   ├── README.md
+│   │   └── src/
+│   │       └── ffmpeg/
+│   │           ├── filters.py  # Generated
+│   │           ├── sources.py  # Generated
+│   │           ├── streams/    # Generated
+│   │           ├── codecs/     # Generated
+│   │           └── formats/    # Generated
+│   │
+│   ├── v6/                     # FFmpeg 6.x bindings
+│   │   ├── pyproject.toml      # name: typed-ffmpeg-v6
+│   │   └── src/ffmpeg/
+│   │
+│   ├── v7/                     # FFmpeg 7.x bindings
+│   │   ├── pyproject.toml      # name: typed-ffmpeg-v7
+│   │   └── src/ffmpeg/
+│   │
+│   ├── v8/                     # FFmpeg 8.x bindings
+│   │   ├── pyproject.toml      # name: typed-ffmpeg-v8
+│   │   └── src/ffmpeg/
+│   │
+│   └── latest/                 # Main package (alias to latest)
+│       ├── pyproject.toml      # name: typed-ffmpeg
+│       ├── README.md
+│       └── src/
+│           └── ffmpeg/
+│               └── __init__.py # Re-exports from typed-ffmpeg-v8
+│
+└── tools/                      # Development tools
+    ├── codegen/                # Code generator
+    └── version_diff/           # Version comparison CLI
 </code></pre></div>
-<p>If this is your first time setting up hooks:</p>
-<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Install prek hooks</span>
-prek<span class="w"> </span>install
+<h3 id="package-dependencies">Package Dependencies<a class="headerlink" href="#package-dependencies" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code>typed-ffmpeg (latest package)
+    ↓ depends on
+typed-ffmpeg-v8
+    ↓ depends on
+ffmpeg-core (shared runtime)
 </code></pre></div>
-<h3 id="3-verify-installation">3. Verify Installation<a class="headerlink" href="#3-verify-installation" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Check prek version</span>
-prek<span class="w"> </span>--version
+<p>All version packages depend on the same <code>ffmpeg-core</code>.</p>
+<h2 id="benefits">Benefits<a class="headerlink" href="#benefits" title="Permanent link">&para;</a></h2>
+<h3 id="1-no-class-identity-problem">1. No Class Identity Problem<a class="headerlink" href="#1-no-class-identity-problem" title="Permanent link">&para;</a></h3>
+<p>Each package is independent. No multiple versions in the same namespace.</p>
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># Install only v6</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">typed</span><span class="o">-</span><span class="n">ffmpeg</span><span class="o">-</span><span class="n">v6</span>
 
-<span class="c1"># Test running hooks</span>
-prek<span class="w"> </span>run<span class="w"> </span>--all-files
+<span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">concat</span>
+<span class="c1"># Only one concat class exists (from v6)</span>
+<span class="c1"># No class identity issues!</span>
 </code></pre></div>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>Prek uses the same commands as pre-commit:</p>
-<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Install hooks</span>
-prek<span class="w"> </span>install
-
-<span class="c1"># Run hooks on staged files</span>
-prek<span class="w"> </span>run
-
-<span class="c1"># Run hooks on all files</span>
-prek<span class="w"> </span>run<span class="w"> </span>--all-files
-
-<span class="c1"># Run specific hook</span>
-prek<span class="w"> </span>run<span class="w"> </span>&lt;hook-id&gt;
-
-<span class="c1"># Update hook repositories</span>
-prek<span class="w"> </span>autoupdate
-
-<span class="c1"># Clean cached repositories</span>
-prek<span class="w"> </span>clean
-
-<span class="c1"># Uninstall hooks</span>
-prek<span class="w"> </span>uninstall
+<h3 id="2-smaller-package-size">2. Smaller Package Size<a class="headerlink" href="#2-smaller-package-size" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code>Before: typed-ffmpeg (10MB+) - contains all versions
+After:  typed-ffmpeg-v6 (2MB) - only v6
+        typed-ffmpeg-v8 (2MB) - only v8
 </code></pre></div>
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<p>Prek uses the same <code>.pre-commit-config.yaml</code> file format. <strong>No changes needed!</strong></p>
-<p>Current configuration works as-is:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span class="nt">repos</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/pre-commit/pre-commit-hooks</span>
-<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v5.0.0</span>
-<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">check-json</span>
-<span class="w">      </span><span class="c1"># ... other hooks</span>
+<h3 id="3-clear-versioning">3. Clear Versioning<a class="headerlink" href="#3-clear-versioning" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># Package version matches FFmpeg version</span>
+<span class="n">typed</span><span class="o">-</span><span class="n">ffmpeg</span><span class="o">-</span><span class="n">v6</span><span class="o">==</span><span class="mf">6.1.0</span>  <span class="c1"># FFmpeg 6.1</span>
+<span class="n">typed</span><span class="o">-</span><span class="n">ffmpeg</span><span class="o">-</span><span class="n">v8</span><span class="o">==</span><span class="mf">8.0.0</span>  <span class="c1"># FFmpeg 8.0</span>
+</code></pre></div>
+<h3 id="4-shared-core-development">4. Shared Core Development<a class="headerlink" href="#4-shared-core-development" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># All versions share the same core runtime</span>
+<span class="c1"># Bug fixes in ffmpeg-core benefit all versions</span>
+<span class="c1"># Only need to maintain one copy of DAG/compile/IR code</span>
+</code></pre></div>
+<h3 id="5-user-choice">5. User Choice<a class="headerlink" href="#5-user-choice" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># Most users: install latest</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">typed</span><span class="o">-</span><span class="n">ffmpeg</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/astral-sh/ruff-pre-commit</span>
-<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.9.6</span>
-<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ruff-format</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ruff</span>
-</code></pre></div>
-<p>All standard hook repositories work:
-- <code>pre-commit-hooks</code>
-- <code>ruff-pre-commit</code>
-- <code>mirrors-mypy</code>
-- Custom local hooks
-- Everything else!</p>
-<h2 id="performance-comparison">Performance Comparison<a class="headerlink" href="#performance-comparison" title="Permanent link">&para;</a></h2>
-<p>Typical performance improvements with prek:</p>
-<ul>
-<li><strong>Hook installation</strong>: 3-5x faster (parallel installation)</li>
-<li><strong>Hook execution</strong>: 2-10x faster</li>
-<li><strong>Dependency overhead</strong>: Removed 8 packages (cfgv, distlib, filelock, identify, nodeenv, pre-commit, virtualenv, platformdirs)</li>
-<li><strong>Startup time</strong>: Near-instant (single Rust binary)</li>
-</ul>
-<p>Example timings on typed-ffmpeg:</p>
-<div class="language-bash highlight"><pre><span></span><code><span class="c1"># pre-commit</span>
-$<span class="w"> </span><span class="nb">time</span><span class="w"> </span>pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
-Passed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">12</span>.3s
+<span class="c1"># Specific version users</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">typed</span><span class="o">-</span><span class="n">ffmpeg</span><span class="o">-</span><span class="n">v6</span>
 
-<span class="c1"># prek</span>
-$<span class="w"> </span><span class="nb">time</span><span class="w"> </span>prek<span class="w"> </span>run<span class="w"> </span>--all-files
-Passed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">3</span>.8s
+<span class="c1"># Developers: install multiple for testing</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">typed</span><span class="o">-</span><span class="n">ffmpeg</span><span class="o">-</span><span class="n">v6</span> <span class="n">typed</span><span class="o">-</span><span class="n">ffmpeg</span><span class="o">-</span><span class="n">v8</span>
 </code></pre></div>
-<p><strong>~70% faster</strong> on typical runs!</p>
-<h2 id="cicd-integration">CI/CD Integration<a class="headerlink" href="#cicd-integration" title="Permanent link">&para;</a></h2>
-<h3 id="github-actions">GitHub Actions<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h3>
-<p>The project workflows have been updated to use prek:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install uv</span>
-<span class="w">  </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">astral-sh/setup-uv@v7</span>
+<h2 id="package-configurations">Package Configurations<a class="headerlink" href="#package-configurations" title="Permanent link">&para;</a></h2>
+<h3 id="core-package">Core Package<a class="headerlink" href="#core-package" title="Permanent link">&para;</a></h3>
+<div class="language-toml highlight"><pre><span></span><code><span class="c1"># packages/core/pyproject.toml</span>
 
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run prek</span>
-<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uvx prek run --all-files</span>
+<span class="k">[project]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ffmpeg-core&quot;</span>
+<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
+<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Core runtime for typed-ffmpeg (DAG, compilation, IR)&quot;</span>
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span><span class="w">  </span><span class="c1"># No dependencies (pure Python)</span>
+
+<span class="k">[tool.setuptools.packages.find]</span>
+<span class="n">where</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">]</span>
+<span class="n">include</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ffmpeg_core*&quot;</span><span class="p">]</span>
 </code></pre></div>
-<p>This is simpler and faster than the previous pre-commit setup:
-- No need to create virtual environment
-- No need to install dev dependencies
-- Uses <code>uvx</code> to run prek directly
-- Parallel hook execution</p>
-<h2 id="what-changed">What Changed<a class="headerlink" href="#what-changed" title="Permanent link">&para;</a></h2>
-<h3 id="dependencies-removed-8-packages">Dependencies Removed (8 packages)<a class="headerlink" href="#dependencies-removed-8-packages" title="Permanent link">&para;</a></h3>
-<p>When switching from pre-commit to prek, these packages were removed:</p>
-<ul>
-<li><code>cfgv</code> - Configuration file parsing (built into prek)</li>
-<li><code>distlib</code> - Distribution utilities (not needed)</li>
-<li><code>filelock</code> - File locking (built into prek)</li>
-<li><code>identify</code> - File type identification (built into prek)</li>
-<li><code>nodeenv</code> - Node.js environment management (not needed for most hooks)</li>
-<li><code>pre-commit</code> - The old tool</li>
-<li><code>virtualenv</code> - Virtual environment management (built into prek)</li>
-<li><code>platformdirs</code> - Platform-specific directories (not needed)</li>
-</ul>
-<h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
-<ul>
-<li><code>prek&gt;=0.1.0</code> - The new Rust-based tool</li>
-</ul>
-<p><strong>Net result</strong>: -8 dependencies, +1 binary. Much simpler!</p>
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<h3 id="hook-not-found">Hook not found<a class="headerlink" href="#hook-not-found" title="Permanent link">&para;</a></h3>
-<p>If prek can't find a hook:</p>
-<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Clean cache and reinstall</span>
-prek<span class="w"> </span>clean
-prek<span class="w"> </span>install
+<h3 id="version-package-example-v6">Version Package (Example: v6)<a class="headerlink" href="#version-package-example-v6" title="Permanent link">&para;</a></h3>
+<div class="language-toml highlight"><pre><span></span><code><span class="c1"># packages/v6/pyproject.toml</span>
+
+<span class="k">[project]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;typed-ffmpeg-v6&quot;</span>
+<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;6.1.0&quot;</span>
+<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Typed FFmpeg bindings for FFmpeg 6.x&quot;</span>
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;ffmpeg-core&gt;=1.0,&lt;2.0&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">[tool.setuptools.packages.find]</span>
+<span class="n">where</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">]</span>
+<span class="n">include</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ffmpeg*&quot;</span><span class="p">]</span>
 </code></pre></div>
-<h3 id="hooks-failing">Hooks failing<a class="headerlink" href="#hooks-failing" title="Permanent link">&para;</a></h3>
-<p>If hooks are failing unexpectedly:</p>
+<h3 id="latest-package">Latest Package<a class="headerlink" href="#latest-package" title="Permanent link">&para;</a></h3>
+<div class="language-toml highlight"><pre><span></span><code><span class="c1"># packages/latest/pyproject.toml</span>
+
+<span class="k">[project]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;typed-ffmpeg&quot;</span>
+<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;8.0.0&quot;</span>
+<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Typed FFmpeg bindings (latest version)&quot;</span>
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;typed-ffmpeg-v8==8.*&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># packages/latest/src/ffmpeg/__init__.py</span>
+<span class="sd">&quot;&quot;&quot;Re-export latest version (v8).&quot;&quot;&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typed_ffmpeg_v8.ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;8.0.0&quot;</span>
+</code></pre></div>
+<h3 id="workspace-configuration">Workspace Configuration<a class="headerlink" href="#workspace-configuration" title="Permanent link">&para;</a></h3>
+<div class="language-toml highlight"><pre><span></span><code><span class="c1"># typed-ffmpeg/pyproject.toml (root)</span>
+
+<span class="k">[tool.uv.workspace]</span>
+<span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;packages/core&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;packages/v5&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;packages/v6&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="s2">&quot;packages/v7&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;packages/v8&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;packages/latest&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">[project]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;typed-ffmpeg-workspace&quot;</span>
+<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
+<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Monorepo for typed-ffmpeg packages&quot;</span>
+<span class="n">requires-python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&gt;=3.10&quot;</span>
+
+<span class="k">[tool.uv]</span>
+<span class="n">dev-dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;pytest&gt;=7.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;ruff&gt;=0.9.6&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;prek&gt;=0.1.0&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</code></pre></div>
+<h2 id="import-path-changes">Import Path Changes<a class="headerlink" href="#import-path-changes" title="Permanent link">&para;</a></h2>
+<h3 id="core-package-exports">Core Package Exports<a class="headerlink" href="#core-package-exports" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># packages/core/src/ffmpeg_core/__init__.py</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.dag</span><span class="w"> </span><span class="kn">import</span> <span class="n">FilterNode</span><span class="p">,</span> <span class="n">Stream</span><span class="p">,</span> <span class="n">InputNode</span><span class="p">,</span> <span class="n">OutputNode</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.compile</span><span class="w"> </span><span class="kn">import</span> <span class="n">compile_as_list</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.common.serialize</span><span class="w"> </span><span class="kn">import</span> <span class="n">Serializable</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;FilterNode&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Stream&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;InputNode&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;OutputNode&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;compile_as_list&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Serializable&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</code></pre></div>
+<h3 id="version-package-imports">Version Package Imports<a class="headerlink" href="#version-package-imports" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># packages/v6/src/ffmpeg/filters.py (generated)</span>
+
+<span class="c1"># Import from core package</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg_core.dag.factory</span><span class="w"> </span><span class="kn">import</span> <span class="n">filter_node_factory</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg_core.common.schema</span><span class="w"> </span><span class="kn">import</span> <span class="n">FFMpegFilterDef</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg_core.schema</span><span class="w"> </span><span class="kn">import</span> <span class="n">Default</span>
+
+<span class="c1"># Generated filter functions</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">concat</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">filter_node_factory</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="development-workflow">Development Workflow<a class="headerlink" href="#development-workflow" title="Permanent link">&para;</a></h2>
+<h3 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Clone repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/livingbio/typed-ffmpeg.git
+<span class="nb">cd</span><span class="w"> </span>typed-ffmpeg
+
+<span class="c1"># Install all packages in development mode</span>
+uv<span class="w"> </span>sync<span class="w"> </span>--all-packages
+
+<span class="c1"># Now you can develop all packages simultaneously</span>
+</code></pre></div>
+<h3 id="code-generation">Code Generation<a class="headerlink" href="#code-generation" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Generate all versions</span>
+python<span class="w"> </span>tools/codegen/generate_all.py
+
+<span class="c1"># Generate specific version</span>
+python<span class="w"> </span>tools/codegen/generate.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--version<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output<span class="w"> </span>packages/v6/src/ffmpeg
+</code></pre></div>
+<h3 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Test all packages</span>
+pytest<span class="w"> </span>packages/
+
+<span class="c1"># Test specific package</span>
+<span class="nb">cd</span><span class="w"> </span>packages/v6<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pytest
+
+<span class="c1"># Test core</span>
+<span class="nb">cd</span><span class="w"> </span>packages/core<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pytest
+</code></pre></div>
+<h3 id="building">Building<a class="headerlink" href="#building" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Build all packages</span>
+<span class="k">for</span><span class="w"> </span>pkg<span class="w"> </span><span class="k">in</span><span class="w"> </span>packages/*/<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$pkg</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>uv<span class="w"> </span>build
+<span class="k">done</span>
+
+<span class="c1"># Build specific package</span>
+<span class="nb">cd</span><span class="w"> </span>packages/v8<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>uv<span class="w"> </span>build
+</code></pre></div>
+<h3 id="publishing">Publishing<a class="headerlink" href="#publishing" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Publish order: core first, then versions, then latest</span>
+<span class="nb">cd</span><span class="w"> </span>packages/core<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>uv<span class="w"> </span>publish
+<span class="nb">cd</span><span class="w"> </span>packages/v5<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>uv<span class="w"> </span>publish
+<span class="nb">cd</span><span class="w"> </span>packages/v6<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>uv<span class="w"> </span>publish
+<span class="nb">cd</span><span class="w"> </span>packages/v7<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>uv<span class="w"> </span>publish
+<span class="nb">cd</span><span class="w"> </span>packages/v8<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>uv<span class="w"> </span>publish
+<span class="nb">cd</span><span class="w"> </span>packages/latest<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>uv<span class="w"> </span>publish
+</code></pre></div>
+<h2 id="migration-plan">Migration Plan<a class="headerlink" href="#migration-plan" title="Permanent link">&para;</a></h2>
+<h3 id="phase-1-create-monorepo-structure-week-1">Phase 1: Create Monorepo Structure (Week 1)<a class="headerlink" href="#phase-1-create-monorepo-structure-week-1" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Check prek version: <code>prek --version</code></li>
-<li>Verify config file: <code>cat .pre-commit-config.yaml</code></li>
-<li>Try cleaning cache: <code>prek clean</code></li>
-<li>Reinstall hooks: <code>prek install</code></li>
+<li>Create <code>packages/</code> directory structure</li>
+<li>Create package <code>pyproject.toml</code> files</li>
+<li>Set up workspace configuration</li>
 </ol>
-<h3 id="different-output-than-pre-commit">Different output than pre-commit<a class="headerlink" href="#different-output-than-pre-commit" title="Permanent link">&para;</a></h3>
-<p>Prek should produce identical results to pre-commit. If you see differences:</p>
+<h3 id="phase-2-split-core-from-versions-week-1-2">Phase 2: Split Core from Versions (Week 1-2)<a class="headerlink" href="#phase-2-split-core-from-versions-week-1-2" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Verify you're using the same hook versions</li>
-<li>Check that <code>.pre-commit-config.yaml</code> hasn't changed</li>
-<li>Report issue to <a href="https://github.com/9999years/prek/issues">prek repository</a></li>
+<li>Move hand-written code to <code>packages/core/src/ffmpeg_core/</code></li>
+<li><code>dag/</code> → <code>ffmpeg_core/dag/</code></li>
+<li><code>compile/</code> → <code>ffmpeg_core/compile/</code></li>
+<li><code>common/</code> → <code>ffmpeg_core/common/</code></li>
+<li>
+<p><code>ir/</code> → <code>ffmpeg_core/ir/</code></p>
+</li>
+<li>
+<p>Move version-specific code to version packages</p>
+</li>
+<li><code>v5/</code> → <code>packages/v5/src/ffmpeg/</code></li>
+<li><code>v6/</code> → <code>packages/v6/src/ffmpeg/</code></li>
+<li><code>v7/</code> → <code>packages/v7/src/ffmpeg/</code></li>
+<li><code>v8/</code> → <code>packages/v8/src/ffmpeg/</code></li>
 </ol>
-<h2 id="compatibility-notes">Compatibility Notes<a class="headerlink" href="#compatibility-notes" title="Permanent link">&para;</a></h2>
-<h3 id="fully-compatible">Fully Compatible<a class="headerlink" href="#fully-compatible" title="Permanent link">&para;</a></h3>
-<ul>
-<li>✅ All standard pre-commit hooks</li>
-<li>✅ Ruff hooks (<code>ruff-pre-commit</code>)</li>
-<li>✅ MyPy hooks (<code>mirrors-mypy</code>)</li>
-<li>✅ Local hooks</li>
-<li>✅ Custom hooks</li>
-<li>✅ All hook repositories on GitHub</li>
-</ul>
-<h3 id="known-differences">Known Differences<a class="headerlink" href="#known-differences" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Output format</strong>: Slightly different (but clearer)</li>
-<li><strong>Performance</strong>: Much faster (this is intentional!)</li>
-<li><strong>Dependencies</strong>: Far fewer (this is good!)</li>
-</ul>
-<h2 id="rollback">Rollback<a class="headerlink" href="#rollback" title="Permanent link">&para;</a></h2>
-<p>If you need to switch back to pre-commit:</p>
-<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Uninstall prek hooks</span>
-prek<span class="w"> </span>uninstall
-
-<span class="c1"># Update pyproject.toml</span>
-<span class="c1"># Change &quot;prek&gt;=0.1.0&quot; back to &quot;pre-commit&quot;</span>
-
-<span class="c1"># Reinstall dependencies</span>
-uv<span class="w"> </span>lock<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>uv<span class="w"> </span>sync<span class="w"> </span>--dev
-
-<span class="c1"># Install pre-commit hooks</span>
-pre-commit<span class="w"> </span>install
+<h3 id="phase-3-update-import-paths-week-2">Phase 3: Update Import Paths (Week 2)<a class="headerlink" href="#phase-3-update-import-paths-week-2" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Update generated code templates</li>
+<li>Change <code>from ffmpeg.dag import</code> → <code>from ffmpeg_core.dag import</code></li>
+<li>
+<p>Change <code>from ffmpeg.common import</code> → <code>from ffmpeg_core.common import</code></p>
+</li>
+<li>
+<p>Regenerate all version bindings with new imports</p>
+</li>
+</ol>
+<h3 id="phase-4-create-latest-package-week-2">Phase 4: Create Latest Package (Week 2)<a class="headerlink" href="#phase-4-create-latest-package-week-2" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Create <code>packages/latest/</code></li>
+<li>Implement re-export from <code>typed-ffmpeg-v8</code></li>
+<li>Test that it works as expected</li>
+</ol>
+<h3 id="phase-5-update-cicd-week-3">Phase 5: Update CI/CD (Week 3)<a class="headerlink" href="#phase-5-update-cicd-week-3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Update workflows for monorepo structure</li>
+<li>Add per-package testing</li>
+<li>Add publishing workflow</li>
+</ol>
+<h3 id="phase-6-documentation-week-3">Phase 6: Documentation (Week 3)<a class="headerlink" href="#phase-6-documentation-week-3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Update README with new installation instructions</li>
+<li>Create migration guide for existing users</li>
+<li>Update contributing guide</li>
+</ol>
+<h3 id="phase-7-cleanup-week-3">Phase 7: Cleanup (Week 3)<a class="headerlink" href="#phase-7-cleanup-week-3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Remove old single-package structure</li>
+<li>Archive old branches</li>
+<li>Update issue templates</li>
+</ol>
+<h2 id="user-migration">User Migration<a class="headerlink" href="#user-migration" title="Permanent link">&para;</a></h2>
+<h3 id="for-new-users">For New Users<a class="headerlink" href="#for-new-users" title="Permanent link">&para;</a></h3>
+<p>No changes needed. Just install:</p>
+<div class="language-bash highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>typed-ffmpeg<span class="w">  </span><span class="c1"># Gets latest (v8)</span>
 </code></pre></div>
-<p>The <code>.pre-commit-config.yaml</code> file works with both tools, so no changes needed there!</p>
-<h2 id="recommended-workflow">Recommended Workflow<a class="headerlink" href="#recommended-workflow" title="Permanent link">&para;</a></h2>
-<h3 id="for-local-development">For Local Development<a class="headerlink" href="#for-local-development" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span class="c1"># One-time setup (after cloning repo)</span>
-uv<span class="w"> </span>sync<span class="w"> </span>--dev
-prek<span class="w"> </span>install
+<h3 id="for-existing-users">For Existing Users<a class="headerlink" href="#for-existing-users" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Old way (single package)</span>
+pip<span class="w"> </span>install<span class="w"> </span>typed-ffmpeg
 
-<span class="c1"># Hooks run automatically on commit</span>
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;fix: something&quot;</span>
+from<span class="w"> </span>ffmpeg.filters<span class="w"> </span>import<span class="w"> </span>concat<span class="w">  </span><span class="c1"># Got v8 mixed with all versions</span>
 
-<span class="c1"># Or run manually</span>
-prek<span class="w"> </span>run<span class="w"> </span>--all-files
+<span class="c1"># New way (after migration)</span>
+pip<span class="w"> </span>uninstall<span class="w"> </span>typed-ffmpeg
+pip<span class="w"> </span>install<span class="w"> </span>typed-ffmpeg<span class="w">  </span><span class="c1"># Now just installs typed-ffmpeg-v8</span>
+
+from<span class="w"> </span>ffmpeg.filters<span class="w"> </span>import<span class="w"> </span>concat<span class="w">  </span><span class="c1"># Clean v8, no other versions</span>
 </code></pre></div>
-<h3 id="for-ci">For CI<a class="headerlink" href="#for-ci" title="Permanent link">&para;</a></h3>
-<p>Already configured! The GitHub Actions workflows use:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">astral-sh/setup-uv@v7</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uvx prek run --all-files</span>
+<p><strong>No code changes needed!</strong> Import paths stay the same.</p>
+<h3 id="for-version-specific-users">For Version-Specific Users<a class="headerlink" href="#for-version-specific-users" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># New capability: install specific version</span>
+pip<span class="w"> </span>install<span class="w"> </span>typed-ffmpeg-v6<span class="w">  </span><span class="c1"># For FFmpeg 6.x users</span>
 </code></pre></div>
-<p>This is the fastest and simplest CI setup:
-- No dependency installation
-- No virtual environment creation
-- Direct execution via <code>uvx</code>
-- Parallel hook execution</p>
-<h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
+<h2 id="pypi-packages">PyPI Packages<a class="headerlink" href="#pypi-packages" title="Permanent link">&para;</a></h2>
+<p>Will publish these packages:</p>
+<ol>
+<li><strong>ffmpeg-core</strong> - Core runtime (hand-written code)</li>
+<li><strong>typed-ffmpeg-v5</strong> - FFmpeg 5.x bindings</li>
+<li><strong>typed-ffmpeg-v6</strong> - FFmpeg 6.x bindings</li>
+<li><strong>typed-ffmpeg-v7</strong> - FFmpeg 7.x bindings</li>
+<li><strong>typed-ffmpeg-v8</strong> - FFmpeg 8.x bindings</li>
+<li><strong>typed-ffmpeg</strong> - Meta-package (installs latest)</li>
+</ol>
+<h2 id="success-criteria">Success Criteria<a class="headerlink" href="#success-criteria" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://github.com/9999years/prek">prek GitHub Repository</a></li>
-<li><a href="https://github.com/9999years/prek#readme">prek Documentation</a></li>
-<li><a href="https://github.com/9999years/prek#performance">Rust performance benefits</a></li>
+<li>✅ Each version package is &lt;3MB</li>
+<li>✅ No class identity issues</li>
+<li>✅ All existing tests pass</li>
+<li>✅ User code requires no changes</li>
+<li>✅ <code>pip install typed-ffmpeg</code> works (installs latest)</li>
+<li>✅ <code>pip install typed-ffmpeg-v6</code> works (installs v6 only)</li>
+<li>✅ Core package shared across all versions</li>
+<li>✅ CI/CD builds and tests all packages</li>
+<li>✅ Documentation updated</li>
 </ul>
-<h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
-<h3 id="do-i-need-to-change-pre-commit-configyaml">Do I need to change .pre-commit-config.yaml?<a class="headerlink" href="#do-i-need-to-change-pre-commit-configyaml" title="Permanent link">&para;</a></h3>
-<p><strong>No!</strong> Prek is 100% compatible with existing pre-commit configurations.</p>
-<h3 id="can-i-use-both-pre-commit-and-prek">Can I use both pre-commit and prek?<a class="headerlink" href="#can-i-use-both-pre-commit-and-prek" title="Permanent link">&para;</a></h3>
-<p>Technically yes, but not recommended. Choose one to avoid confusion. Prek is recommended for better performance.</p>
-<h3 id="will-this-affect-other-contributors">Will this affect other contributors?<a class="headerlink" href="#will-this-affect-other-contributors" title="Permanent link">&para;</a></h3>
-<p>Contributors will automatically get prek when they run <code>uv sync --dev</code>. The hooks work exactly the same as before, just faster.</p>
-<h3 id="is-prek-stable">Is prek stable?<a class="headerlink" href="#is-prek-stable" title="Permanent link">&para;</a></h3>
-<p>Yes. It's actively maintained and is a mature drop-in replacement for pre-commit. Many projects have successfully migrated.</p>
-<h3 id="what-about-hook-compatibility">What about hook compatibility?<a class="headerlink" href="#what-about-hook-compatibility" title="Permanent link">&para;</a></h3>
-<p>All hooks that work with pre-commit work with prek. This includes:
-- Standard <code>pre-commit-hooks</code>
-- Language-specific hooks (ruff, mypy, prettier, etc.)
-- Custom local hooks
-- Third-party hooks</p>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>✅ <strong>Recommended</strong>: Use prek for 2-10x better performance<br />
-✅ <strong>Easy</strong>: Same config file, familiar commands<br />
-✅ <strong>Fast</strong>: Single Rust binary, parallel execution<br />
-✅ <strong>Compatible</strong>: Drop-in replacement<br />
-✅ <strong>Simpler</strong>: Removes 8 dependencies</p>
-<p>Setup now:
-<div class="language-bash highlight"><pre><span></span><code>uv<span class="w"> </span>sync<span class="w"> </span>--dev
-prek<span class="w"> </span>install
-</code></pre></div></p>
-<p>Done! Hooks will run automatically on commit, just much faster.</p>
+<h2 id="open-questions">Open Questions<a class="headerlink" href="#open-questions" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Core package naming</strong>: <code>ffmpeg-core</code> vs <code>typed-ffmpeg-core</code>?</li>
+<li><strong>Latest package strategy</strong>: Meta-package or copy of v8?</li>
+<li><strong>Version comparison tool</strong>: Separate package or in core?</li>
+<li><strong>Deprecation policy</strong>: How long to support old versions?</li>
+</ol>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Get approval on monorepo design</li>
+<li>Create prototype with v6 and v8 only</li>
+<li>Test installation and imports</li>
+<li>Full migration</li>
+<li>Update CI/CD</li>
+<li>Publish to PyPI</li>
+</ol>
 
 
 

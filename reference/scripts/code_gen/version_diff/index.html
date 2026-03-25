@@ -10,31 +10,31 @@
       
       
       
-        <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/reference/scripts/parse_docs/">
+        <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/reference/scripts/code_gen/version_diff/">
       
       
-        <link rel="prev" href="../parse_c/xsd_to_dataclasses/">
+        <link rel="prev" href="../utils/">
       
       
-        <link rel="next" href="cli/">
+        <link rel="next" href="../../conftest/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>parse_docs - typed-ffmpeg</title>
+        <title>version_diff - typed-ffmpeg</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,15 +53,15 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../../css/ansi-colours.css">
+      <link rel="stylesheet" href="../../../../css/ansi-colours.css">
     
-      <link rel="stylesheet" href="../../../css/jupyter-cells.css">
+      <link rel="stylesheet" href="../../../../css/jupyter-cells.css">
     
-      <link rel="stylesheet" href="../../../css/pandas-dataframe.css">
+      <link rel="stylesheet" href="../../../../css/pandas-dataframe.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#scripts.parse_docs" class="md-skip">
+        <a href="#scripts.code_gen.version_diff" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="typed-ffmpeg" class="md-header__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
+    <a href="../../../.." title="typed-ffmpeg" class="md-header__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              parse_docs
+              version_diff
             
           </span>
         </div>
@@ -233,7 +233,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../.." class="md-tabs__link">
+        <a href="../../../.." class="md-tabs__link">
           
   
   
@@ -253,7 +253,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../usage/basic-api-usage/" class="md-tabs__link">
+        <a href="../../../../usage/basic-api-usage/" class="md-tabs__link">
           
   
   
@@ -275,7 +275,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -309,7 +309,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="typed-ffmpeg" class="md-nav__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
+    <a href="../../../.." title="typed-ffmpeg" class="md-nav__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -389,7 +389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -417,7 +417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../faq/" class="md-nav__link">
+      <a href="../../../../faq/" class="md-nav__link">
         
   
   
@@ -502,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../usage/basic-api-usage/" class="md-nav__link">
+      <a href="../../../../usage/basic-api-usage/" class="md-nav__link">
         
   
   
@@ -530,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../usage/probe/" class="md-nav__link">
+      <a href="../../../../usage/probe/" class="md-nav__link">
         
   
   
@@ -558,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../usage/complex-filtering/" class="md-nav__link">
+      <a href="../../../../usage/complex-filtering/" class="md-nav__link">
         
   
   
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../usage/customizing-filters/" class="md-nav__link">
+      <a href="../../../../usage/customizing-filters/" class="md-nav__link">
         
   
   
@@ -614,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../usage/execute/" class="md-nav__link">
+      <a href="../../../../usage/execute/" class="md-nav__link">
         
   
   
@@ -721,7 +721,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -760,6 +760,8 @@
                 
   
   
+    
+  
   
   
     
@@ -770,15 +772,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../code_gen/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -802,7 +804,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_1_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -820,7 +822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code_gen/cli/" class="md-nav__link">
+      <a href="../cli/" class="md-nav__link">
         
   
   
@@ -848,7 +850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code_gen/gen/" class="md-nav__link">
+      <a href="../gen/" class="md-nav__link">
         
   
   
@@ -876,7 +878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code_gen/schema/" class="md-nav__link">
+      <a href="../schema/" class="md-nav__link">
         
   
   
@@ -904,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code_gen/utils/" class="md-nav__link">
+      <a href="../utils/" class="md-nav__link">
         
   
   
@@ -929,10 +931,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../code_gen/version_diff/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    version_diff
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -948,6 +977,83 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Page contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.code_gen.version_diff.VersionDelta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;VersionDelta
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.code_gen.version_diff.VersionMetadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;VersionMetadata
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.code_gen.version_diff.build_version_metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;build_version_metadata
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.code_gen.version_diff.diff_versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;diff_versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.code_gen.version_diff.format_version_note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;format_version_note
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -968,7 +1074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../conftest/" class="md-nav__link">
+      <a href="../../conftest/" class="md-nav__link">
         
   
   
@@ -996,7 +1102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../main/" class="md-nav__link">
+      <a href="../../main/" class="md-nav__link">
         
   
   
@@ -1039,7 +1145,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../manual/" class="md-nav__link ">
+            <a href="../../manual/" class="md-nav__link ">
               
   
   
@@ -1081,7 +1187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../manual/cli/" class="md-nav__link">
+      <a href="../../manual/cli/" class="md-nav__link">
         
   
   
@@ -1109,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../manual/schema/" class="md-nav__link">
+      <a href="../../manual/schema/" class="md-nav__link">
         
   
   
@@ -1160,7 +1266,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../parse_c/" class="md-nav__link ">
+            <a href="../../parse_c/" class="md-nav__link ">
               
   
   
@@ -1202,7 +1308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_c/cli/" class="md-nav__link">
+      <a href="../../parse_c/cli/" class="md-nav__link">
         
   
   
@@ -1230,7 +1336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_c/parse_c_structure/" class="md-nav__link">
+      <a href="../../parse_c/parse_c_structure/" class="md-nav__link">
         
   
   
@@ -1258,7 +1364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_c/parse_ffmpeg_opt_c/" class="md-nav__link">
+      <a href="../../parse_c/parse_ffmpeg_opt_c/" class="md-nav__link">
         
   
   
@@ -1286,7 +1392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_c/pre_compile/" class="md-nav__link">
+      <a href="../../parse_c/pre_compile/" class="md-nav__link">
         
   
   
@@ -1314,7 +1420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_c/schema/" class="md-nav__link">
+      <a href="../../parse_c/schema/" class="md-nav__link">
         
   
   
@@ -1342,7 +1448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_c/xsd_to_dataclasses/" class="md-nav__link">
+      <a href="../../parse_c/xsd_to_dataclasses/" class="md-nav__link">
         
   
   
@@ -1375,8 +1481,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1387,15 +1491,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_6" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../parse_docs/" class="md-nav__link ">
               
   
   
@@ -1413,13 +1517,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_3_1_6" id="__nav_3_1_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3_1_6" id="__nav_3_1_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1437,7 +1541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cli/" class="md-nav__link">
+      <a href="../../parse_docs/cli/" class="md-nav__link">
         
   
   
@@ -1465,7 +1569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="helpers/" class="md-nav__link">
+      <a href="../../parse_docs/helpers/" class="md-nav__link">
         
   
   
@@ -1493,7 +1597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="schema/" class="md-nav__link">
+      <a href="../../parse_docs/schema/" class="md-nav__link">
         
   
   
@@ -1544,7 +1648,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../parse_help/" class="md-nav__link ">
+            <a href="../../parse_help/" class="md-nav__link ">
               
   
   
@@ -1586,7 +1690,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_help/cli/" class="md-nav__link">
+      <a href="../../parse_help/cli/" class="md-nav__link">
         
   
   
@@ -1614,7 +1718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_help/parse_codecs/" class="md-nav__link">
+      <a href="../../parse_help/parse_codecs/" class="md-nav__link">
         
   
   
@@ -1642,7 +1746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_help/parse_filters/" class="md-nav__link">
+      <a href="../../parse_help/parse_filters/" class="md-nav__link">
         
   
   
@@ -1670,7 +1774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_help/parse_formats/" class="md-nav__link">
+      <a href="../../parse_help/parse_formats/" class="md-nav__link">
         
   
   
@@ -1698,7 +1802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_help/parse_help/" class="md-nav__link">
+      <a href="../../parse_help/parse_help/" class="md-nav__link">
         
   
   
@@ -1726,7 +1830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_help/schema/" class="md-nav__link">
+      <a href="../../parse_help/schema/" class="md-nav__link">
         
   
   
@@ -1754,7 +1858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parse_help/utils/" class="md-nav__link">
+      <a href="../../parse_help/utils/" class="md-nav__link">
         
   
   
@@ -1820,6 +1924,69 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.code_gen.version_diff.VersionDelta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;VersionDelta
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.code_gen.version_diff.VersionMetadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;VersionMetadata
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.code_gen.version_diff.build_version_metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;build_version_metadata
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.code_gen.version_diff.diff_versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;diff_versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.code_gen.version_diff.format_version_note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;format_version_note
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1842,33 +2009,28 @@
 
 
 
-<h1 id="scripts.parse_docs" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-module"></code>            <span class="doc doc-object-name doc-module-name">parse_docs</span>
+<h1 id="scripts.code_gen.version_diff" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-module"></code>            <span class="doc doc-object-name doc-module-name">version_diff</span>
 
 
-<a href="#scripts.parse_docs" class="headerlink" title="Permanent link">&para;</a></h1>
+<a href="#scripts.code_gen.version_diff" class="headerlink" title="Permanent link">&para;</a></h1>
 
     <div class="doc doc-contents first">
 
-        <p>FFmpeg Documentation Parsing Package.</p>
-<p>This package contains modules for downloading, parsing, and extracting
-information from the official FFmpeg documentation. The main functionality includes:</p>
-<ul>
-<li>Downloading HTML documentation from the FFmpeg website</li>
-<li>Parsing filter documentation to extract structured information</li>
-<li>Extracting URLs, descriptions, and metadata from documentation</li>
-<li>Caching parsed documentation for faster subsequent access</li>
-</ul>
-<p>These modules help provide context and reference information for FFmpeg filters
-that may not be available through command-line help or source code alone,
-enriching the generated type annotations with more detailed documentation.</p>
+        <p>Cross-version comparison for FFmpeg typed bindings.</p>
+<p>Computes deltas between FFmpeg version caches to power:
+- Deprecation hints in generated docstrings
+- Migration CLI command (<code>typed-ffmpeg diff v6 v7</code>)
+- Per-version documentation pages</p>
 
 
 
 
 
 
-<p><span class="doc-section-title">Modules:</span></p>
+
+
+<p><span class="doc-section-title">Classes:</span></p>
     <table>
       <thead>
         <tr>
@@ -1878,31 +2040,120 @@ enriching the generated type annotations with more detailed documentation.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="            cli (scripts.parse_docs.cli)" href="cli/#scripts.parse_docs.cli">cli</a></code></td>
+            <td><code><a class="autorefs autorefs-internal" title="            VersionDelta
+
+
+  
+      dataclass
+   (scripts.code_gen.version_diff.VersionDelta)" href="#scripts.code_gen.version_diff.VersionDelta">VersionDelta</a></code></td>
             <td>
               <div class="doc-md-description">
-                <p>Parse ffmpeg filter documents from the official ffmpeg documentation.</p>
+                <p>Diff between two FFmpeg versions.</p>
               </div>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="            helpers (scripts.parse_docs.helpers)" href="helpers/#scripts.parse_docs.helpers">helpers</a></code></td>
+            <td><code><a class="autorefs autorefs-internal" title="            VersionMetadata
+
+
+  
+      dataclass
+   (scripts.code_gen.version_diff.VersionMetadata)" href="#scripts.code_gen.version_diff.VersionMetadata">VersionMetadata</a></code></td>
             <td>
               <div class="doc-md-description">
-                <p>Helper functions for parsing FFmpeg filter documentation.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="            schema (scripts.parse_docs.schema)" href="schema/#scripts.parse_docs.schema">schema</a></code></td>
-            <td>
-              <div class="doc-md-description">
-                <p>Schema definitions for parsing FFmpeg filter documentation.</p>
+                <p>Aggregated version info across all available caches.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
+
+
+
+
+<p><span class="doc-section-title">Functions:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            build_version_metadata (scripts.code_gen.version_diff.build_version_metadata)" href="#scripts.code_gen.version_diff.build_version_metadata">build_version_metadata</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Build aggregated metadata across all available version caches.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            diff_versions (scripts.code_gen.version_diff.diff_versions)" href="#scripts.code_gen.version_diff.diff_versions">diff_versions</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Compute the delta between two FFmpeg versions.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            format_version_note (scripts.code_gen.version_diff.format_version_note)" href="#scripts.code_gen.version_diff.format_version_note">format_version_note</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Generate a version availability note for a docstring.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="scripts.code_gen.version_diff.VersionDelta" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">VersionDelta</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#scripts.code_gen.version_diff.VersionDelta" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">VersionDelta</span><span class="p">(</span>
+    <span class="n">from_version</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">,</span>
+    <span class="n">to_version</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">,</span>
+    <span class="n">filters_added</span><span class="p">:</span> <span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">filters_removed</span><span class="p">:</span> <span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">codecs_added</span><span class="p">:</span> <span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">codecs_removed</span><span class="p">:</span> <span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">formats_added</span><span class="p">:</span> <span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">formats_removed</span><span class="p">:</span> <span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+<span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+        <p>Diff between two FFmpeg versions.</p>
+
+
+
+
+
 
 
 
@@ -1921,6 +2172,399 @@ enriching the generated type annotations with more detailed documentation.</p>
 
 
 
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="scripts.code_gen.version_diff.VersionMetadata" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">VersionMetadata</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#scripts.code_gen.version_diff.VersionMetadata" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">VersionMetadata</span><span class="p">(</span>
+    <span class="n">filter_versions</span><span class="p">:</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="set">set</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">]]</span> <span class="o">=</span> <span class="n"><span title="dict">dict</span></span><span class="p">(),</span>
+    <span class="n">codec_versions</span><span class="p">:</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="set">set</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">]]</span> <span class="o">=</span> <span class="n"><span title="dict">dict</span></span><span class="p">(),</span>
+    <span class="n">format_versions</span><span class="p">:</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="set">set</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">]]</span> <span class="o">=</span> <span class="n"><span title="dict">dict</span></span><span class="p">(),</span>
+    <span class="n">available_versions</span><span class="p">:</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">]</span> <span class="o">=</span> <span class="n"><span title="list">list</span></span><span class="p">(),</span>
+<span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+        <p>Aggregated version info across all available caches.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="scripts.code_gen.version_diff.build_version_metadata" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">build_version_metadata</span>
+
+
+<a href="#scripts.code_gen.version_diff.build_version_metadata" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">build_version_metadata</span><span class="p">(</span>
+    <span class="n">versions</span><span class="p">:</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            VersionMetadata
+
+
+  
+      dataclass
+   (scripts.code_gen.version_diff.VersionMetadata)" href="#scripts.code_gen.version_diff.VersionMetadata">VersionMetadata</a></span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Build aggregated metadata across all available version caches.</p>
+<p>This is used by the template renderer to add deprecation/addition
+annotations to generated docstrings.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>versions</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of version strings to analyze (e.g., ["5.0", "6.0", "7.0"]).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            VersionMetadata
+
+
+  
+      dataclass
+   (scripts.code_gen.version_diff.VersionMetadata)" href="#scripts.code_gen.version_diff.VersionMetadata">VersionMetadata</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>VersionMetadata with per-item version availability maps.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="scripts.code_gen.version_diff.diff_versions" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">diff_versions</span>
+
+
+<a href="#scripts.code_gen.version_diff.diff_versions" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">diff_versions</span><span class="p">(</span>
+    <span class="n">from_version</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n">to_version</span><span class="p">:</span> <span class="n"><span title="str">str</span></span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            VersionDelta
+
+
+  
+      dataclass
+   (scripts.code_gen.version_diff.VersionDelta)" href="#scripts.code_gen.version_diff.VersionDelta">VersionDelta</a></span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Compute the delta between two FFmpeg versions.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>from_version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Source version (e.g., "6.0").</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>to_version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Target version (e.g., "7.0").</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            VersionDelta
+
+
+  
+      dataclass
+   (scripts.code_gen.version_diff.VersionDelta)" href="#scripts.code_gen.version_diff.VersionDelta">VersionDelta</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>VersionDelta with added/removed filters, codecs, and formats.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="scripts.code_gen.version_diff.format_version_note" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">format_version_note</span>
+
+
+<a href="#scripts.code_gen.version_diff.format_version_note" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">format_version_note</span><span class="p">(</span>
+    <span class="n">item_name</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">,</span>
+    <span class="n">version_map</span><span class="p">:</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="set">set</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">]],</span>
+    <span class="n">all_versions</span><span class="p">:</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">],</span>
+    <span class="n">current_version</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Generate a version availability note for a docstring.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>item_name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Name of the filter/codec/format.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>version_map</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="set">set</span>[<span title="str">str</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maps item names to sets of version strings where they exist.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>all_versions</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>All known version strings (sorted).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>current_version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The version being generated (major only, e.g., "7").</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A note string like "New in FFmpeg 7.0" or "Removed in FFmpeg 8.0",</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>or None if no note is needed.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
 
 
 
@@ -1980,10 +2624,10 @@ enriching the generated type annotations with more detailed documentation.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
