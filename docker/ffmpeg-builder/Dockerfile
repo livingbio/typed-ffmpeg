@@ -91,6 +91,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 COPY --from=build /opt/ffmpeg /opt/ffmpeg
 
+RUN ln -s /opt/ffmpeg/bin/ffmpeg /usr/local/bin/ffmpeg \
+    && ln -s /opt/ffmpeg/bin/ffprobe /usr/local/bin/ffprobe
+
 ENV PATH=/opt/ffmpeg/bin:$PATH
 ENV LD_LIBRARY_PATH=/opt/ffmpeg/lib
 
