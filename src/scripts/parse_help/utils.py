@@ -55,7 +55,14 @@ def get_ffmpeg_version(ffmpeg_binary: str = "ffmpeg") -> str:
     """
     from ..code_gen.schema import parse_version
 
-    output = run_ffmpeg_command(["-version"], ffmpeg_binary=ffmpeg_binary)
+    # Don't use run_ffmpeg_command here because it appends -hide_banner,
+    # which suppresses the version output on some FFmpeg builds.
+    result = subprocess.run(
+        [ffmpeg_binary, "-version"],
+        stdout=subprocess.PIPE,
+        text=True,
+    )
+    output = result.stdout
     first_line = output.split("\n")[0] if output else ""
     major, minor = parse_version(first_line)
     return f"{major}.{minor}"
