@@ -24,8 +24,11 @@ RUN apt-get update && apt-get install -y \
 
 # These may not exist on all Ubuntu versions — ignore failures
 RUN apt-get update \
-    && apt-get install -y libdav1d-dev libsvtav1-dev libharfbuzz-dev 2>/dev/null || true \
+    && apt-get install -y libdav1d-dev libsvtav1-dev libharfbuzz-dev libplacebo-dev 2>/dev/null || true \
     && rm -rf /var/lib/apt/lists/*
+
+# Verify libharfbuzz is available (needed for drawtext filter)
+RUN pkg-config --exists harfbuzz && echo "harfbuzz: OK" || echo "WARNING: harfbuzz not found"
 
 RUN wget -q "https://ffmpeg.org/releases/ffmpeg-${FFMPEG_SOURCE_VERSION}.tar.bz2" \
     && tar xf "ffmpeg-${FFMPEG_SOURCE_VERSION}.tar.bz2" \
@@ -34,7 +37,13 @@ RUN wget -q "https://ffmpeg.org/releases/ffmpeg-${FFMPEG_SOURCE_VERSION}.tar.bz2
 WORKDIR /ffmpeg-src
 
 # Build without --enable-small so descriptions are preserved in the binary
-RUN ./configure \
+# Detect optional libraries and build configure flags dynamically
+RUN EXTRA_FLAGS=""; \
+    pkg-config --exists harfbuzz && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libharfbuzz"; \
+    pkg-config --exists dav1d && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libdav1d"; \
+    pkg-config --exists SvtAv1Enc && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libsvtav1"; \
+    echo "Extra configure flags: $EXTRA_FLAGS"; \
+    ./configure \
         --prefix=/usr/local \
         --disable-debug \
         --disable-doc \
@@ -67,6 +76,7 @@ RUN ./configure \
         --enable-libzmq \
         --enable-vaapi \
         --enable-opencl \
+        $EXTRA_FLAGS \
     && make -j$(nproc) \
     && make install
 
