@@ -817,6 +817,18 @@
   },
   {
     "__class__": "FFMpegOption",
+    "argname": "speed",
+    "canon": null,
+    "flags": 2436,
+    "help": "Temporary readrate used to catch up if an input lags behind the specified readrate",
+    "name": "readrate_catchup",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_FLOAT"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
     "argname": "type",
     "canon": null,
     "flags": 4229,
@@ -1069,6 +1081,18 @@
   },
   {
     "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 4,
+    "help": "maximum number of buffered frames in a filter graph",
+    "name": "filter_buffered_frames",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_INT"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
     "argname": "filename",
     "canon": null,
     "flags": 6020,
@@ -1086,6 +1110,18 @@
     "flags": 3972,
     "help": "reinit filtergraph on input parameter changes",
     "name": "reinit_filter",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_INT"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "",
+    "canon": null,
+    "flags": 3972,
+    "help": "drop frame instead of reiniting filtergraph on input parameter changes",
+    "name": "drop_changed",
     "type": {
       "__class__": "FFMpegOptionType",
       "value": "OPT_TYPE_INT"
@@ -1137,6 +1173,42 @@
     "type": {
       "__class__": "FFMpegOptionType",
       "value": "OPT_TYPE_FUNC"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": null,
+    "canon": null,
+    "flags": 0,
+    "help": "print execution graph data to stderr",
+    "name": "print_graphs",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_BOOL"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "filename",
+    "canon": null,
+    "flags": 0,
+    "help": "write execution graph data to the specified file",
+    "name": "print_graphs_file",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_STRING"
+    }
+  },
+  {
+    "__class__": "FFMpegOption",
+    "argname": "format",
+    "canon": null,
+    "flags": 0,
+    "help": "set the output printing format (available formats are: default, compact, csv, flat, ini, json, xml, mermaid, mermaidhtml)",
+    "name": "print_graphs_format",
+    "type": {
+      "__class__": "FFMpegOptionType",
+      "value": "OPT_TYPE_STRING"
     }
   },
   {
