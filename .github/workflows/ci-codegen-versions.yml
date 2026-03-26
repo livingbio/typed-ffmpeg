@@ -95,8 +95,14 @@ jobs:
           docker rm "$CONTAINER_ID"
           sudo ldconfig
           ffmpeg -version
+          echo "--- Filter count and drawtext check ---"
+          ffmpeg -filters 2>/dev/null | tail -1
+          ffmpeg -filters 2>/dev/null | grep -i drawtext || echo "drawtext: NOT FOUND"
           echo "--- Filters with hardware acceleration ---"
           ffmpeg -filters 2>/dev/null | grep -iE 'opencl|vulkan|vaapi|ladspa|lv2|cuda' || true
+          echo "--- Check libfreetype ---"
+          ldd /usr/local/bin/ffmpeg | grep -i freetype || echo "freetype not in ffmpeg binary"
+          ldd /usr/local/lib/libavfilter.so* 2>/dev/null | grep -i freetype || echo "freetype not in libavfilter"
 
       - name: Install uv
         run: pip install uv
