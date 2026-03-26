@@ -68,6 +68,19 @@ jobs:
         with:
           python-version: '3.10'
 
+      - name: Install build tools and FFmpeg runtime dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+            nasm yasm build-essential \
+            libass9 libfreetype6 libfontconfig1 libfribidi0 \
+            libx264-dev libx265-dev libvpx-dev libmp3lame0 libopus0 \
+            libvorbis0a libtheora0 libwebp7 libxvidcore4 \
+            libopenjp2-7 libopencore-amrnb0 libopencore-amrwb0 \
+            libzimg2 libvidstab1.1 libaom3 \
+            libsrt1.5-openssl libzmq5 \
+            libva2 libdrm2 ocl-icd-libopencl1 \
+            libdav1d7 libharfbuzz0b 2>/dev/null || true
+
       - name: Extract FFmpeg ${{ matrix.ffmpeg-version }} from Docker image
         run: |
           docker pull ${{ matrix.ffmpeg-image }}
@@ -80,12 +93,9 @@ jobs:
           sudo cp -a /tmp/ffmpeg-libs/. /usr/local/lib/
           docker rm "$CONTAINER_ID"
           sudo ldconfig
-          ffmpeg -version | head -1
+          ffmpeg -version
           echo "--- Filters with hardware acceleration ---"
           ffmpeg -filters 2>/dev/null | grep -iE 'opencl|vulkan|vaapi|ladspa|lv2|cuda' || true
-
-      - name: Install build tools for codegen (nasm/yasm needed for FFmpeg source compile)
-        run: sudo apt-get update && sudo apt-get install -y nasm yasm build-essential
 
       - name: Install uv
         run: pip install uv
