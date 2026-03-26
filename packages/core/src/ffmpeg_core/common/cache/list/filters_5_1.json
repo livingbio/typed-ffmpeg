@@ -4829,6 +4829,45 @@
   },
   {
     "__class__": "FFMpegFilter",
+    "description": "Buffer input frames and send them when they are requested.",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": false,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": false,
+    "name": "afifo",
+    "options": [],
+    "pre": [],
+    "ref": null,
+    "stream_typings_input": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "audio"
+        }
+      }
+    ],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "audio"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
     "description": "Generate a FIR coefficients audio stream.",
     "formula_typings_input": null,
     "formula_typings_output": null,
@@ -27988,6 +28027,145 @@
   },
   {
     "__class__": "FFMpegFilter",
+    "description": "Deinterlacing of VAAPI surfaces",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": false,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": false,
+    "name": "deinterlace_vaapi",
+    "options": [
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Use the highest-numbered (and therefore possibly most advanced) deinterlacing algorithm",
+            "name": "default",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Use the bob deinterlacing algorithm",
+            "name": "bob",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Use the weave deinterlacing algorithm",
+            "name": "weave",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Use the motion adaptive deinterlacing algorithm",
+            "name": "motion_adaptive",
+            "value": "3"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Use the motion compensated deinterlacing algorithm",
+            "name": "motion_compensated",
+            "value": "4"
+          }
+        ],
+        "default": "default",
+        "description": "Deinterlacing mode (from 0 to 4) (default default)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "mode",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Output at frame rate (one frame of output for each field-pair)",
+            "name": "frame",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Output at field rate (one frame of output for each field)",
+            "name": "field",
+            "value": "2"
+          }
+        ],
+        "default": "frame",
+        "description": "Generate output at frame rate or field rate (from 1 to 2) (default frame)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "rate",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "0",
+        "description": "Only deinterlace fields, passing frames through unchanged (from 0 to 1) (default 0)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "auto",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      }
+    ],
+    "pre": [],
+    "ref": null,
+    "stream_typings_input": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
     "description": "Remove judder produced by pullup.",
     "formula_typings_input": null,
     "formula_typings_output": null,
@@ -28141,6 +28319,62 @@
     ],
     "pre": [],
     "ref": "https://ffmpeg.org/ffmpeg-filters.html#delogo",
+    "stream_typings_input": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
+    "description": "VAAPI VPP for de-noise",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": false,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": false,
+    "name": "denoise_vaapi",
+    "options": [
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "0",
+        "description": "denoise level (from 0 to 64) (default 0)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "denoise",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      }
+    ],
+    "pre": [],
+    "ref": null,
     "stream_typings_input": [
       {
         "__class__": "FFMpegIOType",
@@ -35072,6 +35306,45 @@
     ],
     "pre": [],
     "ref": "https://ffmpeg.org/ffmpeg-filters.html#fieldorder",
+    "stream_typings_input": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
+    "description": "Buffer input images and send them when they are requested.",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": false,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": false,
+    "name": "fifo",
+    "options": [],
+    "pre": [],
+    "ref": null,
     "stream_typings_input": [
       {
         "__class__": "FFMpegIOType",
@@ -52564,6 +52837,62 @@
   },
   {
     "__class__": "FFMpegFilter",
+    "description": "Filter video using libpostproc.",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": false,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": true,
+    "name": "pp",
+    "options": [
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "de",
+        "description": "set postprocess subfilters (default \"de\")",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "subfilters",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      }
+    ],
+    "pre": [],
+    "ref": null,
+    "stream_typings_input": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
     "description": "Apply Postprocessing 7 filter.",
     "formula_typings_input": null,
     "formula_typings_output": null,
@@ -52874,6 +53203,110 @@
     ],
     "pre": [],
     "ref": "https://ffmpeg.org/ffmpeg-filters.html#prewitt_005fopencl",
+    "stream_typings_input": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
+    "description": "ProcAmp (color balance) adjustments for hue, saturation, brightness, contrast",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": false,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": false,
+    "name": "procamp_vaapi",
+    "options": [
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "0",
+        "description": "Output video brightness (from -100 to 100) (default 0)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "b",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "float"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "1",
+        "description": "Output video saturation (from 0 to 10) (default 1)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "s",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "float"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "1",
+        "description": "Output video contrast (from 0 to 10) (default 1)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "c",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "float"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "0",
+        "description": "Output video hue (from -180 to 180) (default 0)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "h",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "float"
+        }
+      }
+    ],
+    "pre": [],
+    "ref": null,
     "stream_typings_input": [
       {
         "__class__": "FFMpegIOType",
@@ -55714,6 +56147,909 @@
   },
   {
     "__class__": "FFMpegFilter",
+    "description": "Scale the input video size and/or convert the image format to the given reference.",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": false,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": false,
+    "name": "scale2ref",
+    "options": [
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": null,
+        "description": "Output video width",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "w",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": null,
+        "description": "Output video height",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "h",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "",
+        "description": "Flags to pass to libswscale (default \"\")",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "flags",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "false",
+        "description": "set interlacing (default false)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "interl",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "boolean"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "auto",
+            "value": "auto"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "bt601",
+            "value": "bt601"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "bt470",
+            "value": "bt470"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "smpte170m",
+            "value": "smpte170m"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "bt709",
+            "value": "bt709"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "fcc",
+            "value": "fcc"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "smpte240m",
+            "value": "smpte240m"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "bt2020",
+            "value": "bt2020"
+          }
+        ],
+        "default": "auto",
+        "description": "set input YCbCr type (default \"auto\")",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "in_color_matrix",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "auto",
+            "value": "auto"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "bt601",
+            "value": "bt601"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "bt470",
+            "value": "bt470"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "smpte170m",
+            "value": "smpte170m"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "bt709",
+            "value": "bt709"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "fcc",
+            "value": "fcc"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "smpte240m",
+            "value": "smpte240m"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "bt2020",
+            "value": "bt2020"
+          }
+        ],
+        "default": null,
+        "description": "set output YCbCr type",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "out_color_matrix",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "auto",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "unknown",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "full",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "limited",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "jpeg",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "mpeg",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "tv",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "pc",
+            "value": "2"
+          }
+        ],
+        "default": "auto",
+        "description": "set input color range (from 0 to 2) (default auto)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "in_range",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "auto",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "unknown",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "full",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "limited",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "jpeg",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "mpeg",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "tv",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "pc",
+            "value": "2"
+          }
+        ],
+        "default": "auto",
+        "description": "set output color range (from 0 to 2) (default auto)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "out_range",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "-513",
+        "description": "input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "in_v_chr_pos",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "-513",
+        "description": "input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "in_h_chr_pos",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "-513",
+        "description": "output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "out_v_chr_pos",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "-513",
+        "description": "output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "out_h_chr_pos",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "disable",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "decrease",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "increase",
+            "value": "2"
+          }
+        ],
+        "default": "disable",
+        "description": "decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "force_original_aspect_ratio",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "1",
+        "description": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "force_divisible_by",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "123456",
+        "description": "Scaler param 0 (from INT_MIN to INT_MAX) (default 123456)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "param0",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "double"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "123456",
+        "description": "Scaler param 1 (from INT_MIN to INT_MAX) (default 123456)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "param1",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "double"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "eval expressions once during initialization",
+            "name": "init",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "eval expressions during initialization and per-frame",
+            "name": "frame",
+            "value": "1"
+          }
+        ],
+        "default": "init",
+        "description": "specify when to evaluate expressions (from 0 to 1) (default init)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "eval",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      }
+    ],
+    "pre": [],
+    "ref": null,
+    "stream_typings_input": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      },
+      {
+        "__class__": "FFMpegIOType",
+        "name": "ref",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      },
+      {
+        "__class__": "FFMpegIOType",
+        "name": "ref",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
+    "description": "Scale to/from VAAPI surfaces.",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": false,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": false,
+    "name": "scale_vaapi",
+    "options": [
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "iw",
+        "description": "Output video width (default \"iw\")",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "w",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "ih",
+        "description": "Output video height (default \"ih\")",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "h",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": null,
+        "description": "Output video format (software format of hardware frames)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "format",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Use the default (depend on the driver) scaling algorithm",
+            "name": "default",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Use fast scaling algorithm",
+            "name": "fast",
+            "value": "256"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Use high quality scaling algorithm",
+            "name": "hq",
+            "value": "512"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Use nolinear anamorphic scaling algorithm",
+            "name": "nl_anamorphic",
+            "value": "768"
+          }
+        ],
+        "default": "hq",
+        "description": "Scaling mode (from 0 to 768) (default hq)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "mode",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": null,
+        "description": "Output colour matrix coefficient set",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "out_color_matrix",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Full range",
+            "name": "full",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Limited range",
+            "name": "limited",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Full range",
+            "name": "jpeg",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Limited range",
+            "name": "mpeg",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Limited range",
+            "name": "tv",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "Full range",
+            "name": "pc",
+            "value": "2"
+          }
+        ],
+        "default": "0",
+        "description": "Output colour range (from 0 to 2) (default 0)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "out_range",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": null,
+        "description": "Output colour primaries",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "out_color_primaries",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": null,
+        "description": "Output colour transfer characteristics",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "out_color_transfer",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": null,
+        "description": "Output chroma sample location",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "out_chroma_location",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "string"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "disable",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "decrease",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "",
+            "name": "increase",
+            "value": "2"
+          }
+        ],
+        "default": "disable",
+        "description": "decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "force_original_aspect_ratio",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "1",
+        "description": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "force_divisible_by",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      }
+    ],
+    "pre": [],
+    "ref": null,
+    "stream_typings_input": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
     "description": "Detect video scene change",
     "formula_typings_input": null,
     "formula_typings_output": null,
@@ -57429,6 +58765,62 @@
     ],
     "pre": [],
     "ref": "https://ffmpeg.org/ffmpeg-filters.html#settb_002c-asettb",
+    "stream_typings_input": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
+    "description": "VAAPI VPP for sharpness",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": false,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": false,
+    "name": "sharpness_vaapi",
+    "options": [
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [],
+        "default": "44",
+        "description": "sharpness level (from 0 to 64) (default 44)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "sharpness",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      }
+    ],
+    "pre": [],
+    "ref": null,
     "stream_typings_input": [
       {
         "__class__": "FFMpegIOType",
@@ -71922,6 +73314,273 @@
     ],
     "pre": [],
     "ref": "https://ffmpeg.org/ffmpeg-filters.html#transpose",
+    "stream_typings_input": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
+    "description": "Transpose input video",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": false,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": false,
+    "name": "transpose_opencl",
+    "options": [
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "rotate counter-clockwise with vertical flip",
+            "name": "cclock_flip",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "rotate clockwise",
+            "name": "clock",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "rotate counter-clockwise",
+            "name": "cclock",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "rotate clockwise with vertical flip",
+            "name": "clock_flip",
+            "value": "3"
+          }
+        ],
+        "default": "cclock_flip",
+        "description": "set transpose direction (from 0 to 3) (default cclock_flip)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "dir",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "always apply transposition",
+            "name": "none",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "preserve portrait geometry",
+            "name": "portrait",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "preserve landscape geometry",
+            "name": "landscape",
+            "value": "1"
+          }
+        ],
+        "default": "none",
+        "description": "do not apply transposition if the input matches the specified geometry (from 0 to INT_MAX) (default none)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "passthrough",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      }
+    ],
+    "pre": [],
+    "ref": null,
+    "stream_typings_input": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ],
+    "stream_typings_output": [
+      {
+        "__class__": "FFMpegIOType",
+        "name": "default",
+        "type": {
+          "__class__": "StreamType",
+          "value": "video"
+        }
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegFilter",
+    "description": "VAAPI VPP for transpose",
+    "formula_typings_input": null,
+    "formula_typings_output": null,
+    "id": null,
+    "is_dynamic_input": false,
+    "is_dynamic_output": false,
+    "is_filter_sink": false,
+    "is_filter_source": false,
+    "is_support_command": false,
+    "is_support_framesync": false,
+    "is_support_slice_threading": false,
+    "is_support_timeline": false,
+    "name": "transpose_vaapi",
+    "options": [
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "rotate counter-clockwise with vertical flip",
+            "name": "cclock_flip",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "rotate clockwise",
+            "name": "clock",
+            "value": "1"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "rotate counter-clockwise",
+            "name": "cclock",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "rotate clockwise with vertical flip",
+            "name": "clock_flip",
+            "value": "3"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "rotate by half-turn",
+            "name": "reversal",
+            "value": "4"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "flip horizontally",
+            "name": "hflip",
+            "value": "5"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "flip vertically",
+            "name": "vflip",
+            "value": "6"
+          }
+        ],
+        "default": "cclock_flip",
+        "description": "set transpose direction (from 0 to 6) (default cclock_flip)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "dir",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      },
+      {
+        "__class__": "FFMpegFilterOption",
+        "alias": [],
+        "choices": [
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "always apply transposition",
+            "name": "none",
+            "value": "0"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "preserve portrait geometry",
+            "name": "portrait",
+            "value": "2"
+          },
+          {
+            "__class__": "FFMpegFilterOptionChoice",
+            "flags": "..FV.......",
+            "help": "preserve landscape geometry",
+            "name": "landscape",
+            "value": "1"
+          }
+        ],
+        "default": "none",
+        "description": "do not apply transposition if the input matches the specified geometry (from 0 to INT_MAX) (default none)",
+        "flags": null,
+        "max": null,
+        "min": null,
+        "name": "passthrough",
+        "required": false,
+        "type": {
+          "__class__": "FFMpegFilterOptionType",
+          "value": "int"
+        }
+      }
+    ],
+    "pre": [],
+    "ref": null,
     "stream_typings_input": [
       {
         "__class__": "FFMpegIOType",

@@ -13,7 +13,9 @@ from typing import TYPE_CHECKING, Any
 
 
 from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+
 from ..factory import filter_node_factory
+
 from ...utils.frozendict import FrozenDict, merge
 from ...utils.typing import override
 from ...schema import Default, StreamType, Auto, FFMpegOptionGroup
@@ -26,7 +28,9 @@ from ...options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecCon
 
 from ...options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
 
+
 from ...streams.av import AVStream
+
 from ...streams.channel_layout import CHANNEL_LAYOUT
 from ...codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
 from ...formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
@@ -80,7 +84,7 @@ class OutputArgs(ABC):
             program: add program with specified streams
             stream_group: add stream group with specified streams and group type-specific arguments
             dframes: set the number of data frames to output
-            target: specify target file type (\"vcd\", \"svcd\", \"dvd\", \"dv\" or \"dv50 with optional prefixes \"pal-\", \"ntsc-\" or \"film-\")
+            target: specify target file type ("vcd", "svcd", "dvd", "dv" or "dv50 with optional prefixes "pal-", "ntsc-" or "film-")
             shortest: finish encoding within shortest input
             shortest_buf_duration: maximum buffering duration (in seconds) for the -shortest option
             bitexact: bitexact mode
@@ -169,288 +173,289 @@ class OutputArgs(ABC):
         """
 
         return self._output_node(*streams, filename=filename, **merge({
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             "f": f,
-
-
-
-
-
-
+                
+            
+            
+            
+            
+            
             "c": c,
-
+                
             "codec": codec,
-
+                
             "pre": pre,
-
+                
             "map": map,
-
+                
             "map_metadata": map_metadata,
-
+                
             "map_chapters": map_chapters,
-
+                
             "t": t,
-
+                
             "to": to,
-
+                
             "fs": fs,
-
+                
             "ss": ss,
-
-
-
-
-
-
-
+                
+            
+            
+            
+            
+            
+            
             "timestamp": timestamp,
-
+                
             "metadata": metadata,
-
+                
             "program": program,
-
+                
             "stream_group": stream_group,
-
+                
             "dframes": dframes,
-
-
-
-
-
-
-
-
-
-
-
+                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             "target": target,
-
-
-
-
-
+                
+            
+            
+            
+            
             "shortest": shortest,
-
+                
             "shortest_buf_duration": shortest_buf_duration,
-
+                
             "bitexact": bitexact,
-
-
-
-
-
+                
+            
+            
+            
+            
             "copyinkf": copyinkf,
-
+                
             "copypriorss": copypriorss,
-
+                
             "frames": frames,
-
+                
             "tag": tag,
-
+                
             "q": q,
-
+                
             "qscale": qscale,
-
+                
             "profile": profile,
-
+                
             "filter": filter,
-
-
+                
+            
             "filter_script": filter_script,
-
-
-
-
-
-
-
-
-
+                
+            
+            
+            
+            
+            
+            
+            
+            
             "attach": attach,
-
-
-
-
-
-
+                
+            
+            
+            
+            
+            
             "disposition": disposition,
-
+                
             "thread_queue_size": thread_queue_size,
-
-
+                
+            
             "bits_per_raw_sample": bits_per_raw_sample,
-
+                
             "stats_enc_pre": stats_enc_pre,
-
+                
             "stats_enc_post": stats_enc_post,
-
+                
             "stats_mux_pre": stats_mux_pre,
-
+                
             "stats_enc_pre_fmt": stats_enc_pre_fmt,
-
+                
             "stats_enc_post_fmt": stats_enc_post_fmt,
-
+                
             "stats_mux_pre_fmt": stats_mux_pre_fmt,
-
+                
             "vframes": vframes,
-
+                
             "r": r,
-
+                
             "fpsmax": fpsmax,
-
+                
             "s": s,
-
+                
             "aspect": aspect,
-
+                
             "pix_fmt": pix_fmt,
-
-
-
-
+                
+            
+            
+            
             "vn": vn,
-
+                
             "rc_override": rc_override,
-
+                
             "vcodec": vcodec,
-
+                
             "timecode": timecode,
-
+                
             "pass": _pass,
-
+                
             "passlogfile": passlogfile,
-
-
-
-
+                
+            
+            
+            
             "vf": vf,
-
+                
             "intra_matrix": intra_matrix,
-
+                
             "inter_matrix": inter_matrix,
-
+                
             "chroma_intra_matrix": chroma_intra_matrix,
-
+                
             "vtag": vtag,
-
+                
             "fps_mode": fps_mode,
-
+                
             "force_fps": force_fps,
-
+                
             "streamid": streamid,
-
+                
             "force_key_frames": force_key_frames,
-
+                
             "b": b,
-
-
-
-
-
-
+                
+            
+            
+            
+            
+            
             "autoscale": autoscale,
-
-
+                
+            
             "fix_sub_duration_heartbeat": fix_sub_duration_heartbeat,
-
+                
             "aframes": aframes,
-
+                
             "aq": aq,
-
+                
             "ar": ar,
-
+                
             "ac": ac,
-
+                
             "an": an,
-
+                
             "acodec": acodec,
-
+                
             "ab": ab,
-
+                
             "apad": apad,
-
+                
             "atag": atag,
-
+                
             "sample_fmt": sample_fmt,
-
+                
             "channel_layout": channel_layout,
-
+                
             "ch_layout": ch_layout,
-
+                
             "af": af,
-
-
+                
+            
             "sn": sn,
-
+                
             "scodec": scodec,
-
+                
             "stag": stag,
-
-
-
+                
+            
+            
             "muxdelay": muxdelay,
-
+                
             "muxpreload": muxpreload,
-
+                
             "sdp_file": sdp_file,
-
+                
             "time_base": time_base,
-
+                
             "enc_time_base": enc_time_base,
-
+                
             "bsf": bsf,
-
+                
             "apre": apre,
-
+                
             "vpre": vpre,
-
+                
             "spre": spre,
-
+                
             "fpre": fpre,
-
+                
             "max_muxing_queue_size": max_muxing_queue_size,
-
+                
             "muxing_queue_data_threshold": muxing_queue_data_threshold,
-
+                
             "dcodec": dcodec,
-
+                
             "dn": dn,
-
-
-
-
+                
+            
+            
+            
+            
             "top": top,
-
-
-
-
+                
+            
+            
+            
         }, encoder_options, muxer_options, format_options, codec_options, extra_options)).stream()

@@ -10,7 +10,9 @@ from typing import Any
 
 
 from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+
 from ..factory import filter_node_factory
+
 from ...utils.frozendict import FrozenDict, merge
 from ...utils.typing import override
 from ...schema import Default, StreamType, Auto, FFMpegOptionGroup
@@ -23,7 +25,9 @@ from ...options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecCon
 
 from ...options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
 
+
 from ...streams.av import AVStream
+
 from ...streams.channel_layout import CHANNEL_LAYOUT
 from ...codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
 from ...formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
@@ -122,248 +126,249 @@ def input(
     return InputNode(
         filename=str(filename),
         kwargs=merge({
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 "f": f,
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
                 "c": c,
-
+                
                 "codec": codec,
-
-
-
-
-
+                
+                
+                
+                
+                
                 "t": t,
-
+                
                 "to": to,
-
-
+                
+                
                 "ss": ss,
-
+                
                 "sseof": sseof,
-
+                
                 "seek_timestamp": seek_timestamp,
-
+                
                 "accurate_seek": accurate_seek,
-
+                
                 "isync": isync,
-
+                
                 "itsoffset": itsoffset,
-
+                
                 "itsscale": itsscale,
-
-
-
-
-
-
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 "re": re,
-
+                
                 "readrate": readrate,
-
+                
                 "readrate_initial_burst": readrate_initial_burst,
-
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
+                
                 "bitexact": bitexact,
-
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
+                
                 "tag": tag,
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
                 "reinit_filter": reinit_filter,
-
-
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 "dump_attachment": dump_attachment,
-
+                
                 "stream_loop": stream_loop,
-
-
-
+                
+                
+                
                 "discard": discard,
-
-
+                
+                
                 "thread_queue_size": thread_queue_size,
-
+                
                 "find_stream_info": find_stream_info,
-
-
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 "r": r,
-
-
+                
+                
                 "s": s,
-
-
+                
+                
                 "pix_fmt": pix_fmt,
-
+                
                 "display_rotation": display_rotation,
-
+                
                 "display_hflip": display_hflip,
-
+                
                 "display_vflip": display_vflip,
-
+                
                 "vn": vn,
-
-
+                
+                
                 "vcodec": vcodec,
-
-
-
-
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 "vtag": vtag,
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
                 "hwaccel": hwaccel,
-
+                
                 "hwaccel_device": hwaccel_device,
-
+                
                 "hwaccel_output_format": hwaccel_output_format,
-
-
+                
+                
                 "autorotate": autorotate,
-
-
+                
+                
                 "apply_cropping": apply_cropping,
-
-
-
-
+                
+                
+                
+                
                 "ar": ar,
-
+                
                 "ac": ac,
-
+                
                 "an": an,
-
+                
                 "acodec": acodec,
-
-
-
-
+                
+                
+                
+                
                 "sample_fmt": sample_fmt,
-
+                
                 "channel_layout": channel_layout,
-
+                
                 "ch_layout": ch_layout,
-
-
+                
+                
                 "guess_layout_max": guess_layout_max,
-
+                
                 "sn": sn,
-
+                
                 "scodec": scodec,
-
-
+                
+                
                 "fix_sub_duration": fix_sub_duration,
-
+                
                 "canvas_size": canvas_size,
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
                 "bsf": bsf,
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
                 "dcodec": dcodec,
-
+                
                 "dn": dn,
-
-
-
-
+                
+                
+                
+                
+                
                 "top": top,
-
-
-
-
+                
+                
+                
+                
         }, decoder_options, demuxer_options, format_options, codec_options, extra_options )
     ).stream()
