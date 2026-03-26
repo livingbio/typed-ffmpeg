@@ -116,15 +116,6 @@ jobs:
           echo "Generating bindings for FFmpeg v${FFMPEG_MAJOR} -> ${OUTPATH}"
           python -m scripts.code_gen.cli generate --outpath "$OUTPATH" --rebuild
 
-      - name: Debug check generated files
-        run: |
-          FFMPEG_MAJOR=${{ matrix.ffmpeg-version }}
-          echo "=== Checking packages/v${FFMPEG_MAJOR}/src/ffmpeg/streams/video.py ==="
-          grep -c 'def ' "packages/v${FFMPEG_MAJOR}/src/ffmpeg/streams/video.py" || echo "file not found"
-          grep -c 'avgblur_opencl' "packages/v${FFMPEG_MAJOR}/src/ffmpeg/streams/video.py" || echo "no hw filters"
-          echo "=== Finding all video.py files ==="
-          find . -path "*/ffmpeg/streams/video.py" -exec sh -c 'echo "{}:"; grep -c "def " "{}" 2>/dev/null; grep -c "avgblur_opencl" "{}" 2>/dev/null' \;
-
       - name: Upload generated bindings
         uses: actions/upload-artifact@v4
         with:

@@ -403,6 +403,9 @@ def generate(
         repo_root = Path(__file__).resolve().parents[4]
         major = version.split(".")[0]
         outpath = repo_root / "packages" / f"v{major}" / "src" / "ffmpeg"
+    # Resolve to absolute path now, before any subprocess (e.g. parse_c)
+    # changes the working directory via os.chdir().
+    outpath = outpath.resolve()
     if not is_supported_version(version):
         raise typer.BadParameter(
             f"FFmpeg version {version} is not supported; need >= {MIN_FFMPEG_VERSION_MAJOR}.{MIN_FFMPEG_VERSION_MINOR}"
