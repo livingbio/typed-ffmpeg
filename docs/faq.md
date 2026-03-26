@@ -4,8 +4,8 @@
 
 typed-ffmpeg support ffmpeg source filters:
 
-- How to use predefined video/audio source filter can be find [Complex Filters](./usage/complex-filtering.ipynb)
-- How to customized video/audio source filter can be find [Customizing Filters](./usage/customizing-filters.ipynb)
+- How to use predefined video/audio source filter can be found [Complex Filters](./usage/complex-filtering.ipynb)
+- How to customize video/audio source filter can be found [Customizing Filters](./usage/customizing-filters.ipynb)
 
 
 ## Differences Between ffmpeg-python and typed-ffmpeg
