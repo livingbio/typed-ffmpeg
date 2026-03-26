@@ -49,6 +49,7 @@ import re
 
     
 
+    
 def abuffer(
     
 
@@ -81,6 +82,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#abuffer)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='abuffer', typings_input=(), typings_output=('audio',)),
         
@@ -155,6 +159,7 @@ References:
 
     
 
+    
 def aevalsrc(
     
 
@@ -187,6 +192,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aevalsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='aevalsrc', typings_input=(), typings_output=('audio',)),
         
@@ -229,6 +237,7 @@ References:
 
     
 
+    
 def afirsrc(
     
 
@@ -263,6 +272,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afirsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='afirsrc', typings_input=(), typings_output=('audio',)),
         
@@ -315,6 +327,7 @@ References:
 
     
 
+    
 def ainterleave(
     
 
@@ -346,6 +359,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='ainterleave', typings_input='[StreamType.audio] * int(nb_inputs)', typings_output=('audio',)),
         
@@ -380,6 +396,7 @@ References:
 
     
 
+    
 def allrgb(
     
 
@@ -410,6 +427,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='allrgb', typings_input=(), typings_output=('video',)),
         
@@ -438,6 +458,7 @@ References:
 
     
 
+    
 def allyuv(
     
 
@@ -468,6 +489,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='allyuv', typings_input=(), typings_output=('video',)),
         
@@ -502,6 +526,7 @@ References:
 
     
 
+    
 def amerge(
     
 
@@ -532,6 +557,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amerge)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='amerge', typings_input='[StreamType.audio] * int(inputs)', typings_output=('audio',)),
         
@@ -560,6 +588,7 @@ References:
 
     
 
+    
 def amix(
     
 
@@ -594,6 +623,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amix)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='amix', typings_input='[StreamType.audio] * int(inputs)', typings_output=('audio',)),
         
@@ -628,6 +660,7 @@ References:
 
     
 
+    
 def amovie(
     
 
@@ -665,6 +698,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amovie)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='amovie', typings_input="[StreamType.audio] * len(streams.split('+'))", typings_output="[StreamType.audio] * len(streams.split('+'))"),
         
@@ -718,6 +754,7 @@ References:
 
     
 
+    
 def anoisesrc(
     
 
@@ -751,6 +788,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anoisesrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='anoisesrc', typings_input=(), typings_output=('audio',)),
         
@@ -789,6 +829,7 @@ References:
 
     
 
+    
 def anullsrc(
     
 
@@ -820,6 +861,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anullsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='anullsrc', typings_input=(), typings_output=('audio',)),
         
@@ -902,6 +946,7 @@ References:
 
     
 
+    
 def astreamselect(
     
 
@@ -934,6 +979,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='astreamselect', typings_input='[StreamType.audio] * int(inputs)', typings_output="[StreamType.audio] * len(re.findall(r'\\d+', str(map)))"),
         
@@ -987,6 +1035,7 @@ References:
 
     
 
+    
 def avsynctest(
     
 
@@ -1036,6 +1085,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#avsynctest)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='avsynctest', typings_input=(), typings_output=('audio', 'video')),
         
@@ -1121,6 +1173,7 @@ References:
 
     
 
+    
 def bm3d(
     
 
@@ -1134,6 +1187,7 @@ def bm3d(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -1164,6 +1218,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bm3d)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='bm3d', typings_input='[StreamType.video] + [StreamType.video] if ref else []', typings_output=('video',)),
         
@@ -1216,6 +1276,7 @@ References:
 
     
 
+    
 def buffer(
     
 
@@ -1250,6 +1311,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#buffer)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='buffer', typings_input=(), typings_output=('video',)),
         
@@ -1292,6 +1356,7 @@ References:
 
     
 
+    
 def cellauto(
     
 
@@ -1330,6 +1395,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cellauto)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='cellauto', typings_input=(), typings_output=('video',)),
         
@@ -1392,6 +1460,7 @@ References:
 
     
 
+    
 def color(
     
 
@@ -1424,6 +1493,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='color', typings_input=(), typings_output=('video',)),
         
@@ -1460,6 +1532,7 @@ References:
 
     
 
+    
 def colorchart(
     
 
@@ -1492,6 +1565,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='colorchart', typings_input=(), typings_output=('video',)),
         
@@ -1544,6 +1620,7 @@ References:
 
     
 
+    
 def colorspectrum(
     
 
@@ -1576,6 +1653,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='colorspectrum', typings_input=(), typings_output=('video',)),
         
@@ -1614,6 +1694,7 @@ References:
 
     
 
+    
 def concat(
     
 
@@ -1648,6 +1729,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#concat)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='concat', typings_input='([StreamType.video]*int(v) + [StreamType.audio]*int(a))*int(n)', typings_output='[StreamType.video]*int(v) + [StreamType.audio]*int(a)'),
         
@@ -1715,6 +1799,7 @@ References:
 
     
 
+    
 def decimate(
     
 
@@ -1751,6 +1836,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#decimate)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='decimate', typings_input='[StreamType.video] + ([StreamType.video] if ppsrc else [])', typings_output=('video',)),
         
@@ -1885,6 +1973,7 @@ References:
 
     
 
+    
 def fieldmatch(
     
 
@@ -1928,6 +2017,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldmatch)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='fieldmatch', typings_input='[StreamType.video] + [StreamType.video] if ppsrc else []', typings_output=('video',)),
         
@@ -2016,6 +2108,7 @@ References:
 
     
 
+    
 def gradients(
     
 
@@ -2062,6 +2155,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#gradients)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='gradients', typings_input=(), typings_output=('video',)),
         
@@ -2128,6 +2224,7 @@ References:
 
     
 
+    
 def guided(
     
 
@@ -2141,6 +2238,7 @@ def guided(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -2166,6 +2264,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#guided)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='guided', typings_input='[StreamType.video] + [StreamType.video] if guidance else []', typings_output=('video',)),
         
@@ -2208,6 +2312,7 @@ References:
 
     
 
+    
 def haldclutsrc(
     
 
@@ -2239,6 +2344,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='haldclutsrc', typings_input=(), typings_output=('video',)),
         
@@ -2271,6 +2379,7 @@ References:
 
     
 
+    
 def headphone(
     
 
@@ -2306,6 +2415,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#headphone)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='headphone', typings_input="[StreamType.audio] + [StreamType.audio] * (len(str(map).split('|')) - 1) if int(hrir) == 1 else []", typings_output=('audio',)),
         
@@ -2348,6 +2460,7 @@ References:
 
     
 
+    
 def hilbert(
     
 
@@ -2379,6 +2492,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hilbert)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='hilbert', typings_input=(), typings_output=('audio',)),
         
@@ -2417,6 +2533,7 @@ References:
 
     
 
+    
 def hstack(
     
 
@@ -2448,6 +2565,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hstack)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='hstack', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
         
@@ -2502,6 +2622,7 @@ References:
 
     
 
+    
 def interleave(
     
 
@@ -2533,6 +2654,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='interleave', typings_input='[StreamType.video] * int(nb_inputs)', typings_output=('video',)),
         
@@ -2561,6 +2685,7 @@ References:
 
     
 
+    
 def join(
     
 
@@ -2593,6 +2718,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#join)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='join', typings_input='[StreamType.audio] * int(inputs)', typings_output=('audio',)),
         
@@ -2633,6 +2761,7 @@ References:
 
     
 
+    
 def life(
     
 
@@ -2671,6 +2800,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#life)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='life', typings_input=(), typings_output=('video',)),
         
@@ -2715,6 +2847,7 @@ References:
 
     
 
+    
 def limitdiff(
     
 
@@ -2728,6 +2861,7 @@ def limitdiff(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -2751,6 +2885,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#limitdiff)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='limitdiff', typings_input='[StreamType.video, StreamType.video] + ([StreamType.video] if reference else [])', typings_output=('video',)),
         
@@ -2809,6 +2949,7 @@ References:
 
     
 
+    
 def mandelbrot(
     
 
@@ -2850,6 +2991,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mandelbrot)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='mandelbrot', typings_input=(), typings_output=('video',)),
         
@@ -2916,6 +3060,7 @@ References:
 
     
 
+    
 def mergeplanes(
     
 
@@ -2955,6 +3100,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mergeplanes)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='mergeplanes', typings_input='[StreamType.video] * int(max(hex(int(mapping))[2::2]))', typings_output=('video',)),
         
@@ -3007,6 +3155,7 @@ References:
 
     
 
+    
 def mix(
     
 
@@ -3020,6 +3169,7 @@ def mix(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -3044,6 +3194,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mix)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='mix', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
         
@@ -3084,6 +3240,7 @@ References:
 
     
 
+    
 def movie(
     
 
@@ -3121,6 +3278,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#movie)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='movie', typings_input="[StreamType.video] * len(streams.split('+'))", typings_output="[StreamType.video] * len(streams.split('+'))"),
         
@@ -3164,6 +3324,7 @@ References:
 
     
 
+    
 def mptestsrc(
     
 
@@ -3195,6 +3356,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mptestsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='mptestsrc', typings_input=(), typings_output=('video',)),
         
@@ -3247,6 +3411,7 @@ References:
 
     
 
+    
 def nullsrc(
     
 
@@ -3278,6 +3443,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='nullsrc', typings_input=(), typings_output=('video',)),
         
@@ -3308,6 +3476,7 @@ References:
 
     
 
+    
 def openclsrc(
     
 
@@ -3340,6 +3509,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#openclsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='openclsrc', typings_input=(), typings_output=('video',)),
         
@@ -3386,6 +3558,7 @@ References:
 
     
 
+    
 def pal100bars(
     
 
@@ -3417,6 +3590,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='pal100bars', typings_input=(), typings_output=('video',)),
         
@@ -3447,6 +3623,7 @@ References:
 
     
 
+    
 def pal75bars(
     
 
@@ -3478,6 +3655,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='pal75bars', typings_input=(), typings_output=('video',)),
         
@@ -3532,6 +3712,7 @@ References:
 
     
 
+    
 def premultiply(
     
 
@@ -3545,6 +3726,7 @@ def premultiply(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -3566,6 +3748,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#premultiply)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='premultiply', typings_input='[StreamType.video] + [StreamType.video] if inplace else []', typings_output=('video',)),
         
@@ -3602,6 +3790,7 @@ References:
 
     
 
+    
 def program_opencl(
     
 
@@ -3614,6 +3803,9 @@ def program_opencl(
     source: String = Default(None),kernel: String = Default(None),inputs: Int = Default('1'),size: Image_size = Default(None),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     extra_options: dict[str, Any] | None = None,
@@ -3638,6 +3830,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#program_005fopencl)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='program_opencl', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
         
@@ -3704,6 +3902,7 @@ References:
 
     
 
+    
 def rgbtestsrc(
     
 
@@ -3736,6 +3935,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='rgbtestsrc', typings_input=(), typings_output=('video',)),
         
@@ -3848,6 +4050,7 @@ References:
 
     
 
+    
 def sierpinski(
     
 
@@ -3880,6 +4083,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sierpinski)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='sierpinski', typings_input=(), typings_output=('video',)),
         
@@ -3914,6 +4120,7 @@ References:
 
     
 
+    
 def signature(
     
 
@@ -3952,6 +4159,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#signature)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='signature', typings_input='[StreamType.video] * int(nb_inputs)', typings_output=('video',)),
         
@@ -3998,6 +4208,7 @@ References:
 
     
 
+    
 def sinc(
     
 
@@ -4035,6 +4246,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sinc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='sinc', typings_input=(), typings_output=('audio',)),
         
@@ -4077,6 +4291,7 @@ References:
 
     
 
+    
 def sine(
     
 
@@ -4109,6 +4324,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sine)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='sine', typings_input=(), typings_output=('audio',)),
         
@@ -4145,6 +4363,7 @@ References:
 
     
 
+    
 def smptebars(
     
 
@@ -4176,6 +4395,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='smptebars', typings_input=(), typings_output=('video',)),
         
@@ -4206,6 +4428,7 @@ References:
 
     
 
+    
 def smptehdbars(
     
 
@@ -4237,6 +4460,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='smptehdbars', typings_input=(), typings_output=('video',)),
         
@@ -4289,6 +4515,7 @@ References:
 
     
 
+    
 def streamselect(
     
 
@@ -4321,6 +4548,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='streamselect', typings_input='[StreamType.video] * int(inputs)', typings_output="[StreamType.video] * len(re.findall(r'\\d+', str(map)))"),
         
@@ -4366,6 +4596,7 @@ References:
 
     
 
+    
 def testsrc(
     
 
@@ -4398,6 +4629,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='testsrc', typings_input=(), typings_output=('video',)),
         
@@ -4430,6 +4664,7 @@ References:
 
     
 
+    
 def testsrc2(
     
 
@@ -4462,6 +4697,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='testsrc2', typings_input=(), typings_output=('video',)),
         
@@ -4534,6 +4772,7 @@ References:
 
     
 
+    
 def unpremultiply(
     
 
@@ -4547,6 +4786,7 @@ def unpremultiply(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -4568,6 +4808,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#unpremultiply)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='unpremultiply', typings_input='[StreamType.video] + ([StreamType.video] if inplace else [])', typings_output=('video',)),
         
@@ -4636,6 +4882,7 @@ References:
 
     
 
+    
 def vstack(
     
 
@@ -4667,6 +4914,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vstack)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='vstack', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
         
@@ -4709,6 +4959,7 @@ References:
 
     
 
+    
 def xmedian(
     
 
@@ -4721,9 +4972,13 @@ def xmedian(
     inputs: Int = Auto('len(streams)'),planes: Int = Default('15'),percentile: Float = Default('0.5'),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -4747,6 +5002,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xmedian)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='xmedian', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
         
@@ -4781,6 +5045,7 @@ References:
 
     
 
+    
 def xstack(
     
 
@@ -4815,6 +5080,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xstack)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='xstack', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
         
@@ -4853,6 +5121,7 @@ References:
 
     
 
+    
 def yuvtestsrc(
     
 
@@ -4884,6 +5153,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='yuvtestsrc', typings_input=(), typings_output=('video',)),
         

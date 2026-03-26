@@ -49,6 +49,7 @@ import re
 
     
 
+    
 def aap(
     
 
@@ -68,6 +69,7 @@ def aap(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
@@ -93,6 +95,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aap)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='aap', typings_input=('audio', 'audio'), typings_output=('audio',)),
         
@@ -151,6 +159,7 @@ References:
 
     
 
+    
 def acrossfade(
     
 
@@ -191,6 +200,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossfade)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='acrossfade', typings_input=('audio', 'audio'), typings_output=('audio',)),
         
@@ -297,6 +309,7 @@ References:
 
     
 
+    
 def ainterleave(
     
 
@@ -328,6 +341,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='ainterleave', typings_input='[StreamType.audio] * int(nb_inputs)', typings_output=('audio',)),
         
@@ -370,6 +386,7 @@ References:
 
     
 
+    
 def alphamerge(
     
 
@@ -388,9 +405,13 @@ def alphamerge(
     
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -411,6 +432,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alphamerge)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='alphamerge', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -445,6 +475,7 @@ References:
 
     
 
+    
 def amerge(
     
 
@@ -475,6 +506,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amerge)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='amerge', typings_input='[StreamType.audio] * int(inputs)', typings_output=('audio',)),
         
@@ -503,6 +537,7 @@ References:
 
     
 
+    
 def amix(
     
 
@@ -537,6 +572,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amix)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='amix', typings_input='[StreamType.audio] * int(inputs)', typings_output=('audio',)),
         
@@ -575,6 +613,7 @@ References:
 
     
 
+    
 def amultiply(
     
 
@@ -610,6 +649,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amultiply)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='amultiply', typings_input=('audio', 'audio'), typings_output=('audio',)),
         
@@ -644,6 +686,7 @@ References:
 
     
 
+    
 def anlmf(
     
 
@@ -663,6 +706,7 @@ def anlmf(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
@@ -688,6 +732,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='anlmf', typings_input=('audio', 'audio'), typings_output=('audio',)),
         
@@ -732,6 +782,7 @@ References:
 
     
 
+    
 def anlms(
     
 
@@ -751,6 +802,7 @@ def anlms(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
@@ -776,6 +828,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='anlms', typings_input=('audio', 'audio'), typings_output=('audio',)),
         
@@ -838,6 +896,7 @@ References:
 
     
 
+    
 def apsnr(
     
 
@@ -857,6 +916,7 @@ def apsnr(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
@@ -876,6 +936,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsnr)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='apsnr', typings_input=('audio', 'audio'), typings_output=('audio',)),
         
@@ -918,6 +984,7 @@ References:
 
     
 
+    
 def arls(
     
 
@@ -937,6 +1004,7 @@ def arls(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
@@ -961,6 +1029,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arls)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='arls', typings_input=('audio', 'audio'), typings_output=('audio',)),
         
@@ -1005,6 +1079,7 @@ References:
 
     
 
+    
 def asdr(
     
 
@@ -1024,6 +1099,7 @@ def asdr(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
@@ -1043,6 +1119,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asdr)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='asdr', typings_input=('audio', 'audio'), typings_output=('audio',)),
         
@@ -1093,6 +1175,7 @@ References:
 
     
 
+    
 def asisdr(
     
 
@@ -1112,6 +1195,7 @@ def asisdr(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
@@ -1131,6 +1215,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asisdr)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='asisdr', typings_input=('audio', 'audio'), typings_output=('audio',)),
         
@@ -1173,6 +1263,7 @@ References:
 
     
 
+    
 def astreamselect(
     
 
@@ -1205,6 +1296,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='astreamselect', typings_input='[StreamType.audio] * int(inputs)', typings_output="[StreamType.audio] * len(re.findall(r'\\d+', str(map)))"),
         
@@ -1260,6 +1354,7 @@ References:
 
     
 
+    
 def axcorrelate(
     
 
@@ -1297,6 +1392,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#axcorrelate)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='axcorrelate', typings_input=('audio', 'audio'), typings_output=('audio',)),
         
@@ -1355,6 +1453,7 @@ References:
 
     
 
+    
 def blend(
     
 
@@ -1373,9 +1472,13 @@ def blend(
     c0_mode: Int| Literal["addition","addition128","grainmerge","and","average","burn","darken","difference","difference128","grainextract","divide","dodge","exclusion","extremity","freeze","glow","hardlight","hardmix","heat","lighten","linearlight","multiply","multiply128","negation","normal","or","overlay","phoenix","pinlight","reflect","screen","softlight","subtract","vividlight","xor","softdifference","geometric","harmonic","bleach","stain","interpolate","hardoverlay"] | Default = Default('normal'),c1_mode: Int| Literal["addition","addition128","grainmerge","and","average","burn","darken","difference","difference128","grainextract","divide","dodge","exclusion","extremity","freeze","glow","hardlight","hardmix","heat","lighten","linearlight","multiply","multiply128","negation","normal","or","overlay","phoenix","pinlight","reflect","screen","softlight","subtract","vividlight","xor","softdifference","geometric","harmonic","bleach","stain","interpolate","hardoverlay"] | Default = Default('normal'),c2_mode: Int| Literal["addition","addition128","grainmerge","and","average","burn","darken","difference","difference128","grainextract","divide","dodge","exclusion","extremity","freeze","glow","hardlight","hardmix","heat","lighten","linearlight","multiply","multiply128","negation","normal","or","overlay","phoenix","pinlight","reflect","screen","softlight","subtract","vividlight","xor","softdifference","geometric","harmonic","bleach","stain","interpolate","hardoverlay"] | Default = Default('normal'),c3_mode: Int| Literal["addition","addition128","grainmerge","and","average","burn","darken","difference","difference128","grainextract","divide","dodge","exclusion","extremity","freeze","glow","hardlight","hardmix","heat","lighten","linearlight","multiply","multiply128","negation","normal","or","overlay","phoenix","pinlight","reflect","screen","softlight","subtract","vividlight","xor","softdifference","geometric","harmonic","bleach","stain","interpolate","hardoverlay"] | Default = Default('normal'),all_mode: Int| Literal["addition","addition128","grainmerge","and","average","burn","darken","difference","difference128","grainextract","divide","dodge","exclusion","extremity","freeze","glow","hardlight","hardmix","heat","lighten","linearlight","multiply","multiply128","negation","normal","or","overlay","phoenix","pinlight","reflect","screen","softlight","subtract","vividlight","xor","softdifference","geometric","harmonic","bleach","stain","interpolate","hardoverlay"] | Default = Default('-1'),c0_expr: String = Default(None),c1_expr: String = Default(None),c2_expr: String = Default(None),c3_expr: String = Default(None),all_expr: String = Default(None),c0_opacity: Double = Default('1'),c1_opacity: Double = Default('1'),c2_opacity: Double = Default('1'),c3_opacity: Double = Default('1'),all_opacity: Double = Default('1'),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -1411,6 +1514,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blend)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='blend', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -1479,6 +1591,7 @@ References:
 
     
 
+    
 def bm3d(
     
 
@@ -1492,6 +1605,7 @@ def bm3d(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -1522,6 +1636,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bm3d)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='bm3d', typings_input='[StreamType.video] + [StreamType.video] if ref else []', typings_output=('video',)),
         
@@ -1626,6 +1746,7 @@ References:
 
     
 
+    
 def colormap(
     
 
@@ -1649,6 +1770,7 @@ def colormap(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -1672,6 +1794,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colormap)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='colormap', typings_input=('video', 'video', 'video'), typings_output=('video',)),
         
@@ -1728,6 +1856,7 @@ References:
 
     
 
+    
 def concat(
     
 
@@ -1762,6 +1891,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#concat)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='concat', typings_input='([StreamType.video]*int(v) + [StreamType.audio]*int(a))*int(n)', typings_output='[StreamType.video]*int(v) + [StreamType.audio]*int(a)'),
         
@@ -1799,6 +1931,7 @@ References:
 
     
 
+    
 def convolve(
     
 
@@ -1817,9 +1950,13 @@ def convolve(
     planes: Int = Default('7'),impulse: Int| Literal["first","all"] | Default = Default('all'),noise: Float = Default('1e-07'),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -1843,6 +1980,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolve)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='convolve', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -1885,6 +2031,7 @@ References:
 
     
 
+    
 def corr(
     
 
@@ -1903,9 +2050,13 @@ def corr(
     
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -1926,6 +2077,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#corr)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='corr', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -1986,6 +2146,7 @@ References:
 
     
 
+    
 def decimate(
     
 
@@ -2023,6 +2184,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#decimate)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='decimate', typings_input='[StreamType.video] + ([StreamType.video] if ppsrc else [])', typings_output=('video',)),
         
@@ -2063,6 +2227,7 @@ References:
 
     
 
+    
 def deconvolve(
     
 
@@ -2081,9 +2246,13 @@ def deconvolve(
     planes: Int = Default('7'),impulse: Int| Literal["first","all"] | Default = Default('all'),noise: Float = Default('1e-07'),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -2107,6 +2276,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deconvolve)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='deconvolve', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -2177,6 +2355,7 @@ References:
 
     
 
+    
 def displace(
     
 
@@ -2200,6 +2379,7 @@ def displace(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -2220,6 +2400,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#displace)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='displace', typings_input=('video', 'video', 'video'), typings_output=('video',)),
         
@@ -2302,6 +2488,7 @@ References:
 
     
 
+    
 def feedback(
     
 
@@ -2321,6 +2508,7 @@ def feedback(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> tuple[
@@ -2353,6 +2541,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#feedback)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='feedback', typings_input=('video', 'video'), typings_output=('video', 'video')),
         
@@ -2408,6 +2602,7 @@ References:
 
     
 
+    
 def fieldmatch(
     
 
@@ -2451,6 +2646,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldmatch)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='fieldmatch', typings_input='[StreamType.video] + [StreamType.video] if ppsrc else []', typings_output=('video',)),
         
@@ -2519,6 +2717,7 @@ References:
 
     
 
+    
 def framepack(
     
 
@@ -2555,6 +2754,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framepack)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='framepack', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -2593,6 +2795,7 @@ References:
 
     
 
+    
 def freezeframes(
     
 
@@ -2631,6 +2834,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#freezeframes)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='freezeframes', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -2685,6 +2891,7 @@ References:
 
     
 
+    
 def guided(
     
 
@@ -2698,6 +2905,7 @@ def guided(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -2723,6 +2931,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#guided)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='guided', typings_input='[StreamType.video] + [StreamType.video] if guidance else []', typings_output=('video',)),
         
@@ -2763,6 +2977,7 @@ References:
 
     
 
+    
 def haldclut(
     
 
@@ -2781,9 +2996,13 @@ def haldclut(
     clut: Int| Literal["first","all"] | Default = Default('all'),interp: Int| Literal["nearest","trilinear","tetrahedral","pyramid","prism"] | Default = Default('tetrahedral'),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -2806,6 +3025,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haldclut)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='haldclut', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -2848,6 +3076,7 @@ References:
 
     
 
+    
 def headphone(
     
 
@@ -2883,6 +3112,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#headphone)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='headphone', typings_input="[StreamType.audio] + [StreamType.audio] * (len(str(map).split('|')) - 1) if int(hrir) == 1 else []", typings_output=('audio',)),
         
@@ -2935,6 +3167,7 @@ References:
 
     
 
+    
 def hstack(
     
 
@@ -2966,6 +3199,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hstack)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='hstack', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
         
@@ -2994,6 +3230,7 @@ References:
 
     
 
+    
 def hstack_vaapi(
     
 
@@ -3026,6 +3263,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hstack_005fvaapi)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='hstack_vaapi', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
         
@@ -3070,6 +3310,7 @@ References:
 
     
 
+    
 def hysteresis(
     
 
@@ -3088,9 +3329,13 @@ def hysteresis(
     planes: Int = Default('15'),threshold: Int = Default('0'),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -3113,6 +3358,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hysteresis)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='hysteresis', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -3151,6 +3405,7 @@ References:
 
     
 
+    
 def identity(
     
 
@@ -3169,9 +3424,13 @@ def identity(
     
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -3192,6 +3451,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#identity)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='identity', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -3234,6 +3502,7 @@ References:
 
     
 
+    
 def interleave(
     
 
@@ -3265,6 +3534,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='interleave', typings_input='[StreamType.video] * int(nb_inputs)', typings_output=('video',)),
         
@@ -3293,6 +3565,7 @@ References:
 
     
 
+    
 def join(
     
 
@@ -3325,6 +3598,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#join)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='join', typings_input='[StreamType.audio] * int(inputs)', typings_output=('audio',)),
         
@@ -3367,6 +3643,7 @@ References:
 
     
 
+    
 def limitdiff(
     
 
@@ -3380,6 +3657,7 @@ def limitdiff(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -3403,6 +3681,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#limitdiff)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='limitdiff', typings_input='[StreamType.video, StreamType.video] + ([StreamType.video] if reference else [])', typings_output=('video',)),
         
@@ -3453,6 +3737,7 @@ References:
 
     
 
+    
 def lut2(
     
 
@@ -3471,9 +3756,13 @@ def lut2(
     c0: String = Default('x'),c1: String = Default('x'),c2: String = Default('x'),c3: String = Default('x'),d: Int = Default('0'),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -3499,6 +3788,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='lut2', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -3551,6 +3849,7 @@ References:
 
     
 
+    
 def maskedclamp(
     
 
@@ -3574,6 +3873,7 @@ def maskedclamp(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -3596,6 +3896,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedclamp)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='maskedclamp', typings_input=('video', 'video', 'video'), typings_output=('video',)),
         
@@ -3638,6 +3944,7 @@ References:
 
     
 
+    
 def maskedmax(
     
 
@@ -3661,6 +3968,7 @@ def maskedmax(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -3681,6 +3989,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmax)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='maskedmax', typings_input=('video', 'video', 'video'), typings_output=('video',)),
         
@@ -3719,6 +4033,7 @@ References:
 
     
 
+    
 def maskedmerge(
     
 
@@ -3742,6 +4057,7 @@ def maskedmerge(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -3762,6 +4078,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmerge)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='maskedmerge', typings_input=('video', 'video', 'video'), typings_output=('video',)),
         
@@ -3800,6 +4122,7 @@ References:
 
     
 
+    
 def maskedmin(
     
 
@@ -3823,6 +4146,7 @@ def maskedmin(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -3843,6 +4167,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmin)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='maskedmin', typings_input=('video', 'video', 'video'), typings_output=('video',)),
         
@@ -3881,6 +4211,7 @@ References:
 
     
 
+    
 def maskedthreshold(
     
 
@@ -3900,6 +4231,7 @@ def maskedthreshold(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -3922,6 +4254,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='maskedthreshold', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -3968,6 +4306,7 @@ References:
 
     
 
+    
 def mergeplanes(
     
 
@@ -4007,6 +4346,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mergeplanes)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='mergeplanes', typings_input='[StreamType.video] * int(max(hex(int(mapping))[2::2]))', typings_output=('video',)),
         
@@ -4055,6 +4397,7 @@ References:
 
     
 
+    
 def midequalizer(
     
 
@@ -4074,6 +4417,7 @@ def midequalizer(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -4094,6 +4438,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#midequalizer)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='midequalizer', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -4130,6 +4480,7 @@ References:
 
     
 
+    
 def mix(
     
 
@@ -4143,6 +4494,7 @@ def mix(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -4167,6 +4519,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mix)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='mix', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
         
@@ -4205,6 +4563,7 @@ References:
 
     
 
+    
 def morpho(
     
 
@@ -4223,9 +4582,13 @@ def morpho(
     mode: Int| Literal["erode","dilate","open","close","gradient","tophat","blackhat"] | Default = Default('erode'),planes: Int = Default('7'),structure: Int| Literal["first","all"] | Default = Default('all'),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -4249,6 +4612,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#morpho)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='morpho', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -4295,6 +4667,7 @@ References:
 
     
 
+    
 def msad(
     
 
@@ -4313,9 +4686,13 @@ def msad(
     
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -4336,6 +4713,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#msad)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='msad', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -4370,6 +4756,7 @@ References:
 
     
 
+    
 def multiply(
     
 
@@ -4389,6 +4776,7 @@ def multiply(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -4411,6 +4799,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#multiply)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='multiply', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -4473,6 +4867,7 @@ References:
 
     
 
+    
 def overlay(
     
 
@@ -4493,7 +4888,11 @@ def overlay(
     framesync_options: FFMpegFrameSyncOption | None = None,
     
     
+    
+    
+    
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -4522,6 +4921,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='overlay', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -4572,6 +4977,7 @@ References:
 
     
 
+    
 def overlay_opencl(
     
 
@@ -4609,6 +5015,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_005fopencl)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='overlay_opencl', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -4643,6 +5052,7 @@ References:
 
     
 
+    
 def overlay_vaapi(
     
 
@@ -4661,6 +5071,9 @@ def overlay_vaapi(
     x: String = Default('0'),y: String = Default('0'),w: String = Default('overlay_iw'),h: String = Default('overlay_ih*w/overlay_iw'),alpha: Float = Default('1'),eof_action: Int| Literal["repeat","endall","pass"] | Default = Default('repeat'),shortest: Boolean = Default('false'),repeatlast: Boolean = Default('true'),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    
+    
+    
     
     
     extra_options: dict[str, Any] | None = None,
@@ -4689,6 +5102,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_005fvaapi)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='overlay_vaapi', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -4751,6 +5167,7 @@ References:
 
     
 
+    
 def paletteuse(
     
 
@@ -4792,6 +5209,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#paletteuse)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='paletteuse', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -4856,6 +5276,7 @@ References:
 
     
 
+    
 def premultiply(
     
 
@@ -4869,6 +5290,7 @@ def premultiply(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -4890,6 +5312,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#premultiply)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='premultiply', typings_input='[StreamType.video] + [StreamType.video] if inplace else []', typings_output=('video',)),
         
@@ -4926,6 +5354,7 @@ References:
 
     
 
+    
 def program_opencl(
     
 
@@ -4938,6 +5367,9 @@ def program_opencl(
     source: String = Default(None),kernel: String = Default(None),inputs: Int = Default('1'),size: Image_size = Default(None),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     extra_options: dict[str, Any] | None = None,
@@ -4962,6 +5394,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#program_005fopencl)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='program_opencl', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
         
@@ -4998,6 +5436,7 @@ References:
 
     
 
+    
 def psnr(
     
 
@@ -5016,9 +5455,13 @@ def psnr(
     stats_file: String = Default(None),stats_version: Int = Default('1'),output_max: Boolean = Default('false'),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -5042,6 +5485,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#psnr)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='psnr', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -5094,6 +5546,7 @@ References:
 
     
 
+    
 def remap(
     
 
@@ -5135,6 +5588,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#remap)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='remap', typings_input=('video', 'video', 'video'), typings_output=('video',)),
         
@@ -5173,6 +5629,7 @@ References:
 
     
 
+    
 def remap_opencl(
     
 
@@ -5214,6 +5671,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#remap_005fopencl)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='remap_opencl', typings_input=('video', 'video', 'video'), typings_output=('video',)),
         
@@ -5276,6 +5736,7 @@ References:
 
     
 
+    
 def scale2ref(
     
 
@@ -5342,6 +5803,9 @@ References:
     [FFmpeg Documentation](None)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='scale2ref', typings_input=('video', 'video'), typings_output=('video', 'video')),
         
@@ -5487,6 +5951,7 @@ References:
 
     
 
+    
 def sidechaincompress(
     
 
@@ -5534,6 +5999,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaincompress)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='sidechaincompress', typings_input=('audio', 'audio'), typings_output=('audio',)),
         
@@ -5588,6 +6056,7 @@ References:
 
     
 
+    
 def sidechaingate(
     
 
@@ -5607,6 +6076,7 @@ def sidechaingate(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
@@ -5638,6 +6108,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaingate)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='sidechaingate', typings_input=('audio', 'audio'), typings_output=('audio',)),
         
@@ -5700,6 +6176,7 @@ References:
 
     
 
+    
 def signature(
     
 
@@ -5738,6 +6215,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#signature)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='signature', typings_input='[StreamType.video] * int(nb_inputs)', typings_output=('video',)),
         
@@ -5800,6 +6280,7 @@ References:
 
     
 
+    
 def spectrumsynth(
     
 
@@ -5842,6 +6323,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#spectrumsynth)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='spectrumsynth', typings_input=('video', 'video'), typings_output=('audio',)),
         
@@ -5892,6 +6376,7 @@ References:
 
     
 
+    
 def ssim(
     
 
@@ -5910,9 +6395,13 @@ def ssim(
     stats_file: String = Default(None),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -5934,6 +6423,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ssim)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='ssim', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -5970,6 +6468,7 @@ References:
 
     
 
+    
 def ssim360(
     
 
@@ -5988,6 +6487,9 @@ def ssim360(
     stats_file: String = Default(None),compute_chroma: Int = Default('1'),frame_skip_ratio: Int = Default('0'),ref_projection: Int| Literal["e","equirect","c3x2","c2x3","barrel","barrelsplit"] | Default = Default('e'),main_projection: Int| Literal["e","equirect","c3x2","c2x3","barrel","barrelsplit"] | Default = Default('5'),ref_stereo: Int| Literal["mono","tb","lr"] | Default = Default('mono'),main_stereo: Int| Literal["mono","tb","lr"] | Default = Default('3'),ref_pad: Float = Default('0'),main_pad: Float = Default('0'),use_tape: Int = Default('0'),heatmap_str: String = Default(None),default_heatmap_width: Int = Default('32'),default_heatmap_height: Int = Default('16'),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     extra_options: dict[str, Any] | None = None,
@@ -6021,6 +6523,12 @@ References:
     [FFmpeg Documentation](None)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='ssim360', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -6085,6 +6593,7 @@ References:
 
     
 
+    
 def streamselect(
     
 
@@ -6117,6 +6626,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='streamselect', typings_input='[StreamType.video] * int(inputs)', typings_output="[StreamType.video] * len(re.findall(r'\\d+', str(map)))"),
         
@@ -6168,6 +6680,7 @@ References:
 
     
 
+    
 def threshold(
     
 
@@ -6195,6 +6708,7 @@ def threshold(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -6215,6 +6729,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#threshold)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='threshold', typings_input=('video', 'video', 'video', 'video'), typings_output=('video',)),
         
@@ -6295,6 +6815,7 @@ References:
 
     
 
+    
 def unpremultiply(
     
 
@@ -6308,6 +6829,7 @@ def unpremultiply(
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -6329,6 +6851,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#unpremultiply)
 
     """
+    
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='unpremultiply', typings_input='[StreamType.video] + ([StreamType.video] if inplace else [])', typings_output=('video',)),
         
@@ -6371,6 +6899,7 @@ References:
 
     
 
+    
 def varblur(
     
 
@@ -6389,9 +6918,13 @@ def varblur(
     min_r: Int = Default('0'),max_r: Int = Default('8'),planes: Int = Default('15'),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -6415,6 +6948,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#varblur)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='varblur', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -6469,6 +7011,7 @@ References:
 
     
 
+    
 def vif(
     
 
@@ -6487,9 +7030,13 @@ def vif(
     
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -6510,6 +7057,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vif)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='vif', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -6554,6 +7110,7 @@ References:
 
     
 
+    
 def vstack(
     
 
@@ -6585,6 +7142,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vstack)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='vstack', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
         
@@ -6613,6 +7173,7 @@ References:
 
     
 
+    
 def vstack_vaapi(
     
 
@@ -6645,6 +7206,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vstack_005fvaapi)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='vstack_vaapi', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
         
@@ -6683,6 +7247,7 @@ References:
 
     
 
+    
 def xcorrelate(
     
 
@@ -6701,9 +7266,13 @@ def xcorrelate(
     planes: Int = Default('7'),secondary: Int| Literal["first","all"] | Default = Default('all'),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -6726,6 +7295,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xcorrelate)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='xcorrelate', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -6764,6 +7342,7 @@ References:
 
     
 
+    
 def xfade(
     
 
@@ -6803,6 +7382,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xfade)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='xfade', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -6841,6 +7423,7 @@ References:
 
     
 
+    
 def xfade_opencl(
     
 
@@ -6881,6 +7464,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xfade_005fopencl)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='xfade_opencl', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -6921,6 +7507,7 @@ References:
 
     
 
+    
 def xmedian(
     
 
@@ -6933,9 +7520,13 @@ def xmedian(
     inputs: Int = Auto('len(streams)'),planes: Int = Default('15'),percentile: Float = Default('0.5'),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -6959,6 +7550,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xmedian)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='xmedian', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
         
@@ -6993,6 +7593,7 @@ References:
 
     
 
+    
 def xpsnr(
     
 
@@ -7011,9 +7612,13 @@ def xpsnr(
     stats_file: String = Default(None),
     
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
@@ -7035,6 +7640,15 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xpsnr)
 
     """
+    
+
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+    if timeline_options is None and enable is not None:
+        timeline_options = FFMpegTimelineOption(enable=enable)
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='xpsnr', typings_input=('video', 'video'), typings_output=('video',)),
         
@@ -7071,6 +7685,7 @@ References:
 
     
 
+    
 def xstack(
     
 
@@ -7105,6 +7720,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xstack)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='xstack', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
         
@@ -7139,6 +7757,7 @@ References:
 
     
 
+    
 def xstack_vaapi(
     
 
@@ -7174,6 +7793,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xstack_005fvaapi)
 
     """
+    
+
+
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='xstack_vaapi', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
         
