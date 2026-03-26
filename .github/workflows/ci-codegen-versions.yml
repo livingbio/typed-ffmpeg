@@ -47,17 +47,13 @@ jobs:
         ffmpeg-version: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.ffmpeg-version != 'all') && fromJSON(format('["{0}"]', github.event.inputs.ffmpeg-version)) || fromJSON('["5", "6", "7", "8"]') }}
         include:
           - ffmpeg-version: '5'
-            ffmpeg-source-tag: 'n5.1.6'
-            build-from-source: true
+            ffmpeg-image: 'jrottenberg/ffmpeg:5.1-ubuntu'
           - ffmpeg-version: '6'
-            ffmpeg-source-tag: 'n6.1.2'
-            build-from-source: true
+            ffmpeg-image: 'jrottenberg/ffmpeg:6.1-ubuntu'
           - ffmpeg-version: '7'
-            ffmpeg-source-tag: 'n7.1'
-            build-from-source: true
+            ffmpeg-image: 'jrottenberg/ffmpeg:7.1-ubuntu'
           - ffmpeg-version: '8'
-            ffmpeg-source-tag: 'n8.1'
-            build-from-source: true
+            ffmpeg-image: 'jrottenberg/ffmpeg:8.0-ubuntu'
 
     steps:
       - uses: actions/checkout@v6
@@ -67,59 +63,17 @@ jobs:
         with:
           python-version: '3.10'
 
-      # ── All versions: build from source with full hardware-filter support ──────
-      - name: Install build dependencies (source build)
+      - name: Extract FFmpeg ${{ matrix.ffmpeg-version }} from Docker image
         run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            build-essential nasm yasm pkg-config git wget \
-            libva-dev libdrm-dev \
-            libvulkan-dev glslang-tools glslc \
-            ladspa-sdk \
-            lv2-dev \
-            liblilv-dev \
-            ocl-icd-opencl-dev opencl-headers \
-            libssl-dev zlib1g-dev \
-            libx264-dev libx265-dev libvpx-dev \
-            libfdk-aac-dev libmp3lame-dev libopus-dev libvorbis-dev \
-            libfreetype6-dev libass-dev \
-            libtheora-dev
-
-      - name: Build FFmpeg ${{ matrix.ffmpeg-version }} from source
-        run: |
-          FFMPEG_TAG="${{ matrix.ffmpeg-source-tag }}"
-          wget -q "https://github.com/FFmpeg/FFmpeg/archive/refs/tags/${FFMPEG_TAG}.tar.gz" -O /tmp/ffmpeg.tar.gz
-          tar -xf /tmp/ffmpeg.tar.gz -C /tmp
-          SRCDIR="/tmp/FFmpeg-${FFMPEG_TAG}"
-          cd "$SRCDIR"
-          ./configure \
-            --prefix=/usr/local \
-            --enable-gpl \
-            --enable-nonfree \
-            --enable-openssl \
-            --enable-opencl \
-            --enable-vaapi \
-            --enable-vulkan \
-            --enable-ladspa \
-            --enable-lv2 \
-            --enable-libx264 \
-            --enable-libx265 \
-            --enable-libvpx \
-            --enable-libfdk-aac \
-            --enable-libmp3lame \
-            --enable-libopus \
-            --enable-libvorbis \
-            --enable-libfreetype \
-            --enable-libass \
-            --enable-libtheora \
-            --disable-debug \
-            --disable-doc \
-            --disable-htmlpages \
-            --disable-manpages \
-            --disable-podpages \
-            --disable-txtpages
-          make -j$(nproc)
-          sudo make install
+          docker pull ${{ matrix.ffmpeg-image }}
+          CONTAINER_ID=$(docker create ${{ matrix.ffmpeg-image }})
+          sudo docker cp "$CONTAINER_ID:/usr/local/bin/ffmpeg" /usr/local/bin/ffmpeg || \
+            sudo docker cp "$CONTAINER_ID:/usr/bin/ffmpeg" /usr/local/bin/ffmpeg
+          sudo docker cp "$CONTAINER_ID:/usr/local/bin/ffprobe" /usr/local/bin/ffprobe || \
+            sudo docker cp "$CONTAINER_ID:/usr/bin/ffprobe" /usr/local/bin/ffprobe
+          docker cp "$CONTAINER_ID:/usr/local/lib" /tmp/ffmpeg-libs
+          sudo cp -a /tmp/ffmpeg-libs/. /usr/local/lib/
+          docker rm "$CONTAINER_ID"
           sudo ldconfig
           ffmpeg -version | head -1
           echo "--- Filters with hardware acceleration ---"
