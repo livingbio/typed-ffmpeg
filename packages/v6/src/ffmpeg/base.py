@@ -141,7 +141,6 @@ def filter_multi_output(
     name: str,
     input_typings: tuple[StreamType, ...] = (),
     output_typings: tuple[StreamType, ...] = (),
-    output_tyings: tuple[StreamType, ...] | None = None,
     **kwargs: Any,
 ) -> FilterNode:
     """
@@ -177,10 +176,6 @@ def filter_multi_output(
         Use the built-in filters from the filters module when available.
 
     """
-    # Backwards compat: accept old typo "output_tyings"
-    if output_tyings is not None and not output_typings:
-        output_typings = output_tyings
-
     return FilterNode(
         name=name,
         kwargs=FrozenDict(kwargs),
