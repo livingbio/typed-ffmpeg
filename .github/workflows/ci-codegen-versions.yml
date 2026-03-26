@@ -72,14 +72,15 @@ jobs:
         run: |
           sudo apt-get update && sudo apt-get install -y --no-install-recommends \
             nasm yasm build-essential \
-            libass9 libfreetype6 libfontconfig1 libfribidi0 \
-            libx264-dev libx265-dev libvpx-dev libmp3lame0 libopus0 \
-            libvorbis0a libtheora0 libwebp7 libxvidcore4 \
-            libopenjp2-7 libopencore-amrnb0 libopencore-amrwb0 \
-            libzimg2 libvidstab1.1 libaom3 \
-            libsrt1.5-openssl libzmq5 \
-            libva2 libdrm2 ocl-icd-libopencl1 \
-            libdav1d7 libharfbuzz0b 2>/dev/null || true
+            libx264-dev libx265-dev libvpx-dev libmp3lame-dev libopus-dev \
+            libvorbis-dev libtheora-dev libwebp-dev libxvidcore-dev \
+            libopenjp2-7-dev libopencore-amrnb-dev libopencore-amrwb-dev \
+            libass-dev libfreetype6-dev libfontconfig1-dev libfribidi-dev \
+            libzimg-dev libaom-dev \
+            libssl-dev libsrt-openssl-dev libzmq3-dev \
+            libva-dev libdrm-dev ocl-icd-opencl-dev
+          sudo apt-get install -y --no-install-recommends \
+            libvidstab-dev libdav1d-dev libsvtav1-dev libharfbuzz-dev 2>/dev/null || true
 
       - name: Extract FFmpeg ${{ matrix.ffmpeg-version }} from Docker image
         run: |
