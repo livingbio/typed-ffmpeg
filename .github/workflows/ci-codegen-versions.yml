@@ -27,7 +27,7 @@ on:
   workflow_dispatch:
     inputs:
       ffmpeg-version:
-        description: 'FFmpeg major version to generate (5, 6, 7, or all)'
+        description: 'FFmpeg major version to generate (5, 6, 7, 8, or all)'
         required: true
         default: 'all'
         type: choice
@@ -35,6 +35,7 @@ on:
           - '5'
           - '6'
           - '7'
+          - '8'
           - 'all'
 
 jobs:
@@ -43,16 +44,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ffmpeg-version: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.ffmpeg-version != 'all') && fromJSON(format('["{0}"]', github.event.inputs.ffmpeg-version)) || fromJSON('["5", "6", "7"]') }}
+        ffmpeg-version: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.ffmpeg-version != 'all') && fromJSON(format('["{0}"]', github.event.inputs.ffmpeg-version)) || fromJSON('["5", "6", "7", "8"]') }}
         include:
           - ffmpeg-version: '5'
             ffmpeg-image: 'jrottenberg/ffmpeg:5.1-ubuntu'
             build-from-source: false
           - ffmpeg-version: '6'
-            ffmpeg-image: 'jrottenberg/ffmpeg:6.1-ubuntu'
-            build-from-source: false
+            ffmpeg-source-tag: 'n6.1.2'
+            build-from-source: true
           - ffmpeg-version: '7'
             ffmpeg-source-tag: 'n7.1'
+            build-from-source: true
+          - ffmpeg-version: '8'
+            ffmpeg-source-tag: 'n8.1'
             build-from-source: true
 
     steps:
@@ -86,7 +90,7 @@ jobs:
           sudo ldconfig
           ffmpeg -version | head -1
 
-      # ── FFmpeg 7: build from source with full hardware-filter support ────────
+      # ── FFmpeg 6/7/8: build from source with full hardware-filter support ─────
       - name: Install build dependencies (source build)
         if: ${{ matrix.build-from-source }}
         run: |
