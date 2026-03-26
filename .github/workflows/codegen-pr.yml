@@ -42,6 +42,7 @@ jobs:
             libvulkan-dev glslang-tools \
             ladspa-sdk libladspa-ocaml-dev \
             lv2-dev \
+            liblilv-dev \
             ocl-icd-opencl-dev opencl-headers \
             libssl-dev zlib1g-dev \
             libx264-dev libx265-dev libvpx-dev \
