@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       ffmpeg-version:
-        description: 'FFmpeg version to build (or "all")'
+        description: 'FFmpeg image tag to build (or "all")'
         required: true
         default: 'all'
         type: choice
@@ -31,6 +31,15 @@ jobs:
       fail-fast: false
       matrix:
         ffmpeg-version: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.ffmpeg-version != 'all') && fromJSON(format('["{0}"]', github.event.inputs.ffmpeg-version)) || fromJSON('["5.1", "6.1", "7.1", "8.0"]') }}
+        include:
+          - ffmpeg-version: '5.1'
+            ffmpeg-source-version: '5.1.8'
+          - ffmpeg-version: '6.1'
+            ffmpeg-source-version: '6.1.4'
+          - ffmpeg-version: '7.1'
+            ffmpeg-source-version: '7.1.1'
+          - ffmpeg-version: '8.0'
+            ffmpeg-source-version: '8.0'
 
     steps:
       - uses: actions/checkout@v4
@@ -53,6 +62,7 @@ jobs:
           platforms: linux/amd64
           build-args: |
             FFMPEG_VERSION=${{ matrix.ffmpeg-version }}
+            FFMPEG_SOURCE_VERSION=${{ matrix.ffmpeg-source-version }}
           tags: |
             ghcr.io/${{ github.repository }}/ffmpeg:${{ matrix.ffmpeg-version }}
           cache-from: type=registry,ref=ghcr.io/${{ github.repository }}/ffmpeg:${{ matrix.ffmpeg-version }}-cache

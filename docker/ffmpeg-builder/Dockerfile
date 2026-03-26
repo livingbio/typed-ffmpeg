@@ -1,11 +1,13 @@
 # Build FFmpeg with full descriptions (no --enable-small) and hardware acceleration
-# Usage: docker build --build-arg FFMPEG_VERSION=7.1 -t ffmpeg:7.1 .
+# Usage: docker build --build-arg FFMPEG_VERSION=7.1 --build-arg FFMPEG_SOURCE_VERSION=7.1.1 -t ffmpeg:7.1 .
 ARG FFMPEG_VERSION=7.1
+ARG FFMPEG_SOURCE_VERSION=${FFMPEG_VERSION}
 ARG UBUNTU_VERSION=24.04
 
 FROM ubuntu:${UBUNTU_VERSION} AS build
 
 ARG FFMPEG_VERSION
+ARG FFMPEG_SOURCE_VERSION
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -25,9 +27,9 @@ RUN apt-get update \
     && apt-get install -y libdav1d-dev libsvtav1-dev libharfbuzz-dev 2>/dev/null || true \
     && rm -rf /var/lib/apt/lists/*
 
-RUN wget -q "https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.bz2" \
-    && tar xf "ffmpeg-${FFMPEG_VERSION}.tar.bz2" \
-    && mv "ffmpeg-${FFMPEG_VERSION}" /ffmpeg-src
+RUN wget -q "https://ffmpeg.org/releases/ffmpeg-${FFMPEG_SOURCE_VERSION}.tar.bz2" \
+    && tar xf "ffmpeg-${FFMPEG_SOURCE_VERSION}.tar.bz2" \
+    && mv "ffmpeg-${FFMPEG_SOURCE_VERSION}" /ffmpeg-src
 
 WORKDIR /ffmpeg-src
 
