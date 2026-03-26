@@ -80,28 +80,60 @@ def _convert_av_options(
     )
 
 
-def gen_filter_info(ffmpeg_filter: FFMpegFilter) -> FFMpegFilter:
+def gen_filter_info(
+    ffmpeg_filter: FFMpegFilter,
+    *,
+    texi_docs: list | None = None,
+) -> FFMpegFilter:
     """
     Generate filter info.
 
     Args:
         ffmpeg_filter: The filter
+        texi_docs: Optional list of FilterDocument objects parsed from texi source.
+            When provided, these are preferred over the HTML docs.
 
     Returns:
         The filter info
 
     """
-    try:
-        filter_doc = parse_docs.cli.extract_docs(ffmpeg_filter.name)
-    except ValueError:
-        # Filter not found in FFmpeg HTML docs (e.g. hardware-accelerated
-        # filters like avgblur_opencl or tonemap_vaapi).  Return the filter
-        # without a documentation URL rather than dropping it entirely.
+    filter_doc = None
+
+    # Try texi docs first (version-correct)
+    if texi_docs is not None:
+        for doc in texi_docs:
+            if ffmpeg_filter.name in doc.filter_names:
+                filter_doc = doc
+                break
+
+    # Fall back to HTML docs if no texi docs provided
+    if filter_doc is None and texi_docs is None:
+        try:
+            filter_doc = parse_docs.cli.extract_docs(ffmpeg_filter.name)
+        except ValueError:
+            return ffmpeg_filter
+
+    if filter_doc is None:
         return ffmpeg_filter
 
-    # NOTE:
-    # currently we only use filter_doc's url info
-    return replace(ffmpeg_filter, ref=filter_doc.url)
+    # Enrich description
+    updates: dict = {"ref": filter_doc.url}
+
+    if filter_doc.description:
+        updates["description"] = filter_doc.description
+
+    # Enrich option descriptions from texi parameter docs
+    if filter_doc.parameter_descs:
+        enriched_options = []
+        for option in ffmpeg_filter.options:
+            texi_desc = filter_doc.parameter_descs.get(option.name)
+            if texi_desc:
+                enriched_options.append(replace(option, description=texi_desc))
+            else:
+                enriched_options.append(option)
+        updates["options"] = tuple(enriched_options)
+
+    return replace(ffmpeg_filter, **updates)
 
 
 def _normalize_option_flags(options: list[FFMpegOption]) -> list[FFMpegOption]:
@@ -227,6 +259,20 @@ def load_filters(
         except Exception as e:
             logging.error(f"Failed to load filters from cache: {e}")
 
+    # Load version-correct texi docs from source tarball
+    from ..parse_c.pre_compile import _prepare_source_folder
+    from ..parse_help.utils import get_ffmpeg_version
+
+    version = get_ffmpeg_version(ffmpeg_binary)
+    source_folder = _prepare_source_folder(version)
+    texi_path = source_folder / "doc" / "filters.texi"
+
+    texi_docs = None
+    if texi_path.exists():
+        texi_docs = parse_docs.cli.process_texi_docs(texi_path)
+    else:
+        logging.warning(f"Texi docs not found at {texi_path}, falling back to HTML")
+
     ffmpeg_filters = []
     for f in sorted(
         parse_help.parse_filters.extract(ffmpeg_binary=ffmpeg_binary),
@@ -283,7 +329,7 @@ def load_filters(
         if manual_config:
             converted_filter = replace(converted_filter, **asdict(manual_config))
 
-        filter_info = gen_filter_info(converted_filter)
+        filter_info = gen_filter_info(converted_filter, texi_docs=texi_docs)
         save(filter_info, filter_info.name)
         ffmpeg_filters.append(filter_info)
 
