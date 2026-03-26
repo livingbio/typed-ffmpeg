@@ -1,0 +1,60 @@
+{% import "_components.tera" as _components %}
+"""
+Input node.
+"""
+
+
+from pathlib import Path
+from typing import Any
+
+{{ _components::import_all(template_path=template_path) }}
+
+def input(
+    filename: str | Path,
+    *,
+    {%- for option in options -%}
+    {%- if option.is_input_option -%}
+    {{ option.name | option_name_safe }}: {{ option | option_typing }} = None,
+    {%- endif -%}
+    {%- endfor -%}
+    decoder_options: FFMpegDecoderOption | None = None,
+    demuxer_options: FFMpegDemuxerOption | None = None,
+    format_options: FFMpegAVFormatContextDecoderOption | None = None,
+    codec_options: FFMpegAVCodecContextDecoderOption | None = None,
+    extra_options: dict[str, Any] | None = None,
+) -> AVStream:
+    """
+    Input file URL (ffmpeg ``-i`` option)
+
+    Args:
+        filename: Input file URL
+        {% for option in options %}
+        {%- if option.is_input_option -%}
+        {{option.name | option_name_safe}}: {{option.help }}
+        {% endif %}
+        {%- endfor -%}
+        decoder_options: ffmpeg's decoder options
+        demuxer_options: ffmpeg's demuxer options
+        format_options: ffmpeg's AVFormatContext options
+        codec_options: ffmpeg's AVCodecContext options
+        extra_options: ffmpeg's input file options
+
+    Returns:
+        Input stream
+
+    Examples:
+    ```py
+    >>> input('input.mp4')
+    <AVStream:input.mp4:0>
+    ```
+    """
+    return InputNode(
+        filename=str(filename),
+        kwargs=merge({
+            {% for option in options %}
+                {%- if option.is_input_option -%}
+                "{{ option.name}}": {{ option.name | option_name_safe }},
+                {% endif %}
+                {% endfor %}
+        }, decoder_options, demuxer_options, format_options, codec_options, extra_options )
+    ).stream()
