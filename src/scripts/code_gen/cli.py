@@ -450,8 +450,21 @@ def generate(
         version_prefix=version_prefix,
         version_metadata=version_metadata,
     )
+    # Debug: check if hw filters made it into generated video.py
+    _vpy = render_outpath / "streams" / "video.py"
+    if _vpy.exists():
+        _content = _vpy.read_text()
+        _has_hw = "avgblur_opencl" in _content
+        _methods = _content.count("    def ")
+        print(f"[DEBUG] After render: video.py has {_methods} methods, avgblur_opencl={'YES' if _has_hw else 'NO'}")
     if Path(".pre-commit-config.yaml").exists():
         os.system("prek run -a")
+    # Debug: check after prek
+    if _vpy.exists():
+        _content2 = _vpy.read_text()
+        _has_hw2 = "avgblur_opencl" in _content2
+        _methods2 = _content2.count("    def ")
+        print(f"[DEBUG] After prek: video.py has {_methods2} methods, avgblur_opencl={'YES' if _has_hw2 else 'NO'}")
 
 
 @app.command()
