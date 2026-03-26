@@ -104,7 +104,8 @@ def gen_filter_info(ffmpeg_filter: FFMpegFilter) -> FFMpegFilter:
 
 
 def _normalize_option_flags(options: list[FFMpegOption]) -> list[FFMpegOption]:
-    """Translate old-style (pre-7.0) flag values to the current bit layout.
+    """
+    Translate old-style (pre-7.0) flag values to the current bit layout.
 
     If the options already use the modern layout this is a no-op.
     Detection works by inspecting known OPT_EXIT options (``-L``, ``-h``).
@@ -114,6 +115,7 @@ def _normalize_option_flags(options: list[FFMpegOption]) -> list[FFMpegOption]:
 
     Returns:
         Options with flags guaranteed to use the current layout.
+
     """
     # Find a known OPT_EXIT option to probe the flag layout.
     exit_option = next(
@@ -122,10 +124,7 @@ def _normalize_option_flags(options: list[FFMpegOption]) -> list[FFMpegOption]:
     if exit_option is None or not uses_old_flag_layout(exit_option.flags):
         return options
 
-    return [
-        replace(o, flags=translate_old_flags(o.flags))
-        for o in options
-    ]
+    return [replace(o, flags=translate_old_flags(o.flags)) for o in options]
 
 
 def load_options(

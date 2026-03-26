@@ -1,11 +1,12 @@
 import json
 
 import pytest
+from syrupy.assertion import SnapshotAssertion
+from syrupy.extensions.json import JSONSnapshotExtension
+
 from ffmpeg.compile.compile_json import compile, parse
 from ffmpeg.compile.validate import validate
 from ffmpeg.dag.schema import Stream
-from syrupy.assertion import SnapshotAssertion
-from syrupy.extensions.json import JSONSnapshotExtension
 
 from .cases import shared_cases
 

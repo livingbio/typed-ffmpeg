@@ -1,12 +1,13 @@
 from dataclasses import asdict
 
 import pytest
+from syrupy.assertion import SnapshotAssertion
+from syrupy.extensions.json import JSONSnapshotExtension
+
 from ffmpeg.base import filter_multi_output, input
 from ffmpeg.common.schema import StreamType
 from ffmpeg.compile.compile_cli import compile, compile_as_list, get_args, parse
 from ffmpeg.dag.schema import Stream
-from syrupy.assertion import SnapshotAssertion
-from syrupy.extensions.json import JSONSnapshotExtension
 
 from .cases import shared_cases
 

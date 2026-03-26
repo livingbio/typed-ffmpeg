@@ -96,237 +96,237 @@ class GlobalArgs(ABC):
 
         return self._global_node(**merge(
             {
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 "loglevel": loglevel,
-                
+
                 "v": v,
-                
+
                 "report": report,
-                
+
                 "max_alloc": max_alloc,
-                
+
                 "cpuflags": cpuflags,
-                
+
                 "cpucount": cpucount,
-                
+
                 "hide_banner": hide_banner,
-                
-                
-                
-                
+
+
+
+
                 "y": y,
-                
+
                 "n": n,
-                
+
                 "ignore_unknown": ignore_unknown,
-                
+
                 "copy_unknown": copy_unknown,
-                
+
                 "recast_media": recast_media,
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 "benchmark": benchmark,
-                
+
                 "benchmark_all": benchmark_all,
-                
+
                 "progress": progress,
-                
+
                 "stdin": stdin,
-                
+
                 "timelimit": timelimit,
-                
+
                 "dump": dump,
-                
+
                 "hex": hex,
-                
-                
-                
-                
+
+
+
+
                 "vsync": vsync,
-                
+
                 "frame_drop_threshold": frame_drop_threshold,
-                
+
                 "async": _async,
-                
+
                 "adrift_threshold": adrift_threshold,
-                
+
                 "copyts": copyts,
-                
+
                 "start_at_zero": start_at_zero,
-                
+
                 "copytb": copytb,
-                
-                
-                
-                
+
+
+
+
                 "dts_delta_threshold": dts_delta_threshold,
-                
+
                 "dts_error_threshold": dts_error_threshold,
-                
+
                 "xerror": xerror,
-                
+
                 "abort_on": abort_on,
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
+
                 "filter_threads": filter_threads,
-                
-                
-                
+
+
+
                 "filter_complex": filter_complex,
-                
+
                 "filter_complex_threads": filter_complex_threads,
-                
+
                 "lavfi": lavfi,
-                
+
                 "filter_complex_script": filter_complex_script,
-                
+
                 "auto_conversion_filters": auto_conversion_filters,
-                
+
                 "stats": stats,
-                
+
                 "stats_period": stats_period,
-                
-                
-                
-                
+
+
+
+
                 "debug_ts": debug_ts,
-                
+
                 "max_error_rate": max_error_rate,
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 "psnr": psnr,
-                
+
                 "vstats": vstats,
-                
+
                 "vstats_file": vstats_file,
-                
+
                 "vstats_version": vstats_version,
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
                 "qphist": qphist,
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 "vol": vol,
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 "vaapi_device": vaapi_device,
-                
+
                 "init_hw_device": init_hw_device,
-                
+
                 "filter_hw_device": filter_hw_device,
-                
-                
+
+
             }, extra_options)
         ).stream()
