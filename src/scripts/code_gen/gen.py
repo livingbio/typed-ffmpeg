@@ -373,6 +373,11 @@ def render(
                 current_major or "",
             )
 
+    if "filters" in kwargs:
+        _f = kwargs["filters"]
+        _hw = [f.name for f in _f if "vaapi" in f.name or "opencl" in f.name]
+        print(f"[DEBUG] render() received {len(_f)} filters, {len(_hw)} hw: {_hw[:5]}")
+
     for template_file in template_folder.glob("**/*.*.jinja"):
         template_path = template_file.relative_to(template_folder)
 

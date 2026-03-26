@@ -261,6 +261,9 @@ def load_filters(
 
     save(ffmpeg_filters, cache_id)
 
+    hw = [f.name for f in ffmpeg_filters if "vaapi" in f.name or "opencl" in f.name]
+    print(f"[DEBUG] load_filters returning {len(ffmpeg_filters)} filters, {len(hw)} hw: {hw[:5]}")
+
     return ffmpeg_filters
 
 
