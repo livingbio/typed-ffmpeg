@@ -35,7 +35,7 @@ WORKDIR /ffmpeg-src
 
 # Build without --enable-small so descriptions are preserved in the binary
 RUN ./configure \
-        --prefix=/opt/ffmpeg \
+        --prefix=/usr/local \
         --disable-debug \
         --disable-doc \
         --disable-ffplay \
@@ -89,12 +89,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libvidstab-dev libdav1d-dev libsvtav1-dev libharfbuzz-dev 2>/dev/null || true \
     && rm -rf /var/lib/apt/lists/*
 
-COPY --from=build /opt/ffmpeg /opt/ffmpeg
+COPY --from=build /usr/local/bin/ffmpeg /usr/local/bin/ffmpeg
+COPY --from=build /usr/local/bin/ffprobe /usr/local/bin/ffprobe
+COPY --from=build /usr/local/lib /usr/local/lib
 
-RUN ln -s /opt/ffmpeg/bin/ffmpeg /usr/local/bin/ffmpeg \
-    && ln -s /opt/ffmpeg/bin/ffprobe /usr/local/bin/ffprobe
+RUN ldconfig
 
-ENV PATH=/opt/ffmpeg/bin:$PATH
-ENV LD_LIBRARY_PATH=/opt/ffmpeg/lib
-
-ENTRYPOINT ["/opt/ffmpeg/bin/ffmpeg"]
+ENTRYPOINT ["/usr/local/bin/ffmpeg"]
