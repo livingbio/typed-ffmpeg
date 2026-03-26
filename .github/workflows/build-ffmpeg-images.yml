@@ -4,7 +4,7 @@ on:
   push:
     branches: [main, v4]
     paths:
-      - 'docker/ffmpeg/Dockerfile'
+      - 'docker/ffmpeg-builder/Dockerfile'
       - '.github/workflows/build-ffmpeg-images.yml'
   workflow_dispatch:
     inputs:
@@ -48,7 +48,7 @@ jobs:
       - name: Build and push FFmpeg ${{ matrix.ffmpeg-version }}
         uses: docker/build-push-action@v6
         with:
-          context: docker/ffmpeg
+          context: docker/ffmpeg-builder
           push: true
           platforms: linux/amd64
           build-args: |
