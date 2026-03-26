@@ -70,21 +70,23 @@ RUN ./configure \
     && make -j$(nproc) \
     && make install
 
-# Runtime stage
+# Runtime stage — copy built libs and install runtime dependencies
 FROM ubuntu:${UBUNTU_VERSION}
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install -y \
+# Install base runtime libs; version-specific packages are optional (|| true)
+RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
-    libx264-164 libx265-199 libvpx9 libmp3lame0 libopus0 \
-    libvorbis0a libvorbisenc2 libtheora0 libwebp7 libxvidcore4 \
-    libopenjp2-7 libopencore-amrnb0 libopencore-amrwb0 \
-    libass9 libfreetype6 libfontconfig1 libfribidi0 \
-    libzimg2 libvidstab1.2 libaom3 \
-    libssl3 libsrt1.5-openssl libzmq5 \
-    libva2 libdrm2 ocl-icd-libopencl1 \
-    && apt-get install -y libdav1d7 libsvtav1enc1d1 libharfbuzz0b 2>/dev/null || true \
+    libx264-dev libx265-dev libvpx-dev libmp3lame-dev libopus-dev \
+    libvorbis-dev libtheora-dev libwebp-dev libxvidcore-dev \
+    libopenjp2-7-dev libopencore-amrnb-dev libopencore-amrwb-dev \
+    libass-dev libfreetype6-dev libfontconfig1-dev libfribidi-dev \
+    libzimg-dev libaom-dev \
+    libssl-dev libsrt-openssl-dev libzmq3-dev \
+    libva-dev libdrm-dev ocl-icd-opencl-dev \
+    && apt-get install -y --no-install-recommends \
+        libvidstab-dev libdav1d-dev libsvtav1-dev libharfbuzz-dev 2>/dev/null || true \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=build /opt/ffmpeg /opt/ffmpeg

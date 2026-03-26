@@ -70,8 +70,10 @@ jobs:
 
       - name: Verify image
         run: |
-          docker run --rm ghcr.io/${{ github.repository }}/ffmpeg:${{ matrix.ffmpeg-version }} -version 2>&1 | head -2
+          IMAGE=ghcr.io/${{ github.repository }}/ffmpeg:${{ matrix.ffmpeg-version }}
+          docker pull "$IMAGE"
+          docker run --rm "$IMAGE" -version 2>&1 | head -2
           echo "--- Muxer descriptions ---"
-          docker run --rm ghcr.io/${{ github.repository }}/ffmpeg:${{ matrix.ffmpeg-version }} -muxers 2>&1 | grep "3g2"
+          docker run --rm "$IMAGE" -muxers 2>&1 | grep "3g2"
           echo "--- Hardware filters ---"
-          docker run --rm ghcr.io/${{ github.repository }}/ffmpeg:${{ matrix.ffmpeg-version }} -filters 2>/dev/null | grep -iE 'vaapi|opencl|vulkan|cuda' || echo "(none found)"
+          docker run --rm "$IMAGE" -filters 2>/dev/null | grep -iE 'vaapi|opencl|vulkan|cuda' || echo "(none found)"
