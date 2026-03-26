@@ -48,6 +48,9 @@ jobs:
           echo "--- Filters with hardware acceleration ---"
           ffmpeg -filters 2>/dev/null | grep -iE 'opencl|vulkan|vaapi|ladspa|lv2|cuda' || true
 
+      - name: Install build tools for codegen (nasm/yasm needed for FFmpeg source compile)
+        run: sudo apt-get update && sudo apt-get install -y nasm yasm build-essential
+
       - name: Install uv
         run: pip install uv
 
