@@ -37,11 +37,14 @@ RUN wget -q "https://ffmpeg.org/releases/ffmpeg-${FFMPEG_SOURCE_VERSION}.tar.bz2
 WORKDIR /ffmpeg-src
 
 # Build without --enable-small so descriptions are preserved in the binary
-# Detect optional libraries and build configure flags dynamically
+# Detect optional libraries — only add flags the FFmpeg version actually supports.
 RUN EXTRA_FLAGS=""; \
-    pkg-config --exists harfbuzz && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libharfbuzz"; \
-    pkg-config --exists dav1d && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libdav1d"; \
-    pkg-config --exists SvtAv1Enc && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libsvtav1"; \
+    if ./configure --help 2>&1 | grep -q -- '--enable-libharfbuzz' && pkg-config --exists harfbuzz; then \
+        EXTRA_FLAGS="$EXTRA_FLAGS --enable-libharfbuzz"; fi; \
+    if ./configure --help 2>&1 | grep -q -- '--enable-libdav1d' && pkg-config --exists dav1d; then \
+        EXTRA_FLAGS="$EXTRA_FLAGS --enable-libdav1d"; fi; \
+    if ./configure --help 2>&1 | grep -q -- '--enable-libsvtav1' && pkg-config --exists SvtAv1Enc; then \
+        EXTRA_FLAGS="$EXTRA_FLAGS --enable-libsvtav1"; fi; \
     echo "Extra configure flags: $EXTRA_FLAGS"; \
     ./configure \
         --prefix=/usr/local \
