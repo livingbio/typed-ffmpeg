@@ -116,6 +116,20 @@ jobs:
           echo "Generating bindings for FFmpeg v${FFMPEG_MAJOR} -> ${OUTPATH}"
           python -m scripts.code_gen.cli generate --outpath "$OUTPATH" --rebuild
 
+      - name: Upload generated bindings
+        uses: actions/upload-artifact@v4
+        with:
+          name: ffmpeg-v${{ matrix.ffmpeg-version }}-bindings
+          path: packages/v${{ matrix.ffmpeg-version }}/src/ffmpeg/
+          retention-days: 30
+
+      - name: Upload version cache
+        uses: actions/upload-artifact@v4
+        with:
+          name: ffmpeg-v${{ matrix.ffmpeg-version }}-cache
+          path: packages/core/src/ffmpeg_core/common/cache/list/*_${{ matrix.ffmpeg-version }}_*.json
+          retention-days: 30
+
       - name: Verify generated code imports
         run: |
           source .venv/bin/activate
@@ -138,20 +152,6 @@ jobs:
           find packages/v${FFMPEG_MAJOR}/src/ffmpeg/ -name '*.py' | head -20 >> $GITHUB_STEP_SUMMARY
           find packages/v${FFMPEG_MAJOR}/src/ffmpeg/ -name '*.py' -exec wc -l {} + 2>/dev/null | tail -1 >> $GITHUB_STEP_SUMMARY || true
           echo '```' >> $GITHUB_STEP_SUMMARY
-
-      - name: Upload generated bindings
-        uses: actions/upload-artifact@v4
-        with:
-          name: ffmpeg-v${{ matrix.ffmpeg-version }}-bindings
-          path: packages/v${{ matrix.ffmpeg-version }}/src/ffmpeg/
-          retention-days: 30
-
-      - name: Upload version cache
-        uses: actions/upload-artifact@v4
-        with:
-          name: ffmpeg-v${{ matrix.ffmpeg-version }}-cache
-          path: packages/core/src/ffmpeg_core/common/cache/list/*_${{ matrix.ffmpeg-version }}_*.json
-          retention-days: 30
 
   create-pr:
     needs: generate
