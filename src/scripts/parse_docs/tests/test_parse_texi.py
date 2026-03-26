@@ -1,6 +1,5 @@
 """Tests for the Texinfo parser module."""
 
-import tempfile
 from pathlib import Path
 
 import pytest
@@ -341,55 +340,54 @@ Set list of delays in milliseconds.
 """
 
 
-def _write_texi_tempfile() -> Path:
-    f = tempfile.NamedTemporaryFile(mode="w", suffix=".texi", delete=False)
-    f.write(SAMPLE_TEXI_FILE)
-    f.flush()
-    f.close()
-    return Path(f.name)
+@pytest.fixture()
+def texi_tempfile(tmp_path: Path) -> Path:
+    p = tmp_path / "sample.texi"
+    p.write_text(SAMPLE_TEXI_FILE)
+    return p
 
 
-def test_process_texi_docs_returns_filter_documents() -> None:
-    docs = process_texi_docs(_write_texi_tempfile())
+def test_process_texi_docs_returns_filter_documents(texi_tempfile: Path) -> None:
+    docs = process_texi_docs(texi_tempfile)
     assert len(docs) == 2
     assert all(isinstance(d, FilterDocument) for d in docs)
 
 
-def test_process_texi_docs_filter_names() -> None:
-    docs = process_texi_docs(_write_texi_tempfile())
+def test_process_texi_docs_filter_names(texi_tempfile: Path) -> None:
+    docs = process_texi_docs(texi_tempfile)
     names = [d.filter_names for d in docs]
     assert ("acrossfade",) in names
     assert ("adelay",) in names
 
 
-def test_process_texi_docs_description() -> None:
-    docs = process_texi_docs(_write_texi_tempfile())
+def test_process_texi_docs_description(texi_tempfile: Path) -> None:
+    docs = process_texi_docs(texi_tempfile)
     acrossfade = [d for d in docs if "acrossfade" in d.filter_names][0]
     assert "cross fade" in acrossfade.description
 
 
-def test_process_texi_docs_hash() -> None:
-    docs = process_texi_docs(_write_texi_tempfile())
+def test_process_texi_docs_hash(texi_tempfile: Path) -> None:
+    docs = process_texi_docs(texi_tempfile)
     acrossfade = [d for d in docs if "acrossfade" in d.filter_names][0]
     assert acrossfade.hash == "acrossfade"
 
 
-def test_process_texi_docs_section_index() -> None:
-    docs = process_texi_docs(_write_texi_tempfile())
+def test_process_texi_docs_section_index(texi_tempfile: Path) -> None:
+    docs = process_texi_docs(texi_tempfile)
     assert all(d.section_index == "" for d in docs)
 
 
-def test_process_texi_docs_body() -> None:
-    docs = process_texi_docs(_write_texi_tempfile())
+def test_process_texi_docs_body(texi_tempfile: Path) -> None:
+    docs = process_texi_docs(texi_tempfile)
     acrossfade = [d for d in docs if "acrossfade" in d.filter_names][0]
     assert "@table @option" in acrossfade.body
 
 
-def test_extract_texi_docs_finds_filter() -> None:
-    doc = extract_texi_docs("acrossfade", _write_texi_tempfile())
+def test_extract_texi_docs_finds_filter(texi_tempfile: Path) -> None:
+    doc = extract_texi_docs("acrossfade", texi_tempfile)
     assert "acrossfade" in doc.filter_names
 
 
-def test_extract_texi_docs_raises_for_unknown() -> None:
+def test_extract_texi_docs_raises_for_unknown(texi_tempfile: Path) -> None:
     with pytest.raises(ValueError, match="Unknown filter"):
-        extract_texi_docs("nonexistent", _write_texi_tempfile())
+        extract_texi_docs("nonexistent", texi_tempfile)

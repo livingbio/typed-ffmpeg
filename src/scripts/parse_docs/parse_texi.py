@@ -63,7 +63,7 @@ class TexiFilterSection:
 
 def _parse_options_table(body: str) -> dict[str, str]:
     """
-    Parse the first top-level @table @option block into option name -> description.
+    Parse all top-level @table @option blocks into option name -> description.
 
     Args:
         body: Texinfo body text that may contain @table @option blocks
@@ -72,7 +72,7 @@ def _parse_options_table(body: str) -> dict[str, str]:
         Dictionary mapping option names to their description text
 
     """
-    # Find the first @table @option ... @end table block (top-level only)
+    # Find all @table @option ... @end table blocks (top-level only)
     # We need to handle nested @table blocks by counting depth
     lines = body.split("\n")
     in_table = False
@@ -92,7 +92,8 @@ def _parse_options_table(body: str) -> dict[str, str]:
             elif stripped == "@end table":
                 depth -= 1
                 if depth == 0:
-                    break
+                    in_table = False
+                    continue
             if depth == 1:
                 table_lines.append(line)
 
