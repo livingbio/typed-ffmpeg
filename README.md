@@ -1,6 +1,6 @@
 ## typed-ffmpeg
 
-[![CI Package](https://github.com/livingbio/typed-ffmpeg/actions/workflows/ci-package.yml/badge.svg)](https://github.com/livingbio/typed-ffmpeg/actions?query=workflow%3Aci-package)
+[![CI Package](https://github.com/livingbio/typed-ffmpeg/actions/workflows/ci-package-test.yml/badge.svg)](https://github.com/livingbio/typed-ffmpeg/actions/workflows/ci-package-test.yml)
 [![Documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://livingbio.github.io/typed-ffmpeg/)
 [![PyPI Version](https://img.shields.io/pypi/v/typed-ffmpeg.svg)](https://pypi.org/project/typed-ffmpeg/)
 [![codecov](https://codecov.io/gh/livingbio/typed-ffmpeg/graph/badge.svg?token=B95PR629LP)](https://codecov.io/gh/livingbio/typed-ffmpeg)
