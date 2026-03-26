@@ -1,19 +1,15 @@
 """
 FFmpeg Documentation Parsing Package.
 
-This package contains modules for downloading, parsing, and extracting
-information from the official FFmpeg documentation. The main functionality includes:
+This package contains modules for parsing FFmpeg filter documentation
+from version-correct Texinfo (.texi) source files included in FFmpeg
+source tarballs.
 
-- Downloading HTML documentation from the FFmpeg website
-- Parsing filter documentation to extract structured information
-- Extracting URLs, descriptions, and metadata from documentation
-- Caching parsed documentation for faster subsequent access
-
-These modules help provide context and reference information for FFmpeg filters
-that may not be available through command-line help or source code alone,
-enriching the generated type annotations with more detailed documentation.
+The primary path uses parse_texi to extract filter descriptions and
+parameter documentation from doc/filters.texi. A legacy HTML download
+path from ffmpeg.org is retained as a fallback.
 """
 
-from . import cli, schema
+from . import cli, parse_texi, schema
 
-__all__ = ["cli", "schema"]
+__all__ = ["cli", "parse_texi", "schema"]
