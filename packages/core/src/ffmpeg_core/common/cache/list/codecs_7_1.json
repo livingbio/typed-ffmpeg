@@ -17928,6 +17928,86 @@
   },
   {
     "__class__": "FFMpegDecoder",
+    "description": "dav1d AV1 decoder by VideoLAN (codec av1)",
+    "flags": "V.....",
+    "name": "libdav1d",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": ".D.V......P",
+        "help": "Tile threads (from 0 to 256) (default 0)",
+        "max": "256",
+        "min": "0",
+        "name": "tilethreads",
+        "section": "libdav1d decoder AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": ".D.V......P",
+        "help": "Frame threads (from 0 to 256) (default 0)",
+        "max": "256",
+        "min": "0",
+        "name": "framethreads",
+        "section": "libdav1d decoder AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": ".D.V.......",
+        "help": "Max frame delay (from 0 to 256) (default 0)",
+        "max": "256",
+        "min": "0",
+        "name": "max_frame_delay",
+        "section": "libdav1d decoder AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "auto",
+        "flags": ".D.V......P",
+        "help": "Apply Film Grain (default auto)",
+        "max": null,
+        "min": null,
+        "name": "filmgrain",
+        "section": "libdav1d decoder AVOptions:",
+        "type": "boolean"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "-1",
+        "flags": ".D.V.......",
+        "help": "Select an operating point of the scalable bitstream (from -1 to 31) (default -1)",
+        "max": "31",
+        "min": "-1",
+        "name": "oppoint",
+        "section": "libdav1d decoder AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "false",
+        "flags": ".D.V.......",
+        "help": "Output all spatial layers (default false)",
+        "max": null,
+        "min": null,
+        "name": "alllayers",
+        "section": "libdav1d decoder AVOptions:",
+        "type": "boolean"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegDecoder",
     "description": "Alliance for Open Media AV1",
     "flags": "V....D",
     "name": "av1",

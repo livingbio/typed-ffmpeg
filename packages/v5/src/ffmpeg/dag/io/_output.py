@@ -156,275 +156,275 @@ def output(
         inputs=streams,
         filename=str(filename),
         kwargs=merge({
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 "f": f,
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
                 "c": c,
-
+                
                 "codec": codec,
-
+                
                 "pre": pre,
-
+                
                 "map": map,
-
+                
                 "map_channel": map_channel,
-
+                
                 "map_metadata": map_metadata,
-
+                
                 "map_chapters": map_chapters,
-
+                
                 "t": t,
-
+                
                 "to": to,
-
+                
                 "fs": fs,
-
+                
                 "ss": ss,
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
                 "timestamp": timestamp,
-
+                
                 "metadata": metadata,
-
+                
                 "program": program,
-
+                
                 "dframes": dframes,
-
-
-
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 "target": target,
-
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
+                
                 "shortest": shortest,
-
+                
                 "bitexact": bitexact,
-
+                
                 "apad": apad,
-
-
-
-
-
+                
+                
+                
+                
+                
                 "copyinkf": copyinkf,
-
+                
                 "copypriorss": copypriorss,
-
+                
                 "frames": frames,
-
+                
                 "tag": tag,
-
+                
                 "q": q,
-
+                
                 "qscale": qscale,
-
+                
                 "profile": profile,
-
+                
                 "filter": filter,
-
-
+                
+                
                 "filter_script": filter_script,
-
-
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 "attach": attach,
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
                 "disposition": disposition,
-
-
-
+                
+                
+                
                 "bits_per_raw_sample": bits_per_raw_sample,
-
+                
                 "vframes": vframes,
-
+                
                 "r": r,
-
+                
                 "fpsmax": fpsmax,
-
+                
                 "s": s,
-
+                
                 "aspect": aspect,
-
+                
                 "pix_fmt": pix_fmt,
-
+                
                 "vn": vn,
-
+                
                 "rc_override": rc_override,
-
+                
                 "vcodec": vcodec,
-
+                
                 "timecode": timecode,
-
+                
                 "pass": _pass,
-
+                
                 "passlogfile": passlogfile,
-
-
-
-
-
+                
+                
+                
+                
+                
                 "vf": vf,
-
+                
                 "intra_matrix": intra_matrix,
-
+                
                 "inter_matrix": inter_matrix,
-
+                
                 "chroma_intra_matrix": chroma_intra_matrix,
-
+                
                 "top": top,
-
+                
                 "vtag": vtag,
-
-
+                
+                
                 "fps_mode": fps_mode,
-
+                
                 "force_fps": force_fps,
-
+                
                 "streamid": streamid,
-
+                
                 "force_key_frames": force_key_frames,
-
+                
                 "ab": ab,
-
+                
                 "b": b,
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
                 "autoscale": autoscale,
-
+                
                 "aframes": aframes,
-
+                
                 "aq": aq,
-
+                
                 "ar": ar,
-
+                
                 "ac": ac,
-
+                
                 "an": an,
-
+                
                 "acodec": acodec,
-
+                
                 "atag": atag,
-
-
+                
+                
                 "sample_fmt": sample_fmt,
-
+                
                 "channel_layout": channel_layout,
-
+                
                 "ch_layout": ch_layout,
-
+                
                 "af": af,
-
-
+                
+                
                 "sn": sn,
-
+                
                 "scodec": scodec,
-
+                
                 "stag": stag,
-
-
-
+                
+                
+                
                 "muxdelay": muxdelay,
-
+                
                 "muxpreload": muxpreload,
-
+                
                 "sdp_file": sdp_file,
-
+                
                 "time_base": time_base,
-
+                
                 "enc_time_base": enc_time_base,
-
+                
                 "bsf": bsf,
-
+                
                 "absf": absf,
-
+                
                 "vbsf": vbsf,
-
+                
                 "apre": apre,
-
+                
                 "vpre": vpre,
-
+                
                 "spre": spre,
-
+                
                 "fpre": fpre,
-
+                
                 "max_muxing_queue_size": max_muxing_queue_size,
-
+                
                 "muxing_queue_data_threshold": muxing_queue_data_threshold,
-
+                
                 "dcodec": dcodec,
-
+                
                 "dn": dn,
-
-
-
-
-
+                
+                
+                
+                
+                
         }, encoder_options, muxer_options, format_options, codec_options, extra_options )
     ).stream()
