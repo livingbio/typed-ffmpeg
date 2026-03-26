@@ -288,6 +288,8 @@ def normalize_help_text(text: str) -> str:
     normalized = re.sub(r"\n\s*", " ", normalized)
     # Replace multiple spaces with a single space
     normalized = re.sub(r"\s+", " ", normalized)
+    # Strip backslash-escapes before quotes (invalid in Python docstrings)
+    normalized = normalized.replace('\\"', '"')
     return normalized.strip()
 
 
