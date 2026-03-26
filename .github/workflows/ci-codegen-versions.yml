@@ -52,13 +52,13 @@ jobs:
         ffmpeg-version: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.ffmpeg-version != 'all') && fromJSON(format('["{0}"]', github.event.inputs.ffmpeg-version)) || fromJSON('["5", "6", "7", "8"]') }}
         include:
           - ffmpeg-version: '5'
-            ffmpeg-image: 'jrottenberg/ffmpeg:5.1-ubuntu'
+            ffmpeg-image: 'ghcr.io/livingbio/typed-ffmpeg/ffmpeg:5.1'
           - ffmpeg-version: '6'
-            ffmpeg-image: 'jrottenberg/ffmpeg:6.1-ubuntu'
+            ffmpeg-image: 'ghcr.io/livingbio/typed-ffmpeg/ffmpeg:6.1'
           - ffmpeg-version: '7'
-            ffmpeg-image: 'jrottenberg/ffmpeg:7.1-ubuntu'
+            ffmpeg-image: 'ghcr.io/livingbio/typed-ffmpeg/ffmpeg:7.1'
           - ffmpeg-version: '8'
-            ffmpeg-image: 'jrottenberg/ffmpeg:8.0-ubuntu'
+            ffmpeg-image: 'ghcr.io/livingbio/typed-ffmpeg/ffmpeg:8.0'
 
     steps:
       - uses: actions/checkout@v6
