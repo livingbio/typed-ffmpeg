@@ -17,13 +17,12 @@ jobs:
         include:
           - ffmpeg-version: '5'
             ffmpeg-image: 'jrottenberg/ffmpeg:5.1-ubuntu'
-            build-from-source: false
           - ffmpeg-version: '6'
             ffmpeg-image: 'jrottenberg/ffmpeg:6.1-ubuntu'
-            build-from-source: false
           - ffmpeg-version: '7'
-            ffmpeg-source-tag: 'n7.1'
-            build-from-source: true
+            ffmpeg-image: 'jrottenberg/ffmpeg:7.1-ubuntu'
+          - ffmpeg-version: '8'
+            ffmpeg-image: 'jrottenberg/ffmpeg:8.0-ubuntu'
 
     steps:
       - uses: actions/checkout@v4
@@ -33,13 +32,7 @@ jobs:
         with:
           python-version: '3.10'
 
-      # ── FFmpeg 5 / 6: extract binary from Docker image ──────────────────────
-      - name: Install build dependencies (Docker path)
-        if: ${{ !matrix.build-from-source }}
-        run: sudo apt-get update && sudo apt-get install -y build-essential nasm
-
       - name: Extract FFmpeg ${{ matrix.ffmpeg-version }} from Docker image
-        if: ${{ !matrix.build-from-source }}
         run: |
           docker pull ${{ matrix.ffmpeg-image }}
           CONTAINER_ID=$(docker create ${{ matrix.ffmpeg-image }})
@@ -52,66 +45,11 @@ jobs:
           docker rm "$CONTAINER_ID"
           sudo ldconfig
           ffmpeg -version | head -1
-
-      # ── FFmpeg 7: build from source with full hardware-filter support ────────
-      - name: Install build dependencies (source build)
-        if: ${{ matrix.build-from-source }}
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            build-essential nasm yasm pkg-config git wget \
-            libva-dev libdrm-dev \
-            libvulkan-dev glslang-tools \
-            ladspa-sdk libladspa-ocaml-dev \
-            lv2-dev \
-            ocl-icd-opencl-dev opencl-headers \
-            libssl-dev zlib1g-dev \
-            libx264-dev libx265-dev libvpx-dev \
-            libfdk-aac-dev libmp3lame-dev libopus-dev libvorbis-dev \
-            libfreetype6-dev libass-dev \
-            libtheora-dev
-
-      - name: Build FFmpeg ${{ matrix.ffmpeg-version }} from source
-        if: ${{ matrix.build-from-source }}
-        run: |
-          FFMPEG_TAG="${{ matrix.ffmpeg-source-tag }}"
-          wget -q "https://github.com/FFmpeg/FFmpeg/archive/refs/tags/${FFMPEG_TAG}.tar.gz" -O /tmp/ffmpeg.tar.gz
-          tar -xf /tmp/ffmpeg.tar.gz -C /tmp
-          # Directory name: FFmpeg-<tag without leading 'n'>
-          SRCDIR="/tmp/FFmpeg-${FFMPEG_TAG#n}"
-          cd "$SRCDIR"
-          ./configure \
-            --prefix=/usr/local \
-            --enable-gpl \
-            --enable-nonfree \
-            --enable-openssl \
-            --enable-opencl \
-            --enable-vaapi \
-            --enable-vulkan \
-            --enable-ladspa \
-            --enable-lv2 \
-            --enable-libx264 \
-            --enable-libx265 \
-            --enable-libvpx \
-            --enable-libfdk-aac \
-            --enable-libmp3lame \
-            --enable-libopus \
-            --enable-libvorbis \
-            --enable-libfreetype \
-            --enable-libass \
-            --enable-libtheora \
-            --disable-debug \
-            --disable-doc \
-            --disable-htmlpages \
-            --disable-manpages \
-            --disable-podpages \
-            --disable-txtpages
-          make -j$(nproc)
-          sudo make install
-          sudo ldconfig
-          ffmpeg -version | head -1
-          echo "--- Filters containing 'opencl', 'vulkan', 'vaapi', 'ladspa', 'lv2', 'cuda' ---"
+          echo "--- Filters with hardware acceleration ---"
           ffmpeg -filters 2>/dev/null | grep -iE 'opencl|vulkan|vaapi|ladspa|lv2|cuda' || true
+
+      - name: Install build tools for codegen (nasm/yasm needed for FFmpeg source compile)
+        run: sudo apt-get update && sudo apt-get install -y nasm yasm build-essential
 
       - name: Install uv
         run: pip install uv
@@ -149,6 +87,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: v4
 
       - name: Download all generated bindings
         uses: actions/download-artifact@v4
@@ -164,7 +104,7 @@ jobs:
 
       - name: Apply generated files
         run: |
-          for V in 5 6 7; do
+          for V in 5 6 7 8; do
             if [ -d "/tmp/bindings/bindings-v${V}" ]; then
               echo "Applying v${V} bindings..."
               rsync -a --delete "/tmp/bindings/bindings-v${V}/" "packages/v${V}/src/ffmpeg/"
@@ -192,16 +132,16 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
-          git add packages/v5/src/ffmpeg/ packages/v6/src/ffmpeg/ packages/v7/src/ffmpeg/
+          git add packages/v5/src/ffmpeg/ packages/v6/src/ffmpeg/ packages/v7/src/ffmpeg/ packages/v8/src/ffmpeg/
           git add packages/core/src/ffmpeg_core/common/cache/list/
-          git commit -m "chore: regenerate bindings for FFmpeg v5/v6/v7"
+          git commit -m "chore: regenerate bindings for FFmpeg v5/v6/v7/v8"
           git push origin "$BRANCH"
           gh pr create \
-            --title "chore: regenerate bindings for FFmpeg v5/v6/v7" \
+            --title "chore: regenerate bindings for FFmpeg v5/v6/v7/v8" \
             --body "Auto-generated by the [CodeGen workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).
 
-Fixes #836 — FFmpeg v7 is now built from source with \`--enable-opencl\`, \`--enable-vulkan\`, \`--enable-vaapi\`, \`--enable-ladspa\`, and \`--enable-lv2\` so that hardware-accelerated filters (blend_vulkan, hstack_vaapi, ladspa, lv2, overlay_opencl, etc.) appear in \`ffmpeg -filters\` output and are included in the generated bindings." \
-            --base main \
+Uses \`jrottenberg/ffmpeg\` Docker images (5.1, 6.1, 7.1, 8.0) which include VAAPI hardware-accelerated filters." \
+            --base v4 \
             --head "$BRANCH"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

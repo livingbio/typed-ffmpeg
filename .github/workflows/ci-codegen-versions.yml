@@ -5,7 +5,7 @@ permissions:
 
 on:
   push:
-    branches: [main]
+    branches: [main, v4]
     paths:
       - '.github/workflows/ci-codegen-versions.yml'
       - 'src/scripts/code_gen/**'
@@ -15,7 +15,7 @@ on:
       - 'src/scripts/manual/**'
       - 'packages/core/src/ffmpeg_core/common/**'
   pull_request:
-    branches: [main]
+    branches: [main, v4]
     paths:
       - '.github/workflows/ci-codegen-versions.yml'
       - 'src/scripts/code_gen/**'
@@ -27,7 +27,7 @@ on:
   workflow_dispatch:
     inputs:
       ffmpeg-version:
-        description: 'FFmpeg major version to generate (5, 6, 7, or all)'
+        description: 'FFmpeg major version to generate (5, 6, 7, 8, or all)'
         required: true
         default: 'all'
         type: choice
@@ -35,6 +35,7 @@ on:
           - '5'
           - '6'
           - '7'
+          - '8'
           - 'all'
 
 jobs:
@@ -43,17 +44,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ffmpeg-version: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.ffmpeg-version != 'all') && fromJSON(format('["{0}"]', github.event.inputs.ffmpeg-version)) || fromJSON('["5", "6", "7"]') }}
+        ffmpeg-version: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.ffmpeg-version != 'all') && fromJSON(format('["{0}"]', github.event.inputs.ffmpeg-version)) || fromJSON('["5", "6", "7", "8"]') }}
         include:
           - ffmpeg-version: '5'
             ffmpeg-image: 'jrottenberg/ffmpeg:5.1-ubuntu'
-            build-from-source: false
           - ffmpeg-version: '6'
             ffmpeg-image: 'jrottenberg/ffmpeg:6.1-ubuntu'
-            build-from-source: false
           - ffmpeg-version: '7'
-            ffmpeg-source-tag: 'n7.1'
-            build-from-source: true
+            ffmpeg-image: 'jrottenberg/ffmpeg:7.1-ubuntu'
+          - ffmpeg-version: '8'
+            ffmpeg-image: 'jrottenberg/ffmpeg:8.0-ubuntu'
 
     steps:
       - uses: actions/checkout@v6
@@ -63,88 +63,24 @@ jobs:
         with:
           python-version: '3.10'
 
-      # ── FFmpeg 5 / 6: extract binary from Docker image ──────────────────────
-      - name: Install build dependencies (Docker path)
-        if: ${{ !matrix.build-from-source }}
-        run: sudo apt-get update && sudo apt-get install -y build-essential nasm
-
       - name: Extract FFmpeg ${{ matrix.ffmpeg-version }} from Docker image
-        if: ${{ !matrix.build-from-source }}
         run: |
-          # Pull the Docker image and copy ffmpeg/ffprobe binaries + shared libs
           docker pull ${{ matrix.ffmpeg-image }}
           CONTAINER_ID=$(docker create ${{ matrix.ffmpeg-image }})
-          # Copy binaries
           sudo docker cp "$CONTAINER_ID:/usr/local/bin/ffmpeg" /usr/local/bin/ffmpeg || \
             sudo docker cp "$CONTAINER_ID:/usr/bin/ffmpeg" /usr/local/bin/ffmpeg
           sudo docker cp "$CONTAINER_ID:/usr/local/bin/ffprobe" /usr/local/bin/ffprobe || \
             sudo docker cp "$CONTAINER_ID:/usr/bin/ffprobe" /usr/local/bin/ffprobe
-          # Copy shared libraries needed by the dynamically linked binaries
           docker cp "$CONTAINER_ID:/usr/local/lib" /tmp/ffmpeg-libs
           sudo cp -a /tmp/ffmpeg-libs/. /usr/local/lib/
           docker rm "$CONTAINER_ID"
           sudo ldconfig
           ffmpeg -version | head -1
-
-      # ── FFmpeg 7: build from source with full hardware-filter support ────────
-      - name: Install build dependencies (source build)
-        if: ${{ matrix.build-from-source }}
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            build-essential nasm yasm pkg-config git wget \
-            libva-dev libdrm-dev \
-            libvulkan-dev glslang-tools \
-            ladspa-sdk \
-            lv2-dev \
-            ocl-icd-opencl-dev opencl-headers \
-            libssl-dev zlib1g-dev \
-            libx264-dev libx265-dev libvpx-dev \
-            libfdk-aac-dev libmp3lame-dev libopus-dev libvorbis-dev \
-            libfreetype6-dev libass-dev \
-            libtheora-dev
-
-      - name: Build FFmpeg ${{ matrix.ffmpeg-version }} from source
-        if: ${{ matrix.build-from-source }}
-        run: |
-          FFMPEG_TAG="${{ matrix.ffmpeg-source-tag }}"
-          wget -q "https://github.com/FFmpeg/FFmpeg/archive/refs/tags/${FFMPEG_TAG}.tar.gz" -O /tmp/ffmpeg.tar.gz
-          tar -xf /tmp/ffmpeg.tar.gz -C /tmp
-          # Directory name: FFmpeg-<tag without leading 'n'>
-          SRCDIR="/tmp/FFmpeg-${FFMPEG_TAG#n}"
-          cd "$SRCDIR"
-          ./configure \
-            --prefix=/usr/local \
-            --enable-gpl \
-            --enable-nonfree \
-            --enable-openssl \
-            --enable-opencl \
-            --enable-vaapi \
-            --enable-vulkan \
-            --enable-ladspa \
-            --enable-lv2 \
-            --enable-libx264 \
-            --enable-libx265 \
-            --enable-libvpx \
-            --enable-libfdk-aac \
-            --enable-libmp3lame \
-            --enable-libopus \
-            --enable-libvorbis \
-            --enable-libfreetype \
-            --enable-libass \
-            --enable-libtheora \
-            --disable-debug \
-            --disable-doc \
-            --disable-htmlpages \
-            --disable-manpages \
-            --disable-podpages \
-            --disable-txtpages
-          make -j$(nproc)
-          sudo make install
-          sudo ldconfig
-          ffmpeg -version | head -1
           echo "--- Filters with hardware acceleration ---"
           ffmpeg -filters 2>/dev/null | grep -iE 'opencl|vulkan|vaapi|ladspa|lv2|cuda' || true
+
+      - name: Install build tools for codegen (nasm/yasm needed for FFmpeg source compile)
+        run: sudo apt-get update && sudo apt-get install -y nasm yasm build-essential
 
       - name: Install uv
         run: pip install uv
