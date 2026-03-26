@@ -89,8 +89,7 @@ jobs:
           FFMPEG_TAG="${{ matrix.ffmpeg-source-tag }}"
           wget -q "https://github.com/FFmpeg/FFmpeg/archive/refs/tags/${FFMPEG_TAG}.tar.gz" -O /tmp/ffmpeg.tar.gz
           tar -xf /tmp/ffmpeg.tar.gz -C /tmp
-          # Directory name: FFmpeg-<tag without leading 'n'>
-          SRCDIR="/tmp/FFmpeg-${FFMPEG_TAG#n}"
+          SRCDIR="/tmp/FFmpeg-${FFMPEG_TAG}"
           cd "$SRCDIR"
           ./configure \
             --prefix=/usr/local \
