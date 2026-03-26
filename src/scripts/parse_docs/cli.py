@@ -10,6 +10,7 @@ import typer
 from ffmpeg_core.common.cache import cache_path, save
 
 from .helpers import parse_filter_document
+from .parse_texi import parse_texi_sections
 from .schema import FilterDocument
 
 app = typer.Typer()
@@ -99,3 +100,56 @@ def extract_docs(filter_name: str) -> FilterDocument:
             return doc
 
     raise ValueError(f"Unknown filter {filter_name}")
+
+
+def process_texi_docs(texi_path: Path) -> list[FilterDocument]:
+    """
+    Process a Texinfo file and return FilterDocument objects for each filter section.
+
+    Args:
+        texi_path: Path to a .texi file (e.g. doc/filters.texi from FFmpeg source)
+
+    Returns:
+        List of FilterDocument objects with texi-based descriptions
+
+    """
+    texi_content = texi_path.read_text(encoding="utf-8")
+    sections = parse_texi_sections(texi_content)
+
+    docs: list[FilterDocument] = []
+    for section in sections:
+        title = ", ".join(section.filter_names)
+        doc = FilterDocument(
+            section_index="",
+            hash=section.filter_names[0],
+            title=title,
+            body=section.raw_body,
+            filter_names=section.filter_names,
+            _texi_description=section.description,
+            _texi_parameter_descs=section.parameter_descs,
+        )
+        docs.append(doc)
+
+    return docs
+
+
+def extract_texi_docs(filter_name: str, texi_path: Path) -> FilterDocument:
+    """
+    Extract a specific filter's documentation from a Texinfo file.
+
+    Args:
+        filter_name: The name of the filter to find
+        texi_path: Path to a .texi file
+
+    Returns:
+        FilterDocument object for the requested filter
+
+    Raises:
+        ValueError: If the filter is not found in the texi file.
+
+    """
+    for doc in process_texi_docs(texi_path):
+        if filter_name in doc.filter_names:
+            return doc
+
+    raise ValueError(f"Unknown filter {filter_name} in {texi_path}")
