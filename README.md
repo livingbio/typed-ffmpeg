@@ -39,43 +39,48 @@
 
 ### Multi-Version FFmpeg Support
 
-`typed-ffmpeg` ships pre-generated typed bindings for FFmpeg **5.x, 6.x, 7.x, and 8.x**. By default, imports use the latest version:
+typed-ffmpeg v4 ships separate PyPI packages for each FFmpeg major version. Install only the bindings you need:
 
-```python
-from ffmpeg.filters import concat, overlay  # Uses FFmpeg 8.x types
+| Package | FFmpeg version |
+|---------|----------------|
+| `typed-ffmpeg` | Latest (v8) — recommended for most users |
+| `typed-ffmpeg-v5` | FFmpeg 5.x |
+| `typed-ffmpeg-v6` | FFmpeg 6.x |
+| `typed-ffmpeg-v7` | FFmpeg 7.x |
+| `typed-ffmpeg-v8` | FFmpeg 8.x |
+
+All packages expose the same `ffmpeg` namespace, so your code works identically regardless of which package you install.
+
+To match your installed FFmpeg version:
+
+```bash
+ffmpeg -version | head -1        # e.g. ffmpeg version 6.1.1
+pip install typed-ffmpeg-v6      # install the matching package
 ```
 
-To match your installed FFmpeg version, import from the version-specific submodule:
-
-```python
-from ffmpeg.v6.filters import concat, overlay
-from ffmpeg.v6.codecs.encoders import libx264
-from ffmpeg.v7.streams.video import VideoStream
-```
-
-Check available versions at runtime:
-
-```python
-import ffmpeg.versions
-ffmpeg.versions.available()  # ['5', '6', '7', '8']
-ffmpeg.versions.default      # '8'
-```
-
-Generated docstrings include version notes (e.g., "New in FFmpeg 7.0." or "Removed in FFmpeg 8.0.") to help with migration.
+See the [v4 Package Architecture](https://livingbio.github.io/typed-ffmpeg/v4-packages/) docs for details and the [Migration Guide](https://livingbio.github.io/typed-ffmpeg/migration/v3-to-v4/) if you are upgrading from typed-ffmpeg 3.x.
 
 ---
 
 ## Installation
 
-To install `typed-ffmpeg`, simply use pip:
+Install the latest version (bindings for FFmpeg 8.x):
 
 ```bash
 pip install typed-ffmpeg
 ```
 
+Or install bindings for a specific FFmpeg version:
+
+```bash
+pip install typed-ffmpeg-v6   # FFmpeg 6.x
+pip install typed-ffmpeg-v7   # FFmpeg 7.x
+pip install typed-ffmpeg-v8   # FFmpeg 8.x
+```
+
 Note: FFmpeg must be installed on your system.
 
-Note: If you need to install `ffmpeg-python` at the same time, use `pip install typed-ffmpeg-compatible` to prevent conflicts with the module name.​
+Note: If you need to install `ffmpeg-python` at the same time, use `pip install typed-ffmpeg-compatible` to prevent conflicts with the module name.
 
 ### Visualization Support
 
