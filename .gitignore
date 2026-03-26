@@ -209,3 +209,4 @@ out/
 output.mp4
 ffmpeg/
 .claude/
+docs/_stubs/

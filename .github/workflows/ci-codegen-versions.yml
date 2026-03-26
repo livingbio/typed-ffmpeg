@@ -69,7 +69,6 @@ jobs:
 
       # ── All versions: build from source with full hardware-filter support ──────
       - name: Install build dependencies (source build)
-        if: ${{ matrix.build-from-source }}
         run: |
           sudo apt-get update
           sudo apt-get install -y \
@@ -86,7 +85,6 @@ jobs:
             libtheora-dev
 
       - name: Build FFmpeg ${{ matrix.ffmpeg-version }} from source
-        if: ${{ matrix.build-from-source }}
         run: |
           FFMPEG_TAG="${{ matrix.ffmpeg-source-tag }}"
           wget -q "https://github.com/FFmpeg/FFmpeg/archive/refs/tags/${FFMPEG_TAG}.tar.gz" -O /tmp/ffmpeg.tar.gz
