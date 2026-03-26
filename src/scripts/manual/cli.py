@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 import typer
+
 from ffmpeg_core.common.cache import load, save
 
 from ..parse_help.cli import all_filters
