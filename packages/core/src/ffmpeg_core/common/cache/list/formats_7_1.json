@@ -1484,13 +1484,6 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "audiotoolbox    AudioToolbox output device",
-    "flags": "E",
-    "name": "d",
-    "options": []
-  },
-  {
-    "__class__": "FFMpegMuxer",
     "description": "AVI (Audio Video Interleaved)",
     "flags": "E",
     "name": "avi",
@@ -2783,6 +2776,13 @@
     "description": "PCM 64-bit floating-point little-endian",
     "flags": "E",
     "name": "f64le",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegMuxer",
+    "description": "fbdev           Linux framebuffer",
+    "flags": "E",
+    "name": "d",
     "options": []
   },
   {
@@ -7391,6 +7391,13 @@
   },
   {
     "__class__": "FFMpegMuxer",
+    "description": "oss             OSS (Open Sound System) playback",
+    "flags": "E",
+    "name": "d",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegMuxer",
     "description": "PSP MP4 (MPEG-4 Part 14)",
     "flags": "E",
     "name": "psp",
@@ -8291,13 +8298,6 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "sdl,sdl2        SDL2 output device",
-    "flags": "E",
-    "name": "d",
-    "options": []
-  },
-  {
-    "__class__": "FFMpegMuxer",
     "description": "segment",
     "flags": "E",
     "name": "segment",
@@ -9121,6 +9121,13 @@
     "description": "PCM Archimedes VIDC",
     "flags": "E",
     "name": "vidc",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegMuxer",
+    "description": "video4linux2,v4l2 Video4Linux2 output device",
+    "flags": "E",
+    "name": "d",
     "options": []
   },
   {
@@ -10388,13 +10395,6 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "avfoundation    AVFoundation input device",
-    "flags": "D",
-    "name": "d",
-    "options": []
-  },
-  {
-    "__class__": "FFMpegDemuxer",
     "description": "AVI (Audio Video Interleaved)",
     "flags": "D",
     "name": "avi",
@@ -11219,38 +11219,6 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "Dynamic Adaptive Streaming over HTTP",
-    "flags": "D",
-    "name": "dash",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "aac,m4a,m4s,m4v,mov,mp4,webm,ts",
-        "flags": ".D.........",
-        "help": "List of file extensions that dash is allowed to access (default \"aac,m4a,m4s,m4v,mov,mp4,webm,ts\")",
-        "max": null,
-        "min": null,
-        "name": "allowed_extensions",
-        "section": "dash AVOptions:",
-        "type": "string"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": null,
-        "flags": ".D.........",
-        "help": "Media decryption key (hex)",
-        "max": null,
-        "min": null,
-        "name": "cenc_decryption_key",
-        "section": "dash AVOptions:",
-        "type": "string"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDemuxer",
     "description": "raw data",
     "flags": "D",
     "name": "data",
@@ -11907,6 +11875,13 @@
         "type": "channel_layout"
       }
     ]
+  },
+  {
+    "__class__": "FFMpegDemuxer",
+    "description": "fbdev           Linux framebuffer",
+    "flags": "D",
+    "name": "d",
+    "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
@@ -12677,24 +12652,12 @@
       {
         "__class__": "FFMpegAVOption",
         "choices": [],
-        "default": "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt,cmfv,cmfa,ec3,fmp4",
+        "default": "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,wav",
         "flags": ".D.........",
-        "help": "List of file extensions that hls is allowed to access (default \"3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt,cmfv,cmfa,ec3,fmp4\")",
+        "help": "List of file extensions that hls is allowed to access (default \"3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,wav\")",
         "max": null,
         "min": null,
         "name": "allowed_extensions",
-        "section": "hls demuxer AVOptions:",
-        "type": "string"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt,cmfv,cmfa,ec3,fmp4,html",
-        "flags": ".D.........",
-        "help": "List of file extensions that hls is allowed to access (default \"3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt,cmfv,cmfa,ec3,fmp4,html\")",
-        "max": null,
-        "min": null,
-        "name": "allowed_segment_extensions",
         "section": "hls demuxer AVOptions:",
         "type": "string"
       },
@@ -13126,26 +13089,6 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "IMF (Interoperable Master Format)",
-    "flags": "D",
-    "name": "imf",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": null,
-        "flags": ".D.........",
-        "help": "Comma-separated paths to ASSETMAP files.If not specified, the `ASSETMAP.xml` file in the same directory as the CPL is used.",
-        "max": null,
-        "min": null,
-        "name": "assetmaps",
-        "section": "imf AVOptions:",
-        "type": "string"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDemuxer",
     "description": "raw Ingenient MJPEG",
     "flags": "D",
     "name": "ingenient",
@@ -13529,6 +13472,13 @@
     "description": "Bitmap Brothers JV",
     "flags": "D",
     "name": "jv",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegDemuxer",
+    "description": "kmsgrab         KMS screen capture",
+    "flags": "D",
+    "name": "d",
     "options": []
   },
   {
@@ -14347,6 +14297,13 @@
         "type": "int"
       }
     ]
+  },
+  {
+    "__class__": "FFMpegDemuxer",
+    "description": "oss             OSS (Open Sound System) capture",
+    "flags": "D",
+    "name": "d",
+    "options": []
   },
   {
     "__class__": "FFMpegDemuxer",
@@ -17429,6 +17386,13 @@
         "type": "channel_layout"
       }
     ]
+  },
+  {
+    "__class__": "FFMpegDemuxer",
+    "description": "video4linux2,v4l2 Video4Linux2 device grab",
+    "flags": "D",
+    "name": "d",
+    "options": []
   },
   {
     "__class__": "FFMpegDemuxer",

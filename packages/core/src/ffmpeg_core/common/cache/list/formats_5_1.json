@@ -1419,38 +1419,6 @@
   },
   {
     "__class__": "FFMpegMuxer",
-    "description": "AudioToolbox output device",
-    "flags": "E",
-    "name": "audiotoolbox",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "false",
-        "flags": "E..........",
-        "help": "list available audio devices (default false)",
-        "max": null,
-        "min": null,
-        "name": "list_devices",
-        "section": "AudioToolbox AVOptions:",
-        "type": "boolean"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "-1",
-        "flags": "E..........",
-        "help": "select audio device by index (starts at 0) (from -1 to INT_MAX) (default -1)",
-        "max": "INT_MAX",
-        "min": "-1",
-        "name": "audio_device_index",
-        "section": "AudioToolbox AVOptions:",
-        "type": "int"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegMuxer",
     "description": "AVI (Audio Video Interleaved)",
     "flags": "E",
     "name": "avi",
@@ -2705,6 +2673,38 @@
     "flags": "E",
     "name": "f64le",
     "options": []
+  },
+  {
+    "__class__": "FFMpegMuxer",
+    "description": "Linux framebuffer",
+    "flags": "E",
+    "name": "fbdev",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": "E..........",
+        "help": "set x coordinate of top left corner (from INT_MIN to INT_MAX) (default 0)",
+        "max": "INT_MAX",
+        "min": "INT_MIN",
+        "name": "xoffset",
+        "section": "fbdev outdev AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "0",
+        "flags": "E..........",
+        "help": "set y coordinate of top left corner (from INT_MIN to INT_MAX) (default 0)",
+        "max": "INT_MAX",
+        "min": "INT_MIN",
+        "name": "yoffset",
+        "section": "fbdev outdev AVOptions:",
+        "type": "int"
+      }
+    ]
   },
   {
     "__class__": "FFMpegMuxer",
@@ -7319,6 +7319,13 @@
   },
   {
     "__class__": "FFMpegMuxer",
+    "description": "OSS (Open Sound System) playback",
+    "flags": "E",
+    "name": "oss",
+    "options": []
+  },
+  {
+    "__class__": "FFMpegMuxer",
     "description": "PSP MP4 (MPEG-4 Part 14)",
     "flags": "E",
     "name": "psp",
@@ -10261,134 +10268,6 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "AVFoundation input device",
-    "flags": "D",
-    "name": "avfoundation",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "false",
-        "flags": ".D.........",
-        "help": "list available devices (default false)",
-        "max": null,
-        "min": null,
-        "name": "list_devices",
-        "section": "AVFoundation indev AVOptions:",
-        "type": "boolean"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "-1",
-        "flags": ".D.........",
-        "help": "select video device by index for devices with same name (starts at 0) (from -1 to INT_MAX) (default -1)",
-        "max": "INT_MAX",
-        "min": "-1",
-        "name": "video_device_index",
-        "section": "AVFoundation indev AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "-1",
-        "flags": ".D.........",
-        "help": "select audio device by index for devices with same name (starts at 0) (from -1 to INT_MAX) (default -1)",
-        "max": "INT_MAX",
-        "min": "-1",
-        "name": "audio_device_index",
-        "section": "AVFoundation indev AVOptions:",
-        "type": "int"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "yuv420p",
-        "flags": ".D.........",
-        "help": "set pixel format (default yuv420p)",
-        "max": null,
-        "min": null,
-        "name": "pixel_format",
-        "section": "AVFoundation indev AVOptions:",
-        "type": "pix_fmt"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "ntsc",
-        "flags": ".D.........",
-        "help": "set frame rate (default \"ntsc\")",
-        "max": null,
-        "min": null,
-        "name": "framerate",
-        "section": "AVFoundation indev AVOptions:",
-        "type": "video_rate"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": null,
-        "flags": ".D.........",
-        "help": "set video size",
-        "max": null,
-        "min": null,
-        "name": "video_size",
-        "section": "AVFoundation indev AVOptions:",
-        "type": "image_size"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "false",
-        "flags": ".D.........",
-        "help": "capture the screen cursor (default false)",
-        "max": null,
-        "min": null,
-        "name": "capture_cursor",
-        "section": "AVFoundation indev AVOptions:",
-        "type": "boolean"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "false",
-        "flags": ".D.........",
-        "help": "capture the screen mouse clicks (default false)",
-        "max": null,
-        "min": null,
-        "name": "capture_mouse_clicks",
-        "section": "AVFoundation indev AVOptions:",
-        "type": "boolean"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "false",
-        "flags": ".D.........",
-        "help": "capture the raw data from device connection (default false)",
-        "max": null,
-        "min": null,
-        "name": "capture_raw_data",
-        "section": "AVFoundation indev AVOptions:",
-        "type": "boolean"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "true",
-        "flags": ".D.........",
-        "help": "drop frames that are available later than expected (default true)",
-        "max": null,
-        "min": null,
-        "name": "drop_late_frames",
-        "section": "AVFoundation indev AVOptions:",
-        "type": "boolean"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDemuxer",
     "description": "AVI (Audio Video Interleaved)",
     "flags": "D",
     "name": "avi",
@@ -11193,38 +11072,6 @@
   },
   {
     "__class__": "FFMpegDemuxer",
-    "description": "Dynamic Adaptive Streaming over HTTP",
-    "flags": "D",
-    "name": "dash",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": "aac,m4a,m4s,m4v,mov,mp4,webm,ts",
-        "flags": ".D.........",
-        "help": "List of file extensions that dash is allowed to access (default \"aac,m4a,m4s,m4v,mov,mp4,webm,ts\")",
-        "max": null,
-        "min": null,
-        "name": "allowed_extensions",
-        "section": "dash AVOptions:",
-        "type": "string"
-      },
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": null,
-        "flags": ".D.........",
-        "help": "Media decryption key (hex)",
-        "max": null,
-        "min": null,
-        "name": "cenc_decryption_key",
-        "section": "dash AVOptions:",
-        "type": "string"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDemuxer",
     "description": "raw data",
     "flags": "D",
     "name": "data",
@@ -11906,6 +11753,26 @@
         "name": "ch_layout",
         "section": "pcm demuxer AVOptions:",
         "type": "channel_layout"
+      }
+    ]
+  },
+  {
+    "__class__": "FFMpegDemuxer",
+    "description": "Linux framebuffer",
+    "flags": "D",
+    "name": "fbdev",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "25",
+        "flags": ".D.........",
+        "help": "(default \"25\")",
+        "max": null,
+        "min": null,
+        "name": "framerate",
+        "section": "fbdev indev AVOptions:",
+        "type": "video_rate"
       }
     ]
   },
@@ -12998,26 +12865,6 @@
         "name": "loop",
         "section": "imagepipe demuxer AVOptions:",
         "type": "boolean"
-      }
-    ]
-  },
-  {
-    "__class__": "FFMpegDemuxer",
-    "description": "IMF (Interoperable Master Format)",
-    "flags": "D",
-    "name": "imf",
-    "options": [
-      {
-        "__class__": "FFMpegAVOption",
-        "choices": [],
-        "default": null,
-        "flags": ".D.........",
-        "help": "Comma-separated paths to ASSETMAP files.If not specified, the `ASSETMAP.xml` file in the same directory as the CPL is used.",
-        "max": null,
-        "min": null,
-        "name": "assetmaps",
-        "section": "imf AVOptions:",
-        "type": "string"
       }
     ]
   },
@@ -14256,6 +14103,38 @@
     "flags": "D",
     "name": "oma",
     "options": []
+  },
+  {
+    "__class__": "FFMpegDemuxer",
+    "description": "OSS (Open Sound System) capture",
+    "flags": "D",
+    "name": "oss",
+    "options": [
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "48000",
+        "flags": ".D.........",
+        "help": "(from 1 to INT_MAX) (default 48000)",
+        "max": "INT_MAX",
+        "min": "1",
+        "name": "sample_rate",
+        "section": "OSS indev AVOptions:",
+        "type": "int"
+      },
+      {
+        "__class__": "FFMpegAVOption",
+        "choices": [],
+        "default": "2",
+        "flags": ".D.........",
+        "help": "(from 1 to INT_MAX) (default 2)",
+        "max": "INT_MAX",
+        "min": "1",
+        "name": "channels",
+        "section": "OSS indev AVOptions:",
+        "type": "int"
+      }
+    ]
   },
   {
     "__class__": "FFMpegDemuxer",
