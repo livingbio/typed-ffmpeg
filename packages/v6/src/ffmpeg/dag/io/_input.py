@@ -44,7 +44,7 @@ from ...streams.audio import AudioStream
 
 def input(
     filename: str | Path,
-    *,L: Func = None,h: Func = None,_q: Func = None,help: Func = None,_help: Func = None,version: Func = None,buildconf: Func = None,formats: Func = None,muxers: Func = None,demuxers: Func = None,devices: Func = None,codecs: Func = None,decoders: Func = None,encoders: Func = None,bsfs: Func = None,protocols: Func = None,filters: Func = None,pix_fmts: Func = None,layouts: Func = None,sample_fmts: Func = None,dispositions: Func = None,colors: Func = None,sources: Func = None,sinks: Func = None,hwaccels: Func = None,decoder_options: FFMpegDecoderOption | None = None,
+    *,f: Func = None,c: Func = None,codec: Func = None,t: Func = None,to: Func = None,ss: Func = None,sseof: Func = None,seek_timestamp: Func = None,accurate_seek: Func = None,isync: Func = None,itsoffset: Func = None,itsscale: Func = None,re: Func = None,readrate: Func = None,readrate_initial_burst: Func = None,bitexact: Func = None,tag: Func = None,reinit_filter: Func = None,dump_attachment: Func = None,stream_loop: Func = None,discard: Func = None,thread_queue_size: Func = None,find_stream_info: Func = None,r: Func = None,s: Func = None,pix_fmt: Func = None,display_rotation: Func = None,display_hflip: Func = None,display_vflip: Func = None,vn: Func = None,vcodec: Func = None,top: Func = None,vtag: Func = None,hwaccel: Func = None,hwaccel_device: Func = None,hwaccel_output_format: Func = None,autorotate: Func = None,ar: Func = None,ac: Func = None,an: Func = None,acodec: Func = None,sample_fmt: Func = None,channel_layout: Func = None,ch_layout: Func = None,guess_layout_max: Func = None,sn: Func = None,scodec: Func = None,fix_sub_duration: Func = None,canvas_size: Func = None,dcodec: Func = None,dn: Func = None,decoder_options: FFMpegDecoderOption | None = None,
     demuxer_options: FFMpegDemuxerOption | None = None,
     format_options: FFMpegAVFormatContextDecoderOption | None = None,
     codec_options: FFMpegAVCodecContextDecoderOption | None = None,
@@ -55,31 +55,57 @@ def input(
 
     Args:
         filename: Input file URL
-        L: show license
-        h: show help
-        _q: show help
-        help: show help
-        _help: show help
-        version: show version
-        buildconf: show build configuration
-        formats: show available formats
-        muxers: show available muxers
-        demuxers: show available demuxers
-        devices: show available devices
-        codecs: show available codecs
-        decoders: show available decoders
-        encoders: show available encoders
-        bsfs: show available bit stream filters
-        protocols: show available protocols
-        filters: show available filters
-        pix_fmts: show available pixel formats
-        layouts: show standard channel layouts
-        sample_fmts: show available audio sample formats
-        dispositions: show available stream dispositions
-        colors: show available color names
-        sources: list sources of the input device
-        sinks: list sinks of the output device
-        hwaccels: show available HW acceleration methods
+        f: force format
+        c: codec name
+        codec: codec name
+        t: record or transcode \"duration\" seconds of audio/video
+        to: record or transcode stop time
+        ss: set the start time offset
+        sseof: set the start time offset relative to EOF
+        seek_timestamp: enable/disable seeking by timestamp with -ss
+        accurate_seek: enable/disable accurate seeking with -ss
+        isync: Indicate the input index for sync reference
+        itsoffset: set the input ts offset
+        itsscale: set the input ts scale
+        re: read input at native frame rate; equivalent to -readrate 1
+        readrate: read input at specified rate
+        readrate_initial_burst: The initial amount of input to burst read before imposing any readrate
+        bitexact: bitexact mode
+        tag: force codec tag/fourcc
+        reinit_filter: reinit filtergraph on input parameter changes
+        dump_attachment: extract an attachment into a file
+        stream_loop: set number of times input stream shall be looped
+        discard: discard
+        thread_queue_size: set the maximum number of queued packets from the demuxer
+        find_stream_info: read and decode the streams to fill missing information with heuristics
+        r: set frame rate (Hz value, fraction or abbreviation)
+        s: set frame size (WxH or abbreviation)
+        pix_fmt: set pixel format
+        display_rotation: set pure counter-clockwise rotation in degrees for stream(s)
+        display_hflip: set display horizontal flip for stream(s) (overrides any display rotation if it is not set)
+        display_vflip: set display vertical flip for stream(s) (overrides any display rotation if it is not set)
+        vn: disable video
+        vcodec: force video codec ('copy' to copy stream)
+        top: deprecated, use the setfield video filter
+        vtag: force video tag/fourcc
+        hwaccel: use HW accelerated decoding
+        hwaccel_device: select a device for HW acceleration
+        hwaccel_output_format: select output format used with HW accelerated decoding
+        autorotate: automatically insert correct rotate filters
+        ar: set audio sampling rate (in Hz)
+        ac: set number of audio channels
+        an: disable audio
+        acodec: force audio codec ('copy' to copy stream)
+        sample_fmt: set sample format
+        channel_layout: set channel layout
+        ch_layout: set channel layout
+        guess_layout_max: set the maximum number of channels to try to guess the channel layout
+        sn: disable subtitle
+        scodec: force subtitle codec ('copy' to copy stream)
+        fix_sub_duration: fix subtitles duration
+        canvas_size: set canvas size (WxH or abbreviation)
+        dcodec: force data codec ('copy' to copy stream)
+        dn: disable data
         decoder_options: ffmpeg's decoder options
         demuxer_options: ffmpeg's demuxer options
         format_options: ffmpeg's AVFormatContext options
@@ -98,49 +124,28 @@ def input(
     return InputNode(
         filename=str(filename),
         kwargs=merge({
-            "L": L,
+            
                 
-                "h": h,
                 
-                "?": _q,
                 
-                "help": help,
                 
-                "-help": _help,
                 
-                "version": version,
                 
-                "buildconf": buildconf,
                 
-                "formats": formats,
                 
-                "muxers": muxers,
                 
-                "demuxers": demuxers,
                 
-                "devices": devices,
                 
-                "codecs": codecs,
                 
-                "decoders": decoders,
                 
-                "encoders": encoders,
                 
-                "bsfs": bsfs,
                 
-                "protocols": protocols,
                 
-                "filters": filters,
                 
-                "pix_fmts": pix_fmts,
                 
-                "layouts": layouts,
                 
-                "sample_fmts": sample_fmts,
                 
-                "dispositions": dispositions,
                 
-                "colors": colors,
                 
                 
                 
@@ -149,31 +154,41 @@ def input(
                 
                 
                 
-                "sources": sources,
                 
-                "sinks": sinks,
+                "f": f,
                 
                 
                 
                 
                 
                 
+                "c": c,
                 
+                "codec": codec,
                 
                 
                 
                 
                 
                 
+                "t": t,
                 
+                "to": to,
                 
                 
+                "ss": ss,
                 
+                "sseof": sseof,
                 
+                "seek_timestamp": seek_timestamp,
                 
+                "accurate_seek": accurate_seek,
                 
+                "isync": isync,
                 
+                "itsoffset": itsoffset,
                 
+                "itsscale": itsscale,
                 
                 
                 
@@ -186,8 +201,11 @@ def input(
                 
                 
                 
+                "re": re,
                 
+                "readrate": readrate,
                 
+                "readrate_initial_burst": readrate_initial_burst,
                 
                 
                 
@@ -198,6 +216,7 @@ def input(
                 
                 
                 
+                "bitexact": bitexact,
                 
                 
                 
@@ -207,6 +226,7 @@ def input(
                 
                 
                 
+                "tag": tag,
                 
                 
                 
@@ -214,6 +234,7 @@ def input(
                 
                 
                 
+                "reinit_filter": reinit_filter,
                 
                 
                 
@@ -223,13 +244,18 @@ def input(
                 
                 
                 
+                "dump_attachment": dump_attachment,
                 
+                "stream_loop": stream_loop,
                 
                 
                 
+                "discard": discard,
                 
                 
+                "thread_queue_size": thread_queue_size,
                 
+                "find_stream_info": find_stream_info,
                 
                 
                 
@@ -239,16 +265,24 @@ def input(
                 
                 
                 
+                "r": r,
                 
                 
+                "s": s,
                 
                 
+                "pix_fmt": pix_fmt,
                 
+                "display_rotation": display_rotation,
                 
+                "display_hflip": display_hflip,
                 
+                "display_vflip": display_vflip,
                 
+                "vn": vn,
                 
                 
+                "vcodec": vcodec,
                 
                 
                 
@@ -261,7 +295,9 @@ def input(
                 
                 
                 
+                "top": top,
                 
+                "vtag": vtag,
                 
                 
                 
@@ -269,31 +305,46 @@ def input(
                 
                 
                 
+                "hwaccel": hwaccel,
                 
+                "hwaccel_device": hwaccel_device,
                 
+                "hwaccel_output_format": hwaccel_output_format,
                 
                 
-                "hwaccels": hwaccels,
+                "autorotate": autorotate,
                 
                 
                 
                 
                 
+                "ar": ar,
                 
+                "ac": ac,
                 
+                "an": an,
                 
+                "acodec": acodec,
                 
                 
                 
+                "sample_fmt": sample_fmt,
                 
+                "channel_layout": channel_layout,
                 
+                "ch_layout": ch_layout,
                 
                 
+                "guess_layout_max": guess_layout_max,
                 
+                "sn": sn,
                 
+                "scodec": scodec,
                 
                 
+                "fix_sub_duration": fix_sub_duration,
                 
+                "canvas_size": canvas_size,
                 
                 
                 
@@ -309,8 +360,9 @@ def input(
                 
                 
                 
+                "dcodec": dcodec,
                 
-                
+                "dn": dn,
                 
                 
                 

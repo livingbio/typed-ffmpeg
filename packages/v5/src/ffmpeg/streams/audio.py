@@ -51,6 +51,7 @@ class AudioStream(FilterableStream):
     
         
     
+    
     def abench(
     
     self,
@@ -80,6 +81,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bench_002c-abench)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='abench', typings_input=('audio',), typings_output=('audio',)),
             
@@ -104,6 +108,7 @@ References:
         
     
         
+    
     
     def abitscope(
     
@@ -137,6 +142,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#abitscope)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='abitscope', typings_input=('audio',), typings_output=('video',)),
             
@@ -171,6 +179,7 @@ References:
         
     
         
+    
     
     def acompressor(
     
@@ -212,6 +221,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acompressor)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='acompressor', typings_input=('audio',), typings_output=('audio',)),
             
@@ -259,6 +271,7 @@ References:
     
         
     
+    
     def acontrast(
     
     self,
@@ -288,6 +301,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acontrast)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='acontrast', typings_input=('audio',), typings_output=('audio',)),
             
@@ -312,6 +328,7 @@ References:
         
     
         
+    
     
     def acopy(
     
@@ -341,6 +358,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acopy)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='acopy', typings_input=('audio',), typings_output=('audio',)),
             
@@ -363,6 +383,7 @@ References:
         
     
         
+    
     
     def acrossfade(
     
@@ -405,6 +426,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossfade)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='acrossfade', typings_input=('audio', 'audio'), typings_output=('audio',)),
             
@@ -446,6 +470,7 @@ References:
     
         
     
+    
     def acrossover(
     
     self,
@@ -480,6 +505,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossover)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='acrossover', typings_input=('audio',), typings_output="[StreamType.audio] * len(re.split(r'[ |]+', str(split)))"),
             
@@ -514,6 +542,7 @@ References:
     
         
     
+    
     def acrusher(
     
     self,
@@ -526,6 +555,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -556,6 +586,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrusher)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='acrusher', typings_input=('audio',), typings_output=('audio',)),
             
@@ -603,6 +639,7 @@ References:
     
         
     
+    
     def acue(
     
     self,
@@ -634,6 +671,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acue)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='acue', typings_input=('audio',), typings_output=('audio',)),
             
@@ -665,6 +705,7 @@ References:
     
         
     
+    
     def adeclick(
     
     self,
@@ -677,6 +718,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -702,6 +744,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adeclick)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adeclick', typings_input=('audio',), typings_output=('audio',)),
             
@@ -739,6 +787,7 @@ References:
     
         
     
+    
     def adeclip(
     
     self,
@@ -751,6 +800,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -776,6 +826,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adeclip)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adeclip', typings_input=('audio',), typings_output=('audio',)),
             
@@ -813,6 +869,7 @@ References:
     
         
     
+    
     def adecorrelate(
     
     self,
@@ -825,6 +882,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -846,6 +904,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adecorrelate)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adecorrelate', typings_input=('audio',), typings_output=('audio',)),
             
@@ -875,6 +939,7 @@ References:
     
         
     
+    
     def adelay(
     
     self,
@@ -887,6 +952,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -908,6 +974,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adelay)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adelay', typings_input=('audio',), typings_output=('audio',)),
             
@@ -937,6 +1009,7 @@ References:
     
         
     
+    
     def adenorm(
     
     self,
@@ -949,6 +1022,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -970,6 +1044,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adenorm)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adenorm', typings_input=('audio',), typings_output=('audio',)),
             
@@ -999,6 +1079,7 @@ References:
     
         
     
+    
     def aderivative(
     
     self,
@@ -1011,6 +1092,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -1030,6 +1112,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aderivative_002c-aintegral)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aderivative', typings_input=('audio',), typings_output=('audio',)),
             
@@ -1054,6 +1142,7 @@ References:
         
     
         
+    
     
     def adrawgraph(
     
@@ -1098,6 +1187,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adrawgraph)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adrawgraph', typings_input=('audio',), typings_output=('video',)),
             
@@ -1151,6 +1243,7 @@ References:
     
         
     
+    
     def adynamicequalizer(
     
     self,
@@ -1163,6 +1256,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -1196,6 +1290,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adynamicequalizer)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adynamicequalizer', typings_input=('audio',), typings_output=('audio',)),
             
@@ -1249,6 +1349,7 @@ References:
     
         
     
+    
     def adynamicsmooth(
     
     self,
@@ -1261,6 +1362,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -1282,6 +1384,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adynamicsmooth)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adynamicsmooth', typings_input=('audio',), typings_output=('audio',)),
             
@@ -1310,6 +1418,7 @@ References:
         
     
         
+    
     
     def aecho(
     
@@ -1343,6 +1452,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aecho)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aecho', typings_input=('audio',), typings_output=('audio',)),
             
@@ -1374,6 +1486,7 @@ References:
     
         
     
+    
     def aemphasis(
     
     self,
@@ -1386,6 +1499,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -1409,6 +1523,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aemphasis)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aemphasis', typings_input=('audio',), typings_output=('audio',)),
             
@@ -1442,6 +1562,7 @@ References:
     
         
     
+    
     def aeval(
     
     self,
@@ -1454,6 +1575,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -1475,6 +1597,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aeval)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aeval', typings_input=('audio',), typings_output=('audio',)),
             
@@ -1506,6 +1634,7 @@ References:
     
         
     
+    
     def aexciter(
     
     self,
@@ -1518,6 +1647,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -1545,6 +1675,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aexciter)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aexciter', typings_input=('audio',), typings_output=('audio',)),
             
@@ -1586,6 +1722,7 @@ References:
     
         
     
+    
     def afade(
     
     self,
@@ -1598,6 +1735,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -1623,6 +1761,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afade)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='afade', typings_input=('audio',), typings_output=('audio',)),
             
@@ -1660,6 +1804,7 @@ References:
     
         
     
+    
     def afftdn(
     
     self,
@@ -1672,6 +1817,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -1705,6 +1851,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afftdn)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='afftdn', typings_input=('audio',), typings_output=('audio',)),
             
@@ -1758,6 +1910,7 @@ References:
     
         
     
+    
     def afftfilt(
     
     self,
@@ -1770,6 +1923,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -1794,6 +1948,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afftfilt)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='afftfilt', typings_input=('audio',), typings_output=('audio',)),
             
@@ -1829,6 +1989,7 @@ References:
     
         
     
+    
     def afifo(
     
     self,
@@ -1857,6 +2018,9 @@ References:
     [FFmpeg Documentation](None)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='afifo', typings_input=('audio',), typings_output=('audio',)),
             
@@ -1881,6 +2045,7 @@ References:
         
     
         
+    
     
     def aformat(
     
@@ -1913,6 +2078,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aformat)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aformat', typings_input=('audio',), typings_output=('audio',)),
             
@@ -1942,6 +2110,7 @@ References:
     
         
     
+    
     def afreqshift(
     
     self,
@@ -1954,6 +2123,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -1976,6 +2146,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afreqshift)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='afreqshift', typings_input=('audio',), typings_output=('audio',)),
             
@@ -2007,6 +2183,7 @@ References:
     
         
     
+    
     def afwtdn(
     
     self,
@@ -2019,6 +2196,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -2046,6 +2224,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afwtdn)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='afwtdn', typings_input=('audio',), typings_output=('audio',)),
             
@@ -2087,6 +2271,7 @@ References:
     
         
     
+    
     def agate(
     
     self,
@@ -2099,6 +2284,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -2130,6 +2316,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#agate)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='agate', typings_input=('audio',), typings_output=('audio',)),
             
@@ -2179,6 +2371,7 @@ References:
     
         
     
+    
     def agraphmonitor(
     
     self,
@@ -2212,6 +2405,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#agraphmonitor)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='agraphmonitor', typings_input=('audio',), typings_output=('video',)),
             
@@ -2244,6 +2440,7 @@ References:
         
     
         
+    
     
     def ahistogram(
     
@@ -2282,6 +2479,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ahistogram)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='ahistogram', typings_input=('audio',), typings_output=('video',)),
             
@@ -2322,6 +2522,7 @@ References:
         
     
         
+    
     
     def aiir(
     
@@ -2367,6 +2568,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aiir)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aiir', typings_input=('audio',), typings_output='[StreamType.audio] + [StreamType.video] if response else []'),
             
@@ -2421,6 +2625,7 @@ References:
     
         
     
+    
     def aintegral(
     
     self,
@@ -2433,6 +2638,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -2452,6 +2658,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aderivative_002c-aintegral)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aintegral', typings_input=('audio',), typings_output=('audio',)),
             
@@ -2479,6 +2691,7 @@ References:
     
         
     
+    
     def alatency(
     
     self,
@@ -2491,6 +2704,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -2510,6 +2724,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#latency_002c-alatency)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='alatency', typings_input=('audio',), typings_output=('audio',)),
             
@@ -2535,6 +2755,7 @@ References:
     
         
     
+    
     def alimiter(
     
     self,
@@ -2547,6 +2768,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -2575,6 +2797,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alimiter)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='alimiter', typings_input=('audio',), typings_output=('audio',)),
             
@@ -2618,6 +2846,7 @@ References:
     
         
     
+    
     def allpass(
     
     self,
@@ -2630,6 +2859,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -2658,6 +2888,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allpass)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='allpass', typings_input=('audio',), typings_output=('audio',)),
             
@@ -2705,6 +2941,7 @@ References:
     
         
     
+    
     def aloop(
     
     self,
@@ -2736,6 +2973,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aloop)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aloop', typings_input=('audio',), typings_output=('audio',)),
             
@@ -2771,6 +3011,7 @@ References:
     
         
     
+    
     def ametadata(
     
     self,
@@ -2783,6 +3024,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -2809,6 +3051,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#metadata_002c-ametadata)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='ametadata', typings_input=('audio',), typings_output=('audio',)),
             
@@ -2854,6 +3102,7 @@ References:
     
         
     
+    
     def amultiply(
     
     self,
@@ -2890,6 +3139,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amultiply)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='amultiply', typings_input=('audio', 'audio'), typings_output=('audio',)),
             
@@ -2921,6 +3173,7 @@ References:
     
         
     
+    
     def anequalizer(
     
     self,
@@ -2933,6 +3186,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> FilterNode:
@@ -2959,6 +3213,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anequalizer)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='anequalizer', typings_input=('audio',), typings_output='[StreamType.audio] + [StreamType.video] if curves else []'),
             
@@ -2997,6 +3257,7 @@ References:
     
         
     
+    
     def anlmdn(
     
     self,
@@ -3009,6 +3270,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -3033,6 +3295,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmdn)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='anlmdn', typings_input=('audio',), typings_output=('audio',)),
             
@@ -3068,6 +3336,7 @@ References:
     
         
     
+    
     def anlmf(
     
     self,
@@ -3088,6 +3357,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -3112,6 +3382,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='anlmf', typings_input=('audio', 'audio'), typings_output=('audio',)),
             
@@ -3155,6 +3431,7 @@ References:
     
         
     
+    
     def anlms(
     
     self,
@@ -3175,6 +3452,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -3199,6 +3477,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='anlms', typings_input=('audio', 'audio'), typings_output=('audio',)),
             
@@ -3244,6 +3528,7 @@ References:
     
         
     
+    
     def anull(
     
     self,
@@ -3272,6 +3557,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anull)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='anull', typings_input=('audio',), typings_output=('audio',)),
             
@@ -3299,6 +3587,7 @@ References:
     
         
     
+    
     def apad(
     
     self,
@@ -3311,6 +3600,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -3335,6 +3625,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apad)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='apad', typings_input=('audio',), typings_output=('audio',)),
             
@@ -3370,6 +3666,7 @@ References:
     
         
     
+    
     def aperms(
     
     self,
@@ -3382,6 +3679,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -3403,6 +3701,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#perms_002c-aperms)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aperms', typings_input=('audio',), typings_output=('audio',)),
             
@@ -3431,6 +3735,7 @@ References:
         
     
         
+    
     
     def aphasemeter(
     
@@ -3472,6 +3777,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphasemeter)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aphasemeter', typings_input=('audio',), typings_output='[StreamType.audio] + ([StreamType.video] if video else [])'),
             
@@ -3518,6 +3826,7 @@ References:
     
         
     
+    
     def aphaser(
     
     self,
@@ -3552,6 +3861,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphaser)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aphaser', typings_input=('audio',), typings_output=('audio',)),
             
@@ -3587,6 +3899,7 @@ References:
     
         
     
+    
     def aphaseshift(
     
     self,
@@ -3599,6 +3912,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -3621,6 +3935,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphaseshift)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aphaseshift', typings_input=('audio',), typings_output=('audio',)),
             
@@ -3652,6 +3972,7 @@ References:
     
         
     
+    
     def apsyclip(
     
     self,
@@ -3664,6 +3985,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -3690,6 +4012,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsyclip)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='apsyclip', typings_input=('audio',), typings_output=('audio',)),
             
@@ -3728,6 +4056,7 @@ References:
         
     
         
+    
     
     def apulsator(
     
@@ -3768,6 +4097,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apulsator)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='apulsator', typings_input=('audio',), typings_output=('audio',)),
             
@@ -3813,6 +4145,7 @@ References:
     
         
     
+    
     def arealtime(
     
     self,
@@ -3843,6 +4176,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#realtime_002c-arealtime)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='arealtime', typings_input=('audio',), typings_output=('audio',)),
             
@@ -3869,6 +4205,7 @@ References:
         
     
         
+    
     
     def aresample(
     
@@ -3899,6 +4236,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aresample)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aresample', typings_input=('audio',), typings_output=('audio',)),
             
@@ -3923,6 +4263,7 @@ References:
         
     
         
+    
     
     def areverse(
     
@@ -3952,6 +4293,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#areverse)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='areverse', typings_input=('audio',), typings_output=('audio',)),
             
@@ -3975,6 +4319,7 @@ References:
     
         
     
+    
     def arnndn(
     
     self,
@@ -3987,6 +4332,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -4008,6 +4354,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arnndn)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='arnndn', typings_input=('audio',), typings_output=('audio',)),
             
@@ -4036,6 +4388,7 @@ References:
         
     
         
+    
     
     def asdr(
     
@@ -4073,6 +4426,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asdr)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asdr', typings_input=('audio', 'audio'), typings_output=('audio',)),
             
@@ -4103,6 +4459,7 @@ References:
         
     
         
+    
     
     def asegment(
     
@@ -4135,6 +4492,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#segment_002c-asegment)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asegment', typings_input=('audio',), typings_output="[StreamType.audio] * len(str(timestamps or samples).split('|'))"),
             
@@ -4162,6 +4522,7 @@ References:
         
     
         
+    
     
     def aselect(
     
@@ -4194,6 +4555,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#select_002c-aselect)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aselect', typings_input=('audio',), typings_output='[StreamType.audio] * int(outputs)'),
             
@@ -4221,6 +4585,7 @@ References:
         
     
         
+    
     
     def asendcmd(
     
@@ -4252,6 +4617,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sendcmd_002c-asendcmd)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asendcmd', typings_input=('audio',), typings_output=('audio',)),
             
@@ -4278,6 +4646,7 @@ References:
         
     
         
+    
     
     def asetnsamples(
     
@@ -4309,6 +4678,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asetnsamples)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asetnsamples', typings_input=('audio',), typings_output=('audio',)),
             
@@ -4335,6 +4707,7 @@ References:
         
     
         
+    
     
     def asetpts(
     
@@ -4365,6 +4738,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setpts_002c-asetpts)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asetpts', typings_input=('audio',), typings_output=('audio',)),
             
@@ -4389,6 +4765,7 @@ References:
         
     
         
+    
     
     def asetrate(
     
@@ -4419,6 +4796,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asetrate)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asetrate', typings_input=('audio',), typings_output=('audio',)),
             
@@ -4443,6 +4823,7 @@ References:
         
     
         
+    
     
     def asettb(
     
@@ -4473,6 +4854,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#settb_002c-asettb)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asettb', typings_input=('audio',), typings_output=('audio',)),
             
@@ -4497,6 +4881,7 @@ References:
         
     
         
+    
     
     def ashowinfo(
     
@@ -4526,6 +4911,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ashowinfo)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='ashowinfo', typings_input=('audio',), typings_output=('audio',)),
             
@@ -4549,6 +4937,7 @@ References:
     
         
     
+    
     def asidedata(
     
     self,
@@ -4561,6 +4950,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -4582,6 +4972,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidedata_002c-asidedata)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asidedata', typings_input=('audio',), typings_output=('audio',)),
             
@@ -4611,6 +5007,7 @@ References:
     
         
     
+    
     def asoftclip(
     
     self,
@@ -4623,6 +5020,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -4647,6 +5045,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asoftclip)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asoftclip', typings_input=('audio',), typings_output=('audio',)),
             
@@ -4682,6 +5086,7 @@ References:
     
         
     
+    
     def aspectralstats(
     
     self,
@@ -4713,6 +5118,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aspectralstats)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aspectralstats', typings_input=('audio',), typings_output=('audio',)),
             
@@ -4741,6 +5149,7 @@ References:
         
     
         
+    
     
     def asplit(
     
@@ -4772,6 +5181,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asplit', typings_input=('audio',), typings_output='[StreamType.audio] * int(outputs)'),
             
@@ -4799,6 +5211,7 @@ References:
         
     
         
+    
     
     def astats(
     
@@ -4833,6 +5246,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#astats)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='astats', typings_input=('audio',), typings_output=('audio',)),
             
@@ -4868,6 +5284,7 @@ References:
     
         
     
+    
     def asubboost(
     
     self,
@@ -4880,6 +5297,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -4908,6 +5326,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asubboost)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asubboost', typings_input=('audio',), typings_output=('audio',)),
             
@@ -4951,6 +5375,7 @@ References:
     
         
     
+    
     def asubcut(
     
     self,
@@ -4963,6 +5388,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -4985,6 +5411,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asubcut)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asubcut', typings_input=('audio',), typings_output=('audio',)),
             
@@ -5016,6 +5448,7 @@ References:
     
         
     
+    
     def asupercut(
     
     self,
@@ -5028,6 +5461,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -5050,6 +5484,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asupercut)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asupercut', typings_input=('audio',), typings_output=('audio',)),
             
@@ -5081,6 +5521,7 @@ References:
     
         
     
+    
     def asuperpass(
     
     self,
@@ -5093,6 +5534,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -5116,6 +5558,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asuperpass)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asuperpass', typings_input=('audio',), typings_output=('audio',)),
             
@@ -5149,6 +5597,7 @@ References:
     
         
     
+    
     def asuperstop(
     
     self,
@@ -5161,6 +5610,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -5184,6 +5634,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asuperstop)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asuperstop', typings_input=('audio',), typings_output=('audio',)),
             
@@ -5219,6 +5675,7 @@ References:
     
         
     
+    
     def atempo(
     
     self,
@@ -5248,6 +5705,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atempo)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='atempo', typings_input=('audio',), typings_output=('audio',)),
             
@@ -5273,6 +5733,7 @@ References:
     
         
     
+    
     def atilt(
     
     self,
@@ -5285,6 +5746,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -5309,6 +5771,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atilt)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='atilt', typings_input=('audio',), typings_output=('audio',)),
             
@@ -5343,6 +5811,7 @@ References:
         
     
         
+    
     
     def atrim(
     
@@ -5379,6 +5848,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atrim)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='atrim', typings_input=('audio',), typings_output=('audio',)),
             
@@ -5415,6 +5887,7 @@ References:
         
     
         
+    
     
     def avectorscope(
     
@@ -5460,6 +5933,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#avectorscope)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='avectorscope', typings_input=('audio',), typings_output=('video',)),
             
@@ -5521,6 +5997,7 @@ References:
     
         
     
+    
     def axcorrelate(
     
     self,
@@ -5559,6 +6036,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#axcorrelate)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='axcorrelate', typings_input=('audio', 'audio'), typings_output=('audio',)),
             
@@ -5594,6 +6074,7 @@ References:
     
         
     
+    
     def azmq(
     
     self,
@@ -5623,6 +6104,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zmq_002c-azmq)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='azmq', typings_input=('audio',), typings_output=('audio',)),
             
@@ -5648,6 +6132,7 @@ References:
     
         
     
+    
     def bandpass(
     
     self,
@@ -5660,6 +6145,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -5689,6 +6175,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bandpass)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='bandpass', typings_input=('audio',), typings_output=('audio',)),
             
@@ -5734,6 +6226,7 @@ References:
     
         
     
+    
     def bandreject(
     
     self,
@@ -5746,6 +6239,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -5774,6 +6268,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bandreject)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='bandreject', typings_input=('audio',), typings_output=('audio',)),
             
@@ -5817,6 +6317,7 @@ References:
     
         
     
+    
     def bass(
     
     self,
@@ -5829,6 +6330,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -5859,6 +6361,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bass_002c-lowshelf)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='bass', typings_input=('audio',), typings_output=('audio',)),
             
@@ -5912,6 +6420,7 @@ References:
     
         
     
+    
     def biquad(
     
     self,
@@ -5924,6 +6433,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -5951,6 +6461,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#biquad)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='biquad', typings_input=('audio',), typings_output=('audio',)),
             
@@ -6020,6 +6536,7 @@ References:
     
         
     
+    
     def channelmap(
     
     self,
@@ -6050,6 +6567,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#channelmap)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='channelmap', typings_input=('audio',), typings_output=('audio',)),
             
@@ -6076,6 +6596,7 @@ References:
         
     
         
+    
     
     def channelsplit(
     
@@ -6108,6 +6629,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#channelsplit)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='channelsplit', typings_input=('audio',), typings_output='[StreamType.audio] * CHANNEL_LAYOUT[str(channel_layout)]'),
             
@@ -6135,6 +6659,7 @@ References:
         
     
         
+    
     
     def chorus(
     
@@ -6170,6 +6695,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chorus)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='chorus', typings_input=('audio',), typings_output=('audio',)),
             
@@ -6249,6 +6777,7 @@ References:
     
         
     
+    
     def compand(
     
     self,
@@ -6284,6 +6813,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#compand)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='compand', typings_input=('audio',), typings_output=('audio',)),
             
@@ -6321,6 +6853,7 @@ References:
     
         
     
+    
     def compensationdelay(
     
     self,
@@ -6333,6 +6866,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -6358,6 +6892,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#compensationdelay)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='compensationdelay', typings_input=('audio',), typings_output=('audio',)),
             
@@ -6411,6 +6951,7 @@ References:
     
         
     
+    
     def crossfeed(
     
     self,
@@ -6423,6 +6964,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -6448,6 +6990,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crossfeed)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='crossfeed', typings_input=('audio',), typings_output=('audio',)),
             
@@ -6485,6 +7033,7 @@ References:
     
         
     
+    
     def crystalizer(
     
     self,
@@ -6497,6 +7046,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -6518,6 +7068,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crystalizer)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='crystalizer', typings_input=('audio',), typings_output=('audio',)),
             
@@ -6555,6 +7111,7 @@ References:
     
         
     
+    
     def dcshift(
     
     self,
@@ -6567,6 +7124,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -6588,6 +7146,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dcshift)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='dcshift', typings_input=('audio',), typings_output=('audio',)),
             
@@ -6629,6 +7193,7 @@ References:
     
         
     
+    
     def deesser(
     
     self,
@@ -6641,6 +7206,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -6664,6 +7230,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deesser)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='deesser', typings_input=('audio',), typings_output=('audio',)),
             
@@ -6719,6 +7291,7 @@ References:
     
         
     
+    
     def dialoguenhance(
     
     self,
@@ -6731,6 +7304,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -6753,6 +7327,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dialoguenhance)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='dialoguenhance', typings_input=('audio',), typings_output=('audio',)),
             
@@ -6806,6 +7386,7 @@ References:
     
         
     
+    
     def drmeter(
     
     self,
@@ -6835,6 +7416,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drmeter)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='drmeter', typings_input=('audio',), typings_output=('audio',)),
             
@@ -6860,6 +7444,7 @@ References:
     
         
     
+    
     def dynaudnorm(
     
     self,
@@ -6872,6 +7457,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -6903,6 +7489,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dynaudnorm)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='dynaudnorm', typings_input=('audio',), typings_output=('audio',)),
             
@@ -6952,6 +7544,7 @@ References:
     
         
     
+    
     def earwax(
     
     self,
@@ -6980,6 +7573,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#earwax)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='earwax', typings_input=('audio',), typings_output=('audio',)),
             
@@ -7002,6 +7598,7 @@ References:
         
     
         
+    
     
     def ebur128(
     
@@ -7043,6 +7640,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ebur128)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='ebur128', typings_input=('audio',), typings_output='[StreamType.video] if video else [] + [StreamType.audio]'),
             
@@ -7099,6 +7699,7 @@ References:
     
         
     
+    
     def equalizer(
     
     self,
@@ -7111,6 +7712,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -7140,6 +7742,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#equalizer)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='equalizer', typings_input=('audio',), typings_output=('audio',)),
             
@@ -7195,6 +7803,7 @@ References:
     
         
     
+    
     def extrastereo(
     
     self,
@@ -7207,6 +7816,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -7228,6 +7838,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#extrastereo)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='extrastereo', typings_input=('audio',), typings_output=('audio',)),
             
@@ -7279,6 +7895,7 @@ References:
     
         
     
+    
     def firequalizer(
     
     self,
@@ -7320,6 +7937,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#firequalizer)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='firequalizer', typings_input=('audio',), typings_output=('audio',)),
             
@@ -7369,6 +7989,7 @@ References:
     
         
     
+    
     def flanger(
     
     self,
@@ -7405,6 +8026,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#flanger)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='flanger', typings_input=('audio',), typings_output=('audio',)),
             
@@ -7478,6 +8102,7 @@ References:
     
         
     
+    
     def haas(
     
     self,
@@ -7519,6 +8144,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haas)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='haas', typings_input=('audio',), typings_output=('audio',)),
             
@@ -7572,6 +8200,7 @@ References:
     
         
     
+    
     def hdcd(
     
     self,
@@ -7606,6 +8235,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hdcd)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='hdcd', typings_input=('audio',), typings_output=('audio',)),
             
@@ -7645,6 +8277,7 @@ References:
     
         
     
+    
     def highpass(
     
     self,
@@ -7657,6 +8290,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -7686,6 +8320,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#highpass)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='highpass', typings_input=('audio',), typings_output=('audio',)),
             
@@ -7731,6 +8371,7 @@ References:
     
         
     
+    
     def highshelf(
     
     self,
@@ -7743,6 +8384,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -7773,6 +8415,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#treble_002c-highshelf)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='highshelf', typings_input=('audio',), typings_output=('audio',)),
             
@@ -7880,6 +8528,7 @@ References:
     
         
     
+    
     def loudnorm(
     
     self,
@@ -7919,6 +8568,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#loudnorm)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='loudnorm', typings_input=('audio',), typings_output=('audio',)),
             
@@ -7964,6 +8616,7 @@ References:
     
         
     
+    
     def lowpass(
     
     self,
@@ -7976,6 +8629,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -8005,6 +8659,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lowpass)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='lowpass', typings_input=('audio',), typings_output=('audio',)),
             
@@ -8050,6 +8710,7 @@ References:
     
         
     
+    
     def lowshelf(
     
     self,
@@ -8062,6 +8723,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -8092,6 +8754,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bass_002c-lowshelf)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='lowshelf', typings_input=('audio',), typings_output=('audio',)),
             
@@ -8167,6 +8835,7 @@ References:
     
         
     
+    
     def mcompand(
     
     self,
@@ -8196,6 +8865,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mcompand)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='mcompand', typings_input=('audio',), typings_output=('audio',)),
             
@@ -8293,6 +8965,7 @@ References:
     
         
     
+    
     def pan(
     
     self,
@@ -8322,6 +8995,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pan)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='pan', typings_input=('audio',), typings_output=('audio',)),
             
@@ -8401,6 +9077,7 @@ References:
     
         
     
+    
     def replaygain(
     
     self,
@@ -8429,6 +9106,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#replaygain)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='replaygain', typings_input=('audio',), typings_output=('audio',)),
             
@@ -8506,6 +9186,7 @@ References:
     
         
     
+    
     def showcqt(
     
     self,
@@ -8560,6 +9241,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showcqt)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showcqt', typings_input=('audio',), typings_output=('video',)),
             
@@ -8635,6 +9319,7 @@ References:
     
         
     
+    
     def showfreqs(
     
     self,
@@ -8677,6 +9362,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showfreqs)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showfreqs', typings_input=('audio',), typings_output=('video',)),
             
@@ -8732,6 +9420,7 @@ References:
     
         
     
+    
     def showspatial(
     
     self,
@@ -8764,6 +9453,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspatial)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showspatial', typings_input=('audio',), typings_output=('video',)),
             
@@ -8794,6 +9486,7 @@ References:
         
     
         
+    
     
     def showspectrum(
     
@@ -8843,6 +9536,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspectrum)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showspectrum', typings_input=('audio',), typings_output=('video',)),
             
@@ -8906,6 +9602,7 @@ References:
     
         
     
+    
     def showspectrumpic(
     
     self,
@@ -8950,6 +9647,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspectrumpic)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showspectrumpic', typings_input=('audio',), typings_output=('video',)),
             
@@ -9005,6 +9705,7 @@ References:
     
         
     
+    
     def showvolume(
     
     self,
@@ -9048,6 +9749,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showvolume)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showvolume', typings_input=('audio',), typings_output=('video',)),
             
@@ -9101,6 +9805,7 @@ References:
     
         
     
+    
     def showwaves(
     
     self,
@@ -9137,6 +9842,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showwaves)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showwaves', typings_input=('audio',), typings_output=('video',)),
             
@@ -9176,6 +9884,7 @@ References:
     
         
     
+    
     def showwavespic(
     
     self,
@@ -9210,6 +9919,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showwavespic)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showwavespic', typings_input=('audio',), typings_output=('video',)),
             
@@ -9250,6 +9962,7 @@ References:
         
     
         
+    
     
     def sidechaincompress(
     
@@ -9299,6 +10012,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaincompress)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='sidechaincompress', typings_input=('audio', 'audio'), typings_output=('audio',)),
             
@@ -9354,6 +10070,7 @@ References:
     
         
     
+    
     def sidechaingate(
     
     self,
@@ -9374,6 +10091,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -9405,6 +10123,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaingate)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='sidechaingate', typings_input=('audio', 'audio'), typings_output=('audio',)),
             
@@ -9470,6 +10194,7 @@ References:
     
         
     
+    
     def silencedetect(
     
     self,
@@ -9501,6 +10226,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#silencedetect)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='silencedetect', typings_input=('audio',), typings_output=('audio',)),
             
@@ -9529,6 +10257,7 @@ References:
         
     
         
+    
     
     def silenceremove(
     
@@ -9570,6 +10299,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#silenceremove)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='silenceremove', typings_input=('audio',), typings_output=('audio',)),
             
@@ -9635,6 +10367,7 @@ References:
     
         
     
+    
     def speechnorm(
     
     self,
@@ -9647,6 +10380,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -9675,6 +10409,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#speechnorm)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='speechnorm', typings_input=('audio',), typings_output=('audio',)),
             
@@ -9728,6 +10468,7 @@ References:
     
         
     
+    
     def stereotools(
     
     self,
@@ -9740,6 +10481,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -9779,6 +10521,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereotools)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='stereotools', typings_input=('audio',), typings_output=('audio',)),
             
@@ -9844,6 +10592,7 @@ References:
     
         
     
+    
     def stereowiden(
     
     self,
@@ -9856,6 +10605,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -9879,6 +10629,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereowiden)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='stereowiden', typings_input=('audio',), typings_output=('audio',)),
             
@@ -9917,6 +10673,7 @@ References:
         
     
         
+    
     
     def superequalizer(
     
@@ -9964,6 +10721,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#superequalizer)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='superequalizer', typings_input=('audio',), typings_output=('audio',)),
             
@@ -10022,6 +10782,7 @@ References:
         
     
         
+    
     
     def surround(
     
@@ -10099,6 +10860,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#surround)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='surround', typings_input=('audio',), typings_output=('audio',)),
             
@@ -10238,6 +11002,7 @@ References:
     
         
     
+    
     def tiltshelf(
     
     self,
@@ -10250,6 +11015,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -10280,6 +11046,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tiltshelf)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='tiltshelf', typings_input=('audio',), typings_output=('audio',)),
             
@@ -10351,6 +11123,7 @@ References:
     
         
     
+    
     def treble(
     
     self,
@@ -10363,6 +11136,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -10393,6 +11167,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#treble_002c-highshelf)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='treble', typings_input=('audio',), typings_output=('audio',)),
             
@@ -10440,6 +11220,7 @@ References:
     
         
     
+    
     def tremolo(
     
     self,
@@ -10452,6 +11233,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -10473,6 +11255,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tremolo)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='tremolo', typings_input=('audio',), typings_output=('audio',)),
             
@@ -10526,6 +11314,7 @@ References:
     
         
     
+    
     def vibrato(
     
     self,
@@ -10538,6 +11327,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -10559,6 +11349,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vibrato)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='vibrato', typings_input=('audio',), typings_output=('audio',)),
             
@@ -10596,6 +11392,7 @@ References:
     
         
     
+    
     def virtualbass(
     
     self,
@@ -10608,6 +11405,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -10629,6 +11427,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#virtualbass)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='virtualbass', typings_input=('audio',), typings_output=('audio',)),
             
@@ -10660,6 +11464,7 @@ References:
     
         
     
+    
     def volume(
     
     self,
@@ -10672,6 +11477,7 @@ References:
     
     
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
@@ -10697,6 +11503,12 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#volume)
 
         """
+        
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='volume', typings_input=('audio',), typings_output=('audio',)),
             
@@ -10734,6 +11546,7 @@ References:
     
         
     
+    
     def volumedetect(
     
     self,
@@ -10762,6 +11575,9 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#volumedetect)
 
         """
+        
+
+
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='volumedetect', typings_input=('audio',), typings_output=('audio',)),
             
