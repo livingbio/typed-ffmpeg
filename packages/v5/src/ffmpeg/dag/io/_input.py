@@ -10,7 +10,9 @@ from typing import Any
 
 
 from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+
 from ..factory import filter_node_factory
+
 from ...utils.frozendict import FrozenDict, merge
 from ...utils.typing import override
 from ...schema import Default, StreamType, Auto, FFMpegOptionGroup
@@ -23,7 +25,9 @@ from ...options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecCon
 
 from ...options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
 
+
 from ...streams.av import AVStream
+
 from ...streams.channel_layout import CHANNEL_LAYOUT
 from ...codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
 from ...formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
@@ -95,211 +99,212 @@ def input(
         filename=str(filename),
         kwargs=merge({
             "L": L,
-
+                
                 "h": h,
-
+                
                 "?": _q,
-
+                
                 "help": help,
-
+                
                 "-help": _help,
-
+                
                 "version": version,
-
+                
                 "buildconf": buildconf,
-
+                
                 "formats": formats,
-
+                
                 "muxers": muxers,
-
+                
                 "demuxers": demuxers,
-
+                
                 "devices": devices,
-
+                
                 "codecs": codecs,
-
+                
                 "decoders": decoders,
-
+                
                 "encoders": encoders,
-
+                
                 "bsfs": bsfs,
-
+                
                 "protocols": protocols,
-
+                
                 "filters": filters,
-
+                
                 "pix_fmts": pix_fmts,
-
+                
                 "layouts": layouts,
-
+                
                 "sample_fmts": sample_fmts,
-
+                
                 "dispositions": dispositions,
-
+                
                 "colors": colors,
-
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
+                
                 "sources": sources,
-
+                
                 "sinks": sinks,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 "hwaccels": hwaccels,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
         }, decoder_options, demuxer_options, format_options, codec_options, extra_options )
     ).stream()

@@ -10,11 +10,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any
 
-
 from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
 from ...utils.frozendict import merge
-
-
 if TYPE_CHECKING:
     from ..nodes import GlobalNode, GlobalStream, OutputStream
 
@@ -36,7 +33,7 @@ class GlobalArgs(ABC):
 
     def global_args(
         self,
-        *,loglevel: Func = None,v: Func = None,report: Func = None,max_alloc: Func = None,cpuflags: Func = None,cpucount: Func = None,f: Func = None,c: Func = None,codec: Func = None,pre: Func = None,map: Func = None,map_channel: Func = None,map_metadata: Func = None,map_chapters: Func = None,t: Func = None,to: Func = None,fs: Func = None,ss: Func = None,sseof: Func = None,seek_timestamp: Func = None,isync: Func = None,itsoffset: Func = None,itsscale: Func = None,timestamp: Func = None,metadata: Func = None,program: Func = None,dframes: Func = None,progress: Func = None,timelimit: Func = None,readrate: Func = None,target: Func = None,vsync: Func = None,frame_drop_threshold: Func = None,_async: Func = None,adrift_threshold: Func = None,copytb: Func = None,apad: Func = None,dts_delta_threshold: Func = None,dts_error_threshold: Func = None,abort_on: Func = None,copypriorss: Func = None,frames: Func = None,tag: Func = None,q: Func = None,qscale: Func = None,profile: Func = None,filter: Func = None,filter_threads: Func = None,filter_script: Func = None,reinit_filter: Func = None,filter_complex: Func = None,filter_complex_threads: Func = None,lavfi: Func = None,filter_complex_script: Func = None,stats_period: Func = None,attach: Func = None,dump_attachment: Func = None,stream_loop: Func = None,max_error_rate: Func = None,discard: Func = None,disposition: Func = None,thread_queue_size: Func = None,bits_per_raw_sample: Func = None,vframes: Func = None,r: Func = None,fpsmax: Func = None,s: Func = None,aspect: Func = None,pix_fmt: Func = None,rc_override: Func = None,vcodec: Func = None,timecode: Func = None,_pass: Func = None,passlogfile: Func = None,vstats: Func = None,vstats_file: Func = None,vstats_version: Func = None,vf: Func = None,intra_matrix: Func = None,inter_matrix: Func = None,chroma_intra_matrix: Func = None,top: Func = None,vtag: Func = None,fps_mode: Func = None,streamid: Func = None,force_key_frames: Func = None,ab: Func = None,b: Func = None,hwaccel: Func = None,hwaccel_device: Func = None,hwaccel_output_format: Func = None,aframes: Func = None,aq: Func = None,ar: Func = None,ac: Func = None,acodec: Func = None,atag: Func = None,vol: Func = None,sample_fmt: Func = None,channel_layout: Func = None,ch_layout: Func = None,af: Func = None,guess_layout_max: Func = None,scodec: Func = None,stag: Func = None,canvas_size: Func = None,muxdelay: Func = None,muxpreload: Func = None,sdp_file: Func = None,time_base: Func = None,enc_time_base: Func = None,bsf: Func = None,absf: Func = None,vbsf: Func = None,apre: Func = None,vpre: Func = None,spre: Func = None,fpre: Func = None,max_muxing_queue_size: Func = None,muxing_queue_data_threshold: Func = None,init_hw_device: Func = None,filter_hw_device: Func = None,extra_options: dict[str, Any] | None = None,
+        *,loglevel: Func = None,v: Func = None,report: Func = None,max_alloc: Func = None,cpuflags: Func = None,cpucount: Func = None,f: Func = None,c: Func = None,codec: Func = None,pre: Func = None,map: Func = None,map_channel: Func = None,map_metadata: Func = None,map_chapters: Func = None,t: Func = None,to: Func = None,fs: Func = None,ss: Func = None,sseof: Func = None,seek_timestamp: Func = None,isync: Func = None,itsoffset: Func = None,itsscale: Func = None,timestamp: Func = None,metadata: Func = None,program: Func = None,dframes: Func = None,progress: Func = None,timelimit: Func = None,readrate: Func = None,target: Func = None,vsync: Func = None,frame_drop_threshold: Func = None,_async: Func = None,adrift_threshold: Func = None,copytb: Func = None,apad: Func = None,dts_delta_threshold: Func = None,dts_error_threshold: Func = None,abort_on: Func = None,copypriorss: Func = None,frames: Func = None,tag: Func = None,q: Func = None,qscale: Func = None,profile: Func = None,filter: Func = None,filter_threads: Func = None,filter_script: Func = None,reinit_filter: Func = None,filter_complex: Func = None,filter_complex_threads: Func = None,lavfi: Func = None,filter_complex_script: Func = None,stats_period: Func = None,attach: Func = None,dump_attachment: Func = None,stream_loop: Func = None,max_error_rate: Func = None,discard: Func = None,disposition: Func = None,thread_queue_size: Func = None,bits_per_raw_sample: Func = None,vframes: Func = None,r: Func = None,fpsmax: Func = None,s: Func = None,aspect: Func = None,pix_fmt: Func = None,rc_override: Func = None,vcodec: Func = None,timecode: Func = None,_pass: Func = None,passlogfile: Func = None,vstats: Func = None,vstats_file: Func = None,vstats_version: Func = None,vf: Func = None,intra_matrix: Func = None,inter_matrix: Func = None,chroma_intra_matrix: Func = None,top: Func = None,vtag: Func = None,fps_mode: Func = None,streamid: Func = None,force_key_frames: Func = None,ab: Func = None,b: Func = None,hwaccel: Func = None,hwaccel_device: Func = None,hwaccel_output_format: Func = None,aframes: Func = None,aq: Func = None,ar: Func = None,ac: Func = None,acodec: Func = None,atag: Func = None,vol: Func = None,sample_fmt: Func = None,channel_layout: Func = None,ch_layout: Func = None,af: Func = None,guess_layout_max: Func = None,scodec: Func = None,stag: Func = None,canvas_size: Func = None,muxdelay: Func = None,muxpreload: Func = None,sdp_file: Func = None,time_base: Func = None,enc_time_base: Func = None,bsf: Func = None,absf: Func = None,vbsf: Func = None,apre: Func = None,vpre: Func = None,spre: Func = None,fpre: Func = None,max_muxing_queue_size: Func = None,muxing_queue_data_threshold: Func = None,vaapi_device: Func = None,init_hw_device: Func = None,filter_hw_device: Func = None,extra_options: dict[str, Any] | None = None,
     ) -> GlobalStream:
         """
         Set global options.
@@ -163,6 +160,7 @@ class GlobalArgs(ABC):
             fpre: set options from indicated preset file
             max_muxing_queue_size: maximum number of packets that can be buffered while waiting for all streams to initialize
             muxing_queue_data_threshold: set the threshold after which max_muxing_queue_size is taken into account
+            vaapi_device: set VAAPI hardware device (DRM path or X11 display name)
             init_hw_device: initialise hardware device
             filter_hw_device: set hardware device used when filtering
             extra_options: Additional options
@@ -173,309 +171,311 @@ class GlobalArgs(ABC):
 
         return self._global_node(**merge(
             {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 "loglevel": loglevel,
-
+                
                 "v": v,
-
+                
                 "report": report,
-
+                
                 "max_alloc": max_alloc,
-
+                
                 "cpuflags": cpuflags,
-
+                
                 "cpucount": cpucount,
-
-
-
-
+                
+                
+                
+                
                 "f": f,
-
-
-
-
-
-
+                
+                
+                
+                
+                
+                
                 "c": c,
-
+                
                 "codec": codec,
-
+                
                 "pre": pre,
-
+                
                 "map": map,
-
+                
                 "map_channel": map_channel,
-
+                
                 "map_metadata": map_metadata,
-
+                
                 "map_chapters": map_chapters,
-
+                
                 "t": t,
-
+                
                 "to": to,
-
+                
                 "fs": fs,
-
+                
                 "ss": ss,
-
+                
                 "sseof": sseof,
-
+                
                 "seek_timestamp": seek_timestamp,
-
-
+                
+                
                 "isync": isync,
-
+                
                 "itsoffset": itsoffset,
-
+                
                 "itsscale": itsscale,
-
+                
                 "timestamp": timestamp,
-
+                
                 "metadata": metadata,
-
+                
                 "program": program,
-
+                
                 "dframes": dframes,
-
-
-
+                
+                
+                
                 "progress": progress,
-
-
+                
+                
                 "timelimit": timelimit,
-
-
-
-
+                
+                
+                
+                
                 "readrate": readrate,
-
+                
                 "target": target,
-
+                
                 "vsync": vsync,
-
+                
                 "frame_drop_threshold": frame_drop_threshold,
-
+                
                 "async": _async,
-
+                
                 "adrift_threshold": adrift_threshold,
-
-
-
+                
+                
+                
                 "copytb": copytb,
-
-
-
+                
+                
+                
                 "apad": apad,
-
+                
                 "dts_delta_threshold": dts_delta_threshold,
-
+                
                 "dts_error_threshold": dts_error_threshold,
-
-
+                
+                
                 "abort_on": abort_on,
-
-
+                
+                
                 "copypriorss": copypriorss,
-
+                
                 "frames": frames,
-
+                
                 "tag": tag,
-
+                
                 "q": q,
-
+                
                 "qscale": qscale,
-
+                
                 "profile": profile,
-
+                
                 "filter": filter,
-
+                
                 "filter_threads": filter_threads,
-
+                
                 "filter_script": filter_script,
-
+                
                 "reinit_filter": reinit_filter,
-
+                
                 "filter_complex": filter_complex,
-
+                
                 "filter_complex_threads": filter_complex_threads,
-
+                
                 "lavfi": lavfi,
-
+                
                 "filter_complex_script": filter_complex_script,
-
-
-
+                
+                
+                
                 "stats_period": stats_period,
-
+                
                 "attach": attach,
-
+                
                 "dump_attachment": dump_attachment,
-
+                
                 "stream_loop": stream_loop,
-
-
+                
+                
                 "max_error_rate": max_error_rate,
-
+                
                 "discard": discard,
-
+                
                 "disposition": disposition,
-
+                
                 "thread_queue_size": thread_queue_size,
-
-
+                
+                
                 "bits_per_raw_sample": bits_per_raw_sample,
-
+                
                 "vframes": vframes,
-
+                
                 "r": r,
-
+                
                 "fpsmax": fpsmax,
-
+                
                 "s": s,
-
+                
                 "aspect": aspect,
-
+                
                 "pix_fmt": pix_fmt,
-
-
+                
+                
                 "rc_override": rc_override,
-
+                
                 "vcodec": vcodec,
-
+                
                 "timecode": timecode,
-
+                
                 "pass": _pass,
-
+                
                 "passlogfile": passlogfile,
-
-
+                
+                
                 "vstats": vstats,
-
+                
                 "vstats_file": vstats_file,
-
+                
                 "vstats_version": vstats_version,
-
+                
                 "vf": vf,
-
+                
                 "intra_matrix": intra_matrix,
-
+                
                 "inter_matrix": inter_matrix,
-
+                
                 "chroma_intra_matrix": chroma_intra_matrix,
-
+                
                 "top": top,
-
+                
                 "vtag": vtag,
-
-
+                
+                
                 "fps_mode": fps_mode,
-
-
+                
+                
                 "streamid": streamid,
-
+                
                 "force_key_frames": force_key_frames,
-
+                
                 "ab": ab,
-
+                
                 "b": b,
-
+                
                 "hwaccel": hwaccel,
-
+                
                 "hwaccel_device": hwaccel_device,
-
+                
                 "hwaccel_output_format": hwaccel_output_format,
-
-
-
-
+                
+                
+                
+                
                 "aframes": aframes,
-
+                
                 "aq": aq,
-
+                
                 "ar": ar,
-
+                
                 "ac": ac,
-
-
+                
+                
                 "acodec": acodec,
-
+                
                 "atag": atag,
-
+                
                 "vol": vol,
-
+                
                 "sample_fmt": sample_fmt,
-
+                
                 "channel_layout": channel_layout,
-
+                
                 "ch_layout": ch_layout,
-
+                
                 "af": af,
-
+                
                 "guess_layout_max": guess_layout_max,
-
-
+                
+                
                 "scodec": scodec,
-
+                
                 "stag": stag,
-
-
+                
+                
                 "canvas_size": canvas_size,
-
+                
                 "muxdelay": muxdelay,
-
+                
                 "muxpreload": muxpreload,
-
+                
                 "sdp_file": sdp_file,
-
+                
                 "time_base": time_base,
-
+                
                 "enc_time_base": enc_time_base,
-
+                
                 "bsf": bsf,
-
+                
                 "absf": absf,
-
+                
                 "vbsf": vbsf,
-
+                
                 "apre": apre,
-
+                
                 "vpre": vpre,
-
+                
                 "spre": spre,
-
+                
                 "fpre": fpre,
-
+                
                 "max_muxing_queue_size": max_muxing_queue_size,
-
+                
                 "muxing_queue_data_threshold": muxing_queue_data_threshold,
-
-
-
+                
+                
+                
+                "vaapi_device": vaapi_device,
+                
                 "init_hw_device": init_hw_device,
-
+                
                 "filter_hw_device": filter_hw_device,
-
-
+                
+                
             }, extra_options)
         ).stream()

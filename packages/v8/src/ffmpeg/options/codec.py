@@ -9,7 +9,7 @@ from typing import Literal
 
 
 from ..types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
-from ..dag.factory import filter_node_factory
+
 from ..utils.frozendict import FrozenDict, merge
 from ..utils.typing import override
 from ..schema import Default, StreamType, Auto, FFMpegOptionGroup
@@ -19,8 +19,9 @@ from .timeline import FFMpegTimelineOption
 
 
 
-
-from ..dag.nodes import FilterableStream, FilterNode, OutputStream, OutputNode, InputNode, GlobalNode, GlobalStream
+from ..streams.channel_layout import CHANNEL_LAYOUT
+from ..codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
+from ..formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
 
 
 
@@ -102,7 +103,6 @@ color_trc: int | None| Literal["bt709", "unknown", "gamma22", "gamma28", "smpte1
 colorspace: int | None| Literal["rgb", "bt709", "unknown", "fcc", "bt470bg", "smpte170m", "smpte240m", "ycgco", "bt2020nc", "bt2020c", "smpte2085", "chroma-derived-nc", "chroma-derived-c", "ictcp", "ipt-c2", "unspecified", "ycocg", "ycgco-re", "ycgco-ro", "bt2020_ncl", "bt2020_cl"] = None,
 color_range: int | None| Literal["unknown", "tv", "pc", "unspecified", "mpeg", "jpeg", "limited", "full"] = None,
 chroma_sample_location: int | None| Literal["unknown", "left", "center", "topleft", "top", "bottomleft", "bottom", "unspecified"] = None,
-alpha_mode: int | None| Literal["unknown", "unspecified", "premultiplied", "straight"] = None,
 slices: int | None = None,
 thread_type: str | None = None,
 audio_service_type: int | None| Literal["ma", "ef", "vi", "hi", "di", "co", "em", "vo", "ka"] = None,
@@ -157,7 +157,7 @@ max_samples: int | None = None,
             mbd: macroblock decision algorithm (high quality mode) (from 0 to 2) (default simple),
             rc_init_occupancy: number of bits which should be loaded into the rc buffer before decoding starts (from INT_MIN to INT_MAX) (default 0),
             threads: set the number of threads (from 0 to INT_MAX) (default 1),
-            dc: deprecated; use intra_dc_precision for MPEG-2 instead (from -8 to 16) (default 0),
+            dc: intra_dc_precision (from -8 to 16) (default 0),
             nssew: nsse weight (from INT_MIN to INT_MAX) (default 8),
             profile: (from INT_MIN to INT_MAX) (default unknown),
             level: encoding level, usually corresponding to the profile level, codec-specific (from INT_MIN to INT_MAX) (default unknown),
@@ -182,7 +182,6 @@ max_samples: int | None = None,
             colorspace: color space (from 0 to INT_MAX) (default unknown),
             color_range: color range (from 0 to INT_MAX) (default unknown),
             chroma_sample_location: chroma sample location (from 0 to INT_MAX) (default unknown),
-            alpha_mode: alpha mode (from 0 to INT_MAX) (default unknown),
             slices: set the number of slices, used in parallelized encoding (from 0 to INT_MAX) (default 0),
             thread_type: select multithreading type (default slice+frame),
             audio_service_type: audio service type (from 0 to 8) (default ma),
@@ -264,7 +263,6 @@ max_samples: int | None = None,
         "colorspace": colorspace,
         "color_range": color_range,
         "chroma_sample_location": chroma_sample_location,
-        "alpha_mode": alpha_mode,
         "slices": slices,
         "thread_type": thread_type,
         "audio_service_type": audio_service_type,
@@ -299,7 +297,6 @@ color_trc: int | None| Literal["bt709", "unknown", "gamma22", "gamma28", "smpte1
 colorspace: int | None| Literal["rgb", "bt709", "unknown", "fcc", "bt470bg", "smpte170m", "smpte240m", "ycgco", "bt2020nc", "bt2020c", "smpte2085", "chroma-derived-nc", "chroma-derived-c", "ictcp", "ipt-c2", "unspecified", "ycocg", "ycgco-re", "ycgco-ro", "bt2020_ncl", "bt2020_cl"] = None,
 color_range: int | None| Literal["unknown", "tv", "pc", "unspecified", "mpeg", "jpeg", "limited", "full"] = None,
 chroma_sample_location: int | None| Literal["unknown", "left", "center", "topleft", "top", "bottomleft", "bottom", "unspecified"] = None,
-alpha_mode: int | None| Literal["unknown", "unspecified", "premultiplied", "straight"] = None,
 thread_type: str | None = None,
 request_sample_fmt: str | None = None,
 sub_charenc: str | None = None,
@@ -314,7 +311,7 @@ max_samples: int | None = None,
 hwaccel_flags: str | None = None,
 extra_hw_frames: int | None = None,
 discard_damaged_percentage: int | None = None,
-side_data_prefer_packet: int | None| Literal["replaygain", "displaymatrix", "spherical", "stereo3d", "audio_service_type", "mastering_display_metadata", "content_light_level", "icc_profile", "exif"] = None,
+side_data_prefer_packet: int | None| Literal["replaygain", "displaymatrix", "spherical", "stereo3d", "audio_service_type", "mastering_display_metadata", "content_light_level", "icc_profile"] = None,
 ) -> FFMpegAVCodecContextDecoderOption:
     """
         Decoder codec context options.
@@ -342,7 +339,6 @@ side_data_prefer_packet: int | None| Literal["replaygain", "displaymatrix", "sph
             colorspace: color space (from 0 to INT_MAX) (default unknown),
             color_range: color range (from 0 to INT_MAX) (default unknown),
             chroma_sample_location: chroma sample location (from 0 to INT_MAX) (default unknown),
-            alpha_mode: alpha mode (from 0 to INT_MAX) (default unknown),
             thread_type: select multithreading type (default slice+frame),
             request_sample_fmt: sample format audio decoders should prefer (default none),
             sub_charenc: set input text subtitles character encoding,
@@ -387,7 +383,6 @@ side_data_prefer_packet: int | None| Literal["replaygain", "displaymatrix", "sph
         "colorspace": colorspace,
         "color_range": color_range,
         "chroma_sample_location": chroma_sample_location,
-        "alpha_mode": alpha_mode,
         "thread_type": thread_type,
         "request_sample_fmt": request_sample_fmt,
         "sub_charenc": sub_charenc,
