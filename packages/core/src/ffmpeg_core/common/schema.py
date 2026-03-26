@@ -514,6 +514,91 @@ class FFMpegOptionFlag(int, Enum):
     """
 
 
+# Old-style flag definitions used by FFmpeg < 7.0 (cmdutils.h prior to the
+# option-type refactor).  These are needed to translate cached flag values
+# from older FFmpeg releases into the current (7.0+) bit layout.
+_OLD_HAS_ARG = 0x0001
+_OLD_OPT_BOOL = 0x0002
+_OLD_OPT_EXPERT = 0x0004
+_OLD_OPT_STRING = 0x0008
+_OLD_OPT_VIDEO = 0x0010
+_OLD_OPT_AUDIO = 0x0020
+_OLD_OPT_INT = 0x0080
+_OLD_OPT_FLOAT = 0x0100
+_OLD_OPT_SUBTITLE = 0x0200
+_OLD_OPT_INT64 = 0x0400
+_OLD_OPT_EXIT = 0x0800
+_OLD_OPT_DATA = 0x1000
+_OLD_OPT_PERFILE = 0x2000
+_OLD_OPT_OFFSET = 0x4000
+_OLD_OPT_SPEC = 0x8000
+_OLD_OPT_TIME = 0x10000
+_OLD_OPT_DOUBLE = 0x20000
+_OLD_OPT_INPUT = 0x40000
+_OLD_OPT_OUTPUT = 0x80000
+
+# Mapping from old-style flag bits to the corresponding new-style
+# ``FFMpegOptionFlag`` values.  Only behavioural / classification flags are
+# translated; the type-encoding bits (OPT_BOOL, OPT_STRING, …) are dropped
+# because the new format stores the type separately in ``FFMpegOptionType``.
+_OLD_TO_NEW_FLAG_MAP: list[tuple[int, int]] = [
+    (_OLD_OPT_EXIT, FFMpegOptionFlag.OPT_EXIT),
+    (_OLD_OPT_EXPERT, FFMpegOptionFlag.OPT_EXPERT),
+    (_OLD_OPT_VIDEO, FFMpegOptionFlag.OPT_VIDEO),
+    (_OLD_OPT_AUDIO, FFMpegOptionFlag.OPT_AUDIO),
+    (_OLD_OPT_SUBTITLE, FFMpegOptionFlag.OPT_SUBTITLE),
+    (_OLD_OPT_DATA, FFMpegOptionFlag.OPT_DATA),
+    (_OLD_OPT_PERFILE, FFMpegOptionFlag.OPT_PERFILE),
+    (_OLD_OPT_OFFSET, FFMpegOptionFlag.OPT_FLAG_OFFSET),
+    (_OLD_OPT_SPEC, FFMpegOptionFlag.OPT_FLAG_SPEC),
+    (_OLD_OPT_INPUT, FFMpegOptionFlag.OPT_INPUT),
+    (_OLD_OPT_OUTPUT, FFMpegOptionFlag.OPT_OUTPUT),
+]
+
+
+def translate_old_flags(old_flags: int) -> int:
+    """Translate pre-7.0 FFmpeg option flags to the current (7.0+) bit layout.
+
+    FFmpeg 7.0 reorganised the option flag constants in ``cmdutils.h``.
+    Cached option data from older FFmpeg versions still carries the old
+    numeric values.  This function maps each old bit to its modern
+    equivalent so that ``is_input_option`` / ``is_output_option`` and
+    friends work correctly regardless of the source FFmpeg version.
+
+    Args:
+        old_flags: Raw integer flags from a pre-7.0 FFmpeg build.
+
+    Returns:
+        Flags using the current ``FFMpegOptionFlag`` bit positions.
+    """
+    new_flags = 0
+    for old_bit, new_bit in _OLD_TO_NEW_FLAG_MAP:
+        if old_flags & old_bit:
+            new_flags |= new_bit
+    # OPT_FUNC_ARG (HAS_ARG) kept at bit 0 in both old and new.
+    if old_flags & _OLD_HAS_ARG:
+        new_flags |= FFMpegOptionFlag.OPT_FUNC_ARG
+    return new_flags
+
+
+def uses_old_flag_layout(flags_of_exit_option: int) -> bool:
+    """Detect whether a flags value comes from the old (pre-7.0) layout.
+
+    The simplest heuristic: the ``-L`` / ``-h`` options always carry only
+    ``OPT_EXIT``.  In the old layout ``OPT_EXIT = 0x0800 = 2048``; in the
+    new layout ``OPT_EXIT = 1 << 1 = 2``.  If the value is 2048, the data
+    uses the old layout.
+
+    Args:
+        flags_of_exit_option: The ``flags`` field of a known OPT_EXIT option
+            (e.g. ``-L``).
+
+    Returns:
+        ``True`` if the old layout is detected.
+    """
+    return flags_of_exit_option == _OLD_OPT_EXIT
+
+
 @serializable
 class FFMpegOptionType(str, Enum):
     """

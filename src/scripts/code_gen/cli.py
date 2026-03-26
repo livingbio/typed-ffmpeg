@@ -17,6 +17,8 @@ from ffmpeg_core.common.schema import (
     FFMpegOption,
     FFMpegOptionType,
     StreamType,
+    translate_old_flags,
+    uses_old_flag_layout,
 )
 
 from .. import manual, parse_c, parse_docs, parse_help
@@ -101,6 +103,31 @@ def gen_filter_info(ffmpeg_filter: FFMpegFilter) -> FFMpegFilter:
     return replace(ffmpeg_filter, ref=filter_doc.url)
 
 
+def _normalize_option_flags(options: list[FFMpegOption]) -> list[FFMpegOption]:
+    """Translate old-style (pre-7.0) flag values to the current bit layout.
+
+    If the options already use the modern layout this is a no-op.
+    Detection works by inspecting known OPT_EXIT options (``-L``, ``-h``).
+
+    Args:
+        options: List of options whose flags may use the old layout.
+
+    Returns:
+        Options with flags guaranteed to use the current layout.
+    """
+    # Find a known OPT_EXIT option to probe the flag layout.
+    exit_option = next(
+        (o for o in options if o.name in ("L", "h", "help", "version")), None
+    )
+    if exit_option is None or not uses_old_flag_layout(exit_option.flags):
+        return options
+
+    return [
+        replace(o, flags=translate_old_flags(o.flags))
+        for o in options
+    ]
+
+
 def load_options(
     rebuild: bool,
     ffmpeg_binary: str,
@@ -121,7 +148,8 @@ def load_options(
     cache_id = f"options_{version_key}"
     if not rebuild:
         try:
-            return load(list[FFMpegOption], cache_id)
+            options = load(list[FFMpegOption], cache_id)
+            return _normalize_option_flags(options)
         except Exception as e:
             logging.error(f"Failed to load options from cache: {e}")
 
@@ -137,7 +165,7 @@ def load_options(
         for i in parse_c.cli.parse_ffmpeg_options(ffmpeg_binary=ffmpeg_binary)
     ]
     save(options, cache_id)
-    return options
+    return _normalize_option_flags(options)
 
 
 def load_av_option_set(

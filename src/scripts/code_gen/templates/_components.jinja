@@ -116,6 +116,14 @@ References:
 {%- elif f.filter_type.value in ["af", "vaf", "asrc"] -%}
     {% set return_type = "audio" %}
 {%- endif -%}
+{% if f.is_support_framesync %}
+if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+    framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+{% endif %}
+{% if f.is_support_timeline %}
+if timeline_options is None and enable is not None:
+    timeline_options = FFMpegTimelineOption(enable=enable)
+{% endif %}
 filter_node = filter_node_factory(
     {{f.to_def}},
     {{ stream_params(f, type) }}
@@ -162,9 +170,13 @@ return (
     {{ f | filter_option_typings }}
     {% if f.is_support_framesync %}
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     {% endif %}
     {% if f.is_support_timeline %}
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     {% endif %}
     extra_options: dict[str, Any] | None = None,
     ) {{- return_stream_typings(f) }}
@@ -182,9 +194,13 @@ def {{f.name}}(
     {{ f | filter_option_typings }}
     {% if f.is_support_framesync %}
     framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
     {% endif %}
     {% if f.is_support_timeline %}
     timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
     {% endif %}
     extra_options: dict[str, Any] | None = None,
 ) {{- return_stream_typings(f) }}

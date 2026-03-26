@@ -10,9 +10,15 @@ __version__ = "7.1.0"
 from ffmpeg_core.ffprobe.probe import probe
 
 # Make commonly used modules easily accessible
-from . import codecs, filters, formats, streams
-from .base import merge_outputs
+from . import codecs, compile, dag, filters, formats, sources, streams
+from .base import afilter, filter_multi_output, merge_outputs, vfilter
+from .dag import Stream
 from .dag.io import input, output
+from .exceptions import FFMpegExecuteError, FFMpegTypeError, FFMpegValueError
+from .info import get_codecs, get_decoders, get_encoders
+from .streams.audio import AudioStream
+from .streams.av import AVStream
+from .streams.video import VideoStream
 
 __all__ = [
     "__version__",
@@ -20,10 +26,26 @@ __all__ = [
     "output",
     "merge_outputs",
     "probe",
+    "vfilter",
+    "afilter",
+    "filter_multi_output",
+    "AudioStream",
+    "VideoStream",
+    "AVStream",
+    "Stream",
+    "FFMpegExecuteError",
+    "FFMpegTypeError",
+    "FFMpegValueError",
+    "get_codecs",
+    "get_decoders",
+    "get_encoders",
     "filters",
+    "sources",
     "streams",
     "codecs",
     "formats",
+    "compile",
+    "dag",
 ]
 
 # Dynamically add OutputArgs methods to FilterableStream
