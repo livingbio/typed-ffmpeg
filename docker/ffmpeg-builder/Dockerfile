@@ -93,6 +93,10 @@ COPY --from=build /usr/local/bin/ffmpeg /usr/local/bin/ffmpeg
 COPY --from=build /usr/local/bin/ffprobe /usr/local/bin/ffprobe
 COPY --from=build /usr/local/lib /usr/local/lib
 
-RUN ldconfig
+# Bundle all shared library dependencies into /usr/local/lib so they are
+# included when the CI extracts libs via: docker cp container:/usr/local/lib
+RUN ldd /usr/local/bin/ffmpeg | awk '/=> \// {print $3}' \
+    | xargs -I{} cp -n {} /usr/local/lib/ 2>/dev/null || true \
+    && ldconfig
 
 ENTRYPOINT ["/usr/local/bin/ffmpeg"]
