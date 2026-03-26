@@ -16,8 +16,8 @@ jobs:
       matrix:
         include:
           - ffmpeg-version: '5'
-            ffmpeg-image: 'jrottenberg/ffmpeg:5.1-ubuntu'
-            build-from-source: false
+            ffmpeg-source-tag: 'n5.1.6'
+            build-from-source: true
           - ffmpeg-version: '6'
             ffmpeg-source-tag: 'n6.1.2'
             build-from-source: true
@@ -36,27 +36,7 @@ jobs:
         with:
           python-version: '3.10'
 
-      # ── FFmpeg 5 / 6: extract binary from Docker image ──────────────────────
-      - name: Install build dependencies (Docker path)
-        if: ${{ !matrix.build-from-source }}
-        run: sudo apt-get update && sudo apt-get install -y build-essential nasm
-
-      - name: Extract FFmpeg ${{ matrix.ffmpeg-version }} from Docker image
-        if: ${{ !matrix.build-from-source }}
-        run: |
-          docker pull ${{ matrix.ffmpeg-image }}
-          CONTAINER_ID=$(docker create ${{ matrix.ffmpeg-image }})
-          sudo docker cp "$CONTAINER_ID:/usr/local/bin/ffmpeg" /usr/local/bin/ffmpeg || \
-            sudo docker cp "$CONTAINER_ID:/usr/bin/ffmpeg" /usr/local/bin/ffmpeg
-          sudo docker cp "$CONTAINER_ID:/usr/local/bin/ffprobe" /usr/local/bin/ffprobe || \
-            sudo docker cp "$CONTAINER_ID:/usr/bin/ffprobe" /usr/local/bin/ffprobe
-          docker cp "$CONTAINER_ID:/usr/local/lib" /tmp/ffmpeg-libs
-          sudo cp -a /tmp/ffmpeg-libs/. /usr/local/lib/
-          docker rm "$CONTAINER_ID"
-          sudo ldconfig
-          ffmpeg -version | head -1
-
-      # ── FFmpeg 6/7/8: build from source with full hardware-filter support ─────
+      # ── All versions: build from source with full hardware-filter support ──────
       - name: Install build dependencies (source build)
         if: ${{ matrix.build-from-source }}
         run: |
