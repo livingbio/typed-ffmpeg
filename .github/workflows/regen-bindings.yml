@@ -1,6 +1,10 @@
 name: Regenerate FFmpeg Bindings
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/regen-bindings.yml'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -83,6 +87,9 @@ jobs:
         run: |
           source .venv/bin/activate
           export PYTHONPATH="$PWD/src:$PYTHONPATH"
+          # Ensure ffmpeg can find its shared libs (actions/setup-python sets
+          # LD_LIBRARY_PATH to Python's lib dir, hiding system/custom libs)
+          export LD_LIBRARY_PATH="/usr/local/lib:/usr/lib/x86_64-linux-gnu${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
           python -m scripts.code_gen.cli generate \
             --outpath "packages/v${{ matrix.ffmpeg-version }}/src/ffmpeg" \
             --ffmpeg-binary /usr/local/bin/ffmpeg \
