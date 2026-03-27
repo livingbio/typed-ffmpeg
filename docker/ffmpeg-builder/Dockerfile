@@ -67,9 +67,29 @@ RUN HELP=$(./configure --help 2>&1); \
     chk libharfbuzz  && pkg-config --exists harfbuzz   && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libharfbuzz" || true; \
     chk libdav1d     && pkg-config --exists dav1d      && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libdav1d" || true; \
     chk libsvtav1    && pkg-config --exists SvtAv1Enc  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libsvtav1" || true; \
-    chk libplacebo   && pkg-config --exists libplacebo && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libplacebo" || true; \
-    # Vulkan
-    chk vulkan       && pkg-config --exists vulkan     && EXTRA_FLAGS="$EXTRA_FLAGS --enable-vulkan" || true; \
+    # libplacebo: compile-test the exact API field FFmpeg older versions need;
+    # Ubuntu 24.04 ships libplacebo 6.x which removed force_icc_lut — only
+    # enable when the installed headers are API-compatible with this FFmpeg.
+    if chk libplacebo && pkg-config --exists libplacebo 2>/dev/null; then \
+        if printf '#include <libplacebo/render.h>\nint f(void){struct pl_render_params p;(void)p.force_icc_lut;return 0;}\n' | \
+           cc -x c - -c -o /dev/null $(pkg-config --cflags libplacebo) 2>/dev/null; then \
+            EXTRA_FLAGS="$EXTRA_FLAGS --enable-libplacebo"; \
+        else \
+            echo "INFO: libplacebo API incompatible with this FFmpeg version (force_icc_lut missing), skipping"; \
+        fi; \
+    fi; \
+    # Vulkan: a plain pkg-config existence check is insufficient — FFmpeg's own
+    # configure probe compiles and links a test binary.  Mirror that test here
+    # so we only pass --enable-vulkan when it will actually succeed.
+    if chk vulkan; then \
+        VULKAN_CFLAGS=$(pkg-config --cflags vulkan 2>/dev/null || echo ""); \
+        if printf '#include <vulkan/vulkan.h>\nint main(void){return VK_VERSION_1_1;}\n' | \
+           cc -x c - -o /dev/null $VULKAN_CFLAGS -lvulkan 2>/dev/null; then \
+            EXTRA_FLAGS="$EXTRA_FLAGS --enable-vulkan"; \
+        else \
+            echo "WARNING: Vulkan compile/link test failed, skipping --enable-vulkan"; \
+        fi; \
+    fi; \
     chk libshaderc   && pkg-config --exists shaderc    && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libshaderc" || true; \
     # CUDA / NVENC (header-only — no GPU needed)
     chk cuvid        && pkg-config --exists ffnvcodec  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-cuvid --enable-nvenc --enable-nvdec" || true; \
@@ -117,6 +137,9 @@ RUN HELP=$(./configure --help 2>&1); \
         --enable-vaapi \
         --enable-opencl \
         $EXTRA_FLAGS \
+    || { echo "=== configure failed — ffbuild/config.log ==="; \
+         cat ffbuild/config.log 2>/dev/null || cat config.log 2>/dev/null; \
+         exit 1; } \
     && make -j$(nproc) \
     && make install
 
