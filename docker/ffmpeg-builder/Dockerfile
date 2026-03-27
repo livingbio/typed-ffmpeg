@@ -46,9 +46,19 @@ RUN git clone --depth 1 https://github.com/FFmpeg/nv-codec-headers.git /tmp/nv-c
     && make install PREFIX=/usr/local \
     && rm -rf /tmp/nv-codec-headers
 
+# Upgrade Vulkan headers if the system version is below 1.3.277
+# (FFmpeg 8.0 requires >= 1.3.277; Ubuntu 24.04 ships 1.3.275)
+RUN if ! pkg-config --atleast-version=1.3.277 vulkan 2>/dev/null; then \
+      git clone --depth 1 --branch v1.3.283 https://github.com/KhronosGroup/Vulkan-Headers.git /tmp/vulkan-headers; \
+      cp -r /tmp/vulkan-headers/include/vulkan /usr/include/; \
+      find /usr /lib -name 'vulkan.pc' 2>/dev/null -exec sed -i 's/^Version:.*/Version: 1.3.283/' {} +; \
+      rm -rf /tmp/vulkan-headers; \
+    fi
+
 # Verify key dependencies
 RUN pkg-config --exists harfbuzz && echo "harfbuzz: OK" || echo "WARNING: harfbuzz not found"
 RUN pkg-config --exists vulkan && echo "vulkan: OK" || echo "WARNING: vulkan not found"
+RUN pkg-config --modversion vulkan 2>/dev/null && echo "vulkan version OK" || echo "WARNING: vulkan version check failed"
 RUN pkg-config --exists ffnvcodec && echo "ffnvcodec: OK" || echo "WARNING: nv-codec-headers not found"
 
 RUN wget -q "https://ffmpeg.org/releases/ffmpeg-${FFMPEG_SOURCE_VERSION}.tar.bz2" \
@@ -78,16 +88,14 @@ RUN HELP=$(./configure --help 2>&1); \
             echo "INFO: libplacebo API incompatible with this FFmpeg version (force_icc_lut missing), skipping"; \
         fi; \
     fi; \
-    # Vulkan: a plain pkg-config existence check is insufficient — FFmpeg's own
-    # configure probe compiles and links a test binary.  Mirror that test here
-    # so we only pass --enable-vulkan when it will actually succeed.
+    # Vulkan: mirror FFmpeg 8.0's exact requirement (>= 1.3.277 / VK_HEADER_VERSION >= 277)
     if chk vulkan; then \
         VULKAN_CFLAGS=$(pkg-config --cflags vulkan 2>/dev/null || echo ""); \
-        if printf '#include <vulkan/vulkan.h>\nint main(void){return VK_VERSION_1_1;}\n' | \
+        if printf '#include <vulkan/vulkan.h>\n#if !(defined(VK_VERSION_1_4)||(defined(VK_VERSION_1_3)&&VK_HEADER_VERSION>=277))\n#error "Vulkan headers too old"\n#endif\nint main(void){return 0;}\n' | \
            cc -x c - -o /dev/null $VULKAN_CFLAGS -lvulkan 2>/dev/null; then \
             EXTRA_FLAGS="$EXTRA_FLAGS --enable-vulkan"; \
         else \
-            echo "WARNING: Vulkan compile/link test failed, skipping --enable-vulkan"; \
+            echo "WARNING: Vulkan headers < 1.3.277 or link failed, skipping --enable-vulkan"; \
         fi; \
     fi; \
     chk libshaderc   && pkg-config --exists shaderc    && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libshaderc" || true; \
