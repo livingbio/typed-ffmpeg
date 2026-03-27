@@ -52,9 +52,9 @@ jobs:
         ffmpeg-version: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.ffmpeg-version != 'all') && fromJSON(format('["{0}"]', github.event.inputs.ffmpeg-version)) || fromJSON('["5", "6", "7", "8"]') }}
         include:
           - ffmpeg-version: '5'
-            ffmpeg-image: 'ghcr.io/livingbio/typed-ffmpeg/ffmpeg:5.1'
+            ffmpeg-image: 'jrottenberg/ffmpeg:5.1-ubuntu'
           - ffmpeg-version: '6'
-            ffmpeg-image: 'ghcr.io/livingbio/typed-ffmpeg/ffmpeg:6.1'
+            ffmpeg-image: 'jrottenberg/ffmpeg:6.1-ubuntu'
           - ffmpeg-version: '7'
             ffmpeg-image: 'ghcr.io/livingbio/typed-ffmpeg/ffmpeg:7.1'
           - ffmpeg-version: '8'
@@ -92,6 +92,9 @@ jobs:
             sudo docker cp "$CONTAINER_ID:/usr/bin/ffprobe" /usr/local/bin/ffprobe
           docker cp "$CONTAINER_ID:/usr/local/lib" /tmp/ffmpeg-libs
           sudo cp -a /tmp/ffmpeg-libs/. /usr/local/lib/
+          # Copy system libs from container (custom builds link against system libs)
+          docker cp "$CONTAINER_ID:/usr/lib" /tmp/sys-libs
+          sudo cp -an /tmp/sys-libs/. /usr/lib/
           docker rm "$CONTAINER_ID"
           sudo ldconfig
           ffmpeg -version
@@ -114,6 +117,7 @@ jobs:
         run: |
           source .venv/bin/activate
           export PYTHONPATH="$PWD/src:$PYTHONPATH"
+          export LD_LIBRARY_PATH="/usr/local/lib:/usr/lib/x86_64-linux-gnu${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
           FFMPEG_MAJOR=${{ matrix.ffmpeg-version }}
           OUTPATH="packages/v${FFMPEG_MAJOR}/src/ffmpeg"
           echo "Generating bindings for FFmpeg v${FFMPEG_MAJOR} -> ${OUTPATH}"
