@@ -35,9 +35,29 @@ def get_cache_path() -> Path:
 cache_path = get_cache_path()
 
 
+def _get_data_cache_path() -> Path | None:
+    """
+    Get the cache path from the ffmpeg-core-data package, if installed.
+
+    Returns:
+        Path to the data cache directory, or None if not installed.
+
+    """
+    try:
+        from ffmpeg_core_data import get_cache_path
+
+        return get_cache_path()
+    except ImportError:
+        return None
+
+
 def load(cls: type[T], id: str) -> T:
     """
     Load an object from the cache.
+
+    Tries the local cache first (for development), then falls back to the
+    ffmpeg-core-data package. Raises ImportError with installation instructions
+    if the data is not available.
 
     Args:
         cls: The class of the object
@@ -46,8 +66,23 @@ def load(cls: type[T], id: str) -> T:
     Returns:
         The loaded object
 
+    Raises:
+        ImportError: If the cache file is not found and ffmpeg-core-data is not installed.
+
     """
     path = cache_path / f"{cls.__name__}/{id}.json"
+
+    if not path.exists():
+        data_cache = _get_data_cache_path()
+        if data_cache is not None:
+            path = data_cache / f"{cls.__name__}/{id}.json"
+
+    if not path.exists():
+        raise ImportError(
+            f"Cache file not found: {cls.__name__}/{id}.json. "
+            "Install the parse extra for CLI parsing and Python compilation support: "
+            "pip install ffmpeg-core[parse]"
+        )
 
     with path.open() as ifile:
         obj = loads(ifile.read())

@@ -1,6 +1,7 @@
 [tool.uv.workspace]
 members = [
     "packages/core",
+    "packages/data",
     "packages/v5",
     "packages/v6",
     "packages/v7",
@@ -14,6 +15,7 @@ version = "0.0.0"
 description = "Monorepo root for typed-ffmpeg (workspace + dev scripts)"
 dependencies = [
     "ffmpeg-core",
+    "ffmpeg-core-data",
 ]
 authors = [
     {name = "lucemia", email = "lucemia@gmail.com"}
@@ -56,7 +58,7 @@ Repository = "https://github.com/livingbio/typed-ffmpeg"
 graph = ["graphviz"]
 
 [tool.uv]
-sources = { ffmpeg-core = { workspace = true } }
+sources = { ffmpeg-core = { workspace = true }, ffmpeg-core-data = { workspace = true } }
 dev-dependencies = [
     # Development tools
     "ty",

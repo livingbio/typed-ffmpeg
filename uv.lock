@@ -11,6 +11,7 @@ resolution-markers = [
 [manifest]
 members = [
     "ffmpeg-core",
+    "ffmpeg-core-data",
     "typed-ffmpeg",
     "typed-ffmpeg-v5",
     "typed-ffmpeg-v6",
@@ -503,9 +504,13 @@ dev = [
 graph = [
     { name = "graphviz" },
 ]
+parse = [
+    { name = "ffmpeg-core-data" },
+]
 
 [package.metadata]
 requires-dist = [
+    { name = "ffmpeg-core-data", marker = "extra == 'parse'", editable = "packages/data" },
     { name = "graphviz", marker = "extra == 'graph'" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
@@ -513,7 +518,12 @@ requires-dist = [
     { name = "ruff", marker = "extra == 'dev'", specifier = "==0.12.2" },
     { name = "syrupy", marker = "extra == 'dev'", specifier = ">=5.0" },
 ]
-provides-extras = ["dev", "graph"]
+provides-extras = ["dev", "graph", "parse"]
+
+[[package]]
+name = "ffmpeg-core-data"
+version = "1.0.0a1"
+source = { editable = "packages/data" }
 
 [[package]]
 name = "ghp-import"
@@ -2504,6 +2514,7 @@ version = "0.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "ffmpeg-core" },
+    { name = "ffmpeg-core-data" },
 ]
 
 [package.optional-dependencies]
@@ -2546,6 +2557,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "ffmpeg-core", editable = "packages/core" },
+    { name = "ffmpeg-core-data", editable = "packages/data" },
     { name = "graphviz", marker = "extra == 'graph'" },
 ]
 provides-extras = ["graph"]

@@ -1,0 +1,38 @@
+[project]
+name = "ffmpeg-core-data"
+version = "1.0.0a1"
+description = "Cache data files for typed-ffmpeg CLI parsing and Python compilation"
+authors = [
+    {name = "lucemia", email = "lucemia@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = [
+    "ffmpeg",
+    "data",
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Video",
+]
+
+dependencies = []  # Pure data, no dependencies
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["ffmpeg_core_data*"]
+
+[tool.setuptools.package-data]
+"ffmpeg_core_data" = ["cache/list/*.json"]
