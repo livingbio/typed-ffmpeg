@@ -27451,6 +27451,3 @@ References:
             )
         )
         return filter_node.video(0)
-
-
-
