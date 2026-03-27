@@ -4,7 +4,7 @@ on:
   push:
     branches: [main, v4]
     paths:
-      - 'docker/ffmpeg-builder/Dockerfile'
+      - 'docker/ffmpeg-builder/Dockerfile.*'
       - '.github/workflows/build-ffmpeg-images.yml'
   workflow_dispatch:
     inputs:
@@ -58,10 +58,10 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: docker/ffmpeg-builder
+          file: docker/ffmpeg-builder/Dockerfile.${{ matrix.ffmpeg-version }}
           push: true
           platforms: linux/amd64
           build-args: |
-            FFMPEG_VERSION=${{ matrix.ffmpeg-version }}
             FFMPEG_SOURCE_VERSION=${{ matrix.ffmpeg-source-version }}
           tags: |
             ghcr.io/${{ github.repository }}/ffmpeg:${{ matrix.ffmpeg-version }}
@@ -73,7 +73,21 @@ jobs:
           IMAGE=ghcr.io/${{ github.repository }}/ffmpeg:${{ matrix.ffmpeg-version }}
           docker pull "$IMAGE"
           docker run --rm "$IMAGE" -version 2>&1 | head -2
-          echo "--- Muxer descriptions ---"
-          docker run --rm "$IMAGE" -muxers 2>&1 | grep "3g2"
-          echo "--- Hardware filters ---"
+          echo ""
+          echo "=== All filters ==="
+          docker run --rm "$IMAGE" -filters 2>/dev/null | tail -n +9
+          echo ""
+          echo "=== Filter count ==="
+          docker run --rm "$IMAGE" -filters 2>/dev/null | grep -c '^\s' || true
+          echo ""
+          echo "=== Hardware acceleration filters ==="
           docker run --rm "$IMAGE" -filters 2>/dev/null | grep -iE 'vaapi|opencl|vulkan|cuda' || echo "(none found)"
+          echo ""
+          echo "=== Plugin filters (frei0r, ladspa, lv2) ==="
+          docker run --rm "$IMAGE" -filters 2>/dev/null | grep -iE 'frei0r|ladspa|lv2' || echo "(none found)"
+          echo ""
+          echo "=== Audio filters (bs2b, rubberband, sofalizer, flite) ==="
+          docker run --rm "$IMAGE" -filters 2>/dev/null | grep -iE 'bs2b|rubberband|sofalizer' || echo "(none found)"
+          echo ""
+          echo "=== Muxer descriptions ==="
+          docker run --rm "$IMAGE" -muxers 2>&1 | grep "3g2"
