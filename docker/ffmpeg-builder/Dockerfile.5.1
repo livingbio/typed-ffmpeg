@@ -49,7 +49,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install nv-codec-headers (CUDA/NVENC support without a physical GPU)
-RUN git clone --depth 1 https://github.com/FFmpeg/nv-codec-headers.git /tmp/nv-codec-headers \
+# Pin to n12.0.16.0 — latest nv-codec-headers (12.2+) changed APIs that break FFmpeg 5.x
+RUN git clone --depth 1 --branch n12.0.16.0 https://github.com/FFmpeg/nv-codec-headers.git /tmp/nv-codec-headers \
     && cd /tmp/nv-codec-headers \
     && make install PREFIX=/usr/local \
     && rm -rf /tmp/nv-codec-headers
