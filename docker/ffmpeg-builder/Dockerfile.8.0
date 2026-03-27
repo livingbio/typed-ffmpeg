@@ -169,14 +169,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libbs2b0 librubberband2 libmysofa1 liblilv-0-0 \
     frei0r-plugins \
     libgsm1 libspeex1 libtwolame0 libshine3 \
-    libcodec2-1.0 libsnappy1v5 \
+    libsnappy1v5 \
     libzvbi0 librsvg2-2 \
     && rm -rf /var/lib/apt/lists/*
 
 # Optional runtime libs — install each separately so one failure doesn't block others
 RUN apt-get update \
     && for pkg in libdav1d7 libsvtav1enc1d1 libharfbuzz0b \
-                  libshaderc1 libflite1 librav1e0 libjxl0.10; do \
+                  libshaderc1 libflite1 librav1e0 libjxl0.10 \
+                  libcodec2-1.2 libcodec2-1.0; do \
          apt-get install -y --no-install-recommends "$pkg" 2>/dev/null || true; \
        done \
     && rm -rf /var/lib/apt/lists/*
