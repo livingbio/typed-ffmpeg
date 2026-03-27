@@ -59,6 +59,7 @@ RUN git clone --depth 1 https://github.com/FFmpeg/nv-codec-headers.git /tmp/nv-c
 RUN if ! pkg-config --atleast-version=1.3.277 vulkan 2>/dev/null; then \
       git clone --depth 1 --branch v1.3.283 https://github.com/KhronosGroup/Vulkan-Headers.git /tmp/vulkan-headers; \
       cp -r /tmp/vulkan-headers/include/vulkan /usr/include/; \
+      cp -r /tmp/vulkan-headers/include/vk_video /usr/include/; \
       find /usr /lib -name 'vulkan.pc' 2>/dev/null -exec sed -i 's/^Version:.*/Version: 1.3.283/' {} +; \
       rm -rf /tmp/vulkan-headers; \
     fi
