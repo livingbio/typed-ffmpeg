@@ -457,6 +457,28 @@ from ..streams.audio import AudioStream
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def _012v(
 
 ) -> FFMpegDecoderOption:
@@ -2440,6 +2462,38 @@ def jpegls(
 
 
 
+def libjxl(
+
+) -> FFMpegDecoderOption:
+    """
+    libjxl JPEG XL (codec jpegxl)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+    }))
+
+
+
+def libjxl_anim(
+
+) -> FFMpegDecoderOption:
+    """
+    libjxl JPEG XL animated (codec jpegxl_anim)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+    }))
+
+
+
 def jv(
 
 ) -> FFMpegDecoderOption:
@@ -4291,6 +4345,38 @@ def sunrast(
 
 
 
+def librsvg(
+
+    width: int | None = None,
+
+    height: int | None = None,
+
+    keep_ar: bool | None = None,
+
+) -> FFMpegDecoderOption:
+    """
+    Librsvg rasterizer (codec svg)
+
+    Args:
+        width: Width to render to (0 for default) (from 0 to INT_MAX) (default 0)
+        height: Height to render to (0 for default) (from 0 to INT_MAX) (default 0)
+        keep_ar: Keep aspect ratio with custom width/height (default true)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+        "width": width,
+
+        "height": height,
+
+        "keep_ar": keep_ar,
+
+    }))
+
+
+
 def svq1(
 
 ) -> FFMpegDecoderOption:
@@ -5789,6 +5875,68 @@ def aac_fixed(
 
 
 
+def libfdk_aac(
+
+    conceal: int | None| Literal["spectral", "noise", "energy"] = None,
+
+    drc_boost: int | None = None,
+
+    drc_cut: int | None = None,
+
+    drc_level: int | None = None,
+
+    drc_heavy: int | None = None,
+
+    level_limit: bool | None = None,
+
+    drc_effect: int | None = None,
+
+    album_mode: int | None = None,
+
+    downmix: str | None = None,
+
+) -> FFMpegDecoderOption:
+    """
+    Fraunhofer FDK AAC (codec aac)
+
+    Args:
+        conceal: Error concealment method (from 0 to 2) (default noise)
+        drc_boost: Dynamic Range Control: boost, where [0] is none and [127] is max boost (from -1 to 127) (default -1)
+        drc_cut: Dynamic Range Control: attenuation factor, where [0] is none and [127] is max compression (from -1 to 127) (default -1)
+        drc_level: Dynamic Range Control: reference level, quantized to 0.25dB steps where [0] is 0dB and [127] is -31.75dB, -1 for auto, and -2 for disabled (from -2 to 127) (default -1)
+        drc_heavy: Dynamic Range Control: heavy compression, where [1] is on (RF mode) and [0] is off (from -1 to 1) (default -1)
+        level_limit: Signal level limiting (default auto)
+        drc_effect: Dynamic Range Control: effect type, where e.g. [0] is none and [6] is general (from -1 to 8) (default -1)
+        album_mode: Dynamic Range Control: album mode, where [0] is off and [1] is on (from -1 to 1) (default -1)
+        downmix: Request a specific channel layout from the decoder
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+        "conceal": conceal,
+
+        "drc_boost": drc_boost,
+
+        "drc_cut": drc_cut,
+
+        "drc_level": drc_level,
+
+        "drc_heavy": drc_heavy,
+
+        "level_limit": level_limit,
+
+        "drc_effect": drc_effect,
+
+        "album_mode": album_mode,
+
+        "downmix": downmix,
+
+    }))
+
+
+
 def aac_latm(
 
 ) -> FFMpegDecoderOption:
@@ -7118,6 +7266,22 @@ def cbd2_dpcm(
 
 
 
+def libcodec2(
+
+) -> FFMpegDecoderOption:
+    """
+    codec2 decoder using libcodec2 (codec codec2)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+    }))
+
+
+
 def comfortnoise(
 
 ) -> FFMpegDecoderOption:
@@ -7568,11 +7732,43 @@ def gsm(
 
 
 
+def libgsm(
+
+) -> FFMpegDecoderOption:
+    """
+    libgsm GSM (codec gsm)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+    }))
+
+
+
 def gsm_ms(
 
 ) -> FFMpegDecoderOption:
     """
     GSM Microsoft variant
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+    }))
+
+
+
+def libgsm_ms(
+
+) -> FFMpegDecoderOption:
+    """
+    libgsm GSM Microsoft variant (codec gsm_ms)
 
 
     Returns:
@@ -8963,6 +9159,22 @@ def speex(
 ) -> FFMpegDecoderOption:
     """
     Speex
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+    }))
+
+
+
+def libspeex(
+
+) -> FFMpegDecoderOption:
+    """
+    libspeex Speex (codec speex)
 
 
     Returns:

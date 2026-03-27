@@ -97,7 +97,7 @@ def _3g2(
 
 ) -> FFMpegMuxerOption:
     """
-    3GP2 (3GPP2 file format)
+
 
     Args:
         movflags: MOV muxer flags (default 0)
@@ -239,7 +239,7 @@ def _3gp(
 
 ) -> FFMpegMuxerOption:
     """
-    3GP (3GPP file format)
+
 
     Args:
         movflags: MOV muxer flags (default 0)
@@ -331,7 +331,7 @@ def a64(
 
 ) -> FFMpegMuxerOption:
     """
-    a64 - video for Commodore 64
+
 
 
     Returns:
@@ -347,7 +347,7 @@ def ac3(
 
 ) -> FFMpegMuxerOption:
     """
-    raw AC-3
+
 
 
     Returns:
@@ -365,7 +365,7 @@ def ac4(
 
 ) -> FFMpegMuxerOption:
     """
-    raw AC-4
+
 
     Args:
         write_crc: enable checksum (default false)
@@ -391,7 +391,7 @@ def adts(
 
 ) -> FFMpegMuxerOption:
     """
-    ADTS AAC (Advanced Audio Coding)
+
 
     Args:
         write_id3v2: Enable ID3v2 tag writing (default false)
@@ -417,7 +417,7 @@ def adx(
 
 ) -> FFMpegMuxerOption:
     """
-    CRI ADX
+
 
 
     Returns:
@@ -437,7 +437,7 @@ def aiff(
 
 ) -> FFMpegMuxerOption:
     """
-    Audio IFF
+
 
     Args:
         write_id3v2: Enable ID3 tags writing. (default false)
@@ -460,7 +460,7 @@ def alaw(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM A-law
+
 
 
     Returns:
@@ -478,7 +478,7 @@ def alp(
 
 ) -> FFMpegMuxerOption:
     """
-    LEGO Racers ALP
+
 
     Args:
         type: set file type (from 0 to 2) (default auto)
@@ -494,11 +494,27 @@ def alp(
 
 
 
+def alsa(
+
+) -> FFMpegMuxerOption:
+    """
+
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegMuxerOption(merge({
+
+    }))
+
+
+
 def amr(
 
 ) -> FFMpegMuxerOption:
     """
-    3GPP AMR
+
 
 
     Returns:
@@ -514,7 +530,7 @@ def amv(
 
 ) -> FFMpegMuxerOption:
     """
-    AMV
+
 
 
     Returns:
@@ -530,7 +546,7 @@ def apm(
 
 ) -> FFMpegMuxerOption:
     """
-    Ubisoft Rayman 2 APM
+
 
 
     Returns:
@@ -550,7 +566,7 @@ def apng(
 
 ) -> FFMpegMuxerOption:
     """
-    Animated Portable Network Graphics
+
 
     Args:
         plays: Number of times to play the output: 0 - infinite loop, 1 - no loop (from 0 to 65535) (default 1)
@@ -573,7 +589,7 @@ def aptx(
 
 ) -> FFMpegMuxerOption:
     """
-    raw aptX (Audio Processing Technology for Bluetooth)
+
 
 
     Returns:
@@ -589,7 +605,7 @@ def aptx_hd(
 
 ) -> FFMpegMuxerOption:
     """
-    raw aptX HD (Audio Processing Technology for Bluetooth)
+
 
 
     Returns:
@@ -611,7 +627,7 @@ def argo_asf(
 
 ) -> FFMpegMuxerOption:
     """
-    Argonaut Games ASF
+
 
     Args:
         version_major: override file major version (from 0 to 65535) (default 2)
@@ -643,7 +659,7 @@ def argo_cvg(
 
 ) -> FFMpegMuxerOption:
     """
-    Argonaut Games CVG
+
 
     Args:
         skip_rate_check: skip sample rate check (default false)
@@ -671,7 +687,7 @@ def asf(
 
 ) -> FFMpegMuxerOption:
     """
-    ASF (Advanced / Active Streaming Format)
+
 
     Args:
         packet_size: Packet size (from 100 to 65536) (default 3200)
@@ -693,7 +709,7 @@ def asf_stream(
 
 ) -> FFMpegMuxerOption:
     """
-    ASF (Advanced / Active Streaming Format)
+
 
     Args:
         packet_size: Packet size (from 100 to 65536) (default 3200)
@@ -715,7 +731,7 @@ def ass(
 
 ) -> FFMpegMuxerOption:
     """
-    SSA (SubStation Alpha) subtitle
+
 
     Args:
         ignore_readorder: write events immediately, even if they're out-of-order (default false)
@@ -739,7 +755,7 @@ def ast(
 
 ) -> FFMpegMuxerOption:
     """
-    AST (Audio Stream)
+
 
     Args:
         loopstart: Loopstart position in milliseconds. (from -1 to INT_MAX) (default -1)
@@ -762,7 +778,7 @@ def au(
 
 ) -> FFMpegMuxerOption:
     """
-    Sun AU
+
 
 
     Returns:
@@ -784,7 +800,7 @@ def avi(
 
 ) -> FFMpegMuxerOption:
     """
-    AVI (Audio Video Interleaved)
+
 
     Args:
         reserve_index_space: reserve space (in bytes) at the beginning of the file for each stream index (from 0 to INT_MAX) (default 0)
@@ -814,7 +830,7 @@ def avif(
 
 ) -> FFMpegMuxerOption:
     """
-    AVIF
+
 
     Args:
         movie_timescale: set movie timescale (from 1 to INT_MAX) (default 1000)
@@ -837,7 +853,7 @@ def avm2(
 
 ) -> FFMpegMuxerOption:
     """
-    SWF (ShockWave Flash) (AVM2)
+
 
 
     Returns:
@@ -853,7 +869,7 @@ def avs2(
 
 ) -> FFMpegMuxerOption:
     """
-    raw AVS2-P2/IEEE1857.4 video
+
 
 
     Returns:
@@ -869,7 +885,7 @@ def avs3(
 
 ) -> FFMpegMuxerOption:
     """
-    AVS3-P2/IEEE1857.10
+
 
 
     Returns:
@@ -885,7 +901,7 @@ def bit(
 
 ) -> FFMpegMuxerOption:
     """
-    G.729 BIT file format
+
 
 
     Returns:
@@ -901,7 +917,7 @@ def caf(
 
 ) -> FFMpegMuxerOption:
     """
-    Apple CAF (Core Audio Format)
+
 
 
     Returns:
@@ -917,7 +933,7 @@ def cavsvideo(
 
 ) -> FFMpegMuxerOption:
     """
-    raw Chinese AVS (Audio Video Standard) video
+
 
 
     Returns:
@@ -933,7 +949,7 @@ def codec2(
 
 ) -> FFMpegMuxerOption:
     """
-    codec2 .c2 muxer
+
 
 
     Returns:
@@ -949,7 +965,7 @@ def codec2raw(
 
 ) -> FFMpegMuxerOption:
     """
-    raw codec2 muxer
+
 
 
     Returns:
@@ -965,7 +981,7 @@ def crc(
 
 ) -> FFMpegMuxerOption:
     """
-    CRC testing
+
 
 
     Returns:
@@ -1053,7 +1069,7 @@ def dash(
 
 ) -> FFMpegMuxerOption:
     """
-    DASH Muxer
+
 
     Args:
         adaptation_sets: Adaptation sets. Syntax: id=0,streams=0,1,2 id=1,streams=3,4 and so on
@@ -1178,7 +1194,7 @@ def data(
 
 ) -> FFMpegMuxerOption:
     """
-    raw data
+
 
 
     Returns:
@@ -1194,7 +1210,7 @@ def daud(
 
 ) -> FFMpegMuxerOption:
     """
-    D-Cinema audio
+
 
 
     Returns:
@@ -1210,7 +1226,7 @@ def dfpwm(
 
 ) -> FFMpegMuxerOption:
     """
-    raw DFPWM1a
+
 
 
     Returns:
@@ -1226,7 +1242,7 @@ def dirac(
 
 ) -> FFMpegMuxerOption:
     """
-    raw Dirac
+
 
 
     Returns:
@@ -1242,7 +1258,7 @@ def dnxhd(
 
 ) -> FFMpegMuxerOption:
     """
-    raw DNxHD (SMPTE VC-3)
+
 
 
     Returns:
@@ -1258,7 +1274,7 @@ def dts(
 
 ) -> FFMpegMuxerOption:
     """
-    raw DTS
+
 
 
     Returns:
@@ -1274,7 +1290,7 @@ def dv(
 
 ) -> FFMpegMuxerOption:
     """
-    DV (Digital Video)
+
 
 
     Returns:
@@ -1294,7 +1310,7 @@ def dvd(
 
 ) -> FFMpegMuxerOption:
     """
-    MPEG-2 PS (DVD VOB)
+
 
     Args:
         muxrate: (from 0 to 1.67772e+09) (default 0)
@@ -1317,7 +1333,7 @@ def eac3(
 
 ) -> FFMpegMuxerOption:
     """
-    raw E-AC-3
+
 
 
     Returns:
@@ -1333,7 +1349,7 @@ def evc(
 
 ) -> FFMpegMuxerOption:
     """
-    raw EVC video
+
 
 
     Returns:
@@ -1349,7 +1365,7 @@ def f32be(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM 32-bit floating-point big-endian
+
 
 
     Returns:
@@ -1365,7 +1381,7 @@ def f32le(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM 32-bit floating-point little-endian
+
 
 
     Returns:
@@ -1431,7 +1447,7 @@ def f4v(
 
 ) -> FFMpegMuxerOption:
     """
-    F4V Adobe Flash Video
+
 
     Args:
         movflags: MOV muxer flags (default 0)
@@ -1523,7 +1539,7 @@ def f64be(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM 64-bit floating-point big-endian
+
 
 
     Returns:
@@ -1539,7 +1555,7 @@ def f64le(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM 64-bit floating-point little-endian
+
 
 
     Returns:
@@ -1559,7 +1575,7 @@ def fbdev(
 
 ) -> FFMpegMuxerOption:
     """
-    Linux framebuffer
+
 
     Args:
         xoffset: set x coordinate of top left corner (from INT_MIN to INT_MAX) (default 0)
@@ -1582,7 +1598,7 @@ def ffmetadata(
 
 ) -> FFMpegMuxerOption:
     """
-    FFmpeg metadata in text
+
 
 
     Returns:
@@ -1620,7 +1636,7 @@ def fifo(
 
 ) -> FFMpegMuxerOption:
     """
-    FIFO queue pseudo-muxer
+
 
     Args:
         fifo_format: Target muxer
@@ -1676,7 +1692,7 @@ def fifo_test(
 
 ) -> FFMpegMuxerOption:
     """
-    Fifo test muxer
+
 
     Args:
         write_header_ret: write_header() return value (from INT_MIN to INT_MAX) (default 0)
@@ -1702,7 +1718,7 @@ def film_cpk(
 
 ) -> FFMpegMuxerOption:
     """
-    Sega FILM / CPK
+
 
 
     Returns:
@@ -1718,7 +1734,7 @@ def filmstrip(
 
 ) -> FFMpegMuxerOption:
     """
-    Adobe Filmstrip
+
 
 
     Returns:
@@ -1734,7 +1750,7 @@ def fits(
 
 ) -> FFMpegMuxerOption:
     """
-    Flexible Image Transport System
+
 
 
     Returns:
@@ -1752,7 +1768,7 @@ def flac(
 
 ) -> FFMpegMuxerOption:
     """
-    raw FLAC
+
 
     Args:
         write_header: Write the file header (default true)
@@ -1774,7 +1790,7 @@ def flv(
 
 ) -> FFMpegMuxerOption:
     """
-    FLV (Flash Video)
+
 
     Args:
         flvflags: FLV muxer flags (default 0)
@@ -1794,7 +1810,7 @@ def framecrc(
 
 ) -> FFMpegMuxerOption:
     """
-    framecrc testing
+
 
 
     Returns:
@@ -1814,7 +1830,7 @@ def framehash(
 
 ) -> FFMpegMuxerOption:
     """
-    Per-frame hash testing
+
 
     Args:
         hash: set hash to use (default "sha256")
@@ -1841,7 +1857,7 @@ def framemd5(
 
 ) -> FFMpegMuxerOption:
     """
-    Per-frame MD5 testing
+
 
     Args:
         hash: set hash to use (default "md5")
@@ -1864,7 +1880,7 @@ def g722(
 
 ) -> FFMpegMuxerOption:
     """
-    raw G.722
+
 
 
     Returns:
@@ -1880,7 +1896,7 @@ def g723_1(
 
 ) -> FFMpegMuxerOption:
     """
-    raw G.723.1
+
 
 
     Returns:
@@ -1896,7 +1912,7 @@ def g726(
 
 ) -> FFMpegMuxerOption:
     """
-    raw big-endian G.726 ("left-justified")
+
 
 
     Returns:
@@ -1912,7 +1928,7 @@ def g726le(
 
 ) -> FFMpegMuxerOption:
     """
-    raw little-endian G.726 ("right-justified")
+
 
 
     Returns:
@@ -1932,7 +1948,7 @@ def gif(
 
 ) -> FFMpegMuxerOption:
     """
-    CompuServe Graphics Interchange Format (GIF)
+
 
     Args:
         loop: Number of times to loop the output: -1 - no loop, 0 - infinite loop (from -1 to 65535) (default 0)
@@ -1955,7 +1971,7 @@ def gsm(
 
 ) -> FFMpegMuxerOption:
     """
-    raw GSM
+
 
 
     Returns:
@@ -1971,7 +1987,7 @@ def gxf(
 
 ) -> FFMpegMuxerOption:
     """
-    GXF (General eXchange Format)
+
 
 
     Returns:
@@ -1987,7 +2003,7 @@ def h261(
 
 ) -> FFMpegMuxerOption:
     """
-    raw H.261
+
 
 
     Returns:
@@ -2003,7 +2019,7 @@ def h263(
 
 ) -> FFMpegMuxerOption:
     """
-    raw H.263
+
 
 
     Returns:
@@ -2019,7 +2035,7 @@ def h264(
 
 ) -> FFMpegMuxerOption:
     """
-    raw H.264 video
+
 
 
     Returns:
@@ -2037,7 +2053,7 @@ def hash(
 
 ) -> FFMpegMuxerOption:
     """
-    Hash testing
+
 
     Args:
         hash: set hash to use (default "sha256")
@@ -2065,7 +2081,7 @@ def hds(
 
 ) -> FFMpegMuxerOption:
     """
-    HDS Muxer
+
 
     Args:
         window_size: number of fragments kept in the manifest (from 0 to INT_MAX) (default 0)
@@ -2094,7 +2110,7 @@ def hevc(
 
 ) -> FFMpegMuxerOption:
     """
-    raw HEVC video
+
 
 
     Returns:
@@ -2180,7 +2196,7 @@ def hls(
 
 ) -> FFMpegMuxerOption:
     """
-    Apple HTTP Live Streaming
+
 
     Args:
         start_number: set first number in the sequence (from 0 to I64_MAX) (default 0)
@@ -2302,7 +2318,7 @@ def ico(
 
 ) -> FFMpegMuxerOption:
     """
-    Microsoft Windows ICO
+
 
 
     Returns:
@@ -2318,7 +2334,7 @@ def ilbc(
 
 ) -> FFMpegMuxerOption:
     """
-    iLBC storage
+
 
 
     Returns:
@@ -2346,7 +2362,7 @@ def image2(
 
 ) -> FFMpegMuxerOption:
     """
-    image2 sequence
+
 
     Args:
         update: continuously overwrite one file (default false)
@@ -2381,7 +2397,7 @@ def image2pipe(
 
 ) -> FFMpegMuxerOption:
     """
-    piped image2 sequence
+
 
 
     Returns:
@@ -2447,7 +2463,7 @@ def ipod(
 
 ) -> FFMpegMuxerOption:
     """
-    iPod H.264 MP4 (MPEG-4 Part 14)
+
 
     Args:
         movflags: MOV muxer flags (default 0)
@@ -2539,7 +2555,7 @@ def ircam(
 
 ) -> FFMpegMuxerOption:
     """
-    Berkeley/IRCAM/CARL Sound Format
+
 
 
     Returns:
@@ -2605,7 +2621,7 @@ def ismv(
 
 ) -> FFMpegMuxerOption:
     """
-    ISMV/ISMA (Smooth Streaming)
+
 
     Args:
         movflags: MOV muxer flags (default 0)
@@ -2697,7 +2713,7 @@ def ivf(
 
 ) -> FFMpegMuxerOption:
     """
-    On2 IVF
+
 
 
     Returns:
@@ -2713,7 +2729,7 @@ def jacosub(
 
 ) -> FFMpegMuxerOption:
     """
-    JACOsub subtitle format
+
 
 
     Returns:
@@ -2729,7 +2745,7 @@ def kvag(
 
 ) -> FFMpegMuxerOption:
     """
-    Simon & Schuster Interactive VAG
+
 
 
     Returns:
@@ -2747,7 +2763,7 @@ def latm(
 
 ) -> FFMpegMuxerOption:
     """
-    LOAS/LATM
+
 
     Args:
         smc_interval: StreamMuxConfig interval. (from 1 to 65535) (default 20)
@@ -2767,7 +2783,7 @@ def lrc(
 
 ) -> FFMpegMuxerOption:
     """
-    LRC lyrics
+
 
 
     Returns:
@@ -2783,7 +2799,7 @@ def m4v(
 
 ) -> FFMpegMuxerOption:
     """
-    raw MPEG-4 video
+
 
 
     Returns:
@@ -2821,7 +2837,7 @@ def matroska(
 
 ) -> FFMpegMuxerOption:
     """
-    Matroska
+
 
     Args:
         reserve_index_space: Reserve a given amount of space (in bytes) at the beginning of the file for the index (cues). (from 0 to INT_MAX) (default 0)
@@ -2873,7 +2889,7 @@ def md5(
 
 ) -> FFMpegMuxerOption:
     """
-    MD5 testing
+
 
     Args:
         hash: set hash to use (default "md5")
@@ -2893,7 +2909,7 @@ def microdvd(
 
 ) -> FFMpegMuxerOption:
     """
-    MicroDVD subtitle format
+
 
 
     Returns:
@@ -2909,7 +2925,7 @@ def mjpeg(
 
 ) -> FFMpegMuxerOption:
     """
-    raw MJPEG video
+
 
 
     Returns:
@@ -2925,7 +2941,7 @@ def mkvtimestamp_v2(
 
 ) -> FFMpegMuxerOption:
     """
-    extract pts as timecode v2 format, as defined by mkvtoolnix
+
 
 
     Returns:
@@ -2941,7 +2957,7 @@ def mlp(
 
 ) -> FFMpegMuxerOption:
     """
-    raw MLP
+
 
 
     Returns:
@@ -2957,7 +2973,7 @@ def mmf(
 
 ) -> FFMpegMuxerOption:
     """
-    Yamaha SMAF
+
 
 
     Returns:
@@ -3023,7 +3039,7 @@ def mov(
 
 ) -> FFMpegMuxerOption:
     """
-    QuickTime / MOV
+
 
     Args:
         movflags: MOV muxer flags (default 0)
@@ -3115,7 +3131,7 @@ def mp2(
 
 ) -> FFMpegMuxerOption:
     """
-    MP2 (MPEG audio layer 2)
+
 
 
     Returns:
@@ -3137,7 +3153,7 @@ def mp3(
 
 ) -> FFMpegMuxerOption:
     """
-    MP3 (MPEG audio layer 3)
+
 
     Args:
         id3v2_version: Select ID3v2 version to write. Currently 3 and 4 are supported. (from 0 to 4) (default 4)
@@ -3213,7 +3229,7 @@ def mp4(
 
 ) -> FFMpegMuxerOption:
     """
-    MP4 (MPEG-4 Part 14)
+
 
     Args:
         movflags: MOV muxer flags (default 0)
@@ -3309,7 +3325,7 @@ def mpeg(
 
 ) -> FFMpegMuxerOption:
     """
-    MPEG-1 Systems / MPEG program stream
+
 
     Args:
         muxrate: (from 0 to 1.67772e+09) (default 0)
@@ -3332,7 +3348,7 @@ def mpeg1video(
 
 ) -> FFMpegMuxerOption:
     """
-    raw MPEG-1 video
+
 
 
     Returns:
@@ -3348,7 +3364,7 @@ def mpeg2video(
 
 ) -> FFMpegMuxerOption:
     """
-    raw MPEG-2 video
+
 
 
     Returns:
@@ -3398,7 +3414,7 @@ def mpegts(
 
 ) -> FFMpegMuxerOption:
     """
-    MPEG-TS (MPEG-2 Transport Stream)
+
 
     Args:
         mpegts_transport_stream_id: Set transport_stream_id field. (from 1 to 65535) (default 1)
@@ -3468,7 +3484,7 @@ def mpjpeg(
 
 ) -> FFMpegMuxerOption:
     """
-    MIME multipart JPEG
+
 
     Args:
         boundary_tag: Boundary tag (default "ffmpeg")
@@ -3488,7 +3504,7 @@ def mulaw(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM mu-law
+
 
 
     Returns:
@@ -3508,7 +3524,7 @@ def mxf(
 
 ) -> FFMpegMuxerOption:
     """
-    MXF (Material eXchange Format)
+
 
     Args:
         signal_standard: Force/set Signal Standard (from -1 to 7) (default -1)
@@ -3537,7 +3553,7 @@ def mxf_d10(
 
 ) -> FFMpegMuxerOption:
     """
-    MXF (Material eXchange Format) D-10 Mapping
+
 
     Args:
         d10_channelcount: Force/set channelcount in generic sound essence descriptor (from -1 to 8) (default -1)
@@ -3569,7 +3585,7 @@ def mxf_opatom(
 
 ) -> FFMpegMuxerOption:
     """
-    MXF (Material eXchange Format) Operational Pattern Atom
+
 
     Args:
         mxf_audio_edit_rate: Audio edit rate for timecode (from 0 to INT_MAX) (default 25/1)
@@ -3595,7 +3611,7 @@ def null(
 
 ) -> FFMpegMuxerOption:
     """
-    raw null video
+
 
 
     Returns:
@@ -3615,7 +3631,7 @@ def nut(
 
 ) -> FFMpegMuxerOption:
     """
-    NUT
+
 
     Args:
         syncpoints: NUT syncpoint behaviour (default 0)
@@ -3638,7 +3654,7 @@ def obu(
 
 ) -> FFMpegMuxerOption:
     """
-    AV1 low overhead OBU
+
 
 
     Returns:
@@ -3662,7 +3678,7 @@ def oga(
 
 ) -> FFMpegMuxerOption:
     """
-    Ogg Audio
+
 
     Args:
         serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
@@ -3699,7 +3715,7 @@ def ogg(
 
 ) -> FFMpegMuxerOption:
     """
-    Ogg
+
 
     Args:
         serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
@@ -3736,7 +3752,7 @@ def ogv(
 
 ) -> FFMpegMuxerOption:
     """
-    Ogg Video
+
 
     Args:
         serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
@@ -3765,7 +3781,7 @@ def oma(
 
 ) -> FFMpegMuxerOption:
     """
-    Sony OpenMG audio
+
 
 
     Returns:
@@ -3789,7 +3805,7 @@ def opus(
 
 ) -> FFMpegMuxerOption:
     """
-    Ogg Opus
+
 
     Args:
         serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
@@ -3818,7 +3834,7 @@ def oss(
 
 ) -> FFMpegMuxerOption:
     """
-    OSS (Open Sound System) playback
+
 
 
     Returns:
@@ -3884,7 +3900,7 @@ def psp(
 
 ) -> FFMpegMuxerOption:
     """
-    PSP MP4 (MPEG-4 Part 14)
+
 
     Args:
         movflags: MOV muxer flags (default 0)
@@ -3976,7 +3992,7 @@ def rawvideo(
 
 ) -> FFMpegMuxerOption:
     """
-    raw video
+
 
 
     Returns:
@@ -3992,7 +4008,7 @@ def rm(
 
 ) -> FFMpegMuxerOption:
     """
-    RealMedia
+
 
 
     Returns:
@@ -4008,7 +4024,7 @@ def roq(
 
 ) -> FFMpegMuxerOption:
     """
-    raw id RoQ
+
 
 
     Returns:
@@ -4024,7 +4040,7 @@ def rso(
 
 ) -> FFMpegMuxerOption:
     """
-    Lego Mindstorms RSO
+
 
 
     Returns:
@@ -4050,7 +4066,7 @@ def rtp(
 
 ) -> FFMpegMuxerOption:
     """
-    RTP output
+
 
     Args:
         rtpflags: RTP muxer flags (default 0)
@@ -4086,7 +4102,7 @@ def rtp_mpegts(
 
 ) -> FFMpegMuxerOption:
     """
-    RTP/mpegts output format
+
 
     Args:
         mpegts_muxer_options: set list of options for the MPEG-TS muxer
@@ -4121,7 +4137,7 @@ def rtsp(
 
 ) -> FFMpegMuxerOption:
     """
-    RTSP output
+
 
     Args:
         rtpflags: RTP muxer flags (default 0)
@@ -4156,7 +4172,7 @@ def s16be(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM signed 16-bit big-endian
+
 
 
     Returns:
@@ -4172,7 +4188,7 @@ def s16le(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM signed 16-bit little-endian
+
 
 
     Returns:
@@ -4188,7 +4204,7 @@ def s24be(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM signed 24-bit big-endian
+
 
 
     Returns:
@@ -4204,7 +4220,7 @@ def s24le(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM signed 24-bit little-endian
+
 
 
     Returns:
@@ -4220,7 +4236,7 @@ def s32be(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM signed 32-bit big-endian
+
 
 
     Returns:
@@ -4236,7 +4252,7 @@ def s32le(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM signed 32-bit little-endian
+
 
 
     Returns:
@@ -4252,7 +4268,7 @@ def s8(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM signed 8-bit
+
 
 
     Returns:
@@ -4268,7 +4284,7 @@ def sap(
 
 ) -> FFMpegMuxerOption:
     """
-    SAP output
+
 
 
     Returns:
@@ -4284,7 +4300,7 @@ def sbc(
 
 ) -> FFMpegMuxerOption:
     """
-    raw SBC
+
 
 
     Returns:
@@ -4300,7 +4316,7 @@ def scc(
 
 ) -> FFMpegMuxerOption:
     """
-    Scenarist Closed Captions
+
 
 
     Returns:
@@ -4372,7 +4388,7 @@ def segment(
 
 ) -> FFMpegMuxerOption:
     """
-    segment
+
 
     Args:
         reference_stream: set reference stream (default "auto")
@@ -4473,7 +4489,7 @@ def smjpeg(
 
 ) -> FFMpegMuxerOption:
     """
-    Loki SDL MJPEG
+
 
 
     Returns:
@@ -4499,7 +4515,7 @@ def smoothstreaming(
 
 ) -> FFMpegMuxerOption:
     """
-    Smooth Streaming Muxer
+
 
     Args:
         window_size: number of fragments kept in the manifest (from 0 to INT_MAX) (default 0)
@@ -4527,11 +4543,27 @@ def smoothstreaming(
 
 
 
+def sndio(
+
+) -> FFMpegMuxerOption:
+    """
+
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegMuxerOption(merge({
+
+    }))
+
+
+
 def sox(
 
 ) -> FFMpegMuxerOption:
     """
-    SoX (Sound eXchange) native
+
 
 
     Returns:
@@ -4553,7 +4585,7 @@ def spdif(
 
 ) -> FFMpegMuxerOption:
     """
-    IEC 61937 (used on S/PDIF - IEC958)
+
 
     Args:
         spdif_flags: IEC 61937 encapsulation flags (default 0)
@@ -4587,7 +4619,7 @@ def spx(
 
 ) -> FFMpegMuxerOption:
     """
-    Ogg Speex
+
 
     Args:
         serial_offset: serial number offset (from 0 to INT_MAX) (default 0)
@@ -4616,7 +4648,7 @@ def srt(
 
 ) -> FFMpegMuxerOption:
     """
-    SubRip subtitle
+
 
 
     Returns:
@@ -4634,7 +4666,7 @@ def streamhash(
 
 ) -> FFMpegMuxerOption:
     """
-    Per-stream hash testing
+
 
     Args:
         hash: set hash to use (default "sha256")
@@ -4654,7 +4686,7 @@ def sup(
 
 ) -> FFMpegMuxerOption:
     """
-    raw HDMV Presentation Graphic Stream subtitles
+
 
 
     Returns:
@@ -4674,7 +4706,7 @@ def svcd(
 
 ) -> FFMpegMuxerOption:
     """
-    MPEG-2 PS (SVCD)
+
 
     Args:
         muxrate: (from 0 to 1.67772e+09) (default 0)
@@ -4697,7 +4729,7 @@ def swf(
 
 ) -> FFMpegMuxerOption:
     """
-    SWF (ShockWave Flash)
+
 
 
     Returns:
@@ -4717,7 +4749,7 @@ def tee(
 
 ) -> FFMpegMuxerOption:
     """
-    Multiple muxer tee
+
 
     Args:
         use_fifo: Use fifo pseudo-muxer to separate actual muxers from encoder (default false)
@@ -4740,7 +4772,7 @@ def truehd(
 
 ) -> FFMpegMuxerOption:
     """
-    raw TrueHD
+
 
 
     Returns:
@@ -4756,7 +4788,7 @@ def tta(
 
 ) -> FFMpegMuxerOption:
     """
-    TTA (True Audio)
+
 
 
     Returns:
@@ -4772,7 +4804,7 @@ def ttml(
 
 ) -> FFMpegMuxerOption:
     """
-    TTML subtitle
+
 
 
     Returns:
@@ -4788,7 +4820,7 @@ def u16be(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM unsigned 16-bit big-endian
+
 
 
     Returns:
@@ -4804,7 +4836,7 @@ def u16le(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM unsigned 16-bit little-endian
+
 
 
     Returns:
@@ -4820,7 +4852,7 @@ def u24be(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM unsigned 24-bit big-endian
+
 
 
     Returns:
@@ -4836,7 +4868,7 @@ def u24le(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM unsigned 24-bit little-endian
+
 
 
     Returns:
@@ -4852,7 +4884,7 @@ def u32be(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM unsigned 32-bit big-endian
+
 
 
     Returns:
@@ -4868,7 +4900,7 @@ def u32le(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM unsigned 32-bit little-endian
+
 
 
     Returns:
@@ -4884,7 +4916,7 @@ def u8(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM unsigned 8-bit
+
 
 
     Returns:
@@ -4900,7 +4932,7 @@ def uncodedframecrc(
 
 ) -> FFMpegMuxerOption:
     """
-    uncoded framecrc testing
+
 
 
     Returns:
@@ -4916,7 +4948,7 @@ def vc1(
 
 ) -> FFMpegMuxerOption:
     """
-    raw VC-1 video
+
 
 
     Returns:
@@ -4932,7 +4964,7 @@ def vc1test(
 
 ) -> FFMpegMuxerOption:
     """
-    VC-1 test bitstream
+
 
 
     Returns:
@@ -4952,7 +4984,7 @@ def vcd(
 
 ) -> FFMpegMuxerOption:
     """
-    MPEG-1 Systems / MPEG program stream (VCD)
+
 
     Args:
         muxrate: (from 0 to 1.67772e+09) (default 0)
@@ -4975,7 +5007,7 @@ def vidc(
 
 ) -> FFMpegMuxerOption:
     """
-    PCM Archimedes VIDC
+
 
 
     Returns:
@@ -4995,7 +5027,7 @@ def vob(
 
 ) -> FFMpegMuxerOption:
     """
-    MPEG-2 PS (VOB)
+
 
     Args:
         muxrate: (from 0 to 1.67772e+09) (default 0)
@@ -5018,7 +5050,7 @@ def voc(
 
 ) -> FFMpegMuxerOption:
     """
-    Creative Voice
+
 
 
     Returns:
@@ -5034,7 +5066,7 @@ def vvc(
 
 ) -> FFMpegMuxerOption:
     """
-    raw H.266/VVC video
+
 
 
     Returns:
@@ -5050,7 +5082,7 @@ def w64(
 
 ) -> FFMpegMuxerOption:
     """
-    Sony Wave64
+
 
 
     Returns:
@@ -5078,7 +5110,7 @@ def wav(
 
 ) -> FFMpegMuxerOption:
     """
-    WAV / WAVE (Waveform Audio)
+
 
     Args:
         write_bext: Write BEXT chunk. (default false)
@@ -5135,7 +5167,7 @@ def webm(
 
 ) -> FFMpegMuxerOption:
     """
-    WebM
+
 
     Args:
         reserve_index_space: Reserve a given amount of space (in bytes) at the beginning of the file for the index (cues). (from 0 to INT_MAX) (default 0)
@@ -5193,7 +5225,7 @@ def webm_chunk(
 
 ) -> FFMpegMuxerOption:
     """
-    WebM Chunk Muxer
+
 
     Args:
         chunk_start_index: start index of the chunk (from 0 to INT_MAX) (default 0)
@@ -5236,7 +5268,7 @@ def webm_dash_manifest(
 
 ) -> FFMpegMuxerOption:
     """
-    WebM DASH Manifest
+
 
     Args:
         adaptation_sets: Adaptation sets. Syntax: id=0,streams=0,1,2 id=1,streams=3,4 and so on
@@ -5276,7 +5308,7 @@ def webp(
 
 ) -> FFMpegMuxerOption:
     """
-    WebP
+
 
     Args:
         loop: Number of times to loop the output: 0 - infinite loop (from 0 to 65535) (default 1)
@@ -5296,7 +5328,7 @@ def webvtt(
 
 ) -> FFMpegMuxerOption:
     """
-    WebVTT subtitle
+
 
 
     Returns:
@@ -5312,7 +5344,7 @@ def wsaud(
 
 ) -> FFMpegMuxerOption:
     """
-    Westwood Studios audio
+
 
 
     Returns:
@@ -5328,7 +5360,7 @@ def wtv(
 
 ) -> FFMpegMuxerOption:
     """
-    Windows Television (WTV)
+
 
 
     Returns:
@@ -5344,13 +5376,60 @@ def wv(
 
 ) -> FFMpegMuxerOption:
     """
-    raw WavPack
+
 
 
     Returns:
         the set codec options
     """
     return FFMpegMuxerOption(merge({
+
+    }))
+
+
+
+def xv(
+
+    display_name: str | None = None,
+
+    window_id: int | None = None,
+
+    window_size: str | None = None,
+
+    window_title: str | None = None,
+
+    window_x: int | None = None,
+
+    window_y: int | None = None,
+
+) -> FFMpegMuxerOption:
+    """
+
+
+    Args:
+        display_name: set display name
+        window_id: set existing window id (from 0 to I64_MAX) (default 0)
+        window_size: set window forced size
+        window_title: set window title
+        window_x: set window x offset (from -2.14748e+09 to INT_MAX) (default 0)
+        window_y: set window y offset (from -2.14748e+09 to INT_MAX) (default 0)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegMuxerOption(merge({
+
+        "display_name": display_name,
+
+        "window_id": window_id,
+
+        "window_size": window_size,
+
+        "window_title": window_title,
+
+        "window_x": window_x,
+
+        "window_y": window_y,
 
     }))
 
@@ -5360,7 +5439,7 @@ def yuv4mpegpipe(
 
 ) -> FFMpegMuxerOption:
     """
-    YUV4MPEG pipe
+
 
 
     Returns:
@@ -5369,6 +5448,10 @@ def yuv4mpegpipe(
     return FFMpegMuxerOption(merge({
 
     }))
+
+
+
+
 
 
 

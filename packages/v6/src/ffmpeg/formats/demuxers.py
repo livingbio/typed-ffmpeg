@@ -397,11 +397,17 @@ from ..streams.audio import AudioStream
 
 
 
+
+
+
+
+
+
 def _3dostr(
 
 ) -> FFMpegDemuxerOption:
     """
-    3DO STR
+    3dostr
 
 
     Returns:
@@ -417,7 +423,7 @@ def _4xm(
 
 ) -> FFMpegDemuxerOption:
     """
-    4X Technologies
+    4xm
 
 
     Returns:
@@ -435,7 +441,7 @@ def aa(
 
 ) -> FFMpegDemuxerOption:
     """
-    Audible AA format files
+    aa
 
     Args:
         aa_fixed_key: Fixed key used for handling Audible AA files
@@ -455,7 +461,7 @@ def aac(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw ADTS AAC (Advanced Audio Coding)
+    aac
 
 
     Returns:
@@ -471,7 +477,7 @@ def aax(
 
 ) -> FFMpegDemuxerOption:
     """
-    CRI AAX
+    aax
 
 
     Returns:
@@ -489,7 +495,7 @@ def ac3(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw AC-3
+    ac3
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -509,7 +515,7 @@ def ac4(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw AC-4
+    ac4
 
 
     Returns:
@@ -525,7 +531,7 @@ def ace(
 
 ) -> FFMpegDemuxerOption:
     """
-    tri-Ace Audio Container
+    ace
 
 
     Returns:
@@ -543,7 +549,7 @@ def acm(
 
 ) -> FFMpegDemuxerOption:
     """
-    Interplay ACM
+    acm
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -585,7 +591,7 @@ def adf(
 
 ) -> FFMpegDemuxerOption:
     """
-    Artworx Data Format
+    adf
 
     Args:
         linespeed: set simulated line speed (bytes per second) (from 1 to INT_MAX) (default 6000)
@@ -611,7 +617,7 @@ def adp(
 
 ) -> FFMpegDemuxerOption:
     """
-    ADP
+    adp
 
 
     Returns:
@@ -627,7 +633,7 @@ def ads(
 
 ) -> FFMpegDemuxerOption:
     """
-    Sony PS2 ADS
+    ads
 
 
     Returns:
@@ -643,7 +649,7 @@ def adx(
 
 ) -> FFMpegDemuxerOption:
     """
-    CRI ADX
+    adx
 
 
     Returns:
@@ -659,7 +665,7 @@ def aea(
 
 ) -> FFMpegDemuxerOption:
     """
-    MD STUDIO audio
+    aea
 
 
     Returns:
@@ -675,7 +681,7 @@ def afc(
 
 ) -> FFMpegDemuxerOption:
     """
-    AFC
+    afc
 
 
     Returns:
@@ -691,7 +697,7 @@ def aiff(
 
 ) -> FFMpegDemuxerOption:
     """
-    Audio IFF
+    aiff
 
 
     Returns:
@@ -707,7 +713,7 @@ def aix(
 
 ) -> FFMpegDemuxerOption:
     """
-    CRI AIX
+    aix
 
 
     Returns:
@@ -729,7 +735,7 @@ def alaw(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM A-law
+    alaw
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -773,7 +779,7 @@ def alias_pix(
 
 ) -> FFMpegDemuxerOption:
     """
-    Alias/Wavefront PIX image
+    alias_pix
 
     Args:
         pattern_type: set pattern type (from 0 to INT_MAX) (default 4)
@@ -817,7 +823,7 @@ def alp(
 
 ) -> FFMpegDemuxerOption:
     """
-    LEGO Racers ALP
+    alp
 
 
     Returns:
@@ -829,13 +835,40 @@ def alp(
 
 
 
+def alsa(
+
+    sample_rate: int | None = None,
+
+    channels: int | None = None,
+
+) -> FFMpegDemuxerOption:
+    """
+    alsa
+
+    Args:
+        sample_rate: (from 1 to INT_MAX) (default 48000)
+        channels: (from 1 to INT_MAX) (default 2)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDemuxerOption(merge({
+
+        "sample_rate": sample_rate,
+
+        "channels": channels,
+
+    }))
+
+
+
 def amr(
 
     raw_packet_size: int | None = None,
 
 ) -> FFMpegDemuxerOption:
     """
-    3GPP AMR
+    amr
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -857,7 +890,7 @@ def amrnb(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw AMR-NB
+    amrnb
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -879,7 +912,7 @@ def amrwb(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw AMR-WB
+    amrwb
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -899,7 +932,7 @@ def anm(
 
 ) -> FFMpegDemuxerOption:
     """
-    Deluxe Paint Animation
+    anm
 
 
     Returns:
@@ -917,7 +950,7 @@ def apac(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw APAC
+    apac
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -937,7 +970,7 @@ def apc(
 
 ) -> FFMpegDemuxerOption:
     """
-    CRYO APC
+    apc
 
 
     Returns:
@@ -953,7 +986,7 @@ def ape(
 
 ) -> FFMpegDemuxerOption:
     """
-    Monkey's Audio
+    ape
 
 
     Returns:
@@ -969,7 +1002,7 @@ def apm(
 
 ) -> FFMpegDemuxerOption:
     """
-    Ubisoft Rayman 2 APM
+    apm
 
 
     Returns:
@@ -991,7 +1024,7 @@ def apng(
 
 ) -> FFMpegDemuxerOption:
     """
-    Animated Portable Network Graphics
+    apng
 
     Args:
         ignore_loop: ignore loop setting (default true)
@@ -1019,7 +1052,7 @@ def aptx(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw aptX
+    aptx
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 48000)
@@ -1041,7 +1074,7 @@ def aptx_hd(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw aptX HD
+    aptx_hd
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 48000)
@@ -1063,7 +1096,7 @@ def aqtitle(
 
 ) -> FFMpegDemuxerOption:
     """
-    AQTitle subtitles
+    aqtitle
 
     Args:
         subfps: set the movie frame rate (from 0 to INT_MAX) (default 25/1)
@@ -1083,7 +1116,7 @@ def argo_asf(
 
 ) -> FFMpegDemuxerOption:
     """
-    Argonaut Games ASF
+    argo_asf
 
 
     Returns:
@@ -1099,7 +1132,7 @@ def argo_brp(
 
 ) -> FFMpegDemuxerOption:
     """
-    Argonaut Games BRP
+    argo_brp
 
 
     Returns:
@@ -1115,7 +1148,7 @@ def argo_cvg(
 
 ) -> FFMpegDemuxerOption:
     """
-    Argonaut Games CVG
+    argo_cvg
 
 
     Returns:
@@ -1135,7 +1168,7 @@ def asf(
 
 ) -> FFMpegDemuxerOption:
     """
-    ASF (Advanced / Active Streaming Format)
+    asf
 
     Args:
         no_resync_search: Don't try to resynchronize by looking for a certain optional start code (default false)
@@ -1158,7 +1191,7 @@ def asf_o(
 
 ) -> FFMpegDemuxerOption:
     """
-    ASF (Advanced / Active Streaming Format)
+    asf_o
 
 
     Returns:
@@ -1174,7 +1207,7 @@ def ass(
 
 ) -> FFMpegDemuxerOption:
     """
-    SSA (SubStation Alpha) subtitle
+    ass
 
 
     Returns:
@@ -1190,7 +1223,7 @@ def ast(
 
 ) -> FFMpegDemuxerOption:
     """
-    AST (Audio Stream)
+    ast
 
 
     Returns:
@@ -1206,7 +1239,7 @@ def au(
 
 ) -> FFMpegDemuxerOption:
     """
-    Sun AU
+    au
 
 
     Returns:
@@ -1224,7 +1257,7 @@ def av1(
 
 ) -> FFMpegDemuxerOption:
     """
-    AV1 Annex B
+    av1
 
     Args:
         framerate: (default "25")
@@ -1246,7 +1279,7 @@ def avi(
 
 ) -> FFMpegDemuxerOption:
     """
-    AVI (Audio Video Interleaved)
+    avi
 
     Args:
         use_odml: use odml index (default true)
@@ -1266,7 +1299,7 @@ def avr(
 
 ) -> FFMpegDemuxerOption:
     """
-    AVR (Audio Visual Research)
+    avr
 
 
     Returns:
@@ -1282,7 +1315,7 @@ def avs(
 
 ) -> FFMpegDemuxerOption:
     """
-    Argonaut Games Creature Shock
+    avs
 
 
     Returns:
@@ -1302,7 +1335,7 @@ def avs2(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw AVS2-P2/IEEE1857.4
+    avs2
 
     Args:
         framerate: (default "25")
@@ -1329,7 +1362,7 @@ def avs3(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw AVS3-P2/IEEE1857.10
+    avs3
 
     Args:
         framerate: (default "25")
@@ -1352,7 +1385,7 @@ def bethsoftvid(
 
 ) -> FFMpegDemuxerOption:
     """
-    Bethesda Softworks VID
+    bethsoftvid
 
 
     Returns:
@@ -1368,7 +1401,7 @@ def bfi(
 
 ) -> FFMpegDemuxerOption:
     """
-    Brute Force & Ignorance
+    bfi
 
 
     Returns:
@@ -1384,7 +1417,7 @@ def bfstm(
 
 ) -> FFMpegDemuxerOption:
     """
-    BFSTM (Binary Cafe Stream)
+    bfstm
 
 
     Returns:
@@ -1406,7 +1439,7 @@ def bin(
 
 ) -> FFMpegDemuxerOption:
     """
-    Binary text
+    bin
 
     Args:
         linespeed: set simulated line speed (bytes per second) (from 1 to INT_MAX) (default 6000)
@@ -1432,7 +1465,7 @@ def bink(
 
 ) -> FFMpegDemuxerOption:
     """
-    Bink
+    bink
 
 
     Returns:
@@ -1448,7 +1481,7 @@ def binka(
 
 ) -> FFMpegDemuxerOption:
     """
-    Bink Audio
+    binka
 
 
     Returns:
@@ -1464,7 +1497,7 @@ def bit(
 
 ) -> FFMpegDemuxerOption:
     """
-    G.729 BIT file format
+    bit
 
 
     Returns:
@@ -1486,7 +1519,7 @@ def bitpacked(
 
 ) -> FFMpegDemuxerOption:
     """
-    Bitpacked
+    bitpacked
 
     Args:
         pixel_format: set pixel format (default "yuv420p")
@@ -1522,7 +1555,7 @@ def bmp_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped bmp sequence
+    bmp_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -1554,7 +1587,7 @@ def bmv(
 
 ) -> FFMpegDemuxerOption:
     """
-    Discworld II BMV
+    bmv
 
 
     Returns:
@@ -1570,7 +1603,7 @@ def boa(
 
 ) -> FFMpegDemuxerOption:
     """
-    Black Ops Audio
+    boa
 
 
     Returns:
@@ -1588,7 +1621,7 @@ def bonk(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw Bonk
+    bonk
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -1626,7 +1659,7 @@ def brender_pix(
 
 ) -> FFMpegDemuxerOption:
     """
-    BRender PIX image
+    brender_pix
 
     Args:
         pattern_type: set pattern type (from 0 to INT_MAX) (default 4)
@@ -1670,7 +1703,7 @@ def brstm(
 
 ) -> FFMpegDemuxerOption:
     """
-    BRSTM (Binary Revolution Stream)
+    brstm
 
 
     Returns:
@@ -1686,7 +1719,7 @@ def c93(
 
 ) -> FFMpegDemuxerOption:
     """
-    Interplay C93
+    c93
 
 
     Returns:
@@ -1702,7 +1735,7 @@ def caf(
 
 ) -> FFMpegDemuxerOption:
     """
-    Apple CAF (Core Audio Format)
+    caf
 
 
     Returns:
@@ -1722,7 +1755,7 @@ def cavsvideo(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw Chinese AVS (Audio Video Standard)
+    cavsvideo
 
     Args:
         framerate: (default "25")
@@ -1745,7 +1778,7 @@ def cdg(
 
 ) -> FFMpegDemuxerOption:
     """
-    CD Graphics
+    cdg
 
 
     Returns:
@@ -1765,7 +1798,7 @@ def cdxl(
 
 ) -> FFMpegDemuxerOption:
     """
-    Commodore CDXL video
+    cdxl
 
     Args:
         sample_rate: (from 8000 to INT_MAX) (default 11025)
@@ -1788,7 +1821,7 @@ def cine(
 
 ) -> FFMpegDemuxerOption:
     """
-    Phantom Cine
+    cine
 
 
     Returns:
@@ -1806,7 +1839,7 @@ def codec2(
 
 ) -> FFMpegDemuxerOption:
     """
-    codec2 .c2 demuxer
+    codec2
 
     Args:
         frames_per_packet: Number of frames to read at a time. Higher = faster decoding, lower granularity (from 1 to INT_MAX) (default 1)
@@ -1830,7 +1863,7 @@ def codec2raw(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw codec2 demuxer
+    codec2raw
 
     Args:
         mode: codec2 mode [mandatory] (from -1 to 8) (default -1)
@@ -1859,7 +1892,7 @@ def concat(
 
 ) -> FFMpegDemuxerOption:
     """
-    Virtual concatenation script
+    concat
 
     Args:
         safe: enable safe mode (default true)
@@ -1895,7 +1928,7 @@ def cri_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped cri sequence
+    cri_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -1929,7 +1962,7 @@ def data(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw data
+    data
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -1949,7 +1982,7 @@ def daud(
 
 ) -> FFMpegDemuxerOption:
     """
-    D-Cinema audio
+    daud
 
 
     Returns:
@@ -1965,7 +1998,7 @@ def dcstr(
 
 ) -> FFMpegDemuxerOption:
     """
-    Sega DC STR
+    dcstr
 
 
     Returns:
@@ -1991,7 +2024,7 @@ def dds_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped dds sequence
+    dds_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -2023,7 +2056,7 @@ def derf(
 
 ) -> FFMpegDemuxerOption:
     """
-    Xilam DERF
+    derf
 
 
     Returns:
@@ -2039,7 +2072,7 @@ def dfa(
 
 ) -> FFMpegDemuxerOption:
     """
-    Chronomaster DFA
+    dfa
 
 
     Returns:
@@ -2061,7 +2094,7 @@ def dfpwm(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw DFPWM1a
+    dfpwm
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 48000)
@@ -2087,7 +2120,7 @@ def dhav(
 
 ) -> FFMpegDemuxerOption:
     """
-    Video DAV
+    dhav
 
 
     Returns:
@@ -2107,7 +2140,7 @@ def dirac(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw Dirac
+    dirac
 
     Args:
         framerate: (default "25")
@@ -2134,7 +2167,7 @@ def dnxhd(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw DNxHD (SMPTE VC-3)
+    dnxhd
 
     Args:
         framerate: (default "25")
@@ -2167,7 +2200,7 @@ def dpx_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped dpx sequence
+    dpx_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -2199,7 +2232,7 @@ def dsf(
 
 ) -> FFMpegDemuxerOption:
     """
-    DSD Stream File (DSF)
+    dsf
 
 
     Returns:
@@ -2215,7 +2248,7 @@ def dsicin(
 
 ) -> FFMpegDemuxerOption:
     """
-    Delphine Software International CIN
+    dsicin
 
 
     Returns:
@@ -2231,7 +2264,7 @@ def dss(
 
 ) -> FFMpegDemuxerOption:
     """
-    Digital Speech Standard (DSS)
+    dss
 
 
     Returns:
@@ -2249,7 +2282,7 @@ def dts(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw DTS
+    dts
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -2269,7 +2302,7 @@ def dtshd(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw DTS-HD
+    dtshd
 
 
     Returns:
@@ -2285,7 +2318,7 @@ def dv(
 
 ) -> FFMpegDemuxerOption:
     """
-    DV (Digital Video)
+    dv
 
 
     Returns:
@@ -2303,7 +2336,7 @@ def dvbsub(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw dvbsub
+    dvbsub
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -2345,7 +2378,7 @@ def dxa(
 
 ) -> FFMpegDemuxerOption:
     """
-    DXA
+    dxa
 
 
     Returns:
@@ -2363,7 +2396,7 @@ def ea(
 
 ) -> FFMpegDemuxerOption:
     """
-    Electronic Arts Multimedia
+    ea
 
     Args:
         merge_alpha: return VP6 alpha in the main video stream (default false)
@@ -2383,7 +2416,7 @@ def ea_cdata(
 
 ) -> FFMpegDemuxerOption:
     """
-    Electronic Arts cdata
+    ea_cdata
 
 
     Returns:
@@ -2401,7 +2434,7 @@ def eac3(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw E-AC-3
+    eac3
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -2421,7 +2454,7 @@ def epaf(
 
 ) -> FFMpegDemuxerOption:
     """
-    Ensoniq Paris Audio File
+    epaf
 
 
     Returns:
@@ -2439,7 +2472,7 @@ def evc(
 
 ) -> FFMpegDemuxerOption:
     """
-    EVC Annex B
+    evc
 
     Args:
         framerate: (default "25")
@@ -2469,7 +2502,7 @@ def exr_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped exr sequence
+    exr_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -2507,7 +2540,7 @@ def f32be(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM 32-bit floating-point big-endian
+    f32be
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -2539,7 +2572,7 @@ def f32le(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM 32-bit floating-point little-endian
+    f32le
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -2571,7 +2604,7 @@ def f64be(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM 64-bit floating-point big-endian
+    f64be
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -2603,7 +2636,7 @@ def f64le(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM 64-bit floating-point little-endian
+    f64le
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -2631,7 +2664,7 @@ def fbdev(
 
 ) -> FFMpegDemuxerOption:
     """
-    Linux framebuffer
+    fbdev
 
     Args:
         framerate: (default "25")
@@ -2651,7 +2684,7 @@ def ffmetadata(
 
 ) -> FFMpegDemuxerOption:
     """
-    FFmpeg metadata in text
+    ffmetadata
 
 
     Returns:
@@ -2667,7 +2700,7 @@ def film_cpk(
 
 ) -> FFMpegDemuxerOption:
     """
-    Sega FILM / CPK
+    film_cpk
 
 
     Returns:
@@ -2683,7 +2716,7 @@ def filmstrip(
 
 ) -> FFMpegDemuxerOption:
     """
-    Adobe Filmstrip
+    filmstrip
 
 
     Returns:
@@ -2701,7 +2734,7 @@ def fits(
 
 ) -> FFMpegDemuxerOption:
     """
-    Flexible Image Transport System
+    fits
 
     Args:
         framerate: set the framerate (default "1")
@@ -2723,7 +2756,7 @@ def flac(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw FLAC
+    flac
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -2743,7 +2776,7 @@ def flic(
 
 ) -> FFMpegDemuxerOption:
     """
-    FLI/FLC/FLX animation
+    flic
 
 
     Returns:
@@ -2767,7 +2800,7 @@ def flv(
 
 ) -> FFMpegDemuxerOption:
     """
-    FLV (Flash Video)
+    flv
 
     Args:
         flv_metadata: Allocate streams according to the onMetaData array (default false)
@@ -2796,7 +2829,7 @@ def frm(
 
 ) -> FFMpegDemuxerOption:
     """
-    Megalux Frame
+    frm
 
 
     Returns:
@@ -2812,7 +2845,7 @@ def fsb(
 
 ) -> FFMpegDemuxerOption:
     """
-    FMOD Sample Bank
+    fsb
 
 
     Returns:
@@ -2828,7 +2861,7 @@ def fwse(
 
 ) -> FFMpegDemuxerOption:
     """
-    Capcom's MT Framework sound
+    fwse
 
 
     Returns:
@@ -2846,7 +2879,7 @@ def g722(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw G.722
+    g722
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -2866,7 +2899,7 @@ def g723_1(
 
 ) -> FFMpegDemuxerOption:
     """
-    G.723.1
+    g723_1
 
 
     Returns:
@@ -2886,7 +2919,7 @@ def g726(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw big-endian G.726 ("left aligned")
+    g726
 
     Args:
         code_size: Bits per G.726 code (from 2 to 5) (default 4)
@@ -2913,7 +2946,7 @@ def g726le(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw little-endian G.726 ("right aligned")
+    g726le
 
     Args:
         code_size: Bits per G.726 code (from 2 to 5) (default 4)
@@ -2938,7 +2971,7 @@ def g729(
 
 ) -> FFMpegDemuxerOption:
     """
-    G.729 raw format demuxer
+    g729
 
     Args:
         bit_rate: (from 0 to INT_MAX) (default 8000)
@@ -2958,7 +2991,7 @@ def gdv(
 
 ) -> FFMpegDemuxerOption:
     """
-    Gremlin Digital Video
+    gdv
 
 
     Returns:
@@ -2984,7 +3017,7 @@ def gem_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped gem sequence
+    gem_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -3016,7 +3049,7 @@ def genh(
 
 ) -> FFMpegDemuxerOption:
     """
-    GENeric Header
+    genh
 
 
     Returns:
@@ -3040,7 +3073,7 @@ def gif(
 
 ) -> FFMpegDemuxerOption:
     """
-    CompuServe Graphics Interchange Format (GIF)
+    gif
 
     Args:
         min_delay: minimum valid delay between frames (in hundredths of second) (from 0 to 6000) (default 2)
@@ -3079,7 +3112,7 @@ def gif_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped gif sequence
+    gif_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -3113,7 +3146,7 @@ def gsm(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw GSM
+    gsm
 
     Args:
         sample_rate: (from 1 to 6.50753e+07) (default 8000)
@@ -3133,7 +3166,7 @@ def gxf(
 
 ) -> FFMpegDemuxerOption:
     """
-    GXF (General eXchange Format)
+    gxf
 
 
     Returns:
@@ -3153,7 +3186,7 @@ def h261(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw H.261
+    h261
 
     Args:
         framerate: (default "25")
@@ -3180,7 +3213,7 @@ def h263(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw H.263
+    h263
 
     Args:
         framerate: (default "25")
@@ -3207,7 +3240,7 @@ def h264(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw H.264 video
+    h264
 
     Args:
         framerate: (default "25")
@@ -3236,7 +3269,7 @@ def hca(
 
 ) -> FFMpegDemuxerOption:
     """
-    CRI HCA
+    hca
 
     Args:
         hca_lowkey: Low key used for handling CRI HCA files (from 0 to UINT32_MAX) (default 0)
@@ -3262,7 +3295,7 @@ def hcom(
 
 ) -> FFMpegDemuxerOption:
     """
-    Macintosh HCOM
+    hcom
 
 
     Returns:
@@ -3288,7 +3321,7 @@ def hdr_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped hdr sequence
+    hdr_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -3324,7 +3357,7 @@ def hevc(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw HEVC video
+    hevc
 
     Args:
         framerate: (default "25")
@@ -3351,10 +3384,6 @@ def hls(
 
     allowed_extensions: str | None = None,
 
-    allowed_segment_extensions: str | None = None,
-
-    extension_picky: bool | None = None,
-
     max_reload: int | None = None,
 
     m3u8_hold_counters: int | None = None,
@@ -3371,15 +3400,13 @@ def hls(
 
 ) -> FFMpegDemuxerOption:
     """
-    Apple HTTP Live Streaming
+    hls
 
     Args:
         live_start_index: segment index to start live streams at (negative values are from the end) (from INT_MIN to INT_MAX) (default -3)
         prefer_x_start: prefer to use #EXT-X-START if it's in playlist instead of live_start_index (default false)
-        allowed_extensions: List of file extensions that hls is allowed to access (default "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt,cmfv,cmfa,ec3,fmp4")
-        allowed_segment_extensions: List of file extensions that hls is allowed to access (default "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt,cmfv,cmfa,ec3,fmp4,html")
-        extension_picky: Be picky with all extensions matching (default true)
-        max_reload: Maximum number of times a insufficient list is attempted to be reloaded (from 0 to INT_MAX) (default 100)
+        allowed_extensions: List of file extensions that hls is allowed to access (default "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,wav")
+        max_reload: Maximum number of times a insufficient list is attempted to be reloaded (from 0 to INT_MAX) (default 3)
         m3u8_hold_counters: The maximum number of times to load m3u8 when it refreshes without new segments (from 0 to INT_MAX) (default 1000)
         http_persistent: Use persistent HTTP connections (default true)
         http_multiple: Use multiple HTTP connections for fetching segments (default auto)
@@ -3397,10 +3424,6 @@ def hls(
         "prefer_x_start": prefer_x_start,
 
         "allowed_extensions": allowed_extensions,
-
-        "allowed_segment_extensions": allowed_segment_extensions,
-
-        "extension_picky": extension_picky,
 
         "max_reload": max_reload,
 
@@ -3424,7 +3447,7 @@ def hnm(
 
 ) -> FFMpegDemuxerOption:
     """
-    Cryo HNM v4
+    hnm
 
 
     Returns:
@@ -3440,7 +3463,7 @@ def ico(
 
 ) -> FFMpegDemuxerOption:
     """
-    Microsoft Windows ICO
+    ico
 
 
     Returns:
@@ -3456,7 +3479,7 @@ def idcin(
 
 ) -> FFMpegDemuxerOption:
     """
-    id Cinematic
+    idcin
 
 
     Returns:
@@ -3478,7 +3501,7 @@ def idf(
 
 ) -> FFMpegDemuxerOption:
     """
-    iCE Draw File
+    idf
 
     Args:
         linespeed: set simulated line speed (bytes per second) (from 1 to INT_MAX) (default 6000)
@@ -3504,7 +3527,7 @@ def iff(
 
 ) -> FFMpegDemuxerOption:
     """
-    IFF (Interchange File Format)
+    iff
 
 
     Returns:
@@ -3520,7 +3543,7 @@ def ifv(
 
 ) -> FFMpegDemuxerOption:
     """
-    IFV CCTV DVR
+    ifv
 
 
     Returns:
@@ -3536,7 +3559,7 @@ def ilbc(
 
 ) -> FFMpegDemuxerOption:
     """
-    iLBC storage
+    ilbc
 
 
     Returns:
@@ -3570,7 +3593,7 @@ def image2(
 
 ) -> FFMpegDemuxerOption:
     """
-    image2 sequence
+    image2
 
     Args:
         pattern_type: set pattern type (from 0 to INT_MAX) (default 4)
@@ -3624,7 +3647,7 @@ def image2pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped image2 sequence
+    image2pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -3660,7 +3683,7 @@ def ingenient(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw Ingenient MJPEG
+    ingenient
 
     Args:
         framerate: (default "25")
@@ -3683,7 +3706,7 @@ def ipmovie(
 
 ) -> FFMpegDemuxerOption:
     """
-    Interplay MVE
+    ipmovie
 
 
     Returns:
@@ -3701,7 +3724,7 @@ def ipu(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw IPU Video
+    ipu
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -3721,7 +3744,7 @@ def ircam(
 
 ) -> FFMpegDemuxerOption:
     """
-    Berkeley/IRCAM/CARL Sound Format
+    ircam
 
 
     Returns:
@@ -3737,7 +3760,7 @@ def iss(
 
 ) -> FFMpegDemuxerOption:
     """
-    Funcom ISS
+    iss
 
 
     Returns:
@@ -3753,7 +3776,7 @@ def iv8(
 
 ) -> FFMpegDemuxerOption:
     """
-    IndigoVision 8000 video
+    iv8
 
 
     Returns:
@@ -3769,7 +3792,7 @@ def ivf(
 
 ) -> FFMpegDemuxerOption:
     """
-    On2 IVF
+    ivf
 
 
     Returns:
@@ -3785,7 +3808,7 @@ def ivr(
 
 ) -> FFMpegDemuxerOption:
     """
-    IVR (Internet Video Recording)
+    ivr
 
 
     Returns:
@@ -3811,7 +3834,7 @@ def j2k_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped j2k sequence
+    j2k_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -3843,7 +3866,7 @@ def jacosub(
 
 ) -> FFMpegDemuxerOption:
     """
-    JACOsub subtitle format
+    jacosub
 
 
     Returns:
@@ -3869,7 +3892,7 @@ def jpeg_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped jpeg sequence
+    jpeg_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -3911,7 +3934,7 @@ def jpegls_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped jpegls sequence
+    jpegls_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -3943,7 +3966,7 @@ def jpegxl_anim(
 
 ) -> FFMpegDemuxerOption:
     """
-    Animated JPEG XL
+    jpegxl_anim
 
 
     Returns:
@@ -3969,7 +3992,7 @@ def jpegxl_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped jpegxl sequence
+    jpegxl_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -4001,7 +4024,7 @@ def jv(
 
 ) -> FFMpegDemuxerOption:
     """
-    Bitmap Brothers JV
+    jv
 
 
     Returns:
@@ -4025,7 +4048,7 @@ def kux(
 
 ) -> FFMpegDemuxerOption:
     """
-    KUX (YouKu)
+    kux
 
     Args:
         flv_metadata: Allocate streams according to the onMetaData array (default false)
@@ -4054,7 +4077,7 @@ def kvag(
 
 ) -> FFMpegDemuxerOption:
     """
-    Simon & Schuster Interactive VAG
+    kvag
 
 
     Returns:
@@ -4070,7 +4093,7 @@ def laf(
 
 ) -> FFMpegDemuxerOption:
     """
-    LAF (Limitless Audio Format)
+    laf
 
 
     Returns:
@@ -4092,7 +4115,7 @@ def lavfi(
 
 ) -> FFMpegDemuxerOption:
     """
-    Libavfilter virtual input device
+    lavfi
 
     Args:
         graph: set libavfilter graph
@@ -4126,7 +4149,7 @@ def live_flv(
 
 ) -> FFMpegDemuxerOption:
     """
-    live RTMP FLV (Flash Video)
+    live_flv
 
     Args:
         flv_metadata: Allocate streams according to the onMetaData array (default false)
@@ -4155,7 +4178,7 @@ def lmlm4(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw lmlm4
+    lmlm4
 
 
     Returns:
@@ -4173,7 +4196,7 @@ def loas(
 
 ) -> FFMpegDemuxerOption:
     """
-    LOAS AudioSyncStream
+    loas
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -4193,7 +4216,7 @@ def lrc(
 
 ) -> FFMpegDemuxerOption:
     """
-    LRC lyrics
+    lrc
 
 
     Returns:
@@ -4209,7 +4232,7 @@ def luodat(
 
 ) -> FFMpegDemuxerOption:
     """
-    Video CCTV DAT
+    luodat
 
 
     Returns:
@@ -4225,7 +4248,7 @@ def lvf(
 
 ) -> FFMpegDemuxerOption:
     """
-    LVF
+    lvf
 
 
     Returns:
@@ -4241,7 +4264,7 @@ def lxf(
 
 ) -> FFMpegDemuxerOption:
     """
-    VR native stream (LXF)
+    lxf
 
 
     Returns:
@@ -4261,7 +4284,7 @@ def m4v(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw MPEG-4 video
+    m4v
 
     Args:
         framerate: (default "25")
@@ -4284,7 +4307,7 @@ def mca(
 
 ) -> FFMpegDemuxerOption:
     """
-    MCA Audio Format
+    mca
 
 
     Returns:
@@ -4300,7 +4323,7 @@ def mcc(
 
 ) -> FFMpegDemuxerOption:
     """
-    MacCaption
+    mcc
 
 
     Returns:
@@ -4316,7 +4339,7 @@ def mgsts(
 
 ) -> FFMpegDemuxerOption:
     """
-    Metal Gear Solid: The Twin Snakes
+    mgsts
 
 
     Returns:
@@ -4334,7 +4357,7 @@ def microdvd(
 
 ) -> FFMpegDemuxerOption:
     """
-    MicroDVD subtitle format
+    microdvd
 
     Args:
         subfps: set the movie frame rate fallback (from 0 to INT_MAX) (default 0/1)
@@ -4358,7 +4381,7 @@ def mjpeg(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw MJPEG video
+    mjpeg
 
     Args:
         framerate: (default "25")
@@ -4385,7 +4408,7 @@ def mjpeg_2000(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw MJPEG 2000 video
+    mjpeg_2000
 
     Args:
         framerate: (default "25")
@@ -4410,7 +4433,7 @@ def mlp(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw MLP
+    mlp
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -4430,7 +4453,7 @@ def mlv(
 
 ) -> FFMpegDemuxerOption:
     """
-    Magic Lantern Video (MLV)
+    mlv
 
 
     Returns:
@@ -4446,7 +4469,7 @@ def mm(
 
 ) -> FFMpegDemuxerOption:
     """
-    American Laser Games MM
+    mm
 
 
     Returns:
@@ -4462,7 +4485,7 @@ def mmf(
 
 ) -> FFMpegDemuxerOption:
     """
-    Yamaha SMAF
+    mmf
 
 
     Returns:
@@ -4478,7 +4501,7 @@ def mods(
 
 ) -> FFMpegDemuxerOption:
     """
-    MobiClip MODS
+    mods
 
 
     Returns:
@@ -4494,7 +4517,7 @@ def moflex(
 
 ) -> FFMpegDemuxerOption:
     """
-    MobiClip MOFLEX
+    moflex
 
 
     Returns:
@@ -4512,7 +4535,7 @@ def mp3(
 
 ) -> FFMpegDemuxerOption:
     """
-    MP2/3 (MPEG audio layer 2/3)
+    mp3
 
     Args:
         usetoc: use table of contents (default false)
@@ -4532,7 +4555,7 @@ def mpc(
 
 ) -> FFMpegDemuxerOption:
     """
-    Musepack
+    mpc
 
 
     Returns:
@@ -4548,7 +4571,7 @@ def mpc8(
 
 ) -> FFMpegDemuxerOption:
     """
-    Musepack SV8
+    mpc8
 
 
     Returns:
@@ -4564,7 +4587,7 @@ def mpeg(
 
 ) -> FFMpegDemuxerOption:
     """
-    MPEG-PS (MPEG-2 Program Stream)
+    mpeg
 
 
     Returns:
@@ -4594,7 +4617,7 @@ def mpegts(
 
 ) -> FFMpegDemuxerOption:
     """
-    MPEG-TS (MPEG-2 Transport Stream)
+    mpegts
 
     Args:
         resync_size: set size limit for looking up a new synchronization (from 0 to INT_MAX) (default 65536)
@@ -4638,7 +4661,7 @@ def mpegtsraw(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw MPEG-TS (MPEG-2 Transport Stream)
+    mpegtsraw
 
     Args:
         resync_size: set size limit for looking up a new synchronization (from 0 to INT_MAX) (default 65536)
@@ -4668,7 +4691,7 @@ def mpegvideo(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw MPEG video
+    mpegvideo
 
     Args:
         framerate: (default "25")
@@ -4693,7 +4716,7 @@ def mpjpeg(
 
 ) -> FFMpegDemuxerOption:
     """
-    MIME multipart JPEG
+    mpjpeg
 
     Args:
         strict_mime_boundary: require MIME boundaries match (default false)
@@ -4713,7 +4736,7 @@ def mpl2(
 
 ) -> FFMpegDemuxerOption:
     """
-    MPL2 subtitles
+    mpl2
 
 
     Returns:
@@ -4729,7 +4752,7 @@ def mpsub(
 
 ) -> FFMpegDemuxerOption:
     """
-    MPlayer subtitles
+    mpsub
 
 
     Returns:
@@ -4745,7 +4768,7 @@ def msf(
 
 ) -> FFMpegDemuxerOption:
     """
-    Sony PS3 MSF
+    msf
 
 
     Returns:
@@ -4761,7 +4784,7 @@ def msnwctcp(
 
 ) -> FFMpegDemuxerOption:
     """
-    MSN TCP Webcam stream
+    msnwctcp
 
 
     Returns:
@@ -4777,7 +4800,7 @@ def msp(
 
 ) -> FFMpegDemuxerOption:
     """
-    Microsoft Paint (MSP))
+    msp
 
 
     Returns:
@@ -4793,7 +4816,7 @@ def mtaf(
 
 ) -> FFMpegDemuxerOption:
     """
-    Konami PS2 MTAF
+    mtaf
 
 
     Returns:
@@ -4809,7 +4832,7 @@ def mtv(
 
 ) -> FFMpegDemuxerOption:
     """
-    MTV
+    mtv
 
 
     Returns:
@@ -4831,7 +4854,7 @@ def mulaw(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM mu-law
+    mulaw
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -4857,7 +4880,7 @@ def musx(
 
 ) -> FFMpegDemuxerOption:
     """
-    Eurocom MUSX
+    musx
 
 
     Returns:
@@ -4873,7 +4896,7 @@ def mv(
 
 ) -> FFMpegDemuxerOption:
     """
-    Silicon Graphics Movie
+    mv
 
 
     Returns:
@@ -4889,7 +4912,7 @@ def mvi(
 
 ) -> FFMpegDemuxerOption:
     """
-    Motion Pixels MVI
+    mvi
 
 
     Returns:
@@ -4907,7 +4930,7 @@ def mxf(
 
 ) -> FFMpegDemuxerOption:
     """
-    MXF (Material eXchange Format)
+    mxf
 
     Args:
         eia608_extract: extract eia 608 captions from s436m track (default false)
@@ -4927,7 +4950,7 @@ def mxg(
 
 ) -> FFMpegDemuxerOption:
     """
-    MxPEG clip
+    mxg
 
 
     Returns:
@@ -4943,7 +4966,7 @@ def nc(
 
 ) -> FFMpegDemuxerOption:
     """
-    NC camera feed
+    nc
 
 
     Returns:
@@ -4959,7 +4982,7 @@ def nistsphere(
 
 ) -> FFMpegDemuxerOption:
     """
-    NIST SPeech HEader REsources
+    nistsphere
 
 
     Returns:
@@ -4975,7 +4998,7 @@ def nsp(
 
 ) -> FFMpegDemuxerOption:
     """
-    Computerized Speech Lab NSP
+    nsp
 
 
     Returns:
@@ -4991,7 +5014,7 @@ def nsv(
 
 ) -> FFMpegDemuxerOption:
     """
-    Nullsoft Streaming Video
+    nsv
 
 
     Returns:
@@ -5007,7 +5030,7 @@ def nut(
 
 ) -> FFMpegDemuxerOption:
     """
-    NUT
+    nut
 
 
     Returns:
@@ -5023,7 +5046,7 @@ def nuv(
 
 ) -> FFMpegDemuxerOption:
     """
-    NuppelVideo
+    nuv
 
 
     Returns:
@@ -5041,7 +5064,7 @@ def obu(
 
 ) -> FFMpegDemuxerOption:
     """
-    AV1 low overhead OBU
+    obu
 
     Args:
         framerate: (default "25")
@@ -5061,7 +5084,7 @@ def ogg(
 
 ) -> FFMpegDemuxerOption:
     """
-    Ogg
+    ogg
 
 
     Returns:
@@ -5077,7 +5100,7 @@ def oma(
 
 ) -> FFMpegDemuxerOption:
     """
-    Sony OpenMG audio
+    oma
 
 
     Returns:
@@ -5095,7 +5118,7 @@ def osq(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw OSQ
+    osq
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -5119,7 +5142,7 @@ def oss(
 
 ) -> FFMpegDemuxerOption:
     """
-    OSS (Open Sound System) capture
+    oss
 
     Args:
         sample_rate: (from 1 to INT_MAX) (default 48000)
@@ -5142,7 +5165,7 @@ def paf(
 
 ) -> FFMpegDemuxerOption:
     """
-    Amazing Studio Packed Animation File
+    paf
 
 
     Returns:
@@ -5168,7 +5191,7 @@ def pam_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped pam sequence
+    pam_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -5210,7 +5233,7 @@ def pbm_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped pbm sequence
+    pbm_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -5252,7 +5275,7 @@ def pcx_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped pcx sequence
+    pcx_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -5284,7 +5307,7 @@ def pdv(
 
 ) -> FFMpegDemuxerOption:
     """
-    PlayDate Video
+    pdv
 
 
     Returns:
@@ -5310,7 +5333,7 @@ def pfm_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped pfm sequence
+    pfm_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -5352,7 +5375,7 @@ def pgm_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped pgm sequence
+    pgm_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -5394,7 +5417,7 @@ def pgmyuv_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped pgmyuv sequence
+    pgmyuv_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -5436,7 +5459,7 @@ def pgx_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped pgx sequence
+    pgx_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -5478,7 +5501,7 @@ def phm_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped phm sequence
+    phm_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -5520,7 +5543,7 @@ def photocd_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped photocd sequence
+    photocd_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -5562,7 +5585,7 @@ def pictor_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped pictor sequence
+    pictor_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -5594,7 +5617,7 @@ def pjs(
 
 ) -> FFMpegDemuxerOption:
     """
-    PJS (Phoenix Japanimation Society) subtitles
+    pjs
 
 
     Returns:
@@ -5610,7 +5633,7 @@ def pmp(
 
 ) -> FFMpegDemuxerOption:
     """
-    Playstation Portable PMP
+    pmp
 
 
     Returns:
@@ -5636,7 +5659,7 @@ def png_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped png sequence
+    png_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -5668,7 +5691,7 @@ def pp_bnk(
 
 ) -> FFMpegDemuxerOption:
     """
-    Pro Pinball Series Soundbank
+    pp_bnk
 
 
     Returns:
@@ -5694,7 +5717,7 @@ def ppm_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped ppm sequence
+    ppm_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -5736,7 +5759,7 @@ def psd_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped psd sequence
+    psd_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -5768,7 +5791,7 @@ def psxstr(
 
 ) -> FFMpegDemuxerOption:
     """
-    Sony Playstation STR
+    psxstr
 
 
     Returns:
@@ -5784,7 +5807,7 @@ def pva(
 
 ) -> FFMpegDemuxerOption:
     """
-    TechnoTrend PVA
+    pva
 
 
     Returns:
@@ -5800,7 +5823,7 @@ def pvf(
 
 ) -> FFMpegDemuxerOption:
     """
-    PVF (Portable Voice Format)
+    pvf
 
 
     Returns:
@@ -5816,7 +5839,7 @@ def qcp(
 
 ) -> FFMpegDemuxerOption:
     """
-    QCP
+    qcp
 
 
     Returns:
@@ -5842,7 +5865,7 @@ def qdraw_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped qdraw sequence
+    qdraw_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -5884,7 +5907,7 @@ def qoi_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped qoi sequence
+    qoi_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -5916,7 +5939,7 @@ def r3d(
 
 ) -> FFMpegDemuxerOption:
     """
-    REDCODE R3D
+    r3d
 
 
     Returns:
@@ -5938,7 +5961,7 @@ def rawvideo(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw video
+    rawvideo
 
     Args:
         pixel_format: set pixel format (default "yuv420p")
@@ -5964,7 +5987,7 @@ def realtext(
 
 ) -> FFMpegDemuxerOption:
     """
-    RealText subtitle format
+    realtext
 
 
     Returns:
@@ -5980,7 +6003,7 @@ def redspark(
 
 ) -> FFMpegDemuxerOption:
     """
-    RedSpark
+    redspark
 
 
     Returns:
@@ -5996,7 +6019,7 @@ def rka(
 
 ) -> FFMpegDemuxerOption:
     """
-    RKA (RK Audio)
+    rka
 
 
     Returns:
@@ -6012,7 +6035,7 @@ def rl2(
 
 ) -> FFMpegDemuxerOption:
     """
-    RL2
+    rl2
 
 
     Returns:
@@ -6028,7 +6051,7 @@ def rm(
 
 ) -> FFMpegDemuxerOption:
     """
-    RealMedia
+    rm
 
 
     Returns:
@@ -6044,7 +6067,7 @@ def roq(
 
 ) -> FFMpegDemuxerOption:
     """
-    id RoQ
+    roq
 
 
     Returns:
@@ -6060,7 +6083,7 @@ def rpl(
 
 ) -> FFMpegDemuxerOption:
     """
-    RPL / ARMovie
+    rpl
 
 
     Returns:
@@ -6076,7 +6099,7 @@ def rsd(
 
 ) -> FFMpegDemuxerOption:
     """
-    GameCube RSD
+    rsd
 
 
     Returns:
@@ -6092,7 +6115,7 @@ def rso(
 
 ) -> FFMpegDemuxerOption:
     """
-    Lego Mindstorms RSO
+    rso
 
 
     Returns:
@@ -6120,7 +6143,7 @@ def rtp(
 
 ) -> FFMpegDemuxerOption:
     """
-    RTP input
+    rtp
 
     Args:
         rtp_flags: set RTP flags (default 0)
@@ -6177,7 +6200,7 @@ def rtsp(
 
 ) -> FFMpegDemuxerOption:
     """
-    RTSP input
+    rtsp
 
     Args:
         initial_pause: do not start playing the stream immediately (default false)
@@ -6233,7 +6256,7 @@ def s16be(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM signed 16-bit big-endian
+    s16be
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -6265,7 +6288,7 @@ def s16le(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM signed 16-bit little-endian
+    s16le
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -6297,7 +6320,7 @@ def s24be(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM signed 24-bit big-endian
+    s24be
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -6329,7 +6352,7 @@ def s24le(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM signed 24-bit little-endian
+    s24le
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -6361,7 +6384,7 @@ def s32be(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM signed 32-bit big-endian
+    s32be
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -6393,7 +6416,7 @@ def s32le(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM signed 32-bit little-endian
+    s32le
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -6419,7 +6442,7 @@ def s337m(
 
 ) -> FFMpegDemuxerOption:
     """
-    SMPTE 337M
+    s337m
 
 
     Returns:
@@ -6441,7 +6464,7 @@ def s8(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM signed 8-bit
+    s8
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -6467,7 +6490,7 @@ def sami(
 
 ) -> FFMpegDemuxerOption:
     """
-    SAMI subtitle format
+    sami
 
 
     Returns:
@@ -6483,7 +6506,7 @@ def sap(
 
 ) -> FFMpegDemuxerOption:
     """
-    SAP input
+    sap
 
 
     Returns:
@@ -6501,7 +6524,7 @@ def sbc(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw SBC (low-complexity subband codec)
+    sbc
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -6525,7 +6548,7 @@ def sbg(
 
 ) -> FFMpegDemuxerOption:
     """
-    SBaGen binaural beats script
+    sbg
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 0)
@@ -6548,7 +6571,7 @@ def scc(
 
 ) -> FFMpegDemuxerOption:
     """
-    Scenarist Closed Captions
+    scc
 
 
     Returns:
@@ -6564,7 +6587,7 @@ def scd(
 
 ) -> FFMpegDemuxerOption:
     """
-    Square Enix SCD
+    scd
 
 
     Returns:
@@ -6580,7 +6603,7 @@ def sdns(
 
 ) -> FFMpegDemuxerOption:
     """
-    Xbox SDNS
+    sdns
 
 
     Returns:
@@ -6608,7 +6631,7 @@ def sdp(
 
 ) -> FFMpegDemuxerOption:
     """
-    SDP
+    sdp
 
     Args:
         sdp_flags: SDP flags (default 0)
@@ -6643,7 +6666,7 @@ def sdr2(
 
 ) -> FFMpegDemuxerOption:
     """
-    SDR2
+    sdr2
 
 
     Returns:
@@ -6659,7 +6682,7 @@ def sds(
 
 ) -> FFMpegDemuxerOption:
     """
-    MIDI Sample Dump Standard
+    sds
 
 
     Returns:
@@ -6675,7 +6698,7 @@ def sdx(
 
 ) -> FFMpegDemuxerOption:
     """
-    Sample Dump eXchange
+    sdx
 
 
     Returns:
@@ -6693,7 +6716,7 @@ def ser(
 
 ) -> FFMpegDemuxerOption:
     """
-    SER (Simple uncompressed video format for astronomical capturing)
+    ser
 
     Args:
         framerate: set frame rate (default "25")
@@ -6713,7 +6736,7 @@ def sga(
 
 ) -> FFMpegDemuxerOption:
     """
-    Digital Pictures SGA
+    sga
 
 
     Returns:
@@ -6739,7 +6762,7 @@ def sgi_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped sgi sequence
+    sgi_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -6773,7 +6796,7 @@ def shn(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw Shorten
+    shn
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -6793,7 +6816,7 @@ def siff(
 
 ) -> FFMpegDemuxerOption:
     """
-    Beam Software SIFF
+    siff
 
 
     Returns:
@@ -6809,7 +6832,7 @@ def simbiosis_imx(
 
 ) -> FFMpegDemuxerOption:
     """
-    Simbiosis Interactive IMX
+    simbiosis_imx
 
 
     Returns:
@@ -6831,7 +6854,7 @@ def sln(
 
 ) -> FFMpegDemuxerOption:
     """
-    Asterisk raw pcm
+    sln
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 8000)
@@ -6857,7 +6880,7 @@ def smjpeg(
 
 ) -> FFMpegDemuxerOption:
     """
-    Loki SDL MJPEG
+    smjpeg
 
 
     Returns:
@@ -6873,7 +6896,7 @@ def smk(
 
 ) -> FFMpegDemuxerOption:
     """
-    Smacker
+    smk
 
 
     Returns:
@@ -6889,7 +6912,7 @@ def smush(
 
 ) -> FFMpegDemuxerOption:
     """
-    LucasArts Smush
+    smush
 
 
     Returns:
@@ -6901,11 +6924,38 @@ def smush(
 
 
 
+def sndio(
+
+    sample_rate: int | None = None,
+
+    channels: int | None = None,
+
+) -> FFMpegDemuxerOption:
+    """
+    sndio
+
+    Args:
+        sample_rate: (from 1 to INT_MAX) (default 48000)
+        channels: (from 1 to INT_MAX) (default 2)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDemuxerOption(merge({
+
+        "sample_rate": sample_rate,
+
+        "channels": channels,
+
+    }))
+
+
+
 def sol(
 
 ) -> FFMpegDemuxerOption:
     """
-    Sierra SOL
+    sol
 
 
     Returns:
@@ -6921,7 +6971,7 @@ def sox(
 
 ) -> FFMpegDemuxerOption:
     """
-    SoX (Sound eXchange) native
+    sox
 
 
     Returns:
@@ -6937,7 +6987,7 @@ def spdif(
 
 ) -> FFMpegDemuxerOption:
     """
-    IEC 61937 (compressed data in S/PDIF)
+    spdif
 
 
     Returns:
@@ -6953,7 +7003,7 @@ def srt(
 
 ) -> FFMpegDemuxerOption:
     """
-    SubRip subtitle
+    srt
 
 
     Returns:
@@ -6969,7 +7019,7 @@ def stl(
 
 ) -> FFMpegDemuxerOption:
     """
-    Spruce subtitle format
+    stl
 
 
     Returns:
@@ -6985,7 +7035,7 @@ def subviewer(
 
 ) -> FFMpegDemuxerOption:
     """
-    SubViewer subtitle format
+    subviewer
 
 
     Returns:
@@ -7001,7 +7051,7 @@ def subviewer1(
 
 ) -> FFMpegDemuxerOption:
     """
-    SubViewer v1 subtitle format
+    subviewer1
 
 
     Returns:
@@ -7027,7 +7077,7 @@ def sunrast_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped sunrast sequence
+    sunrast_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -7059,7 +7109,7 @@ def sup(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw HDMV Presentation Graphic Stream subtitles
+    sup
 
 
     Returns:
@@ -7075,7 +7125,7 @@ def svag(
 
 ) -> FFMpegDemuxerOption:
     """
-    Konami PS2 SVAG
+    svag
 
 
     Returns:
@@ -7101,7 +7151,7 @@ def svg_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped svg sequence
+    svg_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -7133,7 +7183,7 @@ def svs(
 
 ) -> FFMpegDemuxerOption:
     """
-    Square SVS
+    svs
 
 
     Returns:
@@ -7149,7 +7199,7 @@ def swf(
 
 ) -> FFMpegDemuxerOption:
     """
-    SWF (ShockWave Flash)
+    swf
 
 
     Returns:
@@ -7167,7 +7217,7 @@ def tak(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw TAK
+    tak
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -7189,7 +7239,7 @@ def tedcaptions(
 
 ) -> FFMpegDemuxerOption:
     """
-    TED Talks captions
+    tedcaptions
 
     Args:
         start_time: set the start time (offset) of the subtitles, in ms (from I64_MIN to I64_MAX) (default 15000)
@@ -7209,7 +7259,7 @@ def thp(
 
 ) -> FFMpegDemuxerOption:
     """
-    THP
+    thp
 
 
     Returns:
@@ -7225,7 +7275,7 @@ def tiertexseq(
 
 ) -> FFMpegDemuxerOption:
     """
-    Tiertex Limited SEQ
+    tiertexseq
 
 
     Returns:
@@ -7251,7 +7301,7 @@ def tiff_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped tiff sequence
+    tiff_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -7283,7 +7333,7 @@ def tmv(
 
 ) -> FFMpegDemuxerOption:
     """
-    8088flex TMV
+    tmv
 
 
     Returns:
@@ -7301,7 +7351,7 @@ def truehd(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw TrueHD
+    truehd
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -7321,7 +7371,7 @@ def tta(
 
 ) -> FFMpegDemuxerOption:
     """
-    TTA (True Audio)
+    tta
 
 
     Returns:
@@ -7343,7 +7393,7 @@ def tty(
 
 ) -> FFMpegDemuxerOption:
     """
-    Tele-typewriter
+    tty
 
     Args:
         chars_per_frame: (from 1 to INT_MAX) (default 6000)
@@ -7369,7 +7419,7 @@ def txd(
 
 ) -> FFMpegDemuxerOption:
     """
-    Renderware TeXture Dictionary
+    txd
 
 
     Returns:
@@ -7385,7 +7435,7 @@ def ty(
 
 ) -> FFMpegDemuxerOption:
     """
-    TiVo TY Stream
+    ty
 
 
     Returns:
@@ -7407,7 +7457,7 @@ def u16be(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM unsigned 16-bit big-endian
+    u16be
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -7439,7 +7489,7 @@ def u16le(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM unsigned 16-bit little-endian
+    u16le
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -7471,7 +7521,7 @@ def u24be(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM unsigned 24-bit big-endian
+    u24be
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -7503,7 +7553,7 @@ def u24le(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM unsigned 24-bit little-endian
+    u24le
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -7535,7 +7585,7 @@ def u32be(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM unsigned 32-bit big-endian
+    u32be
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -7567,7 +7617,7 @@ def u32le(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM unsigned 32-bit little-endian
+    u32le
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -7599,7 +7649,7 @@ def u8(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM unsigned 8-bit
+    u8
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -7625,7 +7675,7 @@ def usm(
 
 ) -> FFMpegDemuxerOption:
     """
-    CRI USM
+    usm
 
 
     Returns:
@@ -7645,7 +7695,7 @@ def v210(
 
 ) -> FFMpegDemuxerOption:
     """
-    Uncompressed 4:2:2 10-bit
+    v210
 
     Args:
         video_size: set frame size
@@ -7672,7 +7722,7 @@ def v210x(
 
 ) -> FFMpegDemuxerOption:
     """
-    Uncompressed 4:2:2 10-bit
+    v210x
 
     Args:
         video_size: set frame size
@@ -7695,7 +7745,7 @@ def vag(
 
 ) -> FFMpegDemuxerOption:
     """
-    Sony PS2 VAG
+    vag
 
 
     Returns:
@@ -7721,7 +7771,7 @@ def vbn_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped vbn sequence
+    vbn_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -7757,7 +7807,7 @@ def vc1(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw VC-1
+    vc1
 
     Args:
         framerate: (default "25")
@@ -7780,7 +7830,7 @@ def vc1test(
 
 ) -> FFMpegDemuxerOption:
     """
-    VC-1 test bitstream
+    vc1test
 
 
     Returns:
@@ -7802,7 +7852,7 @@ def vidc(
 
 ) -> FFMpegDemuxerOption:
     """
-    PCM Archimedes VIDC
+    vidc
 
     Args:
         sample_rate: (from 0 to INT_MAX) (default 44100)
@@ -7828,7 +7878,7 @@ def vividas(
 
 ) -> FFMpegDemuxerOption:
     """
-    Vividas VIV
+    vividas
 
 
     Returns:
@@ -7844,7 +7894,7 @@ def vivo(
 
 ) -> FFMpegDemuxerOption:
     """
-    Vivo
+    vivo
 
 
     Returns:
@@ -7860,7 +7910,7 @@ def vmd(
 
 ) -> FFMpegDemuxerOption:
     """
-    Sierra VMD
+    vmd
 
 
     Returns:
@@ -7878,7 +7928,7 @@ def vobsub(
 
 ) -> FFMpegDemuxerOption:
     """
-    VobSub subtitle format
+    vobsub
 
     Args:
         sub_name: URI for .sub file
@@ -7898,7 +7948,7 @@ def voc(
 
 ) -> FFMpegDemuxerOption:
     """
-    Creative Voice
+    voc
 
 
     Returns:
@@ -7914,7 +7964,7 @@ def vpk(
 
 ) -> FFMpegDemuxerOption:
     """
-    Sony PS2 VPK
+    vpk
 
 
     Returns:
@@ -7930,7 +7980,7 @@ def vplayer(
 
 ) -> FFMpegDemuxerOption:
     """
-    VPlayer subtitles
+    vplayer
 
 
     Returns:
@@ -7946,7 +7996,7 @@ def vqf(
 
 ) -> FFMpegDemuxerOption:
     """
-    Nippon Telegraph and Telephone Corporation (NTT) TwinVQ
+    vqf
 
 
     Returns:
@@ -7966,7 +8016,7 @@ def vvc(
 
 ) -> FFMpegDemuxerOption:
     """
-    raw H.266/VVC video
+    vvc
 
     Args:
         framerate: (default "25")
@@ -7991,7 +8041,7 @@ def w64(
 
 ) -> FFMpegDemuxerOption:
     """
-    Sony Wave64
+    w64
 
     Args:
         max_size: max size of single packet (from 1024 to 4.1943e+06) (default 4096)
@@ -8011,7 +8061,7 @@ def wady(
 
 ) -> FFMpegDemuxerOption:
     """
-    Marble WADY
+    wady
 
 
     Returns:
@@ -8031,7 +8081,7 @@ def wav(
 
 ) -> FFMpegDemuxerOption:
     """
-    WAV / WAVE (Waveform Audio)
+    wav
 
     Args:
         ignore_length: Ignore length (default false)
@@ -8054,7 +8104,7 @@ def wavarc(
 
 ) -> FFMpegDemuxerOption:
     """
-    Waveform Archiver
+    wavarc
 
 
     Returns:
@@ -8070,7 +8120,7 @@ def wc3movie(
 
 ) -> FFMpegDemuxerOption:
     """
-    Wing Commander III movie
+    wc3movie
 
 
     Returns:
@@ -8090,7 +8140,7 @@ def webm_dash_manifest(
 
 ) -> FFMpegDemuxerOption:
     """
-    WebM DASH Manifest
+    webm_dash_manifest
 
     Args:
         live: flag indicating that the input is a live file that only has the headers. (default false)
@@ -8123,7 +8173,7 @@ def webp_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped webp sequence
+    webp_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -8157,7 +8207,7 @@ def webvtt(
 
 ) -> FFMpegDemuxerOption:
     """
-    WebVTT subtitle
+    webvtt
 
     Args:
         kind: Set kind of WebVTT track (from 0 to INT_MAX) (default subtitles)
@@ -8177,7 +8227,7 @@ def wsaud(
 
 ) -> FFMpegDemuxerOption:
     """
-    Westwood Studios audio
+    wsaud
 
 
     Returns:
@@ -8195,7 +8245,7 @@ def wsd(
 
 ) -> FFMpegDemuxerOption:
     """
-    Wideband Single-bit Data (WSD)
+    wsd
 
     Args:
         raw_packet_size: (from 1 to INT_MAX) (default 1024)
@@ -8215,7 +8265,7 @@ def wsvqa(
 
 ) -> FFMpegDemuxerOption:
     """
-    Westwood Studios VQA
+    wsvqa
 
 
     Returns:
@@ -8231,7 +8281,7 @@ def wtv(
 
 ) -> FFMpegDemuxerOption:
     """
-    Windows Television (WTV)
+    wtv
 
 
     Returns:
@@ -8247,7 +8297,7 @@ def wv(
 
 ) -> FFMpegDemuxerOption:
     """
-    WavPack
+    wv
 
 
     Returns:
@@ -8263,7 +8313,7 @@ def wve(
 
 ) -> FFMpegDemuxerOption:
     """
-    Psion 3 audio
+    wve
 
 
     Returns:
@@ -8303,7 +8353,7 @@ def x11grab(
 
 ) -> FFMpegDemuxerOption:
     """
-    X11 screen capture, using XCB
+    x11grab
 
     Args:
         window_id: Window to capture. (from 0 to UINT32_MAX) (default 0)
@@ -8356,7 +8406,7 @@ def xa(
 
 ) -> FFMpegDemuxerOption:
     """
-    Maxis XA
+    xa
 
 
     Returns:
@@ -8378,7 +8428,7 @@ def xbin(
 
 ) -> FFMpegDemuxerOption:
     """
-    eXtended BINary text (XBIN)
+    xbin
 
     Args:
         linespeed: set simulated line speed (bytes per second) (from 1 to INT_MAX) (default 6000)
@@ -8414,7 +8464,7 @@ def xbm_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped xbm sequence
+    xbm_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -8446,7 +8496,7 @@ def xmd(
 
 ) -> FFMpegDemuxerOption:
     """
-    Konami XMD
+    xmd
 
 
     Returns:
@@ -8462,7 +8512,7 @@ def xmv(
 
 ) -> FFMpegDemuxerOption:
     """
-    Microsoft XMV
+    xmv
 
 
     Returns:
@@ -8488,7 +8538,7 @@ def xpm_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped xpm sequence
+    xpm_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -8520,7 +8570,7 @@ def xvag(
 
 ) -> FFMpegDemuxerOption:
     """
-    Sony PS3 XVAG
+    xvag
 
 
     Returns:
@@ -8546,7 +8596,7 @@ def xwd_pipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    piped xwd sequence
+    xwd_pipe
 
     Args:
         frame_size: force frame size in bytes (from 0 to INT_MAX) (default 0)
@@ -8578,7 +8628,7 @@ def xwma(
 
 ) -> FFMpegDemuxerOption:
     """
-    Microsoft xWMA
+    xwma
 
 
     Returns:
@@ -8594,7 +8644,7 @@ def yop(
 
 ) -> FFMpegDemuxerOption:
     """
-    Psygnosis YOP
+    yop
 
 
     Returns:
@@ -8610,7 +8660,7 @@ def yuv4mpegpipe(
 
 ) -> FFMpegDemuxerOption:
     """
-    YUV4MPEG pipe
+    yuv4mpegpipe
 
 
     Returns:

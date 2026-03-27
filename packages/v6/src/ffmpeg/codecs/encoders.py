@@ -47,7 +47,7 @@ def a64multi(
 
 ) -> FFMpegEncoderOption:
     """
-    Multicolor charset for Commodore 64 (codec a64_multi)
+    (codec a64_multi)
 
 
     Returns:
@@ -63,7 +63,7 @@ def a64multi5(
 
 ) -> FFMpegEncoderOption:
     """
-    Multicolor charset for Commodore 64, extended with 5th color (colram) (codec a64_multi5)
+    (codec a64_multi5)
 
 
     Returns:
@@ -79,7 +79,7 @@ def alias_pix(
 
 ) -> FFMpegEncoderOption:
     """
-    Alias/Wavefront PIX image
+
 
 
     Returns:
@@ -141,7 +141,7 @@ def amv(
 
 ) -> FFMpegEncoderOption:
     """
-    AMV Video
+
 
     Args:
         mpv_flags: Flags common for all mpegvideo-based encoders. (default 0)
@@ -233,7 +233,7 @@ def apng(
 
 ) -> FFMpegEncoderOption:
     """
-    APNG (Animated Portable Network Graphics) image
+
 
     Args:
         dpi: Set image resolution (in dots per inch) (from 0 to 65536) (default 0)
@@ -259,7 +259,7 @@ def asv1(
 
 ) -> FFMpegEncoderOption:
     """
-    ASUS V1
+
 
 
     Returns:
@@ -275,7 +275,7 @@ def asv2(
 
 ) -> FFMpegEncoderOption:
     """
-    ASUS V2
+
 
 
     Returns:
@@ -287,213 +287,68 @@ def asv2(
 
 
 
-def av1_nvenc(
+def libsvtav1(
 
-    preset: int | None| Literal["default", "slow", "medium", "fast", "p1", "p2", "p3", "p4", "p5", "p6", "p7"] = None,
+    hielevel: int | None| Literal["3level", "4level"] = None,
 
-    tune: int | None| Literal["hq", "ll", "ull", "lossless"] = None,
+    la_depth: int | None = None,
 
-    level: int | None| Literal["auto", "2", "2.0", "2.1", "2.2", "2.3", "3", "3.0", "3.1", "3.2", "3.3", "4", "4.0", "4.1", "4.2", "4.3", "5", "5.0", "5.1", "5.2", "5.3", "6", "6.0", "6.1", "6.2", "6.3", "7", "7.0", "7.1", "7.2", "7.3"] = None,
+    tier: int | None| Literal["main", "high"] = None,
 
-    tier: int | None| Literal["0", "1"] = None,
+    preset: int | None = None,
 
-    rc: int | None| Literal["constqp", "vbr", "cbr"] = None,
-
-    multipass: int | None| Literal["disabled", "qres", "fullres"] = None,
-
-    highbitdepth: bool | None = None,
-
-    tile_rows: int | None = None,
-
-    tile_columns: int | None = None,
-
-    surfaces: int | None = None,
-
-    gpu: int | None| Literal["any", "list"] = None,
-
-    rgb_mode: int | None| Literal["yuv420", "yuv444", "disabled"] = None,
-
-    delay: int | None = None,
-
-    rc_lookahead: int | None = None,
-
-    cq: float | None = None,
-
-    init_qpP: int | None = None,
-
-    init_qpB: int | None = None,
-
-    init_qpI: int | None = None,
+    crf: int | None = None,
 
     qp: int | None = None,
 
-    qp_cb_offset: int | None = None,
+    sc_detection: bool | None = None,
 
-    qp_cr_offset: int | None = None,
+    tile_columns: int | None = None,
 
-    no_scenecut: bool | None = None,
+    tile_rows: int | None = None,
 
-    forced_idr: bool | None = None,
-
-    b_adapt: bool | None = None,
-
-    spatial_aq: bool | None = None,
-
-    temporal_aq: bool | None = None,
-
-    zerolatency: bool | None = None,
-
-    nonref_p: bool | None = None,
-
-    strict_gop: bool | None = None,
-
-    aq_strength: int | None = None,
-
-    weighted_pred: bool | None = None,
-
-    b_ref_mode: int | None| Literal["disabled", "each", "middle"] = None,
-
-    dpb_size: int | None = None,
-
-    ldkfs: int | None = None,
-
-    intra_refresh: bool | None = None,
-
-    timing_info: bool | None = None,
-
-    extra_sei: bool | None = None,
-
-    a53cc: bool | None = None,
-
-    s12m_tc: bool | None = None,
+    svtav1_params: str | None = None,
 
 ) -> FFMpegEncoderOption:
     """
-    NVIDIA NVENC av1 encoder (codec av1)
+    (codec av1)
 
     Args:
-        preset: Set the encoding preset (from 0 to 18) (default p4)
-        tune: Set the encoding tuning info (from 1 to 4) (default hq)
-        level: Set the encoding level restriction (from 0 to 24) (default auto)
-        tier: Set the encoding tier (from 0 to 1) (default 0)
-        rc: Override the preset rate-control (from -1 to INT_MAX) (default -1)
-        multipass: Set the multipass encoding (from 0 to 2) (default disabled)
-        highbitdepth: Enable 10 bit encode for 8 bit input (default false)
-        tile_rows: Number of tile rows to encode with (from -1 to 64) (default -1)
-        tile_columns: Number of tile columns to encode with (from -1 to 64) (default -1)
-        surfaces: Number of concurrent surfaces (from 0 to 64) (default 0)
-        gpu: Selects which NVENC capable GPU to use. First GPU is 0, second is 1, and so on. (from -2 to INT_MAX) (default any)
-        rgb_mode: Configure how nvenc handles packed RGB input. (from 0 to INT_MAX) (default yuv420)
-        delay: Delay frame output by the given amount of frames (from 0 to INT_MAX) (default INT_MAX)
-        rc_lookahead: Number of frames to look ahead for rate-control (from 0 to INT_MAX) (default 0)
-        cq: Set target quality level (0 to 51, 0 means automatic) for constant quality mode in VBR rate control (from 0 to 51) (default 0)
-        init_qpP: Initial QP value for P frame (from -1 to 255) (default -1)
-        init_qpB: Initial QP value for B frame (from -1 to 255) (default -1)
-        init_qpI: Initial QP value for I frame (from -1 to 255) (default -1)
-        qp: Constant quantization parameter rate control method (from -1 to 255) (default -1)
-        qp_cb_offset: Quantization parameter offset for cb channel (from -12 to 12) (default 0)
-        qp_cr_offset: Quantization parameter offset for cr channel (from -12 to 12) (default 0)
-        no_scenecut: When lookahead is enabled, set this to 1 to disable adaptive I-frame insertion at scene cuts (default false)
-        forced_idr: If forcing keyframes, force them as IDR frames. (default false)
-        b_adapt: When lookahead is enabled, set this to 0 to disable adaptive B-frame decision (default true)
-        spatial_aq: set to 1 to enable Spatial AQ (default false)
-        temporal_aq: set to 1 to enable Temporal AQ (default false)
-        zerolatency: Set 1 to indicate zero latency operation (no reordering delay) (default false)
-        nonref_p: Set this to 1 to enable automatic insertion of non-reference P-frames (default false)
-        strict_gop: Set 1 to minimize GOP-to-GOP rate fluctuations (default false)
-        aq_strength: When Spatial AQ is enabled, this field is used to specify AQ strength. AQ strength scale is from 1 (low) - 15 (aggressive) (from 1 to 15) (default 8)
-        weighted_pred: Enable weighted prediction (default false)
-        b_ref_mode: Use B frames as references (from -1 to 2) (default -1)
-        dpb_size: Specifies the DPB size used for encoding (0 means automatic) (from 0 to INT_MAX) (default 0)
-        ldkfs: Low delay key frame scale; Specifies the Scene Change frame size increase allowed in case of single frame VBV and CBR (from 0 to 255) (default 0)
-        intra_refresh: Use Periodic Intra Refresh instead of IDR frames (default false)
-        timing_info: Include timing info in sequence/frame headers (default false)
-        extra_sei: Pass on extra SEI data (e.g. a53 cc) to be included in the bitstream (default true)
-        a53cc: Use A53 Closed Captions (if available) (default true)
-        s12m_tc: Use timecode (if available) (default true)
+        hielevel: Hierarchical prediction levels setting (Deprecated, use svtav1-params) (from -1 to 4) (default -1)
+        la_depth: Look ahead distance [0, 120] (Deprecated, use svtav1-params) (from -1 to 120) (default -1)
+        tier: Set operating point tier (Deprecated, use svtav1-params) (from -1 to 1) (default -1)
+        preset: Encoding preset (from -2 to 13) (default -2)
+        crf: Constant Rate Factor value (from 0 to 63) (default 0)
+        qp: Initial Quantizer level value (from 0 to 63) (default 0)
+        sc_detection: Scene change detection (Deprecated, use svtav1-params) (default auto)
+        tile_columns: Log2 of number of tile columns to use (Deprecated, use svtav1-params) (from -1 to 4) (default -1)
+        tile_rows: Log2 of number of tile rows to use (Deprecated, use svtav1-params) (from -1 to 6) (default -1)
+        svtav1_params: Set the SVT-AV1 configuration using a :-separated list of key=value parameters
 
     Returns:
         the set codec options
     """
     return FFMpegEncoderOption(merge({
 
-        "preset": preset,
+        "hielevel": hielevel,
 
-        "tune": tune,
-
-        "level": level,
+        "la_depth": la_depth,
 
         "tier": tier,
 
-        "rc": rc,
+        "preset": preset,
 
-        "multipass": multipass,
-
-        "highbitdepth": highbitdepth,
-
-        "tile-rows": tile_rows,
-
-        "tile-columns": tile_columns,
-
-        "surfaces": surfaces,
-
-        "gpu": gpu,
-
-        "rgb_mode": rgb_mode,
-
-        "delay": delay,
-
-        "rc-lookahead": rc_lookahead,
-
-        "cq": cq,
-
-        "init_qpP": init_qpP,
-
-        "init_qpB": init_qpB,
-
-        "init_qpI": init_qpI,
+        "crf": crf,
 
         "qp": qp,
 
-        "qp_cb_offset": qp_cb_offset,
+        "sc_detection": sc_detection,
 
-        "qp_cr_offset": qp_cr_offset,
+        "tile_columns": tile_columns,
 
-        "no-scenecut": no_scenecut,
+        "tile_rows": tile_rows,
 
-        "forced-idr": forced_idr,
-
-        "b_adapt": b_adapt,
-
-        "spatial-aq": spatial_aq,
-
-        "temporal-aq": temporal_aq,
-
-        "zerolatency": zerolatency,
-
-        "nonref_p": nonref_p,
-
-        "strict_gop": strict_gop,
-
-        "aq-strength": aq_strength,
-
-        "weighted_pred": weighted_pred,
-
-        "b_ref_mode": b_ref_mode,
-
-        "dpb_size": dpb_size,
-
-        "ldkfs": ldkfs,
-
-        "intra-refresh": intra_refresh,
-
-        "timing-info": timing_info,
-
-        "extra_sei": extra_sei,
-
-        "a53cc": a53cc,
-
-        "s12m_tc": s12m_tc,
+        "svtav1-params": svtav1_params,
 
     }))
 
@@ -525,7 +380,7 @@ def av1_vaapi(
 
 ) -> FFMpegEncoderOption:
     """
-    AV1 (VAAPI) (codec av1)
+    (codec av1)
 
     Args:
         low_power: Use low-power encoding mode (only available on some platforms; may not support all encoding features) (default false)
@@ -575,7 +430,7 @@ def avrp(
 
 ) -> FFMpegEncoderOption:
     """
-    Avid 1:1 10-bit RGB Packer
+
 
 
     Returns:
@@ -591,7 +446,7 @@ def avui(
 
 ) -> FFMpegEncoderOption:
     """
-    Avid Meridien Uncompressed
+
 
 
     Returns:
@@ -607,7 +462,7 @@ def ayuv(
 
 ) -> FFMpegEncoderOption:
     """
-    Uncompressed packed MS 4:4:4:4
+
 
 
     Returns:
@@ -623,7 +478,7 @@ def bitpacked(
 
 ) -> FFMpegEncoderOption:
     """
-    Bitpacked
+
 
 
     Returns:
@@ -639,7 +494,7 @@ def bmp(
 
 ) -> FFMpegEncoderOption:
     """
-    BMP (Windows and OS/2 bitmap)
+
 
 
     Returns:
@@ -657,7 +512,7 @@ def cfhd(
 
 ) -> FFMpegEncoderOption:
     """
-    GoPro CineForm HD
+
 
     Args:
         quality: set quality (from 0 to 12) (default film3+)
@@ -687,7 +542,7 @@ def cinepak(
 
 ) -> FFMpegEncoderOption:
     """
-    Cinepak
+
 
     Args:
         max_extra_cb_iterations: Max extra codebook recalculation passes, more is better and slower (from 0 to INT_MAX) (default 2)
@@ -721,7 +576,7 @@ def cljr(
 
 ) -> FFMpegEncoderOption:
     """
-    Cirrus Logic AccuPak
+
 
     Args:
         dither_type: Dither type (from 0 to 2) (default 1)
@@ -753,7 +608,7 @@ def vc2(
 
 ) -> FFMpegEncoderOption:
     """
-    SMPTE VC-2 (codec dirac)
+    (codec dirac)
 
     Args:
         tolerance: Max undershoot in percent (from 0 to 45) (default 5)
@@ -794,7 +649,7 @@ def dnxhd(
 
 ) -> FFMpegEncoderOption:
     """
-    VC3/DNxHD
+
 
     Args:
         nitris_compat: encode with Avid Nitris compatibility (default false)
@@ -820,7 +675,7 @@ def dpx(
 
 ) -> FFMpegEncoderOption:
     """
-    DPX (Digital Picture Exchange) image
+
 
 
     Returns:
@@ -838,7 +693,7 @@ def dvvideo(
 
 ) -> FFMpegEncoderOption:
     """
-    DV (Digital Video)
+
 
     Args:
         quant_deadzone: Quantizer dead zone (from 0 to 1024) (default 7)
@@ -864,7 +719,7 @@ def exr(
 
 ) -> FFMpegEncoderOption:
     """
-    OpenEXR image
+
 
     Args:
         compression: set compression type (from 0 to 3) (default none)
@@ -896,7 +751,7 @@ def ffv1(
 
 ) -> FFMpegEncoderOption:
     """
-    FFmpeg video codec #1
+
 
     Args:
         slicecrc: Protect slices with CRCs (default auto)
@@ -928,7 +783,7 @@ def ffvhuff(
 
 ) -> FFMpegEncoderOption:
     """
-    Huffyuv FFmpeg variant
+
 
     Args:
         non_deterministic: Allow multithreading for e.g. context=1 at the expense of determinism (default false)
@@ -954,7 +809,7 @@ def fits(
 
 ) -> FFMpegEncoderOption:
     """
-    Flexible Image Transport System
+
 
 
     Returns:
@@ -970,7 +825,7 @@ def flashsv(
 
 ) -> FFMpegEncoderOption:
     """
-    Flash Screen Video
+
 
 
     Returns:
@@ -986,7 +841,7 @@ def flashsv2(
 
 ) -> FFMpegEncoderOption:
     """
-    Flash Screen Video Version 2
+
 
 
     Returns:
@@ -1052,7 +907,7 @@ def flv(
 
 ) -> FFMpegEncoderOption:
     """
-    FLV / Sorenson Spark / Sorenson H.263 (Flash Video) (codec flv1)
+    (codec flv1)
 
     Args:
         mpv_flags: Flags common for all mpegvideo-based encoders. (default 0)
@@ -1150,7 +1005,7 @@ def gif(
 
 ) -> FFMpegEncoderOption:
     """
-    GIF (Graphics Interchange Format)
+
 
     Args:
         gifflags: set GIF flags (default offsetting+transdiff)
@@ -1226,7 +1081,7 @@ def h261(
 
 ) -> FFMpegEncoderOption:
     """
-    H.261
+
 
     Args:
         mpv_flags: Flags common for all mpegvideo-based encoders. (default 0)
@@ -1372,7 +1227,7 @@ def h263(
 
 ) -> FFMpegEncoderOption:
     """
-    H.263 / H.263-1996
+
 
     Args:
         obmc: use overlapped block motion compensation. (default false)
@@ -1474,7 +1329,7 @@ def h263_v4l2m2m(
 
 ) -> FFMpegEncoderOption:
     """
-    V4L2 mem2mem H.263 encoder wrapper (codec h263)
+    (codec h263)
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
@@ -1555,7 +1410,7 @@ def h263p(
 
 ) -> FFMpegEncoderOption:
     """
-    H.263+ / H.263-1998 / H.263 version 2
+
 
     Args:
         umv: Use unlimited motion vectors. (default false)
@@ -1753,7 +1608,7 @@ def libx264(
 
 ) -> FFMpegEncoderOption:
     """
-    libx264 H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10 (codec h264)
+    (codec h264)
 
     Args:
         preset: Set the encoding preset (cf. x264 --fullhelp) (default "medium")
@@ -2005,7 +1860,7 @@ def libx264rgb(
 
 ) -> FFMpegEncoderOption:
     """
-    libx264 H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10 RGB (codec h264)
+    (codec h264)
 
     Args:
         preset: Set the encoding preset (cf. x264 --fullhelp) (default "medium")
@@ -2159,238 +2014,6 @@ def libx264rgb(
 
 
 
-def h264_nvenc(
-
-    preset: int | None| Literal["default", "slow", "medium", "fast", "hp", "hq", "bd", "ll", "llhq", "llhp", "lossless", "losslesshp", "p1", "p2", "p3", "p4", "p5", "p6", "p7"] = None,
-
-    tune: int | None| Literal["hq", "ll", "ull", "lossless"] = None,
-
-    profile: int | None| Literal["baseline", "main", "high", "high444p"] = None,
-
-    level: int | None| Literal["auto", "1", "1.0", "1b", "1.0b", "1.1", "1.2", "1.3", "2", "2.0", "2.1", "2.2", "3", "3.0", "3.1", "3.2", "4", "4.0", "4.1", "4.2", "5", "5.0", "5.1", "5.2", "6.0", "6.1", "6.2"] = None,
-
-    rc: int | None| Literal["constqp", "vbr", "cbr", "vbr_minqp", "ll_2pass_quality", "ll_2pass_size", "vbr_2pass", "cbr_ld_hq", "cbr_hq", "vbr_hq"] = None,
-
-    rc_lookahead: int | None = None,
-
-    surfaces: int | None = None,
-
-    cbr: bool | None = None,
-
-    _2pass: bool | None = None,
-
-    gpu: int | None| Literal["any", "list"] = None,
-
-    rgb_mode: int | None| Literal["yuv420", "yuv444", "disabled"] = None,
-
-    delay: int | None = None,
-
-    no_scenecut: bool | None = None,
-
-    forced_idr: bool | None = None,
-
-    b_adapt: bool | None = None,
-
-    spatial_aq: bool | None = None,
-
-    temporal_aq: bool | None = None,
-
-    zerolatency: bool | None = None,
-
-    nonref_p: bool | None = None,
-
-    strict_gop: bool | None = None,
-
-    aq_strength: int | None = None,
-
-    cq: float | None = None,
-
-    aud: bool | None = None,
-
-    bluray_compat: bool | None = None,
-
-    init_qpP: int | None = None,
-
-    init_qpB: int | None = None,
-
-    init_qpI: int | None = None,
-
-    qp: int | None = None,
-
-    qp_cb_offset: int | None = None,
-
-    qp_cr_offset: int | None = None,
-
-    weighted_pred: int | None = None,
-
-    coder: int | None| Literal["default", "auto", "cabac", "cavlc", "ac", "vlc"] = None,
-
-    b_ref_mode: int | None| Literal["disabled", "each", "middle"] = None,
-
-    a53cc: bool | None = None,
-
-    dpb_size: int | None = None,
-
-    multipass: int | None| Literal["disabled", "qres", "fullres"] = None,
-
-    ldkfs: int | None = None,
-
-    extra_sei: bool | None = None,
-
-    udu_sei: bool | None = None,
-
-    intra_refresh: bool | None = None,
-
-    single_slice_intra_refresh: bool | None = None,
-
-    max_slice_size: int | None = None,
-
-    constrained_encoding: bool | None = None,
-
-) -> FFMpegEncoderOption:
-    """
-    NVIDIA NVENC H.264 encoder (codec h264)
-
-    Args:
-        preset: Set the encoding preset (from 0 to 18) (default p4)
-        tune: Set the encoding tuning info (from 1 to 4) (default hq)
-        profile: Set the encoding profile (from 0 to 3) (default main)
-        level: Set the encoding level restriction (from 0 to 62) (default auto)
-        rc: Override the preset rate-control (from -1 to INT_MAX) (default -1)
-        rc_lookahead: Number of frames to look ahead for rate-control (from 0 to INT_MAX) (default 0)
-        surfaces: Number of concurrent surfaces (from 0 to 64) (default 0)
-        cbr: Use cbr encoding mode (default false)
-        _2pass: Use 2pass encoding mode (default auto)
-        gpu: Selects which NVENC capable GPU to use. First GPU is 0, second is 1, and so on. (from -2 to INT_MAX) (default any)
-        rgb_mode: Configure how nvenc handles packed RGB input. (from 0 to INT_MAX) (default yuv420)
-        delay: Delay frame output by the given amount of frames (from 0 to INT_MAX) (default INT_MAX)
-        no_scenecut: When lookahead is enabled, set this to 1 to disable adaptive I-frame insertion at scene cuts (default false)
-        forced_idr: If forcing keyframes, force them as IDR frames. (default false)
-        b_adapt: When lookahead is enabled, set this to 0 to disable adaptive B-frame decision (default true)
-        spatial_aq: set to 1 to enable Spatial AQ (default false)
-        temporal_aq: set to 1 to enable Temporal AQ (default false)
-        zerolatency: Set 1 to indicate zero latency operation (no reordering delay) (default false)
-        nonref_p: Set this to 1 to enable automatic insertion of non-reference P-frames (default false)
-        strict_gop: Set 1 to minimize GOP-to-GOP rate fluctuations (default false)
-        aq_strength: When Spatial AQ is enabled, this field is used to specify AQ strength. AQ strength scale is from 1 (low) - 15 (aggressive) (from 1 to 15) (default 8)
-        cq: Set target quality level (0 to 51, 0 means automatic) for constant quality mode in VBR rate control (from 0 to 51) (default 0)
-        aud: Use access unit delimiters (default false)
-        bluray_compat: Bluray compatibility workarounds (default false)
-        init_qpP: Initial QP value for P frame (from -1 to 51) (default -1)
-        init_qpB: Initial QP value for B frame (from -1 to 51) (default -1)
-        init_qpI: Initial QP value for I frame (from -1 to 51) (default -1)
-        qp: Constant quantization parameter rate control method (from -1 to 51) (default -1)
-        qp_cb_offset: Quantization parameter offset for cb channel (from -12 to 12) (default 0)
-        qp_cr_offset: Quantization parameter offset for cr channel (from -12 to 12) (default 0)
-        weighted_pred: Set 1 to enable weighted prediction (from 0 to 1) (default 0)
-        coder: Coder type (from -1 to 2) (default default)
-        b_ref_mode: Use B frames as references (from -1 to 2) (default -1)
-        a53cc: Use A53 Closed Captions (if available) (default true)
-        dpb_size: Specifies the DPB size used for encoding (0 means automatic) (from 0 to INT_MAX) (default 0)
-        multipass: Set the multipass encoding (from 0 to 2) (default disabled)
-        ldkfs: Low delay key frame scale; Specifies the Scene Change frame size increase allowed in case of single frame VBV and CBR (from 0 to 255) (default 0)
-        extra_sei: Pass on extra SEI data (e.g. a53 cc) to be included in the bitstream (default true)
-        udu_sei: Pass on user data unregistered SEI if available (default false)
-        intra_refresh: Use Periodic Intra Refresh instead of IDR frames (default false)
-        single_slice_intra_refresh: Use single slice intra refresh (default false)
-        max_slice_size: Maximum encoded slice size in bytes (from 0 to INT_MAX) (default 0)
-        constrained_encoding: Enable constrainedFrame encoding where each slice in the constrained picture is independent of other slices (default false)
-
-    Returns:
-        the set codec options
-    """
-    return FFMpegEncoderOption(merge({
-
-        "preset": preset,
-
-        "tune": tune,
-
-        "profile": profile,
-
-        "level": level,
-
-        "rc": rc,
-
-        "rc-lookahead": rc_lookahead,
-
-        "surfaces": surfaces,
-
-        "cbr": cbr,
-
-        "2pass": _2pass,
-
-        "gpu": gpu,
-
-        "rgb_mode": rgb_mode,
-
-        "delay": delay,
-
-        "no-scenecut": no_scenecut,
-
-        "forced-idr": forced_idr,
-
-        "b_adapt": b_adapt,
-
-        "spatial-aq": spatial_aq,
-
-        "temporal-aq": temporal_aq,
-
-        "zerolatency": zerolatency,
-
-        "nonref_p": nonref_p,
-
-        "strict_gop": strict_gop,
-
-        "aq-strength": aq_strength,
-
-        "cq": cq,
-
-        "aud": aud,
-
-        "bluray-compat": bluray_compat,
-
-        "init_qpP": init_qpP,
-
-        "init_qpB": init_qpB,
-
-        "init_qpI": init_qpI,
-
-        "qp": qp,
-
-        "qp_cb_offset": qp_cb_offset,
-
-        "qp_cr_offset": qp_cr_offset,
-
-        "weighted_pred": weighted_pred,
-
-        "coder": coder,
-
-        "b_ref_mode": b_ref_mode,
-
-        "a53cc": a53cc,
-
-        "dpb_size": dpb_size,
-
-        "multipass": multipass,
-
-        "ldkfs": ldkfs,
-
-        "extra_sei": extra_sei,
-
-        "udu_sei": udu_sei,
-
-        "intra-refresh": intra_refresh,
-
-        "single-slice-intra-refresh": single_slice_intra_refresh,
-
-        "max_slice_size": max_slice_size,
-
-        "constrained-encoding": constrained_encoding,
-
-    }))
-
-
-
 def h264_v4l2m2m(
 
     num_output_buffers: int | None = None,
@@ -2399,7 +2022,7 @@ def h264_v4l2m2m(
 
 ) -> FFMpegEncoderOption:
     """
-    V4L2 mem2mem H.264 encoder wrapper (codec h264)
+    (codec h264)
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
@@ -2448,7 +2071,7 @@ def h264_vaapi(
 
 ) -> FFMpegEncoderOption:
     """
-    H.264/AVC (VAAPI) (codec h264)
+    (codec h264)
 
     Args:
         low_power: Use low-power encoding mode (only available on some platforms; may not support all encoding features) (default false)
@@ -2504,7 +2127,7 @@ def hdr(
 
 ) -> FFMpegEncoderOption:
     """
-    HDR (Radiance RGBE format) image
+
 
 
     Returns:
@@ -2538,7 +2161,7 @@ def libx265(
 
 ) -> FFMpegEncoderOption:
     """
-    libx265 H.265 / HEVC (codec hevc)
+    (codec hevc)
 
     Args:
         crf: set the x265 crf (from -1 to FLT_MAX) (default -1)
@@ -2578,238 +2201,6 @@ def libx265(
 
 
 
-def hevc_nvenc(
-
-    preset: int | None| Literal["default", "slow", "medium", "fast", "hp", "hq", "bd", "ll", "llhq", "llhp", "lossless", "losslesshp", "p1", "p2", "p3", "p4", "p5", "p6", "p7"] = None,
-
-    tune: int | None| Literal["hq", "ll", "ull", "lossless"] = None,
-
-    profile: int | None| Literal["main", "main10", "rext"] = None,
-
-    level: int | None| Literal["auto", "1", "1.0", "2", "2.0", "2.1", "3", "3.0", "3.1", "4", "4.0", "4.1", "5", "5.0", "5.1", "5.2", "6", "6.0", "6.1", "6.2"] = None,
-
-    tier: int | None| Literal["main", "high"] = None,
-
-    rc: int | None| Literal["constqp", "vbr", "cbr", "vbr_minqp", "ll_2pass_quality", "ll_2pass_size", "vbr_2pass", "cbr_ld_hq", "cbr_hq", "vbr_hq"] = None,
-
-    rc_lookahead: int | None = None,
-
-    surfaces: int | None = None,
-
-    cbr: bool | None = None,
-
-    _2pass: bool | None = None,
-
-    gpu: int | None| Literal["any", "list"] = None,
-
-    rgb_mode: int | None| Literal["yuv420", "yuv444", "disabled"] = None,
-
-    delay: int | None = None,
-
-    no_scenecut: bool | None = None,
-
-    forced_idr: bool | None = None,
-
-    spatial_aq: bool | None = None,
-
-    temporal_aq: bool | None = None,
-
-    zerolatency: bool | None = None,
-
-    nonref_p: bool | None = None,
-
-    strict_gop: bool | None = None,
-
-    aq_strength: int | None = None,
-
-    cq: float | None = None,
-
-    aud: bool | None = None,
-
-    bluray_compat: bool | None = None,
-
-    init_qpP: int | None = None,
-
-    init_qpB: int | None = None,
-
-    init_qpI: int | None = None,
-
-    qp: int | None = None,
-
-    qp_cb_offset: int | None = None,
-
-    qp_cr_offset: int | None = None,
-
-    weighted_pred: int | None = None,
-
-    b_ref_mode: int | None| Literal["disabled", "each", "middle"] = None,
-
-    a53cc: bool | None = None,
-
-    s12m_tc: bool | None = None,
-
-    dpb_size: int | None = None,
-
-    multipass: int | None| Literal["disabled", "qres", "fullres"] = None,
-
-    ldkfs: int | None = None,
-
-    extra_sei: bool | None = None,
-
-    udu_sei: bool | None = None,
-
-    intra_refresh: bool | None = None,
-
-    single_slice_intra_refresh: bool | None = None,
-
-    max_slice_size: int | None = None,
-
-    constrained_encoding: bool | None = None,
-
-) -> FFMpegEncoderOption:
-    """
-    NVIDIA NVENC hevc encoder (codec hevc)
-
-    Args:
-        preset: Set the encoding preset (from 0 to 18) (default p4)
-        tune: Set the encoding tuning info (from 1 to 4) (default hq)
-        profile: Set the encoding profile (from 0 to 4) (default main)
-        level: Set the encoding level restriction (from 0 to 186) (default auto)
-        tier: Set the encoding tier (from 0 to 1) (default main)
-        rc: Override the preset rate-control (from -1 to INT_MAX) (default -1)
-        rc_lookahead: Number of frames to look ahead for rate-control (from 0 to INT_MAX) (default 0)
-        surfaces: Number of concurrent surfaces (from 0 to 64) (default 0)
-        cbr: Use cbr encoding mode (default false)
-        _2pass: Use 2pass encoding mode (default auto)
-        gpu: Selects which NVENC capable GPU to use. First GPU is 0, second is 1, and so on. (from -2 to INT_MAX) (default any)
-        rgb_mode: Configure how nvenc handles packed RGB input. (from 0 to INT_MAX) (default yuv420)
-        delay: Delay frame output by the given amount of frames (from 0 to INT_MAX) (default INT_MAX)
-        no_scenecut: When lookahead is enabled, set this to 1 to disable adaptive I-frame insertion at scene cuts (default false)
-        forced_idr: If forcing keyframes, force them as IDR frames. (default false)
-        spatial_aq: set to 1 to enable Spatial AQ (default false)
-        temporal_aq: set to 1 to enable Temporal AQ (default false)
-        zerolatency: Set 1 to indicate zero latency operation (no reordering delay) (default false)
-        nonref_p: Set this to 1 to enable automatic insertion of non-reference P-frames (default false)
-        strict_gop: Set 1 to minimize GOP-to-GOP rate fluctuations (default false)
-        aq_strength: When Spatial AQ is enabled, this field is used to specify AQ strength. AQ strength scale is from 1 (low) - 15 (aggressive) (from 1 to 15) (default 8)
-        cq: Set target quality level (0 to 51, 0 means automatic) for constant quality mode in VBR rate control (from 0 to 51) (default 0)
-        aud: Use access unit delimiters (default false)
-        bluray_compat: Bluray compatibility workarounds (default false)
-        init_qpP: Initial QP value for P frame (from -1 to 51) (default -1)
-        init_qpB: Initial QP value for B frame (from -1 to 51) (default -1)
-        init_qpI: Initial QP value for I frame (from -1 to 51) (default -1)
-        qp: Constant quantization parameter rate control method (from -1 to 51) (default -1)
-        qp_cb_offset: Quantization parameter offset for cb channel (from -12 to 12) (default 0)
-        qp_cr_offset: Quantization parameter offset for cr channel (from -12 to 12) (default 0)
-        weighted_pred: Set 1 to enable weighted prediction (from 0 to 1) (default 0)
-        b_ref_mode: Use B frames as references (from -1 to 2) (default -1)
-        a53cc: Use A53 Closed Captions (if available) (default true)
-        s12m_tc: Use timecode (if available) (default true)
-        dpb_size: Specifies the DPB size used for encoding (0 means automatic) (from 0 to INT_MAX) (default 0)
-        multipass: Set the multipass encoding (from 0 to 2) (default disabled)
-        ldkfs: Low delay key frame scale; Specifies the Scene Change frame size increase allowed in case of single frame VBV and CBR (from 0 to 255) (default 0)
-        extra_sei: Pass on extra SEI data (e.g. a53 cc) to be included in the bitstream (default true)
-        udu_sei: Pass on user data unregistered SEI if available (default false)
-        intra_refresh: Use Periodic Intra Refresh instead of IDR frames (default false)
-        single_slice_intra_refresh: Use single slice intra refresh (default false)
-        max_slice_size: Maximum encoded slice size in bytes (from 0 to INT_MAX) (default 0)
-        constrained_encoding: Enable constrainedFrame encoding where each slice in the constrained picture is independent of other slices (default false)
-
-    Returns:
-        the set codec options
-    """
-    return FFMpegEncoderOption(merge({
-
-        "preset": preset,
-
-        "tune": tune,
-
-        "profile": profile,
-
-        "level": level,
-
-        "tier": tier,
-
-        "rc": rc,
-
-        "rc-lookahead": rc_lookahead,
-
-        "surfaces": surfaces,
-
-        "cbr": cbr,
-
-        "2pass": _2pass,
-
-        "gpu": gpu,
-
-        "rgb_mode": rgb_mode,
-
-        "delay": delay,
-
-        "no-scenecut": no_scenecut,
-
-        "forced-idr": forced_idr,
-
-        "spatial_aq": spatial_aq,
-
-        "temporal_aq": temporal_aq,
-
-        "zerolatency": zerolatency,
-
-        "nonref_p": nonref_p,
-
-        "strict_gop": strict_gop,
-
-        "aq-strength": aq_strength,
-
-        "cq": cq,
-
-        "aud": aud,
-
-        "bluray-compat": bluray_compat,
-
-        "init_qpP": init_qpP,
-
-        "init_qpB": init_qpB,
-
-        "init_qpI": init_qpI,
-
-        "qp": qp,
-
-        "qp_cb_offset": qp_cb_offset,
-
-        "qp_cr_offset": qp_cr_offset,
-
-        "weighted_pred": weighted_pred,
-
-        "b_ref_mode": b_ref_mode,
-
-        "a53cc": a53cc,
-
-        "s12m_tc": s12m_tc,
-
-        "dpb_size": dpb_size,
-
-        "multipass": multipass,
-
-        "ldkfs": ldkfs,
-
-        "extra_sei": extra_sei,
-
-        "udu_sei": udu_sei,
-
-        "intra-refresh": intra_refresh,
-
-        "single-slice-intra-refresh": single_slice_intra_refresh,
-
-        "max_slice_size": max_slice_size,
-
-        "constrained-encoding": constrained_encoding,
-
-    }))
-
-
-
 def hevc_v4l2m2m(
 
     num_output_buffers: int | None = None,
@@ -2818,7 +2209,7 @@ def hevc_v4l2m2m(
 
 ) -> FFMpegEncoderOption:
     """
-    V4L2 mem2mem HEVC encoder wrapper (codec hevc)
+    (codec hevc)
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
@@ -2867,7 +2258,7 @@ def hevc_vaapi(
 
 ) -> FFMpegEncoderOption:
     """
-    H.265/HEVC (VAAPI) (codec hevc)
+    (codec hevc)
 
     Args:
         low_power: Use low-power encoding mode (only available on some platforms; may not support all encoding features) (default false)
@@ -2919,6 +2310,28 @@ def hevc_vaapi(
 
 
 
+def libkvazaar(
+
+    kvazaar_params: str | None = None,
+
+) -> FFMpegEncoderOption:
+    """
+    (codec hevc)
+
+    Args:
+        kvazaar_params: Set kvazaar parameters as a comma-separated list of key=value pairs.
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+        "kvazaar-params": kvazaar_params,
+
+    }))
+
+
+
 def huffyuv(
 
     non_deterministic: bool | None = None,
@@ -2927,7 +2340,7 @@ def huffyuv(
 
 ) -> FFMpegEncoderOption:
     """
-    Huffyuv / HuffYUV
+
 
     Args:
         non_deterministic: Allow multithreading for e.g. context=1 at the expense of determinism (default false)
@@ -2966,7 +2379,7 @@ def jpeg2000(
 
 ) -> FFMpegEncoderOption:
     """
-    JPEG 2000
+
 
     Args:
         format: Codec Format (from 0 to 1) (default jp2)
@@ -3023,7 +2436,7 @@ def libopenjpeg(
 
 ) -> FFMpegEncoderOption:
     """
-    OpenJPEG JPEG 2000 (codec jpeg2000)
+    (codec jpeg2000)
 
     Args:
         format: Codec Format (from 0 to 2) (default jp2)
@@ -3066,7 +2479,7 @@ def jpegls(
 
 ) -> FFMpegEncoderOption:
     """
-    JPEG-LS
+
 
     Args:
         pred: Prediction method (from 0 to 2) (default left)
@@ -3088,7 +2501,7 @@ def ljpeg(
 
 ) -> FFMpegEncoderOption:
     """
-    Lossless JPEG
+
 
     Args:
         pred: Prediction method (from 1 to 3) (default left)
@@ -3110,7 +2523,7 @@ def magicyuv(
 
 ) -> FFMpegEncoderOption:
     """
-    MagicYUV video
+
 
     Args:
         pred: Prediction method (from 1 to 3) (default left)
@@ -3176,7 +2589,7 @@ def mjpeg(
 
 ) -> FFMpegEncoderOption:
     """
-    MJPEG (Motion JPEG)
+
 
     Args:
         mpv_flags: Flags common for all mpegvideo-based encoders. (default 0)
@@ -3276,7 +2689,7 @@ def mjpeg_vaapi(
 
 ) -> FFMpegEncoderOption:
     """
-    MJPEG (VAAPI) (codec mjpeg)
+    (codec mjpeg)
 
     Args:
         low_power: Use low-power encoding mode (only available on some platforms; may not support all encoding features) (default false)
@@ -3378,7 +2791,7 @@ def mpeg1video(
 
 ) -> FFMpegEncoderOption:
     """
-    MPEG-1 video
+
 
     Args:
         gop_timecode: MPEG GOP Timecode in hh:mm:ss[:;.]ff format. Overrides timecode_frame_start.
@@ -3567,7 +2980,7 @@ def mpeg2video(
 
 ) -> FFMpegEncoderOption:
     """
-    MPEG-2 video
+
 
     Args:
         gop_timecode: MPEG GOP Timecode in hh:mm:ss[:;.]ff format. Overrides timecode_frame_start.
@@ -3714,7 +3127,7 @@ def mpeg2_vaapi(
 
 ) -> FFMpegEncoderOption:
     """
-    MPEG-2 (VAAPI) (codec mpeg2video)
+    (codec mpeg2video)
 
     Args:
         low_power: Use low-power encoding mode (only available on some platforms; may not support all encoding features) (default false)
@@ -3817,7 +3230,7 @@ def mpeg4(
 
 ) -> FFMpegEncoderOption:
     """
-    MPEG-4 part 2
+
 
     Args:
         data_partitioning: Use data partitioning. (default false)
@@ -3941,7 +3354,7 @@ def libxvid(
 
 ) -> FFMpegEncoderOption:
     """
-    libxvidcore MPEG-4 part 2 (codec mpeg4)
+    (codec mpeg4)
 
     Args:
         lumi_aq: Luminance masking AQ (from 0 to 1) (default 0)
@@ -3983,7 +3396,7 @@ def mpeg4_v4l2m2m(
 
 ) -> FFMpegEncoderOption:
     """
-    V4L2 mem2mem MPEG4 encoder wrapper (codec mpeg4)
+    (codec mpeg4)
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
@@ -4056,7 +3469,7 @@ def msmpeg4v2(
 
 ) -> FFMpegEncoderOption:
     """
-    MPEG-4 part 2 Microsoft variant version 2
+
 
     Args:
         mpv_flags: Flags common for all mpegvideo-based encoders. (default 0)
@@ -4198,7 +3611,7 @@ def msmpeg4(
 
 ) -> FFMpegEncoderOption:
     """
-    MPEG-4 part 2 Microsoft variant version 3 (codec msmpeg4v3)
+    (codec msmpeg4v3)
 
     Args:
         mpv_flags: Flags common for all mpegvideo-based encoders. (default 0)
@@ -4290,7 +3703,7 @@ def msrle(
 
 ) -> FFMpegEncoderOption:
     """
-    Microsoft RLE
+
 
 
     Returns:
@@ -4306,7 +3719,7 @@ def msvideo1(
 
 ) -> FFMpegEncoderOption:
     """
-    Microsoft Video-1
+
 
 
     Returns:
@@ -4322,7 +3735,7 @@ def pam(
 
 ) -> FFMpegEncoderOption:
     """
-    PAM (Portable AnyMap) image
+
 
 
     Returns:
@@ -4338,7 +3751,7 @@ def pbm(
 
 ) -> FFMpegEncoderOption:
     """
-    PBM (Portable BitMap) image
+
 
 
     Returns:
@@ -4354,7 +3767,7 @@ def pcx(
 
 ) -> FFMpegEncoderOption:
     """
-    PC Paintbrush PCX image
+
 
 
     Returns:
@@ -4370,7 +3783,7 @@ def pfm(
 
 ) -> FFMpegEncoderOption:
     """
-    PFM (Portable FloatMap) image
+
 
 
     Returns:
@@ -4386,7 +3799,7 @@ def pgm(
 
 ) -> FFMpegEncoderOption:
     """
-    PGM (Portable GrayMap) image
+
 
 
     Returns:
@@ -4402,7 +3815,7 @@ def pgmyuv(
 
 ) -> FFMpegEncoderOption:
     """
-    PGMYUV (Portable GrayMap YUV) image
+
 
 
     Returns:
@@ -4418,7 +3831,7 @@ def phm(
 
 ) -> FFMpegEncoderOption:
     """
-    PHM (Portable HalfFloatMap) image
+
 
 
     Returns:
@@ -4440,7 +3853,7 @@ def png(
 
 ) -> FFMpegEncoderOption:
     """
-    PNG (Portable Network Graphics) image
+
 
     Args:
         dpi: Set image resolution (in dots per inch) (from 0 to 65536) (default 0)
@@ -4466,7 +3879,7 @@ def ppm(
 
 ) -> FFMpegEncoderOption:
     """
-    PPM (Portable PixelMap) image
+
 
 
     Returns:
@@ -4484,7 +3897,7 @@ def prores(
 
 ) -> FFMpegEncoderOption:
     """
-    Apple ProRes
+
 
     Args:
         vendor: vendor ID (default "fmpg")
@@ -4506,7 +3919,7 @@ def prores_aw(
 
 ) -> FFMpegEncoderOption:
     """
-    Apple ProRes (codec prores)
+    (codec prores)
 
     Args:
         vendor: vendor ID (default "fmpg")
@@ -4538,7 +3951,7 @@ def prores_ks(
 
 ) -> FFMpegEncoderOption:
     """
-    Apple ProRes (iCodec Pro) (codec prores)
+    (codec prores)
 
     Args:
         mbs_per_slice: macroblocks per slice (from 1 to 8) (default 8)
@@ -4573,7 +3986,7 @@ def qoi(
 
 ) -> FFMpegEncoderOption:
     """
-    QOI (Quite OK Image format) image
+
 
 
     Returns:
@@ -4589,7 +4002,7 @@ def qtrle(
 
 ) -> FFMpegEncoderOption:
     """
-    QuickTime Animation (RLE) video
+
 
 
     Returns:
@@ -4605,7 +4018,7 @@ def r10k(
 
 ) -> FFMpegEncoderOption:
     """
-    AJA Kona 10-bit RGB Codec
+
 
 
     Returns:
@@ -4621,7 +4034,7 @@ def r210(
 
 ) -> FFMpegEncoderOption:
     """
-    Uncompressed RGB 10-bit
+
 
 
     Returns:
@@ -4637,7 +4050,7 @@ def rawvideo(
 
 ) -> FFMpegEncoderOption:
     """
-    raw video
+
 
 
     Returns:
@@ -4655,7 +4068,7 @@ def roqvideo(
 
 ) -> FFMpegEncoderOption:
     """
-    id RoQ video (codec roq)
+    (codec roq)
 
     Args:
         quake3_compat: Whether to respect known limitations in Quake 3 decoder (default true)
@@ -4681,7 +4094,7 @@ def rpza(
 
 ) -> FFMpegEncoderOption:
     """
-    QuickTime video (RPZA)
+
 
     Args:
         skip_frame_thresh: (from 0 to 24) (default 1)
@@ -4757,7 +4170,7 @@ def rv10(
 
 ) -> FFMpegEncoderOption:
     """
-    RealVideo 1.0
+
 
     Args:
         mpv_flags: Flags common for all mpegvideo-based encoders. (default 0)
@@ -4899,7 +4312,7 @@ def rv20(
 
 ) -> FFMpegEncoderOption:
     """
-    RealVideo 2.0
+
 
     Args:
         mpv_flags: Flags common for all mpegvideo-based encoders. (default 0)
@@ -4993,7 +4406,7 @@ def sgi(
 
 ) -> FFMpegEncoderOption:
     """
-    SGI image
+
 
     Args:
         rle: Use run-length compression (from 0 to 1) (default 1)
@@ -5013,7 +4426,7 @@ def smc(
 
 ) -> FFMpegEncoderOption:
     """
-    QuickTime Graphics (SMC)
+
 
 
     Returns:
@@ -5045,7 +4458,7 @@ def snow(
 
 ) -> FFMpegEncoderOption:
     """
-    Snow
+
 
     Args:
         motion_est: motion estimation algorithm (from 0 to 3) (default epzs)
@@ -5136,7 +4549,7 @@ def speedhq(
 
 ) -> FFMpegEncoderOption:
     """
-    NewTek SpeedHQ
+
 
     Args:
         mpv_flags: Flags common for all mpegvideo-based encoders. (default 0)
@@ -5230,7 +4643,7 @@ def sunrast(
 
 ) -> FFMpegEncoderOption:
     """
-    Sun Rasterfile image
+
 
     Args:
         rle: Use run-length compression (from 0 to 1) (default 1)
@@ -5252,7 +4665,7 @@ def svq1(
 
 ) -> FFMpegEncoderOption:
     """
-    Sorenson Vector Quantizer 1 / Sorenson Video 1 / SVQ1
+
 
     Args:
         motion_est: Motion estimation algorithm (from 0 to 2) (default epzs)
@@ -5274,7 +4687,7 @@ def targa(
 
 ) -> FFMpegEncoderOption:
     """
-    Truevision Targa image
+
 
     Args:
         rle: Use run-length compression (from 0 to 1) (default 1)
@@ -5294,7 +4707,7 @@ def libtheora(
 
 ) -> FFMpegEncoderOption:
     """
-    libtheora Theora (codec theora)
+    (codec theora)
 
 
     Returns:
@@ -5314,7 +4727,7 @@ def tiff(
 
 ) -> FFMpegEncoderOption:
     """
-    TIFF image
+
 
     Args:
         dpi: set the image resolution (in dpi) (from 1 to 65536) (default 72)
@@ -5339,7 +4752,7 @@ def utvideo(
 
 ) -> FFMpegEncoderOption:
     """
-    Ut Video
+
 
     Args:
         pred: Prediction method (from 0 to 3) (default left)
@@ -5359,7 +4772,7 @@ def v210(
 
 ) -> FFMpegEncoderOption:
     """
-    Uncompressed 4:2:2 10-bit
+
 
 
     Returns:
@@ -5375,7 +4788,7 @@ def v308(
 
 ) -> FFMpegEncoderOption:
     """
-    Uncompressed packed 4:4:4
+
 
 
     Returns:
@@ -5391,7 +4804,7 @@ def v408(
 
 ) -> FFMpegEncoderOption:
     """
-    Uncompressed packed QT 4:4:4:4
+
 
 
     Returns:
@@ -5407,7 +4820,7 @@ def v410(
 
 ) -> FFMpegEncoderOption:
     """
-    Uncompressed 4:4:4 10-bit
+
 
 
     Returns:
@@ -5425,7 +4838,7 @@ def vbn(
 
 ) -> FFMpegEncoderOption:
     """
-    Vizrt Binary Image
+
 
     Args:
         format: Texture format (from 0 to 3) (default dxt5)
@@ -5445,7 +4858,7 @@ def vnull(
 
 ) -> FFMpegEncoderOption:
     """
-    null video
+
 
 
     Returns:
@@ -5507,7 +4920,7 @@ def libvpx(
 
 ) -> FFMpegEncoderOption:
     """
-    libvpx VP8 (codec vp8)
+    (codec vp8)
 
     Args:
         lag_in_frames: Number of frames to look ahead for alternate reference frame selection (from -1 to INT_MAX) (default -1)
@@ -5597,7 +5010,7 @@ def vp8_v4l2m2m(
 
 ) -> FFMpegEncoderOption:
     """
-    V4L2 mem2mem VP8 encoder wrapper (codec vp8)
+    (codec vp8)
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
@@ -5636,7 +5049,7 @@ def vp8_vaapi(
 
 ) -> FFMpegEncoderOption:
     """
-    VP8 (VAAPI) (codec vp8)
+    (codec vp8)
 
     Args:
         low_power: Use low-power encoding mode (only available on some platforms; may not support all encoding features) (default false)
@@ -5693,7 +5106,7 @@ def vp9_vaapi(
 
 ) -> FFMpegEncoderOption:
     """
-    VP9 (VAAPI) (codec vp9)
+    (codec vp9)
 
     Args:
         low_power: Use low-power encoding mode (only available on some platforms; may not support all encoding features) (default false)
@@ -5734,7 +5147,7 @@ def wbmp(
 
 ) -> FFMpegEncoderOption:
     """
-    WBMP (Wireless Application Protocol Bitmap) image
+
 
 
     Returns:
@@ -5760,7 +5173,7 @@ def libwebp_anim(
 
 ) -> FFMpegEncoderOption:
     """
-    libwebp WebP image (codec webp)
+    (codec webp)
 
     Args:
         lossless: Use lossless mode (from 0 to 1) (default 0)
@@ -5802,7 +5215,7 @@ def libwebp(
 
 ) -> FFMpegEncoderOption:
     """
-    libwebp WebP image (codec webp)
+    (codec webp)
 
     Args:
         lossless: Use lossless mode (from 0 to 1) (default 0)
@@ -5884,7 +5297,7 @@ def wmv1(
 
 ) -> FFMpegEncoderOption:
     """
-    Windows Media Video 7
+
 
     Args:
         mpv_flags: Flags common for all mpegvideo-based encoders. (default 0)
@@ -6026,7 +5439,7 @@ def wmv2(
 
 ) -> FFMpegEncoderOption:
     """
-    Windows Media Video 8
+
 
     Args:
         mpv_flags: Flags common for all mpegvideo-based encoders. (default 0)
@@ -6118,7 +5531,7 @@ def wrapped_avframe(
 
 ) -> FFMpegEncoderOption:
     """
-    AVFrame to AVPacket passthrough
+
 
 
     Returns:
@@ -6134,7 +5547,7 @@ def xbm(
 
 ) -> FFMpegEncoderOption:
     """
-    XBM (X BitMap) image
+
 
 
     Returns:
@@ -6150,7 +5563,7 @@ def xface(
 
 ) -> FFMpegEncoderOption:
     """
-    X-face image
+
 
 
     Returns:
@@ -6166,7 +5579,7 @@ def xwd(
 
 ) -> FFMpegEncoderOption:
     """
-    XWD (X Window Dump) image
+
 
 
     Returns:
@@ -6182,7 +5595,7 @@ def y41p(
 
 ) -> FFMpegEncoderOption:
     """
-    Uncompressed YUV 4:1:1 12-bit
+
 
 
     Returns:
@@ -6198,7 +5611,7 @@ def yuv4(
 
 ) -> FFMpegEncoderOption:
     """
-    Uncompressed packed 4:2:0
+
 
 
     Returns:
@@ -6214,7 +5627,7 @@ def zlib(
 
 ) -> FFMpegEncoderOption:
     """
-    LCL (LossLess Codec Library) ZLIB
+
 
 
     Returns:
@@ -6230,7 +5643,7 @@ def zmbv(
 
 ) -> FFMpegEncoderOption:
     """
-    Zip Motion Blocks Video
+
 
 
     Returns:
@@ -6262,7 +5675,7 @@ def aac(
 
 ) -> FFMpegEncoderOption:
     """
-    AAC (Advanced Audio Coding)
+
 
     Args:
         aac_coder: Coding algorithm (from 0 to 2) (default twoloop)
@@ -6294,6 +5707,88 @@ def aac(
         "aac_pred": aac_pred,
 
         "aac_pce": aac_pce,
+
+    }))
+
+
+
+def libfdk_aac(
+
+    afterburner: int | None = None,
+
+    eld_sbr: int | None = None,
+
+    eld_v2: int | None = None,
+
+    signaling: int | None| Literal["default", "implicit", "explicit_sbr", "explicit_hierarchical"] = None,
+
+    latm: int | None = None,
+
+    header_period: int | None = None,
+
+    vbr: int | None = None,
+
+    drc_profile: int | None = None,
+
+    drc_target_ref: int | None = None,
+
+    comp_profile: int | None = None,
+
+    comp_target_ref: int | None = None,
+
+    prog_ref: int | None = None,
+
+    frame_length: int | None = None,
+
+) -> FFMpegEncoderOption:
+    """
+    (codec aac)
+
+    Args:
+        afterburner: Afterburner (improved quality) (from 0 to 1) (default 1)
+        eld_sbr: Enable SBR for ELD (for SBR in other configurations, use the -profile parameter) (from 0 to 1) (default 0)
+        eld_v2: Enable ELDv2 (LD-MPS extension for ELD stereo signals) (from 0 to 1) (default 0)
+        signaling: SBR/PS signaling style (from -1 to 2) (default default)
+        latm: Output LATM/LOAS encapsulated data (from 0 to 1) (default 0)
+        header_period: StreamMuxConfig and PCE repetition period (in frames) (from 0 to 65535) (default 0)
+        vbr: VBR mode (1-5) (from 0 to 5) (default 0)
+        drc_profile: The desired compression profile for AAC DRC (from 0 to 256) (default 0)
+        drc_target_ref: Expected target reference level at decoder side in dB (for clipping prevention/limiter) (from -31.75 to 0) (default 0)
+        comp_profile: The desired compression profile for AAC DRC (from 0 to 256) (default 0)
+        comp_target_ref: Expected target reference level at decoder side in dB (for clipping prevention/limiter) (from -31.75 to 0) (default 0)
+        prog_ref: The program reference level or dialog level in dB (from -31.75 to 0) (default 0)
+        frame_length: The desired frame length (from -1 to 1024) (default -1)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+        "afterburner": afterburner,
+
+        "eld_sbr": eld_sbr,
+
+        "eld_v2": eld_v2,
+
+        "signaling": signaling,
+
+        "latm": latm,
+
+        "header_period": header_period,
+
+        "vbr": vbr,
+
+        "drc_profile": drc_profile,
+
+        "drc_target_ref": drc_target_ref,
+
+        "comp_profile": comp_profile,
+
+        "comp_target_ref": comp_target_ref,
+
+        "prog_ref": prog_ref,
+
+        "frame_length": frame_length,
 
     }))
 
@@ -6343,7 +5838,7 @@ def ac3(
 
 ) -> FFMpegEncoderOption:
     """
-    ATSC A/52A (AC-3)
+
 
     Args:
         center_mixlev: Center Mix Level (from 0 to 1) (default 0.594604)
@@ -6460,7 +5955,7 @@ def ac3_fixed(
 
 ) -> FFMpegEncoderOption:
     """
-    ATSC A/52A (AC-3) (codec ac3)
+    (codec ac3)
 
     Args:
         center_mixlev: Center Mix Level (from 0 to 1) (default 0.594604)
@@ -6537,7 +6032,7 @@ def adpcm_adx(
 
 ) -> FFMpegEncoderOption:
     """
-    SEGA CRI ADX ADPCM
+
 
 
     Returns:
@@ -6555,7 +6050,7 @@ def adpcm_argo(
 
 ) -> FFMpegEncoderOption:
     """
-    ADPCM Argonaut Games
+
 
     Args:
         block_size: set the block size (from 32 to 8192) (default 1024)
@@ -6575,7 +6070,7 @@ def g722(
 
 ) -> FFMpegEncoderOption:
     """
-    G.722 ADPCM (codec adpcm_g722)
+    (codec adpcm_g722)
 
 
     Returns:
@@ -6593,7 +6088,7 @@ def g726(
 
 ) -> FFMpegEncoderOption:
     """
-    G.726 ADPCM (codec adpcm_g726)
+    (codec adpcm_g726)
 
     Args:
         code_size: Bits per code (from 2 to 5) (default 4)
@@ -6615,7 +6110,7 @@ def g726le(
 
 ) -> FFMpegEncoderOption:
     """
-    G.726 little endian ADPCM ("right-justified") (codec adpcm_g726le)
+    (codec adpcm_g726le)
 
     Args:
         code_size: Bits per code (from 2 to 5) (default 4)
@@ -6637,7 +6132,7 @@ def adpcm_ima_alp(
 
 ) -> FFMpegEncoderOption:
     """
-    ADPCM IMA High Voltage Software ALP
+
 
     Args:
         block_size: set the block size (from 32 to 8192) (default 1024)
@@ -6659,7 +6154,7 @@ def adpcm_ima_amv(
 
 ) -> FFMpegEncoderOption:
     """
-    ADPCM IMA AMV
+
 
     Args:
         block_size: set the block size (from 32 to 8192) (default 1024)
@@ -6681,7 +6176,7 @@ def adpcm_ima_apm(
 
 ) -> FFMpegEncoderOption:
     """
-    ADPCM IMA Ubisoft APM
+
 
     Args:
         block_size: set the block size (from 32 to 8192) (default 1024)
@@ -6703,7 +6198,7 @@ def adpcm_ima_qt(
 
 ) -> FFMpegEncoderOption:
     """
-    ADPCM IMA QuickTime
+
 
     Args:
         block_size: set the block size (from 32 to 8192) (default 1024)
@@ -6725,7 +6220,7 @@ def adpcm_ima_ssi(
 
 ) -> FFMpegEncoderOption:
     """
-    ADPCM IMA Simon & Schuster Interactive
+
 
     Args:
         block_size: set the block size (from 32 to 8192) (default 1024)
@@ -6747,7 +6242,7 @@ def adpcm_ima_wav(
 
 ) -> FFMpegEncoderOption:
     """
-    ADPCM IMA WAV
+
 
     Args:
         block_size: set the block size (from 32 to 8192) (default 1024)
@@ -6769,7 +6264,7 @@ def adpcm_ima_ws(
 
 ) -> FFMpegEncoderOption:
     """
-    ADPCM IMA Westwood
+
 
     Args:
         block_size: set the block size (from 32 to 8192) (default 1024)
@@ -6791,7 +6286,7 @@ def adpcm_ms(
 
 ) -> FFMpegEncoderOption:
     """
-    ADPCM Microsoft
+
 
     Args:
         block_size: set the block size (from 32 to 8192) (default 1024)
@@ -6813,7 +6308,7 @@ def adpcm_swf(
 
 ) -> FFMpegEncoderOption:
     """
-    ADPCM Shockwave Flash
+
 
     Args:
         block_size: set the block size (from 32 to 8192) (default 1024)
@@ -6835,7 +6330,7 @@ def adpcm_yamaha(
 
 ) -> FFMpegEncoderOption:
     """
-    ADPCM Yamaha
+
 
     Args:
         block_size: set the block size (from 32 to 8192) (default 1024)
@@ -6859,7 +6354,7 @@ def alac(
 
 ) -> FFMpegEncoderOption:
     """
-    ALAC (Apple Lossless Audio Codec)
+
 
     Args:
         min_prediction_order: (from 1 to 30) (default 4)
@@ -6884,7 +6379,7 @@ def libopencore_amrnb(
 
 ) -> FFMpegEncoderOption:
     """
-    OpenCORE AMR-NB (Adaptive Multi-Rate Narrow-Band) (codec amr_nb)
+    (codec amr_nb)
 
     Args:
         dtx: Allow DTX (generate comfort noise) (from 0 to 1) (default 0)
@@ -6904,7 +6399,7 @@ def anull(
 
 ) -> FFMpegEncoderOption:
     """
-    null audio
+
 
 
     Returns:
@@ -6920,7 +6415,7 @@ def aptx(
 
 ) -> FFMpegEncoderOption:
     """
-    aptX (Audio Processing Technology for Bluetooth)
+
 
 
     Returns:
@@ -6936,7 +6431,7 @@ def aptx_hd(
 
 ) -> FFMpegEncoderOption:
     """
-    aptX HD (Audio Processing Technology for Bluetooth)
+
 
 
     Returns:
@@ -6952,7 +6447,7 @@ def comfortnoise(
 
 ) -> FFMpegEncoderOption:
     """
-    RFC 3389 comfort noise generator
+
 
 
     Returns:
@@ -6968,7 +6463,7 @@ def dfpwm(
 
 ) -> FFMpegEncoderOption:
     """
-    DFPWM1a audio
+
 
 
     Returns:
@@ -6986,7 +6481,7 @@ def dca(
 
 ) -> FFMpegEncoderOption:
     """
-    DCA (DTS Coherent Acoustics) (codec dts)
+    (codec dts)
 
     Args:
         dca_adpcm: Use ADPCM encoding (default false)
@@ -7042,7 +6537,7 @@ def eac3(
 
 ) -> FFMpegEncoderOption:
     """
-    ATSC A/52 E-AC-3
+
 
     Args:
         mixing_level: Mixing Level (from -1 to 111) (default -1)
@@ -7131,7 +6626,7 @@ def flac(
 
 ) -> FFMpegEncoderOption:
     """
-    FLAC (Free Lossless Audio Codec)
+
 
     Args:
         lpc_coeff_precision: LPC coefficient precision (from 0 to 15) (default 15)
@@ -7175,7 +6670,7 @@ def g723_1(
 
 ) -> FFMpegEncoderOption:
     """
-    G.723.1
+
 
 
     Returns:
@@ -7205,7 +6700,7 @@ def mlp(
 
 ) -> FFMpegEncoderOption:
     """
-    MLP (Meridian Lossless Packing)
+
 
     Args:
         max_interval: Max number of frames between each new header (from 8 to 128) (default 16)
@@ -7243,7 +6738,7 @@ def mp2(
 
 ) -> FFMpegEncoderOption:
     """
-    MP2 (MPEG audio layer 2)
+
 
 
     Returns:
@@ -7259,7 +6754,7 @@ def mp2fixed(
 
 ) -> FFMpegEncoderOption:
     """
-    MP2 fixed point (MPEG audio layer 2) (codec mp2)
+    (codec mp2)
 
 
     Returns:
@@ -7285,7 +6780,7 @@ def libmp3lame(
 
 ) -> FFMpegEncoderOption:
     """
-    libmp3lame MP3 (MPEG audio layer 3) (codec mp3)
+    (codec mp3)
 
     Args:
         reservoir: use bit reservoir (default true)
@@ -7317,7 +6812,7 @@ def nellymoser(
 
 ) -> FFMpegEncoderOption:
     """
-    Nellymoser Asao
+
 
 
     Returns:
@@ -7337,7 +6832,7 @@ def opus(
 
 ) -> FFMpegEncoderOption:
     """
-    Opus
+
 
     Args:
         opus_delay: Maximum delay in milliseconds (from 2.5 to 360) (default 360)
@@ -7374,7 +6869,7 @@ def libopus(
 
 ) -> FFMpegEncoderOption:
     """
-    libopus Opus (codec opus)
+    (codec opus)
 
     Args:
         application: Intended application type (from 2048 to 2051) (default audio)
@@ -7412,7 +6907,7 @@ def pcm_alaw(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM A-law / G.711 A-law
+
 
 
     Returns:
@@ -7428,7 +6923,7 @@ def pcm_bluray(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM signed 16|20|24-bit big-endian for Blu-ray media
+
 
 
     Returns:
@@ -7444,7 +6939,7 @@ def pcm_dvd(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM signed 16|20|24-bit big-endian for DVD media
+
 
 
     Returns:
@@ -7460,7 +6955,7 @@ def pcm_f32be(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM 32-bit floating point big-endian
+
 
 
     Returns:
@@ -7476,7 +6971,7 @@ def pcm_f32le(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM 32-bit floating point little-endian
+
 
 
     Returns:
@@ -7492,7 +6987,7 @@ def pcm_f64be(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM 64-bit floating point big-endian
+
 
 
     Returns:
@@ -7508,7 +7003,7 @@ def pcm_f64le(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM 64-bit floating point little-endian
+
 
 
     Returns:
@@ -7524,7 +7019,7 @@ def pcm_mulaw(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM mu-law / G.711 mu-law
+
 
 
     Returns:
@@ -7540,7 +7035,7 @@ def pcm_s16be(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM signed 16-bit big-endian
+
 
 
     Returns:
@@ -7556,7 +7051,7 @@ def pcm_s16be_planar(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM signed 16-bit big-endian planar
+
 
 
     Returns:
@@ -7572,7 +7067,7 @@ def pcm_s16le(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM signed 16-bit little-endian
+
 
 
     Returns:
@@ -7588,7 +7083,7 @@ def pcm_s16le_planar(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM signed 16-bit little-endian planar
+
 
 
     Returns:
@@ -7604,7 +7099,7 @@ def pcm_s24be(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM signed 24-bit big-endian
+
 
 
     Returns:
@@ -7620,7 +7115,7 @@ def pcm_s24daud(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM D-Cinema audio signed 24-bit
+
 
 
     Returns:
@@ -7636,7 +7131,7 @@ def pcm_s24le(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM signed 24-bit little-endian
+
 
 
     Returns:
@@ -7652,7 +7147,7 @@ def pcm_s24le_planar(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM signed 24-bit little-endian planar
+
 
 
     Returns:
@@ -7668,7 +7163,7 @@ def pcm_s32be(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM signed 32-bit big-endian
+
 
 
     Returns:
@@ -7684,7 +7179,7 @@ def pcm_s32le(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM signed 32-bit little-endian
+
 
 
     Returns:
@@ -7700,7 +7195,7 @@ def pcm_s32le_planar(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM signed 32-bit little-endian planar
+
 
 
     Returns:
@@ -7716,7 +7211,7 @@ def pcm_s64be(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM signed 64-bit big-endian
+
 
 
     Returns:
@@ -7732,7 +7227,7 @@ def pcm_s64le(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM signed 64-bit little-endian
+
 
 
     Returns:
@@ -7748,7 +7243,7 @@ def pcm_s8(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM signed 8-bit
+
 
 
     Returns:
@@ -7764,7 +7259,7 @@ def pcm_s8_planar(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM signed 8-bit planar
+
 
 
     Returns:
@@ -7780,7 +7275,7 @@ def pcm_u16be(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM unsigned 16-bit big-endian
+
 
 
     Returns:
@@ -7796,7 +7291,7 @@ def pcm_u16le(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM unsigned 16-bit little-endian
+
 
 
     Returns:
@@ -7812,7 +7307,7 @@ def pcm_u24be(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM unsigned 24-bit big-endian
+
 
 
     Returns:
@@ -7828,7 +7323,7 @@ def pcm_u24le(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM unsigned 24-bit little-endian
+
 
 
     Returns:
@@ -7844,7 +7339,7 @@ def pcm_u32be(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM unsigned 32-bit big-endian
+
 
 
     Returns:
@@ -7860,7 +7355,7 @@ def pcm_u32le(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM unsigned 32-bit little-endian
+
 
 
     Returns:
@@ -7876,7 +7371,7 @@ def pcm_u8(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM unsigned 8-bit
+
 
 
     Returns:
@@ -7892,7 +7387,7 @@ def pcm_vidc(
 
 ) -> FFMpegEncoderOption:
     """
-    PCM Archimedes VIDC
+
 
 
     Returns:
@@ -7908,7 +7403,7 @@ def real_144(
 
 ) -> FFMpegEncoderOption:
     """
-    RealAudio 1.0 (14.4K) (codec ra_144)
+    (codec ra_144)
 
 
     Returns:
@@ -7924,7 +7419,7 @@ def roq_dpcm(
 
 ) -> FFMpegEncoderOption:
     """
-    id RoQ DPCM
+
 
 
     Returns:
@@ -7940,7 +7435,7 @@ def s302m(
 
 ) -> FFMpegEncoderOption:
     """
-    SMPTE 302M
+
 
 
     Returns:
@@ -7960,7 +7455,7 @@ def sbc(
 
 ) -> FFMpegEncoderOption:
     """
-    SBC (low-complexity subband codec)
+
 
     Args:
         sbc_delay: set maximum algorithmic latency (default 0.013)
@@ -7983,7 +7478,7 @@ def sonic(
 
 ) -> FFMpegEncoderOption:
     """
-    Sonic
+
 
 
     Returns:
@@ -7999,7 +7494,7 @@ def sonicls(
 
 ) -> FFMpegEncoderOption:
     """
-    Sonic lossless
+
 
 
     Returns:
@@ -8029,7 +7524,7 @@ def truehd(
 
 ) -> FFMpegEncoderOption:
     """
-    TrueHD
+
 
     Args:
         max_interval: Max number of frames between each new header (from 8 to 128) (default 16)
@@ -8067,7 +7562,7 @@ def tta(
 
 ) -> FFMpegEncoderOption:
     """
-    TTA (True Audio)
+
 
 
     Returns:
@@ -8083,7 +7578,7 @@ def vorbis(
 
 ) -> FFMpegEncoderOption:
     """
-    Vorbis
+
 
 
     Returns:
@@ -8101,7 +7596,7 @@ def libvorbis(
 
 ) -> FFMpegEncoderOption:
     """
-    libvorbis (codec vorbis)
+    (codec vorbis)
 
     Args:
         iblock: Sets the impulse block bias (from -15 to 0) (default 0)
@@ -8125,7 +7620,7 @@ def wavpack(
 
 ) -> FFMpegEncoderOption:
     """
-    WavPack
+
 
     Args:
         joint_stereo: (default auto)
@@ -8148,7 +7643,7 @@ def wmav1(
 
 ) -> FFMpegEncoderOption:
     """
-    Windows Media Audio 1
+
 
 
     Returns:
@@ -8164,7 +7659,7 @@ def wmav2(
 
 ) -> FFMpegEncoderOption:
     """
-    Windows Media Audio 2
+
 
 
     Returns:
@@ -8180,7 +7675,7 @@ def ssa(
 
 ) -> FFMpegEncoderOption:
     """
-    ASS (Advanced SubStation Alpha) subtitle (codec ass)
+    (codec ass)
 
 
     Returns:
@@ -8196,7 +7691,7 @@ def ass(
 
 ) -> FFMpegEncoderOption:
     """
-    ASS (Advanced SubStation Alpha) subtitle
+
 
 
     Returns:
@@ -8212,7 +7707,7 @@ def dvbsub(
 
 ) -> FFMpegEncoderOption:
     """
-    DVB subtitles (codec dvb_subtitle)
+    (codec dvb_subtitle)
 
 
     Returns:
@@ -8232,7 +7727,7 @@ def dvdsub(
 
 ) -> FFMpegEncoderOption:
     """
-    DVD subtitles (codec dvd_subtitle)
+    (codec dvd_subtitle)
 
     Args:
         palette: set the global palette
@@ -8257,7 +7752,7 @@ def mov_text(
 
 ) -> FFMpegEncoderOption:
     """
-    3GPP Timed Text subtitle
+
 
     Args:
         height: Frame height, usually video height (from 0 to INT_MAX) (default 0)
@@ -8277,7 +7772,7 @@ def srt(
 
 ) -> FFMpegEncoderOption:
     """
-    SubRip subtitle (codec subrip)
+    (codec subrip)
 
 
     Returns:
@@ -8293,7 +7788,7 @@ def subrip(
 
 ) -> FFMpegEncoderOption:
     """
-    SubRip subtitle
+
 
 
     Returns:
@@ -8309,7 +7804,7 @@ def text(
 
 ) -> FFMpegEncoderOption:
     """
-    Raw text subtitle
+
 
 
     Returns:
@@ -8325,7 +7820,7 @@ def ttml(
 
 ) -> FFMpegEncoderOption:
     """
-    TTML subtitle
+
 
 
     Returns:
@@ -8341,7 +7836,7 @@ def webvtt(
 
 ) -> FFMpegEncoderOption:
     """
-    WebVTT subtitle
+
 
 
     Returns:
@@ -8357,7 +7852,7 @@ def xsub(
 
 ) -> FFMpegEncoderOption:
     """
-    DivX subtitles (XSUB)
+
 
 
     Returns:
@@ -8366,22 +7861,6 @@ def xsub(
     return FFMpegEncoderOption(merge({
 
     }))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

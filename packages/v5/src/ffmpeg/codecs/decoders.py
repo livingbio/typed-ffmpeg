@@ -427,25 +427,11 @@ from ..streams.audio import AudioStream
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def _012v(
 
 ) -> FFMpegDecoderOption:
     """
-    Uncompressed 4:2:2 10-bit
+
 
 
     Returns:
@@ -461,7 +447,7 @@ def _4xm(
 
 ) -> FFMpegDecoderOption:
     """
-    4X Movie
+
 
 
     Returns:
@@ -477,7 +463,7 @@ def _8bps(
 
 ) -> FFMpegDecoderOption:
     """
-    QuickTime 8BPS video
+
 
 
     Returns:
@@ -493,7 +479,7 @@ def aasc(
 
 ) -> FFMpegDecoderOption:
     """
-    Autodesk RLE
+
 
 
     Returns:
@@ -509,7 +495,7 @@ def agm(
 
 ) -> FFMpegDecoderOption:
     """
-    Amuse Graphics Movie
+
 
 
     Returns:
@@ -525,7 +511,7 @@ def aic(
 
 ) -> FFMpegDecoderOption:
     """
-    Apple Intermediate Codec
+
 
 
     Returns:
@@ -541,7 +527,7 @@ def alias_pix(
 
 ) -> FFMpegDecoderOption:
     """
-    Alias/Wavefront PIX image
+
 
 
     Returns:
@@ -557,7 +543,7 @@ def amv(
 
 ) -> FFMpegDecoderOption:
     """
-    AMV Video
+
 
 
     Returns:
@@ -573,7 +559,7 @@ def anm(
 
 ) -> FFMpegDecoderOption:
     """
-    Deluxe Paint Animation
+
 
 
     Returns:
@@ -589,7 +575,7 @@ def ansi(
 
 ) -> FFMpegDecoderOption:
     """
-    ASCII/ANSI art
+
 
 
     Returns:
@@ -605,7 +591,7 @@ def apng(
 
 ) -> FFMpegDecoderOption:
     """
-    APNG (Animated Portable Network Graphics) image
+
 
 
     Returns:
@@ -621,7 +607,7 @@ def arbc(
 
 ) -> FFMpegDecoderOption:
     """
-    Gryphon's Anim Compressor
+
 
 
     Returns:
@@ -637,7 +623,7 @@ def argo(
 
 ) -> FFMpegDecoderOption:
     """
-    Argonaut Games Video
+
 
 
     Returns:
@@ -653,7 +639,7 @@ def asv1(
 
 ) -> FFMpegDecoderOption:
     """
-    ASUS V1
+
 
 
     Returns:
@@ -669,7 +655,7 @@ def asv2(
 
 ) -> FFMpegDecoderOption:
     """
-    ASUS V2
+
 
 
     Returns:
@@ -685,7 +671,7 @@ def aura(
 
 ) -> FFMpegDecoderOption:
     """
-    Auravision AURA
+
 
 
     Returns:
@@ -701,55 +687,13 @@ def aura2(
 
 ) -> FFMpegDecoderOption:
     """
-    Auravision Aura 2
+
 
 
     Returns:
         the set codec options
     """
     return FFMpegDecoderOption(merge({
-
-    }))
-
-
-
-def libdav1d(
-
-    tilethreads: int | None = None,
-
-    framethreads: int | None = None,
-
-    filmgrain: bool | None = None,
-
-    oppoint: int | None = None,
-
-    alllayers: bool | None = None,
-
-) -> FFMpegDecoderOption:
-    """
-    dav1d AV1 decoder by VideoLAN (codec av1)
-
-    Args:
-        tilethreads: Tile threads (from 0 to 256) (default 0)
-        framethreads: Frame threads (from 0 to 256) (default 0)
-        filmgrain: Apply Film Grain (default auto)
-        oppoint: Select an operating point of the scalable bitstream (from -1 to 31) (default -1)
-        alllayers: Output all spatial layers (default false)
-
-    Returns:
-        the set codec options
-    """
-    return FFMpegDecoderOption(merge({
-
-        "tilethreads": tilethreads,
-
-        "framethreads": framethreads,
-
-        "filmgrain": filmgrain,
-
-        "oppoint": oppoint,
-
-        "alllayers": alllayers,
 
     }))
 
@@ -761,7 +705,7 @@ def av1(
 
 ) -> FFMpegDecoderOption:
     """
-    Alliance for Open Media AV1
+
 
     Args:
         operating_point: Select an operating point of the scalable bitstream (from 0 to 31) (default 0)
@@ -777,58 +721,11 @@ def av1(
 
 
 
-def av1_cuvid(
-
-    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
-
-    gpu: str | None = None,
-
-    surfaces: int | None = None,
-
-    drop_second_field: bool | None = None,
-
-    crop: str | None = None,
-
-    resize: str | None = None,
-
-) -> FFMpegDecoderOption:
-    """
-    Nvidia CUVID AV1 decoder (codec av1)
-
-    Args:
-        deint: Set deinterlacing mode (from 0 to 2) (default weave)
-        gpu: GPU to be used for decoding
-        surfaces: Maximum surfaces to be used for decoding (from 0 to INT_MAX) (default 25)
-        drop_second_field: Drop second field when deinterlacing (default false)
-        crop: Crop (top)x(bottom)x(left)x(right)
-        resize: Resize (width)x(height)
-
-    Returns:
-        the set codec options
-    """
-    return FFMpegDecoderOption(merge({
-
-        "deint": deint,
-
-        "gpu": gpu,
-
-        "surfaces": surfaces,
-
-        "drop_second_field": drop_second_field,
-
-        "crop": crop,
-
-        "resize": resize,
-
-    }))
-
-
-
 def avrn(
 
 ) -> FFMpegDecoderOption:
     """
-    Avid AVI Codec
+
 
 
     Returns:
@@ -844,7 +741,7 @@ def avrp(
 
 ) -> FFMpegDecoderOption:
     """
-    Avid 1:1 10-bit RGB Packer
+
 
 
     Returns:
@@ -860,7 +757,7 @@ def avs(
 
 ) -> FFMpegDecoderOption:
     """
-    AVS (Audio Video Standard) video
+
 
 
     Returns:
@@ -876,7 +773,7 @@ def avui(
 
 ) -> FFMpegDecoderOption:
     """
-    Avid Meridien Uncompressed
+
 
 
     Returns:
@@ -892,7 +789,7 @@ def ayuv(
 
 ) -> FFMpegDecoderOption:
     """
-    Uncompressed packed MS 4:4:4:4
+
 
 
     Returns:
@@ -908,7 +805,7 @@ def bethsoftvid(
 
 ) -> FFMpegDecoderOption:
     """
-    Bethesda VID video
+
 
 
     Returns:
@@ -924,7 +821,7 @@ def bfi(
 
 ) -> FFMpegDecoderOption:
     """
-    Brute Force & Ignorance
+
 
 
     Returns:
@@ -940,7 +837,7 @@ def binkvideo(
 
 ) -> FFMpegDecoderOption:
     """
-    Bink video
+
 
 
     Returns:
@@ -956,7 +853,7 @@ def bintext(
 
 ) -> FFMpegDecoderOption:
     """
-    Binary text
+
 
 
     Returns:
@@ -972,7 +869,7 @@ def bitpacked(
 
 ) -> FFMpegDecoderOption:
     """
-    Bitpacked
+
 
 
     Returns:
@@ -988,7 +885,7 @@ def bmp(
 
 ) -> FFMpegDecoderOption:
     """
-    BMP (Windows and OS/2 bitmap)
+
 
 
     Returns:
@@ -1004,7 +901,7 @@ def bmv_video(
 
 ) -> FFMpegDecoderOption:
     """
-    Discworld II BMV video
+
 
 
     Returns:
@@ -1020,7 +917,7 @@ def brender_pix(
 
 ) -> FFMpegDecoderOption:
     """
-    BRender PIX image
+
 
 
     Returns:
@@ -1036,7 +933,7 @@ def c93(
 
 ) -> FFMpegDecoderOption:
     """
-    Interplay C93
+
 
 
     Returns:
@@ -1052,7 +949,7 @@ def cavs(
 
 ) -> FFMpegDecoderOption:
     """
-    Chinese AVS (Audio Video Standard) (AVS1-P2, JiZhun profile)
+
 
 
     Returns:
@@ -1068,7 +965,7 @@ def cdgraphics(
 
 ) -> FFMpegDecoderOption:
     """
-    CD Graphics video
+
 
 
     Returns:
@@ -1084,7 +981,7 @@ def cdtoons(
 
 ) -> FFMpegDecoderOption:
     """
-    CDToons video
+
 
 
     Returns:
@@ -1100,7 +997,7 @@ def cdxl(
 
 ) -> FFMpegDecoderOption:
     """
-    Commodore CDXL video
+
 
 
     Returns:
@@ -1116,7 +1013,7 @@ def cfhd(
 
 ) -> FFMpegDecoderOption:
     """
-    GoPro CineForm HD
+
 
 
     Returns:
@@ -1132,7 +1029,7 @@ def cinepak(
 
 ) -> FFMpegDecoderOption:
     """
-    Cinepak
+
 
 
     Returns:
@@ -1148,7 +1045,7 @@ def clearvideo(
 
 ) -> FFMpegDecoderOption:
     """
-    Iterated Systems ClearVideo
+
 
 
     Returns:
@@ -1164,7 +1061,7 @@ def cljr(
 
 ) -> FFMpegDecoderOption:
     """
-    Cirrus Logic AccuPak
+
 
 
     Returns:
@@ -1180,7 +1077,7 @@ def cllc(
 
 ) -> FFMpegDecoderOption:
     """
-    Canopus Lossless Codec
+
 
 
     Returns:
@@ -1196,7 +1093,7 @@ def eacmv(
 
 ) -> FFMpegDecoderOption:
     """
-    Electronic Arts CMV video (codec cmv)
+    (codec cmv)
 
 
     Returns:
@@ -1212,7 +1109,7 @@ def cpia(
 
 ) -> FFMpegDecoderOption:
     """
-    CPiA video format
+
 
 
     Returns:
@@ -1228,7 +1125,7 @@ def cri(
 
 ) -> FFMpegDecoderOption:
     """
-    Cintel RAW
+
 
 
     Returns:
@@ -1244,7 +1141,7 @@ def camstudio(
 
 ) -> FFMpegDecoderOption:
     """
-    CamStudio (codec cscd)
+    (codec cscd)
 
 
     Returns:
@@ -1260,7 +1157,7 @@ def cyuv(
 
 ) -> FFMpegDecoderOption:
     """
-    Creative YUV (CYUV)
+
 
 
     Returns:
@@ -1276,7 +1173,7 @@ def dds(
 
 ) -> FFMpegDecoderOption:
     """
-    DirectDraw Surface image decoder
+
 
 
     Returns:
@@ -1292,7 +1189,7 @@ def dfa(
 
 ) -> FFMpegDecoderOption:
     """
-    Chronomaster DFA
+
 
 
     Returns:
@@ -1308,7 +1205,7 @@ def dirac(
 
 ) -> FFMpegDecoderOption:
     """
-    BBC Dirac VC-2
+
 
 
     Returns:
@@ -1324,7 +1221,7 @@ def dnxhd(
 
 ) -> FFMpegDecoderOption:
     """
-    VC3/DNxHD
+
 
 
     Returns:
@@ -1340,7 +1237,7 @@ def dpx(
 
 ) -> FFMpegDecoderOption:
     """
-    DPX (Digital Picture Exchange) image
+
 
 
     Returns:
@@ -1356,7 +1253,7 @@ def dsicinvideo(
 
 ) -> FFMpegDecoderOption:
     """
-    Delphine Software International CIN video
+
 
 
     Returns:
@@ -1372,7 +1269,7 @@ def dvvideo(
 
 ) -> FFMpegDecoderOption:
     """
-    DV (Digital Video)
+
 
 
     Returns:
@@ -1388,7 +1285,7 @@ def dxa(
 
 ) -> FFMpegDecoderOption:
     """
-    Feeble Files/ScummVM DXA
+
 
 
     Returns:
@@ -1404,7 +1301,7 @@ def dxtory(
 
 ) -> FFMpegDecoderOption:
     """
-    Dxtory
+
 
 
     Returns:
@@ -1420,7 +1317,7 @@ def dxv(
 
 ) -> FFMpegDecoderOption:
     """
-    Resolume DXV
+
 
 
     Returns:
@@ -1436,7 +1333,7 @@ def escape124(
 
 ) -> FFMpegDecoderOption:
     """
-    Escape 124
+
 
 
     Returns:
@@ -1452,7 +1349,7 @@ def escape130(
 
 ) -> FFMpegDecoderOption:
     """
-    Escape 130
+
 
 
     Returns:
@@ -1476,7 +1373,7 @@ def exr(
 
 ) -> FFMpegDecoderOption:
     """
-    OpenEXR image
+
 
     Args:
         layer: Set the decoding layer (default "")
@@ -1505,7 +1402,7 @@ def ffv1(
 
 ) -> FFMpegDecoderOption:
     """
-    FFmpeg video codec #1
+
 
 
     Returns:
@@ -1521,7 +1418,7 @@ def ffvhuff(
 
 ) -> FFMpegDecoderOption:
     """
-    Huffyuv FFmpeg variant
+
 
 
     Returns:
@@ -1539,7 +1436,7 @@ def fic(
 
 ) -> FFMpegDecoderOption:
     """
-    Mirillis FIC
+
 
     Args:
         skip_cursor: skip the cursor (default false)
@@ -1561,7 +1458,7 @@ def fits(
 
 ) -> FFMpegDecoderOption:
     """
-    Flexible Image Transport System
+
 
     Args:
         blank_value: value that is used to replace BLANK pixels in data array (from 0 to 65535) (default 0)
@@ -1581,7 +1478,7 @@ def flashsv(
 
 ) -> FFMpegDecoderOption:
     """
-    Flash Screen Video v1
+
 
 
     Returns:
@@ -1597,7 +1494,7 @@ def flashsv2(
 
 ) -> FFMpegDecoderOption:
     """
-    Flash Screen Video v2
+
 
 
     Returns:
@@ -1613,7 +1510,7 @@ def flic(
 
 ) -> FFMpegDecoderOption:
     """
-    Autodesk Animator Flic video
+
 
 
     Returns:
@@ -1629,7 +1526,7 @@ def flv(
 
 ) -> FFMpegDecoderOption:
     """
-    FLV / Sorenson Spark / Sorenson H.263 (Flash Video) (codec flv1)
+    (codec flv1)
 
 
     Returns:
@@ -1645,7 +1542,7 @@ def fmvc(
 
 ) -> FFMpegDecoderOption:
     """
-    FM Screen Capture Codec
+
 
 
     Returns:
@@ -1661,7 +1558,7 @@ def fraps(
 
 ) -> FFMpegDecoderOption:
     """
-    Fraps
+
 
 
     Returns:
@@ -1679,7 +1576,7 @@ def frwu(
 
 ) -> FFMpegDecoderOption:
     """
-    Forward Uncompressed
+
 
     Args:
         change_field_order: Change field order (default false)
@@ -1699,7 +1596,7 @@ def g2m(
 
 ) -> FFMpegDecoderOption:
     """
-    Go2Meeting
+
 
 
     Returns:
@@ -1715,7 +1612,7 @@ def gdv(
 
 ) -> FFMpegDecoderOption:
     """
-    Gremlin Digital Video
+
 
 
     Returns:
@@ -1731,7 +1628,7 @@ def gem(
 
 ) -> FFMpegDecoderOption:
     """
-    GEM Raster image
+
 
 
     Returns:
@@ -1749,7 +1646,7 @@ def gif(
 
 ) -> FFMpegDecoderOption:
     """
-    GIF (Graphics Interchange Format)
+
 
     Args:
         trans_color: color value (ARGB) that is used instead of transparent color (from 0 to UINT32_MAX) (default 16777215)
@@ -1769,7 +1666,7 @@ def h261(
 
 ) -> FFMpegDecoderOption:
     """
-    H.261
+
 
 
     Returns:
@@ -1785,7 +1682,7 @@ def h263(
 
 ) -> FFMpegDecoderOption:
     """
-    H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2
+
 
 
     Returns:
@@ -1805,7 +1702,7 @@ def h263_v4l2m2m(
 
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem H.263 decoder wrapper (codec h263)
+    (codec h263)
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 6 to INT_MAX) (default 16)
@@ -1828,7 +1725,7 @@ def h263i(
 
 ) -> FFMpegDecoderOption:
     """
-    Intel H.263
+
 
 
     Returns:
@@ -1844,7 +1741,7 @@ def h263p(
 
 ) -> FFMpegDecoderOption:
     """
-    H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2
+
 
 
     Returns:
@@ -1868,7 +1765,7 @@ def h264(
 
 ) -> FFMpegDecoderOption:
     """
-    H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+
 
     Args:
         is_avc: is avc (default false)
@@ -1901,7 +1798,7 @@ def h264_v4l2m2m(
 
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem H.264 decoder wrapper (codec h264)
+    (codec h264)
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 6 to INT_MAX) (default 16)
@@ -1920,58 +1817,11 @@ def h264_v4l2m2m(
 
 
 
-def h264_cuvid(
-
-    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
-
-    gpu: str | None = None,
-
-    surfaces: int | None = None,
-
-    drop_second_field: bool | None = None,
-
-    crop: str | None = None,
-
-    resize: str | None = None,
-
-) -> FFMpegDecoderOption:
-    """
-    Nvidia CUVID H264 decoder (codec h264)
-
-    Args:
-        deint: Set deinterlacing mode (from 0 to 2) (default weave)
-        gpu: GPU to be used for decoding
-        surfaces: Maximum surfaces to be used for decoding (from 0 to INT_MAX) (default 25)
-        drop_second_field: Drop second field when deinterlacing (default false)
-        crop: Crop (top)x(bottom)x(left)x(right)
-        resize: Resize (width)x(height)
-
-    Returns:
-        the set codec options
-    """
-    return FFMpegDecoderOption(merge({
-
-        "deint": deint,
-
-        "gpu": gpu,
-
-        "surfaces": surfaces,
-
-        "drop_second_field": drop_second_field,
-
-        "crop": crop,
-
-        "resize": resize,
-
-    }))
-
-
-
 def hap(
 
 ) -> FFMpegDecoderOption:
     """
-    Vidvox Hap
+
 
 
     Returns:
@@ -1991,7 +1841,7 @@ def hevc(
 
 ) -> FFMpegDecoderOption:
     """
-    HEVC (High Efficiency Video Coding)
+
 
     Args:
         apply_defdispwin: Apply default display window from VUI (default false)
@@ -2018,7 +1868,7 @@ def hevc_v4l2m2m(
 
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem HEVC decoder wrapper (codec hevc)
+    (codec hevc)
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 6 to INT_MAX) (default 16)
@@ -2037,58 +1887,11 @@ def hevc_v4l2m2m(
 
 
 
-def hevc_cuvid(
-
-    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
-
-    gpu: str | None = None,
-
-    surfaces: int | None = None,
-
-    drop_second_field: bool | None = None,
-
-    crop: str | None = None,
-
-    resize: str | None = None,
-
-) -> FFMpegDecoderOption:
-    """
-    Nvidia CUVID HEVC decoder (codec hevc)
-
-    Args:
-        deint: Set deinterlacing mode (from 0 to 2) (default weave)
-        gpu: GPU to be used for decoding
-        surfaces: Maximum surfaces to be used for decoding (from 0 to INT_MAX) (default 25)
-        drop_second_field: Drop second field when deinterlacing (default false)
-        crop: Crop (top)x(bottom)x(left)x(right)
-        resize: Resize (width)x(height)
-
-    Returns:
-        the set codec options
-    """
-    return FFMpegDecoderOption(merge({
-
-        "deint": deint,
-
-        "gpu": gpu,
-
-        "surfaces": surfaces,
-
-        "drop_second_field": drop_second_field,
-
-        "crop": crop,
-
-        "resize": resize,
-
-    }))
-
-
-
 def hnm4video(
 
 ) -> FFMpegDecoderOption:
     """
-    HNM 4 video
+
 
 
     Returns:
@@ -2104,7 +1907,7 @@ def hq_hqa(
 
 ) -> FFMpegDecoderOption:
     """
-    Canopus HQ/HQA
+
 
 
     Returns:
@@ -2120,7 +1923,7 @@ def hqx(
 
 ) -> FFMpegDecoderOption:
     """
-    Canopus HQX
+
 
 
     Returns:
@@ -2136,7 +1939,7 @@ def huffyuv(
 
 ) -> FFMpegDecoderOption:
     """
-    Huffyuv / HuffYUV
+
 
 
     Returns:
@@ -2152,7 +1955,7 @@ def hymt(
 
 ) -> FFMpegDecoderOption:
     """
-    HuffYUV MT
+
 
 
     Returns:
@@ -2168,7 +1971,7 @@ def idcinvideo(
 
 ) -> FFMpegDecoderOption:
     """
-    id Quake II CIN video (codec idcin)
+    (codec idcin)
 
 
     Returns:
@@ -2184,7 +1987,7 @@ def idf(
 
 ) -> FFMpegDecoderOption:
     """
-    iCEDraw text
+
 
 
     Returns:
@@ -2200,7 +2003,7 @@ def iff(
 
 ) -> FFMpegDecoderOption:
     """
-    IFF ACBM/ANIM/DEEP/ILBM/PBM/RGB8/RGBN (codec iff_ilbm)
+    (codec iff_ilbm)
 
 
     Returns:
@@ -2216,7 +2019,7 @@ def imm4(
 
 ) -> FFMpegDecoderOption:
     """
-    Infinity IMM4
+
 
 
     Returns:
@@ -2232,7 +2035,7 @@ def imm5(
 
 ) -> FFMpegDecoderOption:
     """
-    Infinity IMM5
+
 
 
     Returns:
@@ -2248,7 +2051,7 @@ def indeo2(
 
 ) -> FFMpegDecoderOption:
     """
-    Intel Indeo 2
+
 
 
     Returns:
@@ -2264,7 +2067,7 @@ def indeo3(
 
 ) -> FFMpegDecoderOption:
     """
-    Intel Indeo 3
+
 
 
     Returns:
@@ -2280,7 +2083,7 @@ def indeo4(
 
 ) -> FFMpegDecoderOption:
     """
-    Intel Indeo Video Interactive 4
+
 
 
     Returns:
@@ -2296,7 +2099,7 @@ def indeo5(
 
 ) -> FFMpegDecoderOption:
     """
-    Intel Indeo Video Interactive 5
+
 
 
     Returns:
@@ -2312,7 +2115,7 @@ def interplayvideo(
 
 ) -> FFMpegDecoderOption:
     """
-    Interplay MVE video
+
 
 
     Returns:
@@ -2328,7 +2131,7 @@ def ipu(
 
 ) -> FFMpegDecoderOption:
     """
-    IPU Video
+
 
 
     Returns:
@@ -2346,7 +2149,7 @@ def jpeg2000(
 
 ) -> FFMpegDecoderOption:
     """
-    JPEG 2000
+
 
     Args:
         lowres: Lower the decoding resolution by a power of two (from 0 to 33) (default 0)
@@ -2368,7 +2171,7 @@ def libopenjpeg(
 
 ) -> FFMpegDecoderOption:
     """
-    OpenJPEG JPEG 2000 (codec jpeg2000)
+    (codec jpeg2000)
 
     Args:
         lowqual: Limit the number of layers used for decoding (from 0 to INT_MAX) (default 0)
@@ -2388,7 +2191,7 @@ def jpegls(
 
 ) -> FFMpegDecoderOption:
     """
-    JPEG-LS
+
 
 
     Returns:
@@ -2404,7 +2207,7 @@ def jv(
 
 ) -> FFMpegDecoderOption:
     """
-    Bitmap Brothers JV video
+
 
 
     Returns:
@@ -2420,7 +2223,7 @@ def kgv1(
 
 ) -> FFMpegDecoderOption:
     """
-    Kega Game Video
+
 
 
     Returns:
@@ -2436,7 +2239,7 @@ def kmvc(
 
 ) -> FFMpegDecoderOption:
     """
-    Karl Morton's video codec
+
 
 
     Returns:
@@ -2452,7 +2255,7 @@ def lagarith(
 
 ) -> FFMpegDecoderOption:
     """
-    Lagarith lossless
+
 
 
     Returns:
@@ -2468,7 +2271,7 @@ def loco(
 
 ) -> FFMpegDecoderOption:
     """
-    LOCO
+
 
 
     Returns:
@@ -2484,7 +2287,7 @@ def lscr(
 
 ) -> FFMpegDecoderOption:
     """
-    LEAD Screen Capture
+
 
 
     Returns:
@@ -2500,7 +2303,7 @@ def m101(
 
 ) -> FFMpegDecoderOption:
     """
-    Matrox Uncompressed SD
+
 
 
     Returns:
@@ -2516,7 +2319,7 @@ def eamad(
 
 ) -> FFMpegDecoderOption:
     """
-    Electronic Arts Madcow Video (codec mad)
+    (codec mad)
 
 
     Returns:
@@ -2532,7 +2335,7 @@ def magicyuv(
 
 ) -> FFMpegDecoderOption:
     """
-    MagicYUV video
+
 
 
     Returns:
@@ -2548,7 +2351,7 @@ def mdec(
 
 ) -> FFMpegDecoderOption:
     """
-    Sony PlayStation MDEC (Motion DECoder)
+
 
 
     Returns:
@@ -2564,7 +2367,7 @@ def mimic(
 
 ) -> FFMpegDecoderOption:
     """
-    Mimic
+
 
 
     Returns:
@@ -2582,7 +2385,7 @@ def mjpeg(
 
 ) -> FFMpegDecoderOption:
     """
-    MJPEG (Motion JPEG)
+
 
     Args:
         extern_huff: Use external huffman table. (default false)
@@ -2598,58 +2401,11 @@ def mjpeg(
 
 
 
-def mjpeg_cuvid(
-
-    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
-
-    gpu: str | None = None,
-
-    surfaces: int | None = None,
-
-    drop_second_field: bool | None = None,
-
-    crop: str | None = None,
-
-    resize: str | None = None,
-
-) -> FFMpegDecoderOption:
-    """
-    Nvidia CUVID MJPEG decoder (codec mjpeg)
-
-    Args:
-        deint: Set deinterlacing mode (from 0 to 2) (default weave)
-        gpu: GPU to be used for decoding
-        surfaces: Maximum surfaces to be used for decoding (from 0 to INT_MAX) (default 25)
-        drop_second_field: Drop second field when deinterlacing (default false)
-        crop: Crop (top)x(bottom)x(left)x(right)
-        resize: Resize (width)x(height)
-
-    Returns:
-        the set codec options
-    """
-    return FFMpegDecoderOption(merge({
-
-        "deint": deint,
-
-        "gpu": gpu,
-
-        "surfaces": surfaces,
-
-        "drop_second_field": drop_second_field,
-
-        "crop": crop,
-
-        "resize": resize,
-
-    }))
-
-
-
 def mjpegb(
 
 ) -> FFMpegDecoderOption:
     """
-    Apple MJPEG-B
+
 
 
     Returns:
@@ -2665,7 +2421,7 @@ def mmvideo(
 
 ) -> FFMpegDecoderOption:
     """
-    American Laser Games MM Video
+
 
 
     Returns:
@@ -2681,7 +2437,7 @@ def mobiclip(
 
 ) -> FFMpegDecoderOption:
     """
-    MobiClip Video
+
 
 
     Returns:
@@ -2697,7 +2453,7 @@ def motionpixels(
 
 ) -> FFMpegDecoderOption:
     """
-    Motion Pixels video
+
 
 
     Returns:
@@ -2713,7 +2469,7 @@ def mpeg1video(
 
 ) -> FFMpegDecoderOption:
     """
-    MPEG-1 video
+
 
 
     Returns:
@@ -2733,7 +2489,7 @@ def mpeg1_v4l2m2m(
 
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem MPEG1 decoder wrapper (codec mpeg1video)
+    (codec mpeg1video)
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 6 to INT_MAX) (default 16)
@@ -2752,58 +2508,11 @@ def mpeg1_v4l2m2m(
 
 
 
-def mpeg1_cuvid(
-
-    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
-
-    gpu: str | None = None,
-
-    surfaces: int | None = None,
-
-    drop_second_field: bool | None = None,
-
-    crop: str | None = None,
-
-    resize: str | None = None,
-
-) -> FFMpegDecoderOption:
-    """
-    Nvidia CUVID MPEG1VIDEO decoder (codec mpeg1video)
-
-    Args:
-        deint: Set deinterlacing mode (from 0 to 2) (default weave)
-        gpu: GPU to be used for decoding
-        surfaces: Maximum surfaces to be used for decoding (from 0 to INT_MAX) (default 25)
-        drop_second_field: Drop second field when deinterlacing (default false)
-        crop: Crop (top)x(bottom)x(left)x(right)
-        resize: Resize (width)x(height)
-
-    Returns:
-        the set codec options
-    """
-    return FFMpegDecoderOption(merge({
-
-        "deint": deint,
-
-        "gpu": gpu,
-
-        "surfaces": surfaces,
-
-        "drop_second_field": drop_second_field,
-
-        "crop": crop,
-
-        "resize": resize,
-
-    }))
-
-
-
 def mpeg2video(
 
 ) -> FFMpegDecoderOption:
     """
-    MPEG-2 video
+
 
 
     Returns:
@@ -2819,7 +2528,7 @@ def mpegvideo(
 
 ) -> FFMpegDecoderOption:
     """
-    MPEG-1 video (codec mpeg2video)
+    (codec mpeg2video)
 
 
     Returns:
@@ -2839,7 +2548,7 @@ def mpeg2_v4l2m2m(
 
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem MPEG2 decoder wrapper (codec mpeg2video)
+    (codec mpeg2video)
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 6 to INT_MAX) (default 16)
@@ -2858,58 +2567,11 @@ def mpeg2_v4l2m2m(
 
 
 
-def mpeg2_cuvid(
-
-    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
-
-    gpu: str | None = None,
-
-    surfaces: int | None = None,
-
-    drop_second_field: bool | None = None,
-
-    crop: str | None = None,
-
-    resize: str | None = None,
-
-) -> FFMpegDecoderOption:
-    """
-    Nvidia CUVID MPEG2VIDEO decoder (codec mpeg2video)
-
-    Args:
-        deint: Set deinterlacing mode (from 0 to 2) (default weave)
-        gpu: GPU to be used for decoding
-        surfaces: Maximum surfaces to be used for decoding (from 0 to INT_MAX) (default 25)
-        drop_second_field: Drop second field when deinterlacing (default false)
-        crop: Crop (top)x(bottom)x(left)x(right)
-        resize: Resize (width)x(height)
-
-    Returns:
-        the set codec options
-    """
-    return FFMpegDecoderOption(merge({
-
-        "deint": deint,
-
-        "gpu": gpu,
-
-        "surfaces": surfaces,
-
-        "drop_second_field": drop_second_field,
-
-        "crop": crop,
-
-        "resize": resize,
-
-    }))
-
-
-
 def mpeg4(
 
 ) -> FFMpegDecoderOption:
     """
-    MPEG-4 part 2
+
 
 
     Returns:
@@ -2929,7 +2591,7 @@ def mpeg4_v4l2m2m(
 
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem MPEG4 decoder wrapper (codec mpeg4)
+    (codec mpeg4)
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 6 to INT_MAX) (default 16)
@@ -2948,58 +2610,11 @@ def mpeg4_v4l2m2m(
 
 
 
-def mpeg4_cuvid(
-
-    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
-
-    gpu: str | None = None,
-
-    surfaces: int | None = None,
-
-    drop_second_field: bool | None = None,
-
-    crop: str | None = None,
-
-    resize: str | None = None,
-
-) -> FFMpegDecoderOption:
-    """
-    Nvidia CUVID MPEG4 decoder (codec mpeg4)
-
-    Args:
-        deint: Set deinterlacing mode (from 0 to 2) (default weave)
-        gpu: GPU to be used for decoding
-        surfaces: Maximum surfaces to be used for decoding (from 0 to INT_MAX) (default 25)
-        drop_second_field: Drop second field when deinterlacing (default false)
-        crop: Crop (top)x(bottom)x(left)x(right)
-        resize: Resize (width)x(height)
-
-    Returns:
-        the set codec options
-    """
-    return FFMpegDecoderOption(merge({
-
-        "deint": deint,
-
-        "gpu": gpu,
-
-        "surfaces": surfaces,
-
-        "drop_second_field": drop_second_field,
-
-        "crop": crop,
-
-        "resize": resize,
-
-    }))
-
-
-
 def msa1(
 
 ) -> FFMpegDecoderOption:
     """
-    MS ATC Screen
+
 
 
     Returns:
@@ -3015,7 +2630,7 @@ def mscc(
 
 ) -> FFMpegDecoderOption:
     """
-    Mandsoft Screen Capture Codec
+
 
 
     Returns:
@@ -3031,7 +2646,7 @@ def msmpeg4v1(
 
 ) -> FFMpegDecoderOption:
     """
-    MPEG-4 part 2 Microsoft variant version 1
+
 
 
     Returns:
@@ -3047,7 +2662,7 @@ def msmpeg4v2(
 
 ) -> FFMpegDecoderOption:
     """
-    MPEG-4 part 2 Microsoft variant version 2
+
 
 
     Returns:
@@ -3063,7 +2678,7 @@ def msmpeg4(
 
 ) -> FFMpegDecoderOption:
     """
-    MPEG-4 part 2 Microsoft variant version 3 (codec msmpeg4v3)
+    (codec msmpeg4v3)
 
 
     Returns:
@@ -3079,7 +2694,7 @@ def msp2(
 
 ) -> FFMpegDecoderOption:
     """
-    Microsoft Paint (MSP) version 2
+
 
 
     Returns:
@@ -3095,7 +2710,7 @@ def msrle(
 
 ) -> FFMpegDecoderOption:
     """
-    Microsoft RLE
+
 
 
     Returns:
@@ -3111,7 +2726,7 @@ def mss1(
 
 ) -> FFMpegDecoderOption:
     """
-    MS Screen 1
+
 
 
     Returns:
@@ -3127,7 +2742,7 @@ def mss2(
 
 ) -> FFMpegDecoderOption:
     """
-    MS Windows Media Video V9 Screen
+
 
 
     Returns:
@@ -3143,7 +2758,7 @@ def msvideo1(
 
 ) -> FFMpegDecoderOption:
     """
-    Microsoft Video 1
+
 
 
     Returns:
@@ -3159,7 +2774,7 @@ def mszh(
 
 ) -> FFMpegDecoderOption:
     """
-    LCL (LossLess Codec Library) MSZH
+
 
 
     Returns:
@@ -3175,7 +2790,7 @@ def mts2(
 
 ) -> FFMpegDecoderOption:
     """
-    MS Expression Encoder Screen
+
 
 
     Returns:
@@ -3191,7 +2806,7 @@ def mv30(
 
 ) -> FFMpegDecoderOption:
     """
-    MidiVid 3.0
+
 
 
     Returns:
@@ -3207,7 +2822,7 @@ def mvc1(
 
 ) -> FFMpegDecoderOption:
     """
-    Silicon Graphics Motion Video Compressor 1
+
 
 
     Returns:
@@ -3223,7 +2838,7 @@ def mvc2(
 
 ) -> FFMpegDecoderOption:
     """
-    Silicon Graphics Motion Video Compressor 2
+
 
 
     Returns:
@@ -3239,7 +2854,7 @@ def mvdv(
 
 ) -> FFMpegDecoderOption:
     """
-    MidiVid VQ
+
 
 
     Returns:
@@ -3255,7 +2870,7 @@ def mvha(
 
 ) -> FFMpegDecoderOption:
     """
-    MidiVid Archive Codec
+
 
 
     Returns:
@@ -3271,7 +2886,7 @@ def mwsc(
 
 ) -> FFMpegDecoderOption:
     """
-    MatchWare Screen Capture Codec
+
 
 
     Returns:
@@ -3287,7 +2902,7 @@ def mxpeg(
 
 ) -> FFMpegDecoderOption:
     """
-    Mobotix MxPEG video
+
 
 
     Returns:
@@ -3303,7 +2918,7 @@ def notchlc(
 
 ) -> FFMpegDecoderOption:
     """
-    NotchLC
+
 
 
     Returns:
@@ -3319,7 +2934,7 @@ def nuv(
 
 ) -> FFMpegDecoderOption:
     """
-    NuppelVideo/RTJPEG
+
 
 
     Returns:
@@ -3335,7 +2950,7 @@ def paf_video(
 
 ) -> FFMpegDecoderOption:
     """
-    Amazing Studio Packed Animation File Video
+
 
 
     Returns:
@@ -3351,7 +2966,7 @@ def pam(
 
 ) -> FFMpegDecoderOption:
     """
-    PAM (Portable AnyMap) image
+
 
 
     Returns:
@@ -3367,7 +2982,7 @@ def pbm(
 
 ) -> FFMpegDecoderOption:
     """
-    PBM (Portable BitMap) image
+
 
 
     Returns:
@@ -3383,7 +2998,7 @@ def pcx(
 
 ) -> FFMpegDecoderOption:
     """
-    PC Paintbrush PCX image
+
 
 
     Returns:
@@ -3399,7 +3014,7 @@ def pfm(
 
 ) -> FFMpegDecoderOption:
     """
-    PFM (Portable FloatMap) image
+
 
 
     Returns:
@@ -3415,7 +3030,7 @@ def pgm(
 
 ) -> FFMpegDecoderOption:
     """
-    PGM (Portable GrayMap) image
+
 
 
     Returns:
@@ -3431,7 +3046,7 @@ def pgmyuv(
 
 ) -> FFMpegDecoderOption:
     """
-    PGMYUV (Portable GrayMap YUV) image
+
 
 
     Returns:
@@ -3447,7 +3062,7 @@ def pgx(
 
 ) -> FFMpegDecoderOption:
     """
-    PGX (JPEG2000 Test Format)
+
 
 
     Returns:
@@ -3463,7 +3078,7 @@ def phm(
 
 ) -> FFMpegDecoderOption:
     """
-    PHM (Portable HalfFloatMap) image
+
 
 
     Returns:
@@ -3481,7 +3096,7 @@ def photocd(
 
 ) -> FFMpegDecoderOption:
     """
-    Kodak Photo CD
+
 
     Args:
         lowres: Lower the decoding resolution by a power of two (from 0 to 4) (default 0)
@@ -3501,7 +3116,7 @@ def pictor(
 
 ) -> FFMpegDecoderOption:
     """
-    Pictor/PC Paint
+
 
 
     Returns:
@@ -3517,7 +3132,7 @@ def pixlet(
 
 ) -> FFMpegDecoderOption:
     """
-    Apple Pixlet
+
 
 
     Returns:
@@ -3533,7 +3148,7 @@ def png(
 
 ) -> FFMpegDecoderOption:
     """
-    PNG (Portable Network Graphics) image
+
 
 
     Returns:
@@ -3549,7 +3164,7 @@ def ppm(
 
 ) -> FFMpegDecoderOption:
     """
-    PPM (Portable PixelMap) image
+
 
 
     Returns:
@@ -3565,7 +3180,7 @@ def prores(
 
 ) -> FFMpegDecoderOption:
     """
-    Apple ProRes (iCodec Pro)
+
 
 
     Returns:
@@ -3581,7 +3196,7 @@ def prosumer(
 
 ) -> FFMpegDecoderOption:
     """
-    Brooktree ProSumer Video
+
 
 
     Returns:
@@ -3597,7 +3212,7 @@ def psd(
 
 ) -> FFMpegDecoderOption:
     """
-    Photoshop PSD file
+
 
 
     Returns:
@@ -3613,7 +3228,7 @@ def ptx(
 
 ) -> FFMpegDecoderOption:
     """
-    V.Flash PTX image
+
 
 
     Returns:
@@ -3629,7 +3244,7 @@ def qdraw(
 
 ) -> FFMpegDecoderOption:
     """
-    Apple QuickDraw
+
 
 
     Returns:
@@ -3645,7 +3260,7 @@ def qoi(
 
 ) -> FFMpegDecoderOption:
     """
-    QOI (Quite OK Image format) image
+
 
 
     Returns:
@@ -3661,7 +3276,7 @@ def qpeg(
 
 ) -> FFMpegDecoderOption:
     """
-    Q-team QPEG
+
 
 
     Returns:
@@ -3677,7 +3292,7 @@ def qtrle(
 
 ) -> FFMpegDecoderOption:
     """
-    QuickTime Animation (RLE) video
+
 
 
     Returns:
@@ -3693,7 +3308,7 @@ def r10k(
 
 ) -> FFMpegDecoderOption:
     """
-    AJA Kona 10-bit RGB Codec
+
 
 
     Returns:
@@ -3709,7 +3324,7 @@ def r210(
 
 ) -> FFMpegDecoderOption:
     """
-    Uncompressed RGB 10-bit
+
 
 
     Returns:
@@ -3727,7 +3342,7 @@ def rasc(
 
 ) -> FFMpegDecoderOption:
     """
-    RemotelyAnywhere Screen Capture
+
 
     Args:
         skip_cursor: skip the cursor (default false)
@@ -3749,7 +3364,7 @@ def rawvideo(
 
 ) -> FFMpegDecoderOption:
     """
-    raw video
+
 
     Args:
         top: top field first (default auto)
@@ -3769,7 +3384,7 @@ def rl2(
 
 ) -> FFMpegDecoderOption:
     """
-    RL2 video
+
 
 
     Returns:
@@ -3785,7 +3400,7 @@ def roqvideo(
 
 ) -> FFMpegDecoderOption:
     """
-    id RoQ video (codec roq)
+    (codec roq)
 
 
     Returns:
@@ -3801,7 +3416,7 @@ def rpza(
 
 ) -> FFMpegDecoderOption:
     """
-    QuickTime video (RPZA)
+
 
 
     Returns:
@@ -3817,7 +3432,7 @@ def rscc(
 
 ) -> FFMpegDecoderOption:
     """
-    innoHeim/Rsupport Screen Capture Codec
+
 
 
     Returns:
@@ -3833,7 +3448,7 @@ def rv10(
 
 ) -> FFMpegDecoderOption:
     """
-    RealVideo 1.0
+
 
 
     Returns:
@@ -3849,7 +3464,7 @@ def rv20(
 
 ) -> FFMpegDecoderOption:
     """
-    RealVideo 2.0
+
 
 
     Returns:
@@ -3865,7 +3480,7 @@ def rv30(
 
 ) -> FFMpegDecoderOption:
     """
-    RealVideo 3.0
+
 
 
     Returns:
@@ -3881,7 +3496,7 @@ def rv40(
 
 ) -> FFMpegDecoderOption:
     """
-    RealVideo 4.0
+
 
 
     Returns:
@@ -3897,7 +3512,7 @@ def sanm(
 
 ) -> FFMpegDecoderOption:
     """
-    LucasArts SANM/Smush video
+
 
 
     Returns:
@@ -3913,7 +3528,7 @@ def scpr(
 
 ) -> FFMpegDecoderOption:
     """
-    ScreenPressor
+
 
 
     Returns:
@@ -3929,7 +3544,7 @@ def screenpresso(
 
 ) -> FFMpegDecoderOption:
     """
-    Screenpresso
+
 
 
     Returns:
@@ -3945,7 +3560,7 @@ def sga(
 
 ) -> FFMpegDecoderOption:
     """
-    Digital Pictures SGA Video
+
 
 
     Returns:
@@ -3961,7 +3576,7 @@ def sgi(
 
 ) -> FFMpegDecoderOption:
     """
-    SGI image
+
 
 
     Returns:
@@ -3977,7 +3592,7 @@ def sgirle(
 
 ) -> FFMpegDecoderOption:
     """
-    Silicon Graphics RLE 8-bit video
+
 
 
     Returns:
@@ -3993,7 +3608,7 @@ def sheervideo(
 
 ) -> FFMpegDecoderOption:
     """
-    BitJazz SheerVideo
+
 
 
     Returns:
@@ -4009,7 +3624,7 @@ def simbiosis_imx(
 
 ) -> FFMpegDecoderOption:
     """
-    Simbiosis Interactive IMX Video
+
 
 
     Returns:
@@ -4025,7 +3640,7 @@ def smackvid(
 
 ) -> FFMpegDecoderOption:
     """
-    Smacker video (codec smackvideo)
+    (codec smackvideo)
 
 
     Returns:
@@ -4041,7 +3656,7 @@ def smc(
 
 ) -> FFMpegDecoderOption:
     """
-    QuickTime Graphics (SMC)
+
 
 
     Returns:
@@ -4057,7 +3672,7 @@ def smvjpeg(
 
 ) -> FFMpegDecoderOption:
     """
-    SMV JPEG
+
 
 
     Returns:
@@ -4073,7 +3688,7 @@ def snow(
 
 ) -> FFMpegDecoderOption:
     """
-    Snow
+
 
 
     Returns:
@@ -4089,7 +3704,7 @@ def sp5x(
 
 ) -> FFMpegDecoderOption:
     """
-    Sunplus JPEG (SP5X)
+
 
 
     Returns:
@@ -4105,7 +3720,7 @@ def speedhq(
 
 ) -> FFMpegDecoderOption:
     """
-    NewTek SpeedHQ
+
 
 
     Returns:
@@ -4121,7 +3736,7 @@ def srgc(
 
 ) -> FFMpegDecoderOption:
     """
-    Screen Recorder Gold Codec
+
 
 
     Returns:
@@ -4137,7 +3752,7 @@ def sunrast(
 
 ) -> FFMpegDecoderOption:
     """
-    Sun Rasterfile image
+
 
 
     Returns:
@@ -4153,7 +3768,7 @@ def svq1(
 
 ) -> FFMpegDecoderOption:
     """
-    Sorenson Vector Quantizer 1 / Sorenson Video 1 / SVQ1
+
 
 
     Returns:
@@ -4169,7 +3784,7 @@ def svq3(
 
 ) -> FFMpegDecoderOption:
     """
-    Sorenson Vector Quantizer 3 / Sorenson Video 3 / SVQ3
+
 
 
     Returns:
@@ -4185,7 +3800,7 @@ def targa(
 
 ) -> FFMpegDecoderOption:
     """
-    Truevision Targa image
+
 
 
     Returns:
@@ -4201,7 +3816,7 @@ def targa_y216(
 
 ) -> FFMpegDecoderOption:
     """
-    Pinnacle TARGA CineWave YUV16
+
 
 
     Returns:
@@ -4217,7 +3832,7 @@ def tdsc(
 
 ) -> FFMpegDecoderOption:
     """
-    TDSC
+
 
 
     Returns:
@@ -4233,7 +3848,7 @@ def eatgq(
 
 ) -> FFMpegDecoderOption:
     """
-    Electronic Arts TGQ video (codec tgq)
+    (codec tgq)
 
 
     Returns:
@@ -4249,7 +3864,7 @@ def eatgv(
 
 ) -> FFMpegDecoderOption:
     """
-    Electronic Arts TGV video (codec tgv)
+    (codec tgv)
 
 
     Returns:
@@ -4265,7 +3880,7 @@ def theora(
 
 ) -> FFMpegDecoderOption:
     """
-    Theora
+
 
 
     Returns:
@@ -4281,7 +3896,7 @@ def thp(
 
 ) -> FFMpegDecoderOption:
     """
-    Nintendo Gamecube THP video
+
 
 
     Returns:
@@ -4297,7 +3912,7 @@ def tiertexseqvideo(
 
 ) -> FFMpegDecoderOption:
     """
-    Tiertex Limited SEQ video
+
 
 
     Returns:
@@ -4319,7 +3934,7 @@ def tiff(
 
 ) -> FFMpegDecoderOption:
     """
-    TIFF image
+
 
     Args:
         subimage: decode subimage instead if available (default false)
@@ -4345,7 +3960,7 @@ def tmv(
 
 ) -> FFMpegDecoderOption:
     """
-    8088flex TMV
+
 
 
     Returns:
@@ -4361,7 +3976,7 @@ def eatqi(
 
 ) -> FFMpegDecoderOption:
     """
-    Electronic Arts TQI Video (codec tqi)
+    (codec tqi)
 
 
     Returns:
@@ -4377,7 +3992,7 @@ def truemotion1(
 
 ) -> FFMpegDecoderOption:
     """
-    Duck TrueMotion 1.0
+
 
 
     Returns:
@@ -4393,7 +4008,7 @@ def truemotion2(
 
 ) -> FFMpegDecoderOption:
     """
-    Duck TrueMotion 2.0
+
 
 
     Returns:
@@ -4409,7 +4024,7 @@ def truemotion2rt(
 
 ) -> FFMpegDecoderOption:
     """
-    Duck TrueMotion 2.0 Real Time
+
 
 
     Returns:
@@ -4425,7 +4040,7 @@ def camtasia(
 
 ) -> FFMpegDecoderOption:
     """
-    TechSmith Screen Capture Codec (codec tscc)
+    (codec tscc)
 
 
     Returns:
@@ -4441,7 +4056,7 @@ def tscc2(
 
 ) -> FFMpegDecoderOption:
     """
-    TechSmith Screen Codec 2
+
 
 
     Returns:
@@ -4457,7 +4072,7 @@ def txd(
 
 ) -> FFMpegDecoderOption:
     """
-    Renderware TXD (TeXture Dictionary) image
+
 
 
     Returns:
@@ -4473,7 +4088,7 @@ def ultimotion(
 
 ) -> FFMpegDecoderOption:
     """
-    IBM UltiMotion (codec ulti)
+    (codec ulti)
 
 
     Returns:
@@ -4489,7 +4104,7 @@ def utvideo(
 
 ) -> FFMpegDecoderOption:
     """
-    Ut Video
+
 
 
     Returns:
@@ -4507,7 +4122,7 @@ def v210(
 
 ) -> FFMpegDecoderOption:
     """
-    Uncompressed 4:2:2 10-bit
+
 
     Args:
         custom_stride: Custom V210 stride (from -1 to INT_MAX) (default 0)
@@ -4527,7 +4142,7 @@ def v210x(
 
 ) -> FFMpegDecoderOption:
     """
-    Uncompressed 4:2:2 10-bit
+
 
 
     Returns:
@@ -4543,7 +4158,7 @@ def v308(
 
 ) -> FFMpegDecoderOption:
     """
-    Uncompressed packed 4:4:4
+
 
 
     Returns:
@@ -4559,7 +4174,7 @@ def v408(
 
 ) -> FFMpegDecoderOption:
     """
-    Uncompressed packed QT 4:4:4:4
+
 
 
     Returns:
@@ -4575,7 +4190,7 @@ def v410(
 
 ) -> FFMpegDecoderOption:
     """
-    Uncompressed 4:4:4 10-bit
+
 
 
     Returns:
@@ -4591,7 +4206,7 @@ def vb(
 
 ) -> FFMpegDecoderOption:
     """
-    Beam Software VB
+
 
 
     Returns:
@@ -4607,7 +4222,7 @@ def vble(
 
 ) -> FFMpegDecoderOption:
     """
-    VBLE Lossless Codec
+
 
 
     Returns:
@@ -4623,7 +4238,7 @@ def vbn(
 
 ) -> FFMpegDecoderOption:
     """
-    Vizrt Binary Image
+
 
 
     Returns:
@@ -4639,7 +4254,7 @@ def vc1(
 
 ) -> FFMpegDecoderOption:
     """
-    SMPTE VC-1
+
 
 
     Returns:
@@ -4659,7 +4274,7 @@ def vc1_v4l2m2m(
 
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem VC1 decoder wrapper (codec vc1)
+    (codec vc1)
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 6 to INT_MAX) (default 16)
@@ -4678,58 +4293,11 @@ def vc1_v4l2m2m(
 
 
 
-def vc1_cuvid(
-
-    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
-
-    gpu: str | None = None,
-
-    surfaces: int | None = None,
-
-    drop_second_field: bool | None = None,
-
-    crop: str | None = None,
-
-    resize: str | None = None,
-
-) -> FFMpegDecoderOption:
-    """
-    Nvidia CUVID VC1 decoder (codec vc1)
-
-    Args:
-        deint: Set deinterlacing mode (from 0 to 2) (default weave)
-        gpu: GPU to be used for decoding
-        surfaces: Maximum surfaces to be used for decoding (from 0 to INT_MAX) (default 25)
-        drop_second_field: Drop second field when deinterlacing (default false)
-        crop: Crop (top)x(bottom)x(left)x(right)
-        resize: Resize (width)x(height)
-
-    Returns:
-        the set codec options
-    """
-    return FFMpegDecoderOption(merge({
-
-        "deint": deint,
-
-        "gpu": gpu,
-
-        "surfaces": surfaces,
-
-        "drop_second_field": drop_second_field,
-
-        "crop": crop,
-
-        "resize": resize,
-
-    }))
-
-
-
 def vc1image(
 
 ) -> FFMpegDecoderOption:
     """
-    Windows Media Video 9 Image v2
+
 
 
     Returns:
@@ -4745,7 +4313,7 @@ def vcr1(
 
 ) -> FFMpegDecoderOption:
     """
-    ATI VCR1
+
 
 
     Returns:
@@ -4761,7 +4329,7 @@ def xl(
 
 ) -> FFMpegDecoderOption:
     """
-    Miro VideoXL (codec vixl)
+    (codec vixl)
 
 
     Returns:
@@ -4777,7 +4345,7 @@ def vmdvideo(
 
 ) -> FFMpegDecoderOption:
     """
-    Sierra VMD video
+
 
 
     Returns:
@@ -4793,7 +4361,7 @@ def vmnc(
 
 ) -> FFMpegDecoderOption:
     """
-    VMware Screen Codec / VMware Video
+
 
 
     Returns:
@@ -4809,7 +4377,7 @@ def vp3(
 
 ) -> FFMpegDecoderOption:
     """
-    On2 VP3
+
 
 
     Returns:
@@ -4825,7 +4393,7 @@ def vp4(
 
 ) -> FFMpegDecoderOption:
     """
-    On2 VP4
+
 
 
     Returns:
@@ -4841,7 +4409,7 @@ def vp5(
 
 ) -> FFMpegDecoderOption:
     """
-    On2 VP5
+
 
 
     Returns:
@@ -4857,7 +4425,7 @@ def vp6(
 
 ) -> FFMpegDecoderOption:
     """
-    On2 VP6
+
 
 
     Returns:
@@ -4873,7 +4441,7 @@ def vp6a(
 
 ) -> FFMpegDecoderOption:
     """
-    On2 VP6 (Flash version, with alpha channel)
+
 
 
     Returns:
@@ -4889,7 +4457,7 @@ def vp6f(
 
 ) -> FFMpegDecoderOption:
     """
-    On2 VP6 (Flash version)
+
 
 
     Returns:
@@ -4905,7 +4473,7 @@ def vp7(
 
 ) -> FFMpegDecoderOption:
     """
-    On2 VP7
+
 
 
     Returns:
@@ -4921,7 +4489,7 @@ def vp8(
 
 ) -> FFMpegDecoderOption:
     """
-    On2 VP8
+
 
 
     Returns:
@@ -4941,7 +4509,7 @@ def vp8_v4l2m2m(
 
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem VP8 decoder wrapper (codec vp8)
+    (codec vp8)
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 6 to INT_MAX) (default 16)
@@ -4964,60 +4532,13 @@ def libvpx(
 
 ) -> FFMpegDecoderOption:
     """
-    libvpx VP8 (codec vp8)
+    (codec vp8)
 
 
     Returns:
         the set codec options
     """
     return FFMpegDecoderOption(merge({
-
-    }))
-
-
-
-def vp8_cuvid(
-
-    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
-
-    gpu: str | None = None,
-
-    surfaces: int | None = None,
-
-    drop_second_field: bool | None = None,
-
-    crop: str | None = None,
-
-    resize: str | None = None,
-
-) -> FFMpegDecoderOption:
-    """
-    Nvidia CUVID VP8 decoder (codec vp8)
-
-    Args:
-        deint: Set deinterlacing mode (from 0 to 2) (default weave)
-        gpu: GPU to be used for decoding
-        surfaces: Maximum surfaces to be used for decoding (from 0 to INT_MAX) (default 25)
-        drop_second_field: Drop second field when deinterlacing (default false)
-        crop: Crop (top)x(bottom)x(left)x(right)
-        resize: Resize (width)x(height)
-
-    Returns:
-        the set codec options
-    """
-    return FFMpegDecoderOption(merge({
-
-        "deint": deint,
-
-        "gpu": gpu,
-
-        "surfaces": surfaces,
-
-        "drop_second_field": drop_second_field,
-
-        "crop": crop,
-
-        "resize": resize,
 
     }))
 
@@ -5027,7 +4548,7 @@ def vp9(
 
 ) -> FFMpegDecoderOption:
     """
-    Google VP9
+
 
 
     Returns:
@@ -5047,7 +4568,7 @@ def vp9_v4l2m2m(
 
 ) -> FFMpegDecoderOption:
     """
-    V4L2 mem2mem VP9 decoder wrapper (codec vp9)
+    (codec vp9)
 
     Args:
         num_output_buffers: Number of buffers in the output context (from 6 to INT_MAX) (default 16)
@@ -5066,58 +4587,11 @@ def vp9_v4l2m2m(
 
 
 
-def vp9_cuvid(
-
-    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
-
-    gpu: str | None = None,
-
-    surfaces: int | None = None,
-
-    drop_second_field: bool | None = None,
-
-    crop: str | None = None,
-
-    resize: str | None = None,
-
-) -> FFMpegDecoderOption:
-    """
-    Nvidia CUVID VP9 decoder (codec vp9)
-
-    Args:
-        deint: Set deinterlacing mode (from 0 to 2) (default weave)
-        gpu: GPU to be used for decoding
-        surfaces: Maximum surfaces to be used for decoding (from 0 to INT_MAX) (default 25)
-        drop_second_field: Drop second field when deinterlacing (default false)
-        crop: Crop (top)x(bottom)x(left)x(right)
-        resize: Resize (width)x(height)
-
-    Returns:
-        the set codec options
-    """
-    return FFMpegDecoderOption(merge({
-
-        "deint": deint,
-
-        "gpu": gpu,
-
-        "surfaces": surfaces,
-
-        "drop_second_field": drop_second_field,
-
-        "crop": crop,
-
-        "resize": resize,
-
-    }))
-
-
-
 def wcmv(
 
 ) -> FFMpegDecoderOption:
     """
-    WinCAM Motion Video
+
 
 
     Returns:
@@ -5133,7 +4607,7 @@ def webp(
 
 ) -> FFMpegDecoderOption:
     """
-    WebP image
+
 
 
     Returns:
@@ -5149,7 +4623,7 @@ def wmv1(
 
 ) -> FFMpegDecoderOption:
     """
-    Windows Media Video 7
+
 
 
     Returns:
@@ -5165,7 +4639,7 @@ def wmv2(
 
 ) -> FFMpegDecoderOption:
     """
-    Windows Media Video 8
+
 
 
     Returns:
@@ -5181,7 +4655,7 @@ def wmv3(
 
 ) -> FFMpegDecoderOption:
     """
-    Windows Media Video 9
+
 
 
     Returns:
@@ -5197,7 +4671,7 @@ def wmv3image(
 
 ) -> FFMpegDecoderOption:
     """
-    Windows Media Video 9 Image
+
 
 
     Returns:
@@ -5213,7 +4687,7 @@ def wnv1(
 
 ) -> FFMpegDecoderOption:
     """
-    Winnov WNV1
+
 
 
     Returns:
@@ -5229,7 +4703,7 @@ def wrapped_avframe(
 
 ) -> FFMpegDecoderOption:
     """
-    AVPacket to AVFrame passthrough
+
 
 
     Returns:
@@ -5245,7 +4719,7 @@ def vqavideo(
 
 ) -> FFMpegDecoderOption:
     """
-    Westwood Studios VQA (Vector Quantized Animation) video (codec ws_vqa)
+    (codec ws_vqa)
 
 
     Returns:
@@ -5261,7 +4735,7 @@ def xan_wc3(
 
 ) -> FFMpegDecoderOption:
     """
-    Wing Commander III / Xan
+
 
 
     Returns:
@@ -5277,7 +4751,7 @@ def xan_wc4(
 
 ) -> FFMpegDecoderOption:
     """
-    Wing Commander IV / Xxan
+
 
 
     Returns:
@@ -5293,7 +4767,7 @@ def xbin(
 
 ) -> FFMpegDecoderOption:
     """
-    eXtended BINary text
+
 
 
     Returns:
@@ -5309,7 +4783,7 @@ def xbm(
 
 ) -> FFMpegDecoderOption:
     """
-    XBM (X BitMap) image
+
 
 
     Returns:
@@ -5325,7 +4799,7 @@ def xface(
 
 ) -> FFMpegDecoderOption:
     """
-    X-face image
+
 
 
     Returns:
@@ -5341,7 +4815,7 @@ def xpm(
 
 ) -> FFMpegDecoderOption:
     """
-    XPM (X PixMap) image
+
 
 
     Returns:
@@ -5357,7 +4831,7 @@ def xwd(
 
 ) -> FFMpegDecoderOption:
     """
-    XWD (X Window Dump) image
+
 
 
     Returns:
@@ -5373,7 +4847,7 @@ def y41p(
 
 ) -> FFMpegDecoderOption:
     """
-    Uncompressed YUV 4:1:1 12-bit
+
 
 
     Returns:
@@ -5389,7 +4863,7 @@ def ylc(
 
 ) -> FFMpegDecoderOption:
     """
-    YUY2 Lossless Codec
+
 
 
     Returns:
@@ -5405,7 +4879,7 @@ def yop(
 
 ) -> FFMpegDecoderOption:
     """
-    Psygnosis YOP Video
+
 
 
     Returns:
@@ -5421,7 +4895,7 @@ def yuv4(
 
 ) -> FFMpegDecoderOption:
     """
-    Uncompressed packed 4:2:0
+
 
 
     Returns:
@@ -5437,7 +4911,7 @@ def zerocodec(
 
 ) -> FFMpegDecoderOption:
     """
-    ZeroCodec Lossless Video
+
 
 
     Returns:
@@ -5453,7 +4927,7 @@ def zlib(
 
 ) -> FFMpegDecoderOption:
     """
-    LCL (LossLess Codec Library) ZLIB
+
 
 
     Returns:
@@ -5469,7 +4943,7 @@ def zmbv(
 
 ) -> FFMpegDecoderOption:
     """
-    Zip Motion Blocks Video
+
 
 
     Returns:
@@ -5485,7 +4959,7 @@ def _8svx_exp(
 
 ) -> FFMpegDecoderOption:
     """
-    8SVX exponential
+
 
 
     Returns:
@@ -5501,7 +4975,7 @@ def _8svx_fib(
 
 ) -> FFMpegDecoderOption:
     """
-    8SVX fibonacci
+
 
 
     Returns:
@@ -5521,7 +4995,7 @@ def aac(
 
 ) -> FFMpegDecoderOption:
     """
-    AAC (Advanced Audio Coding)
+
 
     Args:
         dual_mono_mode: Select the channel to decode for dual mono (from -1 to 2) (default auto)
@@ -5544,7 +5018,7 @@ def aac_fixed(
 
 ) -> FFMpegDecoderOption:
     """
-    AAC (Advanced Audio Coding) (codec aac)
+    (codec aac)
 
 
     Returns:
@@ -5556,11 +5030,63 @@ def aac_fixed(
 
 
 
+def libfdk_aac(
+
+    conceal: int | None| Literal["spectral", "noise", "energy"] = None,
+
+    drc_boost: int | None = None,
+
+    drc_cut: int | None = None,
+
+    drc_level: int | None = None,
+
+    drc_heavy: int | None = None,
+
+    level_limit: bool | None = None,
+
+    downmix: str | None = None,
+
+) -> FFMpegDecoderOption:
+    """
+    (codec aac)
+
+    Args:
+        conceal: Error concealment method (from 0 to 2) (default noise)
+        drc_boost: Dynamic Range Control: boost, where [0] is none and [127] is max boost (from -1 to 127) (default -1)
+        drc_cut: Dynamic Range Control: attenuation factor, where [0] is none and [127] is max compression (from -1 to 127) (default -1)
+        drc_level: Dynamic Range Control: reference level, quantized to 0.25dB steps where [0] is 0dB and [127] is -31.75dB, -1 for auto, and -2 for disabled (from -2 to 127) (default -1)
+        drc_heavy: Dynamic Range Control: heavy compression, where [1] is on (RF mode) and [0] is off (from -1 to 1) (default -1)
+        level_limit: Signal level limiting (default auto)
+        downmix: Request a specific channel layout from the decoder
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+        "conceal": conceal,
+
+        "drc_boost": drc_boost,
+
+        "drc_cut": drc_cut,
+
+        "drc_level": drc_level,
+
+        "drc_heavy": drc_heavy,
+
+        "level_limit": level_limit,
+
+        "downmix": downmix,
+
+    }))
+
+
+
 def aac_latm(
 
 ) -> FFMpegDecoderOption:
     """
-    AAC LATM (Advanced Audio Coding LATM syntax)
+
 
 
     Returns:
@@ -5586,7 +5112,7 @@ def ac3(
 
 ) -> FFMpegDecoderOption:
     """
-    ATSC A/52A (AC-3)
+
 
     Args:
         cons_noisegen: enable consistent noise generation (default false)
@@ -5626,7 +5152,7 @@ def ac3_fixed(
 
 ) -> FFMpegDecoderOption:
     """
-    ATSC A/52A (AC-3) (codec ac3)
+    (codec ac3)
 
     Args:
         cons_noisegen: enable consistent noise generation (default false)
@@ -5655,7 +5181,7 @@ def adpcm_4xm(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM 4X Movie
+
 
 
     Returns:
@@ -5671,7 +5197,7 @@ def adpcm_adx(
 
 ) -> FFMpegDecoderOption:
     """
-    SEGA CRI ADX ADPCM
+
 
 
     Returns:
@@ -5687,7 +5213,7 @@ def adpcm_afc(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Nintendo Gamecube AFC
+
 
 
     Returns:
@@ -5703,7 +5229,7 @@ def adpcm_agm(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM AmuseGraphics Movie
+
 
 
     Returns:
@@ -5719,7 +5245,7 @@ def adpcm_aica(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Yamaha AICA
+
 
 
     Returns:
@@ -5735,7 +5261,7 @@ def adpcm_argo(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Argonaut Games
+
 
 
     Returns:
@@ -5751,7 +5277,7 @@ def adpcm_ct(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Creative Technology
+
 
 
     Returns:
@@ -5767,7 +5293,7 @@ def adpcm_dtk(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Nintendo Gamecube DTK
+
 
 
     Returns:
@@ -5783,7 +5309,7 @@ def adpcm_ea(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Electronic Arts
+
 
 
     Returns:
@@ -5799,7 +5325,7 @@ def adpcm_ea_maxis_xa(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Electronic Arts Maxis CDROM XA
+
 
 
     Returns:
@@ -5815,7 +5341,7 @@ def adpcm_ea_r1(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Electronic Arts R1
+
 
 
     Returns:
@@ -5831,7 +5357,7 @@ def adpcm_ea_r2(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Electronic Arts R2
+
 
 
     Returns:
@@ -5847,7 +5373,7 @@ def adpcm_ea_r3(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Electronic Arts R3
+
 
 
     Returns:
@@ -5863,7 +5389,7 @@ def adpcm_ea_xas(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Electronic Arts XAS
+
 
 
     Returns:
@@ -5881,7 +5407,7 @@ def g722(
 
 ) -> FFMpegDecoderOption:
     """
-    G.722 ADPCM (codec adpcm_g722)
+    (codec adpcm_g722)
 
     Args:
         bits_per_codeword: Bits per G722 codeword (from 6 to 8) (default 8)
@@ -5901,7 +5427,7 @@ def g726(
 
 ) -> FFMpegDecoderOption:
     """
-    G.726 ADPCM (codec adpcm_g726)
+    (codec adpcm_g726)
 
 
     Returns:
@@ -5917,7 +5443,7 @@ def g726le(
 
 ) -> FFMpegDecoderOption:
     """
-    G.726 ADPCM little-endian (codec adpcm_g726le)
+    (codec adpcm_g726le)
 
 
     Returns:
@@ -5933,7 +5459,7 @@ def adpcm_ima_acorn(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA Acorn Replay
+
 
 
     Returns:
@@ -5949,7 +5475,7 @@ def adpcm_ima_alp(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA High Voltage Software ALP
+
 
 
     Returns:
@@ -5965,7 +5491,7 @@ def adpcm_ima_amv(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA AMV
+
 
 
     Returns:
@@ -5981,7 +5507,7 @@ def adpcm_ima_apc(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA CRYO APC
+
 
 
     Returns:
@@ -5997,7 +5523,7 @@ def adpcm_ima_apm(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA Ubisoft APM
+
 
 
     Returns:
@@ -6013,7 +5539,7 @@ def adpcm_ima_cunning(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA Cunning Developments
+
 
 
     Returns:
@@ -6029,7 +5555,7 @@ def adpcm_ima_dat4(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA Eurocom DAT4
+
 
 
     Returns:
@@ -6045,7 +5571,7 @@ def adpcm_ima_dk3(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA Duck DK3
+
 
 
     Returns:
@@ -6061,7 +5587,7 @@ def adpcm_ima_dk4(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA Duck DK4
+
 
 
     Returns:
@@ -6077,7 +5603,7 @@ def adpcm_ima_ea_eacs(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA Electronic Arts EACS
+
 
 
     Returns:
@@ -6093,7 +5619,7 @@ def adpcm_ima_ea_sead(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA Electronic Arts SEAD
+
 
 
     Returns:
@@ -6109,7 +5635,7 @@ def adpcm_ima_iss(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA Funcom ISS
+
 
 
     Returns:
@@ -6125,7 +5651,7 @@ def adpcm_ima_moflex(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA MobiClip MOFLEX
+
 
 
     Returns:
@@ -6141,7 +5667,7 @@ def adpcm_ima_mtf(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA Capcom's MT Framework
+
 
 
     Returns:
@@ -6157,7 +5683,7 @@ def adpcm_ima_oki(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA Dialogic OKI
+
 
 
     Returns:
@@ -6173,7 +5699,7 @@ def adpcm_ima_qt(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA QuickTime
+
 
 
     Returns:
@@ -6189,7 +5715,7 @@ def adpcm_ima_rad(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA Radical
+
 
 
     Returns:
@@ -6205,7 +5731,7 @@ def adpcm_ima_smjpeg(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA Loki SDL MJPEG
+
 
 
     Returns:
@@ -6221,7 +5747,7 @@ def adpcm_ima_ssi(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA Simon & Schuster Interactive
+
 
 
     Returns:
@@ -6237,7 +5763,7 @@ def adpcm_ima_wav(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA WAV
+
 
 
     Returns:
@@ -6253,7 +5779,7 @@ def adpcm_ima_ws(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM IMA Westwood
+
 
 
     Returns:
@@ -6269,7 +5795,7 @@ def adpcm_ms(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Microsoft
+
 
 
     Returns:
@@ -6285,7 +5811,7 @@ def adpcm_mtaf(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM MTAF
+
 
 
     Returns:
@@ -6301,7 +5827,7 @@ def adpcm_psx(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Playstation
+
 
 
     Returns:
@@ -6317,7 +5843,7 @@ def adpcm_sbpro_2(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Sound Blaster Pro 2-bit
+
 
 
     Returns:
@@ -6333,7 +5859,7 @@ def adpcm_sbpro_3(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Sound Blaster Pro 2.6-bit
+
 
 
     Returns:
@@ -6349,7 +5875,7 @@ def adpcm_sbpro_4(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Sound Blaster Pro 4-bit
+
 
 
     Returns:
@@ -6365,7 +5891,7 @@ def adpcm_swf(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Shockwave Flash
+
 
 
     Returns:
@@ -6381,7 +5907,7 @@ def adpcm_thp(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Nintendo THP
+
 
 
     Returns:
@@ -6397,7 +5923,7 @@ def adpcm_thp_le(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Nintendo THP (little-endian)
+
 
 
     Returns:
@@ -6413,7 +5939,7 @@ def adpcm_vima(
 
 ) -> FFMpegDecoderOption:
     """
-    LucasArts VIMA audio
+
 
 
     Returns:
@@ -6429,7 +5955,7 @@ def adpcm_xa(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM CDROM XA
+
 
 
     Returns:
@@ -6445,7 +5971,7 @@ def adpcm_yamaha(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Yamaha
+
 
 
     Returns:
@@ -6461,7 +5987,7 @@ def adpcm_zork(
 
 ) -> FFMpegDecoderOption:
     """
-    ADPCM Zork
+
 
 
     Returns:
@@ -6479,7 +6005,7 @@ def alac(
 
 ) -> FFMpegDecoderOption:
     """
-    ALAC (Apple Lossless Audio Codec)
+
 
     Args:
         extra_bits_bug: Force non-standard decoding process (default false)
@@ -6499,7 +6025,7 @@ def amrnb(
 
 ) -> FFMpegDecoderOption:
     """
-    AMR-NB (Adaptive Multi-Rate NarrowBand) (codec amr_nb)
+    (codec amr_nb)
 
 
     Returns:
@@ -6515,7 +6041,7 @@ def libopencore_amrnb(
 
 ) -> FFMpegDecoderOption:
     """
-    OpenCORE AMR-NB (Adaptive Multi-Rate Narrow-Band) (codec amr_nb)
+    (codec amr_nb)
 
 
     Returns:
@@ -6531,7 +6057,7 @@ def amrwb(
 
 ) -> FFMpegDecoderOption:
     """
-    AMR-WB (Adaptive Multi-Rate WideBand) (codec amr_wb)
+    (codec amr_wb)
 
 
     Returns:
@@ -6547,7 +6073,7 @@ def libopencore_amrwb(
 
 ) -> FFMpegDecoderOption:
     """
-    OpenCORE AMR-WB (Adaptive Multi-Rate Wide-Band) (codec amr_wb)
+    (codec amr_wb)
 
 
     Returns:
@@ -6565,7 +6091,7 @@ def ape(
 
 ) -> FFMpegDecoderOption:
     """
-    Monkey's Audio
+
 
     Args:
         max_samples: maximum number of samples decoded per call (from 1 to INT_MAX) (default 4608)
@@ -6585,7 +6111,7 @@ def aptx(
 
 ) -> FFMpegDecoderOption:
     """
-    aptX (Audio Processing Technology for Bluetooth)
+
 
 
     Returns:
@@ -6601,7 +6127,7 @@ def aptx_hd(
 
 ) -> FFMpegDecoderOption:
     """
-    aptX HD (Audio Processing Technology for Bluetooth)
+
 
 
     Returns:
@@ -6617,7 +6143,7 @@ def atrac1(
 
 ) -> FFMpegDecoderOption:
     """
-    ATRAC1 (Adaptive TRansform Acoustic Coding)
+
 
 
     Returns:
@@ -6633,7 +6159,7 @@ def atrac3(
 
 ) -> FFMpegDecoderOption:
     """
-    ATRAC3 (Adaptive TRansform Acoustic Coding 3)
+
 
 
     Returns:
@@ -6649,7 +6175,7 @@ def atrac3al(
 
 ) -> FFMpegDecoderOption:
     """
-    ATRAC3 AL (Adaptive TRansform Acoustic Coding 3 Advanced Lossless)
+
 
 
     Returns:
@@ -6665,7 +6191,7 @@ def atrac3plus(
 
 ) -> FFMpegDecoderOption:
     """
-    ATRAC3+ (Adaptive TRansform Acoustic Coding 3+) (codec atrac3p)
+    (codec atrac3p)
 
 
     Returns:
@@ -6681,7 +6207,7 @@ def atrac3plusal(
 
 ) -> FFMpegDecoderOption:
     """
-    ATRAC3+ AL (Adaptive TRansform Acoustic Coding 3+ Advanced Lossless) (codec atrac3pal)
+    (codec atrac3pal)
 
 
     Returns:
@@ -6697,7 +6223,7 @@ def atrac9(
 
 ) -> FFMpegDecoderOption:
     """
-    ATRAC9 (Adaptive TRansform Acoustic Coding 9)
+
 
 
     Returns:
@@ -6713,7 +6239,7 @@ def on2avc(
 
 ) -> FFMpegDecoderOption:
     """
-    On2 Audio for Video Codec (codec avc)
+    (codec avc)
 
 
     Returns:
@@ -6729,7 +6255,7 @@ def binkaudio_dct(
 
 ) -> FFMpegDecoderOption:
     """
-    Bink Audio (DCT)
+
 
 
     Returns:
@@ -6745,7 +6271,7 @@ def binkaudio_rdft(
 
 ) -> FFMpegDecoderOption:
     """
-    Bink Audio (RDFT)
+
 
 
     Returns:
@@ -6761,7 +6287,7 @@ def bmv_audio(
 
 ) -> FFMpegDecoderOption:
     """
-    Discworld II BMV audio
+
 
 
     Returns:
@@ -6777,7 +6303,7 @@ def comfortnoise(
 
 ) -> FFMpegDecoderOption:
     """
-    RFC 3389 comfort noise generator
+
 
 
     Returns:
@@ -6793,7 +6319,7 @@ def cook(
 
 ) -> FFMpegDecoderOption:
     """
-    Cook / Cooker / Gecko (RealAudio G2)
+
 
 
     Returns:
@@ -6809,7 +6335,7 @@ def derf_dpcm(
 
 ) -> FFMpegDecoderOption:
     """
-    DPCM Xilam DERF
+
 
 
     Returns:
@@ -6825,7 +6351,7 @@ def dfpwm(
 
 ) -> FFMpegDecoderOption:
     """
-    DFPWM1a audio
+
 
 
     Returns:
@@ -6843,7 +6369,7 @@ def dolby_e(
 
 ) -> FFMpegDecoderOption:
     """
-    Dolby E
+
 
     Args:
         channel_order: Order in which the channels are to be exported (from 0 to 1) (default default)
@@ -6863,7 +6389,7 @@ def dsd_lsbf(
 
 ) -> FFMpegDecoderOption:
     """
-    DSD (Direct Stream Digital), least significant bit first
+
 
 
     Returns:
@@ -6879,7 +6405,7 @@ def dsd_lsbf_planar(
 
 ) -> FFMpegDecoderOption:
     """
-    DSD (Direct Stream Digital), least significant bit first, planar
+
 
 
     Returns:
@@ -6895,7 +6421,7 @@ def dsd_msbf(
 
 ) -> FFMpegDecoderOption:
     """
-    DSD (Direct Stream Digital), most significant bit first
+
 
 
     Returns:
@@ -6911,7 +6437,7 @@ def dsd_msbf_planar(
 
 ) -> FFMpegDecoderOption:
     """
-    DSD (Direct Stream Digital), most significant bit first, planar
+
 
 
     Returns:
@@ -6927,7 +6453,7 @@ def dsicinaudio(
 
 ) -> FFMpegDecoderOption:
     """
-    Delphine Software International CIN audio
+
 
 
     Returns:
@@ -6943,7 +6469,7 @@ def dss_sp(
 
 ) -> FFMpegDecoderOption:
     """
-    Digital Speech Standard - Standard Play mode (DSS SP)
+
 
 
     Returns:
@@ -6959,7 +6485,7 @@ def dst(
 
 ) -> FFMpegDecoderOption:
     """
-    DST (Digital Stream Transfer)
+
 
 
     Returns:
@@ -6981,7 +6507,7 @@ def dca(
 
 ) -> FFMpegDecoderOption:
     """
-    DCA (DTS Coherent Acoustics) (codec dts)
+    (codec dts)
 
     Args:
         core_only: Decode core only without extensions (default false)
@@ -7007,7 +6533,7 @@ def dvaudio(
 
 ) -> FFMpegDecoderOption:
     """
-    Ulead DV Audio
+
 
 
     Returns:
@@ -7033,7 +6559,7 @@ def eac3(
 
 ) -> FFMpegDecoderOption:
     """
-    ATSC A/52B (AC-3, E-AC-3)
+
 
     Args:
         cons_noisegen: enable consistent noise generation (default false)
@@ -7067,7 +6593,7 @@ def evrc(
 
 ) -> FFMpegDecoderOption:
     """
-    EVRC (Enhanced Variable Rate Codec)
+
 
     Args:
         postfilter: enable postfilter (default true)
@@ -7087,7 +6613,7 @@ def fastaudio(
 
 ) -> FFMpegDecoderOption:
     """
-    MobiClip FastAudio
+
 
 
     Returns:
@@ -7105,7 +6631,7 @@ def flac(
 
 ) -> FFMpegDecoderOption:
     """
-    FLAC (Free Lossless Audio Codec)
+
 
     Args:
         use_buggy_lpc: emulate old buggy lavc behavior (default false)
@@ -7127,7 +6653,7 @@ def g723_1(
 
 ) -> FFMpegDecoderOption:
     """
-    G.723.1
+
 
     Args:
         postfilter: enable postfilter (default true)
@@ -7147,7 +6673,7 @@ def g729(
 
 ) -> FFMpegDecoderOption:
     """
-    G.729
+
 
 
     Returns:
@@ -7163,7 +6689,7 @@ def gremlin_dpcm(
 
 ) -> FFMpegDecoderOption:
     """
-    DPCM Gremlin
+
 
 
     Returns:
@@ -7179,7 +6705,7 @@ def gsm(
 
 ) -> FFMpegDecoderOption:
     """
-    GSM
+
 
 
     Returns:
@@ -7195,7 +6721,7 @@ def gsm_ms(
 
 ) -> FFMpegDecoderOption:
     """
-    GSM Microsoft variant
+
 
 
     Returns:
@@ -7211,7 +6737,7 @@ def hca(
 
 ) -> FFMpegDecoderOption:
     """
-    CRI HCA
+
 
 
     Returns:
@@ -7227,7 +6753,7 @@ def hcom(
 
 ) -> FFMpegDecoderOption:
     """
-    HCOM Audio
+
 
 
     Returns:
@@ -7243,7 +6769,7 @@ def iac(
 
 ) -> FFMpegDecoderOption:
     """
-    IAC (Indeo Audio Coder)
+
 
 
     Returns:
@@ -7259,7 +6785,7 @@ def ilbc(
 
 ) -> FFMpegDecoderOption:
     """
-    iLBC (Internet Low Bitrate Codec)
+
 
 
     Returns:
@@ -7275,7 +6801,7 @@ def imc(
 
 ) -> FFMpegDecoderOption:
     """
-    IMC (Intel Music Coder)
+
 
 
     Returns:
@@ -7291,7 +6817,7 @@ def interplay_dpcm(
 
 ) -> FFMpegDecoderOption:
     """
-    DPCM Interplay
+
 
 
     Returns:
@@ -7307,7 +6833,7 @@ def interplayacm(
 
 ) -> FFMpegDecoderOption:
     """
-    Interplay ACM
+
 
 
     Returns:
@@ -7323,7 +6849,7 @@ def mace3(
 
 ) -> FFMpegDecoderOption:
     """
-    MACE (Macintosh Audio Compression/Expansion) 3:1
+
 
 
     Returns:
@@ -7339,7 +6865,7 @@ def mace6(
 
 ) -> FFMpegDecoderOption:
     """
-    MACE (Macintosh Audio Compression/Expansion) 6:1
+
 
 
     Returns:
@@ -7355,7 +6881,7 @@ def metasound(
 
 ) -> FFMpegDecoderOption:
     """
-    Voxware MetaSound
+
 
 
     Returns:
@@ -7373,7 +6899,7 @@ def mlp(
 
 ) -> FFMpegDecoderOption:
     """
-    MLP (Meridian Lossless Packing)
+
 
     Args:
         downmix: Request a specific channel layout from the decoder
@@ -7393,7 +6919,7 @@ def mp1(
 
 ) -> FFMpegDecoderOption:
     """
-    MP1 (MPEG audio layer 1)
+
 
 
     Returns:
@@ -7409,7 +6935,7 @@ def mp1float(
 
 ) -> FFMpegDecoderOption:
     """
-    MP1 (MPEG audio layer 1) (codec mp1)
+    (codec mp1)
 
 
     Returns:
@@ -7425,7 +6951,7 @@ def mp2(
 
 ) -> FFMpegDecoderOption:
     """
-    MP2 (MPEG audio layer 2)
+
 
 
     Returns:
@@ -7441,7 +6967,7 @@ def mp2float(
 
 ) -> FFMpegDecoderOption:
     """
-    MP2 (MPEG audio layer 2) (codec mp2)
+    (codec mp2)
 
 
     Returns:
@@ -7457,7 +6983,7 @@ def mp3float(
 
 ) -> FFMpegDecoderOption:
     """
-    MP3 (MPEG audio layer 3) (codec mp3)
+    (codec mp3)
 
 
     Returns:
@@ -7473,7 +6999,7 @@ def mp3(
 
 ) -> FFMpegDecoderOption:
     """
-    MP3 (MPEG audio layer 3)
+
 
 
     Returns:
@@ -7489,7 +7015,7 @@ def mp3adufloat(
 
 ) -> FFMpegDecoderOption:
     """
-    ADU (Application Data Unit) MP3 (MPEG audio layer 3) (codec mp3adu)
+    (codec mp3adu)
 
 
     Returns:
@@ -7505,7 +7031,7 @@ def mp3adu(
 
 ) -> FFMpegDecoderOption:
     """
-    ADU (Application Data Unit) MP3 (MPEG audio layer 3)
+
 
 
     Returns:
@@ -7521,7 +7047,7 @@ def mp3on4float(
 
 ) -> FFMpegDecoderOption:
     """
-    MP3onMP4 (codec mp3on4)
+    (codec mp3on4)
 
 
     Returns:
@@ -7537,7 +7063,7 @@ def mp3on4(
 
 ) -> FFMpegDecoderOption:
     """
-    MP3onMP4
+
 
 
     Returns:
@@ -7553,7 +7079,7 @@ def als(
 
 ) -> FFMpegDecoderOption:
     """
-    MPEG-4 Audio Lossless Coding (ALS) (codec mp4als)
+    (codec mp4als)
 
 
     Returns:
@@ -7569,7 +7095,7 @@ def msnsiren(
 
 ) -> FFMpegDecoderOption:
     """
-    MSN Siren
+
 
 
     Returns:
@@ -7585,7 +7111,7 @@ def mpc7(
 
 ) -> FFMpegDecoderOption:
     """
-    Musepack SV7 (codec musepack7)
+    (codec musepack7)
 
 
     Returns:
@@ -7601,7 +7127,7 @@ def mpc8(
 
 ) -> FFMpegDecoderOption:
     """
-    Musepack SV8 (codec musepack8)
+    (codec musepack8)
 
 
     Returns:
@@ -7617,7 +7143,7 @@ def nellymoser(
 
 ) -> FFMpegDecoderOption:
     """
-    Nellymoser Asao
+
 
 
     Returns:
@@ -7635,7 +7161,7 @@ def opus(
 
 ) -> FFMpegDecoderOption:
     """
-    Opus
+
 
     Args:
         apply_phase_inv: Apply intensity stereo phase inversion (default true)
@@ -7657,7 +7183,7 @@ def libopus(
 
 ) -> FFMpegDecoderOption:
     """
-    libopus Opus (codec opus)
+    (codec opus)
 
     Args:
         apply_phase_inv: Apply intensity stereo phase inversion (default true)
@@ -7677,7 +7203,7 @@ def paf_audio(
 
 ) -> FFMpegDecoderOption:
     """
-    Amazing Studio Packed Animation File Audio
+
 
 
     Returns:
@@ -7693,7 +7219,7 @@ def pcm_alaw(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM A-law / G.711 A-law
+
 
 
     Returns:
@@ -7709,7 +7235,7 @@ def pcm_bluray(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 16|20|24-bit big-endian for Blu-ray media
+
 
 
     Returns:
@@ -7725,7 +7251,7 @@ def pcm_dvd(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 16|20|24-bit big-endian for DVD media
+
 
 
     Returns:
@@ -7741,7 +7267,7 @@ def pcm_f16le(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM 16.8 floating point little-endian
+
 
 
     Returns:
@@ -7757,7 +7283,7 @@ def pcm_f24le(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM 24.0 floating point little-endian
+
 
 
     Returns:
@@ -7773,7 +7299,7 @@ def pcm_f32be(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM 32-bit floating point big-endian
+
 
 
     Returns:
@@ -7789,7 +7315,7 @@ def pcm_f32le(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM 32-bit floating point little-endian
+
 
 
     Returns:
@@ -7805,7 +7331,7 @@ def pcm_f64be(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM 64-bit floating point big-endian
+
 
 
     Returns:
@@ -7821,7 +7347,7 @@ def pcm_f64le(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM 64-bit floating point little-endian
+
 
 
     Returns:
@@ -7837,7 +7363,7 @@ def pcm_lxf(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 20-bit little-endian planar
+
 
 
     Returns:
@@ -7853,7 +7379,7 @@ def pcm_mulaw(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM mu-law / G.711 mu-law
+
 
 
     Returns:
@@ -7869,7 +7395,7 @@ def pcm_s16be(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 16-bit big-endian
+
 
 
     Returns:
@@ -7885,7 +7411,7 @@ def pcm_s16be_planar(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 16-bit big-endian planar
+
 
 
     Returns:
@@ -7901,7 +7427,7 @@ def pcm_s16le(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 16-bit little-endian
+
 
 
     Returns:
@@ -7917,7 +7443,7 @@ def pcm_s16le_planar(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 16-bit little-endian planar
+
 
 
     Returns:
@@ -7933,7 +7459,7 @@ def pcm_s24be(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 24-bit big-endian
+
 
 
     Returns:
@@ -7949,7 +7475,7 @@ def pcm_s24daud(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM D-Cinema audio signed 24-bit
+
 
 
     Returns:
@@ -7965,7 +7491,7 @@ def pcm_s24le(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 24-bit little-endian
+
 
 
     Returns:
@@ -7981,7 +7507,7 @@ def pcm_s24le_planar(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 24-bit little-endian planar
+
 
 
     Returns:
@@ -7997,7 +7523,7 @@ def pcm_s32be(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 32-bit big-endian
+
 
 
     Returns:
@@ -8013,7 +7539,7 @@ def pcm_s32le(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 32-bit little-endian
+
 
 
     Returns:
@@ -8029,7 +7555,7 @@ def pcm_s32le_planar(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 32-bit little-endian planar
+
 
 
     Returns:
@@ -8045,7 +7571,7 @@ def pcm_s64be(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 64-bit big-endian
+
 
 
     Returns:
@@ -8061,7 +7587,7 @@ def pcm_s64le(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 64-bit little-endian
+
 
 
     Returns:
@@ -8077,7 +7603,7 @@ def pcm_s8(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 8-bit
+
 
 
     Returns:
@@ -8093,7 +7619,7 @@ def pcm_s8_planar(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM signed 8-bit planar
+
 
 
     Returns:
@@ -8109,7 +7635,7 @@ def pcm_sga(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM SGA
+
 
 
     Returns:
@@ -8125,7 +7651,7 @@ def pcm_u16be(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM unsigned 16-bit big-endian
+
 
 
     Returns:
@@ -8141,7 +7667,7 @@ def pcm_u16le(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM unsigned 16-bit little-endian
+
 
 
     Returns:
@@ -8157,7 +7683,7 @@ def pcm_u24be(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM unsigned 24-bit big-endian
+
 
 
     Returns:
@@ -8173,7 +7699,7 @@ def pcm_u24le(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM unsigned 24-bit little-endian
+
 
 
     Returns:
@@ -8189,7 +7715,7 @@ def pcm_u32be(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM unsigned 32-bit big-endian
+
 
 
     Returns:
@@ -8205,7 +7731,7 @@ def pcm_u32le(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM unsigned 32-bit little-endian
+
 
 
     Returns:
@@ -8221,7 +7747,7 @@ def pcm_u8(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM unsigned 8-bit
+
 
 
     Returns:
@@ -8237,7 +7763,7 @@ def pcm_vidc(
 
 ) -> FFMpegDecoderOption:
     """
-    PCM Archimedes VIDC
+
 
 
     Returns:
@@ -8253,7 +7779,7 @@ def qcelp(
 
 ) -> FFMpegDecoderOption:
     """
-    QCELP / PureVoice
+
 
 
     Returns:
@@ -8269,7 +7795,7 @@ def qdm2(
 
 ) -> FFMpegDecoderOption:
     """
-    QDesign Music Codec 2
+
 
 
     Returns:
@@ -8285,7 +7811,7 @@ def qdmc(
 
 ) -> FFMpegDecoderOption:
     """
-    QDesign Music Codec 1
+
 
 
     Returns:
@@ -8301,7 +7827,7 @@ def real_144(
 
 ) -> FFMpegDecoderOption:
     """
-    RealAudio 1.0 (14.4K) (codec ra_144)
+    (codec ra_144)
 
 
     Returns:
@@ -8317,7 +7843,7 @@ def real_288(
 
 ) -> FFMpegDecoderOption:
     """
-    RealAudio 2.0 (28.8K) (codec ra_288)
+    (codec ra_288)
 
 
     Returns:
@@ -8333,7 +7859,7 @@ def ralf(
 
 ) -> FFMpegDecoderOption:
     """
-    RealAudio Lossless
+
 
 
     Returns:
@@ -8349,7 +7875,7 @@ def roq_dpcm(
 
 ) -> FFMpegDecoderOption:
     """
-    DPCM id RoQ
+
 
 
     Returns:
@@ -8367,7 +7893,7 @@ def s302m(
 
 ) -> FFMpegDecoderOption:
     """
-    SMPTE 302M
+
 
     Args:
         non_pcm_mode: Chooses what to do with NON-PCM (from 0 to 3) (default decode_drop)
@@ -8387,7 +7913,7 @@ def sbc(
 
 ) -> FFMpegDecoderOption:
     """
-    SBC (low-complexity subband codec)
+
 
 
     Returns:
@@ -8403,7 +7929,7 @@ def sdx2_dpcm(
 
 ) -> FFMpegDecoderOption:
     """
-    DPCM Squareroot-Delta-Exact
+
 
 
     Returns:
@@ -8419,7 +7945,7 @@ def shorten(
 
 ) -> FFMpegDecoderOption:
     """
-    Shorten
+
 
 
     Returns:
@@ -8435,7 +7961,7 @@ def sipr(
 
 ) -> FFMpegDecoderOption:
     """
-    RealAudio SIPR / ACELP.NET
+
 
 
     Returns:
@@ -8451,7 +7977,7 @@ def siren(
 
 ) -> FFMpegDecoderOption:
     """
-    Siren
+
 
 
     Returns:
@@ -8467,7 +7993,7 @@ def smackaud(
 
 ) -> FFMpegDecoderOption:
     """
-    Smacker audio (codec smackaudio)
+    (codec smackaudio)
 
 
     Returns:
@@ -8483,7 +8009,7 @@ def sol_dpcm(
 
 ) -> FFMpegDecoderOption:
     """
-    DPCM Sol
+
 
 
     Returns:
@@ -8499,7 +8025,7 @@ def sonic(
 
 ) -> FFMpegDecoderOption:
     """
-    Sonic
+
 
 
     Returns:
@@ -8515,7 +8041,7 @@ def speex(
 
 ) -> FFMpegDecoderOption:
     """
-    Speex
+
 
 
     Returns:
@@ -8531,7 +8057,7 @@ def tak(
 
 ) -> FFMpegDecoderOption:
     """
-    TAK (Tom's lossless Audio Kompressor)
+
 
 
     Returns:
@@ -8549,7 +8075,7 @@ def truehd(
 
 ) -> FFMpegDecoderOption:
     """
-    TrueHD
+
 
     Args:
         downmix: Request a specific channel layout from the decoder
@@ -8569,7 +8095,7 @@ def truespeech(
 
 ) -> FFMpegDecoderOption:
     """
-    DSP Group TrueSpeech
+
 
 
     Returns:
@@ -8587,7 +8113,7 @@ def tta(
 
 ) -> FFMpegDecoderOption:
     """
-    TTA (True Audio)
+
 
     Args:
         password: Set decoding password
@@ -8607,7 +8133,7 @@ def twinvq(
 
 ) -> FFMpegDecoderOption:
     """
-    VQF TwinVQ
+
 
 
     Returns:
@@ -8623,7 +8149,7 @@ def vmdaudio(
 
 ) -> FFMpegDecoderOption:
     """
-    Sierra VMD audio
+
 
 
     Returns:
@@ -8639,7 +8165,7 @@ def vorbis(
 
 ) -> FFMpegDecoderOption:
     """
-    Vorbis
+
 
 
     Returns:
@@ -8655,7 +8181,7 @@ def libvorbis(
 
 ) -> FFMpegDecoderOption:
     """
-    libvorbis (codec vorbis)
+    (codec vorbis)
 
 
     Returns:
@@ -8671,7 +8197,7 @@ def wavesynth(
 
 ) -> FFMpegDecoderOption:
     """
-    Wave synthesis pseudo-codec
+
 
 
     Returns:
@@ -8687,7 +8213,7 @@ def wavpack(
 
 ) -> FFMpegDecoderOption:
     """
-    WavPack
+
 
 
     Returns:
@@ -8703,7 +8229,7 @@ def ws_snd1(
 
 ) -> FFMpegDecoderOption:
     """
-    Westwood Audio (SND1) (codec westwood_snd1)
+    (codec westwood_snd1)
 
 
     Returns:
@@ -8719,7 +8245,7 @@ def wmalossless(
 
 ) -> FFMpegDecoderOption:
     """
-    Windows Media Audio Lossless
+
 
 
     Returns:
@@ -8735,7 +8261,7 @@ def wmapro(
 
 ) -> FFMpegDecoderOption:
     """
-    Windows Media Audio 9 Professional
+
 
 
     Returns:
@@ -8751,7 +8277,7 @@ def wmav1(
 
 ) -> FFMpegDecoderOption:
     """
-    Windows Media Audio 1
+
 
 
     Returns:
@@ -8767,7 +8293,7 @@ def wmav2(
 
 ) -> FFMpegDecoderOption:
     """
-    Windows Media Audio 2
+
 
 
     Returns:
@@ -8783,7 +8309,7 @@ def wmavoice(
 
 ) -> FFMpegDecoderOption:
     """
-    Windows Media Audio Voice
+
 
 
     Returns:
@@ -8799,7 +8325,7 @@ def xan_dpcm(
 
 ) -> FFMpegDecoderOption:
     """
-    DPCM Xan
+
 
 
     Returns:
@@ -8815,7 +8341,7 @@ def xma1(
 
 ) -> FFMpegDecoderOption:
     """
-    Xbox Media Audio 1
+
 
 
     Returns:
@@ -8831,7 +8357,7 @@ def xma2(
 
 ) -> FFMpegDecoderOption:
     """
-    Xbox Media Audio 2
+
 
 
     Returns:
@@ -8843,11 +8369,38 @@ def xma2(
 
 
 
+def libaribb24(
+
+    aribb24_base_path: str | None = None,
+
+    aribb24_skip_ruby_text: bool | None = None,
+
+) -> FFMpegDecoderOption:
+    """
+    (codec arib_caption)
+
+    Args:
+        aribb24_base_path: set the base path for the libaribb24 library
+        aribb24_skip_ruby_text: skip ruby text blocks during decoding (default true)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+        "aribb24-base-path": aribb24_base_path,
+
+        "aribb24-skip-ruby-text": aribb24_skip_ruby_text,
+
+    }))
+
+
+
 def ssa(
 
 ) -> FFMpegDecoderOption:
     """
-    ASS (Advanced SubStation Alpha) subtitle (codec ass)
+    (codec ass)
 
 
     Returns:
@@ -8863,7 +8416,7 @@ def ass(
 
 ) -> FFMpegDecoderOption:
     """
-    ASS (Advanced SubStation Alpha) subtitle
+
 
 
     Returns:
@@ -8885,7 +8438,7 @@ def dvbsub(
 
 ) -> FFMpegDecoderOption:
     """
-    DVB subtitles (codec dvb_subtitle)
+    (codec dvb_subtitle)
 
     Args:
         compute_edt: compute end of time using pts or timeout (default false)
@@ -8917,7 +8470,7 @@ def dvdsub(
 
 ) -> FFMpegDecoderOption:
     """
-    DVD subtitles (codec dvd_subtitle)
+    (codec dvd_subtitle)
 
     Args:
         palette: set the global palette
@@ -8949,7 +8502,7 @@ def cc_dec(
 
 ) -> FFMpegDecoderOption:
     """
-    Closed Caption (EIA-608 / CEA-708) (codec eia_608)
+    (codec eia_608)
 
     Args:
         real_time: emit subtitle events as they are decoded for real-time display (default false)
@@ -8977,7 +8530,7 @@ def pgssub(
 
 ) -> FFMpegDecoderOption:
     """
-    HDMV Presentation Graphic Stream subtitles (codec hdmv_pgs_subtitle)
+    (codec hdmv_pgs_subtitle)
 
     Args:
         forced_subs_only: Only show forced subtitles (default false)
@@ -8997,7 +8550,7 @@ def jacosub(
 
 ) -> FFMpegDecoderOption:
     """
-    JACOsub subtitle
+
 
 
     Returns:
@@ -9013,7 +8566,7 @@ def microdvd(
 
 ) -> FFMpegDecoderOption:
     """
-    MicroDVD subtitle
+
 
 
     Returns:
@@ -9033,7 +8586,7 @@ def mov_text(
 
 ) -> FFMpegDecoderOption:
     """
-    3GPP Timed Text subtitle
+
 
     Args:
         width: Frame width, usually video width (from 0 to INT_MAX) (default 0)
@@ -9056,7 +8609,7 @@ def mpl2(
 
 ) -> FFMpegDecoderOption:
     """
-    MPL2 subtitle
+
 
 
     Returns:
@@ -9074,7 +8627,7 @@ def pjs(
 
 ) -> FFMpegDecoderOption:
     """
-    PJS subtitle
+
 
     Args:
         keep_ass_markup: Set if ASS tags must be escaped (default false)
@@ -9094,7 +8647,7 @@ def realtext(
 
 ) -> FFMpegDecoderOption:
     """
-    RealText subtitle
+
 
 
     Returns:
@@ -9110,7 +8663,7 @@ def sami(
 
 ) -> FFMpegDecoderOption:
     """
-    SAMI subtitle
+
 
 
     Returns:
@@ -9128,7 +8681,7 @@ def stl(
 
 ) -> FFMpegDecoderOption:
     """
-    Spruce subtitle format
+
 
     Args:
         keep_ass_markup: Set if ASS tags must be escaped (default false)
@@ -9148,7 +8701,7 @@ def srt(
 
 ) -> FFMpegDecoderOption:
     """
-    SubRip subtitle (codec subrip)
+    (codec subrip)
 
 
     Returns:
@@ -9164,7 +8717,7 @@ def subrip(
 
 ) -> FFMpegDecoderOption:
     """
-    SubRip subtitle
+
 
 
     Returns:
@@ -9180,7 +8733,7 @@ def subviewer(
 
 ) -> FFMpegDecoderOption:
     """
-    SubViewer subtitle
+
 
 
     Returns:
@@ -9198,7 +8751,7 @@ def subviewer1(
 
 ) -> FFMpegDecoderOption:
     """
-    SubViewer1 subtitle
+
 
     Args:
         keep_ass_markup: Set if ASS tags must be escaped (default false)
@@ -9220,7 +8773,7 @@ def text(
 
 ) -> FFMpegDecoderOption:
     """
-    Raw text subtitle
+
 
     Args:
         keep_ass_markup: Set if ASS tags must be escaped (default false)
@@ -9242,7 +8795,7 @@ def vplayer(
 
 ) -> FFMpegDecoderOption:
     """
-    VPlayer subtitle
+
 
     Args:
         keep_ass_markup: Set if ASS tags must be escaped (default false)
@@ -9262,7 +8815,7 @@ def webvtt(
 
 ) -> FFMpegDecoderOption:
     """
-    WebVTT subtitle
+
 
 
     Returns:
@@ -9278,7 +8831,7 @@ def xsub(
 
 ) -> FFMpegDecoderOption:
     """
-    XSUB
+
 
 
     Returns:

@@ -827,138 +827,6 @@ References:
 
 
 
-    def avgblur_opencl(
-
-    self,
-
-
-
-
-    *,
-    sizeX: Int = Default('1'),planes: Int = Default('15'),sizeY: Int = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Apply average blur filter.
-
-The filter accepts the following options:
-
-
-Args:
-    sizeX: Set horizontal radius size. Range is [1, 1024] and default value is 1.
-    planes: Set which planes to filter. Default value is 0xf, by which all planes are processed.
-    sizeY: Set vertical radius size. Range is [1, 1024] and default value is 0. If zero, sizeX value will be used.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#avgblur_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='avgblur_opencl', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "sizeX": sizeX,
-
-                "planes": planes,
-
-                "sizeY": sizeY,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-    def avgblur_vulkan(
-
-    self,
-
-
-
-
-    *,
-    sizeX: Int = Default('3'),sizeY: Int = Default('3'),planes: Int = Default('15'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Apply an average blur filter, implemented on the GPU using Vulkan.
-
-The filter accepts the following options:
-
-
-Args:
-    sizeX: Set horizontal radius size. Range is [1, 32] and default value is 3.
-    sizeY: Set vertical radius size. Range is [1, 32] and default value is 3.
-    planes: Set which planes to filter. Default value is 0xf, by which all planes are processed.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#avgblur_vulkan)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='avgblur_vulkan', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "sizeX": sizeX,
-
-                "sizeY": sizeY,
-
-                "planes": planes,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
 
 
 
@@ -1630,113 +1498,6 @@ References:
 
 
 
-    def blend_vulkan(
-
-    self,
-
-
-
-
-
-
-
-        _bottom: VideoStream,
-
-
-
-
-    *,
-    c0_mode: Int| Literal["normal","multiply"] | Default = Default('normal'),c1_mode: Int| Literal["normal","multiply"] | Default = Default('normal'),c2_mode: Int| Literal["normal","multiply"] | Default = Default('normal'),c3_mode: Int| Literal["normal","multiply"] | Default = Default('normal'),all_mode: Int| Literal["normal","multiply"] | Default = Default('-1'),c0_opacity: Double = Default('1'),c1_opacity: Double = Default('1'),c2_opacity: Double = Default('1'),c3_opacity: Double = Default('1'),all_opacity: Double = Default('1'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Blend two Vulkan frames into each other.
-
-The blend filter takes two input streams and outputs one
-stream, the first input is the "top" layer and second input is
-"bottom" layer.  By default, the output terminates when the longest input terminates.
-
-A description of the accepted options follows.
-
-
-Args:
-    c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
-    c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
-    c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
-    c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
-    all_mode: Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: @end table
-    c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
-    c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
-    c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
-    c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
-    all_opacity: set opacity for all color components (from 0 to 1) (default 1)
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blend_vulkan)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='blend_vulkan', typings_input=('video', 'video'), typings_output=('video',)),
-
-            self,
-
-
-
-
-
-
-
-                _bottom,
-
-
-
-
-            **merge({
-
-                "c0_mode": c0_mode,
-
-                "c1_mode": c1_mode,
-
-                "c2_mode": c2_mode,
-
-                "c3_mode": c3_mode,
-
-                "all_mode": all_mode,
-
-                "c0_opacity": c0_opacity,
-
-                "c1_opacity": c1_opacity,
-
-                "c2_opacity": c2_opacity,
-
-                "c3_opacity": c3_opacity,
-
-                "all_opacity": all_opacity,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
     def blockdetect(
 
     self,
@@ -1969,83 +1730,6 @@ References:
 
 
 
-    def boxblur_opencl(
-
-    self,
-
-
-
-
-    *,
-    luma_radius: String = Default('2'),luma_power: Int = Default('2'),chroma_radius: String = Default(None),chroma_power: Int = Default('-1'),alpha_radius: String = Default(None),alpha_power: Int = Default('-1'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Apply a boxblur algorithm to the input video.
-
-It accepts the following parameters:
-
-
-Args:
-    luma_radius: Radius of the luma blurring box (default "2")
-    luma_power: How many times should the boxblur be applied to luma (from 0 to INT_MAX) (default 2)
-    chroma_radius: Radius of the chroma blurring box
-    chroma_power: How many times should the boxblur be applied to chroma (from -1 to INT_MAX) (default -1)
-    alpha_radius: Set an expression for the box radius in pixels used for blurring the corresponding input plane. The radius value must be a non-negative number, and must not be greater than the value of the expression min(w,h)/2 for the luma and alpha planes, and of min(cw,ch)/2 for the chroma planes. Default value for luma_radius is "2". If not specified, chroma_radius and alpha_radius default to the corresponding value set for luma_radius. The expressions can contain the following constants: @end table
-    alpha_power: Specify how many times the boxblur filter is applied to the corresponding plane. Default value for luma_power is 2. If not specified, chroma_power and alpha_power default to the corresponding value set for luma_power. A value of 0 will disable the effect.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#boxblur_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='boxblur_opencl', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "luma_radius": luma_radius,
-
-                "luma_power": luma_power,
-
-                "chroma_radius": chroma_radius,
-
-                "chroma_power": chroma_power,
-
-                "alpha_radius": alpha_radius,
-
-                "alpha_power": alpha_power,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2098,82 +1782,6 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='bwdif', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "mode": mode,
-
-                "parity": parity,
-
-                "deint": deint,
-
-            },
-            extra_options,
-
-
-            timeline_options,
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-    def bwdif_vulkan(
-
-    self,
-
-
-
-
-    *,
-    mode: Int| Literal["send_frame","send_field","send_frame_nospatial","send_field_nospatial"] | Default = Default('send_frame'),parity: Int| Literal["tff","bff","auto"] | Default = Default('auto'),deint: Int| Literal["all","interlaced"] | Default = Default('all'),
-
-
-    timeline_options: FFMpegTimelineOption | None = None,
-    enable: str | None = None,
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Deinterlacer using bwdif, the "Bob Weaver Deinterlacing Filter" algorithm, implemented
-on the GPU using Vulkan.
-
-It accepts the following parameters:
-
-
-Args:
-    mode: The interlacing mode to adopt. It accepts one of the following values: @end table The default value is send_field.
-    parity: The picture field parity assumed for the input interlaced video. It accepts one of the following values: @end table The default value is auto. If the interlacing is unknown or the decoder does not export this information, top field first will be assumed.
-    deint: Specify which frames to deinterlace. Accepts one of the following values: @end table The default value is all.
-    timeline_options: Timeline options
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bwdif_vulkan)
-
-        """
-
-
-
-        if timeline_options is None and enable is not None:
-            timeline_options = FFMpegTimelineOption(enable=enable)
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='bwdif_vulkan', typings_input=('video',), typings_output=('video',)),
 
             self,
 
@@ -2338,68 +1946,6 @@ References:
 
 
 
-
-
-
-
-
-
-
-    def chromaber_vulkan(
-
-    self,
-
-
-
-
-    *,
-    dist_x: Float = Default('0'),dist_y: Float = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Apply an effect that emulates chromatic aberration. Works best with RGB inputs,
-but provides a similar effect with YCbCr inputs too.
-
-
-Args:
-    dist_x: Horizontal displacement multiplier. Each chroma pixel's position will be multiplied by this amount, starting from the center of the image. Default is 0.
-    dist_y: Similarly, this sets the vertical displacement multiplier. Default is 0.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromaber_vulkan)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='chromaber_vulkan', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "dist_x": dist_x,
-
-                "dist_y": dist_y,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
 
 
 
@@ -2902,8 +2448,6 @@ References:
             )
         )
         return filter_node.video(0)
-
-
 
 
 
@@ -3547,72 +3091,6 @@ References:
 
 
 
-    def colorkey_opencl(
-
-    self,
-
-
-
-
-    *,
-    color: Color = Default('black'),similarity: Float = Default('0.01'),blend: Float = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-RGB colorspace color keying.
-
-The filter accepts the following options:
-
-
-Args:
-    color: The color which will be replaced with transparency.
-    similarity: Similarity percentage with the key color. 0.01 matches only the exact key color, while 1.0 matches everything.
-    blend: Blend percentage. 0.0 makes pixels either fully transparent, or not transparent at all. Higher values result in semi-transparent pixels, with a higher transparency the more similar the pixels color is to the key color.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorkey_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='colorkey_opencl', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "color": color,
-
-                "similarity": similarity,
-
-                "blend": blend,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
     def colorlevels(
 
     self,
@@ -4204,96 +3682,6 @@ References:
 
 
             timeline_options,
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-    def convolution_opencl(
-
-    self,
-
-
-
-
-    *,
-    _0m: String = Default('0 0 0 0 1 0 0 0 0'),_2m: String = Default('0 0 0 0 1 0 0 0 0'),_3m: String = Default('0 0 0 0 1 0 0 0 0'),_0rdiv: Float = Default('1'),_1rdiv: Float = Default('1'),_2rdiv: Float = Default('1'),_3rdiv: Float = Default('1'),_0bias: Float = Default('0'),_1bias: Float = Default('0'),_2bias: Float = Default('0'),_3bias: Float = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Apply convolution of 3x3, 5x5, 7x7 matrix.
-
-The filter accepts the following options:
-
-
-Args:
-    _0m: set matrix for 2nd plane (default "0 0 0 0 1 0 0 0 0")
-    _2m: set matrix for 3rd plane (default "0 0 0 0 1 0 0 0 0")
-    _3m: Set matrix for each plane. Matrix is sequence of 9, 25 or 49 signed numbers. Default value for each plane is 0 0 0 0 1 0 0 0 0.
-    _0rdiv: set rdiv for 1nd plane (from 0 to INT_MAX) (default 1)
-    _1rdiv: set rdiv for 2nd plane (from 0 to INT_MAX) (default 1)
-    _2rdiv: set rdiv for 3rd plane (from 0 to INT_MAX) (default 1)
-    _3rdiv: Set multiplier for calculated value for each plane. If unset or 0, it will be sum of all matrix elements. The option value must be a float number greater or equal to 0.0. Default value is 1.0.
-    _0bias: set bias for 1st plane (from 0 to INT_MAX) (default 0)
-    _1bias: set bias for 2nd plane (from 0 to INT_MAX) (default 0)
-    _2bias: set bias for 3rd plane (from 0 to INT_MAX) (default 0)
-    _3bias: Set bias for each plane. This value is added to the result of the multiplication. Useful for making the overall image brighter or darker. The option value must be a float number greater or equal to 0.0. Default value is 0.0.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolution_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='convolution_opencl', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "0m": _0m,
-
-                "2m": _2m,
-
-                "3m": _3m,
-
-                "0rdiv": _0rdiv,
-
-                "1rdiv": _1rdiv,
-
-                "2rdiv": _2rdiv,
-
-                "3rdiv": _3rdiv,
-
-                "0bias": _0bias,
-
-                "1bias": _1bias,
-
-                "2bias": _2bias,
-
-                "3bias": _3bias,
-
-            },
-            extra_options,
-
 
             )
         )
@@ -5777,7 +5165,7 @@ References:
     )-> VideoStream:
         """
 
-Deinterlacing of VAAPI surfaces
+Inputs:
 
 
 Args:
@@ -5990,7 +5378,7 @@ References:
     )-> VideoStream:
         """
 
-VAAPI VPP for de-noise
+Inputs:
 
 
 Args:
@@ -6193,81 +5581,6 @@ References:
                 "filename": filename,
 
                 "opencl": opencl,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-    def deshake_opencl(
-
-    self,
-
-
-
-
-    *,
-    tripod: Boolean = Default('false'),debug: Boolean = Default('false'),adaptive_crop: Boolean = Default('true'),refine_features: Boolean = Default('true'),smooth_strength: Float = Default('0'),smooth_window_multiplier: Float = Default('2'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Feature-point based video stabilization filter.
-
-The filter accepts the following options:
-
-
-Args:
-    tripod: Simulates a tripod by preventing any camera movement whatsoever from the original frame. Defaults to 0.
-    debug: Whether or not additional debug info should be displayed, both in the processed output and in the console. Note that in order to see console debug output you will also need to pass -v verbose to ffmpeg. Viewing point matches in the output video is only supported for RGB input. Defaults to 0.
-    adaptive_crop: Whether or not to do a tiny bit of cropping at the borders to cut down on the amount of mirrored pixels. Defaults to 1.
-    refine_features: Whether or not feature points should be refined at a sub-pixel level. This can be turned off for a slight performance gain at the cost of precision. Defaults to 1.
-    smooth_strength: The strength of the smoothing applied to the camera path from 0.0 to 1.0. 1.0 is the maximum smoothing strength while values less than that result in less smoothing. 0.0 causes the filter to adaptively choose a smoothing strength on a per-frame basis. Defaults to 0.0.
-    smooth_window_multiplier: Controls the size of the smoothing window (the number of frames buffered to determine motion information from). The size of the smoothing window is determined by multiplying the framerate of the video by this number. Acceptable values range from 0.1 to 10.0. Larger values increase the amount of motion data available for determining how to smooth the camera path, potentially improving smoothness, but also increase latency and memory usage. Defaults to 2.0.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deshake_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='deshake_opencl', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "tripod": tripod,
-
-                "debug": debug,
-
-                "adaptive_crop": adaptive_crop,
-
-                "refine_features": refine_features,
-
-                "smooth_strength": smooth_strength,
-
-                "smooth_window_multiplier": smooth_window_multiplier,
 
             },
             extra_options,
@@ -6516,80 +5829,6 @@ References:
 
 
             timeline_options,
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-    def dilation_opencl(
-
-    self,
-
-
-
-
-    *,
-    threshold0: Float = Default('65535'),threshold1: Float = Default('65535'),threshold2: Float = Default('65535'),threshold3: Float = Default('65535'),coordinates: Int = Default('255'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Apply dilation effect to the video.
-
-This filter replaces the pixel by the local(3x3) maximum.
-
-It accepts the following options:
-
-
-Args:
-    threshold0: set threshold for 1st plane (from 0 to 65535) (default 65535)
-    threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
-    threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
-    threshold3: Limit the maximum change for each plane. Range is [0, 65535] and default value is 65535. If 0, plane will remain unchanged.
-    coordinates: Flag which specifies the pixel to refer to. Range is [0, 255] and default value is 255, i.e. all eight pixels are used. Flags to local 3x3 coordinates region centered on x: 1 2 3 4 x 5 6 7 8
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dilation_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='dilation_opencl', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "threshold0": threshold0,
-
-                "threshold1": threshold1,
-
-                "threshold2": threshold2,
-
-                "threshold3": threshold3,
-
-                "coordinates": coordinates,
-
-            },
-            extra_options,
-
 
             )
         )
@@ -7945,80 +7184,6 @@ References:
 
 
 
-    def erosion_opencl(
-
-    self,
-
-
-
-
-    *,
-    threshold0: Float = Default('65535'),threshold1: Float = Default('65535'),threshold2: Float = Default('65535'),threshold3: Float = Default('65535'),coordinates: Int = Default('255'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Apply erosion effect to the video.
-
-This filter replaces the pixel by the local(3x3) minimum.
-
-It accepts the following options:
-
-
-Args:
-    threshold0: set threshold for 1st plane (from 0 to 65535) (default 65535)
-    threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
-    threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
-    threshold3: Limit the maximum change for each plane. Range is [0, 65535] and default value is 65535. If 0, plane will remain unchanged.
-    coordinates: Flag which specifies the pixel to refer to. Range is [0, 255] and default value is 255, i.e. all eight pixels are used. Flags to local 3x3 coordinates region centered on x: 1 2 3 4 x 5 6 7 8
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#erosion_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='erosion_opencl', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "threshold0": threshold0,
-
-                "threshold1": threshold1,
-
-                "threshold2": threshold2,
-
-                "threshold3": threshold3,
-
-                "coordinates": coordinates,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
     def estdif(
 
     self,
@@ -9053,63 +8218,6 @@ References:
 
 
 
-    def flip_vulkan(
-
-    self,
-
-
-
-
-
-
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Flips an image along both the vertical and horizontal axis.
-
-
-Args:
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#flip_vulkan)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='flip_vulkan', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-
-
     def floodfill(
 
     self,
@@ -9724,83 +8832,6 @@ References:
 
 
 
-    def frei0r(
-
-    self,
-
-
-
-
-    *,
-    filter_name: String = Default(None),filter_params: String = Default(None),
-
-
-    timeline_options: FFMpegTimelineOption | None = None,
-    enable: str | None = None,
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Apply a frei0r effect to the input video.
-
-To enable the compilation of this filter, you need to install the frei0r
-header and configure FFmpeg with --enable-frei0r.
-
-It accepts the following parameters:
-
-
-Args:
-    filter_name: The name of the frei0r effect to load. If the environment variable FREI0R_PATH is defined, the frei0r effect is searched for in each of the directories specified by the colon-separated list in FREI0R_PATH. Otherwise, the standard frei0r paths are searched, in this order: HOME/.frei0r-1/lib/, /usr/local/lib/frei0r-1/, /usr/lib/frei0r-1/.
-    filter_params: A '|'-separated list of parameters to pass to the frei0r effect.
-    timeline_options: Timeline options
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#frei0r)
-
-        """
-
-
-
-        if timeline_options is None and enable is not None:
-            timeline_options = FFMpegTimelineOption(enable=enable)
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='frei0r', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "filter_name": filter_name,
-
-                "filter_params": filter_params,
-
-            },
-            extra_options,
-
-
-            timeline_options,
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-
-
     def fspp(
 
     self,
@@ -9950,78 +8981,6 @@ References:
 
 
             timeline_options,
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-    def gblur_vulkan(
-
-    self,
-
-
-
-
-    *,
-    sigma: Float = Default('0.5'),sigmaV: Float = Default('0'),planes: Int = Default('15'),size: Int = Default('19'),sizeV: Int = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Apply Gaussian blur filter on Vulkan frames.
-
-The filter accepts the following options:
-
-
-Args:
-    sigma: Set horizontal sigma, standard deviation of Gaussian blur. Default is 0.5.
-    sigmaV: Set vertical sigma, if negative it will be same as sigma. Default is -1.
-    planes: Set which planes to filter. By default all planes are filtered.
-    size: Set the kernel size along the horizontal axis. Default is 19.
-    sizeV: Set the kernel size along the vertical axis. Default is 0, which sets to use the same value as size.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#gblur_vulkan)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='gblur_vulkan', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "sigma": sigma,
-
-                "sigmaV": sigmaV,
-
-                "planes": planes,
-
-                "size": size,
-
-                "sizeV": sizeV,
-
-            },
-            extra_options,
-
 
             )
         )
@@ -10600,61 +9559,6 @@ References:
 
 
             timeline_options,
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-    def hflip_vulkan(
-
-    self,
-
-
-
-
-
-
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Flips an image horizontally.
-
-
-Args:
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hflip_vulkan)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='hflip_vulkan', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-            },
-            extra_options,
-
 
             )
         )
@@ -11526,66 +10430,6 @@ References:
 
 
 
-    def hwupload_cuda(
-
-    self,
-
-
-
-
-    *,
-    device: Int = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Upload system memory frames to a CUDA device.
-
-It accepts the following optional parameters:
-
-
-Args:
-    device: The number of the CUDA device to use
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hwupload_cuda)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='hwupload_cuda', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "device": device,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
     def hysteresis(
 
     self,
@@ -12277,8 +11121,6 @@ References:
 
 
 
-
-
     def lagfun(
 
     self,
@@ -12508,6 +11350,120 @@ References:
 
 
             timeline_options,
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
+    def libvmaf(
+
+    self,
+
+
+
+
+
+
+
+        _reference: VideoStream,
+
+
+
+
+    *,
+    log_path: String = Default(None),log_fmt: String = Default('xml'),pool: String = Default(None),n_threads: Int = Default('0'),n_subsample: Int = Default('1'),model: String = Default('version=vmaf_v0.6.1'),feature: String = Default(None),
+
+    framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Calulate the VMAF (Video Multi-Method Assessment Fusion) score for a
+reference/distorted pair of input videos.
+
+The first input is the distorted video, and the second input is the reference video.
+
+The obtained VMAF score is printed through the logging system.
+
+It requires Netflix's vmaf library (libvmaf) as a pre-requisite.
+After installing the library it can be enabled using:
+./configure --enable-libvmaf.
+
+The filter has following options:
+
+
+Args:
+    log_path: Set the file path to be used to store log files.
+    log_fmt: Set the format of the log file (xml, json, csv, or sub).
+    pool: Set the pool method to be used for computing vmaf.
+    n_threads: Set number of threads to be used when initializing libvmaf. Default value: 0, no threads.
+    n_subsample: Set frame subsampling interval to be used.
+    model: A `|` delimited list of vmaf models. Each model can be configured with a number of parameters. Default value: "version=vmaf_v0.6.1"
+    feature: A `|` delimited list of features. Each feature can be configured with a number of parameters.
+    framesync_options: Framesync options
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#libvmaf)
+
+        """
+
+
+        if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+            framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='libvmaf', typings_input=('video', 'video'), typings_output=('video',)),
+
+            self,
+
+
+
+
+
+
+
+                _reference,
+
+
+
+
+            **merge({
+
+                "log_path": log_path,
+
+                "log_fmt": log_fmt,
+
+                "pool": pool,
+
+                "n_threads": n_threads,
+
+                "n_subsample": n_subsample,
+
+                "model": model,
+
+                "feature": feature,
+
+            },
+            extra_options,
+
+            framesync_options,
+
 
             )
         )
@@ -13309,8 +12265,6 @@ References:
             )
         )
         return filter_node.video(0)
-
-
 
 
 
@@ -15012,172 +13966,6 @@ References:
 
 
 
-    def nlmeans_opencl(
-
-    self,
-
-
-
-
-    *,
-    s: Double = Default('1'),p: Int = Default('7'),pc: Int = Default('0'),r: Int = Default('15'),rc: Int = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Non-local Means denoise filter through OpenCL, this filter accepts same options as nlmeans.
-
-
-Args:
-    s: denoising strength (from 1 to 30) (default 1)
-    p: patch size (from 0 to 99) (default 7)
-    pc: patch size for chroma planes (from 0 to 99) (default 0)
-    r: research window (from 0 to 99) (default 15)
-    rc: research window for chroma planes (from 0 to 99) (default 0)
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#nlmeans_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='nlmeans_opencl', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "s": s,
-
-                "p": p,
-
-                "pc": pc,
-
-                "r": r,
-
-                "rc": rc,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-    def nlmeans_vulkan(
-
-    self,
-
-
-
-
-    *,
-    s: Double = Default('1'),p: Int = Default('7'),r: Int = Default('15'),t: Int = Default('36'),s1: Double = Default('1'),s2: Double = Default('1'),s3: Double = Default('1'),s4: Double = Default('1'),p1: Int = Default('0'),p2: Int = Default('0'),p3: Int = Default('0'),p4: Int = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Denoise frames using Non-Local Means algorithm, implemented on the GPU using
-Vulkan.
-Supports more pixel formats than nlmeans or nlmeans_opencl, including
-alpha channel support.
-
-The filter accepts the following options.
-
-
-Args:
-    s: Set denoising strength for all components. Default is 1.0. Must be in range [1.0, 100.0].
-    p: Set patch size for all planes. Default is 7. Must be odd number in range [0, 99].
-    r: Set research size. Default is 15. Must be odd number in range [0, 99].
-    t: Set parallelism. Default is 36. Must be a number in the range [1, 168]. Larger values may speed up processing, at the cost of more VRAM. Lower values will slow it down, reducing VRAM usage. Only supported on GPUs with atomic float operations (RDNA3+, Ampere+).
-    s1: denoising strength for component 1 (from 1 to 100) (default 1)
-    s2: denoising strength for component 2 (from 1 to 100) (default 1)
-    s3: Set denoising strength for a specific component. Default is 1, equal to s. Must be odd number in range [1, 100].
-    s4: denoising strength for component 4 (from 1 to 100) (default 1)
-    p1: patch size for component 1 (from 0 to 99) (default 0)
-    p2: patch size for component 2 (from 0 to 99) (default 0)
-    p3: Set patch size for a specific component. Default is 7, equal to p. Must be odd number in range [0, 99].
-    p4: patch size for component 4 (from 0 to 99) (default 0)
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#nlmeans_vulkan)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='nlmeans_vulkan', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "s": s,
-
-                "p": p,
-
-                "r": r,
-
-                "t": t,
-
-                "s1": s1,
-
-                "s2": s2,
-
-                "s3": s3,
-
-                "s4": s4,
-
-                "p1": p1,
-
-                "p2": p2,
-
-                "p3": p3,
-
-                "p4": p4,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
     def nnedi(
 
     self,
@@ -15600,8 +14388,6 @@ References:
 
 
 
-
-
     def oscilloscope(
 
     self,
@@ -15828,88 +14614,6 @@ References:
 
 
 
-    def overlay_opencl(
-
-    self,
-
-
-
-
-
-
-
-        _overlay: VideoStream,
-
-
-
-
-    *,
-    x: Int = Default('0'),y: Int = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Overlay one video on top of another.
-
-It takes two inputs and has one output. The first input is the "main" video on which the second input is overlaid.
-This filter requires same memory layout for all the inputs. So, format conversion may be needed.
-
-The filter accepts the following options:
-
-
-Args:
-    x: Set the x coordinate of the overlaid video on the main video. Default value is 0.
-    y: Set the y coordinate of the overlaid video on the main video. Default value is 0.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='overlay_opencl', typings_input=('video', 'video'), typings_output=('video',)),
-
-            self,
-
-
-
-
-
-
-
-                _overlay,
-
-
-
-
-            **merge({
-
-                "x": x,
-
-                "y": y,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
     def overlay_vaapi(
 
     self,
@@ -16005,88 +14709,6 @@ References:
             extra_options,
 
             framesync_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-    def overlay_vulkan(
-
-    self,
-
-
-
-
-
-
-
-        _overlay: VideoStream,
-
-
-
-
-    *,
-    x: Int = Default('0'),y: Int = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Overlay one video on top of another.
-
-It takes two inputs and has one output. The first input is the "main" video on which the second input is overlaid.
-This filter requires all inputs to use the same pixel format. So, format conversion may be needed.
-
-The filter accepts the following options:
-
-
-Args:
-    x: Set the x coordinate of the overlaid video on the main video. Default value is 0.
-    y: Set the y coordinate of the overlaid video on the main video. Default value is 0.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_vulkan)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='overlay_vulkan', typings_input=('video', 'video'), typings_output=('video',)),
-
-            self,
-
-
-
-
-
-
-
-                _overlay,
-
-
-
-
-            **merge({
-
-                "x": x,
-
-                "y": y,
-
-            },
-            extra_options,
 
 
             )
@@ -16236,82 +14858,6 @@ References:
                 "color": color,
 
                 "eval": eval,
-
-                "aspect": aspect,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-    def pad_opencl(
-
-    self,
-
-
-
-
-    *,
-    width: String = Default('iw'),height: String = Default('ih'),x: String = Default('0'),y: String = Default('0'),color: Color = Default('black'),aspect: Rational = Default('0/1'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Add paddings to the input image, and place the original input at the
-provided x, y coordinates.
-
-It accepts the following options:
-
-
-Args:
-    width: set the pad area width (default "iw")
-    height: Specify an expression for the size of the output image with the paddings added. If the value for width or height is 0, the corresponding input size is used for the output. The width expression can reference the value set by the height expression, and vice versa. The default value of width and height is 0.
-    x: set the x offset for the input image position (default "0")
-    y: The x and y offsets as specified by the x and y expressions, or NAN if not yet specified.
-    color: Specify the color of the padded area. For the syntax of this option, check the "Color" section in the ffmpeg-utils manual.
-    aspect: Pad to an aspect instead to a resolution.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pad_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='pad_opencl', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "width": width,
-
-                "height": height,
-
-                "x": x,
-
-                "y": y,
-
-                "color": color,
 
                 "aspect": aspect,
 
@@ -17266,72 +15812,6 @@ References:
 
 
 
-    def prewitt_opencl(
-
-    self,
-
-
-
-
-    *,
-    planes: Int = Default('15'),scale: Float = Default('1'),delta: Float = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Apply the Prewitt operator (https://en.wikipedia.org/wiki/Prewitt_operator) to input video stream.
-
-The filter accepts the following option:
-
-
-Args:
-    planes: Set which planes to filter. Default value is 0xf, by which all planes are processed.
-    scale: Set value which will be multiplied with filtered result. Range is [0.0, 65535] and default value is 1.0.
-    delta: Set value which will be added to filtered result. Range is [-65535, 65535] and default value is 0.0.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#prewitt_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='prewitt_opencl', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "planes": planes,
-
-                "scale": scale,
-
-                "delta": delta,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
     def procamp_vaapi(
 
     self,
@@ -17347,7 +15827,7 @@ References:
     )-> VideoStream:
         """
 
-ProcAmp (color balance) adjustments for hue, saturation, brightness, contrast
+Inputs:
 
 
 Args:
@@ -17392,8 +15872,6 @@ References:
             )
         )
         return filter_node.video(0)
-
-
 
 
 
@@ -18146,99 +16624,6 @@ References:
 
 
 
-    def remap_opencl(
-
-    self,
-
-
-
-
-
-
-
-        _xmap: VideoStream,
-
-
-
-        _ymap: VideoStream,
-
-
-
-
-    *,
-    interp: Int| Literal["near","linear"] | Default = Default('linear'),fill: Color = Default('black'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Remap pixels using 2nd: Xmap and 3rd: Ymap input video stream.
-
-Destination pixel at position (X, Y) will be picked from source (x, y) position
-where x = Xmap(X, Y) and y = Ymap(X, Y). If mapping values are out of range, zero
-value for pixel will be used for destination pixel.
-
-Xmap and Ymap input video streams must be of same dimensions. Output video stream
-will have Xmap/Ymap video stream dimensions.
-Xmap and Ymap input video streams are 32bit float pixel format, single channel.
-
-
-Args:
-    interp: Specify interpolation used for remapping of pixels. Allowed values are near and linear. Default value is linear.
-    fill: Specify the color of the unmapped pixels. For the syntax of this option, check the "Color" section in the ffmpeg-utils manual. Default color is black.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#remap_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='remap_opencl', typings_input=('video', 'video', 'video'), typings_output=('video',)),
-
-            self,
-
-
-
-
-
-
-
-                _xmap,
-
-
-
-                _ymap,
-
-
-
-
-            **merge({
-
-                "interp": interp,
-
-                "fill": fill,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
     def removegrain(
 
     self,
@@ -18672,72 +17057,6 @@ References:
 
 
 
-    def roberts_opencl(
-
-    self,
-
-
-
-
-    *,
-    planes: Int = Default('15'),scale: Float = Default('1'),delta: Float = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Apply the Roberts cross operator (https://en.wikipedia.org/wiki/Roberts_cross) to input video stream.
-
-The filter accepts the following option:
-
-
-Args:
-    planes: Set which planes to filter. Default value is 0xf, by which all planes are processed.
-    scale: Set value which will be multiplied with filtered result. Range is [0.0, 65535] and default value is 1.0.
-    delta: Set value which will be added to filtered result. Range is [-65535, 65535] and default value is 0.0.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#roberts_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='roberts_opencl', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "planes": planes,
-
-                "scale": scale,
-
-                "delta": delta,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
     def rotate(
 
     self,
@@ -18814,8 +17133,6 @@ References:
             )
         )
         return filter_node.video(0)
-
-
 
 
 
@@ -19184,7 +17501,7 @@ References:
     )-> VideoStream:
         """
 
-Scale to/from VAAPI surfaces.
+Inputs:
 
 
 Args:
@@ -19242,76 +17559,6 @@ References:
                 "force_original_aspect_ratio": force_original_aspect_ratio,
 
                 "force_divisible_by": force_divisible_by,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-    def scale_vulkan(
-
-    self,
-
-
-
-
-    *,
-    w: String = Default('iw'),h: String = Default('ih'),scaler: Int| Literal["bilinear","nearest"] | Default = Default('bilinear'),format: String = Default(None),out_range: Int| Literal["full","limited","jpeg","mpeg","tv","pc"] | Default = Default('0) (from 0 to 2) (default 0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Scale Vulkan frames
-
-
-Args:
-    w: Output video width (default "iw")
-    h: Output video height (default "ih")
-    scaler: Scaler function (from 0 to 2) (default bilinear)
-    format: Output video format (software format of hardware frames)
-    out_range: Output colour range (from 0 to 2) (default 0) (from 0 to 2) (default 0)
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](None)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='scale_vulkan', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "w": w,
-
-                "h": h,
-
-                "scaler": scaler,
-
-                "format": format,
-
-                "out_range": out_range,
 
             },
             extra_options,
@@ -20447,7 +18694,7 @@ References:
     )-> VideoStream:
         """
 
-VAAPI VPP for sharpness
+Inputs:
 
 
 Args:
@@ -21318,74 +19565,6 @@ References:
 
 
 
-    def sobel_opencl(
-
-    self,
-
-
-
-
-    *,
-    planes: Int = Default('15'),scale: Float = Default('1'),delta: Float = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Apply the Sobel operator (https://en.wikipedia.org/wiki/Sobel_operator) to input video stream.
-
-The filter accepts the following option:
-
-
-Args:
-    planes: Set which planes to filter. Default value is 0xf, by which all planes are processed.
-    scale: Set value which will be multiplied with filtered result. Range is [0.0, 65535] and default value is 1.0.
-    delta: Set value which will be added to filtered result. Range is [-65535, 65535] and default value is 0.0.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sobel_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='sobel_opencl', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "planes": planes,
-
-                "scale": scale,
-
-                "delta": delta,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-
-
     def spectrumsynth(
 
     self,
@@ -21847,7 +20026,7 @@ References:
     )-> VideoStream:
         """
 
-Calculate the SSIM between two 360 video streams.
+Inputs:
 
 
 Args:
@@ -23286,93 +21465,6 @@ References:
 
 
 
-    def tonemap_opencl(
-
-    self,
-
-
-
-
-    *,
-    tonemap: Int| Literal["none","linear","gamma","clip","reinhard","hable","mobius"] | Default = Default('none'),transfer: Int| Literal["bt709","bt2020"] | Default = Default('bt709'),matrix: Int| Literal["bt709","bt2020"] | Default = Default('-1'),primaries: Int| Literal["bt709","bt2020"] | Default = Default('-1'),range: Int| Literal["tv","pc","limited","full"] | Default = Default('-1'),format: Pix_fmt = Default('none'),peak: Double = Default('0'),param: Double = Default('nan'),desat: Double = Default('0.5'),threshold: Double = Default('0.2'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Perform HDR(PQ/HLG) to SDR conversion with tone-mapping.
-
-It accepts the following parameters:
-
-
-Args:
-    tonemap: Specify the tone-mapping operator to be used. Same as tonemap option in tonemap.
-    transfer: Set the output transfer characteristics. Possible values are: @end table Default is bt709.
-    matrix: Set the output colorspace matrix. Possible value are: @end table Default is same as input.
-    primaries: Set the output color primaries. Possible values are: @end table Default is same as input.
-    range: Set the output color range. Possible values are: @end table Default is same as input.
-    format: Specify the output pixel format. Currently supported formats are: @end table
-    peak: signal peak override (from 0 to DBL_MAX) (default 0)
-    param: Tune the tone mapping algorithm. same as param option in tonemap.
-    desat: Apply desaturation for highlights that exceed this level of brightness. The higher the parameter, the more color information will be preserved. This setting helps prevent unnaturally blown-out colors for super-highlights, by (smoothly) turning into white instead. This makes images feel more natural, at the cost of reducing information about out-of-range colors. The default value is 0.5, and the algorithm here is a little different from the cpu version tonemap currently. A setting of 0.0 disables this option.
-    threshold: The tonemapping algorithm parameters is fine-tuned per each scene. And a threshold is used to detect whether the scene has changed or not. If the distance between the current frame average brightness and the current running average exceeds a threshold value, we would re-calculate scene average and peak brightness. The default value is 0.2.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tonemap_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='tonemap_opencl', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "tonemap": tonemap,
-
-                "transfer": transfer,
-
-                "matrix": matrix,
-
-                "primaries": primaries,
-
-                "range": range,
-
-                "format": format,
-
-                "peak": peak,
-
-                "param": param,
-
-                "desat": desat,
-
-                "threshold": threshold,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
     def tonemap_vaapi(
 
     self,
@@ -23585,67 +21677,6 @@ References:
 
 
 
-    def transpose_opencl(
-
-    self,
-
-
-
-
-    *,
-    dir: Int| Literal["cclock_flip","clock","cclock","clock_flip"] | Default = Default('cclock_flip'),passthrough: Int| Literal["none","portrait","landscape"] | Default = Default('none'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Transpose input video
-
-
-Args:
-    dir: set transpose direction (from 0 to 3) (default cclock_flip)
-    passthrough: do not apply transposition if the input matches the specified geometry (from 0 to INT_MAX) (default none)
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](None)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='transpose_opencl', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "dir": dir,
-
-                "passthrough": passthrough,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
     def transpose_vaapi(
 
     self,
@@ -23661,7 +21692,7 @@ References:
     )-> VideoStream:
         """
 
-VAAPI VPP for transpose
+Inputs:
 
 
 Args:
@@ -23681,70 +21712,6 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='transpose_vaapi', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "dir": dir,
-
-                "passthrough": passthrough,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-    def transpose_vulkan(
-
-    self,
-
-
-
-
-    *,
-    dir: Int| Literal["cclock_flip","clock","cclock","clock_flip"] | Default = Default('cclock_flip'),passthrough: Int| Literal["none","portrait","landscape"] | Default = Default('none'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Transpose rows with columns in the input video and optionally flip it.
-For more in depth examples see the transpose video filter, which shares mostly the same options.
-
-It accepts the following parameters:
-
-
-Args:
-    dir: Specify the transposition direction. Can assume the following values: @end table
-    passthrough: Do not apply the transposition if the input geometry matches the one specified by the specified value. It accepts the following values: @end table
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#transpose_vulkan)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='transpose_vulkan', typings_input=('video',), typings_output=('video',)),
 
             self,
 
@@ -23937,81 +21904,6 @@ References:
 
 
             timeline_options,
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-    def unsharp_opencl(
-
-    self,
-
-
-
-
-    *,
-    luma_msize_x: Float = Default('5'),luma_msize_y: Float = Default('5'),luma_amount: Float = Default('1'),chroma_msize_x: Float = Default('5'),chroma_msize_y: Float = Default('5'),chroma_amount: Float = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Sharpen or blur the input video.
-
-It accepts the following parameters:
-
-
-Args:
-    luma_msize_x: Set the luma matrix horizontal size. Range is [1, 23] and default value is 5.
-    luma_msize_y: Set the luma matrix vertical size. Range is [1, 23] and default value is 5.
-    luma_amount: Set the luma effect strength. Range is [-10, 10] and default value is 1.0. Negative values will blur the input video, while positive values will sharpen it, a value of zero will disable the effect.
-    chroma_msize_x: Set the chroma matrix horizontal size. Range is [1, 23] and default value is 5.
-    chroma_msize_y: Set the chroma matrix vertical size. Range is [1, 23] and default value is 5.
-    chroma_amount: Set the chroma effect strength. Range is [-10, 10] and default value is 0.0. Negative values will blur the input video, while positive values will sharpen it, a value of zero will disable the effect.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#unsharp_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='unsharp_opencl', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-                "luma_msize_x": luma_msize_x,
-
-                "luma_msize_y": luma_msize_y,
-
-                "luma_amount": luma_amount,
-
-                "chroma_msize_x": chroma_msize_x,
-
-                "chroma_msize_y": chroma_msize_y,
-
-                "chroma_amount": chroma_amount,
-
-            },
-            extra_options,
-
 
             )
         )
@@ -24690,61 +22582,6 @@ References:
 
 
             timeline_options,
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-    def vflip_vulkan(
-
-    self,
-
-
-
-
-
-
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Flips an image vertically.
-
-
-Args:
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vflip_vulkan)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='vflip_vulkan', typings_input=('video',), typings_output=('video',)),
-
-            self,
-
-
-
-
-            **merge({
-
-            },
-            extra_options,
-
 
             )
         )
@@ -25876,174 +23713,6 @@ References:
                 "offset": offset,
 
                 "expr": expr,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-    def xfade_opencl(
-
-    self,
-
-
-
-
-
-
-
-        _xfade: VideoStream,
-
-
-
-
-    *,
-    transition: Int| Literal["custom","fade","wipeleft","wiperight","wipeup","wipedown","slideleft","slideright","slideup","slidedown"] | Default = Default('fade'),source: String = Default(None),kernel: String = Default(None),duration: Duration = Default('1'),offset: Duration = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Cross fade two videos with custom transition effect by using OpenCL.
-
-It accepts the following options:
-
-
-Args:
-    transition: Set one of possible transition effects. @end table
-    source: OpenCL program source file for custom transition.
-    kernel: Set name of kernel to use for custom transition from program source file.
-    duration: Set duration of video transition.
-    offset: Set time of start of transition relative to first video.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xfade_opencl)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='xfade_opencl', typings_input=('video', 'video'), typings_output=('video',)),
-
-            self,
-
-
-
-
-
-
-
-                _xfade,
-
-
-
-
-            **merge({
-
-                "transition": transition,
-
-                "source": source,
-
-                "kernel": kernel,
-
-                "duration": duration,
-
-                "offset": offset,
-
-            },
-            extra_options,
-
-
-            )
-        )
-        return filter_node.video(0)
-
-
-
-
-
-
-
-    def xfade_vulkan(
-
-    self,
-
-
-
-
-
-
-
-        _xfade: VideoStream,
-
-
-
-
-    *,
-    transition: Int| Literal["fade","wipeleft","wiperight","wipeup","wipedown","slidedown","slideup","slideleft","slideright","circleopen","circleclose","dissolve","pixelize","wipetl","wipetr","wipebl","wipebr"] | Default = Default('fade'),duration: Duration = Default('1'),offset: Duration = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-    )-> VideoStream:
-        """
-
-Cross fade one video with another video.
-
-
-Args:
-    transition: set cross fade transition (from 0 to 16) (default fade)
-    duration: set cross fade duration (default 1)
-    offset: set cross fade start relative to first input stream (default 0)
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](None)
-
-        """
-
-
-
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(name='xfade_vulkan', typings_input=('video', 'video'), typings_output=('video',)),
-
-            self,
-
-
-
-
-
-
-
-                _xfade,
-
-
-
-
-            **merge({
-
-                "transition": transition,
-
-                "duration": duration,
-
-                "offset": offset,
 
             },
             extra_options,
