@@ -156,7 +156,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libzvbi0 librsvg2-2 \
     && apt-get install -y --no-install-recommends \
         libvidstab-dev libdav1d-dev libsvtav1-dev libharfbuzz-dev \
-        libshaderc-dev flite1-dev librav1e-dev libjxl-dev 2>/dev/null || true \
+        libshaderc-dev flite1-dev librav1e0 libjxl0.10 2>/dev/null || true \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=build /usr/local/bin/ffmpeg /usr/local/bin/ffmpeg
@@ -171,5 +171,10 @@ RUN for pass in 1 2 3 4 5; do \
       | xargs -I{} cp -n {} /usr/local/lib/ 2>/dev/null || true; \
       ldconfig; \
     done
+
+# Validate ffmpeg starts correctly (catches missing runtime library errors at build time)
+RUN /usr/local/bin/ffmpeg -version 2>&1 | head -3 && \
+    /usr/local/bin/ffmpeg -muxers 2>&1 | grep "3g2" || \
+    { echo "ERROR: ffmpeg validation failed"; /usr/local/bin/ffmpeg -version; exit 1; }
 
 ENTRYPOINT ["/usr/local/bin/ffmpeg"]
