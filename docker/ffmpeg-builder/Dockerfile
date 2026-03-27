@@ -64,26 +64,24 @@ RUN HELP=$(./configure --help 2>&1); \
     chk() { echo "$HELP" | grep -q -- "--enable-$1"; }; \
     EXTRA_FLAGS=""; \
     # Version-gated libraries (not available on all Ubuntu releases)
-    chk libharfbuzz  && pkg-config --exists harfbuzz   && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libharfbuzz"; \
-    chk libdav1d     && pkg-config --exists dav1d      && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libdav1d"; \
-    chk libsvtav1    && pkg-config --exists SvtAv1Enc  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libsvtav1"; \
-    chk libplacebo   && pkg-config --exists libplacebo && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libplacebo"; \
+    chk libharfbuzz  && pkg-config --exists harfbuzz   && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libharfbuzz" || true; \
+    chk libdav1d     && pkg-config --exists dav1d      && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libdav1d" || true; \
+    chk libsvtav1    && pkg-config --exists SvtAv1Enc  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libsvtav1" || true; \
+    chk libplacebo   && pkg-config --exists libplacebo && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libplacebo" || true; \
     # Vulkan
-    chk vulkan       && pkg-config --exists vulkan     && EXTRA_FLAGS="$EXTRA_FLAGS --enable-vulkan"; \
-    chk libshaderc   && pkg-config --exists shaderc    && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libshaderc"; \
+    chk vulkan       && pkg-config --exists vulkan     && EXTRA_FLAGS="$EXTRA_FLAGS --enable-vulkan" || true; \
+    chk libshaderc   && pkg-config --exists shaderc    && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libshaderc" || true; \
     # CUDA / NVENC (header-only — no GPU needed)
-    chk cuda-llvm    && EXTRA_FLAGS="$EXTRA_FLAGS --enable-cuda-llvm"; \
-    chk cuvid        && pkg-config --exists ffnvcodec  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-cuvid --enable-nvenc --enable-nvdec"; \
-    chk ffnvcodec    && pkg-config --exists ffnvcodec  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-ffnvcodec"; \
+    chk cuvid        && pkg-config --exists ffnvcodec  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-cuvid --enable-nvenc --enable-nvdec" || true; \
     # Frei0r
-    chk frei0r       && EXTRA_FLAGS="$EXTRA_FLAGS --enable-frei0r"; \
+    chk frei0r       && EXTRA_FLAGS="$EXTRA_FLAGS --enable-frei0r" || true; \
     # Audio plugins
-    chk ladspa       && EXTRA_FLAGS="$EXTRA_FLAGS --enable-ladspa"; \
-    chk lv2          && pkg-config --exists lilv-0     && EXTRA_FLAGS="$EXTRA_FLAGS --enable-lv2"; \
-    chk libbs2b      && pkg-config --exists libbs2b    && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libbs2b"; \
-    chk librubberband && pkg-config --exists rubberband && EXTRA_FLAGS="$EXTRA_FLAGS --enable-librubberband"; \
-    chk libmysofa    && pkg-config --exists libmysofa  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libmysofa"; \
-    chk libflite     && [ -f /usr/include/flite/flite.h ] && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libflite"; \
+    chk ladspa       && EXTRA_FLAGS="$EXTRA_FLAGS --enable-ladspa" || true; \
+    chk lv2          && pkg-config --exists lilv-0     && EXTRA_FLAGS="$EXTRA_FLAGS --enable-lv2" || true; \
+    chk libbs2b      && pkg-config --exists libbs2b    && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libbs2b" || true; \
+    chk librubberband && pkg-config --exists rubberband && EXTRA_FLAGS="$EXTRA_FLAGS --enable-librubberband" || true; \
+    chk libmysofa    && pkg-config --exists libmysofa  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libmysofa" || true; \
+    chk libflite     && [ -f /usr/include/flite/flite.h ] && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libflite" || true; \
     echo "Extra configure flags: $EXTRA_FLAGS"; \
     ./configure \
         --prefix=/usr/local \
