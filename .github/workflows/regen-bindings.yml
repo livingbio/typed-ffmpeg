@@ -1,6 +1,10 @@
 name: Regenerate FFmpeg Bindings
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/regen-bindings.yml'
   workflow_dispatch:
     inputs:
       dry_run:
