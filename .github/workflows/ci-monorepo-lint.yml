@@ -1,0 +1,65 @@
+name: CI Monorepo - Lint
+
+on:
+  push:
+    branches: [main, refactor/monorepo-architecture]
+    paths:
+      - 'packages/**'
+      - 'pyproject.toml'
+      - 'pyproject-workspace.toml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'packages/**'
+      - 'pyproject.toml'
+      - 'pyproject-workspace.toml'
+
+jobs:
+  lint:
+    name: Lint Packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check import organization
+        run: |
+          # Verify no ffmpeg_core.dag imports in core package
+          if grep -r "from ffmpeg_core\.dag" packages/core/src/ 2>/dev/null; then
+            echo "ERROR: Found ffmpeg_core.dag imports in core package!"
+            exit 1
+          fi
+          echo "✅ Core package has no DAG dependencies"
+
+      - name: Check circular imports
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install -e packages/core
+          pip install -e packages/v8
+          python <<EOF
+          import sys
+          import warnings
+          
+          # Suppress deprecation warnings from dependencies
+          warnings.filterwarnings("ignore", category=DeprecationWarning)
+          warnings.filterwarnings("ignore", category=SyntaxWarning)
+          
+          # Only catch ImportWarning which indicates circular imports
+          with warnings.catch_warnings(record=True) as w:
+              warnings.simplefilter("always", ImportWarning)
+              import ffmpeg
+              
+              if w:
+                  print("Import warnings detected:")
+                  for warning in w:
+                      print(f"  {warning.message}")
+                  sys.exit(1)
+              else:
+                  print("✅ No circular import warnings")
+          EOF

@@ -51,18 +51,20 @@ def _parse_list(text: str) -> list[FFMpegCodec]:
 
 def _extract_list(
     type: Literal["encoders", "decoders", "codecs"],
+    ffmpeg_binary: str = "ffmpeg",
 ) -> list[FFMpegCodec]:
     """
     Get the help text for all codecs.
 
     Args:
         type: The type of codec
+        ffmpeg_binary: Path or name of the ffmpeg executable.
 
     Returns:
         A list of codecs
 
     """
-    return _parse_list(run_ffmpeg_command([f"-{type}"]))
+    return _parse_list(run_ffmpeg_command([f"-{type}"], ffmpeg_binary=ffmpeg_binary))
 
 
 def _parse_codec(text: str) -> list[FFMpegAVOption]:
@@ -101,7 +103,9 @@ def _parse_codec(text: str) -> list[FFMpegAVOption]:
 
 
 def _extract_codec(
-    codec: str, type: Literal["encoder", "decoder"]
+    codec: str,
+    type: Literal["encoder", "decoder"],
+    ffmpeg_binary: str = "ffmpeg",
 ) -> list[FFMpegAVOption]:
     """
     Get the help text for a codec option.
@@ -109,17 +113,23 @@ def _extract_codec(
     Args:
         codec: The codec name
         type: The type of codec
+        ffmpeg_binary: Path or name of the ffmpeg executable.
 
     Returns:
         A list of codec options
 
     """
-    return _parse_codec(run_ffmpeg_command(["-h", f"{type}={codec}"]))
+    return _parse_codec(
+        run_ffmpeg_command(["-h", f"{type}={codec}"], ffmpeg_binary=ffmpeg_binary)
+    )
 
 
-def extract() -> list[FFMpegCodec]:
+def extract(ffmpeg_binary: str = "ffmpeg") -> list[FFMpegCodec]:
     """
     Extract all codec information including encoders and decoders with their options.
+
+    Args:
+        ffmpeg_binary: Path or name of the ffmpeg executable.
 
     Returns:
         A list of codec instances (encoders and decoders) with their associated options
@@ -127,8 +137,8 @@ def extract() -> list[FFMpegCodec]:
     """
     output: list[FFMpegCodec] = []
 
-    for codec in _extract_list("encoders"):
-        options = _extract_codec(codec.name, "encoder")
+    for codec in _extract_list("encoders", ffmpeg_binary=ffmpeg_binary):
+        options = _extract_codec(codec.name, "encoder", ffmpeg_binary=ffmpeg_binary)
         output.append(
             FFMpegEncoder(
                 name=codec.name,
@@ -138,8 +148,8 @@ def extract() -> list[FFMpegCodec]:
             )
         )
 
-    for codec in _extract_list("decoders"):
-        options = _extract_codec(codec.name, "decoder")
+    for codec in _extract_list("decoders", ffmpeg_binary=ffmpeg_binary):
+        options = _extract_codec(codec.name, "decoder", ffmpeg_binary=ffmpeg_binary)
         output.append(
             FFMpegDecoder(
                 name=codec.name,

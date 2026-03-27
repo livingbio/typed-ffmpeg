@@ -1,0 +1,79 @@
+# Monorepo Workspace Configuration
+# This file defines the workspace structure for typed-ffmpeg monorepo
+
+[tool.uv.workspace]
+members = [
+    "packages/core",
+    "packages/v5",
+    "packages/v6",
+    "packages/v7",
+    "packages/v8",
+    "packages/latest",
+]
+
+[project]
+name = "typed-ffmpeg-workspace"
+version = "1.0.0"
+description = "Monorepo workspace for typed-ffmpeg multi-version packages"
+authors = [
+    {name = "lucemia", email = "lucemia@gmail.com"}
+]
+requires-python = ">=3.10"
+readme = "README.md"
+
+[project.optional-dependencies]
+# Shared development dependencies for all packages
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff==0.12.2",
+    "mypy>=1.0",
+    "prek>=0.1.0",
+]
+
+# Install all versions (for development/testing)
+all = [
+    "ffmpeg-core",
+    "typed-ffmpeg-v5",
+    "typed-ffmpeg-v6",
+    "typed-ffmpeg-v7",
+    "typed-ffmpeg-v8",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff==0.12.2",
+    "mypy>=1.0",
+    "prek>=0.1.0",
+]
+
+[tool.ruff]
+# Shared ruff configuration
+line-length = 88
+exclude = [
+    "**/cassettes/",
+    "**/__snapshots__/",
+    ".venv",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+
+[tool.pytest.ini_options]
+# Shared pytest configuration
+testpaths = ["packages/tests-shared", "packages/core/src"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]

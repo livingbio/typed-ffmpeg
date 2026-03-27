@@ -1,0 +1,235 @@
+name: CI CodeGen - Multi-Version FFmpeg
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [main, v4]
+    paths:
+      - '.github/workflows/ci-codegen-versions.yml'
+      - 'src/scripts/code_gen/**'
+      - 'src/scripts/parse_help/**'
+      - 'src/scripts/parse_c/**'
+      - 'src/scripts/parse_docs/**'
+      - 'src/scripts/manual/**'
+      - 'packages/core/src/ffmpeg_core/common/**'
+  pull_request:
+    branches: [main, v4]
+    paths:
+      - '.github/workflows/ci-codegen-versions.yml'
+      - 'src/scripts/code_gen/**'
+      - 'src/scripts/parse_help/**'
+      - 'src/scripts/parse_c/**'
+      - 'src/scripts/parse_docs/**'
+      - 'src/scripts/manual/**'
+      - 'packages/core/src/ffmpeg_core/common/**'
+  workflow_dispatch:
+    inputs:
+      ffmpeg-version:
+        description: 'FFmpeg major version to generate (5, 6, 7, 8, or all)'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - '5'
+          - '6'
+          - '7'
+          - '8'
+          - 'all'
+      create_pr:
+        description: 'Create a PR with the generated bindings against v4'
+        required: false
+        default: 'true'
+        type: boolean
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ffmpeg-version: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.ffmpeg-version != 'all') && fromJSON(format('["{0}"]', github.event.inputs.ffmpeg-version)) || fromJSON('["5", "6", "7", "8"]') }}
+        include:
+          - ffmpeg-version: '5'
+            ffmpeg-image: 'jrottenberg/ffmpeg:5.1-ubuntu'
+          - ffmpeg-version: '6'
+            ffmpeg-image: 'jrottenberg/ffmpeg:6.1-ubuntu'
+          - ffmpeg-version: '7'
+            ffmpeg-image: 'ghcr.io/livingbio/typed-ffmpeg/ffmpeg:7.1'
+          - ffmpeg-version: '8'
+            ffmpeg-image: 'ghcr.io/livingbio/typed-ffmpeg/ffmpeg:8.0'
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+
+      - name: Install build tools and FFmpeg runtime dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+            nasm yasm build-essential \
+            libx264-dev libx265-dev libvpx-dev libmp3lame-dev libopus-dev \
+            libvorbis-dev libtheora-dev libwebp-dev libxvidcore-dev \
+            libopenjp2-7-dev libopencore-amrnb-dev libopencore-amrwb-dev \
+            libass-dev libfreetype6-dev libfontconfig1-dev libfribidi-dev \
+            libzimg-dev libaom-dev \
+            libssl-dev libsrt-openssl-dev libzmq3-dev \
+            libva-dev libdrm-dev ocl-icd-opencl-dev
+          sudo apt-get install -y --no-install-recommends \
+            libvidstab-dev libdav1d-dev libsvtav1-dev libharfbuzz-dev 2>/dev/null || true
+
+      - name: Extract FFmpeg ${{ matrix.ffmpeg-version }} from Docker image
+        run: |
+          docker pull ${{ matrix.ffmpeg-image }}
+          CONTAINER_ID=$(docker create ${{ matrix.ffmpeg-image }})
+          sudo docker cp "$CONTAINER_ID:/usr/local/bin/ffmpeg" /usr/local/bin/ffmpeg || \
+            sudo docker cp "$CONTAINER_ID:/usr/bin/ffmpeg" /usr/local/bin/ffmpeg
+          sudo docker cp "$CONTAINER_ID:/usr/local/bin/ffprobe" /usr/local/bin/ffprobe || \
+            sudo docker cp "$CONTAINER_ID:/usr/bin/ffprobe" /usr/local/bin/ffprobe
+          docker cp "$CONTAINER_ID:/usr/local/lib" /tmp/ffmpeg-libs
+          sudo cp -a /tmp/ffmpeg-libs/. /usr/local/lib/
+          # Copy system libs from container (custom builds link against system libs)
+          docker cp "$CONTAINER_ID:/usr/lib" /tmp/sys-libs
+          sudo cp -an /tmp/sys-libs/. /usr/lib/
+          docker rm "$CONTAINER_ID"
+          sudo ldconfig
+          ffmpeg -version
+          echo "--- Filter check ---"
+          ffmpeg -filters 2>/dev/null | grep -c '^\s' || true
+          ffmpeg -filters 2>/dev/null | grep -i drawtext || echo "drawtext: NOT FOUND"
+          echo "--- Filters with hardware acceleration ---"
+          ffmpeg -filters 2>/dev/null | grep -iE 'opencl|vulkan|vaapi|ladspa|lv2|cuda' || true
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Create virtual environment
+        run: uv venv
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Generate versioned bindings
+        run: |
+          source .venv/bin/activate
+          export PYTHONPATH="$PWD/src:$PYTHONPATH"
+          export LD_LIBRARY_PATH="/usr/local/lib:/usr/lib/x86_64-linux-gnu${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+          FFMPEG_MAJOR=${{ matrix.ffmpeg-version }}
+          OUTPATH="packages/v${FFMPEG_MAJOR}/src/ffmpeg"
+          echo "Generating bindings for FFmpeg v${FFMPEG_MAJOR} -> ${OUTPATH}"
+          python -m scripts.code_gen.cli generate --outpath "$OUTPATH" --rebuild
+
+      - name: Upload generated bindings
+        uses: actions/upload-artifact@v4
+        with:
+          name: ffmpeg-v${{ matrix.ffmpeg-version }}-bindings
+          path: packages/v${{ matrix.ffmpeg-version }}/src/ffmpeg/
+          retention-days: 30
+
+      - name: Upload version cache
+        uses: actions/upload-artifact@v4
+        with:
+          name: ffmpeg-v${{ matrix.ffmpeg-version }}-cache
+          path: packages/core/src/ffmpeg_core/common/cache/list/*_${{ matrix.ffmpeg-version }}_*.json
+          retention-days: 30
+
+      - name: Verify generated code imports
+        run: |
+          source .venv/bin/activate
+          uv pip install -e packages/core -e "packages/v${{ matrix.ffmpeg-version }}[dev]"
+          FFMPEG_MAJOR=${{ matrix.ffmpeg-version }}
+          python -c "
+          import ffmpeg
+          from ffmpeg import filters, sources
+          from ffmpeg.codecs import encoders, decoders
+          from ffmpeg.formats import muxers, demuxers
+          from ffmpeg.streams import audio, video
+          print('All v${FFMPEG_MAJOR} submodules import OK')
+          "
+
+      - name: Show generated file stats
+        run: |
+          FFMPEG_MAJOR=${{ matrix.ffmpeg-version }}
+          echo "## Generated files for v${FFMPEG_MAJOR}" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          find packages/v${FFMPEG_MAJOR}/src/ffmpeg/ -name '*.py' | head -20 >> $GITHUB_STEP_SUMMARY
+          find packages/v${FFMPEG_MAJOR}/src/ffmpeg/ -name '*.py' -exec wc -l {} + 2>/dev/null | tail -1 >> $GITHUB_STEP_SUMMARY || true
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+  create-pr:
+    needs: generate
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.create_pr == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: v4
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download all generated bindings
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ffmpeg-v*-bindings
+          path: /tmp/artifacts
+
+      - name: Download all version caches
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ffmpeg-v*-cache
+          path: /tmp/artifacts
+
+      - name: Apply generated files
+        run: |
+          for ver in 5 6 7 8; do
+            bindings_dir="/tmp/artifacts/ffmpeg-v${ver}-bindings"
+            cache_dir="/tmp/artifacts/ffmpeg-v${ver}-cache"
+            if [ -d "$bindings_dir" ]; then
+              echo "Applying v${ver} bindings..."
+              mkdir -p "packages/v${ver}/src/ffmpeg"
+              cp -r "$bindings_dir/." "packages/v${ver}/src/ffmpeg/"
+            fi
+            if [ -d "$cache_dir" ]; then
+              echo "Applying v${ver} cache..."
+              mkdir -p "packages/core/src/ffmpeg_core/common/cache/list"
+              cp "$cache_dir"/*.json "packages/core/src/ffmpeg_core/common/cache/list/" 2>/dev/null || true
+            fi
+          done
+
+      - name: Check for changes
+        id: check-changes
+        run: |
+          git diff --stat
+          if git diff --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected — bindings are already up to date."
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected."
+          fi
+
+      - name: Create PR with updated bindings
+        if: steps.check-changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          BRANCH="chore/regen-bindings-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b "$BRANCH"
+          git add -A
+          git commit -m "chore: regenerate FFmpeg bindings for v5/v6/v7/v8"
+          git push origin "$BRANCH"
+          gh pr create \
+            --base v4 \
+            --head "$BRANCH" \
+            --title "chore: regenerate FFmpeg bindings" \
+            --body "Auto-generated by [CI CodeGen workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).
+
+          Updates FFmpeg bindings for v5, v6, v7, v8 using pre-built Docker images with hardware filter support (VAAPI, OpenCL, etc.)."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

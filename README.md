@@ -37,26 +37,50 @@
 - **Partial Evaluation:** Enhance the flexibility of filter graphs by enabling partial evaluation, allowing for modular construction and reuse.
 - **Media File Analysis:** Built-in support for analyzing media files using FFmpeg's ffprobe utility, providing detailed metadata extraction with both dictionary and dataclass interfaces.
 
-### Planned Features
+### Multi-Version FFmpeg Support
 
-Please note that the following features are under consideration or development for future releases:
+typed-ffmpeg v4 ships separate PyPI packages for each FFmpeg major version. Install only the bindings you need:
 
-- **Extended FFmpeg Version Support:** While `typed-ffmpeg` is currently built with FFmpeg version 6.0 in mind, we are working to ensure compatibility across different FFmpeg versions. Feedback and issue reports are welcome to improve version support.
-- **Additional Filter Support:** We aim to expand the range of FFmpeg filters supported by `typed-ffmpeg`. Continuous updates will be made to include more complex and varied filters.
+| Package | FFmpeg version |
+|---------|----------------|
+| `typed-ffmpeg` | Latest (v8) — recommended for most users |
+| `typed-ffmpeg-v5` | FFmpeg 5.x |
+| `typed-ffmpeg-v6` | FFmpeg 6.x |
+| `typed-ffmpeg-v7` | FFmpeg 7.x |
+| `typed-ffmpeg-v8` | FFmpeg 8.x |
+
+All packages expose the same `ffmpeg` namespace, so your code works identically regardless of which package you install.
+
+To match your installed FFmpeg version:
+
+```bash
+ffmpeg -version | head -1        # e.g. ffmpeg version 6.1.1
+pip install typed-ffmpeg-v6      # install the matching package
+```
+
+See the [v4 Package Architecture](https://livingbio.github.io/typed-ffmpeg/v4-packages/) docs for details and the [Migration Guide](https://livingbio.github.io/typed-ffmpeg/migration/v3-to-v4/) if you are upgrading from typed-ffmpeg 3.x.
 
 ---
 
 ## Installation
 
-To install `typed-ffmpeg`, simply use pip:
+Install the latest version (bindings for FFmpeg 8.x):
 
 ```bash
 pip install typed-ffmpeg
 ```
 
+Or install bindings for a specific FFmpeg version:
+
+```bash
+pip install typed-ffmpeg-v6   # FFmpeg 6.x
+pip install typed-ffmpeg-v7   # FFmpeg 7.x
+pip install typed-ffmpeg-v8   # FFmpeg 8.x
+```
+
 Note: FFmpeg must be installed on your system.
 
-Note: If you need to install `ffmpeg-python` at the same time, use `pip install typed-ffmpeg-compatible` to prevent conflicts with the module name.​
+Note: If you need to install `ffmpeg-python` at the same time, use `pip install typed-ffmpeg-compatible` to prevent conflicts with the module name.
 
 ### Visualization Support
 

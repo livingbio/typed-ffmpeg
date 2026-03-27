@@ -47,18 +47,20 @@ def _parse_list(text: str) -> list[FFMpegFormat]:
 
 def _extract_list(
     type: Literal["muxers", "demuxers", "formats"],
+    ffmpeg_binary: str = "ffmpeg",
 ) -> list[FFMpegFormat]:
     """
     Get the help text for all formats.
 
     Args:
         type: The type of format
+        ffmpeg_binary: Path or name of the ffmpeg executable.
 
     Returns:
         A list of formats
 
     """
-    return _parse_list(run_ffmpeg_command([f"-{type}"]))
+    return _parse_list(run_ffmpeg_command([f"-{type}"], ffmpeg_binary=ffmpeg_binary))
 
 
 def _parse_format(text: str) -> list[FFMpegAVOption]:
@@ -98,6 +100,7 @@ def _parse_format(text: str) -> list[FFMpegAVOption]:
 def _extract_format(
     format: str,
     type: Literal["muxer", "demuxer"],
+    ffmpeg_binary: str = "ffmpeg",
 ) -> list[FFMpegAVOption]:
     """
     Get the help text for a format option.
@@ -105,17 +108,23 @@ def _extract_format(
     Args:
         format: The format name
         type: The type of format
+        ffmpeg_binary: Path or name of the ffmpeg executable.
 
     Returns:
         A list of format options
 
     """
-    return _parse_format(run_ffmpeg_command(["-h", f"{type}={format}"]))
+    return _parse_format(
+        run_ffmpeg_command(["-h", f"{type}={format}"], ffmpeg_binary=ffmpeg_binary)
+    )
 
 
-def extract() -> list[FFMpegFormat]:
+def extract(ffmpeg_binary: str = "ffmpeg") -> list[FFMpegFormat]:
     """
     Extract all format information including muxers and demuxers with their options.
+
+    Args:
+        ffmpeg_binary: Path or name of the ffmpeg executable.
 
     Returns:
         A list of format instances (muxers and demuxers) with their associated options
@@ -123,8 +132,8 @@ def extract() -> list[FFMpegFormat]:
     """
     output: list[FFMpegFormat] = []
 
-    for codec in _extract_list("muxers"):
-        options = _extract_format(codec.name, "muxer")
+    for codec in _extract_list("muxers", ffmpeg_binary=ffmpeg_binary):
+        options = _extract_format(codec.name, "muxer", ffmpeg_binary=ffmpeg_binary)
         output.append(
             FFMpegMuxer(
                 name=codec.name,
@@ -134,8 +143,8 @@ def extract() -> list[FFMpegFormat]:
             )
         )
 
-    for codec in _extract_list("demuxers"):
-        options = _extract_format(codec.name, "demuxer")
+    for codec in _extract_list("demuxers", ffmpeg_binary=ffmpeg_binary):
+        options = _extract_format(codec.name, "demuxer", ffmpeg_binary=ffmpeg_binary)
         output.append(
             FFMpegDemuxer(
                 name=codec.name,

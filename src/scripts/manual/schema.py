@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass
 
-from ffmpeg.common.serialize import Serializable
+from ffmpeg_core.common.serialize import Serializable
 
 
 @dataclass(kw_only=True)

@@ -1,6 +1,6 @@
 """Schema definitions for parsing FFmpeg filter documentation."""
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from functools import cached_property
 
 from bs4 import BeautifulSoup, Tag
@@ -30,6 +30,14 @@ class FilterDocument:
     """
     The names of the filter (e.g. "acue")
     """
+    _texi_description: str | None = field(default=None, repr=False)
+    """
+    Description parsed from Texinfo source (overrides HTML-based description).
+    """
+    _texi_parameter_descs: dict[str, str] | None = field(default=None, repr=False)
+    """
+    Parameter descriptions parsed from Texinfo source (overrides HTML-based parsing).
+    """
 
     @property
     def url(self) -> str:
@@ -51,6 +59,9 @@ class FilterDocument:
             The description of the filter document
 
         """
+        if self._texi_description is not None:
+            return self._texi_description
+
         from .helpers import convert_html_to_markdown
 
         return convert_html_to_markdown(self.body)
@@ -64,6 +75,9 @@ class FilterDocument:
             The parameter descriptions of the filter document
 
         """
+        if self._texi_parameter_descs is not None:
+            return self._texi_parameter_descs
+
         from .helpers import parse_parameters
 
         soup = BeautifulSoup(self.body, "html.parser")
