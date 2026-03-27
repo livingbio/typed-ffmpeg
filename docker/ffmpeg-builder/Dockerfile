@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y \
     frei0r-plugins-dev \
     # Audio: LADSPA, LV2, BS2B, Rubberband, SOFA (sofalizer)
     ladspa-sdk \
-    lv2-dev lilv-dev \
+    lv2-dev liblilv-dev \
     libbs2b-dev \
     librubberband-dev \
     libmysofa-dev \
