@@ -146,47 +146,47 @@ RUN EXTRA_FLAGS=""; \
     && make -j$(nproc) \
     && make install
 
-# Runtime stage
+# Runtime stage — install only runtime libs (not -dev), set LD_LIBRARY_PATH
 FROM ubuntu:${UBUNTU_VERSION}
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64
 
+# Required runtime libraries
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
-    libx264-dev libx265-dev libvpx-dev libmp3lame-dev libopus-dev \
-    libvorbis-dev libtheora-dev libwebp-dev libxvidcore-dev \
-    libopenjp2-7-dev libopencore-amrnb-dev libopencore-amrwb-dev \
-    libass-dev libfreetype6-dev libfontconfig1-dev libfribidi-dev \
-    libzimg-dev libaom-dev \
-    libssl-dev libsrt-openssl-dev libzmq3-dev \
-    libva-dev libdrm-dev libdrm2 ocl-icd-opencl-dev \
-    libvulkan1 libxcb1 \
+    libx264-164 libx265-199 libnuma1 libvpx9 libmp3lame0 \
+    libopus0 libvorbis0a libvorbisenc2 libtheora0 libwebp7 libxvidcore4 \
+    libopenjp2-7 libopencore-amrnb0 libopencore-amrwb0 \
+    libass9 libfreetype6 libfontconfig1 libfribidi0 fonts-dejavu-core \
+    libzimg2 libvidstab1.1 libaom3 \
+    libssl3t64 libsrt1.5-openssl libzmq5 \
+    libxml2 libbluray2 libfdk-aac2 \
+    libva2 libva-drm2 libdrm2 ocl-icd-libopencl1 \
+    libvulkan1 libxcb1 libxcb-shm0 libxcb-xfixes0 \
     libbs2b0 librubberband2 libmysofa1 liblilv-0-0 \
     frei0r-plugins \
     libgsm1 libspeex1 libtwolame0 libshine3 \
-    libcodec2-1.0 libsnappy1v5 libbluray2 libfdk-aac2 \
+    libcodec2-1.0 libsnappy1v5 \
     libzvbi0 librsvg2-2 \
-    && apt-get install -y --no-install-recommends \
-        libvidstab-dev libdav1d-dev libsvtav1-dev libharfbuzz-dev \
-        libshaderc-dev flite1-dev librav1e0 libjxl0.10 2>/dev/null || true \
     && rm -rf /var/lib/apt/lists/*
 
-COPY --from=build /usr/local/bin/ffmpeg /usr/local/bin/ffmpeg
+# Optional runtime libs — install each separately so one failure doesn't block others
+RUN apt-get update \
+    && for pkg in libdav1d7 libsvtav1enc1d1 libharfbuzz0b \
+                  libshaderc1 libflite1 librav1e0 libjxl0.10; do \
+         apt-get install -y --no-install-recommends "$pkg" 2>/dev/null || true; \
+       done \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=build /usr/local/bin/ffmpeg  /usr/local/bin/ffmpeg
 COPY --from=build /usr/local/bin/ffprobe /usr/local/bin/ffprobe
-COPY --from=build /usr/local/lib /usr/local/lib
+COPY --from=build /usr/local/lib         /usr/local/lib
+RUN ldconfig
 
-# Bundle all transitive shared library dependencies into /usr/local/lib
-RUN for pass in 1 2 3 4 5; do \
-      { ldd /usr/local/bin/ffmpeg /usr/local/bin/ffprobe 2>/dev/null; \
-        find /usr/local/lib -name '*.so*' -not -type d -exec ldd {} \; 2>/dev/null; \
-      } | awk '/=> \// {print $3}' | sort -u \
-      | xargs -I{} cp -n {} /usr/local/lib/ 2>/dev/null || true; \
-      ldconfig; \
-    done
-
-# Validate ffmpeg starts correctly (catches missing runtime library errors at build time)
-RUN /usr/local/bin/ffmpeg -version 2>&1 | head -3 && \
-    /usr/local/bin/ffmpeg -muxers 2>&1 | grep "3g2" || \
-    { echo "ERROR: ffmpeg validation failed"; /usr/local/bin/ffmpeg -version; exit 1; }
+# Validate: ffmpeg must start and muxer descriptions must not be empty
+RUN ffmpeg -version 2>&1 | head -3 \
+    && ffmpeg -muxers 2>&1 | grep "3g2" \
+    || { echo "ERROR: ffmpeg validation failed"; ffmpeg -version 2>&1; exit 1; }
 
 ENTRYPOINT ["/usr/local/bin/ffmpeg"]
