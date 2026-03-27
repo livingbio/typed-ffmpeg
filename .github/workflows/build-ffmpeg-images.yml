@@ -2,7 +2,7 @@ name: Build FFmpeg Docker Images
 
 on:
   push:
-    branches: [main, v4, feature/per-version-dockerfiles]
+    branches: [main, v4]
     paths:
       - 'docker/ffmpeg-builder/Dockerfile.*'
       - '.github/workflows/build-ffmpeg-images.yml'
