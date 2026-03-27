@@ -52,7 +52,9 @@ def gen_filter_info(ffmpeg_filter: FFMpegFilter) -> FFMpegFilter:
         # currently we only use filter_doc's url info
         return replace(ffmpeg_filter, ref=filter_doc.url)
     except ValueError:
-        logging.warning(f"No documentation found for filter {ffmpeg_filter.name!r}, including without doc URL")
+        logging.warning(
+            f"No documentation found for filter {ffmpeg_filter.name!r}, including without doc URL"
+        )
         return ffmpeg_filter
 
 
