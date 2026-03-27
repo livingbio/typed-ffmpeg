@@ -75,18 +75,20 @@ def load(cls: type[T], id: str) -> T:
     if not path.exists():
         data_cache = _get_data_cache_path()
         if data_cache is not None:
-            path = data_cache / f"{cls.__name__}/{id}.json"
+            data_path = data_cache / f"{cls.__name__}/{id}.json"
+            if data_path.exists():
+                path = data_path
 
-    if not path.exists():
-        raise ImportError(
+    try:
+        with path.open() as ifile:
+            obj = loads(ifile.read())
+            return obj
+    except FileNotFoundError:
+        raise FileNotFoundError(
             f"Cache file not found: {cls.__name__}/{id}.json. "
             "Install the parse extra for CLI parsing and Python compilation support: "
             "pip install ffmpeg-core[parse]"
-        )
-
-    with path.open() as ifile:
-        obj = loads(ifile.read())
-        return obj
+        ) from None
 
 
 def save(obj: T, id: str) -> None:
