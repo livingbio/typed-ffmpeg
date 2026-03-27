@@ -44,6 +44,7 @@ RUN apt-get update && apt-get install -y \
     # Additional codecs
     libgsm1-dev libspeex-dev libtwolame-dev libshine-dev \
     libcodec2-dev libsnappy-dev libbluray-dev libfdk-aac-dev \
+    libjxl-dev librsvg2-dev libzvbi-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Optional packages that may not exist on all Ubuntu versions
@@ -100,6 +101,9 @@ RUN EXTRA_FLAGS=""; \
     pkg-config --exists libbluray  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libbluray"; \
     pkg-config --exists fdk-aac    && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libfdk-aac"; \
     pkg-config --exists rav1e      && EXTRA_FLAGS="$EXTRA_FLAGS --enable-librav1e"; \
+    pkg-config --exists libjxl     && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libjxl"; \
+    pkg-config --exists librsvg-2.0 && EXTRA_FLAGS="$EXTRA_FLAGS --enable-librsvg"; \
+    pkg-config --exists zvbi       && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libzvbi"; \
     EXTRA_FLAGS="$EXTRA_FLAGS --enable-postproc"; \
     echo "Extra configure flags: $EXTRA_FLAGS"; \
     ./configure \
@@ -161,9 +165,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     frei0r-plugins \
     libgsm1 libspeex1 libtwolame0 libshine3 \
     libcodec2-1.0 libsnappy1v5 libbluray2 libfdk-aac2 \
+    libzvbi0 librsvg2-2 \
     && apt-get install -y --no-install-recommends \
         libvidstab-dev libdav1d-dev libsvtav1-dev libharfbuzz-dev \
-        libshaderc-dev flite1-dev librav1e-dev 2>/dev/null || true \
+        libshaderc-dev flite1-dev librav1e-dev libjxl-dev 2>/dev/null || true \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=build /usr/local/bin/ffmpeg /usr/local/bin/ffmpeg
