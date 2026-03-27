@@ -43,29 +43,29 @@ from .streams.audio import AudioStream
 import re
 
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 def abuffer(
-    
 
-    
+
+
 
 
     *,
     time_base: Rational = Default('0/1'),sample_rate: Int = Default('0'),sample_fmt: Sample_fmt = Default('none'),channel_layout: String = Default(None),channels: Int = Default('0'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
-    
+
 Buffer audio frames, and make them available to the filter chain.
 
 This source is mainly intended for a programmatic use, in particular
@@ -89,100 +89,100 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#abuffer)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='abuffer', typings_input=(), typings_output=('audio',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "time_base": time_base,
-            
+
             "sample_rate": sample_rate,
-            
+
             "sample_fmt": sample_fmt,
-            
+
             "channel_layout": channel_layout,
-            
+
             "channels": channels,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.audio(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def aevalsrc(
-    
 
-    
+
+
 
 
     *,
     exprs: String = Default(None),nb_samples: Int = Default('1024'),sample_rate: String = Default('44100'),duration: Duration = Default('-0.000001'),channel_layout: String = Default(None),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
-    
+
 Generate an audio signal specified by an expression.
 
 This source accepts in input one or more expressions (one for each
@@ -207,60 +207,60 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aevalsrc)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='aevalsrc', typings_input=(), typings_output=('audio',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "exprs": exprs,
-            
+
             "nb_samples": nb_samples,
-            
+
             "sample_rate": sample_rate,
-            
+
             "duration": duration,
-            
+
             "channel_layout": channel_layout,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.audio(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 def afdelaysrc(
-    
 
-    
+
+
 
 
     *,
     delay: Double = Default('0'),sample_rate: Int = Default('44100'),nb_samples: Int = Default('1024'),taps: Int = Default('0'),channel_layout: String = Default('stereo'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
-    
+
 Generate a fractional delay FIR coefficients.
 
 The resulting stream can be used with afir filter for filtering the audio signal.
@@ -283,62 +283,62 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afdelaysrc)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='afdelaysrc', typings_input=(), typings_output=('audio',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "delay": delay,
-            
+
             "sample_rate": sample_rate,
-            
+
             "nb_samples": nb_samples,
-            
+
             "taps": taps,
-            
+
             "channel_layout": channel_layout,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.audio(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
 def afireqsrc(
-    
 
-    
+
+
 
 
     *,
     preset: Int| Literal["custom","flat","acoustic","bass","beats","classic","clear","deep bass","dubstep","electronic","hardstyle","hip-hop","jazz","metal","movie","pop","r&b","rock","vocal booster"] | Default = Default('flat'),gains: String = Default('0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0'),bands: String = Default('25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000'),taps: Int = Default('4096'),sample_rate: Int = Default('44100'),nb_samples: Int = Default('1024'),interp: Int| Literal["linear","cubic"] | Default = Default('linear'),phase: Int| Literal["linear","min"] | Default = Default('min'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
-    
+
 Generate a FIR equalizer coefficients.
 
 The resulting stream can be used with afir filter for filtering the audio signal.
@@ -364,62 +364,62 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afireqsrc)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='afireqsrc', typings_input=(), typings_output=('audio',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "preset": preset,
-            
+
             "gains": gains,
-            
+
             "bands": bands,
-            
+
             "taps": taps,
-            
+
             "sample_rate": sample_rate,
-            
+
             "nb_samples": nb_samples,
-            
+
             "interp": interp,
-            
+
             "phase": phase,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.audio(0)
 
 
-    
 
-    
 
-    
+
+
+
 def afirsrc(
-    
 
-    
+
+
 
 
     *,
     taps: Int = Default('1025'),frequency: String = Default('0 1'),magnitude: String = Default('1 1'),phase: String = Default('0 0'),sample_rate: Int = Default('44100'),nb_samples: Int = Default('1024'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('blackman'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
-    
+
 Generate a FIR coefficients using frequency sampling method.
 
 The resulting stream can be used with afir filter for filtering the audio signal.
@@ -444,78 +444,78 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afirsrc)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='afirsrc', typings_input=(), typings_output=('audio',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "taps": taps,
-            
+
             "frequency": frequency,
-            
+
             "magnitude": magnitude,
-            
+
             "phase": phase,
-            
+
             "sample_rate": sample_rate,
-            
+
             "nb_samples": nb_samples,
-            
+
             "win_func": win_func,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.audio(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 def ainterleave(
-    
 
-    
+
+
     *streams: AudioStream,
-    
 
 
-    
+
+
     nb_inputs: Int = Auto('len(streams)'),duration: Int| Literal["longest","shortest","first"] | Default = Default('longest'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
-    
+
 Temporally interleave frames from several inputs.
 
 interleave works with video inputs, ainterleave with audio.
@@ -554,58 +554,58 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interleave)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='ainterleave', typings_input='[StreamType.audio] * int(nb_inputs)', typings_output=('audio',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "nb_inputs": nb_inputs,
-            
+
             "duration": duration,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.audio(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
 def allrgb(
-    
 
-    
+
+
 
 
     *,
     rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 The allrgb source returns frames of size 4096x4096 of all rgb colors.
 
 The allyuv source returns frames of size 4096x4096 of all yuv colors.
@@ -666,52 +666,52 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='allrgb', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "sar": sar,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
+
+
+
 def allyuv(
-    
 
-    
+
+
 
 
     *,
     rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 The allrgb source returns frames of size 4096x4096 of all rgb colors.
 
 The allyuv source returns frames of size 4096x4096 of all yuv colors.
@@ -772,60 +772,60 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='allyuv', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "sar": sar,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
 def amerge(
-    
 
-    
+
+
     *streams: AudioStream,
-    
 
 
-    
+
+
     inputs: Int = Auto('len(streams)'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
-    
+
 Merge two or more audio streams into a single multi-channel stream.
 
 The filter accepts the following options:
@@ -842,54 +842,54 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amerge)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='amerge', typings_input='[StreamType.audio] * int(inputs)', typings_output=('audio',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "inputs": inputs,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.audio(0)
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 def amix(
-    
 
-    
+
+
     *streams: AudioStream,
-    
 
 
-    
+
+
     inputs: Int = Auto('len(streams)'),duration: Int| Literal["longest","shortest","first"] | Default = Default('longest'),dropout_transition: Float = Default('2'),weights: String = Default('1 1'),normalize: Boolean = Default('true'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
-    
+
 Mixes multiple audio inputs into a single output.
 
 Note that this filter only supports float samples (the amerge
@@ -915,64 +915,64 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amix)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='amix', typings_input='[StreamType.audio] * int(inputs)', typings_output=('audio',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "inputs": inputs,
-            
+
             "duration": duration,
-            
+
             "dropout_transition": dropout_transition,
-            
+
             "weights": weights,
-            
+
             "normalize": normalize,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.audio(0)
 
 
-    
 
-    
 
-    
+
+
+
 def amovie(
-    
 
-    
+
+
 
 
     *,
     filename: String = Default(None),format_name: String = Default(None),stream_index: Int = Default('-1'),seek_point: Double = Default('0'),streams: String = Default(None),loop: Int = Default('1'),discontinuity: Duration = Default('0'),dec_threads: Int = Default('0'),format_opts: Dictionary = Default(None),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> FilterNode:
     """
-    
+
 This is the same as movie source, except it selects an audio
 stream by default.
 
 
 Args:
-    filename: 
+    filename:
     format_name: set format name
     stream_index: set stream index (from -1 to INT_MAX) (default -1)
     seek_point: set seekpoint (seconds) (from 0 to 9.22337e+12) (default 0)
@@ -991,77 +991,77 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amovie)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='amovie', typings_input="[StreamType.audio] * len(streams.split('+'))", typings_output="[StreamType.audio] * len(streams.split('+'))"),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "filename": filename,
-            
+
             "format_name": format_name,
-            
+
             "stream_index": stream_index,
-            
+
             "seek_point": seek_point,
-            
+
             "streams": streams,
-            
+
             "loop": loop,
-            
+
             "discontinuity": discontinuity,
-            
+
             "dec_threads": dec_threads,
-            
+
             "format_opts": format_opts,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
 
     return filter_node
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
 def anoisesrc(
-    
 
-    
+
+
 
 
     *,
     sample_rate: Int = Default('48000'),amplitude: Double = Default('1'),duration: Duration = Default('0'),color: Int| Literal["white","pink","brown","blue","violet","velvet"] | Default = Default('white'),seed: Int64 = Default('-1'),nb_samples: Int = Default('1024'),density: Double = Default('0.05'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
-    
+
 Generate a noise audio signal.
 
 The filter accepts the following options:
@@ -1084,64 +1084,64 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anoisesrc)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='anoisesrc', typings_input=(), typings_output=('audio',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "sample_rate": sample_rate,
-            
+
             "amplitude": amplitude,
-            
+
             "duration": duration,
-            
+
             "color": color,
-            
+
             "seed": seed,
-            
+
             "nb_samples": nb_samples,
-            
+
             "density": density,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.audio(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 def anullsrc(
-    
 
-    
+
+
 
 
     *,
     channel_layout: String = Default('stereo'),sample_rate: String = Default('44100'),nb_samples: Int = Default('1024'),duration: Duration = Default('-0.000001'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
-    
+
 The null audio source, return unprocessed audio frames. It is mainly useful
 as a template and to be employed in analysis / debugging tools, or as
 the source for filters which ignore the input data (for example the sox
@@ -1164,114 +1164,114 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anullsrc)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='anullsrc', typings_input=(), typings_output=('audio',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "channel_layout": channel_layout,
-            
+
             "sample_rate": sample_rate,
-            
+
             "nb_samples": nb_samples,
-            
+
             "duration": duration,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.audio(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def astreamselect(
-    
 
-    
+
+
     *streams: AudioStream,
-    
 
 
-    
+
+
     inputs: Int = Auto('len(streams)'),map: String = Default(None),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> FilterNode:
     """
-    
+
 Select video or audio streams.
 
 The filter accepts the following options:
@@ -1290,87 +1290,87 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#streamselect)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='astreamselect', typings_input='[StreamType.audio] * int(inputs)', typings_output="[StreamType.audio] * len(re.findall(r'\\d+', str(map)))"),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "inputs": inputs,
-            
+
             "map": map,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
 
     return filter_node
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def avsynctest(
-    
 
-    
+
+
 
 
     *,
     size: Image_size = Default('hd720'),framerate: Video_rate = Default('30'),samplerate: Int = Default('44100'),amplitude: Float = Default('0.7'),period: Int = Default('3'),delay: Int = Default('0'),cycle: Boolean = Default('false'),duration: Duration = Default('0'),fg: Color = Default('white'),bg: Color = Default('black'),ag: Color = Default('gray'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> tuple[
-    
-        
+
+
             AudioStream,
-        
-    
-        
+
+
+
             VideoStream,
-        
-    
+
+
 ]:
     """
-    
+
 Generate an Audio/Video Sync Test.
 
 Generated stream periodically shows flash video frame and emits beep in audio.
@@ -1401,116 +1401,116 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#avsynctest)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='avsynctest', typings_input=(), typings_output=('audio', 'video')),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "size": size,
-            
+
             "framerate": framerate,
-            
+
             "samplerate": samplerate,
-            
+
             "amplitude": amplitude,
-            
+
             "period": period,
-            
+
             "delay": delay,
-            
+
             "cycle": cycle,
-            
+
             "duration": duration,
-            
+
             "fg": fg,
-            
+
             "bg": bg,
-            
+
             "ag": ag,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return (
-        
-            
+
+
                 filter_node.audio(0),
-            
-        
-            
+
+
+
                 filter_node.video(0),
-            
-        
+
+
     )
 
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def bm3d(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     sigma: Float = Default('1'),block: Int = Default('16'),bstep: Int = Default('4'),group: Int = Default('1'),range: Int = Default('9'),mstep: Int = Default('1'),thmse: Float = Default('0'),hdthr: Float = Default('2.7'),estim: Int| Literal["basic","final"] | Default = Default('basic'),ref: Boolean = Default('false'),planes: Int = Default('7'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Denoise frames using Block-Matching 3D algorithm.
 
 The filter accepts the following options.
@@ -1538,7 +1538,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bm3d)
 
     """
-    
+
 
 
     if timeline_options is None and enable is not None:
@@ -1546,71 +1546,71 @@ References:
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='bm3d', typings_input='[StreamType.video] + [StreamType.video] if ref else []', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "sigma": sigma,
-            
+
             "block": block,
-            
+
             "bstep": bstep,
-            
+
             "group": group,
-            
+
             "range": range,
-            
+
             "mstep": mstep,
-            
+
             "thmse": thmse,
-            
+
             "hdthr": hdthr,
-            
+
             "estim": estim,
-            
+
             "ref": ref,
-            
+
             "planes": planes,
-            
+
         },
         extra_options,
-        
-        
+
+
         timeline_options,
-        
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 def buffer(
-    
 
-    
+
+
 
 
     *,
     width: Int = Default('0'),video_size: Image_size = Default(None),height: Int = Default('0'),pix_fmt: Pix_fmt = Default('none'),sar: Rational = Default('0/1'),time_base: Rational = Default('0/1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Buffer video frames, and make them available to the filter chain.
 
 This source is mainly intended for a programmatic use, in particular
@@ -1635,66 +1635,66 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#buffer)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='buffer', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "width": width,
-            
+
             "video_size": video_size,
-            
+
             "height": height,
-            
+
             "pix_fmt": pix_fmt,
-            
+
             "sar": sar,
-            
+
             "time_base": time_base,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
 def cellauto(
-    
 
-    
+
+
 
 
     *,
     filename: String = Default(None),pattern: String = Default(None),rate: Video_rate = Default('25'),size: Image_size = Default(None),rule: Int = Default('110'),random_fill_ratio: Double = Default('0.618034'),random_seed: Int64 = Default('-1'),scroll: Boolean = Default('true'),start_full: Boolean = Default('false'),full: Boolean = Default('true'),stitch: Boolean = Default('true'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Create a pattern generated by an elementary cellular automaton.
 
 The initial state of the cellular automaton can be defined through the
@@ -1729,86 +1729,86 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cellauto)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='cellauto', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "filename": filename,
-            
+
             "pattern": pattern,
-            
+
             "rate": rate,
-            
+
             "size": size,
-            
+
             "rule": rule,
-            
+
             "random_fill_ratio": random_fill_ratio,
-            
+
             "random_seed": random_seed,
-            
+
             "scroll": scroll,
-            
+
             "start_full": start_full,
-            
+
             "full": full,
-            
+
             "stitch": stitch,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
 def color(
-    
 
-    
+
+
 
 
     *,
     color: Color = Default('black'),size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 The allrgb source returns frames of size 4096x4096 of all rgb colors.
 
 The allyuv source returns frames of size 4096x4096 of all yuv colors.
@@ -1871,60 +1871,60 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='color', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "color": color,
-            
+
             "size": size,
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "sar": sar,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 def colorchart(
-    
 
-    
+
+
 
 
     *,
     rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),patch_size: Image_size = Default('64x64'),preset: Int| Literal["reference","skintones"] | Default = Default('reference'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 The allrgb source returns frames of size 4096x4096 of all rgb colors.
 
 The allyuv source returns frames of size 4096x4096 of all yuv colors.
@@ -1987,76 +1987,76 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='colorchart', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "sar": sar,
-            
+
             "patch_size": patch_size,
-            
+
             "preset": preset,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
 def colorspectrum(
-    
 
-    
+
+
 
 
     *,
     size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),type: Int| Literal["black","white","all"] | Default = Default('black'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 The allrgb source returns frames of size 4096x4096 of all rgb colors.
 
 The allyuv source returns frames of size 4096x4096 of all yuv colors.
@@ -2119,64 +2119,64 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='colorspectrum', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "size": size,
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "sar": sar,
-            
+
             "type": type,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
 def concat(
-    
 
-    
+
+
     *streams: FilterableStream,
-    
 
 
-    
+
+
     n: Int = Auto('len(streams) // (int(v) + int(a))'),v: Int = Default('1'),a: Int = Default('0'),unsafe: Boolean = Default('false'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> FilterNode:
     """
-    
+
 Concatenate audio and video streams, joining them together one after the
 other.
 
@@ -2202,95 +2202,95 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#concat)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='concat', typings_input='([StreamType.video]*int(v) + [StreamType.audio]*int(a))*int(n)', typings_output='[StreamType.video]*int(v) + [StreamType.audio]*int(a)'),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "n": n,
-            
+
             "v": v,
-            
+
             "a": a,
-            
+
             "unsafe": unsafe,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
 
     return filter_node
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def decimate(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     cycle: Int = Default('5'),dupthresh: Double = Default('1.1'),scthresh: Double = Default('15'),blockx: Int = Default('32'),blocky: Int = Default('32'),ppsrc: Boolean = Default('false'),chroma: Boolean = Default('true'),mixed: Boolean = Default('false'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Drop duplicated frames at regular intervals.
 
 The filter accepts the following options:
@@ -2314,162 +2314,162 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#decimate)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='decimate', typings_input='[StreamType.video] + ([StreamType.video] if ppsrc else [])', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "cycle": cycle,
-            
+
             "dupthresh": dupthresh,
-            
+
             "scthresh": scthresh,
-            
+
             "blockx": blockx,
-            
+
             "blocky": blocky,
-            
+
             "ppsrc": ppsrc,
-            
+
             "chroma": chroma,
-            
+
             "mixed": mixed,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def fieldmatch(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     order: Int| Literal["auto","bff","tff"] | Default = Default('auto'),mode: Int| Literal["pc","pc_n","pc_u","pc_n_ub","pcn","pcn_ub"] | Default = Default('pc_n'),ppsrc: Boolean = Default('false'),field: Int| Literal["auto","bottom","top"] | Default = Default('auto'),mchroma: Boolean = Default('true'),y0: Int = Default('0'),scthresh: Double = Default('12'),combmatch: Int| Literal["none","sc","full"] | Default = Default('sc'),combdbg: Int| Literal["none","pcn","pcnub"] | Default = Default('none'),cthresh: Int = Default('9'),chroma: Boolean = Default('false'),blockx: Int = Default('16'),blocky: Int = Default('16'),combpel: Int = Default('80'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Field matching filter for inverse telecine. It is meant to reconstruct the
 progressive frames from a telecined stream. The filter does not drop duplicated
 frames, so to achieve a complete inverse telecine fieldmatch needs to be
@@ -2527,112 +2527,112 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldmatch)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='fieldmatch', typings_input='[StreamType.video] + [StreamType.video] if ppsrc else []', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "order": order,
-            
+
             "mode": mode,
-            
+
             "ppsrc": ppsrc,
-            
+
             "field": field,
-            
+
             "mchroma": mchroma,
-            
+
             "y0": y0,
-            
+
             "scthresh": scthresh,
-            
+
             "combmatch": combmatch,
-            
+
             "combdbg": combdbg,
-            
+
             "cthresh": cthresh,
-            
+
             "chroma": chroma,
-            
+
             "blockx": blockx,
-            
+
             "blocky": blocky,
-            
+
             "combpel": combpel,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def gradients(
-    
 
-    
+
+
 
 
     *,
     size: Image_size = Default('640x480'),rate: Video_rate = Default('25'),c0: Color = Default('random'),c1: Color = Default('random'),c2: Color = Default('random'),c3: Color = Default('random'),c4: Color = Default('random'),c5: Color = Default('random'),c6: Color = Default('random'),c7: Color = Default('random'),x0: Int = Default('-1'),y0: Int = Default('-1'),x1: Int = Default('-1'),y1: Int = Default('-1'),nb_colors: Int = Default('2'),seed: Int64 = Default('-1'),duration: Duration = Default('-0.000001'),speed: Float = Default('0.01'),type: Int| Literal["linear","radial","circular","spiral"] | Default = Default('linear'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Generate several gradients.
 
 
@@ -2665,95 +2665,95 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#gradients)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='gradients', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "size": size,
-            
+
             "rate": rate,
-            
+
             "c0": c0,
-            
+
             "c1": c1,
-            
+
             "c2": c2,
-            
+
             "c3": c3,
-            
+
             "c4": c4,
-            
+
             "c5": c5,
-            
+
             "c6": c6,
-            
+
             "c7": c7,
-            
+
             "x0": x0,
-            
+
             "y0": y0,
-            
+
             "x1": x1,
-            
+
             "y1": y1,
-            
+
             "nb_colors": nb_colors,
-            
+
             "seed": seed,
-            
+
             "duration": duration,
-            
+
             "speed": speed,
-            
+
             "type": type,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
 def guided(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     radius: Int = Default('3'),eps: Float = Default('0.01'),mode: Int| Literal["basic","fast"] | Default = Default('basic'),sub: Int = Default('4'),guidance: Int| Literal["off","on"] | Default = Default('off'),planes: Int = Default('1'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Apply guided filter for edge-preserving smoothing, dehazing and so on.
 
 The filter accepts the following options:
@@ -2776,7 +2776,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#guided)
 
     """
-    
+
 
 
     if timeline_options is None and enable is not None:
@@ -2784,61 +2784,61 @@ References:
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='guided', typings_input='[StreamType.video] + [StreamType.video] if guidance else []', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "radius": radius,
-            
+
             "eps": eps,
-            
+
             "mode": mode,
-            
+
             "sub": sub,
-            
+
             "guidance": guidance,
-            
+
             "planes": planes,
-            
+
         },
         extra_options,
-        
-        
+
+
         timeline_options,
-        
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 def haldclutsrc(
-    
 
-    
+
+
 
 
     *,
     level: Int = Default('6'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 The allrgb source returns frames of size 4096x4096 of all rgb colors.
 
 The allyuv source returns frames of size 4096x4096 of all yuv colors.
@@ -2900,58 +2900,58 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='haldclutsrc', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "level": level,
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "sar": sar,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 def headphone(
-    
 
-    
+
+
     *streams: AudioStream,
-    
 
 
-    
+
+
     map: String = Default(None),gain: Float = Default('0'),lfe: Float = Default('0'),type: Int| Literal["time","freq"] | Default = Default('freq'),size: Int = Default('1024'),hrir: Int| Literal["stereo","multich"] | Default = Default('stereo'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
-    
+
 Apply head-related transfer functions (HRTFs) to create virtual
 loudspeakers around the user for binaural listening via headphones.
 The HRIRs are provided via additional streams, for each channel
@@ -2976,66 +2976,66 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#headphone)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='headphone', typings_input="[StreamType.audio] + [StreamType.audio] * (len(str(map).split('|')) - 1) if int(hrir) == 1 else []", typings_output=('audio',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "map": map,
-            
+
             "gain": gain,
-            
+
             "lfe": lfe,
-            
+
             "type": type,
-            
+
             "size": size,
-            
+
             "hrir": hrir,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.audio(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
 def hilbert(
-    
 
-    
+
+
 
 
     *,
     sample_rate: Int = Default('44100'),taps: Int = Default('22051'),nb_samples: Int = Default('1024'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('blackman'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
-    
+
 Generate odd-tap Hilbert transform FIR coefficients.
 
 The resulting stream can be used with afir filter for phase-shifting
@@ -3061,64 +3061,64 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hilbert)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='hilbert', typings_input=(), typings_output=('audio',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "sample_rate": sample_rate,
-            
+
             "taps": taps,
-            
+
             "nb_samples": nb_samples,
-            
+
             "win_func": win_func,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.audio(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
 def hstack(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     inputs: Int = Auto('len(streams)'),shortest: Boolean = Default('false'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Stack input videos horizontally.
 
 All streams must be of same pixel format and of same height.
@@ -3141,54 +3141,54 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hstack)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='hstack', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "inputs": inputs,
-            
+
             "shortest": shortest,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
+
+
+
 def hstack_vaapi(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     inputs: Int = Default('2'),shortest: Boolean = Default('false'),height: Int = Default('0'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Stack input videos horizontally.
 
 This is the VA-API variant of the hstack filter, each input stream may
@@ -3211,82 +3211,82 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hstack_vaapi)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='hstack_vaapi', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "inputs": inputs,
-            
+
             "shortest": shortest,
-            
+
             "height": height,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def interleave(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     nb_inputs: Int = Auto('len(streams)'),duration: Int| Literal["longest","shortest","first"] | Default = Default('longest'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Temporally interleave frames from several inputs.
 
 interleave works with video inputs, ainterleave with audio.
@@ -3325,54 +3325,54 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interleave)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='interleave', typings_input='[StreamType.video] * int(nb_inputs)', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "nb_inputs": nb_inputs,
-            
+
             "duration": duration,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
+
+
+
 def join(
-    
 
-    
+
+
     *streams: AudioStream,
-    
 
 
-    
+
+
     inputs: Int = Auto('len(streams)'),channel_layout: String = Default('stereo'),map: String = Default(None),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
-    
+
 Join multiple input streams into one multi-channel stream.
 
 It accepts the following parameters:
@@ -3391,64 +3391,64 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#join)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='join', typings_input='[StreamType.audio] * int(inputs)', typings_output=('audio',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "inputs": inputs,
-            
+
             "channel_layout": channel_layout,
-            
+
             "map": map,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.audio(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
 def life(
-    
 
-    
+
+
 
 
     *,
     filename: String = Default(None),size: Image_size = Default(None),rate: Video_rate = Default('25'),rule: String = Default('B3/S23'),random_fill_ratio: Double = Default('0.618034'),random_seed: Int64 = Default('-1'),stitch: Boolean = Default('true'),mold: Int = Default('0'),life_color: Color = Default('white'),death_color: Color = Default('black'),mold_color: Color = Default('black'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Generate a life pattern.
 
 This source is based on a generalization of John Conway's life game.
@@ -3487,73 +3487,73 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#life)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='life', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "filename": filename,
-            
+
             "size": size,
-            
+
             "rate": rate,
-            
+
             "rule": rule,
-            
+
             "random_fill_ratio": random_fill_ratio,
-            
+
             "random_seed": random_seed,
-            
+
             "stitch": stitch,
-            
+
             "mold": mold,
-            
+
             "life_color": life_color,
-            
+
             "death_color": death_color,
-            
+
             "mold_color": mold_color,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
+
+
+
 def limitdiff(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     threshold: Float = Default('0.00392157'),elasticity: Float = Default('2'),reference: Boolean = Default('false'),planes: Int = Default('15'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Apply limited difference filter using second and optionally third video stream.
 
 The filter accepts the following options:
@@ -3574,7 +3574,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#limitdiff)
 
     """
-    
+
 
 
     if timeline_options is None and enable is not None:
@@ -3582,77 +3582,77 @@ References:
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='limitdiff', typings_input='[StreamType.video, StreamType.video] + ([StreamType.video] if reference else [])', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "threshold": threshold,
-            
+
             "elasticity": elasticity,
-            
+
             "reference": reference,
-            
+
             "planes": planes,
-            
+
         },
         extra_options,
-        
-        
+
+
         timeline_options,
-        
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def mandelbrot(
-    
 
-    
+
+
 
 
     *,
     size: Image_size = Default('640x480'),rate: Video_rate = Default('25'),maxiter: Int = Default('7189'),start_x: Double = Default('-0.743644'),start_y: Double = Default('-0.131826'),start_scale: Double = Default('3'),end_scale: Double = Default('0.3'),end_pts: Double = Default('400'),bailout: Double = Default('10'),morphxf: Double = Default('0.01'),morphyf: Double = Default('0.0123'),morphamp: Double = Default('0'),outer: Int| Literal["iteration_count","normalized_iteration_count","white","outz"] | Default = Default('normalized_iteration_count'),inner: Int| Literal["black","period","convergence","mincol"] | Default = Default('mincol'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Generate a Mandelbrot set fractal, and progressively zoom towards the
 point specified with start_x and start_y.
 
@@ -3683,94 +3683,94 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mandelbrot)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='mandelbrot', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "size": size,
-            
+
             "rate": rate,
-            
+
             "maxiter": maxiter,
-            
+
             "start_x": start_x,
-            
+
             "start_y": start_y,
-            
+
             "start_scale": start_scale,
-            
+
             "end_scale": end_scale,
-            
+
             "end_pts": end_pts,
-            
+
             "bailout": bailout,
-            
+
             "morphxf": morphxf,
-            
+
             "morphyf": morphyf,
-            
+
             "morphamp": morphamp,
-            
+
             "outer": outer,
-            
+
             "inner": inner,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
 def mergeplanes(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     mapping: Int = Default('-1'),format: Pix_fmt = Default('yuva444p'),map0s: Int = Default('0'),map0p: Int = Default('0'),map1s: Int = Default('0'),map1p: Int = Default('0'),map2s: Int = Default('0'),map2p: Int = Default('0'),map3s: Int = Default('0'),map3p: Int = Default('0'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Merge color channel components from several video streams.
 
 The filter accepts up to 4 input streams, and merge selected input
@@ -3799,81 +3799,81 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mergeplanes)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='mergeplanes', typings_input='[StreamType.video] * int(max(hex(int(mapping))[2::2]))', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "mapping": mapping,
-            
+
             "format": format,
-            
+
             "map0s": map0s,
-            
+
             "map0p": map0p,
-            
+
             "map1s": map1s,
-            
+
             "map1p": map1p,
-            
+
             "map2s": map2s,
-            
+
             "map2p": map2p,
-            
+
             "map3s": map3s,
-            
+
             "map3p": map3p,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
 def mix(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     inputs: Int = Auto('len(streams)'),weights: String = Default('1 1'),scale: Float = Default('0'),planes: Flags = Default('F'),duration: Int| Literal["longest","shortest","first"] | Default = Default('longest'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Mix several video input streams into one video stream.
 
 A description of the accepted options follows.
@@ -3895,7 +3895,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mix)
 
     """
-    
+
 
 
     if timeline_options is None and enable is not None:
@@ -3903,59 +3903,59 @@ References:
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='mix', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "inputs": inputs,
-            
+
             "weights": weights,
-            
+
             "scale": scale,
-            
+
             "planes": planes,
-            
+
             "duration": duration,
-            
+
         },
         extra_options,
-        
-        
+
+
         timeline_options,
-        
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 def movie(
-    
 
-    
+
+
 
 
     *,
     filename: String = Default(None),format_name: String = Default(None),stream_index: Int = Default('-1'),seek_point: Double = Default('0'),streams: String = Default(None),loop: Int = Default('1'),discontinuity: Duration = Default('0'),dec_threads: Int = Default('0'),format_opts: Dictionary = Default(None),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> FilterNode:
     """
-    
+
 Read audio and/or video stream(s) from a movie container.
 
 It accepts the following parameters:
@@ -3981,67 +3981,67 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#movie)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='movie', typings_input="[StreamType.video] * len(streams.split('+'))", typings_output="[StreamType.video] * len(streams.split('+'))"),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "filename": filename,
-            
+
             "format_name": format_name,
-            
+
             "stream_index": stream_index,
-            
+
             "seek_point": seek_point,
-            
+
             "streams": streams,
-            
+
             "loop": loop,
-            
+
             "discontinuity": discontinuity,
-            
+
             "dec_threads": dec_threads,
-            
+
             "format_opts": format_opts,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
 
     return filter_node
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 def mptestsrc(
-    
 
-    
+
+
 
 
     *,
     rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),test: Int| Literal["dc_luma","dc_chroma","freq_luma","freq_chroma","amp_luma","amp_chroma","cbp","mv","ring1","ring2","all"] | Default = Default('all'),max_frames: Int64 = Default('30'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Generate various test patterns, as generated by the MPlayer test filter.
 
 The size of the generated video is fixed, and is 256x256.
@@ -4064,76 +4064,76 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mptestsrc)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='mptestsrc', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "test": test,
-            
+
             "max_frames": max_frames,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def nullsrc(
-    
 
-    
+
+
 
 
     *,
     size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 The allrgb source returns frames of size 4096x4096 of all rgb colors.
 
 The allyuv source returns frames of size 4096x4096 of all yuv colors.
@@ -4195,54 +4195,54 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='nullsrc', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "size": size,
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "sar": sar,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
+
+
+
 def openclsrc(
-    
 
-    
+
+
 
 
     *,
     source: String = Default(None),kernel: String = Default(None),size: Image_size = Default(None),format: Pix_fmt = Default('none'),rate: Video_rate = Default('25'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Generate video using an OpenCL program.
 
 
@@ -4261,70 +4261,70 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#openclsrc)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='openclsrc', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "source": source,
-            
+
             "kernel": kernel,
-            
+
             "size": size,
-            
+
             "format": format,
-            
+
             "rate": rate,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
 def pal100bars(
-    
 
-    
+
+
 
 
     *,
     size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 The allrgb source returns frames of size 4096x4096 of all rgb colors.
 
 The allyuv source returns frames of size 4096x4096 of all yuv colors.
@@ -4386,54 +4386,54 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='pal100bars', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "size": size,
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "sar": sar,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
+
+
+
 def pal75bars(
-    
 
-    
+
+
 
 
     *,
     size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 The allrgb source returns frames of size 4096x4096 of all rgb colors.
 
 The allyuv source returns frames of size 4096x4096 of all yuv colors.
@@ -4495,83 +4495,83 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='pal75bars', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "size": size,
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "sar": sar,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def premultiply(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     planes: Int = Default('15'),inplace: Boolean = Default('false'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Apply alpha premultiply effect to input video stream using first plane
 of second stream as alpha.
 
@@ -4593,7 +4593,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#premultiply)
 
     """
-    
+
 
 
     if timeline_options is None and enable is not None:
@@ -4601,62 +4601,62 @@ References:
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='premultiply', typings_input='[StreamType.video] + [StreamType.video] if inplace else []', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "planes": planes,
-            
+
             "inplace": inplace,
-            
+
         },
         extra_options,
-        
-        
+
+
         timeline_options,
-        
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
 def program_opencl(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     source: String = Default(None),kernel: String = Default(None),inputs: Int = Default('1'),size: Image_size = Default(None),
-    
+
     framesync_options: FFMpegFrameSyncOption | None = None,
     eof_action: str | None = None,
     shortest: bool | None = None,
     repeatlast: bool | None = None,
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Filter video using an OpenCL program.
 
 
@@ -4675,7 +4675,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#program_opencl)
 
     """
-    
+
 
     if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
         framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
@@ -4683,85 +4683,85 @@ References:
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='program_opencl', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "source": source,
-            
+
             "kernel": kernel,
-            
+
             "inputs": inputs,
-            
+
             "size": size,
-            
+
         },
         extra_options,
-        
+
         framesync_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def rgbtestsrc(
-    
 
-    
+
+
 
 
     *,
     size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),complement: Boolean = Default('false'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 The allrgb source returns frames of size 4096x4096 of all rgb colors.
 
 The allyuv source returns frames of size 4096x4096 of all yuv colors.
@@ -4824,138 +4824,138 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='rgbtestsrc', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "size": size,
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "sar": sar,
-            
+
             "complement": complement,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def sierpinski(
-    
 
-    
+
+
 
 
     *,
     size: Image_size = Default('640x480'),rate: Video_rate = Default('25'),seed: Int64 = Default('-1'),jump: Int = Default('100'),type: Int| Literal["carpet","triangle"] | Default = Default('carpet'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Generate a Sierpinski carpet/triangle fractal, and randomly pan around.
 
 This source accepts the following options:
@@ -4976,60 +4976,60 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sierpinski)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='sierpinski', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "size": size,
-            
+
             "rate": rate,
-            
+
             "seed": seed,
-            
+
             "jump": jump,
-            
+
             "type": type,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 def signature(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     detectmode: Int| Literal["off","full","fast"] | Default = Default('off'),nb_inputs: Int = Auto('len(streams)'),filename: String = Default(''),format: Int| Literal["binary","xml"] | Default = Default('binary'),th_d: Int = Default('9000'),th_dc: Int = Default('60000'),th_xh: Int = Default('116'),th_di: Int = Default('0'),th_it: Double = Default('0.5'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Calculates the MPEG-7 Video Signature. The filter can handle more than one
 input. In this case the matching between the inputs can be calculated additionally.
 The filter always passes through the first input. The signature of each stream can
@@ -5057,70 +5057,70 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#signature)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='signature', typings_input='[StreamType.video] * int(nb_inputs)', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "detectmode": detectmode,
-            
+
             "nb_inputs": nb_inputs,
-            
+
             "filename": filename,
-            
+
             "format": format,
-            
+
             "th_d": th_d,
-            
+
             "th_dc": th_dc,
-            
+
             "th_xh": th_xh,
-            
+
             "th_di": th_di,
-            
+
             "th_it": th_it,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 def sinc(
-    
 
-    
+
+
 
 
     *,
     sample_rate: Int = Default('44100'),nb_samples: Int = Default('1024'),hp: Float = Default('0'),lp: Float = Default('0'),phase: Float = Default('50'),beta: Float = Default('-1'),att: Float = Default('120'),round: Boolean = Default('false'),hptaps: Int = Default('0'),lptaps: Int = Default('0'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
-    
+
 Generate a sinc kaiser-windowed low-pass, high-pass, band-pass, or band-reject FIR coefficients.
 
 The resulting stream can be used with afir filter for filtering the audio signal.
@@ -5148,66 +5148,66 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sinc)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='sinc', typings_input=(), typings_output=('audio',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "sample_rate": sample_rate,
-            
+
             "nb_samples": nb_samples,
-            
+
             "hp": hp,
-            
+
             "lp": lp,
-            
+
             "phase": phase,
-            
+
             "beta": beta,
-            
+
             "att": att,
-            
+
             "round": round,
-            
+
             "hptaps": hptaps,
-            
+
             "lptaps": lptaps,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.audio(0)
 
 
-    
 
-    
 
-    
+
+
+
 def sine(
-    
 
-    
+
+
 
 
     *,
     frequency: Double = Default('440'),beep_factor: Double = Default('0'),sample_rate: Int = Default('44100'),duration: Duration = Default('0'),samples_per_frame: String = Default('1024'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> AudioStream:
     """
-    
+
 Generate an audio signal made of a sine wave with amplitude 1/8.
 
 The audio signal is bit-exact.
@@ -5230,60 +5230,60 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sine)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='sine', typings_input=(), typings_output=('audio',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "frequency": frequency,
-            
+
             "beep_factor": beep_factor,
-            
+
             "sample_rate": sample_rate,
-            
+
             "duration": duration,
-            
+
             "samples_per_frame": samples_per_frame,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.audio(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 def smptebars(
-    
 
-    
+
+
 
 
     *,
     size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 The allrgb source returns frames of size 4096x4096 of all rgb colors.
 
 The allyuv source returns frames of size 4096x4096 of all yuv colors.
@@ -5345,54 +5345,54 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='smptebars', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "size": size,
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "sar": sar,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
+
+
+
 def smptehdbars(
-    
 
-    
+
+
 
 
     *,
     size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 The allrgb source returns frames of size 4096x4096 of all rgb colors.
 
 The allyuv source returns frames of size 4096x4096 of all yuv colors.
@@ -5454,80 +5454,80 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='smptehdbars', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "size": size,
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "sar": sar,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def streamselect(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     inputs: Int = Auto('len(streams)'),map: String = Default(None),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> FilterNode:
     """
-    
+
 Select video or audio streams.
 
 The filter accepts the following options:
@@ -5546,69 +5546,69 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#streamselect)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='streamselect', typings_input='[StreamType.video] * int(inputs)', typings_output="[StreamType.video] * len(re.findall(r'\\d+', str(map)))"),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "inputs": inputs,
-            
+
             "map": map,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
 
     return filter_node
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 def testsrc(
-    
 
-    
+
+
 
 
     *,
     size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),decimals: Int = Default('0'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 The allrgb source returns frames of size 4096x4096 of all rgb colors.
 
 The allyuv source returns frames of size 4096x4096 of all yuv colors.
@@ -5671,56 +5671,56 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='testsrc', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "size": size,
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "sar": sar,
-            
+
             "decimals": decimals,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
+
+
+
 def testsrc2(
-    
 
-    
+
+
 
 
     *,
     size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),alpha: Int = Default('255'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 The allrgb source returns frames of size 4096x4096 of all rgb colors.
 
 The allyuv source returns frames of size 4096x4096 of all yuv colors.
@@ -5783,101 +5783,101 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='testsrc2', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "size": size,
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "sar": sar,
-            
+
             "alpha": alpha,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def unpremultiply(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     planes: Int = Default('15'),inplace: Boolean = Default('false'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Apply alpha unpremultiply effect to input video stream using first plane
 of second stream as alpha.
 
@@ -5899,7 +5899,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#unpremultiply)
 
     """
-    
+
 
 
     if timeline_options is None and enable is not None:
@@ -5907,91 +5907,91 @@ References:
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='unpremultiply', typings_input='[StreamType.video] + ([StreamType.video] if inplace else [])', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "planes": planes,
-            
+
             "inplace": inplace,
-            
+
         },
         extra_options,
-        
-        
+
+
         timeline_options,
-        
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def vstack(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     inputs: Int = Auto('len(streams)'),shortest: Boolean = Default('false'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Stack input videos vertically.
 
 All streams must be of same pixel format and of same width.
@@ -6014,54 +6014,54 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vstack)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='vstack', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "inputs": inputs,
-            
+
             "shortest": shortest,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
+
+
+
 def vstack_vaapi(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     inputs: Int = Default('2'),shortest: Boolean = Default('false'),width: Int = Default('0'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Stack input videos vertically.
 
 This is the VA-API variant of the vstack filter, each input stream may
@@ -6084,78 +6084,78 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vstack_vaapi)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='vstack_vaapi', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "inputs": inputs,
-            
+
             "shortest": shortest,
-            
+
             "width": width,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
 def xmedian(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     inputs: Int = Auto('len(streams)'),planes: Int = Default('15'),percentile: Float = Default('0.5'),
-    
+
     framesync_options: FFMpegFrameSyncOption | None = None,
     eof_action: str | None = None,
     shortest: bool | None = None,
     repeatlast: bool | None = None,
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Pick median pixels from several input videos.
 
 The filter accepts the following options:
@@ -6176,7 +6176,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xmedian)
 
     """
-    
+
 
     if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
         framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
@@ -6187,55 +6187,55 @@ References:
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='xmedian', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "inputs": inputs,
-            
+
             "planes": planes,
-            
+
             "percentile": percentile,
-            
+
         },
         extra_options,
-        
+
         framesync_options,
-        
-        
+
+
         timeline_options,
-        
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
+
+
+
 def xstack(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     inputs: Int = Auto('len(streams)'),layout: String = Default(None),grid: Image_size = Default(None),shortest: Boolean = Default('false'),fill: String = Default('none'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Stack video inputs into custom layout.
 
 All streams must be of same pixel format.
@@ -6258,60 +6258,60 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xstack)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='xstack', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "inputs": inputs,
-            
+
             "layout": layout,
-            
+
             "grid": grid,
-            
+
             "shortest": shortest,
-            
+
             "fill": fill,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
+
+
+
 def xstack_vaapi(
-    
 
-    
+
+
     *streams: VideoStream,
-    
 
 
-    
+
+
     inputs: Int = Default('2'),shortest: Boolean = Default('false'),layout: String = Default(None),grid: Image_size = Default(None),grid_tile_size: Image_size = Default(None),fill: String = Default('none'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Stack video inputs into custom layout.
 
 This is the VA-API variant of the xstack filter,  each input stream may
@@ -6337,64 +6337,64 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xstack_vaapi)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='xstack_vaapi', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
-        
 
-        
+
+
         *streams,
-        
+
 
 
         **merge({
-            
+
             "inputs": inputs,
-            
+
             "shortest": shortest,
-            
+
             "layout": layout,
-            
+
             "grid": grid,
-            
+
             "grid_tile_size": grid_tile_size,
-            
+
             "fill": fill,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
 def yuvtestsrc(
-    
 
-    
+
+
 
 
     *,
     size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 The allrgb source returns frames of size 4096x4096 of all rgb colors.
 
 The allyuv source returns frames of size 4096x4096 of all yuv colors.
@@ -6456,56 +6456,56 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allrgb)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='yuvtestsrc', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "size": size,
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "sar": sar,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
 
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 def zoneplate(
-    
 
-    
+
+
 
 
     *,
     size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),precision: Int = Default('10'),xo: Int = Default('0'),yo: Int = Default('0'),to: Int = Default('0'),k0: Int = Default('0'),kx: Int = Default('0'),ky: Int = Default('0'),kt: Int = Default('0'),kxt: Int = Default('0'),kyt: Int = Default('0'),kxy: Int = Default('0'),kx2: Int = Default('0'),ky2: Int = Default('0'),kt2: Int = Default('0'),ku: Int = Default('0'),kv: Int = Default('0'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
 )-> VideoStream:
     """
-    
+
 Generate a zoneplate test video pattern.
 
 This source accepts the following options:
@@ -6541,69 +6541,62 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zoneplate)
 
     """
-    
+
 
 
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='zoneplate', typings_input=(), typings_output=('video',)),
-        
 
-        
+
+
 
 
         **merge({
-            
+
             "size": size,
-            
+
             "rate": rate,
-            
+
             "duration": duration,
-            
+
             "sar": sar,
-            
+
             "precision": precision,
-            
+
             "xo": xo,
-            
+
             "yo": yo,
-            
+
             "to": to,
-            
+
             "k0": k0,
-            
+
             "kx": kx,
-            
+
             "ky": ky,
-            
+
             "kt": kt,
-            
+
             "kxt": kxt,
-            
+
             "kyt": kyt,
-            
+
             "kxy": kxy,
-            
+
             "kx2": kx2,
-            
+
             "ky2": ky2,
-            
+
             "kt2": kt2,
-            
+
             "ku": ku,
-            
+
             "kv": kv,
-            
+
         },
         extra_options,
-        
-        
+
+
         )
     )
     return filter_node.video(0)
-
-
-    
-
-    
-
-    

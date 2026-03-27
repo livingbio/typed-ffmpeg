@@ -41,7 +41,7 @@ typed-ffmpeg-v8 = { workspace = true }
 dev = [
     "pytest>=7.0",
     "pytest-cov>=4.0",
-    "ruff>=0.9.6",
+    "ruff==0.12.2",
 ]
 
 [build-system]

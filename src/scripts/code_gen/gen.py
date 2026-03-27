@@ -388,6 +388,9 @@ def render(
         opath = outpath / str(template_path).replace(".jinja", "")
         opath.parent.mkdir(parents=True, exist_ok=True)
 
+        # Strip trailing whitespace from each line to satisfy pre-commit hooks
+        code = "\n".join(line.rstrip() for line in code.splitlines())
+
         with opath.open("w") as ofile:
             ofile.write("# NOTE: this file is auto-generated, do not modify\n")
             ofile.write(code)

@@ -121,236 +121,236 @@ def input(
     return InputNode(
         filename=str(filename),
         kwargs=merge({
-            
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 "f": f,
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
                 "c": c,
-                
+
                 "codec": codec,
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
                 "t": t,
-                
+
                 "to": to,
-                
-                
+
+
                 "ss": ss,
-                
+
                 "sseof": sseof,
-                
+
                 "seek_timestamp": seek_timestamp,
-                
+
                 "accurate_seek": accurate_seek,
-                
+
                 "isync": isync,
-                
+
                 "itsoffset": itsoffset,
-                
+
                 "itsscale": itsscale,
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
+
+
+
+
                 "re": re,
-                
+
                 "readrate": readrate,
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
+
+
                 "bitexact": bitexact,
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
+
                 "tag": tag,
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
                 "reinit_filter": reinit_filter,
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
+
                 "dump_attachment": dump_attachment,
-                
+
                 "stream_loop": stream_loop,
-                
-                
-                
+
+
+
                 "discard": discard,
-                
-                
+
+
                 "thread_queue_size": thread_queue_size,
-                
+
                 "find_stream_info": find_stream_info,
-                
-                
-                
+
+
+
                 "r": r,
-                
-                
+
+
                 "s": s,
-                
-                
+
+
                 "pix_fmt": pix_fmt,
-                
+
                 "vn": vn,
-                
-                
+
+
                 "vcodec": vcodec,
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
+
+
+
+
                 "top": top,
-                
+
                 "vtag": vtag,
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
                 "hwaccel": hwaccel,
-                
+
                 "hwaccel_device": hwaccel_device,
-                
+
                 "hwaccel_output_format": hwaccel_output_format,
-                
-                
+
+
                 "autorotate": autorotate,
-                
-                
-                
-                
+
+
+
+
                 "ar": ar,
-                
+
                 "ac": ac,
-                
+
                 "an": an,
-                
+
                 "acodec": acodec,
-                
-                
-                
+
+
+
                 "sample_fmt": sample_fmt,
-                
+
                 "channel_layout": channel_layout,
-                
+
                 "ch_layout": ch_layout,
-                
-                
+
+
                 "guess_layout_max": guess_layout_max,
-                
+
                 "sn": sn,
-                
+
                 "scodec": scodec,
-                
-                
+
+
                 "fix_sub_duration": fix_sub_duration,
-                
+
                 "canvas_size": canvas_size,
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
                 "bsf": bsf,
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
+
                 "dcodec": dcodec,
-                
+
                 "dn": dn,
-                
-                
-                
-                
-                
+
+
+
+
+
         }, decoder_options, demuxer_options, format_options, codec_options, extra_options )
     ).stream()
