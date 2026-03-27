@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: 'Dry run (skip creating PR)'
+        description: 'Dry run mode (skip creating PR)'
         required: false
         default: 'false'
         type: boolean
