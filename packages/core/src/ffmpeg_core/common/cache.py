@@ -68,6 +68,7 @@ def save(obj: T, id: str) -> None:
 
     with (schema_path / f"{id}.json").open("w") as ofile:
         ofile.write(dumps(obj))
+        ofile.write("\n")
 
 
 def list_all(cls: type[T]) -> list[T]:

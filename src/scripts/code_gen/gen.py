@@ -391,6 +391,8 @@ def render(
         with opath.open("w") as ofile:
             ofile.write("# NOTE: this file is auto-generated, do not modify\n")
             ofile.write(code)
+            if not code.endswith("\n"):
+                ofile.write("\n")
 
         output.append(opath)
 
