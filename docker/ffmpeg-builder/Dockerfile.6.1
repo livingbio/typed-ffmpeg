@@ -40,12 +40,15 @@ RUN apt-get update && apt-get install -y \
     libmysofa-dev \
     # Flite (text-to-speech)
     flite1-dev \
+    # Additional codecs
+    libgsm1-dev libspeex-dev libtwolame-dev libshine-dev \
+    libcodec2-dev libsnappy-dev libbluray-dev libfdk-aac-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Optional packages that may not exist on all Ubuntu versions
 # Note: libplacebo-dev intentionally omitted — incompatible API with FFmpeg 6.x
 RUN apt-get update \
-    && apt-get install -y libdav1d-dev libsvtav1-dev libharfbuzz-dev 2>/dev/null || true \
+    && apt-get install -y libdav1d-dev libsvtav1-dev libharfbuzz-dev librav1e-dev 2>/dev/null || true \
     && rm -rf /var/lib/apt/lists/*
 
 # Install nv-codec-headers (CUDA/NVENC support without a physical GPU)
@@ -75,6 +78,17 @@ RUN EXTRA_FLAGS=""; \
     pkg-config --exists rubberband && EXTRA_FLAGS="$EXTRA_FLAGS --enable-librubberband"; \
     pkg-config --exists libmysofa  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libmysofa"; \
     test -f /usr/include/flite/flite.h && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libflite"; \
+    # Additional codecs
+    test -f /usr/include/gsm/gsm.h && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libgsm"; \
+    pkg-config --exists speex      && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libspeex"; \
+    pkg-config --exists twolame    && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libtwolame"; \
+    pkg-config --exists shine      && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libshine"; \
+    pkg-config --exists codec2     && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libcodec2"; \
+    test -f /usr/include/snappy-c.h && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libsnappy"; \
+    pkg-config --exists libbluray  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libbluray"; \
+    pkg-config --exists fdk-aac    && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libfdk-aac"; \
+    pkg-config --exists rav1e      && EXTRA_FLAGS="$EXTRA_FLAGS --enable-librav1e"; \
+    EXTRA_FLAGS="$EXTRA_FLAGS --enable-postproc"; \
     echo "Extra configure flags: $EXTRA_FLAGS"; \
     ./configure \
         --prefix=/usr/local \
@@ -133,9 +147,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libvulkan1 \
     libbs2b0 librubberband2 libmysofa1 liblilv-0-0 \
     frei0r-plugins \
+    libgsm1 libspeex1 libtwolame0 libshine3 \
+    libcodec2-1.0 libsnappy1v5 libbluray2 libfdk-aac2 \
     && apt-get install -y --no-install-recommends \
         libvidstab-dev libdav1d-dev libsvtav1-dev libharfbuzz-dev \
-        libshaderc-dev flite1-dev 2>/dev/null || true \
+        libshaderc-dev flite1-dev librav1e-dev 2>/dev/null || true \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=build /usr/local/bin/ffmpeg /usr/local/bin/ffmpeg
