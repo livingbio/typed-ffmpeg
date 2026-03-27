@@ -1,10 +1,10 @@
-name: Regen
+name: Regenerate FFmpeg Bindings
 
 on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: 'Dry run (skip creating PR)'
+        description: 'Dry run mode (skip creating PR)'
         required: false
         default: 'false'
         type: boolean
@@ -22,10 +22,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          # v5/v6: normal jrottenberg builds
           - ffmpeg-version: '5'
             ffmpeg-image: 'jrottenberg/ffmpeg:5.1-ubuntu'
           - ffmpeg-version: '6'
             ffmpeg-image: 'jrottenberg/ffmpeg:6.1-ubuntu'
+          # v7/v8: full builds (no --enable-small, descriptions preserved)
           - ffmpeg-version: '7'
             ffmpeg-image: 'ghcr.io/livingbio/typed-ffmpeg/ffmpeg:7.1'
           - ffmpeg-version: '8'
@@ -44,11 +46,13 @@ jobs:
       - name: Extract FFmpeg ${{ matrix.ffmpeg-version }} from Docker image
         run: |
           docker pull ${{ matrix.ffmpeg-image }}
+          # Copy binaries
           CONTAINER_ID=$(docker create ${{ matrix.ffmpeg-image }})
           sudo docker cp "$CONTAINER_ID:/usr/local/bin/ffmpeg" /usr/local/bin/ffmpeg || \
             sudo docker cp "$CONTAINER_ID:/usr/bin/ffmpeg" /usr/local/bin/ffmpeg
           sudo docker cp "$CONTAINER_ID:/usr/local/bin/ffprobe" /usr/local/bin/ffprobe || \
             sudo docker cp "$CONTAINER_ID:/usr/bin/ffprobe" /usr/local/bin/ffprobe
+          # Copy all libraries from the container (both /usr/local/lib and system libs)
           docker cp "$CONTAINER_ID:/usr/local/lib" /tmp/ffmpeg-libs
           sudo cp -a /tmp/ffmpeg-libs/. /usr/local/lib/
           # Copy system libs from container (custom builds link against system libs)
@@ -80,6 +84,8 @@ jobs:
         run: |
           source .venv/bin/activate
           export PYTHONPATH="$PWD/src:$PYTHONPATH"
+          # Ensure ffmpeg can find its shared libs (actions/setup-python sets
+          # LD_LIBRARY_PATH to Python's lib dir, hiding system/custom libs)
           export LD_LIBRARY_PATH="/usr/local/lib:/usr/lib/x86_64-linux-gnu${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
           python -m scripts.code_gen.cli generate \
             --outpath "packages/v${{ matrix.ffmpeg-version }}/src/ffmpeg" \
