@@ -1,0 +1,154 @@
+# FFmpeg 5.1 — Ubuntu 24.04 build with full codec/plugin support.
+#
+# Version-specific notes:
+#   - libplacebo is NOT enabled: Ubuntu 24.04 ships libplacebo 6.x which
+#     removed the `force_icc_lut` field that FFmpeg 5.x references.
+#   - Vulkan 1.3.275 (Ubuntu 24.04) satisfies FFmpeg 5.1's requirement (>= 1.1.66).
+#
+# Usage:
+#   docker build -f Dockerfile.5.1 \
+#     --build-arg FFMPEG_SOURCE_VERSION=5.1.8 \
+#     -t ffmpeg:5.1 .
+
+ARG FFMPEG_SOURCE_VERSION=5.1.8
+ARG UBUNTU_VERSION=24.04
+
+FROM ubuntu:${UBUNTU_VERSION} AS build
+
+ARG FFMPEG_SOURCE_VERSION
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    build-essential nasm yasm pkg-config wget ca-certificates git \
+    libx264-dev libx265-dev libnuma-dev libvpx-dev libmp3lame-dev \
+    libopus-dev libvorbis-dev libtheora-dev libwebp-dev libxvidcore-dev \
+    libopenjp2-7-dev libopencore-amrnb-dev libopencore-amrwb-dev \
+    libass-dev libfreetype6-dev libfontconfig1-dev libfribidi-dev \
+    libzimg-dev libvidstab-dev libaom-dev \
+    libssl-dev libsrt-openssl-dev libzmq3-dev \
+    libva-dev libdrm-dev ocl-icd-opencl-dev opencl-headers \
+    # Vulkan
+    libvulkan-dev glslang-dev libshaderc-dev spirv-tools \
+    # Frei0r plugin framework
+    frei0r-plugins-dev \
+    # Audio: LADSPA, LV2, BS2B, Rubberband, SOFA (sofalizer)
+    ladspa-sdk \
+    lv2-dev liblilv-dev \
+    libbs2b-dev \
+    librubberband-dev \
+    libmysofa-dev \
+    # Flite (text-to-speech)
+    flite1-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Optional packages that may not exist on all Ubuntu versions
+# Note: libplacebo-dev intentionally omitted — incompatible API with FFmpeg 5.x
+RUN apt-get update \
+    && apt-get install -y libdav1d-dev libsvtav1-dev libharfbuzz-dev 2>/dev/null || true \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install nv-codec-headers (CUDA/NVENC support without a physical GPU)
+# Pin to n12.0.16.0 — latest nv-codec-headers (12.2+) changed APIs that break FFmpeg 5.x
+RUN git clone --depth 1 --branch n12.0.16.0 https://github.com/FFmpeg/nv-codec-headers.git /tmp/nv-codec-headers \
+    && cd /tmp/nv-codec-headers \
+    && make install PREFIX=/usr/local \
+    && rm -rf /tmp/nv-codec-headers
+
+RUN wget -q "https://ffmpeg.org/releases/ffmpeg-${FFMPEG_SOURCE_VERSION}.tar.bz2" \
+    && tar xf "ffmpeg-${FFMPEG_SOURCE_VERSION}.tar.bz2" \
+    && mv "ffmpeg-${FFMPEG_SOURCE_VERSION}" /ffmpeg-src
+
+WORKDIR /ffmpeg-src
+
+RUN EXTRA_FLAGS=""; \
+    pkg-config --exists dav1d      && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libdav1d"; \
+    pkg-config --exists SvtAv1Enc  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libsvtav1"; \
+    # libharfbuzz intentionally skipped: --enable-libharfbuzz not available in FFmpeg 5.x
+    # libplacebo intentionally skipped: Ubuntu 24.04 libplacebo 6.x removed
+    # force_icc_lut from pl_render_params, which FFmpeg 5.x still references.
+    pkg-config --exists vulkan     && EXTRA_FLAGS="$EXTRA_FLAGS --enable-vulkan"; \
+    pkg-config --exists shaderc    && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libshaderc"; \
+    pkg-config --exists ffnvcodec  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-cuvid --enable-nvenc --enable-nvdec"; \
+    EXTRA_FLAGS="$EXTRA_FLAGS --enable-frei0r --enable-ladspa"; \
+    pkg-config --exists lilv-0     && EXTRA_FLAGS="$EXTRA_FLAGS --enable-lv2"; \
+    pkg-config --exists libbs2b    && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libbs2b"; \
+    pkg-config --exists rubberband && EXTRA_FLAGS="$EXTRA_FLAGS --enable-librubberband"; \
+    pkg-config --exists libmysofa  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libmysofa"; \
+    test -f /usr/include/flite/flite.h && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libflite"; \
+    echo "Extra configure flags: $EXTRA_FLAGS"; \
+    ./configure \
+        --prefix=/usr/local \
+        --disable-debug \
+        --disable-doc \
+        --disable-ffplay \
+        --enable-gpl \
+        --enable-nonfree \
+        --enable-version3 \
+        --enable-shared \
+        --enable-libx264 \
+        --enable-libx265 \
+        --enable-libvpx \
+        --enable-libmp3lame \
+        --enable-libopus \
+        --enable-libvorbis \
+        --enable-libtheora \
+        --enable-libwebp \
+        --enable-libxvid \
+        --enable-libopenjpeg \
+        --enable-libopencore-amrnb \
+        --enable-libopencore-amrwb \
+        --enable-libass \
+        --enable-libfreetype \
+        --enable-fontconfig \
+        --enable-libfribidi \
+        --enable-libzimg \
+        --enable-libvidstab \
+        --enable-libaom \
+        --enable-openssl \
+        --enable-libsrt \
+        --enable-libzmq \
+        --enable-vaapi \
+        --enable-opencl \
+        $EXTRA_FLAGS \
+    || { echo "=== configure failed — ffbuild/config.log ==="; \
+         cat ffbuild/config.log 2>/dev/null || cat config.log 2>/dev/null; \
+         exit 1; } \
+    && make -j$(nproc) \
+    && make install
+
+# Runtime stage
+FROM ubuntu:${UBUNTU_VERSION}
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    libx264-dev libx265-dev libvpx-dev libmp3lame-dev libopus-dev \
+    libvorbis-dev libtheora-dev libwebp-dev libxvidcore-dev \
+    libopenjp2-7-dev libopencore-amrnb-dev libopencore-amrwb-dev \
+    libass-dev libfreetype6-dev libfontconfig1-dev libfribidi-dev \
+    libzimg-dev libaom-dev \
+    libssl-dev libsrt-openssl-dev libzmq3-dev \
+    libva-dev libdrm-dev ocl-icd-opencl-dev \
+    libvulkan1 \
+    libbs2b0 librubberband2 libmysofa1 liblilv-0-0 \
+    frei0r-plugins \
+    && apt-get install -y --no-install-recommends \
+        libvidstab-dev libdav1d-dev libsvtav1-dev libharfbuzz-dev \
+        libshaderc-dev flite1-dev 2>/dev/null || true \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=build /usr/local/bin/ffmpeg /usr/local/bin/ffmpeg
+COPY --from=build /usr/local/bin/ffprobe /usr/local/bin/ffprobe
+COPY --from=build /usr/local/lib /usr/local/lib
+
+# Bundle all transitive shared library dependencies into /usr/local/lib
+RUN { ldd /usr/local/bin/ffmpeg; \
+      find /usr/local/lib -name 'libav*.so*' -exec ldd {} \; ; \
+      find /usr/local/lib -name 'libsw*.so*' -exec ldd {} \; ; \
+    } | awk '/=> \// {print $3}' | sort -u \
+    | xargs -I{} cp -n {} /usr/local/lib/ 2>/dev/null || true \
+    && ldconfig
+
+ENTRYPOINT ["/usr/local/bin/ffmpeg"]
