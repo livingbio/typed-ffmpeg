@@ -1551,6 +1551,8 @@ References:
 
 
 
+
+
 def blend(
 
 
@@ -1969,6 +1971,10 @@ References:
 
 
 
+
+
+
+
 def colormap(
 
 
@@ -2067,6 +2073,8 @@ References:
         )
     )
     return filter_node.video(0)
+
+
 
 
 
@@ -5647,6 +5655,109 @@ References:
 
 
 
+def overlay_cuda(
+
+
+
+
+        _main: VideoStream,
+
+
+
+        _overlay: VideoStream,
+
+
+
+
+    *,
+    x: String = Default('0'),y: String = Default('0'),eof_action: Int| Literal["repeat","endall","pass"] | Default = Default('repeat'),eval: Int| Literal["init","frame"] | Default = Default('frame'),shortest: Boolean = Default('false'),repeatlast: Boolean = Default('true'),
+
+    framesync_options: FFMpegFrameSyncOption | None = None,
+
+
+
+
+
+    extra_options: dict[str, Any] | None = None,
+)-> VideoStream:
+    """
+
+Overlay one video on top of another.
+
+This is the CUDA variant of the overlay filter.
+It only accepts CUDA frames. The underlying input pixel formats have to match.
+
+It takes two inputs and has one output. The first input is the "main"
+video on which the second input is overlaid.
+
+It accepts the following parameters:
+
+
+Args:
+    x: set the x expression of overlay (default "0")
+    y: Set expressions for the x and y coordinates of the overlaid video on the main video. They can contain the following parameters: @end table Default value is "0" for both expressions.
+    eof_action: See framesync.
+    eval: Set when the expressions for x and y are evaluated. It accepts the following values: @end table Default value is frame.
+    shortest: See framesync.
+    repeatlast: See framesync.
+    framesync_options: Framesync options
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_cuda)
+
+    """
+
+
+
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name='overlay_cuda', typings_input=('video', 'video'), typings_output=('video',)),
+
+
+
+
+            _main,
+
+
+
+            _overlay,
+
+
+
+
+        **merge({
+
+            "x": x,
+
+            "y": y,
+
+            "eof_action": eof_action,
+
+            "eval": eval,
+
+            "shortest": shortest,
+
+            "repeatlast": repeatlast,
+
+        },
+        extra_options,
+
+        framesync_options,
+
+
+        )
+    )
+    return filter_node.video(0)
+
+
+
+
+
+
+
 def overlay_opencl(
 
 
@@ -6765,6 +6876,8 @@ References:
 
 
 
+
+
 def sidechaincompress(
 
 
@@ -7648,6 +7761,8 @@ References:
         )
     )
     return filter_node.video(0)
+
+
 
 
 
@@ -8860,3 +8975,21 @@ References:
         )
     )
     return filter_node.video(0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

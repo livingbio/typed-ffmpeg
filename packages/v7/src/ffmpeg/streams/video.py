@@ -1256,6 +1256,74 @@ References:
 
 
 
+    def bilateral_cuda(
+
+    self,
+
+
+
+
+    *,
+    sigmaS: Float = Default('0.1'),sigmaR: Float = Default('0.1'),window_size: Int = Default('1'),
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+CUDA accelerated bilateral filter, an edge preserving filter.
+This filter is mathematically accurate thanks to the use of GPU acceleration.
+For best output quality, use one to one chroma subsampling, i.e. yuv444p format.
+
+The filter accepts the following options:
+
+
+Args:
+    sigmaS: Set sigma of gaussian function to calculate spatial weight, also called sigma space. Allowed range is 0.1 to 512. Default is 0.1.
+    sigmaR: Set sigma of gaussian function to calculate color range weight, also called sigma color. Allowed range is 0.1 to 512. Default is 0.1.
+    window_size: Set window size of the bilateral function to determine the number of neighbours to loop on. If the number entered is even, one will be added automatically. Allowed range is 1 to 255. Default is 1.
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bilateral_cuda)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='bilateral_cuda', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "sigmaS": sigmaS,
+
+                "sigmaR": sigmaR,
+
+                "window_size": window_size,
+
+            },
+            extra_options,
+
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
 
 
     def bitplanenoise(
@@ -2128,6 +2196,83 @@ References:
 
 
 
+    def bwdif_cuda(
+
+    self,
+
+
+
+
+    *,
+    mode: Int| Literal["send_frame","send_field","send_frame_nospatial","send_field_nospatial"] | Default = Default('send_frame'),parity: Int| Literal["tff","bff","auto"] | Default = Default('auto'),deint: Int| Literal["all","interlaced"] | Default = Default('all'),
+
+
+    timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Deinterlace the input video using the bwdif algorithm, but implemented
+in CUDA so that it can work as part of a GPU accelerated pipeline with nvdec
+and/or nvenc.
+
+It accepts the following parameters:
+
+
+Args:
+    mode: The interlacing mode to adopt. It accepts one of the following values: @end table The default value is send_field.
+    parity: The picture field parity assumed for the input interlaced video. It accepts one of the following values: @end table The default value is auto. If the interlacing is unknown or the decoder does not export this information, top field first will be assumed.
+    deint: Specify which frames to deinterlace. Accepts one of the following values: @end table The default value is all.
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bwdif_cuda)
+
+        """
+
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='bwdif_cuda', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "mode": mode,
+
+                "parity": parity,
+
+                "deint": deint,
+
+            },
+            extra_options,
+
+
+            timeline_options,
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
     def bwdif_vulkan(
 
     self,
@@ -2552,6 +2697,76 @@ References:
 
 
             timeline_options,
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
+    def chromakey_cuda(
+
+    self,
+
+
+
+
+    *,
+    color: Color = Default('black'),similarity: Float = Default('0.01'),blend: Float = Default('0'),yuv: Boolean = Default('false'),
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+CUDA accelerated YUV colorspace color/chroma keying.
+
+This filter works like normal chromakey filter but operates on CUDA frames.
+for more details and parameters see chromakey.
+
+
+Args:
+    color: set the chromakey key color (default "black")
+    similarity: set the chromakey similarity value (from 0.01 to 1) (default 0.01)
+    blend: set the chromakey key blend value (from 0 to 1) (default 0)
+    yuv: color parameter is in yuv instead of rgb (default false)
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromakey_cuda)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='chromakey_cuda', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "color": color,
+
+                "similarity": similarity,
+
+                "blend": blend,
+
+                "yuv": yuv,
+
+            },
+            extra_options,
+
 
             )
         )
@@ -4007,6 +4222,70 @@ References:
 
 
             timeline_options,
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
+    def colorspace_cuda(
+
+    self,
+
+
+
+
+    *,
+    range: Int| Literal["tv","mpeg","pc","jpeg"] | Default = Default('0'),
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+CUDA accelerated implementation of the colorspace filter.
+
+It is by no means feature complete compared to the software colorspace filter,
+and at the current time only supports color range conversion between jpeg/full
+and mpeg/limited range.
+
+The filter accepts the following options:
+
+
+Args:
+    range: Specify output color range. The accepted values are: @end table
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorspace_cuda)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='colorspace_cuda', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "range": range,
+
+            },
+            extra_options,
+
 
             )
         )
@@ -15614,6 +15893,111 @@ References:
 
 
 
+    def overlay_cuda(
+
+    self,
+
+
+
+
+
+
+
+        _overlay: VideoStream,
+
+
+
+
+    *,
+    x: String = Default('0'),y: String = Default('0'),eof_action: Int| Literal["repeat","endall","pass"] | Default = Default('repeat'),eval: Int| Literal["init","frame"] | Default = Default('frame'),shortest: Boolean = Default('false'),repeatlast: Boolean = Default('true'),
+
+    framesync_options: FFMpegFrameSyncOption | None = None,
+
+
+
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Overlay one video on top of another.
+
+This is the CUDA variant of the overlay filter.
+It only accepts CUDA frames. The underlying input pixel formats have to match.
+
+It takes two inputs and has one output. The first input is the "main"
+video on which the second input is overlaid.
+
+It accepts the following parameters:
+
+
+Args:
+    x: set the x expression of overlay (default "0")
+    y: Set expressions for the x and y coordinates of the overlaid video on the main video. They can contain the following parameters: @end table Default value is "0" for both expressions.
+    eof_action: See framesync.
+    eval: Set when the expressions for x and y are evaluated. It accepts the following values: @end table Default value is frame.
+    shortest: See framesync.
+    repeatlast: See framesync.
+    framesync_options: Framesync options
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_cuda)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='overlay_cuda', typings_input=('video', 'video'), typings_output=('video',)),
+
+            self,
+
+
+
+
+
+
+
+                _overlay,
+
+
+
+
+            **merge({
+
+                "x": x,
+
+                "y": y,
+
+                "eof_action": eof_action,
+
+                "eval": eval,
+
+                "shortest": shortest,
+
+                "repeatlast": repeatlast,
+
+            },
+            extra_options,
+
+            framesync_options,
+
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
     def overlay_opencl(
 
     self,
@@ -19052,6 +19436,88 @@ References:
 
         )
 
+
+
+
+
+
+
+
+    def scale_cuda(
+
+    self,
+
+
+
+
+    *,
+    w: String = Default('iw'),h: String = Default('ih'),interp_algo: Int| Literal["nearest","bilinear","bicubic","lanczos"] | Default = Default('0'),format: Pix_fmt = Default('none'),passthrough: Boolean = Default('true'),param: Float = Default('999999'),force_original_aspect_ratio: Int| Literal["disable","decrease","increase"] | Default = Default('disable'),force_divisible_by: Int = Default('1'),
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Scale (resize) and convert (pixel format) the input video, using accelerated CUDA kernels.
+Setting the output width and height works in the same way as for the scale filter.
+
+The filter accepts the following options:
+
+
+Args:
+    w: Output video width (default "iw")
+    h: Set the output video dimension expression. Default value is the input dimension. Allows for the same expressions as the scale filter.
+    interp_algo: Sets the algorithm used for scaling: @end table
+    format: Controls the output pixel format. By default, or if none is specified, the input pixel format is used. The filter does not support converting between YUV and RGB pixel formats.
+    passthrough: If set to 0, every frame is processed, even if no conversion is necessary. This mode can be useful to use the filter as a buffer for a downstream frame-consumer that exhausts the limited decoder frame pool. If set to 1, frames are passed through as-is if they match the desired output parameters. This is the default behaviour.
+    param: Algorithm-Specific parameter. Affects the curves of the bicubic algorithm.
+    force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
+    force_divisible_by: Work the same as the identical scale filter options.
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scale_cuda)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='scale_cuda', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "w": w,
+
+                "h": h,
+
+                "interp_algo": interp_algo,
+
+                "format": format,
+
+                "passthrough": passthrough,
+
+                "param": param,
+
+                "force_original_aspect_ratio": force_original_aspect_ratio,
+
+                "force_divisible_by": force_divisible_by,
+
+            },
+            extra_options,
+
+
+            )
+        )
+        return filter_node.video(0)
 
 
 
@@ -22572,6 +23038,64 @@ References:
 
 
             timeline_options,
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
+    def thumbnail_cuda(
+
+    self,
+
+
+
+
+    *,
+    n: Int = Default('100'),
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Select the most representative frame in a given sequence of consecutive frames.
+
+
+Args:
+    n: set the frames batch size (from 2 to INT_MAX) (default 100)
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](None)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='thumbnail_cuda', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "n": n,
+
+            },
+            extra_options,
+
 
             )
         )
@@ -26176,6 +26700,83 @@ References:
 
 
 
+    def yadif_cuda(
+
+    self,
+
+
+
+
+    *,
+    mode: Int| Literal["send_frame","send_field","send_frame_nospatial","send_field_nospatial"] | Default = Default('send_frame'),parity: Int| Literal["tff","bff","auto"] | Default = Default('auto'),deint: Int| Literal["all","interlaced"] | Default = Default('all'),
+
+
+    timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Deinterlace the input video using the yadif algorithm, but implemented
+in CUDA so that it can work as part of a GPU accelerated pipeline with nvdec
+and/or nvenc.
+
+It accepts the following parameters:
+
+
+Args:
+    mode: The interlacing mode to adopt. It accepts one of the following values: @end table The default value is send_frame.
+    parity: The picture field parity assumed for the input interlaced video. It accepts one of the following values: @end table The default value is auto. If the interlacing is unknown or the decoder does not export this information, top field first will be assumed.
+    deint: Specify which frames to deinterlace. Accepts one of the following values: @end table The default value is all.
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#yadif_cuda)
+
+        """
+
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='yadif_cuda', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "mode": mode,
+
+                "parity": parity,
+
+                "deint": deint,
+
+            },
+            extra_options,
+
+
+            timeline_options,
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
     def yaepblur(
 
     self,
@@ -26548,3 +27149,6 @@ References:
             )
         )
         return filter_node.video(0)
+
+
+
