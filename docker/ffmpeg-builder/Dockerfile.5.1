@@ -63,7 +63,7 @@ WORKDIR /ffmpeg-src
 RUN EXTRA_FLAGS=""; \
     pkg-config --exists dav1d      && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libdav1d"; \
     pkg-config --exists SvtAv1Enc  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libsvtav1"; \
-    pkg-config --exists harfbuzz   && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libharfbuzz"; \
+    # libharfbuzz intentionally skipped: --enable-libharfbuzz not available in FFmpeg 5.x
     # libplacebo intentionally skipped: Ubuntu 24.04 libplacebo 6.x removed
     # force_icc_lut from pl_render_params, which FFmpeg 5.x still references.
     pkg-config --exists vulkan     && EXTRA_FLAGS="$EXTRA_FLAGS --enable-vulkan"; \
