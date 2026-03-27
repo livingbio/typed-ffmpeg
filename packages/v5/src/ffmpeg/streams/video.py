@@ -879,6 +879,70 @@ References:
 
 
 
+    def avgblur_vulkan(
+
+    self,
+
+
+
+
+    *,
+    sizeX: Int = Default('3'),planes: Int = Default('15'),sizeY: Int = Default('3'),
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Apply avgblur mask to input video
+
+
+Args:
+    sizeX: Set horizontal radius (from 1 to 32) (default 3)
+    planes: Set planes to filter (bitmask) (from 0 to 15) (default 15)
+    sizeY: Set vertical radius (from 1 to 32) (default 3)
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](None)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='avgblur_vulkan', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "sizeX": sizeX,
+
+                "planes": planes,
+
+                "sizeY": sizeY,
+
+            },
+            extra_options,
+
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
 
 
 
@@ -1475,6 +1539,107 @@ References:
 
 
 
+    def blend_vulkan(
+
+    self,
+
+
+
+
+
+
+
+        _bottom: VideoStream,
+
+
+
+
+    *,
+    c0_mode: Int| Literal["normal","multiply"] | Default = Default('normal'),c1_mode: Int| Literal["normal","multiply"] | Default = Default('normal'),c2_mode: Int| Literal["normal","multiply"] | Default = Default('normal'),c3_mode: Int| Literal["normal","multiply"] | Default = Default('normal'),all_mode: Int| Literal["normal","multiply"] | Default = Default('-1'),c0_opacity: Double = Default('1'),c1_opacity: Double = Default('1'),c2_opacity: Double = Default('1'),c3_opacity: Double = Default('1'),all_opacity: Double = Default('1'),
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Blend two video frames in Vulkan
+
+
+Args:
+    c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
+    c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
+    c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
+    c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
+    all_mode: set blend mode for all components (from -1 to 39) (default -1)
+    c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
+    c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
+    c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
+    c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
+    all_opacity: set opacity for all color components (from 0 to 1) (default 1)
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](None)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='blend_vulkan', typings_input=('video', 'video'), typings_output=('video',)),
+
+            self,
+
+
+
+
+
+
+
+                _bottom,
+
+
+
+
+            **merge({
+
+                "c0_mode": c0_mode,
+
+                "c1_mode": c1_mode,
+
+                "c2_mode": c2_mode,
+
+                "c3_mode": c3_mode,
+
+                "all_mode": all_mode,
+
+                "c0_opacity": c0_opacity,
+
+                "c1_opacity": c1_opacity,
+
+                "c2_opacity": c2_opacity,
+
+                "c3_opacity": c3_opacity,
+
+                "all_opacity": all_opacity,
+
+            },
+            extra_options,
+
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
     def blockdetect(
 
     self,
@@ -1786,6 +1951,8 @@ References:
 
 
 
+
+
     def bwdif(
 
     self,
@@ -1937,6 +2104,67 @@ References:
 
 
 
+
+
+
+
+
+
+
+    def chromaber_vulkan(
+
+    self,
+
+
+
+
+    *,
+    dist_x: Float = Default('0'),dist_y: Float = Default('0'),
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Offset chroma of input video (chromatic aberration)
+
+
+Args:
+    dist_x: Set horizontal distortion amount (from -10 to 10) (default 0)
+    dist_y: Set vertical distortion amount (from -10 to 10) (default 0)
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](None)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='chromaber_vulkan', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "dist_x": dist_x,
+
+                "dist_y": dist_y,
+
+            },
+            extra_options,
+
+
+            )
+        )
+        return filter_node.video(0)
 
 
 
@@ -8436,6 +8664,63 @@ References:
 
 
 
+    def flip_vulkan(
+
+    self,
+
+
+
+
+
+
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Flip both horizontally and vertically
+
+
+Args:
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](None)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='flip_vulkan', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+            },
+            extra_options,
+
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
+
+
     def floodfill(
 
     self,
@@ -9050,6 +9335,83 @@ References:
 
 
 
+    def frei0r(
+
+    self,
+
+
+
+
+    *,
+    filter_name: String = Default(None),filter_params: String = Default(None),
+
+
+    timeline_options: FFMpegTimelineOption | None = None,
+    enable: str | None = None,
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Apply a frei0r effect to the input video.
+
+To enable the compilation of this filter, you need to install the frei0r
+header and configure FFmpeg with --enable-frei0r.
+
+It accepts the following parameters:
+
+
+Args:
+    filter_name: The name of the frei0r effect to load. If the environment variable FREI0R_PATH is defined, the frei0r effect is searched for in each of the directories specified by the colon-separated list in FREI0R_PATH. Otherwise, the standard frei0r paths are searched, in this order: HOME/.frei0r-1/lib/, /usr/local/lib/frei0r-1/, /usr/lib/frei0r-1/.
+    filter_params: A '|'-separated list of parameters to pass to the frei0r effect.
+    timeline_options: Timeline options
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#frei0r)
+
+        """
+
+
+
+        if timeline_options is None and enable is not None:
+            timeline_options = FFMpegTimelineOption(enable=enable)
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='frei0r', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "filter_name": filter_name,
+
+                "filter_params": filter_params,
+
+            },
+            extra_options,
+
+
+            timeline_options,
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
+
+
     def fspp(
 
     self,
@@ -9199,6 +9561,76 @@ References:
 
 
             timeline_options,
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
+    def gblur_vulkan(
+
+    self,
+
+
+
+
+    *,
+    sigma: Float = Default('0.5'),sigmaV: Float = Default('0'),planes: Int = Default('15'),size: Int = Default('19'),sizeV: Int = Default('0'),
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Gaussian Blur in Vulkan
+
+
+Args:
+    sigma: Set sigma (from 0.01 to 1024) (default 0.5)
+    sigmaV: Set vertical sigma (from 0 to 1024) (default 0)
+    planes: Set planes to filter (from 0 to 15) (default 15)
+    size: Set kernel size (from 1 to 127) (default 19)
+    sizeV: Set vertical kernel size (from 0 to 127) (default 0)
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](None)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='gblur_vulkan', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "sigma": sigma,
+
+                "sigmaV": sigmaV,
+
+                "planes": planes,
+
+                "size": size,
+
+                "sizeV": sizeV,
+
+            },
+            extra_options,
+
 
             )
         )
@@ -9777,6 +10209,61 @@ References:
 
 
             timeline_options,
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
+    def hflip_vulkan(
+
+    self,
+
+
+
+
+
+
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Horizontally flip the input video in Vulkan
+
+
+Args:
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](None)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='hflip_vulkan', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+            },
+            extra_options,
+
 
             )
         )
@@ -10646,6 +11133,66 @@ References:
 
 
 
+    def hwupload_cuda(
+
+    self,
+
+
+
+
+    *,
+    device: Int = Default('0'),
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Upload system memory frames to a CUDA device.
+
+It accepts the following optional parameters:
+
+
+Args:
+    device: The number of the CUDA device to use
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hwupload_cuda)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='hwupload_cuda', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "device": device,
+
+            },
+            extra_options,
+
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
     def hysteresis(
 
     self,
@@ -11328,6 +11875,8 @@ References:
             )
         )
         return filter_node.video(0)
+
+
 
 
 
@@ -12362,6 +12911,8 @@ References:
             )
         )
         return filter_node.video(0)
+
+
 
 
 
@@ -14864,6 +15415,83 @@ References:
                 "h": h,
 
                 "alpha": alpha,
+
+            },
+            extra_options,
+
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
+    def overlay_vulkan(
+
+    self,
+
+
+
+
+
+
+
+        _overlay: VideoStream,
+
+
+
+
+    *,
+    x: Int = Default('0'),y: Int = Default('0'),
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Overlay a source on top of another
+
+
+Args:
+    x: Set horizontal offset (from 0 to INT_MAX) (default 0)
+    y: Set vertical offset (from 0 to INT_MAX) (default 0)
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](None)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='overlay_vulkan', typings_input=('video', 'video'), typings_output=('video',)),
+
+            self,
+
+
+
+
+
+
+
+                _overlay,
+
+
+
+
+            **merge({
+
+                "x": x,
+
+                "y": y,
 
             },
             extra_options,
@@ -17616,6 +18244,8 @@ References:
 
 
 
+
+
     def sab(
 
     self,
@@ -18035,6 +18665,76 @@ References:
                 "force_original_aspect_ratio": force_original_aspect_ratio,
 
                 "force_divisible_by": force_divisible_by,
+
+            },
+            extra_options,
+
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
+    def scale_vulkan(
+
+    self,
+
+
+
+
+    *,
+    w: String = Default('iw'),h: String = Default('ih'),scaler: Int| Literal["bilinear","nearest"] | Default = Default('bilinear'),format: String = Default(None),out_range: Int| Literal["full","limited","jpeg","mpeg","tv","pc"] | Default = Default('0) (from 0 to 2) (default 0'),
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Scale Vulkan frames
+
+
+Args:
+    w: Output video width (default "iw")
+    h: Output video height (default "ih")
+    scaler: Scaler function (from 0 to 2) (default bilinear)
+    format: Output video format (software format of hardware frames)
+    out_range: Output colour range (from 0 to 2) (default 0) (from 0 to 2) (default 0)
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](None)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='scale_vulkan', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "w": w,
+
+                "h": h,
+
+                "scaler": scaler,
+
+                "format": format,
+
+                "out_range": out_range,
 
             },
             extra_options,
@@ -20096,6 +20796,8 @@ References:
             )
         )
         return filter_node.video(0)
+
+
 
 
 
@@ -22297,6 +22999,67 @@ References:
 
 
 
+    def transpose_vulkan(
+
+    self,
+
+
+
+
+    *,
+    dir: Int| Literal["cclock_flip","clock","cclock","clock_flip"] | Default = Default('cclock_flip'),passthrough: Int| Literal["none","portrait","landscape"] | Default = Default('none'),
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Transpose Vulkan Filter
+
+
+Args:
+    dir: set transpose direction (from 0 to 7) (default cclock_flip)
+    passthrough: do not apply transposition if the input matches the specified geometry (from 0 to INT_MAX) (default none)
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](None)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='transpose_vulkan', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "dir": dir,
+
+                "passthrough": passthrough,
+
+            },
+            extra_options,
+
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
 
 
 
@@ -23130,6 +23893,61 @@ References:
 
 
             timeline_options,
+
+            )
+        )
+        return filter_node.video(0)
+
+
+
+
+
+
+
+    def vflip_vulkan(
+
+    self,
+
+
+
+
+
+
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> VideoStream:
+        """
+
+Vertically flip the input video in Vulkan
+
+
+Args:
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](None)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='vflip_vulkan', typings_input=('video',), typings_output=('video',)),
+
+            self,
+
+
+
+
+            **merge({
+
+            },
+            extra_options,
+
 
             )
         )
@@ -24796,3 +25614,6 @@ References:
             )
         )
         return filter_node.video(0)
+
+
+

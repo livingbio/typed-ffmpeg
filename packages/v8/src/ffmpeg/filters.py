@@ -1442,6 +1442,8 @@ References:
 
 
 
+
+
 def axcorrelate(
 
 
@@ -1518,6 +1520,8 @@ References:
         )
     )
     return filter_node.audio(0)
+
+
 
 
 
@@ -1693,6 +1697,111 @@ References:
 
 
 
+def blend_vulkan(
+
+
+
+
+        _top: VideoStream,
+
+
+
+        _bottom: VideoStream,
+
+
+
+
+    *,
+    c0_mode: Int| Literal["normal","multiply"] | Default = Default('normal'),c1_mode: Int| Literal["normal","multiply"] | Default = Default('normal'),c2_mode: Int| Literal["normal","multiply"] | Default = Default('normal'),c3_mode: Int| Literal["normal","multiply"] | Default = Default('normal'),all_mode: Int| Literal["normal","multiply"] | Default = Default('-1'),c0_opacity: Double = Default('1'),c1_opacity: Double = Default('1'),c2_opacity: Double = Default('1'),c3_opacity: Double = Default('1'),all_opacity: Double = Default('1'),
+
+
+    extra_options: dict[str, Any] | None = None,
+)-> VideoStream:
+    """
+
+Blend two Vulkan frames into each other.
+
+The blend filter takes two input streams and outputs one
+stream, the first input is the "top" layer and second input is
+"bottom" layer.  By default, the output terminates when the longest input terminates.
+
+A description of the accepted options follows.
+
+
+Args:
+    c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
+    c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
+    c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
+    c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
+    all_mode: Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: @end table
+    c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
+    c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
+    c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
+    c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
+    all_opacity: set opacity for all color components (from 0 to 1) (default 1)
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blend_vulkan)
+
+    """
+
+
+
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name='blend_vulkan', typings_input=('video', 'video'), typings_output=('video',)),
+
+
+
+
+            _top,
+
+
+
+            _bottom,
+
+
+
+
+        **merge({
+
+            "c0_mode": c0_mode,
+
+            "c1_mode": c1_mode,
+
+            "c2_mode": c2_mode,
+
+            "c3_mode": c3_mode,
+
+            "all_mode": all_mode,
+
+            "c0_opacity": c0_opacity,
+
+            "c1_opacity": c1_opacity,
+
+            "c2_opacity": c2_opacity,
+
+            "c3_opacity": c3_opacity,
+
+            "all_opacity": all_opacity,
+
+        },
+        extra_options,
+
+
+        )
+    )
+    return filter_node.video(0)
+
+
+
+
+
+
+
 
 
 
@@ -1791,6 +1900,14 @@ References:
         )
     )
     return filter_node.video(0)
+
+
+
+
+
+
+
+
 
 
 
@@ -2924,6 +3041,10 @@ References:
 
 
 
+
+
+
+
 def framepack(
 
 
@@ -3083,6 +3204,12 @@ References:
         )
     )
     return filter_node.video(0)
+
+
+
+
+
+
 
 
 
@@ -3396,6 +3523,8 @@ References:
 
 
 
+
+
 def hstack(
 
 
@@ -3531,6 +3660,8 @@ References:
         )
     )
     return filter_node.video(0)
+
+
 
 
 
@@ -3767,6 +3898,8 @@ References:
 
 
 
+
+
 def interleave(
 
 
@@ -3918,6 +4051,87 @@ References:
 
 
 
+
+
+
+
+
+
+
+def ladspa(
+
+
+
+    *streams: AudioStream,
+
+
+
+
+    file: String = Default(None),plugin: String = Default(None),controls: String = Default(None),sample_rate: Int = Default('44100'),nb_samples: Int = Default('1024'),duration: Duration = Default('-0.000001'),latency: Boolean = Default('false'),
+
+
+    extra_options: dict[str, Any] | None = None,
+)-> AudioStream:
+    """
+
+Load a LADSPA (Linux Audio Developer's Simple Plugin API) plugin.
+
+To enable compilation of this filter you need to configure FFmpeg with
+--enable-ladspa.
+
+
+Args:
+    file: Specifies the name of LADSPA plugin library to load. If the environment variable LADSPA_PATH is defined, the LADSPA plugin is searched in each one of the directories specified by the colon separated list in LADSPA_PATH, otherwise in the standard LADSPA paths, which are in this order: HOME/.ladspa/lib/, /usr/local/lib/ladspa/, /usr/lib/ladspa/.
+    plugin: Specifies the plugin within the library. Some libraries contain only one plugin, but others contain many of them. If this is not set filter will list all available plugins within the specified library.
+    controls: Set the '|' separated list of controls which are zero or more floating point values that determine the behavior of the loaded plugin (for example delay, threshold or gain). Controls need to be defined using the following syntax: c0=value0|c1=value1|c2=value2|..., where valuei is the value set on the i-th control. Alternatively they can be also defined using the following syntax: value0|value1|value2|..., where valuei is the value set on the i-th control. If controls is set to help, all available controls and their valid ranges are printed.
+    sample_rate: Specify the sample rate, default to 44100. Only used if plugin have zero inputs.
+    nb_samples: Set the number of samples per channel per each output frame, default is 1024. Only used if plugin have zero inputs.
+    duration: Set the minimum duration of the sourced audio. See the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. Note that the resulting duration may be greater than the specified duration, as the generated audio is always cut at the end of a complete frame. If not specified, or the expressed duration is negative, the audio is supposed to be generated forever. Only used if plugin have zero inputs.
+    latency: Enable latency compensation, by default is disabled. Only used if plugin have inputs.
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the audio stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ladspa)
+
+    """
+
+
+
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name='ladspa', typings_input='[StreamType.audio]', typings_output=('audio',)),
+
+
+
+        *streams,
+
+
+
+        **merge({
+
+            "file": file,
+
+            "plugin": plugin,
+
+            "controls": controls,
+
+            "sample_rate": sample_rate,
+
+            "nb_samples": nb_samples,
+
+            "duration": duration,
+
+            "latency": latency,
+
+        },
+        extra_options,
+
+
+        )
+    )
+    return filter_node.audio(0)
 
 
 
@@ -4138,6 +4352,81 @@ References:
 
 
 
+
+
+
+
+
+
+
+def lv2(
+
+
+
+    *streams: AudioStream,
+
+
+
+
+    plugin: String = Default(None),controls: String = Default(None),sample_rate: Int = Default('44100'),nb_samples: Int = Default('1024'),duration: Duration = Default('-0.000001'),
+
+
+    extra_options: dict[str, Any] | None = None,
+)-> AudioStream:
+    """
+
+Load a LV2 (LADSPA Version 2) plugin.
+
+To enable compilation of this filter you need to configure FFmpeg with
+--enable-lv2.
+
+
+Args:
+    plugin: Specifies the plugin URI. You may need to escape ':'.
+    controls: Set the '|' separated list of controls which are zero or more floating point values that determine the behavior of the loaded plugin (for example delay, threshold or gain). If controls is set to help, all available controls and their valid ranges are printed.
+    sample_rate: Specify the sample rate, default to 44100. Only used if plugin have zero inputs.
+    nb_samples: Set the number of samples per channel per each output frame, default is 1024. Only used if plugin have zero inputs.
+    duration: Set the minimum duration of the sourced audio. See the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. Note that the resulting duration may be greater than the specified duration, as the generated audio is always cut at the end of a complete frame. If not specified, or the expressed duration is negative, the audio is supposed to be generated forever. Only used if plugin have zero inputs.
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the audio stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lv2)
+
+    """
+
+
+
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name='lv2', typings_input='[StreamType.audio]', typings_output=('audio',)),
+
+
+
+        *streams,
+
+
+
+        **merge({
+
+            "plugin": plugin,
+
+            "controls": controls,
+
+            "sample_rate": sample_rate,
+
+            "nb_samples": nb_samples,
+
+            "duration": duration,
+
+        },
+        extra_options,
+
+
+        )
+    )
+    return filter_node.audio(0)
 
 
 
@@ -5245,6 +5534,8 @@ References:
 
 
 
+
+
 def overlay(
 
 
@@ -5535,6 +5826,86 @@ References:
         extra_options,
 
         framesync_options,
+
+
+        )
+    )
+    return filter_node.video(0)
+
+
+
+
+
+
+
+def overlay_vulkan(
+
+
+
+
+        _main: VideoStream,
+
+
+
+        _overlay: VideoStream,
+
+
+
+
+    *,
+    x: Int = Default('0'),y: Int = Default('0'),
+
+
+    extra_options: dict[str, Any] | None = None,
+)-> VideoStream:
+    """
+
+Overlay one video on top of another.
+
+It takes two inputs and has one output. The first input is the "main" video on which the second input is overlaid.
+This filter requires all inputs to use the same pixel format. So, format conversion may be needed.
+
+The filter accepts the following options:
+
+
+Args:
+    x: Set the x coordinate of the overlaid video on the main video. Default value is 0.
+    y: Set the y coordinate of the overlaid video on the main video. Default value is 0.
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_vulkan)
+
+    """
+
+
+
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name='overlay_vulkan', typings_input=('video', 'video'), typings_output=('video',)),
+
+
+
+
+            _main,
+
+
+
+            _overlay,
+
+
+
+
+        **merge({
+
+            "x": x,
+
+            "y": y,
+
+        },
+        extra_options,
 
 
         )
@@ -6179,6 +6550,8 @@ References:
 
 
 
+
+
 def scale2ref(
 
 
@@ -6334,6 +6707,10 @@ References:
 
 
     )
+
+
+
+
 
 
 
@@ -6732,6 +7109,8 @@ References:
         )
     )
     return filter_node.video(0)
+
+
 
 
 
@@ -7332,6 +7711,8 @@ References:
 
 
 
+
+
 def unpremultiply(
 
 
@@ -7515,6 +7896,8 @@ References:
         )
     )
     return filter_node.video(0)
+
+
 
 
 
@@ -8078,6 +8461,84 @@ References:
 
 
 
+def xfade_vulkan(
+
+
+
+
+        _main: VideoStream,
+
+
+
+        _xfade: VideoStream,
+
+
+
+
+    *,
+    transition: Int| Literal["fade","wipeleft","wiperight","wipeup","wipedown","slidedown","slideup","slideleft","slideright","circleopen","circleclose","dissolve","pixelize","wipetl","wipetr","wipebl","wipebr"] | Default = Default('fade'),duration: Duration = Default('1'),offset: Duration = Default('0'),
+
+
+    extra_options: dict[str, Any] | None = None,
+)-> VideoStream:
+    """
+
+Cross fade one video with another video.
+
+
+Args:
+    transition: set cross fade transition (from 0 to 16) (default fade)
+    duration: set cross fade duration (default 1)
+    offset: set cross fade start relative to first input stream (default 0)
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the video stream
+
+References:
+    [FFmpeg Documentation](None)
+
+    """
+
+
+
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name='xfade_vulkan', typings_input=('video', 'video'), typings_output=('video',)),
+
+
+
+
+            _main,
+
+
+
+            _xfade,
+
+
+
+
+        **merge({
+
+            "transition": transition,
+
+            "duration": duration,
+
+            "offset": offset,
+
+        },
+        extra_options,
+
+
+        )
+    )
+    return filter_node.video(0)
+
+
+
+
+
+
+
 def xmedian(
 
 
@@ -8417,3 +8878,19 @@ References:
         )
     )
     return filter_node.video(0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

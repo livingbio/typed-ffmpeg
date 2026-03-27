@@ -449,6 +449,12 @@ from ..streams.audio import AudioStream
 
 
 
+
+
+
+
+
+
 def _012v(
 
 ) -> FFMpegDecoderOption:
@@ -785,6 +791,53 @@ def av1(
     return FFMpegDecoderOption(merge({
 
         "operating_point": operating_point,
+
+    }))
+
+
+
+def av1_cuvid(
+
+    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
+
+    gpu: str | None = None,
+
+    surfaces: int | None = None,
+
+    drop_second_field: bool | None = None,
+
+    crop: str | None = None,
+
+    resize: str | None = None,
+
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID AV1 decoder (codec av1)
+
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+        "deint": deint,
+
+        "gpu": gpu,
+
+        "surfaces": surfaces,
+
+        "drop_second_field": drop_second_field,
+
+        "crop": crop,
+
+        "resize": resize,
 
     }))
 
@@ -1886,6 +1939,53 @@ def h264_v4l2m2m(
 
 
 
+def h264_cuvid(
+
+    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
+
+    gpu: str | None = None,
+
+    surfaces: int | None = None,
+
+    drop_second_field: bool | None = None,
+
+    crop: str | None = None,
+
+    resize: str | None = None,
+
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID H264 decoder (codec h264)
+
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+        "deint": deint,
+
+        "gpu": gpu,
+
+        "surfaces": surfaces,
+
+        "drop_second_field": drop_second_field,
+
+        "crop": crop,
+
+        "resize": resize,
+
+    }))
+
+
+
 def hap(
 
 ) -> FFMpegDecoderOption:
@@ -1967,6 +2067,53 @@ def hevc_v4l2m2m(
         "num_output_buffers": num_output_buffers,
 
         "num_capture_buffers": num_capture_buffers,
+
+    }))
+
+
+
+def hevc_cuvid(
+
+    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
+
+    gpu: str | None = None,
+
+    surfaces: int | None = None,
+
+    drop_second_field: bool | None = None,
+
+    crop: str | None = None,
+
+    resize: str | None = None,
+
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID HEVC decoder (codec hevc)
+
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+        "deint": deint,
+
+        "gpu": gpu,
+
+        "surfaces": surfaces,
+
+        "drop_second_field": drop_second_field,
+
+        "crop": crop,
+
+        "resize": resize,
 
     }))
 
@@ -2480,6 +2627,53 @@ def mjpeg(
 
 
 
+def mjpeg_cuvid(
+
+    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
+
+    gpu: str | None = None,
+
+    surfaces: int | None = None,
+
+    drop_second_field: bool | None = None,
+
+    crop: str | None = None,
+
+    resize: str | None = None,
+
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID MJPEG decoder (codec mjpeg)
+
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+        "deint": deint,
+
+        "gpu": gpu,
+
+        "surfaces": surfaces,
+
+        "drop_second_field": drop_second_field,
+
+        "crop": crop,
+
+        "resize": resize,
+
+    }))
+
+
+
 def mjpegb(
 
 ) -> FFMpegDecoderOption:
@@ -2587,6 +2781,53 @@ def mpeg1_v4l2m2m(
 
 
 
+def mpeg1_cuvid(
+
+    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
+
+    gpu: str | None = None,
+
+    surfaces: int | None = None,
+
+    drop_second_field: bool | None = None,
+
+    crop: str | None = None,
+
+    resize: str | None = None,
+
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID MPEG1VIDEO decoder (codec mpeg1video)
+
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+        "deint": deint,
+
+        "gpu": gpu,
+
+        "surfaces": surfaces,
+
+        "drop_second_field": drop_second_field,
+
+        "crop": crop,
+
+        "resize": resize,
+
+    }))
+
+
+
 def mpeg2video(
 
 ) -> FFMpegDecoderOption:
@@ -2646,6 +2887,53 @@ def mpeg2_v4l2m2m(
 
 
 
+def mpeg2_cuvid(
+
+    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
+
+    gpu: str | None = None,
+
+    surfaces: int | None = None,
+
+    drop_second_field: bool | None = None,
+
+    crop: str | None = None,
+
+    resize: str | None = None,
+
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID MPEG2VIDEO decoder (codec mpeg2video)
+
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+        "deint": deint,
+
+        "gpu": gpu,
+
+        "surfaces": surfaces,
+
+        "drop_second_field": drop_second_field,
+
+        "crop": crop,
+
+        "resize": resize,
+
+    }))
+
+
+
 def mpeg4(
 
 ) -> FFMpegDecoderOption:
@@ -2684,6 +2972,53 @@ def mpeg4_v4l2m2m(
         "num_output_buffers": num_output_buffers,
 
         "num_capture_buffers": num_capture_buffers,
+
+    }))
+
+
+
+def mpeg4_cuvid(
+
+    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
+
+    gpu: str | None = None,
+
+    surfaces: int | None = None,
+
+    drop_second_field: bool | None = None,
+
+    crop: str | None = None,
+
+    resize: str | None = None,
+
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID MPEG4 decoder (codec mpeg4)
+
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+        "deint": deint,
+
+        "gpu": gpu,
+
+        "surfaces": surfaces,
+
+        "drop_second_field": drop_second_field,
+
+        "crop": crop,
+
+        "resize": resize,
 
     }))
 
@@ -4404,6 +4739,53 @@ def vc1_v4l2m2m(
 
 
 
+def vc1_cuvid(
+
+    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
+
+    gpu: str | None = None,
+
+    surfaces: int | None = None,
+
+    drop_second_field: bool | None = None,
+
+    crop: str | None = None,
+
+    resize: str | None = None,
+
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID VC1 decoder (codec vc1)
+
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+        "deint": deint,
+
+        "gpu": gpu,
+
+        "surfaces": surfaces,
+
+        "drop_second_field": drop_second_field,
+
+        "crop": crop,
+
+        "resize": resize,
+
+    }))
+
+
+
 def vc1image(
 
 ) -> FFMpegDecoderOption:
@@ -4687,6 +5069,53 @@ def libvpx(
 
 
 
+def vp8_cuvid(
+
+    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
+
+    gpu: str | None = None,
+
+    surfaces: int | None = None,
+
+    drop_second_field: bool | None = None,
+
+    crop: str | None = None,
+
+    resize: str | None = None,
+
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID VP8 decoder (codec vp8)
+
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+        "deint": deint,
+
+        "gpu": gpu,
+
+        "surfaces": surfaces,
+
+        "drop_second_field": drop_second_field,
+
+        "crop": crop,
+
+        "resize": resize,
+
+    }))
+
+
+
 def vp9(
 
 ) -> FFMpegDecoderOption:
@@ -4725,6 +5154,53 @@ def vp9_v4l2m2m(
         "num_output_buffers": num_output_buffers,
 
         "num_capture_buffers": num_capture_buffers,
+
+    }))
+
+
+
+def vp9_cuvid(
+
+    deint: int | None| Literal["weave", "bob", "adaptive"] = None,
+
+    gpu: str | None = None,
+
+    surfaces: int | None = None,
+
+    drop_second_field: bool | None = None,
+
+    crop: str | None = None,
+
+    resize: str | None = None,
+
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID VP9 decoder (codec vp9)
+
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(merge({
+
+        "deint": deint,
+
+        "gpu": gpu,
+
+        "surfaces": surfaces,
+
+        "drop_second_field": drop_second_field,
+
+        "crop": crop,
+
+        "resize": resize,
 
     }))
 
