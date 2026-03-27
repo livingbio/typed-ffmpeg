@@ -1062,10 +1062,6 @@ References:
 
 
 
-
-
-
-
 def axcorrelate(
 
 
@@ -1315,105 +1311,6 @@ References:
 
 
 
-def blend_vulkan(
-
-
-
-
-        _top: VideoStream,
-
-
-
-        _bottom: VideoStream,
-
-
-
-
-    *,
-    c0_mode: Int| Literal["normal","multiply"] | Default = Default('normal'),c1_mode: Int| Literal["normal","multiply"] | Default = Default('normal'),c2_mode: Int| Literal["normal","multiply"] | Default = Default('normal'),c3_mode: Int| Literal["normal","multiply"] | Default = Default('normal'),all_mode: Int| Literal["normal","multiply"] | Default = Default('-1'),c0_opacity: Double = Default('1'),c1_opacity: Double = Default('1'),c2_opacity: Double = Default('1'),c3_opacity: Double = Default('1'),all_opacity: Double = Default('1'),
-
-
-    extra_options: dict[str, Any] | None = None,
-)-> VideoStream:
-    """
-
-Blend two video frames in Vulkan
-
-
-Args:
-    c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
-    c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
-    c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
-    c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
-    all_mode: set blend mode for all components (from -1 to 39) (default -1)
-    c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
-    c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
-    c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
-    c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
-    all_opacity: set opacity for all color components (from 0 to 1) (default 1)
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](None)
-
-    """
-
-
-
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(name='blend_vulkan', typings_input=('video', 'video'), typings_output=('video',)),
-
-
-
-
-            _top,
-
-
-
-            _bottom,
-
-
-
-
-        **merge({
-
-            "c0_mode": c0_mode,
-
-            "c1_mode": c1_mode,
-
-            "c2_mode": c2_mode,
-
-            "c3_mode": c3_mode,
-
-            "all_mode": all_mode,
-
-            "c0_opacity": c0_opacity,
-
-            "c1_opacity": c1_opacity,
-
-            "c2_opacity": c2_opacity,
-
-            "c3_opacity": c3_opacity,
-
-            "all_opacity": all_opacity,
-
-        },
-        extra_options,
-
-
-        )
-    )
-    return filter_node.video(0)
-
-
-
-
-
-
-
 
 
 
@@ -1512,14 +1409,6 @@ References:
         )
     )
     return filter_node.video(0)
-
-
-
-
-
-
-
-
 
 
 
@@ -1765,8 +1654,6 @@ References:
     )
 
     return filter_node
-
-
 
 
 
@@ -2110,14 +1997,6 @@ References:
 
 
 
-
-
-
-
-
-
-
-
 def displace(
 
 
@@ -2213,8 +2092,6 @@ References:
         )
     )
     return filter_node.video(0)
-
-
 
 
 
@@ -2532,10 +2409,6 @@ References:
 
 
 
-
-
-
-
 def framepack(
 
 
@@ -2695,12 +2568,6 @@ References:
         )
     )
     return filter_node.video(0)
-
-
-
-
-
-
 
 
 
@@ -3012,8 +2879,6 @@ References:
 
 
 
-
-
 def hstack(
 
 
@@ -3077,8 +2942,6 @@ References:
         )
     )
     return filter_node.video(0)
-
-
 
 
 
@@ -3471,86 +3334,135 @@ References:
 
 
 
-def ladspa(
-
-
-
-    *streams: AudioStream,
 
 
 
 
-    file: String = Default(None),plugin: String = Default(None),controls: String = Default(None),sample_rate: Int = Default('44100'),nb_samples: Int = Default('1024'),duration: Duration = Default('-0.000001'),latency: Boolean = Default('false'),
+
+
+def libvmaf(
+
+
+
+
+        _main: VideoStream,
+
+
+
+        _reference: VideoStream,
+
+
+
+
+    *,
+    model_path: String = Default(None),log_path: String = Default(None),log_fmt: String = Default('xml'),enable_transform: Boolean = Default('false'),psnr: Boolean = Default('false'),ssim: Boolean = Default('false'),ms_ssim: Boolean = Default('false'),pool: String = Default(None),n_threads: Int = Default('0'),n_subsample: Int = Default('1'),enable_conf_interval: Boolean = Default('false'),model: String = Default('version=vmaf_v0.6.1'),feature: String = Default(None),
+
+    framesync_options: FFMpegFrameSyncOption | None = None,
+    eof_action: str | None = None,
+    shortest: bool | None = None,
+    repeatlast: bool | None = None,
 
 
     extra_options: dict[str, Any] | None = None,
-)-> AudioStream:
+)-> VideoStream:
     """
 
-Load a LADSPA (Linux Audio Developer's Simple Plugin API) plugin.
+Calulate the VMAF (Video Multi-Method Assessment Fusion) score for a
+reference/distorted pair of input videos.
 
-To enable compilation of this filter you need to configure FFmpeg with
---enable-ladspa.
+The first input is the distorted video, and the second input is the reference video.
+
+The obtained VMAF score is printed through the logging system.
+
+It requires Netflix's vmaf library (libvmaf) as a pre-requisite.
+After installing the library it can be enabled using:
+./configure --enable-libvmaf.
+
+The filter has following options:
 
 
 Args:
-    file: Specifies the name of LADSPA plugin library to load. If the environment variable LADSPA_PATH is defined, the LADSPA plugin is searched in each one of the directories specified by the colon separated list in LADSPA_PATH, otherwise in the standard LADSPA paths, which are in this order: HOME/.ladspa/lib/, /usr/local/lib/ladspa/, /usr/lib/ladspa/.
-    plugin: Specifies the plugin within the library. Some libraries contain only one plugin, but others contain many of them. If this is not set filter will list all available plugins within the specified library.
-    controls: Set the '|' separated list of controls which are zero or more floating point values that determine the behavior of the loaded plugin (for example delay, threshold or gain). Controls need to be defined using the following syntax: c0=value0|c1=value1|c2=value2|..., where valuei is the value set on the i-th control. Alternatively they can be also defined using the following syntax: value0|value1|value2|..., where valuei is the value set on the i-th control. If controls is set to help, all available controls and their valid ranges are printed.
-    sample_rate: Specify the sample rate, default to 44100. Only used if plugin have zero inputs.
-    nb_samples: Set the number of samples per channel per each output frame, default is 1024. Only used if plugin have zero inputs.
-    duration: Set the minimum duration of the sourced audio. See the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. Note that the resulting duration may be greater than the specified duration, as the generated audio is always cut at the end of a complete frame. If not specified, or the expressed duration is negative, the audio is supposed to be generated forever. Only used if plugin have zero inputs.
-    latency: Enable latency compensation, by default is disabled. Only used if plugin have inputs.
+    model_path: Deprecated, use model='path=...'.
+    log_path: Set the file path to be used to store log files.
+    log_fmt: Set the format of the log file (xml, json, csv, or sub).
+    enable_transform: Deprecated, use model='enable_transform=true'.
+    psnr: Deprecated, use feature='name=psnr'.
+    ssim: Deprecated, use feature='name=ssim'.
+    ms_ssim: Deprecated, use feature='name=ms_ssim'.
+    pool: Set the pool method to be used for computing vmaf.
+    n_threads: Set number of threads to be used when initializing libvmaf. Default value: 0, no threads.
+    n_subsample: Set frame subsampling interval to be used.
+    enable_conf_interval: Deprecated, use model='enable_conf_interval=true'.
+    model: A `|` delimited list of vmaf models. Each model can be configured with a number of parameters. Default value: "version=vmaf_v0.6.1"
+    feature: A `|` delimited list of features. Each feature can be configured with a number of parameters.
+    framesync_options: Framesync options
     extra_options: Extra options for the filter
 
 Returns:
-    default: the audio stream
+    default: the video stream
 
 References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ladspa)
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#libvmaf)
 
     """
 
 
+    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+
 
     filter_node = filter_node_factory(
-        FFMpegFilterDef(name='ladspa', typings_input='[StreamType.audio]', typings_output=('audio',)),
+        FFMpegFilterDef(name='libvmaf', typings_input=('video', 'video'), typings_output=('video',)),
 
 
 
-        *streams,
+
+            _main,
+
+
+
+            _reference,
+
 
 
 
         **merge({
 
-            "file": file,
+            "model_path": model_path,
 
-            "plugin": plugin,
+            "log_path": log_path,
 
-            "controls": controls,
+            "log_fmt": log_fmt,
 
-            "sample_rate": sample_rate,
+            "enable_transform": enable_transform,
 
-            "nb_samples": nb_samples,
+            "psnr": psnr,
 
-            "duration": duration,
+            "ssim": ssim,
 
-            "latency": latency,
+            "ms_ssim": ms_ssim,
+
+            "pool": pool,
+
+            "n_threads": n_threads,
+
+            "n_subsample": n_subsample,
+
+            "enable_conf_interval": enable_conf_interval,
+
+            "model": model,
+
+            "feature": feature,
 
         },
         extra_options,
 
+        framesync_options,
+
 
         )
     )
-    return filter_node.audio(0)
-
-
-
-
-
-
+    return filter_node.video(0)
 
 
 
@@ -3765,81 +3677,6 @@ References:
 
 
 
-
-
-
-
-
-
-
-def lv2(
-
-
-
-    *streams: AudioStream,
-
-
-
-
-    plugin: String = Default(None),controls: String = Default(None),sample_rate: Int = Default('44100'),nb_samples: Int = Default('1024'),duration: Duration = Default('-0.000001'),
-
-
-    extra_options: dict[str, Any] | None = None,
-)-> AudioStream:
-    """
-
-Load a LV2 (LADSPA Version 2) plugin.
-
-To enable compilation of this filter you need to configure FFmpeg with
---enable-lv2.
-
-
-Args:
-    plugin: Specifies the plugin URI. You may need to escape ':'.
-    controls: Set the '|' separated list of controls which are zero or more floating point values that determine the behavior of the loaded plugin (for example delay, threshold or gain). If controls is set to help, all available controls and their valid ranges are printed.
-    sample_rate: Specify the sample rate, default to 44100. Only used if plugin have zero inputs.
-    nb_samples: Set the number of samples per channel per each output frame, default is 1024. Only used if plugin have zero inputs.
-    duration: Set the minimum duration of the sourced audio. See the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. Note that the resulting duration may be greater than the specified duration, as the generated audio is always cut at the end of a complete frame. If not specified, or the expressed duration is negative, the audio is supposed to be generated forever. Only used if plugin have zero inputs.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the audio stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lv2)
-
-    """
-
-
-
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(name='lv2', typings_input='[StreamType.audio]', typings_output=('audio',)),
-
-
-
-        *streams,
-
-
-
-        **merge({
-
-            "plugin": plugin,
-
-            "controls": controls,
-
-            "sample_rate": sample_rate,
-
-            "nb_samples": nb_samples,
-
-            "duration": duration,
-
-        },
-        extra_options,
-
-
-        )
-    )
-    return filter_node.audio(0)
 
 
 
@@ -4936,10 +4773,6 @@ References:
 
 
 
-
-
-
-
 def overlay(
 
 
@@ -5050,252 +4883,6 @@ References:
         )
     )
     return filter_node.video(0)
-
-
-
-
-
-
-
-def overlay_opencl(
-
-
-
-
-        _main: VideoStream,
-
-
-
-        _overlay: VideoStream,
-
-
-
-
-    *,
-    x: Int = Default('0'),y: Int = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-)-> VideoStream:
-    """
-
-Overlay one video on top of another.
-
-It takes two inputs and has one output. The first input is the "main" video on which the second input is overlaid.
-This filter requires same memory layout for all the inputs. So, format conversion may be needed.
-
-The filter accepts the following options:
-
-
-Args:
-    x: Set the x coordinate of the overlaid video on the main video. Default value is 0.
-    y: Set the y coordinate of the overlaid video on the main video. Default value is 0.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_opencl)
-
-    """
-
-
-
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(name='overlay_opencl', typings_input=('video', 'video'), typings_output=('video',)),
-
-
-
-
-            _main,
-
-
-
-            _overlay,
-
-
-
-
-        **merge({
-
-            "x": x,
-
-            "y": y,
-
-        },
-        extra_options,
-
-
-        )
-    )
-    return filter_node.video(0)
-
-
-
-
-
-
-
-def overlay_vaapi(
-
-
-
-
-        _main: VideoStream,
-
-
-
-        _overlay: VideoStream,
-
-
-
-
-    *,
-    x: Int = Default('0'),y: Int = Default('0'),w: Int = Default('0'),h: Int = Default('0'),alpha: Float = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-)-> VideoStream:
-    """
-
-Overlay one video on the top of another.
-
-It takes two inputs and has one output. The first input is the "main" video on which the second input is overlaid.
-This filter requires same memory layout for all the inputs. So, format conversion may be needed.
-
-The filter accepts the following options:
-
-
-Args:
-    x: Set the x coordinate of the overlaid video on the main video. Default value is 0.
-    y: Set the y coordinate of the overlaid video on the main video. Default value is 0.
-    w: Set the width of the overlaid video on the main video. Default value is the width of input overlay video.
-    h: Set the height of the overlaid video on the main video. Default value is the height of input overlay video.
-    alpha: Set blocking detection thresholds. Allowed range is 0.0 to 1.0, it requires an input video with alpha channel. Default value is 0.0.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay_vaapi)
-
-    """
-
-
-
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(name='overlay_vaapi', typings_input=('video', 'video'), typings_output=('video',)),
-
-
-
-
-            _main,
-
-
-
-            _overlay,
-
-
-
-
-        **merge({
-
-            "x": x,
-
-            "y": y,
-
-            "w": w,
-
-            "h": h,
-
-            "alpha": alpha,
-
-        },
-        extra_options,
-
-
-        )
-    )
-    return filter_node.video(0)
-
-
-
-
-
-
-
-def overlay_vulkan(
-
-
-
-
-        _main: VideoStream,
-
-
-
-        _overlay: VideoStream,
-
-
-
-
-    *,
-    x: Int = Default('0'),y: Int = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-)-> VideoStream:
-    """
-
-Overlay a source on top of another
-
-
-Args:
-    x: Set horizontal offset (from 0 to INT_MAX) (default 0)
-    y: Set vertical offset (from 0 to INT_MAX) (default 0)
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](None)
-
-    """
-
-
-
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(name='overlay_vulkan', typings_input=('video', 'video'), typings_output=('video',)),
-
-
-
-
-            _main,
-
-
-
-            _overlay,
-
-
-
-
-        **merge({
-
-            "x": x,
-
-            "y": y,
-
-        },
-        extra_options,
-
-
-        )
-    )
-    return filter_node.video(0)
-
-
 
 
 
@@ -5509,90 +5096,6 @@ References:
     return filter_node.video(0)
 
 
-
-
-
-
-
-
-
-
-
-
-
-def program_opencl(
-
-
-
-    *streams: VideoStream,
-
-
-
-
-    source: String = Default(None),kernel: String = Default(None),inputs: Int = Default('1'),size: Image_size = Default(None),
-
-    framesync_options: FFMpegFrameSyncOption | None = None,
-    eof_action: str | None = None,
-    shortest: bool | None = None,
-    repeatlast: bool | None = None,
-
-
-    extra_options: dict[str, Any] | None = None,
-)-> VideoStream:
-    """
-
-Filter video using an OpenCL program.
-
-
-Args:
-    source: OpenCL program source file.
-    kernel: Kernel name in program.
-    inputs: Number of inputs to the filter. Defaults to 1.
-    size: Size of output frames. Defaults to the same as the first input.
-    framesync_options: Framesync options
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#program_opencl)
-
-    """
-
-
-    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
-        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
-
-
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(name='program_opencl', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
-
-
-
-        *streams,
-
-
-
-        **merge({
-
-            "source": source,
-
-            "kernel": kernel,
-
-            "inputs": inputs,
-
-            "size": size,
-
-        },
-        extra_options,
-
-        framesync_options,
-
-
-        )
-    )
-    return filter_node.video(0)
 
 
 
@@ -5828,101 +5331,6 @@ References:
 
 
 
-def remap_opencl(
-
-
-
-
-        _source: VideoStream,
-
-
-
-        _xmap: VideoStream,
-
-
-
-        _ymap: VideoStream,
-
-
-
-
-    *,
-    interp: Int| Literal["near","linear"] | Default = Default('linear'),fill: Color = Default('black'),
-
-
-    extra_options: dict[str, Any] | None = None,
-)-> VideoStream:
-    """
-
-Remap pixels using 2nd: Xmap and 3rd: Ymap input video stream.
-
-Destination pixel at position (X, Y) will be picked from source (x, y) position
-where x = Xmap(X, Y) and y = Ymap(X, Y). If mapping values are out of range, zero
-value for pixel will be used for destination pixel.
-
-Xmap and Ymap input video streams must be of same dimensions. Output video stream
-will have Xmap/Ymap video stream dimensions.
-Xmap and Ymap input video streams are 32bit float pixel format, single channel.
-
-
-Args:
-    interp: Specify interpolation used for remapping of pixels. Allowed values are near and linear. Default value is linear.
-    fill: Specify the color of the unmapped pixels. For the syntax of this option, check the "Color" section in the ffmpeg-utils manual. Default color is black.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#remap_opencl)
-
-    """
-
-
-
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(name='remap_opencl', typings_input=('video', 'video', 'video'), typings_output=('video',)),
-
-
-
-
-            _source,
-
-
-
-            _xmap,
-
-
-
-            _ymap,
-
-
-
-
-        **merge({
-
-            "interp": interp,
-
-            "fill": fill,
-
-        },
-        extra_options,
-
-
-        )
-    )
-    return filter_node.video(0)
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -6084,12 +5492,6 @@ References:
 
 
     )
-
-
-
-
-
-
 
 
 
@@ -6482,10 +5884,6 @@ References:
         )
     )
     return filter_node.video(0)
-
-
-
-
 
 
 
@@ -6957,16 +6355,6 @@ References:
 
 
 
-
-
-
-
-
-
-
-
-
-
 def unpremultiply(
 
 
@@ -7037,8 +6425,6 @@ References:
         )
     )
     return filter_node.video(0)
-
-
 
 
 
@@ -7148,8 +6534,6 @@ References:
         )
     )
     return filter_node.video(0)
-
-
 
 
 
@@ -7527,92 +6911,6 @@ References:
             "offset": offset,
 
             "expr": expr,
-
-        },
-        extra_options,
-
-
-        )
-    )
-    return filter_node.video(0)
-
-
-
-
-
-
-
-def xfade_opencl(
-
-
-
-
-        _main: VideoStream,
-
-
-
-        _xfade: VideoStream,
-
-
-
-
-    *,
-    transition: Int| Literal["custom","fade","wipeleft","wiperight","wipeup","wipedown","slideleft","slideright","slideup","slidedown"] | Default = Default('fade'),source: String = Default(None),kernel: String = Default(None),duration: Duration = Default('1'),offset: Duration = Default('0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-)-> VideoStream:
-    """
-
-Cross fade two videos with custom transition effect by using OpenCL.
-
-It accepts the following options:
-
-
-Args:
-    transition: Set one of possible transition effects. @end table
-    source: OpenCL program source file for custom transition.
-    kernel: Set name of kernel to use for custom transition from program source file.
-    duration: Set duration of video transition.
-    offset: Set time of start of transition relative to first video.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xfade_opencl)
-
-    """
-
-
-
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(name='xfade_opencl', typings_input=('video', 'video'), typings_output=('video',)),
-
-
-
-
-            _main,
-
-
-
-            _xfade,
-
-
-
-
-        **merge({
-
-            "transition": transition,
-
-            "source": source,
-
-            "kernel": kernel,
-
-            "duration": duration,
-
-            "offset": offset,
 
         },
         extra_options,

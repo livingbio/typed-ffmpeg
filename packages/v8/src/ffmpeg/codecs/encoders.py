@@ -272,6 +272,53 @@ def asv2(
 
 
 
+def librav1e(
+
+    qp: int | None = None,
+
+    speed: int | None = None,
+
+    tiles: int | None = None,
+
+    tile_rows: int | None = None,
+
+    tile_columns: int | None = None,
+
+    rav1e_params: str | None = None,
+
+) -> FFMpegEncoderOption:
+    """
+    librav1e AV1 (codec av1)
+
+    Args:
+        qp: use constant quantizer mode (from -1 to 255) (default -1)
+        speed: what speed preset to use (from -1 to 10) (default -1)
+        tiles: number of tiles encode with (from -1 to I64_MAX) (default 0)
+        tile_rows: number of tiles rows to encode with (from -1 to I64_MAX) (default 0)
+        tile_columns: number of tiles columns to encode with (from -1 to I64_MAX) (default 0)
+        rav1e_params: set the rav1e configuration using a :-separated list of key=value parameters
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+        "qp": qp,
+
+        "speed": speed,
+
+        "tiles": tiles,
+
+        "tile-rows": tile_rows,
+
+        "tile-columns": tile_columns,
+
+        "rav1e-params": rav1e_params,
+
+    }))
+
+
+
 def av1_nvenc(
 
     preset: int | None| Literal["default", "slow", "medium", "fast", "p1", "p2", "p3", "p4", "p5", "p6", "p7"] = None,
@@ -2725,6 +2772,38 @@ def h264_vulkan(
 
 
 
+def hap(
+
+    format: int | None| Literal["hap", "hap_alpha", "hap_q"] = None,
+
+    chunks: int | None = None,
+
+    compressor: int | None| Literal["none", "snappy"] = None,
+
+) -> FFMpegEncoderOption:
+    """
+    Vidvox Hap
+
+    Args:
+        format: (from 11 to 15) (default hap)
+        chunks: chunk count (from 1 to 64) (default 1)
+        compressor: second-stage compressor (from 160 to 176) (default snappy)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+        "format": format,
+
+        "chunks": chunks,
+
+        "compressor": compressor,
+
+    }))
+
+
+
 def hdr(
 
 ) -> FFMpegEncoderOption:
@@ -3434,6 +3513,80 @@ def jpegls(
     return FFMpegEncoderOption(merge({
 
         "pred": pred,
+
+    }))
+
+
+
+def libjxl(
+
+    effort: int | None = None,
+
+    distance: float | None = None,
+
+    modular: int | None = None,
+
+    xyb: int | None = None,
+
+) -> FFMpegEncoderOption:
+    """
+    libjxl JPEG XL (codec jpegxl)
+
+    Args:
+        effort: Encoding effort (from 1 to 9) (default 7)
+        distance: Maximum Butteraugli distance (quality setting, lower = better, zero = lossless, default 1.0) (from -1 to 15) (default -1)
+        modular: Force modular mode (from 0 to 1) (default 0)
+        xyb: Use XYB-encoding for lossy images (from 0 to 1) (default 1)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+        "effort": effort,
+
+        "distance": distance,
+
+        "modular": modular,
+
+        "xyb": xyb,
+
+    }))
+
+
+
+def libjxl_anim(
+
+    effort: int | None = None,
+
+    distance: float | None = None,
+
+    modular: int | None = None,
+
+    xyb: int | None = None,
+
+) -> FFMpegEncoderOption:
+    """
+    libjxl JPEG XL animated (codec jpegxl_anim)
+
+    Args:
+        effort: Encoding effort (from 1 to 9) (default 7)
+        distance: Maximum Butteraugli distance (quality setting, lower = better, zero = lossless, default 1.0) (from -1 to 15) (default -1)
+        modular: Force modular mode (from 0 to 1) (default 0)
+        xyb: Use XYB-encoding for lossy images (from 0 to 1) (default 1)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+        "effort": effort,
+
+        "distance": distance,
+
+        "modular": modular,
+
+        "xyb": xyb,
 
     }))
 
@@ -6667,6 +6820,88 @@ def aac(
 
 
 
+def libfdk_aac(
+
+    afterburner: int | None = None,
+
+    eld_sbr: int | None = None,
+
+    eld_v2: int | None = None,
+
+    signaling: int | None| Literal["default", "implicit", "explicit_sbr", "explicit_hierarchical"] = None,
+
+    latm: int | None = None,
+
+    header_period: int | None = None,
+
+    vbr: int | None = None,
+
+    drc_profile: int | None = None,
+
+    drc_target_ref: int | None = None,
+
+    comp_profile: int | None = None,
+
+    comp_target_ref: int | None = None,
+
+    prog_ref: int | None = None,
+
+    frame_length: int | None = None,
+
+) -> FFMpegEncoderOption:
+    """
+    Fraunhofer FDK AAC (codec aac)
+
+    Args:
+        afterburner: Afterburner (improved quality) (from 0 to 1) (default 1)
+        eld_sbr: Enable SBR for ELD (for SBR in other configurations, use the -profile parameter) (from 0 to 1) (default 0)
+        eld_v2: Enable ELDv2 (LD-MPS extension for ELD stereo signals) (from 0 to 1) (default 0)
+        signaling: SBR/PS signaling style (from -1 to 2) (default default)
+        latm: Output LATM/LOAS encapsulated data (from 0 to 1) (default 0)
+        header_period: StreamMuxConfig and PCE repetition period (in frames) (from 0 to 65535) (default 0)
+        vbr: VBR mode (1-5) (from 0 to 5) (default 0)
+        drc_profile: The desired compression profile for AAC DRC (from 0 to 256) (default 0)
+        drc_target_ref: Expected target reference level at decoder side in dB (for clipping prevention/limiter) (from -31.75 to 0) (default 0)
+        comp_profile: The desired compression profile for AAC DRC (from 0 to 256) (default 0)
+        comp_target_ref: Expected target reference level at decoder side in dB (for clipping prevention/limiter) (from -31.75 to 0) (default 0)
+        prog_ref: The program reference level or dialog level in dB (from -31.75 to 0) (default 0)
+        frame_length: The desired frame length (from -1 to 1024) (default -1)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+        "afterburner": afterburner,
+
+        "eld_sbr": eld_sbr,
+
+        "eld_v2": eld_v2,
+
+        "signaling": signaling,
+
+        "latm": latm,
+
+        "header_period": header_period,
+
+        "vbr": vbr,
+
+        "drc_profile": drc_profile,
+
+        "drc_target_ref": drc_target_ref,
+
+        "comp_profile": comp_profile,
+
+        "comp_target_ref": comp_target_ref,
+
+        "prog_ref": prog_ref,
+
+        "frame_length": frame_length,
+
+    }))
+
+
+
 def ac3(
 
     center_mixlev: float | None = None,
@@ -7316,6 +7551,28 @@ def aptx_hd(
 
 
 
+def libcodec2(
+
+    mode: int | None| Literal["3200", "2400", "1600", "1400", "1300", "1200", "700", "700B", "700C"] = None,
+
+) -> FFMpegEncoderOption:
+    """
+    codec2 encoder using libcodec2 (codec codec2)
+
+    Args:
+        mode: codec2 mode (from 0 to 8) (default 1300)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+        "mode": mode,
+
+    }))
+
+
+
 def comfortnoise(
 
 ) -> FFMpegEncoderOption:
@@ -7555,6 +7812,38 @@ def g723_1(
 
 
 
+def libgsm(
+
+) -> FFMpegEncoderOption:
+    """
+    libgsm GSM (codec gsm)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+    }))
+
+
+
+def libgsm_ms(
+
+) -> FFMpegEncoderOption:
+    """
+    libgsm GSM Microsoft variant (codec gsm_ms)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+    }))
+
+
+
 def mlp(
 
     max_interval: int | None = None,
@@ -7639,6 +7928,58 @@ def mp2fixed(
 
 
 
+def libtwolame(
+
+    mode: int | None| Literal["auto", "stereo", "joint_stereo", "dual_channel", "mono"] = None,
+
+    psymodel: int | None = None,
+
+    energy_levels: int | None = None,
+
+    error_protection: int | None = None,
+
+    copyright: int | None = None,
+
+    original: int | None = None,
+
+    verbosity: int | None = None,
+
+) -> FFMpegEncoderOption:
+    """
+    libtwolame MP2 (MPEG audio layer 2) (codec mp2)
+
+    Args:
+        mode: Mpeg Mode (from -1 to 3) (default auto)
+        psymodel: Psychoacoustic Model (from -1 to 4) (default 3)
+        energy_levels: enable energy levels (from 0 to 1) (default 0)
+        error_protection: enable CRC error protection (from 0 to 1) (default 0)
+        copyright: set MPEG Audio Copyright flag (from 0 to 1) (default 0)
+        original: set MPEG Audio Original flag (from 0 to 1) (default 0)
+        verbosity: set library optput level (0-10) (from 0 to 10) (default 0)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+        "mode": mode,
+
+        "psymodel": psymodel,
+
+        "energy_levels": energy_levels,
+
+        "error_protection": error_protection,
+
+        "copyright": copyright,
+
+        "original": original,
+
+        "verbosity": verbosity,
+
+    }))
+
+
+
 def libmp3lame(
 
     reservoir: bool | None = None,
@@ -7676,6 +8017,22 @@ def libmp3lame(
         "copyright": copyright,
 
         "original": original,
+
+    }))
+
+
+
+def libshine(
+
+) -> FFMpegEncoderOption:
+    """
+    libshine MP3 (MPEG audio layer 3) (codec mp3)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
 
     }))
 
@@ -8347,6 +8704,48 @@ def sbc(
 
 
 
+def libspeex(
+
+    abr: int | None = None,
+
+    cbr_quality: int | None = None,
+
+    frames_per_packet: int | None = None,
+
+    vad: int | None = None,
+
+    dtx: int | None = None,
+
+) -> FFMpegEncoderOption:
+    """
+    libspeex Speex (codec speex)
+
+    Args:
+        abr: Use average bit rate (from 0 to 1) (default 0)
+        cbr_quality: Set quality value (0 to 10) for CBR (from 0 to 10) (default 8)
+        frames_per_packet: Number of frames to encode in each packet (from 1 to 8) (default 1)
+        vad: Voice Activity Detection (from 0 to 1) (default 0)
+        dtx: Discontinuous Transmission (from 0 to 1) (default 0)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+        "abr": abr,
+
+        "cbr_quality": cbr_quality,
+
+        "frames_per_packet": frames_per_packet,
+
+        "vad": vad,
+
+        "dtx": dtx,
+
+    }))
+
+
+
 def truehd(
 
     max_interval: int | None = None,
@@ -8708,6 +9107,22 @@ def xsub(
     return FFMpegEncoderOption(merge({
 
     }))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

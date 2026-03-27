@@ -1345,10 +1345,6 @@ References:
 
 
 
-
-
-
-
 def avsynctest(
 
 
@@ -1494,8 +1490,6 @@ References:
 
 
 
-
-
 def bm3d(
 
 
@@ -1599,10 +1593,6 @@ References:
 
 
 
-
-
-
-
 def buffer(
 
 
@@ -1672,8 +1662,6 @@ References:
         )
     )
     return filter_node.video(0)
-
-
 
 
 
@@ -1778,8 +1766,6 @@ References:
         )
     )
     return filter_node.video(0)
-
-
 
 
 
@@ -1917,83 +1903,6 @@ References:
 
 
 
-def color_vulkan(
-
-
-
-
-
-    *,
-    color: Color = Default('black'),size: Image_size = Default('1920x1080'),rate: Video_rate = Default('60'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),format: String = Default(None),out_range: Int| Literal["full","limited","jpeg","mpeg","tv","pc"] | Default = Default('0) (from 0 to 2) (default 0'),
-
-
-    extra_options: dict[str, Any] | None = None,
-)-> VideoStream:
-    """
-
-Video source that creates a Vulkan frame of a solid color.
-Useful for benchmarking, or overlaying.
-
-It accepts the following parameters:
-
-
-Args:
-    color: The color to use. Either a name, or a hexadecimal value. The default value is black.
-    size: The size of the output frame. Default value is 1920x1080.
-    rate: The framerate to output at. Default value is 60 frames per second.
-    duration: The video duration. Default value is -0.000001.
-    sar: The video signal aspect ratio. Default value is 1/1.
-    format: The pixel format of the output Vulkan frames. Default value is yuv444p.
-    out_range: Set the output YCbCr sample range. This allows the autodetected value to be overridden as well as allows forcing a specific value used for the output and encoder. If not specified, the range depends on the pixel format. Possible values: @end table
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#color_vulkan)
-
-    """
-
-
-
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(name='color_vulkan', typings_input=(), typings_output=('video',)),
-
-
-
-
-
-        **merge({
-
-            "color": color,
-
-            "size": size,
-
-            "rate": rate,
-
-            "duration": duration,
-
-            "sar": sar,
-
-            "format": format,
-
-            "out_range": out_range,
-
-        },
-        extra_options,
-
-
-        )
-    )
-    return filter_node.video(0)
-
-
-
-
-
-
-
 
 
 
@@ -2103,8 +2012,6 @@ References:
         )
     )
     return filter_node.video(0)
-
-
 
 
 
@@ -2360,8 +2267,6 @@ References:
 
 
 
-
-
 def decimate(
 
 
@@ -2438,12 +2343,6 @@ References:
         )
     )
     return filter_node.video(0)
-
-
-
-
-
-
 
 
 
@@ -2684,159 +2583,11 @@ References:
 
 
 
-def flite(
 
 
 
 
 
-    *,
-    list_voices: Boolean = Default('false'),nb_samples: Int = Default('512'),text: String = Default(None),textfile: String = Default(None),v: String = Default('kal'),
-
-
-    extra_options: dict[str, Any] | None = None,
-)-> AudioStream:
-    """
-
-Synthesize a voice utterance using the libflite library.
-
-To enable compilation of this filter you need to configure FFmpeg with
---enable-libflite.
-
-Note that versions of the flite library prior to 2.0 are not thread-safe.
-
-The filter accepts the following options:
-
-
-Args:
-    list_voices: If set to 1, list the names of the available voices and exit immediately. Default value is 0.
-    nb_samples: Set the maximum number of samples per frame. Default value is 512.
-    text: Set the text to speak.
-    textfile: Set the filename containing the text to speak.
-    v: Set the voice to use for the speech synthesis. Default value is kal. See also the list_voices option.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the audio stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#flite)
-
-    """
-
-
-
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(name='flite', typings_input=(), typings_output=('audio',)),
-
-
-
-
-
-        **merge({
-
-            "list_voices": list_voices,
-
-            "nb_samples": nb_samples,
-
-            "text": text,
-
-            "textfile": textfile,
-
-            "v": v,
-
-        },
-        extra_options,
-
-
-        )
-    )
-    return filter_node.audio(0)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def frei0r_src(
-
-
-
-
-
-    *,
-    size: Image_size = Default('320x240'),framerate: Video_rate = Default('25'),filter_name: String = Default(None),
-
-
-    extra_options: dict[str, Any] | None = None,
-)-> VideoStream:
-    """
-
-Provide a frei0r source.
-
-To enable compilation of this filter you need to install the frei0r
-header and configure FFmpeg with --enable-frei0r.
-
-This source accepts the following parameters:
-
-
-Args:
-    size: The size of the video to generate. For the syntax of this option, check the "Video size" section in the ffmpeg-utils manual.
-    framerate: The framerate of the generated video. It may be a string of the form num/den or a frame rate abbreviation.
-    filter_name: The name to the frei0r source to load. For more information regarding frei0r and how to set the parameters, read the frei0r section in the video filters documentation.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#frei0r_src)
-
-    """
-
-
-
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(name='frei0r_src', typings_input=(), typings_output=('video',)),
-
-
-
-
-
-        **merge({
-
-            "size": size,
-
-            "framerate": framerate,
-
-            "filter_name": filter_name,
-
-        },
-        extra_options,
-
-
-        )
-    )
-    return filter_node.video(0)
 
 
 
@@ -3257,8 +3008,6 @@ References:
 
 
 
-
-
 def hilbert(
 
 
@@ -3508,8 +3257,6 @@ References:
 
 
 
-
-
 def interleave(
 
 
@@ -3663,85 +3410,6 @@ References:
 
 
 
-
-
-
-
-
-def ladspa(
-
-
-
-    *streams: AudioStream,
-
-
-
-
-    file: String = Default(None),plugin: String = Default(None),controls: String = Default(None),sample_rate: Int = Default('44100'),nb_samples: Int = Default('1024'),duration: Duration = Default('-0.000001'),latency: Boolean = Default('false'),
-
-
-    extra_options: dict[str, Any] | None = None,
-)-> AudioStream:
-    """
-
-Load a LADSPA (Linux Audio Developer's Simple Plugin API) plugin.
-
-To enable compilation of this filter you need to configure FFmpeg with
---enable-ladspa.
-
-
-Args:
-    file: Specifies the name of LADSPA plugin library to load. If the environment variable LADSPA_PATH is defined, the LADSPA plugin is searched in each one of the directories specified by the colon separated list in LADSPA_PATH, otherwise in the standard LADSPA paths, which are in this order: HOME/.ladspa/lib/, /usr/local/lib/ladspa/, /usr/lib/ladspa/.
-    plugin: Specifies the plugin within the library. Some libraries contain only one plugin, but others contain many of them. If this is not set filter will list all available plugins within the specified library.
-    controls: Set the '|' separated list of controls which are zero or more floating point values that determine the behavior of the loaded plugin (for example delay, threshold or gain). Controls need to be defined using the following syntax: c0=value0|c1=value1|c2=value2|..., where valuei is the value set on the i-th control. Alternatively they can be also defined using the following syntax: value0|value1|value2|..., where valuei is the value set on the i-th control. If controls is set to help, all available controls and their valid ranges are printed.
-    sample_rate: Specify the sample rate, default to 44100. Only used if plugin have zero inputs.
-    nb_samples: Set the number of samples per channel per each output frame, default is 1024. Only used if plugin have zero inputs.
-    duration: Set the minimum duration of the sourced audio. See the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. Note that the resulting duration may be greater than the specified duration, as the generated audio is always cut at the end of a complete frame. If not specified, or the expressed duration is negative, the audio is supposed to be generated forever. Only used if plugin have zero inputs.
-    latency: Enable latency compensation, by default is disabled. Only used if plugin have inputs.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the audio stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ladspa)
-
-    """
-
-
-
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(name='ladspa', typings_input='[StreamType.audio]', typings_output=('audio',)),
-
-
-
-        *streams,
-
-
-
-        **merge({
-
-            "file": file,
-
-            "plugin": plugin,
-
-            "controls": controls,
-
-            "sample_rate": sample_rate,
-
-            "nb_samples": nb_samples,
-
-            "duration": duration,
-
-            "latency": latency,
-
-        },
-        extra_options,
-
-
-        )
-    )
-    return filter_node.audio(0)
 
 
 
@@ -3952,81 +3620,6 @@ References:
 
 
 
-
-
-
-
-
-
-
-def lv2(
-
-
-
-    *streams: AudioStream,
-
-
-
-
-    plugin: String = Default(None),controls: String = Default(None),sample_rate: Int = Default('44100'),nb_samples: Int = Default('1024'),duration: Duration = Default('-0.000001'),
-
-
-    extra_options: dict[str, Any] | None = None,
-)-> AudioStream:
-    """
-
-Load a LV2 (LADSPA Version 2) plugin.
-
-To enable compilation of this filter you need to configure FFmpeg with
---enable-lv2.
-
-
-Args:
-    plugin: Specifies the plugin URI. You may need to escape ':'.
-    controls: Set the '|' separated list of controls which are zero or more floating point values that determine the behavior of the loaded plugin (for example delay, threshold or gain). If controls is set to help, all available controls and their valid ranges are printed.
-    sample_rate: Specify the sample rate, default to 44100. Only used if plugin have zero inputs.
-    nb_samples: Set the number of samples per channel per each output frame, default is 1024. Only used if plugin have zero inputs.
-    duration: Set the minimum duration of the sourced audio. See the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. Note that the resulting duration may be greater than the specified duration, as the generated audio is always cut at the end of a complete frame. If not specified, or the expressed duration is negative, the audio is supposed to be generated forever. Only used if plugin have zero inputs.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the audio stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lv2)
-
-    """
-
-
-
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(name='lv2', typings_input='[StreamType.audio]', typings_output=('audio',)),
-
-
-
-        *streams,
-
-
-
-        **merge({
-
-            "plugin": plugin,
-
-            "controls": controls,
-
-            "sample_rate": sample_rate,
-
-            "nb_samples": nb_samples,
-
-            "duration": duration,
-
-        },
-        extra_options,
-
-
-        )
-    )
-    return filter_node.audio(0)
 
 
 
@@ -4513,10 +4106,6 @@ References:
 
 
 
-
-
-
-
 def nullsrc(
 
 
@@ -4619,80 +4208,6 @@ References:
         )
     )
     return filter_node.video(0)
-
-
-
-
-
-
-
-def openclsrc(
-
-
-
-
-
-    *,
-    source: String = Default(None),kernel: String = Default(None),size: Image_size = Default(None),format: Pix_fmt = Default('none'),rate: Video_rate = Default('25'),
-
-
-    extra_options: dict[str, Any] | None = None,
-)-> VideoStream:
-    """
-
-Generate video using an OpenCL program.
-
-
-Args:
-    source: OpenCL program source file.
-    kernel: Kernel name in program.
-    size: Size of frames to generate. This must be set.
-    format: Pixel format to use for the generated frames. This must be set.
-    rate: Number of frames generated every second. Default value is '25'.
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#openclsrc)
-
-    """
-
-
-
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(name='openclsrc', typings_input=(), typings_output=('video',)),
-
-
-
-
-
-        **merge({
-
-            "source": source,
-
-            "kernel": kernel,
-
-            "size": size,
-
-            "format": format,
-
-            "rate": rate,
-
-        },
-        extra_options,
-
-
-        )
-    )
-    return filter_node.video(0)
-
-
-
-
-
-
 
 
 
@@ -5035,90 +4550,6 @@ References:
 
 
 
-def program_opencl(
-
-
-
-    *streams: VideoStream,
-
-
-
-
-    source: String = Default(None),kernel: String = Default(None),inputs: Int = Default('1'),size: Image_size = Default(None),
-
-    framesync_options: FFMpegFrameSyncOption | None = None,
-    eof_action: str | None = None,
-    shortest: bool | None = None,
-    repeatlast: bool | None = None,
-
-
-    extra_options: dict[str, Any] | None = None,
-)-> VideoStream:
-    """
-
-Filter video using an OpenCL program.
-
-
-Args:
-    source: OpenCL program source file.
-    kernel: Kernel name in program.
-    inputs: Number of inputs to the filter. Defaults to 1.
-    size: Size of output frames. Defaults to the same as the first input.
-    framesync_options: Framesync options
-    extra_options: Extra options for the filter
-
-Returns:
-    default: the video stream
-
-References:
-    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#program_opencl)
-
-    """
-
-
-    if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
-        framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
-
-
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(name='program_opencl', typings_input='[StreamType.video] * int(inputs)', typings_output=('video',)),
-
-
-
-        *streams,
-
-
-
-        **merge({
-
-            "source": source,
-
-            "kernel": kernel,
-
-            "inputs": inputs,
-
-            "size": size,
-
-        },
-        extra_options,
-
-        framesync_options,
-
-
-        )
-    )
-    return filter_node.video(0)
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -5252,12 +4683,6 @@ References:
         )
     )
     return filter_node.video(0)
-
-
-
-
-
-
 
 
 
@@ -5913,10 +5338,6 @@ References:
 
 
 
-
-
-
-
 def streamselect(
 
 
@@ -6260,12 +5681,6 @@ References:
 
 
 
-
-
-
-
-
-
 def unpremultiply(
 
 
@@ -6336,10 +5751,6 @@ References:
         )
     )
     return filter_node.video(0)
-
-
-
-
 
 
 
@@ -6520,10 +5931,6 @@ References:
         )
     )
     return filter_node.video(0)
-
-
-
-
 
 
 

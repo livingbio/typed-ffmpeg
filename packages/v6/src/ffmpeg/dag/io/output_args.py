@@ -463,5 +463,4 @@ class OutputArgs(ABC):
 
 
 
-
         }, encoder_options, muxer_options, format_options, codec_options, extra_options)).stream()
