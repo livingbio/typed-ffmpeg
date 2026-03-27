@@ -178,11 +178,11 @@ COPY --from=build /usr/local/bin/ffprobe /usr/local/bin/ffprobe
 COPY --from=build /usr/local/lib /usr/local/lib
 
 # Bundle all transitive shared library dependencies into /usr/local/lib
-RUN { ldd /usr/local/bin/ffmpeg; \
-      find /usr/local/lib -name 'libav*.so*' -exec ldd {} \; ; \
-      find /usr/local/lib -name 'libsw*.so*' -exec ldd {} \; ; \
-    } | awk '/=> \// {print $3}' | sort -u \
-    | xargs -I{} cp -n {} /usr/local/lib/ 2>/dev/null || true \
-    && ldconfig
+RUN for pass in 1 2 3; do \
+      { ldd /usr/local/bin/ffmpeg /usr/local/bin/ffprobe 2>/dev/null; \
+        find /usr/local/lib -name '*.so*' -not -type d -exec ldd {} \; 2>/dev/null; \
+      } | awk '/=> \// {print $3}' | sort -u \
+      | xargs -I{} cp -n {} /usr/local/lib/ 2>/dev/null || true; \
+    done && ldconfig
 
 ENTRYPOINT ["/usr/local/bin/ffmpeg"]
