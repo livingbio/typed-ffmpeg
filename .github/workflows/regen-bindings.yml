@@ -57,6 +57,10 @@ jobs:
             sudo docker cp "$CONTAINER_ID:/usr/bin/ffprobe" /usr/local/bin/ffprobe
           docker cp "$CONTAINER_ID:/usr/local/lib" /tmp/ffmpeg-libs
           sudo cp -a /tmp/ffmpeg-libs/. /usr/local/lib/
+          # Also extract system libs that ffmpeg depends on (needed for custom builds)
+          docker run --rm --entrypoint sh ${{ matrix.ffmpeg-image }} -c \
+            '{ ldd /usr/local/bin/ffmpeg; find /usr/local/lib -name "*.so*" -exec ldd {} \; 2>/dev/null; } | awk "/=> \// {print \$3}" | sort -u | tar cf - -T -' \
+            | sudo tar xf - -C /
           docker rm "$CONTAINER_ID"
           sudo ldconfig
           ffmpeg -version | head -1
