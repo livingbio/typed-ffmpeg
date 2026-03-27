@@ -30,8 +30,8 @@ repos:
         exclude: '__snapshots__/|.eslintrc.json'
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    # Ruff version - updated for pref compatibility
-    rev: v0.9.6
+    # Ruff version - keep in sync with pyproject.toml and uv.lock
+    rev: v0.12.2
     hooks:
       # Run the formatter.
       - id: ruff-format
