@@ -1,4 +1,4 @@
-name: Regen
+name: Regenerate FFmpeg Bindings
 
 on:
   workflow_dispatch:
