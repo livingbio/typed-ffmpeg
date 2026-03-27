@@ -287,6 +287,228 @@ def asv2(
 
 
 
+def av1_nvenc(
+
+    preset: int | None| Literal["default", "slow", "medium", "fast", "p1", "p2", "p3", "p4", "p5", "p6", "p7"] = None,
+
+    tune: int | None| Literal["hq", "ll", "ull", "lossless"] = None,
+
+    level: int | None| Literal["auto", "2", "2.0", "2.1", "2.2", "2.3", "3", "3.0", "3.1", "3.2", "3.3", "4", "4.0", "4.1", "4.2", "4.3", "5", "5.0", "5.1", "5.2", "5.3", "6", "6.0", "6.1", "6.2", "6.3", "7", "7.0", "7.1", "7.2", "7.3"] = None,
+
+    tier: int | None| Literal["0", "1"] = None,
+
+    rc: int | None| Literal["constqp", "vbr", "cbr"] = None,
+
+    multipass: int | None| Literal["disabled", "qres", "fullres"] = None,
+
+    highbitdepth: bool | None = None,
+
+    tile_rows: int | None = None,
+
+    tile_columns: int | None = None,
+
+    surfaces: int | None = None,
+
+    gpu: int | None| Literal["any", "list"] = None,
+
+    rgb_mode: int | None| Literal["yuv420", "yuv444", "disabled"] = None,
+
+    delay: int | None = None,
+
+    rc_lookahead: int | None = None,
+
+    cq: float | None = None,
+
+    init_qpP: int | None = None,
+
+    init_qpB: int | None = None,
+
+    init_qpI: int | None = None,
+
+    qp: int | None = None,
+
+    qp_cb_offset: int | None = None,
+
+    qp_cr_offset: int | None = None,
+
+    no_scenecut: bool | None = None,
+
+    forced_idr: bool | None = None,
+
+    b_adapt: bool | None = None,
+
+    spatial_aq: bool | None = None,
+
+    temporal_aq: bool | None = None,
+
+    zerolatency: bool | None = None,
+
+    nonref_p: bool | None = None,
+
+    strict_gop: bool | None = None,
+
+    aq_strength: int | None = None,
+
+    weighted_pred: bool | None = None,
+
+    b_ref_mode: int | None| Literal["disabled", "each", "middle"] = None,
+
+    dpb_size: int | None = None,
+
+    ldkfs: int | None = None,
+
+    intra_refresh: bool | None = None,
+
+    timing_info: bool | None = None,
+
+    extra_sei: bool | None = None,
+
+    a53cc: bool | None = None,
+
+    s12m_tc: bool | None = None,
+
+    lookahead_level: int | None| Literal["auto", "0", "1", "2", "3"] = None,
+
+    split_encode_mode: int | None| Literal["disabled", "auto", "forced", "2", "3"] = None,
+
+) -> FFMpegEncoderOption:
+    """
+    NVIDIA NVENC av1 encoder (codec av1)
+
+    Args:
+        preset: Set the encoding preset (from 0 to 18) (default p4)
+        tune: Set the encoding tuning info (from 1 to 4) (default hq)
+        level: Set the encoding level restriction (from 0 to 24) (default auto)
+        tier: Set the encoding tier (from 0 to 1) (default 0)
+        rc: Override the preset rate-control (from -1 to INT_MAX) (default -1)
+        multipass: Set the multipass encoding (from 0 to 2) (default disabled)
+        highbitdepth: Enable 10 bit encode for 8 bit input (default false)
+        tile_rows: Number of tile rows to encode with (from -1 to 64) (default -1)
+        tile_columns: Number of tile columns to encode with (from -1 to 64) (default -1)
+        surfaces: Number of concurrent surfaces (from 0 to 64) (default 0)
+        gpu: Selects which NVENC capable GPU to use. First GPU is 0, second is 1, and so on. (from -2 to INT_MAX) (default any)
+        rgb_mode: Configure how nvenc handles packed RGB input. (from 0 to INT_MAX) (default yuv420)
+        delay: Delay frame output by the given amount of frames (from 0 to INT_MAX) (default INT_MAX)
+        rc_lookahead: Number of frames to look ahead for rate-control (from 0 to INT_MAX) (default 0)
+        cq: Set target quality level (0 to 63, 0 means automatic) for constant quality mode in VBR rate control (from 0 to 63) (default 0)
+        init_qpP: Initial QP value for P frame (from -1 to 255) (default -1)
+        init_qpB: Initial QP value for B frame (from -1 to 255) (default -1)
+        init_qpI: Initial QP value for I frame (from -1 to 255) (default -1)
+        qp: Constant quantization parameter rate control method (from -1 to 255) (default -1)
+        qp_cb_offset: Quantization parameter offset for cb channel (from -12 to 12) (default 0)
+        qp_cr_offset: Quantization parameter offset for cr channel (from -12 to 12) (default 0)
+        no_scenecut: When lookahead is enabled, set this to 1 to disable adaptive I-frame insertion at scene cuts (default false)
+        forced_idr: If forcing keyframes, force them as IDR frames. (default false)
+        b_adapt: When lookahead is enabled, set this to 0 to disable adaptive B-frame decision (default true)
+        spatial_aq: set to 1 to enable Spatial AQ (default false)
+        temporal_aq: set to 1 to enable Temporal AQ (default false)
+        zerolatency: Set 1 to indicate zero latency operation (no reordering delay) (default false)
+        nonref_p: Set this to 1 to enable automatic insertion of non-reference P-frames (default false)
+        strict_gop: Set 1 to minimize GOP-to-GOP rate fluctuations (default false)
+        aq_strength: When Spatial AQ is enabled, this field is used to specify AQ strength. AQ strength scale is from 1 (low) - 15 (aggressive) (from 1 to 15) (default 8)
+        weighted_pred: Enable weighted prediction (default false)
+        b_ref_mode: Use B frames as references (from -1 to 2) (default -1)
+        dpb_size: Specifies the DPB size used for encoding (0 means automatic) (from 0 to INT_MAX) (default 0)
+        ldkfs: Low delay key frame scale; Specifies the Scene Change frame size increase allowed in case of single frame VBV and CBR (from 0 to 255) (default 0)
+        intra_refresh: Use Periodic Intra Refresh instead of IDR frames (default false)
+        timing_info: Include timing info in sequence/frame headers (default false)
+        extra_sei: Pass on extra SEI data (e.g. a53 cc) to be included in the bitstream (default true)
+        a53cc: Use A53 Closed Captions (if available) (default true)
+        s12m_tc: Use timecode (if available) (default true)
+        lookahead_level: Specifies the lookahead level. Higher level may improve quality at the expense of performance. (from -1 to 15) (default -1)
+        split_encode_mode: Specifies the split encoding mode (from 0 to 15) (default auto)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+        "preset": preset,
+
+        "tune": tune,
+
+        "level": level,
+
+        "tier": tier,
+
+        "rc": rc,
+
+        "multipass": multipass,
+
+        "highbitdepth": highbitdepth,
+
+        "tile-rows": tile_rows,
+
+        "tile-columns": tile_columns,
+
+        "surfaces": surfaces,
+
+        "gpu": gpu,
+
+        "rgb_mode": rgb_mode,
+
+        "delay": delay,
+
+        "rc-lookahead": rc_lookahead,
+
+        "cq": cq,
+
+        "init_qpP": init_qpP,
+
+        "init_qpB": init_qpB,
+
+        "init_qpI": init_qpI,
+
+        "qp": qp,
+
+        "qp_cb_offset": qp_cb_offset,
+
+        "qp_cr_offset": qp_cr_offset,
+
+        "no-scenecut": no_scenecut,
+
+        "forced-idr": forced_idr,
+
+        "b_adapt": b_adapt,
+
+        "spatial-aq": spatial_aq,
+
+        "temporal-aq": temporal_aq,
+
+        "zerolatency": zerolatency,
+
+        "nonref_p": nonref_p,
+
+        "strict_gop": strict_gop,
+
+        "aq-strength": aq_strength,
+
+        "weighted_pred": weighted_pred,
+
+        "b_ref_mode": b_ref_mode,
+
+        "dpb_size": dpb_size,
+
+        "ldkfs": ldkfs,
+
+        "intra-refresh": intra_refresh,
+
+        "timing-info": timing_info,
+
+        "extra_sei": extra_sei,
+
+        "a53cc": a53cc,
+
+        "s12m_tc": s12m_tc,
+
+        "lookahead_level": lookahead_level,
+
+        "split_encode_mode": split_encode_mode,
+
+    }))
+
+
+
 def av1_vaapi(
 
     idr_interval: int | None = None,
@@ -1958,6 +2180,243 @@ def libx264rgb(
 
 
 
+def h264_nvenc(
+
+    preset: int | None| Literal["default", "slow", "medium", "fast", "hp", "hq", "bd", "ll", "llhq", "llhp", "lossless", "losslesshp", "p1", "p2", "p3", "p4", "p5", "p6", "p7"] = None,
+
+    tune: int | None| Literal["hq", "ll", "ull", "lossless"] = None,
+
+    profile: int | None| Literal["baseline", "main", "high", "high444p"] = None,
+
+    level: int | None| Literal["auto", "1", "1.0", "1b", "1.0b", "1.1", "1.2", "1.3", "2", "2.0", "2.1", "2.2", "3", "3.0", "3.1", "3.2", "4", "4.0", "4.1", "4.2", "5", "5.0", "5.1", "5.2", "6.0", "6.1", "6.2"] = None,
+
+    rc: int | None| Literal["constqp", "vbr", "cbr", "vbr_minqp", "ll_2pass_quality", "ll_2pass_size", "vbr_2pass", "cbr_ld_hq", "cbr_hq", "vbr_hq"] = None,
+
+    rc_lookahead: int | None = None,
+
+    surfaces: int | None = None,
+
+    cbr: bool | None = None,
+
+    _2pass: bool | None = None,
+
+    gpu: int | None| Literal["any", "list"] = None,
+
+    rgb_mode: int | None| Literal["yuv420", "yuv444", "disabled"] = None,
+
+    delay: int | None = None,
+
+    no_scenecut: bool | None = None,
+
+    forced_idr: bool | None = None,
+
+    b_adapt: bool | None = None,
+
+    spatial_aq: bool | None = None,
+
+    temporal_aq: bool | None = None,
+
+    zerolatency: bool | None = None,
+
+    nonref_p: bool | None = None,
+
+    strict_gop: bool | None = None,
+
+    aq_strength: int | None = None,
+
+    cq: float | None = None,
+
+    aud: bool | None = None,
+
+    bluray_compat: bool | None = None,
+
+    init_qpP: int | None = None,
+
+    init_qpB: int | None = None,
+
+    init_qpI: int | None = None,
+
+    qp: int | None = None,
+
+    qp_cb_offset: int | None = None,
+
+    qp_cr_offset: int | None = None,
+
+    weighted_pred: int | None = None,
+
+    coder: int | None| Literal["default", "auto", "cabac", "cavlc", "ac", "vlc"] = None,
+
+    b_ref_mode: int | None| Literal["disabled", "each", "middle"] = None,
+
+    a53cc: bool | None = None,
+
+    dpb_size: int | None = None,
+
+    multipass: int | None| Literal["disabled", "qres", "fullres"] = None,
+
+    ldkfs: int | None = None,
+
+    extra_sei: bool | None = None,
+
+    udu_sei: bool | None = None,
+
+    intra_refresh: bool | None = None,
+
+    single_slice_intra_refresh: bool | None = None,
+
+    max_slice_size: int | None = None,
+
+    constrained_encoding: bool | None = None,
+
+    lookahead_level: int | None| Literal["auto", "0", "1", "2", "3"] = None,
+
+) -> FFMpegEncoderOption:
+    """
+    NVIDIA NVENC H.264 encoder (codec h264)
+
+    Args:
+        preset: Set the encoding preset (from 0 to 18) (default p4)
+        tune: Set the encoding tuning info (from 1 to 4) (default hq)
+        profile: Set the encoding profile (from 0 to 3) (default main)
+        level: Set the encoding level restriction (from 0 to 62) (default auto)
+        rc: Override the preset rate-control (from -1 to INT_MAX) (default -1)
+        rc_lookahead: Number of frames to look ahead for rate-control (from 0 to INT_MAX) (default 0)
+        surfaces: Number of concurrent surfaces (from 0 to 64) (default 0)
+        cbr: Use cbr encoding mode (default false)
+        _2pass: Use 2pass encoding mode (default auto)
+        gpu: Selects which NVENC capable GPU to use. First GPU is 0, second is 1, and so on. (from -2 to INT_MAX) (default any)
+        rgb_mode: Configure how nvenc handles packed RGB input. (from 0 to INT_MAX) (default yuv420)
+        delay: Delay frame output by the given amount of frames (from 0 to INT_MAX) (default INT_MAX)
+        no_scenecut: When lookahead is enabled, set this to 1 to disable adaptive I-frame insertion at scene cuts (default false)
+        forced_idr: If forcing keyframes, force them as IDR frames. (default false)
+        b_adapt: When lookahead is enabled, set this to 0 to disable adaptive B-frame decision (default true)
+        spatial_aq: set to 1 to enable Spatial AQ (default false)
+        temporal_aq: set to 1 to enable Temporal AQ (default false)
+        zerolatency: Set 1 to indicate zero latency operation (no reordering delay) (default false)
+        nonref_p: Set this to 1 to enable automatic insertion of non-reference P-frames (default false)
+        strict_gop: Set 1 to minimize GOP-to-GOP rate fluctuations (default false)
+        aq_strength: When Spatial AQ is enabled, this field is used to specify AQ strength. AQ strength scale is from 1 (low) - 15 (aggressive) (from 1 to 15) (default 8)
+        cq: Set target quality level (0 to 51, 0 means automatic) for constant quality mode in VBR rate control (from 0 to 51) (default 0)
+        aud: Use access unit delimiters (default false)
+        bluray_compat: Bluray compatibility workarounds (default false)
+        init_qpP: Initial QP value for P frame (from -1 to 51) (default -1)
+        init_qpB: Initial QP value for B frame (from -1 to 51) (default -1)
+        init_qpI: Initial QP value for I frame (from -1 to 51) (default -1)
+        qp: Constant quantization parameter rate control method (from -1 to 51) (default -1)
+        qp_cb_offset: Quantization parameter offset for cb channel (from -12 to 12) (default 0)
+        qp_cr_offset: Quantization parameter offset for cr channel (from -12 to 12) (default 0)
+        weighted_pred: Set 1 to enable weighted prediction (from 0 to 1) (default 0)
+        coder: Coder type (from -1 to 2) (default default)
+        b_ref_mode: Use B frames as references (from -1 to 2) (default -1)
+        a53cc: Use A53 Closed Captions (if available) (default true)
+        dpb_size: Specifies the DPB size used for encoding (0 means automatic) (from 0 to INT_MAX) (default 0)
+        multipass: Set the multipass encoding (from 0 to 2) (default disabled)
+        ldkfs: Low delay key frame scale; Specifies the Scene Change frame size increase allowed in case of single frame VBV and CBR (from 0 to 255) (default 0)
+        extra_sei: Pass on extra SEI data (e.g. a53 cc) to be included in the bitstream (default true)
+        udu_sei: Pass on user data unregistered SEI if available (default false)
+        intra_refresh: Use Periodic Intra Refresh instead of IDR frames (default false)
+        single_slice_intra_refresh: Use single slice intra refresh (default false)
+        max_slice_size: Maximum encoded slice size in bytes (from 0 to INT_MAX) (default 0)
+        constrained_encoding: Enable constrainedFrame encoding where each slice in the constrained picture is independent of other slices (default false)
+        lookahead_level: Specifies the lookahead level. Higher level may improve quality at the expense of performance. (from -1 to 15) (default -1)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+        "preset": preset,
+
+        "tune": tune,
+
+        "profile": profile,
+
+        "level": level,
+
+        "rc": rc,
+
+        "rc-lookahead": rc_lookahead,
+
+        "surfaces": surfaces,
+
+        "cbr": cbr,
+
+        "2pass": _2pass,
+
+        "gpu": gpu,
+
+        "rgb_mode": rgb_mode,
+
+        "delay": delay,
+
+        "no-scenecut": no_scenecut,
+
+        "forced-idr": forced_idr,
+
+        "b_adapt": b_adapt,
+
+        "spatial-aq": spatial_aq,
+
+        "temporal-aq": temporal_aq,
+
+        "zerolatency": zerolatency,
+
+        "nonref_p": nonref_p,
+
+        "strict_gop": strict_gop,
+
+        "aq-strength": aq_strength,
+
+        "cq": cq,
+
+        "aud": aud,
+
+        "bluray-compat": bluray_compat,
+
+        "init_qpP": init_qpP,
+
+        "init_qpB": init_qpB,
+
+        "init_qpI": init_qpI,
+
+        "qp": qp,
+
+        "qp_cb_offset": qp_cb_offset,
+
+        "qp_cr_offset": qp_cr_offset,
+
+        "weighted_pred": weighted_pred,
+
+        "coder": coder,
+
+        "b_ref_mode": b_ref_mode,
+
+        "a53cc": a53cc,
+
+        "dpb_size": dpb_size,
+
+        "multipass": multipass,
+
+        "ldkfs": ldkfs,
+
+        "extra_sei": extra_sei,
+
+        "udu_sei": udu_sei,
+
+        "intra-refresh": intra_refresh,
+
+        "single-slice-intra-refresh": single_slice_intra_refresh,
+
+        "max_slice_size": max_slice_size,
+
+        "constrained-encoding": constrained_encoding,
+
+        "lookahead_level": lookahead_level,
+
+    }))
+
+
+
 def h264_v4l2m2m(
 
     num_output_buffers: int | None = None,
@@ -2072,6 +2531,88 @@ def h264_vaapi(
 
 
 
+def h264_vulkan(
+
+    idr_interval: int | None = None,
+
+    b_depth: int | None = None,
+
+    async_depth: int | None = None,
+
+    qp: int | None = None,
+
+    quality: int | None = None,
+
+    rc_mode: int | None| Literal["auto", "driver", "cqp", "cbr", "vbr"] = None,
+
+    tune: int | None| Literal["default", "hq", "ll", "ull", "lossless"] = None,
+
+    usage: str | None = None,
+
+    content: str | None = None,
+
+    profile: int | None| Literal["constrained_baseline", "main", "high", "high444p"] = None,
+
+    level: int | None| Literal["1", "1.1", "1.2", "1.3", "2", "2.1", "2.2", "3", "3.1", "3.2", "4", "4.1", "4.2", "5", "5.1", "5.2", "6", "6.1", "6.2"] = None,
+
+    coder: int | None| Literal["cabac", "vlc"] = None,
+
+    units: str | None = None,
+
+) -> FFMpegEncoderOption:
+    """
+    H.264/AVC (Vulkan) (codec h264)
+
+    Args:
+        idr_interval: Distance (in I-frames) between key frames (from 0 to INT_MAX) (default 0)
+        b_depth: Maximum B-frame reference depth (from 1 to INT_MAX) (default 1)
+        async_depth: Maximum processing parallelism. Increase this to improve single channel performance. (from 1 to 64) (default 2)
+        qp: Use an explicit constant quantizer for the whole stream (from -1 to 255) (default -1)
+        quality: Set encode quality (trades off against speed, higher is faster) (from 0 to INT_MAX) (default 0)
+        rc_mode: Select rate control type (from 0 to UINT32_MAX) (default auto)
+        tune: Select tuning type (from 0 to INT_MAX) (default default)
+        usage: Select usage type (default 0)
+        content: Select content type (default 0)
+        profile: Set profile (profile_idc and constraint_set*_flag) (from -99 to 65535) (default -99)
+        level: Set level (level_idc) (from -99 to 255) (default -99)
+        coder: Entropy coder type (from 0 to 1) (default cabac)
+        units: Set units to include (default aud+identifier+timing+recovery+a53_cc)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+        "idr_interval": idr_interval,
+
+        "b_depth": b_depth,
+
+        "async_depth": async_depth,
+
+        "qp": qp,
+
+        "quality": quality,
+
+        "rc_mode": rc_mode,
+
+        "tune": tune,
+
+        "usage": usage,
+
+        "content": content,
+
+        "profile": profile,
+
+        "level": level,
+
+        "coder": coder,
+
+        "units": units,
+
+    }))
+
+
+
 def hdr(
 
 ) -> FFMpegEncoderOption:
@@ -2150,6 +2691,263 @@ def libx265(
         "x265-params": x265_params,
 
         "dolbyvision": dolbyvision,
+
+    }))
+
+
+
+def hevc_nvenc(
+
+    preset: int | None| Literal["default", "slow", "medium", "fast", "hp", "hq", "bd", "ll", "llhq", "llhp", "lossless", "losslesshp", "p1", "p2", "p3", "p4", "p5", "p6", "p7"] = None,
+
+    tune: int | None| Literal["hq", "uhq", "ll", "ull", "lossless"] = None,
+
+    profile: int | None| Literal["main", "main10", "rext"] = None,
+
+    level: int | None| Literal["auto", "1", "1.0", "2", "2.0", "2.1", "3", "3.0", "3.1", "4", "4.0", "4.1", "5", "5.0", "5.1", "5.2", "6", "6.0", "6.1", "6.2"] = None,
+
+    tier: int | None| Literal["main", "high"] = None,
+
+    rc: int | None| Literal["constqp", "vbr", "cbr", "vbr_minqp", "ll_2pass_quality", "ll_2pass_size", "vbr_2pass", "cbr_ld_hq", "cbr_hq", "vbr_hq"] = None,
+
+    rc_lookahead: int | None = None,
+
+    surfaces: int | None = None,
+
+    cbr: bool | None = None,
+
+    _2pass: bool | None = None,
+
+    gpu: int | None| Literal["any", "list"] = None,
+
+    rgb_mode: int | None| Literal["yuv420", "yuv444", "disabled"] = None,
+
+    delay: int | None = None,
+
+    no_scenecut: bool | None = None,
+
+    forced_idr: bool | None = None,
+
+    spatial_aq: bool | None = None,
+
+    temporal_aq: bool | None = None,
+
+    zerolatency: bool | None = None,
+
+    nonref_p: bool | None = None,
+
+    strict_gop: bool | None = None,
+
+    aq_strength: int | None = None,
+
+    cq: float | None = None,
+
+    aud: bool | None = None,
+
+    bluray_compat: bool | None = None,
+
+    init_qpP: int | None = None,
+
+    init_qpB: int | None = None,
+
+    init_qpI: int | None = None,
+
+    qp: int | None = None,
+
+    qp_cb_offset: int | None = None,
+
+    qp_cr_offset: int | None = None,
+
+    weighted_pred: int | None = None,
+
+    b_ref_mode: int | None| Literal["disabled", "each", "middle"] = None,
+
+    a53cc: bool | None = None,
+
+    s12m_tc: bool | None = None,
+
+    dpb_size: int | None = None,
+
+    multipass: int | None| Literal["disabled", "qres", "fullres"] = None,
+
+    highbitdepth: bool | None = None,
+
+    ldkfs: int | None = None,
+
+    extra_sei: bool | None = None,
+
+    udu_sei: bool | None = None,
+
+    intra_refresh: bool | None = None,
+
+    single_slice_intra_refresh: bool | None = None,
+
+    max_slice_size: int | None = None,
+
+    constrained_encoding: bool | None = None,
+
+    tf_level: int | None| Literal["0", "4"] = None,
+
+    lookahead_level: int | None| Literal["auto", "0", "1", "2", "3"] = None,
+
+    unidir_b: bool | None = None,
+
+    split_encode_mode: int | None| Literal["disabled", "auto", "forced", "2", "3"] = None,
+
+) -> FFMpegEncoderOption:
+    """
+    NVIDIA NVENC hevc encoder (codec hevc)
+
+    Args:
+        preset: Set the encoding preset (from 0 to 18) (default p4)
+        tune: Set the encoding tuning info (from 1 to 5) (default hq)
+        profile: Set the encoding profile (from 0 to 4) (default main)
+        level: Set the encoding level restriction (from 0 to 186) (default auto)
+        tier: Set the encoding tier (from 0 to 1) (default main)
+        rc: Override the preset rate-control (from -1 to INT_MAX) (default -1)
+        rc_lookahead: Number of frames to look ahead for rate-control (from 0 to INT_MAX) (default 0)
+        surfaces: Number of concurrent surfaces (from 0 to 64) (default 0)
+        cbr: Use cbr encoding mode (default false)
+        _2pass: Use 2pass encoding mode (default auto)
+        gpu: Selects which NVENC capable GPU to use. First GPU is 0, second is 1, and so on. (from -2 to INT_MAX) (default any)
+        rgb_mode: Configure how nvenc handles packed RGB input. (from 0 to INT_MAX) (default yuv420)
+        delay: Delay frame output by the given amount of frames (from 0 to INT_MAX) (default INT_MAX)
+        no_scenecut: When lookahead is enabled, set this to 1 to disable adaptive I-frame insertion at scene cuts (default false)
+        forced_idr: If forcing keyframes, force them as IDR frames. (default false)
+        spatial_aq: set to 1 to enable Spatial AQ (default false)
+        temporal_aq: set to 1 to enable Temporal AQ (default false)
+        zerolatency: Set 1 to indicate zero latency operation (no reordering delay) (default false)
+        nonref_p: Set this to 1 to enable automatic insertion of non-reference P-frames (default false)
+        strict_gop: Set 1 to minimize GOP-to-GOP rate fluctuations (default false)
+        aq_strength: When Spatial AQ is enabled, this field is used to specify AQ strength. AQ strength scale is from 1 (low) - 15 (aggressive) (from 1 to 15) (default 8)
+        cq: Set target quality level (0 to 51, 0 means automatic) for constant quality mode in VBR rate control (from 0 to 51) (default 0)
+        aud: Use access unit delimiters (default false)
+        bluray_compat: Bluray compatibility workarounds (default false)
+        init_qpP: Initial QP value for P frame (from -1 to 51) (default -1)
+        init_qpB: Initial QP value for B frame (from -1 to 51) (default -1)
+        init_qpI: Initial QP value for I frame (from -1 to 51) (default -1)
+        qp: Constant quantization parameter rate control method (from -1 to 51) (default -1)
+        qp_cb_offset: Quantization parameter offset for cb channel (from -12 to 12) (default 0)
+        qp_cr_offset: Quantization parameter offset for cr channel (from -12 to 12) (default 0)
+        weighted_pred: Set 1 to enable weighted prediction (from 0 to 1) (default 0)
+        b_ref_mode: Use B frames as references (from -1 to 2) (default -1)
+        a53cc: Use A53 Closed Captions (if available) (default true)
+        s12m_tc: Use timecode (if available) (default true)
+        dpb_size: Specifies the DPB size used for encoding (0 means automatic) (from 0 to INT_MAX) (default 0)
+        multipass: Set the multipass encoding (from 0 to 2) (default disabled)
+        highbitdepth: Enable 10 bit encode for 8 bit input (default false)
+        ldkfs: Low delay key frame scale; Specifies the Scene Change frame size increase allowed in case of single frame VBV and CBR (from 0 to 255) (default 0)
+        extra_sei: Pass on extra SEI data (e.g. a53 cc) to be included in the bitstream (default true)
+        udu_sei: Pass on user data unregistered SEI if available (default false)
+        intra_refresh: Use Periodic Intra Refresh instead of IDR frames (default false)
+        single_slice_intra_refresh: Use single slice intra refresh (default false)
+        max_slice_size: Maximum encoded slice size in bytes (from 0 to INT_MAX) (default 0)
+        constrained_encoding: Enable constrainedFrame encoding where each slice in the constrained picture is independent of other slices (default false)
+        tf_level: Specifies the strength of the temporal filtering (from -1 to INT_MAX) (default -1)
+        lookahead_level: Specifies the lookahead level. Higher level may improve quality at the expense of performance. (from -1 to 15) (default -1)
+        unidir_b: Enable use of unidirectional B-Frames. (default false)
+        split_encode_mode: Specifies the split encoding mode (from 0 to 15) (default auto)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+        "preset": preset,
+
+        "tune": tune,
+
+        "profile": profile,
+
+        "level": level,
+
+        "tier": tier,
+
+        "rc": rc,
+
+        "rc-lookahead": rc_lookahead,
+
+        "surfaces": surfaces,
+
+        "cbr": cbr,
+
+        "2pass": _2pass,
+
+        "gpu": gpu,
+
+        "rgb_mode": rgb_mode,
+
+        "delay": delay,
+
+        "no-scenecut": no_scenecut,
+
+        "forced-idr": forced_idr,
+
+        "spatial_aq": spatial_aq,
+
+        "temporal_aq": temporal_aq,
+
+        "zerolatency": zerolatency,
+
+        "nonref_p": nonref_p,
+
+        "strict_gop": strict_gop,
+
+        "aq-strength": aq_strength,
+
+        "cq": cq,
+
+        "aud": aud,
+
+        "bluray-compat": bluray_compat,
+
+        "init_qpP": init_qpP,
+
+        "init_qpB": init_qpB,
+
+        "init_qpI": init_qpI,
+
+        "qp": qp,
+
+        "qp_cb_offset": qp_cb_offset,
+
+        "qp_cr_offset": qp_cr_offset,
+
+        "weighted_pred": weighted_pred,
+
+        "b_ref_mode": b_ref_mode,
+
+        "a53cc": a53cc,
+
+        "s12m_tc": s12m_tc,
+
+        "dpb_size": dpb_size,
+
+        "multipass": multipass,
+
+        "highbitdepth": highbitdepth,
+
+        "ldkfs": ldkfs,
+
+        "extra_sei": extra_sei,
+
+        "udu_sei": udu_sei,
+
+        "intra-refresh": intra_refresh,
+
+        "single-slice-intra-refresh": single_slice_intra_refresh,
+
+        "max_slice_size": max_slice_size,
+
+        "constrained-encoding": constrained_encoding,
+
+        "tf_level": tf_level,
+
+        "lookahead_level": lookahead_level,
+
+        "unidir_b": unidir_b,
+
+        "split_encode_mode": split_encode_mode,
 
     }))
 
@@ -2264,6 +3062,88 @@ def hevc_vaapi(
         "sei": sei,
 
         "tiles": tiles,
+
+    }))
+
+
+
+def hevc_vulkan(
+
+    idr_interval: int | None = None,
+
+    b_depth: int | None = None,
+
+    async_depth: int | None = None,
+
+    qp: int | None = None,
+
+    quality: int | None = None,
+
+    rc_mode: int | None| Literal["auto", "driver", "cqp", "cbr", "vbr"] = None,
+
+    tune: int | None| Literal["default", "hq", "ll", "ull", "lossless"] = None,
+
+    usage: str | None = None,
+
+    content: str | None = None,
+
+    profile: int | None| Literal["main", "main10", "rext"] = None,
+
+    tier: int | None| Literal["main", "high"] = None,
+
+    level: int | None| Literal["1", "2", "2.1", "3", "3.1", "4", "4.1", "5", "5.1", "5.2", "6", "6.1", "6.2"] = None,
+
+    units: str | None = None,
+
+) -> FFMpegEncoderOption:
+    """
+    H.265/HEVC (Vulkan) (codec hevc)
+
+    Args:
+        idr_interval: Distance (in I-frames) between key frames (from 0 to INT_MAX) (default 0)
+        b_depth: Maximum B-frame reference depth (from 1 to INT_MAX) (default 1)
+        async_depth: Maximum processing parallelism. Increase this to improve single channel performance. (from 1 to 64) (default 2)
+        qp: Use an explicit constant quantizer for the whole stream (from -1 to 255) (default -1)
+        quality: Set encode quality (trades off against speed, higher is faster) (from 0 to INT_MAX) (default 0)
+        rc_mode: Select rate control type (from 0 to UINT32_MAX) (default auto)
+        tune: Select tuning type (from 0 to INT_MAX) (default default)
+        usage: Select usage type (default 0)
+        content: Select content type (default 0)
+        profile: Set profile (profile_idc and constraint_set*_flag) (from -99 to 65535) (default -99)
+        tier: Set tier (general_tier_flag) (from 0 to 1) (default main)
+        level: Set level (general_level_idc) (from -99 to 255) (default -99)
+        units: Set units to include (default hdr+a53_cc)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(merge({
+
+        "idr_interval": idr_interval,
+
+        "b_depth": b_depth,
+
+        "async_depth": async_depth,
+
+        "qp": qp,
+
+        "quality": quality,
+
+        "rc_mode": rc_mode,
+
+        "tune": tune,
+
+        "usage": usage,
+
+        "content": content,
+
+        "profile": profile,
+
+        "tier": tier,
+
+        "level": level,
+
+        "units": units,
 
     }))
 
@@ -7736,3 +8616,1043 @@ def xsub(
     return FFMpegEncoderOption(merge({
 
     }))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

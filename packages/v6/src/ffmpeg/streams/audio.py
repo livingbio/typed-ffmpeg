@@ -6831,6 +6831,8 @@ References:
 
 
 
+
+
     def axcorrelate(
 
     self,
@@ -7434,6 +7436,80 @@ References:
 
 
 
+    def bs2b(
+
+    self,
+
+
+
+
+    *,
+    profile: Int| Literal["default","cmoy","jmeier"] | Default = Default('default'),fcut: Int = Default('0'),feed: Int = Default('0'),
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> AudioStream:
+        """
+
+Bauer stereo to binaural transformation, which improves headphone listening of
+stereo audio records.
+
+To enable compilation of this filter you need to configure FFmpeg with
+--enable-libbs2b.
+
+It accepts the following parameters:
+
+
+Args:
+    profile: Pre-defined crossfeed level. @end table
+    fcut: Cut frequency (in Hz).
+    feed: Feed level (in Hz).
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the audio stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bs2b)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='bs2b', typings_input=('audio',), typings_output=('audio',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "profile": profile,
+
+                "fcut": fcut,
+
+                "feed": feed,
+
+            },
+            extra_options,
+
+
+            )
+        )
+        return filter_node.audio(0)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7649,6 +7725,10 @@ References:
             )
         )
         return filter_node.audio(0)
+
+
+
+
 
 
 
@@ -9156,6 +9236,16 @@ References:
 
 
 
+
+
+
+
+
+
+
+
+
+
     def haas(
 
     self,
@@ -9344,6 +9434,8 @@ References:
             )
         )
         return filter_node.audio(0)
+
+
 
 
 
@@ -9547,6 +9639,10 @@ References:
             )
         )
         return filter_node.audio(0)
+
+
+
+
 
 
 
@@ -9939,6 +10035,8 @@ References:
 
 
 
+
+
     def mcompand(
 
     self,
@@ -9996,6 +10094,10 @@ References:
             )
         )
         return filter_node.audio(0)
+
+
+
+
 
 
 
@@ -10262,6 +10364,98 @@ References:
 
 
 
+
+
+
+
+
+
+
+
+
+    def rubberband(
+
+    self,
+
+
+
+
+    *,
+    tempo: Double = Default('1'),pitch: Double = Default('1'),transients: Int| Literal["crisp","mixed","smooth"] | Default = Default('crisp'),detector: Int| Literal["compound","percussive","soft"] | Default = Default('compound'),phase: Int| Literal["laminar","independent"] | Default = Default('laminar'),window: Int| Literal["standard","short","long"] | Default = Default('standard'),smoothing: Int| Literal["off","on"] | Default = Default('off'),formant: Int| Literal["shifted","preserved"] | Default = Default('shifted'),pitchq: Int| Literal["quality","speed","consistency"] | Default = Default('speed'),channels: Int| Literal["apart","together"] | Default = Default('apart'),
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> AudioStream:
+        """
+
+Apply time-stretching and pitch-shifting with librubberband.
+
+To enable compilation of this filter, you need to configure FFmpeg with
+--enable-librubberband.
+
+The filter accepts the following options:
+
+
+Args:
+    tempo: Change filter tempo scale factor. Syntax for the command is : "tempo"
+    pitch: Change filter pitch scale factor. Syntax for the command is : "pitch"
+    transients: Set transients detector. Possible values are: @end table
+    detector: Set detector. Possible values are: @end table
+    phase: Set phase. Possible values are: @end table
+    window: Set processing window size. Possible values are: @end table
+    smoothing: Set smoothing. Possible values are: @end table
+    formant: Enable formant preservation when shift pitching. Possible values are: @end table
+    pitchq: Set pitch quality. Possible values are: @end table
+    channels: Set channels. Possible values are: @end table
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the audio stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#rubberband)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='rubberband', typings_input=('audio',), typings_output=('audio',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "tempo": tempo,
+
+                "pitch": pitch,
+
+                "transients": transients,
+
+                "detector": detector,
+
+                "phase": phase,
+
+                "window": window,
+
+                "smoothing": smoothing,
+
+                "formant": formant,
+
+                "pitchq": pitchq,
+
+                "channels": channels,
+
+            },
+            extra_options,
+
+
+            )
+        )
+        return filter_node.audio(0)
 
 
 
@@ -11672,6 +11866,113 @@ References:
 
 
 
+    def sofalizer(
+
+    self,
+
+
+
+
+    *,
+    sofa: String = Default(None),gain: Float = Default('0'),rotation: Float = Default('0'),elevation: Float = Default('0'),radius: Float = Default('1'),type: Int| Literal["time","freq"] | Default = Default('freq'),speakers: String = Default(None),lfegain: Float = Default('0'),framesize: Int = Default('1024'),normalize: Boolean = Default('true'),interpolate: Boolean = Default('false'),minphase: Boolean = Default('false'),anglestep: Float = Default('0.5'),radstep: Float = Default('0.01'),
+
+
+    extra_options: dict[str, Any] | None = None,
+    )-> AudioStream:
+        """
+
+SOFAlizer uses head-related transfer functions (HRTFs) to create virtual
+loudspeakers around the user for binaural listening via headphones (audio
+formats up to 9 channels supported).
+The HRTFs are stored in SOFA files (see http://www.sofacoustics.org/ for a database).
+SOFAlizer is developed at the Acoustics Research Institute (ARI) of the
+Austrian Academy of Sciences.
+
+To enable compilation of this filter you need to configure FFmpeg with
+--enable-libmysofa.
+
+The filter accepts the following options:
+
+
+Args:
+    sofa: Set the SOFA file used for rendering.
+    gain: Set gain applied to audio. Value is in dB. Default is 0.
+    rotation: Set rotation of virtual loudspeakers in deg. Default is 0.
+    elevation: Set elevation of virtual speakers in deg. Default is 0.
+    radius: Set distance in meters between loudspeakers and the listener with near-field HRTFs. Default is 1.
+    type: Set processing type. Can be time or freq. time is processing audio in time domain which is slow. freq is processing audio in frequency domain which is fast. Default is freq.
+    speakers: Set custom positions of virtual loudspeakers. Syntax for this option is: [| |...]. Each virtual loudspeaker is described with short channel name following with azimuth and elevation in degrees. Each virtual loudspeaker description is separated by '|'. For example to override front left and front right channel positions use: 'speakers=FL 45 15|FR 345 15'. Descriptions with unrecognised channel names are ignored.
+    lfegain: Set custom gain for LFE channels. Value is in dB. Default is 0.
+    framesize: Set custom frame size in number of samples. Default is 1024. Allowed range is from 1024 to 96000. Only used if option type is set to freq.
+    normalize: Should all IRs be normalized upon importing SOFA file. By default is enabled.
+    interpolate: Should nearest IRs be interpolated with neighbor IRs if exact position does not match. By default is disabled.
+    minphase: Minphase all IRs upon loading of SOFA file. By default is disabled.
+    anglestep: Set neighbor search angle step. Only used if option interpolate is enabled.
+    radstep: Set neighbor search radius step. Only used if option interpolate is enabled.
+    extra_options: Extra options for the filter
+
+Returns:
+    default: the audio stream
+
+References:
+    [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sofalizer)
+
+        """
+
+
+
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name='sofalizer', typings_input=('audio',), typings_output=('audio',)),
+
+            self,
+
+
+
+
+            **merge({
+
+                "sofa": sofa,
+
+                "gain": gain,
+
+                "rotation": rotation,
+
+                "elevation": elevation,
+
+                "radius": radius,
+
+                "type": type,
+
+                "speakers": speakers,
+
+                "lfegain": lfegain,
+
+                "framesize": framesize,
+
+                "normalize": normalize,
+
+                "interpolate": interpolate,
+
+                "minphase": minphase,
+
+                "anglestep": anglestep,
+
+                "radstep": radstep,
+
+            },
+            extra_options,
+
+
+            )
+        )
+        return filter_node.audio(0)
+
+
+
+
+
+
+
 
 
     def speechnorm(
@@ -12466,6 +12767,8 @@ References:
 
 
 
+
+
     def treble(
 
     self,
@@ -12632,6 +12935,8 @@ References:
             )
         )
         return filter_node.audio(0)
+
+
 
 
 
@@ -12966,3 +13271,46 @@ References:
             )
         )
         return filter_node.audio(0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
