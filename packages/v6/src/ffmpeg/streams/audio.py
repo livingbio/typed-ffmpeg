@@ -48,12 +48,12 @@ class AudioStream(FilterableStream):
     Audio stream.
     """
 
-    
-        
-    
-    
+
+
+
+
     def a3dscope(
-    
+
     self,
 
 
@@ -61,12 +61,12 @@ class AudioStream(FilterableStream):
 
     *,
     rate: Video_rate = Default('25'),size: Image_size = Default('hd720'),fov: Float = Default('90'),roll: Float = Default('0'),pitch: Float = Default('0'),yaw: Float = Default('0'),xzoom: Float = Default('1'),xpos: Float = Default('0'),length: Int = Default('15'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> VideoStream:
         """
-        
+
 Convert input audio to 3d scope video output.
 
 The filter accepts the following options:
@@ -91,53 +91,53 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#a3dscope)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='a3dscope', typings_input=('audio',), typings_output=('video',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "rate": rate,
-                
+
                 "size": size,
-                
+
                 "fov": fov,
-                
+
                 "roll": roll,
-                
+
                 "pitch": pitch,
-                
+
                 "yaw": yaw,
-                
+
                 "xzoom": xzoom,
-                
+
                 "xpos": xpos,
-                
+
                 "length": length,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.video(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def abench(
-    
+
     self,
 
 
@@ -145,12 +145,12 @@ References:
 
     *,
     action: Int| Literal["start","stop"] | Default = Default('start'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Benchmark part of a filtergraph.
 
 The filter accepts the following options:
@@ -167,37 +167,37 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bench)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='abench', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "action": action,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def abitscope(
-    
+
     self,
 
 
@@ -205,12 +205,12 @@ References:
 
     *,
     rate: Video_rate = Default('25'),size: Image_size = Default('1024x256'),colors: String = Default('red|green|blue|yellow|orange|lime|pink|magenta|brown'),mode: Int| Literal["bars","trace"] | Default = Default('bars'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> VideoStream:
         """
-        
+
 Convert input audio to a video output, displaying the audio bit scope.
 
 The filter accepts the following options:
@@ -230,47 +230,47 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#abitscope)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='abitscope', typings_input=('audio',), typings_output=('video',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "rate": rate,
-                
+
                 "size": size,
-                
+
                 "colors": colors,
-                
+
                 "mode": mode,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.video(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
     def acompressor(
-    
+
     self,
 
 
@@ -278,12 +278,12 @@ References:
 
     *,
     level_in: Double = Default('1'),mode: Int| Literal["downward","upward"] | Default = Default('downward'),threshold: Double = Default('0.125'),ratio: Double = Default('2'),attack: Double = Default('20'),release: Double = Default('250'),makeup: Double = Default('1'),knee: Double = Default('2.82843'),link: Int| Literal["average","maximum"] | Default = Default('average'),detection: Int| Literal["peak","rms"] | Default = Default('rms'),level_sc: Double = Default('1'),mix: Double = Default('1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 A compressor is mainly used to reduce the dynamic range of a signal.
 Especially modern music is mostly compressed at a high ratio to
 improve the overall loudness. It's done to get the highest attention
@@ -336,59 +336,59 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acompressor)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='acompressor', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "level_in": level_in,
-                
+
                 "mode": mode,
-                
+
                 "threshold": threshold,
-                
+
                 "ratio": ratio,
-                
+
                 "attack": attack,
-                
+
                 "release": release,
-                
+
                 "makeup": makeup,
-                
+
                 "knee": knee,
-                
+
                 "link": link,
-                
+
                 "detection": detection,
-                
+
                 "level_sc": level_sc,
-                
+
                 "mix": mix,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def acontrast(
-    
+
     self,
 
 
@@ -396,12 +396,12 @@ References:
 
     *,
     contrast: Float = Default('33'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Simple audio dynamic range compression/expansion filter.
 
 The filter accepts the following options:
@@ -418,50 +418,50 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acontrast)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='acontrast', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "contrast": contrast,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def acopy(
-    
+
     self,
 
 
 
 
-    
-    
-    
-    
+
+
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Copy the input audio source unchanged to the output. This is mainly useful for
 testing purposes.
 
@@ -476,56 +476,56 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acopy)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='acopy', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def acrossfade(
-    
+
     self,
 
 
-    
-        
-        
-    
-        
+
+
+
+
+
         _crossfade1: AudioStream,
-        
-    
+
+
 
 
     *,
     nb_samples: Int = Default('44100'),duration: Duration = Default('0'),overlap: Boolean = Default('true'),curve1: Int| Literal["nofade","tri","qsin","esin","hsin","log","ipar","qua","cub","squ","cbr","par","exp","iqsin","ihsin","dese","desi","losi","sinc","isinc","quat","quatr","qsin2","hsin2"] | Default = Default('tri'),curve2: Int| Literal["nofade","tri","qsin","esin","hsin","log","ipar","qua","cub","squ","cbr","par","exp","iqsin","ihsin","dese","desi","losi","sinc","isinc","quat","quatr","qsin2","hsin2"] | Default = Default('tri'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply cross fade from one input audio stream to another input audio stream.
 The cross fade is applied for specified duration near the end of first stream.
 
@@ -547,53 +547,53 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossfade)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='acrossfade', typings_input=('audio', 'audio'), typings_output=('audio',)),
-            
+
             self,
 
 
-            
-                
-                
-            
-                
+
+
+
+
+
                 _crossfade1,
-                
-            
+
+
 
 
             **merge({
-                
+
                 "nb_samples": nb_samples,
-                
+
                 "duration": duration,
-                
+
                 "overlap": overlap,
-                
+
                 "curve1": curve1,
-                
+
                 "curve2": curve2,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def acrossover(
-    
+
     self,
 
 
@@ -601,12 +601,12 @@ References:
 
     *,
     split: String = Default('500'),order: Int| Literal["2nd","4th","6th","8th","10th","12th","14th","16th","18th","20th"] | Default = Default('4th'),level: Float = Default('1'),gain: String = Default('1.f'),precision: Int| Literal["auto","float","double"] | Default = Default('auto'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> FilterNode:
         """
-        
+
 Split audio stream into several bands.
 
 This filter splits audio stream into two or more frequency ranges.
@@ -631,46 +631,46 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossover)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='acrossover', typings_input=('audio',), typings_output="[StreamType.audio] * len(re.split(r'[ |]+', str(split)))"),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "split": split,
-                
+
                 "order": order,
-                
+
                 "level": level,
-                
+
                 "gain": gain,
-                
+
                 "precision": precision,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
 
         return filter_node
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def acrusher(
-    
+
     self,
 
 
@@ -678,15 +678,15 @@ References:
 
     *,
     level_in: Double = Default('1'),level_out: Double = Default('1'),bits: Double = Default('8'),mix: Double = Default('0.5'),mode: Int| Literal["lin","log"] | Default = Default('lin'),dc: Double = Default('1'),aa: Double = Default('0.5'),samples: Double = Default('1'),lfo: Boolean = Default('false'),lforange: Double = Default('20'),lforate: Double = Default('0.3'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Reduce audio bit resolution.
 
 This filter is bit crusher with enhanced functionality. A bit crusher
@@ -731,7 +731,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrusher)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -739,54 +739,54 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='acrusher', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "level_in": level_in,
-                
+
                 "level_out": level_out,
-                
+
                 "bits": bits,
-                
+
                 "mix": mix,
-                
+
                 "mode": mode,
-                
+
                 "dc": dc,
-                
+
                 "aa": aa,
-                
+
                 "samples": samples,
-                
+
                 "lfo": lfo,
-                
+
                 "lforange": lforange,
-                
+
                 "lforate": lforate,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def acue(
-    
+
     self,
 
 
@@ -794,12 +794,12 @@ References:
 
     *,
     cue: Int64 = Default('0'),preroll: Duration = Default('0'),buffer: Duration = Default('0'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Delay audio filtering until a given wallclock timestamp. See the cue
 filter.
 
@@ -817,43 +817,43 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acue)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='acue', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "cue": cue,
-                
+
                 "preroll": preroll,
-                
+
                 "buffer": buffer,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
     def adeclick(
-    
+
     self,
 
 
@@ -861,15 +861,15 @@ References:
 
     *,
     window: Double = Default('55'),overlap: Double = Default('75'),arorder: Double = Default('2'),threshold: Double = Default('2'),burst: Double = Default('2'),method: Int| Literal["add","a","save","s"] | Default = Default('add'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Remove impulsive noise from input audio.
 
 Samples detected as impulsive noise are replaced by interpolated samples using
@@ -893,7 +893,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adeclick)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -901,44 +901,44 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adeclick', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "window": window,
-                
+
                 "overlap": overlap,
-                
+
                 "arorder": arorder,
-                
+
                 "threshold": threshold,
-                
+
                 "burst": burst,
-                
+
                 "method": method,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def adeclip(
-    
+
     self,
 
 
@@ -946,15 +946,15 @@ References:
 
     *,
     window: Double = Default('55'),overlap: Double = Default('75'),arorder: Double = Default('8'),threshold: Double = Default('10'),hsize: Int = Default('1000'),method: Int| Literal["add","a","save","s"] | Default = Default('add'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Remove clipped samples from input audio.
 
 Samples detected as clipped are replaced by interpolated samples using
@@ -978,7 +978,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adeclip)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -986,44 +986,44 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adeclip', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "window": window,
-                
+
                 "overlap": overlap,
-                
+
                 "arorder": arorder,
-                
+
                 "threshold": threshold,
-                
+
                 "hsize": hsize,
-                
+
                 "method": method,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def adecorrelate(
-    
+
     self,
 
 
@@ -1031,15 +1031,15 @@ References:
 
     *,
     stages: Int = Default('6'),seed: Int64 = Default('-1'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply decorrelation to input audio stream.
 
 The filter accepts the following options:
@@ -1058,7 +1058,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adecorrelate)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -1066,36 +1066,36 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adecorrelate', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "stages": stages,
-                
+
                 "seed": seed,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def adelay(
-    
+
     self,
 
 
@@ -1103,15 +1103,15 @@ References:
 
     *,
     delays: String = Default(None),all: Boolean = Default('false'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Delay one or more audio channels.
 
 Samples in delayed channel are filled with silence.
@@ -1132,7 +1132,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adelay)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -1140,36 +1140,36 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adelay', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "delays": delays,
-                
+
                 "all": all,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def adenorm(
-    
+
     self,
 
 
@@ -1177,15 +1177,15 @@ References:
 
     *,
     level: Double = Default('-351'),type: Int| Literal["dc","ac","square","pulse"] | Default = Default('dc'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Remedy denormals in audio by adding extremely low-level noise.
 
 This filter shall be placed before any filter that can produce denormals.
@@ -1206,7 +1206,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adenorm)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -1214,52 +1214,52 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adenorm', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "level": level,
-                
+
                 "type": type,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def aderivative(
-    
+
     self,
 
 
 
 
-    
-    
-    
-    
+
+
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Compute derivative/integral of audio stream.
 
 Applying both filters one after another produces original audio.
@@ -1276,7 +1276,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aderivative)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -1284,32 +1284,32 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aderivative', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def adrawgraph(
-    
+
     self,
 
 
@@ -1317,12 +1317,12 @@ References:
 
     *,
     m1: String = Default(''),fg1: String = Default('0xffff0000'),m2: String = Default(''),fg2: String = Default('0xff00ff00'),m3: String = Default(''),fg3: String = Default('0xffff00ff'),m4: String = Default(''),fg4: String = Default('0xffffff00'),bg: Color = Default('white'),min: Float = Default('-1'),max: Float = Default('1'),mode: Int| Literal["bar","dot","line"] | Default = Default('line'),slide: Int| Literal["frame","replace","scroll","rscroll","picture"] | Default = Default('frame'),size: Image_size = Default('900x256'),rate: Video_rate = Default('25'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> VideoStream:
         """
-        
+
 Draw a graph using input audio metadata.
 
 See drawgraph
@@ -1353,65 +1353,65 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adrawgraph)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adrawgraph', typings_input=('audio',), typings_output=('video',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "m1": m1,
-                
+
                 "fg1": fg1,
-                
+
                 "m2": m2,
-                
+
                 "fg2": fg2,
-                
+
                 "m3": m3,
-                
+
                 "fg3": fg3,
-                
+
                 "m4": m4,
-                
+
                 "fg4": fg4,
-                
+
                 "bg": bg,
-                
+
                 "min": min,
-                
+
                 "max": max,
-                
+
                 "mode": mode,
-                
+
                 "slide": slide,
-                
+
                 "size": size,
-                
+
                 "rate": rate,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.video(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def adrc(
-    
+
     self,
 
 
@@ -1419,15 +1419,15 @@ References:
 
     *,
     transfer: String = Default('p'),attack: Double = Default('50'),release: Double = Default('100'),channels: String = Default('all'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply spectral dynamic range controller filter to input audio stream.
 
 A description of the accepted options follows.
@@ -1448,7 +1448,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adrc)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -1456,40 +1456,40 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adrc', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "transfer": transfer,
-                
+
                 "attack": attack,
-                
+
                 "release": release,
-                
+
                 "channels": channels,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def adynamicequalizer(
-    
+
     self,
 
 
@@ -1497,15 +1497,15 @@ References:
 
     *,
     threshold: Double = Default('0'),dfrequency: Double = Default('1000'),dqfactor: Double = Default('1'),tfrequency: Double = Default('1000'),tqfactor: Double = Default('1'),attack: Double = Default('20'),release: Double = Default('200'),ratio: Double = Default('1'),makeup: Double = Default('0'),range: Double = Default('50'),mode: Int| Literal["listen","cut","boost"] | Default = Default('cut'),dftype: Int| Literal["bandpass","lowpass","highpass","peak"] | Default = Default('bandpass'),tftype: Int| Literal["bell","lowshelf","highshelf"] | Default = Default('bell'),direction: Int| Literal["downward","upward"] | Default = Default('downward'),auto: Int| Literal["disabled","off","on"] | Default = Default('disabled'),precision: Int| Literal["auto","float","double"] | Default = Default('auto'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply dynamic equalization to input audio stream.
 
 A description of the accepted options follows.
@@ -1538,7 +1538,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adynamicequalizer)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -1546,64 +1546,64 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adynamicequalizer', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "threshold": threshold,
-                
+
                 "dfrequency": dfrequency,
-                
+
                 "dqfactor": dqfactor,
-                
+
                 "tfrequency": tfrequency,
-                
+
                 "tqfactor": tqfactor,
-                
+
                 "attack": attack,
-                
+
                 "release": release,
-                
+
                 "ratio": ratio,
-                
+
                 "makeup": makeup,
-                
+
                 "range": range,
-                
+
                 "mode": mode,
-                
+
                 "dftype": dftype,
-                
+
                 "tftype": tftype,
-                
+
                 "direction": direction,
-                
+
                 "auto": auto,
-                
+
                 "precision": precision,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def adynamicsmooth(
-    
+
     self,
 
 
@@ -1611,15 +1611,15 @@ References:
 
     *,
     sensitivity: Double = Default('2'),basefreq: Double = Default('22050'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply dynamic smoothing to input audio stream.
 
 A description of the accepted options follows.
@@ -1638,7 +1638,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adynamicsmooth)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -1646,36 +1646,36 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='adynamicsmooth', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "sensitivity": sensitivity,
-                
+
                 "basefreq": basefreq,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def aecho(
-    
+
     self,
 
 
@@ -1683,12 +1683,12 @@ References:
 
     *,
     in_gain: Float = Default('0.6'),out_gain: Float = Default('0.3'),delays: String = Default('1000'),decays: String = Default('0.5'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply echoing to the input audio.
 
 Echoes are reflected sound and can occur naturally amongst mountains
@@ -1716,43 +1716,43 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aecho)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aecho', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "in_gain": in_gain,
-                
+
                 "out_gain": out_gain,
-                
+
                 "delays": delays,
-                
+
                 "decays": decays,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def aemphasis(
-    
+
     self,
 
 
@@ -1760,15 +1760,15 @@ References:
 
     *,
     level_in: Double = Default('1'),level_out: Double = Default('1'),mode: Int| Literal["reproduction","production"] | Default = Default('reproduction'),type: Int| Literal["col","emi","bsi","riaa","cd","50fm","75fm","50kf","75kf"] | Default = Default('cd'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Audio emphasis filter creates or restores material directly taken from LPs or
 emphased CDs with different filter curves. E.g. to store music on vinyl the
 signal has to be altered by a filter first to even out the disadvantages of
@@ -1794,7 +1794,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aemphasis)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -1802,40 +1802,40 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aemphasis', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "level_in": level_in,
-                
+
                 "level_out": level_out,
-                
+
                 "mode": mode,
-                
+
                 "type": type,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def aeval(
-    
+
     self,
 
 
@@ -1843,15 +1843,15 @@ References:
 
     *,
     exprs: String = Default(None),channel_layout: String = Default(None),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Modify an audio signal according to the specified expressions.
 
 This filter accepts one or more expressions (one for each channel),
@@ -1873,7 +1873,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aeval)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -1881,38 +1881,38 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aeval', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "exprs": exprs,
-                
+
                 "channel_layout": channel_layout,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
     def aexciter(
-    
+
     self,
 
 
@@ -1920,15 +1920,15 @@ References:
 
     *,
     level_in: Double = Default('1'),level_out: Double = Default('1'),amount: Double = Default('1'),drive: Double = Default('8.5'),blend: Double = Default('0'),freq: Double = Default('7500'),ceil: Double = Default('9999'),listen: Boolean = Default('false'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 An exciter is used to produce high sound that is not present in the
 original signal. This is done by creating harmonic distortions of the
 signal which are restricted in range and added to the original signal.
@@ -1958,7 +1958,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aexciter)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -1966,48 +1966,48 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aexciter', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "level_in": level_in,
-                
+
                 "level_out": level_out,
-                
+
                 "amount": amount,
-                
+
                 "drive": drive,
-                
+
                 "blend": blend,
-                
+
                 "freq": freq,
-                
+
                 "ceil": ceil,
-                
+
                 "listen": listen,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def afade(
-    
+
     self,
 
 
@@ -2015,15 +2015,15 @@ References:
 
     *,
     type: Int| Literal["in","out"] | Default = Default('in'),start_sample: Int64 = Default('0'),nb_samples: Int64 = Default('44100'),start_time: Duration = Default('0'),duration: Duration = Default('0'),curve: Int| Literal["nofade","tri","qsin","esin","hsin","log","ipar","qua","cub","squ","cbr","par","exp","iqsin","ihsin","dese","desi","losi","sinc","isinc","quat","quatr","qsin2","hsin2"] | Default = Default('tri'),silence: Double = Default('0'),unity: Double = Default('1'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply fade-in/out effect to input audio.
 
 A description of the accepted parameters follows.
@@ -2048,7 +2048,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afade)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -2056,50 +2056,50 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='afade', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "type": type,
-                
+
                 "start_sample": start_sample,
-                
+
                 "nb_samples": nb_samples,
-                
+
                 "start_time": start_time,
-                
+
                 "duration": duration,
-                
+
                 "curve": curve,
-                
+
                 "silence": silence,
-                
+
                 "unity": unity,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
     def afftdn(
-    
+
     self,
 
 
@@ -2107,15 +2107,15 @@ References:
 
     *,
     noise_reduction: Float = Default('12'),noise_floor: Float = Default('-50'),noise_type: Int| Literal["white","w","vinyl","v","shellac","s","custom","c"] | Default = Default('white'),band_noise: String = Default(None),residual_floor: Float = Default('-38'),track_noise: Boolean = Default('false'),track_residual: Boolean = Default('false'),output_mode: Int| Literal["input","i","output","o","noise","n"] | Default = Default('output'),adaptivity: Float = Default('0.5'),floor_offset: Float = Default('1'),noise_link: Int| Literal["none","min","max","average"] | Default = Default('min'),band_multiplier: Float = Default('1.25'),sample_noise: Int| Literal["none","start","begin","stop","end"] | Default = Default('none'),gain_smooth: Int = Default('0'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Denoise audio samples with FFT.
 
 A description of the accepted parameters follows.
@@ -2146,7 +2146,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afftdn)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -2154,60 +2154,60 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='afftdn', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "noise_reduction": noise_reduction,
-                
+
                 "noise_floor": noise_floor,
-                
+
                 "noise_type": noise_type,
-                
+
                 "band_noise": band_noise,
-                
+
                 "residual_floor": residual_floor,
-                
+
                 "track_noise": track_noise,
-                
+
                 "track_residual": track_residual,
-                
+
                 "output_mode": output_mode,
-                
+
                 "adaptivity": adaptivity,
-                
+
                 "floor_offset": floor_offset,
-                
+
                 "noise_link": noise_link,
-                
+
                 "band_multiplier": band_multiplier,
-                
+
                 "sample_noise": sample_noise,
-                
+
                 "gain_smooth": gain_smooth,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def afftfilt(
-    
+
     self,
 
 
@@ -2215,15 +2215,15 @@ References:
 
     *,
     real: String = Default('re'),imag: String = Default('im'),win_size: Int = Default('4096'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),overlap: Float = Default('0.75'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply arbitrary expressions to samples in frequency domain.
 
 
@@ -2243,7 +2243,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afftfilt)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -2251,55 +2251,55 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='afftfilt', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "real": real,
-                
+
                 "imag": imag,
-                
+
                 "win_size": win_size,
-                
+
                 "win_func": win_func,
-                
+
                 "overlap": overlap,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def afifo(
-    
+
     self,
 
 
 
 
-    
-    
-    
-    
+
+
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Buffer input images and send them when they are requested.
 
 It is mainly useful when auto-inserted by the libavfilter
@@ -2318,39 +2318,39 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fifo)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='afifo', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
     def aformat(
-    
+
     self,
 
 
@@ -2358,12 +2358,12 @@ References:
 
     *,
     sample_fmts: String = Default(None),sample_rates: String = Default(None),channel_layouts: String = Default(None),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Set output format constraints for the input audio. The framework will
 negotiate the most appropriate format to minimize conversions.
 
@@ -2383,41 +2383,41 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aformat)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aformat', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "sample_fmts": sample_fmts,
-                
+
                 "sample_rates": sample_rates,
-                
+
                 "channel_layouts": channel_layouts,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def afreqshift(
-    
+
     self,
 
 
@@ -2425,15 +2425,15 @@ References:
 
     *,
     shift: Double = Default('0'),level: Double = Default('1'),order: Int = Default('8'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply frequency shift to input audio samples.
 
 The filter accepts the following options:
@@ -2453,7 +2453,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afreqshift)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -2461,38 +2461,38 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='afreqshift', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "shift": shift,
-                
+
                 "level": level,
-                
+
                 "order": order,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def afwtdn(
-    
+
     self,
 
 
@@ -2500,15 +2500,15 @@ References:
 
     *,
     sigma: Double = Default('0'),levels: Int = Default('10'),wavet: Int| Literal["sym2","sym4","rbior68","deb10","sym10","coif5","bl3"] | Default = Default('sym10'),percent: Double = Default('85'),profile: Boolean = Default('false'),adaptive: Boolean = Default('false'),samples: Int = Default('8192'),softness: Double = Default('1'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Reduce broadband noise from input samples using Wavelets.
 
 A description of the accepted options follows.
@@ -2533,7 +2533,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afwtdn)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -2541,48 +2541,48 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='afwtdn', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "sigma": sigma,
-                
+
                 "levels": levels,
-                
+
                 "wavet": wavet,
-                
+
                 "percent": percent,
-                
+
                 "profile": profile,
-                
+
                 "adaptive": adaptive,
-                
+
                 "samples": samples,
-                
+
                 "softness": softness,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def agate(
-    
+
     self,
 
 
@@ -2590,15 +2590,15 @@ References:
 
     *,
     level_in: Double = Default('1'),mode: Int| Literal["downward","upward"] | Default = Default('downward'),range: Double = Default('0.06125'),threshold: Double = Default('0.125'),ratio: Double = Default('2'),attack: Double = Default('20'),release: Double = Default('250'),makeup: Double = Default('1'),knee: Double = Default('2.82843'),detection: Int| Literal["peak","rms"] | Default = Default('rms'),link: Int| Literal["average","maximum"] | Default = Default('average'),level_sc: Double = Default('1'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 A gate is mainly used to reduce lower parts of a signal. This kind of signal
 processing reduces disturbing noise between useful signals.
 
@@ -2637,7 +2637,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#agate)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -2645,56 +2645,56 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='agate', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "level_in": level_in,
-                
+
                 "mode": mode,
-                
+
                 "range": range,
-                
+
                 "threshold": threshold,
-                
+
                 "ratio": ratio,
-                
+
                 "attack": attack,
-                
+
                 "release": release,
-                
+
                 "makeup": makeup,
-                
+
                 "knee": knee,
-                
+
                 "detection": detection,
-                
+
                 "link": link,
-                
+
                 "level_sc": level_sc,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def agraphmonitor(
-    
+
     self,
 
 
@@ -2702,12 +2702,12 @@ References:
 
     *,
     size: Image_size = Default('hd720'),opacity: Float = Default('0.9'),mode: Flags| Literal["full","compact","nozero","noeof","nodisabled"] | Default = Default('0'),flags: Flags| Literal["none","all","queue","frame_count_in","frame_count_out","frame_count_delta","pts","pts_delta","time","time_delta","timebase","format","size","rate","eof","sample_count_in","sample_count_out","sample_count_delta","disabled"] | Default = Default('all+queue'),rate: Video_rate = Default('25'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> VideoStream:
         """
-        
+
 See graphmonitor.
 
 
@@ -2726,45 +2726,45 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#agraphmonitor)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='agraphmonitor', typings_input=('audio',), typings_output=('video',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "size": size,
-                
+
                 "opacity": opacity,
-                
+
                 "mode": mode,
-                
+
                 "flags": flags,
-                
+
                 "rate": rate,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.video(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def ahistogram(
-    
+
     self,
 
 
@@ -2772,12 +2772,12 @@ References:
 
     *,
     dmode: Int| Literal["single","separate"] | Default = Default('single'),rate: Video_rate = Default('25'),size: Image_size = Default('hd720'),scale: Int| Literal["log","sqrt","cbrt","lin","rlog"] | Default = Default('log'),ascale: Int| Literal["log","lin"] | Default = Default('log'),acount: Int = Default('1'),rheight: Float = Default('0.1'),slide: Int| Literal["replace","scroll"] | Default = Default('replace'),hmode: Int| Literal["abs","sign"] | Default = Default('abs'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> VideoStream:
         """
-        
+
 Convert input audio to a video output, displaying the volume histogram.
 
 The filter accepts the following options:
@@ -2802,53 +2802,53 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ahistogram)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='ahistogram', typings_input=('audio',), typings_output=('video',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "dmode": dmode,
-                
+
                 "rate": rate,
-                
+
                 "size": size,
-                
+
                 "scale": scale,
-                
+
                 "ascale": ascale,
-                
+
                 "acount": acount,
-                
+
                 "rheight": rheight,
-                
+
                 "slide": slide,
-                
+
                 "hmode": hmode,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.video(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def aiir(
-    
+
     self,
 
 
@@ -2856,12 +2856,12 @@ References:
 
     *,
     zeros: String = Default('1+0i 1-0i'),poles: String = Default('1+0i 1-0i'),gains: String = Default('1|1'),dry: Double = Default('1'),wet: Double = Default('1'),format: Int| Literal["ll","sf","tf","zp","pr","pd","sp"] | Default = Default('zp'),process: Int| Literal["d","s","p"] | Default = Default('s'),precision: Int| Literal["dbl","flt","i32","i16"] | Default = Default('dbl'),e: Int| Literal["dbl","flt","i32","i16"] | Default = Default('dbl'),normalize: Boolean = Default('true'),mix: Double = Default('1'),response: Boolean = Default('false'),channel: Int = Default('0'),size: Image_size = Default('hd720'),rate: Video_rate = Default('25'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> FilterNode:
         """
-        
+
 Apply an arbitrary Infinite Impulse Response filter.
 
 It accepts the following parameters:
@@ -2893,82 +2893,82 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aiir)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aiir', typings_input=('audio',), typings_output='[StreamType.audio] + [StreamType.video] if response else []'),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "zeros": zeros,
-                
+
                 "poles": poles,
-                
+
                 "gains": gains,
-                
+
                 "dry": dry,
-                
+
                 "wet": wet,
-                
+
                 "format": format,
-                
+
                 "process": process,
-                
+
                 "precision": precision,
-                
+
                 "e": e,
-                
+
                 "normalize": normalize,
-                
+
                 "mix": mix,
-                
+
                 "response": response,
-                
+
                 "channel": channel,
-                
+
                 "size": size,
-                
+
                 "rate": rate,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
 
         return filter_node
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def aintegral(
-    
+
     self,
 
 
 
 
-    
-    
-    
-    
+
+
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Compute derivative/integral of audio stream.
 
 Applying both filters one after another produces original audio.
@@ -2985,7 +2985,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aderivative)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -2993,50 +2993,50 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aintegral', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
     def alatency(
-    
+
     self,
 
 
 
 
-    
-    
-    
-    
+
+
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Measure filtering latency.
 
 Report previous filter filtering latency, delay in number of audio samples for audio filters
@@ -3057,7 +3057,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#latency)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -3065,32 +3065,32 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='alatency', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def alimiter(
-    
+
     self,
 
 
@@ -3098,15 +3098,15 @@ References:
 
     *,
     level_in: Double = Default('1'),level_out: Double = Default('1'),limit: Double = Default('1'),attack: Double = Default('5'),release: Double = Default('50'),asc: Boolean = Default('false'),asc_level: Double = Default('0.5'),level: Boolean = Default('true'),latency: Boolean = Default('false'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 The limiter prevents an input signal from rising over a desired threshold.
 This limiter uses lookahead technology to prevent your signal from distorting.
 It means that there is a small delay after the signal is processed. Keep in mind
@@ -3135,7 +3135,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alimiter)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -3143,50 +3143,50 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='alimiter', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "level_in": level_in,
-                
+
                 "level_out": level_out,
-                
+
                 "limit": limit,
-                
+
                 "attack": attack,
-                
+
                 "release": release,
-                
+
                 "asc": asc,
-                
+
                 "asc_level": asc_level,
-                
+
                 "level": level,
-                
+
                 "latency": latency,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def allpass(
-    
+
     self,
 
 
@@ -3194,15 +3194,15 @@ References:
 
     *,
     frequency: Double = Default('3000'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.707'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),order: Int = Default('2'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply a two-pole all-pass filter with central frequency (in Hz)
 frequency, and filter-width width.
 An all-pass filter changes the audio's frequency to phase relationship
@@ -3231,7 +3231,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allpass)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -3239,54 +3239,54 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='allpass', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "frequency": frequency,
-                
+
                 "width_type": width_type,
-                
+
                 "width": width,
-                
+
                 "mix": mix,
-                
+
                 "channels": channels,
-                
+
                 "normalize": normalize,
-                
+
                 "order": order,
-                
+
                 "transform": transform,
-                
+
                 "precision": precision,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
     def aloop(
-    
+
     self,
 
 
@@ -3294,12 +3294,12 @@ References:
 
     *,
     loop: Int = Default('0'),size: Int64 = Default('0'),start: Int64 = Default('0'),time: Duration = Default('INT64_MAX'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Loop audio samples.
 
 The filter accepts the following options:
@@ -3319,49 +3319,49 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aloop)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aloop', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "loop": loop,
-                
+
                 "size": size,
-                
+
                 "start": start,
-                
+
                 "time": time,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
     def ametadata(
-    
+
     self,
 
 
@@ -3369,15 +3369,15 @@ References:
 
     *,
     mode: Int| Literal["select","add","modify","delete","print"] | Default = Default('select'),key: String = Default(None),value: String = Default(None),function: Int| Literal["same_str","starts_with","less","equal","greater","expr","ends_with"] | Default = Default('same_str'),expr: String = Default(None),file: String = Default(None),direct: Boolean = Default('false'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Manipulate frame metadata.
 
 This filter accepts the following options:
@@ -3401,7 +3401,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#metadata)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -3409,73 +3409,73 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='ametadata', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "mode": mode,
-                
+
                 "key": key,
-                
+
                 "value": value,
-                
+
                 "function": function,
-                
+
                 "expr": expr,
-                
+
                 "file": file,
-                
+
                 "direct": direct,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
     def amultiply(
-    
+
     self,
 
 
-    
-        
-        
-    
-        
+
+
+
+
+
         _multiply1: AudioStream,
-        
-    
 
 
-    
-    
-    
-    
+
+
+
+
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Multiply first audio stream with second audio stream and store result
 in output audio stream. Multiplication is done by multiplying each
 sample from first stream with sample at same position from second stream.
@@ -3494,43 +3494,43 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amultiply)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='amultiply', typings_input=('audio', 'audio'), typings_output=('audio',)),
-            
+
             self,
 
 
-            
-                
-                
-            
-                
+
+
+
+
+
                 _multiply1,
-                
-            
+
+
 
 
             **merge({
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def anequalizer(
-    
+
     self,
 
 
@@ -3538,15 +3538,15 @@ References:
 
     *,
     params: String = Default(''),curves: Boolean = Default('false'),size: Image_size = Default('hd720'),mgain: Double = Default('60'),fscale: Int| Literal["lin","log"] | Default = Default('log'),colors: String = Default('red|green|blue|yellow|orange|lime|pink|magenta|brown'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> FilterNode:
         """
-        
+
 High-order parametric multiband equalizer for each channel.
 
 It accepts the following parameters:
@@ -3570,7 +3570,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anequalizer)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -3578,45 +3578,45 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='anequalizer', typings_input=('audio',), typings_output='[StreamType.audio] + [StreamType.video] if curves else []'),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "params": params,
-                
+
                 "curves": curves,
-                
+
                 "size": size,
-                
+
                 "mgain": mgain,
-                
+
                 "fscale": fscale,
-                
+
                 "colors": colors,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
 
         return filter_node
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def anlmdn(
-    
+
     self,
 
 
@@ -3624,15 +3624,15 @@ References:
 
     *,
     strength: Float = Default('1e-05'),patch: Duration = Default('0.002'),research: Duration = Default('0.006'),output: Int| Literal["i","o","n"] | Default = Default('o'),smooth: Float = Default('11'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Reduce broadband noise in audio samples using Non-Local Means algorithm.
 
 Each sample is adjusted by looking for other samples with similar contexts. This
@@ -3658,7 +3658,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmdn)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -3666,66 +3666,66 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='anlmdn', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "strength": strength,
-                
+
                 "patch": patch,
-                
+
                 "research": research,
-                
+
                 "output": output,
-                
+
                 "smooth": smooth,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def anlmf(
-    
+
     self,
 
 
-    
-        
-        
-    
-        
+
+
+
+
+
         _desired: AudioStream,
-        
-    
+
+
 
 
     *,
     order: Int = Default('256'),mu: Float = Default('0.75'),eps: Float = Default('1'),leakage: Float = Default('0'),out_mode: Int| Literal["i","d","o","n","e"] | Default = Default('o'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply Normalized Least-Mean-(Squares|Fourth) algorithm to the first audio stream using the second audio stream.
 
 This adaptive filter is used to mimic a desired filter by finding the filter coefficients that
@@ -3751,7 +3751,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -3759,74 +3759,74 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='anlmf', typings_input=('audio', 'audio'), typings_output=('audio',)),
-            
+
             self,
 
 
-            
-                
-                
-            
-                
+
+
+
+
+
                 _desired,
-                
-            
+
+
 
 
             **merge({
-                
+
                 "order": order,
-                
+
                 "mu": mu,
-                
+
                 "eps": eps,
-                
+
                 "leakage": leakage,
-                
+
                 "out_mode": out_mode,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def anlms(
-    
+
     self,
 
 
-    
-        
-        
-    
-        
+
+
+
+
+
         _desired: AudioStream,
-        
-    
+
+
 
 
     *,
     order: Int = Default('256'),mu: Float = Default('0.75'),eps: Float = Default('1'),leakage: Float = Default('0'),out_mode: Int| Literal["i","d","o","n","e"] | Default = Default('o'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply Normalized Least-Mean-(Squares|Fourth) algorithm to the first audio stream using the second audio stream.
 
 This adaptive filter is used to mimic a desired filter by finding the filter coefficients that
@@ -3852,7 +3852,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -3860,65 +3860,65 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='anlms', typings_input=('audio', 'audio'), typings_output=('audio',)),
-            
+
             self,
 
 
-            
-                
-                
-            
-                
+
+
+
+
+
                 _desired,
-                
-            
+
+
 
 
             **merge({
-                
+
                 "order": order,
-                
+
                 "mu": mu,
-                
+
                 "eps": eps,
-                
+
                 "leakage": leakage,
-                
+
                 "out_mode": out_mode,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
     def anull(
-    
+
     self,
 
 
 
 
-    
-    
-    
-    
+
+
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Pass the audio source unchanged to the output.
 
 
@@ -3932,39 +3932,39 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anull)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='anull', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
     def apad(
-    
+
     self,
 
 
@@ -3972,15 +3972,15 @@ References:
 
     *,
     packet_size: Int = Default('4096'),pad_len: Int64 = Default('-1'),whole_len: Int64 = Default('-1'),pad_dur: Duration = Default('-0.000001'),whole_dur: Duration = Default('-0.000001'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Pad the end of an audio stream with silence.
 
 This can be used together with ffmpeg -shortest to
@@ -4005,7 +4005,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apad)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -4013,42 +4013,42 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='apad', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "packet_size": packet_size,
-                
+
                 "pad_len": pad_len,
-                
+
                 "whole_len": whole_len,
-                
+
                 "pad_dur": pad_dur,
-                
+
                 "whole_dur": whole_dur,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def aperms(
-    
+
     self,
 
 
@@ -4056,15 +4056,15 @@ References:
 
     *,
     mode: Int| Literal["none","ro","rw","toggle","random"] | Default = Default('none'),seed: Int64 = Default('-1'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Set read/write permissions for the output frames.
 
 These filters are mainly aimed at developers to test direct path in the
@@ -4086,7 +4086,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#perms)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -4094,36 +4094,36 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aperms', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "mode": mode,
-                
+
                 "seed": seed,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def aphasemeter(
-    
+
     self,
 
 
@@ -4131,12 +4131,12 @@ References:
 
     *,
     rate: Video_rate = Default('25'),size: Image_size = Default('800x400'),rc: Int = Default('2'),gc: Int = Default('7'),bc: Int = Default('1'),mpc: String = Default('none'),video: Boolean = Default('true'),phasing: Boolean = Default('false'),tolerance: Float = Default('0'),angle: Float = Default('170'),duration: Duration = Default('2'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> FilterNode:
         """
-        
+
 Measures phase of input audio, which is exported as metadata lavfi.aphasemeter.phase,
 representing mean phase of current audio frame. A video output can also be produced and is
 enabled by default. The audio is passed through as first output.
@@ -4170,58 +4170,58 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphasemeter)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aphasemeter', typings_input=('audio',), typings_output='[StreamType.audio] + ([StreamType.video] if video else [])'),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "rate": rate,
-                
+
                 "size": size,
-                
+
                 "rc": rc,
-                
+
                 "gc": gc,
-                
+
                 "bc": bc,
-                
+
                 "mpc": mpc,
-                
+
                 "video": video,
-                
+
                 "phasing": phasing,
-                
+
                 "tolerance": tolerance,
-                
+
                 "angle": angle,
-                
+
                 "duration": duration,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
 
         return filter_node
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def aphaser(
-    
+
     self,
 
 
@@ -4229,12 +4229,12 @@ References:
 
     *,
     in_gain: Double = Default('0.4'),out_gain: Double = Default('0.74'),delay: Double = Default('3'),decay: Double = Default('0.4'),speed: Double = Default('0.5'),type: Int| Literal["triangular","t","sinusoidal","s"] | Default = Default('triangular'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Add a phasing effect to the input audio.
 
 A phaser filter creates series of peaks and troughs in the frequency spectrum.
@@ -4259,47 +4259,47 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphaser)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aphaser', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "in_gain": in_gain,
-                
+
                 "out_gain": out_gain,
-                
+
                 "delay": delay,
-                
+
                 "decay": decay,
-                
+
                 "speed": speed,
-                
+
                 "type": type,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def aphaseshift(
-    
+
     self,
 
 
@@ -4307,15 +4307,15 @@ References:
 
     *,
     shift: Double = Default('0'),level: Double = Default('1'),order: Int = Default('8'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply phase shift to input audio samples.
 
 The filter accepts the following options:
@@ -4335,7 +4335,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphaseshift)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -4343,62 +4343,62 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aphaseshift', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "shift": shift,
-                
+
                 "level": level,
-                
+
                 "order": order,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def apsnr(
-    
+
     self,
 
 
-    
-        
-        
-    
-        
+
+
+
+
+
         _input1: AudioStream,
-        
-    
 
 
-    
-    
-    
-    
+
+
+
+
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Measure Audio Peak Signal-to-Noise Ratio.
 
 This filter takes two audio streams for input, and outputs first
@@ -4417,7 +4417,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsnr)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -4425,40 +4425,40 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='apsnr', typings_input=('audio', 'audio'), typings_output=('audio',)),
-            
+
             self,
 
 
-            
-                
-                
-            
-                
+
+
+
+
+
                 _input1,
-                
-            
+
+
 
 
             **merge({
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def apsyclip(
-    
+
     self,
 
 
@@ -4466,15 +4466,15 @@ References:
 
     *,
     level_in: Double = Default('1'),level_out: Double = Default('1'),clip: Double = Default('1'),diff: Boolean = Default('false'),adaptive: Double = Default('0.5'),iterations: Int = Default('10'),level: Boolean = Default('false'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply Psychoacoustic clipper to input audio stream.
 
 The filter accepts the following options:
@@ -4498,7 +4498,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsyclip)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -4506,46 +4506,46 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='apsyclip', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "level_in": level_in,
-                
+
                 "level_out": level_out,
-                
+
                 "clip": clip,
-                
+
                 "diff": diff,
-                
+
                 "adaptive": adaptive,
-                
+
                 "iterations": iterations,
-                
+
                 "level": level,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def apulsator(
-    
+
     self,
 
 
@@ -4553,12 +4553,12 @@ References:
 
     *,
     level_in: Double = Default('1'),level_out: Double = Default('1'),mode: Int| Literal["sine","triangle","square","sawup","sawdown"] | Default = Default('sine'),amount: Double = Default('1'),offset_l: Double = Default('0'),offset_r: Double = Default('0.5'),width: Double = Default('1'),timing: Int| Literal["bpm","ms","hz"] | Default = Default('hz'),bpm: Double = Default('120'),ms: Int = Default('500'),hz: Double = Default('2'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Audio pulsator is something between an autopanner and a tremolo.
 But it can produce funny stereo effects as well. Pulsator changes the volume
 of the left and right channel based on a LFO (low frequency oscillator) with
@@ -4597,57 +4597,57 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apulsator)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='apulsator', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "level_in": level_in,
-                
+
                 "level_out": level_out,
-                
+
                 "mode": mode,
-                
+
                 "amount": amount,
-                
+
                 "offset_l": offset_l,
-                
+
                 "offset_r": offset_r,
-                
+
                 "width": width,
-                
+
                 "timing": timing,
-                
+
                 "bpm": bpm,
-                
+
                 "ms": ms,
-                
+
                 "hz": hz,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def arealtime(
-    
+
     self,
 
 
@@ -4655,12 +4655,12 @@ References:
 
     *,
     limit: Duration = Default('2'),speed: Double = Default('1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Slow down filtering to match real time approximately.
 
 These filters will pause the filtering for a variable amount of time to
@@ -4682,39 +4682,39 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#realtime)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='arealtime', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "limit": limit,
-                
+
                 "speed": speed,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def aresample(
-    
+
     self,
 
 
@@ -4722,12 +4722,12 @@ References:
 
     *,
     sample_rate: Int = Default('0'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Resample the input audio to the specified parameters, using the
 libswresample library. If none are specified then the filter will
 automatically convert between its input and output.
@@ -4756,50 +4756,50 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aresample)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aresample', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "sample_rate": sample_rate,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def areverse(
-    
+
     self,
 
 
 
 
-    
-    
-    
-    
+
+
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Reverse an audio clip.
 
 Warning: This filter requires memory to buffer the entire clip, so trimming
@@ -4816,59 +4816,59 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#areverse)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='areverse', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def arls(
-    
+
     self,
 
 
-    
-        
-        
-    
-        
+
+
+
+
+
         _desired: AudioStream,
-        
-    
+
+
 
 
     *,
     order: Int = Default('16'),_lambda: Float = Default('1'),delta: Float = Default('2'),out_mode: Int| Literal["i","d","o","n","e"] | Default = Default('o'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply Recursive Least Squares algorithm to the first audio stream using the second audio stream.
 
 This adaptive filter is used to mimic a desired filter by recursively finding the filter coefficients that
@@ -4893,7 +4893,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arls)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -4901,48 +4901,48 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='arls', typings_input=('audio', 'audio'), typings_output=('audio',)),
-            
+
             self,
 
 
-            
-                
-                
-            
-                
+
+
+
+
+
                 _desired,
-                
-            
+
+
 
 
             **merge({
-                
+
                 "order": order,
-                
+
                 "lambda": _lambda,
-                
+
                 "delta": delta,
-                
+
                 "out_mode": out_mode,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def arnndn(
-    
+
     self,
 
 
@@ -4950,15 +4950,15 @@ References:
 
     *,
     model: String = Default(None),mix: Float = Default('1'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Reduce noise from speech using Recurrent Neural Networks.
 
 This filter accepts the following options:
@@ -4977,7 +4977,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arnndn)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -4985,60 +4985,60 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='arnndn', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "model": model,
-                
+
                 "mix": mix,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def asdr(
-    
+
     self,
 
 
-    
-        
-        
-    
-        
+
+
+
+
+
         _input1: AudioStream,
-        
-    
 
 
-    
-    
-    
-    
+
+
+
+
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Measure Audio Signal-to-Distortion Ratio.
 
 This filter takes two audio streams for input, and outputs first
@@ -5057,7 +5057,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asdr)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -5065,40 +5065,40 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asdr', typings_input=('audio', 'audio'), typings_output=('audio',)),
-            
+
             self,
 
 
-            
-                
-                
-            
-                
+
+
+
+
+
                 _input1,
-                
-            
+
+
 
 
             **merge({
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def asegment(
-    
+
     self,
 
 
@@ -5106,12 +5106,12 @@ References:
 
     *,
     timestamps: String = Default(None),samples: String = Default(None),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> FilterNode:
         """
-        
+
 Split single input stream into multiple streams.
 
 This filter does opposite of concat filters.
@@ -5134,40 +5134,40 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#segment)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asegment', typings_input=('audio',), typings_output="[StreamType.audio] * len(str(timestamps or samples).split('|'))"),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "timestamps": timestamps,
-                
+
                 "samples": samples,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
 
         return filter_node
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def aselect(
-    
+
     self,
 
 
@@ -5175,12 +5175,12 @@ References:
 
     *,
     expr: String = Default('1'),outputs: Int = Default('1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> FilterNode:
         """
-        
+
 Select frames to pass in output.
 
 This filter accepts the following options:
@@ -5199,40 +5199,40 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#select)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aselect', typings_input=('audio',), typings_output='[StreamType.audio] * int(outputs)'),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "expr": expr,
-                
+
                 "outputs": outputs,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
 
         return filter_node
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def asendcmd(
-    
+
     self,
 
 
@@ -5240,12 +5240,12 @@ References:
 
     *,
     commands: String = Default(None),filename: String = Default(None),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Send commands to filters in the filtergraph.
 
 These filters read commands to be sent to other filters in the
@@ -5274,39 +5274,39 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sendcmd)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asendcmd', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "commands": commands,
-                
+
                 "filename": filename,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def asetnsamples(
-    
+
     self,
 
 
@@ -5314,15 +5314,15 @@ References:
 
     *,
     nb_out_samples: Int = Default('1024'),pad: Boolean = Default('true'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Set the number of samples per each output audio frame.
 
 The last output packet may contain a different number of samples, as
@@ -5345,7 +5345,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asetnsamples)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -5353,36 +5353,36 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asetnsamples', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "nb_out_samples": nb_out_samples,
-                
+
                 "pad": pad,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def asetpts(
-    
+
     self,
 
 
@@ -5390,12 +5390,12 @@ References:
 
     *,
     expr: String = Default('PTS'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Change the PTS (presentation timestamp) of the input frames.
 
 setpts works on video frames, asetpts on audio frames.
@@ -5414,37 +5414,37 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setpts)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asetpts', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "expr": expr,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def asetrate(
-    
+
     self,
 
 
@@ -5452,12 +5452,12 @@ References:
 
     *,
     sample_rate: Int = Default('44100'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Set the sample rate without altering the PCM data.
 This will result in a change of speed and pitch.
 
@@ -5475,37 +5475,37 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asetrate)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asetrate', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "sample_rate": sample_rate,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def asettb(
-    
+
     self,
 
 
@@ -5513,12 +5513,12 @@ References:
 
     *,
     expr: String = Default('intb'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Set the timebase to use for the output frames timestamps.
 It is mainly useful for testing timebase configuration.
 
@@ -5536,50 +5536,50 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#settb)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asettb', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "expr": expr,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def ashowinfo(
-    
+
     self,
 
 
 
 
-    
-    
-    
-    
+
+
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Show a line containing various information for each input audio frame.
 The input audio is not modified.
 
@@ -5599,35 +5599,35 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ashowinfo)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='ashowinfo', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def asidedata(
-    
+
     self,
 
 
@@ -5635,15 +5635,15 @@ References:
 
     *,
     mode: Int| Literal["select","delete"] | Default = Default('select'),type: Int| Literal["PANSCAN","A53_CC","STEREO3D","MATRIXENCODING","DOWNMIX_INFO","REPLAYGAIN","DISPLAYMATRIX","AFD","MOTION_VECTORS","SKIP_SAMPLES","AUDIO_SERVICE_TYPE","MASTERING_DISPLAY_METADATA","GOP_TIMECODE","SPHERICAL","CONTENT_LIGHT_LEVEL","ICC_PROFILE","S12M_TIMECOD","DYNAMIC_HDR_PLUS","REGIONS_OF_INTEREST","DETECTION_BOUNDING_BOXES","SEI_UNREGISTERED"] | Default = Default('-1'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Delete frame side data, or select frames based on it.
 
 This filter accepts the following options:
@@ -5662,7 +5662,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidedata)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -5670,60 +5670,60 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asidedata', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "mode": mode,
-                
+
                 "type": type,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def asisdr(
-    
+
     self,
 
 
-    
-        
-        
-    
-        
+
+
+
+
+
         _input1: AudioStream,
-        
-    
 
 
-    
-    
-    
-    
+
+
+
+
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Measure Audio Scaled-Invariant Signal-to-Distortion Ratio.
 
 This filter takes two audio streams for input, and outputs first
@@ -5742,7 +5742,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asisdr)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -5750,40 +5750,40 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asisdr', typings_input=('audio', 'audio'), typings_output=('audio',)),
-            
+
             self,
 
 
-            
-                
-                
-            
-                
+
+
+
+
+
                 _input1,
-                
-            
+
+
 
 
             **merge({
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def asoftclip(
-    
+
     self,
 
 
@@ -5791,15 +5791,15 @@ References:
 
     *,
     type: Int| Literal["hard","tanh","atan","cubic","exp","alg","quintic","sin","erf"] | Default = Default('tanh'),threshold: Double = Default('1'),output: Double = Default('1'),param: Double = Default('1'),oversample: Int = Default('1'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply audio soft clipping.
 
 Soft clipping is a type of distortion effect where the amplitude of a signal is saturated
@@ -5824,7 +5824,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asoftclip)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -5832,42 +5832,42 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asoftclip', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "type": type,
-                
+
                 "threshold": threshold,
-                
+
                 "output": output,
-                
+
                 "param": param,
-                
+
                 "oversample": oversample,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def aspectralstats(
-    
+
     self,
 
 
@@ -5875,12 +5875,12 @@ References:
 
     *,
     win_size: Int = Default('2048'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),overlap: Float = Default('0.5'),measure: Flags| Literal["none","all","mean","variance","centroid","spread","skewness","kurtosis","entropy","flatness","crest","flux","slope","decrease","rolloff"] | Default = Default('all+mean+variance+centroid+spread+skewness+kurtosis+entropy+flatness+crest+flux+slope+decrease+rolloff'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Display frequency domain statistical information about the audio channels.
 Statistics are calculated and stored as metadata for each audio channel and for each audio frame.
 
@@ -5901,43 +5901,43 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aspectralstats)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='aspectralstats', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "win_size": win_size,
-                
+
                 "win_func": win_func,
-                
+
                 "overlap": overlap,
-                
+
                 "measure": measure,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def asplit(
-    
+
     self,
 
 
@@ -5945,12 +5945,12 @@ References:
 
     *,
     outputs: Int = Default('2'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> FilterNode:
         """
-        
+
 Split input into several identical outputs.
 
 asplit works with audio input, split with video.
@@ -5971,40 +5971,40 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#split)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asplit', typings_input=('audio',), typings_output='[StreamType.audio] * int(outputs)'),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "outputs": outputs,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
 
         return filter_node
 
 
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
     def astats(
-    
+
     self,
 
 
@@ -6012,12 +6012,12 @@ References:
 
     *,
     length: Double = Default('0.05'),metadata: Boolean = Default('false'),reset: Int = Default('0'),measure_perchannel: Flags| Literal["none","all","Bit_depth","Crest_factor","DC_offset","Dynamic_range","Entropy","Flat_factor","Max_difference","Max_level","Mean_difference","Min_difference","Min_level","Noise_floor","Noise_floor_count","Number_of_Infs","Number_of_NaNs","Number_of_denormals","Number_of_samples","Peak_count","Peak_level","RMS_difference","RMS_level","RMS_peak","RMS_trough","Zero_crossings","Zero_crossings_rate","Abs_Peak_count"] | Default = Default('all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count'),measure_overall: Flags| Literal["none","all","Bit_depth","Crest_factor","DC_offset","Dynamic_range","Entropy","Flat_factor","Max_difference","Max_level","Mean_difference","Min_difference","Min_level","Noise_floor","Noise_floor_count","Number_of_Infs","Number_of_NaNs","Number_of_denormals","Number_of_samples","Peak_count","Peak_level","RMS_difference","RMS_level","RMS_peak","RMS_trough","Zero_crossings","Zero_crossings_rate","Abs_Peak_count"] | Default = Default('all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Display time domain statistical information about the audio channels.
 Statistics are calculated and displayed for each audio channel and,
 where applicable, an overall figure is also given.
@@ -6040,47 +6040,47 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#astats)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='astats', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "length": length,
-                
+
                 "metadata": metadata,
-                
+
                 "reset": reset,
-                
+
                 "measure_perchannel": measure_perchannel,
-                
+
                 "measure_overall": measure_overall,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
     def asubboost(
-    
+
     self,
 
 
@@ -6088,15 +6088,15 @@ References:
 
     *,
     dry: Double = Default('1'),wet: Double = Default('1'),boost: Double = Default('2'),decay: Double = Default('0'),feedback: Double = Default('0.9'),cutoff: Double = Default('100'),slope: Double = Default('0.5'),delay: Double = Default('20'),channels: String = Default('all'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Boost subwoofer frequencies.
 
 The filter accepts the following options:
@@ -6122,7 +6122,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asubboost)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -6130,50 +6130,50 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asubboost', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "dry": dry,
-                
+
                 "wet": wet,
-                
+
                 "boost": boost,
-                
+
                 "decay": decay,
-                
+
                 "feedback": feedback,
-                
+
                 "cutoff": cutoff,
-                
+
                 "slope": slope,
-                
+
                 "delay": delay,
-                
+
                 "channels": channels,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def asubcut(
-    
+
     self,
 
 
@@ -6181,15 +6181,15 @@ References:
 
     *,
     cutoff: Double = Default('20'),order: Int = Default('10'),level: Double = Default('1'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Cut subwoofer frequencies.
 
 This filter allows to set custom, steeper
@@ -6213,7 +6213,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asubcut)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -6221,38 +6221,38 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asubcut', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "cutoff": cutoff,
-                
+
                 "order": order,
-                
+
                 "level": level,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def asupercut(
-    
+
     self,
 
 
@@ -6260,15 +6260,15 @@ References:
 
     *,
     cutoff: Double = Default('20000'),order: Int = Default('10'),level: Double = Default('1'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Cut super frequencies.
 
 The filter accepts the following options:
@@ -6288,7 +6288,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asupercut)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -6296,38 +6296,38 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asupercut', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "cutoff": cutoff,
-                
+
                 "order": order,
-                
+
                 "level": level,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def asuperpass(
-    
+
     self,
 
 
@@ -6335,15 +6335,15 @@ References:
 
     *,
     centerf: Double = Default('1000'),order: Int = Default('4'),qfactor: Double = Default('1'),level: Double = Default('1'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply high order Butterworth band-pass filter.
 
 The filter accepts the following options:
@@ -6364,7 +6364,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asuperpass)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -6372,40 +6372,40 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asuperpass', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "centerf": centerf,
-                
+
                 "order": order,
-                
+
                 "qfactor": qfactor,
-                
+
                 "level": level,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def asuperstop(
-    
+
     self,
 
 
@@ -6413,15 +6413,15 @@ References:
 
     *,
     centerf: Double = Default('1000'),order: Int = Default('4'),qfactor: Double = Default('1'),level: Double = Default('1'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply high order Butterworth band-stop filter.
 
 The filter accepts the following options:
@@ -6442,7 +6442,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asuperstop)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -6450,42 +6450,42 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='asuperstop', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "centerf": centerf,
-                
+
                 "order": order,
-                
+
                 "qfactor": qfactor,
-                
+
                 "level": level,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
     def atempo(
-    
+
     self,
 
 
@@ -6493,12 +6493,12 @@ References:
 
     *,
     tempo: Double = Default('1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Adjust audio tempo.
 
 The filter accepts exactly one parameter, the audio tempo. If not
@@ -6522,37 +6522,37 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atempo)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='atempo', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "tempo": tempo,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def atilt(
-    
+
     self,
 
 
@@ -6560,15 +6560,15 @@ References:
 
     *,
     freq: Double = Default('10000'),slope: Double = Default('0'),width: Double = Default('1000'),order: Int = Default('5'),level: Double = Default('1'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply spectral tilt filter to audio stream.
 
 This filter apply any spectral roll-off slope over any specified frequency band.
@@ -6592,7 +6592,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atilt)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -6600,42 +6600,42 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='atilt', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "freq": freq,
-                
+
                 "slope": slope,
-                
+
                 "width": width,
-                
+
                 "order": order,
-                
+
                 "level": level,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def atrim(
-    
+
     self,
 
 
@@ -6643,12 +6643,12 @@ References:
 
     *,
     start: Duration = Default('INT64_MAX'),end: Duration = Default('INT64_MAX'),start_pts: Int64 = Default('I64_MIN'),end_pts: Int64 = Default('I64_MIN'),duration: Duration = Default('0'),start_sample: Int64 = Default('-1'),end_sample: Int64 = Default('I64_MAX'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Trim the input so that the output contains one continuous subpart of the input.
 
 It accepts the following parameters:
@@ -6671,49 +6671,49 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atrim)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='atrim', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "start": start,
-                
+
                 "end": end,
-                
+
                 "start_pts": start_pts,
-                
+
                 "end_pts": end_pts,
-                
+
                 "duration": duration,
-                
+
                 "start_sample": start_sample,
-                
+
                 "end_sample": end_sample,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def avectorscope(
-    
+
     self,
 
 
@@ -6721,12 +6721,12 @@ References:
 
     *,
     mode: Int| Literal["lissajous","lissajous_xy","polar"] | Default = Default('lissajous'),rate: Video_rate = Default('25'),size: Image_size = Default('400x400'),rc: Int = Default('40'),gc: Int = Default('160'),bc: Int = Default('80'),ac: Int = Default('255'),rf: Int = Default('15'),gf: Int = Default('10'),bf: Int = Default('5'),af: Int = Default('5'),zoom: Double = Default('1'),draw: Int| Literal["dot","line","aaline"] | Default = Default('dot'),scale: Int| Literal["lin","sqrt","cbrt","log"] | Default = Default('lin'),swap: Boolean = Default('true'),mirror: Int| Literal["none","x","y","xy"] | Default = Default('none'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> VideoStream:
         """
-        
+
 Convert input audio to a video output, representing the audio vector
 scope.
 
@@ -6766,94 +6766,94 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#avectorscope)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='avectorscope', typings_input=('audio',), typings_output=('video',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "mode": mode,
-                
+
                 "rate": rate,
-                
+
                 "size": size,
-                
+
                 "rc": rc,
-                
+
                 "gc": gc,
-                
+
                 "bc": bc,
-                
+
                 "ac": ac,
-                
+
                 "rf": rf,
-                
+
                 "gf": gf,
-                
+
                 "bf": bf,
-                
+
                 "af": af,
-                
+
                 "zoom": zoom,
-                
+
                 "draw": draw,
-                
+
                 "scale": scale,
-                
+
                 "swap": swap,
-                
+
                 "mirror": mirror,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.video(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
     def axcorrelate(
-    
+
     self,
 
 
-    
-        
-        
-    
-        
+
+
+
+
+
         _axcorrelate1: AudioStream,
-        
-    
+
+
 
 
     *,
     size: Int = Default('256'),algo: Int| Literal["slow","fast","best"] | Default = Default('best'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Calculate normalized windowed cross-correlation between two input audio streams.
 
 Resulted samples are always between -1 and 1 inclusive.
@@ -6877,47 +6877,47 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#axcorrelate)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='axcorrelate', typings_input=('audio', 'audio'), typings_output=('audio',)),
-            
+
             self,
 
 
-            
-                
-                
-            
-                
+
+
+
+
+
                 _axcorrelate1,
-                
-            
+
+
 
 
             **merge({
-                
+
                 "size": size,
-                
+
                 "algo": algo,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def azmq(
-    
+
     self,
 
 
@@ -6925,12 +6925,12 @@ References:
 
     *,
     bind_address: String = Default('tcp://*:5555'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Receive commands sent through a libzmq client, and forward them to
 filters in the filtergraph.
 
@@ -6989,39 +6989,39 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zmq)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='azmq', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "bind_address": bind_address,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
     def bandpass(
-    
+
     self,
 
 
@@ -7029,15 +7029,15 @@ References:
 
     *,
     frequency: Double = Default('3000'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.5'),csg: Boolean = Default('false'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply a two-pole Butterworth band-pass filter with central
 frequency frequency, and (3dB-point) band-width width.
 The csg option selects a constant skirt gain (peak gain = Q)
@@ -7068,7 +7068,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bandpass)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -7076,52 +7076,52 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='bandpass', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "frequency": frequency,
-                
+
                 "width_type": width_type,
-                
+
                 "width": width,
-                
+
                 "csg": csg,
-                
+
                 "mix": mix,
-                
+
                 "channels": channels,
-                
+
                 "normalize": normalize,
-                
+
                 "transform": transform,
-                
+
                 "precision": precision,
-                
+
                 "blocksize": blocksize,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def bandreject(
-    
+
     self,
 
 
@@ -7129,15 +7129,15 @@ References:
 
     *,
     frequency: Double = Default('3000'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.5'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply a two-pole Butterworth band-reject filter with central
 frequency frequency, and (3dB-point) band-width width.
 The filter roll off at 6dB per octave (20dB per decade).
@@ -7165,7 +7165,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bandreject)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -7173,50 +7173,50 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='bandreject', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "frequency": frequency,
-                
+
                 "width_type": width_type,
-                
+
                 "width": width,
-                
+
                 "mix": mix,
-                
+
                 "channels": channels,
-                
+
                 "normalize": normalize,
-                
+
                 "transform": transform,
-                
+
                 "precision": precision,
-                
+
                 "blocksize": blocksize,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def bass(
-    
+
     self,
 
 
@@ -7224,15 +7224,15 @@ References:
 
     *,
     frequency: Double = Default('100'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.5'),gain: Double = Default('0'),poles: Int = Default('2'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Boost or cut the bass (lower) frequencies of the audio using a two-pole
 shelving filter with a response similar to that of a standard
 hi-fi's tone-controls. This is also known as shelving equalisation (EQ).
@@ -7262,7 +7262,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bass)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -7270,60 +7270,60 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='bass', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "frequency": frequency,
-                
+
                 "width_type": width_type,
-                
+
                 "width": width,
-                
+
                 "gain": gain,
-                
+
                 "poles": poles,
-                
+
                 "mix": mix,
-                
+
                 "channels": channels,
-                
+
                 "normalize": normalize,
-                
+
                 "transform": transform,
-                
+
                 "precision": precision,
-                
+
                 "blocksize": blocksize,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
     def biquad(
-    
+
     self,
 
 
@@ -7331,15 +7331,15 @@ References:
 
     *,
     a0: Double = Default('1'),a1: Double = Default('0'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply a biquad IIR filter with the given coefficients.
 Where b0, b1, b2 and a0, a1, a2
 are the numerator and denominator coefficients respectively.
@@ -7366,7 +7366,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#biquad)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -7374,78 +7374,78 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='biquad', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "a0": a0,
-                
+
                 "a1": a1,
-                
+
                 "mix": mix,
-                
+
                 "channels": channels,
-                
+
                 "normalize": normalize,
-                
+
                 "transform": transform,
-                
+
                 "precision": precision,
-                
+
                 "blocksize": blocksize,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def channelmap(
-    
+
     self,
 
 
@@ -7453,12 +7453,12 @@ References:
 
     *,
     map: String = Default(None),channel_layout: String = Default(None),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Remap input channels to new locations.
 
 It accepts the following parameters:
@@ -7476,39 +7476,39 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#channelmap)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='channelmap', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "map": map,
-                
+
                 "channel_layout": channel_layout,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def channelsplit(
-    
+
     self,
 
 
@@ -7516,12 +7516,12 @@ References:
 
     *,
     channel_layout: String = Default('stereo'),channels: String = Default('all'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> FilterNode:
         """
-        
+
 Split each channel from an input audio stream into a separate output stream.
 
 It accepts the following parameters:
@@ -7540,40 +7540,40 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#channelsplit)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='channelsplit', typings_input=('audio',), typings_output='[StreamType.audio] * CHANNEL_LAYOUT[str(channel_layout)]'),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "channel_layout": channel_layout,
-                
+
                 "channels": channels,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
 
         return filter_node
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def chorus(
-    
+
     self,
 
 
@@ -7581,12 +7581,12 @@ References:
 
     *,
     in_gain: Float = Default('0.4'),out_gain: Float = Default('0.4'),delays: String = Default(None),decays: String = Default(None),speeds: String = Default(None),depths: String = Default(None),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Add a chorus effect to the audio.
 
 Can make a single vocal sound like a chorus, but can also be applied to instrumentation.
@@ -7617,91 +7617,91 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chorus)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='chorus', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "in_gain": in_gain,
-                
+
                 "out_gain": out_gain,
-                
+
                 "delays": delays,
-                
+
                 "decays": decays,
-                
+
                 "speeds": speeds,
-                
+
                 "depths": depths,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def compand(
-    
+
     self,
 
 
@@ -7709,12 +7709,12 @@ References:
 
     *,
     attacks: String = Default('0'),decays: String = Default('0.8'),points: String = Default('-70/-70|-60/-20|1/0'),soft_knee: Double = Default('0.01'),gain: Double = Default('0'),volume: Double = Default('0'),delay: Double = Default('0'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Compress or expand the audio's dynamic range.
 
 It accepts the following parameters:
@@ -7737,49 +7737,49 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#compand)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='compand', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "attacks": attacks,
-                
+
                 "decays": decays,
-                
+
                 "points": points,
-                
+
                 "soft-knee": soft_knee,
-                
+
                 "gain": gain,
-                
+
                 "volume": volume,
-                
+
                 "delay": delay,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def compensationdelay(
-    
+
     self,
 
 
@@ -7787,15 +7787,15 @@ References:
 
     *,
     mm: Int = Default('0'),cm: Int = Default('0'),m: Int = Default('0'),dry: Double = Default('0'),wet: Double = Default('1'),temp: Int = Default('20'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Compensation Delay Line is a metric based delay to compensate differing
 positions of microphones or speakers.
 
@@ -7834,7 +7834,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#compensationdelay)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -7842,62 +7842,62 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='compensationdelay', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "mm": mm,
-                
+
                 "cm": cm,
-                
+
                 "m": m,
-                
+
                 "dry": dry,
-                
+
                 "wet": wet,
-                
+
                 "temp": temp,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def crossfeed(
-    
+
     self,
 
 
@@ -7905,15 +7905,15 @@ References:
 
     *,
     strength: Double = Default('0.2'),range: Double = Default('0.5'),slope: Double = Default('0.5'),level_in: Double = Default('0.9'),level_out: Double = Default('1'),block_size: Int = Default('0'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply headphone crossfeed filter.
 
 Crossfeed is the process of blending the left and right channels of stereo
@@ -7942,7 +7942,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crossfeed)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -7950,44 +7950,44 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='crossfeed', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "strength": strength,
-                
+
                 "range": range,
-                
+
                 "slope": slope,
-                
+
                 "level_in": level_in,
-                
+
                 "level_out": level_out,
-                
+
                 "block_size": block_size,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def crystalizer(
-    
+
     self,
 
 
@@ -7995,15 +7995,15 @@ References:
 
     *,
     i: Float = Default('2'),c: Boolean = Default('true'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Simple algorithm for audio noise sharpening.
 
 This filter linearly increases differences betweeen each audio sample.
@@ -8024,7 +8024,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crystalizer)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -8032,44 +8032,44 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='crystalizer', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "i": i,
-                
+
                 "c": c,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
     def dcshift(
-    
+
     self,
 
 
@@ -8077,15 +8077,15 @@ References:
 
     *,
     shift: Double = Default('0'),limitergain: Double = Default('0'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply a DC shift to the audio.
 
 This can be useful to remove a DC offset (caused perhaps by a hardware problem
@@ -8107,7 +8107,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dcshift)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -8115,48 +8115,48 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='dcshift', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "shift": shift,
-                
+
                 "limitergain": limitergain,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def deesser(
-    
+
     self,
 
 
@@ -8164,15 +8164,15 @@ References:
 
     *,
     i: Double = Default('0'),m: Double = Default('0.5'),f: Double = Default('0.5'),s: Int| Literal["i","o","e"] | Default = Default('o'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply de-essing to the audio samples.
 
 
@@ -8191,7 +8191,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deesser)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -8199,62 +8199,62 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='deesser', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "i": i,
-                
+
                 "m": m,
-                
+
                 "f": f,
-                
+
                 "s": s,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def dialoguenhance(
-    
+
     self,
 
 
@@ -8262,15 +8262,15 @@ References:
 
     *,
     original: Double = Default('1'),enhance: Double = Default('1'),voice: Double = Default('2'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Enhance dialogue in stereo audio.
 
 This filter accepts stereo input and produce surround (3.0) channels output.
@@ -8295,7 +8295,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dialoguenhance)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -8303,60 +8303,60 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='dialoguenhance', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "original": original,
-                
+
                 "enhance": enhance,
-                
+
                 "voice": voice,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def drmeter(
-    
+
     self,
 
 
@@ -8364,12 +8364,12 @@ References:
 
     *,
     length: Double = Default('3'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Measure audio dynamic range.
 
 DR values of 14 and higher is found in very dynamic material. DR of 8 to 13
@@ -8390,37 +8390,37 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drmeter)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='drmeter', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "length": length,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def dynaudnorm(
-    
+
     self,
 
 
@@ -8428,15 +8428,15 @@ References:
 
     *,
     framelen: Int = Default('500'),gausssize: Int = Default('31'),peak: Double = Default('0.95'),maxgain: Double = Default('10'),targetrms: Double = Default('0'),coupling: Boolean = Default('true'),correctdc: Boolean = Default('false'),altboundary: Boolean = Default('false'),compress: Double = Default('0'),threshold: Double = Default('0'),channels: String = Default('all'),overlap: Double = Default('0'),curve: String = Default(None),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Dynamic Audio Normalizer.
 
 This filter applies a certain amount of gain to the input audio in order
@@ -8476,7 +8476,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dynaudnorm)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -8484,71 +8484,71 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='dynaudnorm', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "framelen": framelen,
-                
+
                 "gausssize": gausssize,
-                
+
                 "peak": peak,
-                
+
                 "maxgain": maxgain,
-                
+
                 "targetrms": targetrms,
-                
+
                 "coupling": coupling,
-                
+
                 "correctdc": correctdc,
-                
+
                 "altboundary": altboundary,
-                
+
                 "compress": compress,
-                
+
                 "threshold": threshold,
-                
+
                 "channels": channels,
-                
+
                 "overlap": overlap,
-                
+
                 "curve": curve,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def earwax(
-    
+
     self,
 
 
 
 
-    
-    
-    
-    
+
+
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Make audio easier to listen to on headphones.
 
 This filter adds `cues' to 44.1kHz stereo (i.e. audio CD format) audio
@@ -8569,35 +8569,35 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#earwax)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='earwax', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def ebur128(
-    
+
     self,
 
 
@@ -8605,12 +8605,12 @@ References:
 
     *,
     video: Boolean = Default('false'),size: Image_size = Default('640x480'),meter: Int = Default('9'),framelog: Int| Literal["quiet","info","verbose"] | Default = Default('-1'),metadata: Boolean = Default('false'),peak: Flags| Literal["none","sample","true"] | Default = Default('0'),dualmono: Boolean = Default('false'),panlaw: Double = Default('-3.0103'),target: Int = Default('-23'),gauge: Int| Literal["momentary","m","shortterm","s"] | Default = Default('momentary'),scale: Int| Literal["absolute","LUFS","relative","LU"] | Default = Default('absolute'),integrated: Double = Default('0'),range: Double = Default('0'),lra_low: Double = Default('0'),lra_high: Double = Default('0'),sample_peak: Double = Default('0'),true_peak: Double = Default('0'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> FilterNode:
         """
-        
+
 EBU R128 scanner filter. This filter takes an audio stream and analyzes its loudness
 level. By default, it logs a message at a frequency of 10Hz with the
 Momentary loudness (identified by M), Short-term loudness (S),
@@ -8666,80 +8666,80 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ebur128)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='ebur128', typings_input=('audio',), typings_output='[StreamType.video] if video else [] + [StreamType.audio]'),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "video": video,
-                
+
                 "size": size,
-                
+
                 "meter": meter,
-                
+
                 "framelog": framelog,
-                
+
                 "metadata": metadata,
-                
+
                 "peak": peak,
-                
+
                 "dualmono": dualmono,
-                
+
                 "panlaw": panlaw,
-                
+
                 "target": target,
-                
+
                 "gauge": gauge,
-                
+
                 "scale": scale,
-                
+
                 "integrated": integrated,
-                
+
                 "range": range,
-                
+
                 "lra_low": lra_low,
-                
+
                 "lra_high": lra_high,
-                
+
                 "sample_peak": sample_peak,
-                
+
                 "true_peak": true_peak,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
 
         return filter_node
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def equalizer(
-    
+
     self,
 
 
@@ -8747,15 +8747,15 @@ References:
 
     *,
     frequency: Double = Default('0'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('1'),gain: Double = Default('0'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply a two-pole peaking equalisation (EQ) filter. With this
 filter, the signal-level at and around a selected frequency can
 be increased or decreased, whilst (unlike bandpass and bandreject
@@ -8788,7 +8788,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#equalizer)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -8796,62 +8796,62 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='equalizer', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "frequency": frequency,
-                
+
                 "width_type": width_type,
-                
+
                 "width": width,
-                
+
                 "gain": gain,
-                
+
                 "mix": mix,
-                
+
                 "channels": channels,
-                
+
                 "normalize": normalize,
-                
+
                 "transform": transform,
-                
+
                 "precision": precision,
-                
+
                 "blocksize": blocksize,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def extrastereo(
-    
+
     self,
 
 
@@ -8859,15 +8859,15 @@ References:
 
     *,
     m: Float = Default('2.5'),c: Boolean = Default('true'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Linearly increases the difference between left and right channels which
 adds some sort of "live" effect to playback.
 
@@ -8887,7 +8887,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#extrastereo)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -8895,58 +8895,58 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='extrastereo', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "m": m,
-                
+
                 "c": c,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def firequalizer(
-    
+
     self,
 
 
@@ -8954,12 +8954,12 @@ References:
 
     *,
     gain: String = Default('gain_interpolate(f)'),gain_entry: String = Default(None),delay: Double = Default('0.01'),accuracy: Double = Default('5'),wfunc: Int| Literal["rectangular","hann","hamming","blackman","nuttall3","mnuttall3","nuttall","bnuttall","bharris","tukey"] | Default = Default('hann'),fixed: Boolean = Default('false'),multi: Boolean = Default('false'),zero_phase: Boolean = Default('false'),scale: Int| Literal["linlin","linlog","loglin","loglog"] | Default = Default('linlog'),dumpfile: String = Default(None),dumpscale: Int| Literal["linlin","linlog","loglin","loglog"] | Default = Default('linlog'),fft2: Boolean = Default('false'),min_phase: Boolean = Default('false'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply FIR Equalization using arbitrary frequency response.
 
 The filter accepts the following option:
@@ -8988,61 +8988,61 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#firequalizer)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='firequalizer', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "gain": gain,
-                
+
                 "gain_entry": gain_entry,
-                
+
                 "delay": delay,
-                
+
                 "accuracy": accuracy,
-                
+
                 "wfunc": wfunc,
-                
+
                 "fixed": fixed,
-                
+
                 "multi": multi,
-                
+
                 "zero_phase": zero_phase,
-                
+
                 "scale": scale,
-                
+
                 "dumpfile": dumpfile,
-                
+
                 "dumpscale": dumpscale,
-                
+
                 "fft2": fft2,
-                
+
                 "min_phase": min_phase,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def flanger(
-    
+
     self,
 
 
@@ -9050,12 +9050,12 @@ References:
 
     *,
     delay: Double = Default('0'),depth: Double = Default('2'),regen: Double = Default('0'),width: Double = Default('71'),speed: Double = Default('0.5'),shape: Int| Literal["triangular","t","sinusoidal","s"] | Default = Default('sinusoidal'),phase: Double = Default('25'),interp: Int| Literal["linear","quadratic"] | Default = Default('linear'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply a flanging effect to the audio.
 
 The filter accepts the following options:
@@ -9079,85 +9079,85 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#flanger)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='flanger', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "delay": delay,
-                
+
                 "depth": depth,
-                
+
                 "regen": regen,
-                
+
                 "width": width,
-                
+
                 "speed": speed,
-                
+
                 "shape": shape,
-                
+
                 "phase": phase,
-                
+
                 "interp": interp,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def haas(
-    
+
     self,
 
 
@@ -9165,12 +9165,12 @@ References:
 
     *,
     level_in: Double = Default('1'),level_out: Double = Default('1'),side_gain: Double = Default('1'),middle_source: Int| Literal["left","right","mid","side"] | Default = Default('mid'),middle_phase: Boolean = Default('false'),left_delay: Double = Default('2.05'),left_balance: Double = Default('-1'),left_gain: Double = Default('1'),left_phase: Boolean = Default('false'),right_delay: Double = Default('2.12'),right_balance: Double = Default('1'),right_gain: Double = Default('1'),right_phase: Boolean = Default('true'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply Haas effect to audio.
 
 Note that this makes most sense to apply on mono signals.
@@ -9203,65 +9203,65 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haas)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='haas', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "level_in": level_in,
-                
+
                 "level_out": level_out,
-                
+
                 "side_gain": side_gain,
-                
+
                 "middle_source": middle_source,
-                
+
                 "middle_phase": middle_phase,
-                
+
                 "left_delay": left_delay,
-                
+
                 "left_balance": left_balance,
-                
+
                 "left_gain": left_gain,
-                
+
                 "left_phase": left_phase,
-                
+
                 "right_delay": right_delay,
-                
+
                 "right_balance": right_balance,
-                
+
                 "right_gain": right_gain,
-                
+
                 "right_phase": right_phase,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
     def hdcd(
-    
+
     self,
 
 
@@ -9269,12 +9269,12 @@ References:
 
     *,
     disable_autoconvert: Boolean = Default('true'),process_stereo: Boolean = Default('true'),cdt_ms: Int = Default('2000'),force_pe: Boolean = Default('false'),analyze_mode: Int| Literal["off","lle","pe","cdt","tgm"] | Default = Default('off'),bits_per_sample: Int| Literal["16","20","24"] | Default = Default('16'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Decodes High Definition Compatible Digital (HDCD) data. A 16-bit PCM stream with
 embedded HDCD codes is expanded into a 20-bit PCM stream.
 
@@ -9312,51 +9312,51 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hdcd)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='hdcd', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "disable_autoconvert": disable_autoconvert,
-                
+
                 "process_stereo": process_stereo,
-                
+
                 "cdt_ms": cdt_ms,
-                
+
                 "force_pe": force_pe,
-                
+
                 "analyze_mode": analyze_mode,
-                
+
                 "bits_per_sample": bits_per_sample,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
     def highpass(
-    
+
     self,
 
 
@@ -9364,15 +9364,15 @@ References:
 
     *,
     frequency: Double = Default('3000'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.707'),poles: Int = Default('2'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply a high-pass filter with 3dB point frequency.
 The filter can be either single-pole, or double-pole (the default).
 The filter roll off at 6dB per pole per octave (20dB per pole per decade).
@@ -9401,7 +9401,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#highpass)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -9409,52 +9409,52 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='highpass', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "frequency": frequency,
-                
+
                 "width_type": width_type,
-                
+
                 "width": width,
-                
+
                 "poles": poles,
-                
+
                 "mix": mix,
-                
+
                 "channels": channels,
-                
+
                 "normalize": normalize,
-                
+
                 "transform": transform,
-                
+
                 "precision": precision,
-                
+
                 "blocksize": blocksize,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def highshelf(
-    
+
     self,
 
 
@@ -9462,15 +9462,15 @@ References:
 
     *,
     frequency: Double = Default('3000'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.5'),gain: Double = Default('0'),poles: Int = Default('2'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Boost or cut treble (upper) frequencies of the audio using a two-pole
 shelving filter with a response similar to that of a standard
 hi-fi's tone-controls. This is also known as shelving equalisation (EQ).
@@ -9500,7 +9500,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#treble)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -9508,116 +9508,116 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='highshelf', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "frequency": frequency,
-                
+
                 "width_type": width_type,
-                
+
                 "width": width,
-                
+
                 "gain": gain,
-                
+
                 "poles": poles,
-                
+
                 "mix": mix,
-                
+
                 "channels": channels,
-                
+
                 "normalize": normalize,
-                
+
                 "transform": transform,
-                
+
                 "precision": precision,
-                
+
                 "blocksize": blocksize,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def loudnorm(
-    
+
     self,
 
 
@@ -9625,12 +9625,12 @@ References:
 
     *,
     I: Double = Default('-24'),LRA: Double = Default('7'),TP: Double = Default('-2'),measured_I: Double = Default('0'),measured_LRA: Double = Default('0'),measured_TP: Double = Default('99'),measured_thresh: Double = Default('-70'),offset: Double = Default('0'),linear: Boolean = Default('true'),dual_mono: Boolean = Default('false'),print_format: Int| Literal["none","json","summary"] | Default = Default('none'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 EBU R128 loudness normalization. Includes both dynamic and linear normalization modes.
 Support for both single pass (livestreams, files) and double pass (files) modes.
 This algorithm can target IL, LRA, and maximum true peak. In dynamic mode, to accurately
@@ -9661,57 +9661,57 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#loudnorm)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='loudnorm', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "I": I,
-                
+
                 "LRA": LRA,
-                
+
                 "TP": TP,
-                
+
                 "measured_I": measured_I,
-                
+
                 "measured_LRA": measured_LRA,
-                
+
                 "measured_TP": measured_TP,
-                
+
                 "measured_thresh": measured_thresh,
-                
+
                 "offset": offset,
-                
+
                 "linear": linear,
-                
+
                 "dual_mono": dual_mono,
-                
+
                 "print_format": print_format,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def lowpass(
-    
+
     self,
 
 
@@ -9719,15 +9719,15 @@ References:
 
     *,
     frequency: Double = Default('500'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.707'),poles: Int = Default('2'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply a low-pass filter with 3dB point frequency.
 The filter can be either single-pole or double-pole (the default).
 The filter roll off at 6dB per pole per octave (20dB per pole per decade).
@@ -9756,7 +9756,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lowpass)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -9764,52 +9764,52 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='lowpass', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "frequency": frequency,
-                
+
                 "width_type": width_type,
-                
+
                 "width": width,
-                
+
                 "poles": poles,
-                
+
                 "mix": mix,
-                
+
                 "channels": channels,
-                
+
                 "normalize": normalize,
-                
+
                 "transform": transform,
-                
+
                 "precision": precision,
-                
+
                 "blocksize": blocksize,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def lowshelf(
-    
+
     self,
 
 
@@ -9817,15 +9817,15 @@ References:
 
     *,
     frequency: Double = Default('100'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.5'),gain: Double = Default('0'),poles: Int = Default('2'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Boost or cut the bass (lower) frequencies of the audio using a two-pole
 shelving filter with a response similar to that of a standard
 hi-fi's tone-controls. This is also known as shelving equalisation (EQ).
@@ -9855,7 +9855,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bass)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -9863,84 +9863,84 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='lowshelf', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "frequency": frequency,
-                
+
                 "width_type": width_type,
-                
+
                 "width": width,
-                
+
                 "gain": gain,
-                
+
                 "poles": poles,
-                
+
                 "mix": mix,
-                
+
                 "channels": channels,
-                
+
                 "normalize": normalize,
-                
+
                 "transform": transform,
-                
+
                 "precision": precision,
-                
+
                 "blocksize": blocksize,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def mcompand(
-    
+
     self,
 
 
@@ -9948,12 +9948,12 @@ References:
 
     *,
     args: String = Default('0.005,0.1 6 -47/-40,-34/-34,-17/-33 100 | 0.003,0.05 6 -47/-40,-34/-34,-17/-33 400 | 0.000625,0.0125 6 -47/-40,-34/-34,-15/-33 1600 | 0.0001,0.025 6 -47/-40,-34/-34,-31/-31,-0/-30 6400 | 0,0.025 6 -38/-31,-28/-28,-0/-25 22000'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Multiband Compress or expand the audio's dynamic range.
 
 The input audio is divided into bands using 4th order Linkwitz-Riley IIRs.
@@ -9974,109 +9974,109 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mcompand)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='mcompand', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "args": args,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def pan(
-    
+
     self,
 
 
@@ -10084,12 +10084,12 @@ References:
 
     *,
     args: String = Default(None),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Mix channels with specific gain levels. The filter accepts the output
 channel layout followed by a set of channels definitions.
 
@@ -10101,7 +10101,7 @@ The filter accepts parameters of the form:
 
 
 Args:
-    args: 
+    args:
     extra_options: Extra options for the filter
 
 Returns:
@@ -10111,91 +10111,91 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pan)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='pan', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "args": args,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def replaygain(
-    
+
     self,
 
 
@@ -10203,12 +10203,12 @@ References:
 
     *,
     track_gain: Float = Default('0'),track_peak: Float = Default('0'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 ReplayGain scanner filter. This filter takes an audio stream as an input and
 outputs it unchanged.
 At end of filtering it displays track_gain and track_peak.
@@ -10228,93 +10228,93 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#replaygain)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='replaygain', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "track_gain": track_gain,
-                
+
                 "track_peak": track_peak,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def showcqt(
-    
+
     self,
 
 
@@ -10322,12 +10322,12 @@ References:
 
     *,
     size: Image_size = Default('1920x1080'),fps: Video_rate = Default('25'),bar_h: Int = Default('-1'),axis_h: Int = Default('-1'),sono_h: Int = Default('-1'),fullhd: Boolean = Default('true'),sono_v: String = Default('16'),bar_v: String = Default('sono_v'),sono_g: Float = Default('3'),bar_g: Float = Default('1'),bar_t: Float = Default('1'),timeclamp: Double = Default('0.17'),attack: Double = Default('0'),basefreq: Double = Default('20.0152'),endfreq: Double = Default('20495.6'),coeffclamp: Float = Default('1'),tlength: String = Default('384*tc/(384+tc*f)'),count: Int = Default('6'),fcount: Int = Default('0'),fontfile: String = Default(None),font: String = Default(None),fontcolor: String = Default('st(0, (midi(f)-59.5)/12);st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));r(1-ld(1)) + b(ld(1))'),axisfile: String = Default(None),axis: Boolean = Default('true'),csp: Int| Literal["unspecified","bt709","fcc","bt470bg","smpte170m","smpte240m","bt2020ncl"] | Default = Default('unspecified'),cscheme: String = Default('1|0.5|0|0|0.5|1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> VideoStream:
         """
-        
+
 Convert input audio to a video output representing frequency spectrum
 logarithmically using Brown-Puckette constant Q transform algorithm with
 direct frequency domain coefficient calculation (but the transform itself
@@ -10373,87 +10373,87 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showcqt)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showcqt', typings_input=('audio',), typings_output=('video',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "size": size,
-                
+
                 "fps": fps,
-                
+
                 "bar_h": bar_h,
-                
+
                 "axis_h": axis_h,
-                
+
                 "sono_h": sono_h,
-                
+
                 "fullhd": fullhd,
-                
+
                 "sono_v": sono_v,
-                
+
                 "bar_v": bar_v,
-                
+
                 "sono_g": sono_g,
-                
+
                 "bar_g": bar_g,
-                
+
                 "bar_t": bar_t,
-                
+
                 "timeclamp": timeclamp,
-                
+
                 "attack": attack,
-                
+
                 "basefreq": basefreq,
-                
+
                 "endfreq": endfreq,
-                
+
                 "coeffclamp": coeffclamp,
-                
+
                 "tlength": tlength,
-                
+
                 "count": count,
-                
+
                 "fcount": fcount,
-                
+
                 "fontfile": fontfile,
-                
+
                 "font": font,
-                
+
                 "fontcolor": fontcolor,
-                
+
                 "axisfile": axisfile,
-                
+
                 "axis": axis,
-                
+
                 "csp": csp,
-                
+
                 "cscheme": cscheme,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.video(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def showcwt(
-    
+
     self,
 
 
@@ -10461,12 +10461,12 @@ References:
 
     *,
     size: Image_size = Default('640x512'),rate: String = Default('25'),scale: Int| Literal["linear","log","bark","mel","erbs","sqrt","cbrt","qdrt"] | Default = Default('linear'),iscale: Int| Literal["linear","log","sqrt","cbrt","qdrt"] | Default = Default('log'),min: Float = Default('20'),max: Float = Default('20000'),imin: Float = Default('0'),imax: Float = Default('1'),logb: Float = Default('0.0001'),deviation: Float = Default('1'),pps: Int = Default('64'),mode: Int| Literal["magnitude","phase","magphase","channel","stereo"] | Default = Default('magnitude'),slide: Int| Literal["replace","scroll","frame"] | Default = Default('replace'),direction: Int| Literal["lr","rl","ud","du"] | Default = Default('lr'),bar: Float = Default('0'),rotation: Float = Default('0'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> VideoStream:
         """
-        
+
 Convert input audio to video output representing frequency spectrum
 using Continuous Wavelet Transform and Morlet wavelet.
 
@@ -10499,67 +10499,67 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showcwt)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showcwt', typings_input=('audio',), typings_output=('video',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "size": size,
-                
+
                 "rate": rate,
-                
+
                 "scale": scale,
-                
+
                 "iscale": iscale,
-                
+
                 "min": min,
-                
+
                 "max": max,
-                
+
                 "imin": imin,
-                
+
                 "imax": imax,
-                
+
                 "logb": logb,
-                
+
                 "deviation": deviation,
-                
+
                 "pps": pps,
-                
+
                 "mode": mode,
-                
+
                 "slide": slide,
-                
+
                 "direction": direction,
-                
+
                 "bar": bar,
-                
+
                 "rotation": rotation,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.video(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def showfreqs(
-    
+
     self,
 
 
@@ -10567,12 +10567,12 @@ References:
 
     *,
     size: Image_size = Default('1024x512'),rate: Video_rate = Default('25'),mode: Int| Literal["line","bar","dot"] | Default = Default('bar'),ascale: Int| Literal["lin","sqrt","cbrt","log"] | Default = Default('log'),fscale: Int| Literal["lin","log","rlog"] | Default = Default('lin'),win_size: Int = Default('2048'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),overlap: Float = Default('1'),averaging: Int = Default('1'),colors: String = Default('red|green|blue|yellow|orange|lime|pink|magenta|brown'),cmode: Int| Literal["combined","separate"] | Default = Default('combined'),minamp: Float = Default('1e-06'),data: Int| Literal["magnitude","phase","delay"] | Default = Default('magnitude'),channels: String = Default('all'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> VideoStream:
         """
-        
+
 Convert input audio to video output representing the audio power spectrum.
 Audio amplitude is on Y-axis while frequency is on X-axis.
 
@@ -10603,67 +10603,67 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showfreqs)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showfreqs', typings_input=('audio',), typings_output=('video',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "size": size,
-                
+
                 "rate": rate,
-                
+
                 "mode": mode,
-                
+
                 "ascale": ascale,
-                
+
                 "fscale": fscale,
-                
+
                 "win_size": win_size,
-                
+
                 "win_func": win_func,
-                
+
                 "overlap": overlap,
-                
+
                 "averaging": averaging,
-                
+
                 "colors": colors,
-                
+
                 "cmode": cmode,
-                
+
                 "minamp": minamp,
-                
+
                 "data": data,
-                
+
                 "channels": channels,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.video(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
     def showspatial(
-    
+
     self,
 
 
@@ -10671,12 +10671,12 @@ References:
 
     *,
     size: Image_size = Default('512x512'),win_size: Int = Default('4096'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),rate: Video_rate = Default('25'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> VideoStream:
         """
-        
+
 Convert stereo input audio to a video output, representing the spatial relationship
 between two channels.
 
@@ -10697,43 +10697,43 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspatial)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showspatial', typings_input=('audio',), typings_output=('video',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "size": size,
-                
+
                 "win_size": win_size,
-                
+
                 "win_func": win_func,
-                
+
                 "rate": rate,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.video(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def showspectrum(
-    
+
     self,
 
 
@@ -10741,12 +10741,12 @@ References:
 
     *,
     size: Image_size = Default('640x512'),slide: Int| Literal["replace","scroll","fullframe","rscroll","lreplace"] | Default = Default('replace'),mode: Int| Literal["combined","separate"] | Default = Default('combined'),color: Int| Literal["channel","intensity","rainbow","moreland","nebulae","fire","fiery","fruit","cool","magma","green","viridis","plasma","cividis","terrain"] | Default = Default('channel'),scale: Int| Literal["lin","sqrt","cbrt","log","4thrt","5thrt"] | Default = Default('sqrt'),fscale: Int| Literal["lin","log"] | Default = Default('lin'),saturation: Float = Default('1'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),orientation: Int| Literal["vertical","horizontal"] | Default = Default('vertical'),overlap: Float = Default('0'),gain: Float = Default('1'),data: Int| Literal["magnitude","phase","uphase"] | Default = Default('magnitude'),rotation: Float = Default('0'),start: Int = Default('0'),stop: Int = Default('0'),fps: String = Default('auto'),legend: Boolean = Default('false'),drange: Float = Default('120'),limit: Float = Default('0'),opacity: Float = Default('1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> VideoStream:
         """
-        
+
 Convert input audio to a video output, representing the audio frequency
 spectrum.
 
@@ -10783,75 +10783,75 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspectrum)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showspectrum', typings_input=('audio',), typings_output=('video',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "size": size,
-                
+
                 "slide": slide,
-                
+
                 "mode": mode,
-                
+
                 "color": color,
-                
+
                 "scale": scale,
-                
+
                 "fscale": fscale,
-                
+
                 "saturation": saturation,
-                
+
                 "win_func": win_func,
-                
+
                 "orientation": orientation,
-                
+
                 "overlap": overlap,
-                
+
                 "gain": gain,
-                
+
                 "data": data,
-                
+
                 "rotation": rotation,
-                
+
                 "start": start,
-                
+
                 "stop": stop,
-                
+
                 "fps": fps,
-                
+
                 "legend": legend,
-                
+
                 "drange": drange,
-                
+
                 "limit": limit,
-                
+
                 "opacity": opacity,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.video(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def showspectrumpic(
-    
+
     self,
 
 
@@ -10859,12 +10859,12 @@ References:
 
     *,
     size: Image_size = Default('4096x2048'),mode: Int| Literal["combined","separate"] | Default = Default('combined'),color: Int| Literal["channel","intensity","rainbow","moreland","nebulae","fire","fiery","fruit","cool","magma","green","viridis","plasma","cividis","terrain"] | Default = Default('intensity'),scale: Int| Literal["lin","sqrt","cbrt","log","4thrt","5thrt"] | Default = Default('log'),fscale: Int| Literal["lin","log"] | Default = Default('lin'),saturation: Float = Default('1'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),orientation: Int| Literal["vertical","horizontal"] | Default = Default('vertical'),gain: Float = Default('1'),legend: Boolean = Default('true'),rotation: Float = Default('0'),start: Int = Default('0'),stop: Int = Default('0'),drange: Float = Default('120'),limit: Float = Default('0'),opacity: Float = Default('1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> VideoStream:
         """
-        
+
 Convert input audio to a single video frame, representing the audio frequency
 spectrum.
 
@@ -10897,67 +10897,67 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspectrumpic)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showspectrumpic', typings_input=('audio',), typings_output=('video',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "size": size,
-                
+
                 "mode": mode,
-                
+
                 "color": color,
-                
+
                 "scale": scale,
-                
+
                 "fscale": fscale,
-                
+
                 "saturation": saturation,
-                
+
                 "win_func": win_func,
-                
+
                 "orientation": orientation,
-                
+
                 "gain": gain,
-                
+
                 "legend": legend,
-                
+
                 "rotation": rotation,
-                
+
                 "start": start,
-                
+
                 "stop": stop,
-                
+
                 "drange": drange,
-                
+
                 "limit": limit,
-                
+
                 "opacity": opacity,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.video(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def showvolume(
-    
+
     self,
 
 
@@ -10965,12 +10965,12 @@ References:
 
     *,
     rate: Video_rate = Default('25'),b: Int = Default('1'),w: Int = Default('400'),h: Int = Default('20'),f: Double = Default('0.95'),c: String = Default('PEAK*255+floor((1-PEAK)*255)*256+0xff000000'),t: Boolean = Default('true'),v: Boolean = Default('true'),dm: Double = Default('0'),dmc: Color = Default('orange'),o: Int| Literal["h","v"] | Default = Default('h'),s: Int = Default('0'),p: Float = Default('0'),m: Int| Literal["p","r"] | Default = Default('p'),ds: Int| Literal["lin","log"] | Default = Default('lin'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> VideoStream:
         """
-        
+
 Convert input audio volume to a video output.
 
 The filter accepts the following options:
@@ -11001,65 +11001,65 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showvolume)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showvolume', typings_input=('audio',), typings_output=('video',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "rate": rate,
-                
+
                 "b": b,
-                
+
                 "w": w,
-                
+
                 "h": h,
-                
+
                 "f": f,
-                
+
                 "c": c,
-                
+
                 "t": t,
-                
+
                 "v": v,
-                
+
                 "dm": dm,
-                
+
                 "dmc": dmc,
-                
+
                 "o": o,
-                
+
                 "s": s,
-                
+
                 "p": p,
-                
+
                 "m": m,
-                
+
                 "ds": ds,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.video(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def showwaves(
-    
+
     self,
 
 
@@ -11067,12 +11067,12 @@ References:
 
     *,
     size: Image_size = Default('600x240'),mode: Int| Literal["point","line","p2p","cline"] | Default = Default('point'),n: Rational = Default('0/1'),rate: Video_rate = Default('25'),split_channels: Boolean = Default('false'),colors: String = Default('red|green|blue|yellow|orange|lime|pink|magenta|brown'),scale: Int| Literal["lin","log","sqrt","cbrt"] | Default = Default('lin'),draw: Int| Literal["scale","full"] | Default = Default('scale'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> VideoStream:
         """
-        
+
 Convert input audio to a video output, representing the samples waves.
 
 The filter accepts the following options:
@@ -11096,51 +11096,51 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showwaves)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showwaves', typings_input=('audio',), typings_output=('video',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "size": size,
-                
+
                 "mode": mode,
-                
+
                 "n": n,
-                
+
                 "rate": rate,
-                
+
                 "split_channels": split_channels,
-                
+
                 "colors": colors,
-                
+
                 "scale": scale,
-                
+
                 "draw": draw,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.video(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def showwavespic(
-    
+
     self,
 
 
@@ -11148,12 +11148,12 @@ References:
 
     *,
     size: Image_size = Default('600x240'),split_channels: Boolean = Default('false'),colors: String = Default('red|green|blue|yellow|orange|lime|pink|magenta|brown'),scale: Int| Literal["lin","log","sqrt","cbrt"] | Default = Default('lin'),draw: Int| Literal["scale","full"] | Default = Default('scale'),filter: Int| Literal["average","peak"] | Default = Default('average'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> VideoStream:
         """
-        
+
 Convert input audio to a single video frame, representing the samples waves.
 
 The filter accepts the following options:
@@ -11175,74 +11175,74 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showwavespic)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='showwavespic', typings_input=('audio',), typings_output=('video',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "size": size,
-                
+
                 "split_channels": split_channels,
-                
+
                 "colors": colors,
-                
+
                 "scale": scale,
-                
+
                 "draw": draw,
-                
+
                 "filter": filter,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.video(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
     def sidechaincompress(
-    
+
     self,
 
 
-    
-        
-        
-    
-        
+
+
+
+
+
         _sidechain: AudioStream,
-        
-    
+
+
 
 
     *,
     level_in: Double = Default('1'),mode: Int| Literal["downward","upward"] | Default = Default('downward'),threshold: Double = Default('0.125'),ratio: Double = Default('2'),attack: Double = Default('20'),release: Double = Default('250'),makeup: Double = Default('1'),knee: Double = Default('2.82843'),link: Int| Literal["average","maximum"] | Default = Default('average'),detection: Int| Literal["peak","rms"] | Default = Default('rms'),level_sc: Double = Default('1'),mix: Double = Default('1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 This filter acts like normal compressor but has the ability to compress
 detected signal using second input signal.
 It needs two input streams and returns one output stream.
@@ -11275,91 +11275,91 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaincompress)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='sidechaincompress', typings_input=('audio', 'audio'), typings_output=('audio',)),
-            
+
             self,
 
 
-            
-                
-                
-            
-                
+
+
+
+
+
                 _sidechain,
-                
-            
+
+
 
 
             **merge({
-                
+
                 "level_in": level_in,
-                
+
                 "mode": mode,
-                
+
                 "threshold": threshold,
-                
+
                 "ratio": ratio,
-                
+
                 "attack": attack,
-                
+
                 "release": release,
-                
+
                 "makeup": makeup,
-                
+
                 "knee": knee,
-                
+
                 "link": link,
-                
+
                 "detection": detection,
-                
+
                 "level_sc": level_sc,
-                
+
                 "mix": mix,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def sidechaingate(
-    
+
     self,
 
 
-    
-        
-        
-    
-        
+
+
+
+
+
         _sidechain: AudioStream,
-        
-    
+
+
 
 
     *,
     level_in: Double = Default('1'),mode: Int| Literal["downward","upward"] | Default = Default('downward'),range: Double = Default('0.06125'),threshold: Double = Default('0.125'),ratio: Double = Default('2'),attack: Double = Default('20'),release: Double = Default('250'),makeup: Double = Default('1'),knee: Double = Default('2.82843'),detection: Int| Literal["peak","rms"] | Default = Default('rms'),link: Int| Literal["average","maximum"] | Default = Default('average'),level_sc: Double = Default('1'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 A sidechain gate acts like a normal (wideband) gate but has the ability to
 filter the detected signal before sending it to the gain reduction stage.
 Normally a gate uses the full range signal to detect a level above the
@@ -11398,7 +11398,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaingate)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -11406,72 +11406,72 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='sidechaingate', typings_input=('audio', 'audio'), typings_output=('audio',)),
-            
+
             self,
 
 
-            
-                
-                
-            
-                
+
+
+
+
+
                 _sidechain,
-                
-            
+
+
 
 
             **merge({
-                
+
                 "level_in": level_in,
-                
+
                 "mode": mode,
-                
+
                 "range": range,
-                
+
                 "threshold": threshold,
-                
+
                 "ratio": ratio,
-                
+
                 "attack": attack,
-                
+
                 "release": release,
-                
+
                 "makeup": makeup,
-                
+
                 "knee": knee,
-                
+
                 "detection": detection,
-                
+
                 "link": link,
-                
+
                 "level_sc": level_sc,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
     def silencedetect(
-    
+
     self,
 
 
@@ -11479,12 +11479,12 @@ References:
 
     *,
     n: Double = Default('0.001'),d: Duration = Default('2'),mono: Boolean = Default('false'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Detect silence in an audio stream.
 
 This filter logs a message when it detects that the input audio volume is less
@@ -11518,41 +11518,41 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#silencedetect)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='silencedetect', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "n": n,
-                
+
                 "d": d,
-                
+
                 "mono": mono,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def silenceremove(
-    
+
     self,
 
 
@@ -11560,15 +11560,15 @@ References:
 
     *,
     start_periods: Int = Default('0'),start_duration: Duration = Default('0'),start_threshold: Double = Default('0'),start_silence: Duration = Default('0'),start_mode: Int| Literal["any","all"] | Default = Default('any'),stop_periods: Int = Default('0'),stop_duration: Duration = Default('0'),stop_threshold: Double = Default('0'),stop_silence: Duration = Default('0'),stop_mode: Int| Literal["any","all"] | Default = Default('all'),detection: Int| Literal["avg","rms","peak","median","ptp","dev"] | Default = Default('rms'),window: Duration = Default('0.02'),timestamp: Int| Literal["write","copy"] | Default = Default('write'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Remove silence from the beginning, middle or end of the audio.
 
 The filter accepts the following options:
@@ -11598,7 +11598,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#silenceremove)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -11606,76 +11606,76 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='silenceremove', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "start_periods": start_periods,
-                
+
                 "start_duration": start_duration,
-                
+
                 "start_threshold": start_threshold,
-                
+
                 "start_silence": start_silence,
-                
+
                 "start_mode": start_mode,
-                
+
                 "stop_periods": stop_periods,
-                
+
                 "stop_duration": stop_duration,
-                
+
                 "stop_threshold": stop_threshold,
-                
+
                 "stop_silence": stop_silence,
-                
+
                 "stop_mode": stop_mode,
-                
+
                 "detection": detection,
-                
+
                 "window": window,
-                
+
                 "timestamp": timestamp,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def speechnorm(
-    
+
     self,
 
 
@@ -11683,15 +11683,15 @@ References:
 
     *,
     peak: Double = Default('0.95'),expansion: Double = Default('2'),compression: Double = Default('2'),threshold: Double = Default('0'),_raise: Double = Default('0.001'),fall: Double = Default('0.001'),channels: String = Default('all'),invert: Boolean = Default('false'),link: Boolean = Default('false'),rms: Double = Default('0'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Speech Normalizer.
 
 This filter expands or compresses each half-cycle of audio samples
@@ -11722,7 +11722,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#speechnorm)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -11730,64 +11730,64 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='speechnorm', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "peak": peak,
-                
+
                 "expansion": expansion,
-                
+
                 "compression": compression,
-                
+
                 "threshold": threshold,
-                
+
                 "raise": _raise,
-                
+
                 "fall": fall,
-                
+
                 "channels": channels,
-                
+
                 "invert": invert,
-                
+
                 "link": link,
-                
+
                 "rms": rms,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def stereotools(
-    
+
     self,
 
 
@@ -11795,15 +11795,15 @@ References:
 
     *,
     level_in: Double = Default('1'),level_out: Double = Default('1'),balance_in: Double = Default('0'),balance_out: Double = Default('0'),softclip: Boolean = Default('false'),mutel: Boolean = Default('false'),muter: Boolean = Default('false'),phasel: Boolean = Default('false'),phaser: Boolean = Default('false'),mode: Int| Literal["lr>lr","lr>ms","ms>lr","lr>ll","lr>rr","lr>l+r","lr>rl","ms>ll","ms>rr","ms>rl","lr>l-r"] | Default = Default('lr>lr'),slev: Double = Default('1'),sbal: Double = Default('0'),mlev: Double = Default('1'),mpan: Double = Default('0'),base: Double = Default('0'),delay: Double = Default('0'),sclevel: Double = Default('1'),phase: Double = Default('0'),bmode_in: Int| Literal["balance","amplitude","power"] | Default = Default('balance'),bmode_out: Int| Literal["balance","amplitude","power"] | Default = Default('balance'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 This filter has some handy utilities to manage stereo signals, for converting
 M/S stereo recordings to L/R signal while having control over the parameters
 or spreading the stereo image of master track.
@@ -11842,7 +11842,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereotools)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -11850,72 +11850,72 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='stereotools', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "level_in": level_in,
-                
+
                 "level_out": level_out,
-                
+
                 "balance_in": balance_in,
-                
+
                 "balance_out": balance_out,
-                
+
                 "softclip": softclip,
-                
+
                 "mutel": mutel,
-                
+
                 "muter": muter,
-                
+
                 "phasel": phasel,
-                
+
                 "phaser": phaser,
-                
+
                 "mode": mode,
-                
+
                 "slev": slev,
-                
+
                 "sbal": sbal,
-                
+
                 "mlev": mlev,
-                
+
                 "mpan": mpan,
-                
+
                 "base": base,
-                
+
                 "delay": delay,
-                
+
                 "sclevel": sclevel,
-                
+
                 "phase": phase,
-                
+
                 "bmode_in": bmode_in,
-                
+
                 "bmode_out": bmode_out,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def stereowiden(
-    
+
     self,
 
 
@@ -11923,15 +11923,15 @@ References:
 
     *,
     delay: Float = Default('20'),feedback: Float = Default('0.3'),crossfeed: Float = Default('0.3'),drymix: Float = Default('0.8'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 This filter enhance the stereo effect by suppressing signal common to both
 channels and by delaying the signal of left into right and vice versa,
 thereby widening the stereo effect.
@@ -11954,7 +11954,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereowiden)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -11962,46 +11962,46 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='stereowiden', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "delay": delay,
-                
+
                 "feedback": feedback,
-                
+
                 "crossfeed": crossfeed,
-                
+
                 "drymix": drymix,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
     def superequalizer(
-    
+
     self,
 
 
@@ -12009,12 +12009,12 @@ References:
 
     *,
     _1b: Float = Default('1'),_2b: Float = Default('1'),_3b: Float = Default('1'),_4b: Float = Default('1'),_5b: Float = Default('1'),_6b: Float = Default('1'),_7b: Float = Default('1'),_8b: Float = Default('1'),_9b: Float = Default('1'),_10b: Float = Default('1'),_11b: Float = Default('1'),_12b: Float = Default('1'),_13b: Float = Default('1'),_14b: Float = Default('1'),_15b: Float = Default('1'),_16b: Float = Default('1'),_17b: Float = Default('1'),_18b: Float = Default('1'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply 18 band equalizer.
 
 The filter accepts the following options:
@@ -12048,71 +12048,71 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#superequalizer)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='superequalizer', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "1b": _1b,
-                
+
                 "2b": _2b,
-                
+
                 "3b": _3b,
-                
+
                 "4b": _4b,
-                
+
                 "5b": _5b,
-                
+
                 "6b": _6b,
-                
+
                 "7b": _7b,
-                
+
                 "8b": _8b,
-                
+
                 "9b": _9b,
-                
+
                 "10b": _10b,
-                
+
                 "11b": _11b,
-                
+
                 "12b": _12b,
-                
+
                 "13b": _13b,
-                
+
                 "14b": _14b,
-                
+
                 "15b": _15b,
-                
+
                 "16b": _16b,
-                
+
                 "17b": _17b,
-                
+
                 "18b": _18b,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def surround(
-    
+
     self,
 
 
@@ -12120,12 +12120,12 @@ References:
 
     *,
     chl_out: String = Default('5.1'),chl_in: String = Default('stereo'),level_in: Float = Default('1'),level_out: Float = Default('1'),lfe: Boolean = Default('true'),lfe_low: Int = Default('128'),lfe_high: Int = Default('256'),lfe_mode: Int| Literal["add","sub"] | Default = Default('add'),smooth: Float = Default('0'),angle: Float = Default('90'),focus: Float = Default('0'),fc_in: Float = Default('1'),fc_out: Float = Default('1'),fl_in: Float = Default('1'),fl_out: Float = Default('1'),fr_in: Float = Default('1'),fr_out: Float = Default('1'),sl_in: Float = Default('1'),sl_out: Float = Default('1'),sr_in: Float = Default('1'),sr_out: Float = Default('1'),bl_in: Float = Default('1'),bl_out: Float = Default('1'),br_in: Float = Default('1'),br_out: Float = Default('1'),bc_in: Float = Default('1'),bc_out: Float = Default('1'),lfe_in: Float = Default('1'),lfe_out: Float = Default('1'),allx: Float = Default('-1'),ally: Float = Default('-1'),fcx: Float = Default('0.5'),flx: Float = Default('0.5'),frx: Float = Default('0.5'),blx: Float = Default('0.5'),brx: Float = Default('0.5'),slx: Float = Default('0.5'),srx: Float = Default('0.5'),bcx: Float = Default('0.5'),fcy: Float = Default('0.5'),fly: Float = Default('0.5'),fry: Float = Default('0.5'),bly: Float = Default('0.5'),bry: Float = Default('0.5'),sly: Float = Default('0.5'),sry: Float = Default('0.5'),bcy: Float = Default('0.5'),win_size: Int = Default('4096'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),overlap: Float = Default('0.5'),
-    
-    
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply audio surround upmix filter.
 
 This filter allows to produce multichannel output from audio stream.
@@ -12193,155 +12193,155 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#surround)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='surround', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "chl_out": chl_out,
-                
+
                 "chl_in": chl_in,
-                
+
                 "level_in": level_in,
-                
+
                 "level_out": level_out,
-                
+
                 "lfe": lfe,
-                
+
                 "lfe_low": lfe_low,
-                
+
                 "lfe_high": lfe_high,
-                
+
                 "lfe_mode": lfe_mode,
-                
+
                 "smooth": smooth,
-                
+
                 "angle": angle,
-                
+
                 "focus": focus,
-                
+
                 "fc_in": fc_in,
-                
+
                 "fc_out": fc_out,
-                
+
                 "fl_in": fl_in,
-                
+
                 "fl_out": fl_out,
-                
+
                 "fr_in": fr_in,
-                
+
                 "fr_out": fr_out,
-                
+
                 "sl_in": sl_in,
-                
+
                 "sl_out": sl_out,
-                
+
                 "sr_in": sr_in,
-                
+
                 "sr_out": sr_out,
-                
+
                 "bl_in": bl_in,
-                
+
                 "bl_out": bl_out,
-                
+
                 "br_in": br_in,
-                
+
                 "br_out": br_out,
-                
+
                 "bc_in": bc_in,
-                
+
                 "bc_out": bc_out,
-                
+
                 "lfe_in": lfe_in,
-                
+
                 "lfe_out": lfe_out,
-                
+
                 "allx": allx,
-                
+
                 "ally": ally,
-                
+
                 "fcx": fcx,
-                
+
                 "flx": flx,
-                
+
                 "frx": frx,
-                
+
                 "blx": blx,
-                
+
                 "brx": brx,
-                
+
                 "slx": slx,
-                
+
                 "srx": srx,
-                
+
                 "bcx": bcx,
-                
+
                 "fcy": fcy,
-                
+
                 "fly": fly,
-                
+
                 "fry": fry,
-                
+
                 "bly": bly,
-                
+
                 "bry": bry,
-                
+
                 "sly": sly,
-                
+
                 "sry": sry,
-                
+
                 "bcy": bcy,
-                
+
                 "win_size": win_size,
-                
+
                 "win_func": win_func,
-                
+
                 "overlap": overlap,
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def tiltshelf(
-    
+
     self,
 
 
@@ -12349,15 +12349,15 @@ References:
 
     *,
     frequency: Double = Default('3000'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.5'),gain: Double = Default('0'),poles: Int = Default('2'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Boost or cut the lower frequencies and cut or boost higher frequencies
 of the audio using a two-pole shelving filter with a response similar to
 that of a standard hi-fi's tone-controls.
@@ -12388,7 +12388,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tiltshelf)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -12396,78 +12396,78 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='tiltshelf', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "frequency": frequency,
-                
+
                 "width_type": width_type,
-                
+
                 "width": width,
-                
+
                 "gain": gain,
-                
+
                 "poles": poles,
-                
+
                 "mix": mix,
-                
+
                 "channels": channels,
-                
+
                 "normalize": normalize,
-                
+
                 "transform": transform,
-                
+
                 "precision": precision,
-                
+
                 "blocksize": blocksize,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def treble(
-    
+
     self,
 
 
@@ -12475,15 +12475,15 @@ References:
 
     *,
     frequency: Double = Default('3000'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.5'),gain: Double = Default('0'),poles: Int = Default('2'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Boost or cut treble (upper) frequencies of the audio using a two-pole
 shelving filter with a response similar to that of a standard
 hi-fi's tone-controls. This is also known as shelving equalisation (EQ).
@@ -12513,7 +12513,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#treble)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -12521,54 +12521,54 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='treble', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "frequency": frequency,
-                
+
                 "width_type": width_type,
-                
+
                 "width": width,
-                
+
                 "gain": gain,
-                
+
                 "poles": poles,
-                
+
                 "mix": mix,
-                
+
                 "channels": channels,
-                
+
                 "normalize": normalize,
-                
+
                 "transform": transform,
-                
+
                 "precision": precision,
-                
+
                 "blocksize": blocksize,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def tremolo(
-    
+
     self,
 
 
@@ -12576,15 +12576,15 @@ References:
 
     *,
     f: Double = Default('5'),d: Double = Default('0.5'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Sinusoidal amplitude modulation.
 
 The filter accepts the following options:
@@ -12603,7 +12603,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tremolo)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -12611,62 +12611,62 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='tremolo', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "f": f,
-                
+
                 "d": d,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def vibrato(
-    
+
     self,
 
 
@@ -12674,15 +12674,15 @@ References:
 
     *,
     f: Double = Default('5'),d: Double = Default('0.5'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Sinusoidal phase modulation.
 
 The filter accepts the following options:
@@ -12701,7 +12701,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vibrato)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -12709,44 +12709,44 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='vibrato', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "f": f,
-                
+
                 "d": d,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
     def virtualbass(
-    
+
     self,
 
 
@@ -12754,15 +12754,15 @@ References:
 
     *,
     cutoff: Double = Default('250'),strength: Double = Default('3'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Apply audio Virtual Bass filter.
 
 This filter accepts stereo input and produce stereo with LFE (2.1) channels output.
@@ -12785,7 +12785,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#virtualbass)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -12793,38 +12793,38 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='virtualbass', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "cutoff": cutoff,
-                
+
                 "strength": strength,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-        
-    
-    
+
+
+
+
+
+
+
     def volume(
-    
+
     self,
 
 
@@ -12832,15 +12832,15 @@ References:
 
     *,
     volume: String = Default('1.0'),precision: Int| Literal["fixed","float","double"] | Default = Default('float'),eval: Int| Literal["once","frame"] | Default = Default('once'),replaygain: Int| Literal["drop","ignore","track","album"] | Default = Default('drop'),replaygain_preamp: Double = Default('0'),replaygain_noclip: Boolean = Default('true'),
-    
-    
+
+
     timeline_options: FFMpegTimelineOption | None = None,
     enable: str | None = None,
-    
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Adjust the input audio volume.
 
 It accepts the following parameters:
@@ -12863,7 +12863,7 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#volume)
 
         """
-        
+
 
 
         if timeline_options is None and enable is not None:
@@ -12871,57 +12871,57 @@ References:
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='volume', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
                 "volume": volume,
-                
+
                 "precision": precision,
-                
+
                 "eval": eval,
-                
+
                 "replaygain": replaygain,
-                
+
                 "replaygain_preamp": replaygain_preamp,
-                
+
                 "replaygain_noclip": replaygain_noclip,
-                
+
             },
             extra_options,
-            
-            
+
+
             timeline_options,
-            
+
             )
         )
         return filter_node.audio(0)
 
 
-        
-    
-        
-    
-    
+
+
+
+
+
     def volumedetect(
-    
+
     self,
 
 
 
 
-    
-    
-    
-    
+
+
+
+
     extra_options: dict[str, Any] | None = None,
     )-> AudioStream:
         """
-        
+
 Detect the volume of the input video.
 
 The filter has no parameters. It supports only 16-bit signed integer samples,
@@ -12946,65 +12946,23 @@ References:
     [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#volumedetect)
 
         """
-        
+
 
 
         filter_node = filter_node_factory(
             FFMpegFilterDef(name='volumedetect', typings_input=('audio',), typings_output=('audio',)),
-            
+
             self,
 
 
 
 
             **merge({
-                
+
             },
             extra_options,
-            
-            
+
+
             )
         )
         return filter_node.audio(0)
-
-
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    

@@ -137,9 +137,10 @@ def gen_filter_info(
 
 
 def _normalize_option_flags(options: list[FFMpegOption]) -> list[FFMpegOption]:
-    """Translate old-style (pre-7.0) flag values to the current bit layout
-    and fix known flag omissions.
+    """
+    Translate old-style (pre-7.0) flag values to the current bit layout.
 
+    Fix known flag omissions.
     If the options already use the modern layout, only the fixup step runs.
     Detection works by inspecting known OPT_EXIT options (``-L``, ``-h``).
 
@@ -157,10 +158,7 @@ def _normalize_option_flags(options: list[FFMpegOption]) -> list[FFMpegOption]:
         (o for o in options if o.name in ("L", "h", "help", "version")), None
     )
     if exit_option is not None and uses_old_flag_layout(exit_option.flags):
-        options = [
-            replace(o, flags=translate_old_flags(o.flags))
-            for o in options
-        ]
+        options = [replace(o, flags=translate_old_flags(o.flags)) for o in options]
 
     # Options that FFmpeg's source marks as output-only but also work on input.
     _ALSO_INPUT = {"bsf"}
