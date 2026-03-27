@@ -177,7 +177,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Optional runtime libs — install each separately so one failure doesn't block others
 RUN apt-get update \
     && for pkg in libdav1d7 libsvtav1enc1d1 libharfbuzz0b \
-                  libshaderc1 libflite1 librav1e0 libjxl0.10 \
+                  libshaderc1 libflite1 librav1e0 \
+                  libjxl0.10 libjxl0.7 \
                   libcodec2-1.2 libcodec2-1.0; do \
          apt-get install -y --no-install-recommends "$pkg" 2>/dev/null || true; \
        done \

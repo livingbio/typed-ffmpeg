@@ -59,8 +59,7 @@ jobs:
             FFMPEG_SOURCE_VERSION=${{ matrix.ffmpeg-source-version }}
           tags: |
             ghcr.io/${{ github.repository }}/ffmpeg:${{ matrix.ffmpeg-version }}
-          cache-from: type=registry,ref=ghcr.io/${{ github.repository }}/ffmpeg:${{ matrix.ffmpeg-version }}-cache
-          cache-to: type=registry,ref=ghcr.io/${{ github.repository }}/ffmpeg:${{ matrix.ffmpeg-version }}-cache,mode=max
+          no-cache: true
 
       - name: Verify image
         run: |
