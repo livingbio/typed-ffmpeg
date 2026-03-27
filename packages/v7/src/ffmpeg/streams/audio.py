@@ -7373,6 +7373,8 @@ References:
 
 
 
+
+
     def biquad(
 
     self,
@@ -7548,6 +7550,8 @@ References:
             )
         )
         return filter_node.audio(0)
+
+
 
 
 
@@ -7774,6 +7778,10 @@ References:
             )
         )
         return filter_node.audio(0)
+
+
+
+
 
 
 
@@ -10222,6 +10230,8 @@ References:
 
 
 
+
+
     def pan(
 
     self,
@@ -10503,6 +10513,8 @@ References:
             )
         )
         return filter_node.audio(0)
+
+
 
 
 
@@ -12688,6 +12700,8 @@ References:
 
 
 
+
+
     def tiltshelf(
 
     self,
@@ -13318,3 +13332,50 @@ References:
             )
         )
         return filter_node.audio(0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
