@@ -78,9 +78,13 @@ jobs:
             libass-dev libfreetype6-dev libfontconfig1-dev libfribidi-dev \
             libzimg-dev libaom-dev \
             libssl-dev libsrt-openssl-dev libzmq3-dev \
-            libva-dev libdrm-dev ocl-icd-opencl-dev
+            libva-dev libdrm-dev ocl-icd-opencl-dev \
+            libvulkan1 \
+            libbs2b0 librubberband2 libmysofa1 liblilv-0-0 \
+            frei0r-plugins
           sudo apt-get install -y --no-install-recommends \
-            libvidstab-dev libdav1d-dev libsvtav1-dev libharfbuzz-dev 2>/dev/null || true
+            libvidstab-dev libdav1d-dev libsvtav1-dev libharfbuzz-dev \
+            libplacebo-dev libshaderc-dev flite1-dev 2>/dev/null || true
 
       - name: Extract FFmpeg ${{ matrix.ffmpeg-version }} from Docker image
         run: |
