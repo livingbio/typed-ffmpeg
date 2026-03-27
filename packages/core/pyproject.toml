@@ -54,7 +54,6 @@ include = ["ffmpeg_core*"]
 
 [tool.setuptools.package-data]
 "ffmpeg_core" = ["py.typed"]
-"ffmpeg_core.common" = ["cache/FFMpegFilterManuallyDefined/*.json"]
 
 [tool.ruff]
 line-length = 88
