@@ -1,6 +1,6 @@
 ## typed-ffmpeg
 
-[![CI Package](https://github.com/livingbio/typed-ffmpeg/actions/workflows/ci-package-test.yml/badge.svg)](https://github.com/livingbio/typed-ffmpeg/actions/workflows/ci-package-test.yml)
+[![CI](https://github.com/livingbio/typed-ffmpeg/actions/workflows/ci-monorepo-test.yml/badge.svg)](https://github.com/livingbio/typed-ffmpeg/actions/workflows/ci-monorepo-test.yml)
 [![Documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://livingbio.github.io/typed-ffmpeg/)
 [![PyPI Version](https://img.shields.io/pypi/v/typed-ffmpeg.svg)](https://pypi.org/project/typed-ffmpeg/)
 [![codecov](https://codecov.io/gh/livingbio/typed-ffmpeg/graph/badge.svg?token=B95PR629LP)](https://codecov.io/gh/livingbio/typed-ffmpeg)
@@ -41,13 +41,14 @@
 
 typed-ffmpeg v4 ships separate PyPI packages for each FFmpeg major version. Install only the bindings you need:
 
-| Package | FFmpeg version |
-|---------|----------------|
-| `typed-ffmpeg` | Latest (v8) — recommended for most users |
-| `typed-ffmpeg-v5` | FFmpeg 5.x |
-| `typed-ffmpeg-v6` | FFmpeg 6.x |
-| `typed-ffmpeg-v7` | FFmpeg 7.x |
-| `typed-ffmpeg-v8` | FFmpeg 8.x |
+| Package | FFmpeg version | Description |
+|---------|----------------|-------------|
+| `typed-ffmpeg` | Latest (v8) | Recommended for most users |
+| `typed-ffmpeg-v5` | FFmpeg 5.x | Bindings for FFmpeg 5 |
+| `typed-ffmpeg-v6` | FFmpeg 6.x | Bindings for FFmpeg 6 |
+| `typed-ffmpeg-v7` | FFmpeg 7.x | Bindings for FFmpeg 7 |
+| `typed-ffmpeg-v8` | FFmpeg 8.x | Bindings for FFmpeg 8 |
+| `ffmpeg-core` | — | Shared runtime (auto-installed) |
 
 All packages expose the same `ffmpeg` namespace, so your code works identically regardless of which package you install.
 
@@ -57,6 +58,15 @@ To match your installed FFmpeg version:
 ffmpeg -version | head -1        # e.g. ffmpeg version 6.1.1
 pip install typed-ffmpeg-v6      # install the matching package
 ```
+
+### Optional Extras
+
+| Extra | Install | Description |
+|-------|---------|-------------|
+| `[graph]` | `pip install 'typed-ffmpeg[graph]'` | Graph visualization via Graphviz |
+| `[parse]` | `pip install 'typed-ffmpeg[parse]'` | CLI parsing and `compile_as_python()` support |
+
+The `[parse]` extra installs version-specific cache data (`ffmpeg-data-v5` through `ffmpeg-data-v8`) needed by `ffmpeg.compile.compile_cli.parse()` to reconstruct filter graphs from FFmpeg command lines. Most users do not need this.
 
 See the [v4 Package Architecture](https://livingbio.github.io/typed-ffmpeg/v4-packages/) docs for details and the [Migration Guide](https://livingbio.github.io/typed-ffmpeg/migration/v3-to-v4/) if you are upgrading from typed-ffmpeg 3.x.
 
@@ -73,24 +83,23 @@ pip install typed-ffmpeg
 Or install bindings for a specific FFmpeg version:
 
 ```bash
+pip install typed-ffmpeg-v5   # FFmpeg 5.x
 pip install typed-ffmpeg-v6   # FFmpeg 6.x
 pip install typed-ffmpeg-v7   # FFmpeg 7.x
 pip install typed-ffmpeg-v8   # FFmpeg 8.x
 ```
 
+With optional extras:
+
+```bash
+pip install 'typed-ffmpeg[graph]'          # graph visualization
+pip install 'typed-ffmpeg[parse]'          # CLI parsing support
+pip install 'typed-ffmpeg-v7[parse]'       # CLI parsing for FFmpeg 7.x
+```
+
 Note: FFmpeg must be installed on your system.
 
 Note: If you need to install `ffmpeg-python` at the same time, use `pip install typed-ffmpeg-compatible` to prevent conflicts with the module name.
-
-### Visualization Support
-
-To enable graph visualization features:
-
-```bash
-pip install 'typed-ffmpeg[graph]'
-```
-
-Note: This requires Graphviz to be installed on your system.
 
 ---
 
