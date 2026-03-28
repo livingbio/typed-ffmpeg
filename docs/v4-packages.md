@@ -12,6 +12,7 @@ typed-ffmpeg v4 is a monorepo that publishes separate PyPI packages for each FFm
 | `typed-ffmpeg-v7` | FFmpeg 7.x | `pip install typed-ffmpeg-v7` |
 | `typed-ffmpeg-v8` | FFmpeg 8.x | `pip install typed-ffmpeg-v8` |
 | `ffmpeg-core` | (runtime, auto-installed) | — |
+| `ffmpeg-data-v5`..`v8` | (cache data, optional) | `pip install typed-ffmpeg-vN[parse]` |
 
 ## Which Package Should I Install?
 
@@ -44,12 +45,27 @@ typed-ffmpeg-v7 ──┘
 
 `ffmpeg-core` contains the hand-written runtime code (DAG, compiler, IR) and is installed automatically as a dependency of any `typed-ffmpeg-vX` package. You do not need to install it directly.
 
+### Optional `[parse]` Extra
+
+Each version package has an optional `parse` extra that installs the corresponding data package:
+
+```
+typed-ffmpeg-v7[parse]
+    └── ffmpeg-data-v7   (~6 MB, version-specific cache data)
+```
+
+The data packages contain pre-parsed FFmpeg filter/option/codec/format definitions needed by `ffmpeg.compile.compile_cli.parse()` to reconstruct filter graphs from FFmpeg command lines. Most users do not need this — it is only required if you call `parse()` or `compile_as_python()`.
+
 ## Repository Structure
 
 ```
 typed-ffmpeg/          # monorepo root
 ├── packages/
 │   ├── core/          # ffmpeg-core: shared runtime
+│   ├── data-v5/       # ffmpeg-data-v5: cache data for FFmpeg 5.x
+│   ├── data-v6/       # ffmpeg-data-v6: cache data for FFmpeg 6.x
+│   ├── data-v7/       # ffmpeg-data-v7: cache data for FFmpeg 7.x
+│   ├── data-v8/       # ffmpeg-data-v8: cache data for FFmpeg 8.x
 │   ├── v5/            # typed-ffmpeg-v5
 │   ├── v6/            # typed-ffmpeg-v6
 │   ├── v7/            # typed-ffmpeg-v7
