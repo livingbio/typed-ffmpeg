@@ -1,3 +1,4 @@
+from ..conftest import requires_ffmpeg
 from ..info import (
     Codec,
     CodecFlags,
@@ -93,18 +94,21 @@ Encoders:
     assert CoderFlags.audio in coders[1].flags
 
 
+@requires_ffmpeg
 def test_get_codecs() -> None:
     codecs = get_codecs()
     assert len(codecs) > 0
     assert isinstance(codecs[0], Codec)
 
 
+@requires_ffmpeg
 def test_get_decoders() -> None:
     decoders = get_decoders()
     assert len(decoders) > 0
     assert isinstance(decoders[0], Coder)
 
 
+@requires_ffmpeg
 def test_get_encoders() -> None:
     encoders = get_encoders()
     assert len(encoders) > 0
