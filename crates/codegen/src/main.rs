@@ -669,6 +669,7 @@ fn convert_help_filter_to_schema(
         "formula_typings_input": formula_input,
         "formula_typings_output": formula_output,
         "options": options,
+        "opt_names": f.options.iter().map(|o| &o.name).collect::<Vec<_>>(),
         "pre": pre,
         "filter_type": { "value": filter_type },
         "to_def": to_def,

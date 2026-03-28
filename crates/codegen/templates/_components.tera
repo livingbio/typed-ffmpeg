@@ -121,6 +121,14 @@ References:
 {%- elif f.filter_type.value is matching("^(af|vaf|asrc)$") -%}
     {% set return_type = "audio" %}
 {%- endif -%}
+{% if f.is_support_framesync and "eof_action" is not in(f.opt_names) %}
+if framesync_options is None and any(v is not None for v in (eof_action, shortest, repeatlast)):
+    framesync_options = FFMpegFrameSyncOption(merge({"eof_action": eof_action, "shortest": shortest, "repeatlast": repeatlast}))
+{% endif %}
+{% if f.is_support_timeline and "enable" is not in(f.opt_names) %}
+if timeline_options is None and enable is not None:
+    timeline_options = FFMpegTimelineOption(enable=enable)
+{% endif %}
 filter_node = filter_node_factory(
     {{f.to_def | to_def_repr}},
     {{ self::stream_params(f=f, type=type) }}
@@ -168,9 +176,13 @@ return (
     {{ f | filter_option_typings }}
     {% if f.is_support_framesync %}
     framesync_options: FFMpegFrameSyncOption | None = None,
+    {% if "eof_action" is not in(f.opt_names) %}eof_action: str | None = None,{% endif %}
+    {% if "shortest" is not in(f.opt_names) %}shortest: bool | None = None,{% endif %}
+    {% if "repeatlast" is not in(f.opt_names) %}repeatlast: bool | None = None,{% endif %}
     {% endif %}
     {% if f.is_support_timeline %}
     timeline_options: FFMpegTimelineOption | None = None,
+    {% if "enable" is not in(f.opt_names) %}enable: str | None = None,{% endif %}
     {% endif %}
     extra_options: dict[str, Any] | None = None,
     ) {{- self::return_stream_typings(f=f) }}
@@ -188,9 +200,13 @@ def {{f.name}}(
     {{ f | filter_option_typings }}
     {% if f.is_support_framesync %}
     framesync_options: FFMpegFrameSyncOption | None = None,
+    {% if "eof_action" is not in(f.opt_names) %}eof_action: str | None = None,{% endif %}
+    {% if "shortest" is not in(f.opt_names) %}shortest: bool | None = None,{% endif %}
+    {% if "repeatlast" is not in(f.opt_names) %}repeatlast: bool | None = None,{% endif %}
     {% endif %}
     {% if f.is_support_timeline %}
     timeline_options: FFMpegTimelineOption | None = None,
+    {% if "enable" is not in(f.opt_names) %}enable: str | None = None,{% endif %}
     {% endif %}
     extra_options: dict[str, Any] | None = None,
 ) {{- self::return_stream_typings(f=f) }}

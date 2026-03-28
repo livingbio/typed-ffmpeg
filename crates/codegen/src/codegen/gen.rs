@@ -8,7 +8,7 @@ use regex::Regex;
 use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
 use std::sync::LazyLock;
-use tera::{Function, Tera, Value};
+use tera::{Tera, Value};
 use walkdir::WalkDir;
 
 use super::utils;
