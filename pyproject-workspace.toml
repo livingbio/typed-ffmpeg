@@ -13,6 +13,7 @@ members = [
     "packages/v7",
     "packages/v8",
     "packages/latest",
+    "packages/compatible",
 ]
 
 [project]
