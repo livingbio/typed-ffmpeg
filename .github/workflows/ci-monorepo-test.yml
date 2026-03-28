@@ -163,11 +163,30 @@ jobs:
           print('✅ Import and basic workflow OK')
           "
 
+      - name: Test typed-ffmpeg meta-package
+        run: |
+          source .venv/bin/activate
+          pip install -e packages/latest
+          python -c "
+          import ffmpeg
+          assert hasattr(ffmpeg, 'input'), 'missing ffmpeg.input'
+          assert hasattr(ffmpeg, 'output'), 'missing ffmpeg.output'
+          assert hasattr(ffmpeg, 'probe'), 'missing ffmpeg.probe'
+          assert hasattr(ffmpeg, 'VideoStream'), 'missing ffmpeg.VideoStream'
+          assert hasattr(ffmpeg, 'AudioStream'), 'missing ffmpeg.AudioStream'
+          assert hasattr(ffmpeg, 'filters'), 'missing ffmpeg.filters'
+          assert hasattr(ffmpeg, 'sources'), 'missing ffmpeg.sources'
+          assert hasattr(ffmpeg, 'get_codecs'), 'missing ffmpeg.get_codecs'
+          inp = ffmpeg.input('test.mp4')
+          out = inp.hflip().output(filename='out.mp4')
+          print('✅ typed-ffmpeg meta-package OK')
+          "
+
       - name: Test packages are buildable
         run: |
           source .venv/bin/activate
           pip install build
-          for pkg in core v8 v7 v6 v5; do
+          for pkg in core v8 v7 v6 v5 latest; do
             echo "Building packages/$pkg..."
             python -m build packages/$pkg
           done
