@@ -1,0 +1,49 @@
+[project]
+name = "typed-ffmpeg-compatible"
+version = "1.0.0a1"
+description = "typed-ffmpeg under the typed_ffmpeg module name (no conflict with ffmpeg-python)"
+authors = [
+    {name = "lucemia", email = "lucemia@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = [
+    "ffmpeg",
+    "video",
+    "audio",
+    "multimedia",
+    "filter",
+    "typed",
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Multimedia :: Sound/Audio",
+]
+
+# Depends on v8 for the actual implementation, but exposes it
+# as `typed_ffmpeg` so it doesn't conflict with ffmpeg-python's
+# `ffmpeg` module.
+dependencies = [
+    "typed-ffmpeg-v8>=1.0.0a1,<2.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["typed_ffmpeg*"]

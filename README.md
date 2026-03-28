@@ -99,7 +99,7 @@ pip install 'typed-ffmpeg-v7[parse]'       # CLI parsing for FFmpeg 7.x
 
 Note: FFmpeg must be installed on your system.
 
-Note: If you need to install `ffmpeg-python` at the same time, use `pip install typed-ffmpeg-compatible` to prevent conflicts with the module name.
+Note: If you need to install `ffmpeg-python` at the same time, use `pip install typed-ffmpeg-compatible` to prevent conflicts with the module name. Then use `import typed_ffmpeg as ffmpeg` instead of `import ffmpeg`.
 
 ---
 

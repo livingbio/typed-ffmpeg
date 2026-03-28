@@ -5,7 +5,7 @@ import re
 import sys
 from pathlib import Path
 
-PACKAGES = ["core", "data-v5", "data-v6", "data-v7", "data-v8", "v5", "v6", "v7", "v8", "latest"]
+PACKAGES = ["core", "data-v5", "data-v6", "data-v7", "data-v8", "v5", "v6", "v7", "v8", "latest", "compatible"]
 REPO_ROOT = Path(__file__).parent.parent
 
 
