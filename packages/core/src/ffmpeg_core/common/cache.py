@@ -37,27 +37,31 @@ cache_path = get_cache_path()
 
 def _get_data_cache_path() -> Path | None:
     """
-    Get the cache path from the ffmpeg-core-data package, if installed.
+    Get the cache path from an installed ffmpeg-data-vN package.
+
+    Tries ffmpeg_data_v8 through ffmpeg_data_v5 (newest first) and returns
+    the first one found. Returns None if no data package is installed.
 
     Returns:
         Path to the data cache directory, or None if not installed.
 
     """
-    try:
-        from ffmpeg_core_data import get_cache_path
-
-        return get_cache_path()
-    except ImportError:
-        return None
+    for version in ("v8", "v7", "v6", "v5"):
+        try:
+            mod = __import__(f"ffmpeg_data_{version}")
+            return mod.get_cache_path()
+        except ImportError:
+            continue
+    return None
 
 
 def load(cls: type[T], id: str) -> T:
     """
     Load an object from the cache.
 
-    Tries the local cache first (for development), then falls back to the
-    ffmpeg-core-data package. Raises ImportError with installation instructions
-    if the data is not available.
+    Tries the local cache first (for development), then falls back to an
+    installed ffmpeg-data-vN package. Raises FileNotFoundError with installation
+    instructions if the data is not available.
 
     Args:
         cls: The class of the object
@@ -67,7 +71,7 @@ def load(cls: type[T], id: str) -> T:
         The loaded object
 
     Raises:
-        ImportError: If the cache file is not found and ffmpeg-core-data is not installed.
+        FileNotFoundError: If the cache file is not found and no data package is installed.
 
     """
     path = cache_path / f"{cls.__name__}/{id}.json"
@@ -87,7 +91,7 @@ def load(cls: type[T], id: str) -> T:
         raise FileNotFoundError(
             f"Cache file not found: {cls.__name__}/{id}.json. "
             "Install the parse extra for CLI parsing and Python compilation support: "
-            "pip install ffmpeg-core[parse]"
+            "pip install typed-ffmpeg[parse]"
         ) from None
 
 

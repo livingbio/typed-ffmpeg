@@ -11,7 +11,10 @@ resolution-markers = [
 [manifest]
 members = [
     "ffmpeg-core",
-    "ffmpeg-core-data",
+    "ffmpeg-data-v5",
+    "ffmpeg-data-v6",
+    "ffmpeg-data-v7",
+    "ffmpeg-data-v8",
     "typed-ffmpeg",
     "typed-ffmpeg-v5",
     "typed-ffmpeg-v6",
@@ -504,13 +507,9 @@ dev = [
 graph = [
     { name = "graphviz" },
 ]
-parse = [
-    { name = "ffmpeg-core-data" },
-]
 
 [package.metadata]
 requires-dist = [
-    { name = "ffmpeg-core-data", marker = "extra == 'parse'", editable = "packages/data" },
     { name = "graphviz", marker = "extra == 'graph'" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
@@ -518,12 +517,27 @@ requires-dist = [
     { name = "ruff", marker = "extra == 'dev'", specifier = "==0.12.2" },
     { name = "syrupy", marker = "extra == 'dev'", specifier = ">=5.0" },
 ]
-provides-extras = ["dev", "graph", "parse"]
+provides-extras = ["dev", "graph"]
 
 [[package]]
-name = "ffmpeg-core-data"
+name = "ffmpeg-data-v5"
 version = "1.0.0a1"
-source = { editable = "packages/data" }
+source = { editable = "packages/data-v5" }
+
+[[package]]
+name = "ffmpeg-data-v6"
+version = "1.0.0a1"
+source = { editable = "packages/data-v6" }
+
+[[package]]
+name = "ffmpeg-data-v7"
+version = "1.0.0a1"
+source = { editable = "packages/data-v7" }
+
+[[package]]
+name = "ffmpeg-data-v8"
+version = "1.0.0a1"
+source = { editable = "packages/data-v8" }
 
 [[package]]
 name = "ghp-import"
@@ -2394,15 +2408,19 @@ dev = [
     { name = "pytest-cov" },
     { name = "ruff" },
 ]
+parse = [
+    { name = "ffmpeg-data-v8" },
+]
 
 [package.metadata]
 requires-dist = [
+    { name = "ffmpeg-data-v8", marker = "extra == 'parse'", editable = "packages/data-v8" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = "==0.12.2" },
     { name = "typed-ffmpeg-v8", editable = "packages/v8" },
 ]
-provides-extras = ["dev"]
+provides-extras = ["dev", "parse"]
 
 [[package]]
 name = "typed-ffmpeg-v5"
@@ -2419,16 +2437,20 @@ dev = [
     { name = "ruff" },
     { name = "syrupy" },
 ]
+parse = [
+    { name = "ffmpeg-data-v5" },
+]
 
 [package.metadata]
 requires-dist = [
     { name = "ffmpeg-core", editable = "packages/core" },
+    { name = "ffmpeg-data-v5", marker = "extra == 'parse'", editable = "packages/data-v5" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = "==0.12.2" },
     { name = "syrupy", marker = "extra == 'dev'", specifier = ">=5.0" },
 ]
-provides-extras = ["dev"]
+provides-extras = ["dev", "parse"]
 
 [[package]]
 name = "typed-ffmpeg-v6"
@@ -2445,16 +2467,20 @@ dev = [
     { name = "ruff" },
     { name = "syrupy" },
 ]
+parse = [
+    { name = "ffmpeg-data-v6" },
+]
 
 [package.metadata]
 requires-dist = [
     { name = "ffmpeg-core", editable = "packages/core" },
+    { name = "ffmpeg-data-v6", marker = "extra == 'parse'", editable = "packages/data-v6" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = "==0.12.2" },
     { name = "syrupy", marker = "extra == 'dev'", specifier = ">=5.0" },
 ]
-provides-extras = ["dev"]
+provides-extras = ["dev", "parse"]
 
 [[package]]
 name = "typed-ffmpeg-v7"
@@ -2471,16 +2497,20 @@ dev = [
     { name = "ruff" },
     { name = "syrupy" },
 ]
+parse = [
+    { name = "ffmpeg-data-v7" },
+]
 
 [package.metadata]
 requires-dist = [
     { name = "ffmpeg-core", editable = "packages/core" },
+    { name = "ffmpeg-data-v7", marker = "extra == 'parse'", editable = "packages/data-v7" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = "==0.12.2" },
     { name = "syrupy", marker = "extra == 'dev'", specifier = ">=5.0" },
 ]
-provides-extras = ["dev"]
+provides-extras = ["dev", "parse"]
 
 [[package]]
 name = "typed-ffmpeg-v8"
@@ -2497,16 +2527,20 @@ dev = [
     { name = "ruff" },
     { name = "syrupy" },
 ]
+parse = [
+    { name = "ffmpeg-data-v8" },
+]
 
 [package.metadata]
 requires-dist = [
     { name = "ffmpeg-core", editable = "packages/core" },
+    { name = "ffmpeg-data-v8", marker = "extra == 'parse'", editable = "packages/data-v8" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = "==0.12.2" },
     { name = "syrupy", marker = "extra == 'dev'", specifier = ">=5.0" },
 ]
-provides-extras = ["dev"]
+provides-extras = ["dev", "parse"]
 
 [[package]]
 name = "typed-ffmpeg-workspace"
@@ -2514,7 +2548,10 @@ version = "0.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "ffmpeg-core" },
-    { name = "ffmpeg-core-data" },
+    { name = "ffmpeg-data-v5" },
+    { name = "ffmpeg-data-v6" },
+    { name = "ffmpeg-data-v7" },
+    { name = "ffmpeg-data-v8" },
 ]
 
 [package.optional-dependencies]
@@ -2557,7 +2594,10 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "ffmpeg-core", editable = "packages/core" },
-    { name = "ffmpeg-core-data", editable = "packages/data" },
+    { name = "ffmpeg-data-v5", editable = "packages/data-v5" },
+    { name = "ffmpeg-data-v6", editable = "packages/data-v6" },
+    { name = "ffmpeg-data-v7", editable = "packages/data-v7" },
+    { name = "ffmpeg-data-v8", editable = "packages/data-v8" },
     { name = "graphviz", marker = "extra == 'graph'" },
 ]
 provides-extras = ["graph"]

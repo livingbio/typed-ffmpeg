@@ -1,4 +1,4 @@
-"""Cache data files for typed-ffmpeg CLI parsing and Python compilation."""
+"""Cache data files for typed-ffmpeg-v7 (FFmpeg 7.x)."""
 
 from pathlib import Path
 

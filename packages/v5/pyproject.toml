@@ -21,9 +21,11 @@ dependencies = ["ffmpeg-core>=1.0.0a1,<2.0"]
 
 [tool.uv.sources]
 ffmpeg-core = { workspace = true }
+ffmpeg-data-v5 = { workspace = true }
 
 [project.optional-dependencies]
 dev = ["pytest>=7.0", "pytest-cov>=4.0", "syrupy>=5.0", "ruff==0.12.2"]
+parse = ["ffmpeg-data-v5"]
 
 [build-system]
 requires = ["setuptools>=61.0"]

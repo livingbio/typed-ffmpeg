@@ -38,7 +38,6 @@ dev = [
 ]
 
 graph = ["graphviz"]  # For visualization
-parse = ["ffmpeg-core-data"]  # For CLI parsing and Python compilation
 
 [build-system]
 requires = ["setuptools>=61.0"]
