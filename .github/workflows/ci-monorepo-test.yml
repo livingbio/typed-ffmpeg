@@ -166,7 +166,9 @@ jobs:
       - name: Test typed-ffmpeg meta-package
         run: |
           source .venv/bin/activate
-          pip install -e packages/latest
+          # Latest is a pure meta-package (no source code). Install non-editable
+          # with --no-deps since v8 is already installed as editable.
+          pip install --no-deps packages/latest
           python -c "
           import ffmpeg
           assert hasattr(ffmpeg, 'input'), 'missing ffmpeg.input'
