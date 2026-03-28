@@ -1,0 +1,24 @@
+{
+  "name": "@typed-ffmpeg/v7",
+  "version": "0.1.0",
+  "description": "Type-safe FFmpeg v7 bindings for TypeScript",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "lint": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@typed-ffmpeg/core": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}

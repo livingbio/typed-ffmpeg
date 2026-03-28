@@ -1,0 +1,48 @@
+/**
+ * FFmpeg codec context options.
+ */
+
+import { merge } from "@typed-ffmpeg/core/utils/frozenRecord";
+
+export type FFMpegAVCodecContextEncoderOption = Readonly<Record<string, unknown>>;
+export type FFMpegAVCodecContextDecoderOption = Readonly<Record<string, unknown>>;
+
+/**
+ * Encoder codec context options.
+{% for option in av_option_sets %}{% if option.section == "AVCodecContext AVOptions:" and "E" in option.flags %} * @param options.{{ option.name | option_name_safe }} - {{ option.help }}
+{% endif %}{% endfor %} */
+export function encoderCodecContext(options?: {
+{%- for option in av_option_sets %}
+{%- if option.section == "AVCodecContext AVOptions:" and "E" in option.flags %}
+  {{ option.name | option_name_safe }}?: {{ option | ts_av_option_type }};
+{%- endif %}
+{%- endfor %}
+}): FFMpegAVCodecContextEncoderOption {
+  return merge({
+{%- for option in av_option_sets %}
+{%- if option.section == "AVCodecContext AVOptions:" and "E" in option.flags %}
+    "{{ option.name }}": options?.{{ option.name | option_name_safe }},
+{%- endif %}
+{%- endfor %}
+  });
+}
+
+/**
+ * Decoder codec context options.
+{% for option in av_option_sets %}{% if option.section == "AVCodecContext AVOptions:" and "D" in option.flags %} * @param options.{{ option.name | option_name_safe }} - {{ option.help }}
+{% endif %}{% endfor %} */
+export function decoderCodecContext(options?: {
+{%- for option in av_option_sets %}
+{%- if option.section == "AVCodecContext AVOptions:" and "D" in option.flags %}
+  {{ option.name | option_name_safe }}?: {{ option | ts_av_option_type }};
+{%- endif %}
+{%- endfor %}
+}): FFMpegAVCodecContextDecoderOption {
+  return merge({
+{%- for option in av_option_sets %}
+{%- if option.section == "AVCodecContext AVOptions:" and "D" in option.flags %}
+    "{{ option.name }}": options?.{{ option.name | option_name_safe }},
+{%- endif %}
+{%- endfor %}
+  });
+}

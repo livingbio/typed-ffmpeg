@@ -1,0 +1,175 @@
+{#- TypeScript component macros for code generation -#}
+
+{#- Map FFMpeg filter option type to TS type alias -#}
+{%- macro ts_option_type(option) -%}
+{%- if option.type.value == "boolean" -%}FFBoolean
+{%- elif option.type.value == "duration" -%}FFDuration
+{%- elif option.type.value == "color" -%}FFColor
+{%- elif option.type.value == "flags" -%}FFFlags
+{%- elif option.type.value == "dictionary" -%}FFDictionary
+{%- elif option.type.value == "pix_fmt" -%}FFPixFmt
+{%- elif option.type.value == "int" -%}FFInt
+{%- elif option.type.value == "int64" -%}FFInt64
+{%- elif option.type.value == "double" -%}FFDouble
+{%- elif option.type.value == "float" -%}FFFloat
+{%- elif option.type.value == "string" -%}FFString
+{%- elif option.type.value == "video_rate" -%}FFVideoRate
+{%- elif option.type.value == "image_size" -%}FFImageSize
+{%- elif option.type.value == "rational" -%}FFRational
+{%- elif option.type.value == "sample_fmt" -%}FFSampleFmt
+{%- elif option.type.value == "binary" -%}FFBinary
+{%- elif option.type.value == "channel_layout" -%}FFString
+{%- elif option.type.value == "unsigned" -%}FFInt
+{%- else -%}FFString
+{%- endif -%}
+{%- if option.choices %} | {{ option.choices | map(attribute='name') | map('tojson') | join(' | ') }}{% endif -%}
+{%- endmacro -%}
+
+{#- Generate return type for a filter -#}
+{%- macro ts_return_type(f) -%}
+{%- if f.is_dynamic_output -%}FilterNode
+{%- elif f.stream_typings_output | length == 1 -%}
+{%- if f.filter_type.value in ["vf", "avf", "vsrc"] -%}VideoStream
+{%- elif f.filter_type.value in ["af", "vaf", "asrc"] -%}AudioStream
+{%- else -%}VideoStream{%- endif -%}
+{%- else -%}FilterNode
+{%- endif -%}
+{%- endmacro -%}
+
+{#- Generate return statement for a filter -#}
+{%- macro ts_return_value(f) -%}
+{%- if f.filter_type.value in ["vf", "avf", "vsrc"] -%}
+{%- set return_type = "video" -%}
+{%- elif f.filter_type.value in ["af", "vaf", "asrc"] -%}
+{%- set return_type = "audio" -%}
+{%- endif -%}
+{%- if f.is_dynamic_output -%}
+  return filterNode;
+{%- elif f.stream_typings_output | length == 1 -%}
+  return filterNode.{{return_type}}(0) as unknown as {{ ts_return_type(f) }};
+{%- else -%}
+  return filterNode;
+{%- endif -%}
+{%- endmacro -%}
+
+{#- Generate JSDoc for a filter -#}
+{% macro ts_docstring(f) %}
+/**
+ * {{ f.description | striptags | normalize_help_text }}
+{% if format_version_note is not none %}{% set vnote = format_version_note(f.name) %}{% if vnote %} *
+ * Note: {{ vnote }}{% endif %}{% endif %}
+ *
+{% for option in f.options %} * @param options.{{option.name | option_name_safe}} - {{option.description | striptags | normalize_help_text }}
+{% endfor %}{% if f.ref %} * @see {{ f.ref }}
+{% endif %} */
+{%- endmacro %}
+
+{#- Collect option names for dedup -#}
+{%- macro _opt_names(f) -%}{{ f.options | map(attribute='name') | join(',') }}{%- endmacro -%}
+
+{#- Generate the options interface fields for a filter -#}
+{%- macro ts_options_fields(f) -%}
+{%- set opt_names = f.options | map(attribute='name') | list -%}
+{% for option in f.options %}    {{ option.name | option_name_safe }}?: {{ ts_option_type(option) }};
+{% endfor -%}
+{%- if f.is_support_framesync -%}
+{%- if 'eof_action' not in opt_names %}    eofAction?: FFString;
+{% endif -%}
+{%- if 'shortest' not in opt_names %}    shortest?: FFBoolean;
+{% endif -%}
+{%- if 'repeatlast' not in opt_names %}    repeatlast?: FFBoolean;
+{% endif -%}
+{%- endif -%}
+{%- if f.is_support_timeline -%}
+{%- if 'enable' not in opt_names %}    enable?: FFString;
+{% endif -%}
+{%- endif -%}
+    extraOptions?: Record<string, unknown>;
+{%- endmacro -%}
+
+{#- Generate the merge call to build kwargs -#}
+{%- macro ts_merge_kwargs(f) -%}
+{%- set opt_names = f.options | map(attribute='name') | list -%}
+merge(
+    {
+{% for option in f.options %}      "{{ option.name }}": options?.{{ option.name | option_name_safe }},
+{% endfor -%}
+{%- if f.is_support_framesync -%}
+{%- if 'eof_action' not in opt_names %}      "eof_action": options?.eofAction,
+{% endif -%}
+{%- if 'shortest' not in opt_names %}      "shortest": options?.shortest,
+{% endif -%}
+{%- if 'repeatlast' not in opt_names %}      "repeatlast": options?.repeatlast,
+{% endif -%}
+{%- endif -%}
+{%- if f.is_support_timeline -%}
+{%- if 'enable' not in opt_names %}      "enable": options?.enable,
+{% endif -%}
+{%- endif -%}
+    },
+    options?.extraOptions,
+  )
+{%- endmacro -%}
+
+{#- Generate input typings array literal -#}
+{%- macro ts_input_typings(f) -%}
+[{{ f | input_typings_ts }}]
+{%- endmacro -%}
+
+{#- Generate output typings array literal -#}
+{%- macro ts_output_typings(f) -%}
+[{{ f | output_typings_ts }}]
+{%- endmacro -%}
+
+{#- Generate a filter method on a stream class -#}
+{% macro ts_filter_method(f) %}
+  {{ ts_docstring(f) }}
+  {{ f.name | option_name_safe }}(
+{%- if f.stream_typings_input | length > 1 %}
+{%- for stream_typing in f.stream_typings_input -%}
+{%- if not loop.first %}
+    {{ stream_typing.name | stream_name_safe }}: {% if stream_typing.type.value == "video" %}VideoStream{% else %}AudioStream{% endif %},
+{%- endif -%}
+{%- endfor %}
+{% endif %}
+    options?: {
+{{ ts_options_fields(f) }}
+    },
+  ): {{ ts_return_type(f) }} {
+    const filterNode = filterNodeFactory(
+      { name: "{{ f.name }}", typingsInput: {{ ts_input_typings(f) }}, typingsOutput: {{ ts_output_typings(f) }} },
+      [this{% for stream_typing in f.stream_typings_input %}{% if not loop.first %}, {{ stream_typing.name | stream_name_safe }}{% endif %}{% endfor %}],
+      {{ ts_merge_kwargs(f) }},
+    );
+{{ ts_return_value(f) }}
+  }
+{% endmacro %}
+
+{#- Generate a standalone filter function -#}
+{% macro ts_filter_function(f) %}
+{{ ts_docstring(f) }}
+export function {{ f.name | option_name_safe }}(
+{% if f.is_dynamic_input %}
+  streams: FilterableStream[],
+{% else %}
+{% for stream_typing in f.stream_typings_input %}
+  {{ stream_typing.name | stream_name_safe }}: {% if stream_typing.type.value == "video" %}VideoStream{% else %}AudioStream{% endif %},
+{% endfor %}
+{% endif %}
+  options?: {
+{{ ts_options_fields(f) }}
+  },
+): {{ ts_return_type(f) }} {
+{% if f.is_dynamic_input %}
+  const inputStreams = streams;
+{% else %}
+  const inputStreams: FilterableStream[] = [{% for st in f.stream_typings_input %}{{ st.name | stream_name_safe }}{% if not loop.last %}, {% endif %}{% endfor %}];
+{% endif %}
+  const filterNode = filterNodeFactory(
+    { name: "{{ f.name }}", typingsInput: {{ ts_input_typings(f) }}, typingsOutput: {{ ts_output_typings(f) }} },
+    inputStreams,
+    {{ ts_merge_kwargs(f) }},
+  );
+{{ ts_return_value(f) }}
+}
+{% endmacro %}
