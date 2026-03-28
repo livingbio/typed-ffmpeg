@@ -7,20 +7,11 @@ global-exclude **/*.test.py
 global-exclude **/conftest.py
 
 # Exclude development and documentation files
-global-exclude .coveragerc
-global-exclude .eslintrc.json
 global-exclude .gitignore
-global-exclude .gitmodules
 global-exclude .pre-commit-config.yaml
-global-exclude .prettierignore
-global-exclude .prettierrc
-global-exclude blog.md
 global-exclude codecov.yml
 global-exclude mkdocs.yml
-global-exclude pyproject-compatible.toml
-global-exclude tox.ini
 global-exclude uv.lock
-global-exclude README.ipynb
 
 # Exclude development container files
 global-exclude .devcontainer/**
