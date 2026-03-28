@@ -30,6 +30,8 @@ classifiers = [
     "Topic :: Multimedia :: Sound/Audio",
 ]
 
+# Meta-package: no source code, just depends on typed-ffmpeg-v8
+# which provides `import ffmpeg` directly.
 dependencies = [
     "typed-ffmpeg-v8>=1.0,<2.0",
 ]
@@ -49,10 +51,3 @@ parse = ["ffmpeg-data-v8"]
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
-
-[tool.setuptools]
-package-dir = {"" = "src"}
-
-[tool.setuptools.packages.find]
-where = ["src"]
-include = ["ffmpeg*"]
