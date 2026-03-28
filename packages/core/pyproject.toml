@@ -45,6 +45,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
+include-package-data = false
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -52,9 +53,6 @@ include = ["ffmpeg_core*"]
 
 [tool.setuptools.package-data]
 "ffmpeg_core" = ["py.typed"]
-"ffmpeg_core.common" = ["*"]
-"ffmpeg_core.common.cache" = ["*"]
-"ffmpeg_core.common.cache.list" = ["*"]
 
 [tool.ruff]
 line-length = 88

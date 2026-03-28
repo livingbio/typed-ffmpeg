@@ -1,14 +1,13 @@
 [project]
-name = "typed-ffmpeg-v7"
+name = "ffmpeg-data-v6"
 version = "1.0.0a1"
-description = "Typed FFmpeg bindings for FFmpeg 7.x"
+description = "Cache data files for typed-ffmpeg-v6 (FFmpeg 6.x)"
 authors = [
     {name = "lucemia", email = "lucemia@gmail.com"}
 ]
-readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
-keywords = ["ffmpeg", "video", "audio", "multimedia", "filter", "ffmpeg-7"]
+keywords = ["ffmpeg", "data"]
 classifiers = [
     "Intended Audience :: Developers",
     "Natural Language :: English",
@@ -17,15 +16,7 @@ classifiers = [
     "Topic :: Multimedia :: Video",
 ]
 
-dependencies = ["ffmpeg-core>=1.0.0a1,<2.0"]
-
-[tool.uv.sources]
-ffmpeg-core = { workspace = true }
-ffmpeg-data-v7 = { workspace = true }
-
-[project.optional-dependencies]
-dev = ["pytest>=7.0", "pytest-cov>=4.0", "syrupy>=5.0", "ruff==0.12.2"]
-parse = ["ffmpeg-data-v7"]
+dependencies = []
 
 [build-system]
 requires = ["setuptools>=61.0"]
@@ -36,7 +27,7 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["ffmpeg*"]
+include = ["ffmpeg_data_v6*"]
 
 [tool.setuptools.package-data]
-"ffmpeg" = ["py.typed"]
+"ffmpeg_data_v6" = ["cache/list/*.json"]
