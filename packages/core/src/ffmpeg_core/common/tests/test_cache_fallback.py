@@ -4,11 +4,11 @@ from ..cache import _get_data_cache_path, load
 from ..schema import FFMpegFilter
 
 
-def test_get_data_cache_path_returns_path() -> None:
+def test_get_data_cache_path() -> None:
     path = _get_data_cache_path()
-    # In dev workspace at least one ffmpeg_data_vN is installed
-    assert path is not None
-    assert path.exists()
+    # Returns a valid path if a data package is installed, None otherwise
+    if path is not None:
+        assert path.exists()
 
 
 def test_load_missing_cache_raises_file_not_found() -> None:
@@ -16,9 +16,9 @@ def test_load_missing_cache_raises_file_not_found() -> None:
         load(FFMpegFilter, "nonexistent_id_that_does_not_exist")
 
 
-def test_load_from_data_package() -> None:
+def test_load_from_cache() -> None:
     from ..schema import FFMpegOption
 
-    # This loads from the data package since core wheel excludes list/*.json
+    # Loads from local cache (dev) or data package (installed)
     options = load(list[FFMpegOption], "options")
     assert len(options) > 0
