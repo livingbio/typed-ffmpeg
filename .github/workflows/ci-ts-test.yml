@@ -56,13 +56,14 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install ts-core dependencies
+      - name: Install and build ts-core
         working-directory: packages/ts-core
-        run: npm install
+        run: |
+          npm install
+          npx tsc
 
       - name: Install ts-v7 dependencies
         run: npm install
-        working-directory: .
 
       - name: Type check ts-v7
         working-directory: packages/ts-v7
