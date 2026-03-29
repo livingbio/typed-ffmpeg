@@ -36,7 +36,7 @@ jobs:
       - name: Update snapshots for CI FFmpeg version
         run: |
           source .venv/bin/activate
-          pytest src/scripts --snapshot-update -x -q 2>/dev/null || true
+          pytest src/scripts --snapshot-update -q || true
 
       - name: Run tests
         run: |
