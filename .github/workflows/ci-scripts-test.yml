@@ -33,11 +33,6 @@ jobs:
       - name: Install dependencies
         run: uv sync --group dev
 
-      - name: Update snapshots for CI FFmpeg version
-        run: |
-          source .venv/bin/activate
-          pytest src/scripts --snapshot-update -q || true
-
       - name: Run tests
         run: |
           source .venv/bin/activate
