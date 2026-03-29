@@ -34,9 +34,7 @@ jobs:
         run: uv venv
 
       - name: Install dependencies
-        run: |
-          uv pip install --group dev
-          uv pip install -e packages/core
+        run: uv pip install --group dev
 
       - name: Run tests
         run: |
