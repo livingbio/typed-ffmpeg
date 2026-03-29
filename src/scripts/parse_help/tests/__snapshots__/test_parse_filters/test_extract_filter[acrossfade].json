@@ -19,7 +19,7 @@
       "min": "1",
       "name": "nb_samples",
       "section": "acrossfade AVOptions:",
-      "type": "int64"
+      "type": "int"
     },
     {
       "argname": null,

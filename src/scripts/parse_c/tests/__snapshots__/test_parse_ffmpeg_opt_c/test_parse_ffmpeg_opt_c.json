@@ -446,7 +446,7 @@
   {
     "argname": "codec",
     "canon": ".u1.name_canon = \"codec\"",
-    "flags": 57216,
+    "flags": 24448,
     "help": "select encoder/decoder ('copy' to copy stream without reencoding)",
     "is_global_option": false,
     "is_input_option": true,
@@ -458,7 +458,7 @@
   {
     "argname": "codec",
     "canon": ".u1.names_alt = alt_codec",
-    "flags": 49028,
+    "flags": 16260,
     "help": "alias for -c (select encoder/decoder)",
     "is_global_option": false,
     "is_input_option": true,
@@ -816,18 +816,6 @@
     "type": "OPT_TYPE_DOUBLE"
   },
   {
-    "argname": "speed",
-    "canon": null,
-    "flags": 2436,
-    "help": "Temporary readrate used to catch up if an input lags behind the specified readrate",
-    "is_global_option": false,
-    "is_input_option": true,
-    "is_output_option": false,
-    "is_support_stream_specifier": true,
-    "name": "readrate_catchup",
-    "type": "OPT_TYPE_FLOAT"
-  },
-  {
     "argname": "type",
     "canon": null,
     "flags": 4229,
@@ -922,6 +910,18 @@
     "is_support_stream_specifier": true,
     "name": "bitexact",
     "type": "OPT_TYPE_BOOL"
+  },
+  {
+    "argname": "",
+    "canon": null,
+    "flags": 6020,
+    "help": "audio pad",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "apad",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "threshold",
@@ -1080,18 +1080,6 @@
     "type": "OPT_TYPE_FUNC"
   },
   {
-    "argname": null,
-    "canon": null,
-    "flags": 4,
-    "help": "maximum number of buffered frames in a filter graph",
-    "is_global_option": true,
-    "is_input_option": false,
-    "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "filter_buffered_frames",
-    "type": "OPT_TYPE_INT"
-  },
-  {
     "argname": "filename",
     "canon": null,
     "flags": 6020,
@@ -1113,18 +1101,6 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "reinit_filter",
-    "type": "OPT_TYPE_INT"
-  },
-  {
-    "argname": "",
-    "canon": null,
-    "flags": 3972,
-    "help": "drop frame instead of reiniting filtergraph on input parameter changes",
-    "is_global_option": false,
-    "is_input_option": true,
-    "is_output_option": false,
-    "is_support_stream_specifier": true,
-    "name": "drop_changed",
     "type": "OPT_TYPE_INT"
   },
   {
@@ -1174,42 +1150,6 @@
     "is_support_stream_specifier": false,
     "name": "filter_complex_script",
     "type": "OPT_TYPE_FUNC"
-  },
-  {
-    "argname": null,
-    "canon": null,
-    "flags": 0,
-    "help": "print execution graph data to stderr",
-    "is_global_option": true,
-    "is_input_option": false,
-    "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "print_graphs",
-    "type": "OPT_TYPE_BOOL"
-  },
-  {
-    "argname": "filename",
-    "canon": null,
-    "flags": 0,
-    "help": "write execution graph data to the specified file",
-    "is_global_option": true,
-    "is_input_option": false,
-    "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "print_graphs_file",
-    "type": "OPT_TYPE_STRING"
-  },
-  {
-    "argname": "format",
-    "canon": null,
-    "flags": 0,
-    "help": "set the output printing format (available formats are: default, compact, csv, flat, ini, json, xml, mermaid, mermaidhtml)",
-    "is_global_option": true,
-    "is_input_option": false,
-    "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "print_graphs_format",
-    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -1826,7 +1766,7 @@
   {
     "argname": null,
     "canon": null,
-    "flags": 3980,
+    "flags": 3972,
     "help": "automatically insert correct rotate filters",
     "is_global_option": false,
     "is_input_option": true,
@@ -1838,7 +1778,7 @@
   {
     "argname": null,
     "canon": null,
-    "flags": 6028,
+    "flags": 6020,
     "help": "automatically insert a scale filter at the end of the filter graph",
     "is_global_option": false,
     "is_input_option": false,
@@ -1846,18 +1786,6 @@
     "is_support_stream_specifier": true,
     "name": "autoscale",
     "type": "OPT_TYPE_BOOL"
-  },
-  {
-    "argname": null,
-    "canon": null,
-    "flags": 3980,
-    "help": "select the cropping to apply",
-    "is_global_option": false,
-    "is_input_option": true,
-    "is_output_option": false,
-    "is_support_stream_specifier": true,
-    "name": "apply_cropping",
-    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -1954,18 +1882,6 @@
     "is_support_stream_specifier": true,
     "name": "ab",
     "type": "OPT_TYPE_FUNC"
-  },
-  {
-    "argname": "",
-    "canon": null,
-    "flags": 6036,
-    "help": "audio pad",
-    "is_global_option": false,
-    "is_input_option": false,
-    "is_output_option": true,
-    "is_support_stream_specifier": true,
-    "name": "apad",
-    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "fourcc/tag",
