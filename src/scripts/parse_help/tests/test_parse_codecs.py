@@ -124,6 +124,7 @@ amv encoder AVOptions:
         #   -arnr_strength     <int>        E..V....... altref noise reduction filter strength (from 0 to 6) (default 3)
     ],
 )
+@pytest.mark.dev_only
 def test_extract_codec_options(
     snapshot: SnapshotAssertion, codec: str, type: Literal["encoder", "decoder"]
 ) -> None:

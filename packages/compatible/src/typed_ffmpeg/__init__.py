@@ -5,6 +5,7 @@ Install this package instead of ``typed-ffmpeg`` when you also have
 ``ffmpeg-python`` installed.  It provides the same API under ``typed_ffmpeg``::
 
     import typed_ffmpeg as ffmpeg
+
     ffmpeg.input("in.mp4").hflip().output(filename="out.mp4").run()
 """
 
