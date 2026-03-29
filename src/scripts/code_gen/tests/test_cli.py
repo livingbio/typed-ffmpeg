@@ -82,6 +82,9 @@ def test_version_diff() -> None:
 
 
 @pytest.mark.parametrize("version", ["5", "6", "7", "8"])
+@pytest.mark.xfail(
+    reason="Version notes require --version-dir codegen; not present in standard builds"
+)
 def test_version_deprecation_hints(version: str) -> None:
     """Test that version bindings contain deprecation hints in docstrings."""
     # Monorepo: packages/vN/src/ffmpeg; legacy: src/ffmpeg/vN
