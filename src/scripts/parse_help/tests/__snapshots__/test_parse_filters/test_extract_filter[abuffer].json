@@ -55,7 +55,7 @@
       "min": null,
       "name": "channel_layout",
       "section": "abuffer AVOptions:",
-      "type": "string"
+      "type": "channel_layout"
     },
     {
       "argname": null,
