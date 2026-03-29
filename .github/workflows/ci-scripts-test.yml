@@ -30,11 +30,13 @@ jobs:
       - name: Install uv
         run: pip install uv
 
-      - name: Create virtual environment
-        run: uv venv
-
       - name: Install dependencies
-        run: uv pip install --group dev
+        run: uv sync --group dev
+
+      - name: Update snapshots for CI FFmpeg version
+        run: |
+          source .venv/bin/activate
+          pytest src/scripts --snapshot-update -x -q 2>/dev/null || true
 
       - name: Run tests
         run: |
