@@ -84,7 +84,7 @@ class TestVersionedImportResolution:
             version_prefix="v6",
             generated_modules=GENERATED_MODULES,
         )
-        assert result == "from ffmpeg.types import Int, String"
+        assert result == "from ffmpeg_core.types import Int, String"
 
     def test_generated_to_shared_dag_factory(self) -> None:
         """dag.factory is hand-written → absolute import."""
@@ -95,7 +95,7 @@ class TestVersionedImportResolution:
             version_prefix="v6",
             generated_modules=GENERATED_MODULES,
         )
-        assert result == "from ffmpeg.dag.factory import filter_node_factory"
+        assert result == "from ffmpeg_core.dag.factory import filter_node_factory"
 
     def test_generated_to_shared_dag_nodes(self) -> None:
         """dag.nodes is hand-written → absolute import."""
@@ -106,7 +106,9 @@ class TestVersionedImportResolution:
             version_prefix="v6",
             generated_modules=GENERATED_MODULES,
         )
-        assert result == "from ffmpeg.dag.nodes import FilterableStream, FilterNode"
+        assert (
+            result == "from ffmpeg_core.dag.nodes import FilterableStream, FilterNode"
+        )
 
     def test_generated_to_shared_schema(self) -> None:
         """Test that schema is treated as hand-written and uses an absolute import."""
@@ -117,7 +119,7 @@ class TestVersionedImportResolution:
             version_prefix="v6",
             generated_modules=GENERATED_MODULES,
         )
-        assert result == "from ffmpeg.schema import Default, StreamType"
+        assert result == "from ffmpeg_core.schema import Default, StreamType"
 
     def test_generated_to_shared_common_schema(self) -> None:
         """Test that common.schema is treated as hand-written and uses an absolute import."""
@@ -128,7 +130,7 @@ class TestVersionedImportResolution:
             version_prefix="v6",
             generated_modules=GENERATED_MODULES,
         )
-        assert result == "from ffmpeg.common.schema import FFMpegFilterDef"
+        assert result == "from ffmpeg_core.common.schema import FFMpegFilterDef"
 
     def test_generated_to_shared_options_framesync(self) -> None:
         """options.framesync is hand-written → absolute import."""
@@ -139,7 +141,9 @@ class TestVersionedImportResolution:
             version_prefix="v6",
             generated_modules=GENERATED_MODULES,
         )
-        assert result == "from ffmpeg.options.framesync import FFMpegFrameSyncOption"
+        assert (
+            result == "from ffmpeg_core.options.framesync import FFMpegFrameSyncOption"
+        )
 
     def test_generated_to_shared_utils(self) -> None:
         """Test that utils.frozendict is treated as hand-written and uses an absolute import."""
@@ -150,7 +154,7 @@ class TestVersionedImportResolution:
             version_prefix="v6",
             generated_modules=GENERATED_MODULES,
         )
-        assert result == "from ffmpeg.utils.frozendict import FrozenDict, merge"
+        assert result == "from ffmpeg_core.utils.frozendict import FrozenDict, merge"
 
     def test_generated_to_shared_from_nested(self) -> None:
         """Importing shared core from deeply nested generated file."""
@@ -161,7 +165,7 @@ class TestVersionedImportResolution:
             version_prefix="v6",
             generated_modules=GENERATED_MODULES,
         )
-        assert result == "from ffmpeg.dag.nodes import FilterNode"
+        assert result == "from ffmpeg_core.dag.nodes import FilterNode"
 
     def test_generated_to_generated_sibling(self) -> None:
         """Both are generated → relative import."""
@@ -237,7 +241,7 @@ class TestVersionedImportResolution:
             version_prefix="v6",
             generated_modules=None,
         )
-        assert result == "from ffmpeg.types import Int, String"
+        assert result == "from ffmpeg_core.types import Int, String"
 
     def test_shared_codecs_schema(self) -> None:
         """codecs.schema is hand-written → absolute import."""
@@ -248,7 +252,7 @@ class TestVersionedImportResolution:
             version_prefix="v6",
             generated_modules=GENERATED_MODULES,
         )
-        assert result == "from ffmpeg.codecs.schema import FFMpegEncoderOption"
+        assert result == "from ffmpeg_core.codecs.schema import FFMpegEncoderOption"
 
     def test_shared_streams_av(self) -> None:
         """streams.av is hand-written → absolute import."""
@@ -259,4 +263,4 @@ class TestVersionedImportResolution:
             version_prefix="v6",
             generated_modules=GENERATED_MODULES,
         )
-        assert result == "from ffmpeg.streams.av import AVStream"
+        assert result == "from ffmpeg_core.streams.av import AVStream"

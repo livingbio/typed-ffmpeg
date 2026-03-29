@@ -32,6 +32,4 @@ def test_ffmpeg_execute_error() -> None:
 
 def test_ffmpeg_execute_error_catchable_as_ffmpeg_error() -> None:
     with pytest.raises(FFMpegError):
-        raise FFMpegExecuteError(
-            retcode=1, cmd="ffmpeg", stdout=b"", stderr=b"fail"
-        )
+        raise FFMpegExecuteError(retcode=1, cmd="ffmpeg", stdout=b"", stderr=b"fail")

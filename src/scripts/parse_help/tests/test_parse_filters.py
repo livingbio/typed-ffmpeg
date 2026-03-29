@@ -106,6 +106,7 @@ def test_parse_filter_options(snapshot: SnapshotAssertion, text: str) -> None:
         "libplacebo",  # default value contains parentheses e.g. "   crop_y            <string>     ..FV.....T. Input video crop y (default "(ih-ch)/2")"
     ],
 )
+@pytest.mark.dev_only
 def test_extract_filter(snapshot: SnapshotAssertion, filter: str) -> None:
     options = _extract_filter(filter)
     assert snapshot(extension_class=JSONSnapshotExtension) == asdict(options)

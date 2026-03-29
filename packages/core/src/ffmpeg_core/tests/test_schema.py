@@ -15,7 +15,9 @@ def test_auto_is_default() -> None:
 
 
 def test_option_group_as_av_options() -> None:
-    group = FFMpegOptionGroup({"crf": 23, "preset": "fast", "flag": True, "other": False, "skip": None})
+    group = FFMpegOptionGroup(
+        {"crf": 23, "preset": "fast", "flag": True, "other": False, "skip": None}
+    )
     result = group.as_av_options()
     assert result == {"crf": 23, "preset": "fast", "flag": 1, "other": 0}
     assert "skip" not in result
