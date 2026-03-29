@@ -30,11 +30,10 @@ jobs:
       - name: Install uv
         run: pip install uv
 
-      - name: Create virtual environment
-        run: uv venv
-
       - name: Install dependencies
-        run: uv pip install --group dev
+        run: |
+          uv venv
+          uv sync --group dev
 
       - name: Run tests
         run: |
