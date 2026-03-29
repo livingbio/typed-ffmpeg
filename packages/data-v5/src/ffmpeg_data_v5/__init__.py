@@ -4,7 +4,8 @@ from pathlib import Path
 
 
 def get_cache_path() -> Path:
-    """Return the path to the cache data directory.
+    """
+    Return the path to the cache data directory.
 
     Returns:
         Path to the cache data directory.

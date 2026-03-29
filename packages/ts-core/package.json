@@ -1,32 +1,32 @@
 {
-  "name": "@typed-ffmpeg/core",
-  "version": "0.1.0",
-  "description": "Core runtime for typed-ffmpeg TypeScript bindings",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+    "name": "@typed-ffmpeg/core",
+    "version": "0.1.0",
+    "description": "Core runtime for typed-ffmpeg TypeScript bindings",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        },
+        "./*": {
+            "types": "./dist/*.d.ts",
+            "default": "./dist/*.js"
+        }
     },
-    "./*": {
-      "types": "./dist/*.d.ts",
-      "default": "./dist/*.js"
+    "scripts": {
+        "build": "tsc",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "lint": "tsc --noEmit"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^25.5.0",
+        "typescript": "^5.7.0",
+        "vitest": "^3.0.0"
     }
-  },
-  "scripts": {
-    "build": "tsc",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "lint": "tsc --noEmit"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "@types/node": "^25.5.0",
-    "typescript": "^5.7.0",
-    "vitest": "^3.0.0"
-  }
 }

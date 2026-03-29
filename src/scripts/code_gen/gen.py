@@ -422,20 +422,73 @@ template_folder_ts = Path(__file__).parent / "templates_ts"
 
 
 _TS_RESERVED_WORDS = {
-    "break", "case", "catch", "class", "const", "continue", "debugger",
-    "default", "delete", "do", "else", "enum", "export", "extends",
-    "false", "finally", "for", "function", "if", "import", "in",
-    "instanceof", "new", "null", "return", "super", "switch", "this",
-    "throw", "true", "try", "typeof", "var", "void", "while", "with",
-    "yield", "let", "static", "implements", "interface", "package",
-    "private", "protected", "public", "abstract", "as", "async", "await",
-    "constructor", "declare", "from", "get", "is", "module", "namespace",
-    "of", "require", "set", "type", "undefined",
+    "break",
+    "case",
+    "catch",
+    "class",
+    "const",
+    "continue",
+    "debugger",
+    "default",
+    "delete",
+    "do",
+    "else",
+    "enum",
+    "export",
+    "extends",
+    "false",
+    "finally",
+    "for",
+    "function",
+    "if",
+    "import",
+    "in",
+    "instanceof",
+    "new",
+    "null",
+    "return",
+    "super",
+    "switch",
+    "this",
+    "throw",
+    "true",
+    "try",
+    "typeof",
+    "var",
+    "void",
+    "while",
+    "with",
+    "yield",
+    "let",
+    "static",
+    "implements",
+    "interface",
+    "package",
+    "private",
+    "protected",
+    "public",
+    "abstract",
+    "as",
+    "async",
+    "await",
+    "constructor",
+    "declare",
+    "from",
+    "get",
+    "is",
+    "module",
+    "namespace",
+    "of",
+    "require",
+    "set",
+    "type",
+    "undefined",
 }
 
 
 def ts_option_name_safe(string: str) -> str:
-    """Convert option name to TypeScript-safe identifier.
+    """
+    Convert option name to TypeScript-safe identifier.
 
     Returns:
         A TypeScript-safe identifier string.
@@ -448,7 +501,8 @@ def ts_option_name_safe(string: str) -> str:
 
 
 def ts_stream_name_safe(string: str) -> str:
-    """Convert stream name to TypeScript-safe identifier.
+    """
+    Convert stream name to TypeScript-safe identifier.
 
     Returns:
         A TypeScript-safe identifier string.
@@ -461,7 +515,8 @@ def ts_stream_name_safe(string: str) -> str:
 
 
 def ts_filter_option_typing(option: FFMpegFilterOption) -> str:
-    """Map FFMpeg filter option type to TypeScript type alias.
+    """
+    Map FFMpeg filter option type to TypeScript type alias.
 
     Returns:
         The TypeScript type alias string.
@@ -495,7 +550,8 @@ def ts_filter_option_typing(option: FFMpegFilterOption) -> str:
 
 
 def ts_input_typings(ffmpeg_filter: FFMpegFilter) -> str:
-    """Generate TypeScript array literal for input typings (pre-evaluated).
+    """
+    Generate TypeScript array literal for input typings (pre-evaluated).
 
     Returns:
         Comma-separated string of "video"/"audio" literals.
@@ -506,13 +562,14 @@ def ts_input_typings(ffmpeg_filter: FFMpegFilter) -> str:
         # For dynamic inputs, we just return an empty array (handled at runtime)
         return ""
     return ", ".join(
-        f'"video"' if i.type.value == "video" else f'"audio"'
+        '"video"' if i.type.value == "video" else '"audio"'
         for i in ffmpeg_filter.stream_typings_input
     )
 
 
 def ts_output_typings(ffmpeg_filter: FFMpegFilter) -> str:
-    """Generate TypeScript array literal for output typings (pre-evaluated).
+    """
+    Generate TypeScript array literal for output typings (pre-evaluated).
 
     Returns:
         Comma-separated string of "video"/"audio" literals.
@@ -521,13 +578,14 @@ def ts_output_typings(ffmpeg_filter: FFMpegFilter) -> str:
     if ffmpeg_filter.formula_typings_output:
         return ""
     return ", ".join(
-        f'"video"' if i.type.value == "video" else f'"audio"'
+        '"video"' if i.type.value == "video" else '"audio"'
         for i in ffmpeg_filter.stream_typings_output
     )
 
 
 def ts_option_typing(option: FFMpegOption) -> str:
-    """Map FFMpeg CLI option type to TypeScript type alias.
+    """
+    Map FFMpeg CLI option type to TypeScript type alias.
 
     Returns:
         The TypeScript type alias string.
@@ -547,7 +605,8 @@ def ts_option_typing(option: FFMpegOption) -> str:
 
 
 def ts_av_option_type(option: Any) -> str:
-    """Map FFMpeg AV option type to TypeScript type.
+    """
+    Map FFMpeg AV option type to TypeScript type.
 
     Returns:
         The TypeScript type string.
