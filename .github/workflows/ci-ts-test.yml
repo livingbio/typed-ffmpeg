@@ -1,0 +1,69 @@
+name: CI TypeScript - Test
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/ts-*/**'
+      - 'src/scripts/code_gen/templates_ts/**'
+      - 'src/scripts/code_gen/gen.py'
+      - 'src/scripts/code_gen/cli.py'
+      - '.github/workflows/ci-ts-test.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'packages/ts-*/**'
+      - 'src/scripts/code_gen/templates_ts/**'
+      - 'src/scripts/code_gen/gen.py'
+      - 'src/scripts/code_gen/cli.py'
+      - '.github/workflows/ci-ts-test.yml'
+
+jobs:
+  test-ts-core:
+    name: Test ts-core
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: packages/ts-core
+        run: npm install
+
+      - name: Type check
+        working-directory: packages/ts-core
+        run: npx tsc --noEmit
+
+      - name: Run tests
+        working-directory: packages/ts-core
+        run: npx vitest run
+
+  typecheck-ts-v7:
+    name: Type check ts-v7
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install ts-core dependencies
+        working-directory: packages/ts-core
+        run: npm install
+
+      - name: Install ts-v7 dependencies
+        run: npm install
+        working-directory: .
+
+      - name: Type check ts-v7
+        working-directory: packages/ts-v7
+        run: npx tsc --noEmit

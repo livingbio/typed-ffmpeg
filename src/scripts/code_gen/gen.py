@@ -435,7 +435,12 @@ _TS_RESERVED_WORDS = {
 
 
 def ts_option_name_safe(string: str) -> str:
-    """Convert option name to TypeScript-safe identifier."""
+    """Convert option name to TypeScript-safe identifier.
+
+    Returns:
+        A TypeScript-safe identifier string.
+
+    """
     safe = option_name_safe(string)
     if safe in _TS_RESERVED_WORDS:
         safe = "_" + safe
@@ -443,7 +448,12 @@ def ts_option_name_safe(string: str) -> str:
 
 
 def ts_stream_name_safe(string: str) -> str:
-    """Convert stream name to TypeScript-safe identifier."""
+    """Convert stream name to TypeScript-safe identifier.
+
+    Returns:
+        A TypeScript-safe identifier string.
+
+    """
     safe = stream_name_safe(string)
     if safe.lstrip("_") in _TS_RESERVED_WORDS:
         safe = "_" + safe
@@ -451,7 +461,12 @@ def ts_stream_name_safe(string: str) -> str:
 
 
 def ts_filter_option_typing(option: FFMpegFilterOption) -> str:
-    """Map FFMpeg filter option type to TypeScript type alias."""
+    """Map FFMpeg filter option type to TypeScript type alias.
+
+    Returns:
+        The TypeScript type alias string.
+
+    """
     type_map = {
         FFMpegFilterOptionType.boolean: "FFBoolean",
         FFMpegFilterOptionType.duration: "FFDuration",
@@ -480,7 +495,12 @@ def ts_filter_option_typing(option: FFMpegFilterOption) -> str:
 
 
 def ts_input_typings(ffmpeg_filter: FFMpegFilter) -> str:
-    """Generate TypeScript array literal for input typings (pre-evaluated)."""
+    """Generate TypeScript array literal for input typings (pre-evaluated).
+
+    Returns:
+        Comma-separated string of "video"/"audio" literals.
+
+    """
     if ffmpeg_filter.formula_typings_input:
         # Pre-evaluate: convert Python formula to static TS array
         # For dynamic inputs, we just return an empty array (handled at runtime)
@@ -492,7 +512,12 @@ def ts_input_typings(ffmpeg_filter: FFMpegFilter) -> str:
 
 
 def ts_output_typings(ffmpeg_filter: FFMpegFilter) -> str:
-    """Generate TypeScript array literal for output typings (pre-evaluated)."""
+    """Generate TypeScript array literal for output typings (pre-evaluated).
+
+    Returns:
+        Comma-separated string of "video"/"audio" literals.
+
+    """
     if ffmpeg_filter.formula_typings_output:
         return ""
     return ", ".join(
@@ -502,7 +527,12 @@ def ts_output_typings(ffmpeg_filter: FFMpegFilter) -> str:
 
 
 def ts_option_typing(option: FFMpegOption) -> str:
-    """Map FFMpeg CLI option type to TypeScript type alias."""
+    """Map FFMpeg CLI option type to TypeScript type alias.
+
+    Returns:
+        The TypeScript type alias string.
+
+    """
     type_map = {
         FFMpegOptionType.OPT_TYPE_FUNC: "FFFunc",
         FFMpegOptionType.OPT_TYPE_BOOL: "FFBoolean",
@@ -517,7 +547,12 @@ def ts_option_typing(option: FFMpegOption) -> str:
 
 
 def ts_av_option_type(option: Any) -> str:
-    """Map FFMpeg AV option type to TypeScript type."""
+    """Map FFMpeg AV option type to TypeScript type.
+
+    Returns:
+        The TypeScript type string.
+
+    """
     type_map = {
         "boolean": "boolean | null",
         "int": "number | null",
