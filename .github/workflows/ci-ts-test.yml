@@ -26,7 +26,7 @@ jobs:
     name: Test ts-core
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
 
       - name: Set up Node.js 20
         uses: actions/setup-node@v4
@@ -41,15 +41,26 @@ jobs:
         working-directory: packages/ts-core
         run: npx tsc --noEmit
 
-      - name: Run tests
+      - name: Run tests with coverage
         working-directory: packages/ts-core
-        run: npx vitest run
+        run: npx vitest run --coverage
+
+      - name: Fix lcov paths for monorepo
+        run: sed -i 's|SF:src/|SF:packages/ts-core/src/|g' packages/ts-core/coverage/lcov.info
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./packages/ts-core/coverage/lcov.info
+          flags: typescript
+          name: ts-core-coverage
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   typecheck-ts-v7:
     name: Type check ts-v7
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
 
       - name: Set up Node.js 20
         uses: actions/setup-node@v4
