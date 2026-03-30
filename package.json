@@ -3,5 +3,8 @@
     "workspaces": [
         "packages/ts-*",
         "packages/playground"
-    ]
+    ],
+    "devDependencies": {
+        "vite": "^8.0.0"
+    }
 }
