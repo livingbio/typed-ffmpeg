@@ -52,9 +52,7 @@ jobs:
 
       - name: Build ts-core
         working-directory: packages/ts-core
-        run: |
-          npx tsc
-          npx tsc --project tsconfig.browser.json
+        run: npm run build
 
       - name: Build playground
         working-directory: packages/playground
