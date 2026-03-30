@@ -28,9 +28,15 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: Install and build ts-core
+        working-directory: packages/ts-core
+        run: |
+          npm install
+          npx tsc
+
+      - name: Install playground dependencies
         working-directory: packages/playground
-        run: npm ci
+        run: npm install
 
       - name: Run linting
         working-directory: packages/playground
