@@ -10,7 +10,6 @@ import { Node, Stream } from "./schema.js";
 import { run as runSync, runAwaitable } from "../utils/run.js";
 import type { RunResult } from "../utils/run.js";
 
-import * as path from "node:path";
 
 // ─── Concrete Stream Types ─────────────────────────────────────────────────
 
@@ -244,7 +243,7 @@ export class InputNode extends Node {
   }
 
   override repr(): string {
-    return path.basename(this.filename);
+    return this.filename.replace(/^.*[\\/]/, '') || this.filename;
   }
 
   get video(): VideoStream {
@@ -275,7 +274,7 @@ export class OutputNode extends Node {
   }
 
   override repr(): string {
-    return path.basename(this.filename);
+    return this.filename.replace(/^.*[\\/]/, '') || this.filename;
   }
 
   stream(): OutputStream {

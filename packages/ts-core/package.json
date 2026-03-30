@@ -2,15 +2,17 @@
   "description": "Core runtime for typed-ffmpeg TypeScript bindings",
   "devDependencies": {
     "@types/node": "^25.5.0",
-    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/coverage-v8": "^4.0.0",
     "typescript": "^5.7.0",
-    "vitest": "^3.0.0"
+    "vitest": "^4.0.0"
   },
   "engines": {
     "node": ">=18"
   },
   "exports": {
     ".": {
+      "browser": "./dist/browser/index.browser.js",
+      "import": "./dist/esm/index.js",
       "default": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
@@ -23,7 +25,7 @@
   "main": "dist/index.js",
   "name": "@typed-ffmpeg/core",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && tsc --project tsconfig.esm.json && tsc --project tsconfig.browser.json",
     "lint": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"
