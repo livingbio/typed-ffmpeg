@@ -24,7 +24,7 @@ from ffmpeg_core.common.schema import (
 
 from .. import manual, parse_c, parse_docs, parse_help
 from ..parse_help.schema import FFMpegAVOption as ParseHelpFFMpegAVOption
-from .gen import render
+from .gen import render, render_ts
 from .schema import (
     MIN_FFMPEG_VERSION_MAJOR,
     MIN_FFMPEG_VERSION_MINOR,
@@ -536,6 +536,65 @@ def generate(
     )
     if Path(".pre-commit-config.yaml").exists():
         os.system("prek run -a")
+
+
+@app.command()
+def generate_ts(
+    outpath: Path | None = None,
+    rebuild: bool = False,
+    ffmpeg_binary: Annotated[
+        str,
+        typer.Option(
+            help="Path or name of the ffmpeg executable.",
+        ),
+    ] = "ffmpeg",
+) -> None:
+    """
+    Generate TypeScript bindings for FFmpeg.
+
+    Uses the same metadata loading pipeline as the Python generator,
+    but renders TypeScript templates from templates_ts/.
+
+    Args:
+        outpath: The output path for generated .ts files
+        rebuild: Whether to rebuild metadata from scratch
+        ffmpeg_binary: Path or name of the ffmpeg executable
+
+    Raises:
+        BadParameter: If FFmpeg version is < 5.0.
+
+    """
+    from ..parse_help.utils import get_ffmpeg_version
+
+    version = get_ffmpeg_version(ffmpeg_binary)
+    if not outpath:
+        repo_root = Path(__file__).resolve().parents[4]
+        major = version.split(".")[0]
+        outpath = repo_root / "packages" / f"ts-v{major}" / "src"
+    outpath = outpath.resolve()
+    if not is_supported_version(version):
+        raise typer.BadParameter(
+            f"FFmpeg version {version} is not supported; need >= {MIN_FFMPEG_VERSION_MAJOR}.{MIN_FFMPEG_VERSION_MINOR}"
+        )
+    version_key = version_cache_key(version)
+
+    ffmpeg_filters = load_filters(rebuild, ffmpeg_binary, version_key)
+    ffmpeg_options = load_options(rebuild, ffmpeg_binary, version_key)
+    ffmpeg_codecs = load_codecs(rebuild, ffmpeg_binary, version_key)
+    ffmpeg_muxers = load_formats(rebuild, ffmpeg_binary, version_key)
+    ffmpeg_av_option_set = load_av_option_set(rebuild, ffmpeg_binary, version_key)
+
+    render_ts(
+        filters=ffmpeg_filters,
+        options=ffmpeg_options,
+        codecs=ffmpeg_codecs,
+        muxers=ffmpeg_muxers,
+        av_option_sets=ffmpeg_av_option_set,
+        outpath=outpath,
+        ffmpeg_version=version,
+    )
+
+    logging.info(f"TypeScript bindings generated at {outpath}")
 
 
 @app.command()

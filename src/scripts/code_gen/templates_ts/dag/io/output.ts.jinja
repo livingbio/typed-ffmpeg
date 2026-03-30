@@ -1,0 +1,59 @@
+/**
+ * Typed output() function with all FFmpeg output options.
+ */
+
+import { OutputNode, OutputStream } from "@typed-ffmpeg/core/dag/nodes";
+import { FilterableStream } from "@typed-ffmpeg/core/dag/baseStreams";
+import { merge } from "@typed-ffmpeg/core/utils/frozenRecord";
+import type { FFMpegEncoderOption } from "../../codecs/encoders.js";
+import type { FFMpegMuxerOption } from "../../formats/muxers.js";
+import type { FFMpegAVFormatContextEncoderOption } from "../../options/format.js";
+import type { FFMpegAVCodecContextEncoderOption } from "../../options/codec.js";
+import type {
+  FFBoolean, FFInt, FFInt64, FFFloat, FFDouble, FFString,
+  FFDuration, FFFunc, FFTime,
+} from "@typed-ffmpeg/core/types";
+
+/**
+ * Output file URL
+ *
+ * @param streams - The streams to output
+ * @param filename - The filename to output to
+ * @param options - Output options
+ * @returns The output stream
+ */
+export function output(
+  streams: FilterableStream[],
+  filename: string,
+  options?: {
+{%- for option in options %}
+{%- if option.is_output_option %}
+    {{ option.name | option_name_safe }}?: {{ option | option_typing }};
+{%- endif %}
+{%- endfor %}
+    encoderOptions?: FFMpegEncoderOption;
+    muxerOptions?: FFMpegMuxerOption;
+    formatOptions?: FFMpegAVFormatContextEncoderOption;
+    codecOptions?: FFMpegAVCodecContextEncoderOption;
+    extraOptions?: Record<string, unknown>;
+  },
+): OutputStream {
+  return new OutputNode(
+    streams,
+    filename,
+    merge(
+      {
+{%- for option in options %}
+{%- if option.is_output_option %}
+        "{{ option.name }}": options?.{{ option.name | option_name_safe }},
+{%- endif %}
+{%- endfor %}
+      },
+      options?.encoderOptions as Record<string, unknown> | undefined,
+      options?.muxerOptions as Record<string, unknown> | undefined,
+      options?.formatOptions as Record<string, unknown> | undefined,
+      options?.codecOptions as Record<string, unknown> | undefined,
+      options?.extraOptions,
+    ),
+  ).stream();
+}
