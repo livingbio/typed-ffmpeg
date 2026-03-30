@@ -28,16 +28,14 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Install and build ts-core
+      - name: Install workspace dependencies
+        run: npm install
+
+      - name: Build ts-core
         working-directory: packages/ts-core
         run: |
-          npm install
           npx tsc
           npx tsc --project tsconfig.browser.json
-
-      - name: Install playground dependencies
-        working-directory: packages/playground
-        run: npm install
 
       - name: Run linting
         working-directory: packages/playground
