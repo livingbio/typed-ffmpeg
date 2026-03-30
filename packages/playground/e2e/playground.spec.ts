@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Playground', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/typed-ffmpeg-playground/');
+    await page.goto('/typed-ffmpeg/typed-ffmpeg-playground/');
   });
 
   test('page loads with the flow editor and sidebar', async ({ page }) => {

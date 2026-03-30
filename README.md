@@ -106,7 +106,7 @@ Note: If you need to install `ffmpeg-python` at the same time, use `pip install 
 TypeScript bindings are available as npm packages:
 
 ```bash
-npm install @typed-ffmpeg/core    # Core runtime
+npm install @typed-ffmpeg/core    # Core runtime (Node.js + browser ESM)
 # Generated bindings (coming soon to npm):
 # npm install @typed-ffmpeg/v7    # FFmpeg 7.x bindings
 ```
@@ -120,10 +120,10 @@ const cmd = input("input.mp4")
   .output("output.mp4")
   .overwriteOutput()
   .compile();
-// => ["ffmpeg", "-i", "input.mp4", "-filter_complex", "...", "output.mp4"]
+// => ["-i", "input.mp4", "-filter_complex", "...", "output.mp4"]
 ```
 
-The TypeScript API mirrors the Python API with idiomatic TypeScript patterns (options objects instead of keyword arguments). See `packages/ts-core/` and `packages/ts-v7/` for details.
+`@typed-ffmpeg/core` ships three builds — CJS (Node.js default), ESM, and a browser-safe ESM bundle — selected automatically via the `exports` field. The TypeScript API mirrors the Python API with idiomatic TypeScript patterns (options objects instead of keyword arguments). See `packages/ts-core/` and `packages/ts-v7/` for details.
 
 ---
 
@@ -199,7 +199,7 @@ See the [Usage](https://livingbio.github.io/typed-ffmpeg/usage/typed/) section i
 
 ## Interactive Playground
 
-Try out `typed-ffmpeg` directly in your browser with our [Interactive Playground](https://livingbio.github.io/typed-ffmpeg-playground/)! The playground provides a live environment where you can:
+Try out `typed-ffmpeg` directly in your browser with our [Interactive Playground](https://livingbio.github.io/typed-ffmpeg/typed-ffmpeg-playground/)! The playground provides a live environment where you can:
 
 ![typed-ffmpeg demo](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/demo.gif)
 ![Interactive Playground](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/playground-screenshot.png)

@@ -19,7 +19,7 @@ export default defineConfig({
   ],
   webServer: {
     command: 'npm run dev',
-    url: 'http://localhost:5173/typed-ffmpeg-playground/',
+    url: 'http://localhost:5173/typed-ffmpeg/typed-ffmpeg-playground/',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
   },

@@ -22,7 +22,7 @@ function stubNodeBuiltinsPlugin() {
 }
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/typed-ffmpeg-playground/',
+    base: '/typed-ffmpeg/typed-ffmpeg-playground/',
     plugins: [stubNodeBuiltinsPlugin(), react()],
     optimizeDeps: {
         include: ['@typed-ffmpeg/core'],
