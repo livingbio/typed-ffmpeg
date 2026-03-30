@@ -3,7 +3,7 @@
  */
 
 import { StreamType } from "../common/schema.js";
-import { FilterableStream } from "../dag/baseStreams.js";
+import { FilterableStream, _compileFactories } from "../dag/baseStreams.js";
 import {
   AudioStream,
   AVStream,
@@ -19,7 +19,7 @@ import { Node, Stream } from "../dag/schema.js";
 import { FFMpegValueError } from "../exceptions.js";
 import { escape } from "../utils/escaping.js";
 import { isDefault } from "../utils/types.js";
-import { commandLine } from "../utils/run.js";
+import { commandLine, run, runAwaitable } from "../utils/run.js";
 import { DAGContext } from "./context.js";
 import { validate } from "./validate.js";
 
@@ -249,3 +249,10 @@ export function getArgs(node: Node, context?: DAGContext): string[] {
   if (node instanceof GlobalNode) return getArgsGlobalNode(node, context);
   throw new FFMpegValueError(`Unknown node type: ${node.constructor.name}`);
 }
+
+// ─── Initialize late-bound compile factories ─────────────────────────────────
+
+_compileFactories.compileAsList = compileAsList;
+_compileFactories.compile = compile;
+_compileFactories.run = run;
+_compileFactories.runAwaitable = runAwaitable;

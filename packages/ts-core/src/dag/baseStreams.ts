@@ -8,6 +8,7 @@
 
 import { StreamType } from "../common/schema.js";
 import type { KwargsValue } from "../utils/frozenRecord.js";
+import type { RunResult } from "../utils/run.js";
 import { Node, Stream } from "./schema.js";
 
 /**
@@ -38,6 +39,18 @@ export const _nodeFactories: {
     filename: string,
     kwargs?: Record<string, KwargsValue>,
   ) => Node;
+} = {};
+
+/**
+ * Late-bound reference to compile functions.
+ * Set by compileCli.ts after it loads to break the circular dependency
+ * (compileCli.ts → nodes.ts → baseStreams.ts).
+ */
+export const _compileFactories: {
+  compileAsList?: (stream: Stream, autoFix?: boolean) => string[];
+  compile?: (stream: Stream, autoFix?: boolean) => string;
+  run?: (args: string[], ffmpegBinary?: string) => RunResult;
+  runAwaitable?: (args: string[], ffmpegBinary?: string) => Promise<RunResult>;
 } = {};
 
 /**

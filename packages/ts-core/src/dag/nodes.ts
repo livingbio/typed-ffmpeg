@@ -5,8 +5,10 @@
 import { StreamType } from "../common/schema.js";
 import { FFMpegTypeError, FFMpegValueError } from "../exceptions.js";
 import type { KwargsValue } from "../utils/frozenRecord.js";
-import { FilterableStream, _nodeFactories, filterMultiOutput } from "./baseStreams.js";
+import { FilterableStream, _nodeFactories, _compileFactories, filterMultiOutput } from "./baseStreams.js";
 import { Node, Stream } from "./schema.js";
+import { run as runSync, runAwaitable } from "../utils/run.js";
+import type { RunResult } from "../utils/run.js";
 
 import * as path from "node:path";
 
@@ -307,30 +309,24 @@ export class OutputStream extends Stream {
   }
 
   compile(autoFix: boolean = true): string[] {
-    // Dynamic import to avoid circular dependency with compile module
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { compileAsList } = require("../compile/compileCli.js") as typeof import("../compile/compileCli.js");
-    return compileAsList(this, autoFix);
+    if (!_compileFactories.compileAsList) {
+      throw new Error("Compile factories not initialized. Import compileCli.ts first.");
+    }
+    return _compileFactories.compileAsList(this, autoFix);
   }
 
   compileLine(autoFix: boolean = true): string {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { compile } = require("../compile/compileCli.js") as typeof import("../compile/compileCli.js");
-    return compile(this, autoFix);
+    if (!_compileFactories.compile) {
+      throw new Error("Compile factories not initialized. Import compileCli.ts first.");
+    }
+    return _compileFactories.compile(this, autoFix);
   }
 
-  run(ffmpegBinary: string = "ffmpeg", autoFix: boolean = true): import("../utils/run.js").RunResult {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { run } = require("../utils/run.js") as typeof import("../utils/run.js");
-    return run(this.compile(autoFix), ffmpegBinary);
+  run(ffmpegBinary: string = "ffmpeg", autoFix: boolean = true): RunResult {
+    return runSync(this.compile(autoFix), ffmpegBinary);
   }
 
-  async runAsync(
-    ffmpegBinary: string = "ffmpeg",
-    autoFix: boolean = true,
-  ): Promise<import("../utils/run.js").RunResult> {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { runAwaitable } = require("../utils/run.js") as typeof import("../utils/run.js");
+  async runAsync(ffmpegBinary: string = "ffmpeg", autoFix: boolean = true): Promise<RunResult> {
     return runAwaitable(this.compile(autoFix), ffmpegBinary);
   }
 }
@@ -374,29 +370,24 @@ export class GlobalStream extends Stream {
   }
 
   compile(autoFix: boolean = true): string[] {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { compileAsList } = require("../compile/compileCli.js") as typeof import("../compile/compileCli.js");
-    return compileAsList(this, autoFix);
+    if (!_compileFactories.compileAsList) {
+      throw new Error("Compile factories not initialized. Import compileCli.ts first.");
+    }
+    return _compileFactories.compileAsList(this, autoFix);
   }
 
   compileLine(autoFix: boolean = true): string {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { compile } = require("../compile/compileCli.js") as typeof import("../compile/compileCli.js");
-    return compile(this, autoFix);
+    if (!_compileFactories.compile) {
+      throw new Error("Compile factories not initialized. Import compileCli.ts first.");
+    }
+    return _compileFactories.compile(this, autoFix);
   }
 
-  run(ffmpegBinary: string = "ffmpeg", autoFix: boolean = true): import("../utils/run.js").RunResult {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { run } = require("../utils/run.js") as typeof import("../utils/run.js");
-    return run(this.compile(autoFix), ffmpegBinary);
+  run(ffmpegBinary: string = "ffmpeg", autoFix: boolean = true): RunResult {
+    return runSync(this.compile(autoFix), ffmpegBinary);
   }
 
-  async runAsync(
-    ffmpegBinary: string = "ffmpeg",
-    autoFix: boolean = true,
-  ): Promise<import("../utils/run.js").RunResult> {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { runAwaitable } = require("../utils/run.js") as typeof import("../utils/run.js");
+  async runAsync(ffmpegBinary: string = "ffmpeg", autoFix: boolean = true): Promise<RunResult> {
     return runAwaitable(this.compile(autoFix), ffmpegBinary);
   }
 }
