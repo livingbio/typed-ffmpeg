@@ -1,6 +1,7 @@
 {
     "private": true,
     "workspaces": [
-        "packages/ts-*"
+        "packages/ts-*",
+        "packages/playground"
     ]
 }

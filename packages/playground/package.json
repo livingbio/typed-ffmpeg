@@ -1,5 +1,5 @@
 {
-  "name": "ffmpeg-flow-editor",
+  "name": "@typed-ffmpeg/playground",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -14,7 +14,7 @@
     "test:coverage": "vitest run --coverage",
     "test:pyodide": "vitest run --config vitest.pyodide.config.ts",
     "dev:test": "vite --config vite.test.config.ts",
-    "prepare": "husky install"
+    "prepare": "echo 'husky managed at repo root'"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
