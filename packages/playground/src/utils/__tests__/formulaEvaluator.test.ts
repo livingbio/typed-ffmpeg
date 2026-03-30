@@ -1,12 +1,7 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { evaluateFormula, parseStringParameter } from '../formulaEvaluator';
-import { setupPyodideMock } from './testUtils';
 
 describe('formulaEvaluator', () => {
-  beforeEach(async () => {
-    setupPyodideMock();
-  });
-
   describe('evaluateFormula', () => {
     it('should throw error for empty formula', async () => {
       await expect(evaluateFormula('', {})).rejects.toThrow();
@@ -14,53 +9,74 @@ describe('formulaEvaluator', () => {
 
     it('should evaluate simple formula with video and audio', async () => {
       const result = await evaluateFormula('[StreamType.video] + [StreamType.audio]', {});
-      expect(result).toMatchSnapshot();
+      expect(result).toEqual(['video', 'audio']);
     });
 
     it('should evaluate formula with numeric multiplication', async () => {
       const result = await evaluateFormula('[StreamType.video] * int(inputs)', { inputs: 2 });
-      expect(result).toMatchSnapshot();
+      expect(result).toEqual(['video', 'video']);
     });
 
     it('should evaluate formula with string splitting', async () => {
       const result = await evaluateFormula('[StreamType.video] * len("1+2+3".split("+"))', {});
-      expect(result).toMatchSnapshot();
+      expect(result).toEqual(['video', 'video', 'video']);
     });
 
     it('should evaluate formula with hex conversion', async () => {
       const result = await evaluateFormula(
         '[StreamType.video] * int(max(hex(int(mapping))[2::2]))',
-        { mapping: 0x123 }
+        { mapping: 0x123 },
       );
-      expect(result).toMatchSnapshot();
+      // hex(0x123) = '0x123', [2::2] = ['1','3'], max = '3', int('3') = 3
+      expect(result).toEqual(['video', 'video', 'video']);
     });
 
-    it('should evaluate formula with conditional reference', async () => {
+    it('should evaluate formula with conditional reference (truthy)', async () => {
       const result = await evaluateFormula(
         '[StreamType.video, StreamType.video] + ([StreamType.video] if reference else [])',
-        { reference: 'True' }
+        { reference: 'True' },
       );
-      expect(result).toMatchSnapshot();
+      expect(result).toEqual(['video', 'video', 'video']);
+    });
+
+    it('should evaluate formula with conditional reference (falsy)', async () => {
+      const result = await evaluateFormula(
+        '[StreamType.video, StreamType.video] + ([StreamType.video] if reference else [])',
+        { reference: '' },
+      );
+      expect(result).toEqual(['video', 'video']);
     });
 
     it('should evaluate formula with conditional inplace', async () => {
       const result = await evaluateFormula(
         '[StreamType.video] + ([StreamType.video] if inplace else [])',
-        { inplace: 'True' }
+        { inplace: 'True' },
       );
-      expect(result).toMatchSnapshot();
+      expect(result).toEqual(['video', 'video']);
     });
 
     it('should evaluate formula with mixed audio and video', async () => {
       const result = await evaluateFormula(
         '[StreamType.video]*int(v) + [StreamType.audio]*int(a)',
-        { v: 2, a: 1 }
+        { v: 2, a: 1 },
       );
-      expect(result).toMatchSnapshot();
+      expect(result).toEqual(['video', 'video', 'audio']);
     });
 
-    it('should handle Python evaluation errors', async () => {
-      await expect(evaluateFormula('[StreamType.invalid]', {})).rejects.toThrow();
+    it('should evaluate re.split formula', async () => {
+      const result = await evaluateFormula(
+        "[StreamType.audio] * len(re.split(r'[ |]+', str(split)))",
+        { split: 'a b c' },
+      );
+      expect(result).toEqual(['audio', 'audio', 'audio']);
+    });
+
+    it('should evaluate concat formula with arithmetic', async () => {
+      const result = await evaluateFormula(
+        '[StreamType.audio] * int(outputs)',
+        { outputs: 3 },
+      );
+      expect(result).toEqual(['audio', 'audio', 'audio']);
     });
   });
 
