@@ -123,22 +123,12 @@ export function convertToCoreDAG(globalNode: GlobalNode): CoreGlobalStream {
       );
 
     } else if (node instanceof OutputNode) {
-      const coreInputs: CoreFilterableStream[] = [];
-
-      for (const stream of node.inputs) {
-        if (stream === null) continue;
-        const srcCoreNode = convertNode(stream.node) as CoreInputNode | CoreFilterNode;
-        // OutputNode accepts any FilterableStream — use AVStream for generic input
-        if (stream instanceof VideoStream) {
-          coreInputs.push(new CoreVideoStream(srcCoreNode, stream.index !== undefined ? stream.index : null));
-        } else if (stream instanceof AudioStream) {
-          coreInputs.push(new CoreAudioStream(srcCoreNode, stream.index !== undefined ? stream.index : null));
-        } else if (stream instanceof AVStream) {
-          coreInputs.push(new CoreAVStream(srcCoreNode as CoreInputNode));
-        } else {
-          coreInputs.push(new CoreAVStream(srcCoreNode as CoreInputNode));
-        }
-      }
+      const coreInputs = node.inputs
+        .filter((s): s is NonNullable<typeof s> => s !== null)
+        .map((stream) => {
+          const srcCoreNode = convertNode(stream.node) as CoreInputNode | CoreFilterNode;
+          return toCoreStream(stream, srcCoreNode);
+        });
 
       coreNode = new CoreOutputNode(coreInputs, node.filename, node.kwargs);
 

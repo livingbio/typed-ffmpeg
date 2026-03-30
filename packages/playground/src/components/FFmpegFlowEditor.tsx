@@ -26,7 +26,6 @@ import { NodeMappingManager } from '../utils/nodeMapping';
 import { VideoStream, AudioStream, AVStream, Stream } from '../types/dag';
 import { NodeData } from '../types/node';
 import { parseFFmpegCommandToJson } from '../utils/generateFFmpegCommand';
-// Note: parseFFmpegCommandToJson is a stub in the TypeScript version — it always returns an error.
 import PreviewPanel from './PreviewPanel';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';

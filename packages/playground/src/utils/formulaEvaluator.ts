@@ -472,6 +472,13 @@ const FORMULA_RUNTIME = `
   });
 `;
 
+// ─── Caches (module-level) ─────────────────────────────────────────────────
+
+// formulas come from filters.json — a fixed, finite set — so unbounded caches are fine
+const _exprCache = new Map<string, string>();
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+const _fnCache = new Map<string, Function>();
+
 // ─── Public API ────────────────────────────────────────────────────────────
 
 /**
@@ -487,20 +494,25 @@ export async function evaluateFormula(
 ): Promise<StreamTypeEnum[]> {
   if (!formula.trim()) throw new Error('Empty formula');
 
-  // Transpile Python syntax → JS
-  const jsExpr = new PythonExprParser(formula).parse();
+  // Transpile once per unique formula string (formulas are static filter metadata)
+  let jsExpr = _exprCache.get(formula);
+  if (jsExpr === undefined) {
+    jsExpr = new PythonExprParser(formula).parse();
+    _exprCache.set(formula, jsExpr);
+  }
 
-  // Build the function body with runtime helpers + parameters as local vars
+  // Compile Function once per (formula, param-key-set) combination
   const paramKeys = Object.keys(parameters);
-  const paramValues = Object.values(parameters);
+  const fnKey = `${formula}\0${paramKeys.join(',')}`;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+  let fn = _fnCache.get(fnKey);
+  if (!fn) {
+    // eslint-disable-next-line @typescript-eslint/no-implied-eval
+    fn = new Function(...paramKeys, FORMULA_RUNTIME + `\nreturn (${jsExpr});`);
+    _fnCache.set(fnKey, fn);
+  }
 
-  // eslint-disable-next-line @typescript-eslint/no-implied-eval
-  const fn = new Function(
-    ...paramKeys,
-    FORMULA_RUNTIME + `\nreturn (${jsExpr});`,
-  );
-
-  const result: unknown = fn(...paramValues);
+  const result: unknown = fn(...paramKeys.map((k) => parameters[k]));
 
   if (!Array.isArray(result)) {
     throw new Error(`Formula '${formula}' returned non-array: ${String(result)}`);

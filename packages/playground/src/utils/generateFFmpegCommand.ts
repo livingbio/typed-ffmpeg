@@ -2,7 +2,7 @@
  * FFmpeg command generation using @typed-ffmpeg/core (no Python/Pyodide).
  */
 
-import { compile, compileAsList } from '@typed-ffmpeg/core';
+import { compile } from '@typed-ffmpeg/core';
 import { NodeMappingManager } from './nodeMapping';
 import { convertToCoreDAG } from './dagConverter';
 
@@ -24,22 +24,6 @@ export async function generateFFmpegCommand(
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     return { result: `# Error: ${msg}`, error: msg };
-  }
-}
-
-/**
- * Return the FFmpeg CLI args as a string array.
- */
-export async function generateFFmpegArgs(
-  manager: NodeMappingManager,
-): Promise<{ result: string[]; error: string | null }> {
-  try {
-    const coreStream = convertToCoreDAG(manager.getGlobalNode());
-    const args = compileAsList(coreStream, true);
-    return { result: args, error: null };
-  } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err);
-    return { result: [], error: msg };
   }
 }
 
