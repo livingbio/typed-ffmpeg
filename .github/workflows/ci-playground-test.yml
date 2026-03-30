@@ -1,0 +1,59 @@
+name: CI Playground - Test
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/playground/**'
+      - '.github/workflows/ci-playground-test.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'packages/playground/**'
+      - '.github/workflows/ci-playground-test.yml'
+
+jobs:
+  test-playground:
+    name: Test playground
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: packages/playground
+        run: npm ci
+
+      - name: Run linting
+        working-directory: packages/playground
+        run: npm run lint
+
+      - name: Run tests with coverage
+        working-directory: packages/playground
+        run: npm run test:coverage
+
+      - name: Fix lcov paths for monorepo
+        run: sed -i 's|SF:src/|SF:packages/playground/src/|g' packages/playground/coverage/lcov.info
+
+      - name: Upload coverage to Codecov
+        if: github.actor != 'dependabot[bot]'
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./packages/playground/coverage/lcov.info
+          flags: playground
+          name: playground-coverage
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload coverage reports as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: playground-coverage-report
+          path: packages/playground/coverage
