@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run playground tests when playground files are staged.
+# Loads NVM so that the playground's vitest v4 gets a compatible Node version.
+if git diff --cached --name-only | grep -q "^packages/playground/"; then
+  export NVM_DIR="$HOME/.nvm"
+  # shellcheck disable=SC1091
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  nvm use 22 --silent
+  (cd packages/playground && node_modules/.bin/vitest run)
+fi
