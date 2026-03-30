@@ -20,7 +20,6 @@ import type { FilterableStream as CoreFilterableStream } from '@typed-ffmpeg/cor
 
 import {
   AudioStream,
-  AVStream,
   FilterNode,
   GlobalNode,
   InputNode,

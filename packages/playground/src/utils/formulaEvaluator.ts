@@ -504,10 +504,8 @@ export async function evaluateFormula(
   // Compile Function once per (formula, param-key-set) combination
   const paramKeys = Object.keys(parameters);
   const fnKey = `${formula}\0${paramKeys.join(',')}`;
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   let fn = _fnCache.get(fnKey);
   if (!fn) {
-    // eslint-disable-next-line @typescript-eslint/no-implied-eval
     fn = new Function(...paramKeys, FORMULA_RUNTIME + `\nreturn (${jsExpr});`);
     _fnCache.set(fnKey, fn);
   }
