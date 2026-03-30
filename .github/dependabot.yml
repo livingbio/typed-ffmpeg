@@ -11,6 +11,18 @@ updates:
       interval: "weekly"
     allow:
       - dependency-type: "all"
+  - package-ecosystem: "npm"
+    directory: "/packages/ts-core"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/packages/ts-v7"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/packages/playground"
+    schedule:
+      interval: "weekly"
   - package-ecosystem: "github-actions"
     directory: "/" # Typically GitHub Actions workflows are located in .github/workflows
     schedule:
