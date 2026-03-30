@@ -5,6 +5,7 @@ export default defineConfig({
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,jsx,ts,tsx}'],
     globals: true,
+    setupFiles: ['./src/test/setup.ts'],
     testTimeout: 30000,
     coverage: {
       provider: 'istanbul',

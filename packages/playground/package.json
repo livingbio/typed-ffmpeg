@@ -12,6 +12,7 @@
     "test": "vitest run",
     "test:debug": "vitest --inspect-brk --no-file-parallelism",
     "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
     "dev:test": "vite --config vite.test.config.ts",
     "prepare": "echo 'husky managed at repo root'"
   },
@@ -29,6 +30,10 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
+    "@playwright/test": "^1.58.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/dagre": "^0.7.54",
     "@types/node": "^25.5.0",
     "@types/react": "^19.2.14",

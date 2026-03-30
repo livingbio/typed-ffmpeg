@@ -23,16 +23,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js 20
+      - name: Set up Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install and build ts-core
         working-directory: packages/ts-core
         run: |
           npm install
           npx tsc
+          npx tsc --project tsconfig.browser.json
 
       - name: Install playground dependencies
         working-directory: packages/playground
@@ -45,6 +46,21 @@ jobs:
       - name: Run tests with coverage
         working-directory: packages/playground
         run: npm run test:coverage
+
+      - name: Install Playwright browsers
+        working-directory: packages/playground
+        run: npx playwright install --with-deps chromium
+
+      - name: Run E2E tests
+        working-directory: packages/playground
+        run: npm run test:e2e
+
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: packages/playground/playwright-report
 
       - name: Fix lcov paths for monorepo
         run: sed -i 's|SF:src/|SF:packages/playground/src/|g' packages/playground/coverage/lcov.info

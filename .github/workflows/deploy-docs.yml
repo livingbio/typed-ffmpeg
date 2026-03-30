@@ -18,21 +18,56 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
+
+      # ── Python / docs ────────────────────────────────────────────────────────
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: '3.x'
+
       - name: Install uv
         run: pip install uv
+
       - name: Create virtual environment
         run: uv venv
-      - name: Install dependencies
+
+      - name: Install Python dependencies
         run: |
           source .venv/bin/activate
           uv pip install --group dev
-      - name: Deploy documentation
+
+      - name: Build documentation
+        run: |
+          source .venv/bin/activate
+          mkdocs build
+
+      # ── Node / playground ────────────────────────────────────────────────────
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install and build ts-core
+        working-directory: packages/ts-core
+        run: |
+          npm install
+          npx tsc
+          npx tsc --project tsconfig.browser.json
+
+      - name: Install and build playground
+        working-directory: packages/playground
+        run: |
+          npm install
+          npm run build
+
+      - name: Copy playground into docs site
+        run: cp -r packages/playground/dist site/typed-ffmpeg-playground
+
+      # ── Deploy ───────────────────────────────────────────────────────────────
+      - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           source .venv/bin/activate
-          mkdocs gh-deploy --force
+          pip install ghp-import
+          ghp-import -n -p -f site
