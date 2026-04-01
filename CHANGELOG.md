@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.0a2] - 2026-04-01
+
+### Added
+
+- **`parse()` in Python and TypeScript** — parse an FFmpeg CLI command string back into a typed filter graph (`ffmpeg -i in.mp4 -vf scale=1280:720 out.mp4` → DAG)
+- **TypeScript `parse()`** in `@typed-ffmpeg/core` supporting `-i`, `-vf`, `-af`, `-filter_complex`, `-map`, global/output options, and pre-input options (`-ss`, `-t`)
+- **Python `parse()`** parity across `typed-ffmpeg-v5`..`v8` and `ffmpeg-core`
+- **Playground parse UI** — paste an FFmpeg command into the sidebar to import it as a visual graph
+- **TypeScript playground** (`packages/playground`) with Vite + React + ReactFlow
+
+### Fixed
+
+- Python `parse()`: pre-input options (`-ss`, `-t`) were silently dropped
+- Python `parse()`: O(n²) `-map` injection loop replaced with O(n) pass
+- TypeScript browser bundle: `parse()` was missing from `index.browser.ts`
+
+### Changed
+
+- Playground E2E tests now use `vite preview` (pre-built static files) in CI for fast, reliable test runs
+
 ## [1.0.0a1] - 2026-03-25
 
 Major rewrite: monorepo architecture with multi-version FFmpeg support.
