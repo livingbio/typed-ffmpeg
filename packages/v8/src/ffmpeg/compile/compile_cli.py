@@ -329,9 +329,17 @@ def parse_input(
     return {str(idx): stream for idx, stream in enumerate(output)}
 
 
+_UNESCAPED_EQ = re.compile(r"(?<!\\)=")
+_SEP_PATTERNS: dict[str, re.Pattern[str]] = {}
+
+
 def _split_unescaped(text: str, sep: str) -> list[str]:
     """Split text on unescaped separator character."""
-    return re.split(r"(?<!\\)" + re.escape(sep), text)
+    pattern = _SEP_PATTERNS.get(sep)
+    if pattern is None:
+        pattern = re.compile(r"(?<!\\)" + re.escape(sep))
+        _SEP_PATTERNS[sep] = pattern
+    return pattern.split(text)
 
 
 def _parse_filter_params(
@@ -363,8 +371,8 @@ def _parse_filter_params(
         part = part.strip()
         if not part:
             continue
-        if re.search(r"(?<!\\)=", part):
-            key, value = re.split(r"(?<!\\)=", part, 1)
+        if _UNESCAPED_EQ.search(part):
+            key, value = _UNESCAPED_EQ.split(part, 1)
             result[key.strip()] = value.strip()
         else:
             # Positional parameter — map to option name by index
@@ -449,8 +457,8 @@ def parse_filter_complex(
                 current_output_labels = [implicit_label]
 
             # Split filter_part into name and params on first unescaped '='
-            if re.search(r"(?<!\\)=", filter_part):
-                filter_name, param_str = re.split(r"(?<!\\)=", filter_part, 1)
+            if _UNESCAPED_EQ.search(filter_part):
+                filter_name, param_str = _UNESCAPED_EQ.split(filter_part, 1)
                 filter_name = filter_name.strip()
                 param_str = param_str.strip()
             else:
@@ -609,8 +617,7 @@ def parse(cli: str) -> Stream:
     # Parse global options first
     global_params, remaining_tokens = parse_global(tokens, ffmpeg_options)
 
-    # find the index of the last -i option
-    index = len(remaining_tokens) - 1 - list(reversed(remaining_tokens)).index("-i")
+    index = len(remaining_tokens) - 1 - remaining_tokens[::-1].index("-i")
     input_streams = parse_input(remaining_tokens[: index + 2], ffmpeg_options)
     remaining_tokens = remaining_tokens[index + 2 :]
 
@@ -646,25 +653,14 @@ def parse(cli: str) -> Stream:
         combined = ";".join(filter_complex_parts)
         filterable_streams = parse_filter_complex(combined, input_streams, ffmpeg_filters)
 
-    # Inject implicit -map tokens (from -vf/-af) before each output filename
+    # Inject implicit -map tokens (from -vf/-af) before the first output filename
     if extra_map_tokens:
         new_remaining: list[str] = []
-        i = 0
-        while i < len(remaining_tokens):
-            token = remaining_tokens[i]
-            if _is_filename(token):
-                # Only inject maps before output files that have no explicit -map yet
-                # Check if there's already a -map in the buffer
-                has_map = any(
-                    new_remaining[j] == "-map"
-                    for j in range(len(new_remaining))
-                    if new_remaining[j] == "-map"
-                )
-                if not has_map:
-                    new_remaining += extra_map_tokens
-                    extra_map_tokens = []  # inject only once
+        for token in remaining_tokens:
+            if _is_filename(token) and "-map" not in new_remaining:
+                new_remaining += extra_map_tokens
+                extra_map_tokens = []
             new_remaining.append(token)
-            i += 1
         remaining_tokens = new_remaining
 
     output_streams = parse_output(

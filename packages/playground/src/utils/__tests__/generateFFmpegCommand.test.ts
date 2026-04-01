@@ -133,9 +133,6 @@ describe('parseFFmpegCommandToJson', () => {
   it('parses a simple transcode command', async () => {
     const result = await parseFFmpegCommandToJson('ffmpeg -i input.mp4 output.mp4');
     expect(result.error).toBeNull();
-    const json = JSON.parse(result.result);
-    expect(json).toBeDefined();
-    // The JSON can be loaded back into a manager
     const manager = new NodeMappingManager();
     await manager.fromJson(result.result);
     const cmd = await generateFFmpegCommand(manager);

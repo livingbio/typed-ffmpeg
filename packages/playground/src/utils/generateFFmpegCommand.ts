@@ -79,8 +79,8 @@ export async function generateFFmpegPythonCode(
 
 // ─── Parse helpers ────────────────────────────────────────────────────────────
 
-/** Build a Map<name, CoreFFMpegFilter> from playground's predefinedFilters. */
-function buildFilterMap(): Map<string, CoreFFMpegFilter> {
+/** Map of filter name → CoreFFMpegFilter, built once at module load. */
+const filterMap: Map<string, CoreFFMpegFilter> = (() => {
   const result = new Map<string, CoreFFMpegFilter>();
   for (const f of predefinedFilters) {
     result.set(f.name, {
@@ -121,16 +121,12 @@ function buildFilterMap(): Map<string, CoreFFMpegFilter> {
     });
   }
   return result;
-}
+})();
 
-/** Build a Map<name, CoreFFMpegOption> from the bundled options JSON. */
-function buildOptionMap(): Map<string, CoreFFMpegOption> {
-  const result = new Map<string, CoreFFMpegOption>();
-  for (const o of optionsData as CoreFFMpegOption[]) {
-    result.set(o.name, o);
-  }
-  return result;
-}
+/** Map of option name → CoreFFMpegOption, built once at module load. */
+const optionMap: Map<string, CoreFFMpegOption> = new Map(
+  (optionsData as CoreFFMpegOption[]).map(o => [o.name, o]),
+);
 
 /**
  * Convert a ts-core Stream DAG to the playground's serialized JSON format.
@@ -218,8 +214,6 @@ export async function parseFFmpegCommandToJson(
   cmd: string,
 ): Promise<CommandResult> {
   try {
-    const filterMap = buildFilterMap();
-    const optionMap = buildOptionMap();
     const coreStream = coreParse(cmd, filterMap, optionMap);
     const json = coreStreamToPlaygroundJson(coreStream);
     return { result: json, error: null };

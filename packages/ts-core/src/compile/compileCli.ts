@@ -663,34 +663,27 @@ export function parse(
 
   const [globalParams, remaining] = parseGlobal(tokens, ffmpegOptions);
 
-  // Find last -i to split input/output tokens
-  const lastIIdx =
-    remaining.length - 1 - [...remaining].reverse().indexOf("-i");
+  const lastIIdx = remaining.lastIndexOf("-i");
   const inputStreams = parseInputTokens(remaining.slice(0, lastIIdx + 2), ffmpegOptions);
   let outputTokens = remaining.slice(lastIIdx + 2);
 
   const filterComplexParts: string[] = [];
   const extraMapTokens: string[] = [];
 
-  // -vf → inject as filter_complex chain
-  while (outputTokens.includes("-vf")) {
-    const idx = outputTokens.indexOf("-vf");
-    const vfValue = outputTokens[idx + 1];
-    const label = `_vf_out_${filterComplexParts.length}`;
-    filterComplexParts.push(`[0:v]${vfValue}[${label}]`);
-    extraMapTokens.push("-map", `[${label}]`);
-    outputTokens = [...outputTokens.slice(0, idx), ...outputTokens.slice(idx + 2)];
+  /** Drain all occurrences of a simple filter flag (-vf or -af) into filter_complex. */
+  function drainSimpleFilterFlag(flag: string, streamRef: string, tokens: string[]): string[] {
+    let idx: number;
+    while ((idx = tokens.indexOf(flag)) >= 0) {
+      const label = `_${flag.slice(1)}_out_${filterComplexParts.length}`;
+      filterComplexParts.push(`[${streamRef}]${tokens[idx + 1]}[${label}]`);
+      extraMapTokens.push("-map", `[${label}]`);
+      tokens = [...tokens.slice(0, idx), ...tokens.slice(idx + 2)];
+    }
+    return tokens;
   }
 
-  // -af → inject as filter_complex chain
-  while (outputTokens.includes("-af")) {
-    const idx = outputTokens.indexOf("-af");
-    const afValue = outputTokens[idx + 1];
-    const label = `_af_out_${filterComplexParts.length}`;
-    filterComplexParts.push(`[0:a]${afValue}[${label}]`);
-    extraMapTokens.push("-map", `[${label}]`);
-    outputTokens = [...outputTokens.slice(0, idx), ...outputTokens.slice(idx + 2)];
-  }
+  outputTokens = drainSimpleFilterFlag("-vf", "0:v", outputTokens);
+  outputTokens = drainSimpleFilterFlag("-af", "0:a", outputTokens);
 
   // -filter_complex
   const fcIdx = outputTokens.indexOf("-filter_complex");
