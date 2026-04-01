@@ -75,6 +75,30 @@ def test_get_args_custom_filter(snapshot: SnapshotAssertion) -> None:
             "ffmpeg -i input.mov -map 0:s output.mp4",
             id="stream_selector_with_subtitle",
         ),
+        pytest.param(
+            "ffmpeg -i input.mp4 -vf scale=1280:720 output.mp4",
+            id="vf_named_params",
+        ),
+        pytest.param(
+            "ffmpeg -i input.mp4 -vf scale=1280:720 output.mp4",
+            id="vf_positional_params",
+        ),
+        pytest.param(
+            "ffmpeg -i input.mp4 -vf scale=1280:720,fps=30 output.mp4",
+            id="vf_comma_chain",
+        ),
+        pytest.param(
+            "ffmpeg -i input.mp4 -af aresample=44100 output.mp3",
+            id="af_audio_filter",
+        ),
+        pytest.param(
+            "ffmpeg -i a.mp4 -i b.mp4 -filter_complex [0:v][1:v]overlay=10:20[v] -map [v] out.mp4",
+            id="filter_complex_positional_params",
+        ),
+        pytest.param(
+            "ffmpeg -ss 10 -t 5 -i input.mp4 output.mp4",
+            id="input_options_ss_t",
+        ),
     ],
 )
 def test_parse_ffmpeg_commands(snapshot: SnapshotAssertion, command: str) -> None:
