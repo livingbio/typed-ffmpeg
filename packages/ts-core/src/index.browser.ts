@@ -60,5 +60,5 @@ export { isDAG } from "./dag/utils.js";
 
 // Compile
 export { DAGContext } from "./compile/context.js";
-export { compile, compileAsList, getStreamLabel, getArgs } from "./compile/compileCli.js";
+export { compile, compileAsList, getStreamLabel, getArgs, parse } from "./compile/compileCli.js";
 export { validate, fixGraph, removeSplit, addSplit } from "./compile/validate.js";
