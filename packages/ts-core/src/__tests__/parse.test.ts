@@ -245,4 +245,145 @@ describe("parse()", () => {
     const compiled2 = compile(reparsed);
     expect(compiled1).toBe(compiled2);
   });
+
+  it("audio stream selector [0:a]", () => {
+    const stream = parse(
+      "ffmpeg -i input.mp4 -filter_complex [0:a]aresample=44100[a] -map [a] out.mp3",
+      filtersMap,
+      optionsMap,
+    );
+    const compiled = compile(stream);
+    expect(compiled).toContain("aresample");
+    expect(compiled).toContain("44100");
+  });
+
+  it("split filter with two outputs", () => {
+    const stream = parse(
+      "ffmpeg -i input.mp4 -filter_complex [0:v]split[a][b];[a]hflip[c] -map [c] -map [b] out.mp4",
+      filtersMap,
+      optionsMap,
+    );
+    const compiled = compile(stream);
+    expect(compiled).toContain("split");
+    expect(compiled).toContain("hflip");
+  });
+
+  it("amix with two audio inputs", () => {
+    const stream = parse(
+      "ffmpeg -i a.mp4 -i b.mp4 -filter_complex [0:a][1:a]amix[out] -map [out] out.mp3",
+      filtersMap,
+      optionsMap,
+    );
+    const compiled = compile(stream);
+    expect(compiled).toContain("amix");
+    expect(compiled).toContain("a.mp4");
+    expect(compiled).toContain("b.mp4");
+  });
+
+  it("multiple filter chains separated by semicolons", () => {
+    const stream = parse(
+      "ffmpeg -i a.mp4 -i b.mp4 -filter_complex [0:v]scale=640:480[vs];[1:v]hflip[vf];[vs][vf]overlay[v] -map [v] out.mp4",
+      filtersMap,
+      optionsMap,
+    );
+    const compiled = compile(stream);
+    expect(compiled).toContain("scale");
+    expect(compiled).toContain("hflip");
+    expect(compiled).toContain("overlay");
+  });
+
+  it("multiple output files produces GlobalNode", () => {
+    const stream = parse(
+      "ffmpeg -i input.mp4 -map 0 out1.mp4 -map 0 out2.mp4",
+      filtersMap,
+      optionsMap,
+    );
+    // Should resolve to a GlobalNode wrapping two outputs
+    expect(stream.node).toBeInstanceOf(GlobalNode);
+    const compiled = compile(stream);
+    expect(compiled).toContain("out1.mp4");
+    expect(compiled).toContain("out2.mp4");
+  });
+
+  it("quoted filename with spaces", () => {
+    const stream = parse(
+      "ffmpeg -i 'my file.mp4' output.mp4",
+      filtersMap,
+      optionsMap,
+    );
+    const compiled = compile(stream);
+    expect(compiled).toContain("my file.mp4");
+  });
+
+  it("output codec and bitrate options (-c:a aac -b:v 1M)", () => {
+    const stream = parse(
+      "ffmpeg -i input.mp4 -c:v libx264 -c:a aac -b:v 1M output.mp4",
+      filtersMap,
+      optionsMap,
+    );
+    const compiled = compile(stream);
+    expect(compiled).toContain("-c:v");
+    expect(compiled).toContain("libx264");
+    expect(compiled).toContain("-c:a");
+    expect(compiled).toContain("aac");
+    expect(compiled).toContain("-b:v");
+    expect(compiled).toContain("1M");
+  });
+
+  it("-loglevel global string option", () => {
+    const stream = parse(
+      "ffmpeg -loglevel quiet -i input.mp4 output.mp4",
+      filtersMap,
+      optionsMap,
+    );
+    const compiled = compile(stream);
+    expect(compiled).toContain("-loglevel");
+    expect(compiled).toContain("quiet");
+  });
+
+  it("DAG: InputNode filename and OutputNode filename", () => {
+    const stream = parse("ffmpeg -i myfile.mkv result.avi", filtersMap, optionsMap);
+    // Traverse to find InputNode
+    const outputNode = stream.node as OutputNode;
+    expect(outputNode).toBeInstanceOf(OutputNode);
+    expect(outputNode.filename).toBe("result.avi");
+    const inputStream = outputNode.inputs[0];
+    const inputNode = inputStream.node as InputNode;
+    expect(inputNode).toBeInstanceOf(InputNode);
+    expect(inputNode.filename).toBe("myfile.mkv");
+  });
+
+  it("DAG: FilterNode present after -vf", () => {
+    const stream = parse(
+      "ffmpeg -i input.mp4 -vf hflip output.mp4",
+      filtersMap,
+      optionsMap,
+    );
+    const outputNode = stream.node as OutputNode;
+    const filterStream = outputNode.inputs[0];
+    expect(filterStream.node).toBeInstanceOf(FilterNode);
+    expect((filterStream.node as FilterNode).name).toBe("hflip");
+  });
+
+  it("-vf with only filter name and no params", () => {
+    const stream = parse(
+      "ffmpeg -i input.mp4 -vf hflip output.mp4",
+      filtersMap,
+      optionsMap,
+    );
+    const compiled = compile(stream);
+    expect(compiled).toContain("hflip");
+  });
+
+  it("filter_complex positional params", () => {
+    const stream = parse(
+      "ffmpeg -i input.mp4 -filter_complex [0:v]scale=1920:1080[v] -map [v] out.mp4",
+      filtersMap,
+      optionsMap,
+    );
+    const compiled = compile(stream);
+    expect(compiled).toContain("scale");
+    expect(compiled).toMatch(/1920/);
+    expect(compiled).toMatch(/1080/);
+  });
 });
