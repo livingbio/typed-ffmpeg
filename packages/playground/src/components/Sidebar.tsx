@@ -242,6 +242,7 @@ export default function Sidebar({
           </Typography>
           <Box sx={{ display: 'flex', gap: 1, mt: 0.5 }}>
             <Box
+              data-testid="io-add-input"
               draggable
               onDragStart={(e) => handleDragStart(e, 'input')}
               onClick={() => onAddFilter('input')}
@@ -270,6 +271,7 @@ export default function Sidebar({
               </Typography>
             </Box>
             <Box
+              data-testid="io-add-output"
               draggable
               onDragStart={(e) => handleDragStart(e, 'output')}
               onClick={() => onAddFilter('output')}
