@@ -102,7 +102,8 @@ def parse_options(tokens: list[str]) -> dict[str, list[str | None | bool]]:
     parsed_options: dict[str, list[str | None | bool]] = defaultdict(list)
 
     while tokens:
-        assert tokens[0][0] == "-", f"Expected option, got {tokens[0]}"
+        if not tokens[0].startswith("-"):
+            raise FFMpegValueError(f"Expected option, got {tokens[0]!r}")
         if len(tokens) == 1 or tokens[1][0] == "-":
             if tokens[0].startswith("-no"):
                 # Handle boolean options with -no prefix
@@ -153,7 +154,8 @@ def parse_stream_selector(
     else:
         stream_label = selector
 
-    assert stream_label in mapping, f"Unknown stream label: {stream_label}"
+    if stream_label not in mapping:
+        raise FFMpegValueError(f"Unknown stream label: {stream_label}")
     stream = mapping[stream_label]
 
     if isinstance(stream, AVStream):
@@ -186,17 +188,28 @@ def parse_stream_selector(
 
 def _is_filename(token: str) -> bool:
     """
-    Check if a token is a filename.
+    Check if a token represents a filename or URL (not an option flag).
 
     Args:
         token: The token to check
 
     Returns:
-        True if the token is a filename, False otherwise
+        True if the token looks like a file path, URL, or special device
 
     """
-    # not start with - and has ext
-    return not token.startswith("-") and len(token.split(".")) > 1
+    if token.startswith("-"):
+        return False
+    # Protocol URLs (rtmp://, http://, pipe:, etc.)
+    if re.match(r"^\w+://", token):
+        return True
+    # FFmpeg pipe protocol
+    if re.match(r"^pipe:\d*$", token):
+        return True
+    # Standard special files and stdout shorthand
+    if token in ("/dev/null", "/dev/stdin", "/dev/stdout", "/dev/stderr", "-"):
+        return True
+    # Files with an extension (original heuristic)
+    return "." in token
 
 
 def parse_output(
@@ -317,6 +330,53 @@ def parse_input(
     return {str(idx): stream for idx, stream in enumerate(output)}
 
 
+def _split_unescaped(text: str, sep: str) -> list[str]:
+    """Split text on unescaped separator character."""
+    return re.split(r"(?<!\\)" + re.escape(sep), text)
+
+
+def _parse_filter_params(
+    param_str: str,
+    filter_options: list,
+) -> dict[str, str]:
+    """
+    Parse filter params string into a dict.
+
+    Supports both named params (key=value) and positional params
+    (value mapped by index to option names).
+
+    Args:
+        param_str: The parameter string (e.g. "1280:720" or "w=1280:h=720")
+        filter_options: List of filter options in order (for positional mapping)
+
+    Returns:
+        Dictionary of parameter names to their string values
+
+    """
+    if not param_str:
+        return {}
+
+    result: dict[str, str] = {}
+    parts = _split_unescaped(param_str, ":")
+    positional_idx = 0
+
+    for part in parts:
+        part = part.strip()
+        if not part:
+            continue
+        if re.search(r"(?<!\\)=", part):
+            key, value = re.split(r"(?<!\\)=", part, 1)
+            result[key.strip()] = value.strip()
+        else:
+            # Positional parameter — map to option name by index
+            if positional_idx < len(filter_options):
+                option_name = filter_options[positional_idx].name
+                result[option_name] = part
+            positional_idx += 1
+
+    return result
+
+
 def parse_filter_complex(
     filter_complex: str,
     stream_mapping: dict[str, FilterableStream],
@@ -325,12 +385,16 @@ def parse_filter_complex(
     """
     Parse an FFmpeg filter_complex string into a stream mapping.
 
-    This function processes a filter_complex string (e.g. "[0:v]scale=1280:720[v0]")
-    and converts it into a mapping of stream labels to their corresponding
-    FilterableStream objects. It handles:
+    This function processes a filter_complex string and converts it into a
+    mapping of stream labels to their corresponding FilterableStream objects.
+
+    Handles:
     - Input stream references (e.g. [0:v])
-    - Filter definitions with parameters
+    - Filter definitions with named params (key=value)
+    - Filter definitions with positional params (e.g. scale=1280:720)
+    - Filter chaining with comma (e.g. scale=1280:720,fps=30)
     - Output stream labels (e.g. [v0])
+    - Unknown filters (fallback with inferred typings)
 
     Args:
         filter_complex: The filter_complex string to parse
@@ -341,82 +405,128 @@ def parse_filter_complex(
         Updated stream mapping with new filter outputs added
 
     Raises:
-        FFMpegValueError: If the stream type is unknown
+        FFMpegValueError: If the stream type is unknown or filter unit is invalid
 
     """
-    # Use re.split with negative lookbehind to handle escaped semicolons
-    filter_units = re.split(r"(?<!\\);", filter_complex)
+    filter_chains = _split_unescaped(filter_complex, ";")
+    chain_counter = 0
 
-    for filter_unit in filter_units:
-        pattern = re.compile(
-            r"""
-            (?P<inputs>(\[[^\[\]]+\])*)          # inputs: zero or more [label]
-            (?P<filter>[a-zA-Z0-9_]+)            # filter name
-            (=?(?P<params>[^[]+?))?              # optional =params (until next [ or end)
-            (?P<outputs>(\[[^\[\]]+\])*)$        # outputs: zero or more [label] at end
-            """,
-            re.VERBOSE,
+    for filter_chain in filter_chains:
+        filter_chain = filter_chain.strip()
+        if not filter_chain:
+            continue
+
+        # Extract leading [label] groups (input labels for this chain)
+        leading_match = re.match(r"^(?P<inputs>(\[[^\[\]]+\])*)", filter_chain)
+        chain_input_labels = re.findall(
+            r"\[([^\[\]]+)\]", leading_match.group("inputs") or ""
         )
+        rest = filter_chain[len(leading_match.group(0)):]
 
-        match = pattern.match(filter_unit)
-        assert match, f"Invalid filter unit: {filter_unit}"
-
-        def extract_labels(label_str: str) -> list[str]:
-            return re.findall(r"\[([^\[\]]+)\]", label_str)
-
-        input_labels = extract_labels(match.group("inputs") or "")
-        output_labels = extract_labels(match.group("outputs") or "")
-        filter_name = match.group("filter")
-        param_str = match.group("params")
-
-        # Parse filter parameters into key-value pairs
-        filter_params = {}
-        param_str = param_str and param_str.strip()
-        if param_str:
-            param_parts = re.split(r"(?<!\\):", param_str)
-            for part in param_parts:
-                if "=" in part:
-                    key, value = re.split(r"(?<!\\)=", part, 1)
-                    filter_params[key.strip()] = value.strip()
-
-        assert isinstance(filter_name, str), f"Expected filter name, got {filter_name}"
-        ffmpeg_filter = ffmpeg_filters[filter_name]
-        filter_def = FFMpegFilterDef(
-            name=ffmpeg_filter.name,
-            typings_input=ffmpeg_filter.formula_typings_input
-            or tuple(k.type.value for k in ffmpeg_filter.stream_typings_input),
-            typings_output=ffmpeg_filter.formula_typings_output
-            or tuple(k.type.value for k in ffmpeg_filter.stream_typings_output),
+        # Extract trailing [label] groups (output labels for this chain)
+        trailing_match = re.search(r"(?P<outputs>(\[[^\[\]]+\])*)$", rest)
+        chain_output_labels = re.findall(
+            r"\[([^\[\]]+)\]", trailing_match.group("outputs") or ""
         )
-        input_streams = [
-            parse_stream_selector(label, stream_mapping) for label in input_labels
-        ]
+        filters_str = rest[: len(rest) - len(trailing_match.group(0))].strip()
 
-        # Create the filter node with default options and parsed parameters
-        filter_node = filter_node_factory(
-            filter_def,
-            *input_streams,
-            **(
-                {k.name: Default(k.default) for k in ffmpeg_filter.options}
-                | filter_params
-            ),
-        )
+        # Split filter chain by unescaped comma (sequential filter chaining)
+        filter_parts = _split_unescaped(filters_str, ",")
 
-        # Map output streams to their labels
-        for idx, (output_label, output_typing) in enumerate(
-            zip(output_labels, filter_node.output_typings)
-        ):
-            match output_typing:
-                case StreamType.video:
-                    stream_mapping[output_label] = VideoStream(
-                        node=filter_node, index=idx
-                    )
-                case StreamType.audio:
-                    stream_mapping[output_label] = AudioStream(
-                        node=filter_node, index=idx
-                    )
-                case _:
-                    raise FFMpegValueError(f"Unknown stream type: {output_typing}")
+        current_input_labels = chain_input_labels
+
+        for i, filter_part in enumerate(filter_parts):
+            filter_part = filter_part.strip()
+            if not filter_part:
+                continue
+
+            is_last = i == len(filter_parts) - 1
+
+            if is_last:
+                current_output_labels = chain_output_labels
+            else:
+                implicit_label = f"_chain_{chain_counter}"
+                chain_counter += 1
+                current_output_labels = [implicit_label]
+
+            # Split filter_part into name and params on first unescaped '='
+            if re.search(r"(?<!\\)=", filter_part):
+                filter_name, param_str = re.split(r"(?<!\\)=", filter_part, 1)
+                filter_name = filter_name.strip()
+                param_str = param_str.strip()
+            else:
+                filter_name = filter_part.strip()
+                param_str = ""
+
+            if not filter_name:
+                raise FFMpegValueError(f"Empty filter name in unit: {filter_part!r}")
+
+            # Look up filter definition (with graceful fallback for unknown filters)
+            ffmpeg_filter = ffmpeg_filters.get(filter_name)
+
+            if ffmpeg_filter is not None:
+                filter_def = FFMpegFilterDef(
+                    name=ffmpeg_filter.name,
+                    typings_input=ffmpeg_filter.formula_typings_input
+                    or tuple(k.type.value for k in ffmpeg_filter.stream_typings_input),
+                    typings_output=ffmpeg_filter.formula_typings_output
+                    or tuple(k.type.value for k in ffmpeg_filter.stream_typings_output),
+                )
+                filter_options = list(ffmpeg_filter.options)
+            else:
+                # Fallback: infer typings from the input streams in the mapping
+                logger.warning(
+                    "Unknown filter %r — using fallback typings", filter_name
+                )
+                input_types: list[str] = []
+                for label in current_input_labels:
+                    stream = stream_mapping.get(label)
+                    if isinstance(stream, AudioStream):
+                        input_types.append("audio")
+                    else:
+                        input_types.append("video")
+                output_types = input_types[:1] if input_types else ["video"]
+                filter_def = FFMpegFilterDef(
+                    name=filter_name,
+                    typings_input=tuple(input_types),
+                    typings_output=tuple(output_types),
+                )
+                filter_options = []
+
+            filter_params = _parse_filter_params(param_str, filter_options)
+
+            input_streams = [
+                parse_stream_selector(label, stream_mapping)
+                for label in current_input_labels
+            ]
+
+            default_kwargs: dict[str, object] = {}
+            if ffmpeg_filter:
+                default_kwargs = {
+                    k.name: Default(k.default) for k in ffmpeg_filter.options
+                }
+            default_kwargs.update(filter_params)
+
+            filter_node = filter_node_factory(filter_def, *input_streams, **default_kwargs)
+
+            for idx, (output_label, output_typing) in enumerate(
+                zip(current_output_labels, filter_node.output_typings)
+            ):
+                match output_typing:
+                    case StreamType.video:
+                        stream_mapping[output_label] = VideoStream(
+                            node=filter_node, index=idx
+                        )
+                    case StreamType.audio:
+                        stream_mapping[output_label] = AudioStream(
+                            node=filter_node, index=idx
+                        )
+                    case _:
+                        raise FFMpegValueError(
+                            f"Unknown stream type: {output_typing}"
+                        )
+
+            current_input_labels = current_output_labels
 
     return stream_mapping
 
@@ -471,6 +581,7 @@ def parse(cli: str) -> Stream:
     - Global options
     - Input files and their options
     - Filter complex
+    - Simple video/audio filter chains (-vf / -af)
     - Output files and their options
 
     Args:
@@ -484,6 +595,7 @@ def parse(cli: str) -> Stream:
         stream = parse(
             "ffmpeg -i input.mp4 -filter_complex '[0:v]scale=1280:720[v]' -map '[v]' output.mp4"
         )
+        stream = parse("ffmpeg -i input.mp4 -vf scale=1280:720 output.mp4")
         ```
 
     """
@@ -503,15 +615,58 @@ def parse(cli: str) -> Stream:
     input_streams = parse_input(remaining_tokens[: index + 2], ffmpeg_options)
     remaining_tokens = remaining_tokens[index + 2 :]
 
+    filter_complex_parts: list[str] = []
+    extra_map_tokens: list[str] = []
+
+    # Handle -vf (simple video filter chain)
+    while "-vf" in remaining_tokens:
+        idx = remaining_tokens.index("-vf")
+        vf_value = remaining_tokens[idx + 1]
+        label = f"_vf_out_{len(filter_complex_parts)}"
+        filter_complex_parts.append(f"[0:v]{vf_value}[{label}]")
+        extra_map_tokens += ["-map", f"[{label}]"]
+        remaining_tokens = remaining_tokens[:idx] + remaining_tokens[idx + 2 :]
+
+    # Handle -af (simple audio filter chain)
+    while "-af" in remaining_tokens:
+        idx = remaining_tokens.index("-af")
+        af_value = remaining_tokens[idx + 1]
+        label = f"_af_out_{len(filter_complex_parts)}"
+        filter_complex_parts.append(f"[0:a]{af_value}[{label}]")
+        extra_map_tokens += ["-map", f"[{label}]"]
+        remaining_tokens = remaining_tokens[:idx] + remaining_tokens[idx + 2 :]
+
+    # Handle -filter_complex
     if "-filter_complex" in remaining_tokens:
         index = remaining_tokens.index("-filter_complex")
-        filter_complex = remaining_tokens[index + 1]
-        filterable_streams = parse_filter_complex(
-            filter_complex, input_streams, ffmpeg_filters
-        )
+        filter_complex_parts.append(remaining_tokens[index + 1])
         remaining_tokens = remaining_tokens[index + 2 :]
-    else:
-        filterable_streams = {}
+
+    filterable_streams: dict[str, FilterableStream] = {}
+    if filter_complex_parts:
+        combined = ";".join(filter_complex_parts)
+        filterable_streams = parse_filter_complex(combined, input_streams, ffmpeg_filters)
+
+    # Inject implicit -map tokens (from -vf/-af) before each output filename
+    if extra_map_tokens:
+        new_remaining: list[str] = []
+        i = 0
+        while i < len(remaining_tokens):
+            token = remaining_tokens[i]
+            if _is_filename(token):
+                # Only inject maps before output files that have no explicit -map yet
+                # Check if there's already a -map in the buffer
+                has_map = any(
+                    new_remaining[j] == "-map"
+                    for j in range(len(new_remaining))
+                    if new_remaining[j] == "-map"
+                )
+                if not has_map:
+                    new_remaining += extra_map_tokens
+                    extra_map_tokens = []  # inject only once
+            new_remaining.append(token)
+            i += 1
+        remaining_tokens = new_remaining
 
     output_streams = parse_output(
         remaining_tokens,

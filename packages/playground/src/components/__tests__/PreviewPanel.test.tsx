@@ -47,7 +47,7 @@ describe('PreviewPanel', () => {
       await vi.advanceTimersByTimeAsync(800);
     });
 
-    expect(screen.getByText(/Generating FFmpeg command/)).toBeInTheDocument();
+    expect(screen.getByText(/Generating command/)).toBeInTheDocument();
     // Clean up the hanging promise
     resolve!({ result: '', error: null });
   });
@@ -81,9 +81,7 @@ describe('PreviewPanel', () => {
       await vi.advanceTimersByTimeAsync(800);
     });
 
-    expect(
-      screen.getByText(/Error generating FFmpeg command/),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/Error:/)).toBeInTheDocument();
     expect(
       screen.getByText(/No output connected to global/),
     ).toBeInTheDocument();
