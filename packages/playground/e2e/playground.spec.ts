@@ -10,8 +10,8 @@ test.describe('Playground', () => {
     await expect(page.getByText('FFmpeg Flow Editor').first()).toBeVisible();
     // I/O node section
     await expect(page.getByText('I/O Nodes')).toBeVisible();
-    await expect(page.getByText('Input Node')).toBeVisible();
-    await expect(page.getByText('Output Node')).toBeVisible();
+    await expect(page.getByText('Input')).toBeVisible();
+    await expect(page.getByText('Output')).toBeVisible();
     // Filter search
     await expect(page.getByPlaceholder('Search filters...')).toBeVisible();
   });
@@ -28,7 +28,7 @@ test.describe('Playground', () => {
     // Count initial nodes (expect 1: the global node)
     const initialNodes = await page.locator('.react-flow__node').count();
 
-    await page.getByText('Input Node').click();
+    await page.getByText('Input').click();
 
     // A new node should appear
     await expect(page.locator('.react-flow__node')).toHaveCount(initialNodes + 1);
@@ -37,7 +37,7 @@ test.describe('Playground', () => {
   test('clicking Output Node adds a node to the canvas', async ({ page }) => {
     const initialNodes = await page.locator('.react-flow__node').count();
 
-    await page.getByText('Output Node').click();
+    await page.getByText('Output').click();
 
     await expect(page.locator('.react-flow__node')).toHaveCount(initialNodes + 1);
   });
