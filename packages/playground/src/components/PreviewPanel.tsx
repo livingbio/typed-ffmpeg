@@ -1,13 +1,9 @@
-import {
-  Paper,
-  Typography,
-  Box,
-  Button,
-  CircularProgress,
-} from '@mui/material';
+import { Paper, Typography, Box, Button, CircularProgress } from '@mui/material';
 import { NodeMappingManager, NODE_MAPPING_EVENTS } from '../utils/nodeMapping';
 import { useEffect, useState, useRef } from 'react';
 import { generateFFmpegCommand } from '../utils/generateFFmpegCommand';
+import CheckIcon from '@mui/icons-material/Check';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 interface PreviewPanelProps {
   nodeMappingManager: NodeMappingManager;
@@ -22,6 +18,7 @@ export default function PreviewPanel({
   const [ffmpegCmd, setFfmpegCmd] = useState<string>('');
   const [error, setError] = useState<string | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [copied, setCopied] = useState(false);
 
   // Debounce timer reference
   const debounceTimerRef = useRef<number | null>(null);
@@ -78,6 +75,8 @@ export default function PreviewPanel({
 
   const handleCopyFFmpeg = () => {
     navigator.clipboard.writeText(ffmpegCmd);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
   };
 
   return (
@@ -100,16 +99,24 @@ export default function PreviewPanel({
             size="small"
             onClick={handleCopyFFmpeg}
             disabled={!ffmpegCmd}
-            sx={{ fontSize: '0.75rem', py: 0.5 }}
+            color={copied ? 'success' : 'primary'}
+            startIcon={
+              copied ? (
+                <CheckIcon sx={{ fontSize: '0.85rem !important' }} />
+              ) : (
+                <ContentCopyIcon sx={{ fontSize: '0.85rem !important' }} />
+              )
+            }
+            sx={{ fontSize: '0.7rem', py: 0.25, minWidth: 72 }}
           >
-            Copy
+            {copied ? 'Copied' : 'Copy'}
           </Button>
         </Box>
         <Paper
           elevation={0}
           sx={{
             p: 1.5,
-            backgroundColor: '#f5f5f5',
+            backgroundColor: '#1e1e1e',
             borderRadius: 1,
             overflow: 'auto',
             maxHeight: '200px',
@@ -117,31 +124,33 @@ export default function PreviewPanel({
         >
           {isLoading ? (
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <CircularProgress size={14} />
-              <Typography variant="body2" sx={{ fontSize: '0.75rem' }}>
-                Generating FFmpeg command...
+              <CircularProgress size={14} sx={{ color: '#858585' }} />
+              <Typography
+                variant="body2"
+                sx={{ fontSize: '0.75rem', color: '#858585' }}
+              >
+                Generating command...
               </Typography>
             </Box>
           ) : error ? (
             <Box>
               <Typography
                 variant="body2"
-                color="error"
                 fontWeight="bold"
                 gutterBottom
-                sx={{ fontSize: '0.75rem' }}
+                sx={{ fontSize: '0.75rem', color: '#f48771' }}
               >
-                Error generating FFmpeg command:
+                Error:
               </Typography>
               <Typography
                 variant="body2"
-                color="error"
                 component="pre"
                 sx={{
                   margin: 0,
                   fontFamily: 'monospace',
                   fontSize: '0.7rem',
                   whiteSpace: 'pre-wrap',
+                  color: '#f48771',
                 }}
               >
                 {error}
@@ -154,12 +163,14 @@ export default function PreviewPanel({
                 padding: 0,
                 fontFamily: 'monospace',
                 fontSize: '0.7rem',
-                lineHeight: 1.4,
+                lineHeight: 1.6,
                 whiteSpace: 'pre-wrap',
                 wordBreak: 'break-word',
+                color: '#d4d4d4',
               }}
             >
-              {ffmpegCmd || '# Connect an input and output to generate a command'}
+              {ffmpegCmd ||
+                '# Connect an input and output to generate a command'}
             </pre>
           )}
         </Paper>

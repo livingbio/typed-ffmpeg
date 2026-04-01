@@ -1,4 +1,14 @@
-import { Box, Paper, Typography, Divider, TextField, InputAdornment, Button } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Divider,
+  TextField,
+  InputAdornment,
+  Button,
+  Tooltip,
+  IconButton,
+} from '@mui/material';
+import { Link as MuiLink } from '@mui/material';
 import { predefinedFilters } from '../types/ffmpeg';
 import { useState, useMemo } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
@@ -6,10 +16,10 @@ import InputIcon from '@mui/icons-material/Input';
 import OutputIcon from '@mui/icons-material/Output';
 import DownloadIcon from '@mui/icons-material/Download';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { Link as MuiLink } from '@mui/material';
 import UploadIcon from '@mui/icons-material/Upload';
 import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import ContentPasteIcon from '@mui/icons-material/ContentPaste';
+import CloseIcon from '@mui/icons-material/Close';
 
 import { NodeMappingManager } from '../utils/nodeMapping';
 
@@ -17,12 +27,13 @@ interface SidebarProps {
   onAddFilter: (
     filterType: string,
     parameters?: Record<string, string>,
-    position?: { x: number; y: number }
+    position?: { x: number; y: number },
   ) => void;
   nodeMappingManager: NodeMappingManager;
   onLoadJson: (jsonString: string) => Promise<void>;
   onLayout: () => void;
   onPasteCommand?: (command: string) => void;
+  onClose?: () => void;
 }
 
 export default function Sidebar({
@@ -31,18 +42,20 @@ export default function Sidebar({
   onLoadJson,
   onLayout,
   onPasteCommand,
+  onClose,
 }: SidebarProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [ffmpegCommand, setFfmpegCommand] = useState('');
 
   const filteredFilters = useMemo(() => {
-    if (!searchQuery) return [...predefinedFilters].sort((a, b) => a.name.localeCompare(b.name));
+    if (!searchQuery)
+      return [...predefinedFilters].sort((a, b) => a.name.localeCompare(b.name));
     const query = searchQuery.toLowerCase();
     return predefinedFilters
       .filter(
         (filter) =>
           filter.name.toLowerCase().includes(query) ||
-          filter.description.toLowerCase().includes(query)
+          filter.description.toLowerCase().includes(query),
       )
       .sort((a, b) => a.name.localeCompare(b.name));
   }, [searchQuery]);
@@ -66,7 +79,10 @@ export default function Sidebar({
       URL.revokeObjectURL(url);
     } catch (error) {
       console.error('Error exporting flow:', error);
-      alert('Error exporting flow: ' + (error instanceof Error ? error.message : String(error)));
+      alert(
+        'Error exporting flow: ' +
+          (error instanceof Error ? error.message : String(error)),
+      );
     }
   };
 
@@ -91,106 +107,100 @@ export default function Sidebar({
   };
 
   return (
-    <Paper
-      elevation={3}
+    <Box
       sx={{
-        position: 'fixed',
-        right: 0,
-        top: 0,
-        height: '100vh',
-        width: 350,
-        backgroundColor: '#fff',
-        zIndex: 1000,
         display: 'flex',
         flexDirection: 'column',
+        height: '100%',
+        overflow: 'hidden',
       }}
     >
+      {/* Header */}
       <Box
         sx={{
-          p: 1.5,
+          px: 2,
+          py: 1.25,
           borderBottom: 1,
           borderColor: 'divider',
-          backgroundColor: '#f5f5f5',
+          backgroundColor: '#fafafa',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
+          flexShrink: 0,
         }}
       >
-        <Typography variant="h6" sx={{ fontSize: '0.875rem' }}>
+        <Typography
+          variant="subtitle1"
+          fontWeight={600}
+          sx={{ fontSize: '0.875rem', letterSpacing: '0.01em' }}
+        >
           FFmpeg Flow Editor
         </Typography>
-        <Box sx={{ display: 'flex', gap: 0.5 }}>
-          <Button
-            variant="contained"
-            onClick={onLayout}
-            sx={{
-              mb: 1,
-              minWidth: '32px',
-              width: '32px',
-              height: '32px',
-              padding: 0,
-            }}
-          >
-            <AutoGraphIcon fontSize="small" />
-          </Button>
-          <Button
-            variant="contained"
-            onClick={handleExport}
-            sx={{
-              mb: 1,
-              minWidth: '32px',
-              width: '32px',
-              height: '32px',
-              padding: 0,
-            }}
-          >
-            <DownloadIcon fontSize="small" />
-          </Button>
-          <Button
-            variant="contained"
-            component="label"
-            sx={{
-              mb: 1,
-              minWidth: '32px',
-              width: '32px',
-              height: '32px',
-              padding: 0,
-            }}
-          >
-            <UploadIcon fontSize="small" />
-            <input type="file" hidden accept=".json" onChange={handleLoadJson} />
-          </Button>
+        <Box sx={{ display: 'flex', gap: 0.25, alignItems: 'center' }}>
+          <Tooltip title="Auto Layout" arrow>
+            <IconButton size="small" onClick={onLayout} color="primary">
+              <AutoGraphIcon fontSize="small" />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Export Flow" arrow>
+            <IconButton size="small" onClick={handleExport} color="primary">
+              <DownloadIcon fontSize="small" />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Import Flow" arrow>
+            <IconButton size="small" component="label" color="primary">
+              <UploadIcon fontSize="small" />
+              <input type="file" hidden accept=".json" onChange={handleLoadJson} />
+            </IconButton>
+          </Tooltip>
+          {onClose && (
+            <Tooltip title="Close Panel" arrow>
+              <IconButton size="small" onClick={onClose} sx={{ ml: 0.5 }}>
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
+          )}
         </Box>
       </Box>
 
+      {/* GitHub Link */}
       <Box
         sx={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          p: 1,
+          py: 0.75,
           borderBottom: 1,
           borderColor: 'divider',
-          backgroundColor: '#f0f0f0',
+          backgroundColor: '#f5f5f5',
         }}
       >
-        <GitHubIcon sx={{ fontSize: 16, mr: 0.5 }} />
+        <GitHubIcon sx={{ fontSize: 13, mr: 0.5, color: 'text.secondary' }} />
         <MuiLink
           href="https://github.com/livingbio/typed-ffmpeg"
           target="_blank"
           rel="noopener noreferrer"
           underline="hover"
-          sx={{ fontSize: '0.75rem' }}
+          sx={{ fontSize: '0.7rem', color: 'text.secondary' }}
         >
           github.com/livingbio/typed-ffmpeg
         </MuiLink>
       </Box>
 
-      <Box sx={{ p: 1.5, overflow: 'auto' }}>
+      {/* Scrollable Content */}
+      <Box sx={{ flex: 1, overflowY: 'auto', p: 1.5 }}>
         {/* Command Input Section */}
         <Box sx={{ mb: 2 }}>
-          <Typography variant="subtitle2" sx={{ fontSize: '0.75rem' }} gutterBottom>
-            FFmpeg Command
+          <Typography
+            variant="overline"
+            sx={{
+              fontSize: '0.65rem',
+              fontWeight: 700,
+              color: 'text.secondary',
+              letterSpacing: '0.08em',
+            }}
+          >
+            Parse Command
           </Typography>
           <TextField
             fullWidth
@@ -201,7 +211,7 @@ export default function Sidebar({
             placeholder="Paste FFmpeg command here..."
             variant="outlined"
             size="small"
-            sx={{ mb: 1 }}
+            sx={{ mt: 0.5, mb: 1 }}
           />
           <Button
             variant="contained"
@@ -209,6 +219,7 @@ export default function Sidebar({
             startIcon={<ContentPasteIcon />}
             fullWidth
             size="small"
+            disabled={!ffmpegCommand.trim()}
           >
             Parse Command
           </Button>
@@ -218,81 +229,91 @@ export default function Sidebar({
 
         {/* I/O Nodes Section */}
         <Box sx={{ mb: 2 }}>
-          <Typography variant="subtitle2" gutterBottom>
-            I/O Nodes
-          </Typography>
-          <Box
+          <Typography
+            variant="overline"
             sx={{
-              display: 'flex',
-              gap: 0.5,
-              mb: 1.5,
+              fontSize: '0.65rem',
+              fontWeight: 700,
+              color: 'text.secondary',
+              letterSpacing: '0.08em',
             }}
           >
-            <Paper
-              elevation={0}
+            I/O Nodes
+          </Typography>
+          <Box sx={{ display: 'flex', gap: 1, mt: 0.5 }}>
+            <Box
               draggable
               onDragStart={(e) => handleDragStart(e, 'input')}
               onClick={() => onAddFilter('input')}
               sx={{
                 p: 1,
                 cursor: 'grab',
-                border: '1px solid',
-                borderColor: 'divider',
+                border: '1px solid #4caf50',
                 borderRadius: 1,
                 flex: 1,
                 display: 'flex',
                 alignItems: 'center',
                 gap: 0.5,
-                '&:hover': {
-                  backgroundColor: '#f5f5f5',
-                },
-                '&:active': {
-                  cursor: 'grabbing',
-                },
+                backgroundColor: '#f1f8f1',
+                transition: 'background-color 0.15s',
+                '&:hover': { backgroundColor: '#e8f5e9' },
+                '&:active': { cursor: 'grabbing' },
               }}
             >
-              <InputIcon fontSize="small" />
-              <Typography variant="body2" sx={{ fontSize: '0.75rem' }} fontWeight={500}>
-                Input Node
+              <InputIcon fontSize="small" sx={{ color: '#4caf50' }} />
+              <Typography
+                variant="body2"
+                sx={{ fontSize: '0.75rem' }}
+                fontWeight={500}
+              >
+                Input
               </Typography>
-            </Paper>
-            <Paper
-              elevation={0}
+            </Box>
+            <Box
               draggable
               onDragStart={(e) => handleDragStart(e, 'output')}
               onClick={() => onAddFilter('output')}
               sx={{
                 p: 1,
                 cursor: 'grab',
-                border: '1px solid',
-                borderColor: 'divider',
+                border: '1px solid #2196f3',
                 borderRadius: 1,
                 flex: 1,
                 display: 'flex',
                 alignItems: 'center',
                 gap: 0.5,
-                '&:hover': {
-                  backgroundColor: '#f5f5f5',
-                },
-                '&:active': {
-                  cursor: 'grabbing',
-                },
+                backgroundColor: '#f0f6ff',
+                transition: 'background-color 0.15s',
+                '&:hover': { backgroundColor: '#e3f2fd' },
+                '&:active': { cursor: 'grabbing' },
               }}
             >
-              <OutputIcon fontSize="small" />
-              <Typography variant="body2" sx={{ fontSize: '0.75rem' }} fontWeight={500}>
-                Output Node
+              <OutputIcon fontSize="small" sx={{ color: '#2196f3' }} />
+              <Typography
+                variant="body2"
+                sx={{ fontSize: '0.75rem' }}
+                fontWeight={500}
+              >
+                Output
               </Typography>
-            </Paper>
+            </Box>
           </Box>
         </Box>
 
         <Divider sx={{ my: 1.5 }} />
 
         {/* Filters Section */}
-        <Box sx={{ mb: 2 }}>
-          <Typography variant="subtitle2" sx={{ fontSize: '0.75rem' }} gutterBottom>
-            Available Filters
+        <Box>
+          <Typography
+            variant="overline"
+            sx={{
+              fontSize: '0.65rem',
+              fontWeight: 700,
+              color: 'text.secondary',
+              letterSpacing: '0.08em',
+            }}
+          >
+            Filters ({filteredFilters.length})
           </Typography>
           <TextField
             fullWidth
@@ -300,7 +321,7 @@ export default function Sidebar({
             placeholder="Search filters..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            sx={{ mb: 1.5 }}
+            sx={{ mt: 0.5, mb: 1 }}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -311,47 +332,52 @@ export default function Sidebar({
           />
           <Box
             sx={{
-              // maxHeight: '180px',
-              overflow: 'auto',
               border: '1px solid',
               borderColor: 'divider',
               borderRadius: 1,
+              overflow: 'hidden',
             }}
           >
             {filteredFilters.map((filter) => (
-              <Paper
+              <Box
                 key={filter.name}
-                elevation={0}
                 draggable
                 onDragStart={(e) => handleDragStart(e, filter.name)}
                 onClick={() => onAddFilter(filter.name)}
                 sx={{
-                  p: 1,
+                  px: 1.5,
+                  py: 0.75,
                   cursor: 'grab',
                   borderBottom: '1px solid',
                   borderColor: 'divider',
-                  '&:last-child': {
-                    borderBottom: 'none',
-                  },
-                  '&:hover': {
-                    backgroundColor: '#f5f5f5',
-                  },
-                  '&:active': {
-                    cursor: 'grabbing',
-                  },
+                  '&:last-child': { borderBottom: 'none' },
+                  transition: 'background-color 0.15s',
+                  '&:hover': { backgroundColor: 'action.hover' },
+                  '&:active': { cursor: 'grabbing' },
                 }}
               >
-                <Typography variant="body2" sx={{ fontSize: '0.75rem' }} fontWeight={500}>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: '0.75rem',
+                    fontWeight: 600,
+                    fontFamily: 'monospace',
+                  }}
+                >
                   {filter.name}
                 </Typography>
-                <Typography variant="caption" sx={{ fontSize: '0.7rem' }} color="text.secondary">
+                <Typography
+                  variant="caption"
+                  sx={{ fontSize: '0.68rem' }}
+                  color="text.secondary"
+                >
                   {filter.description}
                 </Typography>
-              </Paper>
+              </Box>
             ))}
           </Box>
         </Box>
       </Box>
-    </Paper>
+    </Box>
   );
 }
