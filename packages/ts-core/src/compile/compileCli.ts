@@ -412,8 +412,10 @@ function parseGlobal(
   ffmpegOptions: Map<string, FFMpegOption>,
 ): [Record<string, string | boolean>, string[]] {
   const firstI = tokens.indexOf("-i");
+  // Only scan tokens before the first -i for global options; pass all tokens
+  // through as remaining so that pre-input options (e.g. -ss, -t) are
+  // picked up by parseInputTokens.
   const globalTokens = firstI >= 0 ? tokens.slice(0, firstI) : [];
-  const remaining = firstI >= 0 ? tokens.slice(firstI) : tokens;
   const opts = parseOptions(globalTokens);
   const params: Record<string, string | boolean> = {};
   for (const [key, values] of Object.entries(opts)) {
@@ -423,7 +425,7 @@ function parseGlobal(
       params[key] = v === null ? true : v === false ? false : (v as string);
     }
   }
-  return [params, remaining];
+  return [params, tokens];
 }
 
 /** Parse all -i input specifications. */
