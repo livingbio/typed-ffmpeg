@@ -623,6 +623,9 @@ def generate_all_ts() -> None:
     TypeScript packages for each. No ffmpeg binary is required since
     all data is loaded from cache.
 
+    Raises:
+        Exit: If no cached filter data is found.
+
     """
     from ffmpeg_core.common.cache import get_cache_path
 
@@ -632,7 +635,9 @@ def generate_all_ts() -> None:
     # Walk up from this file to find the repo root (directory containing pyproject.toml)
     repo_root = Path(__file__).resolve().parent
     while repo_root != repo_root.parent:
-        if (repo_root / "pyproject.toml").exists() and (repo_root / "packages").exists():
+        if (repo_root / "pyproject.toml").exists() and (
+            repo_root / "packages"
+        ).exists():
             break
         repo_root = repo_root.parent
 
@@ -647,7 +652,9 @@ def generate_all_ts() -> None:
             available[major] = version_str
 
     if not available:
-        logging.error("No cached filter data found. Run generate-ts with an ffmpeg binary first.")
+        logging.error(
+            "No cached filter data found. Run generate-ts with an ffmpeg binary first."
+        )
         raise typer.Exit(1)
 
     # Build cross-version metadata once
@@ -665,7 +672,9 @@ def generate_all_ts() -> None:
             ffmpeg_options = _normalize_option_flags(ffmpeg_options)
             ffmpeg_codecs = load(list[FFMpegCodec], f"codecs_{version_key}")
             ffmpeg_muxers = load(list[FFMpegFormat], f"formats_{version_key}")
-            ffmpeg_av_option_set = load(list[FFMpegAVOption], f"av_option_sets_{version_key}")
+            ffmpeg_av_option_set = load(
+                list[FFMpegAVOption], f"av_option_sets_{version_key}"
+            )
         except Exception as e:
             logging.warning(f"Skipping version {version_str}: incomplete cache ({e})")
             continue
@@ -683,7 +692,9 @@ def generate_all_ts() -> None:
 
         logging.info(f"TypeScript bindings for v{major} generated at {outpath}")
 
-    logging.info(f"Generated TypeScript bindings for versions: {', '.join(sorted(available.keys()))}")
+    logging.info(
+        f"Generated TypeScript bindings for versions: {', '.join(sorted(available.keys()))}"
+    )
 
 
 @app.command()
