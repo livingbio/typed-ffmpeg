@@ -356,13 +356,48 @@ uv lock --upgrade-package <package-name>
 
 ### Releasing a New Version
 
-Maintainers only:
+Maintainers only. The monorepo publishes **11 packages** to PyPI in dependency order:
 
-1. Update version in `pyproject.toml`
-2. Update CHANGELOG.md
-3. Create git tag: `git tag v0.x.x`
-4. Push tag: `git push origin v0.x.x`
-5. GitHub Actions will publish to PyPI
+| Layer | Packages |
+|-------|----------|
+| Core | `ffmpeg-core` |
+| Data | `ffmpeg-data-v5`, `ffmpeg-data-v6`, `ffmpeg-data-v7`, `ffmpeg-data-v8` |
+| Bindings | `typed-ffmpeg-v5`, `typed-ffmpeg-v6`, `typed-ffmpeg-v7`, `typed-ffmpeg-v8` |
+| Meta | `typed-ffmpeg` (latest), `typed-ffmpeg-compatible` |
+
+#### Automated Release
+
+The release script handles all steps interactively:
+
+```bash
+python scripts/release.py           # prompts for version
+python scripts/release.py 4.0.0     # skip version prompt
+python scripts/release.py --dry-run # preview without changes
+```
+
+The script will:
+1. Bump version across all 11 packages (via `scripts/bump-version.py`)
+2. Insert a new CHANGELOG.md section and open your `$EDITOR`
+3. Commit and create a git tag
+4. Push to origin (with confirmation)
+5. Create a GitHub Release via `gh` CLI (triggers `monorepo-publish.yml`)
+
+The publish workflow builds all packages and publishes to PyPI in dependency order:
+core → data → bindings → meta. Documentation is deployed automatically via `deploy-docs.yml` on version tags.
+
+#### Manual / Partial Publish
+
+You can also trigger the publish workflow manually from the Actions tab:
+- **`package`**: select specific packages (e.g. `core`, `v8`) or `all`
+- **`test-pypi`**: publish to TestPyPI first for validation (recommended for major releases)
+
+#### Adding a New FFmpeg Version (e.g. v9)
+
+1. Add a Docker image entry to `codegen-regenerate.yml`
+2. Run codegen to generate `packages/v9` and `packages/data-v9`
+3. Add the new packages to `scripts/bump-version.py` and the publish workflow
+4. Update the `typed-ffmpeg` meta-package dependency to point to the new version
+5. Bump version and release all packages
 
 ## Getting Help
 
