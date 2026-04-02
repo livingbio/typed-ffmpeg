@@ -493,7 +493,7 @@ wheels = [
 
 [[package]]
 name = "ffmpeg-core"
-version = "1.0.0a1"
+version = "1.0.0a2"
 source = { editable = "packages/core" }
 
 [package.optional-dependencies]
@@ -521,22 +521,22 @@ provides-extras = ["dev", "graph"]
 
 [[package]]
 name = "ffmpeg-data-v5"
-version = "1.0.0a1"
+version = "1.0.0a2"
 source = { editable = "packages/data-v5" }
 
 [[package]]
 name = "ffmpeg-data-v6"
-version = "1.0.0a1"
+version = "1.0.0a2"
 source = { editable = "packages/data-v6" }
 
 [[package]]
 name = "ffmpeg-data-v7"
-version = "1.0.0a1"
+version = "1.0.0a2"
 source = { editable = "packages/data-v7" }
 
 [[package]]
 name = "ffmpeg-data-v8"
-version = "1.0.0a1"
+version = "1.0.0a2"
 source = { editable = "packages/data-v8" }
 
 [[package]]
@@ -2396,7 +2396,7 @@ wheels = [
 
 [[package]]
 name = "typed-ffmpeg"
-version = "1.0.0a1"
+version = "1.0.0a2"
 source = { editable = "packages/latest" }
 dependencies = [
     { name = "typed-ffmpeg-v8" },
@@ -2424,7 +2424,7 @@ provides-extras = ["dev", "parse"]
 
 [[package]]
 name = "typed-ffmpeg-v5"
-version = "1.0.0a1"
+version = "1.0.0a2"
 source = { editable = "packages/v5" }
 dependencies = [
     { name = "ffmpeg-core" },
@@ -2454,7 +2454,7 @@ provides-extras = ["dev", "parse"]
 
 [[package]]
 name = "typed-ffmpeg-v6"
-version = "1.0.0a1"
+version = "1.0.0a2"
 source = { editable = "packages/v6" }
 dependencies = [
     { name = "ffmpeg-core" },
@@ -2484,7 +2484,7 @@ provides-extras = ["dev", "parse"]
 
 [[package]]
 name = "typed-ffmpeg-v7"
-version = "1.0.0a1"
+version = "1.0.0a2"
 source = { editable = "packages/v7" }
 dependencies = [
     { name = "ffmpeg-core" },
@@ -2514,7 +2514,7 @@ provides-extras = ["dev", "parse"]
 
 [[package]]
 name = "typed-ffmpeg-v8"
-version = "1.0.0a1"
+version = "1.0.0a2"
 source = { editable = "packages/v8" }
 dependencies = [
     { name = "ffmpeg-core" },
