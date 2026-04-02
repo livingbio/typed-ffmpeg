@@ -24,7 +24,8 @@ import type {
 
 /**
  * Apply Affine Projection algorithm to the first audio stream using the second audio stream. This adaptive filter is used to estimate unknown audio based on multiple input audio samples. Affine projection algorithm can make trade-offs between computation complexity with convergence speed. A description of the accepted options follows.
-
+ *
+ * Note: New in FFmpeg 7.0.
  *
  * @param options.order - Set the filter order.
  * @param options.projection - Set the projection order.
@@ -932,10 +933,6 @@ return filterNode.audio(0) as unknown as AudioStream;
 
 
 
-
-
-
-
 /**
  * Blend two video frames into each other. The blend filter takes two input streams and outputs one stream, the first input is the "top" layer and second input is "bottom" layer. By default, the output terminates when the longest input terminates. The tblend (time blend) filter takes two consecutive frames from one single stream, and outputs the result obtained by blending the new frame on top of the old frame. A description of the accepted options follows.
 
@@ -1029,7 +1026,8 @@ return filterNode.video(0) as unknown as VideoStream;
 
 /**
  * Blend two Vulkan frames into each other. The blend filter takes two input streams and outputs one stream, the first input is the "top" layer and second input is "bottom" layer. By default, the output terminates when the longest input terminates. A description of the accepted options follows.
-
+ *
+ * Note: Removed in FFmpeg 8.0.
  *
  * @param options.c0_mode - set component #0 blend mode (from 0 to 39) (default normal)
  * @param options.c1_mode - set component #1 blend mode (from 0 to 39) (default normal)
@@ -1232,12 +1230,6 @@ return filterNode.video(0) as unknown as VideoStream;
 
 
 
-
-
-
-
-
-
 /**
  * Apply custom color maps to video stream. This filter needs three input video streams. First stream is video stream that is going to be filtered out. Second and third video stream specify color patches for source color to target color mapping. The filter accepts the following options:
 
@@ -1286,8 +1278,6 @@ extraOptions?: Record<string, unknown>;
   );
 return filterNode.video(0) as unknown as VideoStream;
 }
-
-
 
 
 
@@ -2211,7 +2201,8 @@ return filterNode.video(0) as unknown as VideoStream;
 
 /**
  * Stack input videos horizontally. This is the VA-API variant of the hstack filter, each input stream may have different height, this filter will scale down/up each input stream while keeping the original aspect. It accepts the following options:
-
+ *
+ * Note: Removed in FFmpeg 8.0.
  *
  * @param options.inputs - See hstack.
  * @param options.shortest - See hstack.
@@ -2374,8 +2365,6 @@ return filterNode.video(0) as unknown as VideoStream;
 
 
 
-
-
 /**
  * Temporally interleave frames from several inputs. interleave works with video inputs, ainterleave with audio. These filters read frames from several inputs and send the oldest queued frame to the output. Input streams must have well defined, monotonically increasing frame timestamp values. In order to submit one frame to output, these filters need to enqueue at least one frame for each input, so they cannot work in case one input is not yet terminated and will not receive incoming frames. For example consider the case when one input is a select filter which always drops input frames. The interleave filter will keep reading from that input, but it will never be able to send new frames to output until the input sends an end-of-stream signal. Also, depending on inputs synchronization, the filters will drop frames in case one input receives more frames than the other ones, and the queue is already filled. These filters accept the following options:
 
@@ -2465,7 +2454,8 @@ return filterNode.audio(0) as unknown as AudioStream;
 
 /**
  * Load a LADSPA (Linux Audio Developer's Simple Plugin API) plugin. To enable compilation of this filter you need to configure FFmpeg with --enable-ladspa.
-
+ *
+ * Note: Removed in FFmpeg 8.0.
  *
  * @param options.file - Specifies the name of LADSPA plugin library to load. If the environment variable LADSPA_PATH is defined, the LADSPA plugin is searched in each one of the directories specified by the colon separated list in LADSPA_PATH, otherwise in the standard LADSPA paths, which are in this order: HOME/.ladspa/lib/, /usr/local/lib/ladspa/, /usr/lib/ladspa/.
  * @param options.plugin - Specifies the plugin within the library. Some libraries contain only one plugin, but others contain many of them. If this is not set filter will list all available plugins within the specified library.
@@ -2659,7 +2649,8 @@ return filterNode.video(0) as unknown as VideoStream;
 
 /**
  * Load a LV2 (LADSPA Version 2) plugin. To enable compilation of this filter you need to configure FFmpeg with --enable-lv2.
-
+ *
+ * Note: Removed in FFmpeg 8.0.
  *
  * @param options.plugin - Specifies the plugin URI. You may need to escape ':'.
  * @param options.controls - Set the '|' separated list of controls which are zero or more floating point values that determine the behavior of the loaded plugin (for example delay, threshold or gain). If controls is set to help, all available controls and their valid ranges are printed.
@@ -3364,65 +3355,9 @@ return filterNode.video(0) as unknown as VideoStream;
 
 
 /**
- * Overlay one video on top of another using CUDA
-
- *
- * @param options.x - set the x expression of overlay (default "0")
- * @param options.y - set the y expression of overlay (default "0")
- * @param options.eof_action - Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
- * @param options.eval - specify when to evaluate expressions (from 0 to 1) (default frame)
- * @param options.shortest - force termination when the shortest input terminates (default false)
- * @param options.repeatlast - repeat overlay of the last overlay frame (default true)
- */
-export function overlay_cuda(
-
-
-  _main: VideoStream,
-
-  _overlay: VideoStream,
-
-
-  options?: {
-    x?: FFString;
-    y?: FFString;
-    eof_action?: FFInt | "repeat" | "endall" | "pass";
-    eval?: FFInt | "init" | "frame";
-    shortest?: FFBoolean;
-    repeatlast?: FFBoolean;
-    enable?: FFString;
-extraOptions?: Record<string, unknown>;
-  },
-): VideoStream {
-
-  const inputStreams: FilterableStream[] = [_main, _overlay];
-
-  const filterNode = filterNodeFactory(
-    { name: "overlay_cuda", typingsInput: ["video", "video"], typingsOutput: ["video"] },
-    inputStreams,
-    merge(
-    {
-      "x": options?.x,
-      "y": options?.y,
-      "eof_action": options?.eof_action,
-      "eval": options?.eval,
-      "shortest": options?.shortest,
-      "repeatlast": options?.repeatlast,
-      "enable": options?.enable,
-},
-    options?.extraOptions,
-  ),
-  );
-return filterNode.video(0) as unknown as VideoStream;
-}
-
-
-
-
-
-
-/**
  * Overlay one video on top of another. It takes two inputs and has one output. The first input is the "main" video on which the second input is overlaid. This filter requires same memory layout for all the inputs. So, format conversion may be needed. The filter accepts the following options:
-
+ *
+ * Note: Removed in FFmpeg 8.0.
  *
  * @param options.x - Set the x coordinate of the overlaid video on the main video. Default value is 0.
  * @param options.y - Set the y coordinate of the overlaid video on the main video. Default value is 0.
@@ -3466,7 +3401,8 @@ return filterNode.video(0) as unknown as VideoStream;
 
 /**
  * Overlay one video on the top of another. It takes two inputs and has one output. The first input is the "main" video on which the second input is overlaid. The filter accepts the following options:
-
+ *
+ * Note: Removed in FFmpeg 8.0.
  *
  * @param options.x - Overlay x position (default "0")
  * @param options.y - Set expressions for the x and y coordinates of the overlaid video on the main video. Default value is "0" for both expressions.
@@ -3528,7 +3464,8 @@ return filterNode.video(0) as unknown as VideoStream;
 
 /**
  * Overlay one video on top of another. It takes two inputs and has one output. The first input is the "main" video on which the second input is overlaid. This filter requires all inputs to use the same pixel format. So, format conversion may be needed. The filter accepts the following options:
-
+ *
+ * Note: Removed in FFmpeg 8.0.
  *
  * @param options.x - Set the x coordinate of the overlaid video on the main video. Default value is 0.
  * @param options.y - Set the y coordinate of the overlaid video on the main video. Default value is 0.
@@ -3564,8 +3501,6 @@ extraOptions?: Record<string, unknown>;
   );
 return filterNode.video(0) as unknown as VideoStream;
 }
-
-
 
 
 
@@ -3662,6 +3597,8 @@ return filterNode.video(0) as unknown as VideoStream;
 
 
 
+
+
 /**
  * Apply alpha premultiply effect to input video stream using first plane of second stream as alpha. Both streams must have same dimensions and same pixel format. The filter accepts the following option:
 
@@ -3712,7 +3649,8 @@ return filterNode.video(0) as unknown as VideoStream;
 
 /**
  * Filter video using an OpenCL program.
-
+ *
+ * Note: Removed in FFmpeg 8.0.
  *
  * @param options.source - OpenCL program source file.
  * @param options.kernel - Kernel name in program.
@@ -3879,7 +3817,8 @@ return filterNode.video(0) as unknown as VideoStream;
 
 /**
  * Remap pixels using 2nd: Xmap and 3rd: Ymap input video stream. Destination pixel at position (X, Y) will be picked from source (x, y) position where x = Xmap(X, Y) and y = Ymap(X, Y). If mapping values are out of range, zero value for pixel will be used for destination pixel. Xmap and Ymap input video streams must be of same dimensions. Output video stream will have Xmap/Ymap video stream dimensions. Xmap and Ymap input video streams are 32bit float pixel format, single channel.
-
+ *
+ * Note: Removed in FFmpeg 8.0.
  *
  * @param options.interp - Specify interpolation used for remapping of pixels. Allowed values are near and linear. Default value is linear.
  * @param options.fill - Specify the color of the unmapped pixels. For the syntax of this option, check the "Color" section in the ffmpeg-utils manual. Default color is black.
@@ -3951,7 +3890,8 @@ return filterNode.video(0) as unknown as VideoStream;
 
 /**
  * Scale the input video size and/or convert the image format to the given reference.
-
+ *
+ * Note: Removed in FFmpeg 8.0.
  *
  * @param options.w - Output video width
  * @param options.h - Output video height
@@ -3964,16 +3904,12 @@ return filterNode.video(0) as unknown as VideoStream;
  * @param options.out_range - set output color range (from 0 to 2) (default auto)
  * @param options.in_chroma_loc - set input chroma sample location (from 0 to 6) (default auto)
  * @param options.out_chroma_loc - set output chroma sample location (from 0 to 6) (default auto)
- * @param options.in_primaries - set input primaries (from -1 to 22) (default auto)
- * @param options.out_primaries - set output primaries (from -1 to 22) (default auto)
- * @param options.in_transfer - set output color transfer (from -1 to 18) (default auto)
  * @param options.in_v_chr_pos - input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
  * @param options.in_h_chr_pos - input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
  * @param options.out_v_chr_pos - output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
  * @param options.out_h_chr_pos - output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
  * @param options.force_original_aspect_ratio - decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
  * @param options.force_divisible_by - enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)
- * @param options.reset_sar - reset SAR to 1 and scale to square pixels if scaling proportionally (default false)
  * @param options.param0 - Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
  * @param options.param1 - Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
  * @param options.eval - specify when to evaluate expressions (from 0 to 1) (default init)
@@ -3998,16 +3934,12 @@ export function scale2ref(
     out_range?: FFInt | "auto" | "unknown" | "full" | "limited" | "jpeg" | "mpeg" | "tv" | "pc";
     in_chroma_loc?: FFInt | "auto" | "unknown" | "left" | "center" | "topleft" | "top" | "bottomleft" | "bottom";
     out_chroma_loc?: FFInt | "auto" | "unknown" | "left" | "center" | "topleft" | "top" | "bottomleft" | "bottom";
-    in_primaries?: FFInt | "auto" | "bt709" | "bt470m" | "bt470bg" | "smpte170m" | "smpte240m" | "film" | "bt2020" | "smpte428" | "smpte431" | "smpte432" | "jedec-p22" | "ebu3213";
-    out_primaries?: FFInt | "auto" | "bt709" | "bt470m" | "bt470bg" | "smpte170m" | "smpte240m" | "film" | "bt2020" | "smpte428" | "smpte431" | "smpte432" | "jedec-p22" | "ebu3213";
-    in_transfer?: FFInt | "auto" | "bt709" | "bt470m" | "gamma22" | "bt470bg" | "gamma28" | "smpte170m" | "smpte240m" | "linear" | "iec61966-2-1" | "srgb" | "iec61966-2-4" | "xvycc" | "bt1361e" | "bt2020-10" | "bt2020-12" | "smpte2084" | "smpte428" | "arib-std-b67";
     in_v_chr_pos?: FFInt;
     in_h_chr_pos?: FFInt;
     out_v_chr_pos?: FFInt;
     out_h_chr_pos?: FFInt;
     force_original_aspect_ratio?: FFInt | "disable" | "decrease" | "increase";
     force_divisible_by?: FFInt;
-    reset_sar?: FFBoolean;
     param0?: FFDouble;
     param1?: FFDouble;
     eval?: FFInt | "init" | "frame";
@@ -4033,16 +3965,12 @@ extraOptions?: Record<string, unknown>;
       "out_range": options?.out_range,
       "in_chroma_loc": options?.in_chroma_loc,
       "out_chroma_loc": options?.out_chroma_loc,
-      "in_primaries": options?.in_primaries,
-      "out_primaries": options?.out_primaries,
-      "in_transfer": options?.in_transfer,
       "in_v_chr_pos": options?.in_v_chr_pos,
       "in_h_chr_pos": options?.in_h_chr_pos,
       "out_v_chr_pos": options?.out_v_chr_pos,
       "out_h_chr_pos": options?.out_h_chr_pos,
       "force_original_aspect_ratio": options?.force_original_aspect_ratio,
       "force_divisible_by": options?.force_divisible_by,
-      "reset_sar": options?.reset_sar,
       "param0": options?.param0,
       "param1": options?.param1,
       "eval": options?.eval,
@@ -4052,10 +3980,6 @@ extraOptions?: Record<string, unknown>;
   );
 return filterNode;
 }
-
-
-
-
 
 
 
@@ -4483,7 +4407,8 @@ return filterNode.video(0) as unknown as VideoStream;
 
 /**
  * Calculate the SSIM between two 360 video streams.
-
+ *
+ * Note: Removed in FFmpeg 8.0.
  *
  * @param options.stats_file - Set file where to store per-frame difference information
  * @param options.compute_chroma - Specifies if non-luma channels must be computed (from 0 to 1) (default 1)
@@ -4493,7 +4418,7 @@ return filterNode.video(0) as unknown as VideoStream;
  * @param options.ref_stereo - stereo format of the reference video (from 0 to 2) (default mono)
  * @param options.main_stereo - stereo format of main video (from 0 to 3) (default 3)
  * @param options.ref_pad - Expansion (padding) coefficient for each cube face of the reference video (from 0 to 10) (default 0)
- * @param options.main_pad - Expansion (padding) coefficient for each cube face of the main video (from 0 to 10) (default 0)
+ * @param options.main_pad - Expansion (padding) coeffiecient for each cube face of the main video (from 0 to 10) (default 0)
  * @param options.use_tape - Specifies if the tape based SSIM 360 algorithm must be used independent of the input video types (from 0 to 1) (default 0)
  * @param options.heatmap_str - Heatmap data for view-based evaluation. For heatmap file format, please refer to EntSphericalVideoHeatmapData.
  * @param options.default_heatmap_width - Default heatmap dimension. Will be used when dimension is not specified in heatmap data. (from 1 to 4096) (default 32)
@@ -4672,8 +4597,6 @@ extraOptions?: Record<string, unknown>;
   );
 return filterNode.video(0) as unknown as VideoStream;
 }
-
-
 
 
 
@@ -4943,7 +4866,8 @@ return filterNode.video(0) as unknown as VideoStream;
 
 /**
  * Stack input videos vertically. This is the VA-API variant of the vstack filter, each input stream may have different width, this filter will scale down/up each input stream while keeping the original aspect. It accepts the following options:
-
+ *
+ * Note: Removed in FFmpeg 8.0.
  *
  * @param options.inputs - See vstack.
  * @param options.shortest - See vstack.
@@ -5096,7 +5020,8 @@ return filterNode.video(0) as unknown as VideoStream;
 
 /**
  * Cross fade two videos with custom transition effect by using OpenCL. It accepts the following options:
-
+ *
+ * Note: Removed in FFmpeg 8.0.
  *
  * @param options.transition - Set one of possible transition effects. @end table
  * @param options.source - OpenCL program source file for custom transition.
@@ -5149,7 +5074,8 @@ return filterNode.video(0) as unknown as VideoStream;
 
 /**
  * Cross fade one video with another video.
-
+ *
+ * Note: Removed in FFmpeg 8.0.
  *
  * @param options.transition - set cross fade transition (from 0 to 16) (default fade)
  * @param options.duration - set cross fade duration (default 1)
@@ -5246,7 +5172,8 @@ return filterNode.video(0) as unknown as VideoStream;
 
 /**
  * Obtain the average (across all input frames) and minimum (across all color plane averages) eXtended Perceptually weighted peak Signal-to-Noise Ratio (XPSNR) between two input videos. The XPSNR is a low-complexity psychovisually motivated distortion measurement algorithm for assessing the difference between two video streams or images. This is especially useful for objectively quantifying the distortions caused by video and image codecs, as an alternative to a formal subjective test. The logarithmic XPSNR output values are in a similar range as those of traditional psnr assessments but better reflect human impressions of visual coding quality. More details on the XPSNR measure, which essentially represents a blockwise weighted variant of the PSNR measure, can be found in the following freely available papers:
-
+ *
+ * Note: New in FFmpeg 7.0.
  *
  * @param options.stats_file - If specified, the filter will use the named file to save the XPSNR value of each individual frame and color plane. When the file name equals "-", that data is sent to standard output.
  * @see https://ffmpeg.org/ffmpeg-filters.html#xpsnr
@@ -5344,7 +5271,8 @@ return filterNode.video(0) as unknown as VideoStream;
 
 /**
  * Stack video inputs into custom layout. This is the VA-API variant of the xstack filter, each input stream may have different size, this filter will scale down/up each input stream to the given output size, or the size of the first input stream. It accepts the following options:
-
+ *
+ * Note: Removed in FFmpeg 8.0.
  *
  * @param options.inputs - See xstack.
  * @param options.shortest - See xstack.
@@ -5388,3 +5316,18 @@ extraOptions?: Record<string, unknown>;
   );
 return filterNode.video(0) as unknown as VideoStream;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

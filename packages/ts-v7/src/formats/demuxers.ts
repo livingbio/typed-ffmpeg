@@ -375,12 +375,6 @@ export type FFMpegDemuxerOption = Readonly<Record<string, unknown>>;
 
 
 
-
-
-
-
-
-
 /**
  * 3DO STR
  */
@@ -993,26 +987,6 @@ export function aptx_hd(options?: {
 }): FFMpegDemuxerOption {
   return merge({
     "sample_rate": options?.sample_rate,
-
-  });
-}
-
-
-
-
-
-
-
-/**
- * APV raw bitstream
- * @param options.framerate - set frame rate (default "30")
- */
-export function apv(options?: {
-  framerate?: string | null;
-
-}): FFMpegDemuxerOption {
-  return merge({
-    "framerate": options?.framerate,
 
   });
 }
@@ -2569,17 +2543,20 @@ export function flic(options?: {
  * @param options.flv_metadata - Allocate streams according to the onMetaData array (default false)
  * @param options.flv_full_metadata - Dump full metadata of the onMetadata (default false)
  * @param options.flv_ignore_prevtag - Ignore the Size of previous tag (default false)
+ * @param options.missing_streams - (from 0 to 255) (default 0)
  */
 export function flv(options?: {
   flv_metadata?: boolean | null;
   flv_full_metadata?: boolean | null;
   flv_ignore_prevtag?: boolean | null;
+  missing_streams?: number | null;
 
 }): FFMpegDemuxerOption {
   return merge({
     "flv_metadata": options?.flv_metadata,
     "flv_full_metadata": options?.flv_full_metadata,
     "flv_ignore_prevtag": options?.flv_ignore_prevtag,
+    "missing_streams": options?.missing_streams,
 
   });
 }
@@ -2714,23 +2691,6 @@ export function g726le(options?: {
   return merge({
     "code_size": options?.code_size,
     "sample_rate": options?.sample_rate,
-
-  });
-}
-
-
-
-
-
-
-
-/**
- * raw G.728
- */
-export function g728(options?: {
-
-}): FFMpegDemuxerOption {
-  return merge({
 
   });
 }
@@ -3096,8 +3056,7 @@ export function hevc(options?: {
  * Apple HTTP Live Streaming
  * @param options.live_start_index - segment index to start live streams at (negative values are from the end) (from INT_MIN to INT_MAX) (default -3)
  * @param options.prefer_x_start - prefer to use #EXT-X-START if it's in playlist instead of live_start_index (default false)
- * @param options.allowed_extensions - List of file extensions that hls is allowed to access (default "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt,cmfv,cmfa,ec3,fmp4")
- * @param options.allowed_segment_extensions - List of file extensions that hls is allowed to access (default "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt,cmfv,cmfa,ec3,fmp4,html")
+ * @param options.allowed_extensions - List of file extensions that hls is allowed to access (default "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,wav")
  * @param options.extension_picky - Be picky with all extensions matching (default true)
  * @param options.max_reload - Maximum number of times a insufficient list is attempted to be reloaded (from 0 to INT_MAX) (default 100)
  * @param options.m3u8_hold_counters - The maximum number of times to load m3u8 when it refreshes without new segments (from 0 to INT_MAX) (default 1000)
@@ -3111,7 +3070,6 @@ export function hls(options?: {
   live_start_index?: number | null;
   prefer_x_start?: boolean | null;
   allowed_extensions?: string | null;
-  allowed_segment_extensions?: string | null;
   extension_picky?: boolean | null;
   max_reload?: number | null;
   m3u8_hold_counters?: number | null;
@@ -3126,7 +3084,6 @@ export function hls(options?: {
     "live_start_index": options?.live_start_index,
     "prefer_x_start": options?.prefer_x_start,
     "allowed_extensions": options?.allowed_extensions,
-    "allowed_segment_extensions": options?.allowed_segment_extensions,
     "extension_picky": options?.extension_picky,
     "max_reload": options?.max_reload,
     "m3u8_hold_counters": options?.m3u8_hold_counters,
@@ -3700,17 +3657,20 @@ export function jv(options?: {
  * @param options.flv_metadata - Allocate streams according to the onMetaData array (default false)
  * @param options.flv_full_metadata - Dump full metadata of the onMetadata (default false)
  * @param options.flv_ignore_prevtag - Ignore the Size of previous tag (default false)
+ * @param options.missing_streams - (from 0 to 255) (default 0)
  */
 export function kux(options?: {
   flv_metadata?: boolean | null;
   flv_full_metadata?: boolean | null;
   flv_ignore_prevtag?: boolean | null;
+  missing_streams?: number | null;
 
 }): FFMpegDemuxerOption {
   return merge({
     "flv_metadata": options?.flv_metadata,
     "flv_full_metadata": options?.flv_full_metadata,
     "flv_ignore_prevtag": options?.flv_ignore_prevtag,
+    "missing_streams": options?.missing_streams,
 
   });
 }
@@ -3782,17 +3742,20 @@ export function lc3(options?: {
  * @param options.flv_metadata - Allocate streams according to the onMetaData array (default false)
  * @param options.flv_full_metadata - Dump full metadata of the onMetadata (default false)
  * @param options.flv_ignore_prevtag - Ignore the Size of previous tag (default false)
+ * @param options.missing_streams - (from 0 to 255) (default 0)
  */
 export function live_flv(options?: {
   flv_metadata?: boolean | null;
   flv_full_metadata?: boolean | null;
   flv_ignore_prevtag?: boolean | null;
+  missing_streams?: number | null;
 
 }): FFMpegDemuxerOption {
   return merge({
     "flv_metadata": options?.flv_metadata,
     "flv_full_metadata": options?.flv_full_metadata,
     "flv_ignore_prevtag": options?.flv_ignore_prevtag,
+    "missing_streams": options?.missing_streams,
 
   });
 }
@@ -3950,14 +3913,11 @@ export function mca(options?: {
 
 /**
  * MacCaption
- * @param options.eia608_extract - extract EIA-608/708 captions from VANC packets (default true)
  */
 export function mcc(options?: {
-  eia608_extract?: boolean | null;
 
 }): FFMpegDemuxerOption {
   return merge({
-    "eia608_extract": options?.eia608_extract,
 
   });
 }
@@ -4233,7 +4193,7 @@ export function mpeg(options?: {
  * @param options.fix_teletext_pts - try to fix pts values of dvb teletext streams (default true)
  * @param options.scan_all_pmts - scan and combine all PMTs (default auto)
  * @param options.skip_unknown_pmt - skip PMTs for programs not advertised in the PAT (default false)
- * @param options.merge_pmt_versions - reuse streams when PMT's version/pids change (default false)
+ * @param options.merge_pmt_versions - re-use streams when PMT's version/pids change (default false)
  * @param options.max_packet_size - maximum size of emitted packet (from 1 to 1.07374e+09) (default 204800)
  */
 export function mpegts(options?: {
@@ -5649,12 +5609,7 @@ export function rtp(options?: {
  * @param options.timeout - set timeout (in microseconds) of socket I/O operations (from INT_MIN to I64_MAX) (default 0)
  * @param options.reorder_queue_size - set number of packets to buffer for handling of reordered packets (from -1 to INT_MAX) (default -1)
  * @param options.buffer_size - Underlying protocol send/receive buffer size (from -1 to INT_MAX) (default -1)
- * @param options.user_agent - override User-Agent header (default "Lavf62.3.100")
- * @param options.ca_file - Certificate Authority database file
- * @param options.tls_verify - Verify the peer certificate (from 0 to 1) (default 0)
- * @param options.cert_file - Certificate file
- * @param options.key_file - Private key file
- * @param options.verifyhost - Verify against a specific hostname
+ * @param options.user_agent - override User-Agent header (default "Lavf61.7.100")
  */
 export function rtsp(options?: {
   initial_pause?: boolean | null;
@@ -5668,11 +5623,6 @@ export function rtsp(options?: {
   reorder_queue_size?: number | null;
   buffer_size?: number | null;
   user_agent?: string | null;
-  ca_file?: string | null;
-  tls_verify?: number | null;
-  cert_file?: string | null;
-  key_file?: string | null;
-  verifyhost?: string | null;
 
 }): FFMpegDemuxerOption {
   return merge({
@@ -5687,11 +5637,6 @@ export function rtsp(options?: {
     "reorder_queue_size": options?.reorder_queue_size,
     "buffer_size": options?.buffer_size,
     "user_agent": options?.user_agent,
-    "ca_file": options?.ca_file,
-    "tls_verify": options?.tls_verify,
-    "cert_file": options?.cert_file,
-    "key_file": options?.key_file,
-    "verifyhost": options?.verifyhost,
 
   });
 }
@@ -7778,3 +7723,4 @@ export function yuv4mpegpipe(options?: {
 
   });
 }
+

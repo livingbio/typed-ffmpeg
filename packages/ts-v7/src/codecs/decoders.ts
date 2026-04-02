@@ -429,26 +429,6 @@ export type FFMpegDecoderOption = Readonly<Record<string, unknown>>;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * Uncompressed 4:2:2 10-bit
  */
@@ -623,23 +603,6 @@ export function ansi(options?: {
  * APNG (Animated Portable Network Graphics) image
  */
 export function apng(options?: {
-
-}): FFMpegDecoderOption {
-  return merge({
-
-  });
-}
-
-
-
-
-
-
-
-/**
- * Advanced Professional Video
- */
-export function apv(options?: {
 
 }): FFMpegDecoderOption {
   return merge({
@@ -1512,8 +1475,8 @@ export function escape130(options?: {
  * OpenEXR image
  * @param options.layer - Set the decoding layer (default "")
  * @param options.part - Set the decoding part (from 0 to INT_MAX) (default 0)
- * @param options.gamma - Set the float gamma value when decoding (deprecated, use a scaler) (from 0.001 to FLT_MAX) (default 1)
- * @param options.apply_trc - color transfer characteristics to apply to EXR linear input (deprecated, use a scaler) (from 1 to 18) (default gamma)
+ * @param options.gamma - Set the float gamma value when decoding (from 0.001 to FLT_MAX) (default 1)
+ * @param options.apply_trc - color transfer characteristics to apply to EXR linear input (from 1 to 18) (default gamma)
  */
 export function exr(options?: {
   layer?: string | null;
@@ -2025,7 +1988,7 @@ export function hdr(options?: {
 /**
  * HEVC (High Efficiency Video Coding)
  * @param options.apply_defdispwin - Apply default display window from VUI (default false)
- * @param options.strict_displaywin - strictly apply default display window size (default false)
+ * @param options.strict_displaywin - stricly apply default display window size (default false)
  * @param options.view_ids - Array of view IDs that should be decoded and output; a single -1 to decode all views
  * @param options.view_ids_available - Array of available view IDs is exported here
  * @param options.view_pos_available - Array of view positions for view_ids_available is exported here, as AVStereo3DView
@@ -2408,40 +2371,6 @@ export function jpeg2000(options?: {
  * JPEG-LS
  */
 export function jpegls(options?: {
-
-}): FFMpegDecoderOption {
-  return merge({
-
-  });
-}
-
-
-
-
-
-
-
-/**
- * libjxl JPEG XL (codec jpegxl)
- */
-export function libjxl(options?: {
-
-}): FFMpegDecoderOption {
-  return merge({
-
-  });
-}
-
-
-
-
-
-
-
-/**
- * libjxl JPEG XL animated (codec jpegxl_anim)
- */
-export function libjxl_anim(options?: {
 
 }): FFMpegDecoderOption {
   return merge({
@@ -2876,10 +2805,10 @@ export function mpeg1_cuvid(options?: {
 
 /**
  * MPEG-2 video
- * @param options.cc_format - extract a specific Closed Captions format (from 0 to 4) (default auto)
+ * @param options.cc_format - extract a specific Closed Captions format (from 0 to 3) (default auto)
  */
 export function mpeg2video(options?: {
-  cc_format?: number | null | "auto" | "a53" | "scte20" | "dvd" | "dish";
+  cc_format?: number | null | "auto" | "a53" | "scte20" | "dvd";
 
 }): FFMpegDecoderOption {
   return merge({
@@ -3677,23 +3606,6 @@ export function prores(options?: {
 
 
 /**
- * Apple ProRes RAW
- */
-export function prores_raw(options?: {
-
-}): FFMpegDecoderOption {
-  return merge({
-
-  });
-}
-
-
-
-
-
-
-
-/**
  * Brooktree ProSumer Video
  */
 export function prosumer(options?: {
@@ -4040,23 +3952,6 @@ export function rv40(options?: {
 
 
 /**
- * RealVideo 6.0
- */
-export function rv60(options?: {
-
-}): FFMpegDecoderOption {
-  return merge({
-
-  });
-}
-
-
-
-
-
-
-
-/**
  * LucasArts SANM/Smush video
  */
 export function sanm(options?: {
@@ -4318,32 +4213,6 @@ export function sunrast(options?: {
 
 }): FFMpegDecoderOption {
   return merge({
-
-  });
-}
-
-
-
-
-
-
-
-/**
- * Librsvg rasterizer (codec svg)
- * @param options.width - Width to render to (0 for default) (from 0 to INT_MAX) (default 0)
- * @param options.height - Height to render to (0 for default) (from 0 to INT_MAX) (default 0)
- * @param options.keep_ar - Keep aspect ratio with custom width/height (default true)
- */
-export function librsvg(options?: {
-  width?: number | null;
-  height?: number | null;
-  keep_ar?: boolean | null;
-
-}): FFMpegDecoderOption {
-  return merge({
-    "width": options?.width,
-    "height": options?.height,
-    "keep_ar": options?.keep_ar,
 
   });
 }
@@ -5862,50 +5731,6 @@ export function aac_fixed(options?: {
 
 
 /**
- * Fraunhofer FDK AAC (codec aac)
- * @param options.conceal - Error concealment method (from 0 to 2) (default noise)
- * @param options.drc_boost - Dynamic Range Control: boost, where [0] is none and [127] is max boost (from -1 to 127) (default -1)
- * @param options.drc_cut - Dynamic Range Control: attenuation factor, where [0] is none and [127] is max compression (from -1 to 127) (default -1)
- * @param options.drc_level - Dynamic Range Control: reference level, quantized to 0.25dB steps where [0] is 0dB and [127] is -31.75dB, -1 for auto, and -2 for disabled (from -2 to 127) (default -1)
- * @param options.drc_heavy - Dynamic Range Control: heavy compression, where [1] is on (RF mode) and [0] is off (from -1 to 1) (default -1)
- * @param options.level_limit - Signal level limiting (default auto)
- * @param options.drc_effect - Dynamic Range Control: effect type, where e.g. [0] is none and [6] is general (from -1 to 8) (default -1)
- * @param options.album_mode - Dynamic Range Control: album mode, where [0] is off and [1] is on (from -1 to 1) (default -1)
- * @param options.downmix - Request a specific channel layout from the decoder
- */
-export function libfdk_aac(options?: {
-  conceal?: number | null | "spectral" | "noise" | "energy";
-  drc_boost?: number | null;
-  drc_cut?: number | null;
-  drc_level?: number | null;
-  drc_heavy?: number | null;
-  level_limit?: boolean | null;
-  drc_effect?: number | null;
-  album_mode?: number | null;
-  downmix?: string | null;
-
-}): FFMpegDecoderOption {
-  return merge({
-    "conceal": options?.conceal,
-    "drc_boost": options?.drc_boost,
-    "drc_cut": options?.drc_cut,
-    "drc_level": options?.drc_level,
-    "drc_heavy": options?.drc_heavy,
-    "level_limit": options?.level_limit,
-    "drc_effect": options?.drc_effect,
-    "album_mode": options?.album_mode,
-    "downmix": options?.downmix,
-
-  });
-}
-
-
-
-
-
-
-
-/**
  * AAC LATM (Advanced Audio Coding LATM syntax)
  */
 export function aac_latm(options?: {
@@ -6633,23 +6458,6 @@ export function adpcm_ima_ws(options?: {
 
 
 /**
- * ADPCM IMA Xbox
- */
-export function adpcm_ima_xbox(options?: {
-
-}): FFMpegDecoderOption {
-  return merge({
-
-  });
-}
-
-
-
-
-
-
-
-/**
  * ADPCM Microsoft
  */
 export function adpcm_ms(options?: {
@@ -6687,23 +6495,6 @@ export function adpcm_mtaf(options?: {
  * ADPCM Playstation
  */
 export function adpcm_psx(options?: {
-
-}): FFMpegDecoderOption {
-  return merge({
-
-  });
-}
-
-
-
-
-
-
-
-/**
- * ADPCM Sanyo
- */
-export function adpcm_sanyo(options?: {
 
 }): FFMpegDecoderOption {
   return merge({
@@ -7285,23 +7076,6 @@ export function cbd2_dpcm(options?: {
 
 
 /**
- * codec2 decoder using libcodec2 (codec codec2)
- */
-export function libcodec2(options?: {
-
-}): FFMpegDecoderOption {
-  return merge({
-
-  });
-}
-
-
-
-
-
-
-
-/**
  * RFC 3389 comfort noise generator
  */
 export function comfortnoise(options?: {
@@ -7678,23 +7452,6 @@ export function g723_1(options?: {
 
 
 /**
- * G.728)
- */
-export function g728(options?: {
-
-}): FFMpegDecoderOption {
-  return merge({
-
-  });
-}
-
-
-
-
-
-
-
-/**
  * G.729
  */
 export function g729(options?: {
@@ -7746,43 +7503,9 @@ export function gsm(options?: {
 
 
 /**
- * libgsm GSM (codec gsm)
- */
-export function libgsm(options?: {
-
-}): FFMpegDecoderOption {
-  return merge({
-
-  });
-}
-
-
-
-
-
-
-
-/**
  * GSM Microsoft variant
  */
 export function gsm_ms(options?: {
-
-}): FFMpegDecoderOption {
-  return merge({
-
-  });
-}
-
-
-
-
-
-
-
-/**
- * libgsm GSM Microsoft variant (codec gsm_ms)
- */
-export function libgsm_ms(options?: {
 
 }): FFMpegDecoderOption {
   return merge({
@@ -8175,14 +7898,11 @@ export function mp3on4(options?: {
 
 /**
  * MPEG-4 Audio Lossless Coding (ALS) (codec mp4als)
- * @param options.max_order - Sets the maximum order (ALS simple profile allows max 15) (from 0 to 1023) (default 1023)
  */
 export function als(options?: {
-  max_order?: number | null;
 
 }): FFMpegDecoderOption {
   return merge({
-    "max_order": options?.max_order,
 
   });
 }
@@ -9257,23 +8977,6 @@ export function speex(options?: {
 
 
 /**
- * libspeex Speex (codec speex)
- */
-export function libspeex(options?: {
-
-}): FFMpegDecoderOption {
-  return merge({
-
-  });
-}
-
-
-
-
-
-
-
-/**
  * TAK (Tom's lossless Audio Kompressor)
  */
 export function tak(options?: {
@@ -10054,3 +9757,4 @@ export function xsub(options?: {
 
   });
 }
+

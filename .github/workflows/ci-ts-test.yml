@@ -56,9 +56,12 @@ jobs:
           name: ts-core-coverage
           token: ${{ secrets.CODECOV_TOKEN }}
 
-  typecheck-ts-v7:
-    name: Type check ts-v7
+  typecheck-ts-versions:
+    name: Type check ts-v${{ matrix.version }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [5, 6, 7, 8]
     steps:
       - uses: actions/checkout@v4
 
@@ -73,9 +76,9 @@ jobs:
           npm install
           npx tsc
 
-      - name: Install ts-v7 dependencies
+      - name: Install ts-v${{ matrix.version }} dependencies
         run: npm install
 
-      - name: Type check ts-v7
-        working-directory: packages/ts-v7
+      - name: Type check ts-v${{ matrix.version }}
+        working-directory: packages/ts-v${{ matrix.version }}
         run: npx tsc --noEmit

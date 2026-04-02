@@ -480,23 +480,6 @@ export function aptx_hd(options?: {
 
 
 /**
- * APV raw bitstream
- */
-export function apv(options?: {
-
-}): FFMpegMuxerOption {
-  return merge({
-
-  });
-}
-
-
-
-
-
-
-
-/**
  * Argonaut Games ASF
  * @param options.version_major - override file major version (from 0 to 65535) (default 2)
  * @param options.version_minor - override file minor version (from 0 to 65535) (default 1)
@@ -2307,14 +2290,11 @@ export function lc3(options?: {
 
 /**
  * LRC lyrics
- * @param options.precision - precision of the fractional part of the timestamp, 2 for centiseconds (from 1 to 6) (default 2)
  */
 export function lrc(options?: {
-  precision?: number | null;
 
 }): FFMpegMuxerOption {
   return merge({
-    "precision": options?.precision,
 
   });
 }
@@ -2382,38 +2362,6 @@ export function matroska(options?: {
     "flipped_raw_rgb": options?.flipped_raw_rgb,
     "write_crc32": options?.write_crc32,
     "default_mode": options?.default_mode,
-
-  });
-}
-
-
-
-
-
-
-
-/**
- * MacCaption
- * @param options.override_time_code_rate - override the `Time Code Rate` value in the output
- * @param options.use_u_alias - use the U alias for E1h 00h 00h 00h, disabled by default because some .mcc files disagree on whether it has 2 or 3 zero bytes (default false)
- * @param options.mcc_version - the mcc file format version (from 1 to 2) (default 2)
- * @param options.creation_program - the creation program
- * @param options.creation_time - the creation time (default "now")
- */
-export function mcc(options?: {
-  override_time_code_rate?: string | null;
-  use_u_alias?: boolean | null;
-  mcc_version?: number | null;
-  creation_program?: string | null;
-  creation_time?: string | null;
-
-}): FFMpegMuxerOption {
-  return merge({
-    "override_time_code_rate": options?.override_time_code_rate,
-    "use_u_alias": options?.use_u_alias,
-    "mcc_version": options?.mcc_version,
-    "creation_program": options?.creation_program,
-    "creation_time": options?.creation_time,
 
   });
 }
@@ -3428,11 +3376,6 @@ export function rtp_mpegts(options?: {
  * @param options.max_port - set maximum local UDP port (from 0 to 65535) (default 65000)
  * @param options.buffer_size - Underlying protocol send/receive buffer size (from -1 to INT_MAX) (default -1)
  * @param options.pkt_size - Underlying protocol send packet size (from -1 to INT_MAX) (default 1472)
- * @param options.ca_file - Certificate Authority database file
- * @param options.tls_verify - Verify the peer certificate (from 0 to 1) (default 0)
- * @param options.cert_file - Certificate file
- * @param options.key_file - Private key file
- * @param options.verifyhost - Verify against a specific hostname
  */
 export function rtsp(options?: {
   rtpflags?: string | null;
@@ -3441,11 +3384,6 @@ export function rtsp(options?: {
   max_port?: number | null;
   buffer_size?: number | null;
   pkt_size?: number | null;
-  ca_file?: string | null;
-  tls_verify?: number | null;
-  cert_file?: string | null;
-  key_file?: string | null;
-  verifyhost?: string | null;
 
 }): FFMpegMuxerOption {
   return merge({
@@ -3455,11 +3393,6 @@ export function rtsp(options?: {
     "max_port": options?.max_port,
     "buffer_size": options?.buffer_size,
     "pkt_size": options?.pkt_size,
-    "ca_file": options?.ca_file,
-    "tls_verify": options?.tls_verify,
-    "cert_file": options?.cert_file,
-    "key_file": options?.key_file,
-    "verifyhost": options?.verifyhost,
 
   });
 }
@@ -4509,38 +4442,6 @@ export function webvtt(options?: {
 
 
 /**
- * WHIP(WebRTC-HTTP ingestion protocol) muxer
- * @param options.handshake_timeout - Timeout in milliseconds for ICE and DTLS handshake. (from -1 to INT_MAX) (default 5000)
- * @param options.pkt_size - The maximum size, in bytes, of RTP packets that send out (from -1 to INT_MAX) (default 1200)
- * @param options.authorization - The optional Bearer token for WHIP Authorization
- * @param options.cert_file - The optional certificate file path for DTLS
- * @param options.key_file - The optional private key file path for DTLS
- */
-export function whip(options?: {
-  handshake_timeout?: number | null;
-  pkt_size?: number | null;
-  authorization?: string | null;
-  cert_file?: string | null;
-  key_file?: string | null;
-
-}): FFMpegMuxerOption {
-  return merge({
-    "handshake_timeout": options?.handshake_timeout,
-    "pkt_size": options?.pkt_size,
-    "authorization": options?.authorization,
-    "cert_file": options?.cert_file,
-    "key_file": options?.key_file,
-
-  });
-}
-
-
-
-
-
-
-
-/**
  * Westwood Studios audio
  */
 export function wsaud(options?: {
@@ -4601,3 +4502,720 @@ export function yuv4mpegpipe(options?: {
 
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
