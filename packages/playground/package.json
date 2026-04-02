@@ -1,21 +1,4 @@
 {
-  "name": "@typed-ffmpeg/playground",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "generate-filters": "tsx src/scripts/generateFilters.ts",
-    "test": "vitest run",
-    "test:debug": "vitest --inspect-brk --no-file-parallelism",
-    "test:coverage": "vitest run --coverage",
-    "test:e2e": "playwright test",
-    "dev:test": "vite --config vite.test.config.ts",
-    "prepare": "echo 'husky managed at repo root'"
-  },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
@@ -60,9 +43,26 @@
       "prettier --write"
     ]
   },
+  "name": "@typed-ffmpeg/playground",
   "prettier": {
-    "singleQuote": true,
     "semi": true,
+    "singleQuote": true,
     "trailingComma": "all"
-  }
+  },
+  "private": true,
+  "scripts": {
+    "build": "tsc -b && vite build",
+    "dev": "vite",
+    "dev:test": "vite --config vite.test.config.ts",
+    "generate-filters": "tsx src/scripts/generateFilters.ts",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "prepare": "echo 'husky managed at repo root'",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:debug": "vitest --inspect-brk --no-file-parallelism",
+    "test:e2e": "playwright test"
+  },
+  "type": "module",
+  "version": "0.0.0"
 }

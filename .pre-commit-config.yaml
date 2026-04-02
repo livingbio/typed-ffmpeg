@@ -7,7 +7,7 @@ repos:
         files: ^(src/|packages/)
       - id: check-json
         files: ^(src/|packages/)
-        exclude: '__snapshots__/|.eslintrc.json'
+        exclude: '__snapshots__/|.eslintrc.json|tsconfig.*\.json'
       - id: check-merge-conflict
         files: ^(src/|packages/)
       - id: check-yaml
@@ -27,7 +27,7 @@ repos:
       - id: pretty-format-json
         files: ^(src/|packages/)
         args: [--autofix]
-        exclude: '__snapshots__/|.eslintrc.json'
+        exclude: '__snapshots__/|.eslintrc.json|tsconfig.*\.json'
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version - keep in sync with pyproject.toml and uv.lock
