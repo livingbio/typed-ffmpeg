@@ -72,6 +72,7 @@ export type FFMpegAVCodecContextDecoderOption = Readonly<Record<string, unknown>
  * @param options.ch_layout -
  * @param options.rc_max_vbv_use - (from 0 to FLT_MAX) (default 0)
  * @param options.rc_min_vbv_use - (from 0 to FLT_MAX) (default 3)
+ * @param options.ticks_per_frame - (from 1 to INT_MAX) (default 1)
  * @param options.color_primaries - color primaries (from 1 to INT_MAX) (default unknown)
  * @param options.color_trc - color transfer characteristics (from 1 to INT_MAX) (default unknown)
  * @param options.colorspace - color space (from 0 to INT_MAX) (default unknown)
@@ -148,6 +149,7 @@ export function encoderCodecContext(options?: {
   ch_layout?: string | null;
   rc_max_vbv_use?: number | null;
   rc_min_vbv_use?: number | null;
+  ticks_per_frame?: number | null;
   color_primaries?: number | null | "bt709" | "unknown" | "bt470m" | "bt470bg" | "smpte170m" | "smpte240m" | "film" | "bt2020" | "smpte428" | "smpte428_1" | "smpte431" | "smpte432" | "jedec-p22" | "ebu3213" | "unspecified";
   color_trc?: number | null | "bt709" | "unknown" | "gamma22" | "gamma28" | "smpte170m" | "smpte240m" | "linear" | "log100" | "log316" | "iec61966-2-4" | "bt1361e" | "iec61966-2-1" | "bt2020-10" | "bt2020-12" | "smpte2084" | "smpte428" | "arib-std-b67" | "unspecified" | "log" | "log_sqrt" | "iec61966_2_4" | "bt1361" | "iec61966_2_1" | "bt2020_10bit" | "bt2020_12bit" | "smpte428_1";
   colorspace?: number | null | "rgb" | "bt709" | "unknown" | "fcc" | "bt470bg" | "smpte170m" | "smpte240m" | "ycgco" | "bt2020nc" | "bt2020c" | "smpte2085" | "chroma-derived-nc" | "chroma-derived-c" | "ictcp" | "ipt-c2" | "unspecified" | "ycocg" | "ycgco-re" | "ycgco-ro" | "bt2020_ncl" | "bt2020_cl";
@@ -224,6 +226,7 @@ export function encoderCodecContext(options?: {
     "ch_layout": options?.ch_layout,
     "rc_max_vbv_use": options?.rc_max_vbv_use,
     "rc_min_vbv_use": options?.rc_min_vbv_use,
+    "ticks_per_frame": options?.ticks_per_frame,
     "color_primaries": options?.color_primaries,
     "color_trc": options?.color_trc,
     "colorspace": options?.colorspace,
@@ -258,6 +261,7 @@ export function encoderCodecContext(options?: {
  * @param options.skip_idct - skip IDCT/dequantization for the selected frames (from INT_MIN to INT_MAX) (default default)
  * @param options.skip_frame - skip decoding for the selected frames (from INT_MIN to INT_MAX) (default default)
  * @param options.ch_layout -
+ * @param options.ticks_per_frame - (from 1 to INT_MAX) (default 1)
  * @param options.color_primaries - color primaries (from 1 to INT_MAX) (default unknown)
  * @param options.color_trc - color transfer characteristics (from 1 to INT_MAX) (default unknown)
  * @param options.colorspace - color space (from 0 to INT_MAX) (default unknown)
@@ -297,6 +301,7 @@ export function decoderCodecContext(options?: {
   skip_idct?: number | null | "none" | "default" | "noref" | "bidir" | "nointra" | "nokey" | "all";
   skip_frame?: number | null | "none" | "default" | "noref" | "bidir" | "nointra" | "nokey" | "all";
   ch_layout?: string | null;
+  ticks_per_frame?: number | null;
   color_primaries?: number | null | "bt709" | "unknown" | "bt470m" | "bt470bg" | "smpte170m" | "smpte240m" | "film" | "bt2020" | "smpte428" | "smpte428_1" | "smpte431" | "smpte432" | "jedec-p22" | "ebu3213" | "unspecified";
   color_trc?: number | null | "bt709" | "unknown" | "gamma22" | "gamma28" | "smpte170m" | "smpte240m" | "linear" | "log100" | "log316" | "iec61966-2-4" | "bt1361e" | "iec61966-2-1" | "bt2020-10" | "bt2020-12" | "smpte2084" | "smpte428" | "arib-std-b67" | "unspecified" | "log" | "log_sqrt" | "iec61966_2_4" | "bt1361" | "iec61966_2_1" | "bt2020_10bit" | "bt2020_12bit" | "smpte428_1";
   colorspace?: number | null | "rgb" | "bt709" | "unknown" | "fcc" | "bt470bg" | "smpte170m" | "smpte240m" | "ycgco" | "bt2020nc" | "bt2020c" | "smpte2085" | "chroma-derived-nc" | "chroma-derived-c" | "ictcp" | "ipt-c2" | "unspecified" | "ycocg" | "ycgco-re" | "ycgco-ro" | "bt2020_ncl" | "bt2020_cl";
@@ -336,6 +341,7 @@ export function decoderCodecContext(options?: {
     "skip_idct": options?.skip_idct,
     "skip_frame": options?.skip_frame,
     "ch_layout": options?.ch_layout,
+    "ticks_per_frame": options?.ticks_per_frame,
     "color_primaries": options?.color_primaries,
     "color_trc": options?.color_trc,
     "colorspace": options?.colorspace,

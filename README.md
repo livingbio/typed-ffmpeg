@@ -103,16 +103,22 @@ Note: If you need to install `ffmpeg-python` at the same time, use `pip install 
 
 ### TypeScript (Experimental)
 
-TypeScript bindings are available as npm packages:
+TypeScript bindings are available as npm packages for each FFmpeg major version:
+
+| Package | FFmpeg version | Description |
+|---------|----------------|-------------|
+| `@typed-ffmpeg/core` | — | Core runtime (Node.js + browser ESM) |
+| `@typed-ffmpeg/v5` | FFmpeg 5.x | Bindings for FFmpeg 5 |
+| `@typed-ffmpeg/v6` | FFmpeg 6.x | Bindings for FFmpeg 6 |
+| `@typed-ffmpeg/v7` | FFmpeg 7.x | Bindings for FFmpeg 7 |
+| `@typed-ffmpeg/v8` | FFmpeg 8.x | Bindings for FFmpeg 8 |
 
 ```bash
-npm install @typed-ffmpeg/core    # Core runtime (Node.js + browser ESM)
-# Generated bindings (coming soon to npm):
-# npm install @typed-ffmpeg/v7    # FFmpeg 7.x bindings
+npm install @typed-ffmpeg/core @typed-ffmpeg/v8   # latest FFmpeg bindings
 ```
 
 ```typescript
-import { input } from "@typed-ffmpeg/v7";
+import { input } from "@typed-ffmpeg/v8";
 
 const cmd = input("input.mp4")
   .video
@@ -123,7 +129,7 @@ const cmd = input("input.mp4")
 // => ["-i", "input.mp4", "-filter_complex", "...", "output.mp4"]
 ```
 
-`@typed-ffmpeg/core` ships three builds — CJS (Node.js default), ESM, and a browser-safe ESM bundle — selected automatically via the `exports` field. The TypeScript API mirrors the Python API with idiomatic TypeScript patterns (options objects instead of keyword arguments). See `packages/ts-core/` and `packages/ts-v7/` for details.
+`@typed-ffmpeg/core` ships three builds — CJS (Node.js default), ESM, and a browser-safe ESM bundle — selected automatically via the `exports` field. The TypeScript API mirrors the Python API with idiomatic TypeScript patterns (options objects instead of keyword arguments). Each version package includes JSDoc annotations indicating filter availability across FFmpeg versions. See `packages/ts-core/` and `packages/ts-v5/` through `packages/ts-v8/` for details.
 
 ---
 

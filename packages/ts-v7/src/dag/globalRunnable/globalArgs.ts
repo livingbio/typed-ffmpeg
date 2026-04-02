@@ -67,8 +67,6 @@ export interface GlobalArgsOptions {
   abort_on?: FFFunc;
   /** number of non-complex filter threads */
   filter_threads?: FFFunc;
-  /** maximum number of buffered frames in a filter graph */
-  filter_buffered_frames?: FFInt;
   /** create a complex filtergraph */
   filter_complex?: FFFunc;
   /** number of threads for -filter_complex */
@@ -77,12 +75,6 @@ export interface GlobalArgsOptions {
   lavfi?: FFFunc;
   /** deprecated, use -/filter_complex instead */
   filter_complex_script?: FFFunc;
-  /** print execution graph data to stderr */
-  print_graphs?: FFBoolean;
-  /** write execution graph data to the specified file */
-  print_graphs_file?: FFString;
-  /** set the output printing format (available formats are: default, compact, csv, flat, ini, json, xml, mermaid, mermaidhtml) */
-  print_graphs_format?: FFString;
   /** enable automatic conversion filters globally */
   auto_conversion_filters?: FFBoolean;
   /** print progress report during encoding */
@@ -99,6 +91,8 @@ export interface GlobalArgsOptions {
   vstats_file?: FFFunc;
   /** Version of the vstats format to use. */
   vstats_version?: FFInt;
+  /** set VAAPI hardware device (DirectX adapter index, DRM path or X11 display name) */
+  vaapi_device?: FFFunc;
   /** initialise hardware device */
   init_hw_device?: FFFunc;
   /** set hardware device used when filtering */
@@ -146,14 +140,10 @@ export function buildGlobalArgsKwargs(options?: GlobalArgsOptions): Record<strin
       "xerror": options?.xerror,
       "abort_on": options?.abort_on,
       "filter_threads": options?.filter_threads,
-      "filter_buffered_frames": options?.filter_buffered_frames,
       "filter_complex": options?.filter_complex,
       "filter_complex_threads": options?.filter_complex_threads,
       "lavfi": options?.lavfi,
       "filter_complex_script": options?.filter_complex_script,
-      "print_graphs": options?.print_graphs,
-      "print_graphs_file": options?.print_graphs_file,
-      "print_graphs_format": options?.print_graphs_format,
       "auto_conversion_filters": options?.auto_conversion_filters,
       "stats": options?.stats,
       "stats_period": options?.stats_period,
@@ -162,6 +152,7 @@ export function buildGlobalArgsKwargs(options?: GlobalArgsOptions): Record<strin
       "vstats": options?.vstats,
       "vstats_file": options?.vstats_file,
       "vstats_version": options?.vstats_version,
+      "vaapi_device": options?.vaapi_device,
       "init_hw_device": options?.init_hw_device,
       "filter_hw_device": options?.filter_hw_device,
       "adrift_threshold": options?.adrift_threshold,

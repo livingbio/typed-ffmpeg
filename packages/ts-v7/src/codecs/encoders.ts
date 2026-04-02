@@ -84,8 +84,11 @@ export function alias_pix(options?: {
  * @param options.skip_factor - Frame skip factor (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_exp - Frame skip exponent (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_cmp - Frame skip compare function (from INT_MIN to INT_MAX) (default dctmax)
+ * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.noise_reduction - Noise reduction (from INT_MIN to INT_MAX) (default 0)
  * @param options.ps - RTP payload size in bytes (from INT_MIN to INT_MAX) (default 0)
+ * @param options.huffman - Huffman table strategy (from 0 to 1) (default optimal)
+ * @param options.force_duplicated_matrix - Always write luma and chroma matrix for mjpeg, useful for rtp streaming. (default false)
  */
 export function amv(options?: {
   mpv_flags?: string | null;
@@ -106,8 +109,11 @@ export function amv(options?: {
   skip_factor?: number | null;
   skip_exp?: number | null;
   skip_cmp?: number | null | "sad" | "sse" | "satd" | "dct" | "psnr" | "bit" | "rd" | "zero" | "vsad" | "vsse" | "nsse" | "dct264" | "dctmax" | "chroma" | "msad";
+  sc_threshold?: number | null;
   noise_reduction?: number | null;
   ps?: number | null;
+  huffman?: number | null | "default" | "optimal";
+  force_duplicated_matrix?: boolean | null;
 
 }): FFMpegEncoderOption {
   return merge({
@@ -129,8 +135,11 @@ export function amv(options?: {
     "skip_factor": options?.skip_factor,
     "skip_exp": options?.skip_exp,
     "skip_cmp": options?.skip_cmp,
+    "sc_threshold": options?.sc_threshold,
     "noise_reduction": options?.noise_reduction,
     "ps": options?.ps,
+    "huffman": options?.huffman,
+    "force_duplicated_matrix": options?.force_duplicated_matrix,
 
   });
 }
@@ -145,7 +154,7 @@ export function amv(options?: {
  * APNG (Animated Portable Network Graphics) image
  * @param options.dpi - Set image resolution (in dots per inch) (from 0 to 65536) (default 0)
  * @param options.dpm - Set image resolution (in dots per meter) (from 0 to 65536) (default 0)
- * @param options.pred - Prediction method (from 0 to 5) (default paeth)
+ * @param options.pred - Prediction method (from 0 to 5) (default none)
  */
 export function apng(options?: {
   dpi?: number | null;
@@ -202,44 +211,9 @@ export function asv2(options?: {
 
 
 /**
- * librav1e AV1 (codec av1)
- * @param options.qp - use constant quantizer mode (from -1 to 255) (default -1)
- * @param options.speed - what speed preset to use (from -1 to 10) (default -1)
- * @param options.tiles - number of tiles encode with (from -1 to I64_MAX) (default 0)
- * @param options.tile_rows - number of tiles rows to encode with (from -1 to I64_MAX) (default 0)
- * @param options.tile_columns - number of tiles columns to encode with (from -1 to I64_MAX) (default 0)
- * @param options.rav1e_params - set the rav1e configuration using a :-separated list of key=value parameters
- */
-export function librav1e(options?: {
-  qp?: number | null;
-  speed?: number | null;
-  tiles?: number | null;
-  tile_rows?: number | null;
-  tile_columns?: number | null;
-  rav1e_params?: string | null;
-
-}): FFMpegEncoderOption {
-  return merge({
-    "qp": options?.qp,
-    "speed": options?.speed,
-    "tiles": options?.tiles,
-    "tile-rows": options?.tile_rows,
-    "tile-columns": options?.tile_columns,
-    "rav1e-params": options?.rav1e_params,
-
-  });
-}
-
-
-
-
-
-
-
-/**
  * NVIDIA NVENC av1 encoder (codec av1)
  * @param options.preset - Set the encoding preset (from 0 to 18) (default p4)
- * @param options.tune - Set the encoding tuning info (from 1 to 5) (default hq)
+ * @param options.tune - Set the encoding tuning info (from 1 to 4) (default hq)
  * @param options.level - Set the encoding level restriction (from 0 to 24) (default auto)
  * @param options.tier - Set the encoding tier (from 0 to 1) (default 0)
  * @param options.rc - Override the preset rate-control (from -1 to INT_MAX) (default -1)
@@ -259,8 +233,6 @@ export function librav1e(options?: {
  * @param options.qp - Constant quantization parameter rate control method (from -1 to 255) (default -1)
  * @param options.qp_cb_offset - Quantization parameter offset for cb channel (from -12 to 12) (default 0)
  * @param options.qp_cr_offset - Quantization parameter offset for cr channel (from -12 to 12) (default 0)
- * @param options.qmin - Specifies the minimum QP used for rate control (from -1 to 255) (default -1)
- * @param options.qmax - Specifies the maximum QP used for rate control (from -1 to 255) (default -1)
  * @param options.no_scenecut - When lookahead is enabled, set this to 1 to disable adaptive I-frame insertion at scene cuts (default false)
  * @param options.forced_idr - If forcing keyframes, force them as IDR frames. (default false)
  * @param options.b_adapt - When lookahead is enabled, set this to 0 to disable adaptive B-frame decision (default true)
@@ -279,14 +251,12 @@ export function librav1e(options?: {
  * @param options.extra_sei - Pass on extra SEI data (e.g. a53 cc) to be included in the bitstream (default true)
  * @param options.a53cc - Use A53 Closed Captions (if available) (default true)
  * @param options.s12m_tc - Use timecode (if available) (default true)
- * @param options.cbr_padding - Pad the bitstream to ensure bitrate does not drop below the target in CBR mode (default false)
- * @param options.tf_level - Specifies the strength of the temporal filtering (from -1 to INT_MAX) (default -1)
  * @param options.lookahead_level - Specifies the lookahead level. Higher level may improve quality at the expense of performance. (from -1 to 15) (default -1)
  * @param options.split_encode_mode - Specifies the split encoding mode (from 0 to 15) (default auto)
  */
 export function av1_nvenc(options?: {
   preset?: number | null | "default" | "slow" | "medium" | "fast" | "p1" | "p2" | "p3" | "p4" | "p5" | "p6" | "p7";
-  tune?: number | null | "hq" | "uhq" | "ll" | "ull" | "lossless";
+  tune?: number | null | "hq" | "ll" | "ull" | "lossless";
   level?: number | null | "auto" | "2" | "2.0" | "2.1" | "2.2" | "2.3" | "3" | "3.0" | "3.1" | "3.2" | "3.3" | "4" | "4.0" | "4.1" | "4.2" | "4.3" | "5" | "5.0" | "5.1" | "5.2" | "5.3" | "6" | "6.0" | "6.1" | "6.2" | "6.3" | "7" | "7.0" | "7.1" | "7.2" | "7.3";
   tier?: number | null | "0" | "1";
   rc?: number | null | "constqp" | "vbr" | "cbr";
@@ -306,8 +276,6 @@ export function av1_nvenc(options?: {
   qp?: number | null;
   qp_cb_offset?: number | null;
   qp_cr_offset?: number | null;
-  qmin?: number | null;
-  qmax?: number | null;
   no_scenecut?: boolean | null;
   forced_idr?: boolean | null;
   b_adapt?: boolean | null;
@@ -326,8 +294,6 @@ export function av1_nvenc(options?: {
   extra_sei?: boolean | null;
   a53cc?: boolean | null;
   s12m_tc?: boolean | null;
-  cbr_padding?: boolean | null;
-  tf_level?: number | null | "0" | "4";
   lookahead_level?: number | null | "auto" | "0" | "1" | "2" | "3";
   split_encode_mode?: number | null | "disabled" | "auto" | "forced" | "2" | "3";
 
@@ -354,8 +320,6 @@ export function av1_nvenc(options?: {
     "qp": options?.qp,
     "qp_cb_offset": options?.qp_cb_offset,
     "qp_cr_offset": options?.qp_cr_offset,
-    "qmin": options?.qmin,
-    "qmax": options?.qmax,
     "no-scenecut": options?.no_scenecut,
     "forced-idr": options?.forced_idr,
     "b_adapt": options?.b_adapt,
@@ -374,8 +338,6 @@ export function av1_nvenc(options?: {
     "extra_sei": options?.extra_sei,
     "a53cc": options?.a53cc,
     "s12m_tc": options?.s12m_tc,
-    "cbr_padding": options?.cbr_padding,
-    "tf_level": options?.tf_level,
     "lookahead_level": options?.lookahead_level,
     "split_encode_mode": options?.split_encode_mode,
 
@@ -727,73 +689,20 @@ export function exr(options?: {
 
 /**
  * FFmpeg video codec #1
- * @param options.slicecrc - Protect slices with CRCs (from -1 to 2) (default -1)
+ * @param options.slicecrc - Protect slices with CRCs (default auto)
  * @param options.coder - Coder type (from -2 to 2) (default rice)
  * @param options.context - Context model (from 0 to 1) (default 0)
- * @param options.qtable - Quantization table (from -1 to 2) (default default)
- * @param options.remap_mode - Remap Mode (from -1 to 2) (default auto)
- * @param options.remap_optimizer - Remap Optimizer (from 0 to 5) (default 3)
  */
 export function ffv1(options?: {
-  slicecrc?: number | null;
+  slicecrc?: boolean | null;
   coder?: number | null | "rice" | "range_def" | "range_tab" | "ac";
   context?: number | null;
-  qtable?: number | null | "default" | "8bit" | "greater8bit";
-  remap_mode?: number | null | "auto" | "off" | "dualrle" | "flipdualrle";
-  remap_optimizer?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
     "slicecrc": options?.slicecrc,
     "coder": options?.coder,
     "context": options?.context,
-    "qtable": options?.qtable,
-    "remap_mode": options?.remap_mode,
-    "remap_optimizer": options?.remap_optimizer,
-
-  });
-}
-
-
-
-
-
-
-
-/**
- * FFmpeg video codec #1 (Vulkan) (codec ffv1)
- * @param options.slicecrc - Protect slices with CRCs (from -1 to 2) (default -1)
- * @param options.context - Context model (from 0 to 1) (default 0)
- * @param options.coder - Coder type (from -2 to 2) (default range_tab)
- * @param options.qtable - Quantization table (from -1 to 2) (default default)
- * @param options.slices_h - Number of horizontal slices (from -1 to 1024) (default -1)
- * @param options.slices_v - Number of vertical slices (from -1 to 1024) (default -1)
- * @param options.force_pcm - Code all slices with no prediction (default false)
- * @param options.rct_search - Run a search for RCT parameters (level 4 only) (default true)
- * @param options.async_depth - Internal parallelization depth (from 1 to INT_MAX) (default 1)
- */
-export function ffv1_vulkan(options?: {
-  slicecrc?: number | null;
-  context?: number | null;
-  coder?: number | null | "rice" | "range_def" | "range_tab";
-  qtable?: number | null | "default" | "8bit" | "greater8bit";
-  slices_h?: number | null;
-  slices_v?: number | null;
-  force_pcm?: boolean | null;
-  rct_search?: boolean | null;
-  async_depth?: number | null;
-
-}): FFMpegEncoderOption {
-  return merge({
-    "slicecrc": options?.slicecrc,
-    "context": options?.context,
-    "coder": options?.coder,
-    "qtable": options?.qtable,
-    "slices_h": options?.slices_h,
-    "slices_v": options?.slices_v,
-    "force_pcm": options?.force_pcm,
-    "rct_search": options?.rct_search,
-    "async_depth": options?.async_depth,
 
   });
 }
@@ -901,13 +810,13 @@ export function flashsv2(options?: {
  * @param options.skip_factor - Frame skip factor (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_exp - Frame skip exponent (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_cmp - Frame skip compare function (from INT_MIN to INT_MAX) (default dctmax)
+ * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.noise_reduction - Noise reduction (from INT_MIN to INT_MAX) (default 0)
  * @param options.ps - RTP payload size in bytes (from INT_MIN to INT_MAX) (default 0)
  * @param options.motion_est - motion estimation algorithm (from 0 to 2) (default epzs)
  * @param options.mepc - Motion estimation bitrate penalty compensation (1.0 = 256) (from INT_MIN to INT_MAX) (default 256)
  * @param options.mepre - pre motion estimation (from INT_MIN to INT_MAX) (default 0)
  * @param options.intra_penalty - Penalty for intra blocks in block decision (from 0 to 1.07374e+09) (default 0)
- * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  */
 export function flv(options?: {
   mpv_flags?: string | null;
@@ -928,13 +837,13 @@ export function flv(options?: {
   skip_factor?: number | null;
   skip_exp?: number | null;
   skip_cmp?: number | null | "sad" | "sse" | "satd" | "dct" | "psnr" | "bit" | "rd" | "zero" | "vsad" | "vsse" | "nsse" | "dct264" | "dctmax" | "chroma" | "msad";
+  sc_threshold?: number | null;
   noise_reduction?: number | null;
   ps?: number | null;
   motion_est?: number | null | "zero" | "epzs" | "xone";
   mepc?: number | null;
   mepre?: number | null;
   intra_penalty?: number | null;
-  sc_threshold?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
@@ -956,13 +865,13 @@ export function flv(options?: {
     "skip_factor": options?.skip_factor,
     "skip_exp": options?.skip_exp,
     "skip_cmp": options?.skip_cmp,
+    "sc_threshold": options?.sc_threshold,
     "noise_reduction": options?.noise_reduction,
     "ps": options?.ps,
     "motion_est": options?.motion_est,
     "mepc": options?.mepc,
     "mepre": options?.mepre,
     "intra_penalty": options?.intra_penalty,
-    "sc_threshold": options?.sc_threshold,
 
   });
 }
@@ -1019,13 +928,13 @@ export function gif(options?: {
  * @param options.skip_factor - Frame skip factor (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_exp - Frame skip exponent (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_cmp - Frame skip compare function (from INT_MIN to INT_MAX) (default dctmax)
+ * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.noise_reduction - Noise reduction (from INT_MIN to INT_MAX) (default 0)
  * @param options.ps - RTP payload size in bytes (from INT_MIN to INT_MAX) (default 0)
  * @param options.motion_est - motion estimation algorithm (from 0 to 2) (default epzs)
  * @param options.mepc - Motion estimation bitrate penalty compensation (1.0 = 256) (from INT_MIN to INT_MAX) (default 256)
  * @param options.mepre - pre motion estimation (from INT_MIN to INT_MAX) (default 0)
  * @param options.intra_penalty - Penalty for intra blocks in block decision (from 0 to 1.07374e+09) (default 0)
- * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  */
 export function h261(options?: {
   mpv_flags?: string | null;
@@ -1046,13 +955,13 @@ export function h261(options?: {
   skip_factor?: number | null;
   skip_exp?: number | null;
   skip_cmp?: number | null | "sad" | "sse" | "satd" | "dct" | "psnr" | "bit" | "rd" | "zero" | "vsad" | "vsse" | "nsse" | "dct264" | "dctmax" | "chroma" | "msad";
+  sc_threshold?: number | null;
   noise_reduction?: number | null;
   ps?: number | null;
   motion_est?: number | null | "zero" | "epzs" | "xone";
   mepc?: number | null;
   mepre?: number | null;
   intra_penalty?: number | null;
-  sc_threshold?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
@@ -1074,13 +983,13 @@ export function h261(options?: {
     "skip_factor": options?.skip_factor,
     "skip_exp": options?.skip_exp,
     "skip_cmp": options?.skip_cmp,
+    "sc_threshold": options?.sc_threshold,
     "noise_reduction": options?.noise_reduction,
     "ps": options?.ps,
     "motion_est": options?.motion_est,
     "mepc": options?.mepc,
     "mepre": options?.mepre,
     "intra_penalty": options?.intra_penalty,
-    "sc_threshold": options?.sc_threshold,
 
   });
 }
@@ -1113,13 +1022,13 @@ export function h261(options?: {
  * @param options.skip_factor - Frame skip factor (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_exp - Frame skip exponent (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_cmp - Frame skip compare function (from INT_MIN to INT_MAX) (default dctmax)
+ * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.noise_reduction - Noise reduction (from INT_MIN to INT_MAX) (default 0)
  * @param options.ps - RTP payload size in bytes (from INT_MIN to INT_MAX) (default 0)
  * @param options.motion_est - motion estimation algorithm (from 0 to 2) (default epzs)
  * @param options.mepc - Motion estimation bitrate penalty compensation (1.0 = 256) (from INT_MIN to INT_MAX) (default 256)
  * @param options.mepre - pre motion estimation (from INT_MIN to INT_MAX) (default 0)
  * @param options.intra_penalty - Penalty for intra blocks in block decision (from 0 to 1.07374e+09) (default 0)
- * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  */
 export function h263(options?: {
   obmc?: boolean | null;
@@ -1142,13 +1051,13 @@ export function h263(options?: {
   skip_factor?: number | null;
   skip_exp?: number | null;
   skip_cmp?: number | null | "sad" | "sse" | "satd" | "dct" | "psnr" | "bit" | "rd" | "zero" | "vsad" | "vsse" | "nsse" | "dct264" | "dctmax" | "chroma" | "msad";
+  sc_threshold?: number | null;
   noise_reduction?: number | null;
   ps?: number | null;
   motion_est?: number | null | "zero" | "epzs" | "xone";
   mepc?: number | null;
   mepre?: number | null;
   intra_penalty?: number | null;
-  sc_threshold?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
@@ -1172,13 +1081,13 @@ export function h263(options?: {
     "skip_factor": options?.skip_factor,
     "skip_exp": options?.skip_exp,
     "skip_cmp": options?.skip_cmp,
+    "sc_threshold": options?.sc_threshold,
     "noise_reduction": options?.noise_reduction,
     "ps": options?.ps,
     "motion_est": options?.motion_est,
     "mepc": options?.mepc,
     "mepre": options?.mepre,
     "intra_penalty": options?.intra_penalty,
-    "sc_threshold": options?.sc_threshold,
 
   });
 }
@@ -1236,13 +1145,13 @@ export function h263_v4l2m2m(options?: {
  * @param options.skip_factor - Frame skip factor (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_exp - Frame skip exponent (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_cmp - Frame skip compare function (from INT_MIN to INT_MAX) (default dctmax)
+ * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.noise_reduction - Noise reduction (from INT_MIN to INT_MAX) (default 0)
  * @param options.ps - RTP payload size in bytes (from INT_MIN to INT_MAX) (default 0)
  * @param options.motion_est - motion estimation algorithm (from 0 to 2) (default epzs)
  * @param options.mepc - Motion estimation bitrate penalty compensation (1.0 = 256) (from INT_MIN to INT_MAX) (default 256)
  * @param options.mepre - pre motion estimation (from INT_MIN to INT_MAX) (default 0)
  * @param options.intra_penalty - Penalty for intra blocks in block decision (from 0 to 1.07374e+09) (default 0)
- * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  */
 export function h263p(options?: {
   umv?: boolean | null;
@@ -1267,13 +1176,13 @@ export function h263p(options?: {
   skip_factor?: number | null;
   skip_exp?: number | null;
   skip_cmp?: number | null | "sad" | "sse" | "satd" | "dct" | "psnr" | "bit" | "rd" | "zero" | "vsad" | "vsse" | "nsse" | "dct264" | "dctmax" | "chroma" | "msad";
+  sc_threshold?: number | null;
   noise_reduction?: number | null;
   ps?: number | null;
   motion_est?: number | null | "zero" | "epzs" | "xone";
   mepc?: number | null;
   mepre?: number | null;
   intra_penalty?: number | null;
-  sc_threshold?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
@@ -1299,13 +1208,13 @@ export function h263p(options?: {
     "skip_factor": options?.skip_factor,
     "skip_exp": options?.skip_exp,
     "skip_cmp": options?.skip_cmp,
+    "sc_threshold": options?.sc_threshold,
     "noise_reduction": options?.noise_reduction,
     "ps": options?.ps,
     "motion_est": options?.motion_est,
     "mepc": options?.mepc,
     "mepre": options?.mepre,
     "intra_penalty": options?.intra_penalty,
-    "sc_threshold": options?.sc_threshold,
 
   });
 }
@@ -1636,7 +1545,7 @@ export function libx264rgb(options?: {
  * NVIDIA NVENC H.264 encoder (codec h264)
  * @param options.preset - Set the encoding preset (from 0 to 18) (default p4)
  * @param options.tune - Set the encoding tuning info (from 1 to 4) (default hq)
- * @param options.profile - Set the encoding profile (from 0 to 5) (default main)
+ * @param options.profile - Set the encoding profile (from 0 to 3) (default main)
  * @param options.level - Set the encoding level restriction (from 0 to 62) (default auto)
  * @param options.rc - Override the preset rate-control (from -1 to INT_MAX) (default -1)
  * @param options.rc_lookahead - Number of frames to look ahead for rate-control (from 0 to INT_MAX) (default 0)
@@ -1664,16 +1573,12 @@ export function libx264rgb(options?: {
  * @param options.qp - Constant quantization parameter rate control method (from -1 to 51) (default -1)
  * @param options.qp_cb_offset - Quantization parameter offset for cb channel (from -12 to 12) (default 0)
  * @param options.qp_cr_offset - Quantization parameter offset for cr channel (from -12 to 12) (default 0)
- * @param options.qmin - Specifies the minimum QP used for rate control (from -1 to 51) (default -1)
- * @param options.qmax - Specifies the maximum QP used for rate control (from -1 to 51) (default -1)
  * @param options.weighted_pred - Set 1 to enable weighted prediction (from 0 to 1) (default 0)
  * @param options.coder - Coder type (from -1 to 2) (default default)
  * @param options.b_ref_mode - Use B frames as references (from -1 to 2) (default -1)
  * @param options.a53cc - Use A53 Closed Captions (if available) (default true)
- * @param options.s12m_tc - Use timecode (if available) (default true)
  * @param options.dpb_size - Specifies the DPB size used for encoding (0 means automatic) (from 0 to INT_MAX) (default 0)
  * @param options.multipass - Set the multipass encoding (from 0 to 2) (default disabled)
- * @param options.highbitdepth - Enable 10 bit encode for 8 bit input (default false)
  * @param options.ldkfs - Low delay key frame scale; Specifies the Scene Change frame size increase allowed in case of single frame VBV and CBR (from 0 to 255) (default 0)
  * @param options.extra_sei - Pass on extra SEI data (e.g. a53 cc) to be included in the bitstream (default true)
  * @param options.udu_sei - Pass on user data unregistered SEI if available (default false)
@@ -1681,14 +1586,12 @@ export function libx264rgb(options?: {
  * @param options.single_slice_intra_refresh - Use single slice intra refresh (default false)
  * @param options.max_slice_size - Maximum encoded slice size in bytes (from 0 to INT_MAX) (default 0)
  * @param options.constrained_encoding - Enable constrainedFrame encoding where each slice in the constrained picture is independent of other slices (default false)
- * @param options.cbr_padding - Pad the bitstream to ensure bitrate does not drop below the target in CBR mode (default false)
- * @param options.tf_level - Specifies the strength of the temporal filtering (from -1 to INT_MAX) (default -1)
  * @param options.lookahead_level - Specifies the lookahead level. Higher level may improve quality at the expense of performance. (from -1 to 15) (default -1)
  */
 export function h264_nvenc(options?: {
   preset?: number | null | "default" | "slow" | "medium" | "fast" | "hp" | "hq" | "bd" | "ll" | "llhq" | "llhp" | "lossless" | "losslesshp" | "p1" | "p2" | "p3" | "p4" | "p5" | "p6" | "p7";
   tune?: number | null | "hq" | "ll" | "ull" | "lossless";
-  profile?: number | null | "baseline" | "main" | "high" | "high10" | "high422" | "high444p";
+  profile?: number | null | "baseline" | "main" | "high" | "high444p";
   level?: number | null | "auto" | "1" | "1.0" | "1b" | "1.0b" | "1.1" | "1.2" | "1.3" | "2" | "2.0" | "2.1" | "2.2" | "3" | "3.0" | "3.1" | "3.2" | "4" | "4.0" | "4.1" | "4.2" | "5" | "5.0" | "5.1" | "5.2" | "6.0" | "6.1" | "6.2";
   rc?: number | null | "constqp" | "vbr" | "cbr" | "vbr_minqp" | "ll_2pass_quality" | "ll_2pass_size" | "vbr_2pass" | "cbr_ld_hq" | "cbr_hq" | "vbr_hq";
   rc_lookahead?: number | null;
@@ -1716,16 +1619,12 @@ export function h264_nvenc(options?: {
   qp?: number | null;
   qp_cb_offset?: number | null;
   qp_cr_offset?: number | null;
-  qmin?: number | null;
-  qmax?: number | null;
   weighted_pred?: number | null;
   coder?: number | null | "default" | "auto" | "cabac" | "cavlc" | "ac" | "vlc";
   b_ref_mode?: number | null | "disabled" | "each" | "middle";
   a53cc?: boolean | null;
-  s12m_tc?: boolean | null;
   dpb_size?: number | null;
   multipass?: number | null | "disabled" | "qres" | "fullres";
-  highbitdepth?: boolean | null;
   ldkfs?: number | null;
   extra_sei?: boolean | null;
   udu_sei?: boolean | null;
@@ -1733,8 +1632,6 @@ export function h264_nvenc(options?: {
   single_slice_intra_refresh?: boolean | null;
   max_slice_size?: number | null;
   constrained_encoding?: boolean | null;
-  cbr_padding?: boolean | null;
-  tf_level?: number | null | "0" | "4";
   lookahead_level?: number | null | "auto" | "0" | "1" | "2" | "3";
 
 }): FFMpegEncoderOption {
@@ -1769,16 +1666,12 @@ export function h264_nvenc(options?: {
     "qp": options?.qp,
     "qp_cb_offset": options?.qp_cb_offset,
     "qp_cr_offset": options?.qp_cr_offset,
-    "qmin": options?.qmin,
-    "qmax": options?.qmax,
     "weighted_pred": options?.weighted_pred,
     "coder": options?.coder,
     "b_ref_mode": options?.b_ref_mode,
     "a53cc": options?.a53cc,
-    "s12m_tc": options?.s12m_tc,
     "dpb_size": options?.dpb_size,
     "multipass": options?.multipass,
-    "highbitdepth": options?.highbitdepth,
     "ldkfs": options?.ldkfs,
     "extra_sei": options?.extra_sei,
     "udu_sei": options?.udu_sei,
@@ -1786,8 +1679,6 @@ export function h264_nvenc(options?: {
     "single-slice-intra-refresh": options?.single_slice_intra_refresh,
     "max_slice_size": options?.max_slice_size,
     "constrained-encoding": options?.constrained_encoding,
-    "cbr_padding": options?.cbr_padding,
-    "tf_level": options?.tf_level,
     "lookahead_level": options?.lookahead_level,
 
   });
@@ -1938,32 +1829,6 @@ export function h264_vulkan(options?: {
 
 
 /**
- * Vidvox Hap
- * @param options.format - (from 11 to 15) (default hap)
- * @param options.chunks - chunk count (from 1 to 64) (default 1)
- * @param options.compressor - second-stage compressor (from 160 to 176) (default snappy)
- */
-export function hap(options?: {
-  format?: number | null | "hap" | "hap_alpha" | "hap_q";
-  chunks?: number | null;
-  compressor?: number | null | "none" | "snappy";
-
-}): FFMpegEncoderOption {
-  return merge({
-    "format": options?.format,
-    "chunks": options?.chunks,
-    "compressor": options?.compressor,
-
-  });
-}
-
-
-
-
-
-
-
-/**
  * HDR (Radiance RGBE format) image
  */
 export function hdr(options?: {
@@ -2031,7 +1896,7 @@ export function libx265(options?: {
  * NVIDIA NVENC hevc encoder (codec hevc)
  * @param options.preset - Set the encoding preset (from 0 to 18) (default p4)
  * @param options.tune - Set the encoding tuning info (from 1 to 5) (default hq)
- * @param options.profile - Set the encoding profile (from 0 to 3) (default main)
+ * @param options.profile - Set the encoding profile (from 0 to 4) (default main)
  * @param options.level - Set the encoding level restriction (from 0 to 186) (default auto)
  * @param options.tier - Set the encoding tier (from 0 to 1) (default main)
  * @param options.rc - Override the preset rate-control (from -1 to INT_MAX) (default -1)
@@ -2059,8 +1924,6 @@ export function libx265(options?: {
  * @param options.qp - Constant quantization parameter rate control method (from -1 to 51) (default -1)
  * @param options.qp_cb_offset - Quantization parameter offset for cb channel (from -12 to 12) (default 0)
  * @param options.qp_cr_offset - Quantization parameter offset for cr channel (from -12 to 12) (default 0)
- * @param options.qmin - Specifies the minimum QP used for rate control (from -1 to 51) (default -1)
- * @param options.qmax - Specifies the maximum QP used for rate control (from -1 to 51) (default -1)
  * @param options.weighted_pred - Set 1 to enable weighted prediction (from 0 to 1) (default 0)
  * @param options.b_ref_mode - Use B frames as references (from -1 to 2) (default -1)
  * @param options.a53cc - Use A53 Closed Captions (if available) (default true)
@@ -2075,7 +1938,6 @@ export function libx265(options?: {
  * @param options.single_slice_intra_refresh - Use single slice intra refresh (default false)
  * @param options.max_slice_size - Maximum encoded slice size in bytes (from 0 to INT_MAX) (default 0)
  * @param options.constrained_encoding - Enable constrainedFrame encoding where each slice in the constrained picture is independent of other slices (default false)
- * @param options.cbr_padding - Pad the bitstream to ensure bitrate does not drop below the target in CBR mode (default false)
  * @param options.tf_level - Specifies the strength of the temporal filtering (from -1 to INT_MAX) (default -1)
  * @param options.lookahead_level - Specifies the lookahead level. Higher level may improve quality at the expense of performance. (from -1 to 15) (default -1)
  * @param options.unidir_b - Enable use of unidirectional B-Frames. (default false)
@@ -2084,7 +1946,7 @@ export function libx265(options?: {
 export function hevc_nvenc(options?: {
   preset?: number | null | "default" | "slow" | "medium" | "fast" | "hp" | "hq" | "bd" | "ll" | "llhq" | "llhp" | "lossless" | "losslesshp" | "p1" | "p2" | "p3" | "p4" | "p5" | "p6" | "p7";
   tune?: number | null | "hq" | "uhq" | "ll" | "ull" | "lossless";
-  profile?: number | null | "main" | "main10" | "rext" | "mv";
+  profile?: number | null | "main" | "main10" | "rext";
   level?: number | null | "auto" | "1" | "1.0" | "2" | "2.0" | "2.1" | "3" | "3.0" | "3.1" | "4" | "4.0" | "4.1" | "5" | "5.0" | "5.1" | "5.2" | "6" | "6.0" | "6.1" | "6.2";
   tier?: number | null | "main" | "high";
   rc?: number | null | "constqp" | "vbr" | "cbr" | "vbr_minqp" | "ll_2pass_quality" | "ll_2pass_size" | "vbr_2pass" | "cbr_ld_hq" | "cbr_hq" | "vbr_hq";
@@ -2112,8 +1974,6 @@ export function hevc_nvenc(options?: {
   qp?: number | null;
   qp_cb_offset?: number | null;
   qp_cr_offset?: number | null;
-  qmin?: number | null;
-  qmax?: number | null;
   weighted_pred?: number | null;
   b_ref_mode?: number | null | "disabled" | "each" | "middle";
   a53cc?: boolean | null;
@@ -2128,7 +1988,6 @@ export function hevc_nvenc(options?: {
   single_slice_intra_refresh?: boolean | null;
   max_slice_size?: number | null;
   constrained_encoding?: boolean | null;
-  cbr_padding?: boolean | null;
   tf_level?: number | null | "0" | "4";
   lookahead_level?: number | null | "auto" | "0" | "1" | "2" | "3";
   unidir_b?: boolean | null;
@@ -2166,8 +2025,6 @@ export function hevc_nvenc(options?: {
     "qp": options?.qp,
     "qp_cb_offset": options?.qp_cb_offset,
     "qp_cr_offset": options?.qp_cr_offset,
-    "qmin": options?.qmin,
-    "qmax": options?.qmax,
     "weighted_pred": options?.weighted_pred,
     "b_ref_mode": options?.b_ref_mode,
     "a53cc": options?.a53cc,
@@ -2182,7 +2039,6 @@ export function hevc_nvenc(options?: {
     "single-slice-intra-refresh": options?.single_slice_intra_refresh,
     "max_slice_size": options?.max_slice_size,
     "constrained-encoding": options?.constrained_encoding,
-    "cbr_padding": options?.cbr_padding,
     "tf_level": options?.tf_level,
     "lookahead_level": options?.lookahead_level,
     "unidir_b": options?.unidir_b,
@@ -2461,64 +2317,6 @@ export function jpegls(options?: {
 
 
 /**
- * libjxl JPEG XL (codec jpegxl)
- * @param options.effort - Encoding effort (from 1 to 9) (default 7)
- * @param options.distance - Maximum Butteraugli distance (quality setting, lower = better, zero = lossless, default 1.0) (from -1 to 15) (default -1)
- * @param options.modular - Force modular mode (from 0 to 1) (default 0)
- * @param options.xyb - Use XYB-encoding for lossy images (from 0 to 1) (default 1)
- */
-export function libjxl(options?: {
-  effort?: number | null;
-  distance?: number | null;
-  modular?: number | null;
-  xyb?: number | null;
-
-}): FFMpegEncoderOption {
-  return merge({
-    "effort": options?.effort,
-    "distance": options?.distance,
-    "modular": options?.modular,
-    "xyb": options?.xyb,
-
-  });
-}
-
-
-
-
-
-
-
-/**
- * libjxl JPEG XL animated (codec jpegxl_anim)
- * @param options.effort - Encoding effort (from 1 to 9) (default 7)
- * @param options.distance - Maximum Butteraugli distance (quality setting, lower = better, zero = lossless, default 1.0) (from -1 to 15) (default -1)
- * @param options.modular - Force modular mode (from 0 to 1) (default 0)
- * @param options.xyb - Use XYB-encoding for lossy images (from 0 to 1) (default 1)
- */
-export function libjxl_anim(options?: {
-  effort?: number | null;
-  distance?: number | null;
-  modular?: number | null;
-  xyb?: number | null;
-
-}): FFMpegEncoderOption {
-  return merge({
-    "effort": options?.effort,
-    "distance": options?.distance,
-    "modular": options?.modular,
-    "xyb": options?.xyb,
-
-  });
-}
-
-
-
-
-
-
-
-/**
  * Lossless JPEG
  * @param options.pred - Prediction method (from 1 to 3) (default left)
  */
@@ -2560,8 +2358,6 @@ export function magicyuv(options?: {
 
 /**
  * MJPEG (Motion JPEG)
- * @param options.huffman - Huffman table strategy (from 0 to 1) (default optimal)
- * @param options.force_duplicated_matrix - Always write luma and chroma matrix for mjpeg, useful for rtp streaming. (default false)
  * @param options.mpv_flags - Flags common for all mpegvideo-based encoders. (default 0)
  * @param options.luma_elim_threshold - single coefficient elimination threshold for luminance (negative values also consider dc coefficient) (from INT_MIN to INT_MAX) (default 0)
  * @param options.chroma_elim_threshold - single coefficient elimination threshold for chrominance (negative values also consider dc coefficient) (from INT_MIN to INT_MAX) (default 0)
@@ -2580,12 +2376,13 @@ export function magicyuv(options?: {
  * @param options.skip_factor - Frame skip factor (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_exp - Frame skip exponent (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_cmp - Frame skip compare function (from INT_MIN to INT_MAX) (default dctmax)
+ * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.noise_reduction - Noise reduction (from INT_MIN to INT_MAX) (default 0)
  * @param options.ps - RTP payload size in bytes (from INT_MIN to INT_MAX) (default 0)
+ * @param options.huffman - Huffman table strategy (from 0 to 1) (default optimal)
+ * @param options.force_duplicated_matrix - Always write luma and chroma matrix for mjpeg, useful for rtp streaming. (default false)
  */
 export function mjpeg(options?: {
-  huffman?: number | null | "default" | "optimal";
-  force_duplicated_matrix?: boolean | null;
   mpv_flags?: string | null;
   luma_elim_threshold?: number | null;
   chroma_elim_threshold?: number | null;
@@ -2604,13 +2401,14 @@ export function mjpeg(options?: {
   skip_factor?: number | null;
   skip_exp?: number | null;
   skip_cmp?: number | null | "sad" | "sse" | "satd" | "dct" | "psnr" | "bit" | "rd" | "zero" | "vsad" | "vsse" | "nsse" | "dct264" | "dctmax" | "chroma" | "msad";
+  sc_threshold?: number | null;
   noise_reduction?: number | null;
   ps?: number | null;
+  huffman?: number | null | "default" | "optimal";
+  force_duplicated_matrix?: boolean | null;
 
 }): FFMpegEncoderOption {
   return merge({
-    "huffman": options?.huffman,
-    "force_duplicated_matrix": options?.force_duplicated_matrix,
     "mpv_flags": options?.mpv_flags,
     "luma_elim_threshold": options?.luma_elim_threshold,
     "chroma_elim_threshold": options?.chroma_elim_threshold,
@@ -2629,8 +2427,11 @@ export function mjpeg(options?: {
     "skip_factor": options?.skip_factor,
     "skip_exp": options?.skip_exp,
     "skip_cmp": options?.skip_cmp,
+    "sc_threshold": options?.sc_threshold,
     "noise_reduction": options?.noise_reduction,
     "ps": options?.ps,
+    "huffman": options?.huffman,
+    "force_duplicated_matrix": options?.force_duplicated_matrix,
 
   });
 }
@@ -2706,13 +2507,13 @@ export function mjpeg_vaapi(options?: {
  * @param options.skip_factor - Frame skip factor (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_exp - Frame skip exponent (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_cmp - Frame skip compare function (from INT_MIN to INT_MAX) (default dctmax)
+ * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.noise_reduction - Noise reduction (from INT_MIN to INT_MAX) (default 0)
  * @param options.ps - RTP payload size in bytes (from INT_MIN to INT_MAX) (default 0)
  * @param options.motion_est - motion estimation algorithm (from 0 to 2) (default epzs)
  * @param options.mepc - Motion estimation bitrate penalty compensation (1.0 = 256) (from INT_MIN to INT_MAX) (default 256)
  * @param options.mepre - pre motion estimation (from INT_MIN to INT_MAX) (default 0)
  * @param options.intra_penalty - Penalty for intra blocks in block decision (from 0 to 1.07374e+09) (default 0)
- * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  */
 export function mpeg1video(options?: {
   gop_timecode?: string | null;
@@ -2740,13 +2541,13 @@ export function mpeg1video(options?: {
   skip_factor?: number | null;
   skip_exp?: number | null;
   skip_cmp?: number | null | "sad" | "sse" | "satd" | "dct" | "psnr" | "bit" | "rd" | "zero" | "vsad" | "vsse" | "nsse" | "dct264" | "dctmax" | "chroma" | "msad";
+  sc_threshold?: number | null;
   noise_reduction?: number | null;
   ps?: number | null;
   motion_est?: number | null | "zero" | "epzs" | "xone";
   mepc?: number | null;
   mepre?: number | null;
   intra_penalty?: number | null;
-  sc_threshold?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
@@ -2775,13 +2576,13 @@ export function mpeg1video(options?: {
     "skip_factor": options?.skip_factor,
     "skip_exp": options?.skip_exp,
     "skip_cmp": options?.skip_cmp,
+    "sc_threshold": options?.sc_threshold,
     "noise_reduction": options?.noise_reduction,
     "ps": options?.ps,
     "motion_est": options?.motion_est,
     "mepc": options?.mepc,
     "mepre": options?.mepre,
     "intra_penalty": options?.intra_penalty,
-    "sc_threshold": options?.sc_threshold,
 
   });
 }
@@ -2825,13 +2626,13 @@ export function mpeg1video(options?: {
  * @param options.skip_factor - Frame skip factor (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_exp - Frame skip exponent (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_cmp - Frame skip compare function (from INT_MIN to INT_MAX) (default dctmax)
+ * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.noise_reduction - Noise reduction (from INT_MIN to INT_MAX) (default 0)
  * @param options.ps - RTP payload size in bytes (from INT_MIN to INT_MAX) (default 0)
  * @param options.motion_est - motion estimation algorithm (from 0 to 2) (default epzs)
  * @param options.mepc - Motion estimation bitrate penalty compensation (1.0 = 256) (from INT_MIN to INT_MAX) (default 256)
  * @param options.mepre - pre motion estimation (from INT_MIN to INT_MAX) (default 0)
  * @param options.intra_penalty - Penalty for intra blocks in block decision (from 0 to 1.07374e+09) (default 0)
- * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  */
 export function mpeg2video(options?: {
   gop_timecode?: string | null;
@@ -2865,13 +2666,13 @@ export function mpeg2video(options?: {
   skip_factor?: number | null;
   skip_exp?: number | null;
   skip_cmp?: number | null | "sad" | "sse" | "satd" | "dct" | "psnr" | "bit" | "rd" | "zero" | "vsad" | "vsse" | "nsse" | "dct264" | "dctmax" | "chroma" | "msad";
+  sc_threshold?: number | null;
   noise_reduction?: number | null;
   ps?: number | null;
   motion_est?: number | null | "zero" | "epzs" | "xone";
   mepc?: number | null;
   mepre?: number | null;
   intra_penalty?: number | null;
-  sc_threshold?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
@@ -2906,13 +2707,13 @@ export function mpeg2video(options?: {
     "skip_factor": options?.skip_factor,
     "skip_exp": options?.skip_exp,
     "skip_cmp": options?.skip_cmp,
+    "sc_threshold": options?.sc_threshold,
     "noise_reduction": options?.noise_reduction,
     "ps": options?.ps,
     "motion_est": options?.motion_est,
     "mepc": options?.mepc,
     "mepre": options?.mepre,
     "intra_penalty": options?.intra_penalty,
-    "sc_threshold": options?.sc_threshold,
 
   });
 }
@@ -2993,13 +2794,13 @@ export function mpeg2_vaapi(options?: {
  * @param options.skip_factor - Frame skip factor (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_exp - Frame skip exponent (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_cmp - Frame skip compare function (from INT_MIN to INT_MAX) (default dctmax)
+ * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.noise_reduction - Noise reduction (from INT_MIN to INT_MAX) (default 0)
  * @param options.ps - RTP payload size in bytes (from INT_MIN to INT_MAX) (default 0)
  * @param options.motion_est - motion estimation algorithm (from 0 to 2) (default epzs)
  * @param options.mepc - Motion estimation bitrate penalty compensation (1.0 = 256) (from INT_MIN to INT_MAX) (default 256)
  * @param options.mepre - pre motion estimation (from INT_MIN to INT_MAX) (default 0)
  * @param options.intra_penalty - Penalty for intra blocks in block decision (from 0 to 1.07374e+09) (default 0)
- * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  */
 export function mpeg4(options?: {
   data_partitioning?: boolean | null;
@@ -3026,13 +2827,13 @@ export function mpeg4(options?: {
   skip_factor?: number | null;
   skip_exp?: number | null;
   skip_cmp?: number | null | "sad" | "sse" | "satd" | "dct" | "psnr" | "bit" | "rd" | "zero" | "vsad" | "vsse" | "nsse" | "dct264" | "dctmax" | "chroma" | "msad";
+  sc_threshold?: number | null;
   noise_reduction?: number | null;
   ps?: number | null;
   motion_est?: number | null | "zero" | "epzs" | "xone";
   mepc?: number | null;
   mepre?: number | null;
   intra_penalty?: number | null;
-  sc_threshold?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
@@ -3060,13 +2861,13 @@ export function mpeg4(options?: {
     "skip_factor": options?.skip_factor,
     "skip_exp": options?.skip_exp,
     "skip_cmp": options?.skip_cmp,
+    "sc_threshold": options?.sc_threshold,
     "noise_reduction": options?.noise_reduction,
     "ps": options?.ps,
     "motion_est": options?.motion_est,
     "mepc": options?.mepc,
     "mepre": options?.mepre,
     "intra_penalty": options?.intra_penalty,
-    "sc_threshold": options?.sc_threshold,
 
   });
 }
@@ -3158,13 +2959,13 @@ export function mpeg4_v4l2m2m(options?: {
  * @param options.skip_factor - Frame skip factor (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_exp - Frame skip exponent (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_cmp - Frame skip compare function (from INT_MIN to INT_MAX) (default dctmax)
+ * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.noise_reduction - Noise reduction (from INT_MIN to INT_MAX) (default 0)
  * @param options.ps - RTP payload size in bytes (from INT_MIN to INT_MAX) (default 0)
  * @param options.motion_est - motion estimation algorithm (from 0 to 2) (default epzs)
  * @param options.mepc - Motion estimation bitrate penalty compensation (1.0 = 256) (from INT_MIN to INT_MAX) (default 256)
  * @param options.mepre - pre motion estimation (from INT_MIN to INT_MAX) (default 0)
  * @param options.intra_penalty - Penalty for intra blocks in block decision (from 0 to 1.07374e+09) (default 0)
- * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  */
 export function msmpeg4v2(options?: {
   mpv_flags?: string | null;
@@ -3185,13 +2986,13 @@ export function msmpeg4v2(options?: {
   skip_factor?: number | null;
   skip_exp?: number | null;
   skip_cmp?: number | null | "sad" | "sse" | "satd" | "dct" | "psnr" | "bit" | "rd" | "zero" | "vsad" | "vsse" | "nsse" | "dct264" | "dctmax" | "chroma" | "msad";
+  sc_threshold?: number | null;
   noise_reduction?: number | null;
   ps?: number | null;
   motion_est?: number | null | "zero" | "epzs" | "xone";
   mepc?: number | null;
   mepre?: number | null;
   intra_penalty?: number | null;
-  sc_threshold?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
@@ -3213,13 +3014,13 @@ export function msmpeg4v2(options?: {
     "skip_factor": options?.skip_factor,
     "skip_exp": options?.skip_exp,
     "skip_cmp": options?.skip_cmp,
+    "sc_threshold": options?.sc_threshold,
     "noise_reduction": options?.noise_reduction,
     "ps": options?.ps,
     "motion_est": options?.motion_est,
     "mepc": options?.mepc,
     "mepre": options?.mepre,
     "intra_penalty": options?.intra_penalty,
-    "sc_threshold": options?.sc_threshold,
 
   });
 }
@@ -3250,13 +3051,13 @@ export function msmpeg4v2(options?: {
  * @param options.skip_factor - Frame skip factor (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_exp - Frame skip exponent (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_cmp - Frame skip compare function (from INT_MIN to INT_MAX) (default dctmax)
+ * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.noise_reduction - Noise reduction (from INT_MIN to INT_MAX) (default 0)
  * @param options.ps - RTP payload size in bytes (from INT_MIN to INT_MAX) (default 0)
  * @param options.motion_est - motion estimation algorithm (from 0 to 2) (default epzs)
  * @param options.mepc - Motion estimation bitrate penalty compensation (1.0 = 256) (from INT_MIN to INT_MAX) (default 256)
  * @param options.mepre - pre motion estimation (from INT_MIN to INT_MAX) (default 0)
  * @param options.intra_penalty - Penalty for intra blocks in block decision (from 0 to 1.07374e+09) (default 0)
- * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  */
 export function msmpeg4(options?: {
   mpv_flags?: string | null;
@@ -3277,13 +3078,13 @@ export function msmpeg4(options?: {
   skip_factor?: number | null;
   skip_exp?: number | null;
   skip_cmp?: number | null | "sad" | "sse" | "satd" | "dct" | "psnr" | "bit" | "rd" | "zero" | "vsad" | "vsse" | "nsse" | "dct264" | "dctmax" | "chroma" | "msad";
+  sc_threshold?: number | null;
   noise_reduction?: number | null;
   ps?: number | null;
   motion_est?: number | null | "zero" | "epzs" | "xone";
   mepc?: number | null;
   mepre?: number | null;
   intra_penalty?: number | null;
-  sc_threshold?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
@@ -3305,13 +3106,13 @@ export function msmpeg4(options?: {
     "skip_factor": options?.skip_factor,
     "skip_exp": options?.skip_exp,
     "skip_cmp": options?.skip_cmp,
+    "sc_threshold": options?.sc_threshold,
     "noise_reduction": options?.noise_reduction,
     "ps": options?.ps,
     "motion_est": options?.motion_est,
     "mepc": options?.mepc,
     "mepre": options?.mepre,
     "intra_penalty": options?.intra_penalty,
-    "sc_threshold": options?.sc_threshold,
 
   });
 }
@@ -3479,7 +3280,7 @@ export function phm(options?: {
  * PNG (Portable Network Graphics) image
  * @param options.dpi - Set image resolution (in dots per inch) (from 0 to 65536) (default 0)
  * @param options.dpm - Set image resolution (in dots per meter) (from 0 to 65536) (default 0)
- * @param options.pred - Prediction method (from 0 to 5) (default paeth)
+ * @param options.pred - Prediction method (from 0 to 5) (default none)
  */
 export function png(options?: {
   dpi?: number | null;
@@ -3744,13 +3545,13 @@ export function rpza(options?: {
  * @param options.skip_factor - Frame skip factor (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_exp - Frame skip exponent (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_cmp - Frame skip compare function (from INT_MIN to INT_MAX) (default dctmax)
+ * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.noise_reduction - Noise reduction (from INT_MIN to INT_MAX) (default 0)
  * @param options.ps - RTP payload size in bytes (from INT_MIN to INT_MAX) (default 0)
  * @param options.motion_est - motion estimation algorithm (from 0 to 2) (default epzs)
  * @param options.mepc - Motion estimation bitrate penalty compensation (1.0 = 256) (from INT_MIN to INT_MAX) (default 256)
  * @param options.mepre - pre motion estimation (from INT_MIN to INT_MAX) (default 0)
  * @param options.intra_penalty - Penalty for intra blocks in block decision (from 0 to 1.07374e+09) (default 0)
- * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  */
 export function rv10(options?: {
   mpv_flags?: string | null;
@@ -3771,13 +3572,13 @@ export function rv10(options?: {
   skip_factor?: number | null;
   skip_exp?: number | null;
   skip_cmp?: number | null | "sad" | "sse" | "satd" | "dct" | "psnr" | "bit" | "rd" | "zero" | "vsad" | "vsse" | "nsse" | "dct264" | "dctmax" | "chroma" | "msad";
+  sc_threshold?: number | null;
   noise_reduction?: number | null;
   ps?: number | null;
   motion_est?: number | null | "zero" | "epzs" | "xone";
   mepc?: number | null;
   mepre?: number | null;
   intra_penalty?: number | null;
-  sc_threshold?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
@@ -3799,13 +3600,13 @@ export function rv10(options?: {
     "skip_factor": options?.skip_factor,
     "skip_exp": options?.skip_exp,
     "skip_cmp": options?.skip_cmp,
+    "sc_threshold": options?.sc_threshold,
     "noise_reduction": options?.noise_reduction,
     "ps": options?.ps,
     "motion_est": options?.motion_est,
     "mepc": options?.mepc,
     "mepre": options?.mepre,
     "intra_penalty": options?.intra_penalty,
-    "sc_threshold": options?.sc_threshold,
 
   });
 }
@@ -3836,13 +3637,13 @@ export function rv10(options?: {
  * @param options.skip_factor - Frame skip factor (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_exp - Frame skip exponent (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_cmp - Frame skip compare function (from INT_MIN to INT_MAX) (default dctmax)
+ * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.noise_reduction - Noise reduction (from INT_MIN to INT_MAX) (default 0)
  * @param options.ps - RTP payload size in bytes (from INT_MIN to INT_MAX) (default 0)
  * @param options.motion_est - motion estimation algorithm (from 0 to 2) (default epzs)
  * @param options.mepc - Motion estimation bitrate penalty compensation (1.0 = 256) (from INT_MIN to INT_MAX) (default 256)
  * @param options.mepre - pre motion estimation (from INT_MIN to INT_MAX) (default 0)
  * @param options.intra_penalty - Penalty for intra blocks in block decision (from 0 to 1.07374e+09) (default 0)
- * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  */
 export function rv20(options?: {
   mpv_flags?: string | null;
@@ -3863,13 +3664,13 @@ export function rv20(options?: {
   skip_factor?: number | null;
   skip_exp?: number | null;
   skip_cmp?: number | null | "sad" | "sse" | "satd" | "dct" | "psnr" | "bit" | "rd" | "zero" | "vsad" | "vsse" | "nsse" | "dct264" | "dctmax" | "chroma" | "msad";
+  sc_threshold?: number | null;
   noise_reduction?: number | null;
   ps?: number | null;
   motion_est?: number | null | "zero" | "epzs" | "xone";
   mepc?: number | null;
   mepre?: number | null;
   intra_penalty?: number | null;
-  sc_threshold?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
@@ -3891,13 +3692,13 @@ export function rv20(options?: {
     "skip_factor": options?.skip_factor,
     "skip_exp": options?.skip_exp,
     "skip_cmp": options?.skip_cmp,
+    "sc_threshold": options?.sc_threshold,
     "noise_reduction": options?.noise_reduction,
     "ps": options?.ps,
     "motion_est": options?.motion_est,
     "mepc": options?.mepc,
     "mepre": options?.mepre,
     "intra_penalty": options?.intra_penalty,
-    "sc_threshold": options?.sc_threshold,
 
   });
 }
@@ -3950,7 +3751,7 @@ export function smc(options?: {
  * @param options.motion_est - motion estimation algorithm (from 0 to 3) (default epzs)
  * @param options.memc_only - Only do ME/MC (I frames -> ref, P frame -> ME+MC). (default false)
  * @param options.no_bitstream - Skip final bitstream writeout. (default false)
- * @param options.intra_penalty - Penalty for intra blocks in block decision (from 0 to INT_MAX) (default 0)
+ * @param options.intra_penalty - Penalty for intra blocks in block decission (from 0 to INT_MAX) (default 0)
  * @param options.iterative_dia_size - Dia size for the iterative ME (from 0 to INT_MAX) (default 0)
  * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.pred - Spatial decomposition type (from 0 to 1) (default dwt97)
@@ -4006,13 +3807,13 @@ export function snow(options?: {
  * @param options.skip_factor - Frame skip factor (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_exp - Frame skip exponent (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_cmp - Frame skip compare function (from INT_MIN to INT_MAX) (default dctmax)
+ * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.noise_reduction - Noise reduction (from INT_MIN to INT_MAX) (default 0)
  * @param options.ps - RTP payload size in bytes (from INT_MIN to INT_MAX) (default 0)
  * @param options.motion_est - motion estimation algorithm (from 0 to 2) (default epzs)
  * @param options.mepc - Motion estimation bitrate penalty compensation (1.0 = 256) (from INT_MIN to INT_MAX) (default 256)
  * @param options.mepre - pre motion estimation (from INT_MIN to INT_MAX) (default 0)
  * @param options.intra_penalty - Penalty for intra blocks in block decision (from 0 to 1.07374e+09) (default 0)
- * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  */
 export function speedhq(options?: {
   mpv_flags?: string | null;
@@ -4033,13 +3834,13 @@ export function speedhq(options?: {
   skip_factor?: number | null;
   skip_exp?: number | null;
   skip_cmp?: number | null | "sad" | "sse" | "satd" | "dct" | "psnr" | "bit" | "rd" | "zero" | "vsad" | "vsse" | "nsse" | "dct264" | "dctmax" | "chroma" | "msad";
+  sc_threshold?: number | null;
   noise_reduction?: number | null;
   ps?: number | null;
   motion_est?: number | null | "zero" | "epzs" | "xone";
   mepc?: number | null;
   mepre?: number | null;
   intra_penalty?: number | null;
-  sc_threshold?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
@@ -4061,13 +3862,13 @@ export function speedhq(options?: {
     "skip_factor": options?.skip_factor,
     "skip_exp": options?.skip_exp,
     "skip_cmp": options?.skip_cmp,
+    "sc_threshold": options?.sc_threshold,
     "noise_reduction": options?.noise_reduction,
     "ps": options?.ps,
     "motion_est": options?.motion_est,
     "mepc": options?.mepc,
     "mepre": options?.mepre,
     "intra_penalty": options?.intra_penalty,
-    "sc_threshold": options?.sc_threshold,
 
   });
 }
@@ -4140,14 +3941,11 @@ export function targa(options?: {
 
 /**
  * libtheora Theora (codec theora)
- * @param options.speed_level - Sets the encoding speed level (from -1 to INT_MAX) (default -1)
  */
 export function libtheora(options?: {
-  speed_level?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
-    "speed_level": options?.speed_level,
 
   });
 }
@@ -4186,7 +3984,7 @@ export function tiff(options?: {
  * @param options.pred - Prediction method (from 0 to 3) (default left)
  */
 export function utvideo(options?: {
-  pred?: number | null | "none" | "left" | "median";
+  pred?: number | null | "none" | "left" | "gradient" | "median";
 
 }): FFMpegEncoderOption {
   return merge({
@@ -4607,13 +4405,13 @@ export function libwebp(options?: {
  * @param options.skip_factor - Frame skip factor (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_exp - Frame skip exponent (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_cmp - Frame skip compare function (from INT_MIN to INT_MAX) (default dctmax)
+ * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.noise_reduction - Noise reduction (from INT_MIN to INT_MAX) (default 0)
  * @param options.ps - RTP payload size in bytes (from INT_MIN to INT_MAX) (default 0)
  * @param options.motion_est - motion estimation algorithm (from 0 to 2) (default epzs)
  * @param options.mepc - Motion estimation bitrate penalty compensation (1.0 = 256) (from INT_MIN to INT_MAX) (default 256)
  * @param options.mepre - pre motion estimation (from INT_MIN to INT_MAX) (default 0)
  * @param options.intra_penalty - Penalty for intra blocks in block decision (from 0 to 1.07374e+09) (default 0)
- * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  */
 export function wmv1(options?: {
   mpv_flags?: string | null;
@@ -4634,13 +4432,13 @@ export function wmv1(options?: {
   skip_factor?: number | null;
   skip_exp?: number | null;
   skip_cmp?: number | null | "sad" | "sse" | "satd" | "dct" | "psnr" | "bit" | "rd" | "zero" | "vsad" | "vsse" | "nsse" | "dct264" | "dctmax" | "chroma" | "msad";
+  sc_threshold?: number | null;
   noise_reduction?: number | null;
   ps?: number | null;
   motion_est?: number | null | "zero" | "epzs" | "xone";
   mepc?: number | null;
   mepre?: number | null;
   intra_penalty?: number | null;
-  sc_threshold?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
@@ -4662,13 +4460,13 @@ export function wmv1(options?: {
     "skip_factor": options?.skip_factor,
     "skip_exp": options?.skip_exp,
     "skip_cmp": options?.skip_cmp,
+    "sc_threshold": options?.sc_threshold,
     "noise_reduction": options?.noise_reduction,
     "ps": options?.ps,
     "motion_est": options?.motion_est,
     "mepc": options?.mepc,
     "mepre": options?.mepre,
     "intra_penalty": options?.intra_penalty,
-    "sc_threshold": options?.sc_threshold,
 
   });
 }
@@ -4699,13 +4497,13 @@ export function wmv1(options?: {
  * @param options.skip_factor - Frame skip factor (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_exp - Frame skip exponent (from INT_MIN to INT_MAX) (default 0)
  * @param options.skip_cmp - Frame skip compare function (from INT_MIN to INT_MAX) (default dctmax)
+ * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  * @param options.noise_reduction - Noise reduction (from INT_MIN to INT_MAX) (default 0)
  * @param options.ps - RTP payload size in bytes (from INT_MIN to INT_MAX) (default 0)
  * @param options.motion_est - motion estimation algorithm (from 0 to 2) (default epzs)
  * @param options.mepc - Motion estimation bitrate penalty compensation (1.0 = 256) (from INT_MIN to INT_MAX) (default 256)
  * @param options.mepre - pre motion estimation (from INT_MIN to INT_MAX) (default 0)
  * @param options.intra_penalty - Penalty for intra blocks in block decision (from 0 to 1.07374e+09) (default 0)
- * @param options.sc_threshold - Scene change threshold (from INT_MIN to INT_MAX) (default 0)
  */
 export function wmv2(options?: {
   mpv_flags?: string | null;
@@ -4726,13 +4524,13 @@ export function wmv2(options?: {
   skip_factor?: number | null;
   skip_exp?: number | null;
   skip_cmp?: number | null | "sad" | "sse" | "satd" | "dct" | "psnr" | "bit" | "rd" | "zero" | "vsad" | "vsse" | "nsse" | "dct264" | "dctmax" | "chroma" | "msad";
+  sc_threshold?: number | null;
   noise_reduction?: number | null;
   ps?: number | null;
   motion_est?: number | null | "zero" | "epzs" | "xone";
   mepc?: number | null;
   mepre?: number | null;
   intra_penalty?: number | null;
-  sc_threshold?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
@@ -4754,13 +4552,13 @@ export function wmv2(options?: {
     "skip_factor": options?.skip_factor,
     "skip_exp": options?.skip_exp,
     "skip_cmp": options?.skip_cmp,
+    "sc_threshold": options?.sc_threshold,
     "noise_reduction": options?.noise_reduction,
     "ps": options?.ps,
     "motion_est": options?.motion_est,
     "mepc": options?.mepc,
     "mepre": options?.mepre,
     "intra_penalty": options?.intra_penalty,
-    "sc_threshold": options?.sc_threshold,
 
   });
 }
@@ -4909,19 +4707,23 @@ export function zmbv(options?: {
 
 /**
  * AAC (Advanced Audio Coding)
- * @param options.aac_coder - Coding algorithm (from 0 to 1) (default twoloop)
+ * @param options.aac_coder - Coding algorithm (from 0 to 2) (default twoloop)
  * @param options.aac_ms - Force M/S stereo coding (default auto)
  * @param options.aac_is - Intensity stereo coding (default true)
  * @param options.aac_pns - Perceptual noise substitution (default true)
  * @param options.aac_tns - Temporal noise shaping (default true)
+ * @param options.aac_ltp - Long term prediction (default false)
+ * @param options.aac_pred - AAC-Main prediction (default false)
  * @param options.aac_pce - Forces the use of PCEs (default false)
  */
 export function aac(options?: {
-  aac_coder?: number | null | "twoloop" | "fast";
+  aac_coder?: number | null | "anmr" | "twoloop" | "fast";
   aac_ms?: boolean | null;
   aac_is?: boolean | null;
   aac_pns?: boolean | null;
   aac_tns?: boolean | null;
+  aac_ltp?: boolean | null;
+  aac_pred?: boolean | null;
   aac_pce?: boolean | null;
 
 }): FFMpegEncoderOption {
@@ -4931,63 +4733,9 @@ export function aac(options?: {
     "aac_is": options?.aac_is,
     "aac_pns": options?.aac_pns,
     "aac_tns": options?.aac_tns,
+    "aac_ltp": options?.aac_ltp,
+    "aac_pred": options?.aac_pred,
     "aac_pce": options?.aac_pce,
-
-  });
-}
-
-
-
-
-
-
-
-/**
- * Fraunhofer FDK AAC (codec aac)
- * @param options.afterburner - Afterburner (improved quality) (from 0 to 1) (default 1)
- * @param options.eld_sbr - Enable SBR for ELD (for SBR in other configurations, use the -profile parameter) (from 0 to 1) (default 0)
- * @param options.eld_v2 - Enable ELDv2 (LD-MPS extension for ELD stereo signals) (from 0 to 1) (default 0)
- * @param options.signaling - SBR/PS signaling style (from -1 to 2) (default default)
- * @param options.latm - Output LATM/LOAS encapsulated data (from 0 to 1) (default 0)
- * @param options.header_period - StreamMuxConfig and PCE repetition period (in frames) (from 0 to 65535) (default 0)
- * @param options.vbr - VBR mode (1-5) (from 0 to 5) (default 0)
- * @param options.drc_profile - The desired compression profile for AAC DRC (from 0 to 256) (default 0)
- * @param options.drc_target_ref - Expected target reference level at decoder side in dB (for clipping prevention/limiter) (from -31.75 to 0) (default 0)
- * @param options.comp_profile - The desired compression profile for AAC DRC (from 0 to 256) (default 0)
- * @param options.comp_target_ref - Expected target reference level at decoder side in dB (for clipping prevention/limiter) (from -31.75 to 0) (default 0)
- * @param options.prog_ref - The program reference level or dialog level in dB (from -31.75 to 0) (default 0)
- * @param options.frame_length - The desired frame length (from -1 to 1024) (default -1)
- */
-export function libfdk_aac(options?: {
-  afterburner?: number | null;
-  eld_sbr?: number | null;
-  eld_v2?: number | null;
-  signaling?: number | null | "default" | "implicit" | "explicit_sbr" | "explicit_hierarchical";
-  latm?: number | null;
-  header_period?: number | null;
-  vbr?: number | null;
-  drc_profile?: number | null;
-  drc_target_ref?: number | null;
-  comp_profile?: number | null;
-  comp_target_ref?: number | null;
-  prog_ref?: number | null;
-  frame_length?: number | null;
-
-}): FFMpegEncoderOption {
-  return merge({
-    "afterburner": options?.afterburner,
-    "eld_sbr": options?.eld_sbr,
-    "eld_v2": options?.eld_v2,
-    "signaling": options?.signaling,
-    "latm": options?.latm,
-    "header_period": options?.header_period,
-    "vbr": options?.vbr,
-    "drc_profile": options?.drc_profile,
-    "drc_target_ref": options?.drc_target_ref,
-    "comp_profile": options?.comp_profile,
-    "comp_target_ref": options?.comp_target_ref,
-    "prog_ref": options?.prog_ref,
-    "frame_length": options?.frame_length,
 
   });
 }
@@ -5541,26 +5289,6 @@ export function aptx_hd(options?: {
 
 
 /**
- * codec2 encoder using libcodec2 (codec codec2)
- * @param options.mode - codec2 mode (from 0 to 8) (default 1300)
- */
-export function libcodec2(options?: {
-  mode?: number | null | "3200" | "2400" | "1600" | "1400" | "1300" | "1200" | "700" | "700B" | "700C";
-
-}): FFMpegEncoderOption {
-  return merge({
-    "mode": options?.mode,
-
-  });
-}
-
-
-
-
-
-
-
-/**
  * RFC 3389 comfort noise generator
  */
 export function comfortnoise(options?: {
@@ -5747,40 +5475,6 @@ export function g723_1(options?: {
 
 
 /**
- * libgsm GSM (codec gsm)
- */
-export function libgsm(options?: {
-
-}): FFMpegEncoderOption {
-  return merge({
-
-  });
-}
-
-
-
-
-
-
-
-/**
- * libgsm GSM Microsoft variant (codec gsm_ms)
- */
-export function libgsm_ms(options?: {
-
-}): FFMpegEncoderOption {
-  return merge({
-
-  });
-}
-
-
-
-
-
-
-
-/**
  * MLP (Meridian Lossless Packing)
  * @param options.max_interval - Max number of frames between each new header (from 8 to 128) (default 16)
  * @param options.lpc_coeff_precision - LPC coefficient precision (from 0 to 15) (default 15)
@@ -5853,44 +5547,6 @@ export function mp2fixed(options?: {
 
 
 /**
- * libtwolame MP2 (MPEG audio layer 2) (codec mp2)
- * @param options.mode - Mpeg Mode (from -1 to 3) (default auto)
- * @param options.psymodel - Psychoacoustic Model (from -1 to 4) (default 3)
- * @param options.energy_levels - enable energy levels (from 0 to 1) (default 0)
- * @param options.error_protection - enable CRC error protection (from 0 to 1) (default 0)
- * @param options.copyright - set MPEG Audio Copyright flag (from 0 to 1) (default 0)
- * @param options.original - set MPEG Audio Original flag (from 0 to 1) (default 0)
- * @param options.verbosity - set library optput level (0-10) (from 0 to 10) (default 0)
- */
-export function libtwolame(options?: {
-  mode?: number | null | "auto" | "stereo" | "joint_stereo" | "dual_channel" | "mono";
-  psymodel?: number | null;
-  energy_levels?: number | null;
-  error_protection?: number | null;
-  copyright?: number | null;
-  original?: number | null;
-  verbosity?: number | null;
-
-}): FFMpegEncoderOption {
-  return merge({
-    "mode": options?.mode,
-    "psymodel": options?.psymodel,
-    "energy_levels": options?.energy_levels,
-    "error_protection": options?.error_protection,
-    "copyright": options?.copyright,
-    "original": options?.original,
-    "verbosity": options?.verbosity,
-
-  });
-}
-
-
-
-
-
-
-
-/**
  * libmp3lame MP3 (MPEG audio layer 3) (codec mp3)
  * @param options.reservoir - use bit reservoir (default true)
  * @param options.joint_stereo - use joint stereo (default true)
@@ -5912,23 +5568,6 @@ export function libmp3lame(options?: {
     "abr": options?.abr,
     "copyright": options?.copyright,
     "original": options?.original,
-
-  });
-}
-
-
-
-
-
-
-
-/**
- * libshine MP3 (MPEG audio layer 3) (codec mp3)
- */
-export function libshine(options?: {
-
-}): FFMpegEncoderOption {
-  return merge({
 
   });
 }
@@ -6619,27 +6258,29 @@ export function sbc(options?: {
 
 
 /**
- * libspeex Speex (codec speex)
- * @param options.abr - Use average bit rate (from 0 to 1) (default 0)
- * @param options.cbr_quality - Set quality value (0 to 10) for CBR (from 0 to 10) (default 8)
- * @param options.frames_per_packet - Number of frames to encode in each packet (from 1 to 8) (default 1)
- * @param options.vad - Voice Activity Detection (from 0 to 1) (default 0)
- * @param options.dtx - Discontinuous Transmission (from 0 to 1) (default 0)
+ * Sonic
  */
-export function libspeex(options?: {
-  abr?: number | null;
-  cbr_quality?: number | null;
-  frames_per_packet?: number | null;
-  vad?: number | null;
-  dtx?: number | null;
+export function sonic(options?: {
 
 }): FFMpegEncoderOption {
   return merge({
-    "abr": options?.abr,
-    "cbr_quality": options?.cbr_quality,
-    "frames_per_packet": options?.frames_per_packet,
-    "vad": options?.vad,
-    "dtx": options?.dtx,
+
+  });
+}
+
+
+
+
+
+
+
+/**
+ * Sonic lossless
+ */
+export function sonicls(options?: {
+
+}): FFMpegEncoderOption {
+  return merge({
 
   });
 }
@@ -6835,14 +6476,11 @@ export function ass(options?: {
 
 /**
  * DVB subtitles (codec dvb_subtitle)
- * @param options.min_bpp - minimum bits-per-pixel for subtitle colors (2, 4 or 8) (from 2 to 8) (default 4)
  */
 export function dvbsub(options?: {
-  min_bpp?: number | null;
 
 }): FFMpegEncoderOption {
   return merge({
-    "min_bpp": options?.min_bpp,
 
   });
 }
@@ -6991,3 +6629,1044 @@ export function xsub(options?: {
 
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
