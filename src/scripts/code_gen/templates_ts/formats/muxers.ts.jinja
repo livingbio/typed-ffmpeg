@@ -1,0 +1,30 @@
+/**
+ * FFmpeg muxer option factories.
+ */
+
+import { merge } from "@typed-ffmpeg/core/utils/frozenRecord";
+
+export type FFMpegMuxerOption = Readonly<Record<string, unknown>>;
+
+{% set seen_names = [] %}
+{% for codec in muxers %}
+{% if codec.is_muxer %}
+{% set safe_name = codec.name | option_name_safe %}
+{% if safe_name not in seen_names %}
+{% if seen_names.append(safe_name) %}{% endif %}
+/**
+ * {{ codec.description }}
+{% for option in codec.options %} * @param options.{{ option.name | option_name_safe }} - {{ option.help }}
+{% endfor %} */
+export function {{ codec.name | option_name_safe }}(options?: {
+{% for option in codec.options %}  {{ option.name | option_name_safe }}?: {{ option | ts_av_option_type }};
+{% endfor %}
+}): FFMpegMuxerOption {
+  return merge({
+{% for option in codec.options %}    "{{ option.name }}": options?.{{ option.name | option_name_safe }},
+{% endfor %}
+  });
+}
+{% endif %}
+{% endif %}
+{% endfor %}

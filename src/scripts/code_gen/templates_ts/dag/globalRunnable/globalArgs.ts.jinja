@@ -1,0 +1,36 @@
+/**
+ * Typed globalArgs() function with all FFmpeg global options.
+ */
+
+import { merge } from "@typed-ffmpeg/core/utils/frozenRecord";
+import type { GlobalStream, OutputStream, GlobalNode } from "@typed-ffmpeg/core/dag/nodes";
+import type {
+  FFBoolean, FFInt, FFInt64, FFFloat, FFDouble, FFString,
+  FFDuration, FFFunc, FFTime,
+} from "@typed-ffmpeg/core/types";
+
+export interface GlobalArgsOptions {
+{%- for option in options %}
+{%- if option.is_global_option %}
+  /** {{ option.help }} */
+  {{ option.name | option_name_safe }}?: {{ option | option_typing }};
+{%- endif %}
+{%- endfor %}
+  extraOptions?: Record<string, unknown>;
+}
+
+/**
+ * Build global args kwargs from typed options.
+ */
+export function buildGlobalArgsKwargs(options?: GlobalArgsOptions): Record<string, unknown> {
+  return merge(
+    {
+{%- for option in options %}
+{%- if option.is_global_option %}
+      "{{ option.name }}": options?.{{ option.name | option_name_safe }},
+{%- endif %}
+{%- endfor %}
+    },
+    options?.extraOptions,
+  ) as Record<string, unknown>;
+}

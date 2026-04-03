@@ -101,6 +101,30 @@ Note: FFmpeg must be installed on your system.
 
 Note: If you need to install `ffmpeg-python` at the same time, use `pip install typed-ffmpeg-compatible` to prevent conflicts with the module name. Then use `import typed_ffmpeg as ffmpeg` instead of `import ffmpeg`.
 
+### TypeScript (Experimental)
+
+TypeScript bindings are available as npm packages:
+
+```bash
+npm install @typed-ffmpeg/core    # Core runtime
+# Generated bindings (coming soon to npm):
+# npm install @typed-ffmpeg/v7    # FFmpeg 7.x bindings
+```
+
+```typescript
+import { input } from "@typed-ffmpeg/v7";
+
+const cmd = input("input.mp4")
+  .video
+  .scale({ w: 1280, h: 720 })
+  .output("output.mp4")
+  .overwriteOutput()
+  .compile();
+// => ["ffmpeg", "-i", "input.mp4", "-filter_complex", "...", "output.mp4"]
+```
+
+The TypeScript API mirrors the Python API with idiomatic TypeScript patterns (options objects instead of keyword arguments). See `packages/ts-core/` and `packages/ts-v7/` for details.
+
 ---
 
 ## Quick Usage

@@ -1,0 +1,25 @@
+/**
+ * Video stream with typed filter methods.
+ */
+{% import "_components.ts.jinja" as _c with context %}
+
+import type { AudioStream } from "./audio.js";
+import { StreamType, type FFMpegFilterDef } from "@typed-ffmpeg/core/common/schema";
+import { Default, Auto } from "@typed-ffmpeg/core/utils/types";
+import { filterNodeFactory } from "@typed-ffmpeg/core/dag/factory";
+import { merge } from "@typed-ffmpeg/core/utils/frozenRecord";
+import { FilterableStream } from "@typed-ffmpeg/core/dag/baseStreams";
+import { VideoStream as VideoStreamBase, FilterNode } from "@typed-ffmpeg/core/dag/nodes";
+import type {
+  FFBoolean, FFInt, FFInt64, FFFloat, FFDouble, FFString,
+  FFDuration, FFColor, FFFlags, FFDictionary, FFPixFmt,
+  FFVideoRate, FFImageSize, FFRational, FFSampleFmt, FFBinary,
+} from "@typed-ffmpeg/core/types";
+
+export class VideoStream extends VideoStreamBase {
+{% for f in filters %}
+{% if f.filter_type.value in ["vf", "vaf"] and not f.is_dynamic_input %}
+{{ _c.ts_filter_method(f) }}
+{% endif %}
+{% endfor %}
+}

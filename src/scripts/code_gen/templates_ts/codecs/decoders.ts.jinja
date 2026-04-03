@@ -1,0 +1,30 @@
+/**
+ * FFmpeg decoder option factories.
+ */
+
+import { merge } from "@typed-ffmpeg/core/utils/frozenRecord";
+
+export type FFMpegDecoderOption = Readonly<Record<string, unknown>>;
+
+{% set seen_names = [] %}
+{% for codec in codecs %}
+{% if codec.is_decoder %}
+{% set safe_name = codec.name | option_name_safe %}
+{% if safe_name not in seen_names %}
+{% if seen_names.append(safe_name) %}{% endif %}
+/**
+ * {{ codec.description }}
+{% for option in codec.filtered_options() %} * @param options.{{ option.name | option_name_safe }} - {{ option.help }}
+{% endfor %} */
+export function {{ safe_name }}(options?: {
+{% for option in codec.filtered_options() %}  {{ option.name | option_name_safe }}?: {{ option | ts_av_option_type }};
+{% endfor %}
+}): FFMpegDecoderOption {
+  return merge({
+{% for option in codec.filtered_options() %}    "{{ option.name }}": options?.{{ option.name | option_name_safe }},
+{% endfor %}
+  });
+}
+{% endif %}
+{% endif %}
+{% endfor %}

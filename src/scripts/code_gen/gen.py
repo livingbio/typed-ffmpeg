@@ -414,3 +414,309 @@ def render(
             output.append(init_py)
 
     return output
+
+
+# ── TypeScript code generation ──────────────────────────────────────────────
+
+template_folder_ts = Path(__file__).parent / "templates_ts"
+
+
+_TS_RESERVED_WORDS = {
+    "break",
+    "case",
+    "catch",
+    "class",
+    "const",
+    "continue",
+    "debugger",
+    "default",
+    "delete",
+    "do",
+    "else",
+    "enum",
+    "export",
+    "extends",
+    "false",
+    "finally",
+    "for",
+    "function",
+    "if",
+    "import",
+    "in",
+    "instanceof",
+    "new",
+    "null",
+    "return",
+    "super",
+    "switch",
+    "this",
+    "throw",
+    "true",
+    "try",
+    "typeof",
+    "var",
+    "void",
+    "while",
+    "with",
+    "yield",
+    "let",
+    "static",
+    "implements",
+    "interface",
+    "package",
+    "private",
+    "protected",
+    "public",
+    "abstract",
+    "as",
+    "async",
+    "await",
+    "constructor",
+    "declare",
+    "from",
+    "get",
+    "is",
+    "module",
+    "namespace",
+    "of",
+    "require",
+    "set",
+    "type",
+    "undefined",
+}
+
+
+def ts_option_name_safe(string: str) -> str:
+    """
+    Convert option name to TypeScript-safe identifier.
+
+    Returns:
+        A TypeScript-safe identifier string.
+
+    """
+    safe = option_name_safe(string)
+    if safe in _TS_RESERVED_WORDS:
+        safe = "_" + safe
+    return safe
+
+
+def ts_stream_name_safe(string: str) -> str:
+    """
+    Convert stream name to TypeScript-safe identifier.
+
+    Returns:
+        A TypeScript-safe identifier string.
+
+    """
+    safe = stream_name_safe(string)
+    if safe.lstrip("_") in _TS_RESERVED_WORDS:
+        safe = "_" + safe
+    return safe
+
+
+def ts_filter_option_typing(option: FFMpegFilterOption) -> str:
+    """
+    Map FFMpeg filter option type to TypeScript type alias.
+
+    Returns:
+        The TypeScript type alias string.
+
+    """
+    type_map = {
+        FFMpegFilterOptionType.boolean: "FFBoolean",
+        FFMpegFilterOptionType.duration: "FFDuration",
+        FFMpegFilterOptionType.color: "FFColor",
+        FFMpegFilterOptionType.flags: "FFFlags",
+        FFMpegFilterOptionType.dictionary: "FFDictionary",
+        FFMpegFilterOptionType.pix_fmt: "FFPixFmt",
+        FFMpegFilterOptionType.int: "FFInt",
+        FFMpegFilterOptionType.int64: "FFInt64",
+        FFMpegFilterOptionType.double: "FFDouble",
+        FFMpegFilterOptionType.float: "FFFloat",
+        FFMpegFilterOptionType.string: "FFString",
+        FFMpegFilterOptionType.video_rate: "FFVideoRate",
+        FFMpegFilterOptionType.image_size: "FFImageSize",
+        FFMpegFilterOptionType.rational: "FFRational",
+        FFMpegFilterOptionType.sample_fmt: "FFSampleFmt",
+        FFMpegFilterOptionType.binary: "FFBinary",
+        FFMpegFilterOptionType.channel_layout: "FFString",
+        FFMpegFilterOptionType.unsigned: "FFInt",
+    }
+    base = type_map.get(option.type, "FFString")
+    if not option.choices:
+        return base
+    values = " | ".join(f'"{i.name}"' for i in option.choices)
+    return f"{base} | {values}"
+
+
+def ts_input_typings(ffmpeg_filter: FFMpegFilter) -> str:
+    """
+    Generate TypeScript array literal for input typings (pre-evaluated).
+
+    Returns:
+        Comma-separated string of "video"/"audio" literals.
+
+    """
+    if ffmpeg_filter.formula_typings_input:
+        # Pre-evaluate: convert Python formula to static TS array
+        # For dynamic inputs, we just return an empty array (handled at runtime)
+        return ""
+    return ", ".join(
+        '"video"' if i.type.value == "video" else '"audio"'
+        for i in ffmpeg_filter.stream_typings_input
+    )
+
+
+def ts_output_typings(ffmpeg_filter: FFMpegFilter) -> str:
+    """
+    Generate TypeScript array literal for output typings (pre-evaluated).
+
+    Returns:
+        Comma-separated string of "video"/"audio" literals.
+
+    """
+    if ffmpeg_filter.formula_typings_output:
+        return ""
+    return ", ".join(
+        '"video"' if i.type.value == "video" else '"audio"'
+        for i in ffmpeg_filter.stream_typings_output
+    )
+
+
+def ts_option_typing(option: FFMpegOption) -> str:
+    """
+    Map FFMpeg CLI option type to TypeScript type alias.
+
+    Returns:
+        The TypeScript type alias string.
+
+    """
+    type_map = {
+        FFMpegOptionType.OPT_TYPE_FUNC: "FFFunc",
+        FFMpegOptionType.OPT_TYPE_BOOL: "FFBoolean",
+        FFMpegOptionType.OPT_TYPE_STRING: "FFString",
+        FFMpegOptionType.OPT_TYPE_INT: "FFInt",
+        FFMpegOptionType.OPT_TYPE_INT64: "FFInt64",
+        FFMpegOptionType.OPT_TYPE_FLOAT: "FFFloat",
+        FFMpegOptionType.OPT_TYPE_DOUBLE: "FFDouble",
+        FFMpegOptionType.OPT_TYPE_TIME: "FFTime",
+    }
+    return type_map.get(option.type, "FFString")
+
+
+def ts_av_option_type(option: Any) -> str:
+    """
+    Map FFMpeg AV option type to TypeScript type.
+
+    Returns:
+        The TypeScript type string.
+
+    """
+    type_map = {
+        "boolean": "boolean | null",
+        "int": "number | null",
+        "int64": "number | null",
+        "unsigned": "number | null",
+        "float": "number | null",
+        "double": "number | null",
+        "string": "string | null",
+        "channel_layout": "string | null",
+        "flags": "string | null",
+        "duration": "string | null",
+        "dictionary": "string | null",
+        "image_size": "string | null",
+        "pixel_format": "string | null",
+        "sample_rate": "number | null",
+        "sample_fmt": "string | null",
+        "binary": "string | null",
+        "rational": "string | null",
+        "color": "string | null",
+        "video_rate": "string | null",
+        "pix_fmt": "string | null",
+    }
+    base = type_map.get(option.type, "string | null")
+    if option.choices and option.type != "flags":
+        literals = " | ".join(f'"{c.name}"' for c in option.choices)
+        return f"{base} | {literals}"
+    return base
+
+
+def render_ts(
+    *,
+    outpath: pathlib.Path,
+    **kwargs: Any,
+) -> list[pathlib.Path]:
+    """
+    Render TypeScript templates.
+
+    Args:
+        outpath: The output path for generated .ts files
+        **kwargs: Context variables (filters, options, codecs, etc.)
+
+    Returns:
+        List of generated file paths
+
+    """
+    loader_ts = jinja2.FileSystemLoader(template_folder_ts)
+    env_ts = jinja2.Environment(loader=loader_ts)
+
+    # Register TS-specific Jinja2 filters
+    env_ts.filters["stream_name_safe"] = ts_stream_name_safe
+    env_ts.filters["option_name_safe"] = ts_option_name_safe
+    env_ts.filters["filter_option_typing"] = ts_filter_option_typing
+    env_ts.filters["option_typing"] = ts_option_typing
+    env_ts.filters["input_typings_ts"] = ts_input_typings
+    env_ts.filters["output_typings_ts"] = ts_output_typings
+    env_ts.filters["normalize_help_text"] = normalize_help_text
+    env_ts.filters["striptags"] = lambda s: re.sub(r"<[^>]+>", "", s) if s else ""
+    env_ts.filters["ts_av_option_type"] = ts_av_option_type
+
+    # Wire up version note function (None by default)
+    version_metadata = kwargs.pop("version_metadata", None)
+    format_version_note_fn = None
+    if version_metadata is not None:
+        from .version_diff import format_version_note as _fmt_note
+
+        ffmpeg_version = kwargs.get("ffmpeg_version", "")
+        current_major = ffmpeg_version.split(".")[0] if ffmpeg_version else ""
+
+        def format_version_note_fn(name: str) -> str | None:  # type: ignore[no-redef]
+            return _fmt_note(
+                name,
+                version_metadata.filter_versions,
+                version_metadata.available_versions,
+                current_major,
+            )
+
+    outpath.mkdir(parents=True, exist_ok=True)
+    output = []
+
+    for template_file in template_folder_ts.glob("**/*.*.jinja"):
+        template_path = template_file.relative_to(template_folder_ts)
+
+        # Skip macro-only templates (starting with _)
+        if template_path.name.startswith("_"):
+            continue
+
+        template = env_ts.get_template(str(template_path))
+        code = template.render(
+            template_path=template_path,
+            format_version_note=format_version_note_fn,
+            **kwargs,
+        )
+
+        opath = outpath / str(template_path).replace(".jinja", "")
+        opath.parent.mkdir(parents=True, exist_ok=True)
+
+        # Strip trailing whitespace
+        code = "\n".join(line.rstrip() for line in code.splitlines())
+
+        with opath.open("w") as ofile:
+            ofile.write("// NOTE: this file is auto-generated, do not modify\n")
+            ofile.write(code)
+            if not code.endswith("\n"):
+                ofile.write("\n")
+
+        output.append(opath)
+
+    return output
