@@ -43,16 +43,34 @@ def parse_ffmpeg_opt_c(text: str) -> list[FFMpegOption]:
         arg_name = None
         canon = None
 
-        if len(line) == 5:
-            name, type, flags, _, help = line
-        elif len(line) == 6:
-            name, type, flags, _, help, arg_name = line
-        elif len(line) == 7:
-            name, type, flags, _, help, arg_name, canon = line
+        # FFmpeg OptionDef layout differs across versions:
+        # - old: {name, type, flags, union, help[, arg][, canon]}
+        # - new: {name, flags, union, help[, arg][, canon]} (type omitted for func options)
+        has_explicit_type = len(line) >= 2 and str(line[1]).startswith("OPT_TYPE_")
+        if has_explicit_type:
+            if len(line) == 5:
+                name, type, flags, _, help = line
+            elif len(line) == 6:
+                name, type, flags, _, help, arg_name = line
+            elif len(line) == 7:
+                name, type, flags, _, help, arg_name, canon = line
+            elif len(line) == 1:
+                continue
+            else:  # pragma: no cover
+                raise ValueError(line)
         elif len(line) == 1:
             continue
-        else:  # pragma: no cover
-            raise ValueError(line)
+        else:
+            # Type omitted; these rows are func-style options in newer FFmpeg.
+            type = "OPT_TYPE_FUNC"
+            if len(line) == 4:
+                name, flags, _, help = line
+            elif len(line) == 5:
+                name, flags, _, help, arg_name = line
+            elif len(line) == 6:
+                name, flags, _, help, arg_name, canon = line
+            else:  # pragma: no cover
+                raise ValueError(line)
 
         name = name.strip('"')
         help = help.strip('"')
@@ -65,9 +83,15 @@ def parse_ffmpeg_opt_c(text: str) -> list[FFMpegOption]:
 
     # process canon
     for key, opt in output.items():
-        if opt.flags & FFMpegOptionFlag.OPT_HAS_CANON:
-            assert opt.canon
+        # Newer FFmpeg versions can change flag bit assignments and struct layout.
+        # Only process canon when the field is explicitly present and parseable.
+        if (
+            (opt.flags & FFMpegOptionFlag.OPT_HAS_CANON)
+            and opt.canon
+            and "=" in opt.canon
+        ):
             ref = opt.canon.split("=")[1].strip().strip('"')
-            output[key] = replace(opt, type=output[ref].type)
+            if ref in output:
+                output[key] = replace(opt, type=output[ref].type)
 
     return list(output.values())

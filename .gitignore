@@ -207,3 +207,6 @@ out/
 # Vite
 .vite/
 output.mp4
+ffmpeg/
+.claude/
+docs/_stubs/

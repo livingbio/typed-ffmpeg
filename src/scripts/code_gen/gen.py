@@ -9,7 +9,7 @@ from typing import Any
 
 import jinja2
 
-from ffmpeg.common.schema import (
+from ffmpeg_core.common.schema import (
     FFMpegFilter,
     FFMpegFilterOption,
     FFMpegFilterOptionType,
@@ -71,6 +71,10 @@ def filter_option_typing(option: FFMpegFilterOption) -> str:
         base_type = "Sample_fmt"
     elif option.type == FFMpegFilterOptionType.binary:
         base_type = "Binary"
+    elif option.type == FFMpegFilterOptionType.channel_layout:
+        base_type = "String"
+    elif option.type == FFMpegFilterOptionType.unsigned:
+        base_type = "Int"
 
     assert base_type, f"{option.type} not fit"
     if not option.choices:
@@ -108,14 +112,19 @@ def option_name_safe(string: str) -> str:
         The option name safe
 
     """
-    if string in keyword.kwlist:
-        return "_" + string
-    if string[0].isdigit():
-        return "_" + string
-    if "-" in string:
-        return string.replace("-", "_")
+    # Keep the shorthand help option readable.
+    if string == "?":
+        return "_q"
 
-    return string
+    safe = string.replace("-", "_")
+    safe = re.sub(r"\W", "_", safe)
+    if not safe:
+        return "_"
+    if safe[0].isdigit():
+        safe = "_" + safe
+    if safe in keyword.kwlist:
+        safe = "_" + safe
+    return safe
 
 
 def option_typing(option: FFMpegOption) -> str:
@@ -280,6 +289,8 @@ def normalize_help_text(text: str) -> str:
     normalized = re.sub(r"\n\s*", " ", normalized)
     # Replace multiple spaces with a single space
     normalized = re.sub(r"\s+", " ", normalized)
+    # Strip backslash-escapes before quotes (invalid in Python docstrings)
+    normalized = normalized.replace('\\"', '"')
     return normalized.strip()
 
 
@@ -292,11 +303,26 @@ env.filters["output_typings"] = output_typings
 env.filters["filter_option_typings"] = filter_option_typings
 env.filters["normalize_help_text"] = normalize_help_text
 env.globals["get_relative_import"] = get_relative_import
+env.globals["format_version_note"] = (
+    None  # Set at render time when version metadata exists
+)
+
+# Set of modules that are generated from templates (as opposed to hand-written).
+# This is derived from the template file names and used by the versioned import
+# resolver to decide between relative (generated→generated) and absolute
+# (generated→shared core) imports.
+GENERATED_MODULES: set[str] = set()
+for _tf in template_folder.glob("**/*.*.jinja"):
+    _rel = _tf.relative_to(template_folder)
+    # Convert path to module name: "streams/video.py.jinja" → "streams.video"
+    _mod = str(_rel).split(".")[0].replace("/", ".")
+    GENERATED_MODULES.add(_mod)
 
 
 def render(
     *,
     outpath: pathlib.Path,
+    version_prefix: str | None = None,
     **kwargs: Any,
 ) -> list[pathlib.Path]:
     """
@@ -304,28 +330,87 @@ def render(
 
     Args:
         outpath: The output path
+        version_prefix: Version subdirectory name (e.g., "v6") for versioned
+            output. When set, generated files use absolute imports for shared
+            core modules.
         **kwargs: Additional keyword arguments to pass to the template
 
     Returns:
         The rendered files
 
     """
-    outpath.mkdir(exist_ok=True)
+    outpath.mkdir(parents=True, exist_ok=True)
     output = []
+
+    # Create a version-aware import function for templates.
+    # NOTE: We pass this as a template variable (not env.globals) because
+    # Jinja2 caches imported macro modules with the globals from their first
+    # render. Passing via template.render() ensures each render gets the
+    # correct function regardless of macro caching.
+    def versioned_get_relative_import(
+        import_path: str, template_path: str, imports: str
+    ) -> str:
+        return get_relative_import(
+            import_path,
+            template_path,
+            imports,
+            version_prefix=version_prefix,
+            generated_modules=GENERATED_MODULES,
+        )
+
+    # Wire up version note function if metadata is provided
+    version_metadata = kwargs.pop("version_metadata", None)
+    format_version_note_fn = None
+    if version_metadata is not None:
+        from .version_diff import format_version_note as _fmt_note
+
+        current_major = version_prefix[1:] if version_prefix else None
+
+        def format_version_note_fn(name: str) -> str | None:  # type: ignore[no-redef]
+            return _fmt_note(
+                name,
+                version_metadata.filter_versions,
+                version_metadata.available_versions,
+                current_major or "",
+            )
 
     for template_file in template_folder.glob("**/*.*.jinja"):
         template_path = template_file.relative_to(template_folder)
 
         template = env.get_template(str(template_path))
-        code = template.render(template_path=template_path, **kwargs)
+        code = template.render(
+            template_path=template_path,
+            get_relative_import=versioned_get_relative_import,
+            format_version_note=format_version_note_fn,
+            **kwargs,
+        )
 
         opath = outpath / str(template_path).replace(".jinja", "")
         opath.parent.mkdir(parents=True, exist_ok=True)
 
+        # Strip trailing whitespace from each line to satisfy pre-commit hooks
+        code = "\n".join(line.rstrip() for line in code.splitlines())
+
         with opath.open("w") as ofile:
             ofile.write("# NOTE: this file is auto-generated, do not modify\n")
             ofile.write(code)
+            if not code.endswith("\n"):
+                ofile.write("\n")
 
         output.append(opath)
+
+    # Generate py.typed marker for type checker discovery
+    py_typed = outpath / "py.typed"
+    py_typed.touch()
+    output.append(py_typed)
+
+    # Generate __init__.py for the version subpackage
+    if version_prefix:
+        init_py = outpath / "__init__.py"
+        if not init_py.exists():
+            init_py.write_text(
+                f'"""typed-ffmpeg bindings for FFmpeg {version_prefix}."""\n'
+            )
+            output.append(init_py)
 
     return output

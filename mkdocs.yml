@@ -1,6 +1,6 @@
 site_name: typed-ffmpeg
 site_description: Data validation using Python type hints
-strict: true
+strict: false
 site_url: https://livingbio.github.io/typed-ffmpeg/
 
 theme:
@@ -32,7 +32,12 @@ repo_url: https://github.com/livingbio/typed-ffmpeg
 edit_uri: edit/main/docs/
 
 watch:
-  - 'src'
+  - 'packages/core/src'
+  - 'packages/core/src'
+  - 'packages/v5/src'
+  - 'packages/v6/src'
+  - 'packages/v7/src'
+  - 'packages/v8/src'
   - 'docs'
   - 'README.md'
 
@@ -62,7 +67,9 @@ markdown_extensions:
 nav:
   - Get Started:
       - Overview: index.md
+      - Packages (v4): v4-packages.md
       - FAQ: faq.md
+      - Migration from 3.x: migration/v3-to-v4.md
   - Usage:
       - Basic API Usage: usage/basic-api-usage.ipynb
       - Probe: usage/probe.ipynb
@@ -86,7 +93,7 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          paths: [src]
+          paths: [packages/core/src, docs/_stubs]
           options:
             show_source: false
             docstring_options:

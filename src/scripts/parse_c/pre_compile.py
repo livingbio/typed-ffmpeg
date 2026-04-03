@@ -12,22 +12,66 @@ that are more amenable to regex-based parsing.
 import os
 import pathlib
 import subprocess
+import tarfile
+import urllib.request
 
-source_folder = pathlib.Path(__file__).parent.parent.parent.parent / "ffmpeg"
+from ffmpeg_core.common.cache import get_cache_path
+
+from ..parse_help.utils import get_ffmpeg_version
+
+DEFAULT_FFMPEG_RELEASE_BASE_URL = "https://ffmpeg.org/releases"
+cache_root = get_cache_path() / "ffmpeg_source"
+cache_root.mkdir(parents=True, exist_ok=True)
 
 target_folder = pathlib.Path(__file__).parent / "ffmpeg"
-target_folder.mkdir(exist_ok=True)
+target_folder.mkdir(parents=True, exist_ok=True)
 
 
-def precompile() -> None:
+def _release_archive_url(version: str) -> str:
+    return f"{DEFAULT_FFMPEG_RELEASE_BASE_URL}/ffmpeg-{version}.tar.xz"
+
+
+def _download_release_archive(version: str) -> pathlib.Path:
+    archive_path = cache_root / f"ffmpeg-{version}.tar.xz"
+    if archive_path.exists():
+        return archive_path
+    urllib.request.urlretrieve(_release_archive_url(version), archive_path)
+    return archive_path
+
+
+def _prepare_source_folder(version: str) -> pathlib.Path:
+    extracted = cache_root / f"ffmpeg-{version}"
+    if extracted.exists():
+        return extracted
+
+    archive_path = _download_release_archive(version)
+    with tarfile.open(archive_path, "r:xz") as tar:
+        tar.extractall(cache_root)
+    return extracted
+
+
+def _target_folder(version: str) -> pathlib.Path:
+    # Keep precompiled output separated by source version.
+    folder = target_folder / version.replace(".", "_")
+    folder.mkdir(parents=True, exist_ok=True)
+    return folder
+
+
+def precompile(ffmpeg_binary: str = "ffmpeg") -> pathlib.Path:
     """
     Pre-compile the ffmpeg source code.
+
+    Returns:
+        Path to the version-scoped precompiled source folder.
 
     Raises:
         CalledProcessError: If the configure script fails.
 
     """
-    print("precompile")
+    version = get_ffmpeg_version(ffmpeg_binary=ffmpeg_binary)
+    source_folder = _prepare_source_folder(version)
+    compiled_target_folder = _target_folder(version)
+    print(f"precompile ffmpeg {version} from {source_folder}")
     os.chdir(source_folder)
 
     if not os.path.exists("config_components.h"):
@@ -50,10 +94,12 @@ def precompile() -> None:
     for file in source_folder.glob("**/*.[cm]"):
         print(f"precompile {file}")
         p = file.relative_to(source_folder)
-        target_path = (target_folder / p).resolve()
+        target_path = (compiled_target_folder / p).resolve()
 
         if target_path.exists():
             continue
 
         target_path.parent.mkdir(parents=True, exist_ok=True)
         os.system(f"gcc -E -I. {file} > {target_path}") == 0
+
+    return compiled_target_folder

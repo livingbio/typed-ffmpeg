@@ -12,7 +12,7 @@ from pathlib import Path
 import typer
 
 from .parse_ffmpeg_opt_c import parse_ffmpeg_opt_c
-from .pre_compile import precompile, target_folder
+from .pre_compile import precompile
 from .schema import FFMpegOption
 from .xsd_to_dataclasses import generate_dataclasses, parse_xsd_file
 
@@ -20,13 +20,13 @@ app = typer.Typer(help="Parse FFmpeg C source code")
 
 
 @app.command()
-def pre_compile() -> None:
+def pre_compile(ffmpeg_binary: str = "ffmpeg") -> None:
     """Pre-compile the ffmpeg source code."""
-    precompile()
+    precompile(ffmpeg_binary=ffmpeg_binary)
 
 
 @app.command()
-def parse_ffmpeg_options() -> list[FFMpegOption]:
+def parse_ffmpeg_options(ffmpeg_binary: str = "ffmpeg") -> list[FFMpegOption]:
     """
     Parse the ffmpeg options from C code.
 
@@ -34,9 +34,8 @@ def parse_ffmpeg_options() -> list[FFMpegOption]:
         List of parsed FFmpeg options.
 
     """
-    precompile()
-
-    ffmpeg_opt_c = target_folder / "fftools/ffmpeg_opt.c"
+    compiled_target_folder = precompile(ffmpeg_binary=ffmpeg_binary)
+    ffmpeg_opt_c = compiled_target_folder / "fftools/ffmpeg_opt.c"
     return parse_ffmpeg_opt_c(ffmpeg_opt_c.read_text())
 
 
