@@ -1,7 +1,7 @@
 [project]
-name = "typed-ffmpeg"
+name = "typed-ffmpeg-compatible"
 version = "1.0.0a1"
-description = "Modern Python FFmpeg wrappers with comprehensive typing (latest version)"
+description = "typed-ffmpeg under the typed_ffmpeg module name (no conflict with ffmpeg-python)"
 authors = [
     {name = "lucemia", email = "lucemia@gmail.com"}
 ]
@@ -30,24 +30,20 @@ classifiers = [
     "Topic :: Multimedia :: Sound/Audio",
 ]
 
-# Meta-package: no source code, just depends on typed-ffmpeg-v8
-# which provides `import ffmpeg` directly.
+# Depends on v8 for the actual implementation, but exposes it
+# as `typed_ffmpeg` so it doesn't conflict with ffmpeg-python's
+# `ffmpeg` module.
 dependencies = [
-    "typed-ffmpeg-v8>=1.0,<2.0",
+    "typed-ffmpeg-v8>=1.0.0a1,<2.0",
 ]
-
-[tool.uv.sources]
-typed-ffmpeg-v8 = { workspace = true }
-ffmpeg-data-v8 = { workspace = true }
-
-[project.optional-dependencies]
-dev = [
-    "pytest>=7.0",
-    "pytest-cov>=4.0",
-    "ruff==0.12.2",
-]
-parse = ["ffmpeg-data-v8"]
 
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["typed_ffmpeg*"]

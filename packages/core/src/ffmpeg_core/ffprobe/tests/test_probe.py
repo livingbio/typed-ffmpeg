@@ -10,6 +10,7 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
+from ...conftest import requires_ffprobe
 from ..probe import probe, probe_obj
 
 test_data = Path(__file__).parent / "test_probe"
@@ -29,6 +30,7 @@ def is_static_image(format_name: str) -> bool:
     return format_name in {"jpeg_pipe", "png_pipe", "webp_pipe"}
 
 
+@requires_ffprobe
 @pytest.mark.parametrize("path", test_data.glob("**/*.*"), ids=lambda x: x.name)
 def test_probe_default(path: Path, snapshot: SnapshotAssertion) -> None:
     info = probe(path)
@@ -73,6 +75,7 @@ def test_probe_default(path: Path, snapshot: SnapshotAssertion) -> None:
     snapshot(name="obj", extension_class=JSONSnapshotExtension) == asdict(obj)
 
 
+@requires_ffprobe
 @pytest.mark.parametrize("path", test_data.glob("**/*.*"), ids=lambda x: x.name)
 def test_probe_complete(path: Path, snapshot: SnapshotAssertion) -> None:
     info = probe(
@@ -152,6 +155,7 @@ def test_probe_complete(path: Path, snapshot: SnapshotAssertion) -> None:
     snapshot(name="obj", extension_class=JSONSnapshotExtension) == asdict(obj)
 
 
+@requires_ffprobe
 def test_probe_timeout_cleanup() -> None:
     """
     Test that ffprobe subprocess is properly cleaned up when timeout occurs.

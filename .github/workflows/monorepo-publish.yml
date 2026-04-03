@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       package:
-        description: 'Package to publish (core, v8, v7, v6, v5, latest, all)'
+        description: 'Package to publish (core, data-v5..v8, v5..v8, latest, compatible, all)'
         required: true
         default: 'all'
       test-pypi:
@@ -47,7 +47,7 @@ jobs:
           fi
           
           if [ "$PKG" = "all" ]; then
-            echo "packages=core v8 v7 v6 v5 latest" >> $GITHUB_OUTPUT
+            echo "packages=core data-v5 data-v6 data-v7 data-v8 v5 v6 v7 v8 latest compatible" >> $GITHUB_OUTPUT
           else
             echo "packages=$PKG" >> $GITHUB_OUTPUT
           fi
@@ -56,7 +56,13 @@ jobs:
         run: |
           for pkg in ${{ steps.packages.outputs.packages }}; do
             echo "Building packages/$pkg..."
-            uv build --package $(grep '^name' packages/$pkg/pyproject.toml | cut -d'"' -f2) --out-dir packages/$pkg/dist
+            PKG_NAME=$(grep '^name' packages/$pkg/pyproject.toml | cut -d'"' -f2)
+            # compatible package is not a workspace member, build it directly
+            if [ "$pkg" = "compatible" ]; then
+              uv run python -m build packages/$pkg --outdir packages/$pkg/dist
+            else
+              uv build --package "$PKG_NAME" --out-dir packages/$pkg/dist
+            fi
           done
 
       - name: Publish to TestPyPI (if enabled)
@@ -85,7 +91,7 @@ jobs:
         if: github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && github.event.inputs.test-pypi == 'false')
         run: |
           # Publish in order: core first, then version packages, then latest
-          PUBLISH_ORDER="core v5 v6 v7 v8 latest"
+          PUBLISH_ORDER="core data-v5 data-v6 data-v7 data-v8 v5 v6 v7 v8 latest compatible"
 
           for pkg in $PUBLISH_ORDER; do
             if echo "${{ steps.packages.outputs.packages }}" | grep -q "$pkg"; then
