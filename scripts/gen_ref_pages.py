@@ -20,6 +20,7 @@ for path in sorted(src.rglob("*.py")):
         "tests" in path.parts
         or "migrations" in path.parts
         or "management" in path.parts
+        or "scripts" in path.parts
     ):
         continue
 
