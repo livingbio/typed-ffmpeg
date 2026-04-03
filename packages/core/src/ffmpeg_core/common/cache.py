@@ -35,9 +35,33 @@ def get_cache_path() -> Path:
 cache_path = get_cache_path()
 
 
+def _get_data_cache_path() -> Path | None:
+    """
+    Get the cache path from an installed ffmpeg-data-vN package.
+
+    Tries ffmpeg_data_v8 through ffmpeg_data_v5 (newest first) and returns
+    the first one found. Returns None if no data package is installed.
+
+    Returns:
+        Path to the data cache directory, or None if not installed.
+
+    """
+    for version in ("v8", "v7", "v6", "v5"):
+        try:
+            mod = __import__(f"ffmpeg_data_{version}")
+            return mod.get_cache_path()
+        except ImportError:
+            continue
+    return None
+
+
 def load(cls: type[T], id: str) -> T:
     """
     Load an object from the cache.
+
+    Tries the local cache first (for development), then falls back to an
+    installed ffmpeg-data-vN package. Raises FileNotFoundError with installation
+    instructions if the data is not available.
 
     Args:
         cls: The class of the object
@@ -46,12 +70,29 @@ def load(cls: type[T], id: str) -> T:
     Returns:
         The loaded object
 
+    Raises:
+        FileNotFoundError: If the cache file is not found and no data package is installed.
+
     """
     path = cache_path / f"{cls.__name__}/{id}.json"
 
-    with path.open() as ifile:
-        obj = loads(ifile.read())
-        return obj
+    if not path.exists():
+        data_cache = _get_data_cache_path()
+        if data_cache is not None:
+            data_path = data_cache / f"{cls.__name__}/{id}.json"
+            if data_path.exists():
+                path = data_path
+
+    try:
+        with path.open() as ifile:
+            obj = loads(ifile.read())
+            return obj
+    except FileNotFoundError:
+        raise FileNotFoundError(
+            f"Cache file not found: {cls.__name__}/{id}.json. "
+            "Install the parse extra for CLI parsing and Python compilation support: "
+            "pip install typed-ffmpeg[parse]"
+        ) from None
 
 
 def save(obj: T, id: str) -> None:

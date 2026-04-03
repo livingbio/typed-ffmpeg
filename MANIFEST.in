@@ -32,8 +32,8 @@ global-exclude docs/**
 # Exclude uv configuration
 global-exclude .uv/**
 
-# Exclude versioned cache files (only needed for code generation, not runtime)
-global-exclude **/cache/list/*_*_*.json
+# Exclude all cache list files from core (shipped separately via ffmpeg-core-data)
+global-exclude **/cache/list/*.json
 
 # Include only necessary files
 include LICENSE

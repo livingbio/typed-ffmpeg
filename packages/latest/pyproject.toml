@@ -36,6 +36,7 @@ dependencies = [
 
 [tool.uv.sources]
 typed-ffmpeg-v8 = { workspace = true }
+ffmpeg-data-v8 = { workspace = true }
 
 [project.optional-dependencies]
 dev = [
@@ -43,6 +44,7 @@ dev = [
     "pytest-cov>=4.0",
     "ruff==0.12.2",
 ]
+parse = ["ffmpeg-data-v8"]
 
 [build-system]
 requires = ["setuptools>=61.0"]
