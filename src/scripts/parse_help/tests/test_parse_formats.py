@@ -141,6 +141,7 @@ def test_parse_format(snapshot: SnapshotAssertion, text: str) -> None:
         ("mov", "muxer"),
     ],
 )
+@pytest.mark.dev_only
 def test_extract_format_options(
     snapshot: SnapshotAssertion, format: str, type: Literal["muxer", "demuxer"]
 ) -> None:

@@ -210,3 +210,4 @@ output.mp4
 ffmpeg/
 .claude/
 docs/_stubs/
+package-lock.json

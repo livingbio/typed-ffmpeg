@@ -1,3 +1,4 @@
+import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
@@ -5,6 +6,7 @@ from ..parse_ffmpeg_opt_c import parse_ffmpeg_opt_c
 from ..pre_compile import precompile
 
 
+@pytest.mark.dev_only
 def test_parse_ffmpeg_opt_c(snapshot: SnapshotAssertion) -> None:
     target_folder = precompile()
     p = target_folder / "fftools/ffmpeg_opt.c"
