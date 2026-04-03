@@ -2,7 +2,7 @@ name: Build FFmpeg Docker Images
 
 on:
   push:
-    branches: [main, v4]
+    branches: [main]
     paths:
       - 'docker/ffmpeg-builder/Dockerfile.*'
       - '.github/workflows/build-ffmpeg-images.yml'
@@ -14,8 +14,6 @@ on:
         default: 'all'
         type: choice
         options:
-          - '5.1'
-          - '6.1'
           - '7.1'
           - '8.0'
           - 'all'
@@ -30,12 +28,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ffmpeg-version: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.ffmpeg-version != 'all') && fromJSON(format('["{0}"]', github.event.inputs.ffmpeg-version)) || fromJSON('["5.1", "6.1", "7.1", "8.0"]') }}
+        ffmpeg-version: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.ffmpeg-version != 'all') && fromJSON(format('["{0}"]', github.event.inputs.ffmpeg-version)) || fromJSON('["7.1", "8.0"]') }}
         include:
-          - ffmpeg-version: '5.1'
-            ffmpeg-source-version: '5.1.8'
-          - ffmpeg-version: '6.1'
-            ffmpeg-source-version: '6.1.4'
           - ffmpeg-version: '7.1'
             ffmpeg-source-version: '7.1.1'
           - ffmpeg-version: '8.0'
