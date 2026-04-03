@@ -8,10 +8,14 @@ on:
     branches: [main]
     paths:
       - 'src/scripts/**'
+      - '.pre-commit-config.yaml'
+      - '.github/workflows/ci-scripts-lint.yml'
   pull_request:
     branches: [main]
     paths:
       - 'src/scripts/**'
+      - '.pre-commit-config.yaml'
+      - '.github/workflows/ci-scripts-lint.yml'
 
 jobs:
   lint:
@@ -27,14 +31,7 @@ jobs:
           python-version: '3.10'
 
       - name: Install uv
-        run: pip install uv
+        uses: astral-sh/setup-uv@v7
 
-      - name: Create virtual environment
-        run: uv venv
-
-      - name: Install dependencies
-        run: uv pip install --group dev
-
-      - name: Run linting
-        run: uv run pre-commit run --all-files
-        working-directory: src/scripts
+      - name: Run prek
+        run: uvx prek run --all-files

@@ -63,8 +63,8 @@ ruff format src/
 # Run mypy type checker
 mypy src/ffmpeg/
 
-# Run all pre-commit hooks
-pre-commit run --all-files
+# Run all prek hooks
+prek run --all-files
 ```
 
 ### Building the Package
@@ -219,9 +219,9 @@ ruff check --fix src/
 ruff format src/
 mypy src/ffmpeg/
 
-# Pre-commit hooks
-pre-commit install
-pre-commit run --all-files
+# Prek hooks
+prek install
+prek run --all-files
 
 # Building and publishing
 python -m build
