@@ -208,6 +208,7 @@ out/
 .vite/
 output.mp4
 ffmpeg/
-.claude/
+.claude/settings.local.json
+.claude/memory/
 docs/_stubs/
 package-lock.json

@@ -1,0 +1,77 @@
+name: CI Playground - Test
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/playground/**'
+      - '.github/workflows/ci-playground-test.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'packages/playground/**'
+      - '.github/workflows/ci-playground-test.yml'
+
+jobs:
+  test-playground:
+    name: Test playground
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install workspace dependencies
+        run: npm install
+
+      - name: Build ts-core
+        working-directory: packages/ts-core
+        run: npm run build
+
+      - name: Run linting
+        working-directory: packages/playground
+        run: npm run lint
+
+      - name: Run tests with coverage
+        working-directory: packages/playground
+        run: npm run test:coverage
+
+      - name: Install Playwright browsers
+        working-directory: packages/playground
+        run: npx playwright install --with-deps chromium
+
+      - name: Run E2E tests
+        working-directory: packages/playground
+        run: npm run test:e2e
+
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: packages/playground/playwright-report
+
+      - name: Fix lcov paths for monorepo
+        run: sed -i 's|SF:src/|SF:packages/playground/src/|g' packages/playground/coverage/lcov.info
+
+      - name: Upload coverage to Codecov
+        if: github.actor != 'dependabot[bot]'
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./packages/playground/coverage/lcov.info
+          flags: playground
+          name: playground-coverage
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload coverage reports as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: playground-coverage-report
+          path: packages/playground/coverage

@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat); cmd=$(echo \"$input\" | jq -r '.tool_input.command // \"\"'); if echo \"$cmd\" | grep -q 'git commit' && echo \"$cmd\" | grep -q 'feat:'; then echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"A feature commit was just made. Review README.md and update it to document this new feature if it is user-facing (new API, new CLI option, new behaviour, new package, etc.). If the README already covers it, no action needed.\"}}'; fi",
+            "statusMessage": "Checking if README needs updating..."
+          }
+        ]
+      }
+    ]
+  }
+}

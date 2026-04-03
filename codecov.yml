@@ -28,6 +28,9 @@ flags:
   typescript:
     paths:
       - packages/ts-core/src
+  playground:
+    paths:
+      - packages/playground/src
 
 comment:
   layout: 'reach, diff, flags, files'
