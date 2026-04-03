@@ -12,8 +12,8 @@
   "exports": {
     ".": {
       "browser": "./dist/browser/index.browser.js",
-      "import": "./dist/esm/index.js",
       "default": "./dist/index.js",
+      "import": "./dist/esm/index.js",
       "types": "./dist/index.d.ts"
     },
     "./*": {

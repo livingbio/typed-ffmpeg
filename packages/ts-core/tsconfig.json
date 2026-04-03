@@ -12,7 +12,9 @@
     "sourceMap": true,
     "strict": true,
     "target": "ES2022",
-    "types": ["node"]
+    "types": [
+      "node"
+    ]
   },
   "exclude": [
     "src/**/*.test.ts"
