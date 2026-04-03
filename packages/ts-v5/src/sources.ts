@@ -4098,10 +4098,3 @@ extraOptions?: Record<string, unknown>;
   );
 return filterNode.video(0) as unknown as VideoStream;
 }
-
-
-
-
-
-
-
