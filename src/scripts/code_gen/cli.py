@@ -46,11 +46,16 @@ def gen_filter_info(ffmpeg_filter: FFMpegFilter) -> FFMpegFilter:
         The filter info
 
     """
-    filter_doc = parse_docs.cli.extract_docs(ffmpeg_filter.name)
-
-    # NOTE:
-    # currently we only use filter_doc's url info
-    return replace(ffmpeg_filter, ref=filter_doc.url)
+    try:
+        filter_doc = parse_docs.cli.extract_docs(ffmpeg_filter.name)
+        # NOTE:
+        # currently we only use filter_doc's url info
+        return replace(ffmpeg_filter, ref=filter_doc.url)
+    except ValueError:
+        logging.warning(
+            f"No documentation found for filter {ffmpeg_filter.name!r}, including without doc URL"
+        )
+        return ffmpeg_filter
 
 
 def load_options(rebuild: bool) -> list[FFMpegOption]:
@@ -200,12 +205,9 @@ def load_filters(rebuild: bool) -> list[FFMpegFilter]:
         if manual_config:
             converted_filter = replace(converted_filter, **asdict(manual_config))
 
-        try:
-            filter_info = gen_filter_info(converted_filter)
-            save(filter_info, filter_info.name)
-            ffmpeg_filters.append(filter_info)
-        except ValueError:
-            print(f"Failed to generate filter info for {converted_filter.name}")
+        filter_info = gen_filter_info(converted_filter)
+        save(filter_info, filter_info.name)
+        ffmpeg_filters.append(filter_info)
 
     save(ffmpeg_filters, "filters")
 
