@@ -5,25 +5,6 @@
       {
         "index": null,
         "node": {
-          "filename": "scale=-1:-1:flags=lanczos,pad=1920:1080:-1:-1,subtitles='subtitles.srt':stream_index=0:force_style='Fontname=Gotham Rounded Medium,Fontsize=17,Alignment=2,PrimaryColour=&Hffffff&,MarginV=25'",
-          "inputs": [
-            {
-              "index": null,
-              "node": {
-                "filename": "input_video.mkv",
-                "inputs": [],
-                "kwargs": "FrozenDict({})"
-              },
-              "optional": false
-            }
-          ],
-          "kwargs": "FrozenDict({'vf': True})"
-        },
-        "optional": false
-      },
-      {
-        "index": null,
-        "node": {
           "filename": "1.8",
           "inputs": [
             {

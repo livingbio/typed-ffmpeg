@@ -31,24 +31,24 @@ describe('Sidebar', () => {
     renderSidebar();
     expect(screen.getByText('FFmpeg Flow Editor')).toBeInTheDocument();
     expect(screen.getByText('I/O Nodes')).toBeInTheDocument();
-    expect(screen.getByText(/Available Filters/)).toBeInTheDocument();
+    expect(screen.getByText(/Filters \(/)).toBeInTheDocument();
   });
 
-  it('renders Input Node and Output Node buttons', () => {
+  it('renders Input and Output draggable boxes', () => {
     renderSidebar();
-    expect(screen.getByText('Input Node')).toBeInTheDocument();
-    expect(screen.getByText('Output Node')).toBeInTheDocument();
+    expect(screen.getByText('Input')).toBeInTheDocument();
+    expect(screen.getByText('Output')).toBeInTheDocument();
   });
 
-  it('calls onAddFilter with "input" when Input Node is clicked', async () => {
+  it('calls onAddFilter with "input" when Input box is clicked', async () => {
     renderSidebar();
-    await userEvent.click(screen.getByText('Input Node'));
+    await userEvent.click(screen.getByText('Input'));
     expect(onAddFilter).toHaveBeenCalledWith('input');
   });
 
-  it('calls onAddFilter with "output" when Output Node is clicked', async () => {
+  it('calls onAddFilter with "output" when Output box is clicked', async () => {
     renderSidebar();
-    await userEvent.click(screen.getByText('Output Node'));
+    await userEvent.click(screen.getByText('Output'));
     expect(onAddFilter).toHaveBeenCalledWith('output');
   });
 
@@ -87,7 +87,9 @@ describe('Sidebar', () => {
 
   it('does not call onPasteCommand when command field is empty', async () => {
     renderSidebar();
-    await userEvent.click(screen.getByRole('button', { name: /Parse Command/i }));
+    // Button is disabled when field is empty — verify it's disabled rather than clicking
+    const btn = screen.getByRole('button', { name: /Parse Command/i });
+    expect(btn).toBeDisabled();
     expect(onPasteCommand).not.toHaveBeenCalled();
   });
 

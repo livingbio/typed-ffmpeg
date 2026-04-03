@@ -12,7 +12,7 @@ import ReactFlow, {
   ReactFlowProvider,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
-import { Box, Paper, Typography, IconButton, Button } from '@mui/material';
+import { Box, Paper, Typography, IconButton, Tooltip } from '@mui/material';
 import dagre from 'dagre';
 import FilterNodeUI from './FilterNode';
 import GlobalNodeUI from './GlobalNode';
@@ -29,9 +29,6 @@ import { parseFFmpegCommandToJson } from '../utils/generateFFmpegCommand';
 import PreviewPanel from './PreviewPanel';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import AutoGraphIcon from '@mui/icons-material/AutoGraph';
-import DownloadIcon from '@mui/icons-material/Download';
-import UploadIcon from '@mui/icons-material/Upload';
 
 const nodeTypes = {
   filter: FilterNodeUI,
@@ -589,40 +586,6 @@ function FFmpegFlowEditorInner() {
     [loadJson],
   );
 
-  // Add handleExport function
-  const handleExport = useCallback(() => {
-    const json = nodeMappingManager.toJson();
-    const blob = new Blob([json], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'ffmpeg-flow.json';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  }, [nodeMappingManager]);
-
-  // Add handleLoadJson function
-  const handleLoadJson = useCallback(
-    async (event: React.ChangeEvent<HTMLInputElement>) => {
-      const file = event.target.files?.[0];
-      if (!file) return;
-
-      try {
-        const text = await file.text();
-        await loadJson(text);
-      } catch (error) {
-        console.error('Error loading JSON:', error);
-        alert(
-          'Error loading JSON file: ' +
-            (error instanceof Error ? error.message : String(error)),
-        );
-      }
-    },
-    [loadJson],
-  );
-
   return (
     <Box
       sx={{
@@ -691,40 +654,41 @@ function FFmpegFlowEditorInner() {
               <Typography variant="h6" sx={{ fontSize: '0.875rem' }}>
                 Preview
               </Typography>
-              <IconButton
-                size="small"
-                onClick={() => setIsPreviewVisible(false)}
-                sx={{ p: 0.5 }}
-              >
-                <VisibilityOffIcon fontSize="small" />
-              </IconButton>
+              <Tooltip title="Hide Preview" arrow>
+                <IconButton
+                  size="small"
+                  onClick={() => setIsPreviewVisible(false)}
+                  sx={{ p: 0.5 }}
+                >
+                  <VisibilityOffIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
             </Box>
             <PreviewPanel nodeMappingManager={nodeMappingManager} />
           </Box>
         </Paper>
       )}
       {!isPreviewVisible && (
-        <IconButton
-          size="small"
-          onClick={() => setIsPreviewVisible(true)}
-          sx={{
-            position: 'fixed',
-            right: isSidebarVisible ? 370 : 20,
-            bottom: 20,
-            backgroundColor: '#fff',
-            boxShadow: 1,
-            zIndex: 1000,
-            '&:hover': {
-              backgroundColor: '#f5f5f5',
-            },
-          }}
-        >
-          <VisibilityIcon fontSize="small" />
-        </IconButton>
+        <Tooltip title="Show Preview" arrow placement="left">
+          <IconButton
+            size="small"
+            onClick={() => setIsPreviewVisible(true)}
+            sx={{
+              position: 'fixed',
+              right: isSidebarVisible ? 370 : 20,
+              bottom: 20,
+              backgroundColor: '#fff',
+              boxShadow: 2,
+              zIndex: 1000,
+              '&:hover': { backgroundColor: '#f5f5f5' },
+            }}
+          >
+            <VisibilityIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
       )}
       {isSidebarVisible && (
-        <Paper
-          elevation={3}
+        <Box
           sx={{
             position: 'fixed',
             right: 0,
@@ -735,102 +699,37 @@ function FFmpegFlowEditorInner() {
             zIndex: 1000,
             display: 'flex',
             flexDirection: 'column',
-            transition: 'transform 0.3s ease-in-out',
+            boxShadow: '-2px 0 8px rgba(0,0,0,0.12)',
           }}
         >
-          <Box
-            sx={{
-              p: 1.5,
-              borderBottom: 1,
-              borderColor: 'divider',
-              backgroundColor: '#f5f5f5',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-          >
-            <Typography variant="h6" sx={{ fontSize: '0.875rem' }}>
-              FFmpeg Flow Editor
-            </Typography>
-            <Box sx={{ display: 'flex', gap: 0.5 }}>
-              <IconButton
-                size="small"
-                onClick={() => setIsSidebarVisible(false)}
-                sx={{ p: 0.5 }}
-              >
-                <VisibilityOffIcon fontSize="small" />
-              </IconButton>
-              <Button
-                variant="contained"
-                onClick={onLayout}
-                sx={{
-                  minWidth: '32px',
-                  width: '32px',
-                  height: '32px',
-                  padding: 0,
-                }}
-              >
-                <AutoGraphIcon fontSize="small" />
-              </Button>
-              <Button
-                variant="contained"
-                onClick={handleExport}
-                sx={{
-                  minWidth: '32px',
-                  width: '32px',
-                  height: '32px',
-                  padding: 0,
-                }}
-              >
-                <DownloadIcon fontSize="small" />
-              </Button>
-              <Button
-                variant="contained"
-                component="label"
-                sx={{
-                  minWidth: '32px',
-                  width: '32px',
-                  height: '32px',
-                  padding: 0,
-                }}
-              >
-                <UploadIcon fontSize="small" />
-                <input
-                  type="file"
-                  hidden
-                  accept=".json"
-                  onChange={handleLoadJson}
-                />
-              </Button>
-            </Box>
-          </Box>
           <Sidebar
             onAddFilter={onAddNode}
             nodeMappingManager={nodeMappingManager}
             onLoadJson={loadJson}
             onLayout={onLayout}
             onPasteCommand={handlePasteCommand}
+            onClose={() => setIsSidebarVisible(false)}
           />
-        </Paper>
+        </Box>
       )}
       {!isSidebarVisible && (
-        <IconButton
-          size="small"
-          onClick={() => setIsSidebarVisible(true)}
-          sx={{
-            position: 'fixed',
-            right: 20,
-            top: 20,
-            backgroundColor: '#fff',
-            boxShadow: 1,
-            zIndex: 1000,
-            '&:hover': {
-              backgroundColor: '#f5f5f5',
-            },
-          }}
-        >
-          <VisibilityIcon fontSize="small" />
-        </IconButton>
+        <Tooltip title="Show Panel" arrow placement="left">
+          <IconButton
+            size="small"
+            onClick={() => setIsSidebarVisible(true)}
+            sx={{
+              position: 'fixed',
+              right: 20,
+              top: 20,
+              backgroundColor: '#fff',
+              boxShadow: 2,
+              zIndex: 1000,
+              '&:hover': { backgroundColor: '#f5f5f5' },
+            }}
+          >
+            <VisibilityIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
       )}
     </Box>
   );

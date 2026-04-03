@@ -43,6 +43,10 @@ jobs:
         working-directory: packages/playground
         run: npm run test:coverage
 
+      - name: Build playground for E2E
+        working-directory: packages/playground
+        run: npm run build
+
       - name: Install Playwright browsers
         working-directory: packages/playground
         run: npx playwright install --with-deps chromium
