@@ -39,11 +39,9 @@ export function input(
     re?: FFBoolean;
     readrate?: FFFloat;
     readrate_initial_burst?: FFDouble;
-    readrate_catchup?: FFFloat;
     bitexact?: FFBoolean;
     tag?: FFString;
     reinit_filter?: FFInt;
-    drop_changed?: FFInt;
     dump_attachment?: FFString;
     stream_loop?: FFInt;
     discard?: FFString;
@@ -105,11 +103,9 @@ export function input(
         "re": options?.re,
         "readrate": options?.readrate,
         "readrate_initial_burst": options?.readrate_initial_burst,
-        "readrate_catchup": options?.readrate_catchup,
         "bitexact": options?.bitexact,
         "tag": options?.tag,
         "reinit_filter": options?.reinit_filter,
-        "drop_changed": options?.drop_changed,
         "dump_attachment": options?.dump_attachment,
         "stream_loop": options?.stream_loop,
         "discard": options?.discard,

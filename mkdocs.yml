@@ -68,6 +68,7 @@ nav:
   - Get Started:
       - Overview: index.md
       - Packages (v4): v4-packages.md
+      - Version Differences: version-differences.md
       - FAQ: faq.md
       - Migration from 3.x: migration/v3-to-v4.md
   - Usage:

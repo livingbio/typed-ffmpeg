@@ -584,6 +584,22 @@ def generate_ts(
     ffmpeg_muxers = load_formats(rebuild, ffmpeg_binary, version_key)
     ffmpeg_av_option_set = load_av_option_set(rebuild, ffmpeg_binary, version_key)
 
+    # Build cross-version metadata for availability annotations in JSDoc
+    version_metadata = None
+    from ffmpeg_core.common.cache import get_cache_path
+
+    from .version_diff import build_version_metadata
+
+    cache_dir = get_cache_path() / "list"
+    available = set()
+    for cache_file in cache_dir.glob("filters_*.json"):
+        # "filters_7_1.json" → "7.1"
+        parts = cache_file.stem.replace("filters_", "").split("_")
+        if len(parts) == 2:
+            available.add(f"{parts[0]}.{parts[1]}")
+    if available:
+        version_metadata = build_version_metadata(sorted(available))
+
     render_ts(
         filters=ffmpeg_filters,
         options=ffmpeg_options,
@@ -592,9 +608,93 @@ def generate_ts(
         av_option_sets=ffmpeg_av_option_set,
         outpath=outpath,
         ffmpeg_version=version,
+        version_metadata=version_metadata,
     )
 
     logging.info(f"TypeScript bindings generated at {outpath}")
+
+
+@app.command()
+def generate_all_ts() -> None:
+    """
+    Generate TypeScript bindings for all cached FFmpeg versions.
+
+    Iterates over all version caches (filters_*.json) and generates
+    TypeScript packages for each. No ffmpeg binary is required since
+    all data is loaded from cache.
+
+    Raises:
+        Exit: If no cached filter data is found.
+
+    """
+    from ffmpeg_core.common.cache import get_cache_path
+
+    from .version_diff import build_version_metadata
+
+    cache_dir = get_cache_path() / "list"
+    # Walk up from this file to find the repo root (directory containing pyproject.toml)
+    repo_root = Path(__file__).resolve().parent
+    while repo_root != repo_root.parent:
+        if (repo_root / "pyproject.toml").exists() and (
+            repo_root / "packages"
+        ).exists():
+            break
+        repo_root = repo_root.parent
+
+    # Discover all cached versions
+    available: dict[str, str] = {}  # major → "major.minor"
+    for cache_file in sorted(cache_dir.glob("filters_*.json")):
+        parts = cache_file.stem.replace("filters_", "").split("_")
+        if len(parts) == 2:
+            version_str = f"{parts[0]}.{parts[1]}"
+            major = parts[0]
+            # Keep latest minor for each major
+            available[major] = version_str
+
+    if not available:
+        logging.error(
+            "No cached filter data found. Run generate-ts with an ffmpeg binary first."
+        )
+        raise typer.Exit(1)
+
+    # Build cross-version metadata once
+    all_versions = sorted(available.values())
+    version_metadata = build_version_metadata(all_versions)
+
+    for major, version_str in sorted(available.items()):
+        version_key = version_cache_key(version_str)
+        outpath = repo_root / "packages" / f"ts-v{major}" / "src"
+        outpath.mkdir(parents=True, exist_ok=True)
+
+        try:
+            ffmpeg_filters = load(list[FFMpegFilter], f"filters_{version_key}")
+            ffmpeg_options = load(list[FFMpegOption], f"options_{version_key}")
+            ffmpeg_options = _normalize_option_flags(ffmpeg_options)
+            ffmpeg_codecs = load(list[FFMpegCodec], f"codecs_{version_key}")
+            ffmpeg_muxers = load(list[FFMpegFormat], f"formats_{version_key}")
+            ffmpeg_av_option_set = load(
+                list[FFMpegAVOption], f"av_option_sets_{version_key}"
+            )
+        except Exception as e:
+            logging.warning(f"Skipping version {version_str}: incomplete cache ({e})")
+            continue
+
+        render_ts(
+            filters=ffmpeg_filters,
+            options=ffmpeg_options,
+            codecs=ffmpeg_codecs,
+            muxers=ffmpeg_muxers,
+            av_option_sets=ffmpeg_av_option_set,
+            outpath=outpath,
+            ffmpeg_version=version_str,
+            version_metadata=version_metadata,
+        )
+
+        logging.info(f"TypeScript bindings for v{major} generated at {outpath}")
+
+    logging.info(
+        f"Generated TypeScript bindings for versions: {', '.join(sorted(available.keys()))}"
+    )
 
 
 @app.command()
