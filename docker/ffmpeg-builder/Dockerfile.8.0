@@ -1,4 +1,17 @@
-# FFmpeg 8.0 — Ubuntu 24.04 build with full codec/plugin support.
+# FFmpeg 8.0 — Ubuntu 24.04 build with full codec/plugin/hardware acceleration support.
+#
+# Hardware Acceleration Support:
+#   - VAAPI: Video Acceleration API (Intel/AMD GPUs)
+#     Filters: scale_vaapi, overlay_vaapi, deinterlace_vaapi, denoise_vaapi,
+#              tonemap_vaapi, sharpness_vaapi, transpose_vaapi, pad_vaapi, etc.
+#   - Intel QSV: Quick Sync Video (Intel integrated graphics)
+#     Encoders: h264_qsv, hevc_qsv, av1_qsv, vp9_qsv, mjpeg_qsv, etc.
+#     Filters: scale_qsv, overlay_qsv, deinterlace_qsv, vpp_qsv
+#   - NVIDIA CUDA/NVENC/NVDEC: (requires NVIDIA GPU)
+#     Encoders: h264_nvenc, hevc_nvenc, av1_nvenc
+#     Filters: scale_cuda, overlay_cuda, thumbnail_cuda, hwupload_cuda, etc.
+#   - Vulkan: Cross-platform GPU compute
+#   - OpenCL: General purpose GPU computing
 #
 # Version-specific notes:
 #   - libplacebo is NOT enabled: Ubuntu 24.04's libplacebo 6.x has API
@@ -28,7 +41,10 @@ RUN apt-get update && apt-get install -y \
     libass-dev libfreetype6-dev libfontconfig1-dev libfribidi-dev \
     libzimg-dev libvidstab-dev libaom-dev \
     libssl-dev libsrt-openssl-dev libzmq3-dev \
+    # Hardware acceleration: VAAPI, DRM, OpenCL
     libva-dev libdrm-dev ocl-icd-opencl-dev opencl-headers \
+    # Intel QSV (Quick Sync Video) - requires libmfx/libvpl
+    libmfx-dev libvpl-dev \
     # Vulkan (headers will be upgraded below to meet FFmpeg 8.0's >= 1.3.277 requirement)
     libvulkan-dev glslang-dev libshaderc-dev spirv-tools \
     # Frei0r plugin framework
@@ -87,6 +103,10 @@ RUN EXTRA_FLAGS=""; \
     pkg-config --atleast-version=1.3.277 vulkan 2>/dev/null \
         && EXTRA_FLAGS="$EXTRA_FLAGS --enable-vulkan"; \
     pkg-config --exists shaderc    && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libshaderc"; \
+    # Intel QSV (Quick Sync Video) hardware acceleration
+    pkg-config --exists libmfx     && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libmfx"; \
+    pkg-config --exists vpl        && EXTRA_FLAGS="$EXTRA_FLAGS --enable-libvpl"; \
+    # NVIDIA hardware acceleration
     pkg-config --exists ffnvcodec  && EXTRA_FLAGS="$EXTRA_FLAGS --enable-cuvid --enable-nvenc --enable-nvdec"; \
     # CUDA filters (scale_cuda, overlay_cuda, etc.) — requires nvcc from nvidia-cuda-toolkit
     command -v nvcc >/dev/null 2>&1 && EXTRA_FLAGS="$EXTRA_FLAGS --enable-cuda-nvcc"; \
@@ -169,7 +189,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libzimg2 libvidstab1.1 libaom3 \
     libssl3t64 libsrt1.5-openssl libzmq5 \
     libxml2 libbluray2 libfdk-aac2 \
+    # Hardware acceleration runtime libraries
     libva2 libva-drm2 libdrm2 ocl-icd-libopencl1 libvdpau1 \
+    libmfx1 libvpl2 \
     libvulkan1 libxcb1 libxcb-shm0 libxcb-xfixes0 \
     libbs2b0 librubberband2 libmysofa1 liblilv-0-0 \
     frei0r-plugins \
