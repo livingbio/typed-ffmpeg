@@ -199,7 +199,7 @@ f
 
 
 
-See the [Usage](https://livingbio.github.io/typed-ffmpeg/usage/typed/) section in our documentation for more examples and detailed guides.
+See the [Usage](https://livingbio.github.io/typed-ffmpeg/usage/basic-api-usage/) section in our documentation for more examples and detailed guides.
 
 ---
 

@@ -49,8 +49,6 @@ pre-commit uninstall
 prek install
 ```
 
-See [prek migration guide](docs/development/prek-migration.md) for details.
-
 ## Development Workflow
 
 ### Making Changes
