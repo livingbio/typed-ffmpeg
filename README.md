@@ -68,7 +68,7 @@ pip install typed-ffmpeg-v6      # install the matching package
 
 The `[parse]` extra installs version-specific cache data (`ffmpeg-data-v5` through `ffmpeg-data-v8`) needed by `ffmpeg.compile.compile_cli.parse()` to reconstruct filter graphs from FFmpeg command lines. Most users do not need this.
 
-See the [v4 Package Architecture](https://livingbio.github.io/typed-ffmpeg/v4-packages/) docs for details and the [Migration Guide](https://livingbio.github.io/typed-ffmpeg/migration/v3-to-v4/) if you are upgrading from typed-ffmpeg 3.x.
+See the [v4 Package Architecture](https://github.com/livingbio/typed-ffmpeg/blob/main/docs/v4-packages.md) docs for details and the [Migration Guide](https://github.com/livingbio/typed-ffmpeg/blob/main/docs/migration/v3-to-v4.md) if you are upgrading from typed-ffmpeg 3.x.
 
 ---
 
@@ -199,13 +199,13 @@ f
 
 
 
-See the [Usage](https://livingbio.github.io/typed-ffmpeg/usage/typed/) section in our documentation for more examples and detailed guides.
+See the [Usage](https://livingbio.github.io/typed-ffmpeg/usage/basic-api-usage/) section in our documentation for more examples and detailed guides.
 
 ---
 
 ## Interactive Playground
 
-Try out `typed-ffmpeg` directly in your browser with our [Interactive Playground](https://livingbio.github.io/typed-ffmpeg/typed-ffmpeg-playground/)! The playground provides a live environment where you can:
+Try out `typed-ffmpeg` directly in your browser with our [Interactive Playground](https://livingbio.github.io/typed-ffmpeg-playground/)! The playground provides a live environment where you can:
 
 ![typed-ffmpeg demo](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/demo.gif)
 ![Interactive Playground](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/playground-screenshot.png)
