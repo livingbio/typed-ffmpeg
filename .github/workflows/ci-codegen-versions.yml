@@ -24,6 +24,12 @@ on:
       - 'src/scripts/parse_docs/**'
       - 'src/scripts/manual/**'
       - 'packages/core/src/ffmpeg_core/common/**'
+  # Auto-trigger when FFmpeg Docker images are built/updated
+  workflow_run:
+    workflows: ["Build FFmpeg Docker Images"]
+    types:
+      - completed
+    branches: [main]
   workflow_dispatch:
     inputs:
       ffmpeg-version:
@@ -46,6 +52,8 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
+    # Only run if Docker build succeeded, or if manually triggered/pushed
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     strategy:
       fail-fast: false
       matrix:
@@ -162,7 +170,10 @@ jobs:
 
   create-pr:
     needs: generate
-    if: github.event_name == 'workflow_dispatch' && github.event.inputs.create_pr == 'true'
+    # Auto-create PR when triggered by Docker build, or when manually requested
+    if: |
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.create_pr == 'true')
     runs-on: ubuntu-latest
     permissions:
       contents: write
