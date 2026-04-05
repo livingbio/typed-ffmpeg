@@ -52,7 +52,7 @@ output.run()
 ## Documentation
 
 - [Full Documentation](https://livingbio.github.io/typed-ffmpeg/)
-- [API Reference](https://livingbio.github.io/typed-ffmpeg/api/v7/)
+- [API Reference](https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/)
 
 ## License
 
