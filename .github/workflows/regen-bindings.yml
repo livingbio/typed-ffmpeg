@@ -34,7 +34,7 @@ jobs:
             ffmpeg-image: 'ghcr.io/livingbio/typed-ffmpeg/ffmpeg:8.0'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ref: v4
 
@@ -113,7 +113,7 @@ jobs:
     if: ${{ github.event.inputs.dry_run != 'true' }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ref: v4
 
