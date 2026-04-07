@@ -12,7 +12,19 @@ updates:
     allow:
       - dependency-type: "all"
   - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
     directory: "/packages/ts-core"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/packages/ts-v5"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/packages/ts-v6"
     schedule:
       interval: "weekly"
   - package-ecosystem: "npm"
@@ -20,7 +32,15 @@ updates:
     schedule:
       interval: "weekly"
   - package-ecosystem: "npm"
+    directory: "/packages/ts-v8"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
     directory: "/packages/playground"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/examples/typescript-demo"
     schedule:
       interval: "weekly"
   - package-ecosystem: "github-actions"
