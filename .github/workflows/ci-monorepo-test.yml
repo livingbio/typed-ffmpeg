@@ -118,7 +118,7 @@ jobs:
           python -m venv .venv
           source .venv/bin/activate
           pip install -e packages/core
-          pip install -e "packages/${{ matrix.ffmpeg-version }}[dev]"
+          pip install -e "packages/${{ matrix.ffmpeg-version }}[dev,parse]"
           pytest packages/tests-shared -v -k "not test_view" \
             --cov=ffmpeg \
             --cov=ffmpeg_core \
