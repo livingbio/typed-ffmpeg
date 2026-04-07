@@ -55,7 +55,7 @@ jobs:
             --cov-report=term-missing
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v6
         with:
           files: packages/core/coverage.xml
           flags: backend,python,${{ matrix.python-version }},ffmpeg-core
@@ -125,7 +125,7 @@ jobs:
             --cov-report=xml:coverage-bindings.xml
 
       - name: Upload bindings coverage to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v6
         with:
           files: coverage-bindings.xml
           flags: backend,python,${{ matrix.python-version }},bindings-${{ matrix.ffmpeg-version }}
