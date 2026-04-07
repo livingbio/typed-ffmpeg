@@ -1,6 +1,6 @@
 [project]
 name = "typed-ffmpeg-compatible"
-version = "1.0.0a2"
+version = "4.0.0"
 description = "typed-ffmpeg under the typed_ffmpeg module name (no conflict with ffmpeg-python)"
 authors = [
     {name = "lucemia", email = "lucemia@gmail.com"}

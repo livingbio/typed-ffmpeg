@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [4.0.0] - 2026-04-07
+
+### Added
+
+- **Multi-version TypeScript bindings** — full TypeScript code generation for FFmpeg v5–v8 with per-version type-safe filter definitions and documentation
+
+### Changed
+
+- Upgraded ESLint to v10 with compatibility fixes
+- Upgraded Pygments to 2.20.0
+- Bumped CI actions: `codecov/codecov-action` v6, `actions/upload-artifact` v7, `actions/download-artifact` v8, `actions/setup-python` v6, `docker/setup-buildx-action` v4
+
+### Fixed
+
+- Fixed broken links in README files
+- Fixed playground Dependabot entry, stale lockfile, and broken husky hook
+- Fixed workspace-internal dependency handling in Dependabot config
+- Fixed YAML indentation in codegen-regenerate workflow
+- Resolved trailing whitespace and JSON formatting lint failures
+
 ## [1.0.0a2] - 2026-04-01
 
 ### Added
