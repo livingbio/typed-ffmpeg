@@ -23,26 +23,38 @@ updates:
     directory: "/packages/ts-v5"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "@typed-ffmpeg/*"
   - package-ecosystem: "npm"
     directory: "/packages/ts-v6"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "@typed-ffmpeg/*"
   - package-ecosystem: "npm"
     directory: "/packages/ts-v7"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "@typed-ffmpeg/*"
   - package-ecosystem: "npm"
     directory: "/packages/ts-v8"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "@typed-ffmpeg/*"
   - package-ecosystem: "npm"
     directory: "/packages/playground"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "@typed-ffmpeg/*"
   - package-ecosystem: "npm"
     directory: "/examples/typescript-demo"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "@typed-ffmpeg/*"
   - package-ecosystem: "github-actions"
     directory: "/" # Typically GitHub Actions workflows are located in .github/workflows
     schedule:
