@@ -161,24 +161,18 @@ export class NodeMappingManager {
       }
     });
     parameters = { ...parameters, ...kwargs };
-    let input_typings: StreamTypeEnum[] = [];
-    if (!filter.formula_typings_input) {
-      input_typings = filter.stream_typings_input.map((t) => t.type.value);
-    } else {
-      input_typings = await evaluateFormula(
-        filter.formula_typings_input,
-        parameters,
-      );
-    }
-    let output_typings: StreamTypeEnum[] = [];
-    if (!filter.formula_typings_output) {
-      output_typings = filter.stream_typings_output.map((t) => t.type.value);
-    } else {
-      output_typings = await evaluateFormula(
-        filter.formula_typings_output,
-        parameters,
-      );
-    }
+    const input_typings: StreamTypeEnum[] = !filter.formula_typings_input
+      ? filter.stream_typings_input.map((t) => t.type.value)
+      : await evaluateFormula(
+          filter.formula_typings_input,
+          parameters,
+        );
+    const output_typings: StreamTypeEnum[] = !filter.formula_typings_output
+      ? filter.stream_typings_output.map((t) => t.type.value)
+      : await evaluateFormula(
+          filter.formula_typings_output,
+          parameters,
+        );
     return {
       input_typings,
       output_typings,
