@@ -1,7 +1,9 @@
 from dataclasses import asdict
+from pathlib import Path
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
+from syrupy.extensions.amber import AmberSnapshotExtension
 from syrupy.extensions.json import JSONSnapshotExtension
 
 from ffmpeg.base import filter_multi_output, input
@@ -9,7 +11,25 @@ from ffmpeg.common.schema import StreamType
 from ffmpeg.compile.compile_cli import compile, compile_as_list, get_args, parse
 from ffmpeg.dag.schema import Stream
 
+import ffmpeg
+
 from .cases import shared_cases
+
+FFMPEG_VERSION = f"v{ffmpeg.__version__.split('.')[0]}"
+
+
+class VersionedAmberExtension(AmberSnapshotExtension):
+    @classmethod
+    def dirname(cls, *, test_location: "PyTestLocation") -> str:  # type: ignore[override]
+        test_dir = Path(test_location.filepath).parent
+        return str(test_dir / f"__snapshots_{FFMPEG_VERSION}__")
+
+
+class VersionedJSONExtension(JSONSnapshotExtension):
+    @classmethod
+    def dirname(cls, *, test_location: "PyTestLocation") -> str:  # type: ignore[override]
+        test_dir = Path(test_location.filepath).parent
+        return str(test_dir / f"__snapshots_{FFMPEG_VERSION}__")
 
 
 @pytest.mark.parametrize("graph", shared_cases)
@@ -104,6 +124,8 @@ def test_get_args_custom_filter(snapshot: SnapshotAssertion) -> None:
 def test_parse_ffmpeg_commands(snapshot: SnapshotAssertion, command: str) -> None:
     parsed = parse(command)
     assert snapshot(
-        name="parse-ffmpeg-commands", extension_class=JSONSnapshotExtension
+        name="parse-ffmpeg-commands", extension_class=VersionedJSONExtension
     ) == asdict(parsed)
-    assert snapshot(name="build-ffmpeg-commands") == compile(parsed)
+    assert snapshot(
+        name="build-ffmpeg-commands", extension_class=VersionedAmberExtension
+    ) == compile(parsed)

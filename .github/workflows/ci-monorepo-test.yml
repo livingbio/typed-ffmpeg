@@ -119,7 +119,7 @@ jobs:
           source .venv/bin/activate
           pip install -e packages/core
           pip install -e "packages/${{ matrix.ffmpeg-version }}[dev,parse]"
-          pytest packages/tests-shared -v -k "not test_view and not test_parse_ffmpeg_commands" \
+          pytest packages/tests-shared -v -k "not test_view" \
             --cov=ffmpeg \
             --cov=ffmpeg_core \
             --cov-report=xml:coverage-bindings.xml
