@@ -101,7 +101,7 @@ class PythonExprParser {
     let left = this.parseAdd();
     this.skipWS();
     while (true) {
-      let op: string | null = null;
+      let op: string;
       if (this.match('==')) op = '===';
       else if (this.match('!=')) op = '!==';
       else if (this.match('<=')) op = '<=';
