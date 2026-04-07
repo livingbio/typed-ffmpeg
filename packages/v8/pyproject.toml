@@ -31,7 +31,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "ffmpeg-core>=1.0.0a2,<2.0",
+    "ffmpeg-core>=4.0.0,<5.0",
 ]
 
 [tool.uv.sources]

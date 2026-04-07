@@ -33,7 +33,7 @@ classifiers = [
 # Meta-package: no source code, just depends on typed-ffmpeg-v8
 # which provides `import ffmpeg` directly.
 dependencies = [
-    "typed-ffmpeg-v8>=1.0,<2.0",
+    "typed-ffmpeg-v8>=4.0.0,<5.0",
 ]
 
 [tool.uv.sources]
