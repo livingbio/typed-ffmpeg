@@ -124,14 +124,14 @@ jobs:
           python -m scripts.code_gen.cli generate --outpath "$OUTPATH" --rebuild
 
       - name: Upload generated bindings
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ffmpeg-v${{ matrix.ffmpeg-version }}-bindings
           path: packages/v${{ matrix.ffmpeg-version }}/src/ffmpeg/
           retention-days: 30
 
       - name: Upload version cache
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ffmpeg-v${{ matrix.ffmpeg-version }}-cache
           path: packages/core/src/ffmpeg_core/common/cache/list/*_${{ matrix.ffmpeg-version }}_*.json

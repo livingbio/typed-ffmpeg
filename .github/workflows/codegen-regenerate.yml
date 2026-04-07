@@ -80,14 +80,14 @@ jobs:
             --rebuild
 
       - name: Upload generated bindings
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: bindings-v${{ matrix.ffmpeg-version }}
           path: packages/v${{ matrix.ffmpeg-version }}/src/ffmpeg/
           retention-days: 1
 
       - name: Upload version cache
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: cache-v${{ matrix.ffmpeg-version }}
           path: packages/core/src/ffmpeg_core/common/cache/list/
