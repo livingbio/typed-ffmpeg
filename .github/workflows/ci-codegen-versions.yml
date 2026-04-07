@@ -174,13 +174,13 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download all generated bindings
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: ffmpeg-v*-bindings
           path: /tmp/artifacts
 
       - name: Download all version caches
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: ffmpeg-v*-cache
           path: /tmp/artifacts
