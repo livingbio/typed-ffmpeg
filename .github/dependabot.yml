@@ -44,12 +44,6 @@ updates:
     ignore:
       - dependency-name: "@typed-ffmpeg/*"
   - package-ecosystem: "npm"
-    directory: "/packages/playground"
-    schedule:
-      interval: "weekly"
-    ignore:
-      - dependency-name: "@typed-ffmpeg/*"
-  - package-ecosystem: "npm"
     directory: "/examples/typescript-demo"
     schedule:
       interval: "weekly"
