@@ -1,5 +1,5 @@
 site_name: typed-ffmpeg
-site_description: Data validation using Python type hints
+site_description: Type-safe FFmpeg bindings for Python & TypeScript
 strict: false
 site_url: https://livingbio.github.io/typed-ffmpeg/
 
@@ -71,6 +71,7 @@ nav:
       - Version Differences: version-differences.md
       - FAQ: faq.md
       - Migration from 3.x: migration/v3-to-v4.md
+  - TypeScript: typescript.md
   - Usage:
       - Basic API Usage: usage/basic-api-usage.ipynb
       - Probe: usage/probe.ipynb

@@ -15,7 +15,7 @@ members = [
 [project]
 name = "typed-ffmpeg-workspace"
 version = "0.0.0"
-description = "Monorepo root for typed-ffmpeg (workspace + dev scripts)"
+description = "Monorepo root for typed-ffmpeg — type-safe FFmpeg bindings for Python & TypeScript"
 dependencies = [
     "ffmpeg-core",
     "ffmpeg-data-v5",
