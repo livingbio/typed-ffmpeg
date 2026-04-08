@@ -26,6 +26,7 @@ from dataclasses import replace
 
 from ffmpeg_core.common.cache import load
 from ffmpeg_core.common.schema import (
+    FFMpegAVOption,
     FFMpegFilter,
     FFMpegFilterDef,
     FFMpegOption,
@@ -68,6 +69,23 @@ def get_options_dict() -> dict[str, FFMpegOption]:
     """
     options = load(list[FFMpegOption], "options")
     return {option.name: option for option in options}
+
+
+def get_av_options_dict() -> dict[str, FFMpegAVOption]:
+    """
+    Load and index FFmpeg AV options (codec/format-level) from the cache.
+
+    Returns:
+        Dictionary mapping option names to their FFMpegAVOption definitions.
+        When duplicate names exist across sections, the first occurrence is kept.
+
+    """
+    av_options = load(list[FFMpegAVOption], "av_option_sets")
+    result: dict[str, FFMpegAVOption] = {}
+    for opt in av_options:
+        if opt.name not in result:
+            result[opt.name] = opt
+    return result
 
 
 def get_filter_dict() -> dict[str, FFMpegFilter]:
@@ -216,6 +234,7 @@ def parse_output(
     source: list[str],
     in_streams: Mapping[str, FilterableStream],
     ffmpeg_options: dict[str, FFMpegOption],
+    av_options: dict[str, FFMpegAVOption] | None = None,
 ) -> list[OutputStream]:
     """
     Parse output file specifications and their options.
@@ -276,6 +295,13 @@ def parse_output(
                         parameters[key] = True
                     else:
                         parameters[key] = value[-1]
+            elif av_options and key_base in av_options:
+                av_opt = av_options[key_base]
+                if av_opt.is_output_option:
+                    if value[-1] is None:
+                        parameters[key] = True
+                    else:
+                        parameters[key] = value[-1]
 
         export.append(output(*inputs, filename=filename, extra_options=parameters))
         buffer = []
@@ -284,7 +310,9 @@ def parse_output(
 
 
 def parse_input(
-    tokens: list[str], ffmpeg_options: dict[str, FFMpegOption]
+    tokens: list[str],
+    ffmpeg_options: dict[str, FFMpegOption],
+    av_options: dict[str, FFMpegAVOption] | None = None,
 ) -> dict[str, FilterableStream]:
     """
     Parse input file specifications and their options.
@@ -318,6 +346,13 @@ def parse_input(
 
                 if option.is_input_option:
                     # just ignore not input options
+                    if value[-1] is None:
+                        parameters[key] = True
+                    else:
+                        parameters[key] = value[-1]
+            elif av_options and key in av_options:
+                av_opt = av_options[key]
+                if av_opt.is_input_option:
                     if value[-1] is None:
                         parameters[key] = True
                     else:
@@ -610,6 +645,7 @@ def parse(cli: str) -> Stream:
     # ffmpeg [global_options] {[input_file_options] -i input_url} ... {[output_file_options] output_url} ...
     ffmpeg_options = get_options_dict()
     ffmpeg_filters = get_filter_dict()
+    av_options = get_av_options_dict()
 
     tokens = shlex.split(cli)
     assert tokens[0].lower().split(".")[0] == "ffmpeg"
@@ -619,7 +655,7 @@ def parse(cli: str) -> Stream:
     global_params, remaining_tokens = parse_global(tokens, ffmpeg_options)
 
     index = len(remaining_tokens) - 1 - remaining_tokens[::-1].index("-i")
-    input_streams = parse_input(remaining_tokens[: index + 2], ffmpeg_options)
+    input_streams = parse_input(remaining_tokens[: index + 2], ffmpeg_options, av_options)
     remaining_tokens = remaining_tokens[index + 2 :]
 
     filter_complex_parts: list[str] = []
@@ -668,6 +704,7 @@ def parse(cli: str) -> Stream:
         remaining_tokens,
         input_streams | filterable_streams,
         ffmpeg_options,
+        av_options,
     )
 
     # Create a stream with global options
