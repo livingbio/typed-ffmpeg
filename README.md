@@ -5,7 +5,7 @@
 [![PyPI Version](https://img.shields.io/pypi/v/typed-ffmpeg.svg)](https://pypi.org/project/typed-ffmpeg/)
 [![codecov](https://codecov.io/gh/livingbio/typed-ffmpeg/graph/badge.svg?token=B95PR629LP)](https://codecov.io/gh/livingbio/typed-ffmpeg)
 
-**typed-ffmpeg** offers a modern, Pythonic interface to FFmpeg, providing extensive support for complex filters with detailed typing and documentation. Inspired by `ffmpeg-python`, this package enhances functionality by addressing common limitations, such as lack of IDE integration and comprehensive typing, while also introducing new features like JSON serialization of filter graphs and automatic FFmpeg validation.
+**typed-ffmpeg** offers a modern, type-safe interface to FFmpeg for both **Python** and **TypeScript**, providing extensive support for complex filters with detailed typing and documentation. Inspired by `ffmpeg-python`, this project enhances functionality by addressing common limitations, such as lack of IDE integration and comprehensive typing, while also introducing new features like JSON serialization of filter graphs and automatic FFmpeg validation.
 
 ---
 

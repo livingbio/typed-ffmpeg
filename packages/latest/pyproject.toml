@@ -1,7 +1,7 @@
 [project]
 name = "typed-ffmpeg"
 version = "4.0.0"
-description = "Modern Python FFmpeg wrappers with comprehensive typing (latest version)"
+description = "Modern Python & TypeScript FFmpeg wrappers with comprehensive typing (latest version)"
 authors = [
     {name = "lucemia", email = "lucemia@gmail.com"}
 ]
