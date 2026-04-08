@@ -2,298 +2,154 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://livingbio.github.io/typed-ffmpeg/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
          <loc>https://livingbio.github.io/typed-ffmpeg/faq/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/development/prek-migration/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/typescript/</loc>
+         <lastmod>2026-04-08</lastmod>
+    </url>
+    <url>
+         <loc>https://livingbio.github.io/typed-ffmpeg/v4-packages/</loc>
+         <lastmod>2026-04-08</lastmod>
+    </url>
+    <url>
+         <loc>https://livingbio.github.io/typed-ffmpeg/version-differences/</loc>
+         <lastmod>2026-04-08</lastmod>
+    </url>
+    <url>
+         <loc>https://livingbio.github.io/typed-ffmpeg/development/codegen/</loc>
+         <lastmod>2026-04-08</lastmod>
+    </url>
+    <url>
+         <loc>https://livingbio.github.io/typed-ffmpeg/migration/v3-to-v4/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
          <loc>https://livingbio.github.io/typed-ffmpeg/reference/SUMMARY/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/conftest/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/base/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/exceptions/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/exceptions/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/expressions/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/expressions/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/info/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/filters/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/schema/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/info/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/types/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/schema/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/common/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/sources/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/common/cache/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/types/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/common/schema/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/codecs/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/common/serialize/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/codecs/decoders/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/ffprobe/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/codecs/encoders/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/ffprobe/parse/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/codecs/schema/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/ffprobe/probe/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/common/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/ffprobe/schema/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/common/cache/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/ffprobe/xml2json/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/common/schema/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/utils/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/common/serialize/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/utils/escaping/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/compile/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/utils/frozendict/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/compile/compile_cli/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/utils/run/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/compile/compile_json/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/utils/snapshot/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/compile/compile_python/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/utils/typing/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/compile/context/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/utils/view/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/compile/validate/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/utils/lazy_eval/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/dag/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/utils/lazy_eval/operator/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/dag/factory/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/dag/nodes/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/dag/schema/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/dag/utils/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/dag/global_runnable/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/dag/global_runnable/global_args/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/dag/global_runnable/runnable/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/dag/io/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/dag/io/_input/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/dag/io/_output/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/dag/io/output_args/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/ffprobe/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/ffprobe/parse/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/ffprobe/probe/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/ffprobe/schema/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/ffprobe/xml2json/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/formats/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/formats/demuxers/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/formats/muxers/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/formats/schema/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/options/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/options/codec/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/options/format/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/options/framesync/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/options/timeline/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/streams/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/streams/audio/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/streams/av/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/streams/channel_layout/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/streams/subtitle/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/streams/video/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/utils/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/utils/escaping/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/utils/frozendict/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/utils/run/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/utils/snapshot/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/utils/typing/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/utils/view/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/utils/lazy_eval/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/utils/lazy_eval/operator/</loc>
-         <lastmod>2026-03-26</lastmod>
-    </url>
-    <url>
-         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/utils/lazy_eval/schema/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg_core/utils/lazy_eval/schema/</loc>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
          <loc>https://livingbio.github.io/typed-ffmpeg/usage/basic-api-usage/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
          <loc>https://livingbio.github.io/typed-ffmpeg/usage/complex-filtering/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
          <loc>https://livingbio.github.io/typed-ffmpeg/usage/customizing-filters/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
          <loc>https://livingbio.github.io/typed-ffmpeg/usage/execute/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <lastmod>2026-04-08</lastmod>
     </url>
     <url>
          <loc>https://livingbio.github.io/typed-ffmpeg/usage/probe/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <lastmod>2026-04-08</lastmod>
     </url>
 </urlset>

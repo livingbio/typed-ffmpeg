@@ -6,17 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Data validation using Python type hints">
+        <meta name="description" content="Type-safe FFmpeg bindings for Python & TypeScript">
       
       
       
         <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/faq/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../version-differences/">
       
       
-        <link rel="next" href="../usage/basic-api-usage/">
+        <link rel="next" href="../migration/v3-to-v4/">
       
       
         
@@ -252,6 +252,25 @@
   
   
   
+    <li class="md-tabs__item">
+      <a href="../typescript/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  TypeScript
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
     
     
       <li class="md-tabs__item">
@@ -274,8 +293,15 @@
   
     
     
+      
+  
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
-        <a href="../reference/ffmpeg/" class="md-tabs__link">
+        <a href="../reference/ffmpeg_core/common/" class="md-tabs__link">
           
   
   
@@ -283,6 +309,9 @@
 
         </a>
       </li>
+    
+  
+
     
   
 
@@ -402,6 +431,62 @@
     
   
     Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4-packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Packages (v4)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version-differences/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Version Differences
   
 
     
@@ -542,9 +627,64 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration/v3-to-v4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration from 3.x
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typescript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TypeScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -567,10 +707,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -588,8 +728,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -764,10 +904,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -785,8 +925,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -814,18 +954,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
         
           
-          <div class="md-nav__link md-nav__container">
-            <a href="../reference/ffmpeg/" class="md-nav__link ">
-              
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
     
   
-    ffmpeg
+    ffmpeg_core
   
 
     
@@ -833,53 +972,19 @@
   
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             
   
-    ffmpeg
+    ffmpeg_core
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/base/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    base
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -899,160 +1004,11 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../reference/ffmpeg/codecs/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    codecs
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    codecs
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/codecs/decoders/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    decoders
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/codecs/encoders/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    encoders
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/codecs/schema/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    schema
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_3" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../reference/ffmpeg/common/" class="md-nav__link ">
+            <a href="../reference/ffmpeg_core/common/" class="md-nav__link ">
               
   
   
@@ -1070,14 +1026,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3_1_3" id="__nav_3_1_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4_1_1" id="__nav_4_1_1_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1094,7 +1050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/common/cache/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/common/cache/" class="md-nav__link">
         
   
   
@@ -1122,7 +1078,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/common/schema/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/common/schema/" class="md-nav__link">
         
   
   
@@ -1150,7 +1106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/common/serialize/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/common/serialize/" class="md-nav__link">
         
   
   
@@ -1185,72 +1141,15 @@
   
   
   
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../reference/ffmpeg/compile/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    compile
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_1_4" id="__nav_3_1_4_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    compile
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/compile/compile_cli/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/conftest/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    compile_cli
+    conftest
   
 
     
@@ -1271,574 +1170,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/compile/compile_json/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    compile_json
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/compile/compile_python/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    compile_python
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/compile/context/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    context
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/compile/validate/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    validate
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_5" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../reference/ffmpeg/dag/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    dag
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_1_5" id="__nav_3_1_5_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    dag
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/dag/factory/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    factory
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_5_2" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../reference/ffmpeg/dag/global_runnable/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    global_runnable
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_1_5_2" id="__nav_3_1_5_2_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_1_5_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1_5_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    global_runnable
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/dag/global_runnable/global_args/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    global_args
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/dag/global_runnable/runnable/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    runnable
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_5_3" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../reference/ffmpeg/dag/io/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    io
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_1_5_3" id="__nav_3_1_5_3_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_1_5_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1_5_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    io
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/dag/io/_input/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    _input
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/dag/io/_output/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    _output
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/dag/io/output_args/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    output_args
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/dag/nodes/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    nodes
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/dag/schema/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    schema
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/dag/utils/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    utils
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/exceptions/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/exceptions/" class="md-nav__link">
         
   
   
@@ -1866,7 +1198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/expressions/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/expressions/" class="md-nav__link">
         
   
   
@@ -1905,11 +1237,11 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_5" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../reference/ffmpeg/ffprobe/" class="md-nav__link ">
+            <a href="../reference/ffmpeg_core/ffprobe/" class="md-nav__link ">
               
   
   
@@ -1927,14 +1259,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3_1_8" id="__nav_3_1_8_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4_1_5" id="__nav_4_1_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1_8">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1951,7 +1283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/ffprobe/parse/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/ffprobe/parse/" class="md-nav__link">
         
   
   
@@ -1979,7 +1311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/ffprobe/probe/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/ffprobe/probe/" class="md-nav__link">
         
   
   
@@ -2007,7 +1339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/ffprobe/schema/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/ffprobe/schema/" class="md-nav__link">
         
   
   
@@ -2035,7 +1367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/ffprobe/xml2json/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/ffprobe/xml2json/" class="md-nav__link">
         
   
   
@@ -2071,184 +1403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/filters/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    filters
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_10" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../reference/ffmpeg/formats/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    formats
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_1_10" id="__nav_3_1_10_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1_10">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    formats
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/formats/demuxers/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    demuxers
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/formats/muxers/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    muxers
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/formats/schema/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    schema
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/info/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/info/" class="md-nav__link">
         
   
   
@@ -2275,185 +1430,8 @@
   
   
   
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_12" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../reference/ffmpeg/options/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    options
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_1_12" id="__nav_3_1_12_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1_12">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    options
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/options/codec/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    codec
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/options/format/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    format
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/options/framesync/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    framesync
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/options/timeline/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    timeline
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/schema/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/schema/" class="md-nav__link">
         
   
   
@@ -2481,240 +1459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/sources/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    sources
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_15" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../reference/ffmpeg/streams/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    streams
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_1_15" id="__nav_3_1_15_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_15_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1_15">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    streams
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/streams/audio/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    audio
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/streams/av/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    av
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/streams/channel_layout/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    channel_layout
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/streams/subtitle/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    subtitle
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/streams/video/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    video
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/ffmpeg/types/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/types/" class="md-nav__link">
         
   
   
@@ -2753,11 +1498,11 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_17" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_9" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../reference/ffmpeg/utils/" class="md-nav__link ">
+            <a href="../reference/ffmpeg_core/utils/" class="md-nav__link ">
               
   
   
@@ -2775,14 +1520,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3_1_17" id="__nav_3_1_17_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4_1_9" id="__nav_4_1_9_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_17_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1_17">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2799,7 +1544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/utils/escaping/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/utils/escaping/" class="md-nav__link">
         
   
   
@@ -2827,7 +1572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/utils/frozendict/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/utils/frozendict/" class="md-nav__link">
         
   
   
@@ -2866,11 +1611,11 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_17_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_9_3" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../reference/ffmpeg/utils/lazy_eval/" class="md-nav__link ">
+            <a href="../reference/ffmpeg_core/utils/lazy_eval/" class="md-nav__link ">
               
   
   
@@ -2888,14 +1633,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3_1_17_3" id="__nav_3_1_17_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4_1_9_3" id="__nav_4_1_9_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_1_17_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1_17_3">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_9_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2912,7 +1657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/utils/lazy_eval/operator/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/utils/lazy_eval/operator/" class="md-nav__link">
         
   
   
@@ -2940,7 +1685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/utils/lazy_eval/schema/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/utils/lazy_eval/schema/" class="md-nav__link">
         
   
   
@@ -2976,7 +1721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/utils/run/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/utils/run/" class="md-nav__link">
         
   
   
@@ -3004,7 +1749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/utils/snapshot/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/utils/snapshot/" class="md-nav__link">
         
   
   
@@ -3032,7 +1777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/utils/typing/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/utils/typing/" class="md-nav__link">
         
   
   
@@ -3060,7 +1805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/ffmpeg/utils/view/" class="md-nav__link">
+      <a href="../reference/ffmpeg_core/utils/view/" class="md-nav__link">
         
   
   
@@ -3206,8 +1951,8 @@
 <h2 id="how-to-use-source-filter">How to use source filter<a class="headerlink" href="#how-to-use-source-filter" title="Permanent link">&para;</a></h2>
 <p>typed-ffmpeg support ffmpeg source filters:</p>
 <ul>
-<li>How to use predefined video/audio source filter can be find <a href="../usage/complex-filtering/">Complex Filters</a></li>
-<li>How to customized video/audio source filter can be find <a href="../usage/customizing-filters/">Customizing Filters</a></li>
+<li>How to use predefined video/audio source filter can be found <a href="../usage/complex-filtering/">Complex Filters</a></li>
+<li>How to customize video/audio source filter can be found <a href="../usage/customizing-filters/">Customizing Filters</a></li>
 </ul>
 <h2 id="differences-between-ffmpeg-python-and-typed-ffmpeg">Differences Between ffmpeg-python and typed-ffmpeg<a class="headerlink" href="#differences-between-ffmpeg-python-and-typed-ffmpeg" title="Permanent link">&para;</a></h2>
 <p>typed-ffmpeg is designed with inspiration from ffmpeg-python and aims to follow good design principles. However, due to differences in approach and static typing requirements, there are some key distinctions. Below are the major differences between ffmpeg-python and typed-ffmpeg. If you notice any discrepancies or have suggestions for improvements, feel free to open an issue or submit a pull request.</p>

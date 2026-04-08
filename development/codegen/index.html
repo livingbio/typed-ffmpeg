@@ -10,13 +10,9 @@
       
       
       
-        <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/usage/customizing-filters/">
+        <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/development/codegen/">
       
       
-        <link rel="prev" href="../complex-filtering/">
-      
-      
-        <link rel="next" href="../execute/">
       
       
         
@@ -27,7 +23,7 @@
     
     
       
-        <title>Customizing Filters - typed-ffmpeg</title>
+        <title>Code Generation - typed-ffmpeg</title>
       
     
     
@@ -86,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#customizing-filters-in-typed-ffmpeg" class="md-skip">
+        <a href="#code-generation" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Customizing Filters
+              Code Generation
             
           </span>
         </div>
@@ -268,13 +264,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../basic-api-usage/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../usage/basic-api-usage/" class="md-tabs__link">
           
   
   
@@ -589,29 +583,24 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -629,7 +618,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -647,7 +636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../basic-api-usage/" class="md-nav__link">
+      <a href="../../usage/basic-api-usage/" class="md-nav__link">
         
   
   
@@ -675,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../probe/" class="md-nav__link">
+      <a href="../../usage/probe/" class="md-nav__link">
         
   
   
@@ -703,7 +692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../complex-filtering/" class="md-nav__link">
+      <a href="../../usage/complex-filtering/" class="md-nav__link">
         
   
   
@@ -728,35 +717,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Customizing Filters
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../usage/customizing-filters/" class="md-nav__link">
         
   
   
@@ -772,98 +736,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="Page contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Page contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#customizing-filters-in-typed-ffmpeg" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Customizing Filters in Typed-FFmpeg
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Customizing Filters in Typed-FFmpeg">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#introduction-to-custom-filters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introduction to Custom Filters
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creating-single-input-custom-filters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating Single-input Custom Filters
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#implementing-multi-input-custom-filters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Implementing Multi-input Custom Filters
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#defining-multi-output-custom-filters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Defining Multi-output Custom Filters
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#define-source-filter" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Define Source Filter
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -876,7 +748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../execute/" class="md-nav__link">
+      <a href="../../usage/execute/" class="md-nav__link">
         
   
   
@@ -1886,6 +1758,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1894,22 +1768,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#customizing-filters-in-typed-ffmpeg" class="md-nav__link">
+  <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Customizing Filters in Typed-FFmpeg
+        How It Works
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Customizing Filters in Typed-FFmpeg">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regenerating-bindings-via-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regenerating Bindings via CI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Regenerating Bindings via CI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#introduction-to-custom-filters" class="md-nav__link">
+  <a href="#regenerate-all-versions-creates-a-pr" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Introduction to Custom Filters
+        Regenerate all versions (creates a PR)
       
     </span>
   </a>
@@ -1917,10 +1802,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#creating-single-input-custom-filters" class="md-nav__link">
+  <a href="#regenerate-a-single-version-for-testing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Creating Single-input Custom Filters
+        Regenerate a single version (for testing)
       
     </span>
   </a>
@@ -1928,32 +1813,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#implementing-multi-input-custom-filters" class="md-nav__link">
+  <a href="#automatic-ci-triggers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementing Multi-input Custom Filters
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#defining-multi-output-custom-filters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Defining Multi-output Custom Filters
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#define-source-filter" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Define Source Filter
+        Automatic CI triggers
       
     </span>
   </a>
@@ -1962,6 +1825,106 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Development
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Local Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#macos-homebrew" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        macOS (Homebrew)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-ffmpeg-binary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using --ffmpeg-binary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-which-binary-is-active" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify which binary is active
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CLI Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caching
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Matrix
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1985,641 +1948,134 @@
   
 
 
-  <h1>Customizing Filters</h1>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script>
-(function() {
-  function addWidgetsRenderer() {
-    var requireJsScript = document.createElement('script');
-    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
-
-    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
-    var jupyterWidgetsScript = document.createElement('script');
-    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
-    var widgetState;
-
-    // Fallback for older version:
-    try {
-      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
-
-      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
-        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
-      }
-    } catch(e) {}
-
-    jupyterWidgetsScript.src = widgetRendererSrc;
-
-    document.body.appendChild(requireJsScript);
-    document.body.appendChild(jupyterWidgetsScript);
-  }
-
-  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
-}());
-</script>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="customizing-filters-in-typed-ffmpeg">Customizing Filters in Typed-FFmpeg<a class="headerlink" href="#customizing-filters-in-typed-ffmpeg" title="Permanent link">&para;</a></h2>
-<h3 id="introduction-to-custom-filters">Introduction to Custom Filters<a class="headerlink" href="#introduction-to-custom-filters" title="Permanent link">&para;</a></h3>
-<p>While Typed-FFmpeg supports most of the FFmpeg filters out-of-the-box, there might be instances where you need to use filters that are not predefined in the library. For such cases, Typed-FFmpeg provides a flexible way to define and utilize custom filters.</p>
-<h3 id="creating-single-input-custom-filters">Creating Single-input Custom Filters<a class="headerlink" href="#creating-single-input-custom-filters" title="Permanent link">&para;</a></h3>
-<p>Easily create your own single-input custom filters with the <code>vfilter</code>, <code>afilter</code> method. This allows for direct application of new or specialized video filters not standard in Typed-FFmpeg.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="language-python highlight"><pre><span></span><code><span class="o">%</span><span class="n">xmode</span> <span class="n">Minimal</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">ffmpeg</span>
-
-<span class="c1"># Apply a custom single-input video filter</span>
-<span class="p">(</span>
-    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">&quot;input.mp4&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">vfilter</span><span class="p">(</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;custom_filter&quot;</span><span class="p">,</span> <span class="n">option1</span><span class="o">=</span><span class="s2">&quot;value1&quot;</span><span class="p">,</span> <span class="n">option2</span><span class="o">=</span><span class="s2">&quot;value2&quot;</span>
-    <span class="p">)</span>  <span class="c1"># Apply &quot;custom_filter&quot; with specified options</span>
-    <span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;output.mp4&quot;</span><span class="p">)</span>
-<span class="p">)</span>
+<h1 id="code-generation">Code Generation<a class="headerlink" href="#code-generation" title="Permanent link">&para;</a></h1>
+<p>Typed-ffmpeg generates its filter/codec/format bindings by introspecting real FFmpeg binaries. Each version package (<code>v5</code>, <code>v6</code>, <code>v7</code>, <code>v8</code>) is generated from the corresponding FFmpeg major version.</p>
+<h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
+<p>The code generation pipeline has three inputs per FFmpeg version:</p>
+<ol>
+<li><strong>FFmpeg binary</strong> — executed directly (<code>ffmpeg -filters</code>, <code>-codecs</code>, <code>-muxers</code>, <code>-h full</code>, etc.) to extract available filters, codecs, formats, and AV options</li>
+<li><strong>FFmpeg source code</strong> — release tarball downloaded from ffmpeg.org, preprocessed with <code>gcc -E</code>, parsed for command-line option definitions</li>
+<li><strong>FFmpeg documentation</strong> — version-correct <code>doc/filters.texi</code> from the source tarball, parsed for filter descriptions and parameter documentation</li>
+</ol>
+<p>The generator outputs Python modules into <code>packages/v{N}/src/ffmpeg/</code> with typed filter functions, codec classes, format classes, and stream methods.</p>
+<h2 id="regenerating-bindings-via-ci">Regenerating Bindings via CI<a class="headerlink" href="#regenerating-bindings-via-ci" title="Permanent link">&para;</a></h2>
+<p>The recommended way to regenerate bindings is via the CI workflow.</p>
+<h3 id="regenerate-all-versions-creates-a-pr">Regenerate all versions (creates a PR)<a class="headerlink" href="#regenerate-all-versions-creates-a-pr" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code>gh<span class="w"> </span>workflow<span class="w"> </span>run<span class="w"> </span>ci-codegen-versions.yml<span class="w"> </span>--ref<span class="w"> </span>v4<span class="w"> </span>-f<span class="w"> </span>ffmpeg-version<span class="o">=</span>all<span class="w"> </span>-f<span class="w"> </span><span class="nv">create_pr</span><span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
-
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-<code>Exception reporting mode: Minimal
-</code>
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="output_svg output_subarea output_execute_result">
-
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
-
-
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-
-
-
-
-<!-- Generated by graphviz version 2.43.0 (0)
- -->
-
-
-
-<!-- Title: %3 Pages: 1 -->
-
-
-<svg height="44pt" viewbox="0.00 0.00 760.00 44.00" width="760pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 40)">
-<title>%3</title>
-<polygon fill="white" points="-4,4 -4,-40 756,-40 756,4 -4,4" stroke="transparent"></polygon>
-
-<!-- 604ab03321d8ab8f -->
-
-
-<g class="node" id="node1">
-<title>604ab03321d8ab8f</title>
-<polygon fill="#99cc00" points="89,-36 0,-36 0,0 89,0 89,-36" stroke="black"></polygon>
-<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="44.5" y="-14.9">-i input.mp4</text>
-</g>
-
-<!-- 4a9c5cba9739f997 -->
-
-
-<g class="node" id="node2">
-<title>4a9c5cba9739f997</title>
-<polygon fill="#ffcc00" points="516,-36 169,-36 169,0 516,0 516,-36" stroke="black"></polygon>
-<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="342.5" y="-14.9">[0] custom_filter= option1=value1:option2=value2 [s0]</text>
-</g>
-
-<!-- 604ab03321d8ab8f&#45;&gt;4a9c5cba9739f997 -->
-
-
-<g class="edge" id="edge1">
-<title>604ab03321d8ab8f-&gt;4a9c5cba9739f997</title>
-<path d="M89.18,-18C108.55,-18 132.79,-18 158.52,-18" fill="none" stroke="black"></path>
-<polygon fill="black" points="158.84,-21.5 168.84,-18 158.84,-14.5 158.84,-21.5" stroke="black"></polygon>
-<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="129" y="-21.8">0 -&gt; 0</text>
-</g>
-
-<!-- 58a0a4c9beb05c96 -->
-
-
-<g class="node" id="node3">
-<title>58a0a4c9beb05c96</title>
-<polygon fill="#99ccff" points="752,-36 604,-36 604,0 752,0 752,-36" stroke="black"></polygon>
-<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="678" y="-14.9">-map [s0] output.mp4</text>
-</g>
-
-<!-- 4a9c5cba9739f997&#45;&gt;58a0a4c9beb05c96 -->
-
-
-<g class="edge" id="edge2">
-<title>4a9c5cba9739f997-&gt;58a0a4c9beb05c96</title>
-<path d="M516.11,-18C543.23,-18 570.14,-18 593.97,-18" fill="none" stroke="black"></path>
-<polygon fill="black" points="593.99,-21.5 603.99,-18 593.99,-14.5 593.99,-21.5" stroke="black"></polygon>
-<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="560" y="-21.8">s0 -&gt; 0</text>
-</g>
-</g>
-</svg>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This code snippet will correspond to the following FFmpeg command line:</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="language-python highlight"><pre><span></span><code><span class="p">(</span>
-    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">&quot;input.mp4&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">vfilter</span><span class="p">(</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;custom_filter&quot;</span><span class="p">,</span> <span class="n">option1</span><span class="o">=</span><span class="s2">&quot;value1&quot;</span><span class="p">,</span> <span class="n">option2</span><span class="o">=</span><span class="s2">&quot;value2&quot;</span>
-    <span class="p">)</span>  <span class="c1"># Apply &quot;custom_filter&quot; with specified options</span>
-    <span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;output.mp4&quot;</span><span class="p">)</span>
-<span class="p">)</span><span class="o">.</span><span class="n">compile_line</span><span class="p">()</span>
+<p>This triggers the <code>CI CodeGen - Multi-Version FFmpeg</code> workflow which:
+1. Pulls version-specific Docker images (<code>ghcr.io/livingbio/typed-ffmpeg/ffmpeg:{version}</code>)
+2. Extracts the FFmpeg binary and libraries
+3. Runs <code>python -m scripts.code_gen.cli generate</code> for each version
+4. Creates a PR against <code>v4</code> with the regenerated bindings</p>
+<h3 id="regenerate-a-single-version-for-testing">Regenerate a single version (for testing)<a class="headerlink" href="#regenerate-a-single-version-for-testing" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code>gh<span class="w"> </span>workflow<span class="w"> </span>run<span class="w"> </span>ci-codegen-versions.yml<span class="w"> </span>--ref<span class="w"> </span>v4<span class="w"> </span>-f<span class="w"> </span>ffmpeg-version<span class="o">=</span><span class="m">7</span><span class="w"> </span>-f<span class="w"> </span><span class="nv">create_pr</span><span class="o">=</span><span class="nb">false</span>
 </code></pre></div>
-
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="output_text output_subarea output_execute_result">
-<pre>
-<code>"ffmpeg -i input.mp4 -filter_complex '[0]custom_filter=option1=value1:option2=value2[s0]' -map '[s0]' output.mp4"</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Alternatively:</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="language-python highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ffmpeg</span>
-
-<span class="c1"># Define a custom video filter for later use</span>
-<span class="n">ffmpeg</span><span class="o">.</span><span class="n">vfilter</span><span class="p">(</span>
-    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">&quot;input.mp4&quot;</span><span class="p">),</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;custom_video_filter&quot;</span><span class="p">,</span>
-    <span class="n">option1</span><span class="o">=</span><span class="s2">&quot;value1&quot;</span><span class="p">,</span>
-    <span class="n">option2</span><span class="o">=</span><span class="s2">&quot;value2&quot;</span><span class="p">,</span>
-<span class="p">)</span>
+<h3 id="automatic-ci-triggers">Automatic CI triggers<a class="headerlink" href="#automatic-ci-triggers" title="Permanent link">&para;</a></h3>
+<p>The codegen workflow also runs automatically on push/PR to <code>main</code> or <code>v4</code> when these paths change:</p>
+<ul>
+<li><code>src/scripts/code_gen/**</code></li>
+<li><code>src/scripts/parse_help/**</code></li>
+<li><code>src/scripts/parse_c/**</code></li>
+<li><code>src/scripts/parse_docs/**</code></li>
+<li><code>src/scripts/manual/**</code></li>
+<li><code>packages/core/src/ffmpeg_core/common/**</code></li>
+</ul>
+<h2 id="local-development">Local Development<a class="headerlink" href="#local-development" title="Permanent link">&para;</a></h2>
+<p>For local code generation you need multiple FFmpeg versions installed side by side.</p>
+<h3 id="macos-homebrew">macOS (Homebrew)<a class="headerlink" href="#macos-homebrew" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>ffmpeg@5<span class="w"> </span>ffmpeg@6<span class="w"> </span>ffmpeg@7<span class="w"> </span>ffmpeg<span class="w">      </span><span class="c1"># ffmpeg (no suffix) = latest (v8+)</span>
 </code></pre></div>
-
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="output_svg output_subarea output_execute_result">
-
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
-
-
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-
-
-
-
-<!-- Generated by graphviz version 2.43.0 (0)
- -->
-
-
-
-<!-- Title: %3 Pages: 1 -->
-
-
-<svg height="44pt" viewbox="0.00 0.00 540.00 44.00" width="540pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 40)">
-<title>%3</title>
-<polygon fill="white" points="-4,4 -4,-40 536,-40 536,4 -4,4" stroke="transparent"></polygon>
-
-<!-- 604ab03321d8ab8f -->
-
-
-<g class="node" id="node1">
-<title>604ab03321d8ab8f</title>
-<polygon fill="#99cc00" points="89,-36 0,-36 0,0 89,0 89,-36" stroke="black"></polygon>
-<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="44.5" y="-14.9">-i input.mp4</text>
-</g>
-
-<!-- 19a46f1d094c55d1 -->
-
-
-<g class="node" id="node2">
-<title>19a46f1d094c55d1</title>
-<polygon fill="#ffcc00" points="532,-36 169,-36 169,0 532,0 532,-36" stroke="black"></polygon>
-<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="350.5" y="-14.9">[0] custom_video_filter= option1=value1:option2=value2 </text>
-</g>
-
-<!-- 604ab03321d8ab8f&#45;&gt;19a46f1d094c55d1 -->
-
-
-<g class="edge" id="edge1">
-<title>604ab03321d8ab8f-&gt;19a46f1d094c55d1</title>
-<path d="M89.06,-18C108.49,-18 132.86,-18 158.85,-18" fill="none" stroke="black"></path>
-<polygon fill="black" points="158.88,-21.5 168.88,-18 158.88,-14.5 158.88,-21.5" stroke="black"></polygon>
-<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="129" y="-21.8">0 -&gt; 0</text>
-</g>
-</g>
-</svg>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="implementing-multi-input-custom-filters">Implementing Multi-input Custom Filters<a class="headerlink" href="#implementing-multi-input-custom-filters" title="Permanent link">&para;</a></h3>
-<p>For filters that require multiple inputs, specify the type of each input using the <code>input_typings</code> parameter to ensure correct stream handling.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="language-python highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ffmpeg</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.schema</span><span class="w"> </span><span class="kn">import</span> <span class="n">StreamType</span>
-
-<span class="c1"># Create a multi-input custom video filter</span>
-<span class="p">(</span>
-    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">&quot;input1.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">vfilter</span><span class="p">(</span>
-        <span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">&quot;input2.mp4&quot;</span><span class="p">),</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;custom_video_filter&quot;</span><span class="p">,</span>
-        <span class="n">input_typings</span><span class="o">=</span><span class="p">(</span><span class="n">StreamType</span><span class="o">.</span><span class="n">video</span><span class="p">,</span> <span class="n">StreamType</span><span class="o">.</span><span class="n">video</span><span class="p">),</span>
-    <span class="p">)</span>
-<span class="p">)</span>
+<p>Then invoke the generator by pointing <code>PATH</code> at the desired version:</p>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Generate bindings for FFmpeg 7</span>
+<span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>brew<span class="w"> </span>--prefix<span class="w"> </span>ffmpeg@7<span class="k">)</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python<span class="w"> </span>-m<span class="w"> </span>scripts.code_gen.cli<span class="w"> </span>generate<span class="w"> </span>--outpath<span class="w"> </span>packages/v7/src/ffmpeg<span class="w"> </span>--rebuild
 </code></pre></div>
-
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="output_svg output_subarea output_execute_result">
-
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
-
-
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-
-
-
-
-<!-- Generated by graphviz version 2.43.0 (0)
- -->
-
-
-
-<!-- Title: %3 Pages: 1 -->
-
-
-<svg height="98pt" viewbox="0.00 0.00 357.00 98.00" width="357pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 94)">
-<title>%3</title>
-<polygon fill="white" points="-4,4 -4,-94 353,-94 353,4 -4,4" stroke="transparent"></polygon>
-
-<!-- 4365f434cb9d947c -->
-
-
-<g class="node" id="node1">
-<title>4365f434cb9d947c</title>
-<polygon fill="#99cc00" points="96,-90 0,-90 0,-54 96,-54 96,-90" stroke="black"></polygon>
-<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="48" y="-68.9">-i input1.mp4</text>
-</g>
-
-<!-- 2dec9b05adba945f -->
-
-
-<g class="node" id="node3">
-<title>2dec9b05adba945f</title>
-<polygon fill="#ffcc00" points="349,-63 176,-63 176,-27 349,-27 349,-63" stroke="black"></polygon>
-<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="262.5" y="-41.9">[0][1] custom_video_filter </text>
-</g>
-
-<!-- 4365f434cb9d947c&#45;&gt;2dec9b05adba945f -->
-
-
-<g class="edge" id="edge1">
-<title>4365f434cb9d947c-&gt;2dec9b05adba945f</title>
-<path d="M96.16,-66.01C116.79,-63.39 141.79,-60.21 166.02,-57.13" fill="none" stroke="black"></path>
-<polygon fill="black" points="166.51,-60.6 175.99,-55.87 165.63,-53.65 166.51,-60.6" stroke="black"></polygon>
-<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="136" y="-66.8">0 -&gt; 0</text>
-</g>
-
-<!-- 1a9957d0ad34d0c6 -->
-
-
-<g class="node" id="node2">
-<title>1a9957d0ad34d0c6</title>
-<polygon fill="#99cc00" points="96,-36 0,-36 0,0 96,0 96,-36" stroke="black"></polygon>
-<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="48" y="-14.9">-i input2.mp4</text>
-</g>
-
-<!-- 1a9957d0ad34d0c6&#45;&gt;2dec9b05adba945f -->
-
-
-<g class="edge" id="edge2">
-<title>1a9957d0ad34d0c6-&gt;2dec9b05adba945f</title>
-<path d="M96.16,-23.99C116.79,-26.61 141.79,-29.79 166.02,-32.87" fill="none" stroke="black"></path>
-<polygon fill="black" points="165.63,-36.35 175.99,-34.13 166.51,-29.4 165.63,-36.35" stroke="black"></polygon>
-<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="136" y="-34.8">1 -&gt; 1</text>
-</g>
-</g>
-</svg>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Alternatively, use the <code>vfilter</code>, <code>afilter</code> function directly for multi-input scenarios:</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="language-python highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ffmpeg</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.schema</span><span class="w"> </span><span class="kn">import</span> <span class="n">StreamType</span>
-
-<span class="c1"># Define and apply a multi-input custom video filter</span>
-<span class="n">ffmpeg</span><span class="o">.</span><span class="n">vfilter</span><span class="p">(</span>
-    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">&quot;input1.mp4&quot;</span><span class="p">),</span>
-    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">&quot;input2.mp4&quot;</span><span class="p">),</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;custom_video_filter&quot;</span><span class="p">,</span>
-    <span class="n">input_typings</span><span class="o">=</span><span class="p">(</span><span class="n">StreamType</span><span class="o">.</span><span class="n">video</span><span class="p">,</span> <span class="n">StreamType</span><span class="o">.</span><span class="n">video</span><span class="p">),</span>
-<span class="p">)</span>
+<h3 id="using-ffmpeg-binary">Using --ffmpeg-binary<a class="headerlink" href="#using-ffmpeg-binary" title="Permanent link">&para;</a></h3>
+<p>You can also specify the binary path directly:</p>
+<div class="language-bash highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>scripts.code_gen.cli<span class="w"> </span>generate<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--outpath<span class="w"> </span>packages/v7/src/ffmpeg<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ffmpeg-binary<span class="w"> </span>/usr/local/opt/ffmpeg@7/bin/ffmpeg<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--rebuild
 </code></pre></div>
-
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="output_svg output_subarea output_execute_result">
-
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
-
-
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-
-
-
-
-<!-- Generated by graphviz version 2.43.0 (0)
- -->
-
-
-
-<!-- Title: %3 Pages: 1 -->
-
-
-<svg height="98pt" viewbox="0.00 0.00 357.00 98.00" width="357pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 94)">
-<title>%3</title>
-<polygon fill="white" points="-4,4 -4,-94 353,-94 353,4 -4,4" stroke="transparent"></polygon>
-
-<!-- 4365f434cb9d947c -->
-
-
-<g class="node" id="node1">
-<title>4365f434cb9d947c</title>
-<polygon fill="#99cc00" points="96,-90 0,-90 0,-54 96,-54 96,-90" stroke="black"></polygon>
-<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="48" y="-68.9">-i input1.mp4</text>
-</g>
-
-<!-- 2dec9b05adba945f -->
-
-
-<g class="node" id="node3">
-<title>2dec9b05adba945f</title>
-<polygon fill="#ffcc00" points="349,-63 176,-63 176,-27 349,-27 349,-63" stroke="black"></polygon>
-<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="262.5" y="-41.9">[0][1] custom_video_filter </text>
-</g>
-
-<!-- 4365f434cb9d947c&#45;&gt;2dec9b05adba945f -->
-
-
-<g class="edge" id="edge1">
-<title>4365f434cb9d947c-&gt;2dec9b05adba945f</title>
-<path d="M96.16,-66.01C116.79,-63.39 141.79,-60.21 166.02,-57.13" fill="none" stroke="black"></path>
-<polygon fill="black" points="166.51,-60.6 175.99,-55.87 165.63,-53.65 166.51,-60.6" stroke="black"></polygon>
-<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="136" y="-66.8">0 -&gt; 0</text>
-</g>
-
-<!-- 1a9957d0ad34d0c6 -->
-
-
-<g class="node" id="node2">
-<title>1a9957d0ad34d0c6</title>
-<polygon fill="#99cc00" points="96,-36 0,-36 0,0 96,0 96,-36" stroke="black"></polygon>
-<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="48" y="-14.9">-i input2.mp4</text>
-</g>
-
-<!-- 1a9957d0ad34d0c6&#45;&gt;2dec9b05adba945f -->
-
-
-<g class="edge" id="edge2">
-<title>1a9957d0ad34d0c6-&gt;2dec9b05adba945f</title>
-<path d="M96.16,-23.99C116.79,-26.61 141.79,-29.79 166.02,-32.87" fill="none" stroke="black"></path>
-<polygon fill="black" points="165.63,-36.35 175.99,-34.13 166.51,-29.4 165.63,-36.35" stroke="black"></polygon>
-<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="136" y="-34.8">1 -&gt; 1</text>
-</g>
-</g>
-</svg>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="defining-multi-output-custom-filters">Defining Multi-output Custom Filters<a class="headerlink" href="#defining-multi-output-custom-filters" title="Permanent link">&para;</a></h3>
-<p>In cases where a filter generates multiple outputs, use <code>ffmpeg.filter_multi_output</code> function and specify the expected types of these outputs using the <code>output_typings</code> parameter. This feature is particularly useful for filters that split the input stream into several output streams.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="language-python highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ffmpeg</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.schema</span><span class="w"> </span><span class="kn">import</span> <span class="n">StreamType</span>
-
-<span class="c1"># Create a custom filter that yields multiple outputs</span>
-<span class="n">ffmpeg</span><span class="o">.</span><span class="n">filter_multi_output</span><span class="p">(</span>
-    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">&quot;input1.mp4&quot;</span><span class="p">),</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;custom_split&quot;</span><span class="p">,</span>
-    <span class="n">input_typings</span><span class="o">=</span><span class="p">(</span><span class="n">StreamType</span><span class="o">.</span><span class="n">video</span><span class="p">,),</span>
-    <span class="n">output_typings</span><span class="o">=</span><span class="p">(</span><span class="n">StreamType</span><span class="o">.</span><span class="n">video</span><span class="p">,</span> <span class="n">StreamType</span><span class="o">.</span><span class="n">video</span><span class="p">),</span>
-<span class="p">)</span>
+<h3 id="verify-which-binary-is-active">Verify which binary is active<a class="headerlink" href="#verify-which-binary-is-active" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code>ffmpeg<span class="w"> </span>-version<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+<span class="c1"># ffmpeg version 7.1 ...</span>
 </code></pre></div>
+<h2 id="cli-reference">CLI Reference<a class="headerlink" href="#cli-reference" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Generate bindings (auto-detects version from ffmpeg binary)</span>
+python<span class="w"> </span>-m<span class="w"> </span>scripts.code_gen.cli<span class="w"> </span>generate<span class="w"> </span>--outpath<span class="w"> </span>&lt;path&gt;<span class="w"> </span><span class="o">[</span>--rebuild<span class="o">]</span><span class="w"> </span><span class="o">[</span>--ffmpeg-binary<span class="w"> </span>&lt;path&gt;<span class="o">]</span>
 
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="output_svg output_subarea output_execute_result">
+<span class="c1"># Compare metadata between two FFmpeg versions</span>
+python<span class="w"> </span>-m<span class="w"> </span>scripts.code_gen.cli<span class="w"> </span>diff<span class="w"> </span><span class="m">6</span>.1<span class="w"> </span><span class="m">7</span>.1
 
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
-
-
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-
-
-
-
-<!-- Generated by graphviz version 2.43.0 (0)
- -->
-
-
-
-<!-- Title: %3 Pages: 1 -->
-
-
-<svg height="44pt" viewbox="0.00 0.00 299.00 44.00" width="299pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 40)">
-<title>%3</title>
-<polygon fill="white" points="-4,4 -4,-40 295,-40 295,4 -4,4" stroke="transparent"></polygon>
-
-<!-- 154ff34600e9d197 -->
-
-
-<g class="node" id="node1">
-<title>154ff34600e9d197</title>
-<polygon fill="#99cc00" points="96,-36 0,-36 0,0 96,0 96,-36" stroke="black"></polygon>
-<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="48" y="-14.9">-i input1.mp4</text>
-</g>
-
-<!-- 55777e461d6738ad -->
-
-
-<g class="node" id="node2">
-<title>55777e461d6738ad</title>
-<polygon fill="#ffcc00" points="291,-36 176,-36 176,0 291,0 291,-36" stroke="black"></polygon>
-<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="233.5" y="-14.9">[0] custom_split </text>
-</g>
-
-<!-- 154ff34600e9d197&#45;&gt;55777e461d6738ad -->
-
-
-<g class="edge" id="edge1">
-<title>154ff34600e9d197-&gt;55777e461d6738ad</title>
-<path d="M96.26,-18C117.44,-18 142.8,-18 165.86,-18" fill="none" stroke="black"></path>
-<polygon fill="black" points="165.93,-21.5 175.93,-18 165.93,-14.5 165.93,-21.5" stroke="black"></polygon>
-<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="136" y="-21.8">0 -&gt; 0</text>
-</g>
-</g>
-</svg>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>By following these guidelines, you can extend the functionality of Typed-FFmpeg to accommodate any specific filtering needs, ensuring maximum flexibility and efficiency in your video processing tasks.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="define-source-filter">Define Source Filter<a class="headerlink" href="#define-source-filter" title="Permanent link">&para;</a></h3>
-<p>Source filter can also be defined in the same way</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="language-python highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ffmpeg</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.schema</span><span class="w"> </span><span class="kn">import</span> <span class="n">StreamType</span>
-
-<span class="n">ffmpeg</span><span class="o">.</span><span class="n">vfilter</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;color&quot;</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">duration</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">input_typings</span><span class="o">=</span><span class="p">(),</span>
-    <span class="n">output_typings</span><span class="o">=</span><span class="p">(</span><span class="n">StreamType</span><span class="o">.</span><span class="n">video</span><span class="p">,),</span>
-<span class="p">)</span>
+<span class="c1"># Re-export latest version symbols at package root</span>
+python<span class="w"> </span>-m<span class="w"> </span>scripts.code_gen.cli<span class="w"> </span>reexport<span class="w"> </span>--outpath<span class="w"> </span>&lt;path&gt;<span class="w"> </span><span class="o">[</span>version<span class="o">]</span>
 </code></pre></div>
-
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="output_svg output_subarea output_execute_result">
-
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
-
-
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-
-
-
-
-<!-- Generated by graphviz version 2.43.0 (0)
- -->
-
-
-
-<!-- Title: %3 Pages: 1 -->
-
-
-<svg height="44pt" viewbox="0.00 0.00 515.00 44.00" width="515pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 40)">
-<title>%3</title>
-<polygon fill="white" points="-4,4 -4,-40 511,-40 511,4 -4,4" stroke="transparent"></polygon>
-
-<!-- 3064ec056e14e614 -->
-
-
-<g class="node" id="node1">
-<title>3064ec056e14e614</title>
-<polygon fill="#ffcc00" points="507,-36 0,-36 0,0 507,0 507,-36" stroke="black"></polygon>
-<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="253.5" y="-14.9"> color= color=black:duration=1:output_typings=(&lt;StreamType.video\: \'video\'&gt;,) </text>
-</g>
-</g>
-</svg>
-</div>
-</div>
-</div>
-</div>
-</div>
+<h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--outpath</code></td>
+<td>Output directory for generated Python modules</td>
+</tr>
+<tr>
+<td><code>--rebuild</code></td>
+<td>Ignore cache, regenerate everything from scratch</td>
+</tr>
+<tr>
+<td><code>--ffmpeg-binary</code></td>
+<td>Path to the ffmpeg executable (default: <code>ffmpeg</code> on PATH)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="caching">Caching<a class="headerlink" href="#caching" title="Permanent link">&para;</a></h2>
+<p>Generated metadata is cached per version in <code>packages/core/src/ffmpeg_core/common/cache/list/</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>filters_7_1.json      # Filter definitions for FFmpeg 7.1
+codecs_7_1.json       # Codec definitions
+formats_7_1.json      # Format definitions
+options_7_1.json      # Global CLI options
+av_option_sets_7_1.json  # AV option metadata
+</code></pre></div>
+<p>Use <code>--rebuild</code> to bypass the cache and regenerate from scratch.</p>
+<h2 id="version-matrix">Version Matrix<a class="headerlink" href="#version-matrix" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>FFmpeg Version</th>
+<th>Docker Image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>packages/v5</code></td>
+<td>5.1</td>
+<td><code>ghcr.io/livingbio/typed-ffmpeg/ffmpeg:5.1</code></td>
+</tr>
+<tr>
+<td><code>packages/v6</code></td>
+<td>6.1</td>
+<td><code>ghcr.io/livingbio/typed-ffmpeg/ffmpeg:6.1</code></td>
+</tr>
+<tr>
+<td><code>packages/v7</code></td>
+<td>7.1</td>
+<td><code>ghcr.io/livingbio/typed-ffmpeg/ffmpeg:7.1</code></td>
+</tr>
+<tr>
+<td><code>packages/v8</code></td>
+<td>8.0</td>
+<td><code>ghcr.io/livingbio/typed-ffmpeg/ffmpeg:8.0</code></td>
+</tr>
+</tbody>
+</table>
 
 
 
