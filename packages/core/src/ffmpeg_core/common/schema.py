@@ -635,6 +635,82 @@ class FFMpegOptionType(str, Enum):
 
 
 @dataclass(frozen=True, kw_only=True)
+class FFMpegOptionChoice(Serializable):
+    """A choice option for FFmpeg AV parameters."""
+
+    name: str
+    """The name of the choice"""
+
+    help: str
+    """Description of this choice"""
+
+    flags: str
+    """Flags associated with this choice"""
+
+    value: str
+    """The value for this choice"""
+
+
+@dataclass(frozen=True, kw_only=True)
+class FFMpegAVOption(Serializable):
+    """An FFmpeg AV option (codec/format-level) with metadata.
+
+    These options come from AVCodecContext, encoder/decoder-specific,
+    and muxer/demuxer option sets. The ``flags`` field is a string like
+    ``"E..V......."`` where position 0 indicates Encoding (E) or
+    Decoding (D) capability, and position 3 indicates the media type
+    (V=Video, A=Audio, S=Subtitle).
+    """
+
+    section: str
+    """The section this option belongs to (e.g. 'AVCodecContext AVOptions:')"""
+
+    name: str
+    """The name of the option"""
+
+    type: str
+    """The data type of the option"""
+
+    flags: str
+    """Flags string indicating encoding/decoding and media type"""
+
+    help: str
+    """Description of the option"""
+
+    min: str | None = None
+    """Minimum allowed value"""
+
+    max: str | None = None
+    """Maximum allowed value"""
+
+    default: str | None = None
+    """Default value"""
+
+    choices: tuple[FFMpegOptionChoice, ...] = ()
+    """Enumerated values this option accepts"""
+
+    @property
+    def is_encoding_option(self) -> bool:
+        """Check if this option applies to encoding (output)."""
+        return len(self.flags) > 0 and self.flags[0] == "E"
+
+    @property
+    def is_decoding_option(self) -> bool:
+        """Check if this option applies to decoding (input)."""
+        return len(self.flags) > 1 and self.flags[1] == "D"
+
+    @property
+    def is_output_option(self) -> bool:
+        """Check if this option applies to output files (encoding)."""
+        return self.is_encoding_option
+
+    @property
+    def is_input_option(self) -> bool:
+        """Check if this option applies to input files (decoding)."""
+        return self.is_decoding_option
+
+
+@dataclass(frozen=True, kw_only=True)
 class FFMpegOption(Serializable):
     """
     Represents a command-line option for FFmpeg.

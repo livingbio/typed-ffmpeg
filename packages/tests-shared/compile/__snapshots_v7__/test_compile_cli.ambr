@@ -3,7 +3,7 @@
   "ffmpeg -i input.mp4 -filter_complex '[0:a]aresample=sample_rate=44100[s0]' -map '[s0]' output.mp3"
 # ---
 # name: test_parse_ffmpeg_commands[complex_command][build-ffmpeg-commands]
-  'ffmpeg -nostdin -i input_video.mkv -map 0:a:0 -map 0:v:0 -sn -c:a aac -b:a 192k -ac 2 -c:v libx264 1.8 -map 0 -pix_fmt yuv420p -map_metadata -map_chapters output_video.mp4'
+  'ffmpeg -nostdin -i input_video.mkv -map 0:a:0 -map 0:v:0 -sn -c:a aac -b:a 192k -ac 2 -c:v libx264 -crf 18 -preset slow -tune film -aq-strength 1.8 -map 0 -mbtree 0 -pix_fmt yuv420p -map_metadata -map_chapters output_video.mp4'
 # ---
 # name: test_parse_ffmpeg_commands[escaping][build-ffmpeg-commands]
   'ffmpeg -i input.mov -filter_complex \'[0:v]drawtext=fontfile=resources/fonts/arial.ttf:text=\\\\\\\'"\'"\'\\\\=\\\\\\\\\\;\\\\\\\\\\\\:\\\\\\\'"\'"\':fontcolor=white:fontsize=30:x=(W-tw)/2:y=text_h:borderw=2:timecode=00\\\\\\\\\\\\:00\\\\\\\\\\\\:00\\\\\\\\\\\\:00:r=25/1[s0]\' -map \'[s0]\' output.mp4'

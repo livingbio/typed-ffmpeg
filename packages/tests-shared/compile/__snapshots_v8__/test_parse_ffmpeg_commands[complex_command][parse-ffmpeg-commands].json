@@ -26,7 +26,7 @@
               "optional": false
             }
           ],
-          "kwargs": "FrozenDict({'sn': True, 'c:a': 'aac', 'b:a': '192k', 'ac': '2', 'c:v': 'libx264'})"
+          "kwargs": "FrozenDict({'sn': True, 'c:a': 'aac', 'b:a': '192k', 'ac': '2', 'c:v': 'libx264', 'crf': '18', 'preset': 'slow', 'tune': 'film', 'aq-strength': True})"
         },
         "optional": false
       },
@@ -45,7 +45,7 @@
               "optional": false
             }
           ],
-          "kwargs": "FrozenDict({'pix_fmt': 'yuv420p', 'map_metadata': True, 'map_chapters': True})"
+          "kwargs": "FrozenDict({'mbtree': '0', 'pix_fmt': 'yuv420p', 'map_metadata': True, 'map_chapters': True})"
         },
         "optional": false
       }
