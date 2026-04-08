@@ -18,7 +18,7 @@ stubs_dir = root / "docs" / "_stubs"
 def _add_api_pages(src: Path, module_prefix: str, nav_prefix: tuple[str, ...], doc_prefix: Path) -> None:
     """Generate full mkdocstrings API reference pages for a source tree."""
     for path in sorted(src.rglob("*.py")):
-        if any(part in path.parts for part in ("tests", "__pycache__")):
+        if any(part in path.parts for part in ("tests", "__pycache__", ".claude", "cache")):
             continue
 
         module_path = path.relative_to(src).with_suffix("")
