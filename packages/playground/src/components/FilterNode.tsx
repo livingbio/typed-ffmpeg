@@ -183,11 +183,13 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
               variant="outlined"
               error={!!errors[param.name]}
               helperText={errors[param.name] || param.description}
-              InputProps={{
-                sx: {
-                  '& input::placeholder': {
-                    color: 'text.disabled',
-                    opacity: 1,
+              slotProps={{
+                input: {
+                  sx: {
+                    '& input::placeholder': {
+                      color: 'text.disabled',
+                      opacity: 1,
+                    },
                   },
                 },
               }}

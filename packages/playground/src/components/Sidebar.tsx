@@ -131,8 +131,7 @@ export default function Sidebar({
       >
         <Typography
           variant="subtitle1"
-          fontWeight={600}
-          sx={{ fontSize: '0.875rem', letterSpacing: '0.01em' }}
+          sx={{ fontSize: '0.875rem', letterSpacing: '0.01em', fontWeight: 600 }}
         >
           FFmpeg Flow Editor
         </Typography>
@@ -264,8 +263,7 @@ export default function Sidebar({
               <InputIcon fontSize="small" sx={{ color: '#4caf50' }} />
               <Typography
                 variant="body2"
-                sx={{ fontSize: '0.75rem' }}
-                fontWeight={500}
+                sx={{ fontSize: '0.75rem', fontWeight: 500 }}
               >
                 Input
               </Typography>
@@ -293,8 +291,7 @@ export default function Sidebar({
               <OutputIcon fontSize="small" sx={{ color: '#2196f3' }} />
               <Typography
                 variant="body2"
-                sx={{ fontSize: '0.75rem' }}
-                fontWeight={500}
+                sx={{ fontSize: '0.75rem', fontWeight: 500 }}
               >
                 Output
               </Typography>
@@ -324,12 +321,14 @@ export default function Sidebar({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             sx={{ mt: 0.5, mb: 1 }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon fontSize="small" />
-                </InputAdornment>
-              ),
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon fontSize="small" />
+                  </InputAdornment>
+                ),
+              },
             }}
           />
           <Box

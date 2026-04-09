@@ -127,11 +127,13 @@ function InputNode({ data, id }: NodeProps<NodeData>) {
           variant="outlined"
           margin="dense"
           helperText="Input file path"
-          InputProps={{
-            sx: {
-              '& input::placeholder': {
-                color: 'text.disabled',
-                opacity: 1,
+          slotProps={{
+            input: {
+              sx: {
+                '& input::placeholder': {
+                  color: 'text.disabled',
+                  opacity: 1,
+                },
               },
             },
           }}
@@ -149,11 +151,13 @@ function InputNode({ data, id }: NodeProps<NodeData>) {
               variant="outlined"
               margin="dense"
               helperText={option.help}
-              InputProps={{
-                sx: {
-                  '& input::placeholder': {
-                    color: 'text.disabled',
-                    opacity: 0.7,
+              slotProps={{
+                input: {
+                  sx: {
+                    '& input::placeholder': {
+                      color: 'text.disabled',
+                      opacity: 0.7,
+                    },
                   },
                 },
               }}

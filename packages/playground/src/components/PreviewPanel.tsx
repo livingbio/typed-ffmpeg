@@ -136,9 +136,8 @@ export default function PreviewPanel({
             <Box>
               <Typography
                 variant="body2"
-                fontWeight="bold"
                 gutterBottom
-                sx={{ fontSize: '0.75rem', color: '#f48771' }}
+                sx={{ fontSize: '0.75rem', color: '#f48771', fontWeight: 'bold' }}
               >
                 Error:
               </Typography>

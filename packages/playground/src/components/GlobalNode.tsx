@@ -115,11 +115,13 @@ function GlobalNode({ data, id }: NodeProps<NodeData>) {
               variant="outlined"
               margin="dense"
               helperText={option.help}
-              InputProps={{
-                sx: {
-                  '& input::placeholder': {
-                    color: 'text.disabled',
-                    opacity: 0.7,
+              slotProps={{
+                input: {
+                  sx: {
+                    '& input::placeholder': {
+                      color: 'text.disabled',
+                      opacity: 0.7,
+                    },
                   },
                 },
               }}

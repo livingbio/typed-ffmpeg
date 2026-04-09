@@ -79,12 +79,14 @@ export default function Toolbar({ onAddFilter }: ToolbarProps) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               inputRef={searchInputRef}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon />
-                  </InputAdornment>
-                ),
+              slotProps={{
+                input: {
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                },
               }}
               sx={{ mb: 1 }}
             />
