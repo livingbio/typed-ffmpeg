@@ -8,12 +8,37 @@ from pathlib import Path
 PACKAGES = ["core", "data-v5", "data-v6", "data-v7", "data-v8", "v5", "v6", "v7", "v8", "latest", "compatible"]
 REPO_ROOT = Path(__file__).parent.parent
 
+# Internal packages whose dependency constraints should be updated
+INTERNAL_DEPS = ["ffmpeg-core", "typed-ffmpeg-v8"]
+
+
+def _version_constraint(version: str) -> str:
+    """Compute a compatible version constraint from a version string.
+
+    For version "4.0.0" or "4.0.1" returns ">=4.0.0,<5.0".
+    For pre-release "4.0.0a1" returns ">=4.0.0a1,<5.0".
+    """
+    major = version.split(".")[0]
+    next_major = int(major) + 1
+    return f">={version},<{next_major}.0"
+
 
 def bump(version: str) -> None:
+    constraint = _version_constraint(version)
+
     for pkg in PACKAGES:
         path = REPO_ROOT / "packages" / pkg / "pyproject.toml"
         text = path.read_text()
         updated = re.sub(r'^version = ".*"', f'version = "{version}"', text, count=1, flags=re.MULTILINE)
+
+        # Also update internal dependency constraints
+        for dep in INTERNAL_DEPS:
+            updated = re.sub(
+                rf'"{re.escape(dep)}>=.*?"',
+                f'"{dep}{constraint}"',
+                updated,
+            )
+
         if text == updated:
             print(f"  WARN: no version line found in packages/{pkg}/pyproject.toml")
         else:
