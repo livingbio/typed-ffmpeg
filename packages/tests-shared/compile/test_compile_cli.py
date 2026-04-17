@@ -1,10 +1,14 @@
 from dataclasses import asdict
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.amber import AmberSnapshotExtension
 from syrupy.extensions.json import JSONSnapshotExtension
+
+if TYPE_CHECKING:
+    from syrupy.location import PyTestLocation
 
 import ffmpeg
 from ffmpeg.base import filter_multi_output, input
