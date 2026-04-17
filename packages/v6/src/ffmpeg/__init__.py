@@ -57,10 +57,3 @@ __all__ = [
     "options",
     "expressions",
 ]
-
-# Dynamically add OutputArgs methods to FilterableStream
-# This must be done after all imports to avoid circular dependencies
-from .dag.base_streams import _add_output_args_methods
-
-_add_output_args_methods()
-del _add_output_args_methods
