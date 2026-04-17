@@ -6,12 +6,11 @@ from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.amber import AmberSnapshotExtension
 from syrupy.extensions.json import JSONSnapshotExtension
 
+import ffmpeg
 from ffmpeg.base import filter_multi_output, input
 from ffmpeg.common.schema import StreamType
 from ffmpeg.compile.compile_cli import compile, compile_as_list, get_args, parse
 from ffmpeg.dag.schema import Stream
-
-import ffmpeg
 
 from .cases import shared_cases
 
