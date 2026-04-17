@@ -11,7 +11,6 @@ import textwrap
 
 import pytest
 
-
 # Minimal reproduction from the issue report
 _SAMPLE = textwrap.dedent("""
     import ffmpeg
