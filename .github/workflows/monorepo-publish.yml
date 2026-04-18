@@ -37,6 +37,31 @@ jobs:
       - name: Install dependencies
         run: uv sync
 
+      - name: Validate package versions match tag
+        if: github.event_name == 'release'
+        run: |
+          TAG="${{ github.ref_name }}"
+          EXPECTED="${TAG#v}"
+          echo "Release tag: $TAG — expected package version: $EXPECTED"
+
+          FAIL=0
+          for pkg in core data-v5 data-v6 data-v7 data-v8 v5 v6 v7 v8 latest compatible; do
+            PKG_VER=$(grep '^version = ' packages/$pkg/pyproject.toml | cut -d'"' -f2)
+            if [ "$PKG_VER" != "$EXPECTED" ]; then
+              echo "❌ packages/$pkg: $PKG_VER != $EXPECTED"
+              FAIL=1
+            else
+              echo "✅ packages/$pkg: $PKG_VER"
+            fi
+          done
+
+          if [ "$FAIL" = "1" ]; then
+            echo ""
+            echo "ERROR: Package versions do not match release tag '$TAG'."
+            echo "Run: python scripts/bump-version.py $EXPECTED, commit, re-tag, and re-publish."
+            exit 1
+          fi
+
       - name: Determine packages to publish
         id: packages
         run: |
