@@ -24,4 +24,4 @@ console.log(cmd.compileLine());
 
 All filter methods include JSDoc annotations indicating availability across FFmpeg versions.
 
-See the [TypeScript documentation](https://livingbio.github.io/typed-ffmpeg/typescript/) for more examples.
+See the [TypeScript documentation](https://lucemia.github.io/typed-ffmpeg/typescript/) for more examples.

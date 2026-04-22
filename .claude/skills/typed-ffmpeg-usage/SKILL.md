@@ -3,7 +3,7 @@ name: typed-ffmpeg-usage
 description: Guide for using typed-ffmpeg, a modern Python FFmpeg wrapper with extensive typing support and comprehensive filter support. Use this when working with FFmpeg operations, video/audio processing, or filter graphs in Python.
 license: MIT
 metadata:
-  author: livingbio
+  author: lucemia
   version: "1.0"
   compatibility: Python 3.10+
 ---
@@ -764,9 +764,9 @@ subprocess.run(cmd)
 
 ## Package Information
 
-- **Repository**: https://github.com/livingbio/typed-ffmpeg
-- **Documentation**: https://livingbio.github.io/typed-ffmpeg/
-- **Interactive Playground**: https://livingbio.github.io/typed-ffmpeg-playground/
+- **Repository**: https://github.com/lucemia/typed-ffmpeg
+- **Documentation**: https://lucemia.github.io/typed-ffmpeg/
+- **Interactive Playground**: https://lucemia.github.io/typed-ffmpeg-playground/
 - **PyPI**: https://pypi.org/project/typed-ffmpeg/
 - **Python Version**: 3.10+ required
 - **Dependencies**: None (pure Python standard library)
@@ -775,7 +775,7 @@ subprocess.run(cmd)
 ## Additional Resources
 
 - [FFmpeg Documentation](https://ffmpeg.org/documentation.html)
-- [typed-ffmpeg Examples](https://livingbio.github.io/typed-ffmpeg/usage/typed/)
+- [typed-ffmpeg Examples](https://lucemia.github.io/typed-ffmpeg/usage/typed/)
 - [Filter Reference](https://ffmpeg.org/ffmpeg-filters.html)
 
 ## Notes for AI Agents

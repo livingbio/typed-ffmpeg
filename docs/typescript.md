@@ -219,7 +219,7 @@ Each version package re-exports core types and adds:
 
 ## Demo Project
 
-A complete demo project is available at [`examples/typescript-demo/`](https://github.com/livingbio/typed-ffmpeg/tree/main/examples/typescript-demo) with 8 working examples covering all major use cases.
+A complete demo project is available at [`examples/typescript-demo/`](https://github.com/lucemia/typed-ffmpeg/tree/main/examples/typescript-demo) with 8 working examples covering all major use cases.
 
 ```bash
 cd examples/typescript-demo

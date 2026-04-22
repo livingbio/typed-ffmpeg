@@ -29,4 +29,4 @@ Three builds are shipped, selected automatically via the `exports` field:
 - `run()`, `runAsync()` — Execute FFmpeg commands
 - `StreamType` — Enum for stream types (Video, Audio)
 
-See the [TypeScript documentation](https://livingbio.github.io/typed-ffmpeg/typescript/) for usage examples.
+See the [TypeScript documentation](https://lucemia.github.io/typed-ffmpeg/typescript/) for usage examples.

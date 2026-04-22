@@ -176,13 +176,13 @@ export default function Sidebar({
       >
         <GitHubIcon sx={{ fontSize: 13, mr: 0.5, color: 'text.secondary' }} />
         <MuiLink
-          href="https://github.com/livingbio/typed-ffmpeg"
+          href="https://github.com/lucemia/typed-ffmpeg"
           target="_blank"
           rel="noopener noreferrer"
           underline="hover"
           sx={{ fontSize: '0.7rem', color: 'text.secondary' }}
         >
-          github.com/livingbio/typed-ffmpeg
+          github.com/lucemia/typed-ffmpeg
         </MuiLink>
       </Box>
 

@@ -1,7 +1,7 @@
 site_name: typed-ffmpeg
 site_description: Type-safe FFmpeg bindings for Python & TypeScript
 strict: false
-site_url: https://livingbio.github.io/typed-ffmpeg/
+site_url: https://lucemia.github.io/typed-ffmpeg/
 
 theme:
   name: 'material'
@@ -27,8 +27,8 @@ theme:
     - announce.dismiss
     - navigation.tabs
 
-repo_name: livingbio/typed-ffmpeg
-repo_url: https://github.com/livingbio/typed-ffmpeg
+repo_name: lucemia/typed-ffmpeg
+repo_url: https://github.com/lucemia/typed-ffmpeg
 edit_uri: edit/main/docs/
 
 watch:

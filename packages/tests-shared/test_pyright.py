@@ -1,5 +1,5 @@
 """
-Regression test for https://github.com/livingbio/typed-ffmpeg/issues/923
+Regression test for https://github.com/lucemia/typed-ffmpeg/issues/923
 
 Verifies that Pyright can resolve .output() on AVStream / AudioStream / VideoStream.
 In v4.0.x the method was injected dynamically via setattr(), which Pyright cannot see.

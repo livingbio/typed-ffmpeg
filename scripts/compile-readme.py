@@ -26,7 +26,7 @@ def post_process(markdown_file: str, original_folder: str, new_folder: str) -> N
 
     """
     rel_path = (
-        "https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/" + new_folder
+        "https://raw.githubusercontent.com/lucemia/typed-ffmpeg/main/" + new_folder
     )
 
     # Move the folder
