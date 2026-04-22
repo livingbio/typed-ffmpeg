@@ -42,7 +42,7 @@ This package is part of the typed-ffmpeg monorepo.
 
 ```bash
 # Clone monorepo
-git clone https://github.com/livingbio/typed-ffmpeg.git
+git clone https://github.com/lucemia/typed-ffmpeg.git
 cd typed-ffmpeg
 
 # Install in development mode

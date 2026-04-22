@@ -187,7 +187,7 @@ def create_github_release(version: str) -> None:
     result = run(cmd, check=False)
     if result.returncode != 0:
         print("  Failed to create release. Create it manually at:")
-        print(f"    https://github.com/livingbio/typed-ffmpeg/releases/new?tag={tag}")
+        print(f"    https://github.com/lucemia/typed-ffmpeg/releases/new?tag={tag}")
     else:
         print(f"  Release created. This triggers the publish workflow.")
 

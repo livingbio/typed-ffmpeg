@@ -1,9 +1,9 @@
 ## typed-ffmpeg
 
-[![CI](https://github.com/livingbio/typed-ffmpeg/actions/workflows/ci-monorepo-test.yml/badge.svg)](https://github.com/livingbio/typed-ffmpeg/actions/workflows/ci-monorepo-test.yml)
-[![Documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://livingbio.github.io/typed-ffmpeg/)
+[![CI](https://github.com/lucemia/typed-ffmpeg/actions/workflows/ci-monorepo-test.yml/badge.svg)](https://github.com/lucemia/typed-ffmpeg/actions/workflows/ci-monorepo-test.yml)
+[![Documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://lucemia.github.io/typed-ffmpeg/)
 [![PyPI Version](https://img.shields.io/pypi/v/typed-ffmpeg.svg)](https://pypi.org/project/typed-ffmpeg/)
-[![codecov](https://codecov.io/gh/livingbio/typed-ffmpeg/graph/badge.svg?token=B95PR629LP)](https://codecov.io/gh/livingbio/typed-ffmpeg)
+[![codecov](https://codecov.io/gh/lucemia/typed-ffmpeg/graph/badge.svg?token=B95PR629LP)](https://codecov.io/gh/lucemia/typed-ffmpeg)
 
 **typed-ffmpeg** offers a modern, type-safe interface to FFmpeg for both **Python** and **TypeScript**, providing extensive support for complex filters with detailed typing and documentation. Inspired by `ffmpeg-python`, this project enhances functionality by addressing common limitations, such as lack of IDE integration and comprehensive typing, while also introducing new features like JSON serialization of filter graphs and automatic FFmpeg validation.
 
@@ -14,7 +14,7 @@
 - [Features](#features)
 - [Installation](#installation)
 - [Quick Usage](#quick-usage)
-- [Documentation](https://livingbio.github.io/typed-ffmpeg/)
+- [Documentation](https://lucemia.github.io/typed-ffmpeg/)
 - [Interactive Playground](#interactive-playground)
 - [Acknowledgements](#acknowledgements)
 
@@ -22,7 +22,7 @@
 
 ## Features
 
-![typed-ffmpeg](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/autocomplete.png)
+![typed-ffmpeg](https://raw.githubusercontent.com/lucemia/typed-ffmpeg/main/docs/media/autocomplete.png)
 
 
 - **Zero Dependencies:** Built purely with the Python standard library, ensuring maximum compatibility and security.
@@ -68,7 +68,7 @@ pip install typed-ffmpeg-v6      # install the matching package
 
 The `[parse]` extra installs version-specific cache data (`ffmpeg-data-v5` through `ffmpeg-data-v8`) needed by `ffmpeg.compile.compile_cli.parse()` to reconstruct filter graphs from FFmpeg command lines. Most users do not need this.
 
-See the [v4 Package Architecture](https://github.com/livingbio/typed-ffmpeg/blob/main/docs/v4-packages.md) docs for details and the [Migration Guide](https://github.com/livingbio/typed-ffmpeg/blob/main/docs/migration/v3-to-v4.md) if you are upgrading from typed-ffmpeg 3.x.
+See the [v4 Package Architecture](https://github.com/lucemia/typed-ffmpeg/blob/main/docs/v4-packages.md) docs for details and the [Migration Guide](https://github.com/lucemia/typed-ffmpeg/blob/main/docs/migration/v3-to-v4.md) if you are upgrading from typed-ffmpeg 3.x.
 
 ---
 
@@ -159,7 +159,7 @@ f
 
 
 
-![svg](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/README_files/README_1_0.svg)
+![svg](https://raw.githubusercontent.com/lucemia/typed-ffmpeg/main/docs/media/README_files/README_1_0.svg)
 
 
 
@@ -194,21 +194,21 @@ f
 
 
 
-![svg](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/README_files/README_3_0.svg)
+![svg](https://raw.githubusercontent.com/lucemia/typed-ffmpeg/main/docs/media/README_files/README_3_0.svg)
 
 
 
 
-See the [Usage](https://livingbio.github.io/typed-ffmpeg/usage/basic-api-usage/) section in our documentation for more examples and detailed guides.
+See the [Usage](https://lucemia.github.io/typed-ffmpeg/usage/basic-api-usage/) section in our documentation for more examples and detailed guides.
 
 ---
 
 ## Interactive Playground
 
-Try out `typed-ffmpeg` directly in your browser with our [Interactive Playground](https://livingbio.github.io/typed-ffmpeg-playground/)! The playground provides a live environment where you can:
+Try out `typed-ffmpeg` directly in your browser with our [Interactive Playground](https://lucemia.github.io/typed-ffmpeg-playground/)! The playground provides a live environment where you can:
 
-![typed-ffmpeg demo](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/demo.gif)
-![Interactive Playground](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/playground-screenshot.png)
+![typed-ffmpeg demo](https://raw.githubusercontent.com/lucemia/typed-ffmpeg/main/docs/media/demo.gif)
+![Interactive Playground](https://raw.githubusercontent.com/lucemia/typed-ffmpeg/main/docs/media/playground-screenshot.png)
 
 - Experiment with FFmpeg filters and commands
 - Visualize filter graphs in real-time
@@ -232,7 +232,7 @@ This project is dedicated to my son, Austin, on his seventh birthday (February 2
 
 ---
 
-Feel free to check the [Documentation](https://livingbio.github.io/typed-ffmpeg/) for detailed information and more advanced features.
+Feel free to check the [Documentation](https://lucemia.github.io/typed-ffmpeg/) for detailed information and more advanced features.
 
 ## Development Setup
 

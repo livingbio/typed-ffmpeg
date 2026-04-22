@@ -401,9 +401,9 @@ You can also trigger the publish workflow manually from the Actions tab:
 
 ## Getting Help
 
-- **Documentation**: https://livingbio.github.io/typed-ffmpeg/
-- **Issues**: https://github.com/livingbio/typed-ffmpeg/issues
-- **Discussions**: https://github.com/livingbio/typed-ffmpeg/discussions
+- **Documentation**: https://lucemia.github.io/typed-ffmpeg/
+- **Issues**: https://github.com/lucemia/typed-ffmpeg/issues
+- **Discussions**: https://github.com/lucemia/typed-ffmpeg/discussions
 
 ## Code of Conduct
 

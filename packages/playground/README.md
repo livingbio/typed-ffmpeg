@@ -4,7 +4,7 @@ A visual flow editor for creating and managing FFmpeg command pipelines. This to
 
 ## Live Demo
 
-Check out the live demo at: [https://livingbio.github.io/typed-ffmpeg-playground/](https://livingbio.github.io/typed-ffmpeg-playground/)
+Check out the live demo at: [https://lucemia.github.io/typed-ffmpeg-playground/](https://lucemia.github.io/typed-ffmpeg-playground/)
 
 ## Features
 
@@ -24,7 +24,7 @@ Check out the live demo at: [https://livingbio.github.io/typed-ffmpeg-playground
 
 ```bash
 # Clone the repository
-git clone https://github.com/livingbio/typed-ffmpeg-playground.git
+git clone https://github.com/lucemia/typed-ffmpeg-playground.git
 cd typed-ffmpeg-playground
 
 # Install dependencies

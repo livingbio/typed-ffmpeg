@@ -69,7 +69,7 @@ test.describe('Playground', () => {
 
   test('GitHub link is present in the sidebar', async ({ page }) => {
     await expect(
-      page.getByRole('link', { name: /github\.com\/livingbio\/typed-ffmpeg/ }),
+      page.getByRole('link', { name: /github\.com\/lucemia\/typed-ffmpeg/ }),
     ).toBeVisible();
   });
 });

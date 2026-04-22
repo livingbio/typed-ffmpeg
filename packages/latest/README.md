@@ -53,7 +53,7 @@ output.run()
 
 ## Documentation
 
-- [Full Documentation](https://livingbio.github.io/typed-ffmpeg/)
+- [Full Documentation](https://lucemia.github.io/typed-ffmpeg/)
 
 ## License
 

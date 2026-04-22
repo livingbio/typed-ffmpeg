@@ -57,8 +57,8 @@ output.run()
 
 ## Documentation
 
-- [Full Documentation](https://livingbio.github.io/typed-ffmpeg/)
-- [API Reference](https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/)
+- [Full Documentation](https://lucemia.github.io/typed-ffmpeg/)
+- [API Reference](https://lucemia.github.io/typed-ffmpeg/reference/ffmpeg/)
 
 ## License
 

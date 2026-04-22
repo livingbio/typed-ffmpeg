@@ -23,7 +23,7 @@ gh workflow run ci-codegen-versions.yml --ref v4 -f ffmpeg-version=all -f create
 ```
 
 This triggers the `CI CodeGen - Multi-Version FFmpeg` workflow which:
-1. Pulls version-specific Docker images (`ghcr.io/livingbio/typed-ffmpeg/ffmpeg:{version}`)
+1. Pulls version-specific Docker images (`ghcr.io/lucemia/typed-ffmpeg/ffmpeg:{version}`)
 2. Extracts the FFmpeg binary and libraries
 3. Runs `python -m scripts.code_gen.cli generate` for each version
 4. Creates a PR against `v4` with the regenerated bindings
@@ -120,7 +120,7 @@ Use `--rebuild` to bypass the cache and regenerate from scratch.
 
 | Package | FFmpeg Version | Docker Image |
 |---------|---------------|--------------|
-| `packages/v5` | 5.1 | `ghcr.io/livingbio/typed-ffmpeg/ffmpeg:5.1` |
-| `packages/v6` | 6.1 | `ghcr.io/livingbio/typed-ffmpeg/ffmpeg:6.1` |
-| `packages/v7` | 7.1 | `ghcr.io/livingbio/typed-ffmpeg/ffmpeg:7.1` |
-| `packages/v8` | 8.0 | `ghcr.io/livingbio/typed-ffmpeg/ffmpeg:8.0` |
+| `packages/v5` | 5.1 | `ghcr.io/lucemia/typed-ffmpeg/ffmpeg:5.1` |
+| `packages/v6` | 6.1 | `ghcr.io/lucemia/typed-ffmpeg/ffmpeg:6.1` |
+| `packages/v7` | 7.1 | `ghcr.io/lucemia/typed-ffmpeg/ffmpeg:7.1` |
+| `packages/v8` | 8.0 | `ghcr.io/lucemia/typed-ffmpeg/ffmpeg:8.0` |

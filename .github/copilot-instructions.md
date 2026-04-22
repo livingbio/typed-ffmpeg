@@ -230,5 +230,5 @@ python -m build
 ## Additional Resources
 
 - FFmpeg Documentation: https://ffmpeg.org/documentation.html
-- Project Documentation: https://livingbio.github.io/typed-ffmpeg/
-- Issue Tracker: https://github.com/livingbio/typed-ffmpeg/issues
+- Project Documentation: https://lucemia.github.io/typed-ffmpeg/
+- Issue Tracker: https://github.com/lucemia/typed-ffmpeg/issues
