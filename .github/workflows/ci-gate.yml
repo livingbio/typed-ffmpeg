@@ -1,0 +1,87 @@
+name: CI Gate
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      monorepo: ${{ steps.filter.outputs.monorepo }}
+      monorepo-lint: ${{ steps.filter.outputs.monorepo-lint }}
+      scripts-lint: ${{ steps.filter.outputs.scripts-lint }}
+      scripts-test: ${{ steps.filter.outputs.scripts-test }}
+      scripts-docs: ${{ steps.filter.outputs.scripts-docs }}
+      ts-test: ${{ steps.filter.outputs.ts-test }}
+      playground: ${{ steps.filter.outputs.playground }}
+      codegen: ${{ steps.filter.outputs.codegen }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            monorepo:
+              - 'packages/**'
+              - 'pyproject.toml'
+              - 'pyproject-workspace.toml'
+              - '.github/workflows/ci-monorepo-test.yml'
+            monorepo-lint:
+              - 'packages/**'
+              - 'pyproject.toml'
+              - 'pyproject-workspace.toml'
+            scripts-lint:
+              - 'src/scripts/**'
+              - '.pre-commit-config.yaml'
+              - '.github/workflows/ci-scripts-lint.yml'
+            scripts-test:
+              - 'src/scripts/**'
+            scripts-docs:
+              - 'src/scripts/**'
+              - 'docs/**'
+              - 'mkdocs.yml'
+            ts-test:
+              - 'packages/ts-*/**'
+              - 'src/scripts/code_gen/templates_ts/**'
+              - 'src/scripts/code_gen/gen.py'
+              - 'src/scripts/code_gen/cli.py'
+              - '.github/workflows/ci-ts-test.yml'
+            playground:
+              - 'packages/playground/**'
+              - '.github/workflows/ci-playground-test.yml'
+            codegen:
+              - '.github/workflows/ci-codegen-versions.yml'
+              - 'src/scripts/code_gen/**'
+              - 'src/scripts/parse_help/**'
+              - 'src/scripts/parse_c/**'
+              - 'src/scripts/parse_docs/**'
+              - 'src/scripts/manual/**'
+              - 'packages/core/src/ffmpeg_core/common/**'
+
+  status:
+    # This is the only job that should be a required status check.
+    # It always runs and reports the aggregate result of all conditional CI.
+    name: CI Status
+    runs-on: ubuntu-latest
+    needs: [detect-changes]
+    if: always()
+    steps:
+      - name: CI passed
+        run: |
+          echo "All relevant CI checks have been evaluated."
+          echo "Changed areas:"
+          echo "  monorepo: ${{ needs.detect-changes.outputs.monorepo }}"
+          echo "  monorepo-lint: ${{ needs.detect-changes.outputs.monorepo-lint }}"
+          echo "  scripts-lint: ${{ needs.detect-changes.outputs.scripts-lint }}"
+          echo "  scripts-test: ${{ needs.detect-changes.outputs.scripts-test }}"
+          echo "  scripts-docs: ${{ needs.detect-changes.outputs.scripts-docs }}"
+          echo "  ts-test: ${{ needs.detect-changes.outputs.ts-test }}"
+          echo "  playground: ${{ needs.detect-changes.outputs.playground }}"
+          echo "  codegen: ${{ needs.detect-changes.outputs.codegen }}"
+      - name: Check detect-changes succeeded
+        if: needs.detect-changes.result == 'failure'
+        run: exit 1
