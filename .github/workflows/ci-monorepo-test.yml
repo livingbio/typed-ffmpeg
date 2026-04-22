@@ -135,6 +135,8 @@ jobs:
 
   test-integration:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     needs: [test-core, test-versions]
 
     steps:

@@ -67,6 +67,7 @@ jobs:
     # It always runs and reports the aggregate result of all conditional CI.
     name: CI Status
     runs-on: ubuntu-latest
+    permissions: {}
     needs: [detect-changes]
     if: always()
     steps:

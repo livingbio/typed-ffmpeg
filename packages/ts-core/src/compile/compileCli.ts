@@ -477,7 +477,7 @@ function parseFilterComplex(
     const rest = chain.slice((leadingMatch?.[0] ?? "").length);
 
     // Extract trailing [label] groups
-    const trailingMatch = rest.match(/(\[[^\[\]]+\])*$/);
+    const trailingMatch = rest.match(/(?:\[[^\[\]]+\])+$/);
     const chainOutputLabels = [...(trailingMatch?.[0] ?? "").matchAll(/\[([^\[\]]+)\]/g)].map(m => m[1]);
     const filtersStr = rest.slice(0, rest.length - (trailingMatch?.[0] ?? "").length).trim();
 
