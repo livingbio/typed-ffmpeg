@@ -476,10 +476,19 @@ function parseFilterComplex(
     const chainInputLabels = [...(leadingMatch?.[0] ?? "").matchAll(/\[([^\[\]]+)\]/g)].map(m => m[1]);
     const rest = chain.slice((leadingMatch?.[0] ?? "").length);
 
-    // Extract trailing [label] groups
-    const trailingMatch = rest.match(/(?:\[[^\[\]]+\])+$/);
-    const chainOutputLabels = [...(trailingMatch?.[0] ?? "").matchAll(/\[([^\[\]]+)\]/g)].map(m => m[1]);
-    const filtersStr = rest.slice(0, rest.length - (trailingMatch?.[0] ?? "").length).trim();
+    // Extract trailing [label] groups — iterative scan to avoid ReDoS
+    let trailingStart = rest.length;
+    while (trailingStart >= 2 && rest[trailingStart - 1] === "]") {
+      const open = rest.lastIndexOf("[", trailingStart - 2);
+      if (open === -1) break;
+      // Ensure no nested brackets between open and trailingStart
+      const segment = rest.slice(open + 1, trailingStart - 1);
+      if (segment.includes("[") || segment.includes("]")) break;
+      trailingStart = open;
+    }
+    const trailingSuffix = rest.slice(trailingStart);
+    const chainOutputLabels = [...trailingSuffix.matchAll(/\[([^\[\]]+)\]/g)].map(m => m[1]);
+    const filtersStr = rest.slice(0, trailingStart).trim();
 
     // Split by unescaped comma (sequential chaining)
     const filterParts = splitUnescaped(filtersStr, ",");
