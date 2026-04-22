@@ -56,9 +56,9 @@ jobs:
           - ffmpeg-version: '6'
             ffmpeg-image: 'jrottenberg/ffmpeg:6.1-ubuntu'
           - ffmpeg-version: '7'
-            ffmpeg-image: 'ghcr.io/livingbio/typed-ffmpeg/ffmpeg:7.1'
+            ffmpeg-image: 'ghcr.io/lucemia/typed-ffmpeg/ffmpeg:7.1'
           - ffmpeg-version: '8'
-            ffmpeg-image: 'ghcr.io/livingbio/typed-ffmpeg/ffmpeg:8.0'
+            ffmpeg-image: 'ghcr.io/lucemia/typed-ffmpeg/ffmpeg:8.0'
 
     steps:
       - uses: actions/checkout@v6
