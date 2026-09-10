@@ -4,7 +4,7 @@
     "@types/node": "^26.1.0",
     "@vitest/coverage-v8": "^5.0.0",
     "typescript": "^7.0.2",
-    "vitest": "^4.0.0"
+    "vitest": "^5.0.0"
   },
   "engines": {
     "node": ">=18"
