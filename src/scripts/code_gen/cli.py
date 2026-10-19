@@ -245,6 +245,43 @@ def load_av_option_set(
     return output
 
 
+def load_expression_options(
+    rebuild: bool,
+    ffmpeg_binary: str,
+    version_key: str,
+    filters: list[FFMpegFilter],
+) -> dict[str, list[str]]:
+    """
+    Load the filter options FFmpeg evaluates as expressions.
+
+    Args:
+        rebuild: Whether to use the cache
+        ffmpeg_binary: Path or name of the ffmpeg executable
+        version_key: Cache key suffix for this FFmpeg version
+        filters: The filters of this FFmpeg version
+
+    Returns:
+        Mapping of filter name to its expression option names
+
+    """
+    cache_id = f"expression_options_{version_key}"
+    if not rebuild:
+        try:
+            return load(dict[str, list[str]], cache_id)
+        except Exception as e:
+            logging.error(f"Failed to load expression options from cache: {e}")
+
+    from ..parse_c.parse_expression_options import extract_expression_options
+    from ..parse_c.pre_compile import _prepare_source_folder
+    from ..parse_help.utils import get_ffmpeg_version
+
+    source_folder = _prepare_source_folder(get_ffmpeg_version(ffmpeg_binary))
+    output = extract_expression_options(source_folder, {f.name for f in filters})
+
+    save(output, cache_id)
+    return output
+
+
 def load_filters(
     rebuild: bool,
     ffmpeg_binary: str,
@@ -502,6 +539,9 @@ def generate(
     ffmpeg_codecs = load_codecs(rebuild, ffmpeg_binary, version_key)
     ffmpeg_muxers = load_formats(rebuild, ffmpeg_binary, version_key)
     ffmpeg_av_option_set = load_av_option_set(rebuild, ffmpeg_binary, version_key)
+    expression_options = load_expression_options(
+        rebuild, ffmpeg_binary, version_key, ffmpeg_filters
+    )
 
     version_prefix = f"v{major_version}" if version_dir else None
     render_outpath = outpath / version_prefix if version_prefix else outpath
@@ -529,6 +569,7 @@ def generate(
         codecs=ffmpeg_codecs,
         muxers=ffmpeg_muxers,
         av_option_sets=ffmpeg_av_option_set,
+        expression_options=expression_options,
         outpath=render_outpath,
         ffmpeg_version=version,
         version_prefix=version_prefix,

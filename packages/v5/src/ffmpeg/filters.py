@@ -8,7 +8,7 @@ FFmpeg filters.
 from typing import Any, Literal
 
 
-from .types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+from .types import Binary, Boolean, Color, Dictionary, Double, Duration, Expr, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
 
 from .dag.factory import filter_node_factory
 
@@ -77,7 +77,7 @@ def acrossfade(
 
 
     *,
-    nb_samples: Int = Default('44100'),duration: Duration = Default('0'),overlap: Boolean = Default('true'),curve1: Int| Literal["nofade","tri","qsin","esin","hsin","log","ipar","qua","cub","squ","cbr","par","exp","iqsin","ihsin","dese","desi","losi","sinc","isinc"] | Default = Default('tri'),curve2: Int| Literal["nofade","tri","qsin","esin","hsin","log","ipar","qua","cub","squ","cbr","par","exp","iqsin","ihsin","dese","desi","losi","sinc","isinc"] | Default = Default('tri'),
+    nb_samples: Int = Default(44100),duration: Duration = Default('0'),overlap: Boolean = Default('true'),curve1: Int| Literal["nofade","tri","qsin","esin","hsin","log","ipar","qua","cub","squ","cbr","par","exp","iqsin","ihsin","dese","desi","losi","sinc","isinc"] | Default = Default('tri'),curve2: Int| Literal["nofade","tri","qsin","esin","hsin","log","ipar","qua","cub","squ","cbr","par","exp","iqsin","ihsin","dese","desi","losi","sinc","isinc"] | Default = Default('tri'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -483,7 +483,7 @@ def amix(
 
 
 
-    inputs: Int = Auto('len(streams)'),duration: Int| Literal["longest","shortest","first"] | Default = Default('longest'),dropout_transition: Float = Default('2'),weights: String = Default('1 1'),normalize: Boolean = Default('true'),
+    inputs: Int = Auto('len(streams)'),duration: Int| Literal["longest","shortest","first"] | Default = Default('longest'),dropout_transition: Float = Default(2),weights: String = Default('1 1'),normalize: Boolean = Default('true'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -657,7 +657,7 @@ def anlmf(
 
 
     *,
-    order: Int = Default('256'),mu: Float = Default('0.75'),eps: Float = Default('1'),leakage: Float = Default('0'),out_mode: Int| Literal["i","d","o","n"] | Default = Default('o'),
+    order: Int = Default(256),mu: Float = Default(0.75),eps: Float = Default(1),leakage: Float = Default(0),out_mode: Int| Literal["i","d","o","n"] | Default = Default('o'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -756,7 +756,7 @@ def anlms(
 
 
     *,
-    order: Int = Default('256'),mu: Float = Default('0.75'),eps: Float = Default('1'),leakage: Float = Default('0'),out_mode: Int| Literal["i","d","o","n"] | Default = Default('o'),
+    order: Int = Default(256),mu: Float = Default(0.75),eps: Float = Default(1),leakage: Float = Default(0),out_mode: Int| Literal["i","d","o","n"] | Default = Default('o'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -1077,7 +1077,7 @@ def axcorrelate(
 
 
     *,
-    size: Int = Default('256'),algo: Int| Literal["slow","fast"] | Default = Default('slow'),
+    size: Int = Default(256),algo: Int| Literal["slow","fast"] | Default = Default('slow'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -1182,7 +1182,7 @@ def blend(
 
 
     *,
-    c0_mode: Int| Literal["addition","addition128","grainmerge","and","average","burn","darken","difference","difference128","grainextract","divide","dodge","exclusion","extremity","freeze","glow","hardlight","hardmix","heat","lighten","linearlight","multiply","multiply128","negation","normal","or","overlay","phoenix","pinlight","reflect","screen","softlight","subtract","vividlight","xor","softdifference","geometric","harmonic","bleach","stain","interpolate","hardoverlay"] | Default = Default('normal'),c1_mode: Int| Literal["addition","addition128","grainmerge","and","average","burn","darken","difference","difference128","grainextract","divide","dodge","exclusion","extremity","freeze","glow","hardlight","hardmix","heat","lighten","linearlight","multiply","multiply128","negation","normal","or","overlay","phoenix","pinlight","reflect","screen","softlight","subtract","vividlight","xor","softdifference","geometric","harmonic","bleach","stain","interpolate","hardoverlay"] | Default = Default('normal'),c2_mode: Int| Literal["addition","addition128","grainmerge","and","average","burn","darken","difference","difference128","grainextract","divide","dodge","exclusion","extremity","freeze","glow","hardlight","hardmix","heat","lighten","linearlight","multiply","multiply128","negation","normal","or","overlay","phoenix","pinlight","reflect","screen","softlight","subtract","vividlight","xor","softdifference","geometric","harmonic","bleach","stain","interpolate","hardoverlay"] | Default = Default('normal'),c3_mode: Int| Literal["addition","addition128","grainmerge","and","average","burn","darken","difference","difference128","grainextract","divide","dodge","exclusion","extremity","freeze","glow","hardlight","hardmix","heat","lighten","linearlight","multiply","multiply128","negation","normal","or","overlay","phoenix","pinlight","reflect","screen","softlight","subtract","vividlight","xor","softdifference","geometric","harmonic","bleach","stain","interpolate","hardoverlay"] | Default = Default('normal'),all_mode: Int| Literal["addition","addition128","grainmerge","and","average","burn","darken","difference","difference128","grainextract","divide","dodge","exclusion","extremity","freeze","glow","hardlight","hardmix","heat","lighten","linearlight","multiply","multiply128","negation","normal","or","overlay","phoenix","pinlight","reflect","screen","softlight","subtract","vividlight","xor","softdifference","geometric","harmonic","bleach","stain","interpolate","hardoverlay"] | Default = Default('-1'),c0_expr: String = Default(None),c1_expr: String = Default(None),c2_expr: String = Default(None),c3_expr: String = Default(None),all_expr: String = Default(None),c0_opacity: Double = Default('1'),c1_opacity: Double = Default('1'),c2_opacity: Double = Default('1'),c3_opacity: Double = Default('1'),all_opacity: Double = Default('1'),
+    c0_mode: Int| Literal["addition","addition128","grainmerge","and","average","burn","darken","difference","difference128","grainextract","divide","dodge","exclusion","extremity","freeze","glow","hardlight","hardmix","heat","lighten","linearlight","multiply","multiply128","negation","normal","or","overlay","phoenix","pinlight","reflect","screen","softlight","subtract","vividlight","xor","softdifference","geometric","harmonic","bleach","stain","interpolate","hardoverlay"] | Default = Default('normal'),c1_mode: Int| Literal["addition","addition128","grainmerge","and","average","burn","darken","difference","difference128","grainextract","divide","dodge","exclusion","extremity","freeze","glow","hardlight","hardmix","heat","lighten","linearlight","multiply","multiply128","negation","normal","or","overlay","phoenix","pinlight","reflect","screen","softlight","subtract","vividlight","xor","softdifference","geometric","harmonic","bleach","stain","interpolate","hardoverlay"] | Default = Default('normal'),c2_mode: Int| Literal["addition","addition128","grainmerge","and","average","burn","darken","difference","difference128","grainextract","divide","dodge","exclusion","extremity","freeze","glow","hardlight","hardmix","heat","lighten","linearlight","multiply","multiply128","negation","normal","or","overlay","phoenix","pinlight","reflect","screen","softlight","subtract","vividlight","xor","softdifference","geometric","harmonic","bleach","stain","interpolate","hardoverlay"] | Default = Default('normal'),c3_mode: Int| Literal["addition","addition128","grainmerge","and","average","burn","darken","difference","difference128","grainextract","divide","dodge","exclusion","extremity","freeze","glow","hardlight","hardmix","heat","lighten","linearlight","multiply","multiply128","negation","normal","or","overlay","phoenix","pinlight","reflect","screen","softlight","subtract","vividlight","xor","softdifference","geometric","harmonic","bleach","stain","interpolate","hardoverlay"] | Default = Default('normal'),all_mode: Int| Literal["addition","addition128","grainmerge","and","average","burn","darken","difference","difference128","grainextract","divide","dodge","exclusion","extremity","freeze","glow","hardlight","hardmix","heat","lighten","linearlight","multiply","multiply128","negation","normal","or","overlay","phoenix","pinlight","reflect","screen","softlight","subtract","vividlight","xor","softdifference","geometric","harmonic","bleach","stain","interpolate","hardoverlay"] | Default = Default(-1),c0_expr: Expr = Default(None),c1_expr: Expr = Default(None),c2_expr: Expr = Default(None),c3_expr: Expr = Default(None),all_expr: String = Default(None),c0_opacity: Double = Default(1),c1_opacity: Double = Default(1),c2_opacity: Double = Default(1),c3_opacity: Double = Default(1),all_opacity: Double = Default(1),
 
     framesync_options: FFMpegFrameSyncOption | None = None,
     eof_action: str | None = None,
@@ -1324,7 +1324,7 @@ def bm3d(
 
 
 
-    sigma: Float = Default('1'),block: Int = Default('4'),bstep: Int = Default('4'),group: Int = Default('1'),range: Int = Default('9'),mstep: Int = Default('1'),thmse: Float = Default('0'),hdthr: Float = Default('2.7'),estim: Int| Literal["basic","final"] | Default = Default('basic'),ref: Boolean = Default('false'),planes: Int = Default('7'),
+    sigma: Float = Default(1),block: Int = Default(4),bstep: Int = Default(4),group: Int = Default(1),range: Int = Default(9),mstep: Int = Default(1),thmse: Float = Default(0),hdthr: Float = Default(2.7),estim: Int| Literal["basic","final"] | Default = Default('basic'),ref: Boolean = Default('false'),planes: Int = Default(7),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -1485,7 +1485,7 @@ def colormap(
 
 
     *,
-    patch_size: Image_size = Default('64x64'),nb_patches: Int = Default('0'),type: Int| Literal["relative","absolute"] | Default = Default('absolute'),kernel: Int| Literal["euclidean","weuclidean"] | Default = Default('euclidean'),
+    patch_size: Image_size = Default('64x64'),nb_patches: Int = Default(0),type: Int| Literal["relative","absolute"] | Default = Default('absolute'),kernel: Int| Literal["euclidean","weuclidean"] | Default = Default('euclidean'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -1592,7 +1592,7 @@ def concat(
 
 
 
-    n: Int = Auto('len(streams) // (int(v) + int(a))'),v: Int = Default('1'),a: Int = Default('0'),unsafe: Boolean = Default('false'),
+    n: Int = Auto('len(streams) // (int(v) + int(a))'),v: Int = Default(1),a: Int = Default(0),unsafe: Boolean = Default('false'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -1678,7 +1678,7 @@ def convolve(
 
 
     *,
-    planes: Int = Default('7'),impulse: Int| Literal["first","all"] | Default = Default('all'),noise: Float = Default('1e-07'),
+    planes: Int = Default(7),impulse: Int| Literal["first","all"] | Default = Default('all'),noise: Float = Default(1e-07),
 
     framesync_options: FFMpegFrameSyncOption | None = None,
     eof_action: str | None = None,
@@ -1801,7 +1801,7 @@ def decimate(
 
 
 
-    cycle: Int = Default('5'),dupthresh: Double = Default('1.1'),scthresh: Double = Default('15'),blockx: Int = Default('32'),blocky: Int = Default('32'),ppsrc: Boolean = Default('false'),chroma: Boolean = Default('true'),
+    cycle: Int = Default(5),dupthresh: Double = Default(1.1),scthresh: Double = Default(15),blockx: Int = Default(32),blocky: Int = Default(32),ppsrc: Boolean = Default('false'),chroma: Boolean = Default('true'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -1887,7 +1887,7 @@ def deconvolve(
 
 
     *,
-    planes: Int = Default('7'),impulse: Int| Literal["first","all"] | Default = Default('all'),noise: Float = Default('1e-07'),
+    planes: Int = Default(7),impulse: Int| Literal["first","all"] | Default = Default('all'),noise: Float = Default(1e-07),
 
     framesync_options: FFMpegFrameSyncOption | None = None,
     eof_action: str | None = None,
@@ -2162,7 +2162,7 @@ def feedback(
 
 
     *,
-    x: Int = Default('0'),w: Int = Default('0'),
+    x: Int = Default(0),w: Int = Default(0),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -2271,7 +2271,7 @@ def fieldmatch(
 
 
 
-    order: Int| Literal["auto","bff","tff"] | Default = Default('auto'),mode: Int| Literal["pc","pc_n","pc_u","pc_n_ub","pcn","pcn_ub"] | Default = Default('pc_n'),ppsrc: Boolean = Default('false'),field: Int| Literal["auto","bottom","top"] | Default = Default('auto'),mchroma: Boolean = Default('true'),y0: Int = Default('0'),scthresh: Double = Default('12'),combmatch: Int| Literal["none","sc","full"] | Default = Default('sc'),combdbg: Int| Literal["none","pcn","pcnub"] | Default = Default('none'),cthresh: Int = Default('9'),chroma: Boolean = Default('false'),blockx: Int = Default('16'),blocky: Int = Default('16'),combpel: Int = Default('80'),
+    order: Int| Literal["auto","bff","tff"] | Default = Default('auto'),mode: Int| Literal["pc","pc_n","pc_u","pc_n_ub","pcn","pcn_ub"] | Default = Default('pc_n'),ppsrc: Boolean = Default('false'),field: Int| Literal["auto","bottom","top"] | Default = Default('auto'),mchroma: Boolean = Default('true'),y0: Int = Default(0),scthresh: Double = Default(12),combmatch: Int| Literal["none","sc","full"] | Default = Default('sc'),combdbg: Int| Literal["none","pcn","pcnub"] | Default = Default('none'),cthresh: Int = Default(9),chroma: Boolean = Default('false'),blockx: Int = Default(16),blocky: Int = Default(16),combpel: Int = Default(80),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -2508,7 +2508,7 @@ def freezeframes(
 
 
     *,
-    first: Int64 = Default('0'),last: Int64 = Default('0'),replace: Int64 = Default('0'),
+    first: Int64 = Default(0),last: Int64 = Default(0),replace: Int64 = Default(0),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -2600,7 +2600,7 @@ def guided(
 
 
 
-    radius: Int = Default('3'),eps: Float = Default('0.01'),mode: Int| Literal["basic","fast"] | Default = Default('basic'),sub: Int = Default('4'),guidance: Int| Literal["off","on"] | Default = Default('off'),planes: Int = Default('1'),
+    radius: Int = Default(3),eps: Float = Default(0.01),mode: Int| Literal["basic","fast"] | Default = Default('basic'),sub: Int = Default(4),guidance: Int| Literal["off","on"] | Default = Default('off'),planes: Int = Default(1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -2792,7 +2792,7 @@ def headphone(
 
 
 
-    map: String = Default(None),gain: Float = Default('0'),lfe: Float = Default('0'),type: Int| Literal["time","freq"] | Default = Default('freq'),size: Int = Default('1024'),hrir: Int| Literal["stereo","multich"] | Default = Default('stereo'),
+    map: String = Default(None),gain: Float = Default(0),lfe: Float = Default(0),type: Int| Literal["time","freq"] | Default = Default('freq'),size: Int = Default(1024),hrir: Int| Literal["stereo","multich"] | Default = Default('stereo'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -2978,7 +2978,7 @@ def hysteresis(
 
 
     *,
-    planes: Int = Default('15'),threshold: Int = Default('0'),
+    planes: Int = Default(15),threshold: Int = Default(0),
 
     framesync_options: FFMpegFrameSyncOption | None = None,
     eof_action: str | None = None,
@@ -3355,7 +3355,7 @@ def libvmaf(
 
 
     *,
-    model_path: String = Default(None),log_path: String = Default(None),log_fmt: String = Default('xml'),enable_transform: Boolean = Default('false'),psnr: Boolean = Default('false'),ssim: Boolean = Default('false'),ms_ssim: Boolean = Default('false'),pool: String = Default(None),n_threads: Int = Default('0'),n_subsample: Int = Default('1'),enable_conf_interval: Boolean = Default('false'),model: String = Default('version=vmaf_v0.6.1'),feature: String = Default(None),
+    model_path: String = Default(None),log_path: String = Default(None),log_fmt: String = Default('xml'),enable_transform: Boolean = Default('false'),psnr: Boolean = Default('false'),ssim: Boolean = Default('false'),ms_ssim: Boolean = Default('false'),pool: String = Default(None),n_threads: Int = Default(0),n_subsample: Int = Default(1),enable_conf_interval: Boolean = Default('false'),model: String = Default('version=vmaf_v0.6.1'),feature: String = Default(None),
 
     framesync_options: FFMpegFrameSyncOption | None = None,
     eof_action: str | None = None,
@@ -3481,7 +3481,7 @@ def limitdiff(
 
 
 
-    threshold: Float = Default('0.00392157'),elasticity: Float = Default('2'),reference: Boolean = Default('false'),planes: Int = Default('15'),
+    threshold: Float = Default(0.00392157),elasticity: Float = Default(2),reference: Boolean = Default('false'),planes: Int = Default(15),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -3583,7 +3583,7 @@ def lut2(
 
 
     *,
-    c0: String = Default('x'),c1: String = Default('x'),c2: String = Default('x'),c3: String = Default('x'),d: Int = Default('0'),
+    c0: Expr = Default('x'),c1: Expr = Default('x'),c2: Expr = Default('x'),c3: Expr = Default('x'),d: Int = Default(0),
 
     framesync_options: FFMpegFrameSyncOption | None = None,
     eof_action: str | None = None,
@@ -3705,7 +3705,7 @@ def maskedclamp(
 
 
     *,
-    undershoot: Int = Default('0'),overshoot: Int = Default('0'),planes: Int = Default('15'),
+    undershoot: Int = Default(0),overshoot: Int = Default(0),planes: Int = Default(15),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -3805,7 +3805,7 @@ def maskedmax(
 
 
     *,
-    planes: Int = Default('15'),
+    planes: Int = Default(15),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -3900,7 +3900,7 @@ def maskedmerge(
 
 
     *,
-    planes: Int = Default('15'),
+    planes: Int = Default(15),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -3998,7 +3998,7 @@ def maskedmin(
 
 
     *,
-    planes: Int = Default('15'),
+    planes: Int = Default(15),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -4089,7 +4089,7 @@ def maskedthreshold(
 
 
     *,
-    threshold: Int = Default('1'),planes: Int = Default('15'),
+    threshold: Int = Default(1),planes: Int = Default(15),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -4181,7 +4181,7 @@ def mergeplanes(
 
 
 
-    mapping: Int = Default('-1'),format: Pix_fmt = Default('yuva444p'),map0s: Int = Default('0'),map0p: Int = Default('0'),map1s: Int = Default('0'),map1p: Int = Default('0'),map2s: Int = Default('0'),map2p: Int = Default('0'),map3s: Int = Default('0'),map3p: Int = Default('0'),
+    mapping: Int = Default(-1),format: Pix_fmt = Default('yuva444p'),map0s: Int = Default(0),map0p: Int = Default(0),map1s: Int = Default(0),map1p: Int = Default(0),map2s: Int = Default(0),map2p: Int = Default(0),map3s: Int = Default(0),map3p: Int = Default(0),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -4283,7 +4283,7 @@ def midequalizer(
 
 
     *,
-    planes: Int = Default('15'),
+    planes: Int = Default(15),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -4370,7 +4370,7 @@ def mix(
 
 
 
-    inputs: Int = Auto('len(streams)'),weights: String = Default('1 1'),scale: Float = Default('0'),planes: Flags = Default('F'),duration: Int| Literal["longest","shortest","first"] | Default = Default('longest'),
+    inputs: Int = Auto('len(streams)'),weights: String = Default('1 1'),scale: Float = Default(0),planes: Flags = Default('F'),duration: Int| Literal["longest","shortest","first"] | Default = Default('longest'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -4461,7 +4461,7 @@ def morpho(
 
 
     *,
-    mode: Int| Literal["erode","dilate","open","close","gradient","tophat","blackhat"] | Default = Default('erode'),planes: Int = Default('7'),structure: Int| Literal["first","all"] | Default = Default('all'),
+    mode: Int| Literal["erode","dilate","open","close","gradient","tophat","blackhat"] | Default = Default('erode'),planes: Int = Default(7),structure: Int| Literal["first","all"] | Default = Default('all'),
 
     framesync_options: FFMpegFrameSyncOption | None = None,
     eof_action: str | None = None,
@@ -4679,7 +4679,7 @@ def multiply(
 
 
     *,
-    scale: Float = Default('1'),offset: Float = Default('0.5'),planes: Flags = Default('F'),
+    scale: Float = Default(1),offset: Float = Default(0.5),planes: Flags = Default('F'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -4788,7 +4788,7 @@ def overlay(
 
 
     *,
-    x: String = Default('0'),y: String = Default('0'),eof_action: Int| Literal["repeat","endall","pass"] | Default = Default('repeat'),eval: Int| Literal["init","frame"] | Default = Default('frame'),shortest: Boolean = Default('false'),format: Int| Literal["yuv420","yuv420p10","yuv422","yuv422p10","yuv444","rgb","gbrp","auto"] | Default = Default('yuv420'),repeatlast: Boolean = Default('true'),alpha: Int| Literal["straight","premultiplied"] | Default = Default('straight'),
+    x: Expr = Default(0),y: Expr = Default(0),eof_action: Int| Literal["repeat","endall","pass"] | Default = Default('repeat'),eval: Int| Literal["init","frame"] | Default = Default('frame'),shortest: Boolean = Default('false'),format: Int| Literal["yuv420","yuv420p10","yuv422","yuv422p10","yuv444","rgb","gbrp","auto"] | Default = Default('yuv420'),repeatlast: Boolean = Default('true'),alpha: Int| Literal["straight","premultiplied"] | Default = Default('straight'),
 
     framesync_options: FFMpegFrameSyncOption | None = None,
 
@@ -4915,7 +4915,7 @@ def paletteuse(
 
 
     *,
-    dither: Int| Literal["bayer","heckbert","floyd_steinberg","sierra2","sierra2_4a"] | Default = Default('sierra2_4a'),bayer_scale: Int = Default('2'),diff_mode: Int| Literal["rectangle"] | Default = Default('0'),new: Boolean = Default('false'),alpha_threshold: Int = Default('128'),use_alpha: Boolean = Default('false'),debug_kdtree: String = Default(None),color_search: Int| Literal["nns_iterative","nns_recursive","bruteforce"] | Default = Default('nns_iterative'),mean_err: Boolean = Default('false'),debug_accuracy: Boolean = Default('false'),
+    dither: Int| Literal["bayer","heckbert","floyd_steinberg","sierra2","sierra2_4a"] | Default = Default('sierra2_4a'),bayer_scale: Int = Default(2),diff_mode: Int| Literal["rectangle"] | Default = Default(0),new: Boolean = Default('false'),alpha_threshold: Int = Default(128),use_alpha: Boolean = Default('false'),debug_kdtree: String = Default(None),color_search: Int| Literal["nns_iterative","nns_recursive","bruteforce"] | Default = Default('nns_iterative'),mean_err: Boolean = Default('false'),debug_accuracy: Boolean = Default('false'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -5033,7 +5033,7 @@ def premultiply(
 
 
 
-    planes: Int = Default('15'),inplace: Boolean = Default('false'),
+    planes: Int = Default(15),inplace: Boolean = Default('false'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -5120,7 +5120,7 @@ def psnr(
 
 
     *,
-    stats_file: String = Default(None),stats_version: Int = Default('1'),output_max: Boolean = Default('false'),
+    stats_file: String = Default(None),stats_version: Int = Default(1),output_max: Boolean = Default('false'),
 
     framesync_options: FFMpegFrameSyncOption | None = None,
     eof_action: str | None = None,
@@ -5368,7 +5368,7 @@ def scale2ref(
 
 
     *,
-    w: String = Default(None),h: String = Default(None),flags: String = Default(''),interl: Boolean = Default('false'),in_color_matrix: String| Literal["auto","bt601","bt470","smpte170m","bt709","fcc","smpte240m","bt2020"] | Default = Default('auto'),out_color_matrix: String| Literal["auto","bt601","bt470","smpte170m","bt709","fcc","smpte240m","bt2020"] | Default = Default(None),in_range: Int| Literal["auto","unknown","full","limited","jpeg","mpeg","tv","pc"] | Default = Default('auto'),out_range: Int| Literal["auto","unknown","full","limited","jpeg","mpeg","tv","pc"] | Default = Default('auto'),in_v_chr_pos: Int = Default('-513'),in_h_chr_pos: Int = Default('-513'),out_v_chr_pos: Int = Default('-513'),out_h_chr_pos: Int = Default('-513'),force_original_aspect_ratio: Int| Literal["disable","decrease","increase"] | Default = Default('disable'),force_divisible_by: Int = Default('1'),param0: Double = Default('123456'),param1: Double = Default('123456'),eval: Int| Literal["init","frame"] | Default = Default('init'),
+    w: Expr = Default(None),h: Expr = Default(None),flags: String = Default(''),interl: Boolean = Default('false'),in_color_matrix: String| Literal["auto","bt601","bt470","smpte170m","bt709","fcc","smpte240m","bt2020"] | Default = Default('auto'),out_color_matrix: String| Literal["auto","bt601","bt470","smpte170m","bt709","fcc","smpte240m","bt2020"] | Default = Default(None),in_range: Int| Literal["auto","unknown","full","limited","jpeg","mpeg","tv","pc"] | Default = Default('auto'),out_range: Int| Literal["auto","unknown","full","limited","jpeg","mpeg","tv","pc"] | Default = Default('auto'),in_v_chr_pos: Int = Default(-513),in_h_chr_pos: Int = Default(-513),out_v_chr_pos: Int = Default(-513),out_h_chr_pos: Int = Default(-513),force_original_aspect_ratio: Int| Literal["disable","decrease","increase"] | Default = Default('disable'),force_divisible_by: Int = Default(1),param0: Double = Default(123456),param1: Double = Default(123456),eval: Int| Literal["init","frame"] | Default = Default('init'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -5573,7 +5573,7 @@ def sidechaincompress(
 
 
     *,
-    level_in: Double = Default('1'),mode: Int| Literal["downward","upward"] | Default = Default('downward'),threshold: Double = Default('0.125'),ratio: Double = Default('2'),attack: Double = Default('20'),release: Double = Default('250'),makeup: Double = Default('1'),knee: Double = Default('2.82843'),link: Int| Literal["average","maximum"] | Default = Default('average'),detection: Int| Literal["peak","rms"] | Default = Default('rms'),level_sc: Double = Default('1'),mix: Double = Default('1'),
+    level_in: Double = Default(1),mode: Int| Literal["downward","upward"] | Default = Default('downward'),threshold: Double = Default(0.125),ratio: Double = Default(2),attack: Double = Default(20),release: Double = Default(250),makeup: Double = Default(1),knee: Double = Default(2.82843),link: Int| Literal["average","maximum"] | Default = Default('average'),detection: Int| Literal["peak","rms"] | Default = Default('rms'),level_sc: Double = Default(1),mix: Double = Default(1),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -5685,7 +5685,7 @@ def sidechaingate(
 
 
     *,
-    level_in: Double = Default('1'),mode: Int| Literal["downward","upward"] | Default = Default('downward'),range: Double = Default('0.06125'),threshold: Double = Default('0.125'),ratio: Double = Default('2'),attack: Double = Default('20'),release: Double = Default('250'),makeup: Double = Default('1'),knee: Double = Default('2.82843'),detection: Int| Literal["peak","rms"] | Default = Default('rms'),link: Int| Literal["average","maximum"] | Default = Default('average'),level_sc: Double = Default('1'),
+    level_in: Double = Default(1),mode: Int| Literal["downward","upward"] | Default = Default('downward'),range: Double = Default(0.06125),threshold: Double = Default(0.125),ratio: Double = Default(2),attack: Double = Default(20),release: Double = Default(250),makeup: Double = Default(1),knee: Double = Default(2.82843),detection: Int| Literal["peak","rms"] | Default = Default('rms'),link: Int| Literal["average","maximum"] | Default = Default('average'),level_sc: Double = Default(1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -5811,7 +5811,7 @@ def signature(
 
 
 
-    detectmode: Int| Literal["off","full","fast"] | Default = Default('off'),nb_inputs: Int = Auto('len(streams)'),filename: String = Default(''),format: Int| Literal["binary","xml"] | Default = Default('binary'),th_d: Int = Default('9000'),th_dc: Int = Default('60000'),th_xh: Int = Default('116'),th_di: Int = Default('0'),th_it: Double = Default('0.5'),
+    detectmode: Int| Literal["off","full","fast"] | Default = Default('off'),nb_inputs: Int = Auto('len(streams)'),filename: String = Default(''),format: Int| Literal["binary","xml"] | Default = Default('binary'),th_d: Int = Default(9000),th_dc: Int = Default(60000),th_xh: Int = Default(116),th_di: Int = Default(0),th_it: Double = Default(0.5),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -5924,7 +5924,7 @@ def spectrumsynth(
 
 
     *,
-    sample_rate: Int = Default('44100'),channels: Int = Default('1'),scale: Int| Literal["lin","log"] | Default = Default('log'),slide: Int| Literal["replace","scroll","fullframe","rscroll"] | Default = Default('fullframe'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman"] | Default = Default('rect'),overlap: Float = Default('1'),orientation: Int| Literal["vertical","horizontal"] | Default = Default('vertical'),
+    sample_rate: Int = Default(44100),channels: Int = Default(1),scale: Int| Literal["lin","log"] | Default = Default('log'),slide: Int| Literal["replace","scroll","fullframe","rscroll"] | Default = Default('fullframe'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman"] | Default = Default('rect'),overlap: Float = Default(1),orientation: Int| Literal["vertical","horizontal"] | Default = Default('vertical'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -6246,7 +6246,7 @@ def threshold(
 
 
     *,
-    planes: Int = Default('15'),
+    planes: Int = Default(15),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -6364,7 +6364,7 @@ def unpremultiply(
 
 
 
-    planes: Int = Default('15'),inplace: Boolean = Default('false'),
+    planes: Int = Default(15),inplace: Boolean = Default('false'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -6455,7 +6455,7 @@ def varblur(
 
 
     *,
-    min_r: Int = Default('0'),max_r: Int = Default('8'),planes: Int = Default('15'),
+    min_r: Int = Default(0),max_r: Int = Default(8),planes: Int = Default(15),
 
     framesync_options: FFMpegFrameSyncOption | None = None,
     eof_action: str | None = None,
@@ -6755,7 +6755,7 @@ def xcorrelate(
 
 
     *,
-    planes: Int = Default('7'),secondary: Int| Literal["first","all"] | Default = Default('all'),
+    planes: Int = Default(7),secondary: Int| Literal["first","all"] | Default = Default('all'),
 
     framesync_options: FFMpegFrameSyncOption | None = None,
     eof_action: str | None = None,
@@ -6854,7 +6854,7 @@ def xfade(
 
 
     *,
-    transition: Int| Literal["custom","fade","wipeleft","wiperight","wipeup","wipedown","slideleft","slideright","slideup","slidedown","circlecrop","rectcrop","distance","fadeblack","fadewhite","radial","smoothleft","smoothright","smoothup","smoothdown","circleopen","circleclose","vertopen","vertclose","horzopen","horzclose","dissolve","pixelize","diagtl","diagtr","diagbl","diagbr","hlslice","hrslice","vuslice","vdslice","hblur","fadegrays","wipetl","wipetr","wipebl","wipebr","squeezeh","squeezev","zoomin","fadefast","fadeslow"] | Default = Default('fade'),duration: Duration = Default('1'),offset: Duration = Default('0'),expr: String = Default(None),
+    transition: Int| Literal["custom","fade","wipeleft","wiperight","wipeup","wipedown","slideleft","slideright","slideup","slidedown","circlecrop","rectcrop","distance","fadeblack","fadewhite","radial","smoothleft","smoothright","smoothup","smoothdown","circleopen","circleclose","vertopen","vertclose","horzopen","horzclose","dissolve","pixelize","diagtl","diagtr","diagbl","diagbr","hlslice","hrslice","vuslice","vdslice","hblur","fadegrays","wipetl","wipetr","wipebl","wipebr","squeezeh","squeezev","zoomin","fadefast","fadeslow"] | Default = Default('fade'),duration: Duration = Default('1'),offset: Duration = Default('0'),expr: Expr = Default(None),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -6935,7 +6935,7 @@ def xmedian(
 
 
 
-    inputs: Int = Auto('len(streams)'),planes: Int = Default('15'),percentile: Float = Default('0.5'),
+    inputs: Int = Auto('len(streams)'),planes: Int = Default(15),percentile: Float = Default(0.5),
 
     framesync_options: FFMpegFrameSyncOption | None = None,
     eof_action: str | None = None,

@@ -66,7 +66,8 @@ def test_expression_arithmetic() -> None:
     assert str(e - 2) == "x-2"
     assert str(e * 3) == "x*3"
     assert str(e / 4) == "x/4"
-    assert str(e % 5) == "x%5"
+    # FFmpeg has no % operator
+    assert str(e % 5) == "mod(x,5)"
 
 
 def test_expression_unary() -> None:
@@ -78,6 +79,49 @@ def test_expression_unary() -> None:
 def test_expression_pow() -> None:
     e = Expression("x")
     assert str(e**2) == "x^2"
+
+
+def test_expression_precedence() -> None:
+    iw, w, x = Expression("iw"), Expression("w"), Expression("x")
+    assert str((iw - w) / 2) == "(iw-w)/2"
+    assert str(iw - w / 2) == "iw-w/2"
+    assert str((iw + w) * (x + 1)) == "(iw+w)*(x+1)"
+    assert str(iw - (w - x)) == "iw-(w-x)"
+    assert str(iw - w - x) == "iw-w-x"
+    assert str(iw / (w * x)) == "iw/(w*x)"
+    assert str(iw * w / x) == "iw*w/x"
+    assert str(x ** (iw**2)) == "x^(iw^2)"
+    assert str((x**iw) ** 2) == "x^iw^2"
+    assert str((x + 1) ** 2) == "(x+1)^2"
+
+
+def test_expression_reflected() -> None:
+    iw = Expression("iw")
+    assert str(2 * iw) == "2*iw"
+    assert str(1 + iw) == "1+iw"
+    assert str(1 - iw) == "1-iw"
+    assert str(1 / iw) == "1/iw"
+    assert str(2**iw) == "2^iw"
+    assert str(7 % iw) == "mod(7,iw)"
+
+
+def test_expression_signs() -> None:
+    x, y = Expression("x"), Expression("y")
+    # FFmpeg rejects two adjacent signs such as x+-y
+    assert str(x + -y) == "x+(-y)"
+    assert str(x - -1) == "x-(-1)"
+    assert str(x * -y) == "x*(-y)"
+    assert str(-(x + y)) == "-(x+y)"
+    assert str(-(x**2)) == "-x^2"
+    assert str((-x) ** 2) == "(-x)^2"
+
+
+def test_expression_from_raw_string() -> None:
+    # unknown structure is parenthesized; function calls are atoms
+    assert str(Expression("x+1") * 2) == "(x+1)*2"
+    assert str(abs("x") * 2) == "abs(x)*2"
+    assert str(Expression("(a)+(b)") * 2) == "((a)+(b))*2"
+    assert str(Expression("x") * "w/2") == "x*(w/2)"
 
 
 def test_unary_functions() -> None:

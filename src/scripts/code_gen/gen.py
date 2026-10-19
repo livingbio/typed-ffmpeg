@@ -27,19 +27,24 @@ env = jinja2.Environment(
 )
 
 
-def filter_option_typing(option: FFMpegFilterOption) -> str:
+def filter_option_typing(
+    option: FFMpegFilterOption, is_expression: bool = False
+) -> str:
     """
     Get the typing of the filter option.
 
     Args:
         option: The filter option
+        is_expression: Whether FFmpeg evaluates this string option as an expression
 
     Returns:
         The typing of the filter option
 
     """
     base_type = None
-    if option.type == FFMpegFilterOptionType.boolean:
+    if option.type == FFMpegFilterOptionType.string and is_expression:
+        base_type = "Expr"
+    elif option.type == FFMpegFilterOptionType.boolean:
         base_type = "Boolean"
     elif option.type == FFMpegFilterOptionType.duration:
         base_type = "Duration"
@@ -206,13 +211,26 @@ def output_typings(ffmpeg_filter: FFMpegFilter) -> str:
     )
 
 
-def default_value(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
+NUMERIC_OPTION_TYPES = frozenset({
+    FFMpegFilterOptionType.int,
+    FFMpegFilterOptionType.int64,
+    FFMpegFilterOptionType.unsigned,
+    FFMpegFilterOptionType.float,
+    FFMpegFilterOptionType.double,
+})
+NUMBER_LITERAL = re.compile(r"-?(0|[1-9]\d*)(\.\d+)?([eE][-+]?\d+)?")
+
+
+def default_value(
+    option: FFMpegFilterOption, f: FFMpegFilter, is_expression: bool = False
+) -> str:
     """
     Get the default value of the filter option.
 
     Args:
         option: The filter option
         f: The filter
+        is_expression: Whether FFmpeg evaluates this string option as an expression
 
     Returns:
         The default value of the filter option
@@ -220,45 +238,63 @@ def default_value(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
     """
     if option.name in f.pre_dict:
         return f"Auto({repr(f.pre_dict[option.name])})"
-    if not isinstance(option.default, float) or not isnan(option.default):
-        return f"Default({repr(option.default)})"
-    return 'Default("nan")'
+    if isinstance(option.default, float) and isnan(option.default):
+        return 'Default("nan")'
+    # Show numeric defaults as numbers (Default(0), not Default("0")) so the
+    # signature does not suggest the option only takes strings.
+    if (
+        isinstance(option.default, str)
+        and (is_expression or option.type in NUMERIC_OPTION_TYPES)
+        and NUMBER_LITERAL.fullmatch(option.default)
+    ):
+        return f"Default({option.default})"
+    return f"Default({repr(option.default)})"
 
 
-def default_typings(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
+def default_typings(
+    option: FFMpegFilterOption, f: FFMpegFilter, is_expression: bool = False
+) -> str:
     """
     Get the default typing of the filter option.
 
     Args:
         option: The filter option
         f: The filter
+        is_expression: Whether FFmpeg evaluates this string option as an expression
 
     Returns:
         The default typing of the filter option
 
     """
+    typing = filter_option_typing(option, is_expression)
+    default = default_value(option, f, is_expression)
     if option.choices:
-        return f"{filter_option_typing(option)} | Default = {default_value(option, f)}"
-    return f"{filter_option_typing(option)} = {default_value(option, f)}"
+        return f"{typing} | Default = {default}"
+    return f"{typing} = {default}"
 
 
-def filter_option_typings(ffmpeg_filter: FFMpegFilter) -> str:
+def filter_option_typings(
+    ffmpeg_filter: FFMpegFilter,
+    expression_options: dict[str, list[str]] | None = None,
+) -> str:
     """
     Get the typing of the filter options.
 
     Args:
         ffmpeg_filter: The filter
+        expression_options: Mapping of filter name to the options FFmpeg
+            evaluates as expressions (see parse_c.parse_expression_options)
 
     Returns:
         The typing of the filter options
 
     """
     output = []
+    expressions = set((expression_options or {}).get(ffmpeg_filter.name, ()))
 
     for option in ffmpeg_filter.options:
-        output.append(
-            f"{option_name_safe(option.name)}: {default_typings(option, ffmpeg_filter)}"
-        )
+        typing = default_typings(option, ffmpeg_filter, option.name in expressions)
+        output.append(f"{option_name_safe(option.name)}: {typing}")
 
     if output:
         return ",".join(output) + ","

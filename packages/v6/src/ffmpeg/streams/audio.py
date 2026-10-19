@@ -10,7 +10,7 @@ import re
 from typing import TYPE_CHECKING, Any, Literal
 
 
-from ..types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+from ..types import Binary, Boolean, Color, Dictionary, Double, Duration, Expr, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
 
 from ..dag.factory import filter_node_factory
 
@@ -60,7 +60,7 @@ class AudioStream(FilterableStream):
 
 
     *,
-    rate: Video_rate = Default('25'),size: Image_size = Default('hd720'),fov: Float = Default('90'),roll: Float = Default('0'),pitch: Float = Default('0'),yaw: Float = Default('0'),xzoom: Float = Default('1'),xpos: Float = Default('0'),length: Int = Default('15'),
+    rate: Video_rate = Default('25'),size: Image_size = Default('hd720'),fov: Float = Default(90),roll: Float = Default(0),pitch: Float = Default(0),yaw: Float = Default(0),xzoom: Float = Default(1),xpos: Float = Default(0),length: Int = Default(15),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -277,7 +277,7 @@ References:
 
 
     *,
-    level_in: Double = Default('1'),mode: Int| Literal["downward","upward"] | Default = Default('downward'),threshold: Double = Default('0.125'),ratio: Double = Default('2'),attack: Double = Default('20'),release: Double = Default('250'),makeup: Double = Default('1'),knee: Double = Default('2.82843'),link: Int| Literal["average","maximum"] | Default = Default('average'),detection: Int| Literal["peak","rms"] | Default = Default('rms'),level_sc: Double = Default('1'),mix: Double = Default('1'),
+    level_in: Double = Default(1),mode: Int| Literal["downward","upward"] | Default = Default('downward'),threshold: Double = Default(0.125),ratio: Double = Default(2),attack: Double = Default(20),release: Double = Default(250),makeup: Double = Default(1),knee: Double = Default(2.82843),link: Int| Literal["average","maximum"] | Default = Default('average'),detection: Int| Literal["peak","rms"] | Default = Default('rms'),level_sc: Double = Default(1),mix: Double = Default(1),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -395,7 +395,7 @@ References:
 
 
     *,
-    contrast: Float = Default('33'),
+    contrast: Float = Default(33),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -519,7 +519,7 @@ References:
 
 
     *,
-    nb_samples: Int = Default('44100'),duration: Duration = Default('0'),overlap: Boolean = Default('true'),curve1: Int| Literal["nofade","tri","qsin","esin","hsin","log","ipar","qua","cub","squ","cbr","par","exp","iqsin","ihsin","dese","desi","losi","sinc","isinc","quat","quatr","qsin2","hsin2"] | Default = Default('tri'),curve2: Int| Literal["nofade","tri","qsin","esin","hsin","log","ipar","qua","cub","squ","cbr","par","exp","iqsin","ihsin","dese","desi","losi","sinc","isinc","quat","quatr","qsin2","hsin2"] | Default = Default('tri'),
+    nb_samples: Int = Default(44100),duration: Duration = Default('0'),overlap: Boolean = Default('true'),curve1: Int| Literal["nofade","tri","qsin","esin","hsin","log","ipar","qua","cub","squ","cbr","par","exp","iqsin","ihsin","dese","desi","losi","sinc","isinc","quat","quatr","qsin2","hsin2"] | Default = Default('tri'),curve2: Int| Literal["nofade","tri","qsin","esin","hsin","log","ipar","qua","cub","squ","cbr","par","exp","iqsin","ihsin","dese","desi","losi","sinc","isinc","quat","quatr","qsin2","hsin2"] | Default = Default('tri'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -600,7 +600,7 @@ References:
 
 
     *,
-    split: String = Default('500'),order: Int| Literal["2nd","4th","6th","8th","10th","12th","14th","16th","18th","20th"] | Default = Default('4th'),level: Float = Default('1'),gain: String = Default('1.f'),precision: Int| Literal["auto","float","double"] | Default = Default('auto'),
+    split: String = Default('500'),order: Int| Literal["2nd","4th","6th","8th","10th","12th","14th","16th","18th","20th"] | Default = Default('4th'),level: Float = Default(1),gain: String = Default('1.f'),precision: Int| Literal["auto","float","double"] | Default = Default('auto'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -677,7 +677,7 @@ References:
 
 
     *,
-    level_in: Double = Default('1'),level_out: Double = Default('1'),bits: Double = Default('8'),mix: Double = Default('0.5'),mode: Int| Literal["lin","log"] | Default = Default('lin'),dc: Double = Default('1'),aa: Double = Default('0.5'),samples: Double = Default('1'),lfo: Boolean = Default('false'),lforange: Double = Default('20'),lforate: Double = Default('0.3'),
+    level_in: Double = Default(1),level_out: Double = Default(1),bits: Double = Default(8),mix: Double = Default(0.5),mode: Int| Literal["lin","log"] | Default = Default('lin'),dc: Double = Default(1),aa: Double = Default(0.5),samples: Double = Default(1),lfo: Boolean = Default('false'),lforange: Double = Default(20),lforate: Double = Default(0.3),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -793,7 +793,7 @@ References:
 
 
     *,
-    cue: Int64 = Default('0'),preroll: Duration = Default('0'),buffer: Duration = Default('0'),
+    cue: Int64 = Default(0),preroll: Duration = Default('0'),buffer: Duration = Default('0'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -860,7 +860,7 @@ References:
 
 
     *,
-    window: Double = Default('55'),overlap: Double = Default('75'),arorder: Double = Default('2'),threshold: Double = Default('2'),burst: Double = Default('2'),method: Int| Literal["add","a","save","s"] | Default = Default('add'),
+    window: Double = Default(55),overlap: Double = Default(75),arorder: Double = Default(2),threshold: Double = Default(2),burst: Double = Default(2),method: Int| Literal["add","a","save","s"] | Default = Default('add'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -945,7 +945,7 @@ References:
 
 
     *,
-    window: Double = Default('55'),overlap: Double = Default('75'),arorder: Double = Default('8'),threshold: Double = Default('10'),hsize: Int = Default('1000'),method: Int| Literal["add","a","save","s"] | Default = Default('add'),
+    window: Double = Default(55),overlap: Double = Default(75),arorder: Double = Default(8),threshold: Double = Default(10),hsize: Int = Default(1000),method: Int| Literal["add","a","save","s"] | Default = Default('add'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -1030,7 +1030,7 @@ References:
 
 
     *,
-    stages: Int = Default('6'),seed: Int64 = Default('-1'),
+    stages: Int = Default(6),seed: Int64 = Default(-1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -1176,7 +1176,7 @@ References:
 
 
     *,
-    level: Double = Default('-351'),type: Int| Literal["dc","ac","square","pulse"] | Default = Default('dc'),
+    level: Double = Default(-351),type: Int| Literal["dc","ac","square","pulse"] | Default = Default('dc'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -1316,7 +1316,7 @@ References:
 
 
     *,
-    m1: String = Default(''),fg1: String = Default('0xffff0000'),m2: String = Default(''),fg2: String = Default('0xff00ff00'),m3: String = Default(''),fg3: String = Default('0xffff00ff'),m4: String = Default(''),fg4: String = Default('0xffffff00'),bg: Color = Default('white'),min: Float = Default('-1'),max: Float = Default('1'),mode: Int| Literal["bar","dot","line"] | Default = Default('line'),slide: Int| Literal["frame","replace","scroll","rscroll","picture"] | Default = Default('frame'),size: Image_size = Default('900x256'),rate: Video_rate = Default('25'),
+    m1: String = Default(''),fg1: Expr = Default('0xffff0000'),m2: String = Default(''),fg2: Expr = Default('0xff00ff00'),m3: String = Default(''),fg3: Expr = Default('0xffff00ff'),m4: String = Default(''),fg4: Expr = Default('0xffffff00'),bg: Color = Default('white'),min: Float = Default(-1),max: Float = Default(1),mode: Int| Literal["bar","dot","line"] | Default = Default('line'),slide: Int| Literal["frame","replace","scroll","rscroll","picture"] | Default = Default('frame'),size: Image_size = Default('900x256'),rate: Video_rate = Default('25'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -1418,7 +1418,7 @@ References:
 
 
     *,
-    transfer: String = Default('p'),attack: Double = Default('50'),release: Double = Default('100'),channels: String = Default('all'),
+    transfer: Expr = Default('p'),attack: Double = Default(50),release: Double = Default(100),channels: String = Default('all'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -1496,7 +1496,7 @@ References:
 
 
     *,
-    threshold: Double = Default('0'),dfrequency: Double = Default('1000'),dqfactor: Double = Default('1'),tfrequency: Double = Default('1000'),tqfactor: Double = Default('1'),attack: Double = Default('20'),release: Double = Default('200'),ratio: Double = Default('1'),makeup: Double = Default('0'),range: Double = Default('50'),mode: Int| Literal["listen","cut","boost"] | Default = Default('cut'),dftype: Int| Literal["bandpass","lowpass","highpass","peak"] | Default = Default('bandpass'),tftype: Int| Literal["bell","lowshelf","highshelf"] | Default = Default('bell'),direction: Int| Literal["downward","upward"] | Default = Default('downward'),auto: Int| Literal["disabled","off","on"] | Default = Default('disabled'),precision: Int| Literal["auto","float","double"] | Default = Default('auto'),
+    threshold: Double = Default(0),dfrequency: Double = Default(1000),dqfactor: Double = Default(1),tfrequency: Double = Default(1000),tqfactor: Double = Default(1),attack: Double = Default(20),release: Double = Default(200),ratio: Double = Default(1),makeup: Double = Default(0),range: Double = Default(50),mode: Int| Literal["listen","cut","boost"] | Default = Default('cut'),dftype: Int| Literal["bandpass","lowpass","highpass","peak"] | Default = Default('bandpass'),tftype: Int| Literal["bell","lowshelf","highshelf"] | Default = Default('bell'),direction: Int| Literal["downward","upward"] | Default = Default('downward'),auto: Int| Literal["disabled","off","on"] | Default = Default('disabled'),precision: Int| Literal["auto","float","double"] | Default = Default('auto'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -1610,7 +1610,7 @@ References:
 
 
     *,
-    sensitivity: Double = Default('2'),basefreq: Double = Default('22050'),
+    sensitivity: Double = Default(2),basefreq: Double = Default(22050),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -1682,7 +1682,7 @@ References:
 
 
     *,
-    in_gain: Float = Default('0.6'),out_gain: Float = Default('0.3'),delays: String = Default('1000'),decays: String = Default('0.5'),
+    in_gain: Float = Default(0.6),out_gain: Float = Default(0.3),delays: String = Default('1000'),decays: String = Default('0.5'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -1759,7 +1759,7 @@ References:
 
 
     *,
-    level_in: Double = Default('1'),level_out: Double = Default('1'),mode: Int| Literal["reproduction","production"] | Default = Default('reproduction'),type: Int| Literal["col","emi","bsi","riaa","cd","50fm","75fm","50kf","75kf"] | Default = Default('cd'),
+    level_in: Double = Default(1),level_out: Double = Default(1),mode: Int| Literal["reproduction","production"] | Default = Default('reproduction'),type: Int| Literal["col","emi","bsi","riaa","cd","50fm","75fm","50kf","75kf"] | Default = Default('cd'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -1919,7 +1919,7 @@ References:
 
 
     *,
-    level_in: Double = Default('1'),level_out: Double = Default('1'),amount: Double = Default('1'),drive: Double = Default('8.5'),blend: Double = Default('0'),freq: Double = Default('7500'),ceil: Double = Default('9999'),listen: Boolean = Default('false'),
+    level_in: Double = Default(1),level_out: Double = Default(1),amount: Double = Default(1),drive: Double = Default(8.5),blend: Double = Default(0),freq: Double = Default(7500),ceil: Double = Default(9999),listen: Boolean = Default('false'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -2014,7 +2014,7 @@ References:
 
 
     *,
-    type: Int| Literal["in","out"] | Default = Default('in'),start_sample: Int64 = Default('0'),nb_samples: Int64 = Default('44100'),start_time: Duration = Default('0'),duration: Duration = Default('0'),curve: Int| Literal["nofade","tri","qsin","esin","hsin","log","ipar","qua","cub","squ","cbr","par","exp","iqsin","ihsin","dese","desi","losi","sinc","isinc","quat","quatr","qsin2","hsin2"] | Default = Default('tri'),silence: Double = Default('0'),unity: Double = Default('1'),
+    type: Int| Literal["in","out"] | Default = Default('in'),start_sample: Int64 = Default(0),nb_samples: Int64 = Default(44100),start_time: Duration = Default('0'),duration: Duration = Default('0'),curve: Int| Literal["nofade","tri","qsin","esin","hsin","log","ipar","qua","cub","squ","cbr","par","exp","iqsin","ihsin","dese","desi","losi","sinc","isinc","quat","quatr","qsin2","hsin2"] | Default = Default('tri'),silence: Double = Default(0),unity: Double = Default(1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -2106,7 +2106,7 @@ References:
 
 
     *,
-    noise_reduction: Float = Default('12'),noise_floor: Float = Default('-50'),noise_type: Int| Literal["white","w","vinyl","v","shellac","s","custom","c"] | Default = Default('white'),band_noise: String = Default(None),residual_floor: Float = Default('-38'),track_noise: Boolean = Default('false'),track_residual: Boolean = Default('false'),output_mode: Int| Literal["input","i","output","o","noise","n"] | Default = Default('output'),adaptivity: Float = Default('0.5'),floor_offset: Float = Default('1'),noise_link: Int| Literal["none","min","max","average"] | Default = Default('min'),band_multiplier: Float = Default('1.25'),sample_noise: Int| Literal["none","start","begin","stop","end"] | Default = Default('none'),gain_smooth: Int = Default('0'),
+    noise_reduction: Float = Default(12),noise_floor: Float = Default(-50),noise_type: Int| Literal["white","w","vinyl","v","shellac","s","custom","c"] | Default = Default('white'),band_noise: String = Default(None),residual_floor: Float = Default(-38),track_noise: Boolean = Default('false'),track_residual: Boolean = Default('false'),output_mode: Int| Literal["input","i","output","o","noise","n"] | Default = Default('output'),adaptivity: Float = Default(0.5),floor_offset: Float = Default(1),noise_link: Int| Literal["none","min","max","average"] | Default = Default('min'),band_multiplier: Float = Default(1.25),sample_noise: Int| Literal["none","start","begin","stop","end"] | Default = Default('none'),gain_smooth: Int = Default(0),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -2214,7 +2214,7 @@ References:
 
 
     *,
-    real: String = Default('re'),imag: String = Default('im'),win_size: Int = Default('4096'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),overlap: Float = Default('0.75'),
+    real: String = Default('re'),imag: String = Default('im'),win_size: Int = Default(4096),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),overlap: Float = Default(0.75),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -2424,7 +2424,7 @@ References:
 
 
     *,
-    shift: Double = Default('0'),level: Double = Default('1'),order: Int = Default('8'),
+    shift: Double = Default(0),level: Double = Default(1),order: Int = Default(8),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -2499,7 +2499,7 @@ References:
 
 
     *,
-    sigma: Double = Default('0'),levels: Int = Default('10'),wavet: Int| Literal["sym2","sym4","rbior68","deb10","sym10","coif5","bl3"] | Default = Default('sym10'),percent: Double = Default('85'),profile: Boolean = Default('false'),adaptive: Boolean = Default('false'),samples: Int = Default('8192'),softness: Double = Default('1'),
+    sigma: Double = Default(0),levels: Int = Default(10),wavet: Int| Literal["sym2","sym4","rbior68","deb10","sym10","coif5","bl3"] | Default = Default('sym10'),percent: Double = Default(85),profile: Boolean = Default('false'),adaptive: Boolean = Default('false'),samples: Int = Default(8192),softness: Double = Default(1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -2589,7 +2589,7 @@ References:
 
 
     *,
-    level_in: Double = Default('1'),mode: Int| Literal["downward","upward"] | Default = Default('downward'),range: Double = Default('0.06125'),threshold: Double = Default('0.125'),ratio: Double = Default('2'),attack: Double = Default('20'),release: Double = Default('250'),makeup: Double = Default('1'),knee: Double = Default('2.82843'),detection: Int| Literal["peak","rms"] | Default = Default('rms'),link: Int| Literal["average","maximum"] | Default = Default('average'),level_sc: Double = Default('1'),
+    level_in: Double = Default(1),mode: Int| Literal["downward","upward"] | Default = Default('downward'),range: Double = Default(0.06125),threshold: Double = Default(0.125),ratio: Double = Default(2),attack: Double = Default(20),release: Double = Default(250),makeup: Double = Default(1),knee: Double = Default(2.82843),detection: Int| Literal["peak","rms"] | Default = Default('rms'),link: Int| Literal["average","maximum"] | Default = Default('average'),level_sc: Double = Default(1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -2701,7 +2701,7 @@ References:
 
 
     *,
-    size: Image_size = Default('hd720'),opacity: Float = Default('0.9'),mode: Flags| Literal["full","compact","nozero","noeof","nodisabled"] | Default = Default('0'),flags: Flags| Literal["none","all","queue","frame_count_in","frame_count_out","frame_count_delta","pts","pts_delta","time","time_delta","timebase","format","size","rate","eof","sample_count_in","sample_count_out","sample_count_delta","disabled"] | Default = Default('all+queue'),rate: Video_rate = Default('25'),
+    size: Image_size = Default('hd720'),opacity: Float = Default(0.9),mode: Flags| Literal["full","compact","nozero","noeof","nodisabled"] | Default = Default('0'),flags: Flags| Literal["none","all","queue","frame_count_in","frame_count_out","frame_count_delta","pts","pts_delta","time","time_delta","timebase","format","size","rate","eof","sample_count_in","sample_count_out","sample_count_delta","disabled"] | Default = Default('all+queue'),rate: Video_rate = Default('25'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -2771,7 +2771,7 @@ References:
 
 
     *,
-    dmode: Int| Literal["single","separate"] | Default = Default('single'),rate: Video_rate = Default('25'),size: Image_size = Default('hd720'),scale: Int| Literal["log","sqrt","cbrt","lin","rlog"] | Default = Default('log'),ascale: Int| Literal["log","lin"] | Default = Default('log'),acount: Int = Default('1'),rheight: Float = Default('0.1'),slide: Int| Literal["replace","scroll"] | Default = Default('replace'),hmode: Int| Literal["abs","sign"] | Default = Default('abs'),
+    dmode: Int| Literal["single","separate"] | Default = Default('single'),rate: Video_rate = Default('25'),size: Image_size = Default('hd720'),scale: Int| Literal["log","sqrt","cbrt","lin","rlog"] | Default = Default('log'),ascale: Int| Literal["log","lin"] | Default = Default('log'),acount: Int = Default(1),rheight: Float = Default(0.1),slide: Int| Literal["replace","scroll"] | Default = Default('replace'),hmode: Int| Literal["abs","sign"] | Default = Default('abs'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -2855,7 +2855,7 @@ References:
 
 
     *,
-    zeros: String = Default('1+0i 1-0i'),poles: String = Default('1+0i 1-0i'),gains: String = Default('1|1'),dry: Double = Default('1'),wet: Double = Default('1'),format: Int| Literal["ll","sf","tf","zp","pr","pd","sp"] | Default = Default('zp'),process: Int| Literal["d","s","p"] | Default = Default('s'),precision: Int| Literal["dbl","flt","i32","i16"] | Default = Default('dbl'),e: Int| Literal["dbl","flt","i32","i16"] | Default = Default('dbl'),normalize: Boolean = Default('true'),mix: Double = Default('1'),response: Boolean = Default('false'),channel: Int = Default('0'),size: Image_size = Default('hd720'),rate: Video_rate = Default('25'),
+    zeros: String = Default('1+0i 1-0i'),poles: String = Default('1+0i 1-0i'),gains: String = Default('1|1'),dry: Double = Default(1),wet: Double = Default(1),format: Int| Literal["ll","sf","tf","zp","pr","pd","sp"] | Default = Default('zp'),process: Int| Literal["d","s","p"] | Default = Default('s'),precision: Int| Literal["dbl","flt","i32","i16"] | Default = Default('dbl'),e: Int| Literal["dbl","flt","i32","i16"] | Default = Default('dbl'),normalize: Boolean = Default('true'),mix: Double = Default(1),response: Boolean = Default('false'),channel: Int = Default(0),size: Image_size = Default('hd720'),rate: Video_rate = Default('25'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -3097,7 +3097,7 @@ References:
 
 
     *,
-    level_in: Double = Default('1'),level_out: Double = Default('1'),limit: Double = Default('1'),attack: Double = Default('5'),release: Double = Default('50'),asc: Boolean = Default('false'),asc_level: Double = Default('0.5'),level: Boolean = Default('true'),latency: Boolean = Default('false'),
+    level_in: Double = Default(1),level_out: Double = Default(1),limit: Double = Default(1),attack: Double = Default(5),release: Double = Default(50),asc: Boolean = Default('false'),asc_level: Double = Default(0.5),level: Boolean = Default('true'),latency: Boolean = Default('false'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -3193,7 +3193,7 @@ References:
 
 
     *,
-    frequency: Double = Default('3000'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.707'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),order: Int = Default('2'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),
+    frequency: Double = Default(3000),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default(0.707),mix: Double = Default(1),channels: String = Default('all'),normalize: Boolean = Default('false'),order: Int = Default(2),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -3293,7 +3293,7 @@ References:
 
 
     *,
-    loop: Int = Default('0'),size: Int64 = Default('0'),start: Int64 = Default('0'),time: Duration = Default('INT64_MAX'),
+    loop: Int = Default(0),size: Int64 = Default(0),start: Int64 = Default(0),time: Duration = Default('INT64_MAX'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -3368,7 +3368,7 @@ References:
 
 
     *,
-    mode: Int| Literal["select","add","modify","delete","print"] | Default = Default('select'),key: String = Default(None),value: String = Default(None),function: Int| Literal["same_str","starts_with","less","equal","greater","expr","ends_with"] | Default = Default('same_str'),expr: String = Default(None),file: String = Default(None),direct: Boolean = Default('false'),
+    mode: Int| Literal["select","add","modify","delete","print"] | Default = Default('select'),key: String = Default(None),value: String = Default(None),function: Int| Literal["same_str","starts_with","less","equal","greater","expr","ends_with"] | Default = Default('same_str'),expr: Expr = Default(None),file: String = Default(None),direct: Boolean = Default('false'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -3537,7 +3537,7 @@ References:
 
 
     *,
-    params: String = Default(''),curves: Boolean = Default('false'),size: Image_size = Default('hd720'),mgain: Double = Default('60'),fscale: Int| Literal["lin","log"] | Default = Default('log'),colors: String = Default('red|green|blue|yellow|orange|lime|pink|magenta|brown'),
+    params: String = Default(''),curves: Boolean = Default('false'),size: Image_size = Default('hd720'),mgain: Double = Default(60),fscale: Int| Literal["lin","log"] | Default = Default('log'),colors: String = Default('red|green|blue|yellow|orange|lime|pink|magenta|brown'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -3623,7 +3623,7 @@ References:
 
 
     *,
-    strength: Float = Default('1e-05'),patch: Duration = Default('0.002'),research: Duration = Default('0.006'),output: Int| Literal["i","o","n"] | Default = Default('o'),smooth: Float = Default('11'),
+    strength: Float = Default(1e-05),patch: Duration = Default('0.002'),research: Duration = Default('0.006'),output: Int| Literal["i","o","n"] | Default = Default('o'),smooth: Float = Default(11),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -3716,7 +3716,7 @@ References:
 
 
     *,
-    order: Int = Default('256'),mu: Float = Default('0.75'),eps: Float = Default('1'),leakage: Float = Default('0'),out_mode: Int| Literal["i","d","o","n","e"] | Default = Default('o'),
+    order: Int = Default(256),mu: Float = Default(0.75),eps: Float = Default(1),leakage: Float = Default(0),out_mode: Int| Literal["i","d","o","n","e"] | Default = Default('o'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -3817,7 +3817,7 @@ References:
 
 
     *,
-    order: Int = Default('256'),mu: Float = Default('0.75'),eps: Float = Default('1'),leakage: Float = Default('0'),out_mode: Int| Literal["i","d","o","n","e"] | Default = Default('o'),
+    order: Int = Default(256),mu: Float = Default(0.75),eps: Float = Default(1),leakage: Float = Default(0),out_mode: Int| Literal["i","d","o","n","e"] | Default = Default('o'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -3971,7 +3971,7 @@ References:
 
 
     *,
-    packet_size: Int = Default('4096'),pad_len: Int64 = Default('-1'),whole_len: Int64 = Default('-1'),pad_dur: Duration = Default('-0.000001'),whole_dur: Duration = Default('-0.000001'),
+    packet_size: Int = Default(4096),pad_len: Int64 = Default(-1),whole_len: Int64 = Default(-1),pad_dur: Duration = Default('-0.000001'),whole_dur: Duration = Default('-0.000001'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -4055,7 +4055,7 @@ References:
 
 
     *,
-    mode: Int| Literal["none","ro","rw","toggle","random"] | Default = Default('none'),seed: Int64 = Default('-1'),
+    mode: Int| Literal["none","ro","rw","toggle","random"] | Default = Default('none'),seed: Int64 = Default(-1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -4130,7 +4130,7 @@ References:
 
 
     *,
-    rate: Video_rate = Default('25'),size: Image_size = Default('800x400'),rc: Int = Default('2'),gc: Int = Default('7'),bc: Int = Default('1'),mpc: String = Default('none'),video: Boolean = Default('true'),phasing: Boolean = Default('false'),tolerance: Float = Default('0'),angle: Float = Default('170'),duration: Duration = Default('2'),
+    rate: Video_rate = Default('25'),size: Image_size = Default('800x400'),rc: Int = Default(2),gc: Int = Default(7),bc: Int = Default(1),mpc: String = Default('none'),video: Boolean = Default('true'),phasing: Boolean = Default('false'),tolerance: Float = Default(0),angle: Float = Default(170),duration: Duration = Default('2'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -4228,7 +4228,7 @@ References:
 
 
     *,
-    in_gain: Double = Default('0.4'),out_gain: Double = Default('0.74'),delay: Double = Default('3'),decay: Double = Default('0.4'),speed: Double = Default('0.5'),type: Int| Literal["triangular","t","sinusoidal","s"] | Default = Default('triangular'),
+    in_gain: Double = Default(0.4),out_gain: Double = Default(0.74),delay: Double = Default(3),decay: Double = Default(0.4),speed: Double = Default(0.5),type: Int| Literal["triangular","t","sinusoidal","s"] | Default = Default('triangular'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -4306,7 +4306,7 @@ References:
 
 
     *,
-    shift: Double = Default('0'),level: Double = Default('1'),order: Int = Default('8'),
+    shift: Double = Default(0),level: Double = Default(1),order: Int = Default(8),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -4465,7 +4465,7 @@ References:
 
 
     *,
-    level_in: Double = Default('1'),level_out: Double = Default('1'),clip: Double = Default('1'),diff: Boolean = Default('false'),adaptive: Double = Default('0.5'),iterations: Int = Default('10'),level: Boolean = Default('false'),
+    level_in: Double = Default(1),level_out: Double = Default(1),clip: Double = Default(1),diff: Boolean = Default('false'),adaptive: Double = Default(0.5),iterations: Int = Default(10),level: Boolean = Default('false'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -4552,7 +4552,7 @@ References:
 
 
     *,
-    level_in: Double = Default('1'),level_out: Double = Default('1'),mode: Int| Literal["sine","triangle","square","sawup","sawdown"] | Default = Default('sine'),amount: Double = Default('1'),offset_l: Double = Default('0'),offset_r: Double = Default('0.5'),width: Double = Default('1'),timing: Int| Literal["bpm","ms","hz"] | Default = Default('hz'),bpm: Double = Default('120'),ms: Int = Default('500'),hz: Double = Default('2'),
+    level_in: Double = Default(1),level_out: Double = Default(1),mode: Int| Literal["sine","triangle","square","sawup","sawdown"] | Default = Default('sine'),amount: Double = Default(1),offset_l: Double = Default(0),offset_r: Double = Default(0.5),width: Double = Default(1),timing: Int| Literal["bpm","ms","hz"] | Default = Default('hz'),bpm: Double = Default(120),ms: Int = Default(500),hz: Double = Default(2),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -4654,7 +4654,7 @@ References:
 
 
     *,
-    limit: Duration = Default('2'),speed: Double = Default('1'),
+    limit: Duration = Default('2'),speed: Double = Default(1),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -4721,7 +4721,7 @@ References:
 
 
     *,
-    sample_rate: Int = Default('0'),
+    sample_rate: Int = Default(0),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -4859,7 +4859,7 @@ References:
 
 
     *,
-    order: Int = Default('16'),_lambda: Float = Default('1'),delta: Float = Default('2'),out_mode: Int| Literal["i","d","o","n","e"] | Default = Default('o'),
+    order: Int = Default(16),_lambda: Float = Default(1),delta: Float = Default(2),out_mode: Int| Literal["i","d","o","n","e"] | Default = Default('o'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -4949,7 +4949,7 @@ References:
 
 
     *,
-    model: String = Default(None),mix: Float = Default('1'),
+    model: String = Default(None),mix: Float = Default(1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -5174,7 +5174,7 @@ References:
 
 
     *,
-    expr: String = Default('1'),outputs: Int = Default('1'),
+    expr: Expr = Default(1),outputs: Int = Default(1),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -5313,7 +5313,7 @@ References:
 
 
     *,
-    nb_out_samples: Int = Default('1024'),pad: Boolean = Default('true'),
+    nb_out_samples: Int = Default(1024),pad: Boolean = Default('true'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -5389,7 +5389,7 @@ References:
 
 
     *,
-    expr: String = Default('PTS'),
+    expr: Expr = Default('PTS'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -5451,7 +5451,7 @@ References:
 
 
     *,
-    sample_rate: Int = Default('44100'),
+    sample_rate: Int = Default(44100),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -5512,7 +5512,7 @@ References:
 
 
     *,
-    expr: String = Default('intb'),
+    expr: Expr = Default('intb'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -5634,7 +5634,7 @@ References:
 
 
     *,
-    mode: Int| Literal["select","delete"] | Default = Default('select'),type: Int| Literal["PANSCAN","A53_CC","STEREO3D","MATRIXENCODING","DOWNMIX_INFO","REPLAYGAIN","DISPLAYMATRIX","AFD","MOTION_VECTORS","SKIP_SAMPLES","AUDIO_SERVICE_TYPE","MASTERING_DISPLAY_METADATA","GOP_TIMECODE","SPHERICAL","CONTENT_LIGHT_LEVEL","ICC_PROFILE","S12M_TIMECOD","DYNAMIC_HDR_PLUS","REGIONS_OF_INTEREST","DETECTION_BOUNDING_BOXES","SEI_UNREGISTERED"] | Default = Default('-1'),
+    mode: Int| Literal["select","delete"] | Default = Default('select'),type: Int| Literal["PANSCAN","A53_CC","STEREO3D","MATRIXENCODING","DOWNMIX_INFO","REPLAYGAIN","DISPLAYMATRIX","AFD","MOTION_VECTORS","SKIP_SAMPLES","AUDIO_SERVICE_TYPE","MASTERING_DISPLAY_METADATA","GOP_TIMECODE","SPHERICAL","CONTENT_LIGHT_LEVEL","ICC_PROFILE","S12M_TIMECOD","DYNAMIC_HDR_PLUS","REGIONS_OF_INTEREST","DETECTION_BOUNDING_BOXES","SEI_UNREGISTERED"] | Default = Default(-1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -5790,7 +5790,7 @@ References:
 
 
     *,
-    type: Int| Literal["hard","tanh","atan","cubic","exp","alg","quintic","sin","erf"] | Default = Default('tanh'),threshold: Double = Default('1'),output: Double = Default('1'),param: Double = Default('1'),oversample: Int = Default('1'),
+    type: Int| Literal["hard","tanh","atan","cubic","exp","alg","quintic","sin","erf"] | Default = Default('tanh'),threshold: Double = Default(1),output: Double = Default(1),param: Double = Default(1),oversample: Int = Default(1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -5874,7 +5874,7 @@ References:
 
 
     *,
-    win_size: Int = Default('2048'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),overlap: Float = Default('0.5'),measure: Flags| Literal["none","all","mean","variance","centroid","spread","skewness","kurtosis","entropy","flatness","crest","flux","slope","decrease","rolloff"] | Default = Default('all+mean+variance+centroid+spread+skewness+kurtosis+entropy+flatness+crest+flux+slope+decrease+rolloff'),
+    win_size: Int = Default(2048),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),overlap: Float = Default(0.5),measure: Flags| Literal["none","all","mean","variance","centroid","spread","skewness","kurtosis","entropy","flatness","crest","flux","slope","decrease","rolloff"] | Default = Default('all+mean+variance+centroid+spread+skewness+kurtosis+entropy+flatness+crest+flux+slope+decrease+rolloff'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -5944,7 +5944,7 @@ References:
 
 
     *,
-    outputs: Int = Default('2'),
+    outputs: Int = Default(2),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -6011,7 +6011,7 @@ References:
 
 
     *,
-    length: Double = Default('0.05'),metadata: Boolean = Default('false'),reset: Int = Default('0'),measure_perchannel: Flags| Literal["none","all","Bit_depth","Crest_factor","DC_offset","Dynamic_range","Entropy","Flat_factor","Max_difference","Max_level","Mean_difference","Min_difference","Min_level","Noise_floor","Noise_floor_count","Number_of_Infs","Number_of_NaNs","Number_of_denormals","Number_of_samples","Peak_count","Peak_level","RMS_difference","RMS_level","RMS_peak","RMS_trough","Zero_crossings","Zero_crossings_rate","Abs_Peak_count"] | Default = Default('all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count'),measure_overall: Flags| Literal["none","all","Bit_depth","Crest_factor","DC_offset","Dynamic_range","Entropy","Flat_factor","Max_difference","Max_level","Mean_difference","Min_difference","Min_level","Noise_floor","Noise_floor_count","Number_of_Infs","Number_of_NaNs","Number_of_denormals","Number_of_samples","Peak_count","Peak_level","RMS_difference","RMS_level","RMS_peak","RMS_trough","Zero_crossings","Zero_crossings_rate","Abs_Peak_count"] | Default = Default('all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count'),
+    length: Double = Default(0.05),metadata: Boolean = Default('false'),reset: Int = Default(0),measure_perchannel: Flags| Literal["none","all","Bit_depth","Crest_factor","DC_offset","Dynamic_range","Entropy","Flat_factor","Max_difference","Max_level","Mean_difference","Min_difference","Min_level","Noise_floor","Noise_floor_count","Number_of_Infs","Number_of_NaNs","Number_of_denormals","Number_of_samples","Peak_count","Peak_level","RMS_difference","RMS_level","RMS_peak","RMS_trough","Zero_crossings","Zero_crossings_rate","Abs_Peak_count"] | Default = Default('all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count'),measure_overall: Flags| Literal["none","all","Bit_depth","Crest_factor","DC_offset","Dynamic_range","Entropy","Flat_factor","Max_difference","Max_level","Mean_difference","Min_difference","Min_level","Noise_floor","Noise_floor_count","Number_of_Infs","Number_of_NaNs","Number_of_denormals","Number_of_samples","Peak_count","Peak_level","RMS_difference","RMS_level","RMS_peak","RMS_trough","Zero_crossings","Zero_crossings_rate","Abs_Peak_count"] | Default = Default('all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -6087,7 +6087,7 @@ References:
 
 
     *,
-    dry: Double = Default('1'),wet: Double = Default('1'),boost: Double = Default('2'),decay: Double = Default('0'),feedback: Double = Default('0.9'),cutoff: Double = Default('100'),slope: Double = Default('0.5'),delay: Double = Default('20'),channels: String = Default('all'),
+    dry: Double = Default(1),wet: Double = Default(1),boost: Double = Default(2),decay: Double = Default(0),feedback: Double = Default(0.9),cutoff: Double = Default(100),slope: Double = Default(0.5),delay: Double = Default(20),channels: String = Default('all'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -6180,7 +6180,7 @@ References:
 
 
     *,
-    cutoff: Double = Default('20'),order: Int = Default('10'),level: Double = Default('1'),
+    cutoff: Double = Default(20),order: Int = Default(10),level: Double = Default(1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -6259,7 +6259,7 @@ References:
 
 
     *,
-    cutoff: Double = Default('20000'),order: Int = Default('10'),level: Double = Default('1'),
+    cutoff: Double = Default(20000),order: Int = Default(10),level: Double = Default(1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -6334,7 +6334,7 @@ References:
 
 
     *,
-    centerf: Double = Default('1000'),order: Int = Default('4'),qfactor: Double = Default('1'),level: Double = Default('1'),
+    centerf: Double = Default(1000),order: Int = Default(4),qfactor: Double = Default(1),level: Double = Default(1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -6412,7 +6412,7 @@ References:
 
 
     *,
-    centerf: Double = Default('1000'),order: Int = Default('4'),qfactor: Double = Default('1'),level: Double = Default('1'),
+    centerf: Double = Default(1000),order: Int = Default(4),qfactor: Double = Default(1),level: Double = Default(1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -6492,7 +6492,7 @@ References:
 
 
     *,
-    tempo: Double = Default('1'),
+    tempo: Double = Default(1),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -6559,7 +6559,7 @@ References:
 
 
     *,
-    freq: Double = Default('10000'),slope: Double = Default('0'),width: Double = Default('1000'),order: Int = Default('5'),level: Double = Default('1'),
+    freq: Double = Default(10000),slope: Double = Default(0),width: Double = Default(1000),order: Int = Default(5),level: Double = Default(1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -6642,7 +6642,7 @@ References:
 
 
     *,
-    start: Duration = Default('INT64_MAX'),end: Duration = Default('INT64_MAX'),start_pts: Int64 = Default('I64_MIN'),end_pts: Int64 = Default('I64_MIN'),duration: Duration = Default('0'),start_sample: Int64 = Default('-1'),end_sample: Int64 = Default('I64_MAX'),
+    start: Duration = Default('INT64_MAX'),end: Duration = Default('INT64_MAX'),start_pts: Int64 = Default('I64_MIN'),end_pts: Int64 = Default('I64_MIN'),duration: Duration = Default('0'),start_sample: Int64 = Default(-1),end_sample: Int64 = Default('I64_MAX'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -6720,7 +6720,7 @@ References:
 
 
     *,
-    mode: Int| Literal["lissajous","lissajous_xy","polar"] | Default = Default('lissajous'),rate: Video_rate = Default('25'),size: Image_size = Default('400x400'),rc: Int = Default('40'),gc: Int = Default('160'),bc: Int = Default('80'),ac: Int = Default('255'),rf: Int = Default('15'),gf: Int = Default('10'),bf: Int = Default('5'),af: Int = Default('5'),zoom: Double = Default('1'),draw: Int| Literal["dot","line","aaline"] | Default = Default('dot'),scale: Int| Literal["lin","sqrt","cbrt","log"] | Default = Default('lin'),swap: Boolean = Default('true'),mirror: Int| Literal["none","x","y","xy"] | Default = Default('none'),
+    mode: Int| Literal["lissajous","lissajous_xy","polar"] | Default = Default('lissajous'),rate: Video_rate = Default('25'),size: Image_size = Default('400x400'),rc: Int = Default(40),gc: Int = Default(160),bc: Int = Default(80),ac: Int = Default(255),rf: Int = Default(15),gf: Int = Default(10),bf: Int = Default(5),af: Int = Default(5),zoom: Double = Default(1),draw: Int| Literal["dot","line","aaline"] | Default = Default('dot'),scale: Int| Literal["lin","sqrt","cbrt","log"] | Default = Default('lin'),swap: Boolean = Default('true'),mirror: Int| Literal["none","x","y","xy"] | Default = Default('none'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -6845,7 +6845,7 @@ References:
 
 
     *,
-    size: Int = Default('256'),algo: Int| Literal["slow","fast","best"] | Default = Default('best'),
+    size: Int = Default(256),algo: Int| Literal["slow","fast","best"] | Default = Default('best'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -7026,7 +7026,7 @@ References:
 
 
     *,
-    frequency: Double = Default('3000'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.5'),csg: Boolean = Default('false'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
+    frequency: Double = Default(3000),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default(0.5),csg: Boolean = Default('false'),mix: Double = Default(1),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default(0),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -7126,7 +7126,7 @@ References:
 
 
     *,
-    frequency: Double = Default('3000'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.5'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
+    frequency: Double = Default(3000),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default(0.5),mix: Double = Default(1),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default(0),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -7221,7 +7221,7 @@ References:
 
 
     *,
-    frequency: Double = Default('100'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.5'),gain: Double = Default('0'),poles: Int = Default('2'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
+    frequency: Double = Default(100),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default(0.5),gain: Double = Default(0),poles: Int = Default(2),mix: Double = Default(1),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default(0),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -7328,7 +7328,7 @@ References:
 
 
     *,
-    a0: Double = Default('1'),a1: Double = Default('0'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
+    a0: Double = Default(1),a1: Double = Default(0),mix: Double = Default(1),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default(0),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -7576,7 +7576,7 @@ References:
 
 
     *,
-    in_gain: Float = Default('0.4'),out_gain: Float = Default('0.4'),delays: String = Default(None),decays: String = Default(None),speeds: String = Default(None),depths: String = Default(None),
+    in_gain: Float = Default(0.4),out_gain: Float = Default(0.4),delays: String = Default(None),decays: String = Default(None),speeds: String = Default(None),depths: String = Default(None),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -7702,7 +7702,7 @@ References:
 
 
     *,
-    attacks: String = Default('0'),decays: String = Default('0.8'),points: String = Default('-70/-70|-60/-20|1/0'),soft_knee: Double = Default('0.01'),gain: Double = Default('0'),volume: Double = Default('0'),delay: Double = Default('0'),
+    attacks: String = Default('0'),decays: String = Default('0.8'),points: String = Default('-70/-70|-60/-20|1/0'),soft_knee: Double = Default(0.01),gain: Double = Default(0),volume: Double = Default(0),delay: Double = Default(0),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -7780,7 +7780,7 @@ References:
 
 
     *,
-    mm: Int = Default('0'),cm: Int = Default('0'),m: Int = Default('0'),dry: Double = Default('0'),wet: Double = Default('1'),temp: Int = Default('20'),
+    mm: Int = Default(0),cm: Int = Default(0),m: Int = Default(0),dry: Double = Default(0),wet: Double = Default(1),temp: Int = Default(20),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -7896,7 +7896,7 @@ References:
 
 
     *,
-    strength: Double = Default('0.2'),range: Double = Default('0.5'),slope: Double = Default('0.5'),level_in: Double = Default('0.9'),level_out: Double = Default('1'),block_size: Int = Default('0'),
+    strength: Double = Default(0.2),range: Double = Default(0.5),slope: Double = Default(0.5),level_in: Double = Default(0.9),level_out: Double = Default(1),block_size: Int = Default(0),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -7986,7 +7986,7 @@ References:
 
 
     *,
-    i: Float = Default('2'),c: Boolean = Default('true'),
+    i: Float = Default(2),c: Boolean = Default('true'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -8068,7 +8068,7 @@ References:
 
 
     *,
-    shift: Double = Default('0'),limitergain: Double = Default('0'),
+    shift: Double = Default(0),limitergain: Double = Default(0),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -8155,7 +8155,7 @@ References:
 
 
     *,
-    i: Double = Default('0'),m: Double = Default('0.5'),f: Double = Default('0.5'),s: Int| Literal["i","o","e"] | Default = Default('o'),
+    i: Double = Default(0),m: Double = Default(0.5),f: Double = Default(0.5),s: Int| Literal["i","o","e"] | Default = Default('o'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -8251,7 +8251,7 @@ References:
 
 
     *,
-    original: Double = Default('1'),enhance: Double = Default('1'),voice: Double = Default('2'),
+    original: Double = Default(1),enhance: Double = Default(1),voice: Double = Default(2),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -8351,7 +8351,7 @@ References:
 
 
     *,
-    length: Double = Default('3'),
+    length: Double = Default(3),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -8415,7 +8415,7 @@ References:
 
 
     *,
-    framelen: Int = Default('500'),gausssize: Int = Default('31'),peak: Double = Default('0.95'),maxgain: Double = Default('10'),targetrms: Double = Default('0'),coupling: Boolean = Default('true'),correctdc: Boolean = Default('false'),altboundary: Boolean = Default('false'),compress: Double = Default('0'),threshold: Double = Default('0'),channels: String = Default('all'),overlap: Double = Default('0'),curve: String = Default(None),
+    framelen: Int = Default(500),gausssize: Int = Default(31),peak: Double = Default(0.95),maxgain: Double = Default(10),targetrms: Double = Default(0),coupling: Boolean = Default('true'),correctdc: Boolean = Default('false'),altboundary: Boolean = Default('false'),compress: Double = Default(0),threshold: Double = Default(0),channels: String = Default('all'),overlap: Double = Default(0),curve: Expr = Default(None),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -8592,7 +8592,7 @@ References:
 
 
     *,
-    video: Boolean = Default('false'),size: Image_size = Default('640x480'),meter: Int = Default('9'),framelog: Int| Literal["quiet","info","verbose"] | Default = Default('-1'),metadata: Boolean = Default('false'),peak: Flags| Literal["none","sample","true"] | Default = Default('0'),dualmono: Boolean = Default('false'),panlaw: Double = Default('-3.0103'),target: Int = Default('-23'),gauge: Int| Literal["momentary","m","shortterm","s"] | Default = Default('momentary'),scale: Int| Literal["absolute","LUFS","relative","LU"] | Default = Default('absolute'),integrated: Double = Default('0'),range: Double = Default('0'),lra_low: Double = Default('0'),lra_high: Double = Default('0'),sample_peak: Double = Default('0'),true_peak: Double = Default('0'),
+    video: Boolean = Default('false'),size: Image_size = Default('640x480'),meter: Int = Default(9),framelog: Int| Literal["quiet","info","verbose"] | Default = Default(-1),metadata: Boolean = Default('false'),peak: Flags| Literal["none","sample","true"] | Default = Default('0'),dualmono: Boolean = Default('false'),panlaw: Double = Default(-3.0103),target: Int = Default(-23),gauge: Int| Literal["momentary","m","shortterm","s"] | Default = Default('momentary'),scale: Int| Literal["absolute","LUFS","relative","LU"] | Default = Default('absolute'),integrated: Double = Default(0),range: Double = Default(0),lra_low: Double = Default(0),lra_high: Double = Default(0),sample_peak: Double = Default(0),true_peak: Double = Default(0),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -8734,7 +8734,7 @@ References:
 
 
     *,
-    frequency: Double = Default('0'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('1'),gain: Double = Default('0'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
+    frequency: Double = Default(0),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default(1),gain: Double = Default(0),mix: Double = Default(1),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default(0),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -8844,7 +8844,7 @@ References:
 
 
     *,
-    m: Float = Default('2.5'),c: Boolean = Default('true'),
+    m: Float = Default(2.5),c: Boolean = Default('true'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -8939,7 +8939,7 @@ References:
 
 
     *,
-    gain: String = Default('gain_interpolate(f)'),gain_entry: String = Default(None),delay: Double = Default('0.01'),accuracy: Double = Default('5'),wfunc: Int| Literal["rectangular","hann","hamming","blackman","nuttall3","mnuttall3","nuttall","bnuttall","bharris","tukey"] | Default = Default('hann'),fixed: Boolean = Default('false'),multi: Boolean = Default('false'),zero_phase: Boolean = Default('false'),scale: Int| Literal["linlin","linlog","loglin","loglog"] | Default = Default('linlog'),dumpfile: String = Default(None),dumpscale: Int| Literal["linlin","linlog","loglin","loglog"] | Default = Default('linlog'),fft2: Boolean = Default('false'),min_phase: Boolean = Default('false'),
+    gain: String = Default('gain_interpolate(f)'),gain_entry: String = Default(None),delay: Double = Default(0.01),accuracy: Double = Default(5),wfunc: Int| Literal["rectangular","hann","hamming","blackman","nuttall3","mnuttall3","nuttall","bnuttall","bharris","tukey"] | Default = Default('hann'),fixed: Boolean = Default('false'),multi: Boolean = Default('false'),zero_phase: Boolean = Default('false'),scale: Int| Literal["linlin","linlog","loglin","loglog"] | Default = Default('linlog'),dumpfile: String = Default(None),dumpscale: Int| Literal["linlin","linlog","loglin","loglog"] | Default = Default('linlog'),fft2: Boolean = Default('false'),min_phase: Boolean = Default('false'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -9035,7 +9035,7 @@ References:
 
 
     *,
-    delay: Double = Default('0'),depth: Double = Default('2'),regen: Double = Default('0'),width: Double = Default('71'),speed: Double = Default('0.5'),shape: Int| Literal["triangular","t","sinusoidal","s"] | Default = Default('sinusoidal'),phase: Double = Default('25'),interp: Int| Literal["linear","quadratic"] | Default = Default('linear'),
+    delay: Double = Default(0),depth: Double = Default(2),regen: Double = Default(0),width: Double = Default(71),speed: Double = Default(0.5),shape: Int| Literal["triangular","t","sinusoidal","s"] | Default = Default('sinusoidal'),phase: Double = Default(25),interp: Int| Literal["linear","quadratic"] | Default = Default('linear'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -9150,7 +9150,7 @@ References:
 
 
     *,
-    level_in: Double = Default('1'),level_out: Double = Default('1'),side_gain: Double = Default('1'),middle_source: Int| Literal["left","right","mid","side"] | Default = Default('mid'),middle_phase: Boolean = Default('false'),left_delay: Double = Default('2.05'),left_balance: Double = Default('-1'),left_gain: Double = Default('1'),left_phase: Boolean = Default('false'),right_delay: Double = Default('2.12'),right_balance: Double = Default('1'),right_gain: Double = Default('1'),right_phase: Boolean = Default('true'),
+    level_in: Double = Default(1),level_out: Double = Default(1),side_gain: Double = Default(1),middle_source: Int| Literal["left","right","mid","side"] | Default = Default('mid'),middle_phase: Boolean = Default('false'),left_delay: Double = Default(2.05),left_balance: Double = Default(-1),left_gain: Double = Default(1),left_phase: Boolean = Default('false'),right_delay: Double = Default(2.12),right_balance: Double = Default(1),right_gain: Double = Default(1),right_phase: Boolean = Default('true'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -9254,7 +9254,7 @@ References:
 
 
     *,
-    disable_autoconvert: Boolean = Default('true'),process_stereo: Boolean = Default('true'),cdt_ms: Int = Default('2000'),force_pe: Boolean = Default('false'),analyze_mode: Int| Literal["off","lle","pe","cdt","tgm"] | Default = Default('off'),bits_per_sample: Int| Literal["16","20","24"] | Default = Default('16'),
+    disable_autoconvert: Boolean = Default('true'),process_stereo: Boolean = Default('true'),cdt_ms: Int = Default(2000),force_pe: Boolean = Default('false'),analyze_mode: Int| Literal["off","lle","pe","cdt","tgm"] | Default = Default('off'),bits_per_sample: Int| Literal["16","20","24"] | Default = Default(16),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -9349,7 +9349,7 @@ References:
 
 
     *,
-    frequency: Double = Default('3000'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.707'),poles: Int = Default('2'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
+    frequency: Double = Default(3000),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default(0.707),poles: Int = Default(2),mix: Double = Default(1),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default(0),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -9447,7 +9447,7 @@ References:
 
 
     *,
-    frequency: Double = Default('3000'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.5'),gain: Double = Default('0'),poles: Int = Default('2'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
+    frequency: Double = Default(3000),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default(0.5),gain: Double = Default(0),poles: Int = Default(2),mix: Double = Default(1),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default(0),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -9612,7 +9612,7 @@ References:
 
 
     *,
-    I: Double = Default('-24'),LRA: Double = Default('7'),TP: Double = Default('-2'),measured_I: Double = Default('0'),measured_LRA: Double = Default('0'),measured_TP: Double = Default('99'),measured_thresh: Double = Default('-70'),offset: Double = Default('0'),linear: Boolean = Default('true'),dual_mono: Boolean = Default('false'),print_format: Int| Literal["none","json","summary"] | Default = Default('none'),
+    I: Double = Default(-24),LRA: Double = Default(7),TP: Double = Default(-2),measured_I: Double = Default(0),measured_LRA: Double = Default(0),measured_TP: Double = Default(99),measured_thresh: Double = Default(-70),offset: Double = Default(0),linear: Boolean = Default('true'),dual_mono: Boolean = Default('false'),print_format: Int| Literal["none","json","summary"] | Default = Default('none'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -9706,7 +9706,7 @@ References:
 
 
     *,
-    frequency: Double = Default('500'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.707'),poles: Int = Default('2'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
+    frequency: Double = Default(500),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default(0.707),poles: Int = Default(2),mix: Double = Default(1),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default(0),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -9804,7 +9804,7 @@ References:
 
 
     *,
-    frequency: Double = Default('100'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.5'),gain: Double = Default('0'),poles: Int = Default('2'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
+    frequency: Double = Default(100),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default(0.5),gain: Double = Default(0),poles: Int = Default(2),mix: Double = Default(1),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default(0),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -10176,7 +10176,7 @@ References:
 
 
     *,
-    track_gain: Float = Default('0'),track_peak: Float = Default('0'),
+    track_gain: Float = Default(0),track_peak: Float = Default(0),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -10293,7 +10293,7 @@ References:
 
 
     *,
-    size: Image_size = Default('1920x1080'),fps: Video_rate = Default('25'),bar_h: Int = Default('-1'),axis_h: Int = Default('-1'),sono_h: Int = Default('-1'),fullhd: Boolean = Default('true'),sono_v: String = Default('16'),bar_v: String = Default('sono_v'),sono_g: Float = Default('3'),bar_g: Float = Default('1'),bar_t: Float = Default('1'),timeclamp: Double = Default('0.17'),attack: Double = Default('0'),basefreq: Double = Default('20.0152'),endfreq: Double = Default('20495.6'),coeffclamp: Float = Default('1'),tlength: String = Default('384*tc/(384+tc*f)'),count: Int = Default('6'),fcount: Int = Default('0'),fontfile: String = Default(None),font: String = Default(None),fontcolor: String = Default('st(0, (midi(f)-59.5)/12);st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));r(1-ld(1)) + b(ld(1))'),axisfile: String = Default(None),axis: Boolean = Default('true'),csp: Int| Literal["unspecified","bt709","fcc","bt470bg","smpte170m","smpte240m","bt2020ncl"] | Default = Default('unspecified'),cscheme: String = Default('1|0.5|0|0|0.5|1'),
+    size: Image_size = Default('1920x1080'),fps: Video_rate = Default('25'),bar_h: Int = Default(-1),axis_h: Int = Default(-1),sono_h: Int = Default(-1),fullhd: Boolean = Default('true'),sono_v: Expr = Default(16),bar_v: Expr = Default('sono_v'),sono_g: Float = Default(3),bar_g: Float = Default(1),bar_t: Float = Default(1),timeclamp: Double = Default(0.17),attack: Double = Default(0),basefreq: Double = Default(20.0152),endfreq: Double = Default(20495.6),coeffclamp: Float = Default(1),tlength: Expr = Default('384*tc/(384+tc*f)'),count: Int = Default(6),fcount: Int = Default(0),fontfile: String = Default(None),font: String = Default(None),fontcolor: Expr = Default('st(0, (midi(f)-59.5)/12);st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));r(1-ld(1)) + b(ld(1))'),axisfile: String = Default(None),axis: Boolean = Default('true'),csp: Int| Literal["unspecified","bt709","fcc","bt470bg","smpte170m","smpte240m","bt2020ncl"] | Default = Default('unspecified'),cscheme: String = Default('1|0.5|0|0|0.5|1'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -10432,7 +10432,7 @@ References:
 
 
     *,
-    size: Image_size = Default('640x512'),rate: String = Default('25'),scale: Int| Literal["linear","log","bark","mel","erbs","sqrt","cbrt","qdrt"] | Default = Default('linear'),iscale: Int| Literal["linear","log","sqrt","cbrt","qdrt"] | Default = Default('log'),min: Float = Default('20'),max: Float = Default('20000'),imin: Float = Default('0'),imax: Float = Default('1'),logb: Float = Default('0.0001'),deviation: Float = Default('1'),pps: Int = Default('64'),mode: Int| Literal["magnitude","phase","magphase","channel","stereo"] | Default = Default('magnitude'),slide: Int| Literal["replace","scroll","frame"] | Default = Default('replace'),direction: Int| Literal["lr","rl","ud","du"] | Default = Default('lr'),bar: Float = Default('0'),rotation: Float = Default('0'),
+    size: Image_size = Default('640x512'),rate: String = Default('25'),scale: Int| Literal["linear","log","bark","mel","erbs","sqrt","cbrt","qdrt"] | Default = Default('linear'),iscale: Int| Literal["linear","log","sqrt","cbrt","qdrt"] | Default = Default('log'),min: Float = Default(20),max: Float = Default(20000),imin: Float = Default(0),imax: Float = Default(1),logb: Float = Default(0.0001),deviation: Float = Default(1),pps: Int = Default(64),mode: Int| Literal["magnitude","phase","magphase","channel","stereo"] | Default = Default('magnitude'),slide: Int| Literal["replace","scroll","frame"] | Default = Default('replace'),direction: Int| Literal["lr","rl","ud","du"] | Default = Default('lr'),bar: Float = Default(0),rotation: Float = Default(0),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -10538,7 +10538,7 @@ References:
 
 
     *,
-    size: Image_size = Default('1024x512'),rate: Video_rate = Default('25'),mode: Int| Literal["line","bar","dot"] | Default = Default('bar'),ascale: Int| Literal["lin","sqrt","cbrt","log"] | Default = Default('log'),fscale: Int| Literal["lin","log","rlog"] | Default = Default('lin'),win_size: Int = Default('2048'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),overlap: Float = Default('1'),averaging: Int = Default('1'),colors: String = Default('red|green|blue|yellow|orange|lime|pink|magenta|brown'),cmode: Int| Literal["combined","separate"] | Default = Default('combined'),minamp: Float = Default('1e-06'),data: Int| Literal["magnitude","phase","delay"] | Default = Default('magnitude'),channels: String = Default('all'),
+    size: Image_size = Default('1024x512'),rate: Video_rate = Default('25'),mode: Int| Literal["line","bar","dot"] | Default = Default('bar'),ascale: Int| Literal["lin","sqrt","cbrt","log"] | Default = Default('log'),fscale: Int| Literal["lin","log","rlog"] | Default = Default('lin'),win_size: Int = Default(2048),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),overlap: Float = Default(1),averaging: Int = Default(1),colors: String = Default('red|green|blue|yellow|orange|lime|pink|magenta|brown'),cmode: Int| Literal["combined","separate"] | Default = Default('combined'),minamp: Float = Default(1e-06),data: Int| Literal["magnitude","phase","delay"] | Default = Default('magnitude'),channels: String = Default('all'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -10642,7 +10642,7 @@ References:
 
 
     *,
-    size: Image_size = Default('512x512'),win_size: Int = Default('4096'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),rate: Video_rate = Default('25'),
+    size: Image_size = Default('512x512'),win_size: Int = Default(4096),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),rate: Video_rate = Default('25'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -10712,7 +10712,7 @@ References:
 
 
     *,
-    size: Image_size = Default('640x512'),slide: Int| Literal["replace","scroll","fullframe","rscroll","lreplace"] | Default = Default('replace'),mode: Int| Literal["combined","separate"] | Default = Default('combined'),color: Int| Literal["channel","intensity","rainbow","moreland","nebulae","fire","fiery","fruit","cool","magma","green","viridis","plasma","cividis","terrain"] | Default = Default('channel'),scale: Int| Literal["lin","sqrt","cbrt","log","4thrt","5thrt"] | Default = Default('sqrt'),fscale: Int| Literal["lin","log"] | Default = Default('lin'),saturation: Float = Default('1'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),orientation: Int| Literal["vertical","horizontal"] | Default = Default('vertical'),overlap: Float = Default('0'),gain: Float = Default('1'),data: Int| Literal["magnitude","phase","uphase"] | Default = Default('magnitude'),rotation: Float = Default('0'),start: Int = Default('0'),stop: Int = Default('0'),fps: String = Default('auto'),legend: Boolean = Default('false'),drange: Float = Default('120'),limit: Float = Default('0'),opacity: Float = Default('1'),
+    size: Image_size = Default('640x512'),slide: Int| Literal["replace","scroll","fullframe","rscroll","lreplace"] | Default = Default('replace'),mode: Int| Literal["combined","separate"] | Default = Default('combined'),color: Int| Literal["channel","intensity","rainbow","moreland","nebulae","fire","fiery","fruit","cool","magma","green","viridis","plasma","cividis","terrain"] | Default = Default('channel'),scale: Int| Literal["lin","sqrt","cbrt","log","4thrt","5thrt"] | Default = Default('sqrt'),fscale: Int| Literal["lin","log"] | Default = Default('lin'),saturation: Float = Default(1),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),orientation: Int| Literal["vertical","horizontal"] | Default = Default('vertical'),overlap: Float = Default(0),gain: Float = Default(1),data: Int| Literal["magnitude","phase","uphase"] | Default = Default('magnitude'),rotation: Float = Default(0),start: Int = Default(0),stop: Int = Default(0),fps: String = Default('auto'),legend: Boolean = Default('false'),drange: Float = Default(120),limit: Float = Default(0),opacity: Float = Default(1),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -10830,7 +10830,7 @@ References:
 
 
     *,
-    size: Image_size = Default('4096x2048'),mode: Int| Literal["combined","separate"] | Default = Default('combined'),color: Int| Literal["channel","intensity","rainbow","moreland","nebulae","fire","fiery","fruit","cool","magma","green","viridis","plasma","cividis","terrain"] | Default = Default('intensity'),scale: Int| Literal["lin","sqrt","cbrt","log","4thrt","5thrt"] | Default = Default('log'),fscale: Int| Literal["lin","log"] | Default = Default('lin'),saturation: Float = Default('1'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),orientation: Int| Literal["vertical","horizontal"] | Default = Default('vertical'),gain: Float = Default('1'),legend: Boolean = Default('true'),rotation: Float = Default('0'),start: Int = Default('0'),stop: Int = Default('0'),drange: Float = Default('120'),limit: Float = Default('0'),opacity: Float = Default('1'),
+    size: Image_size = Default('4096x2048'),mode: Int| Literal["combined","separate"] | Default = Default('combined'),color: Int| Literal["channel","intensity","rainbow","moreland","nebulae","fire","fiery","fruit","cool","magma","green","viridis","plasma","cividis","terrain"] | Default = Default('intensity'),scale: Int| Literal["lin","sqrt","cbrt","log","4thrt","5thrt"] | Default = Default('log'),fscale: Int| Literal["lin","log"] | Default = Default('lin'),saturation: Float = Default(1),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),orientation: Int| Literal["vertical","horizontal"] | Default = Default('vertical'),gain: Float = Default(1),legend: Boolean = Default('true'),rotation: Float = Default(0),start: Int = Default(0),stop: Int = Default(0),drange: Float = Default(120),limit: Float = Default(0),opacity: Float = Default(1),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -10936,7 +10936,7 @@ References:
 
 
     *,
-    rate: Video_rate = Default('25'),b: Int = Default('1'),w: Int = Default('400'),h: Int = Default('20'),f: Double = Default('0.95'),c: String = Default('PEAK*255+floor((1-PEAK)*255)*256+0xff000000'),t: Boolean = Default('true'),v: Boolean = Default('true'),dm: Double = Default('0'),dmc: Color = Default('orange'),o: Int| Literal["h","v"] | Default = Default('h'),s: Int = Default('0'),p: Float = Default('0'),m: Int| Literal["p","r"] | Default = Default('p'),ds: Int| Literal["lin","log"] | Default = Default('lin'),
+    rate: Video_rate = Default('25'),b: Int = Default(1),w: Int = Default(400),h: Int = Default(20),f: Double = Default(0.95),c: Expr = Default('PEAK*255+floor((1-PEAK)*255)*256+0xff000000'),t: Boolean = Default('true'),v: Boolean = Default('true'),dm: Double = Default(0),dmc: Color = Default('orange'),o: Int| Literal["h","v"] | Default = Default('h'),s: Int = Default(0),p: Float = Default(0),m: Int| Literal["p","r"] | Default = Default('p'),ds: Int| Literal["lin","log"] | Default = Default('lin'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -11208,7 +11208,7 @@ References:
 
 
     *,
-    level_in: Double = Default('1'),mode: Int| Literal["downward","upward"] | Default = Default('downward'),threshold: Double = Default('0.125'),ratio: Double = Default('2'),attack: Double = Default('20'),release: Double = Default('250'),makeup: Double = Default('1'),knee: Double = Default('2.82843'),link: Int| Literal["average","maximum"] | Default = Default('average'),detection: Int| Literal["peak","rms"] | Default = Default('rms'),level_sc: Double = Default('1'),mix: Double = Default('1'),
+    level_in: Double = Default(1),mode: Int| Literal["downward","upward"] | Default = Default('downward'),threshold: Double = Default(0.125),ratio: Double = Default(2),attack: Double = Default(20),release: Double = Default(250),makeup: Double = Default(1),knee: Double = Default(2.82843),link: Int| Literal["average","maximum"] | Default = Default('average'),detection: Int| Literal["peak","rms"] | Default = Default('rms'),level_sc: Double = Default(1),mix: Double = Default(1),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -11322,7 +11322,7 @@ References:
 
 
     *,
-    level_in: Double = Default('1'),mode: Int| Literal["downward","upward"] | Default = Default('downward'),range: Double = Default('0.06125'),threshold: Double = Default('0.125'),ratio: Double = Default('2'),attack: Double = Default('20'),release: Double = Default('250'),makeup: Double = Default('1'),knee: Double = Default('2.82843'),detection: Int| Literal["peak","rms"] | Default = Default('rms'),link: Int| Literal["average","maximum"] | Default = Default('average'),level_sc: Double = Default('1'),
+    level_in: Double = Default(1),mode: Int| Literal["downward","upward"] | Default = Default('downward'),range: Double = Default(0.06125),threshold: Double = Default(0.125),ratio: Double = Default(2),attack: Double = Default(20),release: Double = Default(250),makeup: Double = Default(1),knee: Double = Default(2.82843),detection: Int| Literal["peak","rms"] | Default = Default('rms'),link: Int| Literal["average","maximum"] | Default = Default('average'),level_sc: Double = Default(1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -11450,7 +11450,7 @@ References:
 
 
     *,
-    n: Double = Default('0.001'),d: Duration = Default('2'),mono: Boolean = Default('false'),
+    n: Double = Default(0.001),d: Duration = Default('2'),mono: Boolean = Default('false'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -11531,7 +11531,7 @@ References:
 
 
     *,
-    start_periods: Int = Default('0'),start_duration: Duration = Default('0'),start_threshold: Double = Default('0'),start_silence: Duration = Default('0'),start_mode: Int| Literal["any","all"] | Default = Default('any'),stop_periods: Int = Default('0'),stop_duration: Duration = Default('0'),stop_threshold: Double = Default('0'),stop_silence: Duration = Default('0'),stop_mode: Int| Literal["any","all"] | Default = Default('all'),detection: Int| Literal["avg","rms","peak","median","ptp","dev"] | Default = Default('rms'),window: Duration = Default('0.02'),timestamp: Int| Literal["write","copy"] | Default = Default('write'),
+    start_periods: Int = Default(0),start_duration: Duration = Default('0'),start_threshold: Double = Default(0),start_silence: Duration = Default('0'),start_mode: Int| Literal["any","all"] | Default = Default('any'),stop_periods: Int = Default(0),stop_duration: Duration = Default('0'),stop_threshold: Double = Default(0),stop_silence: Duration = Default('0'),stop_mode: Int| Literal["any","all"] | Default = Default('all'),detection: Int| Literal["avg","rms","peak","median","ptp","dev"] | Default = Default('rms'),window: Duration = Default('0.02'),timestamp: Int| Literal["write","copy"] | Default = Default('write'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -11652,7 +11652,7 @@ References:
 
 
     *,
-    peak: Double = Default('0.95'),expansion: Double = Default('2'),compression: Double = Default('2'),threshold: Double = Default('0'),_raise: Double = Default('0.001'),fall: Double = Default('0.001'),channels: String = Default('all'),invert: Boolean = Default('false'),link: Boolean = Default('false'),rms: Double = Default('0'),
+    peak: Double = Default(0.95),expansion: Double = Default(2),compression: Double = Default(2),threshold: Double = Default(0),_raise: Double = Default(0.001),fall: Double = Default(0.001),channels: String = Default('all'),invert: Boolean = Default('false'),link: Boolean = Default('false'),rms: Double = Default(0),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -11764,7 +11764,7 @@ References:
 
 
     *,
-    level_in: Double = Default('1'),level_out: Double = Default('1'),balance_in: Double = Default('0'),balance_out: Double = Default('0'),softclip: Boolean = Default('false'),mutel: Boolean = Default('false'),muter: Boolean = Default('false'),phasel: Boolean = Default('false'),phaser: Boolean = Default('false'),mode: Int| Literal["lr>lr","lr>ms","ms>lr","lr>ll","lr>rr","lr>l+r","lr>rl","ms>ll","ms>rr","ms>rl","lr>l-r"] | Default = Default('lr>lr'),slev: Double = Default('1'),sbal: Double = Default('0'),mlev: Double = Default('1'),mpan: Double = Default('0'),base: Double = Default('0'),delay: Double = Default('0'),sclevel: Double = Default('1'),phase: Double = Default('0'),bmode_in: Int| Literal["balance","amplitude","power"] | Default = Default('balance'),bmode_out: Int| Literal["balance","amplitude","power"] | Default = Default('balance'),
+    level_in: Double = Default(1),level_out: Double = Default(1),balance_in: Double = Default(0),balance_out: Double = Default(0),softclip: Boolean = Default('false'),mutel: Boolean = Default('false'),muter: Boolean = Default('false'),phasel: Boolean = Default('false'),phaser: Boolean = Default('false'),mode: Int| Literal["lr>lr","lr>ms","ms>lr","lr>ll","lr>rr","lr>l+r","lr>rl","ms>ll","ms>rr","ms>rl","lr>l-r"] | Default = Default('lr>lr'),slev: Double = Default(1),sbal: Double = Default(0),mlev: Double = Default(1),mpan: Double = Default(0),base: Double = Default(0),delay: Double = Default(0),sclevel: Double = Default(1),phase: Double = Default(0),bmode_in: Int| Literal["balance","amplitude","power"] | Default = Default('balance'),bmode_out: Int| Literal["balance","amplitude","power"] | Default = Default('balance'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -11892,7 +11892,7 @@ References:
 
 
     *,
-    delay: Float = Default('20'),feedback: Float = Default('0.3'),crossfeed: Float = Default('0.3'),drymix: Float = Default('0.8'),
+    delay: Float = Default(20),feedback: Float = Default(0.3),crossfeed: Float = Default(0.3),drymix: Float = Default(0.8),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -11978,7 +11978,7 @@ References:
 
 
     *,
-    _1b: Float = Default('1'),_2b: Float = Default('1'),_3b: Float = Default('1'),_4b: Float = Default('1'),_5b: Float = Default('1'),_6b: Float = Default('1'),_7b: Float = Default('1'),_8b: Float = Default('1'),_9b: Float = Default('1'),_10b: Float = Default('1'),_11b: Float = Default('1'),_12b: Float = Default('1'),_13b: Float = Default('1'),_14b: Float = Default('1'),_15b: Float = Default('1'),_16b: Float = Default('1'),_17b: Float = Default('1'),_18b: Float = Default('1'),
+    _1b: Float = Default(1),_2b: Float = Default(1),_3b: Float = Default(1),_4b: Float = Default(1),_5b: Float = Default(1),_6b: Float = Default(1),_7b: Float = Default(1),_8b: Float = Default(1),_9b: Float = Default(1),_10b: Float = Default(1),_11b: Float = Default(1),_12b: Float = Default(1),_13b: Float = Default(1),_14b: Float = Default(1),_15b: Float = Default(1),_16b: Float = Default(1),_17b: Float = Default(1),_18b: Float = Default(1),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -12089,7 +12089,7 @@ References:
 
 
     *,
-    chl_out: String = Default('5.1'),chl_in: String = Default('stereo'),level_in: Float = Default('1'),level_out: Float = Default('1'),lfe: Boolean = Default('true'),lfe_low: Int = Default('128'),lfe_high: Int = Default('256'),lfe_mode: Int| Literal["add","sub"] | Default = Default('add'),smooth: Float = Default('0'),angle: Float = Default('90'),focus: Float = Default('0'),fc_in: Float = Default('1'),fc_out: Float = Default('1'),fl_in: Float = Default('1'),fl_out: Float = Default('1'),fr_in: Float = Default('1'),fr_out: Float = Default('1'),sl_in: Float = Default('1'),sl_out: Float = Default('1'),sr_in: Float = Default('1'),sr_out: Float = Default('1'),bl_in: Float = Default('1'),bl_out: Float = Default('1'),br_in: Float = Default('1'),br_out: Float = Default('1'),bc_in: Float = Default('1'),bc_out: Float = Default('1'),lfe_in: Float = Default('1'),lfe_out: Float = Default('1'),allx: Float = Default('-1'),ally: Float = Default('-1'),fcx: Float = Default('0.5'),flx: Float = Default('0.5'),frx: Float = Default('0.5'),blx: Float = Default('0.5'),brx: Float = Default('0.5'),slx: Float = Default('0.5'),srx: Float = Default('0.5'),bcx: Float = Default('0.5'),fcy: Float = Default('0.5'),fly: Float = Default('0.5'),fry: Float = Default('0.5'),bly: Float = Default('0.5'),bry: Float = Default('0.5'),sly: Float = Default('0.5'),sry: Float = Default('0.5'),bcy: Float = Default('0.5'),win_size: Int = Default('4096'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),overlap: Float = Default('0.5'),
+    chl_out: String = Default('5.1'),chl_in: String = Default('stereo'),level_in: Float = Default(1),level_out: Float = Default(1),lfe: Boolean = Default('true'),lfe_low: Int = Default(128),lfe_high: Int = Default(256),lfe_mode: Int| Literal["add","sub"] | Default = Default('add'),smooth: Float = Default(0),angle: Float = Default(90),focus: Float = Default(0),fc_in: Float = Default(1),fc_out: Float = Default(1),fl_in: Float = Default(1),fl_out: Float = Default(1),fr_in: Float = Default(1),fr_out: Float = Default(1),sl_in: Float = Default(1),sl_out: Float = Default(1),sr_in: Float = Default(1),sr_out: Float = Default(1),bl_in: Float = Default(1),bl_out: Float = Default(1),br_in: Float = Default(1),br_out: Float = Default(1),bc_in: Float = Default(1),bc_out: Float = Default(1),lfe_in: Float = Default(1),lfe_out: Float = Default(1),allx: Float = Default(-1),ally: Float = Default(-1),fcx: Float = Default(0.5),flx: Float = Default(0.5),frx: Float = Default(0.5),blx: Float = Default(0.5),brx: Float = Default(0.5),slx: Float = Default(0.5),srx: Float = Default(0.5),bcx: Float = Default(0.5),fcy: Float = Default(0.5),fly: Float = Default(0.5),fry: Float = Default(0.5),bly: Float = Default(0.5),bry: Float = Default(0.5),sly: Float = Default(0.5),sry: Float = Default(0.5),bcy: Float = Default(0.5),win_size: Int = Default(4096),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('hann'),overlap: Float = Default(0.5),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -12318,7 +12318,7 @@ References:
 
 
     *,
-    frequency: Double = Default('3000'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.5'),gain: Double = Default('0'),poles: Int = Default('2'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
+    frequency: Double = Default(3000),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default(0.5),gain: Double = Default(0),poles: Int = Default(2),mix: Double = Default(1),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default(0),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -12440,7 +12440,7 @@ References:
 
 
     *,
-    frequency: Double = Default('3000'),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default('0.5'),gain: Double = Default('0'),poles: Int = Default('2'),mix: Double = Default('1'),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default('0'),
+    frequency: Double = Default(3000),width_type: Int| Literal["h","q","o","s","k"] | Default = Default('q'),width: Double = Default(0.5),gain: Double = Default(0),poles: Int = Default(2),mix: Double = Default(1),channels: String = Default('all'),normalize: Boolean = Default('false'),transform: Int| Literal["di","dii","tdi","tdii","latt","svf","zdf"] | Default = Default('di'),precision: Int| Literal["auto","s16","s32","f32","f64"] | Default = Default('auto'),blocksize: Int = Default(0),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -12541,7 +12541,7 @@ References:
 
 
     *,
-    f: Double = Default('5'),d: Double = Default('0.5'),
+    f: Double = Default(5),d: Double = Default(0.5),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -12637,7 +12637,7 @@ References:
 
 
     *,
-    f: Double = Default('5'),d: Double = Default('0.5'),
+    f: Double = Default(5),d: Double = Default(0.5),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -12717,7 +12717,7 @@ References:
 
 
     *,
-    cutoff: Double = Default('250'),strength: Double = Default('3'),
+    cutoff: Double = Default(250),strength: Double = Default(3),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -12795,7 +12795,7 @@ References:
 
 
     *,
-    volume: String = Default('1.0'),precision: Int| Literal["fixed","float","double"] | Default = Default('float'),eval: Int| Literal["once","frame"] | Default = Default('once'),replaygain: Int| Literal["drop","ignore","track","album"] | Default = Default('drop'),replaygain_preamp: Double = Default('0'),replaygain_noclip: Boolean = Default('true'),
+    volume: Expr = Default(1.0),precision: Int| Literal["fixed","float","double"] | Default = Default('float'),eval: Int| Literal["once","frame"] | Default = Default('once'),replaygain: Int| Literal["drop","ignore","track","album"] | Default = Default('drop'),replaygain_preamp: Double = Default(0),replaygain_noclip: Boolean = Default('true'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,

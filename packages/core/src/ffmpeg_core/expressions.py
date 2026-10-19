@@ -1,20 +1,116 @@
 """FFmpeg expression functions and utilities."""
 
+import re
 from typing import Any
+
+from typing_extensions import Self
+
+# Operator precedence of FFmpeg expressions, see libavutil/eval.c.
+# A leading sign applies to the whole power chain (-x^2 == -(x^2)), and two
+# signs may never be adjacent (a+-b and a--b are parse errors).
+_LOWEST = 0
+_SUM = 1
+_PRODUCT = 2
+_UNARY = 3
+_POWER = 4
+_ATOM = 5
+
+_NUMBER_RE = re.compile(r"[0-9.]+(?:[eE][-+]?[0-9]+)?[a-zA-Z]*")
+_NAME_RE = re.compile(r"[A-Za-z_][A-Za-z0-9_]*")
+
+
+def _is_wrapped(text: str) -> bool:
+    """Whether ``text`` is ``name(...)`` or ``(...)`` with one outer pair of parentheses."""
+    match = re.match(r"[A-Za-z_][A-Za-z0-9_]*\(|\(", text)
+    if not match or not text.endswith(")"):
+        return False
+    depth = 0
+    for index in range(match.end() - 1, len(text)):
+        if text[index] == "(":
+            depth += 1
+        elif text[index] == ")":
+            depth -= 1
+            if depth == 0:
+                return index == len(text) - 1
+    return False
+
+
+def _infer_precedence(text: str) -> int:
+    if _NAME_RE.fullmatch(text) or _NUMBER_RE.fullmatch(text) or _is_wrapped(text):
+        return _ATOM
+    # unknown structure: always parenthesize when combined with an operator
+    return _LOWEST
+
+
+def _operand(value: Any) -> tuple[str, int]:
+    if isinstance(value, Expression):
+        return value.expression, value.precedence
+    if isinstance(value, bool):
+        return str(int(value)), _ATOM
+    if isinstance(value, int | float):
+        return repr(value), _UNARY if value < 0 else _ATOM
+    text = str(value)
+    return text, _infer_precedence(text)
+
+
+def _binary(left: Any, op: str, right: Any, precedence: int) -> "Expression":
+    left_text, left_precedence = _operand(left)
+    right_text, right_precedence = _operand(right)
+
+    if left_precedence < precedence:
+        left_text = f"({left_text})"
+    # - / ^ are left-associative, so a right operand of the same precedence
+    # needs parentheses; a signed right operand always does.
+    if (
+        right_precedence < precedence
+        or right_precedence == _UNARY
+        or (right_precedence == precedence and op in "-/^")
+    ):
+        right_text = f"({right_text})"
+
+    return Expression(f"{left_text}{op}{right_text}", precedence)
+
+
+def _unary(op: str, value: Any) -> "Expression":
+    text, precedence = _operand(value)
+    if precedence < _POWER:
+        text = f"({text})"
+    return Expression(f"{op}{text}", _UNARY)
 
 
 class Expression(str):
-    """A string-based expression class for FFmpeg expressions."""
+    """
+    A string-based expression class for FFmpeg expressions.
 
-    def __init__(self, expression: str):
+    Python operators build a correctly parenthesized FFmpeg expression::
+
+        (Expression("iw") - Expression("w")) / 2  # -> (iw-w)/2
+        2 * Expression("iw")  # -> 2*iw
+
+    """
+
+    expression: str
+    precedence: int
+
+    def __new__(cls, expression: str, precedence: int | None = None) -> Self:
         """
-        Initialize an Expression with a string expression.
+        Create an Expression from an FFmpeg expression string.
 
         Args:
             expression: The FFmpeg expression string.
+            precedence: The precedence of the outermost operator; inferred
+                from ``expression`` when omitted.
+
+        Returns:
+            The new Expression.
 
         """
-        self.expression = expression
+        obj = super().__new__(cls, expression)
+        obj.expression = expression
+        obj.precedence = (
+            _infer_precedence(expression) if precedence is None else precedence
+        )
+        return obj
 
     def __str__(self) -> str:
         """
@@ -37,7 +133,7 @@ class Expression(str):
         return f"Expression({self.expression})"
 
     # The following binary operators are available: +, -, *, /, ^.
-    def __add__(self, other: Any) -> "Expression":
+    def __add__(self, other: Any) -> "Expression":  # type: ignore[override]
         """
         Add another value to this expression.
 
@@ -45,7 +141,17 @@ class Expression(str):
             A new Expression with the addition operation.
 
         """
-        return Expression(f"{self.expression}+{other}")
+        return _binary(self, "+", other, _SUM)
+
+    def __radd__(self, other: Any) -> "Expression":
+        """
+        Add this expression to another value.
+
+        Returns:
+            A new Expression with the addition operation.
+
+        """
+        return _binary(other, "+", self, _SUM)
 
     def __sub__(self, other: Any) -> "Expression":
         """
@@ -55,9 +161,19 @@ class Expression(str):
             A new Expression with the subtraction operation.
 
         """
-        return Expression(f"{self.expression}-{other}")
+        return _binary(self, "-", other, _SUM)
 
-    def __mul__(self, other: Any) -> "Expression":
+    def __rsub__(self, other: Any) -> "Expression":
+        """
+        Subtract this expression from another value.
+
+        Returns:
+            A new Expression with the subtraction operation.
+
+        """
+        return _binary(other, "-", self, _SUM)
+
+    def __mul__(self, other: Any) -> "Expression":  # type: ignore[override]
         """
         Multiply this expression by another value.
 
@@ -65,7 +181,17 @@ class Expression(str):
             A new Expression with the multiplication operation.
 
         """
-        return Expression(f"{self.expression}*{other}")
+        return _binary(self, "*", other, _PRODUCT)
+
+    def __rmul__(self, other: Any) -> "Expression":  # type: ignore[override]
+        """
+        Multiply another value by this expression.
+
+        Returns:
+            A new Expression with the multiplication operation.
+
+        """
+        return _binary(other, "*", self, _PRODUCT)
 
     def __truediv__(self, other: Any) -> "Expression":
         """
@@ -75,17 +201,39 @@ class Expression(str):
             A new Expression with the division operation.
 
         """
-        return Expression(f"{self.expression}/{other}")
+        return _binary(self, "/", other, _PRODUCT)
 
-    def __mod__(self, other: Any) -> "Expression":
+    def __rtruediv__(self, other: Any) -> "Expression":
+        """
+        Divide another value by this expression.
+
+        Returns:
+            A new Expression with the division operation.
+
+        """
+        return _binary(other, "/", self, _PRODUCT)
+
+    def __mod__(self, other: Any) -> "Expression":  # type: ignore[override]
         """
         Compute the modulo of this expression with another value.
+
+        FFmpeg has no ``%`` operator, so this uses the ``mod()`` function.
 
         Returns:
             A new Expression with the modulo operation.
 
         """
-        return Expression(f"{self.expression}%{other}")
+        return mod(self, other)
+
+    def __rmod__(self, other: Any) -> "Expression":  # type: ignore[override]
+        """
+        Compute the modulo of another value with this expression.
+
+        Returns:
+            A new Expression with the modulo operation.
+
+        """
+        return mod(other, self)
 
     def __pow__(self, other: Any) -> "Expression":
         """
@@ -95,7 +243,17 @@ class Expression(str):
             A new Expression with the power operation.
 
         """
-        return Expression(f"{self.expression}^{other}")
+        return _binary(self, "^", other, _POWER)
+
+    def __rpow__(self, other: Any) -> "Expression":
+        """
+        Raise another value to the power of this expression.
+
+        Returns:
+            A new Expression with the power operation.
+
+        """
+        return _binary(other, "^", self, _POWER)
 
     # The following unary operators are available: +, -.
     def __neg__(self) -> "Expression":
@@ -106,7 +264,7 @@ class Expression(str):
             A new Expression with the negation operation.
 
         """
-        return Expression(f"-{self.expression}")
+        return _unary("-", self)
 
     def __pos__(self) -> "Expression":
         """
@@ -116,7 +274,7 @@ class Expression(str):
             A new Expression with the positive operation.
 
         """
-        return Expression(f"+{self.expression}")
+        return _unary("+", self)
 
 
 def abs(x: Any) -> Expression:

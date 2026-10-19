@@ -8,7 +8,7 @@ FFmpeg encoders.
 from typing import Literal
 
 
-from ..types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+from ..types import Binary, Boolean, Color, Dictionary, Double, Duration, Expr, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
 
 from ..dag.factory import filter_node_factory
 

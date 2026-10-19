@@ -7,7 +7,7 @@ FFmpeg sources.
 from typing import Any, Literal
 
 
-from .types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+from .types import Binary, Boolean, Color, Dictionary, Double, Duration, Expr, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
 
 from .dag.factory import filter_node_factory
 
@@ -59,7 +59,7 @@ def abuffer(
 
 
     *,
-    time_base: Rational = Default('0/1'),sample_rate: Int = Default('0'),sample_fmt: Sample_fmt = Default('none'),channel_layout: String = Default(None),channels: Int = Default('0'),
+    time_base: Rational = Default('0/1'),sample_rate: Int = Default(0),sample_fmt: Sample_fmt = Default('none'),channel_layout: String = Default(None),channels: Int = Default(0),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -176,7 +176,7 @@ def aevalsrc(
 
 
     *,
-    exprs: String = Default(None),nb_samples: Int = Default('1024'),sample_rate: String = Default('44100'),duration: Duration = Default('-0.000001'),channel_layout: String = Default(None),
+    exprs: String = Default(None),nb_samples: Int = Default(1024),sample_rate: String = Default('44100'),duration: Duration = Default('-0.000001'),channel_layout: String = Default(None),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -254,7 +254,7 @@ def afdelaysrc(
 
 
     *,
-    delay: Double = Default('0'),sample_rate: Int = Default('44100'),nb_samples: Int = Default('1024'),taps: Int = Default('0'),channel_layout: String = Default('stereo'),
+    delay: Double = Default(0),sample_rate: Int = Default(44100),nb_samples: Int = Default(1024),taps: Int = Default(0),channel_layout: String = Default('stereo'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -332,7 +332,7 @@ def afireqsrc(
 
 
     *,
-    preset: Int| Literal["custom","flat","acoustic","bass","beats","classic","clear","deep bass","dubstep","electronic","hardstyle","hip-hop","jazz","metal","movie","pop","r&b","rock","vocal booster"] | Default = Default('flat'),gains: String = Default('0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0'),bands: String = Default('25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000'),taps: Int = Default('4096'),sample_rate: Int = Default('44100'),nb_samples: Int = Default('1024'),interp: Int| Literal["linear","cubic"] | Default = Default('linear'),phase: Int| Literal["linear","min"] | Default = Default('min'),
+    preset: Int| Literal["custom","flat","acoustic","bass","beats","classic","clear","deep bass","dubstep","electronic","hardstyle","hip-hop","jazz","metal","movie","pop","r&b","rock","vocal booster"] | Default = Default('flat'),gains: String = Default('0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0'),bands: String = Default('25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000'),taps: Int = Default(4096),sample_rate: Int = Default(44100),nb_samples: Int = Default(1024),interp: Int| Literal["linear","cubic"] | Default = Default('linear'),phase: Int| Literal["linear","min"] | Default = Default('min'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -413,7 +413,7 @@ def afirsrc(
 
 
     *,
-    taps: Int = Default('1025'),frequency: String = Default('0 1'),magnitude: String = Default('1 1'),phase: String = Default('0 0'),sample_rate: Int = Default('44100'),nb_samples: Int = Default('1024'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('blackman'),
+    taps: Int = Default(1025),frequency: String = Default('0 1'),magnitude: String = Default('1 1'),phase: String = Default('0 0'),sample_rate: Int = Default(44100),nb_samples: Int = Default(1024),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('blackman'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -883,7 +883,7 @@ def amix(
 
 
 
-    inputs: Int = Auto('len(streams)'),duration: Int| Literal["longest","shortest","first"] | Default = Default('longest'),dropout_transition: Float = Default('2'),weights: String = Default('1 1'),normalize: Boolean = Default('true'),
+    inputs: Int = Auto('len(streams)'),duration: Int| Literal["longest","shortest","first"] | Default = Default('longest'),dropout_transition: Float = Default(2),weights: String = Default('1 1'),normalize: Boolean = Default('true'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -960,7 +960,7 @@ def amovie(
 
 
     *,
-    filename: String = Default(None),format_name: String = Default(None),stream_index: Int = Default('-1'),seek_point: Double = Default('0'),streams: String = Default(None),loop: Int = Default('1'),discontinuity: Duration = Default('0'),dec_threads: Int = Default('0'),format_opts: Dictionary = Default(None),
+    filename: String = Default(None),format_name: String = Default(None),stream_index: Int = Default(-1),seek_point: Double = Default(0),streams: String = Default(None),loop: Int = Default(1),discontinuity: Duration = Default('0'),dec_threads: Int = Default(0),format_opts: Dictionary = Default(None),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -1055,7 +1055,7 @@ def anoisesrc(
 
 
     *,
-    sample_rate: Int = Default('48000'),amplitude: Double = Default('1'),duration: Duration = Default('0'),color: Int| Literal["white","pink","brown","blue","violet","velvet"] | Default = Default('white'),seed: Int64 = Default('-1'),nb_samples: Int = Default('1024'),density: Double = Default('0.05'),
+    sample_rate: Int = Default(48000),amplitude: Double = Default(1),duration: Duration = Default('0'),color: Int| Literal["white","pink","brown","blue","violet","velvet"] | Default = Default('white'),seed: Int64 = Default(-1),nb_samples: Int = Default(1024),density: Double = Default(0.05),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -1135,7 +1135,7 @@ def anullsrc(
 
 
     *,
-    channel_layout: String = Default('stereo'),sample_rate: String = Default('44100'),nb_samples: Int = Default('1024'),duration: Duration = Default('-0.000001'),
+    channel_layout: String = Default('stereo'),sample_rate: String = Default('44100'),nb_samples: Int = Default(1024),duration: Duration = Default('-0.000001'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -1352,7 +1352,7 @@ def avsynctest(
 
 
     *,
-    size: Image_size = Default('hd720'),framerate: Video_rate = Default('30'),samplerate: Int = Default('44100'),amplitude: Float = Default('0.7'),period: Int = Default('3'),delay: Int = Default('0'),cycle: Boolean = Default('false'),duration: Duration = Default('0'),fg: Color = Default('white'),bg: Color = Default('black'),ag: Color = Default('gray'),
+    size: Image_size = Default('hd720'),framerate: Video_rate = Default('30'),samplerate: Int = Default(44100),amplitude: Float = Default(0.7),period: Int = Default(3),delay: Int = Default(0),cycle: Boolean = Default('false'),duration: Duration = Default('0'),fg: Color = Default('white'),bg: Color = Default('black'),ag: Color = Default('gray'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -1499,7 +1499,7 @@ def bm3d(
 
 
 
-    sigma: Float = Default('1'),block: Int = Default('16'),bstep: Int = Default('4'),group: Int = Default('1'),range: Int = Default('9'),mstep: Int = Default('1'),thmse: Float = Default('0'),hdthr: Float = Default('2.7'),estim: Int| Literal["basic","final"] | Default = Default('basic'),ref: Boolean = Default('false'),planes: Int = Default('7'),
+    sigma: Float = Default(1),block: Int = Default(16),bstep: Int = Default(4),group: Int = Default(1),range: Int = Default(9),mstep: Int = Default(1),thmse: Float = Default(0),hdthr: Float = Default(2.7),estim: Int| Literal["basic","final"] | Default = Default('basic'),ref: Boolean = Default('false'),planes: Int = Default(7),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -1600,7 +1600,7 @@ def buffer(
 
 
     *,
-    width: Int = Default('0'),video_size: Image_size = Default(None),height: Int = Default('0'),pix_fmt: Pix_fmt = Default('none'),sar: Rational = Default('0/1'),time_base: Rational = Default('0/1'),
+    width: Int = Default(0),video_size: Image_size = Default(None),height: Int = Default(0),pix_fmt: Pix_fmt = Default('none'),sar: Rational = Default('0/1'),time_base: Rational = Default('0/1'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -1684,7 +1684,7 @@ def cellauto(
 
 
     *,
-    filename: String = Default(None),pattern: String = Default(None),rate: Video_rate = Default('25'),size: Image_size = Default(None),rule: Int = Default('110'),random_fill_ratio: Double = Default('0.618034'),random_seed: Int64 = Default('-1'),scroll: Boolean = Default('true'),start_full: Boolean = Default('false'),full: Boolean = Default('true'),stitch: Boolean = Default('true'),
+    filename: String = Default(None),pattern: String = Default(None),rate: Video_rate = Default('25'),size: Image_size = Default(None),rule: Int = Default(110),random_fill_ratio: Double = Default(0.618034),random_seed: Int64 = Default(-1),scroll: Boolean = Default('true'),start_full: Boolean = Default('false'),full: Boolean = Default('true'),stitch: Boolean = Default('true'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -2164,7 +2164,7 @@ def concat(
 
 
 
-    n: Int = Auto('len(streams) // (int(v) + int(a))'),v: Int = Default('1'),a: Int = Default('0'),unsafe: Boolean = Default('false'),
+    n: Int = Auto('len(streams) // (int(v) + int(a))'),v: Int = Default(1),a: Int = Default(0),unsafe: Boolean = Default('false'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -2276,7 +2276,7 @@ def decimate(
 
 
 
-    cycle: Int = Default('5'),dupthresh: Double = Default('1.1'),scthresh: Double = Default('15'),blockx: Int = Default('32'),blocky: Int = Default('32'),ppsrc: Boolean = Default('false'),chroma: Boolean = Default('true'),mixed: Boolean = Default('false'),
+    cycle: Int = Default(5),dupthresh: Double = Default(1.1),scthresh: Double = Default(15),blockx: Int = Default(32),blocky: Int = Default(32),ppsrc: Boolean = Default('false'),chroma: Boolean = Default('true'),mixed: Boolean = Default('false'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -2449,7 +2449,7 @@ def fieldmatch(
 
 
 
-    order: Int| Literal["auto","bff","tff"] | Default = Default('auto'),mode: Int| Literal["pc","pc_n","pc_u","pc_n_ub","pcn","pcn_ub"] | Default = Default('pc_n'),ppsrc: Boolean = Default('false'),field: Int| Literal["auto","bottom","top"] | Default = Default('auto'),mchroma: Boolean = Default('true'),y0: Int = Default('0'),scthresh: Double = Default('12'),combmatch: Int| Literal["none","sc","full"] | Default = Default('sc'),combdbg: Int| Literal["none","pcn","pcnub"] | Default = Default('none'),cthresh: Int = Default('9'),chroma: Boolean = Default('false'),blockx: Int = Default('16'),blocky: Int = Default('16'),combpel: Int = Default('80'),
+    order: Int| Literal["auto","bff","tff"] | Default = Default('auto'),mode: Int| Literal["pc","pc_n","pc_u","pc_n_ub","pcn","pcn_ub"] | Default = Default('pc_n'),ppsrc: Boolean = Default('false'),field: Int| Literal["auto","bottom","top"] | Default = Default('auto'),mchroma: Boolean = Default('true'),y0: Int = Default(0),scthresh: Double = Default(12),combmatch: Int| Literal["none","sc","full"] | Default = Default('sc'),combdbg: Int| Literal["none","pcn","pcnub"] | Default = Default('none'),cthresh: Int = Default(9),chroma: Boolean = Default('false'),blockx: Int = Default(16),blocky: Int = Default(16),combpel: Int = Default(80),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -2612,7 +2612,7 @@ def gradients(
 
 
     *,
-    size: Image_size = Default('640x480'),rate: Video_rate = Default('25'),c0: Color = Default('random'),c1: Color = Default('random'),c2: Color = Default('random'),c3: Color = Default('random'),c4: Color = Default('random'),c5: Color = Default('random'),c6: Color = Default('random'),c7: Color = Default('random'),x0: Int = Default('-1'),y0: Int = Default('-1'),x1: Int = Default('-1'),y1: Int = Default('-1'),nb_colors: Int = Default('2'),seed: Int64 = Default('-1'),duration: Duration = Default('-0.000001'),speed: Float = Default('0.01'),type: Int| Literal["linear","radial","circular","spiral"] | Default = Default('linear'),
+    size: Image_size = Default('640x480'),rate: Video_rate = Default('25'),c0: Color = Default('random'),c1: Color = Default('random'),c2: Color = Default('random'),c3: Color = Default('random'),c4: Color = Default('random'),c5: Color = Default('random'),c6: Color = Default('random'),c7: Color = Default('random'),x0: Int = Default(-1),y0: Int = Default(-1),x1: Int = Default(-1),y1: Int = Default(-1),nb_colors: Int = Default(2),seed: Int64 = Default(-1),duration: Duration = Default('-0.000001'),speed: Float = Default(0.01),type: Int| Literal["linear","radial","circular","spiral"] | Default = Default('linear'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -2730,7 +2730,7 @@ def guided(
 
 
 
-    radius: Int = Default('3'),eps: Float = Default('0.01'),mode: Int| Literal["basic","fast"] | Default = Default('basic'),sub: Int = Default('4'),guidance: Int| Literal["off","on"] | Default = Default('off'),planes: Int = Default('1'),
+    radius: Int = Default(3),eps: Float = Default(0.01),mode: Int| Literal["basic","fast"] | Default = Default('basic'),sub: Int = Default(4),guidance: Int| Literal["off","on"] | Default = Default('off'),planes: Int = Default(1),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -2818,7 +2818,7 @@ def haldclutsrc(
 
 
     *,
-    level: Int = Default('6'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),
+    level: Int = Default(6),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -2931,7 +2931,7 @@ def headphone(
 
 
 
-    map: String = Default(None),gain: Float = Default('0'),lfe: Float = Default('0'),type: Int| Literal["time","freq"] | Default = Default('freq'),size: Int = Default('1024'),hrir: Int| Literal["stereo","multich"] | Default = Default('stereo'),
+    map: String = Default(None),gain: Float = Default(0),lfe: Float = Default(0),type: Int| Literal["time","freq"] | Default = Default('freq'),size: Int = Default(1024),hrir: Int| Literal["stereo","multich"] | Default = Default('stereo'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -3015,7 +3015,7 @@ def hilbert(
 
 
     *,
-    sample_rate: Int = Default('44100'),taps: Int = Default('22051'),nb_samples: Int = Default('1024'),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('blackman'),
+    sample_rate: Int = Default(44100),taps: Int = Default(22051),nb_samples: Int = Default(1024),win_func: Int| Literal["rect","bartlett","hann","hanning","hamming","blackman","welch","flattop","bharris","bnuttall","bhann","sine","nuttall","lanczos","gauss","tukey","dolph","cauchy","parzen","poisson","bohman","kaiser"] | Default = Default('blackman'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -3168,7 +3168,7 @@ def hstack_vaapi(
 
 
 
-    inputs: Int = Default('2'),shortest: Boolean = Default('false'),height: Int = Default('0'),
+    inputs: Int = Default(2),shortest: Boolean = Default('false'),height: Int = Default(0),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -3430,7 +3430,7 @@ def life(
 
 
     *,
-    filename: String = Default(None),size: Image_size = Default(None),rate: Video_rate = Default('25'),rule: String = Default('B3/S23'),random_fill_ratio: Double = Default('0.618034'),random_seed: Int64 = Default('-1'),stitch: Boolean = Default('true'),mold: Int = Default('0'),life_color: Color = Default('white'),death_color: Color = Default('black'),mold_color: Color = Default('black'),
+    filename: String = Default(None),size: Image_size = Default(None),rate: Video_rate = Default('25'),rule: String = Default('B3/S23'),random_fill_ratio: Double = Default(0.618034),random_seed: Int64 = Default(-1),stitch: Boolean = Default('true'),mold: Int = Default(0),life_color: Color = Default('white'),death_color: Color = Default('black'),mold_color: Color = Default('black'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -3532,7 +3532,7 @@ def limitdiff(
 
 
 
-    threshold: Float = Default('0.00392157'),elasticity: Float = Default('2'),reference: Boolean = Default('false'),planes: Int = Default('15'),
+    threshold: Float = Default(0.00392157),elasticity: Float = Default(2),reference: Boolean = Default('false'),planes: Int = Default(15),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -3634,7 +3634,7 @@ def mandelbrot(
 
 
     *,
-    size: Image_size = Default('640x480'),rate: Video_rate = Default('25'),maxiter: Int = Default('7189'),start_x: Double = Default('-0.743644'),start_y: Double = Default('-0.131826'),start_scale: Double = Default('3'),end_scale: Double = Default('0.3'),end_pts: Double = Default('400'),bailout: Double = Default('10'),morphxf: Double = Default('0.01'),morphyf: Double = Default('0.0123'),morphamp: Double = Default('0'),outer: Int| Literal["iteration_count","normalized_iteration_count","white","outz"] | Default = Default('normalized_iteration_count'),inner: Int| Literal["black","period","convergence","mincol"] | Default = Default('mincol'),
+    size: Image_size = Default('640x480'),rate: Video_rate = Default('25'),maxiter: Int = Default(7189),start_x: Double = Default(-0.743644),start_y: Double = Default(-0.131826),start_scale: Double = Default(3),end_scale: Double = Default(0.3),end_pts: Double = Default(400),bailout: Double = Default(10),morphxf: Double = Default(0.01),morphyf: Double = Default(0.0123),morphamp: Double = Default(0),outer: Int| Literal["iteration_count","normalized_iteration_count","white","outz"] | Default = Default('normalized_iteration_count'),inner: Int| Literal["black","period","convergence","mincol"] | Default = Default('mincol'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -3752,7 +3752,7 @@ def mergeplanes(
 
 
 
-    mapping: Int = Default('-1'),format: Pix_fmt = Default('yuva444p'),map0s: Int = Default('0'),map0p: Int = Default('0'),map1s: Int = Default('0'),map1p: Int = Default('0'),map2s: Int = Default('0'),map2p: Int = Default('0'),map3s: Int = Default('0'),map3p: Int = Default('0'),
+    mapping: Int = Default(-1),format: Pix_fmt = Default('yuva444p'),map0s: Int = Default(0),map0p: Int = Default(0),map1s: Int = Default(0),map1p: Int = Default(0),map2s: Int = Default(0),map2p: Int = Default(0),map3s: Int = Default(0),map3p: Int = Default(0),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -3852,7 +3852,7 @@ def mix(
 
 
 
-    inputs: Int = Auto('len(streams)'),weights: String = Default('1 1'),scale: Float = Default('0'),planes: Flags = Default('F'),duration: Int| Literal["longest","shortest","first"] | Default = Default('longest'),
+    inputs: Int = Auto('len(streams)'),weights: String = Default('1 1'),scale: Float = Default(0),planes: Flags = Default('F'),duration: Int| Literal["longest","shortest","first"] | Default = Default('longest'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -3937,7 +3937,7 @@ def movie(
 
 
     *,
-    filename: String = Default(None),format_name: String = Default(None),stream_index: Int = Default('-1'),seek_point: Double = Default('0'),streams: String = Default(None),loop: Int = Default('1'),discontinuity: Duration = Default('0'),dec_threads: Int = Default('0'),format_opts: Dictionary = Default(None),
+    filename: String = Default(None),format_name: String = Default(None),stream_index: Int = Default(-1),seek_point: Double = Default(0),streams: String = Default(None),loop: Int = Default(1),discontinuity: Duration = Default('0'),dec_threads: Int = Default(0),format_opts: Dictionary = Default(None),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -4023,7 +4023,7 @@ def mptestsrc(
 
 
     *,
-    rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),test: Int| Literal["dc_luma","dc_chroma","freq_luma","freq_chroma","amp_luma","amp_chroma","cbp","mv","ring1","ring2","all"] | Default = Default('all'),max_frames: Int64 = Default('30'),
+    rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),test: Int| Literal["dc_luma","dc_chroma","freq_luma","freq_chroma","amp_luma","amp_chroma","cbp","mv","ring1","ring2","all"] | Default = Default('all'),max_frames: Int64 = Default(30),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -4476,7 +4476,7 @@ def premultiply(
 
 
 
-    planes: Int = Default('15'),inplace: Boolean = Default('false'),
+    planes: Int = Default(15),inplace: Boolean = Default('false'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -4777,7 +4777,7 @@ def sierpinski(
 
 
     *,
-    size: Image_size = Default('640x480'),rate: Video_rate = Default('25'),seed: Int64 = Default('-1'),jump: Int = Default('100'),type: Int| Literal["carpet","triangle"] | Default = Default('carpet'),
+    size: Image_size = Default('640x480'),rate: Video_rate = Default('25'),seed: Int64 = Default(-1),jump: Int = Default(100),type: Int| Literal["carpet","triangle"] | Default = Default('carpet'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -4851,7 +4851,7 @@ def signature(
 
 
 
-    detectmode: Int| Literal["off","full","fast"] | Default = Default('off'),nb_inputs: Int = Auto('len(streams)'),filename: String = Default(''),format: Int| Literal["binary","xml"] | Default = Default('binary'),th_d: Int = Default('9000'),th_dc: Int = Default('60000'),th_xh: Int = Default('116'),th_di: Int = Default('0'),th_it: Double = Default('0.5'),
+    detectmode: Int| Literal["off","full","fast"] | Default = Default('off'),nb_inputs: Int = Auto('len(streams)'),filename: String = Default(''),format: Int| Literal["binary","xml"] | Default = Default('binary'),th_d: Int = Default(9000),th_dc: Int = Default(60000),th_xh: Int = Default(116),th_di: Int = Default(0),th_it: Double = Default(0.5),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -4942,7 +4942,7 @@ def sinc(
 
 
     *,
-    sample_rate: Int = Default('44100'),nb_samples: Int = Default('1024'),hp: Float = Default('0'),lp: Float = Default('0'),phase: Float = Default('50'),beta: Float = Default('-1'),att: Float = Default('120'),round: Boolean = Default('false'),hptaps: Int = Default('0'),lptaps: Int = Default('0'),
+    sample_rate: Int = Default(44100),nb_samples: Int = Default(1024),hp: Float = Default(0),lp: Float = Default(0),phase: Float = Default(50),beta: Float = Default(-1),att: Float = Default(120),round: Boolean = Default('false'),hptaps: Int = Default(0),lptaps: Int = Default(0),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -5029,7 +5029,7 @@ def sine(
 
 
     *,
-    frequency: Double = Default('440'),beep_factor: Double = Default('0'),sample_rate: Int = Default('44100'),duration: Duration = Default('0'),samples_per_frame: String = Default('1024'),
+    frequency: Double = Default(440),beep_factor: Double = Default(0),sample_rate: Int = Default(44100),duration: Duration = Default('0'),samples_per_frame: String = Default('1024'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -5428,7 +5428,7 @@ def testsrc(
 
 
     *,
-    size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),decimals: Int = Default('0'),
+    size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),decimals: Int = Default(0),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -5540,7 +5540,7 @@ def testsrc2(
 
 
     *,
-    size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),alpha: Int = Default('255'),
+    size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),alpha: Int = Default(255),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -5690,7 +5690,7 @@ def unpremultiply(
 
 
 
-    planes: Int = Default('15'),inplace: Boolean = Default('false'),
+    planes: Int = Default(15),inplace: Boolean = Default('false'),
 
 
     timeline_options: FFMpegTimelineOption | None = None,
@@ -5875,7 +5875,7 @@ def vstack_vaapi(
 
 
 
-    inputs: Int = Default('2'),shortest: Boolean = Default('false'),width: Int = Default('0'),
+    inputs: Int = Default(2),shortest: Boolean = Default('false'),width: Int = Default(0),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -5959,7 +5959,7 @@ def xmedian(
 
 
 
-    inputs: Int = Auto('len(streams)'),planes: Int = Default('15'),percentile: Float = Default('0.5'),
+    inputs: Int = Auto('len(streams)'),planes: Int = Default(15),percentile: Float = Default(0.5),
 
     framesync_options: FFMpegFrameSyncOption | None = None,
     eof_action: str | None = None,
@@ -6123,7 +6123,7 @@ def xstack_vaapi(
 
 
 
-    inputs: Int = Default('2'),shortest: Boolean = Default('false'),layout: String = Default(None),grid: Image_size = Default(None),grid_tile_size: Image_size = Default(None),fill: String = Default('none'),
+    inputs: Int = Default(2),shortest: Boolean = Default('false'),layout: String = Default(None),grid: Image_size = Default(None),grid_tile_size: Image_size = Default(None),fill: String = Default('none'),
 
 
     extra_options: dict[str, Any] | None = None,
@@ -6317,7 +6317,7 @@ def zoneplate(
 
 
     *,
-    size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),precision: Int = Default('10'),xo: Int = Default('0'),yo: Int = Default('0'),to: Int = Default('0'),k0: Int = Default('0'),kx: Int = Default('0'),ky: Int = Default('0'),kt: Int = Default('0'),kxt: Int = Default('0'),kyt: Int = Default('0'),kxy: Int = Default('0'),kx2: Int = Default('0'),ky2: Int = Default('0'),kt2: Int = Default('0'),ku: Int = Default('0'),kv: Int = Default('0'),
+    size: Image_size = Default('320x240'),rate: Video_rate = Default('25'),duration: Duration = Default('-0.000001'),sar: Rational = Default('1/1'),precision: Int = Default(10),xo: Int = Default(0),yo: Int = Default(0),to: Int = Default(0),k0: Int = Default(0),kx: Int = Default(0),ky: Int = Default(0),kt: Int = Default(0),kxt: Int = Default(0),kyt: Int = Default(0),kxy: Int = Default(0),kx2: Int = Default(0),ky2: Int = Default(0),kt2: Int = Default(0),ku: Int = Default(0),kv: Int = Default(0),
 
 
     extra_options: dict[str, Any] | None = None,

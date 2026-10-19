@@ -12,7 +12,7 @@ from ffmpeg_core.common.schema import (
     StreamType,
 )
 
-from ..gen import render
+from ..gen import filter_option_typings, render
 
 
 def test_render(snapshot: SnapshotAssertion) -> None:
@@ -59,3 +59,46 @@ def test_render(snapshot: SnapshotAssertion) -> None:
                 snapshot(name=name, extension_class=SingleFileSnapshotExtension)
                 == outfile.read_bytes()
             )
+
+
+def test_filter_option_typings_expression() -> None:
+    drawbox = FFMpegFilter(
+        name="drawbox",
+        description="description",
+        options=(
+            FFMpegFilterOption(
+                name="x",
+                description="set horizontal position",
+                type=FFMpegFilterOptionType.string,
+                default="0",
+            ),
+            FFMpegFilterOption(
+                name="color",
+                description="set color",
+                type=FFMpegFilterOptionType.string,
+                default="black",
+            ),
+            FFMpegFilterOption(
+                name="t",
+                description="set thickness",
+                type=FFMpegFilterOptionType.int,
+                default="3",
+            ),
+            FFMpegFilterOption(
+                name="ratio",
+                description="set ratio",
+                type=FFMpegFilterOptionType.double,
+                default="-0.5",
+            ),
+        ),
+    )
+
+    assert filter_option_typings(drawbox, {"drawbox": ["x"]}).split(",") == [
+        "x: Expr = Default(0)",
+        "color: String = Default('black')",
+        "t: Int = Default(3)",
+        "ratio: Double = Default(-0.5)",
+        "",
+    ]
+    # without expression metadata the option stays a plain String
+    assert filter_option_typings(drawbox).startswith("x: String = Default('0'),")
