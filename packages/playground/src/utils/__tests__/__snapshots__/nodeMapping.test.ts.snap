@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…' case 1`] = `
+exports[`Node Mapping > should handle test_compile_json[amix-stream][compile-… case 1`] = `
 {
   "__class__": "OutputStream",
   "index": null,
@@ -191,7 +191,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…' case 2`] = `
+exports[`Node Mapping > should handle test_compile_json[amix-stream][compile-… case 2`] = `
 {
   "__class__": "GlobalStream",
   "index": null,
@@ -392,7 +392,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…' case 1`] = `
+exports[`Node Mapping > should handle test_compile_json[amix-stream-2][compil… case 1`] = `
 {
   "__class__": "OutputStream",
   "index": null,
@@ -583,7 +583,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…' case 2`] = `
+exports[`Node Mapping > should handle test_compile_json[amix-stream-2][compil… case 2`] = `
 {
   "__class__": "GlobalStream",
   "index": null,
@@ -784,7 +784,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…' case 1`] = `
+exports[`Node Mapping > should handle test_compile_json[complex-stream][compi… case 1`] = `
 {
   "__class__": "OutputStream",
   "index": null,
@@ -1380,7 +1380,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…' case 2`] = `
+exports[`Node Mapping > should handle test_compile_json[complex-stream][compi… case 2`] = `
 {
   "__class__": "GlobalStream",
   "index": null,
@@ -1986,7 +1986,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…' case 1`] = `
+exports[`Node Mapping > should handle test_compile_json[global-args][compile-… case 1`] = `
 {
   "__class__": "GlobalStream",
   "index": null,
@@ -2022,7 +2022,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…' case 2`] = `
+exports[`Node Mapping > should handle test_compile_json[global-args][compile-… case 2`] = `
 {
   "__class__": "GlobalStream",
   "index": null,
@@ -2058,44 +2058,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…' case 1`] = `
-{
-  "__class__": "GlobalStream",
-  "index": null,
-  "node": {
-    "__class__": "GlobalNode",
-    "inputs": [
-      {
-        "__class__": "OutputStream",
-        "index": null,
-        "node": {
-          "__class__": "OutputNode",
-          "filename": "tmp.mp4",
-          "inputs": [
-            {
-              "__class__": "AVStream",
-              "index": null,
-              "node": {
-                "__class__": "InputNode",
-                "filename": "input1.mp4",
-                "inputs": [],
-                "kwargs": {},
-              },
-            },
-          ],
-          "kwargs": {},
-        },
-      },
-    ],
-    "kwargs": {
-      "dump": true,
-      "hide_banner": true,
-    },
-  },
-}
-`;
-
-exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…' case 2`] = `
+exports[`Node Mapping > should handle test_compile_json[global-args-2][compil… case 1`] = `
 {
   "__class__": "GlobalStream",
   "index": null,
@@ -2132,7 +2095,44 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…' case 1`] = `
+exports[`Node Mapping > should handle test_compile_json[global-args-2][compil… case 2`] = `
+{
+  "__class__": "GlobalStream",
+  "index": null,
+  "node": {
+    "__class__": "GlobalNode",
+    "inputs": [
+      {
+        "__class__": "OutputStream",
+        "index": null,
+        "node": {
+          "__class__": "OutputNode",
+          "filename": "tmp.mp4",
+          "inputs": [
+            {
+              "__class__": "AVStream",
+              "index": null,
+              "node": {
+                "__class__": "InputNode",
+                "filename": "input1.mp4",
+                "inputs": [],
+                "kwargs": {},
+              },
+            },
+          ],
+          "kwargs": {},
+        },
+      },
+    ],
+    "kwargs": {
+      "dump": true,
+      "hide_banner": true,
+    },
+  },
+}
+`;
+
+exports[`Node Mapping > should handle test_compile_json[merged-output-1][comp… case 1`] = `
 {
   "__class__": "GlobalStream",
   "index": null,
@@ -2189,7 +2189,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…' case 2`] = `
+exports[`Node Mapping > should handle test_compile_json[merged-output-1][comp… case 2`] = `
 {
   "__class__": "GlobalStream",
   "index": null,
@@ -2246,7 +2246,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…' case 1`] = `
+exports[`Node Mapping > should handle test_compile_json[multi-output-filter][… case 1`] = `
 {
   "__class__": "GlobalStream",
   "index": null,
@@ -2439,7 +2439,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…' case 2`] = `
+exports[`Node Mapping > should handle test_compile_json[multi-output-filter][… case 2`] = `
 {
   "__class__": "GlobalStream",
   "index": null,
@@ -2632,7 +2632,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…' case 1`] = `
+exports[`Node Mapping > should handle test_compile_json[not-utilize-split][co… case 1`] = `
 {
   "__class__": "OutputStream",
   "index": null,
@@ -2679,7 +2679,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…' case 2`] = `
+exports[`Node Mapping > should handle test_compile_json[not-utilize-split][co… case 2`] = `
 {
   "__class__": "GlobalStream",
   "index": null,
@@ -2736,7 +2736,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…' case 1`] = `
+exports[`Node Mapping > should handle test_compile_json[redundant-split-dupli… case 1`] = `
 {
   "__class__": "OutputStream",
   "index": null,
@@ -2981,7 +2981,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…' case 2`] = `
+exports[`Node Mapping > should handle test_compile_json[redundant-split-dupli… case 2`] = `
 {
   "__class__": "GlobalStream",
   "index": null,
@@ -3236,7 +3236,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…' case 1`] = `
+exports[`Node Mapping > should handle test_compile_json[redundant-split-outpu… case 1`] = `
 {
   "__class__": "OutputStream",
   "index": null,
@@ -3283,7 +3283,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…' case 2`] = `
+exports[`Node Mapping > should handle test_compile_json[redundant-split-outpu… case 2`] = `
 {
   "__class__": "GlobalStream",
   "index": null,
@@ -3340,7 +3340,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…' case 1`] = `
+exports[`Node Mapping > should handle test_compile_json[reuse-input][compile-… case 1`] = `
 {
   "__class__": "OutputStream",
   "index": null,
@@ -3403,7 +3403,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…' case 2`] = `
+exports[`Node Mapping > should handle test_compile_json[reuse-input][compile-… case 2`] = `
 {
   "__class__": "GlobalStream",
   "index": null,
@@ -3476,7 +3476,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…' case 1`] = `
+exports[`Node Mapping > should handle test_compile_json[reuse-stream][compile… case 1`] = `
 {
   "__class__": "OutputStream",
   "index": null,
@@ -3643,7 +3643,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…' case 2`] = `
+exports[`Node Mapping > should handle test_compile_json[reuse-stream][compile… case 2`] = `
 {
   "__class__": "GlobalStream",
   "index": null,
