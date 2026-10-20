@@ -3,12 +3,30 @@
 FFmpeg demuxers.
 """
 
-
-
 from typing import Literal
 
 
-from ..types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+from ..types import (
+    Binary,
+    Boolean,
+    Color,
+    Dictionary,
+    Double,
+    Duration,
+    Expr,
+    Flags,
+    Float,
+    Func,
+    Image_size,
+    Int,
+    Int64,
+    Pix_fmt,
+    Rational,
+    Sample_fmt,
+    String,
+    Time,
+    Video_rate,
+)
 
 from ..dag.factory import filter_node_factory
 
@@ -19,10 +37,16 @@ from ..common.schema import FFMpegFilterDef
 from ..options.framesync import FFMpegFrameSyncOption
 from ..options.timeline import FFMpegTimelineOption
 
-from ..options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecContextDecoderOption
+from ..options.codec import (
+    FFMpegAVCodecContextEncoderOption,
+    FFMpegAVCodecContextDecoderOption,
+)
 
 
-from ..options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
+from ..options.format import (
+    FFMpegAVFormatContextEncoderOption,
+    FFMpegAVFormatContextDecoderOption,
+)
 
 
 from ..streams.av import AVStream
@@ -31,7 +55,15 @@ from ..streams.channel_layout import CHANNEL_LAYOUT
 from ..codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
 from .schema import FFMpegMuxerOption, FFMpegDemuxerOption
 
-from ..dag.nodes import FilterableStream, FilterNode, OutputStream, OutputNode, InputNode, GlobalNode, GlobalStream
+from ..dag.nodes import (
+    FilterableStream,
+    FilterNode,
+    OutputStream,
+    OutputNode,
+    InputNode,
+    GlobalNode,
+    GlobalStream,
+)
 
 
 from ..streams.video import VideoStream
@@ -40,360 +72,7 @@ from ..streams.video import VideoStream
 from ..streams.audio import AudioStream
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def _3dostr(
-
-) -> FFMpegDemuxerOption:
+def _3dostr() -> FFMpegDemuxerOption:
     """
     3dostr
 
@@ -401,15 +80,10 @@ def _3dostr(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def _4xm(
-
-) -> FFMpegDemuxerOption:
+def _4xm() -> FFMpegDemuxerOption:
     """
     4xm
 
@@ -417,16 +91,11 @@ def _4xm(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def aa(
-
     aa_fixed_key: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     aa
@@ -437,17 +106,16 @@ def aa(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "aa_fixed_key": aa_fixed_key,
+            }
+        )
+    )
 
-        "aa_fixed_key": aa_fixed_key,
 
-    }))
-
-
-
-def aac(
-
-) -> FFMpegDemuxerOption:
+def aac() -> FFMpegDemuxerOption:
     """
     aac
 
@@ -455,15 +123,10 @@ def aac(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def aax(
-
-) -> FFMpegDemuxerOption:
+def aax() -> FFMpegDemuxerOption:
     """
     aax
 
@@ -471,16 +134,11 @@ def aax(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def ac3(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     ac3
@@ -491,17 +149,16 @@ def ac3(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "raw_packet_size": raw_packet_size,
 
-    }))
-
-
-
-def ace(
-
-) -> FFMpegDemuxerOption:
+def ace() -> FFMpegDemuxerOption:
     """
     ace
 
@@ -509,16 +166,11 @@ def ace(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def acm(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     acm
@@ -529,17 +181,16 @@ def acm(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "raw_packet_size": raw_packet_size,
 
-    }))
-
-
-
-def act(
-
-) -> FFMpegDemuxerOption:
+def act() -> FFMpegDemuxerOption:
     """
     ACT Voice file format
 
@@ -547,20 +198,13 @@ def act(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def adf(
-
     linespeed: int | None = None,
-
     video_size: str | None = None,
-
     framerate: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     adf
@@ -573,21 +217,18 @@ def adf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "linespeed": linespeed,
+                "video_size": video_size,
+                "framerate": framerate,
+            }
+        )
+    )
 
-        "linespeed": linespeed,
 
-        "video_size": video_size,
-
-        "framerate": framerate,
-
-    }))
-
-
-
-def adp(
-
-) -> FFMpegDemuxerOption:
+def adp() -> FFMpegDemuxerOption:
     """
     adp
 
@@ -595,15 +236,10 @@ def adp(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def ads(
-
-) -> FFMpegDemuxerOption:
+def ads() -> FFMpegDemuxerOption:
     """
     ads
 
@@ -611,15 +247,10 @@ def ads(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def adx(
-
-) -> FFMpegDemuxerOption:
+def adx() -> FFMpegDemuxerOption:
     """
     adx
 
@@ -627,15 +258,10 @@ def adx(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def aea(
-
-) -> FFMpegDemuxerOption:
+def aea() -> FFMpegDemuxerOption:
     """
     aea
 
@@ -643,15 +269,10 @@ def aea(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def afc(
-
-) -> FFMpegDemuxerOption:
+def afc() -> FFMpegDemuxerOption:
     """
     afc
 
@@ -659,15 +280,10 @@ def afc(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def aiff(
-
-) -> FFMpegDemuxerOption:
+def aiff() -> FFMpegDemuxerOption:
     """
     aiff
 
@@ -675,15 +291,10 @@ def aiff(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def aix(
-
-) -> FFMpegDemuxerOption:
+def aix() -> FFMpegDemuxerOption:
     """
     aix
 
@@ -691,20 +302,13 @@ def aix(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def alaw(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     alaw
@@ -717,38 +321,29 @@ def alaw(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def alias_pix(
-
-    pattern_type: int | None| Literal["glob_sequence", "glob", "sequence", "none"] = None,
-
+    pattern_type: int
+    | None
+    | Literal["glob_sequence", "glob", "sequence", "none"] = None,
     start_number: int | None = None,
-
     start_number_range: int | None = None,
-
-    ts_from_file: int | None| Literal["none", "sec", "ns"] = None,
-
+    ts_from_file: int | None | Literal["none", "sec", "ns"] = None,
     export_path_metadata: bool | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     alias_pix
@@ -767,33 +362,24 @@ def alias_pix(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "pattern_type": pattern_type,
-
-        "start_number": start_number,
-
-        "start_number_range": start_number_range,
-
-        "ts_from_file": ts_from_file,
-
-        "export_path_metadata": export_path_metadata,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "pattern_type": pattern_type,
+                "start_number": start_number,
+                "start_number_range": start_number_range,
+                "ts_from_file": ts_from_file,
+                "export_path_metadata": export_path_metadata,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def alp(
-
-) -> FFMpegDemuxerOption:
+def alp() -> FFMpegDemuxerOption:
     """
     alp
 
@@ -801,16 +387,11 @@ def alp(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def amr(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     amr
@@ -821,18 +402,17 @@ def amr(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
 
 def amrnb(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     amrnb
@@ -843,18 +423,17 @@ def amrnb(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
 
 def amrwb(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     amrwb
@@ -865,17 +444,16 @@ def amrwb(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "raw_packet_size": raw_packet_size,
 
-    }))
-
-
-
-def anm(
-
-) -> FFMpegDemuxerOption:
+def anm() -> FFMpegDemuxerOption:
     """
     anm
 
@@ -883,15 +461,10 @@ def anm(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def apc(
-
-) -> FFMpegDemuxerOption:
+def apc() -> FFMpegDemuxerOption:
     """
     apc
 
@@ -899,15 +472,10 @@ def apc(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def ape(
-
-) -> FFMpegDemuxerOption:
+def ape() -> FFMpegDemuxerOption:
     """
     ape
 
@@ -915,15 +483,10 @@ def ape(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def apm(
-
-) -> FFMpegDemuxerOption:
+def apm() -> FFMpegDemuxerOption:
     """
     apm
 
@@ -931,20 +494,13 @@ def apm(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def apng(
-
     ignore_loop: bool | None = None,
-
     max_fps: int | None = None,
-
     default_fps: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     apng
@@ -957,22 +513,19 @@ def apng(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "ignore_loop": ignore_loop,
-
-        "max_fps": max_fps,
-
-        "default_fps": default_fps,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "ignore_loop": ignore_loop,
+                "max_fps": max_fps,
+                "default_fps": default_fps,
+            }
+        )
+    )
 
 
 def aptx(
-
     sample_rate: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     aptx
@@ -983,18 +536,17 @@ def aptx(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+            }
+        )
+    )
 
 
 def aptx_hd(
-
     sample_rate: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     aptx_hd
@@ -1005,18 +557,17 @@ def aptx_hd(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+            }
+        )
+    )
 
 
 def aqtitle(
-
     subfps: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     aqtitle
@@ -1027,17 +578,16 @@ def aqtitle(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "subfps": subfps,
+            }
+        )
+    )
 
-        "subfps": subfps,
 
-    }))
-
-
-
-def argo_asf(
-
-) -> FFMpegDemuxerOption:
+def argo_asf() -> FFMpegDemuxerOption:
     """
     argo_asf
 
@@ -1045,15 +595,10 @@ def argo_asf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def argo_brp(
-
-) -> FFMpegDemuxerOption:
+def argo_brp() -> FFMpegDemuxerOption:
     """
     argo_brp
 
@@ -1061,15 +606,10 @@ def argo_brp(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def argo_cvg(
-
-) -> FFMpegDemuxerOption:
+def argo_cvg() -> FFMpegDemuxerOption:
     """
     argo_cvg
 
@@ -1077,18 +617,12 @@ def argo_cvg(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def asf(
-
     no_resync_search: bool | None = None,
-
     export_xmp: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     asf
@@ -1100,19 +634,17 @@ def asf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "no_resync_search": no_resync_search,
+                "export_xmp": export_xmp,
+            }
+        )
+    )
 
-        "no_resync_search": no_resync_search,
 
-        "export_xmp": export_xmp,
-
-    }))
-
-
-
-def asf_o(
-
-) -> FFMpegDemuxerOption:
+def asf_o() -> FFMpegDemuxerOption:
     """
     asf_o
 
@@ -1120,15 +652,10 @@ def asf_o(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def ass(
-
-) -> FFMpegDemuxerOption:
+def ass() -> FFMpegDemuxerOption:
     """
     ass
 
@@ -1136,15 +663,10 @@ def ass(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def ast(
-
-) -> FFMpegDemuxerOption:
+def ast() -> FFMpegDemuxerOption:
     """
     ast
 
@@ -1152,15 +674,10 @@ def ast(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def au(
-
-) -> FFMpegDemuxerOption:
+def au() -> FFMpegDemuxerOption:
     """
     au
 
@@ -1168,16 +685,11 @@ def au(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def av1(
-
     framerate: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     av1
@@ -1188,18 +700,17 @@ def av1(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "framerate": framerate,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+            }
+        )
+    )
 
 
 def avi(
-
     use_odml: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     avi
@@ -1210,17 +721,16 @@ def avi(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "use_odml": use_odml,
+            }
+        )
+    )
 
-        "use_odml": use_odml,
 
-    }))
-
-
-
-def avr(
-
-) -> FFMpegDemuxerOption:
+def avr() -> FFMpegDemuxerOption:
     """
     avr
 
@@ -1228,15 +738,10 @@ def avr(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def avs(
-
-) -> FFMpegDemuxerOption:
+def avs() -> FFMpegDemuxerOption:
     """
     avs
 
@@ -1244,18 +749,12 @@ def avs(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def avs2(
-
     framerate: str | None = None,
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     avs2
@@ -1267,22 +766,19 @@ def avs2(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "framerate": framerate,
-
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
 
 def avs3(
-
     framerate: str | None = None,
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     avs3
@@ -1294,19 +790,17 @@ def avs3(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "framerate": framerate,
 
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
-
-
-def bethsoftvid(
-
-) -> FFMpegDemuxerOption:
+def bethsoftvid() -> FFMpegDemuxerOption:
     """
     bethsoftvid
 
@@ -1314,15 +808,10 @@ def bethsoftvid(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def bfi(
-
-) -> FFMpegDemuxerOption:
+def bfi() -> FFMpegDemuxerOption:
     """
     bfi
 
@@ -1330,15 +819,10 @@ def bfi(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def bfstm(
-
-) -> FFMpegDemuxerOption:
+def bfstm() -> FFMpegDemuxerOption:
     """
     bfstm
 
@@ -1346,20 +830,13 @@ def bfstm(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def bin(
-
     linespeed: int | None = None,
-
     video_size: str | None = None,
-
     framerate: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     bin
@@ -1372,21 +849,18 @@ def bin(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "linespeed": linespeed,
+                "video_size": video_size,
+                "framerate": framerate,
+            }
+        )
+    )
 
-        "linespeed": linespeed,
 
-        "video_size": video_size,
-
-        "framerate": framerate,
-
-    }))
-
-
-
-def bink(
-
-) -> FFMpegDemuxerOption:
+def bink() -> FFMpegDemuxerOption:
     """
     bink
 
@@ -1394,15 +868,10 @@ def bink(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def binka(
-
-) -> FFMpegDemuxerOption:
+def binka() -> FFMpegDemuxerOption:
     """
     binka
 
@@ -1410,15 +879,10 @@ def binka(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def bit(
-
-) -> FFMpegDemuxerOption:
+def bit() -> FFMpegDemuxerOption:
     """
     bit
 
@@ -1426,20 +890,13 @@ def bit(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def bitpacked(
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     framerate: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     bitpacked
@@ -1452,30 +909,23 @@ def bitpacked(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "framerate": framerate,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "framerate": framerate,
+            }
+        )
+    )
 
 
 def bmp_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     bmp_pipe
@@ -1490,25 +940,20 @@ def bmp_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def bmv(
-
-) -> FFMpegDemuxerOption:
+def bmv() -> FFMpegDemuxerOption:
     """
     bmv
 
@@ -1516,15 +961,10 @@ def bmv(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def boa(
-
-) -> FFMpegDemuxerOption:
+def boa() -> FFMpegDemuxerOption:
     """
     boa
 
@@ -1532,32 +972,21 @@ def boa(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def brender_pix(
-
-    pattern_type: int | None| Literal["glob_sequence", "glob", "sequence", "none"] = None,
-
+    pattern_type: int
+    | None
+    | Literal["glob_sequence", "glob", "sequence", "none"] = None,
     start_number: int | None = None,
-
     start_number_range: int | None = None,
-
-    ts_from_file: int | None| Literal["none", "sec", "ns"] = None,
-
+    ts_from_file: int | None | Literal["none", "sec", "ns"] = None,
     export_path_metadata: bool | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     brender_pix
@@ -1576,33 +1005,24 @@ def brender_pix(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "pattern_type": pattern_type,
-
-        "start_number": start_number,
-
-        "start_number_range": start_number_range,
-
-        "ts_from_file": ts_from_file,
-
-        "export_path_metadata": export_path_metadata,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "pattern_type": pattern_type,
+                "start_number": start_number,
+                "start_number_range": start_number_range,
+                "ts_from_file": ts_from_file,
+                "export_path_metadata": export_path_metadata,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def brstm(
-
-) -> FFMpegDemuxerOption:
+def brstm() -> FFMpegDemuxerOption:
     """
     brstm
 
@@ -1610,15 +1030,10 @@ def brstm(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def c93(
-
-) -> FFMpegDemuxerOption:
+def c93() -> FFMpegDemuxerOption:
     """
     c93
 
@@ -1626,15 +1041,10 @@ def c93(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def caf(
-
-) -> FFMpegDemuxerOption:
+def caf() -> FFMpegDemuxerOption:
     """
     caf
 
@@ -1642,18 +1052,12 @@ def caf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def cavsvideo(
-
     framerate: str | None = None,
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     cavsvideo
@@ -1665,19 +1069,17 @@ def cavsvideo(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "framerate": framerate,
 
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
-
-
-def cdg(
-
-) -> FFMpegDemuxerOption:
+def cdg() -> FFMpegDemuxerOption:
     """
     cdg
 
@@ -1685,18 +1087,12 @@ def cdg(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def cdxl(
-
     sample_rate: int | None = None,
-
     frame_rate: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     cdxl
@@ -1708,19 +1104,17 @@ def cdxl(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "frame_rate": frame_rate,
+            }
+        )
+    )
 
-        "sample_rate": sample_rate,
 
-        "frame_rate": frame_rate,
-
-    }))
-
-
-
-def cine(
-
-) -> FFMpegDemuxerOption:
+def cine() -> FFMpegDemuxerOption:
     """
     cine
 
@@ -1728,16 +1122,11 @@ def cine(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def codec2(
-
     frames_per_packet: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     codec2
@@ -1748,20 +1137,22 @@ def codec2(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frames_per_packet": frames_per_packet,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frames_per_packet": frames_per_packet,
+            }
+        )
+    )
 
 
 def codec2raw(
-
-    mode: int | None| Literal["3200", "2400", "1600", "1400", "1300", "1200", "700", "700B", "700C"] = None,
-
+    mode: int
+    | None
+    | Literal[
+        "3200", "2400", "1600", "1400", "1300", "1200", "700", "700B", "700C"
+    ] = None,
     frames_per_packet: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     codec2raw
@@ -1773,24 +1164,20 @@ def codec2raw(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "mode": mode,
-
-        "frames_per_packet": frames_per_packet,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "mode": mode,
+                "frames_per_packet": frames_per_packet,
+            }
+        )
+    )
 
 
 def concat(
-
     safe: bool | None = None,
-
     auto_convert: bool | None = None,
-
     segment_time_metadata: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     concat
@@ -1803,30 +1190,23 @@ def concat(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "safe": safe,
-
-        "auto_convert": auto_convert,
-
-        "segment_time_metadata": segment_time_metadata,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "safe": safe,
+                "auto_convert": auto_convert,
+                "segment_time_metadata": segment_time_metadata,
+            }
+        )
+    )
 
 
 def cri_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     cri_pipe
@@ -1841,26 +1221,21 @@ def cri_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def data(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     data
@@ -1871,17 +1246,16 @@ def data(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "raw_packet_size": raw_packet_size,
 
-    }))
-
-
-
-def daud(
-
-) -> FFMpegDemuxerOption:
+def daud() -> FFMpegDemuxerOption:
     """
     daud
 
@@ -1889,15 +1263,10 @@ def daud(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def dcstr(
-
-) -> FFMpegDemuxerOption:
+def dcstr() -> FFMpegDemuxerOption:
     """
     dcstr
 
@@ -1905,24 +1274,15 @@ def dcstr(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def dds_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     dds_pipe
@@ -1937,25 +1297,20 @@ def dds_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def derf(
-
-) -> FFMpegDemuxerOption:
+def derf() -> FFMpegDemuxerOption:
     """
     derf
 
@@ -1963,15 +1318,10 @@ def derf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def dfa(
-
-) -> FFMpegDemuxerOption:
+def dfa() -> FFMpegDemuxerOption:
     """
     dfa
 
@@ -1979,20 +1329,13 @@ def dfa(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def dfpwm(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     dfpwm
@@ -2005,21 +1348,18 @@ def dfpwm(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
-        "sample_rate": sample_rate,
 
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
-
-
-def dhav(
-
-) -> FFMpegDemuxerOption:
+def dhav() -> FFMpegDemuxerOption:
     """
     dhav
 
@@ -2027,18 +1367,12 @@ def dhav(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def dirac(
-
     framerate: str | None = None,
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     dirac
@@ -2050,22 +1384,19 @@ def dirac(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "framerate": framerate,
-
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
 
 def dnxhd(
-
     framerate: str | None = None,
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     dnxhd
@@ -2077,28 +1408,22 @@ def dnxhd(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "framerate": framerate,
-
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
 
 def dpx_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     dpx_pipe
@@ -2113,25 +1438,20 @@ def dpx_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def dsf(
-
-) -> FFMpegDemuxerOption:
+def dsf() -> FFMpegDemuxerOption:
     """
     dsf
 
@@ -2139,15 +1459,10 @@ def dsf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def dsicin(
-
-) -> FFMpegDemuxerOption:
+def dsicin() -> FFMpegDemuxerOption:
     """
     dsicin
 
@@ -2155,15 +1470,10 @@ def dsicin(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def dss(
-
-) -> FFMpegDemuxerOption:
+def dss() -> FFMpegDemuxerOption:
     """
     dss
 
@@ -2171,16 +1481,11 @@ def dss(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def dts(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     dts
@@ -2191,17 +1496,16 @@ def dts(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "raw_packet_size": raw_packet_size,
 
-    }))
-
-
-
-def dtshd(
-
-) -> FFMpegDemuxerOption:
+def dtshd() -> FFMpegDemuxerOption:
     """
     dtshd
 
@@ -2209,15 +1513,10 @@ def dtshd(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def dv(
-
-) -> FFMpegDemuxerOption:
+def dv() -> FFMpegDemuxerOption:
     """
     dv
 
@@ -2225,16 +1524,11 @@ def dv(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def dvbsub(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     dvbsub
@@ -2245,18 +1539,17 @@ def dvbsub(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
 
 def dvbtxt(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     dvbtxt
@@ -2267,17 +1560,16 @@ def dvbtxt(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "raw_packet_size": raw_packet_size,
 
-    }))
-
-
-
-def dxa(
-
-) -> FFMpegDemuxerOption:
+def dxa() -> FFMpegDemuxerOption:
     """
     dxa
 
@@ -2285,15 +1577,10 @@ def dxa(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def ea(
-
-) -> FFMpegDemuxerOption:
+def ea() -> FFMpegDemuxerOption:
     """
     ea
 
@@ -2301,15 +1588,10 @@ def ea(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def ea_cdata(
-
-) -> FFMpegDemuxerOption:
+def ea_cdata() -> FFMpegDemuxerOption:
     """
     ea_cdata
 
@@ -2317,16 +1599,11 @@ def ea_cdata(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def eac3(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     eac3
@@ -2337,17 +1614,16 @@ def eac3(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "raw_packet_size": raw_packet_size,
 
-    }))
-
-
-
-def epaf(
-
-) -> FFMpegDemuxerOption:
+def epaf() -> FFMpegDemuxerOption:
     """
     epaf
 
@@ -2355,24 +1631,15 @@ def epaf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def exr_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     exr_pipe
@@ -2387,30 +1654,23 @@ def exr_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def f32be(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     f32be
@@ -2423,26 +1683,21 @@ def f32be(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def f32le(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     f32le
@@ -2455,26 +1710,21 @@ def f32le(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def f64be(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     f64be
@@ -2487,26 +1737,21 @@ def f64be(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def f64le(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     f64le
@@ -2519,22 +1764,19 @@ def f64le(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def fbdev(
-
     framerate: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     fbdev
@@ -2545,17 +1787,16 @@ def fbdev(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+            }
+        )
+    )
 
-        "framerate": framerate,
 
-    }))
-
-
-
-def ffmetadata(
-
-) -> FFMpegDemuxerOption:
+def ffmetadata() -> FFMpegDemuxerOption:
     """
     ffmetadata
 
@@ -2563,15 +1804,10 @@ def ffmetadata(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def film_cpk(
-
-) -> FFMpegDemuxerOption:
+def film_cpk() -> FFMpegDemuxerOption:
     """
     film_cpk
 
@@ -2579,15 +1815,10 @@ def film_cpk(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def filmstrip(
-
-) -> FFMpegDemuxerOption:
+def filmstrip() -> FFMpegDemuxerOption:
     """
     filmstrip
 
@@ -2595,16 +1826,11 @@ def filmstrip(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def fits(
-
     framerate: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     fits
@@ -2615,18 +1841,17 @@ def fits(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "framerate": framerate,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+            }
+        )
+    )
 
 
 def flac(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     flac
@@ -2637,17 +1862,16 @@ def flac(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "raw_packet_size": raw_packet_size,
 
-    }))
-
-
-
-def flic(
-
-) -> FFMpegDemuxerOption:
+def flic() -> FFMpegDemuxerOption:
     """
     flic
 
@@ -2655,22 +1879,14 @@ def flic(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def flv(
-
     flv_metadata: bool | None = None,
-
     flv_full_metadata: bool | None = None,
-
     flv_ignore_prevtag: bool | None = None,
-
     missing_streams: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     flv
@@ -2684,23 +1900,19 @@ def flv(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "flv_metadata": flv_metadata,
-
-        "flv_full_metadata": flv_full_metadata,
-
-        "flv_ignore_prevtag": flv_ignore_prevtag,
-
-        "missing_streams": missing_streams,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "flv_metadata": flv_metadata,
+                "flv_full_metadata": flv_full_metadata,
+                "flv_ignore_prevtag": flv_ignore_prevtag,
+                "missing_streams": missing_streams,
+            }
+        )
+    )
 
 
-def frm(
-
-) -> FFMpegDemuxerOption:
+def frm() -> FFMpegDemuxerOption:
     """
     frm
 
@@ -2708,15 +1920,10 @@ def frm(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def fsb(
-
-) -> FFMpegDemuxerOption:
+def fsb() -> FFMpegDemuxerOption:
     """
     fsb
 
@@ -2724,15 +1931,10 @@ def fsb(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def fwse(
-
-) -> FFMpegDemuxerOption:
+def fwse() -> FFMpegDemuxerOption:
     """
     fwse
 
@@ -2740,16 +1942,11 @@ def fwse(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def g722(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     g722
@@ -2760,17 +1957,16 @@ def g722(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "raw_packet_size": raw_packet_size,
 
-    }))
-
-
-
-def g723_1(
-
-) -> FFMpegDemuxerOption:
+def g723_1() -> FFMpegDemuxerOption:
     """
     g723_1
 
@@ -2778,18 +1974,12 @@ def g723_1(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def g726(
-
     code_size: int | None = None,
-
     sample_rate: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     g726
@@ -2801,22 +1991,19 @@ def g726(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "code_size": code_size,
-
-        "sample_rate": sample_rate,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "code_size": code_size,
+                "sample_rate": sample_rate,
+            }
+        )
+    )
 
 
 def g726le(
-
     code_size: int | None = None,
-
     sample_rate: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     g726le
@@ -2828,20 +2015,18 @@ def g726le(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "code_size": code_size,
-
-        "sample_rate": sample_rate,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "code_size": code_size,
+                "sample_rate": sample_rate,
+            }
+        )
+    )
 
 
 def g729(
-
     bit_rate: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     g729
@@ -2852,17 +2037,16 @@ def g729(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "bit_rate": bit_rate,
+            }
+        )
+    )
 
-        "bit_rate": bit_rate,
 
-    }))
-
-
-
-def gdv(
-
-) -> FFMpegDemuxerOption:
+def gdv() -> FFMpegDemuxerOption:
     """
     gdv
 
@@ -2870,24 +2054,15 @@ def gdv(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def gem_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     gem_pipe
@@ -2902,25 +2077,20 @@ def gem_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def genh(
-
-) -> FFMpegDemuxerOption:
+def genh() -> FFMpegDemuxerOption:
     """
     genh
 
@@ -2928,22 +2098,14 @@ def genh(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def gif(
-
     min_delay: int | None = None,
-
     max_gif_delay: int | None = None,
-
     default_delay: int | None = None,
-
     ignore_loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     gif
@@ -2957,32 +2119,24 @@ def gif(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "min_delay": min_delay,
-
-        "max_gif_delay": max_gif_delay,
-
-        "default_delay": default_delay,
-
-        "ignore_loop": ignore_loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "min_delay": min_delay,
+                "max_gif_delay": max_gif_delay,
+                "default_delay": default_delay,
+                "ignore_loop": ignore_loop,
+            }
+        )
+    )
 
 
 def gif_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     gif_pipe
@@ -2997,26 +2151,21 @@ def gif_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def gsm(
-
     sample_rate: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     gsm
@@ -3027,17 +2176,16 @@ def gsm(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+            }
+        )
+    )
 
-        "sample_rate": sample_rate,
 
-    }))
-
-
-
-def gxf(
-
-) -> FFMpegDemuxerOption:
+def gxf() -> FFMpegDemuxerOption:
     """
     gxf
 
@@ -3045,18 +2193,12 @@ def gxf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def h261(
-
     framerate: str | None = None,
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     h261
@@ -3068,22 +2210,19 @@ def h261(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "framerate": framerate,
-
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
 
 def h263(
-
     framerate: str | None = None,
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     h263
@@ -3095,22 +2234,19 @@ def h263(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "framerate": framerate,
-
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
 
 def h264(
-
     framerate: str | None = None,
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     h264
@@ -3122,19 +2258,17 @@ def h264(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "framerate": framerate,
 
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
-
-
-def hca(
-
-) -> FFMpegDemuxerOption:
+def hca() -> FFMpegDemuxerOption:
     """
     hca
 
@@ -3142,15 +2276,10 @@ def hca(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def hcom(
-
-) -> FFMpegDemuxerOption:
+def hcom() -> FFMpegDemuxerOption:
     """
     hcom
 
@@ -3158,18 +2287,12 @@ def hcom(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def hevc(
-
     framerate: str | None = None,
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     hevc
@@ -3181,36 +2304,26 @@ def hevc(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "framerate": framerate,
-
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
 
 def hls(
-
     live_start_index: int | None = None,
-
     prefer_x_start: bool | None = None,
-
     allowed_extensions: str | None = None,
-
     max_reload: int | None = None,
-
     m3u8_hold_counters: int | None = None,
-
     http_persistent: bool | None = None,
-
     http_multiple: bool | None = None,
-
     http_seekable: bool | None = None,
-
     seg_format_options: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     hls
@@ -3229,33 +2342,24 @@ def hls(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "live_start_index": live_start_index,
-
-        "prefer_x_start": prefer_x_start,
-
-        "allowed_extensions": allowed_extensions,
-
-        "max_reload": max_reload,
-
-        "m3u8_hold_counters": m3u8_hold_counters,
-
-        "http_persistent": http_persistent,
-
-        "http_multiple": http_multiple,
-
-        "http_seekable": http_seekable,
-
-        "seg_format_options": seg_format_options,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "live_start_index": live_start_index,
+                "prefer_x_start": prefer_x_start,
+                "allowed_extensions": allowed_extensions,
+                "max_reload": max_reload,
+                "m3u8_hold_counters": m3u8_hold_counters,
+                "http_persistent": http_persistent,
+                "http_multiple": http_multiple,
+                "http_seekable": http_seekable,
+                "seg_format_options": seg_format_options,
+            }
+        )
+    )
 
 
-
-def hnm(
-
-) -> FFMpegDemuxerOption:
+def hnm() -> FFMpegDemuxerOption:
     """
     hnm
 
@@ -3263,15 +2367,10 @@ def hnm(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def ico(
-
-) -> FFMpegDemuxerOption:
+def ico() -> FFMpegDemuxerOption:
     """
     ico
 
@@ -3279,15 +2378,10 @@ def ico(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def idcin(
-
-) -> FFMpegDemuxerOption:
+def idcin() -> FFMpegDemuxerOption:
     """
     idcin
 
@@ -3295,20 +2389,13 @@ def idcin(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def idf(
-
     linespeed: int | None = None,
-
     video_size: str | None = None,
-
     framerate: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     idf
@@ -3321,21 +2408,18 @@ def idf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "linespeed": linespeed,
+                "video_size": video_size,
+                "framerate": framerate,
+            }
+        )
+    )
 
-        "linespeed": linespeed,
 
-        "video_size": video_size,
-
-        "framerate": framerate,
-
-    }))
-
-
-
-def iff(
-
-) -> FFMpegDemuxerOption:
+def iff() -> FFMpegDemuxerOption:
     """
     iff
 
@@ -3343,15 +2427,10 @@ def iff(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def ifv(
-
-) -> FFMpegDemuxerOption:
+def ifv() -> FFMpegDemuxerOption:
     """
     ifv
 
@@ -3359,15 +2438,10 @@ def ifv(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def ilbc(
-
-) -> FFMpegDemuxerOption:
+def ilbc() -> FFMpegDemuxerOption:
     """
     ilbc
 
@@ -3375,32 +2449,21 @@ def ilbc(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def image2(
-
-    pattern_type: int | None| Literal["glob_sequence", "glob", "sequence", "none"] = None,
-
+    pattern_type: int
+    | None
+    | Literal["glob_sequence", "glob", "sequence", "none"] = None,
     start_number: int | None = None,
-
     start_number_range: int | None = None,
-
-    ts_from_file: int | None| Literal["none", "sec", "ns"] = None,
-
+    ts_from_file: int | None | Literal["none", "sec", "ns"] = None,
     export_path_metadata: bool | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     image2
@@ -3419,42 +2482,29 @@ def image2(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "pattern_type": pattern_type,
-
-        "start_number": start_number,
-
-        "start_number_range": start_number_range,
-
-        "ts_from_file": ts_from_file,
-
-        "export_path_metadata": export_path_metadata,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "pattern_type": pattern_type,
+                "start_number": start_number,
+                "start_number_range": start_number_range,
+                "ts_from_file": ts_from_file,
+                "export_path_metadata": export_path_metadata,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def image2pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     image2pipe
@@ -3469,28 +2519,22 @@ def image2pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def ingenient(
-
     framerate: str | None = None,
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     ingenient
@@ -3502,19 +2546,17 @@ def ingenient(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "framerate": framerate,
 
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
-
-
-def ipmovie(
-
-) -> FFMpegDemuxerOption:
+def ipmovie() -> FFMpegDemuxerOption:
     """
     ipmovie
 
@@ -3522,16 +2564,11 @@ def ipmovie(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def ipu(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     ipu
@@ -3542,17 +2579,16 @@ def ipu(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "raw_packet_size": raw_packet_size,
 
-    }))
-
-
-
-def ircam(
-
-) -> FFMpegDemuxerOption:
+def ircam() -> FFMpegDemuxerOption:
     """
     ircam
 
@@ -3560,15 +2596,10 @@ def ircam(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def iss(
-
-) -> FFMpegDemuxerOption:
+def iss() -> FFMpegDemuxerOption:
     """
     iss
 
@@ -3576,15 +2607,10 @@ def iss(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def iv8(
-
-) -> FFMpegDemuxerOption:
+def iv8() -> FFMpegDemuxerOption:
     """
     iv8
 
@@ -3592,15 +2618,10 @@ def iv8(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def ivf(
-
-) -> FFMpegDemuxerOption:
+def ivf() -> FFMpegDemuxerOption:
     """
     ivf
 
@@ -3608,15 +2629,10 @@ def ivf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def ivr(
-
-) -> FFMpegDemuxerOption:
+def ivr() -> FFMpegDemuxerOption:
     """
     ivr
 
@@ -3624,24 +2640,15 @@ def ivr(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def j2k_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     j2k_pipe
@@ -3656,25 +2663,20 @@ def j2k_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def jacosub(
-
-) -> FFMpegDemuxerOption:
+def jacosub() -> FFMpegDemuxerOption:
     """
     jacosub
 
@@ -3682,24 +2684,15 @@ def jacosub(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def jpeg_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     jpeg_pipe
@@ -3714,34 +2707,25 @@ def jpeg_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def jpegls_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     jpegls_pipe
@@ -3756,34 +2740,25 @@ def jpegls_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def jpegxl_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     jpegxl_pipe
@@ -3798,25 +2773,20 @@ def jpegxl_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def jv(
-
-) -> FFMpegDemuxerOption:
+def jv() -> FFMpegDemuxerOption:
     """
     jv
 
@@ -3824,22 +2794,14 @@ def jv(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def kux(
-
     flv_metadata: bool | None = None,
-
     flv_full_metadata: bool | None = None,
-
     flv_ignore_prevtag: bool | None = None,
-
     missing_streams: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     kux
@@ -3853,23 +2815,19 @@ def kux(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "flv_metadata": flv_metadata,
-
-        "flv_full_metadata": flv_full_metadata,
-
-        "flv_ignore_prevtag": flv_ignore_prevtag,
-
-        "missing_streams": missing_streams,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "flv_metadata": flv_metadata,
+                "flv_full_metadata": flv_full_metadata,
+                "flv_ignore_prevtag": flv_ignore_prevtag,
+                "missing_streams": missing_streams,
+            }
+        )
+    )
 
 
-def kvag(
-
-) -> FFMpegDemuxerOption:
+def kvag() -> FFMpegDemuxerOption:
     """
     kvag
 
@@ -3877,20 +2835,13 @@ def kvag(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def lavfi(
-
     graph: str | None = None,
-
     graph_file: str | None = None,
-
     dumpgraph: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     lavfi
@@ -3903,28 +2854,22 @@ def lavfi(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "graph": graph,
-
-        "graph_file": graph_file,
-
-        "dumpgraph": dumpgraph,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "graph": graph,
+                "graph_file": graph_file,
+                "dumpgraph": dumpgraph,
+            }
+        )
+    )
 
 
 def live_flv(
-
     flv_metadata: bool | None = None,
-
     flv_full_metadata: bool | None = None,
-
     flv_ignore_prevtag: bool | None = None,
-
     missing_streams: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     live_flv
@@ -3938,23 +2883,19 @@ def live_flv(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "flv_metadata": flv_metadata,
-
-        "flv_full_metadata": flv_full_metadata,
-
-        "flv_ignore_prevtag": flv_ignore_prevtag,
-
-        "missing_streams": missing_streams,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "flv_metadata": flv_metadata,
+                "flv_full_metadata": flv_full_metadata,
+                "flv_ignore_prevtag": flv_ignore_prevtag,
+                "missing_streams": missing_streams,
+            }
+        )
+    )
 
 
-def lmlm4(
-
-) -> FFMpegDemuxerOption:
+def lmlm4() -> FFMpegDemuxerOption:
     """
     lmlm4
 
@@ -3962,16 +2903,11 @@ def lmlm4(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def loas(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     loas
@@ -3982,17 +2918,16 @@ def loas(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "raw_packet_size": raw_packet_size,
 
-    }))
-
-
-
-def lrc(
-
-) -> FFMpegDemuxerOption:
+def lrc() -> FFMpegDemuxerOption:
     """
     lrc
 
@@ -4000,15 +2935,10 @@ def lrc(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def luodat(
-
-) -> FFMpegDemuxerOption:
+def luodat() -> FFMpegDemuxerOption:
     """
     luodat
 
@@ -4016,15 +2946,10 @@ def luodat(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def lvf(
-
-) -> FFMpegDemuxerOption:
+def lvf() -> FFMpegDemuxerOption:
     """
     lvf
 
@@ -4032,15 +2957,10 @@ def lvf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def lxf(
-
-) -> FFMpegDemuxerOption:
+def lxf() -> FFMpegDemuxerOption:
     """
     lxf
 
@@ -4048,18 +2968,12 @@ def lxf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def m4v(
-
     framerate: str | None = None,
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     m4v
@@ -4071,19 +2985,17 @@ def m4v(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "framerate": framerate,
 
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
-
-
-def mca(
-
-) -> FFMpegDemuxerOption:
+def mca() -> FFMpegDemuxerOption:
     """
     mca
 
@@ -4091,15 +3003,10 @@ def mca(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def mcc(
-
-) -> FFMpegDemuxerOption:
+def mcc() -> FFMpegDemuxerOption:
     """
     mcc
 
@@ -4107,15 +3014,10 @@ def mcc(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def mgsts(
-
-) -> FFMpegDemuxerOption:
+def mgsts() -> FFMpegDemuxerOption:
     """
     mgsts
 
@@ -4123,16 +3025,11 @@ def mgsts(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def microdvd(
-
     subfps: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     microdvd
@@ -4143,20 +3040,18 @@ def microdvd(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "subfps": subfps,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "subfps": subfps,
+            }
+        )
+    )
 
 
 def mjpeg(
-
     framerate: str | None = None,
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     mjpeg
@@ -4168,22 +3063,19 @@ def mjpeg(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "framerate": framerate,
-
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
 
 def mjpeg_2000(
-
     framerate: str | None = None,
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     mjpeg_2000
@@ -4195,20 +3087,18 @@ def mjpeg_2000(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "framerate": framerate,
-
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
 
 def mlp(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     mlp
@@ -4219,17 +3109,16 @@ def mlp(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "raw_packet_size": raw_packet_size,
 
-    }))
-
-
-
-def mlv(
-
-) -> FFMpegDemuxerOption:
+def mlv() -> FFMpegDemuxerOption:
     """
     mlv
 
@@ -4237,15 +3126,10 @@ def mlv(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def mm(
-
-) -> FFMpegDemuxerOption:
+def mm() -> FFMpegDemuxerOption:
     """
     mm
 
@@ -4253,15 +3137,10 @@ def mm(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def mmf(
-
-) -> FFMpegDemuxerOption:
+def mmf() -> FFMpegDemuxerOption:
     """
     mmf
 
@@ -4269,15 +3148,10 @@ def mmf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def mods(
-
-) -> FFMpegDemuxerOption:
+def mods() -> FFMpegDemuxerOption:
     """
     mods
 
@@ -4285,15 +3159,10 @@ def mods(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def moflex(
-
-) -> FFMpegDemuxerOption:
+def moflex() -> FFMpegDemuxerOption:
     """
     moflex
 
@@ -4301,16 +3170,11 @@ def moflex(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def mp3(
-
     usetoc: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     mp3
@@ -4321,17 +3185,16 @@ def mp3(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "usetoc": usetoc,
+            }
+        )
+    )
 
-        "usetoc": usetoc,
 
-    }))
-
-
-
-def mpc(
-
-) -> FFMpegDemuxerOption:
+def mpc() -> FFMpegDemuxerOption:
     """
     mpc
 
@@ -4339,15 +3202,10 @@ def mpc(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def mpc8(
-
-) -> FFMpegDemuxerOption:
+def mpc8() -> FFMpegDemuxerOption:
     """
     mpc8
 
@@ -4355,15 +3213,10 @@ def mpc8(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def mpeg(
-
-) -> FFMpegDemuxerOption:
+def mpeg() -> FFMpegDemuxerOption:
     """
     mpeg
 
@@ -4371,28 +3224,17 @@ def mpeg(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def mpegts(
-
     resync_size: int | None = None,
-
     fix_teletext_pts: bool | None = None,
-
     ts_packetsize: int | None = None,
-
     scan_all_pmts: bool | None = None,
-
     skip_unknown_pmt: bool | None = None,
-
     merge_pmt_versions: bool | None = None,
-
     max_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     mpegts
@@ -4409,34 +3251,25 @@ def mpegts(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "resync_size": resync_size,
-
-        "fix_teletext_pts": fix_teletext_pts,
-
-        "ts_packetsize": ts_packetsize,
-
-        "scan_all_pmts": scan_all_pmts,
-
-        "skip_unknown_pmt": skip_unknown_pmt,
-
-        "merge_pmt_versions": merge_pmt_versions,
-
-        "max_packet_size": max_packet_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "resync_size": resync_size,
+                "fix_teletext_pts": fix_teletext_pts,
+                "ts_packetsize": ts_packetsize,
+                "scan_all_pmts": scan_all_pmts,
+                "skip_unknown_pmt": skip_unknown_pmt,
+                "merge_pmt_versions": merge_pmt_versions,
+                "max_packet_size": max_packet_size,
+            }
+        )
+    )
 
 
 def mpegtsraw(
-
     resync_size: int | None = None,
-
     compute_pcr: bool | None = None,
-
     ts_packetsize: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     mpegtsraw
@@ -4449,24 +3282,20 @@ def mpegtsraw(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "resync_size": resync_size,
-
-        "compute_pcr": compute_pcr,
-
-        "ts_packetsize": ts_packetsize,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "resync_size": resync_size,
+                "compute_pcr": compute_pcr,
+                "ts_packetsize": ts_packetsize,
+            }
+        )
+    )
 
 
 def mpegvideo(
-
     framerate: str | None = None,
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     mpegvideo
@@ -4478,20 +3307,18 @@ def mpegvideo(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "framerate": framerate,
-
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
 
 def mpjpeg(
-
     strict_mime_boundary: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     mpjpeg
@@ -4502,17 +3329,16 @@ def mpjpeg(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "strict_mime_boundary": strict_mime_boundary,
+            }
+        )
+    )
 
-        "strict_mime_boundary": strict_mime_boundary,
 
-    }))
-
-
-
-def mpl2(
-
-) -> FFMpegDemuxerOption:
+def mpl2() -> FFMpegDemuxerOption:
     """
     mpl2
 
@@ -4520,15 +3346,10 @@ def mpl2(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def mpsub(
-
-) -> FFMpegDemuxerOption:
+def mpsub() -> FFMpegDemuxerOption:
     """
     mpsub
 
@@ -4536,15 +3357,10 @@ def mpsub(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def msf(
-
-) -> FFMpegDemuxerOption:
+def msf() -> FFMpegDemuxerOption:
     """
     msf
 
@@ -4552,15 +3368,10 @@ def msf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def msnwctcp(
-
-) -> FFMpegDemuxerOption:
+def msnwctcp() -> FFMpegDemuxerOption:
     """
     msnwctcp
 
@@ -4568,15 +3379,10 @@ def msnwctcp(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def msp(
-
-) -> FFMpegDemuxerOption:
+def msp() -> FFMpegDemuxerOption:
     """
     msp
 
@@ -4584,15 +3390,10 @@ def msp(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def mtaf(
-
-) -> FFMpegDemuxerOption:
+def mtaf() -> FFMpegDemuxerOption:
     """
     mtaf
 
@@ -4600,15 +3401,10 @@ def mtaf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def mtv(
-
-) -> FFMpegDemuxerOption:
+def mtv() -> FFMpegDemuxerOption:
     """
     mtv
 
@@ -4616,20 +3412,13 @@ def mtv(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def mulaw(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     mulaw
@@ -4642,21 +3431,18 @@ def mulaw(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
-        "sample_rate": sample_rate,
 
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
-
-
-def musx(
-
-) -> FFMpegDemuxerOption:
+def musx() -> FFMpegDemuxerOption:
     """
     musx
 
@@ -4664,15 +3450,10 @@ def musx(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def mv(
-
-) -> FFMpegDemuxerOption:
+def mv() -> FFMpegDemuxerOption:
     """
     mv
 
@@ -4680,15 +3461,10 @@ def mv(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def mvi(
-
-) -> FFMpegDemuxerOption:
+def mvi() -> FFMpegDemuxerOption:
     """
     mvi
 
@@ -4696,16 +3472,11 @@ def mvi(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def mxf(
-
     eia608_extract: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     mxf
@@ -4716,17 +3487,16 @@ def mxf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "eia608_extract": eia608_extract,
+            }
+        )
+    )
 
-        "eia608_extract": eia608_extract,
 
-    }))
-
-
-
-def mxg(
-
-) -> FFMpegDemuxerOption:
+def mxg() -> FFMpegDemuxerOption:
     """
     mxg
 
@@ -4734,15 +3504,10 @@ def mxg(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def nc(
-
-) -> FFMpegDemuxerOption:
+def nc() -> FFMpegDemuxerOption:
     """
     nc
 
@@ -4750,15 +3515,10 @@ def nc(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def nistsphere(
-
-) -> FFMpegDemuxerOption:
+def nistsphere() -> FFMpegDemuxerOption:
     """
     nistsphere
 
@@ -4766,15 +3526,10 @@ def nistsphere(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def nsp(
-
-) -> FFMpegDemuxerOption:
+def nsp() -> FFMpegDemuxerOption:
     """
     nsp
 
@@ -4782,15 +3537,10 @@ def nsp(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def nsv(
-
-) -> FFMpegDemuxerOption:
+def nsv() -> FFMpegDemuxerOption:
     """
     nsv
 
@@ -4798,15 +3548,10 @@ def nsv(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def nut(
-
-) -> FFMpegDemuxerOption:
+def nut() -> FFMpegDemuxerOption:
     """
     nut
 
@@ -4814,15 +3559,10 @@ def nut(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def nuv(
-
-) -> FFMpegDemuxerOption:
+def nuv() -> FFMpegDemuxerOption:
     """
     nuv
 
@@ -4830,16 +3570,11 @@ def nuv(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def obu(
-
     framerate: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     obu
@@ -4850,17 +3585,16 @@ def obu(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+            }
+        )
+    )
 
-        "framerate": framerate,
 
-    }))
-
-
-
-def ogg(
-
-) -> FFMpegDemuxerOption:
+def ogg() -> FFMpegDemuxerOption:
     """
     ogg
 
@@ -4868,15 +3602,10 @@ def ogg(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def oma(
-
-) -> FFMpegDemuxerOption:
+def oma() -> FFMpegDemuxerOption:
     """
     oma
 
@@ -4884,18 +3613,12 @@ def oma(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def oss(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     oss
@@ -4907,19 +3630,17 @@ def oss(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+            }
+        )
+    )
 
-        "sample_rate": sample_rate,
 
-        "channels": channels,
-
-    }))
-
-
-
-def paf(
-
-) -> FFMpegDemuxerOption:
+def paf() -> FFMpegDemuxerOption:
     """
     paf
 
@@ -4927,24 +3648,15 @@ def paf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def pam_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     pam_pipe
@@ -4959,34 +3671,25 @@ def pam_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def pbm_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     pbm_pipe
@@ -5001,34 +3704,25 @@ def pbm_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def pcx_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     pcx_pipe
@@ -5043,34 +3737,25 @@ def pcx_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def pfm_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     pfm_pipe
@@ -5085,34 +3770,25 @@ def pfm_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def pgm_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     pgm_pipe
@@ -5127,34 +3803,25 @@ def pgm_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def pgmyuv_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     pgmyuv_pipe
@@ -5169,34 +3836,25 @@ def pgmyuv_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def pgx_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     pgx_pipe
@@ -5211,34 +3869,25 @@ def pgx_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def phm_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     phm_pipe
@@ -5253,34 +3902,25 @@ def phm_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def photocd_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     photocd_pipe
@@ -5295,34 +3935,25 @@ def photocd_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def pictor_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     pictor_pipe
@@ -5337,25 +3968,20 @@ def pictor_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def pjs(
-
-) -> FFMpegDemuxerOption:
+def pjs() -> FFMpegDemuxerOption:
     """
     pjs
 
@@ -5363,15 +3989,10 @@ def pjs(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def pmp(
-
-) -> FFMpegDemuxerOption:
+def pmp() -> FFMpegDemuxerOption:
     """
     pmp
 
@@ -5379,24 +4000,15 @@ def pmp(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def png_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     png_pipe
@@ -5411,25 +4023,20 @@ def png_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def pp_bnk(
-
-) -> FFMpegDemuxerOption:
+def pp_bnk() -> FFMpegDemuxerOption:
     """
     pp_bnk
 
@@ -5437,24 +4044,15 @@ def pp_bnk(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def ppm_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     ppm_pipe
@@ -5469,34 +4067,25 @@ def ppm_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def psd_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     psd_pipe
@@ -5511,25 +4100,20 @@ def psd_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def psxstr(
-
-) -> FFMpegDemuxerOption:
+def psxstr() -> FFMpegDemuxerOption:
     """
     psxstr
 
@@ -5537,15 +4121,10 @@ def psxstr(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def pva(
-
-) -> FFMpegDemuxerOption:
+def pva() -> FFMpegDemuxerOption:
     """
     pva
 
@@ -5553,15 +4132,10 @@ def pva(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def pvf(
-
-) -> FFMpegDemuxerOption:
+def pvf() -> FFMpegDemuxerOption:
     """
     pvf
 
@@ -5569,15 +4143,10 @@ def pvf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def qcp(
-
-) -> FFMpegDemuxerOption:
+def qcp() -> FFMpegDemuxerOption:
     """
     qcp
 
@@ -5585,24 +4154,15 @@ def qcp(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def qdraw_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     qdraw_pipe
@@ -5617,34 +4177,25 @@ def qdraw_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def qoi_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     qoi_pipe
@@ -5659,25 +4210,20 @@ def qoi_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def r3d(
-
-) -> FFMpegDemuxerOption:
+def r3d() -> FFMpegDemuxerOption:
     """
     r3d
 
@@ -5685,20 +4231,13 @@ def r3d(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def rawvideo(
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     framerate: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     rawvideo
@@ -5711,21 +4250,18 @@ def rawvideo(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "framerate": framerate,
+            }
+        )
+    )
 
-        "pixel_format": pixel_format,
 
-        "video_size": video_size,
-
-        "framerate": framerate,
-
-    }))
-
-
-
-def realtext(
-
-) -> FFMpegDemuxerOption:
+def realtext() -> FFMpegDemuxerOption:
     """
     realtext
 
@@ -5733,15 +4269,10 @@ def realtext(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def redspark(
-
-) -> FFMpegDemuxerOption:
+def redspark() -> FFMpegDemuxerOption:
     """
     redspark
 
@@ -5749,15 +4280,10 @@ def redspark(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def rl2(
-
-) -> FFMpegDemuxerOption:
+def rl2() -> FFMpegDemuxerOption:
     """
     rl2
 
@@ -5765,15 +4291,10 @@ def rl2(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def rm(
-
-) -> FFMpegDemuxerOption:
+def rm() -> FFMpegDemuxerOption:
     """
     rm
 
@@ -5781,15 +4302,10 @@ def rm(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def roq(
-
-) -> FFMpegDemuxerOption:
+def roq() -> FFMpegDemuxerOption:
     """
     roq
 
@@ -5797,15 +4313,10 @@ def roq(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def rpl(
-
-) -> FFMpegDemuxerOption:
+def rpl() -> FFMpegDemuxerOption:
     """
     rpl
 
@@ -5813,15 +4324,10 @@ def rpl(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def rsd(
-
-) -> FFMpegDemuxerOption:
+def rsd() -> FFMpegDemuxerOption:
     """
     rsd
 
@@ -5829,15 +4335,10 @@ def rsd(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def rso(
-
-) -> FFMpegDemuxerOption:
+def rso() -> FFMpegDemuxerOption:
     """
     rso
 
@@ -5845,26 +4346,16 @@ def rso(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def rtp(
-
     rtp_flags: str | None = None,
-
     listen_timeout: str | None = None,
-
     localaddr: str | None = None,
-
     allowed_media_types: str | None = None,
-
     reorder_queue_size: int | None = None,
-
     buffer_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     rtp
@@ -5880,48 +4371,32 @@ def rtp(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "rtp_flags": rtp_flags,
-
-        "listen_timeout": listen_timeout,
-
-        "localaddr": localaddr,
-
-        "allowed_media_types": allowed_media_types,
-
-        "reorder_queue_size": reorder_queue_size,
-
-        "buffer_size": buffer_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "rtp_flags": rtp_flags,
+                "listen_timeout": listen_timeout,
+                "localaddr": localaddr,
+                "allowed_media_types": allowed_media_types,
+                "reorder_queue_size": reorder_queue_size,
+                "buffer_size": buffer_size,
+            }
+        )
+    )
 
 
 def rtsp(
-
     initial_pause: bool | None = None,
-
     rtsp_transport: str | None = None,
-
     rtsp_flags: str | None = None,
-
     allowed_media_types: str | None = None,
-
     min_port: int | None = None,
-
     max_port: int | None = None,
-
     listen_timeout: int | None = None,
-
     timeout: int | None = None,
-
     reorder_queue_size: int | None = None,
-
     buffer_size: int | None = None,
-
     user_agent: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     rtsp
@@ -5942,42 +4417,29 @@ def rtsp(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "initial_pause": initial_pause,
-
-        "rtsp_transport": rtsp_transport,
-
-        "rtsp_flags": rtsp_flags,
-
-        "allowed_media_types": allowed_media_types,
-
-        "min_port": min_port,
-
-        "max_port": max_port,
-
-        "listen_timeout": listen_timeout,
-
-        "timeout": timeout,
-
-        "reorder_queue_size": reorder_queue_size,
-
-        "buffer_size": buffer_size,
-
-        "user_agent": user_agent,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "initial_pause": initial_pause,
+                "rtsp_transport": rtsp_transport,
+                "rtsp_flags": rtsp_flags,
+                "allowed_media_types": allowed_media_types,
+                "min_port": min_port,
+                "max_port": max_port,
+                "listen_timeout": listen_timeout,
+                "timeout": timeout,
+                "reorder_queue_size": reorder_queue_size,
+                "buffer_size": buffer_size,
+                "user_agent": user_agent,
+            }
+        )
+    )
 
 
 def s16be(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     s16be
@@ -5990,26 +4452,21 @@ def s16be(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def s16le(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     s16le
@@ -6022,26 +4479,21 @@ def s16le(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def s24be(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     s24be
@@ -6054,26 +4506,21 @@ def s24be(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def s24le(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     s24le
@@ -6086,26 +4533,21 @@ def s24le(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def s32be(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     s32be
@@ -6118,26 +4560,21 @@ def s32be(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def s32le(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     s32le
@@ -6150,21 +4587,18 @@ def s32le(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
-        "sample_rate": sample_rate,
 
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
-
-
-def s337m(
-
-) -> FFMpegDemuxerOption:
+def s337m() -> FFMpegDemuxerOption:
     """
     s337m
 
@@ -6172,20 +4606,13 @@ def s337m(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def s8(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     s8
@@ -6198,21 +4625,18 @@ def s8(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
-        "sample_rate": sample_rate,
 
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
-
-
-def sami(
-
-) -> FFMpegDemuxerOption:
+def sami() -> FFMpegDemuxerOption:
     """
     sami
 
@@ -6220,15 +4644,10 @@ def sami(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def sap(
-
-) -> FFMpegDemuxerOption:
+def sap() -> FFMpegDemuxerOption:
     """
     sap
 
@@ -6236,16 +4655,11 @@ def sap(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def sbc(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     sbc
@@ -6256,20 +4670,18 @@ def sbc(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
 
 def sbg(
-
     sample_rate: int | None = None,
-
     max_file_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     sbg
@@ -6281,19 +4693,17 @@ def sbg(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "max_file_size": max_file_size,
+            }
+        )
+    )
 
-        "sample_rate": sample_rate,
 
-        "max_file_size": max_file_size,
-
-    }))
-
-
-
-def scc(
-
-) -> FFMpegDemuxerOption:
+def scc() -> FFMpegDemuxerOption:
     """
     scc
 
@@ -6301,15 +4711,10 @@ def scc(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def scd(
-
-) -> FFMpegDemuxerOption:
+def scd() -> FFMpegDemuxerOption:
     """
     scd
 
@@ -6317,26 +4722,16 @@ def scd(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def sdp(
-
     sdp_flags: str | None = None,
-
     listen_timeout: str | None = None,
-
     localaddr: str | None = None,
-
     allowed_media_types: str | None = None,
-
     reorder_queue_size: int | None = None,
-
     buffer_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     sdp
@@ -6352,27 +4747,21 @@ def sdp(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sdp_flags": sdp_flags,
-
-        "listen_timeout": listen_timeout,
-
-        "localaddr": localaddr,
-
-        "allowed_media_types": allowed_media_types,
-
-        "reorder_queue_size": reorder_queue_size,
-
-        "buffer_size": buffer_size,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sdp_flags": sdp_flags,
+                "listen_timeout": listen_timeout,
+                "localaddr": localaddr,
+                "allowed_media_types": allowed_media_types,
+                "reorder_queue_size": reorder_queue_size,
+                "buffer_size": buffer_size,
+            }
+        )
+    )
 
 
-
-def sdr2(
-
-) -> FFMpegDemuxerOption:
+def sdr2() -> FFMpegDemuxerOption:
     """
     sdr2
 
@@ -6380,15 +4769,10 @@ def sdr2(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def sds(
-
-) -> FFMpegDemuxerOption:
+def sds() -> FFMpegDemuxerOption:
     """
     sds
 
@@ -6396,15 +4780,10 @@ def sds(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def sdx(
-
-) -> FFMpegDemuxerOption:
+def sdx() -> FFMpegDemuxerOption:
     """
     sdx
 
@@ -6412,16 +4791,11 @@ def sdx(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def ser(
-
     framerate: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     ser
@@ -6432,17 +4806,16 @@ def ser(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+            }
+        )
+    )
 
-        "framerate": framerate,
 
-    }))
-
-
-
-def sga(
-
-) -> FFMpegDemuxerOption:
+def sga() -> FFMpegDemuxerOption:
     """
     sga
 
@@ -6450,24 +4823,15 @@ def sga(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def sgi_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     sgi_pipe
@@ -6482,26 +4846,21 @@ def sgi_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def shn(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     shn
@@ -6512,17 +4871,16 @@ def shn(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "raw_packet_size": raw_packet_size,
 
-    }))
-
-
-
-def siff(
-
-) -> FFMpegDemuxerOption:
+def siff() -> FFMpegDemuxerOption:
     """
     siff
 
@@ -6530,15 +4888,10 @@ def siff(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def simbiosis_imx(
-
-) -> FFMpegDemuxerOption:
+def simbiosis_imx() -> FFMpegDemuxerOption:
     """
     simbiosis_imx
 
@@ -6546,20 +4899,13 @@ def simbiosis_imx(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def sln(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     sln
@@ -6572,21 +4918,18 @@ def sln(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
-        "sample_rate": sample_rate,
 
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
-
-
-def smjpeg(
-
-) -> FFMpegDemuxerOption:
+def smjpeg() -> FFMpegDemuxerOption:
     """
     smjpeg
 
@@ -6594,15 +4937,10 @@ def smjpeg(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def smk(
-
-) -> FFMpegDemuxerOption:
+def smk() -> FFMpegDemuxerOption:
     """
     smk
 
@@ -6610,15 +4948,10 @@ def smk(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def smush(
-
-) -> FFMpegDemuxerOption:
+def smush() -> FFMpegDemuxerOption:
     """
     smush
 
@@ -6626,15 +4959,10 @@ def smush(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def sol(
-
-) -> FFMpegDemuxerOption:
+def sol() -> FFMpegDemuxerOption:
     """
     sol
 
@@ -6642,15 +4970,10 @@ def sol(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def sox(
-
-) -> FFMpegDemuxerOption:
+def sox() -> FFMpegDemuxerOption:
     """
     sox
 
@@ -6658,15 +4981,10 @@ def sox(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def spdif(
-
-) -> FFMpegDemuxerOption:
+def spdif() -> FFMpegDemuxerOption:
     """
     spdif
 
@@ -6674,15 +4992,10 @@ def spdif(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def srt(
-
-) -> FFMpegDemuxerOption:
+def srt() -> FFMpegDemuxerOption:
     """
     srt
 
@@ -6690,15 +5003,10 @@ def srt(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def stl(
-
-) -> FFMpegDemuxerOption:
+def stl() -> FFMpegDemuxerOption:
     """
     stl
 
@@ -6706,15 +5014,10 @@ def stl(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def subviewer(
-
-) -> FFMpegDemuxerOption:
+def subviewer() -> FFMpegDemuxerOption:
     """
     subviewer
 
@@ -6722,15 +5025,10 @@ def subviewer(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def subviewer1(
-
-) -> FFMpegDemuxerOption:
+def subviewer1() -> FFMpegDemuxerOption:
     """
     subviewer1
 
@@ -6738,24 +5036,15 @@ def subviewer1(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def sunrast_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     sunrast_pipe
@@ -6770,25 +5059,20 @@ def sunrast_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def sup(
-
-) -> FFMpegDemuxerOption:
+def sup() -> FFMpegDemuxerOption:
     """
     sup
 
@@ -6796,15 +5080,10 @@ def sup(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def svag(
-
-) -> FFMpegDemuxerOption:
+def svag() -> FFMpegDemuxerOption:
     """
     svag
 
@@ -6812,24 +5091,15 @@ def svag(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def svg_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     svg_pipe
@@ -6844,25 +5114,20 @@ def svg_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def svs(
-
-) -> FFMpegDemuxerOption:
+def svs() -> FFMpegDemuxerOption:
     """
     svs
 
@@ -6870,15 +5135,10 @@ def svs(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def swf(
-
-) -> FFMpegDemuxerOption:
+def swf() -> FFMpegDemuxerOption:
     """
     swf
 
@@ -6886,16 +5146,11 @@ def swf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def tak(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     tak
@@ -6906,18 +5161,17 @@ def tak(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
 
 def tedcaptions(
-
     start_time: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     tedcaptions
@@ -6928,17 +5182,16 @@ def tedcaptions(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "start_time": start_time,
+            }
+        )
+    )
 
-        "start_time": start_time,
 
-    }))
-
-
-
-def thp(
-
-) -> FFMpegDemuxerOption:
+def thp() -> FFMpegDemuxerOption:
     """
     thp
 
@@ -6946,15 +5199,10 @@ def thp(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def tiertexseq(
-
-) -> FFMpegDemuxerOption:
+def tiertexseq() -> FFMpegDemuxerOption:
     """
     tiertexseq
 
@@ -6962,24 +5210,15 @@ def tiertexseq(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def tiff_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     tiff_pipe
@@ -6994,25 +5233,20 @@ def tiff_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def tmv(
-
-) -> FFMpegDemuxerOption:
+def tmv() -> FFMpegDemuxerOption:
     """
     tmv
 
@@ -7020,16 +5254,11 @@ def tmv(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def truehd(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     truehd
@@ -7040,17 +5269,16 @@ def truehd(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "raw_packet_size": raw_packet_size,
 
-    }))
-
-
-
-def tta(
-
-) -> FFMpegDemuxerOption:
+def tta() -> FFMpegDemuxerOption:
     """
     tta
 
@@ -7058,20 +5286,13 @@ def tta(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def tty(
-
     chars_per_frame: int | None = None,
-
     video_size: str | None = None,
-
     framerate: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     tty
@@ -7084,21 +5305,18 @@ def tty(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "chars_per_frame": chars_per_frame,
+                "video_size": video_size,
+                "framerate": framerate,
+            }
+        )
+    )
 
-        "chars_per_frame": chars_per_frame,
 
-        "video_size": video_size,
-
-        "framerate": framerate,
-
-    }))
-
-
-
-def txd(
-
-) -> FFMpegDemuxerOption:
+def txd() -> FFMpegDemuxerOption:
     """
     txd
 
@@ -7106,15 +5324,10 @@ def txd(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def ty(
-
-) -> FFMpegDemuxerOption:
+def ty() -> FFMpegDemuxerOption:
     """
     ty
 
@@ -7122,20 +5335,13 @@ def ty(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def u16be(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     u16be
@@ -7148,26 +5354,21 @@ def u16be(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def u16le(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     u16le
@@ -7180,26 +5381,21 @@ def u16le(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def u24be(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     u24be
@@ -7212,26 +5408,21 @@ def u24be(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def u24le(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     u24le
@@ -7244,26 +5435,21 @@ def u24le(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def u32be(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     u32be
@@ -7276,26 +5462,21 @@ def u32be(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def u32le(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     u32le
@@ -7308,26 +5489,21 @@ def u32le(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def u8(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     u8
@@ -7340,24 +5516,20 @@ def u8(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "sample_rate": sample_rate,
-
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
 
 def v210(
-
     video_size: str | None = None,
-
     framerate: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     v210
@@ -7369,22 +5541,19 @@ def v210(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "video_size": video_size,
-
-        "framerate": framerate,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "video_size": video_size,
+                "framerate": framerate,
+            }
+        )
+    )
 
 
 def v210x(
-
     video_size: str | None = None,
-
     framerate: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     v210x
@@ -7396,19 +5565,17 @@ def v210x(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "video_size": video_size,
+                "framerate": framerate,
+            }
+        )
+    )
 
-        "video_size": video_size,
 
-        "framerate": framerate,
-
-    }))
-
-
-
-def vag(
-
-) -> FFMpegDemuxerOption:
+def vag() -> FFMpegDemuxerOption:
     """
     vag
 
@@ -7416,24 +5583,15 @@ def vag(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def vbn_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     vbn_pipe
@@ -7448,28 +5606,22 @@ def vbn_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def vc1(
-
     framerate: str | None = None,
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     vc1
@@ -7481,19 +5633,17 @@ def vc1(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "framerate": framerate,
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "framerate": framerate,
 
-        "raw_packet_size": raw_packet_size,
-
-    }))
-
-
-
-def vc1test(
-
-) -> FFMpegDemuxerOption:
+def vc1test() -> FFMpegDemuxerOption:
     """
     vc1test
 
@@ -7501,20 +5651,13 @@ def vc1test(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def vidc(
-
     sample_rate: int | None = None,
-
     channels: int | None = None,
-
     ch_layout: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     vidc
@@ -7527,21 +5670,18 @@ def vidc(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "ch_layout": ch_layout,
+            }
+        )
+    )
 
-        "sample_rate": sample_rate,
 
-        "channels": channels,
-
-        "ch_layout": ch_layout,
-
-    }))
-
-
-
-def vividas(
-
-) -> FFMpegDemuxerOption:
+def vividas() -> FFMpegDemuxerOption:
     """
     vividas
 
@@ -7549,15 +5689,10 @@ def vividas(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def vivo(
-
-) -> FFMpegDemuxerOption:
+def vivo() -> FFMpegDemuxerOption:
     """
     vivo
 
@@ -7565,15 +5700,10 @@ def vivo(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def vmd(
-
-) -> FFMpegDemuxerOption:
+def vmd() -> FFMpegDemuxerOption:
     """
     vmd
 
@@ -7581,16 +5711,11 @@ def vmd(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def vobsub(
-
     sub_name: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     vobsub
@@ -7601,17 +5726,16 @@ def vobsub(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "sub_name": sub_name,
+            }
+        )
+    )
 
-        "sub_name": sub_name,
 
-    }))
-
-
-
-def voc(
-
-) -> FFMpegDemuxerOption:
+def voc() -> FFMpegDemuxerOption:
     """
     voc
 
@@ -7619,15 +5743,10 @@ def voc(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def vpk(
-
-) -> FFMpegDemuxerOption:
+def vpk() -> FFMpegDemuxerOption:
     """
     vpk
 
@@ -7635,15 +5754,10 @@ def vpk(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def vplayer(
-
-) -> FFMpegDemuxerOption:
+def vplayer() -> FFMpegDemuxerOption:
     """
     vplayer
 
@@ -7651,15 +5765,10 @@ def vplayer(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def vqf(
-
-) -> FFMpegDemuxerOption:
+def vqf() -> FFMpegDemuxerOption:
     """
     vqf
 
@@ -7667,16 +5776,11 @@ def vqf(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def w64(
-
     max_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     w64
@@ -7687,20 +5791,18 @@ def w64(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "max_size": max_size,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "max_size": max_size,
+            }
+        )
+    )
 
 
 def wav(
-
     ignore_length: bool | None = None,
-
     max_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     wav
@@ -7712,19 +5814,17 @@ def wav(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "ignore_length": ignore_length,
+                "max_size": max_size,
+            }
+        )
+    )
 
-        "ignore_length": ignore_length,
 
-        "max_size": max_size,
-
-    }))
-
-
-
-def wc3movie(
-
-) -> FFMpegDemuxerOption:
+def wc3movie() -> FFMpegDemuxerOption:
     """
     wc3movie
 
@@ -7732,18 +5832,12 @@ def wc3movie(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def webm_dash_manifest(
-
     live: bool | None = None,
-
     bandwidth: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     webm_dash_manifest
@@ -7755,28 +5849,22 @@ def webm_dash_manifest(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "live": live,
-
-        "bandwidth": bandwidth,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "live": live,
+                "bandwidth": bandwidth,
+            }
+        )
+    )
 
 
 def webp_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     webp_pipe
@@ -7791,26 +5879,23 @@ def webp_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
 def webvtt(
-
-    kind: int | None| Literal["subtitles", "captions", "descriptions", "metadata"] = None,
-
+    kind: int
+    | None
+    | Literal["subtitles", "captions", "descriptions", "metadata"] = None,
 ) -> FFMpegDemuxerOption:
     """
     webvtt
@@ -7821,17 +5906,16 @@ def webvtt(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "kind": kind,
+            }
+        )
+    )
 
-        "kind": kind,
 
-    }))
-
-
-
-def wsaud(
-
-) -> FFMpegDemuxerOption:
+def wsaud() -> FFMpegDemuxerOption:
     """
     wsaud
 
@@ -7839,16 +5923,11 @@ def wsaud(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def wsd(
-
     raw_packet_size: int | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     wsd
@@ -7859,17 +5938,16 @@ def wsd(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "raw_packet_size": raw_packet_size,
+            }
+        )
+    )
 
-        "raw_packet_size": raw_packet_size,
 
-    }))
-
-
-
-def wsvqa(
-
-) -> FFMpegDemuxerOption:
+def wsvqa() -> FFMpegDemuxerOption:
     """
     wsvqa
 
@@ -7877,15 +5955,10 @@ def wsvqa(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def wtv(
-
-) -> FFMpegDemuxerOption:
+def wtv() -> FFMpegDemuxerOption:
     """
     wtv
 
@@ -7893,15 +5966,10 @@ def wtv(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def wv(
-
-) -> FFMpegDemuxerOption:
+def wv() -> FFMpegDemuxerOption:
     """
     wv
 
@@ -7909,15 +5977,10 @@ def wv(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def wve(
-
-) -> FFMpegDemuxerOption:
+def wve() -> FFMpegDemuxerOption:
     """
     wve
 
@@ -7925,15 +5988,10 @@ def wve(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def xa(
-
-) -> FFMpegDemuxerOption:
+def xa() -> FFMpegDemuxerOption:
     """
     xa
 
@@ -7941,20 +5999,13 @@ def xa(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def xbin(
-
     linespeed: int | None = None,
-
     video_size: str | None = None,
-
     framerate: str | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     xbin
@@ -7967,30 +6018,23 @@ def xbin(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "linespeed": linespeed,
-
-        "video_size": video_size,
-
-        "framerate": framerate,
-
-    }))
-
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "linespeed": linespeed,
+                "video_size": video_size,
+                "framerate": framerate,
+            }
+        )
+    )
 
 
 def xbm_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     xbm_pipe
@@ -8005,25 +6049,20 @@ def xbm_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def xmv(
-
-) -> FFMpegDemuxerOption:
+def xmv() -> FFMpegDemuxerOption:
     """
     xmv
 
@@ -8031,24 +6070,15 @@ def xmv(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def xpm_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     xpm_pipe
@@ -8063,25 +6093,20 @@ def xpm_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def xvag(
-
-) -> FFMpegDemuxerOption:
+def xvag() -> FFMpegDemuxerOption:
     """
     xvag
 
@@ -8089,24 +6114,15 @@ def xvag(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
-
+    return FFMpegDemuxerOption(merge({}))
 
 
 def xwd_pipe(
-
     frame_size: int | None = None,
-
     framerate: str | None = None,
-
     pixel_format: str | None = None,
-
     video_size: str | None = None,
-
     loop: bool | None = None,
-
 ) -> FFMpegDemuxerOption:
     """
     xwd_pipe
@@ -8121,25 +6137,20 @@ def xwd_pipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-        "frame_size": frame_size,
-
-        "framerate": framerate,
-
-        "pixel_format": pixel_format,
-
-        "video_size": video_size,
-
-        "loop": loop,
-
-    }))
+    return FFMpegDemuxerOption(
+        merge(
+            {
+                "frame_size": frame_size,
+                "framerate": framerate,
+                "pixel_format": pixel_format,
+                "video_size": video_size,
+                "loop": loop,
+            }
+        )
+    )
 
 
-
-def xwma(
-
-) -> FFMpegDemuxerOption:
+def xwma() -> FFMpegDemuxerOption:
     """
     xwma
 
@@ -8147,15 +6158,10 @@ def xwma(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def yop(
-
-) -> FFMpegDemuxerOption:
+def yop() -> FFMpegDemuxerOption:
     """
     yop
 
@@ -8163,15 +6169,10 @@ def yop(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))
 
 
-
-def yuv4mpegpipe(
-
-) -> FFMpegDemuxerOption:
+def yuv4mpegpipe() -> FFMpegDemuxerOption:
     """
     yuv4mpegpipe
 
@@ -8179,6 +6180,4 @@ def yuv4mpegpipe(
     Returns:
         the set codec options
     """
-    return FFMpegDemuxerOption(merge({
-
-    }))
+    return FFMpegDemuxerOption(merge({}))

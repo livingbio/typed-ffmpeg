@@ -79,6 +79,17 @@ This represents FFmpeg's string type. It can accept either a Python string value
 or a int/float that will be converted to a string.
 """
 
+Expr = str | int | float | Default | LazyValue | None
+"""
+This represents an FFmpeg expression, e.g. drawbox's `x` or overlay's `y`.
+FFmpeg declares these options as strings because it evaluates them per frame,
+so it accepts a Python int/float, an expression string such as `"(iw-w)/2"`,
+or an `ffmpeg.expressions.Expression`.
+
+Note:
+    [Document](https://ffmpeg.org/ffmpeg-utils.html#Expression-Evaluation)
+"""
+
 Video_rate = str | int | float | Default | LazyValue | None
 """
 Specify the frame rate of a video, expressed as the number of frames generated per second. It has to be a string in the format frame_rate_num/frame_rate_den, an integer number, a float number or a valid video frame rate abbreviation.

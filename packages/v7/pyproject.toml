@@ -40,3 +40,7 @@ include = ["ffmpeg*"]
 
 [tool.setuptools.package-data]
 "ffmpeg" = ["py.typed"]
+
+[tool.ruff]
+line-length = 88
+src = ["src"]

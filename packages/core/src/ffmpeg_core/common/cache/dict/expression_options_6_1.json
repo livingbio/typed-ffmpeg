@@ -1,0 +1,283 @@
+{
+  "addroi": [
+    "h",
+    "w",
+    "x",
+    "y"
+  ],
+  "adrawgraph": [
+    "fg1",
+    "fg2",
+    "fg3",
+    "fg4"
+  ],
+  "adrc": [
+    "transfer"
+  ],
+  "ametadata": [
+    "expr"
+  ],
+  "aselect": [
+    "e",
+    "expr"
+  ],
+  "asetpts": [
+    "expr"
+  ],
+  "asettb": [
+    "expr",
+    "tb"
+  ],
+  "blend": [
+    "c0_expr",
+    "c1_expr",
+    "c2_expr",
+    "c3_expr"
+  ],
+  "crop": [
+    "h",
+    "out_h",
+    "out_w",
+    "w",
+    "x",
+    "y"
+  ],
+  "dctdnoiz": [
+    "e",
+    "expr"
+  ],
+  "delogo": [
+    "h",
+    "w",
+    "x",
+    "y"
+  ],
+  "drawbox": [
+    "h",
+    "height",
+    "t",
+    "thickness",
+    "w",
+    "width",
+    "x",
+    "y"
+  ],
+  "drawgraph": [
+    "fg1",
+    "fg2",
+    "fg3",
+    "fg4"
+  ],
+  "drawgrid": [
+    "h",
+    "height",
+    "t",
+    "thickness",
+    "w",
+    "width",
+    "x",
+    "y"
+  ],
+  "drawtext": [
+    "alpha",
+    "fontsize",
+    "x",
+    "y"
+  ],
+  "dynaudnorm": [
+    "curve",
+    "v"
+  ],
+  "eq": [
+    "brightness",
+    "contrast",
+    "gamma",
+    "gamma_b",
+    "gamma_g",
+    "gamma_r",
+    "gamma_weight",
+    "saturation"
+  ],
+  "fftfilt": [
+    "weight_U",
+    "weight_V",
+    "weight_Y"
+  ],
+  "fps": [
+    "fps"
+  ],
+  "geq": [
+    "a",
+    "alpha_expr",
+    "b",
+    "blue_expr",
+    "cb",
+    "cb_expr",
+    "cr",
+    "cr_expr",
+    "g",
+    "green_expr",
+    "lum",
+    "lum_expr",
+    "r",
+    "red_expr"
+  ],
+  "hue": [
+    "H",
+    "b",
+    "h",
+    "s"
+  ],
+  "lut": [
+    "a",
+    "b",
+    "c0",
+    "c1",
+    "c2",
+    "c3",
+    "g",
+    "r",
+    "u",
+    "v",
+    "y"
+  ],
+  "lut2": [
+    "c0",
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "metadata": [
+    "expr"
+  ],
+  "overlay": [
+    "x",
+    "y"
+  ],
+  "pad": [
+    "h",
+    "height",
+    "w",
+    "width",
+    "x",
+    "y"
+  ],
+  "perspective": [
+    "x0",
+    "x1",
+    "x2",
+    "x3",
+    "y0",
+    "y1",
+    "y2",
+    "y3"
+  ],
+  "pseudocolor": [
+    "c0",
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "qp": [
+    "qp"
+  ],
+  "rotate": [
+    "a",
+    "angle",
+    "oh",
+    "out_h",
+    "out_w",
+    "ow"
+  ],
+  "scale": [
+    "h",
+    "height",
+    "w",
+    "width"
+  ],
+  "scale2ref": [
+    "h",
+    "height",
+    "w",
+    "width"
+  ],
+  "select": [
+    "e",
+    "expr"
+  ],
+  "setdar": [
+    "dar",
+    "r",
+    "ratio",
+    "sar"
+  ],
+  "setpts": [
+    "expr"
+  ],
+  "setsar": [
+    "dar",
+    "r",
+    "ratio",
+    "sar"
+  ],
+  "settb": [
+    "expr",
+    "tb"
+  ],
+  "showcqt": [
+    "bar_v",
+    "fontcolor",
+    "sono_v",
+    "tlength",
+    "volume",
+    "volume2"
+  ],
+  "showvolume": [
+    "c"
+  ],
+  "swaprect": [
+    "h",
+    "w",
+    "x1",
+    "x2",
+    "y1",
+    "y2"
+  ],
+  "tblend": [
+    "c0_expr",
+    "c1_expr",
+    "c2_expr",
+    "c3_expr"
+  ],
+  "tlut2": [
+    "c0",
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "vignette": [
+    "a",
+    "angle",
+    "x0",
+    "y0"
+  ],
+  "volume": [
+    "volume"
+  ],
+  "xfade": [
+    "expr"
+  ],
+  "zoompan": [
+    "d",
+    "x",
+    "y",
+    "z",
+    "zoom"
+  ],
+  "zscale": [
+    "h",
+    "height",
+    "w",
+    "width"
+  ]
+}

@@ -8,21 +8,28 @@ typed-ffmpeg support ffmpeg source filters:
 - How to customize video/audio source filter can be found [Customizing Filters](./usage/customizing-filters.ipynb)
 
 
-## Why are numeric options like `drawbox(x=..., width=...)` typed as `String`?
+## Why do options like `drawbox(x=..., width=...)` accept strings?
 
-Many FFmpeg filter options that look numeric are declared by FFmpeg itself as string options, because they accept **expressions** evaluated per frame, e.g. `x="(iw-w)/2"`, `width="iw/2"` or `thickness="fill"`. typed-ffmpeg mirrors FFmpeg's declared option type, so these parameters are annotated as `String`.
-
-`String` is a type alias, not `str`. It also accepts `int` and `float`, so you never need to convert numbers yourself:
+Many FFmpeg filter options that look numeric are **expressions** evaluated per frame, e.g. `x="(iw-w)/2"`, `width="iw/2"` or `thickness="fill"`. FFmpeg declares them as string options, so typed-ffmpeg annotates them as `Expr`:
 
 ```python
-(
-    ffmpeg.input("in.mp4")
-    .video.drawbox(x=10, y=20, width=320, height=180, thickness=5, color="red")
-)
-# drawbox=x=10:y=20:width=320:height=180:color=red:thickness=5
+def drawbox(self, *, x: Expr = Default(0), width: Expr = Default(0), color: String = Default("black"), ...)
 ```
 
-Values of any other type (e.g. a `list`) are rejected by type checkers such as mypy, pyright or ty. See `ffmpeg.types` for the full definition of each option type.
+`Expr` accepts a Python `int` or `float`, an expression string, or an `Expression` built with Python operators, so you never need to convert numbers yourself:
+
+```python
+from ffmpeg.expressions import Expression
+
+iw, w = Expression("iw"), Expression("w")
+(
+    ffmpeg.input("in.mp4")
+    .video.drawbox(x=(iw - w) / 2, y=20, width=320, height=180, thickness=5)
+)
+# drawbox=x=(iw-w)/2:y=20:width=320:height=180:thickness=5
+```
+
+Values of any other type (e.g. a `list`) are rejected by type checkers such as mypy, pyright or ty. Options typed `String` are free-form text (colors, file names, `|`-separated lists, ...). See `ffmpeg.types` for the full definition of each option type.
 
 ## Differences Between ffmpeg-python and typed-ffmpeg
 

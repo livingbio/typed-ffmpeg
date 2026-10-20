@@ -34,10 +34,12 @@ def framesync(
 
     """
     return FFMpegFrameSyncOption(
-        merge({
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-        })
+        merge(
+            {
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+            }
+        )
     )
