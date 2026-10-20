@@ -1,6 +1,6 @@
 [project]
 name = "typed-ffmpeg-v8"
-version = "4.5"
+version = "4.6"
 description = "Typed FFmpeg bindings for FFmpeg 8.x"
 authors = [
     {name = "lucemia", email = "lucemia@gmail.com"}
@@ -31,7 +31,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "ffmpeg-core>=4.5,<5.0",
+    "ffmpeg-core>=4.6,<5.0",
 ]
 
 [tool.uv.sources]
