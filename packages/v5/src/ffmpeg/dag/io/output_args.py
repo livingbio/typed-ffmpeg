@@ -3,8 +3,6 @@
 Output arguments.
 """
 
-
-
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
@@ -12,7 +10,27 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
 
-from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Expr, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+from ...types import (
+    Binary,
+    Boolean,
+    Color,
+    Dictionary,
+    Double,
+    Duration,
+    Expr,
+    Flags,
+    Float,
+    Func,
+    Image_size,
+    Int,
+    Int64,
+    Pix_fmt,
+    Rational,
+    Sample_fmt,
+    String,
+    Time,
+    Video_rate,
+)
 
 from ...utils.frozendict import FrozenDict, merge
 from ...utils.typing import override
@@ -21,18 +39,21 @@ from ...common.schema import FFMpegFilterDef
 from ...options.framesync import FFMpegFrameSyncOption
 from ...options.timeline import FFMpegTimelineOption
 
-from ...options.codec import FFMpegAVCodecContextEncoderOption, FFMpegAVCodecContextDecoderOption
+from ...options.codec import (
+    FFMpegAVCodecContextEncoderOption,
+    FFMpegAVCodecContextDecoderOption,
+)
 
 
-from ...options.format import FFMpegAVFormatContextEncoderOption, FFMpegAVFormatContextDecoderOption
+from ...options.format import (
+    FFMpegAVFormatContextEncoderOption,
+    FFMpegAVFormatContextDecoderOption,
+)
 
 
 from ...streams.channel_layout import CHANNEL_LAYOUT
 from ...codecs.schema import FFMpegEncoderOption, FFMpegDecoderOption
 from ...formats.schema import FFMpegMuxerOption, FFMpegDemuxerOption
-
-
-
 
 
 if TYPE_CHECKING:
@@ -41,17 +62,107 @@ if TYPE_CHECKING:
     from ...streams.video import VideoStream
     from ...streams.audio import AudioStream
 
+
 class OutputArgs(ABC):
     """Output arguments interface."""
 
     @abstractmethod
-    def _output_node(self, *streams: FilterableStream, filename: str | Path, **kwargs: Any) -> OutputNode:
-        ...
+    def _output_node(
+        self, *streams: FilterableStream, filename: str | Path, **kwargs: Any
+    ) -> OutputNode: ...
 
     def output(
         self,
         *streams: "FilterableStream",
-        filename: str | Path,f: Func = None,c: Func = None,codec: Func = None,pre: Func = None,map: Func = None,map_channel: Func = None,map_metadata: Func = None,map_chapters: Func = None,t: Func = None,to: Func = None,fs: Func = None,ss: Func = None,timestamp: Func = None,metadata: Func = None,program: Func = None,dframes: Func = None,target: Func = None,shortest: Func = None,bitexact: Func = None,apad: Func = None,copyinkf: Func = None,copypriorss: Func = None,frames: Func = None,tag: Func = None,q: Func = None,qscale: Func = None,profile: Func = None,filter: Func = None,filter_script: Func = None,attach: Func = None,disposition: Func = None,bits_per_raw_sample: Func = None,vframes: Func = None,r: Func = None,fpsmax: Func = None,s: Func = None,aspect: Func = None,pix_fmt: Func = None,vn: Func = None,rc_override: Func = None,vcodec: Func = None,timecode: Func = None,_pass: Func = None,passlogfile: Func = None,vf: Func = None,intra_matrix: Func = None,inter_matrix: Func = None,chroma_intra_matrix: Func = None,top: Func = None,vtag: Func = None,fps_mode: Func = None,force_fps: Func = None,streamid: Func = None,force_key_frames: Func = None,ab: Func = None,b: Func = None,autoscale: Func = None,aframes: Func = None,aq: Func = None,ar: Func = None,ac: Func = None,an: Func = None,acodec: Func = None,atag: Func = None,sample_fmt: Func = None,channel_layout: Func = None,ch_layout: Func = None,af: Func = None,sn: Func = None,scodec: Func = None,stag: Func = None,muxdelay: Func = None,muxpreload: Func = None,sdp_file: Func = None,time_base: Func = None,enc_time_base: Func = None,bsf: Func = None,absf: Func = None,vbsf: Func = None,apre: Func = None,vpre: Func = None,spre: Func = None,fpre: Func = None,max_muxing_queue_size: Func = None,muxing_queue_data_threshold: Func = None,dcodec: Func = None,dn: Func = None,encoder_options: FFMpegEncoderOption | None = None,
+        filename: str | Path,
+        f: Func = None,
+        c: Func = None,
+        codec: Func = None,
+        pre: Func = None,
+        map: Func = None,
+        map_channel: Func = None,
+        map_metadata: Func = None,
+        map_chapters: Func = None,
+        t: Func = None,
+        to: Func = None,
+        fs: Func = None,
+        ss: Func = None,
+        timestamp: Func = None,
+        metadata: Func = None,
+        program: Func = None,
+        dframes: Func = None,
+        target: Func = None,
+        shortest: Func = None,
+        bitexact: Func = None,
+        apad: Func = None,
+        copyinkf: Func = None,
+        copypriorss: Func = None,
+        frames: Func = None,
+        tag: Func = None,
+        q: Func = None,
+        qscale: Func = None,
+        profile: Func = None,
+        filter: Func = None,
+        filter_script: Func = None,
+        attach: Func = None,
+        disposition: Func = None,
+        bits_per_raw_sample: Func = None,
+        vframes: Func = None,
+        r: Func = None,
+        fpsmax: Func = None,
+        s: Func = None,
+        aspect: Func = None,
+        pix_fmt: Func = None,
+        vn: Func = None,
+        rc_override: Func = None,
+        vcodec: Func = None,
+        timecode: Func = None,
+        _pass: Func = None,
+        passlogfile: Func = None,
+        vf: Func = None,
+        intra_matrix: Func = None,
+        inter_matrix: Func = None,
+        chroma_intra_matrix: Func = None,
+        top: Func = None,
+        vtag: Func = None,
+        fps_mode: Func = None,
+        force_fps: Func = None,
+        streamid: Func = None,
+        force_key_frames: Func = None,
+        ab: Func = None,
+        b: Func = None,
+        autoscale: Func = None,
+        aframes: Func = None,
+        aq: Func = None,
+        ar: Func = None,
+        ac: Func = None,
+        an: Func = None,
+        acodec: Func = None,
+        atag: Func = None,
+        sample_fmt: Func = None,
+        channel_layout: Func = None,
+        ch_layout: Func = None,
+        af: Func = None,
+        sn: Func = None,
+        scodec: Func = None,
+        stag: Func = None,
+        muxdelay: Func = None,
+        muxpreload: Func = None,
+        sdp_file: Func = None,
+        time_base: Func = None,
+        enc_time_base: Func = None,
+        bsf: Func = None,
+        absf: Func = None,
+        vbsf: Func = None,
+        apre: Func = None,
+        vpre: Func = None,
+        spre: Func = None,
+        fpre: Func = None,
+        max_muxing_queue_size: Func = None,
+        muxing_queue_data_threshold: Func = None,
+        dcodec: Func = None,
+        dn: Func = None,
+        encoder_options: FFMpegEncoderOption | None = None,
         muxer_options: FFMpegMuxerOption | None = None,
         format_options: FFMpegAVFormatContextEncoderOption | None = None,
         codec_options: FFMpegAVCodecContextEncoderOption | None = None,
@@ -160,275 +271,103 @@ class OutputArgs(ABC):
             the output stream
         """
 
-        return self._output_node(*streams, filename=filename, **merge({
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            "f": f,
-
-
-
-
-
-
-            "c": c,
-
-            "codec": codec,
-
-            "pre": pre,
-
-            "map": map,
-
-            "map_channel": map_channel,
-
-            "map_metadata": map_metadata,
-
-            "map_chapters": map_chapters,
-
-            "t": t,
-
-            "to": to,
-
-            "fs": fs,
-
-            "ss": ss,
-
-
-
-
-
-
-
-            "timestamp": timestamp,
-
-            "metadata": metadata,
-
-            "program": program,
-
-            "dframes": dframes,
-
-
-
-
-
-
-
-
-
-
-            "target": target,
-
-
-
-
-
-
-
-
-            "shortest": shortest,
-
-            "bitexact": bitexact,
-
-            "apad": apad,
-
-
-
-
-
-            "copyinkf": copyinkf,
-
-            "copypriorss": copypriorss,
-
-            "frames": frames,
-
-            "tag": tag,
-
-            "q": q,
-
-            "qscale": qscale,
-
-            "profile": profile,
-
-            "filter": filter,
-
-
-            "filter_script": filter_script,
-
-
-
-
-
-
-
-
-
-            "attach": attach,
-
-
-
-
-
-
-            "disposition": disposition,
-
-
-
-            "bits_per_raw_sample": bits_per_raw_sample,
-
-            "vframes": vframes,
-
-            "r": r,
-
-            "fpsmax": fpsmax,
-
-            "s": s,
-
-            "aspect": aspect,
-
-            "pix_fmt": pix_fmt,
-
-            "vn": vn,
-
-            "rc_override": rc_override,
-
-            "vcodec": vcodec,
-
-            "timecode": timecode,
-
-            "pass": _pass,
-
-            "passlogfile": passlogfile,
-
-
-
-
-
-            "vf": vf,
-
-            "intra_matrix": intra_matrix,
-
-            "inter_matrix": inter_matrix,
-
-            "chroma_intra_matrix": chroma_intra_matrix,
-
-            "top": top,
-
-            "vtag": vtag,
-
-
-            "fps_mode": fps_mode,
-
-            "force_fps": force_fps,
-
-            "streamid": streamid,
-
-            "force_key_frames": force_key_frames,
-
-            "ab": ab,
-
-            "b": b,
-
-
-
-
-
-
-            "autoscale": autoscale,
-
-            "aframes": aframes,
-
-            "aq": aq,
-
-            "ar": ar,
-
-            "ac": ac,
-
-            "an": an,
-
-            "acodec": acodec,
-
-            "atag": atag,
-
-
-            "sample_fmt": sample_fmt,
-
-            "channel_layout": channel_layout,
-
-            "ch_layout": ch_layout,
-
-            "af": af,
-
-
-            "sn": sn,
-
-            "scodec": scodec,
-
-            "stag": stag,
-
-
-
-            "muxdelay": muxdelay,
-
-            "muxpreload": muxpreload,
-
-            "sdp_file": sdp_file,
-
-            "time_base": time_base,
-
-            "enc_time_base": enc_time_base,
-
-            "bsf": bsf,
-
-            "absf": absf,
-
-            "vbsf": vbsf,
-
-            "apre": apre,
-
-            "vpre": vpre,
-
-            "spre": spre,
-
-            "fpre": fpre,
-
-            "max_muxing_queue_size": max_muxing_queue_size,
-
-            "muxing_queue_data_threshold": muxing_queue_data_threshold,
-
-            "dcodec": dcodec,
-
-            "dn": dn,
-
-
-
-
-
-        }, encoder_options, muxer_options, format_options, codec_options, extra_options)).stream()
+        return self._output_node(
+            *streams,
+            filename=filename,
+            **merge(
+                {
+                    "f": f,
+                    "c": c,
+                    "codec": codec,
+                    "pre": pre,
+                    "map": map,
+                    "map_channel": map_channel,
+                    "map_metadata": map_metadata,
+                    "map_chapters": map_chapters,
+                    "t": t,
+                    "to": to,
+                    "fs": fs,
+                    "ss": ss,
+                    "timestamp": timestamp,
+                    "metadata": metadata,
+                    "program": program,
+                    "dframes": dframes,
+                    "target": target,
+                    "shortest": shortest,
+                    "bitexact": bitexact,
+                    "apad": apad,
+                    "copyinkf": copyinkf,
+                    "copypriorss": copypriorss,
+                    "frames": frames,
+                    "tag": tag,
+                    "q": q,
+                    "qscale": qscale,
+                    "profile": profile,
+                    "filter": filter,
+                    "filter_script": filter_script,
+                    "attach": attach,
+                    "disposition": disposition,
+                    "bits_per_raw_sample": bits_per_raw_sample,
+                    "vframes": vframes,
+                    "r": r,
+                    "fpsmax": fpsmax,
+                    "s": s,
+                    "aspect": aspect,
+                    "pix_fmt": pix_fmt,
+                    "vn": vn,
+                    "rc_override": rc_override,
+                    "vcodec": vcodec,
+                    "timecode": timecode,
+                    "pass": _pass,
+                    "passlogfile": passlogfile,
+                    "vf": vf,
+                    "intra_matrix": intra_matrix,
+                    "inter_matrix": inter_matrix,
+                    "chroma_intra_matrix": chroma_intra_matrix,
+                    "top": top,
+                    "vtag": vtag,
+                    "fps_mode": fps_mode,
+                    "force_fps": force_fps,
+                    "streamid": streamid,
+                    "force_key_frames": force_key_frames,
+                    "ab": ab,
+                    "b": b,
+                    "autoscale": autoscale,
+                    "aframes": aframes,
+                    "aq": aq,
+                    "ar": ar,
+                    "ac": ac,
+                    "an": an,
+                    "acodec": acodec,
+                    "atag": atag,
+                    "sample_fmt": sample_fmt,
+                    "channel_layout": channel_layout,
+                    "ch_layout": ch_layout,
+                    "af": af,
+                    "sn": sn,
+                    "scodec": scodec,
+                    "stag": stag,
+                    "muxdelay": muxdelay,
+                    "muxpreload": muxpreload,
+                    "sdp_file": sdp_file,
+                    "time_base": time_base,
+                    "enc_time_base": enc_time_base,
+                    "bsf": bsf,
+                    "absf": absf,
+                    "vbsf": vbsf,
+                    "apre": apre,
+                    "vpre": vpre,
+                    "spre": spre,
+                    "fpre": fpre,
+                    "max_muxing_queue_size": max_muxing_queue_size,
+                    "muxing_queue_data_threshold": muxing_queue_data_threshold,
+                    "dcodec": dcodec,
+                    "dn": dn,
+                },
+                encoder_options,
+                muxer_options,
+                format_options,
+                codec_options,
+                extra_options,
+            ),
+        ).stream()
