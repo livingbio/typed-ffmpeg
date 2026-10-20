@@ -1,9 +1,10 @@
 """FFmpeg expression functions and utilities."""
 
 import re
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
-from typing_extensions import Self
+if TYPE_CHECKING:
+    from typing_extensions import Self
 
 # Operator precedence of FFmpeg expressions, see libavutil/eval.c.
 # A leading sign applies to the whole power chain (-x^2 == -(x^2)), and two
@@ -92,7 +93,7 @@ class Expression(str):
     expression: str
     precedence: int
 
-    def __new__(cls, expression: str, precedence: int | None = None) -> Self:
+    def __new__(cls, expression: str, precedence: int | None = None) -> "Self":
         """
         Create an Expression from an FFmpeg expression string.
 
