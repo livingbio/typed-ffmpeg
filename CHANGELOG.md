@@ -5,6 +5,50 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [4.6] - 2026-10-21
+
+Expression options get their own type, and `Expression` arithmetic now produces
+expressions FFmpeg evaluates correctly. Every package is republished because the
+generated bindings changed in all of v5–v9.
+
+### Added
+
+- **`Expr` type for expression options** (#1184). FFmpeg declares options such
+  as `drawbox`'s `x`, `y`, `width`, `height` and `thickness` as plain strings,
+  so they were typed `String`. The codegen now scans FFmpeg's libavfilter
+  source for string options that are evaluated with `av_expr_parse` (directly,
+  through helper functions, or through token-pasting macros) and types those as
+  `Expr`: 156/158/175/175/175 parameters in v5/v6/v7/v8/v9. `Expr` accepts the
+  same values as `String` (`str | int | float | Default | LazyValue | None`),
+  so existing code keeps type-checking. Plain-text options such as `color` stay
+  `String`
+
+### Changed
+
+- Numeric defaults in generated signatures are rendered unquoted, e.g.
+  `x: Expr = Default(0)` instead of `x: String = Default("0")`. `Default` is a
+  `str` subclass, so the runtime value is unchanged, and defaults are still
+  omitted from the command line
+- The v5–v7 generated bindings are now formatted with ruff like v8 and v9
+
+### Fixed
+
+- **`Expression` operators ignored FFmpeg's precedence rules.** Composed
+  expressions are now parenthesised as needed:
+  - `(Expression("iw") - "w") / 2` gave `iw-w/2`; it now gives `(iw-w)/2`
+  - `iw / (ih * 2)` gave `iw/ih*2`; it now gives `iw/(ih*2)`
+  - `2 * Expression("iw")` gave `iwiw` (string repetition); it now gives `2*iw`
+  - `10 - Expression("iw")` raised `TypeError`; reflected operators now work
+  - `x - (-3)` gave `x--3`, which FFmpeg cannot parse; it now gives `x-(-3)`
+  - `x % 5` gave `x%5`, but FFmpeg has no `%` operator; it now gives
+    `mod(x,5)`
+
+  Expressions that were already correct, such as `iw+ih`, `-x`, `x^2` and
+  function calls, produce the same output as before
+- CI on `main`: snapshots regenerated for syrupy 6 and vitest 5, the playground
+  jest-dom matchers typed for vitest, and the TypeScript workflow moved to
+  Node 22 after npm 10.8 crashed resolving workspace peers
+
 ## [4.5] - 2026-08-23
 
 Bug-fix release. Two separate defects made the 4.4 packages unusable for common

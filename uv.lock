@@ -791,7 +791,7 @@ wheels = [
 
 [[package]]
 name = "ffmpeg-core"
-version = "4.5"
+version = "4.6"
 source = { editable = "packages/core" }
 
 [package.optional-dependencies]
@@ -819,27 +819,27 @@ provides-extras = ["dev", "graph"]
 
 [[package]]
 name = "ffmpeg-data-v5"
-version = "4.5"
+version = "4.6"
 source = { editable = "packages/data-v5" }
 
 [[package]]
 name = "ffmpeg-data-v6"
-version = "4.5"
+version = "4.6"
 source = { editable = "packages/data-v6" }
 
 [[package]]
 name = "ffmpeg-data-v7"
-version = "4.5"
+version = "4.6"
 source = { editable = "packages/data-v7" }
 
 [[package]]
 name = "ffmpeg-data-v8"
-version = "4.5"
+version = "4.6"
 source = { editable = "packages/data-v8" }
 
 [[package]]
 name = "ffmpeg-data-v9"
-version = "4.5"
+version = "4.6"
 source = { editable = "packages/data-v9" }
 
 [[package]]
@@ -2773,7 +2773,7 @@ wheels = [
 
 [[package]]
 name = "typed-ffmpeg"
-version = "4.5"
+version = "4.6"
 source = { editable = "packages/latest" }
 dependencies = [
     { name = "typed-ffmpeg-v9" },
@@ -2801,7 +2801,7 @@ provides-extras = ["dev", "parse"]
 
 [[package]]
 name = "typed-ffmpeg-v5"
-version = "4.5"
+version = "4.6"
 source = { editable = "packages/v5" }
 dependencies = [
     { name = "ffmpeg-core" },
@@ -2831,7 +2831,7 @@ provides-extras = ["dev", "parse"]
 
 [[package]]
 name = "typed-ffmpeg-v6"
-version = "4.5"
+version = "4.6"
 source = { editable = "packages/v6" }
 dependencies = [
     { name = "ffmpeg-core" },
@@ -2861,7 +2861,7 @@ provides-extras = ["dev", "parse"]
 
 [[package]]
 name = "typed-ffmpeg-v7"
-version = "4.5"
+version = "4.6"
 source = { editable = "packages/v7" }
 dependencies = [
     { name = "ffmpeg-core" },
@@ -2891,7 +2891,7 @@ provides-extras = ["dev", "parse"]
 
 [[package]]
 name = "typed-ffmpeg-v8"
-version = "4.5"
+version = "4.6"
 source = { editable = "packages/v8" }
 dependencies = [
     { name = "ffmpeg-core" },
@@ -2921,7 +2921,7 @@ provides-extras = ["dev", "parse"]
 
 [[package]]
 name = "typed-ffmpeg-v9"
-version = "4.5"
+version = "4.6"
 source = { editable = "packages/v9" }
 dependencies = [
     { name = "ffmpeg-core" },
