@@ -580,10 +580,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-are-numeric-options-like-drawboxx-width-typed-as-string" class="md-nav__link">
+  <a href="#why-do-options-like-drawboxx-width-accept-strings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why are numeric options like drawbox(x=..., width=...) typed as String?
+        Why do options like drawbox(x=..., width=...) accept strings?
       
     </span>
   </a>
@@ -12345,10 +12345,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-are-numeric-options-like-drawboxx-width-typed-as-string" class="md-nav__link">
+  <a href="#why-do-options-like-drawboxx-width-accept-strings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why are numeric options like drawbox(x=..., width=...) typed as String?
+        Why do options like drawbox(x=..., width=...) accept strings?
       
     </span>
   </a>
@@ -12421,16 +12421,21 @@
 <li>How to use predefined video/audio source filter can be found <a href="../usage/complex-filtering/">Complex Filters</a></li>
 <li>How to customize video/audio source filter can be found <a href="../usage/customizing-filters/">Customizing Filters</a></li>
 </ul>
-<h2 id="why-are-numeric-options-like-drawboxx-width-typed-as-string">Why are numeric options like <code>drawbox(x=..., width=...)</code> typed as <code>String</code>?<a class="headerlink" href="#why-are-numeric-options-like-drawboxx-width-typed-as-string" title="Permanent link">&para;</a></h2>
-<p>Many FFmpeg filter options that look numeric are declared by FFmpeg itself as string options, because they accept <strong>expressions</strong> evaluated per frame, e.g. <code>x="(iw-w)/2"</code>, <code>width="iw/2"</code> or <code>thickness="fill"</code>. typed-ffmpeg mirrors FFmpeg's declared option type, so these parameters are annotated as <code>String</code>.</p>
-<p><code>String</code> is a type alias, not <code>str</code>. It also accepts <code>int</code> and <code>float</code>, so you never need to convert numbers yourself:</p>
-<div class="language-python highlight"><pre><span></span><code><span class="p">(</span>
-    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">"in.mp4"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">video</span><span class="o">.</span><span class="n">drawbox</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">320</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span>
-<span class="p">)</span>
-<span class="c1"># drawbox=x=10:y=20:width=320:height=180:color=red:thickness=5</span>
+<h2 id="why-do-options-like-drawboxx-width-accept-strings">Why do options like <code>drawbox(x=..., width=...)</code> accept strings?<a class="headerlink" href="#why-do-options-like-drawboxx-width-accept-strings" title="Permanent link">&para;</a></h2>
+<p>Many FFmpeg filter options that look numeric are <strong>expressions</strong> evaluated per frame, e.g. <code>x="(iw-w)/2"</code>, <code>width="iw/2"</code> or <code>thickness="fill"</code>. FFmpeg declares them as string options, so typed-ffmpeg annotates them as <code>Expr</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">drawbox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Expr</span> <span class="o">=</span> <span class="n">Default</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">width</span><span class="p">:</span> <span class="n">Expr</span> <span class="o">=</span> <span class="n">Default</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="n">Default</span><span class="p">(</span><span class="s2">"black"</span><span class="p">),</span> <span class="o">...</span><span class="p">)</span>
 </code></pre></div>
-<p>Values of any other type (e.g. a <code>list</code>) are rejected by type checkers such as mypy, pyright or ty. See <code>ffmpeg.types</code> for the full definition of each option type.</p>
+<p><code>Expr</code> accepts a Python <code>int</code> or <code>float</code>, an expression string, or an <code>Expression</code> built with Python operators, so you never need to convert numbers yourself:</p>
+<div class="language-python highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.expressions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Expression</span>
+
+<span class="n">iw</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Expression</span><span class="p">(</span><span class="s2">"iw"</span><span class="p">),</span> <span class="n">Expression</span><span class="p">(</span><span class="s2">"w"</span><span class="p">)</span>
+<span class="p">(</span>
+    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">"in.mp4"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">video</span><span class="o">.</span><span class="n">drawbox</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="n">iw</span> <span class="o">-</span> <span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">320</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="c1"># drawbox=x=(iw-w)/2:y=20:width=320:height=180:thickness=5</span>
+</code></pre></div>
+<p>Values of any other type (e.g. a <code>list</code>) are rejected by type checkers such as mypy, pyright or ty. Options typed <code>String</code> are free-form text (colors, file names, <code>|</code>-separated lists, ...). See <code>ffmpeg.types</code> for the full definition of each option type.</p>
 <h2 id="differences-between-ffmpeg-python-and-typed-ffmpeg">Differences Between ffmpeg-python and typed-ffmpeg<a class="headerlink" href="#differences-between-ffmpeg-python-and-typed-ffmpeg" title="Permanent link">&para;</a></h2>
 <p>typed-ffmpeg is designed with inspiration from ffmpeg-python and aims to follow good design principles. However, due to differences in approach and static typing requirements, there are some key distinctions. Below are the major differences between ffmpeg-python and typed-ffmpeg. If you notice any discrepancies or have suggestions for improvements, feel free to open an issue or submit a pull request.</p>
 <h3 id="defining-custom-filters-for-single-output">Defining Custom Filters for single output<a class="headerlink" href="#defining-custom-filters-for-single-output" title="Permanent link">&para;</a></h3>

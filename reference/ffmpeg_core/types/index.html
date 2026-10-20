@@ -1470,6 +1470,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ffmpeg_core.types.Expr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;Expr
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ffmpeg_core.types.Flags" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12486,6 +12497,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ffmpeg_core.types.Expr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;Expr
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ffmpeg_core.types.Flags" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12722,6 +12744,21 @@ The source of these types is defined within the AVOptionType enumeration found i
             <td>
               <div class="doc-md-description">
                 <p>This represents FFmpeg's duration type. It can accept either a Python integer or float value</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            Expr
+
+
+  
+      module-attribute
+   (ffmpeg_core.types.Expr)" href="#ffmpeg_core.types.Expr">Expr</a></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>This represents an FFmpeg expression, e.g. drawbox's <code>x</code> or overlay's <code>y</code>.</p>
               </div>
             </td>
           </tr>
@@ -13015,6 +13052,38 @@ or a string that represents a duration value.</p>
 <details class="note" open>
   <summary>Note</summary>
   <p><a href="https://ffmpeg.org/ffmpeg-utils.html#Time-duration">Document</a></p>
+</details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="ffmpeg_core.types.Expr" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">Expr</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#ffmpeg_core.types.Expr" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="n">Expr</span> <span class="o">=</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            Default (ffmpeg_core.schema.Default)" href="../schema/#ffmpeg_core.schema.Default">Default</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-internal" title="            LazyValue (ffmpeg_core.utils.lazy_eval.schema.LazyValue)" href="../utils/lazy_eval/schema/#ffmpeg_core.utils.lazy_eval.schema.LazyValue">LazyValue</a></span> <span class="o">|</span> <span class="kc">None</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>This represents an FFmpeg expression, e.g. drawbox's <code>x</code> or overlay's <code>y</code>.
+FFmpeg declares these options as strings because it evaluates them per frame,
+so it accepts a Python int/float, an expression string such as <code>"(iw-w)/2"</code>,
+or an <code>ffmpeg.expressions.Expression</code>.</p>
+
+
+<details class="note" open>
+  <summary>Note</summary>
+  <p><a href="https://ffmpeg.org/ffmpeg-utils.html#Expression-Evaluation">Document</a></p>
 </details>
     </div>
 

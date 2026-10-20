@@ -14,6 +14,7 @@ from ...types import (
     Dictionary,
     Double,
     Duration,
+    Expr,
     Flags,
     Float,
     Func,
