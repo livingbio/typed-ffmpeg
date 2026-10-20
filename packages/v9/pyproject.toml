@@ -42,7 +42,7 @@ ffmpeg-data-v9 = { workspace = true }
 dev = [
     "pytest>=7.0",
     "pytest-cov>=7.1.0",
-    "syrupy>=5.5.3",
+    "syrupy>=6.0.0",
     "ruff==0.17.0",
 ]
 parse = ["ffmpeg-data-v9"]

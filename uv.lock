@@ -813,7 +813,7 @@ requires-dist = [
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=7.1.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = "==0.17.0" },
-    { name = "syrupy", marker = "extra == 'dev'", specifier = ">=5.5.3" },
+    { name = "syrupy", marker = "extra == 'dev'", specifier = ">=6.0.0" },
 ]
 provides-extras = ["dev", "graph"]
 
@@ -2825,7 +2825,7 @@ requires-dist = [
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=7.1.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = "==0.17.0" },
-    { name = "syrupy", marker = "extra == 'dev'", specifier = ">=5.5.3" },
+    { name = "syrupy", marker = "extra == 'dev'", specifier = ">=6.0.0" },
 ]
 provides-extras = ["dev", "parse"]
 
@@ -2855,7 +2855,7 @@ requires-dist = [
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=7.1.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = "==0.17.0" },
-    { name = "syrupy", marker = "extra == 'dev'", specifier = ">=5.5.3" },
+    { name = "syrupy", marker = "extra == 'dev'", specifier = ">=6.0.0" },
 ]
 provides-extras = ["dev", "parse"]
 
@@ -2885,7 +2885,7 @@ requires-dist = [
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=7.1.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = "==0.17.0" },
-    { name = "syrupy", marker = "extra == 'dev'", specifier = ">=5.5.3" },
+    { name = "syrupy", marker = "extra == 'dev'", specifier = ">=6.0.0" },
 ]
 provides-extras = ["dev", "parse"]
 
@@ -2915,7 +2915,7 @@ requires-dist = [
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=7.1.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = "==0.17.0" },
-    { name = "syrupy", marker = "extra == 'dev'", specifier = ">=5.5.3" },
+    { name = "syrupy", marker = "extra == 'dev'", specifier = ">=6.0.0" },
 ]
 provides-extras = ["dev", "parse"]
 
@@ -2945,7 +2945,7 @@ requires-dist = [
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=7.1.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = "==0.17.0" },
-    { name = "syrupy", marker = "extra == 'dev'", specifier = ">=5.5.3" },
+    { name = "syrupy", marker = "extra == 'dev'", specifier = ">=6.0.0" },
 ]
 provides-extras = ["dev", "parse"]
 
@@ -3038,7 +3038,7 @@ dev = [
     { name = "pytest-datadir", specifier = ">=1.8.0" },
     { name = "pytest-recording", specifier = ">=0.13.1" },
     { name = "ruff", specifier = "==0.17.0" },
-    { name = "syrupy", specifier = ">=4.6.0" },
+    { name = "syrupy", specifier = ">=6.0.0" },
     { name = "ty" },
     { name = "typer" },
 ]
