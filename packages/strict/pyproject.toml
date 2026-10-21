@@ -1,6 +1,6 @@
 [project]
 name = "typed-ffmpeg-strict"
-version = "4.6.1"
+version = "4.6.2"
 description = "Strict typing for typed-ffmpeg: expression options accept numbers and Expression, not plain str"
 authors = [
     {name = "lucemia", email = "lucemia@gmail.com"}
@@ -17,7 +17,7 @@ classifiers = [
 # Stub-only (PEP 561 partial stub package): it overrides ffmpeg.types for type
 # checkers and changes nothing at runtime.
 dependencies = [
-    "typed-ffmpeg>=4.6.1,<5.0",
+    "typed-ffmpeg>=4.6.2,<5.0",
 ]
 
 [build-system]
