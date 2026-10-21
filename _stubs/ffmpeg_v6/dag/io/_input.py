@@ -142,7 +142,7 @@ def input(
         f: force format
         c: codec name
         codec: codec name
-        t: record or transcode \"duration\" seconds of audio/video
+        t: record or transcode "duration" seconds of audio/video
         to: record or transcode stop time
         ss: set the start time offset
         sseof: set the start time offset relative to EOF
