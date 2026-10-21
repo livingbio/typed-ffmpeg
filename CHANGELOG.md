@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [4.6.1] - 2026-10-21
+
+Bug-fix release.
+
+### Fixed
+
+- **Importing the bindings emitted two `SyntaxWarning`s on Python 3.12+**
+  (#1204), in every version package.
+  FFmpeg help text was copied verbatim into regular docstrings, and `movie`'s
+  `format_opts` (`udp\:protocol_blacklist=http`) and the output `target`
+  option (`"dv50\ "`) contain backslashes that are invalid escape sequences.
+  Python 3.12+ warns on them (older versions emit a hidden
+  `DeprecationWarning`), and a future release will reject them.
+  Backslashes in generated docstrings are now escaped; the rendered `__doc__`
+  text is unchanged
+
 ## [4.6] - 2026-10-21
 
 Expression options get their own type, and `Expression` arithmetic now produces
