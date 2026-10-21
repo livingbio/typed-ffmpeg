@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [4.6.2] - 2026-10-21
+
+Bug-fix release.
+
+### Fixed
+
+- **mypy ignored the types shipped in `ffmpeg-core`** (#1206).
+  `ffmpeg-core` declared `py.typed` as package data, but the file never
+  existed, so it was missing from every wheel. mypy therefore treated
+  `ffmpeg_core` as untyped: `from ffmpeg.expressions import Expression` failed
+  with `Module "ffmpeg.expressions" has no attribute "Expression"`, and the
+  option aliases in `ffmpeg.types` resolved to `Any`. The marker is now
+  included. pyright and ty were not affected
+
 ## [4.6.1] - 2026-10-21
 
 Bug-fix release.
