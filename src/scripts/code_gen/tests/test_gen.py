@@ -1,4 +1,6 @@
+import ast
 import tempfile
+import warnings
 from pathlib import Path
 
 from syrupy.assertion import SnapshotAssertion
@@ -12,7 +14,7 @@ from ffmpeg_core.common.schema import (
     StreamType,
 )
 
-from ..gen import filter_option_typings, render
+from ..gen import docstring_safe, filter_option_typings, render
 
 
 def test_render(snapshot: SnapshotAssertion) -> None:
@@ -102,3 +104,16 @@ def test_filter_option_typings_expression() -> None:
     ]
     # without expression metadata the option stays a plain String
     assert filter_option_typings(drawbox).startswith("x: String = Default('0'),")
+
+
+def test_docstring_safe() -> None:
+    help_text = r'protocol_whitelist=file,rtp,udp\:protocol_blacklist=http "dv50\ " \"t\" seconds'
+    docstring = f'"""{docstring_safe(help_text)}"""'
+
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")
+        value = ast.literal_eval(docstring)
+    assert (
+        value
+        == r'protocol_whitelist=file,rtp,udp\:protocol_blacklist=http "dv50\ " "t" seconds'
+    )

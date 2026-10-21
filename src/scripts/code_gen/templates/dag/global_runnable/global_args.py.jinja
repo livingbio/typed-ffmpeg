@@ -47,7 +47,7 @@ class GlobalArgs(ABC):
         Args:
             {% for option in options %}
             {%- if option.is_global_option -%}
-            {{option.name | option_name_safe}}: {{option.help }}
+            {{option.name | option_name_safe}}: {{ option.help | docstring_safe }}
             {% endif %}
             {%- endfor -%}
             extra_options: Additional options

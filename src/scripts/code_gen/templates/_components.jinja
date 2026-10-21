@@ -50,7 +50,7 @@
 {%- endmacro -%}
 
 {% macro docstring(f) %}
-{{ f.description }}
+{{ f.description | docstring_safe }}
 {% if format_version_note is not none %}{% set vnote = format_version_note(f.name) %}{% if vnote %}
 
 .. note:: {{ vnote }}
@@ -58,7 +58,7 @@
 
 Args:
 {%- for option in f.options %}
-    {{option.name | option_name_safe}}: {{option.description | striptags }}
+    {{option.name | option_name_safe}}: {{ option.description | striptags | docstring_safe }}
 {%- endfor %}
 {%- if f.is_support_framesync %}
     framesync_options: Framesync options

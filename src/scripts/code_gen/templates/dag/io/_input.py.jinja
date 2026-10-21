@@ -30,7 +30,7 @@ def input(
         filename: Input file URL
         {% for option in options %}
         {%- if option.is_input_option -%}
-        {{option.name | option_name_safe}}: {{option.help }}
+        {{option.name | option_name_safe}}: {{ option.help | docstring_safe }}
         {% endif %}
         {%- endfor -%}
         decoder_options: ffmpeg's decoder options
