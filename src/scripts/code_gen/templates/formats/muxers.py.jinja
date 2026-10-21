@@ -16,11 +16,11 @@ def {{codec.name | option_name_safe }}(
     {% endfor %}
 ) -> FFMpegMuxerOption:
     """
-    {{codec.description}}
+    {{ codec.description | docstring_safe }}
     {% if codec.options | length > 0 %}
     Args:
     {%- for option in codec.options %}
-        {{option.name | option_name_safe}}: {{option.help}}
+        {{option.name | option_name_safe}}: {{ option.help | docstring_safe }}
     {%- endfor %}
     {%- endif %}
 

@@ -3113,7 +3113,7 @@ def movie(
         loop: Specifies how many times to read the stream in sequence. If the value is 0, the stream will be looped infinitely. Default value is "1". Note that when the movie is looped the source timestamps are not changed, so it will generate non monotonically increasing timestamps.
         discontinuity: Specifies the time difference between frames above which the point is considered a timestamp discontinuity which is removed by adjusting the later timestamps.
         dec_threads: Specifies the number of threads for decoding
-        format_opts: Specify format options for the opened file. Format options can be specified as a list of key=value pairs separated by ':'. The following example shows how to add protocol_whitelist and protocol_blacklist options: @example ffplay -f lavfi "movie=filename='1.sdp':format_opts='protocol_whitelist=file,rtp,udp\:protocol_blacklist=http'" @end example
+        format_opts: Specify format options for the opened file. Format options can be specified as a list of key=value pairs separated by ':'. The following example shows how to add protocol_whitelist and protocol_blacklist options: @example ffplay -f lavfi "movie=filename='1.sdp':format_opts='protocol_whitelist=file,rtp,udp\\:protocol_blacklist=http'" @end example
         extra_options: Extra options for the filter
 
     Returns:

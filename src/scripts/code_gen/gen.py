@@ -330,6 +330,25 @@ def normalize_help_text(text: str) -> str:
     return normalized.strip()
 
 
+def docstring_safe(text: str | None) -> str:
+    r"""
+    Escape text interpolated into a generated docstring.
+
+    FFmpeg help text can contain backslashes (e.g. ``udp\:protocol``), which
+    are invalid escape sequences inside a regular Python string literal and
+    raise ``SyntaxWarning`` on import.
+
+    Args:
+        text: The help text or description
+
+    Returns:
+        The text with ``\"`` unescaped to ``"`` and every other backslash
+        doubled, so the docstring reads as the original text
+
+    """
+    return (text or "").replace('\\"', '"').replace("\\", "\\\\")
+
+
 env.filters["stream_name_safe"] = stream_name_safe
 env.filters["option_name_safe"] = option_name_safe
 env.filters["filter_option_typing"] = filter_option_typing
@@ -338,6 +357,7 @@ env.filters["input_typings"] = input_typings
 env.filters["output_typings"] = output_typings
 env.filters["filter_option_typings"] = filter_option_typings
 env.filters["normalize_help_text"] = normalize_help_text
+env.filters["docstring_safe"] = docstring_safe
 env.globals["get_relative_import"] = get_relative_import
 env.globals["format_version_note"] = (
     None  # Set at render time when version metadata exists
