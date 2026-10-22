@@ -105,7 +105,7 @@ dev = [
     "mkdocstrings-python>=1.8.0,<3.0",
     # Capped: 12.2+ makes `md` a required argument of pymdownx Highlight,
     # which mkdocstrings 1.0.x Highlighter does not pass, breaking the docs build.
-    "pymdown-extensions>=10.7,<12.2",
+    "pymdown-extensions>=10.7,<12.4",
     "mkdocs-gen-files",
     "mkdocs-literate-nav",
     "mkdocs-section-index",
