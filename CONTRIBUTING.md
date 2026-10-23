@@ -32,7 +32,7 @@ pip install -e ".[dev]"
 
 3. **Install prek hooks**
 
-We use [prek](https://github.com/9999years/prek), a Rust-based drop-in replacement for pre-commit:
+We use [prek](https://github.com/j178/prek), a Rust-based drop-in replacement for pre-commit:
 
 ```bash
 # Install hooks (prek included in dev dependencies)
@@ -48,8 +48,6 @@ pre-commit uninstall
 # Install prek hooks
 prek install
 ```
-
-See [prek migration guide](docs/development/prek-migration.md) for details.
 
 ## Development Workflow
 

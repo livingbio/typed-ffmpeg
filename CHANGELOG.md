@@ -230,7 +230,7 @@ Major rewrite: monorepo architecture with multi-version FFmpeg support.
 
 - Package renamed from `typed-ffmpeg` (single package) to a monorepo with per-version packages
 - Import paths updated for multi-version support
-- Replaced pre-commit with [prek](https://github.com/9999years/prek) (2–10x faster)
+- Replaced pre-commit with [prek](https://github.com/j178/prek) (2–10x faster)
 - Switched to [uv](https://github.com/astral-sh/uv) package manager
 - Improved `ffmpeg-core` test coverage from 74% to 92%
 - Regenerated bindings for all supported FFmpeg versions
